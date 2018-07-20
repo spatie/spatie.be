@@ -60,6 +60,7 @@ class ImportGitHubIssues extends Command
                     }
 
                     $this->info("Tweeting issue id `$issue->id`");
+
                     dispatch(new TweetIssueJob($issue));
                 });
         });
