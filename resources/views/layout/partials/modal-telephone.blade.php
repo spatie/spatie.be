@@ -7,7 +7,14 @@
             @if(is_office_open())
                 <span class="text-green links-underline links-green"><a href="tel:+3232925679">Click to call us</a>
             @else
-                <span class="text-pink links-underline links-pink">Our office is closed now, <a href="mailto:info@spatie.be">email us instead</a></span>
+                <span class="text-pink links-underline links-pink">Our office is closed now, <a href="{{ mailto(
+'I\'d like to have a chat!',
+'Tell us how we can help you:
+- Call you back
+- Arrange a meeting
+- …
+'
+) }}">email us instead</a></span>
             @endif
         </p>
     </div>
