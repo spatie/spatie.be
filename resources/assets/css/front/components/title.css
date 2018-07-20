@@ -1,0 +1,38 @@
+.title-2xl {
+    @apply font-serif-bold;
+    @apply text-5xl;
+
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    padding-top: 0.25em;
+    line-height: 1;
+
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0.083em;
+        background-color: currentcolor;
+        opacity: 0.9;
+        border-radius: 4px;
+    }
+}
+
+.title-xl {
+    @apply text-5xl font-serif-bold leading-tight;
+}
+
+.title {
+    @apply text-2xl font-sans-bold leading-tight;
+}
+
+.title-sm {
+    @apply font-sans-bold uppercase leading-tight;
+}
+
+.title-subtext {
+    @apply text-xs font-sans-bold uppercase leading-tight mt-2;
+}

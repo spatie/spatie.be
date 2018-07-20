@@ -1,0 +1,72 @@
+/* show only postcards for older browsers */
+
+.illustration {
+    @apply hidden;
+    @apply bg-white;
+    @apply border-white border-solid;
+    @apply shadow-lg;
+
+        &.is-framed {
+            border-width: 4px;
+        }
+
+        &.is-postcard-without-caption {
+            padding: 4% 4% 12%;
+        }
+
+        &.is-postcard {
+            padding: 4%;
+        }
+
+        &.h-full img {
+            @apply min-h-full object-fit-cover;
+        }
+}
+
+.illustration-svg {
+    @apply hidden;
+}
+
+.illustration.is-postcard {
+    @apply block;
+}
+
+@supports(display:grid) {
+    .illustration {
+        @apply block;
+
+
+        @screen sm {
+            &.is-left {
+                padding-left: 0 !important;
+            }
+
+            &.is-right {
+                padding-right: 0 !important;
+            }
+        }
+
+        &.is-rotated {
+            @apply mt-16;
+
+            transform: rotate(-2deg) translateY(-2rem);
+
+            &.is-left {
+                transform-origin: 0 100%;
+            }
+
+            &.is-right {
+                transform-origin: 100% 0;
+            }
+
+            @screen sm {
+                @apply mt-8;
+            }
+        }
+
+    }
+
+    .illustration-svg {
+        @apply block;
+    }
+}

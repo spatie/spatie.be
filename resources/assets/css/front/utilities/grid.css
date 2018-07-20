@@ -1,0 +1,266 @@
+@responsive {
+    .grid {
+        --col-repeat: 1;
+        --row-repeat: 1;
+        --cols: 1fr;
+        --rows: 1fr;
+
+        display: grid;
+    }
+
+    .grid-template {
+        grid-template: var(--rows) / var(--cols);
+    }
+
+    .grid-rows {
+        display: grid;
+        grid-template-rows: var(--rows);
+    }
+
+    .grid-cols {
+        display: grid;
+        grid-template-columns: var(--cols);
+    }
+
+    .grid-flow-dense {
+        grid-auto-flow: dense;
+    }
+
+    .grid-flow-column {
+        grid-auto-flow: column;
+    }
+
+    .grid-flow-row {
+        grid-auto-flow: row;
+    }
+
+    .grid-repeat {
+        grid-template: repeat(var(--row-repeat), 1fr) / repeat(var(--col-repeat), 1fr);
+    }
+
+    /* grid gaps */
+
+    .gap-0 {
+        grid-gap: 0;
+    }
+
+    .gap-1 {
+        grid-gap: config('padding.1');
+    }
+
+    .gapy-1 {
+        grid-row-gap: config('padding.1');
+    }
+
+    .gapx-1 {
+        grid-column-gap: config('padding.1');
+    }
+
+    .gap-1 {
+        grid-gap: config('padding.1');
+    }
+
+    .gap-2 {
+        grid-gap: config('padding.2');
+    }
+
+    .gapy-2 {
+        grid-row-gap: config('padding.2');
+    }
+
+    .gapx-2 {
+        grid-column-gap: config('padding.2');
+    }
+
+    .gap-4 {
+        grid-gap: config('padding.4');
+    }
+
+    .gapy-4 {
+        grid-row-gap: config('padding.4');
+    }
+
+    .gapx-4 {
+        grid-column-gap: config('padding.4');
+    }
+
+    .gap-8 {
+        grid-gap: config('padding.8');
+    }
+
+    .gapy-8 {
+        grid-row-gap: config('padding.8');
+    }
+
+    .gapx-8 {
+        grid-column-gap: config('padding.8');
+    }
+
+    .gap-16 {
+        grid-gap: config('padding.16');
+    }
+
+    .gapy-16 {
+        grid-row-gap: config('padding.16');
+    }
+
+    .gapx-16 {
+        grid-column-gap: config('padding.16');
+    }
+
+    /* change order */
+
+    .order-0 {
+        order: 0;
+    }
+
+    .order-1 {
+        order: 1;
+    }
+
+    .order-2 {
+        order: 2;
+    }
+
+    /* span rows and cols, or both */
+
+    .span-2 {
+        grid-column: span 2;
+    }
+
+    .span-3 {
+        grid-column: span 3;
+    }
+
+    .span-4 {
+        grid-column: span 4;
+    }
+
+    .span-5 {
+        grid-column: span 5;
+    }
+
+    .span-6 {
+        grid-column: span 6;
+    }
+
+    .spanx-2 {
+        grid-column-end: span 2;
+    }
+
+    .spanx-3 {
+        grid-column-end: span 3;
+    }
+
+    .spanx-4 {
+        grid-column-end: span 4;
+    }
+
+    .spanx-5 {
+        grid-column-end: span 5;
+    }
+
+    .spanx-6 {
+        grid-column-end: span 6;
+    }
+
+    .spanx-7 {
+        grid-column-end: span 7;
+    }
+
+    .spany-2 {
+        grid-row-end: span 2;
+    }
+
+    .spany-3 {
+        grid-row-end: span 3;
+    }
+
+    .spany-4 {
+        grid-row-end: span 4;
+    }
+
+    .spany-5 {
+        grid-row-end: span 5;
+    }
+
+    .spany-6 {
+        grid-row-end: span 6;
+    }
+
+    /* skip cols with column-start */
+
+    .startx-1 {
+        grid-column-start: 1;
+    }
+
+    .startx-2 {
+        grid-column-start: 2;
+    }
+
+    .startx-3 {
+        grid-column-start: 3;
+    }
+
+    .startx-4 {
+        grid-column-start: 4;
+    }
+
+    .startx-5 {
+        grid-column-start: 5;
+    }
+
+    .startx-6 {
+        grid-column-start: 6;
+    }
+
+    .startx-7 {
+        grid-column-start: 7;
+    }
+
+    .starty-1 {
+        grid-row-start: 1;
+    }
+
+    .starty-2 {
+        grid-row-start: 2;
+    }
+
+    .starty-3 {
+        grid-row-start: 3;
+    }
+
+    .starty-4 {
+        grid-row-start: 4;
+    }
+
+    .starty-5 {
+        grid-row-start: 5;
+    }
+
+    .starty-6 {
+        grid-row-start: 6;
+    }
+
+    .starty-7 {
+        grid-row-start: 7;
+    }
+
+    /* justify-self */
+
+    .justify-self-end {
+        justify-self: end;
+    }
+
+    .justify-self-start {
+        justify-self: start;
+    }
+
+    /* text alignment in grid, has no use when ther is no support */
+
+    .grid-text-right {
+        @supports(display:grid) {
+            @apply text-right;
+        }
+    }
+}

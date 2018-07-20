@@ -1,0 +1,68 @@
+.bullets {
+    --bullet-color: inherit;
+
+    & li {
+        padding-left: 1em;
+
+        &:before {
+            @apply font-icons;
+            @apply pr-2;
+
+            color: var(--bullet-color);
+            left: 0;
+            position: absolute;
+            content: '\f105'; /* fa-angle-right */
+        }
+
+        &:not(:last-child) {
+            margin-bottom: 0.35em;
+        }
+    }
+}
+
+.bullets-green {
+    --bullet-color: config(colors.green);
+}
+
+.bullets-pink {
+    --bullet-color: config(colors.pink);
+}
+
+.bullets-blue {
+    --bullet-color: config(colors.blue);
+}
+
+.bullets-grey {
+    --bullet-color: config(colors.grey);
+}
+
+.bullets-white {
+    --bullet-color: #fff;
+}
+
+.bullets-none {
+    & li {
+        padding-left: 0;
+
+        &:before {
+            display: none;
+        }
+    }
+}
+
+.bullets-inline {
+    @apply leading-loose;
+
+    & li {
+        display: inline-block;
+
+        &:not(:last-child) {
+            &:after {
+                @apply char-separator;
+                margin: 0 .5em;
+                content: '•';
+                color: var( --bullet-color);
+            }
+        }
+    }
+}

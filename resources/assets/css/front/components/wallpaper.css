@@ -1,0 +1,9 @@
+.wallpaper {
+    @apply absolute pin;
+    @apply z-back;
+    @apply overflow-hidden;
+
+    & img {
+        @apply w-full;
+    }
+}

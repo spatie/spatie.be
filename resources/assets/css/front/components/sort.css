@@ -1,0 +1,23 @@
+.sort {
+    @apply ml-2 flex items-center border-b border-grey-lighter;
+}
+
+.sort-select {
+    @apply font-sans lowercase text-grey bg-transparent appearance-none;
+
+     @supports(display:grid) {
+        @apply pr-4;
+     }
+}
+
+.sort-arrow {
+    @apply hidden;
+
+    @supports(display:grid) {
+        @apply absolute block pin-r text-grey-light pointer-events-none;
+    }
+}
+
+.sort-select:active + .sort-arrow {
+    transform: rotate(180deg);
+}

@@ -1,0 +1,33 @@
+.cell-l {
+    @apply pr-4 py-4;
+}
+
+.cell-r {
+    @apply border-b-2 border-grey-lightest pb-4;
+}
+
+@supports(display:grid) {
+    .cells {
+        @screen md {
+            @apply grid grid-cols;
+        }
+    }
+
+    .cell-l {
+        @screen md {
+            @apply border-b-2 border-grey-lightest;
+        }
+    }
+
+    .cell {
+        @screen md {
+            @apply border-b-2 border-grey-lightest px-4 py-4;
+        }
+    }
+
+    .cell-r {
+        @screen md {
+            @apply py-4 pl-4;
+        }
+    }
+}

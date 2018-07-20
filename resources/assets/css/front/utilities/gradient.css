@@ -1,0 +1,7 @@
+.gradient-linear {
+    background-image: linear-gradient(
+        var(--gradient-angle),
+        var(--gradient-from),
+        var(--gradient-to)
+    );
+}

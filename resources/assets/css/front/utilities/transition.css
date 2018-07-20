@@ -1,0 +1,16 @@
+.transition-color {
+    transition-property: color;
+}
+
+.transition-opacity {
+    transition-property: opacity;
+}
+
+.transition-transform {
+    transition-property: transform;
+}
+
+.transition-fast {
+    transition-duration: 0.1s;
+    transition-timing-function: ease-out;
+}

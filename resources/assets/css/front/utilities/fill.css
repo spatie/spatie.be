@@ -1,0 +1,23 @@
+.fill-blue {
+    fill: config('colors.blue');
+}
+
+.fill-pink {
+    fill: config('colors.pink');
+}
+
+.fill-red {
+    fill: config('colors.red');
+}
+
+.fill-grey {
+    fill: config('colors.grey');
+}
+
+.fill-white {
+    fill: config('colors.white');
+}
+
+.fill-green {
+    fill: config('colors.green');
+}

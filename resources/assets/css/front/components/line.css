@@ -1,0 +1,54 @@
+.line {
+    @apply my-16;
+    @apply h-2px opacity-25 rounded bg-grey;
+}
+
+.line-l {
+    @apply pl-4;
+
+    &:after {
+        @apply absolute pin-t pin-b pin-l w-2px opacity-25 rounded bg-grey;
+
+        content: '';
+    }
+}
+
+.line-l-white {
+    @apply line-l;
+
+    &:after {
+        @apply bg-white;
+    }
+}
+
+.line-before {
+    display: flex;
+    align-items: center;
+
+    &:before {
+        @apply bg-grey text-grey;
+
+        content: '';
+        flex-grow: 1;
+        height: 2px;
+        opacity: 0.25;
+        border-radius: 4px;
+        margin-right: 1rem;
+    }
+}
+
+.line-after {
+    display: flex;
+    align-items: center;
+
+    &:after {
+        @apply bg-grey;
+
+        content: '';
+        flex-grow: 1;
+        height: 2px;
+        opacity: 0.25;
+        margin-left: 1rem;
+        border-radius: 4px;
+    }
+}

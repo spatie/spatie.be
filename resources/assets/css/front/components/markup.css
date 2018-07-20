@@ -1,0 +1,55 @@
+.markup {
+    & .title {
+        @apply mb-8;
+    }
+
+    & .title-sm {
+        @apply mb-4;
+    }
+
+    & address,
+    & p,
+    & ol,
+    & ul {
+        &:not(:last-child) {
+            margin-bottom: 1.5em;
+        }
+    }
+
+    & address {
+        @apply line-l;
+    }
+
+    & strong {
+        @apply font-sans-bold;
+    }
+
+    & em {
+        @apply font-sans-normal-italic;
+    }
+}
+
+.markup-titles {
+    & h2 {
+        @apply title;
+        @apply mb-8;
+
+        &:not(:first-child) {
+            @apply mt-16;
+        }
+    }
+
+    & h2 + h3 {
+        @apply mt-8;
+    }
+
+    & h3 {
+        @apply title-sm;
+        @apply mb-4 mt-16;
+    }
+
+    & h4 {
+        @apply title-subtext;
+        @apply mb-2 mt-8;
+    }
+}

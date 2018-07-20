@@ -1,0 +1,80 @@
+.wrap {
+    @apply px-8 mx-auto max-w-columns;
+
+    @screen sm {
+        @apply px-16;
+    }
+}
+
+.wrap-6,
+.wrap-8,
+.wrap-gallery {
+    @apply wrap;
+
+    /* lazy fallback for non-grid cells */
+    & > :not(:first-child) {
+        @apply mt-8;
+    }
+}
+
+.wrap-inset {
+    /* lazy fallback for non-grid cells */
+    & > :not(:first-child) {
+        @apply mt-8;
+    }
+}
+
+@supports(display:grid) {
+    .wrap-6,
+    .wrap-8
+    .wrap-gallery,
+    .wrap-inset {
+        & > :not(:first-child) {
+            @apply mt-0;
+        }
+    }
+
+    .wrap-inset{
+        @apply grid-rows gap-8;
+
+        @screen md {
+            @apply grid-cols;
+        }
+    }
+
+    .wrap-6 {
+        @apply grid grid-template gap-8;
+
+        --cols: 1fr;
+
+        @screen sm {
+            @apply grid grid-template gap-8;
+
+            /* 6 cols */
+            --cols: repeat(6, minmax(min-content, 7rem));
+        }
+    }
+
+    .wrap-8 {
+        @apply grid grid-template gap-8;
+
+        --cols: 1fr;
+
+        @screen sm {
+            @apply px-0;
+            max-width: none;
+
+            --cols: minmax(config(padding.8), 1fr) repeat(6, minmax(min-content, 7rem))
+                minmax(config(padding.8), 1fr);
+
+        }
+    }
+
+    .wrap-gallery {
+        @apply wrap;
+        @apply grid grid-template gap-0;
+        max-width: none;
+
+        --cols: repeat(auto-fill, minmax(20rem, 1fr));
+    }
+}

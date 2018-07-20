@@ -1,0 +1,5 @@
+.transform-rotate {
+    --angle: 0;
+
+    transform: rotate(var(--angle));
+}

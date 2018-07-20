@@ -1,0 +1,26 @@
+/* Prevent using unavailable font-weight combos, faux-bold etc. */
+
+.font-sans-normal {
+    @apply font-sans;
+    @apply font-normal;
+}
+
+.font-sans-normal-italic {
+    @apply font-sans;
+    @apply font-normal;
+    @apply italic;
+}
+
+.font-sans-bold {
+    @apply font-sans;
+    @apply font-bold;
+}
+
+.font-serif-bold {
+    @apply font-serif;
+    @apply font-bold;
+}
+
+.font-icons {
+    font-family: 'Font Awesome 5 Pro';
+}

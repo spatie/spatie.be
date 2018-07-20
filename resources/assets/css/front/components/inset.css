@@ -1,0 +1,51 @@
+.inset {
+    @apply px-8 py-8 rounded-lg;
+
+    @screen lg {
+        @apply -mx-8;
+    }
+}
+
+.inset-green {
+    @apply inset;
+    @apply bg-green;
+    @apply gradient-linear;
+    @apply text-white;
+
+    --gradient-angle: 120deg;
+    --gradient-from:#21b989;
+    --gradient-to:#82d8af;
+}
+
+.inset-pink {
+    @apply inset;
+    @apply bg-pink;
+    @apply gradient-linear;
+    @apply text-white;
+
+    --gradient-angle: 120deg;
+    --gradient-from: #ddaeb4;
+    --gradient-to: #dd9099;
+}
+
+.inset-blue {
+    @apply inset;
+    @apply bg-blue-lightest;
+    @apply gradient-linear;
+    @apply text-black;
+
+    --gradient-angle: 120deg;
+    --gradient-from: #cae1e8;
+    --gradient-to: #e2f1f3;
+}
+
+.inset-grey {
+    @apply inset;
+    @apply bg-grey-lighter;
+    @apply gradient-linear;
+    @apply text-black;
+
+    --gradient-angle: 120deg;
+    --gradient-from:#f3efea;
+    --gradient-to:#e1ded9;
+}
