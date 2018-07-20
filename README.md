@@ -10,7 +10,9 @@ Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
 
 All postcards are published [on our website](https://spatie.be/en/opensource/postcards).
 
+## Credits
 
+This website was principally designed by [Willem Van Bockstal](https://github.com/orgs/spatie/people/willemvb). [Everyone at Spatie](https://github.com/orgs/spatie/people) has made cool contributions during development.
 
 ## License
 
