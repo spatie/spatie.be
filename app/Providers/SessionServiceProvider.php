@@ -16,14 +16,4 @@ class SessionServiceProvider extends ServiceProvider
 
         config()->set('session.driver', $sessionDriver);
     }
-
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
-    }
 }
