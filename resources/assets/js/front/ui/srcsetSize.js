@@ -1,7 +1,7 @@
 /* Enhance medialibrary srcset script when upsizing a browser */
 
 export default function() {
-    const srcsets = document.querySelectorAll('[srcset]');
+    const srcsets = document.querySelectorAll('[srcset][sizes="1px"]');
 
     for (let i = 0; i < srcsets.length; ++i) {
         const img = srcsets[i];

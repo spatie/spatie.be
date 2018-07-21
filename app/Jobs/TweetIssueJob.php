@@ -24,6 +24,10 @@ class TweetIssueJob implements ShouldQueue
 
     public function handle(Twitter $twitter)
     {
+        if (! app()->environment('production')) {
+            return;
+        }
+
         if ($this->issue->hasBeenTweeted()) {
             return;
         }

@@ -75,6 +75,10 @@
         @apply grid grid-template gap-0;
         max-width: none;
 
-        --cols: repeat(auto-fill, minmax(20rem, 1fr));
+        --cols: repeat(auto-fill, minmax(10rem, 1fr));
+
+         @screen sm {
+            --cols: repeat(auto-fill, minmax(16rem, 1fr));
+         }
     }
 }

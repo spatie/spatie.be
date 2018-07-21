@@ -19,7 +19,9 @@
         }
 
         &.h-full img {
-            @apply min-h-full object-fit-cover;
+            @apply min-h-full w-full;
+            @apply object-fit-cover;
+            max-height: 60vh;
         }
 }
 
