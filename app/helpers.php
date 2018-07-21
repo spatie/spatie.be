@@ -40,7 +40,7 @@ function gravatar_img(string $name): string
 {
     $gravatarId = md5(strtolower(trim($name)));
 
-    return '<img src="https://gravatar.com/avatar/' . $gravatarId . '">';
+    return '<img src="https://gravatar.com/avatar/' . $gravatarId . '?s=240">';
 }
 
 function faker(): Generator
