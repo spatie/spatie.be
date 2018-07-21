@@ -6,11 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 class SessionServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
     public function boot()
     {
         $sessionDriver = 'array';
