@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class SessionProvider extends ServiceProvider
+class SessionServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap services.

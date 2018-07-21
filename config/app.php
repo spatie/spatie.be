@@ -168,7 +168,7 @@ return [
         App\Providers\ViewServiceProvider::class,
         App\Providers\NavigationServiceProvider::class,
         App\Services\GitHub\GitHubServiceProvider::class,
-        App\Providers\SessionProvider::class,
+        App\Providers\SessionServiceProvider::class,
         App\Services\Twitter\TwitterServiceProvider::class
     ],
 
