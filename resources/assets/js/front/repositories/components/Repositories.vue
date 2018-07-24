@@ -9,8 +9,8 @@
             <div v-if="filterable" class="wrap flex justify-center mb-8">
                 <input
                     type="search"
-                    placeholder="Search for a package…"
                     class="border-2 border-grey-lighter bg-white rounded-full p-4 outline-0 focus:border-pink"
+                    :placeholder="`Search ${label}…`"
                     v-model="filter"
                 >
             </div>
@@ -18,10 +18,10 @@
                 <div v-if="filterable" class="flex items-baseline">
                     <h3 class="title-sm text-grey mb-4">
                         <span v-if="filter">
-                            Filtered packages
+                            Filtered {{ label }}
                         </span>
                         <span v-else>
-                            All packages
+                            All {{ label }}
                         </span>
                     </h3>
                     <div class="sort">
@@ -51,11 +51,12 @@ export default {
     props: {
         repositories: { required: true, type: Array },
         filterable: { default: false },
+        label: { default: 'packages' },
     },
 
     data: () => ({
         filter: '',
-        sort: 'name',
+        sort: '-star_count',
     }),
 
     components: {

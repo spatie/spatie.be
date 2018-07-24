@@ -8,6 +8,7 @@ export default function repositories(el) {
                 props: {
                     repositories: JSON.parse(el.dataset.repositories),
                     filterable: el.dataset.hasOwnProperty('filterable'),
+                    label: el.dataset.label,
                 },
             });
         }

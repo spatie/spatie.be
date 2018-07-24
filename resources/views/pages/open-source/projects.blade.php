@@ -9,7 +9,11 @@
     @include('pages.open-source.partials.banner-projects')
 
     <div class="section pt-0 section-fade">
-        <div data-repositories="{{ json_encode($repositories) }}"></div>
+        <div
+            data-repositories="{{ json_encode($repositories) }}"
+            data-label="projects"
+            data-filterable
+        ></div>
     </div>
 
     @include('pages.open-source.partials.support')
