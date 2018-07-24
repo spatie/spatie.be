@@ -20,6 +20,19 @@
     @apply wrap;
 }
 
+.wrap-logos {
+    @apply wrap;
+
+    & > a:hover {
+        opacity: .75;
+    }
+
+    & img {
+        @apply w-48;
+    }
+}
+
+
 .wrap-inset {
     /* lazy fallback for non-grid cells */
     & > :not(:first-child) {
@@ -29,8 +42,7 @@
 
 @supports(display:grid) {
     .wrap-6,
-    .wrap-8
-    .wrap-gallery,
+    .wrap-8,
     .wrap-inset {
         & > :not(:first-child) {
             @apply mt-0;
@@ -82,5 +94,13 @@
          @screen sm {
             --cols: repeat(auto-fill, minmax(16rem, 1fr));
          }
+    }
+
+    .wrap-logos {
+        @apply grid grid-template;
+        @apply gapx-16 gapy-8;
+        justify-content: center;
+
+         --cols: repeat(auto-fit, 8rem);
     }
 }

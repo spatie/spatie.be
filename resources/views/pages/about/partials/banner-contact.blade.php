@@ -2,11 +2,11 @@
     <span>
         <a class="link link-black" href="mailto:info@spatie.be">info@spatie.be</a>
         <br>
-        <a class="link link-black" href="https://twitter.com/intent/tweet?text=Dear+@spatie_be+…" target="_blank" rel="nofollow noreferrer noopener">@spatie_be</a>
+        <a class="link link-black" href="https://twitter.com/intent/tweet?text=Dear+@spatie_be+…" target="_blank" rel="noreferrer noopener">@spatie_be</a>
         <br>
         <a class="link link-black" href="#tel">+32 3 292 56 79</a>
     </span>
-    <a class="group block link link-black" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank" rel="nofollow noreferrer noopener">
+    <a class="group block link link-black" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank" rel="noreferrer noopener">
             Samberstraat 69D
             <br>
             2060 Antwerp <br>Belgium
