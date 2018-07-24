@@ -9,7 +9,10 @@
     @include('pages.open-source.partials.banner')
 
     <div class="section-group pt-0 section-fade">
-        @include('pages.open-source.partials.mostFamousPackages')
+        <section class="section">
+            <div data-repositories="{{ json_encode($repositories) }}"></div>
+        </section>
+
         @include('pages.open-source.partials.resources')
         @include('pages.open-source.partials.news')
     </div>

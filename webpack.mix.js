@@ -50,7 +50,11 @@ mix.version()
             chunkFilename: 'js/[name].js',
         },
 
-        stats: 'minimal',
+        resolve: {
+            alias: {
+                vue$: 'vue',
+            },
+        },
     })
 
     .purgeCss({

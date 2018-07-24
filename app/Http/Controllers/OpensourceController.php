@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\RepositoryResource;
 use App\Models\Contributor;
 use App\Models\Repository;
 
@@ -9,7 +10,9 @@ class OpensourceController extends Controller
 {
     public function index()
     {
-        $repositories = Repository::getHighlightedPackages();
+        $repositories = RepositoryResource::collection(
+            Repository::getHighlightedPackages()
+        )->resolve();
 
         $contributor = Contributor::first();
 
@@ -18,14 +21,18 @@ class OpensourceController extends Controller
 
     public function packages()
     {
-        $repositories = Repository::getAllPackages();
+        $repositories = RepositoryResource::collection(
+            Repository::getAllPackages()
+        )->resolve();
 
         return view('pages.open-source.packages', compact('repositories'));
     }
 
     public function projects()
     {
-        $repositories = Repository::getAllProjects();
+        $repositories = RepositoryResource::collection(
+            Repository::getAllProjects()
+        )->resolve();
 
         return view('pages.open-source.projects', compact('repositories'));
     }

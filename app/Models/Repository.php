@@ -13,12 +13,12 @@ class Repository extends Model
     use RepositoryPresenter;
 
     protected $casts = [
+        'new' => 'boolean',
         'topics' => 'array',
+        'repository_created_at' => 'datetime',
     ];
 
-    protected $with = [
-        'issues',
-    ];
+    protected $with = ['issues'];
 
     public function issues(): HasMany
     {
@@ -84,14 +84,12 @@ class Repository extends Model
         $newRepositories = Repository::visible()
             ->where('type', RepositoryType::PACKAGE)
             ->where('new', true)
-            ->orderByDesc('created_at')
             ->get();
 
         $highlightedRepositories = Repository::visible()
             ->where('type', RepositoryType::PACKAGE)
             ->where('highlighted', true)
             ->whereNotIn('id', $newRepositories->pluck('id')->toArray())
-            ->orderByDesc('downloads')
             ->get();
 
         return $newRepositories->concat($highlightedRepositories);
@@ -101,7 +99,6 @@ class Repository extends Model
     {
         return Repository::visible()
             ->where('type', RepositoryType::PACKAGE)
-            ->orderByDesc('downloads')
             ->get();
     }
 
@@ -110,14 +107,11 @@ class Repository extends Model
         $newRepositories = Repository::visible()
             ->where('type', RepositoryType::PROJECT)
             ->where('new', true)
-            ->orderByDesc('created_at')
             ->get();
 
         $highlightedRepositories = Repository::visible()
             ->where('type', RepositoryType::PROJECT)
             ->whereNotIn('id', $newRepositories->pluck('id')->toArray())
-            ->orderByDesc('highlighted')
-            ->orderByDesc('stars')
             ->get();
 
         return $newRepositories->concat($highlightedRepositories);
