@@ -47,7 +47,7 @@
         </section>
     </div>
 
-    <div class="sections">
+    <div class="section-group">
         @include('pages.laravel.partials.stack')
         @include('pages.vacancies.partials.cta')
     </div>

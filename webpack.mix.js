@@ -59,5 +59,5 @@ mix.version()
 
     .purgeCss({
         only: ['css/front.css'],
-        whitelistPatterns: [/active/, /grid-span/, /fancybox/, /char-/, /logo-/],
+        whitelistPatterns: [/active/, /grid-span/, /fancybox/, /char-/, /fill-/],
     });

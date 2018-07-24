@@ -13,7 +13,7 @@
         @include('pages.about.partials.team')
     </div>
 
-    <div class="sections">
+    <div class="section-group">
         @include('pages.about.partials.outro')
         @include('pages.about.partials.cta')
     </div>
