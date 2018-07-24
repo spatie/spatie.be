@@ -11,7 +11,7 @@
             @include('pages.vacancies.partials.list', ['showInterns' => true])
 
             <p class="mt-4">
-                <a class="link-underline link-blue" href="{{ route('vacancies.internship') }}">Interns</a>
+                <a class="link-underline link-blue" href="{{ route('vacancies.internship') }}">Web development interns</a>
                 <br>
                 <span class="text-xs text-grey">Antwerp / Minimum 8 weeks</span>
             </p>
