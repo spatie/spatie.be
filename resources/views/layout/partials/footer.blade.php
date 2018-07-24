@@ -6,7 +6,7 @@
             <div class="grid gapy-4 text-sm | sm:grid-repeat sm:gapx-8 | md:flex flex-row-reverse justify-between" style="--col-repeat:2;--row-repeat:1;">
                 <address class="grid gapy-4 | sm:gap-0 | md:grid-flow-column md:gapx-8 md:text-right">
                     <div>
-                        <a class="group flex items-end | md:flex-row-reverse" href="https://goo.gl/maps/Qe39fmR5RTC2">
+                        <a class="group flex items-end | md:flex-row-reverse" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank">
                             <span>
                                 Samberstraat 69D
                                 <br>
@@ -25,22 +25,22 @@
                 </address>
                 <ul class="hidden grid-flow-column gapx-8 | sm:block md:order-0 md:grid">
                     <li>
-                        <a href="https://github.com/spatie">
+                        <a href="https://github.com/spatie" target="_blank">
                             GitHub
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/spatie_be">
+                        <a href="https://www.instagram.com/spatie_be" target="_blank">
                             Instagram
                         </a>
                     </li>
                     <li>
-                        <a href="https://patreon.com/spatie">
+                        <a href="https://patreon.com/spatie" target="_blank">
                             Patreon
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/spatie_be">
+                        <a href="https://twitter.com/spatie_be" target="_blank">
                             Twitter
                         </a>
                     </li>
