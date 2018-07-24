@@ -5,14 +5,14 @@
 
     &:target {
         @apply fixed;
-        @apply pin-t pin-l;
+        @apply pin-t;
+        @apply pin-l;
         @apply flex;
         @apply items-center;
         @apply justify-center;
         @apply w-screen;
         @apply min-h-screen;
         @apply cursor-pointer;
-
         background-color: color(config(colors.black) a(0.9));
         backdrop-filter: grayscale(1);
     }
@@ -23,7 +23,6 @@
         @apply items-start;
         @apply justify-end;
         @apply text-white;
-
         top: 0.5em;
         right: 0.5em;
         content: '×';

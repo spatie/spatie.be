@@ -1,5 +1,7 @@
 .wrap {
-    @apply px-8 mx-auto max-w-columns;
+    @apply px-8;
+    @apply mx-auto;
+    @apply max-w-columns;
 
     @screen sm {
         @apply px-16;
@@ -24,14 +26,13 @@
     @apply wrap;
 
     & > a:hover {
-        opacity: .75;
+        opacity: 0.75;
     }
 
     & img {
         @apply w-48;
     }
 }
-
 
 .wrap-inset {
     /* lazy fallback for non-grid cells */
@@ -40,7 +41,7 @@
     }
 }
 
-@supports(display:grid) {
+@supports (display: grid) {
     .wrap-6,
     .wrap-8,
     .wrap-inset {
@@ -49,8 +50,9 @@
         }
     }
 
-    .wrap-inset{
-        @apply grid-rows gap-8;
+    .wrap-inset {
+        @apply grid-rows;
+        @apply gap-8;
 
         @screen md {
             @apply grid-cols;
@@ -58,49 +60,57 @@
     }
 
     .wrap-6 {
-        @apply grid grid-template gap-8;
-
         --cols: 1fr;
 
-        @screen sm {
-            @apply grid grid-template gap-8;
+        @apply grid;
+        @apply grid-template;
+        @apply gap-8;
 
-            /* 6 cols */
+        @screen sm {
             --cols: repeat(6, minmax(min-content, 7rem));
+
+            @apply grid;
+            @apply grid-template;
+            @apply gap-8;
         }
     }
 
     .wrap-8 {
-        @apply grid grid-template gap-8;
-
         --cols: 1fr;
 
-        @screen sm {
-            @apply px-0;
-            max-width: none;
+        @apply grid;
+        @apply grid-template;
+        @apply gap-8;
 
+        @screen sm {
             --cols: minmax(config(padding.8), 1fr) repeat(6, minmax(min-content, 7rem))
                 minmax(config(padding.8), 1fr);
 
+            @apply px-0;
+            max-width: none;
         }
     }
 
     .wrap-gallery {
-        @apply grid grid-template gap-0;
-        max-width: none;
-
         --cols: repeat(auto-fill, minmax(10rem, 1fr));
 
-         @screen sm {
+        @apply grid;
+        @apply grid-template;
+        @apply gap-0;
+        max-width: none;
+
+        @screen sm {
             --cols: repeat(auto-fill, minmax(16rem, 1fr));
-         }
+        }
     }
 
     .wrap-logos {
-        @apply grid grid-template;
-        @apply gapx-16 gapy-8;
-        justify-content: center;
+        --cols: repeat(auto-fit, 8rem);
 
-         --cols: repeat(auto-fit, 8rem);
+        @apply grid;
+        @apply grid-template;
+        @apply gapx-16;
+        @apply gapy-8;
+        justify-content: center;
     }
 }

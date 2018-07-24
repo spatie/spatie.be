@@ -1,5 +1,5 @@
 .char-separator {
-    @apply opacity-50 text-blue;
-
+    @apply opacity-50;
+    @apply text-blue;
     margin: 0 0.15em;
 }

@@ -45,11 +45,13 @@
 
     & h3 {
         @apply title-sm;
-        @apply mb-4 mt-16;
+        @apply mb-4;
+        @apply mt-16;
     }
 
     & h4 {
         @apply title-subtext;
-        @apply mb-2 mt-8;
+        @apply mb-2;
+        @apply mt-8;
     }
 }

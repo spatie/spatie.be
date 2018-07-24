@@ -1,20 +1,32 @@
 .sort {
-    @apply ml-2 flex items-center border-b border-grey-lighter;
+    @apply ml-2;
+    @apply flex;
+    @apply items-center;
+    @apply border-b;
+    @apply border-grey-lighter;
 }
 
 .sort-select {
-    @apply font-sans lowercase text-grey bg-transparent appearance-none;
+    @apply font-sans;
+    @apply lowercase;
+    @apply text-grey;
+    @apply bg-transparent;
+    @apply appearance-none;
 
-     @supports(display:grid) {
+    @supports (display: grid) {
         @apply pr-4;
-     }
+    }
 }
 
 .sort-arrow {
     @apply hidden;
 
-    @supports(display:grid) {
-        @apply absolute block pin-r text-grey-light pointer-events-none;
+    @supports (display: grid) {
+        @apply absolute;
+        @apply block;
+        @apply pin-r;
+        @apply text-grey-light;
+        @apply pointer-events-none;
     }
 }
 

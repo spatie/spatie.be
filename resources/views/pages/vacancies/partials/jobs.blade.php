@@ -2,7 +2,7 @@
     <div class="wrap-6 | items-start">
         <div class="sm:spanx-3 | line-l">
             <h2 class="title-sm">
-                Open positions
+                Positions at SPATIE
                 <div class="title-subtext text-pink">
                    Currently: full house
                 </div>

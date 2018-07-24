@@ -18,6 +18,7 @@ mix.version()
                 features: {
                     rem: false,
                     customProperties: {
+                        preserve: true,
                         warnings: false,
                     },
                 },

@@ -1,4 +1,4 @@
-<section id="cta" class="section">
+<section id="cta" class="section pt-0">
     <div class="wrap">
         <div class="inset-green">
             <div class="wrap-inset md:items-end" style="--cols: 1fr 2fr">

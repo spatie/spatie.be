@@ -3,26 +3,28 @@
 .illustration {
     @apply hidden;
     @apply bg-white;
-    @apply border-white border-solid;
+    @apply border-white;
+    @apply border-solid;
     @apply shadow-lg;
 
-        &.is-framed {
-            border-width: 4px;
-        }
+    &.is-framed {
+        border-width: 4px;
+    }
 
-        &.is-postcard-without-caption {
-            padding: 4% 4% 12%;
-        }
+    &.is-postcard-without-caption {
+        padding: 4% 4% 12%;
+    }
 
-        &.is-postcard {
-            padding: 4%;
-        }
+    &.is-postcard {
+        padding: 4%;
+    }
 
-        &.h-full img {
-            @apply min-h-full w-full;
-            @apply object-fit-cover;
-            max-height: 60vh;
-        }
+    &.h-full img {
+        @apply min-h-full;
+        @apply w-full;
+        @apply object-fit-cover;
+        max-height: 60vh;
+    }
 }
 
 .illustration-svg {
@@ -33,10 +35,9 @@
     @apply block;
 }
 
-@supports(display:grid) {
+@supports (display: grid) {
     .illustration {
         @apply block;
-
 
         @screen sm {
             &.is-left {
@@ -50,7 +51,6 @@
 
         &.is-rotated {
             @apply mt-16;
-
             transform: rotate(-2deg) translateY(-2rem);
 
             &.is-left {
@@ -65,7 +65,6 @@
                 @apply mt-8;
             }
         }
-
     }
 
     .illustration-svg {

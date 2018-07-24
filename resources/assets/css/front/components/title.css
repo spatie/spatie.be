@@ -1,7 +1,6 @@
 .title-2xl {
     @apply font-serif-bold;
     @apply text-5xl;
-
     display: inline-block;
     margin-top: 0;
     margin-bottom: 3rem;
@@ -22,17 +21,27 @@
 }
 
 .title-xl {
-    @apply text-5xl font-serif-bold leading-tight;
+    @apply text-5xl;
+    @apply font-serif-bold;
+    @apply leading-tight;
 }
 
 .title {
-    @apply text-2xl font-sans-bold leading-tight;
+    @apply text-2xl;
+    @apply font-sans-bold;
+    @apply leading-tight;
 }
 
 .title-sm {
-    @apply font-sans-bold uppercase leading-tight;
+    @apply font-sans-bold;
+    @apply uppercase;
+    @apply leading-tight;
 }
 
 .title-subtext {
-    @apply text-xs font-sans-bold uppercase leading-tight mt-2;
+    @apply text-xs;
+    @apply font-sans-bold;
+    @apply uppercase;
+    @apply leading-tight;
+    @apply mt-2;
 }

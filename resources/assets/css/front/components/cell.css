@@ -1,33 +1,42 @@
 .cell-l {
-    @apply pr-4 py-4;
+    @apply pr-4;
+    @apply py-4;
 }
 
 .cell-r {
-    @apply border-b-2 border-grey-lightest pb-4;
+    @apply border-b-2;
+    @apply border-grey-lightest;
+    @apply pb-4;
 }
 
-@supports(display:grid) {
+@supports (display: grid) {
     .cells {
         @screen md {
-            @apply grid grid-cols;
+            @apply grid;
+            @apply grid-cols;
         }
     }
 
     .cell-l {
         @screen md {
-            @apply border-b-2 border-grey-lightest;
+            @apply border-b-2;
+            @apply border-grey-lightest;
         }
     }
 
     .cell {
         @screen md {
-            @apply border-b-2 border-grey-lightest px-4 py-4;
+            @apply border-b-2;
+            @apply border-grey-lightest;
+            @apply px-4;
+            @apply py-4;
         }
     }
 
     .cell-r {
         @screen md {
-            @apply py-4 pl-4;
+            @apply py-4;
+            @apply pl-4;
         }
     }
 }

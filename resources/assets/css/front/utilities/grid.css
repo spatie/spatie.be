@@ -1,10 +1,12 @@
+:root {
+    --col-repeat: 1;
+    --row-repeat: 1;
+    --cols: 1fr;
+    --rows: 1fr;
+}
+
 @responsive {
     .grid {
-        --col-repeat: 1;
-        --row-repeat: 1;
-        --cols: 1fr;
-        --rows: 1fr;
-
         display: grid;
     }
 
@@ -269,7 +271,7 @@
     /* text alignment in grid, has no use when ther is no support */
 
     .grid-text-right {
-        @supports(display:grid) {
+        @supports (display: grid) {
             @apply text-right;
         }
     }

@@ -1,13 +1,14 @@
-.bullets {
+:root {
     --bullet-color: inherit;
+}
 
+.bullets {
     & li {
         padding-left: 1em;
 
         &:before {
             @apply font-icons;
             @apply pr-2;
-
             color: var(--bullet-color);
             left: 0;
             position: absolute;
@@ -59,9 +60,9 @@
         &:not(:last-child) {
             &:after {
                 @apply char-separator;
-                margin: 0 .5em;
+                margin: 0 0.5em;
                 content: '•';
-                color: var( --bullet-color);
+                color: var(--bullet-color);
             }
         }
     }

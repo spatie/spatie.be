@@ -1,13 +1,16 @@
 .avatar {
     @apply rounded-full;
-    @apply w-16 h-16;
+    @apply w-16;
+    @apply h-16;
     @apply overflow-hidden;
     @apply mt-4;
-    @apply border-2 border-white;
+    @apply border-2;
+    @apply border-white;
     @apply shadow-lg;
 
     & img {
-        @apply absolute w-full h-full;
+        @apply absolute;
+        @apply w-full h-full;
         @apply object-fit-cover;
     }
 }

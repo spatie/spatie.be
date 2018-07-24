@@ -7,13 +7,11 @@ export default function() {
         const img = srcsets[i];
 
         /* Take object-fit into account: size needed can be bigger when image is clipped */
-        const imgRatio = img.naturalWidth/img.naturalHeight;
-        const objectFitRatio = img.getBoundingClientRect().width/img.getBoundingClientRect().height;
-        const width = Math.ceil(img.getBoundingClientRect().width * imgRatio / objectFitRatio);
+        const imgRatio = img.naturalWidth / img.naturalHeight;
+        const objectFitRatio =
+            img.getBoundingClientRect().width / img.getBoundingClientRect().height;
+        const width = Math.ceil((img.getBoundingClientRect().width * imgRatio) / objectFitRatio);
 
-        srcsets[i].setAttribute(
-            'sizes',
-            width + 'px'
-        );
+        srcsets[i].setAttribute('sizes', width + 'px');
     }
 }
