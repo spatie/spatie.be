@@ -48,8 +48,8 @@ collect(['en', 'nl'])->each(function (string $locale) {
             Route::redirect('postcards', 'open-source/postcards');
         });
 
-        Route::redirect("team", 'about-us');
-        Route::redirect("disclaimer", 'disclaimer');
-        Route::redirect("stage", 'vacancies/internships');
+        Route::redirect('team', 'about-us');
+        Route::redirect('disclaimer', 'disclaimer');
+        Route::redirect('stage', 'vacancies/internships');
     });
 });
