@@ -20,7 +20,7 @@
                     class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
                     easy issues
                 </a>
-                <span v-if="repository.is_new" class="bg-pink-lightest text-pink-dark rounded-full px-2 ml-2">
+                <span v-if="repository.is_new" class="bg-gold-lightest text-gold-darkest rounded-full px-2 ml-2">
                     new
                 </span>
             </div>
