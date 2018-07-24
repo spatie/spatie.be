@@ -37,14 +37,19 @@ Route::view('privacy', 'pages.legal.privacy')->name('legal.privacy');
 Route::view('disclaimer', 'pages.legal.disclaimer')->name('legal.disclaimer');
 
 collect(['en', 'nl'])->each(function (string $locale) {
-    Route::redirect("{$locale}/", '/');
-    Route::redirect("{$locale}/open-source", 'open-source');
-    Route::redirect("{$locale}/open-source/php", 'open-source/packages');
-    Route::redirect("{$locale}/open-source/laravel", 'open-source/packages');
-    Route::redirect("{$locale}/open-source/javascript", 'open-source/packages');
-    Route::redirect("{$locale}/open-source/postcards", 'open-source/postcards');
+    Route::prefix($locale)->group(function() {
+        Route::redirect('/', '/');
 
-    Route::redirect("{$locale}/team", 'about-us');
-    Route::redirect("{$locale}/disclaimer", 'disclaimer');
-    Route::redirect("{$locale}/stage", 'vacancies/internships');
+        Route::prefix('opensource')->group(function() {
+            Route::redirect('/', 'open-source');
+            Route::redirect('php', 'open-source/packages');
+            Route::redirect('laravel', 'open-source/packages');
+            Route::redirect('javascript', 'open-source/packages');
+            Route::redirect('postcards', 'open-source/postcards');
+        });
+
+        Route::redirect("team", 'about-us');
+        Route::redirect("disclaimer", 'disclaimer');
+        Route::redirect("stage", 'vacancies/internships');
+    });
 });
