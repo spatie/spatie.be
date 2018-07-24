@@ -1,4 +1,4 @@
-<div class="flex items-center my-6">
+<div class="flex items-center mt-8 my-6">
     <div class="avatar">
         <img src="{{ $contributor->avatar_url }}">
     </div>

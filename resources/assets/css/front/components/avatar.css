@@ -10,7 +10,8 @@
 
     & img {
         @apply absolute;
-        @apply w-full h-full;
+        @apply w-full;
+        @apply h-full;
         @apply object-fit-cover;
     }
 }
