@@ -7,9 +7,9 @@
         @endif
 
         @if ($postcard->location)
-            <div class="flex items-start text-grey my-2">
-                <i class="fas flex-none fa-map-marker-alt text-grey-lighter"></i>
-                <span class="ml-1">{{ $postcard->location }}</span>
+            <div class="flex items-baseline text-grey my-2">
+                <span>{{ $postcard->location }}</span>
+                <i class="ml-1 flex-none fas fa-map-marker-alt text-grey-lighter"></i>
             </div>
         @endif
     </div>

@@ -4,13 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
-class SessionProvider extends ServiceProvider
+class SessionServiceProvider extends ServiceProvider
 {
-    /**
-     * Bootstrap services.
-     *
-     * @return void
-     */
     public function boot()
     {
         $sessionDriver = 'array';
@@ -20,15 +15,5 @@ class SessionProvider extends ServiceProvider
         }
 
         config()->set('session.driver', $sessionDriver);
-    }
-
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-        //
     }
 }

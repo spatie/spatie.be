@@ -1,4 +1,4 @@
-/* Enhance medialibrary srcset script when upsizing a browser */
+/* Enhance medialibrary srcset script for object-fit and browser resize */
 
 export default function() {
     const srcsets = document.querySelectorAll('[srcset][sizes="1px"]');
