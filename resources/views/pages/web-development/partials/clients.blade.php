@@ -8,16 +8,28 @@
                 <h3 class="title-sm">Corporate</h3>
                 <ul class="links-underline links-black">
                     <li>
-                        <a href="https://krauthammer.com" target="_blank" rel="noreferrer noopener">Krauthammer</a>
+                        <a href="https://my.agrafa.com" target="_blank" rel="noreferrer noopener">Agrafa</a>
+                        <div class="text-xs text-grey">Onsite apps for banner distribution</div>
+                    </li>
+                    <li class=mt-2>
+                        <a href="https://artassistant.com" target="_blank" rel="noreferrer noopener">ArtAssistant</a>
+                        <div class="text-xs text-grey">Art transaction platform</div>
+                    </li>
+                    <li class=mt-2>
+                        <a href="https://bodartservicehouse.be" target="_blank" rel="noreferrer noopener">Bodart Service House</a>
+                        <div class="text-xs text-grey">Webshop for kitchen appliances</div>
+                    </li>
+                    <li class=mt-2>
+                        <a href="https://hpengineers.be" target="_blank" rel="noreferrer noopener">HP Engineers</a>
+                        <div class="text-xs text-grey">Portfolio of engineering company</div>
+                    </li>
+                    <li class=mt-2>
+                        <a href="https://memocards.krauthammer.com" target="_blank" rel="noreferrer noopener">Krauthammer</a>
                         <div class="text-xs text-grey">Tools for management trainings</div>
                     </li>
                     <li class=mt-2>
                         <a href="https://mutsy.com" target="_blank" rel="noreferrer noopener">Mutsy</a>
                         <div class="text-xs text-grey">Site for high-end Dutch strollers</div>
-                    </li>
-                    <li class=mt-2>
-                        <a href="https://demo.stmpdrcrds.com" target="_blank" rel="noreferrer noopener">Martin Garrix</a>
-                        <div class="text-xs text-grey">Workflow tool for the DJ himself</div>
                     </li>
                 </ul>
             </div>
@@ -39,6 +51,10 @@
                         <div class="text-xs text-grey">Smart energy consortium</div>
                     </li>
                     <li class=mt-2>
+                        <a href="https://vluchtelingenwerk.be" target="_blank" rel="noreferrer noopener">Vluchtelingenwerk Vlaanderen</a>
+                        <div class="text-xs text-grey">Interactive exhibition timeline</div>
+                    </li>
+                    <li class=mt-2>
                         <a href="https://vrijwilligerswerk.be" target="_blank" rel="noreferrer noopener">Vrijwilligerswerk Vlaanderen</a>
                         <div class="text-xs text-grey">Job platform for volunteers</div>
                     </li>
@@ -50,21 +66,26 @@
                 <h3 class="title-sm">Creative</h3>
                 <ul class="leading-loose links-underline links-black">
                     <li>
-                        <a href="https://wimdelvoye.be" target="_blank" rel="noreferrer noopener">Wim Delvoye</a>
-                        <div class="text-xs text-grey">Famous artist's portfolio</div>
-                    </li>
-                    <li class=mt-2>
                         <a href="https://bulkarchitecten.be" target="_blank" rel="noreferrer noopener">Bulk architects</a>
                         <div class="text-xs text-grey">Portfolio site</div>
+                    </li>
+                    <li class=mt-2>
+                        <a href="https://demo.stmpdrcrds.com" target="_blank" rel="noreferrer noopener">Martin Garrix</a>
+                        <div class="text-xs text-grey">Workflow tool for the DJ himself</div>
                     </li>
                     <li class=mt-2>
                         <a href="https://meta.be" target="_blank" rel="noreferrer noopener">META architects</a>
                         <div class="text-xs text-grey">Portfolio site</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://artassistant.com" target="_blank" rel="noreferrer noopener">ArtAssistant</a>
-                        <div class="text-xs text-grey">Art transaction platform</div>
+                        <a href="https://overlegkunsten.org" target="_blank" rel="noreferrer noopener">Overleg Kunstenorganisaties</a>
+                        <div class="text-xs text-grey">Portfolio site</div>
                     </li>
+                    <li class=mt-2>
+                        <a href="https://wimdelvoye.be" target="_blank" rel="noreferrer noopener">Wim Delvoye</a>
+                        <div class="text-xs text-grey">Famous artist's portfolio</div>
+                    </li>
+
                 </ul>
             </div>
         </div>

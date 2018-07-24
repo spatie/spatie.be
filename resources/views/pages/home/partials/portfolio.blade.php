@@ -33,15 +33,14 @@
         <div class="sm:startx-2 sm:spanx-3 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
-                    Art Transaction Marketplace
+                    Art Transaction Platform
                     <div class="title-subtext text-pink">
                         <span class="font-normal">Using</span> Laravel, Vue, Stripe
                     </div>
                 </h3>
                 <p class="text-lg">
-                    We helped a startup in the art fair sector to develop a platform that facilitates selling and exposing artwork as a gallery owner.
-                    <br>
-                    The platform is currently in beta and will go live mid 2018.
+                    ArtAssistant is the one-stop shop for the world of art, offering different services such as valuation, trading and lending of artworks.
+                    We assisted this startup with the development of a 'collection manager' that facilitates selling and exposing artwork as a gallery owner.
                 </p>
                 <ul class="text-lg mt-8 bullets bullets-pink inline-block">
                     <li><a href="https://my.artassistant.com">my.artassistant.com</a></li>
