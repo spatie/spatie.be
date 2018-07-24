@@ -7,14 +7,17 @@
 }
 
 .wrap-6,
-.wrap-8,
-.wrap-gallery {
+.wrap-8 {
     @apply wrap;
 
     /* lazy fallback for non-grid cells */
     & > :not(:first-child) {
         @apply mt-8;
     }
+}
+
+.wrap-gallery {
+    @apply wrap;
 }
 
 .wrap-inset {
@@ -71,7 +74,6 @@
     }
 
     .wrap-gallery {
-        @apply wrap;
         @apply grid grid-template gap-0;
         max-width: none;
 

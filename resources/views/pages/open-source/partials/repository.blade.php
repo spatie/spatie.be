@@ -36,13 +36,16 @@
         @endforeach
     </div>
 </div>
-<div class="cell-r grid-text-right">
+<div class="cell-r grid-text-right flex flex-col justify-center">
     @if ($repository->documentation_url)
-        <a href="{{ $repository->documentation_url }}" class="link-underline link-grey text-xs">Documentation</a>
-        <br>
+        <a href="{{ $repository->documentation_url }}" class="link-underline link-grey text-xs">
+            Documentation
+        </a>
     @endif
 
     @if($repository->blogpost_url)
-        <a href="{{ $repository->blogpost_url }}" class="link-underline link-grey text-xs">Blogpost</a>
+        <a href="{{ $repository->blogpost_url }}" class="link-underline link-grey text-xs">
+            Blogpost
+        </a>
     @endif
 </div>
