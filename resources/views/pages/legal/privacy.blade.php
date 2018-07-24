@@ -20,6 +20,8 @@
         <section id="jobs">
             <div class="wrap">
                 <div class="markup markup-titles links-underline links-blue bullets bullets-green">
+                    <p><em>Dutch version — translation in progress</em></p>
+
                     <h2>1. Waarom deze privacyverklaring</h2>
 
                     <p>SPATIE hecht grote waarde aan de bescherming van uw privacy en persoonsgegevens. Wij gebruiken uw persoonsgegevens uitsluitend in overeenstemming met de Privacywet en andere relevante vigerende wettelijke voorschriften. Iedere verwijzing in deze Privacyverklaring naar de Privacywet betekent een verwijzing naar de Wet van 8 december 1992 tot bescherming van de persoonlijke levenssfeer ten opzichte van de verwerking van persoonsgegevens. Iedere verwijzing naar de Verordening is een verwijzing naar de Verordening van 27 april 2016 betreffende de bescherming van natuurlijke personen in verband met de verwerking van persoonsgegevens en betreffende het vrije verkeer van die gegevens.

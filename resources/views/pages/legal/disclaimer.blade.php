@@ -20,6 +20,8 @@
         <section id="jobs">
             <div class="wrap">
                 <div class="markup markup-titles links-underline links-blue bullets bullets-green">
+                    <p><em>Dutch version — translation in progress</em></p>
+
                     <p>Het gebruik van onze website moet steeds gebeuren conform de rechten en plichten die duidelijk op de website vermeld staan en de rechten en plichten die bepaald zijn in de Disclaimer, de Verkoopsvoorwaarden en de Privacy Verklaring. Het geheel van deze teksten zijn onze Algemene Voorwaarden.
                     </p>
                     <p>Deze Algemene Voorwaarden gelden zowel voor ons, SPATIE BVBA, als voor jou, de Gebruiker. Zodra je gebruik maakt van onze website erken en aanvaard je uitdrukkelijk dat onze Algemene Voorwaarden van toepassing zijn en dat volledig verzaakt wordt aan de toepassing van eigen Algemene Voorwaarden.

@@ -256,6 +256,16 @@
         justify-self: start;
     }
 
+    /* align-self */
+
+    .align-self-end {
+        align-self: end;
+    }
+
+    .align-self-start {
+        align-self: start;
+    }
+
     /* text alignment in grid, has no use when ther is no support */
 
     .grid-text-right {

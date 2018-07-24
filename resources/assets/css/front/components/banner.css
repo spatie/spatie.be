@@ -23,7 +23,7 @@
 
     @supports(display:grid) {
         @screen sm {
-            @apply spanx-4 rounded-tl-none rounded-bl-none justify-self-start;
+            @apply spanx-4 rounded-tl-none rounded-bl-none justify-self-start align-self-start;
         }
 
         @screen md {
