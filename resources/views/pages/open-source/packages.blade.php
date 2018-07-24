@@ -9,7 +9,12 @@
     @include('pages.open-source.partials.banner-packages')
 
     <div class="section-group pt-0 section-fade">
-        @include('pages.open-source.partials.search')
+        <section class="section">
+            <div
+                data-repositories="{{ json_encode($repositories) }}"
+                data-filterable
+            ></div>
+        </section>
     </div>
 
     @include('pages.open-source.partials.support')

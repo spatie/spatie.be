@@ -1,22 +1,19 @@
-/**
- * Bootstrap the application. This includes all setup that doesn't really *do*
- * anything.
- */
+import srcsetSize from './ui/srcsetSize';
+import repositories from './repositories';
+import './ui/zoom';
 
-require('./bootstrap');
-import { TableComponent, TableColumn } from 'vue-table-component';
+let resizeTimer;
 
-/**
- * Finally, we'll mount our Vue application.
-
-
-const Vue = require('vue');
-
-Vue.component('table-component', TableComponent);
-Vue.component('table-column', TableColumn);
-
-new Vue({
-    el: '#app',
+window.addEventListener('load', () => {
+    srcsetSize();
 });
 
-*/
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+
+    resizeTimer = setTimeout(() => {
+        srcsetSize();
+    }, 250);
+});
+
+[...document.querySelectorAll('[data-repositories]')].forEach(repositories);

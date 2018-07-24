@@ -9,13 +9,7 @@
     @include('pages.open-source.partials.banner-projects')
 
     <div class="section pt-0 section-fade">
-        <div class="wrap mt-8">
-            <div class="cells" style="--cols: 1fr 1fr auto">
-                @foreach($repositories as $repository)
-                    @include('pages.open-source.partials.repository')
-                @endforeach
-            </div>
-        </div>
+        <div data-repositories="{{ json_encode($repositories) }}"></div>
     </div>
 
     @include('pages.open-source.partials.support')
