@@ -37,6 +37,7 @@ Route::view('privacy', 'pages.legal.privacy')->name('legal.privacy');
 Route::view('disclaimer', 'pages.legal.disclaimer')->name('legal.disclaimer');
 
 collect(['en', 'nl'])->each(function (string $locale) {
+    Route::redirect("{$locale}/", '/');
     Route::redirect("{$locale}/open-source", 'open-source');
     Route::redirect("{$locale}/open-source/php", 'open-source/packages');
     Route::redirect("{$locale}/open-source/laravel", 'open-source/packages');
