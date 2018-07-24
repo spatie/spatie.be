@@ -10,18 +10,18 @@
                     </div>
                 </h2>
                 <p class="mt-4">
-                    <a class="link-underline link-blue" href="#">
+                    <a class="link link-black" href="#">
                         Connect with S3
                     </a>
                     <br>
-                    <span class="text-xs text-grey">Laravel Media Library #152</span>
+                    <span class="text-xs text-grey">Laravel Media Library <span class="char-separator">•</span> <a class="link-underline link-blue" href="#">#152</a></span>
                 </p>
                 <p class="mt-4">
-                    <a class="link-underline link-blue" href="#">
+                    <a class="link link-black" href="#">
                         Upgrade to Laravel 5.7
                     </a>
                     <br>
-                    <span class="text-xs text-grey">Laravel Media Library #153</span>
+                    <span class="text-xs text-grey">Laravel Media Library <span class="char-separator">•</span> <a class="link-underline link-blue" href="#">#153</a></span>
                 </p>
                 <p class="mt-4">
                     <a class="link-underline link-blue"
