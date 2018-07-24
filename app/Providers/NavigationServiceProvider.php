@@ -3,9 +3,8 @@
 namespace App\Providers;
 
 use Barryvdh\Debugbar\ServiceProvider;
-use Spatie\Menu\Laravel\Menu;
-use Spatie\Menu\Activatable;
 use Spatie\Menu\Laravel\Link;
+use Spatie\Menu\Laravel\Menu;
 
 class NavigationServiceProvider extends ServiceProvider
 {
