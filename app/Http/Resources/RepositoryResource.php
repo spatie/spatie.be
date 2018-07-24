@@ -26,7 +26,7 @@ class RepositoryResource extends JsonResource
             'formatted_download_count' => number_format($this->downloads, 0, '.', ' '),
             'is_new' => $this->new,
             'has_issues' => $this->has_issues,
-            'url' => "https://github.com/spatie/{$this->name}",
+            'url' => $this->url,
             'issues_url' => $this->issues_url,
             'documentation_url' => $this->documentation_url,
             'blogpost_url' => $this->blogpost_url,

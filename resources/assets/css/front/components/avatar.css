@@ -2,7 +2,6 @@
     @apply rounded-full;
     @apply w-16 h-16;
     @apply overflow-hidden;
-    @apply mt-4;
     @apply border-2 border-white;
     @apply shadow-lg;
 

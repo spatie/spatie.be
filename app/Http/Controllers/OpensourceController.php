@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\RepositoryResource;
 use App\Models\Contributor;
 use App\Models\Repository;
+use App\Models\Issue;
 
 class OpensourceController extends Controller
 {
@@ -14,9 +15,11 @@ class OpensourceController extends Controller
             Repository::getHighlightedPackages()
         )->resolve();
 
+        $issues = Issue::latest()->take(2)->get();
+
         $contributor = Contributor::first();
 
-        return view('pages.open-source.index', compact('repositories', 'contributor'));
+        return view('pages.open-source.index', compact('repositories', 'issues', 'contributor'));
     }
 
     public function packages()

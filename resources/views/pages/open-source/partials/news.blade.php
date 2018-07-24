@@ -9,20 +9,23 @@
                         Easy issues to solve
                     </div>
                 </h2>
-                <p class="mt-4">
-                    <a class="link link-black" href="#">
-                        Connect with S3
-                    </a>
-                    <br>
-                    <span class="text-xs text-grey">Laravel Media Library <span class="char-separator">•</span> <a class="link-underline link-blue" href="#">#152</a></span>
-                </p>
-                <p class="mt-4">
-                    <a class="link link-black" href="#">
-                        Upgrade to Laravel 5.7
-                    </a>
-                    <br>
-                    <span class="text-xs text-grey">Laravel Media Library <span class="char-separator">•</span> <a class="link-underline link-blue" href="#">#153</a></span>
-                </p>
+                @foreach($issues as $issue)
+                    <p class="mt-4">
+                        <a href="{{ $issue->url }}" target="_blank" rel="nofollow noreferrer noopener" class="link link-black">
+                            {{ $issue->title }}
+                        </a>
+                        <br>
+                        <span class="text-xs text-grey">
+                            <a href="{{ $issue->repository->url }}" target="_blank" rel="nofollow noreferrer noopener">
+                                {{ $issue->repository->name }}
+                            </a>
+                            <span class="char-separator">•</span>
+                            <a href="{{ $issue->url }}" target="_blank" rel="nofollow noreferrer noopener" class="link-underline link-blue">
+                                #{{ $issue->number }}
+                            </a>
+                        </span>
+                    </p>
+                @endforeach
                 <p class="mt-4">
                     <a class="link-underline link-blue"
                        href='https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aspatie+is%3Apublic+label%3A%22good+first+issue%22'>
