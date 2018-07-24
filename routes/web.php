@@ -35,21 +35,3 @@ Route::view('legal', 'pages.legal.index')->name('legal.index');
 Route::view('privacy', 'pages.legal.privacy')->name('legal.privacy');
 
 Route::view('disclaimer', 'pages.legal.disclaimer')->name('legal.disclaimer');
-
-collect(['en', 'nl'])->each(function (string $locale) {
-    Route::prefix($locale)->group(function() {
-        Route::redirect('/', '/');
-
-        Route::prefix('opensource')->group(function() {
-            Route::redirect('/', 'open-source');
-            Route::redirect('php', 'open-source/packages');
-            Route::redirect('laravel', 'open-source/packages');
-            Route::redirect('javascript', 'open-source/packages');
-            Route::redirect('postcards', 'open-source/postcards');
-        });
-
-        Route::redirect('team', 'about-us');
-        Route::redirect('disclaimer', 'disclaimer');
-        Route::redirect('stage', 'vacancies/internships');
-    });
-});

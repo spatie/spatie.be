@@ -14,6 +14,8 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapAdminRoutes();
 
         $this->mapWebRoutes();
+        
+        $this->mapRedirectsForOldSite();
     }
 
     protected function mapAdminRoutes()
@@ -28,5 +30,26 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware(['web', 'cacheResponse'])
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapRedirectsForOldSite()
+    {
+        collect(['en', 'nl'])->each(function (string $locale) {
+            Route::prefix($locale)->group(function() {
+                Route::redirect('/', '/');
+
+                Route::prefix('opensource')->group(function() {
+                    Route::redirect('/', 'open-source');
+                    Route::redirect('php', 'open-source/packages');
+                    Route::redirect('laravel', 'open-source/packages');
+                    Route::redirect('javascript', 'open-source/packages');
+                    Route::redirect('postcards', 'open-source/postcards');
+                });
+
+                Route::redirect('team', 'about-us');
+                Route::redirect('disclaimer', 'disclaimer');
+                Route::redirect('stage', 'vacancies/internships');
+            });
+        });
     }
 }
