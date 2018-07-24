@@ -49,7 +49,10 @@ var colors = {
 
     paper: 'rgba(249, 248, 248, 0.5)',
     opaque: 'rgba(255, 255, 255, 0.5)',
+
+    'gold-lightest': '#eee8d6',
     gold: '#a89f81',
+    'gold-darkest': '#51492c',
 
     'grey-lightest': '#f3efea',
     'grey-lighter': '#cbd2ce',

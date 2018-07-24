@@ -9,11 +9,16 @@
 </p>
 --}}
 <p class="mt-4">
-    <a class="link-underline link-blue" href="{{ route('vacancies.show', 'backend-developer') }}">Backend developers</a>
+    <a class="link-underline link-blue" href="{{ route('vacancies.show', 'free-application') }}">Free applications</a>
     <br>
     <span class="text-xs text-grey">Antwerp / Partially remote</span>
 </p>
 {{--
+<p class="mt-4">
+    <a class="link-underline link-blue" href="{{ route('vacancies.show', 'backend-developer') }}">Backend developers</a>
+    <br>
+    <span class="text-xs text-grey">Antwerp / Partially remote</span>
+</p>
 <p class="mt-4">
     <a class="link-underline link-blue" href="{{ route('vacancies.show', 'front-end-developer') }}">Frontend Developer</a>
     <br>

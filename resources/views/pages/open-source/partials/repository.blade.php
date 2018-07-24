@@ -19,7 +19,7 @@
         @endif
 
         @if ($repository->new)
-            <span class="bg-pink-lightest text-pink-dark rounded-full px-2 ml-2">new</span>
+            <span class="bg-gold-lightest text-gold-darkest rounded-full px-2 ml-2">new</span>
         @endif
     </div>
 </div>

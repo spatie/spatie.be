@@ -2,9 +2,9 @@
     <div class="wrap-6 | items-start">
         <div class="sm:spanx-3 | line-l">
             <h2 class="title-sm">
-                We're hiring!
+                Open positions
                 <div class="title-subtext text-pink">
-                    Currently looking for …
+                   Currently: full house
                 </div>
             </h2>
             @include('pages.vacancies.partials.list')

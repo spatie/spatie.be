@@ -2,7 +2,7 @@
     <div class="wrap-6 items-start">
         <div class="sm:spanx-3 | line-l">
             <h2 class="title-sm">
-                We're hiring!
+                Work with us!
                 <div class="title-subtext text-pink">
                     Currently looking for …
                 </div>

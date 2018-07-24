@@ -1,5 +1,5 @@
 @extends('layout.default', [
-    'background' => '/backgrounds/home-short.jpg',
+    'background' => '/backgrounds/home.jpg',
     'title' => 'Websites & webapplications in Laravel',
     'description' => 'Spatie is a digital allrounder: we design solid websites & web applications using Laravel & Vue. No frills, just proven expertise. From Antwerp, Belgium',
 ])
