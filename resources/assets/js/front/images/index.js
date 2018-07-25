@@ -6,7 +6,7 @@ function setImageSizes(image) {
     const fittedWidthRatio = image.getBoundingClientRect().width / image.getBoundingClientRect().height;
 
     const width = Math.max(
-        image.getBoundingClientRect().height * imageWidthRatio,
+        image.getBoundingClientRect().width,
         image.getBoundingClientRect().height * fittedWidthRatio
     );
 
