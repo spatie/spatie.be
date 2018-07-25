@@ -2,7 +2,7 @@
 require __DIR__.'/vendor/autoload.php';
 (new \Dotenv\Dotenv(__DIR__, '.env'))->load();
 
-$server = "new.spatie.be";
+$server = "spatie.be";
 $userAndServer = 'forge@'. $server;
 $repository = "spatie/spatie.be";
 $baseDir = "/home/forge/spatie.be";
