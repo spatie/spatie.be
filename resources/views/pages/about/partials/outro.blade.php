@@ -8,14 +8,14 @@
         <div class="sm:spanx-4">
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    We design, build and support websites, webshops or applications —since 2004.
+                    We design, build and support websites, webshops and applications —since 2004.
                 </p>
                 <p class="text-lg">
-                    We try to focus on analysis, clear-cut advice and solid technology more than on fads of the moment. Our sites are built following modern standards, and optimized for performance on all types of devices.
+                    We prefer analysis, clear-cut advice and solid technology over momentary fads. Our sites are built with modern standards, and optimized for performance on all types of devices.
                 </p>
                 <p class="text-lg">
-                    Open source work is valued very much. Almost every aspect of our job builds upon the work of others.
-                    We try to give back and release our own code to the community whenever it's possible.
+                    Almost every aspect of our job builds upon the work of others.
+                    We greatly value open source and try to give back to the community whenever possible.
                 </p>
                 <p class="text-lg">
                     There is a strong mentality to stay on top of things: through Slack, in-house presentations or conferences.

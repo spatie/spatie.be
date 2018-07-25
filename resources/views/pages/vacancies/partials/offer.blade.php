@@ -9,7 +9,7 @@
                     <li>A competitive salary package</li>
                     <li>Health insurance</li>
                     <li>Meal vouchers</li>
-                    <li>Eco voucher</li>
+                    <li>Eco vouchers</li>
                     <li>Vélo card for public bikes in Antwerp</li>
                     <li>Laptop + second screen, smartphone</li>
                     <li>Internet at home</li>
@@ -28,7 +28,7 @@
                 <ul class="bullets bullets-green">
                     <li>A genuine drive to learn from each other: code reviews, in-house presentations and chit-chat on Slack</li>
                     <li>A flat company structure where you can make a clear difference</li>
-                    <li><a href="https://www.kiva.org">Kiva</a> budget for micro-loans</li>
+                    <li><a href="https://www.kiva.org" target="_blank" rel="nofollow noreferrer noopener">Kiva</a> budget for micro-loans</li>
                     <li>Real espresso &amp; fresh fruit in the office</li>
                     <li>Monthly Italian lunch with the team; wine from a chicken jug</li>
                 </ul>

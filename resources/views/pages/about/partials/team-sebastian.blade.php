@@ -15,7 +15,7 @@
         <ul class="text-xs">
             <li><a href="mailto:sebastian@spatie.be">sebastian@spatie.be</a></li>
             <li><a href="https://twitter.com/sebdedeyne">@sebdedeyne</a></li>
-            <li><a href="https://sebdedeyne.com">sebdedeyne.com</a></li>
+            <li><a href="https://sebastiandedeyne.com">sebastiandedeyne.com</a></li>
         </ul>
     </div>
 </div>

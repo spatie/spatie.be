@@ -31,14 +31,14 @@
             <h3 class="title-sm">4. Write it down</h3>
             <p class="">
                 We'd have to agree on what to build exactly.
-                We make blueprints for all screens, and propose our technical solution.
-                Feedback can only make these better.
+                We blueprint every screen and propose our technical solution.
+                Your feedback only makes these better.
             </p>
         </div>
         <div class="sm:spanx-2 sm:startx-1 sm:starty-5">
             <h3 class="title-sm">5. Build with sense</h3>
             <p class="">
-                Now the plans are laid out. On the front, we design a tasteful but functional interface. In the back, we code with modern best practices in PHP development.
+                With the plans laid out, we design a tasteful but functional interface. In the back, we code with modern best practices in PHP development.
             </p>
         </div>
         <div class="hidden | sm:block sm:spanx-4 sm:startx-3 sm:starty-5">

@@ -21,7 +21,7 @@
 - …
 
 Anything that helps us to start straightforward!'
-) }}">Discuss with us</a> how we could step in and help you out
+) }}">Let's figure out</a> how we could step in and help you out
                     </p>
                 </div>
             </div>
