@@ -49,7 +49,7 @@
         height: 24rem;
         background: linear-gradient(
             to bottom,
-            color(config(colors.white) a(1) 30%),
+            color(config(colors.white) a(0) 30%),
             color(config(colors.grey-lightest) a(0.85))
         );
     }

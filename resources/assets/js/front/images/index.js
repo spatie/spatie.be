@@ -3,11 +3,10 @@ const $$ = selectors => [...document.querySelectorAll(selectors)];
 function setImageSizes(image) {
     // Take object-fit into account: size needed can be bigger when image is clipped on it's sides
     const imageWidthRatio = image.naturalWidth / image.naturalHeight;
-    const fittedWidthRatio = image.getBoundingClientRect().width / image.getBoundingClientRect().height;
 
     const width = Math.max(
         image.getBoundingClientRect().width,
-        image.getBoundingClientRect().height * fittedWidthRatio
+        image.getBoundingClientRect().height * imageWidthRatio
     );
 
     image.setAttribute('sizes', `${width}px`);
