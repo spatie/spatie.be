@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapAdminRoutes();
 
         $this->mapWebRoutes();
-        
+
         $this->mapRedirectsForOldSite();
     }
 
@@ -39,16 +39,18 @@ class RouteServiceProvider extends ServiceProvider
                 Route::redirect('/', '/');
 
                 Route::prefix('opensource')->group(function () {
-                    Route::redirect('/', 'open-source');
-                    Route::redirect('php', 'open-source/packages');
-                    Route::redirect('laravel', 'open-source/packages');
-                    Route::redirect('javascript', 'open-source/packages');
-                    Route::redirect('postcards', 'open-source/postcards');
+                    Route::redirect('/', '/open-source');
+                    Route::redirect('php', '/open-source/packages');
+                    Route::redirect('laravel', '/open-source/packages');
+                    Route::redirect('javascript', '/open-source/packages');
+                    Route::redirect('postcards', '/open-source/postcards');
                 });
 
-                Route::redirect('team', 'about-us');
-                Route::redirect('disclaimer', 'disclaimer');
-                Route::redirect('stage', 'vacancies/internships');
+                Route::redirect('team', '/about-us#team');
+                Route::redirect('vacancies', '/vacancies');
+                Route::redirect('back-end-vacancy', '/vacancies');
+                Route::redirect('disclaimer', '/disclaimer');
+                Route::redirect('stage', '/vacancies/internships');
             });
         });
     }

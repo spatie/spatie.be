@@ -5,7 +5,7 @@
         </a>
         <p class="md:absolute pin-l pin-r pin-b md:text-lg md:p-8">
             @if(is_office_open())
-                <span class="text-green links-underline links-green"><a href="tel:+3232925679">Click to call us</a>
+                <span class="text-green links-underline links-green"><a href="tel:+3232925679">Click to call us</a></span>
             @else
                 <span class="text-pink-dark links-underline links-pink">Our office is closed now, <a href="{{ mailto(
 'I\'d like to have a chat!',
