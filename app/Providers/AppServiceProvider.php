@@ -11,7 +11,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Horizon::auth(function () {
-            return true;
             if (app()->environment('local')) {
                 return true;
             }
