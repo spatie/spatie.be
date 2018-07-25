@@ -5,9 +5,10 @@ function setImageSizes(image) {
     const imageWidthRatio = image.naturalWidth / image.naturalHeight;
     const fittedWidthRatio = image.getBoundingClientRect().width / image.getBoundingClientRect().height;
 
-    const width = imageWidthRatio < fittedWidthRatio
-        ? image.getBoundingClientRect().width
-        : image.getBoundingClientRect().width * fittedWidthRatio;
+    const width = Math.max(
+        image.getBoundingClientRect().height * imageWidthRatio,
+        image.getBoundingClientRect().height * fittedWidthRatio
+    );
 
     image.setAttribute('sizes', `${width}px`);
 }
