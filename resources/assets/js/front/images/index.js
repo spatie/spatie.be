@@ -1,12 +1,15 @@
 const $$ = selectors => [...document.querySelectorAll(selectors)];
 
 function setImageSizes(image) {
-    // Take object-fit into account: size needed can be bigger when image is clipped
-    const imageRatio = image.naturalWidth / image.naturalHeight;
-    const objectFitRatio = image.getBoundingClientRect().width / image.getBoundingClientRect().height;
-    const width = Math.ceil((image.getBoundingClientRect().width * imageRatio) / objectFitRatio);
+    // Take object-fit into account: size needed can be bigger when image is clipped on it's sides
+    const imageWidthRatio = image.naturalWidth / image.naturalHeight;
+    const fittedWidthRatio = image.getBoundingClientRect().width / image.getBoundingClientRect().height;
 
-    image.setAttribute('sizes', width + 'px');
+    const width = imageWidthRatio < fittedWidthRatio
+        ? image.getBoundingClientRect().width
+        : image.getBoundingClientRect().width * fittedWidthRatio;
+
+    image.setAttribute('sizes', `${width}px`);
 }
 
 function handleIntersection(entries, observer) {
