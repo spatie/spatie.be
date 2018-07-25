@@ -12,7 +12,7 @@
                 Internships <br>in Antwerp
             </h1>
             <p class="mt-4">
-                <i class="far fa-angle-left mr-2 opacity-50 text-blue"></i> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
+                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
             </p>
         </div>
     </section>

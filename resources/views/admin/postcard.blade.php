@@ -67,7 +67,7 @@
                             </div>
                             <div class="cell">
                                 <div class="text-sm text-grey">
-                                    <i class="fas fa-map-marker-alt text-grey-lighter"></i> {{ $postcard->location }}
+                                    <span class="icon ml-1 flex-none fill-grey-lighter">{{ svg('icons/fas-map-marker-alt') }}</span> {{ $postcard->location }}
                                 </div>
                             </div>
                             <div class="cell-r">

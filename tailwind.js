@@ -179,7 +179,6 @@ module.exports = {
             'serif',
         ],
         mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
-        icons: ['"Font Awesome 5 Pro"'],
     },
 
     /*

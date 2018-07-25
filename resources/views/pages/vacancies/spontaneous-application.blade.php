@@ -12,7 +12,7 @@
                 Your job title here
             </h1>
             <p class="mt-4">
-                <i class="far fa-angle-left mr-2 opacity-50 text-blue"></i> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
+                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
             </p>
         </div>
     </section>
@@ -33,9 +33,9 @@
                         <div class="mt-16">
                             <h3 class="title">The best part first</h3>
                             <ul class="bullets bullets-green">
-                                <li>Get €1500,- personal budget every year for trainings &amp; conferences</li>
-                                <li>Take the lead, literally. We are open for you way of working</li>
-                                <li>Be part of a team that has made its name in open source</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Get €1500,- personal budget every year for trainings &amp; conferences</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Take the lead, literally. We are open for you way of working</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team that has made its name in open source</li>
                             </ul>
                         </div>
                     </div>

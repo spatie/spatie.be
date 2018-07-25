@@ -42,11 +42,11 @@ Anything that helps us to start straightforward!'
                     <h3 class="title-sm">
                         Topics to discuss
                     </h3>
-                    <ul class="mt-4 bullets">
-                        <li>Your main objective</li>
-                        <li>The initial budget &amp; planning</li>
-                        <li>Who's doing content creation?</li>
-                        <li>All external services / APIs</li>
+                    <ul class="mt-4 bullets bullets-white">
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Your main objective</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> The initial budget &amp; planning</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Who's doing content creation?</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> All external services / APIs</li>
                     </ul>
                 </div>
             </div>

@@ -25,10 +25,10 @@
                     </h2>
                     <ul class="links-underline links-blue">
                         <li class=mt-4>
-                            <a href="/downloads/algemenevoorwaarden.pdf" download><i class="fal fa-arrow-to-bottom mr-1"></i>General Conditions</a>
+                            <a href="/downloads/algemenevoorwaarden.pdf" download><span class="icon mr-2 fill-blue opacity-50">{{ svg('icons/fal-arrow-to-bottom') }}</span>General Conditions</a>
                             <span class="ml-2 text-xs text-grey">PDF - Dutch</span></li>
                         <li class=mt-4>
-                            <a href="/downloads/gdpr-addendum.pdf" download><i class="fal fa-arrow-to-bottom mr-1"></i>GDPR addendum</a>
+                            <a href="/downloads/gdpr-addendum.pdf" download><span class="icon mr-2 fill-blue opacity-50">{{ svg('icons/fal-arrow-to-bottom') }}</span>GDPR addendum</a>
                             <span class="ml-2 text-xs text-grey">PDF - Dutch</span>
                         </li>
                     </ul>

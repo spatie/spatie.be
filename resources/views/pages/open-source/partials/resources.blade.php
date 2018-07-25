@@ -6,9 +6,9 @@
                     Popular <br>Resources
                 </h2>
                 <ul class="text-2xl links-black links-underline bullets bullets-blue">
-                        <li><a href="{{ route('open-source.packages') }}">Search all packages</a></li>
-                        <li><a href="https://docs.spatie.be">All documentation</a></li>
-                        <li><a href="https://github.com/spatie">GitHub</a></li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.packages') }}">Search all packages</a></li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="https://docs.spatie.be">All documentation</a></li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="https://github.com/spatie">GitHub</a></li>
                     </ul>
             </div>
         </div>

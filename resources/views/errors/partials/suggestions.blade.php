@@ -6,9 +6,9 @@
                     A few <br>suggestions
                 </h2>
                 <ul class="text-2xl links-white links-underline bullets bullets-white">
-                    <li><a href="{{ route('home') }}">Homepage</a></li>
-                    <li><a href="{{ route('open-source.packages') }}">Open source packages</a></li>
-                    <li><a href="{{ route('about') }}">About us</a></li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('home') }}">Homepage</a></li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.packages') }}">Open source packages</a></li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('about') }}">About us</a></li>
                 </ul>
             </div>
         </div>

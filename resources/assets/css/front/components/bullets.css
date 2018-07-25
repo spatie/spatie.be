@@ -43,7 +43,7 @@
     & li {
         padding-left: 0;
 
-        &:before {
+        & .icon {
             display: none;
         }
     }
