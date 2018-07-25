@@ -61,6 +61,5 @@ export default {
         ArrowToBottomIcon,
         StarIcon,
     },
-}
+};
 </script>
-

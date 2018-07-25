@@ -1,10 +1,10 @@
 .icon {
-    margin: 0 .15em;
+    margin: 0 0.15em;
     display: inline-block;
     vertical-align: baseline;
 
     & svg {
-        height: .95em;
+        height: 0.95em;
         width: auto;
         fill: inherit;
         display: inline-block;

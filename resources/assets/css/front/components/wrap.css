@@ -83,8 +83,7 @@
         @apply gap-8;
 
         @screen sm {
-            --cols: minmax(config(padding.8), 1fr) repeat(6, minmax(min-content, 7rem))
-                minmax(config(padding.8), 1fr);
+            --cols: minmax(config(padding.8), 1fr) repeat(6, minmax(min-content, 7rem)) minmax(config(padding.8), 1fr);
 
             @apply px-0;
             max-width: none;

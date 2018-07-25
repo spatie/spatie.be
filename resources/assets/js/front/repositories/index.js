@@ -11,7 +11,7 @@ export default function repositories(el) {
                     label: el.dataset.label,
                 },
             });
-        }
+        },
     });
 
     vm.$mount(el);
