@@ -84,7 +84,7 @@ yarn
 @task('generateAssets', ['on' => 'remote'])
 {{ logMessage("🌅  Generating assets...") }}
 cd {{ $newReleaseDir }};
-yarn run production -- --progress false
+yarn run production --progress false
 @endtask
 
 @task('updateSymlinks', ['on' => 'remote'])
@@ -108,7 +108,6 @@ ln -nfs {{ $baseDir }}/.env .env;
 {{ logMessage("✨  Optimizing installation...") }}
 cd {{ $newReleaseDir }};
 php artisan clear-compiled;
-php artisan optimize;
 @endtask
 
 @task('backupDatabase', ['on' => 'remote'])
