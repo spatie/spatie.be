@@ -3,7 +3,6 @@
     @apply w-16;
     @apply h-16;
     @apply overflow-hidden;
-    @apply mt-4;
     @apply border-2;
     @apply border-white;
     @apply shadow-lg;

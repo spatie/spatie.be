@@ -5,7 +5,7 @@
             is achievable
         </h1>
         <p class="banner-intro">
-           You don't have to start <br>from scratch
+           You don't always have to start <br>from scratch
         </p>
     </div>
 </section>

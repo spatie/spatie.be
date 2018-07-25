@@ -1,6 +1,6 @@
 <section id="stack" class="section">
     <div class="wrap">
-        <h3 class="title line-after mb-16">Our Technology Stack</h3>
+        <h3 class="title line-after mb-16">Our technology stack</h3>
     </div>
     <div class="wrap-6 items-start">
         <div class="line-l | sm:spanx-3 | md:spanx-2">
@@ -10,9 +10,10 @@
                     <li>Vue.js</li>
                     <li>React</li>
                     <li>Vanilla JS</li>
-                    <li>Tailwind</li>
+                    <li>Tailwind CSS</li>
                     <li>PostCSS</li>
                     <li>Laravel Mix</li>
+                    <li>npm</li>
                     <li>Yarn</li>
                     <li>Webpack</li>
                 </ul>
@@ -33,11 +34,13 @@
                     <li>PHP</li>
                     <li>MySQL</li>
                     <li>Algolia</li>
+                    <li>Elasticsearch</li>
                 </ul>
                 <h3 class="title-sm">Integrations</h3>
                 <ul class="bullets-inline bullets-blue">
                     <li>Stripe</li>
                     <li>Ingenico</li>
+                    <li>Mollie</li>
                     <li>Salesforce</li>
                     <li>Teamleader</li>
                     <li>Exact Online</li>

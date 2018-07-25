@@ -7,7 +7,7 @@
                 </h2>
                 <ul class="text-2xl links-black links-underline bullets bullets-blue">
                         <li><a href="{{ route('open-source.packages') }}">Our open source work</a></li>
-                        <li><a href="http://git-awards.com/users?utf8=✓&type=world&language=php">Top ranking on Github</a></li>
+                        <li><a href="http://git-awards.com/users?utf8=✓&type=world&language=php" target="_blank" rel="nofollow noreferrer noopener">Top ranking on GitHub</a></li>
                         <li><a href="{{ route('about') }}#team">A skilled team</a></li>
                     </ul>
             </div>
