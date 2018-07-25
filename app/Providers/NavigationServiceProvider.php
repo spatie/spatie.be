@@ -32,7 +32,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->setActiveClass('font-bold')
                 ->each(function (Link $link) {
                     if ($link->isActive()) {
-                        $link->append('<i class="far fa-angle-right ml-2 opacity-50"></i>');
+                        $link->append('<span class="ml-2 opacity-50 icon fill-white">'.svg('icons/far-angle-right').'</span>');
                     }
                 });
         });
