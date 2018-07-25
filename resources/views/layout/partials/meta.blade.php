@@ -3,8 +3,8 @@
 
 <link rel="publisher" href="https://plus.google.com/115651694673948212718">
 
-<link rel="dns-prefetch" href="//cloud.typography.com">
-<link rel="dns-prefetch" href="//pro.fontawesome.com">
+<link rel="dns-prefetch" href="https://cloud.typography.com">
+<link rel="dns-prefetch" href="https://pro.fontawesome.com">
 
 <title>{{ $title ?? '' }} | Spatie</title>
 
