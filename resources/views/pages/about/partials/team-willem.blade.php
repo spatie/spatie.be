@@ -13,7 +13,6 @@
             Willem doesn't like to write about himself. Since these are his words that you are reading, this is all you get.
         </p>
         <ul class="text-xs">
-            <li><a href="mailto:willem@spatie.be">willem@spatie.be</a></li>
             <li><a href="https://twitter.com/willemvbockstal">@willemvbockstal</a></li>
         </ul>
     </div>

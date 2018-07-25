@@ -13,7 +13,6 @@
             Alex can throw backend code, servers and hardware in the mix. He's famous for winning the first Laravel blog contest and struggling with Paypal ever since.
         </p>
         <ul class="text-xs">
-            <li><a href="mailto:alex@spatie.be">alex@spatie.be</a></li>
             <li><a href="https://twitter.com/alexvanderbist">@alexvanderbist</a></li>
             <li><a href="https://alexvanderbist.com">alexvanderbist.com</a></li>
         </ul>

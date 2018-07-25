@@ -78,10 +78,6 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@willemvb/zoom.js@https://github.com/willemvb/zoom.js":
-  version "2.0.1"
-  resolved "https://github.com/willemvb/zoom.js#ef902a245ee14c2b7c450e6cd5df334b0e91b89f"
-
 abbrev@1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/abbrev/-/abbrev-1.1.1.tgz#f8f2c887ad10bf67f634f005b6987fed3179aac8"

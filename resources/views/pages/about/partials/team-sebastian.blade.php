@@ -13,7 +13,6 @@
             Seb really earns the label ‘full stack’. Throw anything at this guy and he'll kick it back to you as a component.
         </p>
         <ul class="text-xs">
-            <li><a href="mailto:sebastian@spatie.be">sebastian@spatie.be</a></li>
             <li><a href="https://twitter.com/sebdedeyne">@sebdedeyne</a></li>
             <li><a href="https://sebastiandedeyne.com">sebastiandedeyne.com</a></li>
         </ul>

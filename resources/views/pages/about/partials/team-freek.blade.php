@@ -13,7 +13,6 @@
             Freek is our godfather of backend code. You are not into Laravel if this face doesn't ring a bell to you.
         </p>
         <ul class="text-xs">
-            <li><a href="mailto:freek@spatie.be">freek@spatie.be</a></li>
             <li><a href="https://twitter.com/freekmurze">@freekmurze</a></li>
             <li><a href="https://murze.be">murze.be</a></li>
         </ul>

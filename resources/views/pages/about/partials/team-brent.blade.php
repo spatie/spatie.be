@@ -13,7 +13,6 @@
             Brent has a love for syntax and clean code and showed us how to work in a light theme. Our office has never been so bright.
         </p>
         <ul class="text-xs">
-            <li><a href="mailto:brent@spatie.be">brent@spatie.be</a></li>
             <li><a href="https://twitter.com/brendt_gd">@brendt_gd</a></li>
             <li><a href="https://stitcher.io">stitcher.io</a></li>
         </ul>
