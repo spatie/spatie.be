@@ -1,6 +1,5 @@
 import srcsetSize from './ui/srcsetSize';
 import repositories from './repositories';
-import './ui/zoom';
 
 let resizeTimer;
 

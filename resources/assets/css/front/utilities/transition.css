@@ -2,6 +2,10 @@
     transition-property: color;
 }
 
+.transition-fill {
+    transition-property: fill;
+}
+
 .transition-opacity {
     transition-property: opacity;
 }

@@ -30,7 +30,7 @@
                             <option value="-star_count">by popularity</option>
                             <option value="-repository_created_at">by date</option>
                         </select>
-                        <i class="sort-arrow far fa-angle-down"></i>
+                        <span class="icon fill-grey"><AngleDownIcon /></span>
                     </div>
                 </div>
                 <Repository
@@ -46,6 +46,7 @@
 <script>
 import Repository from './Repository';
 import DataComponent, { createFetcher } from 'vue-data-component';
+import AngleDownIcon from './icons/AngleDownIcon';
 
 export default {
     props: {
@@ -62,6 +63,7 @@ export default {
     components: {
         Repository,
         DataComponent,
+        AngleDownIcon,
     },
 
     computed: {

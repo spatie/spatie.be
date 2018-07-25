@@ -12,8 +12,8 @@
                                 <br>
                                 2060 Antwerp, Belgium
                             </span>
-                            <span class="px-2 text-grey-lighter group-hover:text-pink transition-color transition-fast">
-                                <i class="fas fa-map-marker-alt"></i>
+                            <span class="icon px-2 fill-grey-lighter group-hover:fill-pink transition-fill transition-fast">
+                                {{ svg('icons/fas-map-marker-alt') }}
                             </span>
                         </a>
                     </div>

@@ -1,0 +1,41 @@
+@variants hover, group-hover {
+    .fill-blue {
+        fill: config('colors.blue');
+    }
+
+    .fill-pink {
+        fill: config('colors.pink');
+    }
+
+    .fill-pink-dark {
+        fill: config('colors.pink-dark');
+    }
+
+    .fill-red {
+        fill: config('colors.red');
+    }
+
+    .fill-grey {
+        fill: config('colors.grey');
+    }
+
+    .fill-grey-light {
+        fill: config('colors.grey-light');
+    }
+
+    .fill-grey-lighter {
+        fill: config('colors.grey-lighter');
+    }
+
+    .fill-white {
+        fill: config('colors.white');
+    }
+
+    .fill-green {
+        fill: config('colors.green');
+    }
+
+    .fill-green-dark {
+        fill: config('colors.green-dark');
+    }
+}

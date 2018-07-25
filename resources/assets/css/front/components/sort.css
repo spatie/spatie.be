@@ -30,6 +30,6 @@
     }
 }
 
-.sort-select:active + .sort-arrow {
+.sort-select:active + .icon {
     transform: rotate(180deg);
 }

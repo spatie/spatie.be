@@ -12,10 +12,11 @@
                     <span class="char-separator">•</span>
                 </span>
                 <span v-if="repository.download_count">
-                    {{ repository.formatted_download_count }} <i class="fal fa-arrow-to-bottom"></i>
+                    {{ repository.formatted_download_count }}
+                    <span class="icon fill-grey"><ArrowToBottomIcon /></span>
                     <span class="char-separator">•</span>
                 </span>
-                {{ repository.formatted_star_count }} <i class="fal fa-star"></i>
+                {{ repository.formatted_star_count }} <span class="icon fill-grey"><StarIcon /></span>
                 <a v-if="repository.has_issues" :href="repository.issues_url" target="_blank" rel="nofollow noreferrer noopener"
                     class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
                     easy issues
@@ -48,9 +49,17 @@
 </template>
 
 <script>
+import ArrowToBottomIcon from './icons/ArrowToBottomIcon';
+import StarIcon from './icons/StarIcon';
+
 export default {
     props: {
         repository: { required: true },
+    },
+
+    components: {
+        ArrowToBottomIcon,
+        StarIcon,
     },
 }
 </script>

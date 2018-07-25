@@ -6,13 +6,11 @@
     & li {
         padding-left: 1em;
 
-        &:before {
-            @apply font-icons;
+        & .icon {
             @apply pr-2;
-            color: var(--bullet-color);
+            fill: var(--bullet-color);
             left: 0;
             position: absolute;
-            content: '\f105'; /* fa-angle-right */
         }
 
         &:not(:last-child) {

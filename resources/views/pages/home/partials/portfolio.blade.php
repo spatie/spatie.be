@@ -18,8 +18,8 @@
                     <br>
                     Crew members can listen and evaluate SoundCloud tracks by upcoming talents, submitted to the application.
                 </p>
-                <ul class="text-lg mt-8 bullets bullets-green">
-                    <li><a href="https://demo.stmpdrcrds.com">demo.stmpdrcrds.com</a></li>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-green-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://demo.stmpdrcrds.com">demo.stmpdrcrds.com</a></li>
                 </ul>
             </div>
         </div>
@@ -42,8 +42,8 @@
                     ArtAssistant is the one-stop shop for the world of art, offering different services such as valuation, trading and lending of artworks.
                     We assisted this startup with the development of a 'collection manager' that facilitates selling and exposing artwork as a gallery owner.
                 </p>
-                <ul class="text-lg mt-8 bullets bullets-pink inline-block">
-                    <li><a href="https://my.artassistant.com">my.artassistant.com</a></li>
+                <ul class="text-lg mt-8 inline-block">
+                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://my.artassistant.com">my.artassistant.com</a></li>
                 </ul>
             </div>
         </div>

@@ -7,7 +7,7 @@
             Open source packages
             </h1>
             <p class="banner-intro">
-            {{ ucfirst(App\Models\Repository::humanReadableDownloadCount()) }} downloads and <i class="far fa-chart-line"></i>
+            {{ ucfirst(App\Models\Repository::humanReadableDownloadCount()) }} downloads and <span class="icon">{{ svg('icons/far-chart-line') }}</span>
             </p>
         </div>
     </div>

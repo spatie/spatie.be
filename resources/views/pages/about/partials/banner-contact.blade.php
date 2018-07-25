@@ -10,8 +10,8 @@
             Samberstraat 69D
             <br>
             2060 Antwerp <br>Belgium
-            <span class="px-2 text-pink group-hover:text-pink-dark transition-color transition-fast">
-                <i class="fas fa-map-marker-alt"></i>
+            <span class="icon px-2 fill-pink group-hover:opacity-75 transition-fill transition-fast">
+                {{ svg('icons/fas-map-marker-alt') }}
             </span>
         </span>
     </a>
