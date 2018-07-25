@@ -20,7 +20,7 @@
         <section id="jobs">
             <div class="wrap">
                 <div class="markup markup-titles links-underline links-blue bullets bullets-green">
-                    <p><em>Dutch version — translation in progress</em></p>
+                    <p><strong>Dutch version — translation in progress</strong></p>
 
                     <h2>1. Waarom deze privacyverklaring</h2>
 

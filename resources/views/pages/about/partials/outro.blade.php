@@ -26,7 +26,7 @@
         </div>
         <div class="line-l | sm:spanx-2 sm:startx-5">
             <p class="markup text-grey text-xs">
-                <em>Spatie</em> is Dutch for <em>space</em>, the character between 2 words.
+                ‘Spatie’ is Dutch for ‘space’, the character between 2 words.
                 <br>You pronounce it /'spɑːsiː/.
             </p>
         </div>

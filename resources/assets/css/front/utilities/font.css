@@ -5,12 +5,6 @@
     @apply font-normal;
 }
 
-.font-sans-normal-italic {
-    @apply font-sans;
-    @apply font-normal;
-    @apply italic;
-}
-
 .font-sans-bold {
     @apply font-sans;
     @apply font-bold;
