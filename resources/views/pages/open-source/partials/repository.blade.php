@@ -5,11 +5,11 @@
     <div class="text-xs mt-2 text-grey">
         @if($repository->language)
             <span class="font-bold">{{ $repository->language }}</span>
-            <span class="char-separator">•</span>
+            <span class="char-separator" >•</span>
         @endif
         @if ($repository->downloads > 0)
             {{ $repository->formatted_downloads }} <i class="fal fa-arrow-to-bottom"></i>
-            <span class="char-separator">•</span>
+            <span class="char-separator" >•</span>
         @endif
         {{ $repository->formatted_stars }} <i class="fal fa-star"></i>
 
@@ -31,7 +31,7 @@
             {{ $topic }}
 
             @if(! $loop->last)
-                <span class="char-separator">•</span>
+                <span class="char-separator" >•</span>
             @endif
         @endforeach
     </div>

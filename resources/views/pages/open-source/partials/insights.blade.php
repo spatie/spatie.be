@@ -1,6 +1,6 @@
 <h2 class="title-sm">
     Latest insights
-    <div class="title-subtext text-pink">
+    <div class="title-subtext text-pink-dark">
         From the team
     </div>
 </h2>
@@ -10,7 +10,7 @@
         <br>
         <span class="text-xs text-grey">
             {{ $insight->created_at->format('M jS Y') }}
-            <span class="char-separator">•</span>
+            <span class="char-separator" >•</span>
             <a class="link-underline link-blue" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->website }}</a>
         </span>
     </p>

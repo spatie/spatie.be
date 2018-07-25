@@ -3,7 +3,7 @@
         <div class="sm:spanx-3 | line-l">
             <h2 class="title-sm">
                 Work with us!
-                <div class="title-subtext text-pink">
+                <div class="title-subtext text-pink-dark">
                     Currently looking for …
                 </div>
             </h2>

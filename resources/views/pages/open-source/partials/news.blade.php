@@ -5,7 +5,7 @@
                 <h2 class="title-sm">
                     <a href='https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aspatie+is%3Apublic+label%3A%22good+first+issue%22'
                        class="link-black">Help us out</a>
-                    <div class="title-subtext text-pink">
+                    <div class="title-subtext text-pink-dark">
                         Easy issues to solve
                     </div>
                 </h2>
@@ -19,7 +19,7 @@
                             <a href="{{ $issue->repository->url }}" target="_blank" rel="nofollow noreferrer noopener">
                                 {{ $issue->repository->name }}
                             </a>
-                            <span class="char-separator">•</span>
+                            <span class="char-separator" >•</span>
                             <a href="{{ $issue->url }}" target="_blank" rel="nofollow noreferrer noopener" class="link-underline link-blue">
                                 #{{ $issue->number }}
                             </a>

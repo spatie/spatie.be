@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="sm:spanx-3 sm:startx-6">
-            <a class="illustration is-right is-rotated is-postcard-without-caption h-full" href="{{ route('open-source.postcards') }}" >
+            <a class="illustration is-right is-rotated is-postcard-without-caption h-full" href="{{ route('open-source.postcards') }}" title="Postcards">
                 {{ image('open-source.jpg') }}
             </a>
         </div>

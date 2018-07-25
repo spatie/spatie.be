@@ -57,8 +57,8 @@ var colors = {
     'grey-lightest': '#f3efea',
     'grey-lighter': '#cbd2ce',
     'grey-light': '#b8bfbb',
-    grey: '#888787',
-    'grey-dark': '#767d79',
+    grey: '#767575',
+    'grey-dark': '#686666',
     'grey-darker': '#4c534f',
     'grey-darkest': '#171e1a',
 
@@ -79,13 +79,13 @@ var colors = {
 
     'pink-lightest': '#f2d8db',
     pink: '#dd9099',
-    'pink-dark': '#c67780',
+    'pink-dark': '#B95661',
 
     'green-lightest': '#daefe8',
     'green-lighter': '#94dac4',
     'green-light': '#57c9a5',
     green: '#21b989',
-    'green-dark': '#0da071',
+    'green-dark': '#0D875F',
 };
 
 module.exports = {

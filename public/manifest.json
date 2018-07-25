@@ -1,5 +1,6 @@
 {
     "name": "Spatie",
+    "short_name": "Spatie",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

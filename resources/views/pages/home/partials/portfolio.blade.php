@@ -1,7 +1,7 @@
 <section id="portfolio" class="section">
     <div class="wrap-8 section">
         <div class="sm:spanx-4">
-            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full">
+            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com">
                 {{ image('portfolio/stmpd.jpg') }}
             </a>
         </div>
@@ -9,7 +9,7 @@
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Soundcloud Demo Platform
-                    <div class="title-subtext text-green">
+                    <div class="title-subtext text-green-dark">
                         <span class="font-normal">Using</span> Soundcloud, Laravel, Vue
                     </div>
                 </h3>
@@ -26,7 +26,7 @@
     </div>
     <div class="wrap-8 grid-flow-dense section">
         <div class="sm:startx-5 sm:spanx-4">
-            <a href="https://my.artassistant.com" class="illustration is-right h-full">
+            <a href="https://my.artassistant.com" class="illustration is-right h-full" title="my.artassistant.com">
                 {{ image('portfolio/artassistant.jpg') }}
             </a>
         </div>
@@ -34,7 +34,7 @@
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Art Transaction Platform
-                    <div class="title-subtext text-pink">
+                    <div class="title-subtext text-pink-dark">
                         <span class="font-normal">Using</span> Laravel, Vue, Stripe
                     </div>
                 </h3>

@@ -3,7 +3,7 @@
         <div class="sm:spanx-3 | line-l">
             <h2 class="title-sm">
                 Vacancies at Spatie
-                <div class="title-subtext text-pink">
+                <div class="title-subtext text-pink-dark">
                    Currently: full house
                 </div>
             </h2>
@@ -12,7 +12,7 @@
         <div class="sm:spanx-3 | line-l">
             <h2 class="title-sm">
                 Internships
-                <div class="title-subtext text-pink">
+                <div class="title-subtext text-pink-dark">
                     Backend or frontend
                 </div>
             </h2>
