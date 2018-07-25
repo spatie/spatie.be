@@ -1,18 +1,14 @@
-import srcsetSize from './ui/srcsetSize';
+import images from './images';
 import repositories from './repositories';
 
-let resizeTimer;
+window.addEventListener('load', images);
 
-window.addEventListener('load', () => {
-    srcsetSize();
-});
+// window.addEventListener('resize', () => {
+//     clearTimeout(resizeTimer);
 
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-
-    resizeTimer = setTimeout(() => {
-        srcsetSize();
-    }, 250);
-});
+//     resizeTimer = setTimeout(() => {
+//         images();
+//     }, 250);
+// });
 
 [...document.querySelectorAll('[data-repositories]')].forEach(repositories);
