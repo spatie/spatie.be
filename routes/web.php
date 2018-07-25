@@ -15,10 +15,10 @@ Route::prefix('about-us')->group(function () {
 });
 
 Route::prefix('open-source')->group(function () {
-    Route::get('/', 'OpensourceController@index')->name('open-source.index');
+    Route::get('/', 'OpenSourceController@index')->name('open-source.index');
     Route::get('postcards', 'PostcardController@index')->name('open-source.postcards');
-    Route::get('packages', 'OpensourceController@packages')->name('open-source.packages');
-    Route::get('projects', 'OpensourceController@projects')->name('open-source.projects');
+    Route::get('packages', 'OpenSourceController@packages')->name('open-source.packages');
+    Route::get('projects', 'OpenSourceController@projects')->name('open-source.projects');
 });
 
 Route::prefix('vacancies')->group(function () {

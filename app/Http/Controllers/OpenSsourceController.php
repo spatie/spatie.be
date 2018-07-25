@@ -7,7 +7,7 @@ use App\Models\Contributor;
 use App\Models\Repository;
 use App\Models\Issue;
 
-class OpensourceController extends Controller
+class OpenSourceController extends Controller
 {
     public function index()
     {
