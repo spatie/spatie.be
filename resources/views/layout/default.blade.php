@@ -3,9 +3,9 @@
 
 <head>
     @include('layout.partials.meta')
-    @include('layout.partials.fonts')
 
     <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
+    <link rel="stylesheet" href="https://cloud.typography.com/6194432/6145752/css/fonts.css">
 
     @include('layout.partials.favicons')
 
