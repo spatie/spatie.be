@@ -10,7 +10,7 @@ Route::prefix('about-us')->group(function () {
     Route::view('/', 'pages/about/index')->name('about');
 
     collect(config('team.members'))->each(function (string $personName) {
-        Route::redirect($personName, "#{$personName}");
+        Route::redirect($personName, "/about-us/#{$personName}");
     });
 });
 
