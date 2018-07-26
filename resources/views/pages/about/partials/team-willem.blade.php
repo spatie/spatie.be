@@ -10,7 +10,7 @@
     </div>
     <div class="line-l markup links-underline links-blue | sm:spanx-4 text-sm">
         <p>
-            Willem doesn't like to write about himself. Since these are his words that you are reading, this is all you get.
+            You ended up in this particular place on the internet because Willem created this site. And this company. Is there something this guy can't do?
         </p>
         <ul class="text-xs">
             <li><a href="https://twitter.com/willemvbockstal">@willemvbockstal</a></li>
