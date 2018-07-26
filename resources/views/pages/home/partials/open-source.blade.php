@@ -6,7 +6,7 @@
                 (open) source
                 </h2>
                 <p class="text-lg">
-                    We are open source enthousiasts and  active contributors to the Laravel ecosystem. Our packages have been downloaded worldwide  {{ App\Models\Repository::humanReadableDownloadCount() }} times.<br>
+                    We are open source enthusiasts and  active contributors to the Laravel ecosystem. Our packages have been downloaded worldwide  {{ App\Models\Repository::humanReadableDownloadCount() }} times.<br>
                     Our <a href="http://git-awards.com/users?utf8=✓&type=world&language=php">top ranking</a> amongst PHP developers on GitHub makes us very proud.
                 </p>
             </div>
