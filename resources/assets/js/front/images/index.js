@@ -21,7 +21,7 @@ function handleIntersection(entries, observer) {
 
 export default function() {
     const observer = new IntersectionObserver(handleIntersection, {
-        rootMargin: '100px 0px',
+        rootMargin: '500px 0px',
     });
 
     $$('[srcset][sizes="1px"]').forEach(image => {
