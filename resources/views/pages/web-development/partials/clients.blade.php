@@ -8,7 +8,7 @@
                 <h3 class="title-sm">Corporate</h3>
                 <ul class="links-underline links-black">
                     <li>
-                        <a href="https://my.agrafa.com" target="_blank" rel="noreferrer noopener">Agrafa</a>
+                        <a href="https://my.agrafa.be" target="_blank" rel="noreferrer noopener">Agrafa</a>
                         <div class="text-xs text-grey">Onsite apps for banner distribution</div>
                     </li>
                     <li class=mt-2>
