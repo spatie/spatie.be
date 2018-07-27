@@ -6,7 +6,5 @@ window.addEventListener('load', images);
 [...document.querySelectorAll('[data-repositories]')].forEach(repositories);
 
 if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/serviceworker.js');
-  });
+    navigator.serviceWorker.register('/service-worker.js');
 }
