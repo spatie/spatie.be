@@ -34,6 +34,8 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapRedirectsForOldSite()
     {
+        Route::redirect('opensource', '/open-source');
+
         collect(['en', 'nl'])->each(function (string $locale) {
             Route::prefix($locale)->group(function () {
                 Route::redirect('/', '/');
