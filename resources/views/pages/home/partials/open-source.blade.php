@@ -26,8 +26,8 @@
             </a>
         </div>
         <div class="sm:spanx-4 sm:startx-4 | text-right text-sm links-underline links-blue">
-            <p>Check out the kind <a href="{{ route('open-source.postcards') }}" >postcards</a> <br>
-            we get from users all over the world.</p>
+            <p>Check out the <a href="{{ route('open-source.postcards') }}" >postcards</a> <br>
+            we get from kind users all over the world.</p>
         </div>
     </div>
 </section>
