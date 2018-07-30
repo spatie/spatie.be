@@ -120,6 +120,7 @@ php artisan backup:run
 {{ logMessage("🙈  Migrating database...") }}
 cd {{ $newReleaseDir }};
 php artisan migrate --force;
+php artisan db:seed --class MembersSeeder
 @endtask
 
 @task('blessNewRelease', ['on' => 'remote'])

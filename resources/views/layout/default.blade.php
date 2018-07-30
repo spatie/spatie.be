@@ -28,6 +28,5 @@
     @include('layout.partials.footer')
 
     @yield('twitterTracking')
-
 </body>
 </html>
