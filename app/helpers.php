@@ -5,6 +5,7 @@ use Faker\Factory;
 use Faker\Generator;
 use Illuminate\Support\HtmlString;
 use Spatie\MediaLibrary\Models\Media;
+use App\Services\Schema\Schema;
 
 function svg($filename): HtmlString
 {
@@ -55,4 +56,9 @@ function mailto(string $subject, string $body): string
     $body = rawurlencode(htmlspecialchars_decode($body));
 
     return "mailto:info@spatie.be?subject={$subject}&body={$body}" ;
+}
+
+function schema(): Schema
+{
+    return app(Schema::class);
 }

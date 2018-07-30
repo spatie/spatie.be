@@ -21,7 +21,7 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer('pages.about.partials.team', function ($view) {
-            $view->with('members', Member::all());
+            $view->with('members', Member::orderBy('first_name')->get());
         });
     }
 }

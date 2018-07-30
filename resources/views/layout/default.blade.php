@@ -28,5 +28,7 @@
     @include('layout.partials.footer')
 
     @yield('twitterTracking')
+
+    {!! schema()->localBusiness() !!}
 </body>
 </html>
