@@ -31,6 +31,7 @@
         "spatie/laravel-responsecache": "^4.4",
         "spatie/laravel-tail": "^3.0",
         "spatie/packagist-api": "^1.0",
+        "spatie/schema-org": "^2.0",
         "themsaid/laravel-mail-preview": "^2.0",
         "zendframework/zend-feed": "^2.9",
         "zendframework/zend-http": "^2.7"

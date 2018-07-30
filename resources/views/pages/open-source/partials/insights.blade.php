@@ -4,7 +4,7 @@
         From the team
     </div>
 </h2>
-@foreach (App\Models\Insight::getLatest() as $insight)
+@foreach ($insights as $insight)
      <p class="mt-4">
         <a class="link link-black" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->title }}</a>
         <br>

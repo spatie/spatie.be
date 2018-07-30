@@ -47,10 +47,10 @@ git pull origin master
 @task('cloneRepository', ['on' => 'remote'])
 {{ logMessage("🌀  Cloning repository...") }}
 [ -d {{ $releasesDir }} ] || mkdir {{ $releasesDir }};
-cd {{ $releasesDir }};
+cd {{ $releasesDir }}
 
 # Create the release dir
-mkdir {{ $newReleaseDir }};
+mkdir {{ $newReleaseDir }}
 
 # Clone the repo
 git clone --depth 1 git@github.com:{{ $repository }} {{ $newReleaseName }}
@@ -70,44 +70,44 @@ echo "{{ $newReleaseName }}" > public/release-name.txt
 
 @task('runComposer', ['on' => 'remote'])
 {{ logMessage("🚚  Running Composer...") }}
-cd {{ $newReleaseDir }};
-composer install --prefer-dist --no-scripts --no-dev -q -o;
+cd {{ $newReleaseDir }}
+composer install --prefer-dist --no-scripts --no-dev -q -o
 @endtask
 
 @task('runYarn', ['on' => 'remote'])
 {{ logMessage("📦  Running Yarn...") }}
-cd {{ $newReleaseDir }};
+cd {{ $newReleaseDir }}
 yarn config set ignore-engines true
 yarn
 @endtask
 
 @task('generateAssets', ['on' => 'remote'])
 {{ logMessage("🌅  Generating assets...") }}
-cd {{ $newReleaseDir }};
+cd {{ $newReleaseDir }}
 yarn run production --progress false
 @endtask
 
 @task('updateSymlinks', ['on' => 'remote'])
 {{ logMessage("🔗  Updating symlinks to persistent data...") }}
 # Remove the storage directory and replace with persistent data
-rm -rf {{ $newReleaseDir }}/storage;
-cd {{ $newReleaseDir }};
-ln -nfs {{ $baseDir }}/persistent/storage storage;
+rm -rf {{ $newReleaseDir }}/storage
+cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/persistent/storage storage
 
 # Remove the public/media directory and replace with persistent data
-rm -rf {{ $newReleaseDir }}/public/images/medialibrary;
-cd {{ $newReleaseDir }};
-ln -nfs {{ $baseDir }}/persistent/medialibrary public/images/medialibrary;
+rm -rf {{ $newReleaseDir }}/public/images/medialibrary
+cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/persistent/medialibrary public/images/medialibrary
 
 # Import the environment config
-cd {{ $newReleaseDir }};
-ln -nfs {{ $baseDir }}/.env .env;
+cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/.env .env
 @endtask
 
 @task('optimizeInstallation', ['on' => 'remote'])
 {{ logMessage("✨  Optimizing installation...") }}
-cd {{ $newReleaseDir }};
-php artisan clear-compiled;
+cd {{ $newReleaseDir }}
+php artisan clear-compiled
 @endtask
 
 @task('backupDatabase', ['on' => 'remote'])
@@ -118,13 +118,14 @@ php artisan backup:run
 
 @task('migrateDatabase', ['on' => 'remote'])
 {{ logMessage("🙈  Migrating database...") }}
-cd {{ $newReleaseDir }};
-php artisan migrate --force;
+cd {{ $newReleaseDir }}
+php artisan migrate --force
+php artisan db:seed --class MembersSeeder --force
 @endtask
 
 @task('blessNewRelease', ['on' => 'remote'])
 {{ logMessage("🙏  Blessing new release...") }}
-ln -nfs {{ $newReleaseDir }} {{ $currentDir }};
+ln -nfs {{ $newReleaseDir }} {{ $currentDir }}
 cd {{ $newReleaseDir }}
 
 php artisan horizon:terminate
@@ -142,8 +143,8 @@ sudo supervisorctl restart all
 {{ logMessage("🚾  Cleaning up old releases...") }}
 # Delete all but the 5 most recent.
 cd {{ $releasesDir }}
-ls -dt {{ $releasesDir }}/* | tail -n +6 | xargs -d "\n" sudo chown -R forge .;
-ls -dt {{ $releasesDir }}/* | tail -n +6 | xargs -d "\n" rm -rf;
+ls -dt {{ $releasesDir }}/* | tail -n +6 | xargs -d "\n" sudo chown -R forge .
+ls -dt {{ $releasesDir }}/* | tail -n +6 | xargs -d "\n" rm -rf
 @endtask
 
 @task('finishDeploy', ['on' => 'local'])

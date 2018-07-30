@@ -5,6 +5,7 @@ use Faker\Factory;
 use Faker\Generator;
 use Illuminate\Support\HtmlString;
 use Spatie\MediaLibrary\Models\Media;
+use App\Services\Schema\Schema;
 
 function svg($filename): HtmlString
 {
@@ -36,11 +37,11 @@ function is_office_open(): bool
     return now()->between($startTime, $endTime);
 }
 
-function gravatar_img(string $name): string
+function gravatar_img(string $name): HtmlString
 {
     $gravatarId = md5(strtolower(trim($name)));
 
-    return '<img src="https://gravatar.com/avatar/' . $gravatarId . '?s=240">';
+    return new HtmlString('<img src="https://gravatar.com/avatar/' . $gravatarId . '?s=240">');
 }
 
 function faker(): Generator
@@ -55,4 +56,9 @@ function mailto(string $subject, string $body): string
     $body = rawurlencode(htmlspecialchars_decode($body));
 
     return "mailto:info@spatie.be?subject={$subject}&body={$body}" ;
+}
+
+function schema(): Schema
+{
+    return app(Schema::class);
 }
