@@ -37,9 +37,18 @@ self.addEventListener('fetch', event => {
         (event.request.method === 'GET' && event.request.headers.get('accept').includes('text/html'))
     ) {
         event.respondWith(
-            fetch(event.request.url).catch(error => {
-                return caches.match(offlineUrl);
-            })
+            fetch(event.request.url)
+                .then(response => {
+                    // Prevent redirect errors in Chrome
+                    if (response.redirected) {
+                        return Response.redirect(response.url);
+                    }
+
+                    return response;
+                })
+                .catch(error => {
+                    return caches.match(offlineUrl);
+                })
         );
     } else {
         // Respond with everything else if we can
