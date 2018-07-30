@@ -39,12 +39,8 @@ self.addEventListener('fetch', event => {
         event.respondWith(
             fetch(event.request.url)
                 .then(response => {
-                    // Prevent redirect errors in Chrome
-                    if (response.redirected) {
-                        return Response.redirect(response.url);
-                    }
-
-                    return response;
+                    // Prevent service worker redirect errors
+                    return response.redirected ? Response.redirect(response.url) : response;
                 })
                 .catch(error => {
                     return caches.match(offlineUrl);
