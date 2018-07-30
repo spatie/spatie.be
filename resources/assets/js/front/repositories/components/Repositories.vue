@@ -33,11 +33,17 @@
                         <span class="icon fill-grey"><AngleDownIcon /></span>
                     </div>
                 </div>
-                <Repository
-                    v-for="repository in repositories"
-                    :key="repository.id"
-                    :repository="repository"
-                />
+                <div v-if="repositories.length">
+                    <Repository
+                        v-for="repository in repositories"
+                        :key="repository.id"
+                        :repository="repository"
+                    />
+                </div>
+                <p v-else class="mt-12 text-lg text-grey">
+                    Apparently there's not a Spatie package for everything! <br>
+                    Maybe check back later.
+                </p>
             </div>
         </template>
     </DataComponent>
