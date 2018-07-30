@@ -9,8 +9,8 @@ class Insight extends Model
     public static function getLatest(): Collection
     {
         return static::query()
-            ->orderByDesc('created_at')
-            ->groupBy('website')
-            ->get();
+            ->latest()
+            ->get()
+            ->unique('website');
     }
 }
