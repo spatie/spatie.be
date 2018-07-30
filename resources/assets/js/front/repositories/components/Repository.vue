@@ -36,13 +36,13 @@
             </div>
         </div>
         <div class="cell-r mt-4 flex flex-col justify-center | md:mt-0 md:grid-text-right">
+            <a v-if="repository.blogpost_url" :href="repository.blogpost_url" target="_blank" rel="nofollow noreferrer noopener"
+                class="link-underline link-grey text-xs">
+                Introduction
+            </a>
             <a v-if="repository.documentation_url" :href="repository.documentation_url" target="_blank" rel="nofollow noreferrer noopener"
                 class="link-underline link-grey text-xs">
                 Documentation
-            </a>
-            <a v-if="repository.blogpost_url" :href="repository.blogpost_url" target="_blank" rel="nofollow noreferrer noopener"
-                class="link-underline link-grey text-xs">
-                Blogpost
             </a>
         </div>
     </div>
