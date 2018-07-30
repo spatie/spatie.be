@@ -11,7 +11,7 @@
 
     @yield('twitterMeta')
 
-    <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver" defer></script>
+    <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from" defer></script>
     <script src="{{ mix('/js/app.js') }}" defer></script>
 
     @include('layout.partials.analytics')
