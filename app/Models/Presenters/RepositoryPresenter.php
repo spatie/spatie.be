@@ -18,6 +18,6 @@ trait RepositoryPresenter
             return 'more than ' .  $approximateMillions . ' million';
         }
 
-        return 'almost' .  $approximateMillions . ' million';
+        return 'almost ' .  $approximateMillions . ' million';
     }
 }
