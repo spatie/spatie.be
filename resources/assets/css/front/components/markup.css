@@ -55,3 +55,86 @@
         @apply mt-8;
     }
 }
+
+.markup-chapters {
+    counter-reset: chapter;
+
+    & h2 {
+        counter-reset: subchapter;
+        counter-increment: chapter;
+        padding-left: 2.5rem;
+    }
+
+     & h2:before {
+        @apply font-sans-normal;
+        content: counter(chapter, decimal) '.';
+        left: 0;
+        position: absolute;
+    }
+
+    & h3 {
+        counter-increment: subchapter;
+        padding-left: 2.5rem;
+    }
+
+    & h3:before {
+        @apply font-sans-normal;
+        content: counter(chapter, decimal) '.' counter(subchapter, decimal) '.';
+        left: 0;
+        position: absolute;
+    }
+}
+
+.markup-lists {
+    & li:not(:last-child) {
+        margin-bottom: 0.35em;
+    }
+
+    & ul li {
+        padding-left: 1em;
+    }
+
+    & ul li:before {
+        @apply text-blue;
+        content: '•';
+        left: 0;
+        position: absolute;
+        opacity:.75;
+    }
+
+    & ol {
+        counter-reset: ol;
+    }
+
+    & ol > li{
+        counter-increment: ol;
+        padding-left: 2.5rem;
+    }
+
+    & ol > li:before {
+        content: counter(ol, decimal) '.';
+        left: 0;
+        position: absolute;
+    }
+
+    & ol.markup-list-chapters {
+        & > li {
+            counter-increment: subchapter;
+        }
+
+        & > li:before {
+            content: counter(chapter, decimal) '.' counter(subchapter, decimal) '.';
+        }
+    }
+}
+
+.markup-lists-upper-alpha ol > li:before,
+ol.markup-list-upper-alpha > li:before {
+    content: '(' counter(ol, upper-alpha) ')';
+}
+
+.markup-lists-lower-roman ol > li:before,
+ol.markup-list-lower-roman > li:before {
+    content: '(' counter(ol, lower-roman) ')';
+}
+

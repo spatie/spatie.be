@@ -39,16 +39,6 @@
     --bullet-color: #fff;
 }
 
-.bullets-none {
-    & li {
-        padding-left: 0;
-
-        & .icon {
-            display: none;
-        }
-    }
-}
-
 .bullets-inline {
     @apply leading-loose;
 

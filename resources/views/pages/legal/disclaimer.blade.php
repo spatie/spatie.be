@@ -19,100 +19,101 @@
     <div class="section-group pt-0">
         <section id="jobs">
             <div class="wrap">
-                <div class="markup markup-titles links-underline links-blue bullets bullets-green">
-                    <p><strong>Dutch version — translation in progress</strong></p>
-
-                    <p>Het gebruik van onze website moet steeds gebeuren conform de rechten en plichten die duidelijk op de website vermeld staan en de rechten en plichten die bepaald zijn in de Disclaimer, de Verkoopsvoorwaarden en de Privacy Verklaring. Het geheel van deze teksten zijn onze Algemene Voorwaarden.
+                <div class="markup markup-titles markup-lists markup-chapters links-underline links-blue">
+                    <p>
+                        The use of our website should always be done in accordance with the rights and obligations which are clearly listed on the website and the rights and obligations defined in the disclaimer, sales terms and conditions and the privacy statement. The whole of these texts are our terms and conditions.
                     </p>
-                    <p>Deze Algemene Voorwaarden gelden zowel voor ons, SPATIE BVBA, als voor jou, de Gebruiker. Zodra je gebruik maakt van onze website erken en aanvaard je uitdrukkelijk dat onze Algemene Voorwaarden van toepassing zijn en dat volledig verzaakt wordt aan de toepassing van eigen Algemene Voorwaarden.
+                    <p>
+                        These general terms and conditions apply to both us, SPATIE BVBA, as well as for you, the User. Once you use our website you expressly acknowledge and accept that our general terms and conditions apply and that you completely renounce the application of your own general terms and conditions.
                     </p>
-                    <p>Wij kunnen in uitzonderlijke gevallen afwijken van de Algemene Voorwaarden, voor zover deze afwijkingen schriftelijk worden vastgelegd en aanvaard worden door alle partijen. Deze afwijkingen gelden slechts ter vervanging of aanvulling van de clausules waar ze betrekking op hebben en hebben geen effect op de toepassing van overige bepalingen uit de Algemene Voorwaarden.
+                    <p>
+                        We may, in exceptional cases deviate from the general conditions, as far as these deviations are established in writing and accepted by all parties. These deviations shall apply only to replace or supplement the clauses where they relate to and have no effect on the application of other provisions of the general terms and conditions.
                     </p>
 
-                    <h2>1. Wie zijn wij?</h2>
+                    <h2>Who are we?</h2>
 
-                    <p>De website spatie.be is een initiatief van: </p>
+                    <p>The website spatie.be is an initiative of: </p>
                     <address>
                         SPATIE BVBA<br>
                         Samberstraat 69D<br>
                         2060 Antwerpen<br>
+                        Belgium<br>
                         E-mail: <a href="mailto:info@spatie.be">info@spatie.be</a><br>
                         Telefoon: +32 3 292 56 79 <br>
                     </address>
                     <p>
-                        Contacteer ons gerust indien u verdere vragen of opmerkingen heeft.
+                        Please feel free to contact us if you have further questions or comments.
                     </p>
 
-                    <h2>2. Onze website</h2>
-                    <h3>2.1 Goede werking, veiligheid en toegankelijkheid</h3>
+                    <h2>Our website</h2>
+                    <h3>Good operation, safety and accessibility</h3>
                     <p>
-                        Je kan ervan op aan, wij bieden een gebruiksvriendelijke website aan die veilig is voor iedere Gebruiker. We nemen dan ook alle redelijke maatregelen die nodig zijn om de goede werking, veiligheid en toegankelijkheid van onze website te garanderen. Toch kunnen we jou geen absolute garanties geven en moet men onze maatregelen beschouwen als een middelenverbintenis.
+                        You can rest assured, we offer an easy-to-use website that is safe for each User. We take all reasonable measures necessary to ensure the proper operation, safety and accessibility of our website.
+                        However, we can give you no absolute guarantees, and you must regard our measures as an obligation of means.
                     </p>
                     <p>
-                        Ieder gebruik van de website gebeurt steeds op eigen risico. Dit betekent dat wij geen aansprakelijkheid dragen voor schade die voortvloeit uit storingen, onderbrekingen, schadelijke elementen of defecten aan de website, ongeacht het bestaan van een vreemde oorzaak of overmacht.
+                        Any use of the website is always at your own risk. This means that we carry no liability for damages resulting from malfunctions, interruptions, defects or harmful elements to the website, regardless of the existence of a strange cause or force majeure.
                     </p>
                     <p>
-                        We hebben het recht om de toegang tot onze website te allen tijde te beperken en/of geheel of gedeeltelijk te onderbreken, zonder voorafgaande waarschuwing. We doen dit in principe uitsluitend indien de omstandigheden dit verantwoorden, maar dit is geen absolute voorwaarde.
+                        We have the right to limit access to our website at any time and/or to suspend it in whole or in part, without prior warning. We do this in principle only where the circumstances justify this, but this is not an absolute condition.
                     </p>
-                    <h3>2.2 Inhoud op onze website</h3>
+                    <h3>Site content</h3>
                     <p>
-                        De inhoud van de website wordt grotendeels door ons bepaald en wij besteden de grootste zorg aan deze inhoud. Dit wil zeggen dat we de nodige maatregelen nemen om onze website zo volledig, nauwkeurig en actueel mogelijk te houden, ook wanneer content wordt aangeleverd door derde partijen. De inhoud op onze website kan steeds gewijzigd, aangevuld of verwijderd worden.
-                    </p>
-                    <p>
-                        Toch kunnen we geen garanties geven omtrent de kwaliteit van de informatie op onze website. Het is mogelijk dat informatie niet volledig, voldoende accuraat en/of nuttig is. We zijn bijgevolg niet aansprakelijk voor (directe en indirecte) schade die de Gebruiker lijdt ten gevolge van de informatie op onze website.
+                        The content of the website is largely determined by us and we take great care in this content. This means that we take the necessary measures to ensure that our website is as complete, accurate and up to date as possible, even when the content is provided by third parties. The content on our website can always be amended, supplemented or deleted.
                     </p>
                     <p>
-                        In het geval bepaalde inhoud op onze website een schending van de geldende wetgeving en/of een schending van de rechten van derde partijen betekent en/of eenvoudigweg niet door de beugel kan, vragen wij aan jou om ons dit zo spoedig mogelijk te melden zodat we de gepaste maatregelen kunnen nemen. Zo kunnen we overgaan tot een gedeeltelijke of gehele verwijdering en/of aanpassing van de inhoud.
+                        However, we can give no guarantees about the quality of the information on our website. It is possible that the information is not complete, sufficiently accurate and/or useful. We are therefore not liable for (direct and indirect) damage the User suffers as a result of the information on our website.
                     </p>
                     <p>
-                        Onze website bevat inhoud die gedownload kan worden. Iedere download van onze website gebeurt steeds op eigen risico. Hiervoor zijn wij niet aansprakelijk en schade ten gevolge van een verlies van data of schade aan het computersysteem valt volledig en uitsluitend onder de verantwoordelijkheid van Gebruiker.
+                        In case certain content on our website is a violation of applicable law and/or a violation of the rights of third parties and/or simply is unacceptable, we ask you to report this to us as soon as possible so that we can take appropriate measures. So that we can proceed to a partial or entire removal and/or adaptation of the content.
                     </p>
                     <p>
-                        Specifiek voor prijzen en andere informatie over producten op de website geldt een voorbehoud van kennelijke programmeer- en typefouten. De Gebruiker kan op basis van dergelijke fouten geen overeenkomst claimen met SPATIE.
-                    </p>
-
-                    <h3>2.3 Wat wij van jou als Gebruiker verwachten</h3>
-                    <p>
-                        Ook de Gebruiker draagt een zekere verantwoordelijkheid bij het gebruiken van onze website. De Gebruiker moet zich steeds onthouden van handelingen die een schadelijke impact kunnen hebben op de goede werking en veiligheid van de website. Zo mag de website niet gebruikt worden om ons business model te omzeilen en/of om informatie van andere Gebruikers op grote schaal te verzamelen.
+                        Our website contains content that can be downloaded. Each download of our website is always at your own risk. We are not liable and damage as a result of a loss of data or damage to the computer system is the sole responsibility of the User.
                     </p>
                     <p>
-                        Het is bijgevolg niet toegelaten om onze website te gebruiken voor de verspreiding van inhoud die schade aan andere Gebruikers van de website kan toebrengen, zoals de verspreiding van schadelijke programmatuur zoals computervirussen, malware, worms, trojans en cancelbots. De verspreiding van ongevraagde en/of commerciële berichten via de website, zoals junk mail, spamming en kettingbrieven, valt hier ook onder.
-                    </p>
-                    <p>
-                        Wij behouden ons het recht voor om alle noodzakelijke handelingen te treffen die herstel kunnen opleveren voor ons en voor onze Gebruikers, zowel op gerechtelijk als buitengerechtelijk vlak. De Gebruiker is als enige persoonlijk en integraal verantwoordelijk indien zijn handelingen en gedragingen effectief schade veroorzaken aan de website en de andere Gebruikers. In dat geval moet hij SPATIE vrijwaren van iedere schadeclaim die volgt.
+                        Rates specifically but also other information about products on the website are subject to a reservation of manifest programming and typing errors. The User cannot claim for any such errors on the basis of the agreement with SPATIE.
                     </p>
 
-                    <h2>3. Links naar andere websites</h2>
+                    <h3>What we expect from you as a User</h3>
                     <p>
-                        De inhoud van onze website kan een link, hyperlink of framed link naar vreemde websites of andere vormen van elektronische portalen bevatten. Een link betekent niet automatisch dat er een band tussen ons en de vreemde website bestaat, noch dat wij (impliciet) akkoord gaan met de inhoud van deze websites.
+                        The User also bears a certain responsibility when using our website. The User should always refrain from actions which may have a harmful impact on the proper functioning and security of the website. As such our website may not be used to circumvent our business model and/or to collect information from other Users on a large scale.
                     </p>
                     <p>
-                        Wij houden geen controle op deze vreemde websites en zijn niet verantwoordelijk voor de veilige en correcte werking van de link en de uiteindelijke bestemming. Zodra men op de link klikt verlaat men onze website en kan men ons niet meer aansprakelijk stellen voor enige schade.
+                        It is therefore not allowed to use our website for the distribution of content that can cause damage to other Users of the website, such as the spreading of malicious software such as computer viruses, malware, worms, Trojans and cancel bots. The distribution of unsolicited and/or commercial messages via the website, such as chain letters, junk email, spamming is also included in this.
                     </p>
                     <p>
-                        Het is mogelijk dat vreemde websites niet dezelfde garanties bieden als wij. Daarom raden wij aan om aandachtig de Algemene Voorwaarden en de Privacy Statement van deze websites door te nemen.
-                    </p>
-
-                    <h2>4. Intellectuele eigendom</h2>
-                    <p>
-                        Creativiteit verdient bescherming, zo ook onze website en haar inhoud. De bescherming wordt voorzien door intellectuele eigendomsrechten en komt toe aan alle rechthebbende partijen, zijnde SPATIE en derde partijen. Onder inhoud verstaat men de heel ruime categorie van foto’s, video, audio, tekst, ideeën, notities, tekeningen, artikels, et cetera. Al deze inhoud wordt beschermd door het auteursrecht, softwarerecht, databankrecht, tekeningen- en modellenrecht en andere toepasselijke (intellectuele) eigendomsrechten. Het technische karakter van onze website zelf is beschermd door het auteursrecht, het softwarerecht en databankenrecht.  Iedere handelsnaam die wij gebruiken op onze websites wordt eveneens beschermd door het toepasselijke handelsnamenrecht of merkenrecht.
-                    </p>
-                    <p>
-                        Iedere Gebruiker krijgt een beperkt recht van toegang, gebruik en weergave van onze websites en haar inhoud. Dit toegekende recht is niet-exclusief, niet-overdraagbaar en kan enkel binnen een persoonlijk, niet-commercieel kader worden gebruikt. Wij vragen onze Gebruikers dan ook om geen gebruik te maken van en/of wijzigingen aan te brengen in de door deze rechten beschermde zaken, zonder de toestemming van de rechthebbende. SPATIE hecht veel belang aan haar intellectuele eigendomsrechten en heeft hiervoor alle mogelijke maatregelen getroffen om de bescherming te garanderen. Iedere inbreuk op de bestaande intellectuele eigendomsrechten wordt vervolgd.
+                        We reserve the right to take all the necessary actions that can produce recovery for us and for our Users, both at the judicial and extrajudicial level. The User is personally and solely responsible if his actions and behaviour can cause effective damage to the website and other Users. In that case he must hold SPATIE harmless from any damage claim that follows.
                     </p>
 
+                    <h2>Links to other websites</h2>
+                    <p>
+                        The content of our website can contain a link, hyperlink or framed link to external websites or other forms of electronic portals. A link does not automatically mean that there is a link between us and the external website, nor that we (implicitly) agree with the content of these websites.
+                    </p>
+                    <p>
+                        We keep no check on these external websites and are not responsible for the safe and correct operation of the link and the final destination. As soon as you click on the link, you will leave our website and one can no longer hold us liable for any damage.
+                    </p>
+                    <p>
+                        It is possible that the external websites do not offer the same guarantees as we do. Therefore, we recommend to read carefully the general terms and conditions and the privacy statement of these websites.
+                    </p>
 
-                    <h2>5. Algemene bepalingen omtrent de Algemene Voorwaarden</h2>
+                    <h2>Intellectual property</h2>
                     <p>
-                        Wij behouden de vrijheid om onze website en de daarbij horende diensten te allen tijde te wijzigen, uit te breiden, te beperken of stop te zetten. Dit kan zonder voorafgaande kennisgeving van de Gebruiker en geeft evenmin aanleiding tot enige vorm van schadevergoeding.
+                        Creativity deserves protection, as well as our website and its content. The protection is provided for by intellectual property rights and belongs to all beneficiary parties, being SPATIE and third parties. Under content, one means the very wide category of photos, video, audio, text, ideas, notes, drawings, articles, etc. All such content is protected by copyright law, software law, database rights, drawings and design law and other applicable (intellectual) property rights. The technical nature of our website itself is protected by copyright, the software right and database law. Each trade name that we use on our websites is also protected by the trade names law or applicable trademark law.
                     </p>
                     <p>
-                        Deze Algemene Voorwaarden (inclusief de Verkoopsvoorwaarden) worden exclusief beheerst en geïnterpreteerd in overeenstemming met de Belgische Wetgeving. Alle geschillen die verband houden met of voortvloeien uit aanbiedingen van SPATIE, of overeenkomsten die met haar gesloten zijn, worden voorgelegd aan de bevoegde rechtbank uit het gerechtelijk arrondissement Antwerpen.
-                    </p>
-                    <p>
-                        Indien de werking of geldigheid van één of meerdere van bovenstaande bepalingen van deze Algemene Voorwaarden in het gedrang komen, zal dit geen gevolg hebben op de geldigheid van de overige bepalingen van deze overeenkomst. In dergelijk geval hebben wij het recht om de betrokken bepaling te wijzigen in een geldige bepaling van gelijkaardige strekking.
+                        Each User gets a limited right to access, use and display of our web sites and its content. This granted right is non-exclusive, non-transferable and may only be used in a personal, non-commercial context. We ask our Users not to use and/or to make changes to the rights protected business, without the consent of the beneficiary. SPATIE attaches great importance to its intellectual property rights and has taken all possible measures to ensure the protection. Any breach of the existing intellectual property rights will be pursued.
                     </p>
 
+                    <h2>General provisions concerning the general terms and conditions</h2>
+                    <p>
+                        We retain the freedom to make changes to our website and related services at any time, to expand, limit or stop them. This can be done without prior notification of the User and neither gives rise to any form of compensation.
+                    </p>
+                    <p>
+                        These general terms and conditions (including the terms and conditions of sale) are exclusively governed by and interpreted in accordance with Belgian law. All disputes relating to or arising from offers of SPATIE, or agreements that are concluded with it shall be submitted to the competent court of the  judicial district of Antwerp.
+                    </p>
+                    <p>
+                        If the operation or validity of one or more of the above provisions of these general terms and conditions will be in jeopardy, this will have no effect on the validity of the remaining provisions of this agreement. In such case we have the right to change the provision concerned with a valid provision of similar effect.
+                    </p>
                 </div>
             </div>
         </section>
