@@ -1,6 +1,6 @@
 # The source code of spatie.be
 
-This repo contains the source code of [our company website](https://spatie.be). You are free to use the code, but please don't use the look and feel or any of the text for your own projects.
+This repo contains the source code of [our company website](https://spatie.be).
 
 ## Postcardware
 
@@ -13,6 +13,13 @@ All postcards are published [on our website](https://spatie.be/en/opensource/pos
 ## Credits
 
 This website was principally designed by [Willem Van Bockstal](https://github.com/orgs/spatie/people/willemvb). [Everyone at Spatie](https://github.com/orgs/spatie/people) has made cool contributions during development.
+
+## License
+
+- The web application falls under the [MIT License](https://choosealicense.com/licenses/mit/)
+- The content and design are under [exclusive copyright](https://choosealicense.com/no-license/)
+
+If you'd like to reuse or repost something, feel free to hit us up at info@spatie.be. Please remember that the design is not meant to be forked!
 
 ## License
 
