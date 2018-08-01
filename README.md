@@ -1,6 +1,6 @@
 # The sourcecode of spatie.be
 
-This repo contains the source code of [our company website](https://spatie.be).
+This repo contains the source code of [our company website](https://spatie.be). You are free to use the code, but please don't use the look and feel or any of the text for your own projects.
 
 ## Postcardware
 
