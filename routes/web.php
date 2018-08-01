@@ -18,10 +18,12 @@ Route::prefix('open-source')->group(function () {
     Route::get('/', 'OpenSourceController@index')->name('open-source.index');
     Route::get('postcards', 'PostcardController@index')->name('open-source.postcards');
     Route::get('packages', 'OpenSourceController@packages')->name('open-source.packages');
-    Route::get('projects', 'OpenSourceController@projects')->name('open-source.projects');
+    Route::get('projects', 'OpenSourceController@projects')->name('open-sourc"e.projects');
 });
 
 Route::prefix('vacancies')->group(function () {
+    Route::redirect('free-application', '/vacancies/spontaneous-application');
+
     Route::view('/', 'pages.vacancies.index')->name('vacancies.index');
     Route::view('internships', 'pages.vacancies.internship')->name('vacancies.internship');
 

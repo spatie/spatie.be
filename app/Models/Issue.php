@@ -33,7 +33,7 @@ class Issue extends Model
             "Looking for a good first issue to start contributing to open source? Here you go!",
             "Who has a little of spare time and motivation to take care of this issue on {$repositoryName}?",
             "You can help us out by fixing this easy issue on the {$repositoryName} repo.",
-            "Have you always wanted to contribute to open source but never knew where to begin? Here's a good first issue you could take care off",
+            "Have you always wanted to contribute to open source but never knew where to begin? Here's a good first issue you could take care of",
         ]);
 
         return $tweetTexts->random() . PHP_EOL . $this->url;
