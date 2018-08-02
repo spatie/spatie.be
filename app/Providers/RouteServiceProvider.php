@@ -54,6 +54,8 @@ class RouteServiceProvider extends ServiceProvider
                 Route::redirect('front-end-vacancy', '/vacancies');
                 Route::redirect('disclaimer', '/disclaimer');
                 Route::redirect('stage', '/vacancies/internships');
+                Route::redirect('legaal', '/legal');
+                Route::redirect('legal', '/legal');
             });
         });
     }
