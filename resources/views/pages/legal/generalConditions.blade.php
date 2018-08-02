@@ -33,7 +33,7 @@
         </section>
         <section class=section>
             <div class="wrap">
-                <div class="markup markup-titles counters counters-upper-roman markup-lists links-underline links-blue">
+                <div class="markup markup-titles counters markup-lists links-underline links-blue">
                     <h1 id="chapter-1">General sales conditions</h1>
 
                     <h2>Applicability</h2>

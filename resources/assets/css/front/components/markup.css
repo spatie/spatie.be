@@ -85,14 +85,12 @@
     & ol {
         --counter-reset: ol;
         --counter-increment: ol;
-        --counter-content: counter(var(--counter-increment), decimal) '.';
+        --counter-style: decimal;
 
         @apply counter-reset;
     }
 
     & ol > li {
-        --counter-increment: ol;
-
         @apply counter-increment;
     }
 }
