@@ -1,0 +1,71 @@
+.counter-reset {
+    counter-reset: var(--counter-reset);
+}
+
+.counter-increment {
+    counter-increment: var(--counter-increment);
+    padding-left: 2.5rem;
+
+    &:before {
+        left: 0;
+        position: absolute;
+        content: var(--counter-content);
+    }
+}
+
+.counters {
+    --counter-reset: level-0 level-1 level-2;
+    --counter-increment: level-0 level-1;
+
+    @apply counter-reset;
+
+    & h1 {
+        --counter-increment: level-0;
+        --counter-reset: level-1;
+        --counter-content: counter(var(--counter-increment), upper-roman) '.';
+
+        @apply counter-reset;
+        @apply counter-increment;
+
+        padding-left: 7.5rem; /* more room for romans on H1 */
+    }
+
+    & h2,
+    & .counters-level-1:not(ol),
+    & .counters-level-1 > li {
+        --counter-reset: level-2;
+        --counter-increment: level-1;
+        --counter-content: counter(var(--counter-increment), decimal) '.';
+
+        @apply counter-reset;
+        @apply counter-increment;
+    }
+
+    & h3,
+    & .counters-level-2:not(ol),
+    & .counters-level-2 > li {
+        --counter-reset: level-3;
+        --counter-increment: level-2;
+        --counter-parent: level-1;
+        --counter-content: counter(var(--counter-parent)) '.' counter(var(--counter-increment)) '.';
+
+        @apply counter-reset;
+        @apply counter-increment;
+    }
+}
+
+.counters-lower-alpha {
+    --counter-content: counter(var(--counter-increment), lower-alpha) '.' !important;
+}
+
+.counters-upper-alpha {
+    --counter-content: '(' counter(var(--counter-increment), upper-alpha) ')' !important;
+}
+
+.counters-lower-roman {
+    --counter-content: '(' counter(var(--counter-increment), lower-roman) ')' !important;
+}
+
+.counters-upper-roman {
+    --counter-content: counter(var(--counter-increment), upper-roman) '.' !important;
+}

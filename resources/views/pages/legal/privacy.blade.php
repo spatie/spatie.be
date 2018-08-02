@@ -17,9 +17,9 @@
         </div>
     </section>
     <div class="section-group pt-0">
-        <section id="jobs">
+        <section>
             <div class="wrap">
-                <div class="markup markup-titles markup-lists markup-chapters links-underline links-blue">
+                <div class="markup markup-titles markup-lists counters links-underline links-blue">
                     <h2>Why this Privacy Statement</h2>
 
                     <p>

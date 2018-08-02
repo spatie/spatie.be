@@ -1,7 +1,7 @@
 @extends('layout.default', [
     'background' => '/backgrounds/vacancies.jpg',
     'title' => 'Vacancies',
-    'description' => 'List of vacancies for frontend and backend developers, project managers and the like. We are always looking for interns as well.',
+    'description' => 'Vacancies for frontend and backend developers, project managers and the like. We are always looking for interns as well.',
 ])
 
 @section('content')

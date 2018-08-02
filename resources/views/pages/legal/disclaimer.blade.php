@@ -17,9 +17,9 @@
         </div>
     </section>
     <div class="section-group pt-0">
-        <section id="jobs">
+        <section>
             <div class="wrap">
-                <div class="markup markup-titles markup-lists markup-chapters links-underline links-blue">
+                <div class="markup markup-titles markup-lists counters links-underline links-blue">
                     <p>
                         The use of our website should always be done in accordance with the rights and obligations which are clearly listed on the website and the rights and obligations defined in the disclaimer, sales terms and conditions and the privacy statement. The whole of these texts are our terms and conditions.
                     </p>

@@ -1,7 +1,7 @@
 @extends('layout.default', [
         'background' => '/backgrounds/open-source.jpg',
-        'title' => 'Open source projects',
-        'description' => 'Search in our how-grown projects, written in Laravel & JavaScript.',
+        'title' => 'Projects',
+        'description' => 'Search in our how-grown open source projects, written in Laravel & JavaScript.',
 ])
 
 @section('content')
