@@ -128,6 +128,7 @@ module.exports = {
         md: '920px',
         lg: '1230px',
         xl: '1615px',
+        print: { raw: 'print' },
     },
 
     /*

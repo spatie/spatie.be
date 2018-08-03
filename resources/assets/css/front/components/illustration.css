@@ -24,6 +24,12 @@
         @apply w-full;
         @apply object-fit-cover;
         max-height: 60vh;
+
+        @screen print {
+            min-height: none;
+            max-height: none;
+            height: 4cm;
+        }
     }
 }
 

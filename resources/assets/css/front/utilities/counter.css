@@ -51,7 +51,8 @@
     & .counters-level-2 > li {
         --counter-parent: level-1;
         --counter-increment: level-2;
-        --counter-content: counter(var(--counter-parent), var(--counter-style)) '.' counter(var(--counter-increment), var(--counter-style)) '.' !important;
+        --counter-content: counter(var(--counter-parent), var(--counter-style)) '.'
+            counter(var(--counter-increment), var(--counter-style)) '.' !important;
 
         @apply counter-increment;
     }

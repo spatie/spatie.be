@@ -12,7 +12,7 @@
                 General terms <br>
                 and conditions
             </h1>
-            <p class="mt-4">
+            <p class="mt-4 | print:hidden">
                 <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('legal.index')}}" class="link-underline link-blue">Legal overview</a>
             </p>
         </div>
@@ -303,7 +303,7 @@
                         </li>
                     </ol>
 
-                    <p class="mt-16">
+                    <p class="mt-16 | print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 
@@ -397,7 +397,7 @@
                         </li>
                     </ol>
 
-                    <p class="mt-16">
+                    <p class="mt-16 | print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 
@@ -477,7 +477,7 @@
                         </li>
                     </ol>
 
-                    <p class="mt-16">
+                    <p class="mt-16 | print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 
@@ -546,7 +546,7 @@
                         </li>
                     </ol>
 
-                    <p class="mt-16">
+                    <p class="mt-16 | print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 

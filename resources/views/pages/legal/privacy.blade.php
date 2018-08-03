@@ -11,7 +11,7 @@
             <h1 class="banner-slogan">
                 Privacy policy
             </h1>
-            <p class="mt-4">
+            <p class="mt-4 | print:hidden">
                 <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('legal.index')}}" class="link-underline link-blue">Legal overview</a>
             </p>
         </div>

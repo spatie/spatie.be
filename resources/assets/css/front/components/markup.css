@@ -30,12 +30,22 @@
 }
 
 .markup-titles {
+    @screen print {
+        & h1,
+        & h2,
+        & h3,
+        & h4 {
+            page-break-after: avoid;
+        }
+    }
+
     & h1 {
         @apply title-xl;
         @apply mb-16;
 
         &:not(:first-child) {
             @apply mt-32;
+            page-break-before: always;
         }
     }
 
@@ -79,7 +89,7 @@
         content: '•';
         left: 0;
         position: absolute;
-        opacity:.75;
+        opacity: 0.75;
     }
 
     & ol {
