@@ -19,17 +19,27 @@
         padding: 4%;
     }
 
-    &.h-full img {
-        @apply min-h-full;
-        @apply w-full;
-        @apply object-fit-cover;
-        max-height: 60vh;
+     &.h-full {
+        & img {
+            @apply min-h-full;
+            @apply w-full;
+            @apply object-fit-cover;
+            max-height: 60vh;
+
+            @screen print {
+                min-height: none;
+                max-height: none;
+                height: 6cm;
+            }
+        }
 
         @screen print {
-            min-height: none;
-            max-height: none;
-            height: 4cm;
+            height: auto;
         }
+     }
+
+    @screen print {
+        @apply shadow; /* Large doesn't print so well */
     }
 }
 
