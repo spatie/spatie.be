@@ -98,6 +98,11 @@ svg {
     }
 }
 
+@page :first {
+  margin-top: 0;
+}
+
 @page {
-    margin: 2cm 0;
+  margin-left: 0;
+  margin-right: 0;
 }

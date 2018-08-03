@@ -30,18 +30,11 @@
 }
 
 .markup-titles {
-    @screen print {
-        & h1,
-        & h2,
-        & h3,
-        & h4 {
-            page-break-after: avoid;
-        }
-    }
-
     & h1 {
         @apply title-xl;
         @apply mb-16;
+        page-break-inside: avoid;
+        page-break-after: avoid;
 
         &:not(:first-child) {
             @apply mt-32;
@@ -52,6 +45,8 @@
     & h2 {
         @apply title;
         @apply mb-8;
+        page-break-inside: avoid;
+        page-break-after: avoid;
 
         &:not(:first-child) {
             @apply mt-16;
@@ -66,12 +61,16 @@
         @apply title-sm;
         @apply mb-4;
         @apply mt-16;
+        page-break-inside: avoid;
+        page-break-after: avoid;
     }
 
     & h4 {
         @apply title-subtext;
         @apply mb-2;
         @apply mt-8;
+        page-break-inside: avoid;
+        page-break-after: avoid;
     }
 }
 

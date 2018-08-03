@@ -1,11 +1,11 @@
 <section id="brief" class="section">
     <div class="wrap-8">
-        <div class="hidden | md:block md:spanx-3">
+        <div class="sm:spanx-3">
             <span class="illustration is-left is-rotated is-postcard-without-caption h-full">
                 {{ image('robots.jpg') }}
             </span>
         </div>
-        <div class="sm:spanx-6 sm:startx-2 | md:spanx-3 md:startx-5">
+        <div class="sm:spanx-3 sm:startx-5">
             <h2 class="title-2xl">
                 We are nót <br>the robots
             </h2>
