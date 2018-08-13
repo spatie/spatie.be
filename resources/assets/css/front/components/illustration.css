@@ -1,4 +1,4 @@
-/* show only postcards for older browsers */
+/* Hide illustrations for older browsers without grid */
 
 .illustration {
     @apply hidden;
@@ -6,24 +6,38 @@
     @apply border-white;
     @apply border-solid;
     @apply shadow-lg;
+    @apply max-w-1/2;
+    @apply mx-auto;
 
-    &.is-framed {
-        border-width: 4px;
+    & img {
+        page-break-inside: avoid;
     }
 
     &.is-postcard-without-caption {
-        padding: 4% 4% 12%;
+        border-width: 1em 1em 3em;
     }
 
     &.is-postcard {
-        padding: 4%;
+        @apply block; /* Show postcards for older browsers */
+        border-width: 1em;
     }
 
-    &.h-full img {
-        @apply min-h-full;
-        @apply w-full;
-        @apply object-fit-cover;
-        max-height: 60vh;
+    &.h-full {
+        & img {
+            @screen sm {
+                @apply absolute;
+                @apply w-full;
+                @apply h-full;
+                @apply pin;
+                @apply object-fit-cover;
+                max-height: none;
+            }
+        }
+    }
+
+    @screen print {
+        @apply shadow; /* Large shadow doesn't print so well */
+        max-height: 7cm !important;
     }
 }
 
@@ -31,21 +45,19 @@
     @apply hidden;
 }
 
-.illustration.is-postcard {
-    @apply block;
-}
-
 @supports (display: grid) {
     .illustration {
         @apply block;
 
         @screen sm {
+            @apply max-w-none;
+
             &.is-left {
-                padding-left: 0 !important;
+                border-left-width: 0 !important;
             }
 
             &.is-right {
-                padding-right: 0 !important;
+                border-right-width: 0 !important;
             }
         }
 

@@ -34,6 +34,10 @@ html {
     @screen xl {
         font-size: 21px;
     }
+
+    @screen print {
+        font-size: 12px;
+    }
 }
 
 /* From reboot.css: speed up any delay that might exist for touch users */
@@ -83,4 +87,22 @@ svg {
         animation: none !important;
         transition: none !important;
     }
+}
+
+/* Print */
+
+@screen print {
+    a {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
+}
+
+@page :first {
+  margin-top: 0;
+}
+
+@page {
+  margin-left: 0;
+  margin-right: 0;
 }

@@ -1,0 +1,77 @@
+/* Reusable classes to apply */
+
+.counter-reset {
+    counter-reset: var(--counter-reset);
+}
+
+.counter-increment {
+    --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';
+
+    counter-increment: var(--counter-increment);
+    padding-left: 2.5rem;
+
+    &:before {
+        left: 0;
+        position: absolute;
+        content: var(--counter-content);
+    }
+}
+
+/* Counters */
+
+.counters {
+    --counter-reset: level-0 level-1 level-2;
+    --counter-style: decimal;
+
+    @apply counter-reset;
+
+    & h1 {
+        --counter-increment: level-0;
+        --counter-reset: level-1 level-2 level-3;
+        --counter-style: upper-roman;
+
+        @apply counter-reset;
+        @apply counter-increment;
+
+        padding-left: 7.5rem; /* more room for romans on H1 */
+    }
+
+    & h2,
+    & .counters-level-1:not(ol),
+    & .counters-level-1 > li {
+        --counter-increment: level-1;
+        --counter-reset: level-2 level-3;
+
+        @apply counter-reset;
+        @apply counter-increment;
+    }
+
+    & h3,
+    & .counters-level-2:not(ol),
+    & .counters-level-2 > li {
+        --counter-parent: level-1;
+        --counter-increment: level-2;
+        --counter-content: counter(var(--counter-parent), var(--counter-style)) '.'
+            counter(var(--counter-increment), var(--counter-style)) '.' !important;
+
+        @apply counter-increment;
+    }
+}
+
+/* Use !important to work in markup-list as well */
+
+.counters-lower-alpha {
+    --counter-style: lower-alpha !important;
+}
+
+.counters-upper-alpha {
+    --counter-style: upper-alpha !important;
+}
+
+.counters-lower-roman {
+    --counter-style: lower-roman !important;
+}
+
+.counters-upper-roman {
+    --counter-style: upper-roman !important;
+}

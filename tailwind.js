@@ -128,6 +128,7 @@ module.exports = {
         md: '920px',
         lg: '1230px',
         xl: '1615px',
+        print: { raw: 'print' },
     },
 
     /*
@@ -515,6 +516,7 @@ module.exports = {
   */
 
     maxWidth: {
+        none: 'none',
         xs: '20rem',
         sm: '25rem', // xl/2 - half gap
         md: '40rem',
@@ -524,6 +526,7 @@ module.exports = {
         '3xl': '80rem',
         '4xl': '90rem',
         '5xl': '100rem',
+        '1/2': '50vw',
         full: '100%',
         columns: '60rem', // xl + (2 * large gap)
         logoclient: '8rem',

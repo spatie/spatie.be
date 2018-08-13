@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="sm:spanx-3 sm:startx-1">
-            <div class="illustration is-left is-postcard is-rotated h-full sm:mr-8">
+            <div class="illustration is-left is-postcard is-rotated h-full | sm:mr-8">
                 {{ image('italian.jpg') }}
             </div>
         </div>

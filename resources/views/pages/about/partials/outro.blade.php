@@ -1,5 +1,5 @@
 <section id="company" class="section">
-    <div class=wrap>
+    <div class="wrap">
        <h2 class="title-2xl">
             About <br>Spatie
         </h2>

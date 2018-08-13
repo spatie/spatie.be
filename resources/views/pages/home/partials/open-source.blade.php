@@ -1,4 +1,4 @@
-<section id="open-source" class=section>
+<section id="open-source" class="section">
     <div class="wrap-8">
         <div class="sm:spanx-3 sm:startx-2">
             <div class="markup links-underline links-blue">

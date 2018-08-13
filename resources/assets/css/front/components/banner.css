@@ -63,4 +63,10 @@
         @apply text-2xl;
         @apply mt-4;
     }
+
+    @screen print {
+        @apply block;
+        @apply text-xl;
+        @apply mt-4;
+    }
 }

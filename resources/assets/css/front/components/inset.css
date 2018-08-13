@@ -6,6 +6,10 @@
     @screen lg {
         @apply -mx-8;
     }
+
+    @screen print {
+        page-break-after: avoid;
+    }
 }
 
 .inset-green {

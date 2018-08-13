@@ -33,9 +33,9 @@ Route::prefix('vacancies')->group(function () {
 });
 
 Route::view('legal', 'pages.legal.index')->name('legal.index');
-
 Route::view('privacy', 'pages.legal.privacy')->name('legal.privacy');
-
 Route::view('disclaimer', 'pages.legal.disclaimer')->name('legal.disclaimer');
+Route::view('general-conditions', 'pages.legal.generalConditions')->name('legal.conditions');
+Route::view('gdpr', 'pages.legal.gdpr')->name('legal.gdpr');
 
 Route::view('offline', 'errors.offline')->name('offline');

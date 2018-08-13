@@ -16,7 +16,7 @@
     "postcss-cssnext": "^3.0.2",
     "postcss-easy-import": "^3.0.0",
     "prettier": "^1.10.2",
-    "tailwindcss": "^0.4.0",
+    "tailwindcss": "^0.6.4",
     "vue": "^2.5.0",
     "vue-data-component": "1.0.0-alpha.20"
   }

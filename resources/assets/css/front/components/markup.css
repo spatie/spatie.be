@@ -30,9 +30,23 @@
 }
 
 .markup-titles {
+    & h1 {
+        @apply title-xl;
+        @apply mb-16;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+
+        &:not(:first-child) {
+            @apply mt-32;
+            page-break-before: always;
+        }
+    }
+
     & h2 {
         @apply title;
         @apply mb-8;
+        page-break-inside: avoid;
+        page-break-after: avoid;
 
         &:not(:first-child) {
             @apply mt-16;
@@ -47,11 +61,45 @@
         @apply title-sm;
         @apply mb-4;
         @apply mt-16;
+        page-break-inside: avoid;
+        page-break-after: avoid;
     }
 
     & h4 {
         @apply title-subtext;
         @apply mb-2;
         @apply mt-8;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+}
+
+.markup-lists {
+    & li:not(:last-child) {
+        margin-bottom: 0.35em;
+    }
+
+    & ul li {
+        padding-left: 1em;
+    }
+
+    & ul li:before {
+        @apply text-blue;
+        content: '•';
+        left: 0;
+        position: absolute;
+        opacity: 0.75;
+    }
+
+    & ol {
+        --counter-reset: ol;
+        --counter-increment: ol;
+        --counter-style: decimal;
+
+        @apply counter-reset;
+    }
+
+    & ol > li {
+        @apply counter-increment;
     }
 }

@@ -17,7 +17,7 @@
         </div>
     </section>
     <div class="section-group pt-0">
-        <section id="jobs">
+        <section>
             <div class="wrap-6 | items-start">
                 <div class="sm:spanx-3 | line-l">
                     <h2 class="title-sm">
@@ -25,11 +25,10 @@
                     </h2>
                     <ul class="links-underline links-blue">
                         <li class=mt-4>
-                            <a href="/downloads/algemenevoorwaarden.pdf" download><span class="icon mr-2 fill-blue opacity-50">{{ svg('icons/fal-arrow-to-bottom') }}</span>General Conditions</a>
-                            <span class="ml-2 text-xs text-grey">PDF - Dutch</span></li>
+                            <a href="{{ route('legal.conditions')}}">General conditions</a>
+                        </li>
                         <li class=mt-4>
-                            <a href="/downloads/gdpr-addendum.pdf" download><span class="icon mr-2 fill-blue opacity-50">{{ svg('icons/fal-arrow-to-bottom') }}</span>GDPR addendum</a>
-                            <span class="ml-2 text-xs text-grey">PDF - Dutch</span>
+                            <a href="{{ route('legal.gdpr')}}">GDPR addendum</a>
                         </li>
                     </ul>
                 </div>

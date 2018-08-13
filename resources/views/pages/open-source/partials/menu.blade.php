@@ -1,3 +1,3 @@
-<div class="banner-menu">
+<div class="banner-menu | print:hidden">
   {{ Menu::opensource() }}
 </div>

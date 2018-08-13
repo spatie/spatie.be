@@ -16,6 +16,12 @@ function handleIntersection(entries, observer) {
     });
 }
 
+function prepareForPrint() {
+    $$('[srcset][sizes="1px"]').forEach(image => {
+        setImageSizes(image);
+    });
+}
+
 export default function() {
     const observer = new IntersectionObserver(handleIntersection, {
         rootMargin: '500px 0px',
@@ -35,5 +41,17 @@ export default function() {
                 setImageSizes(image);
             });
         }, 250);
+    });
+
+    /* Try to load images on print for Webkit and others */
+
+    window.matchMedia('print').addListener(mql => {
+        if (mql.matches) {
+            prepareForPrint();
+        }
+    });
+
+    window.addEventListener('beforeprint', () => {
+        prepareForPrint();
     });
 }
