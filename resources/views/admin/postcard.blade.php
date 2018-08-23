@@ -23,9 +23,20 @@
                     <fieldset class="mt-8">
                         <div>
                             <div class="overflow-hidden inline-block">
-                                <button class="font-bold py-3 px-6 rounded bg-grey-lightest text-grey hover:text-grey-dark w-full">Upload image</button>
-                                <input class="absolute pin-l pin-t opacity-0 cursor-pointer" style="font-size:100px;" type="file" required accept="image/*" name="image">
+                                <button id=image-button class="font-bold py-3 px-6 rounded bg-grey-lightest text-grey hover:text-grey-dark w-full">Upload image</button>
+                                <input id=image class="absolute pin-l pin-t opacity-0 cursor-pointer" style="font-size:100px;" type="file" required accept="image/*" name="image">
                             </div>
+
+                            <script>
+                                const input = document.querySelector('#image');
+                                const button = document.querySelector('#image-button');
+                                const buttonVal = button.innerHTML;
+
+                                input.addEventListener('change', e => {
+                                    const fileName = e.target.value.split( '\\' ).pop();
+                                    button.innerHTML = fileName ? fileName : buttonVal;
+                                });
+                            </script>
                         </div>
 
                         <div class="mt-4">

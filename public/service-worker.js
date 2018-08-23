@@ -30,7 +30,9 @@ self.addEventListener('install', event => {
 });
 
 self.addEventListener('fetch', event => {
-    if (event.request.method !== 'GET') {
+
+    if (event.request.method !== 'GET' ||
+        event.request.headers.get('status').includes('401')) {
         return;
     }
 
