@@ -1,6 +1,6 @@
 .title-2xl {
     @apply font-serif-bold;
-    @apply text-5xl;
+    @apply text-4xl;
     display: inline-block;
     margin-top: 0;
     margin-bottom: 3rem;
@@ -22,12 +22,20 @@
     @screen print {
         margin-top: 1cm;
     }
+
+    @screen sm {
+        @apply text-5xl;
+    }
 }
 
 .title-xl {
-    @apply text-5xl;
+    @apply text-4xl;
     @apply font-serif-bold;
     @apply leading-tight;
+
+    @screen sm {
+        @apply text-5xl;
+    }
 }
 
 .title {
