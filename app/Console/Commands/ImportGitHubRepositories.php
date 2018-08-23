@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\Repository;
 use App\Services\GitHub\GitHubApi;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
@@ -37,7 +39,7 @@ class ImportGitHubRepositories extends Command
                 'description' => $repositoryAttributes['description'],
                 'stars' => $repositoryAttributes['stargazers_count'],
                 'language' => $repositoryAttributes['language'],
-                'repository_created_at' => $repositoryAttributes['created_at'],
+                'repository_created_at' => Carbon::createFromFormat(DateTime::ATOM, $repositoryAttributes['created_at']),
             ]);
 
             $repository->setTopics(Cache::remember("repository_topics-{$repository->name}", 60, function () use ($repository) {
