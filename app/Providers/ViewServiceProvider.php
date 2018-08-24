@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Insight;
+use App\Models\InstagramPhoto;
 use App\Models\Member;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -22,6 +23,10 @@ class ViewServiceProvider extends ServiceProvider
 
         View::composer('pages.about.partials.team', function ($view) {
             $view->with('members', Member::orderBy('first_name')->get());
+        });
+
+        View::composer('pages.open-source.laracon-eu', function ($view) {
+            $view->with('instagramPhotos', InstagramPhoto::latest()->get());
         });
     }
 }

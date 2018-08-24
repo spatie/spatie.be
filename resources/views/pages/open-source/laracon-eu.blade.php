@@ -69,18 +69,17 @@
                 </div>
             </div>
             <div class="wrap-gallery items-start mt-8">
-                {{-- Start Instagram loop --}}
+                @foreach($instagramPhotos as $instagramPhoto)
                 <div class="illustration is-postcard" style="left: {{ rand(-20, +20) }}px; top: {{ rand(-20, +10) }}px">
-                    <img srcset="…">
+                    {{ $instagramPhoto->getFirstMedia() }}
 
                     <div class="mt-4 text-xs links-underline links-black leading-tight">
                         <div class="flex items-baseline text-grey my-2">
-                            Image comments
+                            {{ $instagramPhoto->description }}
                         </div>
-
                     </div>
                 </div>
-                {{-- End Instagram loop --}}
+                @endforeach
             </div>
         </section>
     </div>
