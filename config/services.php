@@ -57,4 +57,8 @@ return [
         'https://alexvanderbist.com/feed',
     ],
 
+    'instagram' => [
+        'token' => env('INSTAGRAM_TOKEN'),
+    ]
+
 ];

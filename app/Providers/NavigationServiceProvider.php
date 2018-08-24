@@ -24,6 +24,7 @@ class NavigationServiceProvider extends ServiceProvider
         Menu::macro('opensource', function () {
             return Menu::new()
                 ->route('open-source.index', 'Overview')
+                ->route('open-source.laracon-eu', 'Laracon EU')
                 ->route('open-source.packages', 'Packages')
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
