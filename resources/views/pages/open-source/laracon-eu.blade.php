@@ -31,12 +31,14 @@
                         </h2>
                         <p class="text-lg">
                             Show us how you implement our packages in your own code.
-                            Visit our booth and talk to us about your plans or projects.
+                            Visit our booth and talk to us about your plans or projects.<br>
+                            You can walk away with a <strong>fresh pair of SPATIE socks</strong>! <sup><a class="link-grey" style="text-decoration: none!important" href="#disclaimer">*</a></sup>
                         </p>
                         <p class="text-lg">
-                            You can walk away with a fresh pair of SPATIE socks! <sup><a class="link-grey" style="text-decoration: none!important" href="#disclaimer">*</a></sup>
-                            <br>
-                            A new batch of stickers has arrived as well, so you can still win that <a href="https://laravelstickercontest.com" target="_blank">Laravel sticker contest</a>!
+                            If you ever contributed to any of our open source stuff, come get a <strong>t-shirt</strong>. Be quick —these are in short supply!
+                        </p>
+                        <p class="text-lg">
+                            A <strong>new batch of stickers</strong> has arrived as well for everyone, so you can still win that <a href="https://laravelstickercontest.com" target="_blank">Laravel sticker contest</a>!
                         </p>
                         <p class="text-lg">
                             Just come say hi at our booth for a chat, our entire development team will be there.
@@ -62,17 +64,19 @@
         </section>
         <section id="impressions" class="section pt-0 overflow-visible">
             <div class="wrap -mt-8 mb-4">
-                <div class="markup links-underline links-blue">
+                <div class="markup links-underline links-black">
                     <h2 class="title">
-                        Impressions from Instagram
+                        Impressions from <a href="https://www.instagram.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">Instagram</a>
                     </h2>
                 </div>
             </div>
             <div class="wrap-gallery items-start mt-8">
                 @foreach($instagramPhotos as $instagramPhoto)
                 <div class="illustration is-postcard" style="left: {{ rand(-20, +20) }}px; top: {{ rand(-20, +10) }}px">
-                    {{ $instagramPhoto->getFirstMedia() }}
 
+                    <a href="{{ $instagramPhoto->url_to_original }}" target="_blank" rel="nofollow noreferrer noopener">
+                        {{ $instagramPhoto->getFirstMedia() }}
+                    </a>
                     <div class="mt-4 text-xs links-underline links-black leading-tight">
                         <div class="flex items-baseline text-grey my-2">
                             {{ $instagramPhoto->description }}

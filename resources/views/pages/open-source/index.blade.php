@@ -14,7 +14,7 @@
                 <div class="inset-blue inline-block ml-auto">
                     <p class="text-2xl">
                         <a class="link-black link-underline" href="{{ route('open-source.laracon-eu') }}">
-                            We'll be attending <strong>Laracon EU 2018</strong>!
+                            We have a booth at <strong>Laracon EU 2018</strong>!
                         </a>
                     </p>
                 </div>

@@ -26,7 +26,7 @@ class ImportInstagramPhotos extends Command
                 return new InstagramPhoto($instagramProperties);
             })
             ->filter(function(InstagramPhoto $instagramPhoto) {
-                return $instagramPhoto->hasTag('larasocks');
+                return $instagramPhoto->hasTag('laraconeu');
             })
             ->each(function(InstagramPhoto $instagramPhoto) {
                 InstagramPhotoModel::import($instagramPhoto);
