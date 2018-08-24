@@ -17,18 +17,11 @@ class ImportInstagramPhotos extends Command
     /** @var \Vinkla\Instagram\Instagram */
     protected $instagram;
 
-    public function __construct(Instagram $instagram)
-    {
-        parent::__construct();
-
-        $this->instagram = $instagram;
-    }
-
-    public function handle()
+    public function handle(Instagram $instagram)
     {
         $this->info('Importing instagram photos...');
 
-        collect($this->instagram->media())
+        collect($instagram->media())
             ->map(function(stdClass $instagramProperties) {
                 return new InstagramPhoto($instagramProperties);
             })
