@@ -31,5 +31,4 @@ class InstagramPhoto extends Model implements HasMedia
 
         $model->save();
     }
-
 }

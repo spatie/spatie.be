@@ -1,11 +1,11 @@
 <?php
 
 use App\Models\Image;
+use App\Services\Schema\Schema;
 use Faker\Factory;
 use Faker\Generator;
 use Illuminate\Support\HtmlString;
 use Spatie\MediaLibrary\Models\Media;
-use App\Services\Schema\Schema;
 
 function svg($filename): HtmlString
 {

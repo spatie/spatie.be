@@ -3,9 +3,9 @@
 namespace App\Services\Schema;
 
 use App\Models\Member;
-use Spatie\SchemaOrg\Schema as Builder;
 use Spatie\SchemaOrg\LocalBusiness;
 use Spatie\SchemaOrg\PostalAddress;
+use Spatie\SchemaOrg\Schema as Builder;
 
 class Schema
 {

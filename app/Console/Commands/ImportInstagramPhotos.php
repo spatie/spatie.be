@@ -2,11 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Models\InstagramPhoto as InstagramPhotoModel;
 use App\Services\Instagram\InstagramPhoto;
 use Illuminate\Console\Command;
 use stdClass;
 use Vinkla\Instagram\Instagram;
-use App\Models\InstagramPhoto as InstagramPhotoModel;
 
 class ImportInstagramPhotos extends Command
 {
@@ -22,13 +22,13 @@ class ImportInstagramPhotos extends Command
         $this->info('Importing instagram photos...');
 
         collect($instagram->media())
-            ->map(function(stdClass $instagramProperties) {
+            ->map(function (stdClass $instagramProperties) {
                 return new InstagramPhoto($instagramProperties);
             })
-            ->filter(function(InstagramPhoto $instagramPhoto) {
+            ->filter(function (InstagramPhoto $instagramPhoto) {
                 return $instagramPhoto->hasTag('laraconeu');
             })
-            ->each(function(InstagramPhoto $instagramPhoto) {
+            ->each(function (InstagramPhoto $instagramPhoto) {
                 InstagramPhotoModel::import($instagramPhoto);
             });
 
