@@ -12,7 +12,7 @@ class ImportInstagramPhotos extends Command
 {
     protected $signature = 'import:instagram-photos';
 
-    protected $description = 'Import instagram photos';
+    protected $description = 'Import instagram photos.';
 
     /** @var \Vinkla\Instagram\Instagram */
     protected $instagram;
