@@ -33,6 +33,8 @@ Route::prefix('vacancies')->group(function () {
     })->name('vacancies.show');
 });
 
+Route::get('api/instagram-photos', 'Api\InstagramPhotosController')->middleware(\Spatie\Cors\Cors::class);
+
 Route::view('legal', 'pages.legal.index')->name('legal.index');
 Route::view('privacy', 'pages.legal.privacy')->name('legal.privacy');
 Route::view('disclaimer', 'pages.legal.disclaimer')->name('legal.disclaimer');
