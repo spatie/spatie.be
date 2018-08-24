@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use \App\Services\Instagram\InstagramPhoto as Photo;
-use Carbon\Carbon;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 

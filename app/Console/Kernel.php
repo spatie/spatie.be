@@ -11,9 +11,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('import:github-issues')->hourly();
         $schedule->command('import:insights')->hourly();
+        $schedule->command('import:instagram-photos')->everyFifteenMinutes();
         $schedule->command('import:random-contributor')->hourly();
         $schedule->command('import:packagist-downloads')->hourly();
-        $schedule->command('import:instagram-photos')->hourly();
         $schedule->command('import:github-repositories')->daily();
     }
 
