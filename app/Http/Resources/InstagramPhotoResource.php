@@ -14,7 +14,7 @@ class InstagramPhotoResource extends JsonResource
             'instagram_id' => $this->instagram_id,
             'taken_at' => (string) $this->taken_at,
             'url_to_original' => $this->url_to_original,
-            'image_url' => $this->getFirstMediaUrl(),
+            'image_url' => url($this->getFirstMediaUrl()),
         ];
     }
 }
