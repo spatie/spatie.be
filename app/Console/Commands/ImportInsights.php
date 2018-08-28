@@ -4,8 +4,8 @@ namespace App\Console\Commands;
 
 use App\Models\Insight;
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Console\Command;
+use Zend\Feed\Exception\ExceptionInterface;
 use Zend\Feed\Reader\Entry\AbstractEntry;
 use Zend\Feed\Reader\Reader;
 
@@ -36,8 +36,8 @@ class ImportInsights extends Command
 
                         $this->info("Imported `{$insight->title}`");
                     }
-                } catch (Exception $exception) {
-                    report($exception);
+                } catch (ExceptionInterface $exception) {
+                    $this->error("Could not load {$feedUrl}");
                 }
             });
     }
