@@ -31,6 +31,8 @@
                 <h3 class="title-sm">Backend</h3>
                 <ul class="bullets-inline bullets-blue">
                     <li>Laravel</li>
+                    <li>Laravel Spark</li>
+                    <li>Laravel Nova</li>
                     <li>PHP</li>
                     <li>MySQL</li>
                     <li>Algolia</li>
