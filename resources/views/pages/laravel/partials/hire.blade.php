@@ -9,7 +9,7 @@
                     <a href="{{ route('about') }}#team">Our team</a> is a fine blend of back &amp; frontend profiles that are used to working together, tightly coupled.
                 </p>
                 <p class="text-lg">
-                    We assist agencies in the scaffolding of Laravel projects. We can also help you out with your own Laravel or Vue packages, custom Laravel Nova components or build a Saas based on Laravel Spark.
+                    We assist agencies in the scaffolding of Laravel projects. We can also help you out with your own Laravel or Vue packages, custom Laravel Nova components or a Saas based on Laravel Spark.
                 </p>
                 <div class="inset-green mt-16">
                     <p class="text-2xl links-white links-underline">
