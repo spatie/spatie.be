@@ -21,6 +21,7 @@ collect(['en', 'nl'])->each(function (string $locale) {
         });
 
         Route::redirect('team', '/about-us#team');
+        Route::redirect('jef', '/about-us#jef');
         Route::redirect('vacancies', '/vacancies');
         Route::redirect('back-end-vacancy', '/vacancies');
         Route::redirect('front-end-vacancy', '/vacancies');
@@ -30,3 +31,5 @@ collect(['en', 'nl'])->each(function (string $locale) {
         Route::redirect('legal', '/legal');
     });
 });
+
+Route::redirect('jef', '/about-us#jef');
