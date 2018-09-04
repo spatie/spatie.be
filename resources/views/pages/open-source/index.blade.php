@@ -9,18 +9,6 @@
     @include('pages.open-source.partials.banner')
 
     <div class="section-group pt-0 section-fade">
-        <section id="laracon" class="section -mb-8 | sm:-mb-16">
-            <div class="wrap text-center">
-                <div class="inset-blue inline-block ml-auto">
-                    <p class="text-2xl">
-                        <a class="link-black link-underline" href="{{ route('open-source.laracon-eu') }}">
-                            We have a booth at <strong>Laracon EU 2018</strong>!
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </section>
-
         <section class="section">
             <div class="wrap">
                 <h3 class="title-sm text-grey mb-4">Our current favorites</h3>

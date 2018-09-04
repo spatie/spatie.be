@@ -18,9 +18,7 @@ Route::prefix('open-source')->group(function () {
     Route::get('/', 'OpenSourceController@index')->name('open-source.index');
     Route::get('postcards', 'PostcardController@index')->name('open-source.postcards');
     Route::get('packages', 'OpenSourceController@packages')->name('open-source.packages');
-    Route::get('projects', 'OpenSourceController@projects')->name('open-source.projects');
-    Route::view('laracon-eu', 'pages.open-source.laracon-eu')->name('open-source.laracon-eu');
-});
+    Route::get('projects', 'OpenSourceController@projects')->name('open-source.projects');});
 
 Route::prefix('vacancies')->group(function () {
     Route::redirect('free-application', '/vacancies/spontaneous-application');
