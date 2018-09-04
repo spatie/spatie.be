@@ -35,7 +35,6 @@
         "spatie/packagist-api": "^1.0",
         "spatie/schema-org": "^2.0",
         "themsaid/laravel-mail-preview": "^2.0",
-        "vinkla/instagram": "^9.0",
         "zendframework/zend-feed": "^2.9",
         "zendframework/zend-http": "^2.7"
     },
