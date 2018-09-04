@@ -12,6 +12,8 @@ class Image extends Model implements HasMedia
 
     public static function boot()
     {
+        parent::boot();
+
         static::created(function (Image $image) {
             $image
                 ->addMedia(resource_path($image->path))
