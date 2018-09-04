@@ -4,8 +4,8 @@ require('laravel-mix-purgecss');
 
 mix.version()
 
-    .js('resources/assets/js/front/app.js', 'public/js')
-    .postCss('resources/assets/css/front/front.css', 'public/css')
+    .js('resources/js/front/app.js', 'public/js')
+    .postCss('resources/css/front/front.css', 'public/css')
 
     .version()
 
