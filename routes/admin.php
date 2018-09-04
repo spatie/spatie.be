@@ -1,6 +1,6 @@
 <?php
 
-Route::redirectPermanent('admin', 'admin/postcards');
+Route::permanentRedirect('admin', 'admin/postcards');
 
 Route::get('admin/postcards', 'PostcardController@index');
 Route::post('admin/postcards', 'PostcardController@store');
