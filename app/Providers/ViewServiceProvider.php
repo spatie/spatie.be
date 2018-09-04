@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\Insight;
-use App\Models\InstagramPhoto;
 use App\Models\Member;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
