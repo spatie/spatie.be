@@ -1,35 +1,35 @@
 <?php
 
 Route::prefix('opensource')->group(function () {
-    Route::redirect('/', '/open-source');
-    Route::redirect('php', '/open-source/packages');
-    Route::redirect('laravel', '/open-source/packages');
-    Route::redirect('javascript', '/open-source/packages');
-    Route::redirect('postcards', '/open-source/postcards');
+    Route::redirectPermanent('/', '/open-source');
+    Route::redirectPermanent('php', '/open-source/packages');
+    Route::redirectPermanent('laravel', '/open-source/packages');
+    Route::redirectPermanent('javascript', '/open-source/packages');
+    Route::redirectPermanent('postcards', '/open-source/postcards');
 });
 
 collect(['en', 'nl'])->each(function (string $locale) {
     Route::prefix($locale)->group(function () {
-        Route::redirect('/', '/');
+        Route::redirectPermanent('/', '/');
 
         Route::prefix('opensource')->group(function () {
-            Route::redirect('/', '/open-source');
-            Route::redirect('php', '/open-source/packages');
-            Route::redirect('laravel', '/open-source/packages');
-            Route::redirect('javascript', '/open-source/packages');
-            Route::redirect('postcards', '/open-source/postcards');
+            Route::redirectPermanent('/', '/open-source');
+            Route::redirectPermanent('php', '/open-source/packages');
+            Route::redirectPermanent('laravel', '/open-source/packages');
+            Route::redirectPermanent('javascript', '/open-source/packages');
+            Route::redirectPermanent('postcards', '/open-source/postcards');
         });
 
-        Route::redirect('team', '/about-us#team');
-        Route::redirect('jef', '/about-us#jef');
-        Route::redirect('vacancies', '/vacancies');
-        Route::redirect('back-end-vacancy', '/vacancies');
-        Route::redirect('front-end-vacancy', '/vacancies');
-        Route::redirect('disclaimer', '/disclaimer');
-        Route::redirect('stage', '/vacancies/internships');
-        Route::redirect('legaal', '/legal');
-        Route::redirect('legal', '/legal');
+        Route::redirectPermanent('team', '/about-us#team');
+        Route::redirectPermanent('jef', '/about-us#jef');
+        Route::redirectPermanent('vacancies', '/vacancies');
+        Route::redirectPermanent('back-end-vacancy', '/vacancies');
+        Route::redirectPermanent('front-end-vacancy', '/vacancies');
+        Route::redirectPermanent('disclaimer', '/disclaimer');
+        Route::redirectPermanent('stage', '/vacancies/internships');
+        Route::redirectPermanent('legaal', '/legal');
+        Route::redirectPermanent('legal', '/legal');
     });
 });
 
-Route::redirect('jef', '/about-us#jef');
+Route::redirectPermanent('jef', '/about-us#jef');

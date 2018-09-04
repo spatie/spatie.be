@@ -10,7 +10,7 @@ Route::prefix('about-us')->group(function () {
     Route::view('/', 'pages/about/index')->name('about');
 
     collect(config('team.members'))->each(function (string $personName) {
-        Route::redirect($personName, "/about-us/#{$personName}");
+        Route::redirectPermanent($personName, "/about-us/#{$personName}");
     });
 });
 
@@ -22,7 +22,7 @@ Route::prefix('open-source')->group(function () {
 });
 
 Route::prefix('vacancies')->group(function () {
-    Route::redirect('free-application', '/vacancies/spontaneous-application');
+    Route::redirectPermanent('free-application', '/vacancies/spontaneous-application');
 
     Route::view('/', 'pages.vacancies.index')->name('vacancies.index');
     Route::view('internships', 'pages.vacancies.internship')->name('vacancies.internship');
