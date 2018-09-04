@@ -42,7 +42,7 @@ class Image extends Model implements HasMedia
 
     protected static function normalizePath(string $path): string
     {
-        $resourcePath = 'assets/images';
+        $resourcePath = 'images';
 
         $fullResourcePath = "resources/{$resourcePath}";
 
