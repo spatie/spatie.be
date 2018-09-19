@@ -20,7 +20,7 @@
             <span class="w-8 inline-block text-grey">VAT</span> BE0809.387.596
             <br>
             {{-- IBAN nr spaced out for readability but selectable with double click. --}}
-            <span class="w-8 inline-block text-grey">IBAN</span> BE66<span class=ml-1>3</span>631<span class=ml-1>2</span>787<span class=ml-1>5</span>443
+            <span class="w-8 inline-block text-grey">IBAN</span> BE66<span class=ml-1>3631</span><span class=ml-1>2787</span><span class=ml-1>5443</span>
             <br>
             <span class="w-8 inline-block text-grey">BIC</span> BBRUBEBB
         </span>
