@@ -1,6 +1,6 @@
 'use strict';
 
-const cacheVersion = 3;
+const cacheVersion = 4;
 const currentCache = {
     offline: 'offline-cache-' + cacheVersion,
 };
@@ -31,8 +31,7 @@ self.addEventListener('install', event => {
 
 self.addEventListener('fetch', event => {
 
-    if (event.request.method !== 'GET' ||
-        event.request.headers.get('status').includes('401')) {
+    if (event.request.method !== 'GET') {
         return;
     }
 
