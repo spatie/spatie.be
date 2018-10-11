@@ -34,7 +34,7 @@
                             <h3 class="title">The best part first</h3>
                             <ul class="bullets bullets-green">
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Get €1500,- personal budget every year for trainings &amp; conferences</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Take the lead, literally. We are open for you way of working</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Take the lead, literally. We are open for your way of working</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team that has made its name in open source</li>
                             </ul>
                         </div>
