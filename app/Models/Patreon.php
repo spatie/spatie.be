@@ -31,4 +31,19 @@ class Patreon extends Model implements HasMedia
 
         $model->save();
     }
+
+    public function getAvatarUrlAttribute()
+    {
+        return $this->getFirstMediaUrl();
+    }
+
+    public function getRespectPhraseAttribute()
+    {
+        return collect([
+            "Thank your for your pledge",
+            "You sir/madam are awesome",
+            "We eat our monthly pasta thanks to you",
+            "Your actions are heart-warming",
+        ])->random();
+    }
 }

@@ -1,23 +1,13 @@
 <div class="flex items-center mt-8 my-6">
     <div class="avatar">
-        {{ gravatar_img("user@email.com") }}
+        <img src="{{ $patreon->avatarUrl }}">
     </div>
     <div class="ml-4">
         <h3 class="title-sm">
-            Patreon name
+            {{ $patreon->name }}
         </h3>
         <p class="text-xs text-grey mt-2 links-underline links-grey">
-            Thank you for your pledge
-
-            {{--
-                Random praise phrase selection for every patreon?
-
-                    - Thank your for your pledge
-                    - You sir/madam are awesome
-                    - We eat our monthly pasta thanks to you
-                    - Your actions are heart-warming
-
-                --}}
+            {{ $patreon->respectPhrase }}
         </p>
     </div>
 </div>
