@@ -11,7 +11,7 @@ class PatreonServiceProvider extends ServiceProvider
         $this->app->singleton(PatreonApi::class, function () {
             $authenticator = new PatreonAuthenticator(env('PATREON_CLIENT_ID'), env('PATREON_SECRET'));
 
-            $tokens = $authenticator->autoRefresh('');
+            $tokens = $authenticator->autoRefresh();
 
             return new PatreonApi($tokens['access_token']);
         });
