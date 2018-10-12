@@ -16,16 +16,15 @@ class Pledge extends Resource
     /** @var \App\Services\Patreon\Resources\User */
     public $user;
 
-    public function __construct(int $id, int $amount, int $userId)
+    /** @var int|null */
+    public $rewardId;
+
+    public function __construct(int $id, int $amount, int $userId, ?int $rewardId)
     {
         $this->id = $id;
         $this->amount = $amount;
         $this->userId = $userId;
-    }
-
-    public function setuser(User $user)
-    {
-        $this->user = $user;
+        $this->rewardId = $rewardId;
     }
 
     public static function import(array $pledge): Pledge
@@ -33,7 +32,8 @@ class Pledge extends Resource
         return new self(
             $pledge['id'],
             $pledge['attributes']['amount_cents'],
-            $pledge['relationships']['patron']['data']['id']
+            $pledge['relationships']['patron']['data']['id'],
+            $pledge['relationships']['reward']['data']['id']
         );
     }
 }

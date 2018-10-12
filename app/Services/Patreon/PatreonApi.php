@@ -59,8 +59,9 @@ class PatreonApi
             $pledges->add(Pledge::import($pledge));
         }
 
-        $pledges->each(function (Pledge $pledge) use ($users) {
-            $pledge->setuser($users->get($pledge->userId));
+        $pledges->each(function (Pledge $pledge) use ($rewards, $users) {
+            $pledge->user = $users->get($pledge->userId);
+            $pledge->reward = $rewards->get($pledge->rewardId);
         });
 
         if (array_key_exists('next', $data['links'])) {
@@ -72,12 +73,23 @@ class PatreonApi
 
     public function campaigns(): Collection
     {
-        $data = $this->request("current_user/campaigns?include=pledges");
+        $data = $this->request("current_user/campaigns?include=pledges,rewards");
 
-        $campaigns = new Collection();
+        $rewards = new ResourceCollection();
+
+        foreach ($data['included'] as $included) {
+            if ($included['type'] === 'reward') {
+                $rewards->add(Reward::import($included));
+            }
+        }
+
+        $campaigns = new ResourceCollection();
 
         foreach ($data['data'] as $campaign) {
-            $campaigns->push(Campaign::import($campaign));
+            $campaignResource = Campaign::import($campaign);
+            $campaignResource->fillRewards($campaign['relationships']['rewards'], $rewards);
+
+            $campaigns->add($campaignResource);
         }
 
         return $campaigns;
