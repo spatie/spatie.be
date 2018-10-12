@@ -53,7 +53,7 @@ class PatreonAuthenticator
             $response = $this->client->request('post', 'token', [
                 'query' => $data,
             ]);
-        }catch (RequestException $exception){
+        } catch (RequestException $exception) {
             return $this->getTokens();
         }
 
@@ -80,11 +80,13 @@ class PatreonAuthenticator
         return $tokens;
     }
 
-    public function getAccessToken(){
+    public function getAccessToken()
+    {
         return $this->getTokens()['access_token'];
     }
 
-    public function getRefreshToken(){
+    public function getRefreshToken()
+    {
         return $this->getTokens()['refresh_token'];
     }
 }

@@ -24,8 +24,8 @@ class Reward extends Resource
         $this->usersCount = $usersCount;
     }
 
-    public static function import(array $data){
-
+    public static function import(array $data)
+    {
         return new self(
             $data['id'],
             $data['attributes']['amount_cents'],

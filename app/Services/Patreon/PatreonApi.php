@@ -2,7 +2,6 @@
 
 namespace App\Services\Patreon;
 
-
 use App\Services\Patreon\Resources\Campaign;
 use App\Services\Patreon\Resources\Pledge;
 use App\Services\Patreon\Resources\ResourceCollection;
@@ -44,41 +43,40 @@ class PatreonApi
         $users = new ResourceCollection();
         $rewards = new ResourceCollection();
 
-        foreach ($data['included'] as $included){
-            if($included['type'] === 'user'){
+        foreach ($data['included'] as $included) {
+            if ($included['type'] === 'user') {
                 $users->add(User::import($included));
             }
 
-            if($included['type'] === 'reward'){
+            if ($included['type'] === 'reward') {
                 $rewards->add(Reward::import($included));
             }
         }
 
-
         $pledges = new ResourceCollection();
 
-        foreach ($data['data'] as $pledge){
+        foreach ($data['data'] as $pledge) {
             $pledges->add(Pledge::import($pledge));
         }
 
-        $pledges->each(function(Pledge $pledge) use ($users) {
+        $pledges->each(function (Pledge $pledge) use ($users) {
             $pledge->setuser($users->get($pledge->userId));
         });
 
-        if(array_key_exists('next', $data['links'])){
+        if (array_key_exists('next', $data['links'])) {
             $pledges = $pledges->merge($this->pledges($campaignId, $data['links']['next']));
         }
 
         return $pledges;
     }
 
-    public function campaigns() : Collection
+    public function campaigns(): Collection
     {
         $data = $this->request("current_user/campaigns?include=pledges");
 
         $campaigns = new Collection();
 
-        foreach ($data['data'] as $campaign){
+        foreach ($data['data'] as $campaign) {
             $campaigns->push(Campaign::import($campaign));
         }
 

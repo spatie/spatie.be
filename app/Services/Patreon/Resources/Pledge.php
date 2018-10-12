@@ -23,7 +23,8 @@ class Pledge extends Resource
         $this->userId = $userId;
     }
 
-    public function setuser(User $user){
+    public function setuser(User $user)
+    {
         $this->user = $user;
     }
 

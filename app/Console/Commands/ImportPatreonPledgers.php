@@ -29,8 +29,8 @@ class ImportPatreonPledgers extends Command
 
         $pledges = $this->api->pledges('795100');
 
-        foreach ($pledges as $pledge){
-            if($pledge->amount > 500){
+        foreach ($pledges as $pledge) {
+            if ($pledge->amount > 500) {
                 Patreon::import($pledge->user);
             }
         }

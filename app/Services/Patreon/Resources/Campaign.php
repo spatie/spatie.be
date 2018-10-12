@@ -20,7 +20,8 @@ class Campaign extends Resource
         $this->pledgedSum = $pledgedSum;
     }
 
-    public static function import(array $data){
+    public static function import(array $data)
+    {
         return new self(
             $data['id'],
             $data['attributes']['creation_name'],
