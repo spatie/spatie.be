@@ -19,9 +19,9 @@ class ImportGitHubIssues extends Command
     /** @var \App\Services\GitHub\GitHubApi */
     protected $api;
 
-    public function __construct(GitHubApi $api)
+    public function __construct(GitHubApi $patreon)
     {
-        $this->api = $api;
+        $this->api = $patreon;
 
         parent::__construct();
     }

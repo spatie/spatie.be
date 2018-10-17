@@ -2,7 +2,7 @@
 
 namespace App\Services\Patreon\Resources;
 
-class Campaign extends Resource
+class Campaign
 {
     /** @var int */
     public $id;

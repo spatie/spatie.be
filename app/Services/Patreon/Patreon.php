@@ -10,25 +10,18 @@ use App\Services\Patreon\Resources\User;
 use GuzzleHttp\Client;
 use Illuminate\Support\Collection;
 
-class PatreonApi
+class Patreon
 {
     /** @var \GuzzleHttp\Client */
     protected $client;
 
-    public function __construct(string $accessToken)
+    public function __construct(Client $client)
     {
-        $this->client = new Client([
-            'base_uri' => 'https://www.patreon.com/api/oauth2/api/',
-            'headers' => [
-                'authorization' => "Bearer {$accessToken}",
-            ],
-        ]);
+        $this->client = $client;
     }
 
     protected function request(string $endpoint): array
     {
-        $response = null;
-
         $response = $this->client->get($endpoint);
 
         return json_decode($response->getBody(), true);

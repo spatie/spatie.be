@@ -2,7 +2,7 @@
 
 namespace App\Services\Patreon\Resources;
 
-class Pledge extends Resource
+class Pledge
 {
     /** @var int */
     public $id;

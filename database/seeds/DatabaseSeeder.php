@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
             ->call(RepositoriesSeeder::class)
             ->call(UserSeeder::class)
             ->call(ContributorSeeder::class)
-            ->call(PatreonsSeeder::class)
+            ->call(PatreonPledgersSeeder::class)
             ->call(PostcardsSeeder::class)
             ->call(InstagramPhotosSeeder::class);
     }

@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 class ResourceCollection extends Collection
 {
-    public function add(Resource $resource)
+    public function add($resource)
     {
         $this->put($resource->id, $resource);
     }

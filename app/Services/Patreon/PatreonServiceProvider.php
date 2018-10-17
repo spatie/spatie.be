@@ -3,17 +3,29 @@
 namespace App\Services\Patreon;
 
 use Carbon\Laravel\ServiceProvider;
+use GuzzleHttp\Client;
 
 class PatreonServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(PatreonApi::class, function () {
+        $this->app->singleton(Patreon::class, function () {
             $authenticator = new PatreonAuthenticator(env('PATREON_CLIENT_ID'), env('PATREON_SECRET'));
 
             $tokens = $authenticator->autoRefresh();
 
-            return new PatreonApi($tokens['access_token']);
+            $client = $this->buildClient($tokens['access_token']);
+
+            return new Patreon($client);
         });
+    }
+
+    public function buildClient($accessToken) : Client{
+        return new Client([
+            'base_uri' => 'https://www.patreon.com/api/oauth2/api/',
+            'headers' => [
+                'authorization' => "Bearer {$accessToken}",
+            ],
+        ]);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Services\Patreon\Resources;
 
-class User extends Resource
+class User
 {
     /** @var int */
     public $id;

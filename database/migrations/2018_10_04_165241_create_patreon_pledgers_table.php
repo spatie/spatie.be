@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePatreonsTable extends Migration
+class CreatePatreonPledgersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePatreonsTable extends Migration
      */
     public function up()
     {
-        Schema::create('patreons', function (Blueprint $table) {
+        Schema::create('patreon_pledgers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('patreon_id');
             $table->string('name');
@@ -29,6 +29,6 @@ class CreatePatreonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('patreons');
+        Schema::dropIfExists('patreon_pledgers');
     }
 }

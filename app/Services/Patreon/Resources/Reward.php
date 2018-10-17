@@ -2,7 +2,7 @@
 
 namespace App\Services\Patreon\Resources;
 
-class Reward extends Resource
+class Reward
 {
     /** @var int */
     public $id;
