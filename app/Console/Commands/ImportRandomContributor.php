@@ -16,9 +16,9 @@ class ImportRandomContributor extends Command
     /** @var \App\Services\GitHub\GitHubApi */
     protected $api;
 
-    public function __construct(GitHubApi $patreon)
+    public function __construct(GitHubApi $api)
     {
-        $this->api = $patreon;
+        $this->api = $api;
 
         parent::__construct();
     }
