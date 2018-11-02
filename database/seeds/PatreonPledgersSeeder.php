@@ -1,14 +1,15 @@
 <?php
 
+use App\Models\PatreonPledger;
 use Illuminate\Database\Seeder;
 
 class PatreonPledgersSeeder extends Seeder
 {
     public function run()
     {
-        factory(\App\Models\PatreonPledger::class, 10)
+        factory(PatreonPledger::class, 10)
             ->create()
-            ->each(function (\App\Models\PatreonPledger $patreon) {
+            ->each(function (PatreonPledger $patreon) {
                 $patreon
                     ->addMediaFromUrl(faker()->imageUrl(1920, 1080))
                     ->withResponsiveImages()

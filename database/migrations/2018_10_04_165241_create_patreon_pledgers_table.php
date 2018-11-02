@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreatePatreonPledgersTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('patreon_pledgers', function (Blueprint $table) {
@@ -20,15 +15,5 @@ class CreatePatreonPledgersTable extends Migration
             $table->string('url_to_original');
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('patreon_pledgers');
     }
 }

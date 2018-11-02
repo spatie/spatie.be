@@ -31,9 +31,7 @@ class ImportPatreonPledgers extends Command
     {
         $this->info('Importing pledgers from Patreon...');
 
-        $campaign = $this->patreon->campaigns()->first();
-
-        if (! $campaign) {
+        if (! $campaign = $this->patreon->campaigns()->first()) {
             throw new Exception("No Patreon campaigns found.");
         }
 
