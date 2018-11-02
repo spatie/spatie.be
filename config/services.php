@@ -62,7 +62,7 @@ return [
     ],
 
     'patreon' => [
-        'id' => env('PATREON_ID'),
+        'id' => env('PATREON_CLIENT_ID'),
         'secret' => env('PATREON_SECRET'),
     ],
 ];

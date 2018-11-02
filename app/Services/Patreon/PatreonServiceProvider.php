@@ -10,7 +10,7 @@ class PatreonServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Patreon::class, function () {
-            $authenticator = new PatreonAuthenticator(config('patreon.id'), config('patreon.secret'));
+            $authenticator = new PatreonAuthenticator(config('services.patreon.id'), config('services.patreon.secret'));
 
             $tokens = $authenticator->autoRefresh();
 
