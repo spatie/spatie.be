@@ -19,9 +19,6 @@ class ImportGitHubIssues extends Command
     /** @var \App\Services\GitHub\GitHubApi */
     protected $api;
 
-    /** @var int  */
-    protected $fireRetardant = 0;
-
     public function __construct(GitHubApi $api)
     {
         $this->api = $api;
@@ -57,18 +54,9 @@ class ImportGitHubIssues extends Command
 
                     return $issue;
                 })
-                ->each(function (Issue $issue) {
-                    if ($issue->hasBeenTweeted()) {
-                        return;
-                    }
-
-                    $this->fireRetardant === 0
-                        ? $this->info("Tweeting issue id `$issue->id`")
-                        : $this->info("Tweeting issue id `$issue->id` within " . $this->fireRetardant * 2 . " hours");
-
-                    dispatch(new TweetIssueJob($issue))->delay(now()->addHours($this->fireRetardant * 2));
-
-                    $this->fireRetardant++;
+                ->values()
+                ->each(function (Issue $issue, int $delayInHours) {
+                    $this->tweetIssue($issue, $delayInHours);
                 });
         });
 
@@ -89,5 +77,16 @@ class ImportGitHubIssues extends Command
         $closedIssues->each->delete();
 
         $this->warn("Deleted {$closedIssues->count()} closed issues.");
+    }
+
+    protected function tweetIssue(Issue $issue, int $delayInHours)
+    {
+        if ($issue->hasBeenTweeted()) {
+            return;
+        }
+
+        $this->info("Scheduling tweeting issue id `$issue->id`");
+
+        dispatch(new TweetIssueJob($issue))->delay(now()->addHours($delayInHours));
     }
 }
