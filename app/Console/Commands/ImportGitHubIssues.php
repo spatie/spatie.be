@@ -19,6 +19,9 @@ class ImportGitHubIssues extends Command
     /** @var \App\Services\GitHub\GitHubApi */
     protected $api;
 
+    /** @var int  */
+    protected $fireRetardant = 0;
+
     public function __construct(GitHubApi $api)
     {
         $this->api = $api;
@@ -59,9 +62,13 @@ class ImportGitHubIssues extends Command
                         return;
                     }
 
-                    $this->info("Tweeting issue id `$issue->id`");
+                    $this->fireRetardant === 0
+                        ? $this->info("Tweeting issue id `$issue->id`")
+                        : $this->info("Tweeting issue id `$issue->id` within " . $this->fireRetardant * 2 . " hours");
 
-                    dispatch(new TweetIssueJob($issue));
+                    dispatch(new TweetIssueJob($issue))->delay(now()->addHours($this->fireRetardant * 2));
+
+                    $this->fireRetardant++;
                 });
         });
 
