@@ -79,14 +79,4 @@ class PatreonAuthenticator
 
         return $tokens;
     }
-
-    public function getAccessToken()
-    {
-        return $this->getTokens()['access_token'];
-    }
-
-    public function getRefreshToken()
-    {
-        return $this->getTokens()['refresh_token'];
-    }
 }

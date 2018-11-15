@@ -4,13 +4,9 @@ namespace App\Models;
 
 use App\Services\Patreon\Resources\User;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 
-class PatreonPledger extends Model implements HasMedia
+class PatreonPledger extends Model
 {
-    use HasMediaTrait;
-
     public $dates = ['taken_at'];
 
     public static function import(User $user)
@@ -23,18 +19,9 @@ class PatreonPledger extends Model implements HasMedia
 
         $model->patreon_id = $user->id;
         $model->name = $user->name;
-        $model->url_to_original = $user->imageUrl;
-        $model
-            ->addMediaFromUrl($user->imageUrl)
-            ->withResponsiveImages()
-            ->toMediaCollection();
+        $model->avatar_url = $user->avatarUrl;
 
         $model->save();
-    }
-
-    public function getAvatarUrlAttribute()
-    {
-        return $this->getFirstMediaUrl();
     }
 
     public function getRespectPhraseAttribute()

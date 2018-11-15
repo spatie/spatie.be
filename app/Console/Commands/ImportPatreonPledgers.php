@@ -31,26 +31,41 @@ class ImportPatreonPledgers extends Command
     {
         $this->info('Importing pledgers from Patreon...');
 
+        $this->removePreviousPledgers();
+
         if (! $campaign = $this->patreon->campaigns()->first()) {
             throw new Exception("No Patreon campaigns found.");
         }
 
-        $this->getPledges($campaign)->each(function(Pledge $pledge){
+        $this->getPledges($campaign)->each(function (Pledge $pledge) {
             PatreonPledger::import($pledge->user);
         });
 
         $this->info('All done!');
     }
 
-    protected function getPledges(Campaign $campaign) : Collection{
-        $rewards = $campaign->rewards->filter(function (Reward $reward) {
-            return $reward->amount >= 5000;
-        });
+    protected function getPledges(Campaign $campaign): Collection
+    {
+        $rewards = $this->getSuitableRewards($campaign);
 
         return $this->patreon->pledges($campaign->id)->filter(function (Pledge $pledge) use ($rewards) {
             return $rewards->contains(function (Reward $reward) use ($pledge) {
                 return $reward->id === $pledge->rewardId;
             });
         });
+    }
+
+    protected function getSuitableRewards(Campaign $campaign): Collection
+    {
+        $minimalAmount = 5000;
+
+        return $campaign->rewards->filter(function (Reward $reward) use ($minimalAmount) {
+            return $reward->amount >= $minimalAmount;
+        })->values();
+    }
+
+    protected function removePreviousPledgers()
+    {
+        PatreonPledger::query()->truncate();
     }
 }

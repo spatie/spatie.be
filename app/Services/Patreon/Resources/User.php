@@ -11,13 +11,13 @@ class User
     public $name;
 
     /** @var string */
-    public $imageUrl;
+    public $avatarUrl;
 
-    public function __construct(int $id, string $name, string $imageUrl)
+    public function __construct(int $id, string $name, string $avatarUrl)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->imageUrl = $imageUrl;
+        $this->avatarUrl = $avatarUrl;
     }
 
     public static function import(array $data): User

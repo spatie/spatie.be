@@ -12,7 +12,7 @@ class CreatePatreonPledgersTable extends Migration
             $table->increments('id');
             $table->integer('patreon_id');
             $table->string('name');
-            $table->string('url_to_original');
+            $table->string('avatar_url');
             $table->timestamps();
         });
     }

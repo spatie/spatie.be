@@ -1,6 +1,6 @@
 <div class="flex items-center mt-8 my-6">
     <div class="avatar">
-        <img src="{{ $patreonPledger->avatarUrl }}">
+        <img src="{{ $patreonPledger->avatar_url }}">
     </div>
     <div class="ml-4">
         <h3 class="title-sm">

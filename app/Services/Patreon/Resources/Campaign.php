@@ -2,6 +2,8 @@
 
 namespace App\Services\Patreon\Resources;
 
+use Illuminate\Support\Collection;
+
 class Campaign
 {
     /** @var int */
@@ -10,34 +12,21 @@ class Campaign
     /** @var string */
     public $name;
 
-    /** @var int */
-    public $pledgedSum;
-
-    /** @var \App\Services\Patreon\Resources\ResourceCollection  */
+    /** @var \Illuminate\Support\Collection */
     public $rewards;
 
-    public function __construct(int $id, string $name, int $pledgedSum)
+    public function __construct(int $id, string $name)
     {
         $this->id = $id;
         $this->name = $name;
-        $this->pledgedSum = $pledgedSum;
-
-        $this->rewards = new ResourceCollection();
+        $this->rewards = new Collection();
     }
 
-    public function fillRewards(array $rewardRelationsData, ResourceCollection $rewards)
-    {
-        foreach ($rewardRelationsData['data'] as $rewardRelation) {
-            $this->rewards->add($rewards->get($rewardRelation['id']));
-        }
-    }
-
-    public static function import(array $data)
+    public static function import(array $data): Campaign
     {
         return new self(
             $data['id'],
-            $data['attributes']['creation_name'],
-            $data['attributes']['pledge_sum']
+            $data['attributes']['creation_name']
         );
     }
 }

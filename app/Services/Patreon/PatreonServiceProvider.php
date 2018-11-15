@@ -20,7 +20,8 @@ class PatreonServiceProvider extends ServiceProvider
         });
     }
 
-    public function buildClient($accessToken) : Client{
+    protected function buildClient($accessToken): Client
+    {
         return new Client([
             'base_uri' => 'https://www.patreon.com/api/oauth2/api/',
             'headers' => [

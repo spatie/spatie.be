@@ -4,7 +4,6 @@ namespace App\Services\Patreon;
 
 use App\Services\Patreon\Resources\Campaign;
 use App\Services\Patreon\Resources\Pledge;
-use App\Services\Patreon\Resources\ResourceCollection;
 use App\Services\Patreon\Resources\Reward;
 use App\Services\Patreon\Resources\User;
 use GuzzleHttp\Client;
@@ -27,64 +26,80 @@ class Patreon
         return json_decode($response->getBody(), true);
     }
 
-    public function pledges($campaignId, string $endpoint = null): Collection
+    public function campaigns(): Collection
     {
-        $data = $endpoint === null
-            ? $this->request("campaigns/{$campaignId}/pledges?include=patron.null,reward")
-            : $this->request($endpoint);
+        $data = $this->request("current_user/campaigns?include=pledges,rewards");
 
-        $users = new ResourceCollection();
-        $rewards = new ResourceCollection();
+        return $this->importCampaigns($data);
+    }
 
-        foreach ($data['included'] as $included) {
-            if ($included['type'] === 'user') {
-                $users->add(User::import($included));
-            }
+    public function pledges($campaignId): Collection
+    {
+        return $this->fetchPledges("campaigns/{$campaignId}/pledges?include=patron.null,reward");
+    }
 
-            if ($included['type'] === 'reward') {
-                $rewards->add(Reward::import($included));
-            }
-        }
+    protected function fetchPledges(string $endpoint): Collection
+    {
+        $data = $this->request($endpoint);
 
-        $pledges = new ResourceCollection();
-
-        foreach ($data['data'] as $pledge) {
-            $pledges->add(Pledge::import($pledge));
-        }
-
-        $pledges->each(function (Pledge $pledge) use ($rewards, $users) {
-            $pledge->user = $users->get($pledge->userId);
-            $pledge->reward = $rewards->get($pledge->rewardId);
-        });
+        $pledges = $this->importPledges($data);
 
         if (array_key_exists('next', $data['links'])) {
-            $pledges = $pledges->merge($this->pledges($campaignId, $data['links']['next']));
+            $pledges = $pledges->merge($this->fetchPledges($data['links']['next']));
         }
 
         return $pledges;
     }
 
-    public function campaigns(): Collection
+    protected function importCampaigns(array $data): Collection
     {
-        $data = $this->request("current_user/campaigns?include=pledges,rewards");
+        $rewards = $this->importRewards($data);
 
-        $rewards = new ResourceCollection();
+        return collect($data['data'])->map(function (array $item) use ($rewards) {
+            $campagin = Campaign::import($item);
 
-        foreach ($data['included'] as $included) {
-            if ($included['type'] === 'reward') {
-                $rewards->add(Reward::import($included));
-            }
-        }
+            $campagin->rewards = collect($item['relationships']['rewards']['data'])
+                ->map(function ($item) use ($rewards) {
+                    return $rewards->first(function (Reward $reward) use ($rewards, $item) {
+                        return $reward->id === (int ) $item['id'];
+                    });
+                });
 
-        $campaigns = new ResourceCollection();
+            return $campagin;
+        });
+    }
 
-        foreach ($data['data'] as $campaign) {
-            $campaignResource = Campaign::import($campaign);
-            $campaignResource->fillRewards($campaign['relationships']['rewards'], $rewards);
+    protected function importPledges(array $data)
+    {
+        $users = $this->importUsers($data);
+        $rewards = $this->importRewards($data);
 
-            $campaigns->add($campaignResource);
-        }
+        return collect($data['data'])->map(function (array $pledge) use ($rewards, $users) {
+            $pledge = Pledge::import($pledge);
 
-        return $campaigns;
+            $pledge->user = $users->first(function (User $user) use ($pledge) {
+                return $user->id === $pledge->userId;
+            });
+
+            return $pledge;
+        });
+    }
+
+    protected function importUsers(array $data): Collection
+    {
+        return collect($data['included'])->filter(function (array $item) {
+            return $item['type'] === 'user';
+        })->map(function ($item) {
+            return User::import($item);
+        })->values();
+    }
+
+    protected function importRewards(array $data): Collection
+    {
+        return collect($data['included'])->filter(function (array $item) {
+            return $item['type'] === 'reward';
+        })->map(function ($item) {
+            return Reward::import($item);
+        })->values();
     }
 }
