@@ -33,11 +33,13 @@ class ImportPatreonPledgers extends Command
 
         $this->removePreviousPledgers();
 
-        if (! $campaign = $this->patreon->campaigns()->first()) {
+        $campaigns = $this->patreon->campaigns();
+
+        if ($campaigns->count() === 0) {
             throw new Exception("No Patreon campaigns found.");
         }
 
-        $this->getPledges($campaign)->each(function (Pledge $pledge) {
+        $this->getPledges($campaigns->first())->each(function (Pledge $pledge) {
             PatreonPledger::import($pledge->user);
         });
 
