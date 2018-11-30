@@ -15,18 +15,18 @@ class Campaign
     /** @var \Illuminate\Support\Collection */
     public $rewards;
 
-    public function __construct(int $id, string $name)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->rewards = new Collection();
-    }
-
     public static function import(array $data): Campaign
     {
         return new self(
             $data['id'],
             $data['attributes']['creation_name']
         );
+    }
+
+    public function __construct(int $id, string $name)
+    {
+        $this->id = $id;
+        $this->name = $name;
+        $this->rewards = new Collection();
     }
 }

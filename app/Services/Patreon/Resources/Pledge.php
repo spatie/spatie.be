@@ -19,14 +19,6 @@ class Pledge
     /** @var int|null */
     public $rewardId;
 
-    public function __construct(int $id, int $amount, int $userId, ?int $rewardId)
-    {
-        $this->id = $id;
-        $this->amount = $amount;
-        $this->userId = $userId;
-        $this->rewardId = $rewardId;
-    }
-
     public static function import(array $pledge): Pledge
     {
         return new self(
@@ -35,5 +27,13 @@ class Pledge
             $pledge['relationships']['patron']['data']['id'],
             $pledge['relationships']['reward']['data']['id']
         );
+    }
+
+    public function __construct(int $id, int $amount, int $userId, ?int $rewardId)
+    {
+        $this->id = $id;
+        $this->amount = $amount;
+        $this->userId = $userId;
+        $this->rewardId = $rewardId;
     }
 }

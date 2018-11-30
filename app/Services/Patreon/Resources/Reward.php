@@ -10,17 +10,17 @@ class Reward
     /** @var int */
     public $amount;
 
-    public function __construct(int $id, int $amount)
-    {
-        $this->id = $id;
-        $this->amount = $amount;
-    }
-
     public static function import(array $data): Reward
     {
         return new self(
             $data['id'],
             $data['attributes']['amount_cents']
         );
+    }
+
+    public function __construct(int $id, int $amount)
+    {
+        $this->id = $id;
+        $this->amount = $amount;
     }
 }
