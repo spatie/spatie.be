@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('import:random-contributor')->hourly();
         $schedule->command('import:packagist-downloads')->hourly();
         $schedule->command('import:github-repositories')->daily();
+        $schedule->command('import:patreon-pledgers')->daily();
     }
 
     protected function commands()
