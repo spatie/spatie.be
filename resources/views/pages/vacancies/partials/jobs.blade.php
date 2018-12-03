@@ -4,7 +4,7 @@
             <h2 class="title-sm">
                 Vacancies at Spatie
                 <div class="title-subtext text-pink-dark">
-                   Currently: full house
+                   Currently looking for…
                 </div>
             </h2>
             @include('pages.vacancies.partials.list')
