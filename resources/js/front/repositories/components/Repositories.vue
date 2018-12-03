@@ -9,7 +9,7 @@
             <div v-if="filterable" class="wrap flex justify-center mb-8">
                 <input
                     type="search"
-                    class="border-2 border-grey-lighter bg-white rounded-full p-4 outline-0 focus:border-pink"
+                    class="border-2 border-grey-lighter bg-white rounded-full p-4 outline-0 focus:border-blue"
                     :placeholder="`Search ${label}…`"
                     v-model="filter"
                 >

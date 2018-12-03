@@ -41,18 +41,18 @@
 
                         <div class="mt-4">
                             <label class="text-grey" for="sender">Senders</label><br/>
-                            <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-pink" type="text" name="sender" placeholder="John Doe, @twitterhandle">
+                            <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue" type="text" name="sender" placeholder="John Doe, @twitterhandle">
                         </div>
 
                         <div class="mt-4 grid grid-cols gap-4" style="--cols: 1fr 1fr">
                             <div class="">
                                 <label class="text-grey" for="city">City</label><br/>
-                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-pink" type="text" name="city" placeholder="Antwerp">
+                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue" type="text" name="city" placeholder="Antwerp">
                             </div>
 
                             <div>
                                 <label class="text-grey" for="country">Country</label><br/>
-                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-pink" type="text" name="country" placeholder="Belgium">
+                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue" type="text" name="country" placeholder="Belgium">
                             </div>
                         </div>
                     </fieldset>
