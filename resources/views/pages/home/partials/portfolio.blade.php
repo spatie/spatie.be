@@ -1,6 +1,6 @@
 <section id="portfolio" class="section">
     <div class="wrap-8 section">
-        <div class="sm:spanx-4">
+        <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
             <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com">
                 {{ image('portfolio/stmpd.jpg') }}
             </a>
@@ -25,7 +25,7 @@
         </div>
     </div>
     <div class="wrap-8 grid-flow-dense section">
-        <div class="sm:startx-5 sm:spanx-4">
+        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
             <a href="https://my.artassistant.com" target="_blank" rel="nofollow noreferrer noopener" class="illustration is-right h-full" title="my.artassistant.com">
                 {{ image('portfolio/artassistant.jpg') }}
             </a>

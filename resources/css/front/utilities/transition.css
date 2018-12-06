@@ -1,3 +1,7 @@
+.transition-border-color {
+    transition-property: border-color;
+}
+
 .transition-color {
     transition-property: color;
 }
