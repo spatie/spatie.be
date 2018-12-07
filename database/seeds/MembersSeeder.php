@@ -70,6 +70,15 @@ class MembersSeeder extends Seeder
             'twitter' => 'brouwerswouter',
             'public_email' => true,
         ],
+
+        'ruben@spatie.be' => [
+            'first_name' => 'Ruben',
+            'last_name' => 'Van Assche',
+            'role' => 'Backend developer',
+            'description' => 'Ruben knows how to write PHP. And C++. And Java. And Python. And he can talk to humans too!',
+            'twitter' => 'rubenvanassche',
+            'public_email' => true,
+        ],
     ];
 
     public function run()
