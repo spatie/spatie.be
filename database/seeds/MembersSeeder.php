@@ -6,6 +6,14 @@ use Illuminate\Database\Seeder;
 class MembersSeeder extends Seeder
 {
     protected $members = [
+        'adriaan@spatie.be' => [
+            'first_name' => 'Adriaan',
+            'last_name' => 'Marain',
+            'role' => 'Frontend developer',
+            'description' => 'Adriaan\'s first language is JavaScript. React, Vue, Node.js, anything goes! Rumor has it he was raised by wolves.',
+            'twitter' => 'adriaanmrn',
+        ],
+
         'alex@spatie.be' => [
             'first_name' => 'Alex',
             'last_name' => 'Vanderbist',
