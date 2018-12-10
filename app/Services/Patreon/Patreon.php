@@ -19,13 +19,6 @@ class Patreon
         $this->client = $client;
     }
 
-    protected function request(string $endpoint): array
-    {
-        $response = $this->client->get($endpoint);
-
-        return json_decode($response->getBody(), true);
-    }
-
     public function campaigns(): Collection
     {
         $data = $this->request("current_user/campaigns?include=pledges,rewards");
@@ -33,9 +26,16 @@ class Patreon
         return $this->importCampaigns($data);
     }
 
-    public function pledges($campaignId): Collection
+    public function pledges(int $campaignId): Collection
     {
         return $this->fetchPledges("campaigns/{$campaignId}/pledges?include=patron.null,reward");
+    }
+
+    protected function request(string $endpoint): array
+    {
+        $response = $this->client->get($endpoint);
+
+        return json_decode($response->getBody(), true);
     }
 
     protected function fetchPledges(string $endpoint): Collection
