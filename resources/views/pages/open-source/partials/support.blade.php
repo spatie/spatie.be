@@ -24,7 +24,6 @@
     <div class="wrap pt-16">
         <p class="text-lg">
             Following patreons have helped us out in a substantial way.<br>
-            Time to pay our respect!
         </p>
     </div>
     <div class="wrap-6">
