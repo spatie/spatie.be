@@ -20,7 +20,7 @@ class OpenSourceController extends Controller
 
         $contributor = Contributor::first();
 
-        $patreonPledger = PatreonPledger::get()->random();
+        $patreonPledger = PatreonPledger::inRandomOrder()->first();
 
         return view('pages.open-source.index', compact('repositories', 'issues', 'contributor', 'patreonPledger'));
     }

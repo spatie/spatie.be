@@ -20,7 +20,7 @@
             </a>
         </div>
     </div>
-    {{-- if # patreons > 0 --}}
+    @if($patreonPledger !== null)
     <div class="wrap pt-16">
         <p class="text-lg">
             Following patreons have helped us out in a substantial way.<br>
@@ -39,5 +39,5 @@
             Want to be featured on our site as well? Check out our <a href="https://patreon.com/spatie">Patreon campaign</a>.
         </p>
     </div>
-    {{-- end if --}}
+    @endif
 </section>
