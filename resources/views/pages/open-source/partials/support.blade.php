@@ -20,4 +20,24 @@
             </a>
         </div>
     </div>
+    {{-- if # patreons > 0 --}}
+    <div class="wrap pt-16">
+        <p class="text-lg">
+            Following patreons have helped us out in a substantial way.<br>
+            Time to pay our respect!
+        </p>
+    </div>
+    <div class="wrap-6">
+        {{-- start loop for patreons --}}
+        <div class="sm:spanx-2">
+            @include('pages.open-source.partials.patreon')
+        </div>
+        {{-- end loop for patreons --}}
+    </div>
+    <div class="wrap">
+        <p class="mt-8 text-xs text-grey links-underline links-grey">
+            Want to be featured on our site as well? Check out our <a href="https://patreon.com/spatie">Patreon campaign</a>.
+        </p>
+    </div>
+    {{-- end if --}}
 </section>

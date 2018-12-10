@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Resources\RepositoryResource;
 use App\Models\Contributor;
 use App\Models\Issue;
+use App\Models\PatreonPledger;
 use App\Models\Repository;
 
 class OpenSourceController extends Controller
@@ -19,7 +20,9 @@ class OpenSourceController extends Controller
 
         $contributor = Contributor::first();
 
-        return view('pages.open-source.index', compact('repositories', 'issues', 'contributor'));
+        $patreonPledger = PatreonPledger::get()->random();
+
+        return view('pages.open-source.index', compact('repositories', 'issues', 'contributor', 'patreonPledger'));
     }
 
     public function packages()
