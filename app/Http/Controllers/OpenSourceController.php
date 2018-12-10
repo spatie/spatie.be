@@ -10,6 +10,14 @@ use App\Models\Repository;
 
 class OpenSourceController extends Controller
 {
+    /** @var \App\Models\PatreonPledger */
+    protected $patreonPledger;
+
+    public function __construct()
+    {
+        $this->patreonPledger = PatreonPledger::inRandomOrder()->first();
+    }
+
     public function index()
     {
         $repositories = RepositoryResource::collection(
@@ -20,9 +28,12 @@ class OpenSourceController extends Controller
 
         $contributor = Contributor::first();
 
-        $patreonPledger = PatreonPledger::inRandomOrder()->first();
-
-        return view('pages.open-source.index', compact('repositories', 'issues', 'contributor', 'patreonPledger'));
+        return view('pages.open-source.index', [
+            'repositories' => $repositories,
+            'issues' => $issues,
+            'contributor' => $contributor,
+            'patreonPledger' => $this->patreonPledger,
+        ]);
     }
 
     public function packages()
@@ -31,7 +42,10 @@ class OpenSourceController extends Controller
             Repository::getAllPackages()
         )->resolve();
 
-        return view('pages.open-source.packages', compact('repositories'));
+        return view('pages.open-source.packages', [
+            'repositories' => $repositories,
+            'patreonPledger' => $this->patreonPledger,
+        ]);
     }
 
     public function projects()
@@ -40,6 +54,9 @@ class OpenSourceController extends Controller
             Repository::getAllProjects()
         )->resolve();
 
-        return view('pages.open-source.projects', compact('repositories'));
+        return view('pages.open-source.projects', [
+            'repositories' => $repositories,
+            'patreonPledger' => $this->patreonPledger,
+        ]);
     }
 }
