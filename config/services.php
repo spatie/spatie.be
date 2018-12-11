@@ -52,7 +52,7 @@ return [
 
     'rss' => [
         'https://murze.be/feed/originals',
-        'https://sebastiandedeyne.com/feed',
+        'https://sebastiandedeyne.com/articles.xml',
         'https://www.stitcher.io/rss',
         'https://alexvanderbist.com/feed',
     ],
