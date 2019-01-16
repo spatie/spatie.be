@@ -26,7 +26,7 @@
                         <h2 class="font-serif text-3xl text-green line-l">
                             Zeg luidop:
                             <br>
-                            Ik bouw moderne web applicaties in Laravel!
+                            Ik bouw moderne web applicaties met Laravel!
                         </h2>
 
                         <div class="mt-16">
