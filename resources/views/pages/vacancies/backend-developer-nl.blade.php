@@ -44,7 +44,7 @@
                             <ul class="bullets bullets-green">
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Krijg elk jaar €1500,- persoonlijk budget voor opleiding &amp; conferenties als Laracon EU/US, DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spendeer 4u/week aan experimenteren en open source werk (Dat is meer dan bij Airbnb)</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Wordt deel van een team dat naam maakt binnen open source</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Word deel van een team dat naam maakt binnen open source</li>
                             </ul>
                         </div>
                     </div>
