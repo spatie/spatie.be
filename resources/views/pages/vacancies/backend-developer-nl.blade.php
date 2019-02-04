@@ -61,7 +61,7 @@
                             </h2>
                             <ul class="bullets bullets-green">
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Een competitief salarispakket</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Groepsverzekering</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Hospitalisatieverzekering</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Maaltijdcheques</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Ecocheques</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Vélo kaart voor deelfietsen in Antwerpen</li>
