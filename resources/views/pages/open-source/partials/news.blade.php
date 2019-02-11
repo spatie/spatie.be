@@ -6,7 +6,7 @@
                     <a href='https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aspatie+is%3Apublic+label%3A%22good+first+issue%22'
                        class="link-black">Help us out</a>
                     <div class="title-subtext text-pink-dark">
-                        Easy issues to solve
+                        Good first issues to solve
                     </div>
                 </h2>
                 @foreach($issues as $issue)
@@ -28,8 +28,8 @@
                 @endforeach
                 <p class="mt-4">
                     <a class="link-underline link-blue"
-                       href='https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aspatie+is%3Apublic+label%3A%22good+first+issue%22'>
-                        All easy issues on GitHub…
+                       href="https://github.com/search?q=is%3Aopen+is%3Aissue+user%3Aspatie+is%3Apublic+label%3A%22good+first+issue%22">
+                        All good first issues on GitHub…
                     </a>
                 </p>
             </div>
