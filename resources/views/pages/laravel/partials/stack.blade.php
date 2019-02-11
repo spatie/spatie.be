@@ -9,6 +9,7 @@
                 <ul class="bullets-inline bullets-blue">
                     <li>Vue.js</li>
                     <li>React</li>
+                    <li>React Native</li>
                     <li>Vanilla JS</li>
                     <li>Tailwind CSS</li>
                     <li>PostCSS</li>
@@ -47,6 +48,7 @@
                     <li>Teamleader</li>
                     <li>Exact Online</li>
                     <li>Laravel Spark</li>
+                    <li>Urban Airship</li>
                 </ul>
             </div>
         </div>
