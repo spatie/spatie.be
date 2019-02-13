@@ -2,5 +2,5 @@
 <ul class="bullets bullets-green">
     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Web apps for Tomorrowland or international names like Krauthammer, Mutsy or Martin Garrix</li>
     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Public sites for Waaslandhaven, City of Hemiksem or Vrijwilligerswerk Vlaanderen</li>
-    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Clean sites for Wim Delvoye, META architects or ArtAssistant</li>
+    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Private websites for Wim Delvoye, META architects or ArtAssistant</li>
 </ul>
