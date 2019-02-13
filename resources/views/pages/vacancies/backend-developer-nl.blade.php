@@ -41,7 +41,7 @@
                         <div class="mt-16">
                             <h3 class="title">Het beste eerst</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Wordt pijlsnel een krak in Laravel en PHP. Bekijk onze volledige <a href="#stack">technology stack</a></li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Wordt pijlsnel een krak in Laravel en PHP — bekijk onze <a href="#stack">technology stack</a></li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Krijg elk jaar €1500,- persoonlijk budget voor opleiding &amp; conferenties als Laracon EU/US, DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spendeer een halve dag per week aan experimenteren en open source werk</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Word deel van een team dat naam maakt binnen open source</li>
