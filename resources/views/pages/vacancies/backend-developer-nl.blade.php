@@ -32,18 +32,18 @@
                         <div class="mt-16">
                             <h3 class="title">Je werkt aan</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Business web apps voor Tomorrowland</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Corporate web apps voor internationale bedrijven als Krauthammer, Mutsy of Martin Garrix</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Web apps voor Tomorrowland en internationale namen als Krauthammer, Mutsy of Martin Garrix</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Publieke sites voor de Waaslandhaven, Gemeente Hemiksem of Vrijwilligerswerk Vlaanderen</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Arty stuff voor Wim Delvoye, META architecten of ArtAssistant</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Propere websites voor Wim Delvoye, META architecten of ArtAssistant</li>
                             </ul>
                         </div>
 
                         <div class="mt-16">
                             <h3 class="title">Het beste eerst</h3>
                             <ul class="bullets bullets-green">
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Wordt pijlsnel een krak in Laravel en PHP. Bekijk onze volledige <a href="#stack">technology stack</a></li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Krijg elk jaar €1500,- persoonlijk budget voor opleiding &amp; conferenties als Laracon EU/US, DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spendeer 4u/week aan experimenteren en open source werk (Dat is meer dan bij Airbnb)</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spendeer een halve dag per week aan experimenteren en open source werk</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Word deel van een team dat naam maakt binnen open source</li>
                             </ul>
                         </div>
@@ -65,7 +65,7 @@
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Maaltijdcheques</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Ecocheques</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Vélo kaart voor deelfietsen in Antwerpen</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Laptop + 2de scherm, smartphone</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Laptop + 2<sup>de</sup> scherm, smartphone</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Internet thuis</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling hoofdtelefoons</li>
                             </ul>
