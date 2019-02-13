@@ -36,8 +36,9 @@
                         <div class="mt-16">
                             <h3 class="title">The best part first</h3>
                             <ul class="bullets bullets-green">
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Become a real expert in Laravel and PHP — have a look at our <a href="#stack">technology stack</a></li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Get €1500,- personal budget every year for trainings &amp; conferences like Laracon EU and US, DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spend 4h/week on experiment and open source work (that's more than at Airbnb)</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spend half a day each week on experiment and open source work</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team that has made its name in open source</li>
                             </ul>
                         </div>

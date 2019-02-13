@@ -27,6 +27,11 @@
     & em {
         @apply font-sans-normal; /* no italics for now */
     }
+
+    & sub,
+    & sup {
+        @apply text-xs;
+    }
 }
 
 .markup-titles {

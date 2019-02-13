@@ -11,7 +11,7 @@
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Eco vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Vélo card for public bikes in Antwerp</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Laptop + second screen, smartphone</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Laptop + 2<sup>nd</sup> screen, smartphone</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Internet at home</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
                 </ul>
