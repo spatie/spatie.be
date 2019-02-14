@@ -17,7 +17,7 @@
                 </div>
             </h2>
             <p class="mt-4">
-                Are you looking to get really good in Laravel, Vue.js, PostCSS or Tailwind? We have slots available for students starting September 2018.
+                Are you looking to get really good in Laravel, Vue.js, PostCSS or Tailwind? We have slots available for students.
             </p>
             <p class="mt-4">
                 <a class="link-underline link-blue" href="{{ route('vacancies.internship') }}">
