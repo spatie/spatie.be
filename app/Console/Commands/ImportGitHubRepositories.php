@@ -42,7 +42,7 @@ class ImportGitHubRepositories extends Command
                 'repository_created_at' => Carbon::createFromFormat(DateTime::ATOM, $repositoryAttributes['created_at']),
             ]);
 
-            $repository->setTopics(Cache::remember("repository_topics-{$repository->name}", 60, function () use ($repository) {
+            $repository->setTopics(Cache::remember("repository_topics-{$repository->name}", 3600, function () use ($repository) {
                 return $this->api->fetchRepositoryTopics('spatie', $repository->name);
             }));
         });
