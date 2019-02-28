@@ -4574,24 +4574,24 @@
         },
         {
             "name": "spatie/pdf-to-image",
-            "version": "1.8.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/pdf-to-image.git",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26"
+                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
-                "reference": "f33afc92ff7bff272fa6a9ba1cc335e96c57eb26",
+                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/9a5cb264a99e87e010c65d4ece03b51f821d55bd",
+                "reference": "9a5cb264a99e87e010c65d4ece03b51f821d55bd",
                 "shasum": ""
             },
             "require": {
-                "ext-imagick": "*",
-                "php": "^7.0"
+                "php": ">=5.5.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^6.2"
+                "phpunit/phpunit": "4.*",
+                "scrutinizer/ocular": "~1.1"
             },
             "type": "library",
             "autoload": {
@@ -4620,7 +4620,7 @@
                 "pdf-to-image",
                 "spatie"
             ],
-            "time": "2018-07-02T09:30:32+00:00"
+            "time": "2016-12-14T15:37:00+00:00"
         },
         {
             "name": "spatie/schema-org",
