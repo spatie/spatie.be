@@ -30,6 +30,10 @@ return [
         'secret' => env('MAILGUN_SECRET'),
     ],
 
+    'postmark' => [
+        'token' => env('POSTMARK_TOKEN'),
+    ],
+
     'ses' => [
         'key' => env('SES_KEY'),
         'secret' => env('SES_SECRET'),
@@ -41,9 +45,13 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\Models\User::class,
+        'model' => App\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+        'webhook' => [
+            'secret' => env('STRIPE_WEBHOOK_SECRET'),
+            'tolerance' => env('STRIPE_WEBHOOK_TOLERANCE', 300),
+        ],
     ],
 
     'github' => [
