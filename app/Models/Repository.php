@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Str;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,7 +38,7 @@ class Repository extends Model
 
     public function getSlug(): string
     {
-        return str_slug($this->name);
+        return Str::slug($this->name);
     }
 
     public function getUrlAttribute(): string
