@@ -21,6 +21,7 @@
         "knplabs/github-api": "^2.8",
         "laravel/framework": "5.8.*",
         "laravel/horizon": "^1.3",
+        "laravel/slack-notification-channel": "^2.0",
         "laravel/tinker": "^1.0",
         "myclabs/php-enum": "^1.5",
         "patreon/patreon": "^0.3.1",
