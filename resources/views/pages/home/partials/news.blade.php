@@ -1,25 +1,37 @@
 <section id="news">
-    <div class="wrap-6 items-start">
+    <div class="wrap-6 gapy-0 items-end">
         <div class="sm:spanx-3 | line-l">
-            <h2 class="title-sm">
-                Work with us!
-                <div class="title-subtext text-pink-dark">
-                    Currently looking for …
-                </div>
-            </h2>
+                <h2 class="title-sm">
+                        Latest insights
+                        <div class="title-subtext text-pink-dark">
+                            From the team
+                        </div>
+                    </h2>
 
-            @include('pages.vacancies.partials.list', ['showInterns' => true])
-
-            {{--
-            <p class="mt-4">
-                <a class="link-underline link-blue" href="{{ route('vacancies.internship') }}">Web development interns</a>
-                <br>
-                <span class="text-xs text-grey">Antwerp / Minimum 8 weeks</span>
-            </p>
-            --}}
+                @foreach ($insights->slice(0, 2) as $insight)
+                    <p class="mt-4">
+                       <a class="link link-black" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->title }}</a>
+                       <br>
+                       <span class="text-xs text-grey">
+                           {{ $insight->created_at->format('M jS Y') }}
+                           <span class="char-separator" >•</span>
+                           <a class="link-underline link-blue" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->website }}</a>
+                       </span>
+                   </p>
+               @endforeach
         </div>
         <div class="sm:spanx-3 | line-l">
-            @include('pages.open-source.partials.insights')
+            @foreach ($insights->slice(2, 2) as $insight)
+                <p class="mt-4">
+                   <a class="link link-black" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->title }}</a>
+                   <br>
+                   <span class="text-xs text-grey">
+                       {{ $insight->created_at->format('M jS Y') }}
+                       <span class="char-separator" >•</span>
+                       <a class="link-underline link-blue" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->website }}</a>
+                   </span>
+               </p>
+           @endforeach
         </div>
     </div>
 </section>

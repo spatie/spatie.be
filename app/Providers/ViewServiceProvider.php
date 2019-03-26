@@ -20,6 +20,10 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('insights', Insight::getLatest());
         });
 
+        View::composer('pages.home.partials.news', function ($view) {
+            $view->with('insights', Insight::getLatest());
+        });
+
         View::composer('pages.about.partials.team', function ($view) {
             $view->with('members', Member::orderBy('first_name')->get());
         });
