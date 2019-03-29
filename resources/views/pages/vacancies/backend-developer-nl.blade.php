@@ -32,7 +32,7 @@
                         <div class="mt-16">
                             <h3 class="title">Je werkt aan</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Web apps voor Tomorrowland en internationale namen als Krauthammer, Mutsy of Martin Garrix</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Web apps voor internationale namen als Krauthammer, Mutsy of Martin Garrix</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Publieke sites voor de Waaslandhaven, Gemeente Hemiksem of Vrijwilligerswerk Vlaanderen</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Propere websites voor Wim Delvoye, META architecten of ArtAssistant</li>
                             </ul>
