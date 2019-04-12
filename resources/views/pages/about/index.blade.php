@@ -8,7 +8,8 @@
 
     @include('pages.about.partials.banner')
 
-    <div class="mt-8 section-group section-fade">
+    <div class="mt-4 section-group section-fade">
+        @include('pages.vacancies.partials.jobs')
         @include('pages.about.partials.team')
     </div>
 

@@ -23,6 +23,8 @@
                 <a class="link-underline link-blue" href="{{ route('vacancies.internship') }}">
                     Apply for an internship
                 </a>
+                <br>
+    <span class="text-xs text-grey">Antwerp</span>
             </p>
         </div>
     </div>
