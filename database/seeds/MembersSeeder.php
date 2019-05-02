@@ -87,6 +87,15 @@ class MembersSeeder extends Seeder
             'twitter' => 'rubenvanassche',
             'public_email' => true,
         ],
+
+        'rias@spatie.be' => [
+            'first_name' => 'Rias',
+            'last_name' => 'Van der Veken',
+            'role' => 'Backend developer',
+            'description' => 'Another member of the Full Stack Antwerp family in our midst: Rias brings Laravel & CMS expertise to the backend table —with a smile.',
+            'twitter' => 'riasvdv',
+            'website' => 'https://rias.be',
+        ],
     ];
 
     public function run()
