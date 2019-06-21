@@ -14,7 +14,7 @@
                     </div>
                 </h3>
                 <p class="text-lg">
-                    For Martin Garrix' record label <a href="https://stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">stmpdcrds.com</a> we made a workflow application to streamline their demo track influx.
+                    For Martin Garrix' record label <a href="https://stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">stmpdrcrds.com</a> we made a workflow application to streamline their demo track influx.
                     <br>
                     Crew members can listen and evaluate SoundCloud tracks by upcoming talents, submitted to the application.
                 </p>
