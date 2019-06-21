@@ -1,4 +1,6 @@
 @setup
+require __DIR__.'/vendor/autoload.php';
+
 $server = "spatie.be";
 $userAndServer = 'forge@'. $server;
 $repository = "spatie/spatie.be";
