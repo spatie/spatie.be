@@ -3942,20 +3942,20 @@
         },
         {
             "name": "spatie/db-dumper",
-            "version": "2.14.1",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/db-dumper.git",
-                "reference": "c9b699c74b56adeff75da76cef8a82a8529765ad"
+                "reference": "eec21c55012b02fb8453c9929fa1c3150ca184ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/c9b699c74b56adeff75da76cef8a82a8529765ad",
-                "reference": "c9b699c74b56adeff75da76cef8a82a8529765ad",
+                "url": "https://api.github.com/repos/spatie/db-dumper/zipball/eec21c55012b02fb8453c9929fa1c3150ca184ac",
+                "reference": "eec21c55012b02fb8453c9929fa1c3150ca184ac",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.3",
+                "php": "^7.1",
                 "symfony/process": "^4.2"
             },
             "require-dev": {
@@ -3988,7 +3988,7 @@
                 "mysqldump",
                 "spatie"
             ],
-            "time": "2019-05-10T09:22:23+00:00"
+            "time": "2019-04-17T07:03:19+00:00"
         },
         {
             "name": "spatie/image",
