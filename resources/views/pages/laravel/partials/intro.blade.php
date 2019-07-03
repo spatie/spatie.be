@@ -3,7 +3,7 @@
         <div class="sm:spanx-3">
             <div class="markup links-underline links-blue">
                 <div class="flex justify-start z-10 | sm:justify-end sm:-mr-8">
-                    <div class="illustration-svg ">
+                    <div class="illustration-svg">
                         <div class="rounded-full w-16 h-16 overflow-hidden mt-4 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:w-32 sm:h-32 ">
                             <div class="w-2/3">
                                 @svg('laravel')
@@ -21,18 +21,27 @@
         </div>
         <div class="sm:spanx-3">
             <div class="markup links-underline links-blue">
-                <div class="flex justify-start | sm:-ml-8">
-                    <div class="illustration-svg ">
-                        <div class="rounded-full w-16 h-16 overflow-hidden mt-4 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:w-32 sm:h-32 ">
-                            <div class="w-2/3">
-                                @svg('vue')
+                <div class="flex justify-start | sm:-ml-2">
+                    <div class="flex sm:flex-col">
+                        <div class="illustration-svg">
+                            <div class="rounded-full w-16 h-16 overflow-hidden mt-4 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:w-18 sm:h-18 ">
+                                <div class="w-2/3">
+                                    @svg('vue')
+                                </div>
+                            </div>
+                        </div>
+                        <div class="illustration-svg">
+                            <div class="rounded-full w-16 h-16 overflow-hidden mt-4 -ml-2 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:-mt-4 sm:ml-0 sm:w-18 sm:h-18 ">
+                                <div class="w-2/3">
+                                    @svg('react')
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <h3 class="title-sm mt-4 | sm:mt-8">Vue.js</h3>
+                <h3 class="title-sm mt-4 | sm:mt-8">React & Vue.js</h3>
                 <p class="text-lg">
-                    <a href="https://vuejs.org">Vue.js</a> is our frontend framework of choice. We use it to render UIs &amp; dynamic data in your browser. It's comparable to React, but has a larger foot in the door in Laravel projects.
+                    <a href="https://vuejs.org">Vue.js</a> shines in Laravel apps that need that extra sprinkle of interactivity, while <a href="https://reactjs.org">React</a> is our weapon of choice for highly interactive web and mobile applications.
                 </p>
             </div>
         </div>
