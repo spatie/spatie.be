@@ -38,7 +38,7 @@ class MembersSeeder extends Seeder
             'role' => 'Backend developer',
             'description' => 'Freek is our godfather of backend code. You are not into Laravel if this face doesn\'t ring a bell to you.',
             'twitter' => 'freekmurze',
-            'website' => 'https://murze.be',
+            'website' => 'https://freek.dev',
             'founder' => true,
         ],
 
