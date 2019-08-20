@@ -5,7 +5,7 @@
                 <div class="flex justify-start z-10 | sm:justify-end sm:-mr-8">
                     <div class="illustration-svg">
                         <div class="rounded-full w-16 h-16 overflow-hidden mt-4 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:w-32 sm:h-32 ">
-                            <div class="w-2/3">
+                            <div class="w-2/3" style="transform: translateX(3%) translateY(4%)">
                                 @svg('laravel')
                             </div>
                         </div>
