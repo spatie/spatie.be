@@ -1,7 +1,7 @@
 <section id="portfolio" class="section">
     <div class="wrap-8 section">
         <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
-            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com">
+            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com">
                 {{ image('portfolio/flare.jpg') }}
             </a>
         </div>
