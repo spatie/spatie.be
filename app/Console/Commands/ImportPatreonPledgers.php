@@ -20,15 +20,10 @@ class ImportPatreonPledgers extends Command
     /** @var \App\Services\Patreon\Patreon */
     protected $patreon;
 
-    public function __construct(Patreon $patreon)
+    public function handle(Patreon $patreon)
     {
         $this->patreon = $patreon;
 
-        parent::__construct();
-    }
-
-    public function handle()
-    {
         $this->info('Importing pledgers from Patreon...');
 
         $this->removePreviousPledgers();

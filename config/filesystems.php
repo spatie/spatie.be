@@ -43,6 +43,11 @@ return [
 
     'disks' => [
 
+        'backups' => [
+            'driver' => 'local',
+            'root' => storage_path('app/backups'),
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),
@@ -64,6 +69,12 @@ return [
             'url' => env('AWS_URL'),
         ],
 
+        'medialibrary' => [
+            'driver' => 'local',
+            'root' => public_path('images/medialibrary'),
+            'url' => '/images/medialibrary',
+            'visibility' => 'public',
+        ]
     ],
 
 ];
