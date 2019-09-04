@@ -34,7 +34,6 @@
         "spatie/laravel-cors": "^1.6",
         "spatie/laravel-medialibrary": "^7.12",
         "spatie/laravel-menu": "^3.4",
-        "spatie/laravel-responsecache": "^6.2",
         "spatie/laravel-tail": "^3.3",
         "spatie/packagist-api": "^1.0",
         "spatie/schema-org": "^2.0",
@@ -90,7 +89,10 @@
     "config": {
         "preferred-install": "dist",
         "sort-packages": true,
-        "optimize-autoloader": true
+        "optimize-autoloader": true,
+        "platform": {
+            "php": "7.2.1"
+        }
     },
     "extra": {
         "laravel": {

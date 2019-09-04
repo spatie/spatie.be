@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "411dfc0c58c7ab380073614b4b78fe73",
+    "content-hash": "50f1e50f300f72ffbd4b66eb88986b8c",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -4695,70 +4695,6 @@
             "time": "2019-09-03T17:39:24+00:00"
         },
         {
-            "name": "spatie/laravel-responsecache",
-            "version": "6.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-responsecache.git",
-                "reference": "0d0a5c86619215f5d59aeadf14a6cfb4b4bcfbef"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-responsecache/zipball/0d0a5c86619215f5d59aeadf14a6cfb4b4bcfbef",
-                "reference": "0d0a5c86619215f5d59aeadf14a6cfb4b4bcfbef",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "~5.7.0|~5.8.0|^6.0",
-                "nesbot/carbon": "~1.19 || ^2.0",
-                "php": "^7.3"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "~3.7.0|~3.8.0|^4.0",
-                "phpunit/phpunit": "^7.0|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\ResponseCache\\ResponseCacheServiceProvider"
-                    ],
-                    "aliases": {
-                        "ResponseCache": "Spatie\\ResponseCache\\Facades\\ResponseCache"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\ResponseCache\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Speed up a Laravel application by caching the entire response",
-            "homepage": "https://github.com/spatie/laravel-responsecache",
-            "keywords": [
-                "cache",
-                "laravel",
-                "laravel-responsecache",
-                "performance",
-                "response",
-                "spatie"
-            ],
-            "time": "2019-09-02T06:43:32+00:00"
-        },
-        {
             "name": "spatie/laravel-tail",
             "version": "3.3.0",
             "source": {
@@ -9189,5 +9125,8 @@
     "platform": {
         "php": "^7.2"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "platform-overrides": {
+        "php": "7.2.1"
+    }
 }

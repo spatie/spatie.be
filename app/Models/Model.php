@@ -11,6 +11,7 @@ abstract class Model extends BaseModel
 
     public static function boot()
     {
+        /*
         static::creating(function () {
             ResponseCache::clear();
         });
@@ -22,6 +23,7 @@ abstract class Model extends BaseModel
         static::deleting(function () {
             ResponseCache::clear();
         });
+        */
 
         parent::boot();
     }
