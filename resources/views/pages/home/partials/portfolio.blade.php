@@ -1,7 +1,8 @@
 <section id="portfolio" class="section">
     <div class="wrap-8 section">
         <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
-            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com">
+            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
+            rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flare.jpg') }}
             </a>
         </div>
@@ -17,7 +18,7 @@
                 <p class="text-lg">
                     Ignition is a free and shareable error page that ships with Laravel 6 and up. It's built to keep you
                     focused on finding a solution.
-                    It also couples with an online service —Flare— that tracks production errors and let you work in
+                    It also couples with an online service —Flare— that tracks production errors and lets you work in
                     team to fix them.
                 </p>
                 <ul class="text-lg mt-8">
@@ -31,7 +32,8 @@
 
     <div class="wrap-8 grid-flow-dense section">
         <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
-            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com">
+            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
+            rel="nofollow noreferrer noopener">
                 {{ image('portfolio/stmpd.jpg') }}
             </a>
         </div>
