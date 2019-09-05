@@ -30,4 +30,35 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'github' => [
+        'token' => env('GITHUB_TOKEN'),
+    ],
+    'rss' => [
+        'https://freek.dev/feed/originals',
+        'https://sebastiandedeyne.com/feed/articles',
+        'https://www.stitcher.io/rss',
+        'https://alexvanderbist.com/feed',
+    ],
+    'instagram' => [
+        'token' => env('INSTAGRAM_TOKEN'),
+    ],
+    'patreon' => [
+        'id' => env('PATREON_CLIENT_ID'),
+        'secret' => env('PATREON_SECRET'),
+    ],
+
+    'twitter' => [
+        'consumer_key' => env('TWITTER_CONSUMER_KEY'),
+        'consumer_secret' => env('TWITTER_CONSUMER_SECRET'),
+        'access_token' => env('TWITTER_ACCESS_TOKEN'),
+        'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
+    ],
+    'google_api' => [
+        'key' => env('GOOGLE_API_KEY'),
+    ],
+
+    'github' => [
+        'token' => env('GITHUB_TOKEN'),
+    ],
+
 ];
