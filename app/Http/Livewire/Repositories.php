@@ -5,7 +5,6 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Repository;
 use Illuminate\Support\Collection;
-use App\Http\Resources\RepositoryResource;
 
 class Repositories extends Component
 {
@@ -27,8 +26,7 @@ class Repositories extends Component
     public function render()
     {
         return view('livewire.repositories', [
-            'repositories' => RepositoryResource::collection($this->getRepositories())
-                ->toArray(request()),
+            'repositories' => $this->getRepositories(),
         ]);
     }
 

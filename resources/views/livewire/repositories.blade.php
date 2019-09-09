@@ -33,32 +33,32 @@
                 <div class="cells" style="--cols: 3fr 3fr 1fr">
                     <div class="cell-l">
                         <div>
-                            <a class="font-sans-bold link-underline link-blue" href="{{ $repository['url'] }}" target="_blank" rel="nofollow noreferrer noopener">
-                                {{ $repository['name'] }}
+                            <a class="font-sans-bold link-underline link-blue" href="{{ $repository->url }}" target="_blank" rel="nofollow noreferrer noopener">
+                                {{ $repository->name }}
                             </a>
                         </div>
                         <div class="text-xs mt-2 text-grey">
-                            @if($repository['language'])
+                            @if($repository->language)
                                 <span class="font-bold">
-                                    {{ $repository['language'] }}
+                                    {{ $repository->language }}
                                     <span class="char-separator">•</span>
                                 </span>
                             @endif
-                            @if($repository['download_count'])
+                            @if($repository->download_count)
                                 <span>
-                                    {{ $repository['formatted_download_count'] }}
+                                    {{ number_format($repository->stars, 0, '.', ' ') }}
                                     <span class="icon fill-grey"><ArrowToBottomIcon /></span>
                                     <span class="char-separator">•</span>
                                 </span>
                             @endif
-                            {{ $repository['formatted_star_count'] }} <span class="icon fill-grey"><StarIcon /></span>
-                            @if($repository['has_issues'])
-                                <a href="{{ $repository['issues_url'] }}" target="_blank" rel="nofollow noreferrer noopener"
+                            {{ number_format($repository->downloads, 0, '.', ' ') }} <span class="icon fill-grey"><StarIcon /></span>
+                            @if($repository->has_issues)
+                                <a href="{{ $repository->issues_url }}" target="_blank" rel="nofollow noreferrer noopener"
                                     class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
                                     easy issues
                                 </a>
                             @endif
-                            @if($repository['is_new'])
+                            @if($repository->is_new)
                                 <span class="bg-gold-lightest text-gold-darkest rounded-full px-2 ml-2">
                                     new
                                 </span>
@@ -66,9 +66,9 @@
                         </div>
                     </div>
                     <div class="cell">
-                        {{ $repository['description'] }}
+                        {{ $repository->description }}
                         <div class="text-xs mt-2 text-grey">
-                            @foreach($repository['topics'] as $topic)
+                            @foreach($repository->topics as $topic)
                                 <span>
                                     {{ $topic }}
                                     @unless($loop->last)
@@ -79,14 +79,14 @@
                         </div>
                     </div>
                     <div class="cell-r mt-4 flex flex-col justify-center | md:mt-0 md:grid-text-right">
-                        @if($repository['blogpost_url'])
-                            <a href="{{ $repository['blogpost_url'] }}" target="_blank" rel="nofollow noreferrer noopener"
+                        @if($repository->blogpost_url)
+                            <a href="{{ $repository->blogpost_url }}" target="_blank" rel="nofollow noreferrer noopener"
                                 class="link-underline link-grey text-xs">
                                 Introduction
                             </a>
                         @endif
-                        @if($repository['documentation_url'])
-                            <a href="{{ $repository['documentation_url'] }}" target="_blank" rel="nofollow noreferrer noopener"
+                        @if($repository->documentation_url)
+                            <a href="{{ $repository->documentation_url }}" target="_blank" rel="nofollow noreferrer noopener"
                                 class="link-underline link-grey text-xs">
                                 Documentation
                             </a>

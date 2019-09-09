@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\RepositoryResource;
 use App\Models\Contributor;
 use App\Models\Issue;
 use App\Models\PatreonPledger;
-use App\Models\Repository;
 
 class OpenSourceController extends Controller
 {
