@@ -34,7 +34,7 @@ class ImportRandomContributor extends Command
         $contributor = Contributor::create([
             'username' => $contributorAttributes['login'],
             'avatar_url' => $contributorAttributes['avatar_url'],
-            'name' => $user['name'],
+            'name' => $user['name'] ?? 'John Doe',
             'repository_url' => $repository->url,
             'repository_name' => $repository->name,
         ]);
