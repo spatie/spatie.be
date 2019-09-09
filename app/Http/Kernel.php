@@ -25,7 +25,7 @@ class Kernel extends HttpKernel
 
         'admin' => [
             \App\Http\Middleware\VerifyCsrfToken::class,
-            \Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
+            //\Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
         ],
 
         'api' => [
