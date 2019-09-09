@@ -13,7 +13,14 @@
             <div class="wrap">
                 <h3 class="title-sm text-grey mb-4">Our current favorites</h3>
             </div>
-            <div data-repositories="{{ json_encode($repositories) }}"></div>
+
+            @livewire('repositories', [
+                'type' => 'packages',
+                'highlighted' => true,
+                'filterable' => false,
+                'sort' => 'stars',
+            ])
+
             <div class="wrap pt-8">
                 <a href="{{ route('open-source.packages') }}" class="link-underline link-blue text-xl">Search all packages…</a>
             </div>

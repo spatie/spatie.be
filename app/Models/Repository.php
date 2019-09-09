@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use BadMethodCallException;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use Illuminate\Database\Eloquent\Builder;
@@ -80,41 +81,45 @@ class Repository extends Model
         $builder->where('visible', true);
     }
 
-    public static function getHighlightedPackages(): Collection
+    public function scopePackages(Builder $builder)
     {
-        $newRepositories = Repository::visible()
-            ->where('type', RepositoryType::PACKAGE)
-            ->where('new', true)
-            ->get();
-
-        $highlightedRepositories = Repository::visible()
-            ->where('type', RepositoryType::PACKAGE)
-            ->where('highlighted', true)
-            ->whereNotIn('id', $newRepositories->pluck('id')->toArray())
-            ->get();
-
-        return $newRepositories->concat($highlightedRepositories);
+        $builder->where('type', RepositoryType::PACKAGE);
     }
 
-    public static function getAllPackages(): Collection
+    public function scopeProjects(Builder $builder)
     {
-        return Repository::visible()
-            ->where('type', RepositoryType::PACKAGE)
-            ->get();
+        $builder->where('type', RepositoryType::PROJECT);
     }
 
-    public static function getAllProjects(): Collection
+    public function scopeHighlighted(Builder $builder)
     {
-        $newRepositories = Repository::visible()
-            ->where('type', RepositoryType::PROJECT)
-            ->where('new', true)
-            ->get();
+        $builder->where('highlighted', true);
+    }
 
-        $highlightedRepositories = Repository::visible()
-            ->where('type', RepositoryType::PROJECT)
-            ->whereNotIn('id', $newRepositories->pluck('id')->toArray())
-            ->get();
+    public function scopeSearch(Builder $builder, string $search)
+    {
+        if (!$search) {
+            return;
+        }
 
-        return $newRepositories->concat($highlightedRepositories);
+        $builder->where('name', 'LIKE', "%{$search}%");
+    }
+
+    public function scopeApplySort(Builder $builder, string $sort)
+    {
+        if (!$sort) {
+            return;
+        }
+
+        collect(['name', 'stars', 'repository_created_at'])->first(function (string $validSort) use ($sort) {
+            return ltrim($sort, '-') === $validSort;
+        }, function () use ($sort) {
+            throw new BadMethodCallException('Not allowed to sort by `' . $sort . '`');
+        });
+
+        $builder->orderBy(
+            ltrim($sort, '-'),
+            Str::startsWith($sort, '-') ? 'desc' : 'asc'
+        );
     }
 }

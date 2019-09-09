@@ -27,6 +27,10 @@
 
     @include('layout.partials.footer')
 
+    @if($livewire ?? false)
+        @livewireAssets
+    @endif
+
     @yield('twitterTracking')
 
     {!! schema()->localBusiness() !!}
