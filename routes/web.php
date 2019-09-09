@@ -28,6 +28,12 @@ Route::prefix('vacancies')->group(function () {
     Route::view('internships', 'pages.vacancies.internship')->name('vacancies.internship');
 
     Route::get('{slug}', function ($slug) {
+        $view = "pages.vacancies.{$slug}";
+
+        if (!view()->exists($view)) {
+            abort(404);
+        }
+
         return view("pages.vacancies.{$slug}");
     })->name('vacancies.show');
 });
