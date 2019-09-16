@@ -38,6 +38,7 @@ return [
         'https://sebastiandedeyne.com/feed/articles',
         'https://www.stitcher.io/rss',
         'https://alexvanderbist.com/feed',
+        'https://rias.be/feed',
     ],
     'instagram' => [
         'token' => env('INSTAGRAM_TOKEN'),
