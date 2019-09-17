@@ -14,11 +14,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('import:random-contributor')->hourly();
         $schedule->command('import:packagist-downloads')->hourly();
         $schedule->command('import:github-repositories')->daily();
-        $schedule->command('import:patreon-pledgers')->daily();
+        // $schedule->command('import:patreon-pledgers')->daily();
     }
 
     protected function commands()
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
     }
 }

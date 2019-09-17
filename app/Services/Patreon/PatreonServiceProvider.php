@@ -9,17 +9,15 @@ class PatreonServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        $this->app->singleton(Patreon::class, function () {
-            /*
-            $authenticator = new PatreonAuthenticator(config('services.patreon.id'), config('services.patreon.secret'));
+        // $this->app->singleton(Patreon::class, function () {
+        //     $authenticator = new PatreonAuthenticator(config('services.patreon.id'), config('services.patreon.secret'));
 
-            $tokens = $authenticator->autoRefresh();
+        //     $tokens = $authenticator->autoRefresh();
 
-            $client = $this->buildClient($tokens['access_token']);
+        //     $client = $this->buildClient($tokens['access_token']);
 
-            return new Patreon($client);
-            */
-        });
+        //     return new Patreon($client);
+        // });
     }
 
     protected function buildClient($accessToken): Client
