@@ -5,7 +5,7 @@
             just proven expertise
         </h1>
         <p class="banner-intro">
-            We craft websites &amp; web applications <br>using Laravel &amp; Vue
+            We craft websites &amp; web applications <br>using Laravel, React &amp; Vue
         </p>
     </div>
 </section>
