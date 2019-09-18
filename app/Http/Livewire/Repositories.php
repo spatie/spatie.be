@@ -42,11 +42,9 @@ class Repositories extends Component
     {
         $query = Repository::visible();
 
-        if ($this->type === 'projects') {
-            $query->projects();
-        } else {
-            $query->packages();
-        }
+        $this->type === 'projects'
+            ? $query->projects()
+            : $query->packages();
 
         if ($this->highlighted) {
             $query->highlighted();
