@@ -27,9 +27,7 @@
 
     @include('layout.partials.footer')
 
-    @if($livewire ?? false)
-        @livewireAssets
-    @endif
+    @livewireAssets
 
     @yield('twitterTracking')
 

@@ -2,7 +2,6 @@
     'background' => '/backgrounds/open-source.jpg',
     'title' => 'Packages',
     'description' => 'Search in our massive list of open source packages for Laravel & JavaScript.',
-    'livewire' => true,
 ])
 
 @section('content')
