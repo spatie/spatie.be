@@ -177,7 +177,6 @@ return [
         App\Providers\SessionServiceProvider::class,
         App\Services\GitHub\GitHubServiceProvider::class,
         App\Services\Twitter\TwitterServiceProvider::class,
-        App\Services\Patreon\PatreonServiceProvider::class,
     ],
 
     /*
