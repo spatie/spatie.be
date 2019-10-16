@@ -47,7 +47,7 @@
                             @if($repository->downloads)
                                 <span>
                                     {{ number_format($repository->stars, 0, '.', ' ') }}
-                                    <span class="icon fill-grey" style="transform: translateY(-2px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
+                                    <span class="icon fill-grey" style="transform: translateY(-1px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
                                     <span class="char-separator">•</span>
                                 </span>
                             @endif
