@@ -8,12 +8,12 @@ use App\Models\PatreonPledger;
 
 class OpenSourceController extends Controller
 {
-    /** @var \App\Models\PatreonPledger */
-    protected $patreonPledger;
+    /** @var \Illuminate\Support\Collection */
+    protected $patreonPledgers;
 
     public function __construct()
     {
-        $this->patreonPledger = PatreonPledger::inRandomOrder()->first();
+        $this->patreonPledgers = PatreonPledger::inRandomOrder()->get();
     }
 
     public function index()
@@ -25,21 +25,21 @@ class OpenSourceController extends Controller
         return view('pages.open-source.index', [
             'issues' => $issues,
             'contributor' => $contributor,
-            'patreonPledger' => $this->patreonPledger,
+            'patreonPledgers' => $this->patreonPledgers,
         ]);
     }
 
     public function packages()
     {
         return view('pages.open-source.packages', [
-            'patreonPledger' => $this->patreonPledger,
+            'patreonPledgers' => $this->patreonPledgers,
         ]);
     }
 
     public function projects()
     {
         return view('pages.open-source.projects', [
-            'patreonPledger' => $this->patreonPledger,
+            'patreonPledgers' => $this->patreonPledgers,
         ]);
     }
 }
