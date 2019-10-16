@@ -47,11 +47,11 @@
                             @if($repository->download_count)
                                 <span>
                                     {{ number_format($repository->stars, 0, '.', ' ') }}
-                                    <span class="icon fill-grey"><ArrowToBottomIcon /></span>
+                                    <span class="icon fill-grey" style="transform: translateY(-2px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
                                     <span class="char-separator">•</span>
                                 </span>
                             @endif
-                            {{ number_format($repository->downloads, 0, '.', ' ') }} <span class="icon fill-grey"><StarIcon /></span>
+                            {{ number_format($repository->downloads, 0, '.', ' ') }} <span class="icon fill-grey" style="transform: translateY(-2px)">{{ svg('icons/fal-star') }}</span>
                             @if($repository->has_issues)
                                 <a href="{{ $repository->issues_url }}" target="_blank" rel="nofollow noreferrer noopener"
                                     class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
