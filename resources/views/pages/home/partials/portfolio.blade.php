@@ -1,13 +1,42 @@
 <section id="portfolio" class="section">
     <div class="wrap-8 section">
         <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
+            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank"
+            rel="nofollow noreferrer noopener">
+                {{ image('portfolio/mailcoach.jpg') }}
+            </a>
+        </div>
+        <div class="sm:spanx-3 sm:startx-5 | self-center">
+            <div class="markup links-blue links-underline">
+                <h3 class="title">
+                    Newsletter software and package
+                    <div class="title-subtext text-pink-dark">
+                        <span class="font-normal">Work</span> in progress
+                    </div>
+                </h3>
+                <p class="text-lg">
+                    Mailcoach is a self-hosted dashboard to setup mailing lists, send out newsletter campaigns and track the success.
+                    It can be used as a separate app or integrated in your own Laravel application, and couples with all email services that support SMTP.
+                    <br>To be launched before the end of the year!
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                            href="https://mailcoach.app" target="_blank"
+                            rel="nofollow noreferrer noopener">mailcoach.app</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap-8 grid-flow-dense section">
+        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
             <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
             rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flare.jpg') }}
             </a>
         </div>
-        <div class="sm:spanx-3 sm:startx-5 | self-center">
-            <div class="markup links-blue links-underline">
+        <div class="sm:startx-2 sm:spanx-3 | self-center">
+            <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Ignition + Flare
                     <div class="title-subtext text-pink-dark">
@@ -30,18 +59,18 @@
         </div>
     </div>
 
-    <div class="wrap-8 grid-flow-dense section">
-        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
+    <div class="wrap-8 section">
+        <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
             <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
             rel="nofollow noreferrer noopener">
                 {{ image('portfolio/stmpd.jpg') }}
             </a>
         </div>
-        <div class="sm:startx-2 sm:spanx-3 | self-center">
-            <div class="markup links-blue links-underline | sm:grid-text-right">
+        <div class="sm:spanx-3 sm:startx-5 | self-center">
+            <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Soundcloud Demo Platform
-                    <div class="title-subtext text-green-dark">
+                    <div class="title-subtext text-pink-dark">
                         <span class="font-normal">Using</span> Soundcloud, Laravel, Vue
                     </div>
                 </h3>
@@ -54,7 +83,7 @@
                     application.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-green-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://demo.stmpdrcrds.com" target="_blank"
                             rel="nofollow noreferrer noopener">demo.stmpdrcrds.com</a></li>
                 </ul>
@@ -62,15 +91,15 @@
         </div>
     </div>
 
-    <div class="wrap-8 section">
-        <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
+    <div class="wrap-8 grid-flow-dense section">
+        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
             <a href="https://my.artassistant.com" target="_blank" rel="nofollow noreferrer noopener"
                 class="illustration is-right h-full" title="my.artassistant.com">
                 {{ image('portfolio/artassistant.jpg') }}
             </a>
         </div>
-        <div class="sm:spanx-3 sm:startx-5 | self-center">
-            <div class="markup links-blue links-underline">
+        <div class="sm:startx-2 sm:spanx-3 | self-center">
+            <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Art Transaction Platform
                     <div class="title-subtext text-pink-dark">
