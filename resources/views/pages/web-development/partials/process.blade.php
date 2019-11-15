@@ -59,7 +59,7 @@
         <div class="sm:spanx-3 | md:spanx-2 md:startx-1 md:starty-7">
             <h3 class="title-sm">7. Follow up</h3>
             <p class="">
-                Accuse us from job protection, but our most successful projects are never finished. Maintenance and further improvements are key for any online project.
+                Accuse us of job protection, but our most successful projects are never finished. Maintenance and further improvements are key for any online project.
             </p>
             <div class="hidden | md:block absolute pin-b w-full" style="right: 100%;">
                 <img src="/images/process-06.svg" class="illustration-svg w-full">
