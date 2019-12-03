@@ -42,9 +42,9 @@
             "authors": [
                 {
                     "name": "Abraham Williams",
-                    "role": "Developer",
                     "email": "abraham@abrah.am",
-                    "homepage": "https://abrah.am"
+                    "homepage": "https://abrah.am",
+                    "role": "Developer"
                 }
             ],
             "description": "The most popular PHP library for use with the Twitter OAuth REST API.",
@@ -360,12 +360,12 @@
             "version": "v0.3.5",
             "source": {
                 "type": "git",
-                "url": "https://github.com/calebporzio/livewire.git",
+                "url": "https://github.com/livewire/livewire.git",
                 "reference": "ee87e4d7af339f62ffac43622910813e563386f9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/calebporzio/livewire/zipball/ee87e4d7af339f62ffac43622910813e563386f9",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/ee87e4d7af339f62ffac43622910813e563386f9",
                 "reference": "ee87e4d7af339f62ffac43622910813e563386f9",
                 "shasum": ""
             },
@@ -406,6 +406,7 @@
                 }
             ],
             "description": "Build and test rich client-side functionality: with only backend code.",
+            "abandoned": "livewire/livewire",
             "time": "2019-09-11T15:47:11+00:00"
         },
         {
@@ -791,6 +792,7 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "homepage": "https://github.com/container-interop/container-interop",
+            "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
         },
         {
@@ -1609,8 +1611,8 @@
             "authors": [
                 {
                     "name": "Filipe Dobreira",
-                    "role": "Developer",
-                    "homepage": "https://github.com/filp"
+                    "homepage": "https://github.com/filp",
+                    "role": "Developer"
                 }
             ],
             "description": "php error handling for cool kids",
@@ -3127,14 +3129,14 @@
             "authors": [
                 {
                     "name": "Paul Annesley",
-                    "role": "Developer",
                     "email": "paul@annesley.cc",
-                    "homepage": "http://paul.annesley.cc/"
+                    "homepage": "http://paul.annesley.cc/",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sam Mousa",
-                    "role": "Maintainer",
-                    "email": "sam@mousa.nl"
+                    "email": "sam@mousa.nl",
+                    "role": "Maintainer"
                 }
             ],
             "description": "PHP client for beanstalkd queue",
@@ -4193,18 +4195,18 @@
             "authors": [
                 {
                     "name": "Geert Bergman",
-                    "role": "Project Author",
-                    "homepage": "http://www.scrivo.org/"
+                    "homepage": "http://www.scrivo.org/",
+                    "role": "Project Author"
                 },
                 {
                     "name": "Vladimir Jimenez",
-                    "role": "Contributor",
-                    "homepage": "https://allejo.io"
+                    "homepage": "https://allejo.io",
+                    "role": "Contributor"
                 },
                 {
                     "name": "Martin Folkers",
-                    "role": "Contributor",
-                    "homepage": "https://twobrain.io"
+                    "homepage": "https://twobrain.io",
+                    "role": "Contributor"
                 }
             ],
             "description": "Server side syntax highlighter that supports 185 languages. It's a PHP port of highlight.js",
@@ -4344,9 +4346,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Dump databases",
@@ -4400,9 +4402,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Manipulate images with an expressive API",
@@ -4450,9 +4452,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Easily optimize images using PHP",
@@ -4832,9 +4834,9 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "A trait to dynamically add methods to a class",
@@ -4927,15 +4929,15 @@
             "authors": [
                 {
                     "name": "Freek Van der Herten",
-                    "role": "Developer",
                     "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 },
                 {
                     "name": "Jolita Grazyte",
-                    "role": "Developer",
                     "email": "jolita@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Fetch package info from Packagist",
@@ -5038,15 +5040,15 @@
             "authors": [
                 {
                     "name": "Sebastian De Deyne",
-                    "role": "Developer",
                     "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 },
                 {
                     "name": "Tom Witkowski",
-                    "role": "Developer",
                     "email": "dev.gummibeer@gmail.com",
-                    "homepage": "https://gummibeer.de"
+                    "homepage": "https://gummibeer.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A fluent builder Schema.org types and ld+json generator",
@@ -5138,9 +5140,9 @@
             "authors": [
                 {
                     "name": "Sebastian De Deyne",
-                    "role": "Developer",
                     "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be"
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
                 }
             ],
             "description": "Parse, build and manipulate URL's",
@@ -5826,16 +5828,16 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v4.3.4",
+            "version": "v4.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
-                "reference": "987a05df1c6ac259b34008b932551353f4f408df"
+                "reference": "010cc488e56cafe5f7494dea70aea93100c234df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/mime/zipball/987a05df1c6ac259b34008b932551353f4f408df",
-                "reference": "987a05df1c6ac259b34008b932551353f4f408df",
+                "url": "https://api.github.com/repos/symfony/mime/zipball/010cc488e56cafe5f7494dea70aea93100c234df",
+                "reference": "010cc488e56cafe5f7494dea70aea93100c234df",
                 "shasum": ""
             },
             "require": {
@@ -5843,14 +5845,17 @@
                 "symfony/polyfill-intl-idn": "^1.10",
                 "symfony/polyfill-mbstring": "^1.0"
             },
+            "conflict": {
+                "symfony/mailer": "<4.4"
+            },
             "require-dev": {
                 "egulias/email-validator": "^2.1.10",
-                "symfony/dependency-injection": "~3.4|^4.1"
+                "symfony/dependency-injection": "^3.4|^4.1|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "4.3-dev"
+                    "dev-master": "4.4-dev"
                 }
             },
             "autoload": {
@@ -5881,7 +5886,7 @@
                 "mime",
                 "mime-type"
             ],
-            "time": "2019-08-22T08:16:11+00:00"
+            "time": "2019-11-30T08:27:26+00:00"
         },
         {
             "name": "symfony/options-resolver",
@@ -6056,16 +6061,16 @@
         },
         {
             "name": "symfony/polyfill-intl-idn",
-            "version": "v1.12.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-intl-idn.git",
-                "reference": "6af626ae6fa37d396dc90a399c0ff08e5cfc45b2"
+                "reference": "6f9c239e61e1b0c9229a28ff89a812dc449c3d46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/6af626ae6fa37d396dc90a399c0ff08e5cfc45b2",
-                "reference": "6af626ae6fa37d396dc90a399c0ff08e5cfc45b2",
+                "url": "https://api.github.com/repos/symfony/polyfill-intl-idn/zipball/6f9c239e61e1b0c9229a28ff89a812dc449c3d46",
+                "reference": "6f9c239e61e1b0c9229a28ff89a812dc449c3d46",
                 "shasum": ""
             },
             "require": {
@@ -6079,7 +6084,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -6114,20 +6119,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2019-11-27T13:56:44+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
-            "version": "v1.12.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
-                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17"
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/b42a2f66e8f1b15ccf25652c3424265923eb4f17",
-                "reference": "b42a2f66e8f1b15ccf25652c3424265923eb4f17",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/7b4aab9743c30be783b73de055d24a39cf4b954f",
+                "reference": "7b4aab9743c30be783b73de055d24a39cf4b954f",
                 "shasum": ""
             },
             "require": {
@@ -6139,7 +6144,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -6173,20 +6178,20 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2019-11-27T14:18:11+00:00"
         },
         {
             "name": "symfony/polyfill-php72",
-            "version": "v1.12.0",
+            "version": "v1.13.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php72.git",
-                "reference": "04ce3335667451138df4307d6a9b61565560199e"
+                "reference": "66fea50f6cb37a35eea048d75a7d99a45b586038"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/04ce3335667451138df4307d6a9b61565560199e",
-                "reference": "04ce3335667451138df4307d6a9b61565560199e",
+                "url": "https://api.github.com/repos/symfony/polyfill-php72/zipball/66fea50f6cb37a35eea048d75a7d99a45b586038",
+                "reference": "66fea50f6cb37a35eea048d75a7d99a45b586038",
                 "shasum": ""
             },
             "require": {
@@ -6195,7 +6200,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.12-dev"
+                    "dev-master": "1.13-dev"
                 }
             },
             "autoload": {
@@ -6228,7 +6233,7 @@
                 "portable",
                 "shim"
             ],
-            "time": "2019-08-06T08:03:45+00:00"
+            "time": "2019-11-27T13:56:44+00:00"
         },
         {
             "name": "symfony/polyfill-php73",
@@ -6719,8 +6724,8 @@
             "authors": [
                 {
                     "name": "Tijs Verkoyen",
-                    "role": "Developer",
-                    "email": "css_to_inline_styles@verkoyen.eu"
+                    "email": "css_to_inline_styles@verkoyen.eu",
+                    "role": "Developer"
                 }
             ],
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
@@ -7686,18 +7691,18 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Heuer",
-                    "role": "Developer",
-                    "email": "sebastian@phpeople.de"
+                    "email": "sebastian@phpeople.de",
+                    "role": "Developer"
                 },
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "Developer",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "Developer"
                 }
             ],
             "description": "Component for reading phar.io manifest information from a PHP Archive (PHAR)",
@@ -9106,8 +9111,8 @@
             "authors": [
                 {
                     "name": "Arne Blankerts",
-                    "role": "Developer",
-                    "email": "arne@blankerts.de"
+                    "email": "arne@blankerts.de",
+                    "role": "Developer"
                 }
             ],
             "description": "A small library for converting tokenized PHP source code into XML and potentially other formats",
