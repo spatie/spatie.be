@@ -23,6 +23,8 @@ class Repositories extends Component
     /** @var boolean */
     public $highlighted = false;
 
+    protected $updatesQueryString = ['search', 'sort'];
+
     public function render()
     {
         return view('livewire.repositories', [
@@ -35,7 +37,8 @@ class Repositories extends Component
         $this->type = $options['type'] ?? 'packages';
         $this->filterable = $options['filterable'] ?? true;
         $this->highlighted = $options['highlighted'] ?? false;
-        $this->sort = $options['sort'] ?? 'name';
+        $this->sort = request()->query('sort', $options['sort'] ?? 'name');
+        $this->search = request()->query('search', '');
     }
 
     private function getRepositories(): Collection

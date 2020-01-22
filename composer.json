@@ -15,7 +15,7 @@
         "abraham/twitteroauth": "^0.9.2",
         "barryvdh/laravel-debugbar": "^3.0",
         "barryvdh/laravel-ide-helper": "^2.4",
-        "livewire/livewire": "^0.6",
+        "livewire/livewire": "^0.7",
         "doctrine/dbal": "^2.8",
         "facade/ignition": "^1.0",
         "fideloper/proxy": "^4.0",
