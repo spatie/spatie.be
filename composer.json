@@ -15,7 +15,7 @@
         "abraham/twitteroauth": "^0.9.2",
         "barryvdh/laravel-debugbar": "^3.0",
         "barryvdh/laravel-ide-helper": "^2.4",
-        "calebporzio/livewire": "^0.3",
+        "livewire/livewire": "^0.6",
         "doctrine/dbal": "^2.8",
         "facade/ignition": "^1.0",
         "fideloper/proxy": "^4.0",
@@ -47,8 +47,7 @@
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^8.0",
-        "nunomaduro/collision": "^3.0",
-        "facade/ignition": "^1.4"
+        "nunomaduro/collision": "^3.0"
     },
     "autoload": {
         "classmap": [

@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
     <link rel="stylesheet" href="https://cloud.typography.com/6194432/6145752/css/fonts.css">
+    @livewireStyles
 
     @include('layout.partials.favicons')
 
@@ -27,7 +28,7 @@
 
     @include('layout.partials.footer')
 
-    @livewireAssets
+    @livewireScripts
 
     @yield('twitterTracking')
 

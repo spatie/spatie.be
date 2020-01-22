@@ -1,5 +1,5 @@
 <div>
-    @if($filterable)
+    @if($this->filterable)
         <div class="wrap flex justify-center mb-8">
             <input
                 type="search"
@@ -11,10 +11,10 @@
         <div class="wrap">
             <div class="flex items-baseline">
                 <h3 class="title-sm text-grey mb-4">
-                    @if($search)
-                        Filtered {{ $type === 'projects' ? 'Projects' : 'Packages' }}
+                    @if($this->search)
+                        Filtered {{ $this->type === 'projects' ? 'Projects' : 'Packages' }}
                     @else
-                        All {{ $type === 'projects' ? 'Projects' : 'Packages' }}
+                        All {{ $this->type === 'projects' ? 'Projects' : 'Packages' }}
                     @endif
                 </h3>
                 <div class="sort">
