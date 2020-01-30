@@ -6,6 +6,7 @@
     @apply border-2;
     @apply border-white;
     @apply shadow-lg;
+    @apply flex-no-shrink;
 
     & img {
         @apply absolute;
