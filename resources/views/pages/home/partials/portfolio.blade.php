@@ -11,13 +11,12 @@
                 <h3 class="title">
                     Newsletter software and package
                     <div class="title-subtext text-pink-dark">
-                        <span class="font-normal">Work</span> in progress
+                        <span class="font-normal">Including</span> video course
                     </div>
                 </h3>
                 <p class="text-lg">
                     Mailcoach is a self-hosted dashboard to setup mailing lists, send out newsletter campaigns and track the success.
-                    It can be used as a separate app or integrated in your own Laravel application, and couples with all email services that support SMTP.
-                    <br>To be launched before the end of the year!
+                    It can be used as a separate app or integrated in your own Laravel application, and couples with Amazon SES, Mailgun or Sendgrid.
                 </p>
                 <ul class="text-lg mt-8">
                     <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
