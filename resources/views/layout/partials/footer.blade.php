@@ -6,7 +6,7 @@
             <div class="grid gapy-4 text-sm | sm:grid-repeat sm:gapx-8 | md:flex flex-row-reverse justify-between" style="--col-repeat:2;--row-repeat:1;">
                 <address class="grid gapy-4 | sm:gap-0 | md:grid-flow-column md:gapx-8 md:text-right">
                     <div>
-                        <a class="group flex items-end | md:flex-row-reverse" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank" rel="nofollow noreferrer noopener">
+                        <a class="group flex items-start | md:flex-row-reverse" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank" rel="nofollow noreferrer noopener">
                             <span>
                                 Kruikstraat 22, Box 12
                                 <br>
@@ -14,7 +14,7 @@
                                 <br>
                                 Belgium
                             </span>
-                            <span class="icon px-2 fill-grey-lighter group-hover:fill-pink transition-fill transition-fast | print:hidden">
+                            <span class="icon px-1 fill-grey-lighter group-hover:fill-pink transition-fill transition-fast | print:hidden">
                                 {{ svg('icons/fas-map-marker-alt') }}
                             </span>
                         </a>
