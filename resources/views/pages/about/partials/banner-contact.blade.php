@@ -6,7 +6,7 @@
         <br>
         <a class="link link-black" href="#tel">+32 3 292 56 79</a>
     </span>
-    <a class="group block link link-black" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank" rel="noreferrer noopener">
+    <a class="group block link link-black" href="https://goo.gl/maps/A2zoLK3nVF9V8jydA" target="_blank" rel="noreferrer noopener">
             Kruikstraat 22, Box 12
             <br>
             2018 Antwerp
