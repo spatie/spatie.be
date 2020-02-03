@@ -28,9 +28,9 @@
                     <address>
                         E-mail: <a href="mailto:support@spatie.be">support@spatie.be</a><br>
                         +32 3 292 56 79 <br>
-                        Samberstraat 69D<br>
-                        2060 Antwerpen<br>
-                        Belgium<br>
+                        Kruikstraat 22, Box 12<br>
+                        2018 Antwerp<br>
+                        Belgium
                     </address>
                     <p>
                         <strong>Between SPATIE BVBA and the Controller</strong>

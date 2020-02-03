@@ -7,9 +7,11 @@
         <a class="link link-black" href="#tel">+32 3 292 56 79</a>
     </span>
     <a class="group block link link-black" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank" rel="noreferrer noopener">
-            Samberstraat 69D
+            Kruikstraat 22, Box 12
             <br>
-            2060 Antwerp <br>Belgium
+            2018 Antwerp
+            <br>
+            Belgium
             <span class="icon px-2 fill-pink group-hover:opacity-75 transition-fill transition-fast">
                 {{ svg('icons/fas-map-marker-alt') }}
             </span>

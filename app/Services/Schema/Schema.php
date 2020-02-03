@@ -32,7 +32,7 @@ class Schema
             ->addressLocality('Antwerp')
             ->addressRegion('Antwerp')
             ->postalCode(2060)
-            ->streetAddress('Samberstraat 69D')
+            ->streetAddress('Kruikstraat 22 bus 12')
             ->addressCountry('Belgium');
     }
 

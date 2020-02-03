@@ -35,8 +35,8 @@
                     <p>The website spatie.be is an initiative of: </p>
                     <address>
                         SPATIE BVBA<br>
-                        Samberstraat 69D<br>
-                        2060 Antwerpen<br>
+                        Kruikstraat 22, Box 12<br>
+                        2018 Antwerp<br>
                         Belgium<br>
                         E-mail: <a href="mailto:info@spatie.be">info@spatie.be</a><br>
                         Telefoon: +32 3 292 56 79 <br>

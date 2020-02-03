@@ -8,9 +8,11 @@
                     <div>
                         <a class="group flex items-end | md:flex-row-reverse" href="https://goo.gl/maps/Qe39fmR5RTC2" target="_blank" rel="nofollow noreferrer noopener">
                             <span>
-                                Samberstraat 69D
+                                Kruikstraat 22, Box 12
                                 <br>
-                                2060 Antwerp, Belgium
+                                2018 Antwerp
+                                <br>
+                                Belgium
                             </span>
                             <span class="icon px-2 fill-grey-lighter group-hover:fill-pink transition-fill transition-fast | print:hidden">
                                 {{ svg('icons/fas-map-marker-alt') }}
