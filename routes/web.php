@@ -19,7 +19,7 @@ Route::prefix('open-source')->group(function () {
     Route::get('postcards', 'PostcardController@index')->name('open-source.postcards');
     Route::get('packages', 'OpenSourceController@packages')->name('open-source.packages');
     Route::get('projects', 'OpenSourceController@projects')->name('open-source.projects');
-    Route::get('support', 'OpenSourceController@support')->name('open-source.support');
+    Route::get('support-us', 'OpenSourceController@support')->name('open-source.support');
 });
 
 
