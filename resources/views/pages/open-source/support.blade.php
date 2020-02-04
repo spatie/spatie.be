@@ -27,7 +27,7 @@
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     <a href="https://mailcoach.app/register">
                                         Mailcoach.app</a>
-                                    <br><span class="text-base">Self-host your email newsletter campaigns. <br>
+                                    <br><span class="text-base">Self-host your email newsletter campaigns. Includes [a video course](https://mailcoach.app/videos) on how to improve your Laravel skills.<br>
                                         Now for only <strong>$99</strong>.</span>
                                 </li>
                                 <li class="pt-4">
