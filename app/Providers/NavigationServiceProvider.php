@@ -27,7 +27,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('open-source.packages', 'Packages')
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
-                ->route('support', 'Support us')
+                ->route('open-source.support', 'Support us')
                 ->addClass('text-xl leading-loose links-underline links-white')
                 ->setActiveFromRequest('/open-source')
                 ->setActiveClass('font-bold')
