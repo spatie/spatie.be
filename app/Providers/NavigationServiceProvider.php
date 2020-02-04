@@ -27,12 +27,13 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('open-source.packages', 'Packages')
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
+                ->route('support', 'Support us')
                 ->addClass('text-xl leading-loose links-underline links-white')
                 ->setActiveFromRequest('/open-source')
                 ->setActiveClass('font-bold')
                 ->each(function (Link $link) {
                     if ($link->isActive()) {
-                        $link->append('<span class="ml-2 opacity-50 icon fill-white">'.svg('icons/far-angle-right').'</span>');
+                        $link->append('<span class="ml-2 opacity-50 icon fill-white">' . svg('icons/far-angle-right') . '</span>');
                     }
                 });
         });

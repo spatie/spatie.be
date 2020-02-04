@@ -10,9 +10,9 @@
                 </p>
                 <p class="text-lg">
                     With a growing portfolio of {{ App\Models\Repository::count() }} packages, maintaining and supporting all issues and updates has become a substantial portion of our workload.<br>
-                    Reach out and
-                    <a href="https://patreon.com/spatie" target="_blank" rel="noreferrer noopener">support us</a> on Patreon.
-                    <a href="https://patreon.com/spatie" target="_blank" rel="noreferrer noopener"><img class="mt-8 h-10" src="/images/patreon.png"></a>
+                </p>
+                <p class="text-lg">
+                    See how you can <a href="{{ route('support') }}">support us</a>.
                 </p>
             </div>
         </div>
@@ -22,24 +22,4 @@
             </a>
         </div>
     </div>
-    @if(! $patreonPledgers->isEmpty())
-        <div class="wrap pt-16">
-            <p class="text-lg">
-                Following patreons have helped us out in a substantial way.<br>
-            </p>
-        </div>
-        <div class="wrap-6">
-            @foreach($patreonPledgers as $patreonPledger)
-                <div class="sm:spanx-2">
-                    @include('pages.open-source.partials.patreon')
-                </div>
-            @endforeach
-        </div>
-        <div class="wrap">
-            <p class="mt-8 text-xs text-grey links-underline links-grey">
-                Want to be featured on our site as well? Check out our
-                <a href="https://patreon.com/spatie">Patreon campaign</a>.
-            </p>
-        </div>
-    @endif
 </section>

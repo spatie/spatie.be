@@ -10,8 +10,13 @@
 
     & img {
         @apply absolute;
-        @apply w-full;
-        @apply h-full;
+        width: 110%;
+        height: 110%;
+        top: -5%;
+        left: -5%;
+        max-width: none;
         @apply object-fit-cover;
+        object-position: center;
+        @apply rounded-full;
     }
 }

@@ -21,6 +21,9 @@ Route::prefix('open-source')->group(function () {
     Route::get('projects', 'OpenSourceController@projects')->name('open-source.projects');
 });
 
+Route::get('support', 'OpenSourceController@support')->name('support');
+
+
 Route::prefix('vacancies')->group(function () {
     Route::permanentRedirect('free-application', '/vacancies/spontaneous-application');
 

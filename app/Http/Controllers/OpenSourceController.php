@@ -42,4 +42,14 @@ class OpenSourceController extends Controller
             'patreonPledgers' => $this->patreonPledgers,
         ]);
     }
+
+    public function support()
+    {
+        $contributor = Contributor::first();
+
+        return view('pages.open-source.support', [
+            'contributor' => $contributor,
+            'patreonPledgers' => $this->patreonPledgers,
+        ]);
+    }
 }
