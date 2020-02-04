@@ -17,6 +17,7 @@
                 <ul class="mt-4 text-lg bullets bullets-blue links-underline links-black">
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('laravel') }}">Laravel &amp; Vue development</a></li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.index') }}">Open source packages</a></li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('support') }}">Open source packages</a></li>
                 </ul>
             </div>
         </div>
