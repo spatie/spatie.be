@@ -28,6 +28,7 @@
                                     <a href="https://mailcoach.app/register">
                                         Mailcoach.app</a>
                                     <br><span class="text-base">Self-host your email newsletter campaigns. 
+                                        <br>
                                         Includes <a href="https://mailcoach.app/videos">a video course</a> on how to improve your Laravel skills.<br>
                                         Now for only <strong>$99</strong>.</span>
                                 </li>
