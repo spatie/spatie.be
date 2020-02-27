@@ -7,6 +7,9 @@
                     <br>
                    So cool to get snail mail from all over the world!
                 </p>
+                <p>
+                    You can find our address <a href="/about-us">here</a>. Alternatively, you could use <a href="this site">https://spatie.cards</a> to send us a postcard.
+                </p>
             </div>
         </div>
     </div>
