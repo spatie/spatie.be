@@ -50,7 +50,7 @@
                     <h3 class="title">Your helping hand</h3>
                     <p class="text-lg">
                         You can help with our open source efforts in many ways: by resolving <a href='https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aspatie+is%3Apublic+label%3A%22good+first+issue%22'
-                        class="link-black">open issues</a> or just by sending us a <a href="{{ route('open-source.postcards') }}">postcard</a>.
+                        class="link-black">open issues</a> or just by sending us a <a href="{{ route('open-source.postcards') }}">postcard</a>. An easy way to send us a postcard is via <a href="https://spatie.cards">spatie.cards</a>.
                     </p>
                 </div>
 
