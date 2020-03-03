@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use BadMethodCallException;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
+use BadMethodCallException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;

@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Models\Repository;
 use Illuminate\Support\Collection;
+use Livewire\Component;
 
 class Repositories extends Component
 {
