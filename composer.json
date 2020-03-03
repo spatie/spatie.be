@@ -40,7 +40,8 @@
         "spatie/schema-org": "^2.0",
         "spatie/valuestore": "^1.2",
         "zendframework/zend-feed": "^2.9",
-        "zendframework/zend-http": "^2.7"
+        "zendframework/zend-http": "^2.7",
+        "laravel/ui": "^2.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.4",
