@@ -87,7 +87,7 @@
             "@php artisan package:discover"
         ],
         "post-update-cmd": [
-            "@php artisan horizon:assets"
+            "@php artisan horizon:publish"
         ]
     },
     "config": {
