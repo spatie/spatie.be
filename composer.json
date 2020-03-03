@@ -11,20 +11,19 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "php": "^7.2",
+        "php": "^7.4",
         "abraham/twitteroauth": "^0.9.2",
         "barryvdh/laravel-debugbar": "^3.0",
-        "barryvdh/laravel-ide-helper": "^2.4",
-        "livewire/livewire": "^0.7",
+        "livewire/livewire": "^1.0",
         "doctrine/dbal": "^2.8",
-        "facade/ignition": "^1.0",
+        "facade/ignition": "^2.0",
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "~6.0",
         "knplabs/github-api": "^2.8",
-        "laravel/framework": "^6.0",
-        "laravel/horizon": "^3.2.7",
+        "laravel/framework": "^7.0",
+        "laravel/horizon": "^4.0",
         "laravel/slack-notification-channel": "^2.0",
-        "laravel/tinker": "^1.0",
+        "laravel/tinker": "^2.0",
         "myclabs/php-enum": "^1.5",
         "patreon/patreon": "^0.3.1",
         "pda/pheanstalk": "^4.0",
@@ -32,10 +31,9 @@
         "php-http/message": "^1.7",
         "predis/predis": "^1.1",
         "spatie/laravel-backup": "^6.4",
-        "spatie/laravel-cors": "^1.6",
         "spatie/laravel-medialibrary": "^7.12",
         "spatie/laravel-menu": "^3.4",
-        "spatie/laravel-tail": "^3.3",
+        "spatie/laravel-tail": "^4.2",
         "spatie/packagist-api": "^1.0",
         "spatie/schema-org": "^2.0",
         "spatie/valuestore": "^1.2",
@@ -91,7 +89,7 @@
         "sort-packages": true,
         "optimize-autoloader": true,
         "platform": {
-            "php": "7.2.1"
+            "php": "7.4.3"
         }
     },
     "extra": {
