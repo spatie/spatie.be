@@ -21,9 +21,5 @@ class AppServiceProvider extends ServiceProvider
         Request::macro('isAdmin', function (Request $request) {
             return $request->segment(1) === 'admin';
         });
-
-        if ($this->app->environment() === 'local') {
-            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
-        }
     }
 }

@@ -81,6 +81,10 @@ return [
             ],
         ],
 
+        'flare' => [
+            'driver' => 'flare',
+        ],
+
         'syslog' => [
             'driver' => 'syslog',
             'level' => 'debug',
