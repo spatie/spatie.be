@@ -10,10 +10,14 @@
                 <h2 class="title-2xl">Donations
                 </h2>
                 <p class="text-lg">
-                    If you'd like to make a donation to keep us going, 
-                    <a href="https://patreon.com/spatie" target="_blank" rel="noreferrer noopener">support us</a> on Patreon.
-                    <a href="https://patreon.com/spatie" target="_blank" rel="noreferrer noopener"><img class="mt-8 h-10" src="/images/patreon.png"></a>
+                    If you'd like to make a donation to keep us going, support us via 
+                    <a href="https://github.com/sponsors/spatie" target="_blank" rel="noreferrer noopener">Github Sponsors</a> or
+                    <a href="https://patreon.com/spatie" target="_blank" rel="noreferrer noopener">Patreon</a>.
                 </p>
+            </div>
+            <div class="flex">
+                <a href="https://github.com/sponsors/spatie" target="_blank" rel="noreferrer noopener"><img class="mt-8 h-10" src="/images/github-sponsors.png"></a>
+                <a class="ml-2" href="https://patreon.com/spatie" target="_blank" rel="noreferrer noopener"><img class="mt-8 h-10" src="/images/patreon.png"></a>
             </div>
 
             @if(! $patreonPledgers->isEmpty())
@@ -36,11 +40,6 @@
                         </div>
                     </div>
                 @endforeach
-
-                <p class="mt-8 text-xs text-grey links-underline links-grey">
-                    Want to be featured on our site as well? Check out our
-                    <a href="https://patreon.com/spatie">Patreon campaign</a>.
-                </p>
             @endif
         </div>
     </div>

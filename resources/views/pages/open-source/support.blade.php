@@ -58,7 +58,7 @@
         </section>
 
         <section class="section">
-            @include('pages.open-source.partials.patreon')
+            @include('pages.open-source.partials.donations')
         </section>
     </div>
 
