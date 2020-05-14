@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\GithubSocialiteController;
+use App\Http\Controllers\ScreencastsController;
+
 Route::view('/', 'pages/home/index')->name('home');
 
 Route::view('laravel', 'pages/laravel/index')->name('laravel');
@@ -22,8 +25,6 @@ Route::prefix('open-source')->group(function () {
     Route::get('support-us', 'OpenSourceController@support')->name('open-source.support');
 });
 
-
-
 Route::prefix('vacancies')->group(function () {
     Route::permanentRedirect('free-application', '/vacancies/spontaneous-application');
 
@@ -40,6 +41,14 @@ Route::prefix('vacancies')->group(function () {
         return view("pages.vacancies.{$slug}");
     })->name('vacancies.show');
 });
+
+// Github login
+Route::get('login/github', [GithubSocialiteController::class, 'redirect']);
+Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
+
+// Screencasts
+Route::get('/screencasts', [ScreencastsController::class, 'index'])->name('screencasts.index');
+Route::get('/screencasts/{series:slug}/{screencast:slug}', [ScreencastsController::class, 'show'])->name('screencasts.show');
 
 Route::get('api/instagram-photos', 'Api\InstagramPhotosController')->middleware(\Spatie\Cors\Cors::class);
 

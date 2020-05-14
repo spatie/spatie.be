@@ -127,6 +127,7 @@ php artisan db:seed --class MembersSeeder --force
 ln -nfs {{ $newReleaseDir }} {{ $currentDir }}
 cd {{ $newReleaseDir }}
 
+php artisan update-screencasts
 php artisan horizon:terminate
 php artisan config:clear
 php artisan cache:clear
@@ -153,6 +154,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +6 | xargs -d "\n" rm -rf
 {{ logMessage("💻  Deploying code changes...") }}
 cd {{ $currentDir }}
 git pull origin master
+php artisan update-screencasts
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache

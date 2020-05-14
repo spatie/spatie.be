@@ -174,9 +174,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\ViewServiceProvider::class,
         App\Providers\NavigationServiceProvider::class,
-        App\Providers\SessionServiceProvider::class,
         App\Services\GitHub\GitHubServiceProvider::class,
         App\Services\Twitter\TwitterServiceProvider::class,
+        App\Services\Vimeo\VimeoServiceProvider::class,
     ],
 
     /*

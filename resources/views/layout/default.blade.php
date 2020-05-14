@@ -31,6 +31,7 @@
     @livewireScripts
 
     @yield('twitterTracking')
+    @stack('scripts')
 
     {!! schema()->localBusiness() !!}
 </body>
