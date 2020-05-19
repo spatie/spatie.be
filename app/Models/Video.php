@@ -97,4 +97,13 @@ class Video extends Model
 
         return (new CommonMarkConverter())->convertToHtml($this->description);
     }
+
+    public function canBeSeenByCurrentUser(): bool
+    {
+        if (! $this->only_for_sponsors) {
+            return true;
+        }
+
+        return optional(auth()->user())->is_sponsor;
+    }
 }

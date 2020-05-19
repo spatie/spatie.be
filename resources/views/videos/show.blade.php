@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="w-full aspect-16x9 shadow-lg" id="player" style="padding-bottom: 56.25%;">
-                    @if (! $currentVideo->only_for_sponsors || (auth()->user() && auth()->user()->is_sponsor))
+                    @if ($currentVideo->canBeSeenByCurrentUser())
                         <iframe class="absolute pin w-full h-full" src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency></iframe>
                     @else
                         <div class="absolute pin-b pin-l pin-r pin-t bg-blue overflow-hidden">
