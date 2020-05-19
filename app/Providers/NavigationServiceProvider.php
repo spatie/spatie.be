@@ -14,8 +14,9 @@ class NavigationServiceProvider extends ServiceProvider
             return Menu::new()
                 ->route('home', 'Home')
                 ->route('web-development', 'Web development')
-                ->route('laravel', 'Laravel')
                 ->route('open-source.index', 'Open source')
+                ->route('videos.index', 'Videos')
+
                 ->route('about', 'About us')
                 ->setActiveFromRequest()
                 ->addClass($properties['class'] ?? '');

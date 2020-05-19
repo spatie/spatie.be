@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\VideosController;
+use App\Http\Controllers\Videos\VideoIndexController;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
@@ -49,7 +49,7 @@ class Screencast extends Model
 
     public function getUrlAttribute(): string
     {
-        return action([VideosController::class, 'show'], [$this->series, $this]);
+        return action([VideoIndexController::class, 'show'], [$this->series, $this]);
     }
 
     protected function getDownloadUrls(): Collection

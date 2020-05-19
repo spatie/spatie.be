@@ -1,20 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Videos;
 
 use App\Models\Screencast;
 use App\Models\Series;
 
-class VideosController extends Controller
+class ShowVideoController
 {
-    public function index()
-    {
-        $screencast = Screencast::first();
-
-        return redirect()->action([VideosController::class, 'show'], [$screencast->series, $screencast]);
-    }
-
-    public function show(Series $series, Screencast $screencast)
+    public function __invoke(Series $series, Screencast $screencast)
     {
         $allSeries = Series::with('screencasts')->get();
 
@@ -25,7 +18,7 @@ class VideosController extends Controller
         $title = $currentScreencast->title;
         $description = $currentScreencast->description;
 
-        return view('screencasts.show', compact(
+        return view('videos.show', compact(
             'title',
             'description',
             'allSeries',

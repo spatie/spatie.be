@@ -33,3 +33,5 @@ collect(['en', 'nl'])->each(function (string $locale) {
 });
 
 Route::permanentRedirect('jef', '/about-us#jef');
+Route::permanentRedirect('laravel', '/open-source')->name('laravel');
+

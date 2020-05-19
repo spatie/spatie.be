@@ -15,7 +15,7 @@
                     <ul>
                         @forelse ($series->screencasts as $screencast)
                             <li class="{{ isset($currentScreencast) && $currentScreencast->id === $screencast->id ? "active" : "" }}">
-                                <a href="{{ route('screencasts.show', [$series, $screencast]) }}">
+                                <a href="{{ route('videos.show', [$series, $screencast]) }}">
                                     {{ $screencast->title }}
                                 </a>
                             </li>

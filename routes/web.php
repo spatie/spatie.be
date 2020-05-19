@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\Api\InstagramPhotosController;
 use App\Http\Controllers\GithubSocialiteController;
-use App\Http\Controllers\VideosController;
+use App\Http\Controllers\OpenSourceController;
+use App\Http\Controllers\PostcardController;
+use App\Http\Controllers\Videos\ShowVideoController;
+use App\Http\Controllers\Videos\VideoIndexController;
+use Spatie\Cors\Cors;
 
 Route::view('/', 'pages/home/index')->name('home');
 
-Route::view('laravel', 'pages/laravel/index')->name('laravel');
 
 Route::view('web-development', 'pages/web-development/index')->name('web-development');
 
@@ -18,11 +22,11 @@ Route::prefix('about-us')->group(function () {
 });
 
 Route::prefix('open-source')->group(function () {
-    Route::get('/', 'OpenSourceController@index')->name('open-source.index');
-    Route::get('postcards', 'PostcardController@index')->name('open-source.postcards');
-    Route::get('packages', 'OpenSourceController@packages')->name('open-source.packages');
-    Route::get('projects', 'OpenSourceController@projects')->name('open-source.projects');
-    Route::get('support-us', 'OpenSourceController@support')->name('open-source.support');
+    Route::get('/', [OpenSourceController::class, 'index'])->name('open-source.index');
+    Route::get('postcards', [PostcardController::class, 'index'])->name('open-source.postcards');
+    Route::get('packages', [OpenSourceController::class, 'packages'])->name('open-source.packages');
+    Route::get('projects', [OpenSourceController::class, 'projects'])->name('open-source.projects');
+    Route::get('support-us', [OpenSourceController::class, 'support'])->name('open-source.support');
 });
 
 Route::prefix('vacancies')->group(function () {
@@ -47,10 +51,10 @@ Route::get('login/github', [GithubSocialiteController::class, 'redirect']);
 Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
 
 // Videos
-Route::get('/videos', [VideosController::class, 'index'])->name('screencasts.index');
-Route::get('/videos/{series:slug}/{screencast:slug}', [VideosController::class, 'show'])->name('screencasts.show');
+Route::get('/videos', VideoIndexController::class)->name('videos.index');
+Route::get('/videos/{series:slug}/{screencast:slug}', ShowVideoController::class)->name('videos.show');
 
-Route::get('api/instagram-photos', 'Api\InstagramPhotosController')->middleware(\Spatie\Cors\Cors::class);
+Route::get('api/instagram-photos', InstagramPhotosController::class)->middleware(Cors::class);
 
 Route::view('legal', 'pages.legal.index')->name('legal.index');
 Route::view('privacy', 'pages.legal.privacy')->name('legal.privacy');

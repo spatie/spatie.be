@@ -10,7 +10,7 @@
     player.on('ended', function() {
         // Don't the next link if there is none
         if (@json(! $nextScreencast)) return;
-        location.href = '{{ route('screencasts.show', [$nextScreencast->series, $nextScreencast]) }}';
+        location.href = '{{ route('videos.show', [$nextScreencast->series, $nextScreencast]) }}';
     });
 
     // Remember the user's PlaybackRate.
