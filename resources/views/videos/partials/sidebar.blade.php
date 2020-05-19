@@ -9,7 +9,6 @@
     </div>
     <div class="docs-sidebar">
         <ul class="docs-menu">
-            @foreach ($allSeries as $series)
                 <li>
                     <h2>{{ $series->title }}</h2>
                     <ul>
@@ -24,7 +23,6 @@
                         @endforelse
                     </ul>
                 </li>
-            @endforeach
         </ul>
     </div>
 </div>
