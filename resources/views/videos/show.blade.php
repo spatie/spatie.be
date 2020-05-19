@@ -2,29 +2,29 @@
 
 @section('content')
     <div class="flex wrap">
-        @include('screencasts.partials.sidebar')
+        @include('videos.partials.sidebar')
         <div>
             <div class="">
-                @include('screencasts.partials.vimeo')
+                @include('videos.partials.vimeo')
 
                 <div class="w-full overflow-hidden md:flex justify-between pb-10">
-                    @if ($previousScreencast)
-                        <a class="mb-2 no-underline text-black md:w-1/2 md:pr-4 flex items-center text-sm opacity-75 hover:opacity-100" href="{{ $previousScreencast->url }}">
+                    @if ($previousVideo)
+                        <a class="mb-2 no-underline text-black md:w-1/2 md:pr-4 flex items-center text-sm opacity-75 hover:opacity-100" href="{{ $previousVideo->url }}">
                             <i class="fa fa-arrow-left text-sm opacity-50 mr-1 hidden | md:inline-block"></i>
-                            <span class="truncate"><span class="font-semibold">Previous: </span> {{ $previousScreencast->title }}</span>
+                            <span class="truncate"><span class="font-semibold">Previous: </span> {{ $previousVideo->title }}</span>
                         </a>
                     @endif
-                    @if ($nextScreencast)
-                        <a class="mb-2 no-underline text-black md:w-1/2 md:pl-4 flex items-center md:justify-end ml-auto text-sm opacity-75 hover:opacity-100" href="{{ $nextScreencast->url }}">
-                            <span class="truncate"><span class="font-semibold">Next</span>: {{ $nextScreencast->title  }}</span>
+                    @if ($nextVideo)
+                        <a class="mb-2 no-underline text-black md:w-1/2 md:pl-4 flex items-center md:justify-end ml-auto text-sm opacity-75 hover:opacity-100" href="{{ $nextVideo->url }}">
+                            <span class="truncate"><span class="font-semibold">Next</span>: {{ $nextVideo->title  }}</span>
                             <i class="fa fa-arrow-right text-sm opacity-50 ml-1 hidden | md:inline-block"></i>
                         </a>
                     @endif
                 </div>
 
                 <div class="w-full aspect-16x9 shadow-lg" id="player" style="padding-bottom: 56.25%;">
-                    @if (! $currentScreencast->only_for_sponsors || (auth()->user() && auth()->user()->is_sponsor))
-                        <iframe class="absolute pin w-full h-full" src="https://player.vimeo.com/video/{{ $currentScreencast->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency></iframe>
+                    @if (! $currentVideo->only_for_sponsors || (auth()->user() && auth()->user()->is_sponsor))
+                        <iframe class="absolute pin w-full h-full" src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency></iframe>
                     @else
                         <div class="absolute pin-b pin-l pin-r pin-t bg-blue overflow-hidden">
                             <div class="absolute pin-b pin-l pin-r pin-t z-0 overflow-hidden" style="
@@ -60,30 +60,30 @@
                 </div>
 
                 <div class="flex justify-between items-baseline">
-                    <h2 class="mr-4">{{ $currentScreencast->title }}</h2>
+                    <h2 class="mr-4">{{ $currentVideo->title }}</h2>
                 </div>
 
                 <div class="text-lg">
-                    {!! $currentScreencast->formatted_description !!}
+                    {!! $currentVideo->formatted_description !!}
                 </div>
 
-                @if ($currentScreencast->download_hd_url || $currentScreencast->download_sd_url)
+                @if ($currentVideo->download_hd_url || $currentVideo->download_sd_url)
                     <div class="mt-16 border-t-2 border-dark-100 pt-6">
                         <h3 class="mt-0">Downloads</h3>
-                        @if ($currentScreencast->download_hd_url)
+                        @if ($currentVideo->download_hd_url)
                             <div class="py-2">
-                                <a href="{{ $currentScreencast->download_hd_url }}">
-                                    HD Screencast
+                                <a href="{{ $currentVideo->download_hd_url }}">
+                                    HD Video
                                 </a>
-                                <span class="opacity-75 text-black text-sm">— {{ formatBytes($currentScreencast->download_hd_size) }}</span>
+                                <span class="opacity-75 text-black text-sm">— {{ formatBytes($currentVideo->download_hd_size) }}</span>
                             </div>
                         @endif
-                        @if ($currentScreencast->download_sd_url)
+                        @if ($currentVideo->download_sd_url)
                             <div class="py-2">
-                                <a href="{{ $currentScreencast->download_sd_url }}" class="py-2">
-                                    SD Screencast
+                                <a href="{{ $currentVideo->download_sd_url }}" class="py-2">
+                                    SD Video
                                 </a>
-                                <span class="opacity-75 text-black text-sm">— {{ formatBytes($currentScreencast->download_sd_size) }}</span>
+                                <span class="opacity-75 text-black text-sm">— {{ formatBytes($currentVideo->download_sd_size) }}</span>
                             </div>
                         @endif
                     </div>

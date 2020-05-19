@@ -34,7 +34,9 @@ class User extends Authenticatable
     {
         if (in_array($this->github_username, [
             'riasvdv',
-        ])) return true;
+        ])) {
+            return true;
+        }
 
         return !! $this->sponsor;
     }

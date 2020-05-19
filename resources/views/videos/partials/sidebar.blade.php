@@ -13,14 +13,14 @@
                 <li>
                     <h2>{{ $series->title }}</h2>
                     <ul>
-                        @forelse ($series->screencasts as $screencast)
-                            <li class="{{ isset($currentScreencast) && $currentScreencast->id === $screencast->id ? "active" : "" }}">
-                                <a href="{{ route('videos.show', [$series, $screencast]) }}">
-                                    {{ $screencast->title }}
+                        @forelse ($series->videos as $video)
+                            <li class="{{ isset($currentVideo) && $currentVideo->id === $video->id ? "active" : "" }}">
+                                <a href="{{ route('videos.show', [$series, $video]) }}">
+                                    {{ $video->title }}
                                 </a>
                             </li>
                         @empty
-                            <li>No screencasts yet! Stay tuned...</li>
+                            <li>No videos yet! Stay tuned...</li>
                         @endforelse
                     </ul>
                 </li>
