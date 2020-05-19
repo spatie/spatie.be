@@ -18,7 +18,6 @@
     @apply flex;
     @apply items-center;
     @apply p-8;
-    @apply pr-16;
     @apply rounded;
     @apply bg-blue-lightest;
     @apply gradient-linear;
@@ -35,9 +34,13 @@
         @screen md {
             @apply rounded-tl-none;
             @apply spanx-3;
-            @apply pl-16;
+            @apply p-12;
             @apply text-xl;
             top: 0;
+        }
+
+        @screen lg {
+            @apply spanx-2;
         }
 
 

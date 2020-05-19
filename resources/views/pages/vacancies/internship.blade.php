@@ -34,7 +34,7 @@
             </div>
         </section>
 
-        @include('pages.laravel.partials.stack')
+        @include('pages.web-development.partials.stack')
         @include('pages.vacancies.partials.cta', ["github" => true])
 
     </div>

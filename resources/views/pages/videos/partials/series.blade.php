@@ -1,4 +1,7 @@
 <section id="series" class="section">
+    <div class="wrap">
+        <h2 class="title line-after mb-16">Available series</h2>
+    </div>
     <div class="wrap-6 | items-start markup-lists">
         @foreach($allSeries as $series)
             <div class="sm:spanx-3 | line-l">
