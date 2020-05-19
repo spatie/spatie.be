@@ -2,7 +2,6 @@
     <div class="wrap-6 grid-flow-dense">
         <div class="sm:spanx-6">
             <div class="markup links-underline links-blue">
-                <h3 class="title">Our strength</h3>
                 <p class="text-lg">
                     Tailor-made web development in Laravel is what we do best. We love every new challenge as the next, and try to extract common patterns.
                     This has left us with a collection of <a href="{{ route('open-source.index') }}">solid building blocks</a> to play with, plus a sense of what makes a web project great.

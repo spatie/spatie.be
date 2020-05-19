@@ -10,7 +10,7 @@
         </div>
         <div class="wrap">
             <div class="flex items-baseline">
-                <h3 class="title-sm text-grey mb-4">
+                <h3 class="title-sm mb-4">
                     @if($this->search)
                         Filtered {{ $this->type === 'projects' ? 'Projects' : 'Packages' }}
                     @else
@@ -23,6 +23,8 @@
                         <option value="-stars">by popularity</option>
                         <option value="-repository_created_at">by date</option>
                     </select>
+                    <span class="sort-arrow w-2 h-2 fill-green">
+                    {{ svg('icons/far-angle-down') }}</span>
                 </div>
             </div>
         </div>

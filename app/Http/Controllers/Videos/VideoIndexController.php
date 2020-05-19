@@ -9,7 +9,7 @@ class VideoIndexController extends Controller
 {
     public function __invoke()
     {
-        return view('videos.index', [
+        return view('pages.videos.index', [
             'allSeries' => Series::get(),
         ]);
     }

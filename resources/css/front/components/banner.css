@@ -12,8 +12,8 @@
 
 .banner-menu {
     --gradient-angle: 120deg;
-    --gradient-from: #bcdce0;
-    --gradient-to: #b3d8e4;
+    --gradient-from: #e3ded8;
+    --gradient-to: #d5d0c8;
 
     @apply flex;
     @apply items-center;
