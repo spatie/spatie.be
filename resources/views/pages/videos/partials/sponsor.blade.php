@@ -6,8 +6,8 @@
                     Get full <br>access
                 </h2>
                 <ul class="text-2xl links-black links-underline bullets bullets-blue">
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.support') }}">Login as GitHub sponsor</a></li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="https://github.com/sponsors/spatie">Become a sponsor</a></li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.support') }}">Other ways to support us</a></li>
                 </ul>
             </div>
         </div>

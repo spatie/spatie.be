@@ -8,7 +8,7 @@
 
     <div class="section-group pt-0 section-fade">
         @include('pages.videos.partials.intro')
-        @include('pages.videos.partials.series')
         @include('pages.videos.partials.sponsor')
+        @include('pages.videos.partials.series')
     </div>
 @endsection
