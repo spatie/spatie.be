@@ -2,7 +2,7 @@
     <h2 class="title-sm text-xs text-grey mb-4">{{ $series->title }}</h2>
     <ol class="text-xs">
         @forelse ($series->videos as $video)
-            <li class="{{ isset($currentVideo) && $currentVideo->id === $video->id ? "font-sans-bold" : "" }}">
+            <li style="padding-left:2em" class="{{ isset($currentVideo) && $currentVideo->id === $video->id ? "font-sans-bold" : "" }}">
                 <a href="{{ route('videos.show', [$series, $video]) }}">
                     {{ $video->title }}
                 </a>
