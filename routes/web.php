@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\GithubSocialiteController;
-use App\Http\Controllers\ScreencastsController;
+use App\Http\Controllers\VideosController;
 
 Route::view('/', 'pages/home/index')->name('home');
 
@@ -46,9 +46,9 @@ Route::prefix('vacancies')->group(function () {
 Route::get('login/github', [GithubSocialiteController::class, 'redirect']);
 Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
 
-// Screencasts
-Route::get('/screencasts', [ScreencastsController::class, 'index'])->name('screencasts.index');
-Route::get('/screencasts/{series:slug}/{screencast:slug}', [ScreencastsController::class, 'show'])->name('screencasts.show');
+// Videos
+Route::get('/videos', [VideosController::class, 'index'])->name('screencasts.index');
+Route::get('/videos/{series:slug}/{screencast:slug}', [VideosController::class, 'show'])->name('screencasts.show');
 
 Route::get('api/instagram-photos', 'Api\InstagramPhotosController')->middleware(\Spatie\Cors\Cors::class);
 

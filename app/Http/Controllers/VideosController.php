@@ -5,13 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Screencast;
 use App\Models\Series;
 
-class ScreencastsController extends Controller
+class VideosController extends Controller
 {
     public function index()
     {
         $screencast = Screencast::first();
 
-        return redirect()->action([ScreencastsController::class, 'show'], [$screencast->series, $screencast]);
+        return redirect()->action([VideosController::class, 'show'], [$screencast->series, $screencast]);
     }
 
     public function show(Series $series, Screencast $screencast)
