@@ -11,8 +11,11 @@ class DatabaseSeeder extends Seeder
             ->call(InsightsSeeder::class)
             ->call(RepositoriesSeeder::class)
             ->call(UserSeeder::class)
-            ->call(ContributorSeeder::class);
+            ->call(ContributorSeeder::class)
+            ->call(VideoSeeder::class)
+
             //->call(PostcardsSeeder::class)
-            //->call(InstagramPhotosSeeder::class);
+            //->call(InstagramPhotosSeeder::class)
+              ;
     }
 }
