@@ -10,9 +10,11 @@
 
     <div class="section-group pt-0 section-fade">
         @include('pages.web-development.partials.intro')
-        @include('pages.web-development.partials.process')
         @include('pages.web-development.partials.cta')
         @include('pages.web-development.partials.clients')
+        @include('pages.web-development.partials.greenhouse')
+        @include('pages.web-development.partials.proof')
+        @include('pages.web-development.partials.stack')
     </div>
 
     @include('pages.web-development.partials.brief')

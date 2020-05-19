@@ -2,12 +2,12 @@
     <div class="wrap-8">
         <div class="sm:spanx-3">
             <span class="illustration is-left is-rotated is-postcard-without-caption h-full">
-                {{ image('robots.jpg') }}
+                {{ image('hire.jpg') }}
             </span>
         </div>
         <div class="sm:spanx-3 sm:startx-5">
             <h2 class="title-2xl">
-                We are nót <br>the robots
+                Hire <br>a team
             </h2>
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
@@ -15,9 +15,9 @@
                     That's why we love to work in partnership: as advisors, as architects of technically challenging projects.
                 </p>
                 <p class="text-lg">
-                    Are you looking for a <a href="{{ route('laravel') }}#hire">subcontractor for a Laravel project or a Vue package</a>? We can help as well.
+                    <a href="{{ route('about') }}#team">Our team</a> is a fine blend of back &amp; frontend profiles that are used to working together, tightly coupled.
                 </p>
-                <p class="text-lg">
+                 <p class="text-lg">
                     We'd really like to know what kind of project or problem you're dealing with. Feed us with as much input as you have, so we can get accurate early on.
                 </p>
             </div>
