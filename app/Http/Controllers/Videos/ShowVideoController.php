@@ -16,7 +16,7 @@ class ShowVideoController
         $title = $currentVideo->title;
         $description = $currentVideo->description;
 
-        return view('videos.show', compact(
+        return view('pages.videos.show', compact(
             'title',
             'description',
             'series',

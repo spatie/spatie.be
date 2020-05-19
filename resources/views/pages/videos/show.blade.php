@@ -2,10 +2,10 @@
 
 @section('content')
     <div class="flex wrap">
-        @include('videos.partials.sidebar')
+        @include('pages.videos.partials.sidebar')
         <div>
             <div class="">
-                @include('videos.partials.vimeo')
+                @include('pages.videos.partials.vimeo')
 
                 <div class="w-full overflow-hidden md:flex justify-between pb-10">
                     @if ($previousVideo)
