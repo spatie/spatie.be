@@ -10,7 +10,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use League\CommonMark\CommonMarkConverter;
 
-class Screencast extends Model
+class Video extends Model
 {
     protected $guarded = [];
 
@@ -29,18 +29,18 @@ class Screencast extends Model
         return $this->belongsTo(Series::class);
     }
 
-    public function getPrevious(): ?Screencast
+    public function getPrevious(): ?Video
     {
-        return Screencast::where('series_id', $this->series_id)
+        return Video::where('series_id', $this->series_id)
             ->where('sort', '<', $this->sort)
             ->orderByDesc('sort')
             ->limit(1)
             ->first();
     }
 
-    public function getNext(): ?Screencast
+    public function getNext(): ?Video
     {
-        return Screencast::where('series_id', $this->series_id)
+        return Video::where('series_id', $this->series_id)
             ->where('sort', '>', $this->sort)
             ->orderBy('sort')
             ->limit(1)

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Screencast;
+use App\Models\Video;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
@@ -32,6 +32,7 @@ class GithubSocialiteController extends Controller
 
         auth()->login($user);
 
-        return redirect()->to(session('before-github-redirect', Screencast::orderBy('sort')->first()->url));
+        return redirect()
+            ->to(session('before-github-redirect', Video::orderBy('sort')->first()->url));
     }
 }

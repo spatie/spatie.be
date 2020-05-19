@@ -16,7 +16,7 @@ class CreateScreencastsTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('screencasts', function (Blueprint $table) {
+        Schema::create('videos', function (Blueprint $table) {
             $table->id();
             $table->foreignId('series_id');
             $table->string('vimeo_id');

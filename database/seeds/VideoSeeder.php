@@ -8,6 +8,6 @@ class VideoSeeder extends Seeder
 {
     public function run()
     {
-        Artisan::call('update-screencasts');
+        Artisan::call('update-videos');
     }
 }

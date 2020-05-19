@@ -4,7 +4,7 @@ return [
     'series' => [
         [
             'title' => 'Package development',
-            'screencasts' => [
+            'videos' => [
                 ['id' => '417225584', 'only_for_sponsors' => false], // intro
                 ['id' => '417225712', 'only_for_sponsors' => true], // starting a php package
                 ['id' => '417226543', 'only_for_sponsors' => true], // configuring the namespace
@@ -16,7 +16,7 @@ return [
         ],
         [
             'title' => 'Another series',
-            'screencasts' => [
+            'videos' => [
                 ['id' => '417225584', 'only_for_sponsors' => false], // intro
                 ['id' => '417225712', 'only_for_sponsors' => true], // starting a php package
                 ['id' => '417226543', 'only_for_sponsors' => true], // configuring the namespace

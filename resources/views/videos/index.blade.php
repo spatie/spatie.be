@@ -4,7 +4,7 @@
     <h1>Videos</h1>
     <ul>
         @foreach($allSeries as $series)
-            <li>{{ $series->name }}</li>
+            <li>{{ $series->title }}</li>
         @endforeach
     </ul>
 @endsection

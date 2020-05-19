@@ -2,27 +2,27 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Screencast;
+use App\Models\Video;
 use App\Models\Series;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
-class UpdateScreencastsCommand extends Command
+class UpdateVideosCommand extends Command
 {
-    protected $signature = 'update-screencasts';
+    protected $signature = 'update-videos';
 
-    protected $description = 'Update the screencasts with the latest from Vimeo.';
+    protected $description = 'Update the videos with the latest from Vimeo.';
 
     public function handle(Vimeo $vimeo)
     {
-        $this->info('Start updating screencasts...');
+        $this->info('Start updating videos...');
 
         $vimeoVideos = collect($vimeo->getVideos());
 
         $currentSeriesSlugs = array_flip(Series::all()->pluck('slug')->toArray());
 
-        foreach (config('screencasts.series') as $sort => $series) {
+        foreach (config('videos.series') as $sort => $series) {
             /** @var Series $seriesModel */
             $seriesModel = Series::updateOrCreate([
                 'slug' => Str::slug($series['title']),
@@ -31,14 +31,14 @@ class UpdateScreencastsCommand extends Command
                 'sort' => $sort,
             ]);
 
-            $currentScreencastSlugs = array_flip($seriesModel->screencasts->pluck('slug')->toArray());
+            $currentScreencastSlugs = array_flip($seriesModel->videos->pluck('slug')->toArray());
 
-            foreach ($series['screencasts'] as $screencastSort => $screencastData) {
+            foreach ($series['videos'] as $screencastSort => $screencastData) {
                 $screencast = $vimeoVideos->first(fn ($screencast) => $screencast['uri'] === '/videos/'.$screencastData['id']);
                 $slug = Str::slug($screencast['name']);
 
                 $this->comment("Imported Screencast: {$screencast['name']}");
-                $seriesModel->screencasts()->updateOrCreate([
+                $seriesModel->videos()->updateOrCreate([
                     'vimeo_id' => $screencastData['id'],
                 ], [
                     'slug' => $slug,
@@ -55,7 +55,7 @@ class UpdateScreencastsCommand extends Command
 
             unset($currentSeriesSlugs[$seriesModel->slug]);
 
-            $seriesModel->screencasts()->whereIn('slug', array_flip($currentScreencastSlugs))->delete();
+            $seriesModel->videos()->whereIn('slug', array_flip($currentScreencastSlugs))->delete();
         }
 
         Series::whereIn('slug', array_flip($currentSeriesSlugs))->delete();

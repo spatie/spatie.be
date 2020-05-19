@@ -13,8 +13,8 @@ class Series extends Model
         return 'slug';
     }
 
-    public function screencasts()
+    public function videos()
     {
-        return $this->hasMany(Screencast::class);
+        return $this->hasMany(Video::class);
     }
 }

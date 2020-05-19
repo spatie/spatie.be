@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Videos;
 
-use App\Models\Screencast;
+use App\Models\Video;
 use App\Models\Series;
 
 class ShowVideoController
 {
-    public function __invoke(Series $series, Screencast $screencast)
+    public function __invoke(Series $series, Video $screencast)
     {
-        $allSeries = Series::with('screencasts')->get();
+        $allSeries = Series::with('videos')->get();
 
         $previousScreencast = $screencast->getPrevious();
         $nextScreencast = $screencast->getNext();
