@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Videos\ShowVideoController;
 use App\Http\Controllers\Videos\VideoIndexController;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Model;
@@ -49,7 +50,7 @@ class Video extends Model
 
     public function getUrlAttribute(): string
     {
-        return action([VideoIndexController::class, 'show'], [$this->series, $this]);
+        return action(ShowVideoController::class, [$this->series, $this]);
     }
 
     protected function getDownloadUrls(): Collection

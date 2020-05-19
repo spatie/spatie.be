@@ -17,4 +17,9 @@ class Series extends Model
     {
         return $this->hasMany(Video::class);
     }
+
+    public function getUrlAttribute(): string
+    {
+        return optional($this->videos->first())->url;
+    }
 }

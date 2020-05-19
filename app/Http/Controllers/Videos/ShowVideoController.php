@@ -7,25 +7,25 @@ use App\Models\Series;
 
 class ShowVideoController
 {
-    public function __invoke(Series $series, Video $screencast)
+    public function __invoke(Series $series, Video $video)
     {
         $allSeries = Series::with('videos')->get();
 
-        $previousScreencast = $screencast->getPrevious();
-        $nextScreencast = $screencast->getNext();
-        $currentScreencast = $screencast;
+        $previousVideo = $video->getPrevious();
+        $nextVideo = $video->getNext();
+        $currentVideo = $video;
 
-        $title = $currentScreencast->title;
-        $description = $currentScreencast->description;
+        $title = $currentVideo->title;
+        $description = $currentVideo->description;
 
         return view('videos.show', compact(
             'title',
             'description',
             'allSeries',
             'series',
-            'currentScreencast',
-            'previousScreencast',
-            'nextScreencast',
+            'currentVideo',
+            'previousVideo',
+            'nextVideo',
         ));
     }
 }

@@ -52,7 +52,7 @@ Route::get('login/github/callback', [GithubSocialiteController::class, 'callback
 
 // Videos
 Route::get('/videos', VideoIndexController::class)->name('videos.index');
-Route::get('/videos/{series:slug}/{screencast:slug}', ShowVideoController::class)->name('videos.show');
+Route::get('/videos/{series:slug}/{video:slug}', ShowVideoController::class)->name('videos.show');
 
 Route::get('api/instagram-photos', InstagramPhotosController::class)->middleware(Cors::class);
 

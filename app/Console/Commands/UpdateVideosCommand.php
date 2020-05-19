@@ -31,31 +31,31 @@ class UpdateVideosCommand extends Command
                 'sort' => $sort,
             ]);
 
-            $currentScreencastSlugs = array_flip($seriesModel->videos->pluck('slug')->toArray());
+            $currentVideoSlugs = array_flip($seriesModel->videos->pluck('slug')->toArray());
 
-            foreach ($series['videos'] as $screencastSort => $screencastData) {
-                $screencast = $vimeoVideos->first(fn ($screencast) => $screencast['uri'] === '/videos/'.$screencastData['id']);
-                $slug = Str::slug($screencast['name']);
+            foreach ($series['videos'] as $videoSort => $videoData) {
+                $video = $vimeoVideos->first(fn ($video) => $video['uri'] === '/videos/'.$videoData['id']);
+                $slug = Str::slug($video['name']);
 
-                $this->comment("Imported Screencast: {$screencast['name']}");
+                $this->comment("Imported Video: {$video['name']}");
                 $seriesModel->videos()->updateOrCreate([
-                    'vimeo_id' => $screencastData['id'],
+                    'vimeo_id' => $videoData['id'],
                 ], [
                     'slug' => $slug,
-                    'title' => $screencast['name'],
-                    'description' => $screencast['description'],
-                    'sort' => $screencastSort,
-                    'runtime' => $screencast['duration'],
-                    'thumbnail' => $screencast['pictures']['sizes'][1]['link'],
-                    'only_for_sponsors' => $screencastData['only_for_sponsors'],
+                    'title' => $video['name'],
+                    'description' => $video['description'],
+                    'sort' => $videoSort,
+                    'runtime' => $video['duration'],
+                    'thumbnail' => $video['pictures']['sizes'][1]['link'],
+                    'only_for_sponsors' => $videoData['only_for_sponsors'],
                 ]);
 
-                unset($currentScreencastSlugs[$slug]);
+                unset($currentVideoSlugs[$slug]);
             }
 
             unset($currentSeriesSlugs[$seriesModel->slug]);
 
-            $seriesModel->videos()->whereIn('slug', array_flip($currentScreencastSlugs))->delete();
+            $seriesModel->videos()->whereIn('slug', array_flip($currentVideoSlugs))->delete();
         }
 
         Series::whereIn('slug', array_flip($currentSeriesSlugs))->delete();
