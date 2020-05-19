@@ -38,7 +38,7 @@ Route::prefix('vacancies')->group(function () {
     Route::get('{slug}', function ($slug) {
         $view = "pages.vacancies.{$slug}";
 
-        if (!view()->exists($view)) {
+        if (! view()->exists($view)) {
             abort(404);
         }
 

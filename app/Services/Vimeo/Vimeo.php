@@ -19,7 +19,7 @@ class Vimeo
         $response = $this->client->get('https://api.vimeo.com/me/videos', [
             'query' => [
                 'per_page' => 100,
-            ]
+            ],
         ]);
 
         $data = json_decode($response->getBody()->getContents(), true);

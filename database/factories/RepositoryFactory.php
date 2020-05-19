@@ -14,6 +14,6 @@ $factory->define(Repository::class, function (Faker\Generator $faker) {
         'new' => $faker->boolean(20),
         'highlighted' => $faker->boolean(5),
         'language' => $faker->randomElement(['php', 'javascript']),
-        'type' => $faker->randomElement(\App\Models\Enums\RepositoryType::toArray())
+        'type' => $faker->randomElement(\App\Models\Enums\RepositoryType::toArray()),
     ];
 });

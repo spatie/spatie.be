@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Video;
 use App\Models\Series;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Console\Command;

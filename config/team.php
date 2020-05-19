@@ -9,5 +9,5 @@ return [
         'brent',
         'alex',
         'harish',
-    ]
+    ],
 ];

@@ -13,7 +13,7 @@ class VimeoServiceProvider extends ServiceProvider
             return new Vimeo(new Client([
                 'headers' => [
                     'Authorization' => 'Bearer '.config('services.vimeo.access'),
-                ]
+                ],
             ]));
         });
     }

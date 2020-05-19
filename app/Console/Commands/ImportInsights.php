@@ -31,7 +31,7 @@ class ImportInsights extends Command
                             'title' => $this->sanitizeTitle($entry->getTitle()),
                             'created_at' => new Carbon($entry->getDateModified()->format(DATE_ATOM)),
                             'url' => $entry->getLink(),
-                            'website' => $this->getWebsite($entry)
+                            'website' => $this->getWebsite($entry),
                         ]);
 
                         $this->info("Imported `{$insight->title}`");
@@ -53,7 +53,7 @@ class ImportInsights extends Command
 
     protected function getWebsite(AbstractEntry $entry): string
     {
-        $host =  parse_url($entry->getLink(), PHP_URL_HOST);
+        $host = parse_url($entry->getLink(), PHP_URL_HOST);
 
         $host = ltrim($host, 'www.');
 

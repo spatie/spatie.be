@@ -7,7 +7,7 @@ use Log;
 
 class Twitter
 {
-    /** @var \Abraham\TwitterOAuth\TwitterOAuth  */
+    /** @var \Abraham\TwitterOAuth\TwitterOAuth */
     protected $twitter;
 
     public function __construct(TwitterOAuth $twitter)

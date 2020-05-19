@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Video;
 use App\Models\User;
+use App\Models\Video;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 

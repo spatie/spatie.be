@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Http\Controllers\Videos\ShowVideoController;
-use App\Http\Controllers\Videos\VideoIndexController;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
