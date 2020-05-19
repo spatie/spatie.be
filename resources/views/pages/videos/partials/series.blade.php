@@ -12,7 +12,7 @@
                     Learn how to create your own laravel packages in these comprehensive …
                 </p>
                 <p class="mt-4">
-                    <a class="link-underline link-blue" href="http://spatie.be.test/vacancies/spontaneous-application">Watch this series</a>
+                    <a class="link-underline link-blue" href="{{ $series->url }}">Watch this series</a>
                 </p>
                 
                 <ol class="mt-4 text-xs text-grey">
