@@ -26,7 +26,7 @@ class CreateScreencastsTables extends Migration
             $table->integer('sort');
             $table->integer('runtime');
             $table->string('thumbnail');
-            $table->boolean('is_paid');
+            $table->boolean('only_for_sponsors');
             $table->timestamps();
 
             $table->foreign('series_id')->references('id')->on('series')->onDelete('cascade');

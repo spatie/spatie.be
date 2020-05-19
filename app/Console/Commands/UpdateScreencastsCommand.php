@@ -47,7 +47,7 @@ class UpdateScreencastsCommand extends Command
                     'sort' => $screencastSort,
                     'runtime' => $screencast['duration'],
                     'thumbnail' => $screencast['pictures']['sizes'][1]['link'],
-                    'is_paid' => $screencastData['is_paid'],
+                    'only_for_sponsors' => $screencastData['only_for_sponsors'],
                 ]);
 
                 unset($currentScreencastSlugs[$slug]);

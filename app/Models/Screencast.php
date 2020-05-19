@@ -16,7 +16,7 @@ class Screencast extends Model
 
     protected $casts = [
         'sort' => 'integer',
-        'is_paid' => 'boolean',
+        'only_for_sponsors' => 'boolean',
     ];
 
     public function getRouteKeyName()
