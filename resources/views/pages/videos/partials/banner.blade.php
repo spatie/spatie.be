@@ -5,7 +5,7 @@
             and learn
         </h1>
         <p class="banner-intro">
-           See how we do it ourselves
+           See how we do it
         </p>
     </div>
 </section>

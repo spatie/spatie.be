@@ -3,10 +3,10 @@
         <div class="sm:spanx-6">
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    Tailor-made web development in Laravel is what we do best. We love every new challenge as the next, and try to extract common patterns.
-                    This has left us with a collection of <a href="{{ route('open-source.index') }}">solid building blocks</a> to play with, plus a sense of what makes a web project great.
+                    From Laravel best practices to things that keep the team busy, these video series will give you great insight in how we work and how you can improve your web development skills.
+                </p>
                 <p class="text-lg">
-                    Moreover, we can lean on the shoulders of frameworks like Laravel, React &amp; Vue</a> to take giant leaps.
+                    A lot of this content is sponsors-first: by becoming a Spatie <a href="https://github.com/sponsors/spatie">sponsor on Github</a>, you'll get early access and exclusive content from the team.
                 </p>
             </div>
         </div>
