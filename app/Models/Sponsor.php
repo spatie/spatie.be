@@ -43,7 +43,8 @@ class Sponsor extends Model
         });
     }
 
-    public function fetchRawSponsors($runningSponsors = [], $afterCursor = null) {
+    public function fetchRawSponsors($runningSponsors = [], $afterCursor = null)
+    {
         $afterCursor = json_encode($afterCursor);
         $response = Http::withToken(config('services.github.token'))
             ->post('https://api.github.com/graphql', [

@@ -30,14 +30,20 @@ class User extends Authenticatable
         return $this->hasOne(Sponsor::class, 'username', 'github_username');
     }
 
-    public function getIsSponsorAttribute()
+    public function getIsSponsorAttribute(): bool
     {
-        if (in_array($this->github_username, [
-            'riasvdv',
-        ])) {
+        if ($this->isGitHubAccountOfSpatieMember()) {
             return true;
         }
 
-        return !! $this->sponsor;
+        return (bool)$this->sponsor;
+    }
+
+    public function isGitHubAccountOfSpatieMember(): bool
+    {
+        return in_array($this->github_username, [
+            'riasvdv',
+            'freekmurze',
+        ]);
     }
 }
