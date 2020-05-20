@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\InstagramPhotosController;
 use App\Http\Controllers\GithubSocialiteController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\Videos\ShowVideoController;
@@ -49,6 +50,7 @@ Route::prefix('vacancies')->group(function () {
 // Github login
 Route::get('login/github', [GithubSocialiteController::class, 'redirect']);
 Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
+Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 // Videos
 Route::get('/videos', VideoIndexController::class)->name('videos.index');
