@@ -1,5 +1,5 @@
 <nav class="markup-lists">
-    <h2 class="title-sm text-xs text-grey mb-4">{{ $series->title }}</h2>
+    <h2 class="title-sm text-sm text-grey mb-4">{{ $series->title }}</h2>
     <ol class="text-xs">
         @forelse ($series->videos as $video)
             <li style="padding-left:2em" class="{{ isset($currentVideo) && $currentVideo->id === $video->id ? "font-sans-bold" : "" }}">
