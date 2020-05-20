@@ -8,7 +8,7 @@
                 <h2 class="title-sm">
                     <a href="{{ $series->url }}">{{ $series->title }}</a>
                     <div class="title-subtext text-grey">
-                        13 videos
+                        {{ $series->videos()->count() }} {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
                     </div>
                 </h2>
                 <p class="mt-4">
