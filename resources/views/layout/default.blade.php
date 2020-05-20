@@ -20,6 +20,8 @@
 
 <body class="flex flex-col min-h-screen">
     @include('layout.partials.wallpaper')
+    
+    @include('layout.partials.status')
     @include('layout.partials.header')
 
     <div class="flex-grow" role="main">

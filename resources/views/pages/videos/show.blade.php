@@ -47,7 +47,7 @@
                                                     </span>                                                
                                                 </a>
                                         @else
-                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="__blank">
+                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="_blank">
                                                     <span>Become A GitHub Sponsor</span>
                                                     <span class="ml-3 h-6 w-6 text-black">
                                                         {{ svg('github') }}
