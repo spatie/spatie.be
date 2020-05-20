@@ -1,6 +1,6 @@
 <section id="greenhouse" class="section">
     <div class="wrap">
-        <h3 class="title line-after mb-16">Our greenhouse</h3>
+        <h3 class="title line-after mb-12">Our greenhouse</h3>
     </div>
     <div class="wrap-6">
         <div class="sm:spanx-6">

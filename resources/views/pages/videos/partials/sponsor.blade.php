@@ -1,5 +1,5 @@
 @guest
-    <section id="proof" class="section">
+    <section id="access" class="section">
         <div class="wrap">
             <div class="inset-green">
                 <div class="wrap-inset md:items-center" style="--cols: 1fr auto">
