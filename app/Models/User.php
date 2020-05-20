@@ -18,14 +18,14 @@ class User extends Authenticatable
 
     public function isSponsoring(): bool
     {
-        if ($this->isGitHubAccountOfSpatieMember()) {
+        if ($this->isSpatieMember()) {
             return true;
         }
 
         return $this->is_sponsor;
     }
 
-    public function isGitHubAccountOfSpatieMember(): bool
+    public function isSpatieMember(): bool
     {
         return in_array($this->github_username, [
             'riasvdv',

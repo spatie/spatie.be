@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class GitHubGraphApi
 {
-    public static function isSponsor($gitHubUserName): bool
+    public function isSponsor($gitHubUserName): bool
     {
-        return in_array($gitHubUserName, static::getAllSponsors());
+        return in_array($gitHubUserName, $this->getAllSponsors());
     }
 
-    public static function getAllSponsors(): array
+    public function getAllSponsors(): array
     {
         return Cache::remember('sponsors', now()->addSeconds(30), function () {
             return array_map(function ($sponsor) {
@@ -36,8 +36,6 @@ class GitHubGraphApi
             }, $this->fetchRawSponsors());
         });
     }
-
-
 
     public function fetchRawSponsors($runningSponsors = [], $afterCursor = null)
     {

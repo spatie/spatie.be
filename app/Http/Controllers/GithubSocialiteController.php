@@ -20,14 +20,11 @@ class GithubSocialiteController extends Controller
 
     public function callback()
     {
-        $gitHubUser = Socialite::driver('github')->stateless()->user();
+        $gitHubUser = Socialite::driver('github')->user();
 
-        $isSponsor = GitHubGraphApi::isSponsor($gitHubUser->nickname);
+        $isSponsor = (new GitHubGraphApi())->isSponsor($gitHubUser->nickname);
 
-        if (! $isSponsor) {
-            return redirect()->to(session('before-github-redirect', route('videos.index')));
-        }
-
+        /** @var \App\Models\User $user */
         $user = User::updateOrCreate([
             'github_id' => $gitHubUser->id,
         ], [
@@ -39,7 +36,9 @@ class GithubSocialiteController extends Controller
             'is_sponsor' => $isSponsor,
         ]);
 
-        auth()->login($user);
+        if ($user->is_sponsor || $user->isSpatieMember()) {
+            auth()->login($user);
+        }
 
         return redirect()->to(session('before-github-redirect', route('videos.index')));
     }
