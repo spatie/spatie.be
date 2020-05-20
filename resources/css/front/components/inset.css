@@ -61,7 +61,8 @@
     --gradient-from: #31302f;
     --gradient-to: #172a3d;
 
-    @apply inset;
+    @apply px-8;
+    @apply py-8;
     @apply bg-grey-dark;
     @apply gradient-linear;
     @apply text-white;

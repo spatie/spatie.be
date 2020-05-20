@@ -5,7 +5,7 @@
 ])
 
 @section('content')
-    <section id="banner" class="py-4 md:py-6 lg:py-8" role="banner">
+    <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
             <p class="mt-4">
                 <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos</a>
@@ -17,10 +17,10 @@
         </div>
     </section>
 
-    <div class="section-group pt-0 section-fade z-10">
-        <section id="video" class="section">
+    <div class="pb-16 md:pb-24 xl:pb-32">
+        <section id="video">
             <div class="wrap-8 items-start">
-                <div class="sm:startx-2 sm:spanx-3 | md:spanx-4 | lg:spanx-5">
+                <div class="pt-8 md:pt-0 sm:startx-2 sm:spanx-3 | md:spanx-4 | lg:spanx-5">
                     @include('pages.videos.partials.vimeo')
 
                     <div class="w-full shadow-lg bg-white overflow-hidden" id="player" style="height: 0; padding-bottom: 56.25%;">
@@ -94,7 +94,7 @@
                     </div>
                 </div>
 
-                <div class="banner-menu | print:hidden">
+                <div class="z-10 banner-menu | print:hidden">
                     @include('pages.videos.partials.sidebar')
                 </div>
 
