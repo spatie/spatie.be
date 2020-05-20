@@ -18,11 +18,17 @@ function image(string $path): ?Media
 {
     $image = Image::findByPath($path);
 
-    if (! $image) {
-        $image = Image::createWithPath($path);
-    }
+    try {
+        if (! $image) {
+            $image = Image::createWithPath($path);
+        }
 
-    return optional($image)->getFirstMedia();
+        return optional($image)->getFirstMedia();
+    } catch (Exception $exception) {
+        report($exception);
+
+        return null;
+    }
 }
 
 function is_office_open(): bool

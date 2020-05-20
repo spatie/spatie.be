@@ -6,7 +6,7 @@
         @foreach($allSeries as $series)
             <div class="sm:spanx-3">
                 <a href="{{ $series->url }}" class="illustration">
-                    {{ image('portfolio/flare.jpg') }}
+                    {{ image("video-series/{$series->slug}.jpg") }}
                 </a>
             
                 <div class="mt-8 line-l">
@@ -22,13 +22,6 @@
                     <p class="mt-4">
                         <a class="link-underline link-blue" href="{{ $series->url }}">Watch this series</a>
                     </p>
-                    
-                    <ol class="mt-4 text-xs text-grey markup-list-compact">
-                        <li>Title</li>
-                        <li>Title</li>
-                        <li>Title</li>
-                        <li>Title</li>
-                    </ol>
                 </div>
             </div>
         @endforeach
