@@ -9,8 +9,11 @@
     // Automatically send the user to the next video after completion.
     player.on('ended', function() {
         // Don't the next link if there is none
-        if (@json(! $nextVideo)) return;
-        location.href = '{{ route('videos.show', [$nextVideo->series, $nextVideo]) }}';
+        @if ($nextVideo)
+            location.href = '{{ route('videos.show', [$nextVideo->series, $nextVideo]) }}';
+        @else
+            return;
+        @endif
     });
 
     // Remember the user's PlaybackRate.
