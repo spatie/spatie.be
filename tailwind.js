@@ -124,7 +124,7 @@ module.exports = {
   */
 
     screens: {
-        sm: '576px',
+        sm: '640px',
         md: '920px',
         lg: '1230px',
         xl: '1615px',

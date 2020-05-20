@@ -5,13 +5,12 @@
 ])
 
 @section('content')
-    <section id="banner" class="banner" role="banner">
+    <section id="banner" class="py-4 md:py-6 lg:py-8" role="banner">
         <div class="wrap">
-            <h1 class="banner-slogan">
-                {{ $series->title }}
-            </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos overview</a>
+                <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos</a>
+                <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
+                <span class="font-sans-bold">{{ $series->title }}</span>
             </p>
         </div>
     </section>
@@ -29,31 +28,39 @@
                                 <div class="absolute pin flex justify-center items-center inset-dark z-10 p-8">
                                     <div class="flex flex-col items-center text-center">
                                         @if(session()->has('not-a-sponsor'))
-                                            YOU ARE NOT A SPONSOR
-                                        @endif
-
-                                        <h4 class="mb-2 font-serif-bold text-2xl leading-tight">This video is exclusively for GitHub sponsors.</h4>
-                                        <p class="hidden md:block text-center">
-                                            Your sponsorship helps make videos like these possible! 
-                                            <span class="fill-pink icon">
-                                                {{ svg('icons/fas-heart') }}
-                                            </span>
-                                        </p>
-                                        @guest
-                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="/login/github">
-                                                    <span>Log in with GitHub</span>
-                                                    <span class="ml-3 h-6 w-6 text-black">
-                                                        {{ svg('github') }}
-                                                    </span>                                                
-                                                </a>
+                                            <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">Aaaaw… you're not a sponsor yet.</h4>
+                                            <p class="hidden md:block text-center">
+                                                Become one to get access to this video right away! 
+                                                <span class="fill-pink icon">
+                                                    {{ svg('icons/fas-heart') }}
+                                                </span>
+                                            </p>
+                                            <a class="mt-4 md:mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="_blank">
+                                                <span class="mr-3 h-6 w-6 text-white">
+                                                    {{ svg('github') }}
+                                                </span>                                                
+                                                <span>Become a GitHub Sponsor</span>
+                                            </a>
                                         @else
-                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="_blank">
-                                                    <span>Become A GitHub Sponsor</span>
-                                                    <span class="ml-3 h-6 w-6 text-black">
+                                            <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is exclusively for GitHub sponsors.</h4>
+                                            <p class="hidden md:block text-center">
+                                                Sponsorship makes videos like these possible! 
+                                                <span class="fill-pink icon">
+                                                    {{ svg('icons/fas-heart') }}
+                                                </span>
+                                            </p>
+                                            <div class="mt-4 md:mt-8 md:flex">
+                                                <a class="font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full md:rounded-r-none text-white" href="/login/github">
+                                                    <span class="mr-3 h-6 w-6 text-white">
                                                         {{ svg('github') }}
                                                     </span>                                                
+                                                    <span>Log in</span>
                                                 </a>
-                                        @endif
+                                                <a class="mt-2 md:mt-0 font-sans-bold cursor-pointer border-l-2 border-green-dark bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full md:rounded-l-none text-white" href="https://github.com/sponsors/spatie" target="_blank">
+                                                    <span>Become a GitHub Sponsor</span>                                             
+                                                </a>
+                                            </div>
+                                       @endif
                                      </div>
                                 </div>
                         @endif
@@ -80,7 +87,7 @@
 
                     <h2 class="title line-after mt-8">{{ $currentVideo->title }}</h2>
 
-                    <div class="mt-8 text-lg links-blue">
+                    <div class="mt-8 text-lg links-blue markup markup-titles markup-lists">
                         {!! $currentVideo->formatted_description !!}
                     </div>
                 </div>
