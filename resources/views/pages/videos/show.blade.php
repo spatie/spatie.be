@@ -10,7 +10,7 @@
             <p class="mt-4">
                 <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos</a>
                 <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
-                <a href="{{ $series->url }}" class="link-underline link-blue">{{ $series->title }}</a>
+                <span>{{ $series->title }}</span>
                 <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
                 <span class="font-sans-bold">{{ $currentVideo->title }}</span>
             </p>
@@ -68,6 +68,14 @@
                         @endif
                     </div>
 
+                    <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
+
+                    <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
+                        {!! $currentVideo->formatted_description !!}
+                    </div>
+
+                    <hr class="mt-12 line-after" />    
+
                      <div class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
                         @if ($previousVideo)
                             <a class="mb-2 md:w-1/2 md:pr-4 flex items-center" href="{{ $previousVideo->url }}">
@@ -85,12 +93,6 @@
                                 </span>
                             </a>
                         @endif
-                    </div>
-
-                    <h2 class="title line-after mt-8">{{ $currentVideo->title }}</h2>
-
-                    <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
-                        {!! $currentVideo->formatted_description !!}
                     </div>
                 </div>
 
