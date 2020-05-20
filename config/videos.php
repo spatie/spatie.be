@@ -3,7 +3,7 @@
 return [
     'series' => [
         [
-            'title' => 'Writing beautiful PHP',
+            'title' => 'Write beautiful PHP',
             'description' => "In this series, we'll explore best practices on how to write maintainable and readable PHP code",
             'videos' => [
                 ['id' => '417225584', 'only_for_sponsors' => false], // intro
