@@ -15,7 +15,6 @@
         "ext-json": "*",
         "abraham/twitteroauth": "^0.9.2",
         "barryvdh/laravel-debugbar": "^3.0",
-        "calebporzio/sushi": "^2.0",
         "doctrine/dbal": "^2.8",
         "facade/ignition": "^2.0",
         "fideloper/proxy": "^4.2",

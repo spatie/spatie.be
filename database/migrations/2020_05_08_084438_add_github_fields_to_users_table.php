@@ -11,6 +11,7 @@ class AddGithubFieldsToUsersTable extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->integer('github_id')->nullable();
             $table->string('github_username')->nullable();
+            $table->boolean('is_sponsor')->nullable();
             $table->string('avatar')->nullable();
         });
     }

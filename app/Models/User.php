@@ -15,18 +15,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function sponsor()
-    {
-        return $this->hasOne(Sponsor::class, 'username', 'github_username');
-    }
 
-    public function getIsSponsorAttribute(): bool
+    public function isSponsoring(): bool
     {
         if ($this->isGitHubAccountOfSpatieMember()) {
             return true;
         }
 
-        return (bool)$this->sponsor;
+        return $this->is_sponsor;
     }
 
     public function isGitHubAccountOfSpatieMember(): bool

@@ -1,26 +1,20 @@
 <?php
 
-namespace App\Models;
+namespace App\Services\GitHub;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Sushi\Sushi;
 
-class Sponsor extends Model
+class GitHubGraphApi
 {
-    use Sushi;
-
-    protected $keyType = 'string';
-
-    public function user()
+    public static function isSponsor($gitHubUserName): bool
     {
-        return $this->hasOne(User::class, 'github_username', 'username');
+        return in_array($gitHubUserName, static::getAllSponsors());
     }
 
-    public function getRows()
+    public static function getAllSponsors(): array
     {
-        return Cache::remember('sponsors', now()->addHour(), function () {
+        return Cache::remember('sponsors', now()->addSeconds(30), function () {
             return array_map(function ($sponsor) {
                 return [
                     'id' => $sponsor['sponsorEntity']['id'],
@@ -42,6 +36,8 @@ class Sponsor extends Model
             }, $this->fetchRawSponsors());
         });
     }
+
+
 
     public function fetchRawSponsors($runningSponsors = [], $afterCursor = null)
     {
@@ -95,7 +91,7 @@ class Sponsor extends Model
                       }
                   }
                 EOT,
-        ]);
+            ]);
 
         $sponsors = $response['data']['organization']['sponsorshipsAsMaintainer']['nodes'];
         $hasNextPage = $response['data']['organization']['sponsorshipsAsMaintainer']['pageInfo']['hasNextPage'];

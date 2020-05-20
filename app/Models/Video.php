@@ -108,6 +108,6 @@ class Video extends Model
             return false;
         }
 
-        return auth()->user()->is_sponsor;
+        return auth()->user()->isSponsoring();
     }
 }
