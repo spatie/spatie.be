@@ -56,7 +56,7 @@
                                                     </span>                                                
                                                     <span>Log in</span>
                                                 </a>
-                                                <a class="mt-2 md:mt-0 font-sans-bold cursor-pointer border-l-2 border-green-dark bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full md:rounded-l-none text-white" href="https://github.com/sponsors/spatie" target="_blank">
+                                                <a class="mt-2 md:mt-0 font-sans-bold cursor-pointer md:border-l-2 md:border-green-dark bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full md:rounded-l-none text-white" href="https://github.com/sponsors/spatie" target="_blank">
                                                     <span>Become a GitHub Sponsor</span>                                             
                                                 </a>
                                             </div>
