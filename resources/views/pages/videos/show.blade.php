@@ -11,6 +11,8 @@
                 <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos</a>
                 <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
                 <span class="font-sans-bold">{{ $series->title }}</span>
+                <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
+                <span class="font-sans-bold">{{ $currentVideo->title }}</span>
             </p>
         </div>
     </section>
