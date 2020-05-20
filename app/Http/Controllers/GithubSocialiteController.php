@@ -18,7 +18,7 @@ class GithubSocialiteController extends Controller
 
     public function callback()
     {
-        $gitHubUser = Socialite::driver('github')->stateless()->user();
+        $gitHubUser = Socialite::driver('github')->user();
 
         $user = User::updateOrCreate([
             'github_id' => $gitHubUser->id,
