@@ -1,5 +1,5 @@
 @extends('layout.default', [
-    'background' => '/backgrounds/videos.jpg',
+    'background' => '/backgrounds/video-detail.jpg',
     'title' => $currentVideo->title,
     'description' => $currentVideo->description,
 ])
@@ -22,40 +22,36 @@
                 <div class="sm:startx-2 sm:spanx-3 | md:spanx-4 | lg:spanx-5">
                     @include('pages.videos.partials.vimeo')
 
-                    <div class="w-full h-0 shadow-lg bg-white" id="player" style="padding-bottom: 56.25%;">
+                    <div class="w-full shadow-lg bg-white overflow-hidden" id="player" style="height: 0; padding-bottom: 56.25%;">
                         @if ($currentVideo->canBeSeenByCurrentUser())
                             <iframe class="absolute pin w-full h-full" src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency></iframe>
                         @else
-                            <div class="absolute pin-b pin-l pin-r pin-t bg-blue overflow-hidden">
-                                <div class="absolute pin-b pin-l pin-r pin-t z-0 overflow-hidden" style="
-                                    transform: scale(1.05);
-                                    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3)), url('https://placehold.it/3008x1692');
-                                    filter: blur(4px);
-                                    -webkit-filter: blur(4px);
-                                    background-position: center;
-                                    background-repeat: no-repeat;
-                                    background-size: cover;
-                                "></div>
-                                <div class="flex flex-col justify-center items-center relative z-10 h-full w-full">
-                                    <div class="font-bold md:mb-8 md:text-3xl text-center text-white">This video is restricted to GitHub sponsors only.</div>
-                                    <div class="hidden md:block md:mb-8 text-center text-white md:text-xl">Your sponsorship helps make videos like these possible! ❤️</div>
-                                    @guest
-                                        <div class="mt-4">
-                                            <a class="text-sm md:text-base cursor-pointer border-2 border-white flex hover:border-gray-300 hover:text-gray-400 items-center px-4 md:px-8 py-1 md:py-2 rounded-full shadow text-white" href="/login/github">
-                                                <span class="mr-2">Log in with GitHub</span>
-                                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                            </a>
-                                        </div>
-                                    @else
-                                        <div class="mt-4">
-                                            <a class="text-sm md:text-base cursor-pointer border-2 border-white flex hover:border-gray-300 hover:text-gray-400 items-center px-4 md:px-8 py-1 md:py-2 rounded-full shadow text-white" href="https://github.com/sponsors/spatie" target="__blank">
-                                                <span class="mr-4">Become A GitHub Sponsor</span>
-                                                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                                            </a>
-                                        </div>
-                                    @endif
+                                <div class="absolute pin flex justify-center items-center inset-dark z-10 p-8">
+                                    <div class="flex flex-col items-center text-center">
+                                        <h4 class="mb-2 font-serif-bold text-2xl leading-tight">This video is exclusively for GitHub sponsors.</h4>
+                                        <p class="hidden md:block text-center">
+                                            Your sponsorship helps make videos like these possible! 
+                                            <span class="fill-pink icon">
+                                                {{ svg('icons/fas-heart') }}
+                                            </span>
+                                        </p>
+                                        @guest
+                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="/login/github">
+                                                    <span>Log in with GitHub</span>
+                                                    <span class="ml-3 h-6 w-6 text-black">
+                                                        {{ svg('github') }}
+                                                    </span>                                                
+                                                </a>
+                                        @else
+                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="__blank">
+                                                    <span>Become A GitHub Sponsor</span>
+                                                    <span class="ml-3 h-6 w-6 text-black">
+                                                        {{ svg('github') }}
+                                                    </span>                                                
+                                                </a>
+                                        @endif
+                                     </div>
                                 </div>
-                            </div>
                         @endif
                     </div>
 
@@ -78,9 +74,9 @@
                         @endif
                     </div>
 
-                    <h2 class="mt-8 title line-after mb-16">{{ $currentVideo->title }}</h2>
+                    <h2 class="title line-after mt-8">{{ $currentVideo->title }}</h2>
 
-                    <div class="text-lg">
+                    <div class="mt-8 text-lg links-blue">
                         {!! $currentVideo->formatted_description !!}
                     </div>
                 </div>

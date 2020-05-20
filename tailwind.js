@@ -85,7 +85,7 @@ var colors = {
     'green-lighter': '#94dac4',
     'green-light': '#57c9a5',
     green: '#21b989',
-    'green-dark': '#0D875F',
+    'green-dark': '#0a8867',
 };
 
 module.exports = {

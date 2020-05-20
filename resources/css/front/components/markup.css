@@ -108,3 +108,7 @@
         @apply counter-increment;
     }
 }
+
+.markup-list-compact li {
+    padding-left: 1.5em !important;
+}

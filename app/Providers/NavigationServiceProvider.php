@@ -29,12 +29,12 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
                 ->route('open-source.support', 'Support us')
-                ->addClass('leading-loose links-underline links-black')
+                ->addClass('leading-loose links-underline links-white')
                 ->setActiveFromRequest('/open-source')
                 ->setActiveClass('font-bold')
                 ->each(function (Link $link) {
                     if ($link->isActive()) {
-                        $link->prepend('<span class="absolute pin-l -ml-4 icon fill-blue">' . svg('icons/far-angle-right') . '</span>');
+                        $link->prepend('<span class="absolute pin-l -ml-4 icon fill-white">' . svg('icons/far-angle-right') . '</span>');
                     }
                 });
         });
