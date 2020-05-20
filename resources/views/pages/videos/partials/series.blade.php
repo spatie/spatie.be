@@ -23,7 +23,7 @@
                         <a class="link-underline link-blue" href="{{ $series->url }}">Watch this series</a>
                     </p>
                     
-                    <ol class="mt-4 text-xs text-grey">
+                    <ol class="mt-4 text-xs text-grey markup-list-compact">
                         <li>Title</li>
                         <li>Title</li>
                         <li>Title</li>
