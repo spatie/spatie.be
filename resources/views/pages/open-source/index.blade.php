@@ -11,7 +11,7 @@
     <div class="section-group pt-0 section-fade">
         <section class="section">
             <div class="wrap">
-                <h3 class="title-sm text-grey mb-4">Our current favorites</h3>
+                <h3 class="title-sm mb-4">Our current favorites</h3>
             </div>
 
             @livewire('repositories', [

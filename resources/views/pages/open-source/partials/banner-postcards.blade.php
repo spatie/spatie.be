@@ -1,14 +1,15 @@
-<section id="banner" class="banner" role="banner">
-    <div class="wrap-8">
-        @include('pages.open-source.partials.menu')
-
-        <div class="self-start sm:spanx-3 mt-8 | sm:grid-text-right sm:mt-0 | md:spanx-4 | print:spanx-7">
+<section id="banner" role="banner" class="pb-8 | md:pb-12 | lg:pb-16">
+    <div class="wrap-8 items-stretch">
+        <div class="pt-8 sm:startx-2 sm:spanx-3 | md:pt-12 md:spanx-4 | lg:pt-16 lg:spanx-5 | print:spanx-7">
             <h1 class="banner-slogan">
-            Greetings <br>to Antwerp
+                Greetings <br>to Antwerp
             </h1>
             <p class="banner-intro">
-            Postcardware in action
+                Postcardware in action            
             </p>
         </div>
+
+        @include('pages.open-source.partials.menu')
+
     </div>
 </section>

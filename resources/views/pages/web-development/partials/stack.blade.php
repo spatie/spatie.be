@@ -1,6 +1,6 @@
 <section id="stack" class="section">
     <div class="wrap">
-        <h3 class="title line-after mb-16">Our technology stack</h3>
+        <h3 class="title line-after mb-12">Our technology stack</h3>
     </div>
     <div class="wrap-6 items-start">
         <div class="line-l | sm:spanx-3 | md:spanx-2">

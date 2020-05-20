@@ -1,4 +1,6 @@
-<section id="intro" class="section">
+
+
+<section id="laravel" class="section mt-8">
     <div class="wrap-6">
         <div class="sm:spanx-3">
             <div class="markup links-underline links-blue">
@@ -42,23 +44,6 @@
                 <h3 class="title-sm mt-4 | sm:mt-8">React & Vue.js</h3>
                 <p class="text-lg">
                     <a href="https://vuejs.org">Vue.js</a> shines in Laravel apps that need that extra sprinkle of interactivity, while <a href="https://reactjs.org">React</a> is our weapon of choice for highly interactive web and mobile applications.
-                </p>
-            </div>
-        </div>
-    </div>
-    <div class=wrap>
-        <hr class=line>
-    </div>
-    <div class="wrap-6 mt-16">
-        <div class="sm:spanx-6">
-            <div class="markup links-underline links-blue">
-                <h3 class="title">Our greenhouse</h3>
-                <p class="text-lg">
-                    We are truly a household name in the community, having contributed over <a href="{{ route('open-source.index') }}">
-                    {{ App\Models\Repository::count() }} building blocks</a>. Our packages have been downloaded  {{ App\Models\Repository::humanReadableDownloadCount() }} times by peer developers.
-                </p>
-                <p class="text-lg">
-                    The many contributions, conference talks and top ranking amongst PHP developers are proof of our dedication to the Laravel ecosystem, and even more: to web development in general.<br>
                 </p>
             </div>
         </div>

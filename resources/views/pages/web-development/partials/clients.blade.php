@@ -1,6 +1,6 @@
 <section id="clients" class="section">
     <div class="wrap">
-        <h3 class="title line-after mb-16">Some of our clients</h3>
+        <h3 class="title line-after mb-12">Some of our clients</h3>
     </div>
     <div class="wrap-6 items-start">
         <div class="line-l | sm:spanx-2">

@@ -6,7 +6,7 @@
                 (open) source
                 </h2>
                 <p class="text-lg">
-                    We are open source enthusiasts and  active contributors to the Laravel ecosystem. Our packages have been downloaded worldwide  {{ App\Models\Repository::humanReadableDownloadCount() }} times.<br>
+                    We are open source enthusiasts and active contributors to the Laravel ecosystem. Our packages have been downloaded worldwide {{ App\Models\Repository::humanReadableDownloadCount() }} times.<br>
                     Our <a href="http://git-awards.com/users?utf8=✓&type=world&language=php">top ranking</a> amongst PHP developers on GitHub makes us very proud.
                 </p>
             </div>
@@ -15,7 +15,7 @@
                     Learn more
                 </h3>
                 <ul class="mt-4 text-lg bullets bullets-blue links-underline links-black">
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('laravel') }}">Laravel &amp; Vue development</a></li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('web-development') }}">Laravel, React &amp; Vue development</a></li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.index') }}">Open source packages</a></li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.support') }}">Support us</a></li>
                 </ul>

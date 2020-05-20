@@ -98,7 +98,7 @@ class Repository extends Model
 
     public function scopeSearch(Builder $builder, string $search)
     {
-        if (!$search) {
+        if (! $search) {
             return;
         }
 
@@ -107,7 +107,7 @@ class Repository extends Model
 
     public function scopeApplySort(Builder $builder, string $sort)
     {
-        if (!$sort) {
+        if (! $sort) {
             return;
         }
 

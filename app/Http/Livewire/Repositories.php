@@ -17,10 +17,10 @@ class Repositories extends Component
     /** @var string */
     public $type = 'packages';
 
-    /** @var boolean */
+    /** @var bool */
     public $filterable = true;
 
-    /** @var boolean */
+    /** @var bool */
     public $highlighted = false;
 
     protected $updatesQueryString = ['search', 'sort'];

@@ -14,8 +14,9 @@ class NavigationServiceProvider extends ServiceProvider
             return Menu::new()
                 ->route('home', 'Home')
                 ->route('web-development', 'Web development')
-                ->route('laravel', 'Laravel')
                 ->route('open-source.index', 'Open source')
+                ->route('videos.index', 'Videos')
+
                 ->route('about', 'About us')
                 ->setActiveFromRequest()
                 ->addClass($properties['class'] ?? '');
@@ -28,12 +29,12 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
                 ->route('open-source.support', 'Support us')
-                ->addClass('text-xl leading-loose links-underline links-white')
+                ->addClass('leading-loose links-underline links-white')
                 ->setActiveFromRequest('/open-source')
                 ->setActiveClass('font-bold')
                 ->each(function (Link $link) {
                     if ($link->isActive()) {
-                        $link->append('<span class="ml-2 opacity-50 icon fill-white">' . svg('icons/far-angle-right') . '</span>');
+                        $link->prepend('<span class="absolute pin-l -ml-4 icon fill-white">' . svg('icons/far-angle-right') . '</span>');
                     }
                 });
         });

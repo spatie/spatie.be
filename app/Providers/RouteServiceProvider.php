@@ -7,8 +7,6 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'App\Http\Controllers';
-
     public function map()
     {
         $this->mapAdminRoutes();
@@ -20,17 +18,13 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapAdminRoutes()
     {
-        Route::middleware(['web', 'admin', 'auth.basic'])
-            ->namespace($this->namespace . '\Admin')
+        Route::middleware(['web', 'admin', 'auth.basic', 'spatieMembers'])
             ->group(base_path('routes/admin.php'));
     }
 
     protected function mapWebRoutes()
     {
-        // Route::middleware(['web', 'cacheResponse'])
         Route::middleware(['web'])
-
-                        ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
     }
 

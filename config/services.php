@@ -31,8 +31,19 @@ return [
     ],
 
     'github' => [
+        'username' => env('GITHUB_USERNAME'),
         'token' => env('GITHUB_TOKEN'),
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_CALLBACK_URL'),
     ],
+
+    'vimeo' => [
+        'client' => env('VIMEO_CLIENT'),
+        'secret' => env('VIMEO_SECRET'),
+        'access' => env('VIMEO_ACCESS'),
+    ],
+
     'rss' => [
         'https://freek.dev/feed/originals',
         'https://sebastiandedeyne.com/feed/articles',
@@ -40,6 +51,7 @@ return [
         'https://alexvanderbist.com/feed',
         'https://rias.be/feed',
     ],
+
     'instagram' => [
         'token' => env('INSTAGRAM_TOKEN'),
     ],
@@ -57,9 +69,4 @@ return [
     'google_api' => [
         'key' => env('GOOGLE_API_KEY'),
     ],
-
-    'github' => [
-        'token' => env('GITHUB_TOKEN'),
-    ],
-
 ];

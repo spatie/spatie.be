@@ -1,4 +1,4 @@
-<section id="resources" class="section">
+<section id="proof" class="section">
     <div class="wrap">
         <div class="inset-blue">
             <div class="wrap-inset md:items-center" style="--cols: 1fr 1fr">

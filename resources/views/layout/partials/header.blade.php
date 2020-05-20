@@ -6,11 +6,7 @@
 
         @include('layout.partials.menu')
 
-        <div class=" flex justify-end absolute pin-r pin-t ml-16 w-20 | sm:opacity-75 | md:relative md:opacity-25">
-        {{-- Menu::language()
-            ->addClass('leading-none grid-rows grid-flow-column gap-4')
-            ->setActiveClass('font-sans-bold')
-        --}}
+        <div class="hidden ml-16 w-20 | lg:block">
         </div>
     </div>
     <div class="lg:max-w-columns lg:px-16 lg:mx-auto md:hidden | print:hidden">

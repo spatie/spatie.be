@@ -74,7 +74,7 @@ return [
             'root' => public_path('images/medialibrary'),
             'url' => '/images/medialibrary',
             'visibility' => 'public',
-        ]
+        ],
     ],
 
     /*

@@ -68,7 +68,7 @@ var colors = {
     blue: '#197593',
     'blue-dark': '#004966',
     'blue-darker': '#172a3d',
-    'blue-darkest': '#172a3d',
+    'blue-darkest': '#0f1c29',
 
     orange: '#ffa200',
     'orange-dark': '#e89158',
@@ -85,7 +85,7 @@ var colors = {
     'green-lighter': '#94dac4',
     'green-light': '#57c9a5',
     green: '#21b989',
-    'green-dark': '#0D875F',
+    'green-dark': '#0a8867',
 };
 
 module.exports = {
@@ -124,8 +124,8 @@ module.exports = {
   */
 
     screens: {
-        sm: '576px',
-        md: '920px',
+        sm: '720px',
+        md: '960px',
         lg: '1230px',
         xl: '1615px',
         print: { raw: 'print' },

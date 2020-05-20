@@ -18,11 +18,17 @@ function image(string $path): ?Media
 {
     $image = Image::findByPath($path);
 
-    if (! $image) {
-        $image = Image::createWithPath($path);
-    }
+    try {
+        if (! $image) {
+            $image = Image::createWithPath($path);
+        }
 
-    return optional($image)->getFirstMedia();
+        return optional($image)->getFirstMedia();
+    } catch (Exception $exception) {
+        report($exception);
+
+        return null;
+    }
 }
 
 function is_office_open(): bool
@@ -61,4 +67,13 @@ function mailto(string $subject, string $body): string
 function schema(): Schema
 {
     return app(Schema::class);
+}
+
+
+function formatBytes($size, $precision = 2)
+{
+    $base = log((float) $size, 1024);
+    $suffixes = ['', 'K', 'M', 'G', 'T'];
+
+    return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
 }

@@ -66,3 +66,32 @@
         background: linear-gradient(to bottom, rgba(76, 55, 55, 0), rgba(76, 55, 55, 0.05));
     }
 }
+
+.section-fade-sm {
+    &:before {
+        @apply z-back;
+        @apply absolute;
+        @apply w-full;
+        @apply pin-l;
+        @apply pin-b;
+        content: '';
+        height: 8rem;
+        background: linear-gradient(
+            to bottom,
+            color(config(colors.white) a(0) 30%),
+            color(config(colors.grey-lightest) a(0.85))
+        );
+    }
+
+    /* fake inset shadow at the bottom */
+    &:after {
+        @apply z-back;
+        @apply absolute;
+        @apply w-full;
+        @apply pin-l;
+        @apply pin-b;
+        content: '';
+        height: 4px;
+        background: linear-gradient(to bottom, rgba(76, 55, 55, 0), rgba(76, 55, 55, 0.05));
+    }
+}

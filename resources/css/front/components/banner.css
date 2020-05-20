@@ -1,12 +1,12 @@
 .banner {
-    @apply py-12;
+    @apply py-8;
 
     @screen md {
-        @apply py-16;
+        @apply py-12;
     }
 
     @screen lg {
-        @apply py-24;
+        @apply py-16;
     }
 }
 
@@ -18,26 +18,32 @@
     @apply flex;
     @apply items-center;
     @apply p-8;
-    @apply pr-16;
-    @apply rounded-lg;
-    @apply bg-pink;
-    @apply gradient-linear;
-    @apply shadow;
+    @apply rounded;
     @apply text-white;
+    @apply bg-pink-lightest;
+    @apply gradient-linear;
 
     @supports (display: grid) {
         @screen sm {
             @apply spanx-4;
-            @apply rounded-tl-none;
-            @apply rounded-bl-none;
-            @apply justify-self-start;
-            @apply align-self-start;
+            @apply rounded-tr-none;
+            @apply rounded-br-none;
+            top: -1rem;
+            @apply z-10;
         }
 
         @screen md {
             @apply spanx-3;
-            @apply pl-16;
+            @apply p-12;
+            @apply text-xl;
+            top: 0;
         }
+
+        @screen lg {
+            @apply spanx-2;
+        }
+
+
     }
 }
 
