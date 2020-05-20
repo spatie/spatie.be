@@ -28,6 +28,10 @@
                         @else
                                 <div class="absolute pin flex justify-center items-center inset-dark z-10 p-8">
                                     <div class="flex flex-col items-center text-center">
+                                        @if(session()->has('not-a-sponsor'))
+                                            YOU ARE NOT A SPONSOR
+                                        @endif
+
                                         <h4 class="mb-2 font-serif-bold text-2xl leading-tight">This video is exclusively for GitHub sponsors.</h4>
                                         <p class="hidden md:block text-center">
                                             Your sponsorship helps make videos like these possible! 

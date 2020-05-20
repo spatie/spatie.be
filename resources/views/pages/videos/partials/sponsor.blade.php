@@ -1,10 +1,10 @@
-
-{{ dump(auth()->user()) }}
 @guest
-
     <section id="proof" class="section">
         <div class="wrap">
             <div class="inset-green">
+                @if(session()->has('not-a-sponsor'))
+                    YOU ARE NOT A SPONSOR
+                @endif
                 <div class="wrap-inset md:items-center" style="--cols: 1fr auto">
                     <h2 class="title-xl">
                         Get full access
