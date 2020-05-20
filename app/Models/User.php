@@ -29,7 +29,7 @@ class User extends Authenticatable
     {
         return in_array($this->github_username, [
             'riasvdv',
-            'freekmurze',
+            //'freekmurze',
         ]);
     }
 }
