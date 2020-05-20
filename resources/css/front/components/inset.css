@@ -55,3 +55,14 @@
     @apply gradient-linear;
     @apply text-black;
 }
+
+.inset-dark {
+    --gradient-angle: 120deg;
+    --gradient-from: #31302f;
+    --gradient-to: #172a3d;
+
+    @apply inset;
+    @apply bg-grey-dark;
+    @apply gradient-linear;
+    @apply text-white;
+}

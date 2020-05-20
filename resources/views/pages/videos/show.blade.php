@@ -26,7 +26,7 @@
                         @if ($currentVideo->canBeSeenByCurrentUser())
                             <iframe class="absolute pin w-full h-full" src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media" allowfullscreen allowtransparency></iframe>
                         @else
-                                <div class="absolute pin flex justify-center items-center inset-green z-10 p-8">
+                                <div class="absolute pin flex justify-center items-center inset-dark z-10 p-8">
                                     <div class="flex flex-col items-center text-center">
                                         <h4 class="mb-2 font-serif-bold text-2xl leading-tight">This video is exclusively for GitHub sponsors.</h4>
                                         <p class="hidden md:block text-center">
@@ -36,16 +36,16 @@
                                             </span>
                                         </p>
                                         @guest
-                                                <a class="mt-8 text-sm font-sans-bold cursor-pointer bg-white hover:shadow-lg shadow  flex items-center px-4 py-2 rounded-full text-green" href="/login/github">
+                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="/login/github">
                                                     <span>Log in with GitHub</span>
-                                                    <span class="ml-2 h-6 w-6 text-black">
+                                                    <span class="ml-3 h-6 w-6 text-black">
                                                         {{ svg('github') }}
                                                     </span>                                                
                                                 </a>
                                         @else
-                                                <a class="mt-8 text-sm font-sans-bold cursor-pointer bg-white hover:shadow-lg shadow  flex items-center px-4 py-2 rounded-full text-green" href="https://github.com/sponsors/spatie" target="__blank">
+                                                <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="__blank">
                                                     <span>Become A GitHub Sponsor</span>
-                                                    <span class="ml-2 h-6 w-6 text-black">
+                                                    <span class="ml-3 h-6 w-6 text-black">
                                                         {{ svg('github') }}
                                                     </span>                                                
                                                 </a>

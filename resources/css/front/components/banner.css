@@ -12,14 +12,15 @@
 
 .banner-menu {
     --gradient-angle: 120deg;
-    --gradient-from: #e3ded8;
-    --gradient-to: #d5d0c8;
+    --gradient-to: #dd9099;
+    --gradient-from: #ddaeb4;
 
     @apply flex;
     @apply items-center;
     @apply p-8;
     @apply rounded;
-    @apply bg-blue-lightest;
+    @apply text-white;
+    @apply bg-pink-lightest;
     @apply gradient-linear;
 
     @supports (display: grid) {

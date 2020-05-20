@@ -9,7 +9,7 @@
                     {{ image('portfolio/flare.jpg') }}
                 </a>
             
-                <div class="mt-6 line-l">
+                <div class="mt-8 line-l">
                     <h2 class="title-sm">
                         <a href="{{ $series->url }}">{{ $series->title }}</a>
                         <div class="title-subtext text-grey">
