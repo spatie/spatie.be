@@ -89,7 +89,7 @@
 
                     <h2 class="title line-after mt-8">{{ $currentVideo->title }}</h2>
 
-                    <div class="mt-8 text-lg links-blue markup markup-titles markup-lists">
+                    <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
                         {!! $currentVideo->formatted_description !!}
                     </div>
                 </div>
