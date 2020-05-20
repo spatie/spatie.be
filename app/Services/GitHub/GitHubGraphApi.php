@@ -9,7 +9,9 @@ class GitHubGraphApi
 {
     public function isSponsor($gitHubUserName): bool
     {
-        return in_array($gitHubUserName, $this->getAllSponsors());
+        $sponsorUserNames = collect($this->getAllSponsors())->pluck('username')->toArray();
+
+        return in_array($gitHubUserName, $sponsorUserNames);
     }
 
     public function getAllSponsors(): array
