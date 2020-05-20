@@ -34,7 +34,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->setActiveClass('font-bold')
                 ->each(function (Link $link) {
                     if ($link->isActive()) {
-                        $link->prepend('<span class="absolute pin-l -ml-4 icon fill-blue">' . svg('icons/far-angle-right') . '</span>');
+                        $link->prepend('<span class="absolute pin-l -ml-4 icon fill-white">' . svg('icons/far-angle-right') . '</span>');
                     }
                 });
         });
