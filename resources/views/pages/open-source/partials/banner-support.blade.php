@@ -5,7 +5,7 @@
                 How to <br>support us
             </h1>
             <p class="banner-intro">
-                We got each other's back      
+                Welcome to our little shop      
             </p>
         </div>
 
