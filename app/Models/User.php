@@ -28,8 +28,7 @@ class User extends Authenticatable
     public function isSpatieMember(): bool
     {
         return in_array($this->github_username, [
-            'riasvdv',
-            'freekmurze',
+            'riasvdv'
         ]);
     }
 }
