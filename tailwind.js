@@ -124,8 +124,8 @@ module.exports = {
   */
 
     screens: {
-        sm: '640px',
-        md: '920px',
+        sm: '720px',
+        md: '960px',
         lg: '1230px',
         xl: '1615px',
         print: { raw: 'print' },
