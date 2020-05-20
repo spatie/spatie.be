@@ -12,6 +12,7 @@ class CreateVideosTables extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
+            $table->text('description');
             $table->integer('sort');
             $table->timestamps();
         });

@@ -17,7 +17,7 @@
                         </div>
                     </h2>
                     <p class="mt-4">
-                        Learn how to create your own laravel packages in these comprehensive …
+                        {{ $series->description }}
                     </p>
                     <p class="mt-4">
                         <a class="link-underline link-blue" href="{{ $series->url }}">Watch this series</a>

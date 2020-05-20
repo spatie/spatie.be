@@ -27,6 +27,7 @@ class UpdateVideosCommand extends Command
                 'slug' => Str::slug($series['title']),
             ], [
                 'title' => $series['title'],
+                'description' => $series['description'],
                 'sort' => $sort,
             ]);
 

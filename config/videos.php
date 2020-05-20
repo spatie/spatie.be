@@ -3,7 +3,8 @@
 return [
     'series' => [
         [
-            'title' => 'Package development',
+            'title' => 'Writing beautiful PHP',
+            'description' => "In this series, we'll explore best practices on how to write maintainable and readable PHP code",
             'videos' => [
                 ['id' => '417225584', 'only_for_sponsors' => false], // intro
                 ['id' => '417225712', 'only_for_sponsors' => true], // starting a php package
@@ -15,7 +16,8 @@ return [
             ],
         ],
         [
-            'title' => 'Another series',
+            'title' => 'Source diving SPATIE packages',
+            'description' => "Have you ever wondered how some of our packages work under the hood? In this series all secrets will be revealed",
             'videos' => [
                 ['id' => '417225584', 'only_for_sponsors' => false], // intro
                 ['id' => '417225712', 'only_for_sponsors' => true], // starting a php package
