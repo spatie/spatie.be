@@ -10,7 +10,7 @@
             <p class="mt-4">
                 <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos</a>
                 <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
-                <span class="font-sans-bold">{{ $series->title }}</span>
+                <a href="{{ $series->url }}" class="link-underline link-blue">{{ $series->title }}</a>
                 <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
                 <span class="font-sans-bold">{{ $currentVideo->title }}</span>
             </p>
