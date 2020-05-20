@@ -46,7 +46,7 @@
                                         @else
                                             <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is exclusively for GitHub sponsors.</h4>
                                             <p class="hidden md:block text-center">
-                                                Sponsorships makes videos like these possible! 
+                                                Sponsorships make videos like these possible!
                                                 <span class="fill-pink icon">
                                                     {{ svg('icons/fas-heart') }}
                                                 </span>
