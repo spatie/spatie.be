@@ -1,12 +1,12 @@
 .banner {
-    @apply py-12;
+    @apply py-8;
 
     @screen md {
-        @apply py-16;
+        @apply py-12;
     }
 
     @screen lg {
-        @apply py-24;
+        @apply py-16;
     }
 }
 

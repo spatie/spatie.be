@@ -1,5 +1,5 @@
 @extends('layout.default', [
-    'background' => '/backgrounds/videos.jpg',
+    'background' => '/backgrounds/video-detail.jpg',
     'title' => $currentVideo->title,
     'description' => $currentVideo->description,
 ])
@@ -74,9 +74,9 @@
                         @endif
                     </div>
 
-                    <h2 class="mt-8 title line-after mb-16">{{ $currentVideo->title }}</h2>
+                    <h2 class="title line-after mt-8">{{ $currentVideo->title }}</h2>
 
-                    <div class="text-lg">
+                    <div class="mt-8 text-lg links-blue">
                         {!! $currentVideo->formatted_description !!}
                     </div>
                 </div>
