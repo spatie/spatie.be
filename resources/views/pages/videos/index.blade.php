@@ -9,8 +9,10 @@
 
     <div class="section-group pt-0 section-fade z-10">
         @include('pages.videos.partials.intro')
-        @include('pages.videos.partials.sponsor')
-        @include('pages.videos.partials.series')
     </div>
+    
+    @include('pages.videos.partials.sponsor')
+    
+    @include('pages.videos.partials.series')
 
 @endsection
