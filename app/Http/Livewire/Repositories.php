@@ -32,12 +32,16 @@ class Repositories extends Component
         ]);
     }
 
-    public function mount(array $options = [])
-    {
-        $this->type = $options['type'] ?? 'packages';
-        $this->filterable = $options['filterable'] ?? true;
-        $this->highlighted = $options['highlighted'] ?? false;
-        $this->sort = request()->query('sort', $options['sort'] ?? 'name');
+    public function mount(
+        $type = 'packages',
+        $filterable = true,
+        $highlighted = false,
+        $sort = 'name'
+    ) {
+        $this->type = $type;
+        $this->filterable = $filterable;
+        $this->highlighted = $highlighted;
+        $this->sort = request()->query('sort', $sort);
         $this->search = request()->query('search', '');
     }
 
