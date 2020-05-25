@@ -30,7 +30,7 @@ class GithubSocialiteController extends Controller
         ], [
             'github_username' => $gitHubUser->nickname,
             'email' => $gitHubUser->email,
-            'name' => $gitHubUser->name,
+            'name' => $gitHubUser->name ?? $gitHubUser->nickname,
             'avatar' => $gitHubUser->avatar,
             'password' => Str::random(),
             'is_sponsor' => $isSponsor,
