@@ -20,7 +20,7 @@ class GithubSocialiteController extends Controller
 
     public function callback()
     {
-        $gitHubUser = Socialite::driver('github')->user();
+        $gitHubUser = Socialite::driver('github')->stateless()->user();
 
         $isSponsor = (new GitHubGraphApi())->isSponsor($gitHubUser->nickname);
 
