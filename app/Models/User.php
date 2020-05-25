@@ -15,7 +15,6 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
     public function isSponsoring(): bool
     {
         if ($this->isSpatieMember()) {
@@ -27,8 +26,10 @@ class User extends Authenticatable
 
     public function isSpatieMember(): bool
     {
-        return in_array($this->github_username, [
-            'riasvdv'
-        ]);
+        if (!$this->github_username) {
+            return false;
+        }
+
+        return Member::where('github', $this->github_username)->exists();
     }
 }
