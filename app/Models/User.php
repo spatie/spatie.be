@@ -26,10 +26,6 @@ class User extends Authenticatable
 
     public function isSpatieMember(): bool
     {
-        if (!$this->github_username) {
-            return false;
-        }
-
         return Member::where('github', $this->github_username)->exists();
     }
 }
