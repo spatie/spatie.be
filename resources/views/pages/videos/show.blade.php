@@ -70,6 +70,10 @@
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
 
+                    <div class="my-8">
+                        @include('pages.videos.partials.promo')
+                    </div>
+
                     <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
                         {!! $currentVideo->formatted_description !!}
                     </div>

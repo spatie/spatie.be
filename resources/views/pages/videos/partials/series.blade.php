@@ -13,7 +13,8 @@
                     <h2 class="title-sm">
                         <a href="{{ $series->url }}">{{ $series->title }}</a>
                         <div class="title-subtext text-grey">
-                            {{ $series->videos()->count() }} {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                            {{ $series->videos()->count() }} free {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                            <span class="px-1 rounded-sm bg-green-lightest text-green-dark font-normal text-xs">+ more available</span>
                         </div>
                     </h2>
                     <p class="mt-4">
