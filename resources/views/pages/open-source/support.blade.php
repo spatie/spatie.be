@@ -15,7 +15,16 @@
                     
                     <div class="mb-16 inset-blue">
                         <div class="wrap-inset md:items-center" style="--cols: 1fr">
-                            <ul class="links-blue links-underline bullets bullets-blue">
+                            <ul class="grid gap-4 links-blue links-underline bullets bullets-blue">
+                                <li>
+                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                                    <a class="text-xl font-sans-bold" href="https://laravelpackage.training">
+                                        Laravel Package Training</a>
+                                    <br><span class="text-base">Become the next package maestro. 
+                                        <br>
+                                        Learn how to build reusable components like we build them.<br>
+                                        For only <strong>$79</strong>.</span>
+                                </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     <a class="text-xl font-sans-bold" href="https://mailcoach.app/register">
@@ -25,7 +34,7 @@
                                         Includes <a href="https://mailcoach.app/videos">a video course</a> on how to improve your Laravel skills.<br>
                                         For only <strong>$149</strong>.</span>
                                 </li>
-                                <li class="pt-4">
+                                <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     <a class="text-xl font-sans-bold" href="https://flareapp.io/register">Flareapp.io</a>
                                     <br>

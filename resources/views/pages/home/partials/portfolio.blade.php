@@ -1,4 +1,31 @@
 <section id="portfolio" class="section">
+    <div class="wrap-8 grid-flow-dense section">
+        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
+            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank"
+            rel="nofollow noreferrer noopener">
+                {{ image('portfolio/laravel-package-training.jpg') }}
+            </a>
+        </div>
+        <div class="sm:startx-2 sm:spanx-3 | self-center">
+            <div class="markup links-blue links-underline | sm:grid-text-right">
+                <h3 class="title">
+                    Laravel Package Training
+                    <div class="title-subtext text-pink-dark">
+                        <span class="font-normal">4 hours of </span>premium video content
+                    </div>
+                </h3>
+                <p class="text-lg">
+                    Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                            href="https://laravelpackage.training" target="_blank"
+                            rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="wrap-8 section">
         <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
             <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank"
