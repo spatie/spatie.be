@@ -69,4 +69,8 @@ return [
     'google_api' => [
         'key' => env('GOOGLE_API_KEY'),
     ],
+
+    'promo_codes' => [
+        'package_training' => env('PROMO_CODE_PACKAGE_TRAINING'),
+    ],
 ];
