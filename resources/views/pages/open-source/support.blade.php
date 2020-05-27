@@ -1,7 +1,7 @@
 @extends('layout.default', [
         'background' => '/backgrounds/open-source.jpg',
         'title' => 'Support us',
-        'description' => 'Learn how to support us via our paid products or via Patreon.',
+        'description' => 'Learn how to support us via our paid products or via GitHub sponsors.',
 ])
 
 @section('content')

@@ -35,11 +35,6 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://patreon.com/spatie" target="_blank" rel="nofollow noreferrer noopener">
-                            Patreon
-                        </a>
-                    </li>
-                    <li>
                         <a href="https://twitter.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
                             Twitter
                         </a>
