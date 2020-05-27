@@ -11,6 +11,8 @@
 
                 @if (sponsorIsViewingPage())
                     As a sponsor, you can grab the entire course with 15$ off with following coupon:
+                @else
+                    Sponsors will receive a coupon code that offers a discount when purchasing the course.
                 @endif
             </p>
 

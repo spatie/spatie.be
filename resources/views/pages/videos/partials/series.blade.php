@@ -8,13 +8,16 @@
                 <a href="{{ $series->url }}" class="illustration">
                     {{ image("/video-series/{$series->slug}.jpg") }}
                 </a>
-            
+
                 <div class="mt-8 line-l">
                     <h2 class="title-sm">
                         <a href="{{ $series->url }}">{{ $series->title }}</a>
                         <div class="title-subtext text-grey">
-                            {{ $series->videos()->count() }} free {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
-                            <span class="px-1 rounded-sm bg-green-lightest text-green-dark font-normal text-xs">+ more available</span>
+                            {{ $series->videos()->count() }}
+                            free {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                            @if ($series->slug === 'spatie-package-source-dives')
+                                <span class="px-1 rounded-sm bg-green-lightest text-green-dark font-normal text-xs">+ more available</span>
+                            @endif
                         </div>
                     </h2>
                     <p class="mt-4">
