@@ -17,5 +17,13 @@ return [
                 ['id' => '420490355', 'only_for_sponsors' => true], // refactor complex conditionals
             ],
         ],
+
+        [
+            'title' => 'Show me the code',
+            'description' => "Here are some problems that we solved in an elegant way",
+            'videos' => [
+                ['id' => '423805273', 'only_for_sponsors' => true], // refactor complex conditionals
+            ],
+        ],
     ],
 ];
