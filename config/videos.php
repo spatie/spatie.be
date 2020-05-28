@@ -8,6 +8,7 @@ return [
             'videos' => [
                 ['id' => '419946519', 'only_for_sponsors' => true], // multitenancy
                 ['id' => '420606741', 'only_for_sponsors' => true], // response cache
+                ['id' => '423825543', 'only_for_sponsors' => true], // laravel-dashboard
             ],
         ],
         [
