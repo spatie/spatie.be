@@ -12,10 +12,13 @@ return [
             ],
         ],
         [
-            'title' => 'Write beautiful PHP',
-            'description' => "In this series, we'll explore best practices on how to write maintainable and readable PHP code",
+            'title' => 'Readable Laravel',
+            'description' => "In this series, we'll explore best practices on how to write maintainable and readable code",
             'videos' => [
-                ['id' => '420490355', 'only_for_sponsors' => true], // refactor complex conditionals
+                ['id' => '425400766', 'only_for_sponsors' => true], // Using lookup tables
+                ['id' => '420490355', 'only_for_sponsors' => true], // Refactor complex conditionals
+                ['id' => '424357726', 'only_for_sponsors' => true], // Getting auto completion on models and API resources
+                ['id' => '424351669', 'only_for_sponsors' => true], // use Blade components for layouts
             ],
         ],
 
