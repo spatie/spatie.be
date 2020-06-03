@@ -13,7 +13,7 @@ return [
         ],
         [
             'title' => 'Readable Laravel',
-            'description' => "In this series, we'll explore best practices on how to write maintainable and readable code",
+            'description' => "In this series, we'll explore best practices on how to write maintainable and readable code.",
             'videos' => [
                 ['id' => '425443685', 'only_for_sponsors' => false], // Improving readability by decreasing indentation
                 ['id' => '425400766', 'only_for_sponsors' => true], // Using lookup tables
