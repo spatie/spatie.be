@@ -3,12 +3,19 @@
 return [
     'series' => [
         [
-            'title' => 'SPATIE package source dives',
-            'description' => "Have you ever wondered how some of our packages work under the hood? This series reveals all secrets!",
+            'title' => 'Laravel Package Training',
+            'description' => "Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!",
             'videos' => [
                 ['id' => '419946519', 'only_for_sponsors' => true], // multitenancy
                 ['id' => '420606741', 'only_for_sponsors' => true], // response cache
                 ['id' => '423825543', 'only_for_sponsors' => true], // laravel-dashboard
+            ],
+        ],
+        [
+            'title' => 'Building Mailcoach',
+            'description' => "Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.",
+            'videos' => [
+                ['id' => '381650670', 'only_for_sponsors' => false], // refactor complex conditionals
             ],
         ],
         [
