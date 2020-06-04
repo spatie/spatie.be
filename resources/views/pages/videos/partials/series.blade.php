@@ -32,13 +32,13 @@
                     @if($series->slug === 'building-mailcoach')
                         <p class="">
                             <a class="link-underline link-blue" href="https://mailcoach.app/videos">
-                                Buy the entire series at <strong>mailcoach.app/videos</strong>
+                                Buy the entire course at <strong>mailcoach.app/videos</strong>
                             </a>
                         </p>
 
                         @if (sponsorIsViewingPage())
                             <p class="mt-2 text-xs text-grey">
-                                As a sponsor, you can grab the entire course with 15$ off with following coupon:
+                                As a sponsor, you can get 15$ off with following coupon:
                                 <span class="mt-2 font-mono opacity-75">{{ config('services.promo_codes.package_training') }}</span>
                             </p>
                         @endif
@@ -47,13 +47,13 @@
                     @if($series->slug === 'laravel-package-training')
                         <p class="">
                             <a class="link-underline link-blue" href="https://laravelpackage.training">
-                                Buy the entire series at <strong>laravelpackage.training</strong>
+                                Buy the entire course at <strong>laravelpackage.training</strong>
                             </a>
                         </p>
 
                         @if (sponsorIsViewingPage())
                             <p class="mt-2 text-xs text-grey">
-                                As a sponsor, you can grab the entire course with 15$ off with following coupon:
+                                As a sponsor, you can get 15$ off with following coupon:
                                 <span class="mt-2 font-mono opacity-75">{{ config('services.promo_codes.package_training') }}</span>
                             </p>
                         @endif
