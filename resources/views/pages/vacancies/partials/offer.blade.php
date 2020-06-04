@@ -6,7 +6,7 @@
                 fulfilled
                 </h2>
                 <ul class="bullets bullets-green">
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package that can be tailored to your personal needs</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Eco vouchers</li>
@@ -23,9 +23,11 @@
     <div class="wrap-8 grid-flow-dense">
         <div class="sm:spanx-4 sm:startx-4">
             <div class="markup links-underline links-blue">
-                <h3 class="title">Extra icing</h3>
+                <h3 class="title">Extras that will feel familiar quickly</h3>
 
                 <ul class="bullets bullets-green">
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A modern office in the center of Antwerp, right in between 2 train stations</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Standing desks and a roof terrace</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A genuine drive to learn from each other: code reviews, in-house presentations and chit-chat on Slack</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A flat company structure where you can make a clear difference</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="https://www.kiva.org" target="_blank" rel="nofollow noreferrer noopener">Kiva</a> budget for micro-loans</li>

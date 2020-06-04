@@ -15,6 +15,7 @@
                     <li>Redis</li>
                     <li>Algolia</li>
                     <li>Elasticsearch</li>
+                    <li>Statamic</li>
                 </ul>
                 <h3 class="title-sm">Frontend</h3>
                 <ul class="bullets-inline bullets-blue">

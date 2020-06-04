@@ -78,9 +78,15 @@
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
 
-                    @if($series->slug === 'spatie-package-source-dives')
+                    @if($series->slug === 'laravel-package-training')
                         <div class="my-8">
                             @include('pages.videos.partials.packageTrainingPromo')
+                        </div>
+                    @endif
+
+                    @if($series->slug === 'building-mailcoach')
+                        <div class="my-8">
+                            @include('pages.videos.partials.mailcoachPromo')
                         </div>
                     @endif
 
