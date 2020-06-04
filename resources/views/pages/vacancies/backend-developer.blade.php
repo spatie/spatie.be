@@ -36,7 +36,7 @@
                         <div class="mt-16">
                             <h3 class="title">Personal growth is not an empty promise here</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Get €1500,- personal budget every year for trainings &amp; conferences like Laracon EU and US, DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay, ...</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Get €1500,- personal budget every year for trainings &amp; conferences like Laracon EU and US, DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay ...</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Become a real expert in Laravel and PHP — have a look at our <a href="#stack">technology stack</a></li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spend half a day each week on experimentation and open source work</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team with an excellent reputation in the Laravel community</li>

@@ -43,12 +43,13 @@
                     <li>Salesforce</li>
                     <li>Teamleader</li>
                     <li>Exact Online</li>
-                    <li>Urban Airship</li>
+                    <li>One Signal</li>
                     <li>MailChimp</li>
                     <li>Sendgrid</li>
                     <li>Google Maps</li>
                     <li>Google Analytics</li>
                     <li>Google Tag Manager</li>
+                    <li>MS Visual Studio App Center</li>
                 </ul>
             </div>
         </div>
@@ -59,6 +60,7 @@
                     <li>AWS</li>
                     <li>Digital Ocean</li>
                     <li>Laravel Forge</li>
+                    <li>Laravel Vapor</li>
                     <li>Netlify</li>
                     <li>NGINX</li>
                     <li>Docker</li>
