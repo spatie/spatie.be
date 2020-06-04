@@ -26,7 +26,7 @@
                         <h2 class="font-serif text-3xl text-green line-l">
                             Say out loud:
                             <br>
-                            I can build modern web applications in Laravel!
+                            I can build modern web applications with Laravel!
                         </h2>
 
                         <div class="mt-16">
