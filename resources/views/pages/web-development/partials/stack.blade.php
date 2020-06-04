@@ -62,6 +62,7 @@
                     <li>Netlify</li>
                     <li>NGINX</li>
                     <li>Docker</li>
+                    <li>Ansible</li>
                 </ul>
             </div>
         </div>
