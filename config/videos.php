@@ -9,7 +9,7 @@ return [
                 ['id' => '419946519', 'only_for_sponsors' => true], // multitenancy
                 ['id' => '420606741', 'only_for_sponsors' => true], // response cache
                 ['id' => '423825543', 'only_for_sponsors' => true], // laravel-dashboard
-                ['id' => '426741940', 'only_for_sponsors' => true], // laravel-short-schedule using
+                ['id' => '426741940', 'only_for_sponsors' => false], // laravel-short-schedule using
                 ['id' => '426743340', 'only_for_sponsors' => true], // laravel-short-schedule under the hood
                 ['id' => '426803489', 'only_for_sponsors' => true], // laravel-short-schedule testing
             ],
