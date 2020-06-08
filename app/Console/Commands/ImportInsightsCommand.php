@@ -9,7 +9,7 @@ use Zend\Feed\Exception\ExceptionInterface;
 use Zend\Feed\Reader\Entry\AbstractEntry;
 use Zend\Feed\Reader\Reader;
 
-class ImportInsights extends Command
+class ImportInsightsCommand extends Command
 {
     protected $signature = 'import:insights';
 

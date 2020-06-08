@@ -7,7 +7,7 @@ use App\Models\Repository;
 use App\Services\GitHub\GitHubApi;
 use Illuminate\Console\Command;
 
-class ImportRandomContributor extends Command
+class ImportRandomContributorCommand extends Command
 {
     protected $signature = 'import:random-contributor';
 

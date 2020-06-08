@@ -7,7 +7,7 @@ use App\Services\Vimeo\Vimeo;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
-class UpdateVideosCommand extends Command
+class UpdateVideosCommandCommand extends Command
 {
     protected $signature = 'update-videos';
 

@@ -10,7 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 
-class ImportGitHubIssues extends Command
+class ImportGitHubIssuesCommand extends Command
 {
     protected $signature = 'import:github-issues';
 

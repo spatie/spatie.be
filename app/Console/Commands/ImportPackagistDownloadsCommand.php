@@ -7,7 +7,7 @@ use GuzzleHttp\Client;
 use Illuminate\Console\Command;
 use Spatie\Packagist\Packagist;
 
-class ImportPackagistDownloads extends Command
+class ImportPackagistDownloadsCommand extends Command
 {
     protected $signature = 'import:packagist-downloads';
 

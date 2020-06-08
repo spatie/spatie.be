@@ -9,7 +9,7 @@ use DateTime;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Cache;
 
-class ImportGitHubRepositories extends Command
+class ImportGitHubRepositoriesCommand extends Command
 {
     protected $signature = 'import:github-repositories';
 
