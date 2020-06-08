@@ -178,6 +178,7 @@ return [
         App\Services\Twitter\TwitterServiceProvider::class,
         App\Services\Vimeo\VimeoServiceProvider::class,
         App\Providers\BladeComponentsServiceProvider::class,
+        App\Providers\LivewireServiceProvider::class,
     ],
 
     /*

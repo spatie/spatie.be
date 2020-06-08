@@ -11,7 +11,7 @@ class RouteServiceProvider extends ServiceProvider
     {
         $this->mapAdminRoutes();
 
-        $this->mapWebRoutes();
+        $this->mapFrontRoutes();
 
         $this->mapRedirectsForOldSite();
     }
@@ -22,10 +22,10 @@ class RouteServiceProvider extends ServiceProvider
             ->group(base_path('routes/admin.php'));
     }
 
-    protected function mapWebRoutes()
+    protected function mapFrontRoutes()
     {
         Route::middleware(['web'])
-            ->group(base_path('routes/web.php'));
+            ->group(base_path('routes/front.php'));
     }
 
     protected function mapRedirectsForOldSite()

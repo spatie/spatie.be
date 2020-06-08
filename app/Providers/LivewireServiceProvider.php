@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Livewire\RepositoriesComponent;
+use App\Http\Front\Livewire\RepositoriesComponent;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 

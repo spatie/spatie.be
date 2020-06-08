@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\PostcardController;
+use App\Http\Admin\Controllers\PostcardController;
 
 Route::permanentRedirect('admin', 'admin/postcards');
 
