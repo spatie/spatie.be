@@ -10,7 +10,6 @@ class AddUuidFieldToMediaTable extends Migration
     {
         Schema::table('media', function (Blueprint $table) {
             $table->uuid('uuid')->nullable();
-
         });
     }
 }
