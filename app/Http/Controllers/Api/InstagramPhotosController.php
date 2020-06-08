@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
 use App\Http\Resources\InstagramPhotoResource;
 use App\Models\InstagramPhoto;
 
-class InstagramPhotosController extends Controller
+class InstagramPhotosController
 {
     public function __invoke()
     {

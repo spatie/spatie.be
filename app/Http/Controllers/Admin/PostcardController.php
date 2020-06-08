@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Postcard;
 use Illuminate\Http\Request;
 
-class PostcardController extends Controller
+class PostcardController
 {
     public function index()
     {

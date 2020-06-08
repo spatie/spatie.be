@@ -3,13 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use App\Models\Video;
-use App\Services\GitHub\GitHubApi;
 use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
-class GithubSocialiteController extends Controller
+class GithubSocialiteController
 {
     public function redirect()
     {

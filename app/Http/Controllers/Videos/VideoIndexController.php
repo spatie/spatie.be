@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Videos;
 
-use App\Http\Controllers\Controller;
 use App\Models\Series;
 
-class VideoIndexController extends Controller
+class VideoIndexController
 {
     public function __invoke()
     {

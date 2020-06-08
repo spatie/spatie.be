@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Postcard;
 
-class PostcardController extends Controller
+class PostcardController
 {
     public function index()
     {

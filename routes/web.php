@@ -11,7 +11,6 @@ use Spatie\Cors\Cors;
 
 Route::view('/', 'pages/home/index')->name('home');
 
-
 Route::view('web-development', 'pages/web-development/index')->name('web-development');
 
 Route::prefix('about-us')->group(function () {

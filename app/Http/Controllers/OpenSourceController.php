@@ -4,18 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Contributor;
 use App\Models\Issue;
-use App\Models\PatreonPledger;
 
-class OpenSourceController extends Controller
+class OpenSourceController
 {
-    /** @var \Illuminate\Support\Collection */
-    protected $patreonPledgers;
-
-    public function __construct()
-    {
-        $this->patreonPledgers = PatreonPledger::inRandomOrder()->get();
-    }
-
     public function index()
     {
         $issues = Issue::latest()->take(2)->get();
@@ -25,22 +16,17 @@ class OpenSourceController extends Controller
         return view('pages.open-source.index', [
             'issues' => $issues,
             'contributor' => $contributor,
-            'patreonPledgers' => $this->patreonPledgers,
         ]);
     }
 
     public function packages()
     {
-        return view('pages.open-source.packages', [
-            'patreonPledgers' => $this->patreonPledgers,
-        ]);
+        return view('pages.open-source.packages');
     }
 
     public function projects()
     {
-        return view('pages.open-source.projects', [
-            'patreonPledgers' => $this->patreonPledgers,
-        ]);
+        return view('pages.open-source.projects');
     }
 
     public function support()
@@ -49,7 +35,6 @@ class OpenSourceController extends Controller
 
         return view('pages.open-source.support', [
             'contributor' => $contributor,
-            'patreonPledgers' => $this->patreonPledgers,
         ]);
     }
 }
