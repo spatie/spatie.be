@@ -10,10 +10,12 @@ function setImageSizes(image) {
 }
 
 function handleIntersection(entries, observer) {
-    entries.filter(entry => entry.intersectionRatio > 0).forEach(entry => {
-        observer.unobserve(entry.target);
-        setImageSizes(entry.target);
-    });
+    entries
+        .filter(entry => entry.intersectionRatio > 0)
+        .forEach(entry => {
+            observer.unobserve(entry.target);
+            setImageSizes(entry.target);
+        });
 }
 
 function prepareForPrint() {
