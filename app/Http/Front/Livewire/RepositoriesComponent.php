@@ -27,7 +27,7 @@ class RepositoriesComponent extends Component
 
     public function render()
     {
-        return view('livewire.repositories', [
+        return view('front.livewire.repositories', [
             'repositories' => $this->getRepositories(),
         ]);
     }
