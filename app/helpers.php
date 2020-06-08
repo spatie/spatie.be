@@ -5,7 +5,7 @@ use App\Services\Schema\Schema;
 use Faker\Factory;
 use Faker\Generator;
 use Illuminate\Support\HtmlString;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 function svg($filename): HtmlString
 {

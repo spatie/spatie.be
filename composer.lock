@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e9523ffea115bd173fc36f3a7bf3505e",
+    "content-hash": "f0923b88622282dcf90683aaa7470a66",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -2390,23 +2390,23 @@
         },
         {
             "name": "maennchen/zipstream-php",
-            "version": "1.2.0",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maennchen/ZipStream-PHP.git",
-                "reference": "6373eefe0b3274d7b702d81f2c99aa977ff97dc2"
+                "reference": "c4c5803cc1f93df3d2448478ef79394a5981cc58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/6373eefe0b3274d7b702d81f2c99aa977ff97dc2",
-                "reference": "6373eefe0b3274d7b702d81f2c99aa977ff97dc2",
+                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/c4c5803cc1f93df3d2448478ef79394a5981cc58",
+                "reference": "c4c5803cc1f93df3d2448478ef79394a5981cc58",
                 "shasum": ""
             },
             "require": {
-                "ext-mbstring": "*",
                 "myclabs/php-enum": "^1.5",
                 "php": ">= 7.1",
-                "psr/http-message": "^1.0"
+                "psr/http-message": "^1.0",
+                "symfony/polyfill-mbstring": "^1.0"
             },
             "require-dev": {
                 "ext-zip": "*",
@@ -2430,12 +2430,12 @@
                     "email": "pabs@pablotron.org"
                 },
                 {
-                    "name": "Jesse Donat",
-                    "email": "donatj@gmail.com"
-                },
-                {
                     "name": "Jonatan Männchen",
                     "email": "jonatan@maennchen.ch"
+                },
+                {
+                    "name": "Jesse Donat",
+                    "email": "donatj@gmail.com"
                 },
                 {
                     "name": "András Kolesár",
@@ -2447,7 +2447,7 @@
                 "stream",
                 "zip"
             ],
-            "time": "2019-07-17T11:01:58+00:00"
+            "time": "2020-05-30T13:11:16+00:00"
         },
         {
             "name": "maximebf/debugbar",
@@ -4291,31 +4291,30 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "7.19.3",
+            "version": "8.2.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "7d6b634e0967f7399e1c7cd7b02c8b7da6f80c2d"
+                "reference": "c2158bcf350f666ca6a2c84cb1fc41324a62369b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/7d6b634e0967f7399e1c7cd7b02c8b7da6f80c2d",
-                "reference": "7d6b634e0967f7399e1c7cd7b02c8b7da6f80c2d",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/c2158bcf350f666ca6a2c84cb1fc41324a62369b",
+                "reference": "c2158bcf350f666ca6a2c84cb1fc41324a62369b",
                 "shasum": ""
             },
             "require": {
                 "ext-fileinfo": "*",
                 "ext-json": "*",
-                "illuminate/bus": "~5.8.35|^6.0|^7.0",
-                "illuminate/console": "~5.8.35|^6.0|^7.0",
-                "illuminate/database": "~5.8.35|^6.0|^7.0",
-                "illuminate/pipeline": "~5.8.35|^6.0|^7.0",
-                "illuminate/support": "~5.8.35|^6.0|^7.0",
-                "league/flysystem": "^1.0.8",
-                "maennchen/zipstream-php": "^1.0",
-                "php": "^7.2",
+                "illuminate/bus": "^6.18|^7.0",
+                "illuminate/console": "^6.18|^7.0",
+                "illuminate/database": "^6.18|^7.0",
+                "illuminate/pipeline": "^6.18|^7.0",
+                "illuminate/support": "^6.18|^7.0",
+                "league/flysystem": "^1.0.64",
+                "maennchen/zipstream-php": "^1.0|^2.0",
+                "php": "^7.4",
                 "spatie/image": "^1.4.0",
-                "spatie/pdf-to-image": "^2.0",
                 "spatie/temporary-directory": "^1.1",
                 "symfony/console": "^4.4|^5.0"
             },
@@ -4323,18 +4322,23 @@
                 "php-ffmpeg/php-ffmpeg": "<0.6.1"
             },
             "require-dev": {
+                "aws/aws-sdk-php": "^3.133.11",
                 "doctrine/dbal": "^2.5.2",
                 "ext-pdo_sqlite": "*",
+                "ext-zip": "*",
                 "guzzlehttp/guzzle": "^6.3",
-                "league/flysystem-aws-s3-v3": "^1.0.13",
-                "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^3.8|^4.0|^5.0",
-                "phpunit/phpunit": "^8.0",
-                "spatie/phpunit-snapshot-assertions": "^2.0"
+                "league/flysystem-aws-s3-v3": "^1.0.23",
+                "mockery/mockery": "^1.3",
+                "orchestra/testbench": "^4.0|^5.0",
+                "php-ffmpeg/php-ffmpeg": "^0.16.0",
+                "phpunit/phpunit": "^9.1",
+                "spatie/pdf-to-image": "^2.0",
+                "spatie/phpunit-snapshot-assertions": "^4.0"
             },
             "suggest": {
                 "league/flysystem-aws-s3-v3": "Required to use AWS S3 file storage",
-                "php-ffmpeg/php-ffmpeg": "Required for generating video thumbnails"
+                "php-ffmpeg/php-ffmpeg": "Required for generating video thumbnails",
+                "spatie/pdf-to-image": "Required for generating thumbsnails of PDFs and SVGs"
             },
             "type": "library",
             "extra": {
@@ -4357,7 +4361,7 @@
                 {
                     "name": "Freek Van der Herten",
                     "email": "freek@spatie.be",
-                    "homepage": "https://murze.be",
+                    "homepage": "https://spatie.be",
                     "role": "Developer"
                 }
             ],
@@ -4373,7 +4377,7 @@
                 "media",
                 "spatie"
             ],
-            "time": "2020-03-09T16:43:55+00:00"
+            "time": "2020-06-08T11:30:07+00:00"
         },
         {
             "name": "spatie/laravel-menu",
@@ -4702,56 +4706,6 @@
                 "spatie"
             ],
             "time": "2020-03-25T20:23:56+00:00"
-        },
-        {
-            "name": "spatie/pdf-to-image",
-            "version": "2.0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/pdf-to-image.git",
-                "reference": "3b140c4ef9a8cbb72ac51592a3f13d6a6b6d969e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/pdf-to-image/zipball/3b140c4ef9a8cbb72ac51592a3f13d6a6b6d969e",
-                "reference": "3b140c4ef9a8cbb72ac51592a3f13d6a6b6d969e",
-                "shasum": ""
-            },
-            "require": {
-                "ext-imagick": "*",
-                "php": "^7.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^8.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\PdfToImage\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Convert a pdf to an image",
-            "homepage": "https://github.com/spatie/pdf-to-image",
-            "keywords": [
-                "convert",
-                "image",
-                "pdf",
-                "pdf-to-image",
-                "spatie"
-            ],
-            "time": "2020-04-29T08:21:17+00:00"
         },
         {
             "name": "spatie/schema-org",

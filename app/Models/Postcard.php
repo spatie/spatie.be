@@ -4,21 +4,21 @@ namespace App\Models;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use Spatie\MediaLibrary\HasMedia\HasMedia;
-use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
-use Spatie\MediaLibrary\Models\Media;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class Postcard extends Model implements HasMedia
 {
-    use HasMediaTrait;
+    use InteractsWithMedia;
 
     public $with = [
         'media',
     ];
 
-    public function registerMediaConversions(Media $media = null)
+    public function registerMediaConversions(Media $media = null): void
     {
-        return $this
+        $this
             ->addMediaConversion('thumb')
             ->width(200)
             ->height(200)

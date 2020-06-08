@@ -34,7 +34,7 @@
         "php-http/message": "^1.7",
         "predis/predis": "^1.1",
         "spatie/laravel-backup": "^6.8",
-        "spatie/laravel-medialibrary": "^7.12",
+        "spatie/laravel-medialibrary": "^8.0",
         "spatie/laravel-menu": "^3.4",
         "spatie/laravel-stubs": "^1.1",
         "spatie/laravel-tail": "^4.2",
@@ -54,6 +54,16 @@
         "psalm/plugin-laravel": "^1.2",
         "vimeo/psalm": "^3.11"
     },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://satis.mailcoach.app"
+        },
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        }
+    ],
     "autoload": {
         "classmap": [
             "database"
