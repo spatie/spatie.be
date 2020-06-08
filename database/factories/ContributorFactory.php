@@ -2,6 +2,7 @@
 
 use App\Models\Contributor;
 
+/* @var Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(Contributor::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,

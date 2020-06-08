@@ -2,6 +2,7 @@
 
 use App\Models\Repository;
 
+/* @var Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(Repository::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->word,

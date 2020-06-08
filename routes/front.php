@@ -8,6 +8,8 @@ use App\Http\Front\Controllers\PostcardController;
 use App\Http\Front\Controllers\Videos\ShowVideoController;
 use App\Http\Front\Controllers\Videos\VideoIndexController;
 
+Route::mailcoach('mailcoach');
+
 Route::view('/', 'front.pages.home.index')->name('home');
 
 Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
