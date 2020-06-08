@@ -15,6 +15,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public $casts = [
+        'is_admin' => 'bool',
+    ];
+
     public function isSponsoring(): bool
     {
         if ($this->isSpatieMember()) {

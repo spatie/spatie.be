@@ -179,6 +179,7 @@ return [
         App\Services\Vimeo\VimeoServiceProvider::class,
         App\Providers\BladeComponentsServiceProvider::class,
         App\Providers\LivewireServiceProvider::class,
+        App\Providers\NovaServiceProvider::class,
     ],
 
     /*

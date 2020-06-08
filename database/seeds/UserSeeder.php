@@ -9,10 +9,16 @@ class UserSeeder extends Seeder
     {
         User::truncate();
 
-        User::create([
-            'name' => 'basic auth user',
-            'email' => env('BASIC_AUTH_USERNAME'),
-            'password' => bcrypt(env('BASIC_AUTH_PASSWORD')),
-        ]);
+        collect([
+            'freek',
+            'willem',
+            'rias',
+            'alex',
+        ])->each(fn (string $name) => User::create([
+            'name' => ucfirst($name),
+            'email' => "${name}@spatie.be",
+            'password' => bcrypt('password'),
+            'is_admin' => true,
+        ]));
     }
 }
