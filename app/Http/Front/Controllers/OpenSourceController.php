@@ -11,6 +11,7 @@ class OpenSourceController
     {
         $issues = Issue::latest()->take(2)->get();
 
+        /** @var Contributor $contributor */
         $contributor = Contributor::first();
 
         return view('front.pages.open-source.index', [

@@ -15,23 +15,13 @@ class ImportGitHubRepositories extends Command
 
     protected $description = 'Import public repositories';
 
-    /** @var \App\Services\GitHub\GitHubApi */
-    protected $api;
-
-    public function __construct(GitHubApi $api)
-    {
-        $this->api = $api;
-
-        parent::__construct();
-    }
-
-    public function handle()
+    public function handle(GitHubApi $api)
     {
         $this->info('Syncing all public repositories...');
 
-        $repositories = $this->api->fetchPublicRepositories('spatie');
+        $repositories = $api->fetchPublicRepositories('spatie');
 
-        $repositories->each(function (array $repositoryAttributes) {
+        $repositories->each(function (array $repositoryAttributes) use ($api) {
             $this->comment("Importing `{$repositoryAttributes['name']}`... ");
 
             $repository = Repository::updateOrCreate(['name' => $repositoryAttributes['name'] ?? null], [
@@ -42,9 +32,13 @@ class ImportGitHubRepositories extends Command
                 'repository_created_at' => Carbon::createFromFormat(DateTime::ATOM, $repositoryAttributes['created_at']),
             ]);
 
-            $repository->setTopics(Cache::remember("repository_topics-{$repository->name}", 3600, function () use ($repository) {
-                return $this->api->fetchRepositoryTopics('spatie', $repository->name);
-            }));
+            $repository->setTopics(
+                Cache::remember(
+                    "repository_topics-{$repository->name}",
+                    3600,
+                    fn () => $api->fetchRepositoryTopics('spatie', $repository->name)
+                )
+            );
         });
 
         $this->info('All done!');

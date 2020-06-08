@@ -13,23 +13,13 @@ class ImportRandomContributor extends Command
 
     protected $description = 'Import random contributor.';
 
-    /** @var \App\Services\GitHub\GitHubApi */
-    protected $api;
-
-    public function __construct(GitHubApi $api)
-    {
-        $this->api = $api;
-
-        parent::__construct();
-    }
-
-    public function handle()
+    public function handle(GitHubApi $api)
     {
         $this->info('Importing random contributor from GitHub...');
 
-        [$contributorAttributes, $repository] = $this->getRandomContributor();
+        [$contributorAttributes, $repository] = $this->getRandomContributor($api);
 
-        $user = $this->api->getUser($contributorAttributes['login']);
+        $user = $api->getUser($contributorAttributes['login']);
 
         $contributor = Contributor::create([
             'username' => $contributorAttributes['login'],
@@ -45,17 +35,16 @@ class ImportRandomContributor extends Command
         $this->info('All done');
     }
 
-    public function getRandomContributor(): array
+    public function getRandomContributor(GitHubApi $api): array
     {
         $contributors = collect();
 
         while ($contributors->isEmpty()) {
             $repository = Repository::get()->random();
 
-            $contributors = $this->api->fetchRepositoryContributors('spatie', $repository->name)
-                ->reject(function (array $contributorAttributes) {
-                    return $this->worksForSpatie($contributorAttributes['login']);
-                });
+            $contributors = $api
+                ->fetchRepositoryContributors('spatie', $repository->name)
+                ->reject(fn (array $contributorAttributes) => $this->worksForSpatie($contributorAttributes['login']));
         }
 
         return [$contributors->random(), $repository];

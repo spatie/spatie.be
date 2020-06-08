@@ -14,8 +14,7 @@ class TweetIssueJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    /** @var \App\Models\Issue */
-    public $issue;
+    public Issue $issue;
 
     public function __construct(Issue $issue)
     {

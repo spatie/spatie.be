@@ -16,24 +16,14 @@ class ImportGitHubIssues extends Command
 
     protected $description = 'Import issues.';
 
-    /** @var \App\Services\GitHub\GitHubApi */
-    protected $api;
-
-    public function __construct(GitHubApi $api)
-    {
-        $this->api = $api;
-
-        parent::__construct();
-    }
-
-    public function handle()
+    public function handle(GitHubApi $api)
     {
         $this->info('Importing good first issues from GitHub...');
 
-        Repository::get()->each(function (Repository $repository) {
+        Repository::get()->each(function (Repository $repository) use ($api) {
             $this->comment("Searching for good issues in {$repository->name}");
 
-            $issues = $this->api->fetchOpenIssues('spatie', $repository->name, ['good first issue']);
+            $issues = $api->fetchOpenIssues('spatie', $repository->name, ['good first issue']);
 
             $this->cleanupIssuesForPackage($repository, $issues);
 
