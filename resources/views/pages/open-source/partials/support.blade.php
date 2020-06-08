@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="sm:spanx-3 sm:startx-6">
-            <a class="illustration is-right is-rotated is-postcard-without-caption h-full" href="https://patreon.com/spatie">
+            <a class="illustration is-right is-rotated is-postcard-without-caption h-full" href="https://github.com/sponsors/spatie">
                 {{ image('support.jpg') }}
             </a>
         </div>

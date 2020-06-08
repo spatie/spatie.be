@@ -6,11 +6,9 @@
 
     <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
     <link rel="stylesheet" href="https://cloud.typography.com/6194432/6145752/css/fonts.css">
-    @livewireStyles
+    <livewire:styles>
 
     @include('layout.partials.favicons')
-
-    @yield('twitterMeta')
 
     <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
     <script src="{{ mix('/js/app.js') }}" defer></script>
@@ -25,15 +23,12 @@
     @include('layout.partials.header')
 
     <div class="flex-grow" role="main">
-        @yield('content')
+        {{ $slot }}
     </div>
 
     @include('layout.partials.footer')
 
-    @livewireScripts
-
-    @yield('twitterTracking')
-    @stack('scripts')
+    <livewire:scripts>
 
     {!! schema()->localBusiness() !!}
 </body>

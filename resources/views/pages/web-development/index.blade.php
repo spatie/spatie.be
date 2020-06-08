@@ -1,10 +1,10 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/web-development.jpg',
-    'title' => 'Web development',
-    'description' => 'Tailor-made web development is what we do best. Read about our strengths, our thoughtful process and our beloved clients.',
-])
-
-@section('content')
+<x-page
+        title="Web development"
+        background="/backgrounds/web-development.jpg"
+>
+    <x-slot name="description">
+        Tailor-made web development is what we do best. Read about our strengths, our thoughtful process and our beloved clients.
+    </x-slot>
 
     @include('pages.web-development.partials.banner')
 
@@ -18,5 +18,4 @@
     </div>
 
     @include('pages.web-development.partials.brief')
-
-@endsection
+</x-page>

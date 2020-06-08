@@ -1,9 +1,7 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/error.jpg',
-    'title' => 'Server error',
-    ])
-
-    @section('content')
+<x-page
+        title="Server error"
+        background="/backgrounds/error.jpg"
+>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
@@ -30,5 +28,4 @@
             </div>
         </section>
     </div>
-
-    @endsection
+</x-page>

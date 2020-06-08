@@ -1,9 +1,6 @@
-@extends('layout.default', [
-   'title' => 'Postcards',
-])
-
-@section('content')
-
+<x-page
+        title="Postcards"
+>
     <section class=section>
         <div class="wrap-6">
             <div class="spanx-6">
@@ -23,8 +20,12 @@
                     <fieldset class="mt-8">
                         <div>
                             <div class="overflow-hidden inline-block">
-                                <button id=image-button class="font-bold py-3 px-6 rounded bg-grey-lightest text-grey hover:text-grey-dark w-full">Upload image</button>
-                                <input id=image class="absolute pin-l pin-t opacity-0 cursor-pointer" style="font-size:100px;" type="file" required accept="image/*" name="image">
+                                <button id=image-button
+                                        class="font-bold py-3 px-6 rounded bg-grey-lightest text-grey hover:text-grey-dark w-full">
+                                    Upload image
+                                </button>
+                                <input id=image class="absolute pin-l pin-t opacity-0 cursor-pointer"
+                                       style="font-size:100px;" type="file" required accept="image/*" name="image">
                             </div>
 
                             <script>
@@ -33,7 +34,7 @@
                                 const buttonVal = button.innerHTML;
 
                                 input.addEventListener('change', e => {
-                                    const fileName = e.target.value.split( '\\' ).pop();
+                                    const fileName = e.target.value.split('\\').pop();
                                     button.innerHTML = fileName ? fileName : buttonVal;
                                 });
                             </script>
@@ -41,31 +42,35 @@
 
                         <div class="mt-4">
                             <label class="text-grey" for="sender">Senders</label><br/>
-                            <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue" type="text" name="sender" placeholder="John Doe, @twitterhandle">
+                            <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue"
+                                   type="text" name="sender" placeholder="John Doe, @twitterhandle">
                         </div>
 
                         <div class="mt-4 grid grid-cols gap-4" style="--cols: 1fr 1fr">
                             <div class="">
                                 <label class="text-grey" for="city">City</label><br/>
-                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue" type="text" name="city" placeholder="Antwerp">
+                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue"
+                                       type="text" name="city" placeholder="Antwerp">
                             </div>
 
                             <div>
                                 <label class="text-grey" for="country">Country</label><br/>
-                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue" type="text" name="country" placeholder="Belgium">
+                                <input class="border-2 border-grey-lighter bg-white rounded p-4 outline-0 w-full focus:border-blue"
+                                       type="text" name="country" placeholder="Belgium">
                             </div>
                         </div>
                     </fieldset>
 
                     <div class="mt-8">
-                        <input class="font-bold py-3 px-6 rounded bg-blue text-white hover:bg-blue-dark" type="submit" value="Create postcard">
+                        <input class="font-bold py-3 px-6 rounded bg-blue text-white hover:bg-blue-dark" type="submit"
+                               value="Create postcard">
                     </div>
                 </form>
 
                 <div class="mt-32">
                     <h3 class="title">Current postcards</h3>
 
-                   <div class="md:grid md:grid-cols" style="--cols: 1fr 1fr 1fr auto">
+                    <div class="md:grid md:grid-cols" style="--cols: 1fr 1fr 1fr auto">
                         @foreach($postcards as $postcard)
 
                             <div class="cell-l">
@@ -82,7 +87,8 @@
                                 </div>
                             </div>
                             <div class="cell-r">
-                                <form method="POST" action="{{ action('Admin\PostcardController@delete', ['postcard' => $postcard->id]) }}">
+                                <form method="POST"
+                                      action="{{ action('Admin\PostcardController@delete', ['postcard' => $postcard->id]) }}">
                                     @csrf
 
                                     <input name="_method" type="hidden" value="DELETE">
@@ -97,4 +103,4 @@
         </div>
     </section>
 
-@stop
+</x-page>

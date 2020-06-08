@@ -1,10 +1,10 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/legal.jpg',
-    'title' => 'Legal',
-    'description' => 'General conditions, policies & disclaimers. A lot of difficult sentences.',
-])
-
-@section('content')
+<x-page
+        title="Legal"
+        background="/backgrounds/legal.jpg"
+>
+    <x-slot name="description">
+        General conditions, policies & disclaimers. A lot of difficult sentences.
+    </x-slot>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
@@ -48,5 +48,4 @@
             </div>
         </section>
     </div>
-
-@endsection
+</x-page>

@@ -177,6 +177,7 @@ return [
         App\Services\GitHub\GitHubServiceProvider::class,
         App\Services\Twitter\TwitterServiceProvider::class,
         App\Services\Vimeo\VimeoServiceProvider::class,
+        App\Providers\BladeComponentsServiceProvider::class,
     ],
 
     /*

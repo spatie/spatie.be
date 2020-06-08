@@ -1,10 +1,8 @@
-@extends('layout.default', [
-        'background' => '/backgrounds/open-source.jpg',
-        'title' => 'Support us',
-        'description' => 'Learn how to support us via our paid products or via GitHub sponsors.',
-])
-
-@section('content')
+<x-page
+        title="Support us"
+        background="/backgrounds/open-source.jpg"
+        description="Learn how to support us via our paid products or via GitHub sponsors."
+>
 
     @include('pages.open-source.partials.banner-support')
 
@@ -67,5 +65,4 @@
             @include('pages.open-source.partials.donations')
         </section>
     </div>
-
-@endsection
+</x-page>

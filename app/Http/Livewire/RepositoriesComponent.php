@@ -6,7 +6,7 @@ use App\Models\Repository;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
-class Repositories extends Component
+class RepositoriesComponent extends Component
 {
     /** @var string */
     public $search = '';

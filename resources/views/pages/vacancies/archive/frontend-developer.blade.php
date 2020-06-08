@@ -1,10 +1,8 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/vacancies.jpg',
-    'title' => 'Frontend developer vacancy',
-    'description' => 'Vacancy for a frontend developer. Location: Antwerp.',
-])
-
-@section('content')
+<x-page
+        background="/backgrounds/vacancies.jpg"
+        title="Frontend developer vacancy"
+        description="Vacancy for a frontend developer. Location: Antwerp."
+>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
@@ -12,7 +10,8 @@
                 Frontend developer
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
+                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                        href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
             </p>
         </div>
     </section>
@@ -35,7 +34,9 @@
                         <div class="mt-16">
                             <h3 class="title">The best part first</h3>
                             <ul class="bullets bullets-green">
-                                <li>Get €1500,- personal budget every year for trainings &amp; conferences like dotJS/dotCSS, nordic.JS, Frontend United</li>
+                                <li>Get €1500,- personal budget every year for trainings &amp; conferences like
+                                    dotJS/dotCSS, nordic.JS, Frontend United
+                                </li>
                                 <li>Spend 4h/week on experiment and open source work (that's more than Airbnb)</li>
                                 <li>Be part of a team that has made its name in open source</li>
                             </ul>
@@ -54,4 +55,4 @@
         @include('pages.vacancies.partials.cta', ['github' => true ])
     </div>
 
-@endsection
+</x-page>

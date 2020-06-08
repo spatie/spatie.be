@@ -1,10 +1,8 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/vacancies.jpg',
-    'title' => 'Project manager vacancy',
-    'description' => 'Vacancy for a digital project manager. Location: Antwerp.',
-])
-
-@section('content')
+<x-page
+        title="Project manager vacancy"
+        background="/backgrounds/vacancies.jpg"
+        description="Vacancy for a digital project manager. Location: Antwerp."
+>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
@@ -12,7 +10,8 @@
                 Project manager
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
+                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                        href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
             </p>
         </div>
     </section>
@@ -35,9 +34,15 @@
                         <div class="mt-16">
                             <h3 class="title">The best part first</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Get €1500,- personal budget every year for trainings &amp; conferences</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Take the lead, literally. We are open for your way of working</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team that has made its name in open source</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Get €1500,- personal
+                                    budget every year for trainings &amp; conferences
+                                </li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Take the lead,
+                                    literally. We are open for your way of working
+                                </li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team that
+                                    has made its name in open source
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -54,4 +59,4 @@
         @include('pages.vacancies.partials.cta')
     </div>
 
-@endsection
+</x-page>

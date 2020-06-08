@@ -1,10 +1,9 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/about.jpg',
-    'title' => 'About us',
-    'description' => 'Contact us on info@spatie.be or +32 3 292 56 79. See our contact details, vacancies and get to know our team.',
-])
-
-@section('content')
+<x-page
+        title="About us"
+        background="/backgrounds/about.jpg">
+    <x-slot name="description">
+        Contact us on info@spatie.be or +32 3 292 56 79. See our contact details, vacancies and get to know our team.
+    </x-slot>
 
     @include('pages.about.partials.banner')
 
@@ -18,4 +17,4 @@
         @include('pages.about.partials.cta')
     </div>
 
-@endsection
+</x-page>

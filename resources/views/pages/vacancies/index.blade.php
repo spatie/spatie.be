@@ -1,10 +1,11 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/vacancies.jpg',
-    'title' => 'Vacancies',
-    'description' => 'Vacancies for frontend and backend developers, project managers and the like. We are always looking for interns as well.',
-])
-
-@section('content')
+<x-page
+        title="Vacancies"
+        background="/backgrounds/vacancies.jpg"
+>
+    <x-slot name="description">
+        Vacancies for frontend and backend developers, project managers and the like. We are always looking for interns
+        as well.
+    </x-slot>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
@@ -20,4 +21,4 @@
         @include('pages.vacancies.partials.jobs')
     </div>
 
-@endsection
+</x-page>

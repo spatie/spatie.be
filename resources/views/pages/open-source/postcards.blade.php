@@ -1,11 +1,8 @@
-@extends('layout.default', [
-        'background' => '/backgrounds/open-source.jpg',
-        'title' => 'Postcards',
-        'description' => 'This is our postcardware license in action.',
-])
-
-@section('content')
-
+<x-page
+        title="Postcards"
+        background="/backgrounds/open-source.jpg"
+        description="This is our postcardware license in action."
+>
     @include('pages.open-source.partials.banner-postcards')
 
     <div class="section-group py-0">
@@ -17,6 +14,4 @@
     </div>
 
     @include('pages.open-source.partials.postcards')
-
-
-@endsection
+</x-page>

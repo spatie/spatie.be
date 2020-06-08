@@ -1,10 +1,8 @@
-@extends('layout.default', [
-    'background' => '/backgrounds/video-detail.jpg',
-    'title' => $currentVideo->title,
-    'description' => $currentVideo->description,
-])
-
-@section('content')
+<x-page
+        :title="$currentVideo->title"
+        background="/backgrounds/video-detail.jpg"
+        :description="$currentVideo->description"
+>
     <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
             <p class="mt-4">
@@ -125,4 +123,4 @@
         </section>
     </div>
 
-@overwrite
+</x-page>
