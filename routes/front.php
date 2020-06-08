@@ -7,6 +7,7 @@ use App\Http\Front\Controllers\OpenSourceController;
 use App\Http\Front\Controllers\PostcardController;
 use App\Http\Front\Controllers\Videos\ShowVideoController;
 use App\Http\Front\Controllers\Videos\VideoIndexController;
+use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
 
@@ -47,12 +48,10 @@ Route::prefix('vacancies')->group(function () {
     })->name('vacancies.show');
 });
 
-// Github login
 Route::get('login/github', [GithubSocialiteController::class, 'redirect']);
 Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
-// Videos
 Route::get('/videos', VideoIndexController::class)->name('videos.index');
 Route::get('/videos/{series:slug}/{video:slug}', ShowVideoController::class)->name('videos.show');
 
