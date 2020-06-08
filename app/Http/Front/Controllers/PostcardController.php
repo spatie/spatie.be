@@ -12,6 +12,6 @@ class PostcardController
 
         $countries = Postcard::getTopCountries();
 
-        return view('pages.open-source.postcards', compact('postcards', 'countries'));
+        return view('front.pages.open-source.postcards', compact('postcards', 'countries'));
     }
 }

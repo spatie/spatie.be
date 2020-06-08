@@ -17,7 +17,7 @@
                     You might want to call us from a phone booth or <br>
                     come visit us in person.
                 </p>
-                @include('pages.about.partials.banner-contact')
+                @include('front.pages.about.partials.banner-contact')
             </div>
         </section>
     </div>

@@ -8,12 +8,12 @@ use App\Http\Front\Controllers\PostcardController;
 use App\Http\Front\Controllers\Videos\ShowVideoController;
 use App\Http\Front\Controllers\Videos\VideoIndexController;
 
-Route::view('/', 'pages/home/index')->name('home');
+Route::view('/', 'front.pages.home.index')->name('home');
 
-Route::view('web-development', 'pages/web-development/index')->name('web-development');
+Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
 
 Route::prefix('about-us')->group(function () {
-    Route::view('/', 'pages/about/index')->name('about');
+    Route::view('/', 'front.pages.about.index')->name('about');
 
     collect(config('team.members'))->each(function (string $personName) {
         Route::permanentRedirect($personName, "/about-us/#{$personName}");
@@ -31,8 +31,8 @@ Route::prefix('open-source')->group(function () {
 Route::prefix('vacancies')->group(function () {
     Route::permanentRedirect('free-application', '/vacancies/spontaneous-application');
 
-    Route::view('/', 'pages.vacancies.index')->name('vacancies.index');
-    Route::view('internships', 'pages.vacancies.internship')->name('vacancies.internship');
+    Route::view('/', 'front.pages.vacancies.index')->name('vacancies.index');
+    Route::view('internships', 'front.pages.vacancies.internship')->name('vacancies.internship');
 
     Route::get('{slug}', function ($slug) {
         $view = "pages.vacancies.{$slug}";
@@ -41,7 +41,7 @@ Route::prefix('vacancies')->group(function () {
             abort(404);
         }
 
-        return view("pages.vacancies.{$slug}");
+        return view("front.pages.vacancies.{$slug}");
     })->name('vacancies.show');
 });
 
@@ -54,10 +54,10 @@ Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/videos', VideoIndexController::class)->name('videos.index');
 Route::get('/videos/{series:slug}/{video:slug}', ShowVideoController::class)->name('videos.show');
 
-Route::view('legal', 'pages.legal.index')->name('legal.index');
-Route::view('privacy', 'pages.legal.privacy')->name('legal.privacy');
-Route::view('disclaimer', 'pages.legal.disclaimer')->name('legal.disclaimer');
-Route::view('general-conditions', 'pages.legal.generalConditions')->name('legal.conditions');
-Route::view('gdpr', 'pages.legal.gdpr')->name('legal.gdpr');
+Route::view('legal', 'front.pages.legal.index')->name('legal.index');
+Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
+Route::view('disclaimer', 'front.pages.legal.disclaimer')->name('legal.disclaimer');
+Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('legal.conditions');
+Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 
 Route::view('offline', 'errors.offline')->name('offline');

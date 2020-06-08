@@ -13,7 +13,7 @@ class OpenSourceController
 
         $contributor = Contributor::first();
 
-        return view('pages.open-source.index', [
+        return view('front.pages.open-source.index', [
             'issues' => $issues,
             'contributor' => $contributor,
         ]);
@@ -21,19 +21,19 @@ class OpenSourceController
 
     public function packages()
     {
-        return view('pages.open-source.packages');
+        return view('front.pages.open-source.packages');
     }
 
     public function projects()
     {
-        return view('pages.open-source.projects');
+        return view('front.pages.open-source.projects');
     }
 
     public function support()
     {
         $contributor = Contributor::first();
 
-        return view('pages.open-source.support', [
+        return view('front.pages.open-source.support', [
             'contributor' => $contributor,
         ]);
     }

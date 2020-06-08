@@ -8,7 +8,7 @@ class VideoIndexController
 {
     public function __invoke()
     {
-        return view('pages.videos.index', [
+        return view('front.pages.videos.index', [
             'allSeries' => Series::get(),
         ]);
     }

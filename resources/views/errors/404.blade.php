@@ -24,7 +24,7 @@
                     If you have a burning question at this point, <br>just contact us so we can help you out.
                 </p>
 
-                @include('pages.about.partials.banner-contact')
+                @include('front.pages.about.partials.banner-contact')
             </div>
         </section>
     </div>

@@ -21,7 +21,7 @@
                     Even though our site is having a little break, <br>you can still reach us.
                 </p>
 
-                @include('pages.about.partials.banner-contact')
+                @include('front.pages.about.partials.banner-contact')
             </div>
         </section>
     </div>
