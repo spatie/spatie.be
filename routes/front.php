@@ -38,7 +38,7 @@ Route::prefix('vacancies')->group(function () {
     Route::view('internships', 'front.pages.vacancies.internship')->name('vacancies.internship');
 
     Route::get('{slug}', function ($slug) {
-        $view = "pages.vacancies.{$slug}";
+        $view = "front.pages.vacancies.{$slug}";
 
         if (! view()->exists($view)) {
             abort(404);
