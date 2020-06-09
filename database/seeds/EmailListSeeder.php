@@ -1,7 +1,6 @@
 <?php
 
 
-use App\Mail\WelcomeMail;
 use Illuminate\Database\Seeder;
 use Spatie\Mailcoach\Models\EmailList;
 
