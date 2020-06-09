@@ -7,11 +7,8 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function boot()
     {
-        Gate::define('viewMailcoach', function ($user = null) {
-            dd('here');
-            return optional($user)->is_admin;
-        });
+
     }
 }
