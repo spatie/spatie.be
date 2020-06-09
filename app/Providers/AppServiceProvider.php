@@ -11,6 +11,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Gate::define('viewMailcoach', function ($user = null) {
             dd('here');
+
             return optional($user)->is_admin;
         });
     }
