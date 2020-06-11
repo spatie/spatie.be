@@ -13,6 +13,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapFrontRoutes();
 
+        $this->mapApiRoutes();
+
         $this->mapRedirectsForOldSite();
     }
 
@@ -26,6 +28,13 @@ class RouteServiceProvider extends ServiceProvider
     {
         Route::middleware(['web'])
             ->group(base_path('routes/front.php'));
+    }
+
+    protected function mapApiRoutes()
+    {
+        Route::middleware(['api'])
+            ->prefix('api')
+            ->group(base_path('routes/api.php'));
     }
 
     protected function mapRedirectsForOldSite()
