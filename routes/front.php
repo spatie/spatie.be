@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Api\InstagramPhotosController;
 use App\Http\Front\Controllers\GithubSocialiteController;
 use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Front\Controllers\OpenSourceController;
