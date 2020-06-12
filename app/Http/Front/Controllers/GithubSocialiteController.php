@@ -12,6 +12,9 @@ class GithubSocialiteController
     public function redirect()
     {
         session()->put('before-github-redirect', url()->previous());
+        if (auth()->check()) {
+            session()->put('auth-user-email', auth()->user()->email);
+        }
 
         return Socialite::driver('github')->redirect();
     }
@@ -22,15 +25,22 @@ class GithubSocialiteController
 
         $isSponsor = (new GitHubGraphApi())->isSponsor($gitHubUser->nickname);
 
-        /** @var \App\Models\User $user */
-        $user = User::updateOrCreate([
+        if (session('auth-user-email')) {
+            $user = User::where('email', session('auth-user-email'))->first();
+        } else {
+            $user = User::firstOrCreate([
+                'github_id' => $gitHubUser->id,
+            ], [
+                'password' => bcrypt(Str::random()),
+                'email' => $gitHubUser->email,
+                'name' => $gitHubUser->name ?? $gitHubUser->nickname,
+            ]);
+        }
+
+        $user->update([
             'github_id' => $gitHubUser->id,
-        ], [
             'github_username' => $gitHubUser->nickname,
-            'email' => $gitHubUser->email,
-            'name' => $gitHubUser->name ?? $gitHubUser->nickname,
             'avatar' => $gitHubUser->avatar,
-            'password' => Str::random(),
             'is_sponsor' => $isSponsor,
         ]);
 

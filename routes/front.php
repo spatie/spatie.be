@@ -1,9 +1,14 @@
 <?php
 
+use App\Http\Auth\Controllers\ForgotPasswordController;
+use App\Http\Auth\Controllers\LoginController;
+use App\Http\Auth\Controllers\ProfileController;
+use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Front\Controllers\GithubSocialiteController;
 use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Front\Controllers\OpenSourceController;
 use App\Http\Front\Controllers\PostcardController;
+use App\Http\Front\Controllers\ProductsController;
 use App\Http\Front\Controllers\Videos\ShowVideoController;
 use App\Http\Front\Controllers\Videos\VideoIndexController;
 use Illuminate\Support\Facades\Route;
@@ -20,6 +25,11 @@ Route::prefix('about-us')->group(function () {
     collect(config('team.members'))->each(function (string $personName) {
         Route::permanentRedirect($personName, "/about-us/#{$personName}");
     });
+});
+
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductsController::class, 'index'])->name('products.index');
+    Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
 });
 
 Route::prefix('open-source')->group(function () {
@@ -47,7 +57,20 @@ Route::prefix('vacancies')->group(function () {
     })->name('vacancies.show');
 });
 
-Route::get('login/github', [GithubSocialiteController::class, 'redirect']);
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('profile', [ProfileController::class, 'update'])->name('profile');
+    Route::get('disconnect', [ProfileController::class, 'disconnect'])->name('github-disconnect');
+    Route::delete('profile', [ProfileController::class, 'delete'])->name('profile');
+});
+Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('login', [LoginController::class, 'login'])->name('login');
+Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [RegisterController::class, 'register'])->name('register');
+Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('forgot-password');
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('forgot-password');
+
+Route::get('login/github', [GithubSocialiteController::class, 'redirect'])->name('github-login');
 Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 

@@ -11,7 +11,7 @@ class ResetPasswordController
 {
     use ResetsPasswords, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     public function __construct()
     {

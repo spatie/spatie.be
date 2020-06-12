@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b671b9168245f6892e94cc0af72ddbe3",
+    "content-hash": "f72ce728cb1d8683831b667fe7890a7d",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -3233,6 +3233,51 @@
             "time": "2020-06-07T11:41:29+00:00"
         },
         {
+            "name": "optimistdigital/nova-sortable",
+            "version": "1.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/optimistdigital/nova-sortable.git",
+                "reference": "41f0c9f9a30f88dd3d4693a9f4d23914c022eb5e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/optimistdigital/nova-sortable/zipball/41f0c9f9a30f88dd3d4693a9f4d23914c022eb5e",
+                "reference": "41f0c9f9a30f88dd3d4693a9f4d23914c022eb5e",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^2.0.11 || ^3.0",
+                "php": ">=7.1.0",
+                "spatie/eloquent-sortable": "^3.7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "OptimistDigital\\NovaSortable\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OptimistDigital\\NovaSortable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "This Laravel Nova package allows you to reorder models in a Nova resource's index view using drag & drop.",
+            "keywords": [
+                "eloquent-sortable",
+                "laravel",
+                "nova",
+                "optimistdigital"
+            ],
+            "time": "2020-04-28T11:40:01+00:00"
+        },
+        {
             "name": "pda/pheanstalk",
             "version": "v4.0.1",
             "source": {
@@ -4667,6 +4712,62 @@
                 "spatie"
             ],
             "time": "2020-05-06T14:32:38+00:00"
+        },
+        {
+            "name": "spatie/eloquent-sortable",
+            "version": "3.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/eloquent-sortable.git",
+                "reference": "5df5d545003f6443ced9684765759ea2e5cf5d91"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/eloquent-sortable/zipball/5df5d545003f6443ced9684765759ea2e5cf5d91",
+                "reference": "5df5d545003f6443ced9684765759ea2e5cf5d91",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.8.0|^6.0|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "~3.8.0|^4.0|^5.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\EloquentSortable\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be"
+                }
+            ],
+            "description": "Sortable behaviour for eloquent models",
+            "homepage": "https://github.com/spatie/eloquent-sortable",
+            "keywords": [
+                "behaviour",
+                "eloquent",
+                "laravel",
+                "model",
+                "sort",
+                "sortable"
+            ],
+            "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                }
+            ],
+            "time": "2020-03-02T19:45:44+00:00"
         },
         {
             "name": "spatie/image",
@@ -12444,5 +12545,6 @@
     "platform-dev": [],
     "platform-overrides": {
         "php": "7.4.3"
-    }
+    },
+    "plugin-api-version": "1.1.0"
 }

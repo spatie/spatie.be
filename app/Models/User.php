@@ -25,7 +25,7 @@ class User extends Authenticatable
             return true;
         }
 
-        return $this->is_sponsor;
+        return (bool) $this->is_sponsor;
     }
 
     public function isSpatieMember(): bool
