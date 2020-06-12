@@ -46,6 +46,10 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'license-api' => [
+            'driver' => 'license-key',
+        ],
     ],
 
     /*
