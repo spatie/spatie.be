@@ -6,12 +6,13 @@ return [
             'title' => 'Laravel Package Training',
             'description' => "Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!",
             'videos' => [
-                ['id' => '419946519', 'only_for_sponsors' => true], // multitenancy
-                ['id' => '420606741', 'only_for_sponsors' => true], // response cache
-                ['id' => '423825543', 'only_for_sponsors' => true], // laravel-dashboard
+                ['id' => '424550560', 'only_for_sponsors' => false], // psalm
                 ['id' => '426741940', 'only_for_sponsors' => false], // laravel-short-schedule using
                 ['id' => '426743340', 'only_for_sponsors' => true], // laravel-short-schedule under the hood
                 ['id' => '426803489', 'only_for_sponsors' => true], // laravel-short-schedule testing
+                ['id' => '419946519', 'only_for_sponsors' => true], // multitenancy
+                ['id' => '420606741', 'only_for_sponsors' => true], // response cache
+                ['id' => '423825543', 'only_for_sponsors' => true], // laravel-dashboard
             ],
         ],
         [
