@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
             ->call(MembersSeeder::class)
             ->call(InsightsSeeder::class)
             ->call(RepositoriesSeeder::class)
+            ->call(ProductSeeder::class)
             ->call(UserSeeder::class)
             ->call(ContributorSeeder::class)
             ->call(VideoSeeder::class);

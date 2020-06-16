@@ -1,9 +1,6 @@
 <?php
 
-use App\Models\License;
 use App\Models\Product;
-use App\Models\Purchase;
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder

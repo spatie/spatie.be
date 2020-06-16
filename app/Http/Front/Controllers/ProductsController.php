@@ -5,14 +5,17 @@ namespace App\Http\Front\Controllers;
 use App\Models\Contributor;
 use App\Models\Issue;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductsController
 {
-    public function index()
+    public function index(Request $request)
     {
         $products = Product::orderBy('sort_order')->get();
 
-        return view('front.pages.products.index', compact('products'));
+        $purchases = $request->user()->purchases;
+
+        return view('front.pages.products.index', compact('products', 'purchases'));
     }
 
     public function show(Product $product)
