@@ -13,6 +13,8 @@ Route::mailcoach('mailcoach');
 
 Route::view('/', 'front.pages.home.index')->name('home');
 
+Route::post('api/satis/authenticate', fn () => 'ok');
+
 Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
 
 Route::prefix('about-us')->group(function () {
