@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->string('action_url');
             $table->string('action_label');
             $table->integer('sort_order');
+            $table->boolean('requires_license')->default(0);
             $table->timestamps();
         });
     }

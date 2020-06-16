@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\License;
+use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -7,8 +9,6 @@ class UserSeeder extends Seeder
 {
     public function run()
     {
-        User::truncate();
-
         collect([
             'freek',
             'willem',

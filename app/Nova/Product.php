@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Models\Product as EloquentProduct;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
@@ -58,6 +59,7 @@ class Product extends Resource
             Text::make('Url'),
             Text::make('Action url'),
             Text::make('Action label'),
+            Boolean::make('Requires license'),
         ];
     }
 

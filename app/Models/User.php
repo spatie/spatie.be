@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -31,5 +32,10 @@ class User extends Authenticatable
     public function isSpatieMember(): bool
     {
         return Member::where('github', $this->github_username)->exists();
+    }
+
+    public function licenses(): HasManyThrough
+    {
+        return $this->hasManyThrough(License::class, Purchase::class);
     }
 }
