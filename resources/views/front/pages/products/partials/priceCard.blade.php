@@ -1,6 +1,6 @@
 <div class="my-8">
     @auth
-        @php($payLink = auth()->user()->chargeProduct($product->paddle_product_id))
+        @php($payLink = auth()->user()->chargeProduct($purchasable->paddle_product_id))
 
         <section id="cta" class="section">
             <div class="wrap">
@@ -8,7 +8,7 @@
                     <div class="wrap-inset md:items-end" style="--cols: 1fr 2fr">
                         <div class="links-underline links-white">
                             <p class="text-2xl">
-                                {{ $product->title }}
+                                {{ $purchasable->title }}
                             </p>
                         </div>
                         <h2 class="title-xl | grid-text-right">
@@ -30,7 +30,7 @@
                 <div class="wrap-inset md:items-end" style="--cols: 1fr 2fr">
                     <div class="links-underline links-white">
                         <p class="text-2xl">
-                            Please log in to purchase {{ $product->title }}
+                            Please log in to purchase {{ $purchasable->title }}
                         </p>
                     </div>
                     <h2 class="title-xl | grid-text-right">
@@ -49,7 +49,7 @@
         return string.indexOf(firstDigit);
     }
 
-    Paddle.Product.Prices({{ $product->paddle_product_id }}, function(prices) {
+    Paddle.Product.Prices({{ $purchasable->paddle_product_id }}, function(prices) {
         console.log(prices);
         let priceString = prices.price.net;
 

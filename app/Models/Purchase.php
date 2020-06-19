@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Purchase extends Model
@@ -18,5 +19,10 @@ class Purchase extends Model
     public function purchasable(): BelongsTo
     {
         return $this->belongsTo(Purchasable::class);
+    }
+
+    public function scopeWhereUser(Builder $builder, User $user): Builder
+    {
+        return $builder->where('user_id', $user->id);
     }
 }

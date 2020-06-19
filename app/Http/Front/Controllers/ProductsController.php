@@ -2,9 +2,9 @@
 
 namespace App\Http\Front\Controllers;
 
-use App\Models\Contributor;
-use App\Models\Issue;
 use App\Models\Product;
+use App\Models\Purchase;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ProductsController
@@ -13,7 +13,9 @@ class ProductsController
     {
         $products = Product::orderBy('sort_order')->get();
 
-        $purchases = optional($request->user())->purchases;
+        $purchases = $request->user()
+            ? Purchase::with('purchasable.product')->whereUser($request->user())->get()
+            : [];
 
         return view('front.pages.products.index', compact('products', 'purchases'));
     }

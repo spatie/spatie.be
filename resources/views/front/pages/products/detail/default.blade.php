@@ -3,7 +3,7 @@
         {{ $product->description }}
     </x-slot>
 
-    @if ($product->paddle_product_id)
-        @include('front.pages.products.partials.priceCard')
-    @endif
+    @foreach($product->purchasables as $purchasable)
+            @include('front.pages.products.partials.priceCard')
+    @endforeach
 </div>
