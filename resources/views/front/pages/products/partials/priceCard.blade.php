@@ -1,28 +1,45 @@
 <div class="my-8">
-    @php($payLink = auth()->user()->chargeProduct($product->paddle_product_id))
+    @auth
+        @php($payLink = auth()->user()->chargeProduct($product->paddle_product_id))
 
-    <section id="cta" class="section">
+        <section id="cta" class="section">
+            <div class="wrap">
+                <div class="inset-green">
+                    <div class="wrap-inset md:items-end" style="--cols: 1fr 2fr">
+                        <div class="links-underline links-white">
+                            <p class="text-2xl">
+                                {{ $product->title }}
+                            </p>
+                        </div>
+                        <h2 class="title-xl | grid-text-right">
+                            <x-paddle-button :url="$payLink" data-theme="none">
+                                Buy
+                            </x-paddle-button>
+                            <span class="text-lg leading-none">
+                                <span class="" data-id="current-currency"></span>
+                                <span class="" data-id="current-price"></span>
+                            </span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @else
         <div class="wrap">
             <div class="inset-green">
                 <div class="wrap-inset md:items-end" style="--cols: 1fr 2fr">
                     <div class="links-underline links-white">
                         <p class="text-2xl">
-                            {{ $product->title }}
+                            Please log in to purchase {{ $product->title }}
                         </p>
                     </div>
                     <h2 class="title-xl | grid-text-right">
-                        <x-paddle-button :url="$payLink" data-theme="none">
-                            Buy
-                        </x-paddle-button>
-                        <span class="text-lg leading-none">
-                            <span class="" data-id="current-currency"></span>
-                            <span class="" data-id="current-price"></span>
-                        </span>
+                        <a href="{{ route('login') }}">Log in</a>
                     </h2>
                 </div>
             </div>
         </div>
-    </section>
+    @endauth
 </div>
 
 <script type="text/javascript">

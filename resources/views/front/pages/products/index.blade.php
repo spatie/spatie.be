@@ -2,7 +2,7 @@
         title="Products"
         background="/backgrounds/home.jpg"
 >
-    @includeIf($purchases->isNotEmpty(), 'front.pages.products.partials.purchases', ['purchases' => $purchases])
+    @includeIf($purchases && $purchases->isNotEmpty(), 'front.pages.products.partials.purchases', ['purchases' => $purchases])
 
     <div class="section-group wrap flex grid grid-cols-3 gap-4">
         @foreach ($products as $product)

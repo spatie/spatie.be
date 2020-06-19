@@ -13,7 +13,7 @@ class ProductsController
     {
         $products = Product::orderBy('sort_order')->get();
 
-        $purchases = $request->user()->purchases;
+        $purchases = optional($request->user())->purchases;
 
         return view('front.pages.products.index', compact('products', 'purchases'));
     }
