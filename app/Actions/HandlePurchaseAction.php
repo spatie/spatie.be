@@ -6,6 +6,7 @@ use App\Models\License;
 use App\Models\Product;
 use App\Models\Purchase;
 use App\Models\User;
+use App\Support\Paddle\PaddlePayload;
 
 class HandlePurchaseAction
 {
@@ -16,10 +17,10 @@ class HandlePurchaseAction
         $this->createLicenseAction = $createLicenseAction;
     }
 
-    public function execute(User $user, Product $product, array $paddlePayload): Purchase
+    public function execute(User $user, Product $product, PaddlePayload $paddlePayload): Purchase
     {
         if ($product->requires_license) {
-            $license = $this->createOrRenewLicense();
+            $license = $this->createOrRenewLicense($user, $product);
         }
 
         return Purchase::create([

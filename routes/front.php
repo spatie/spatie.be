@@ -12,9 +12,12 @@ use App\Http\Front\Controllers\PostcardController;
 use App\Http\Front\Controllers\ProductsController;
 use App\Http\Front\Controllers\Videos\ShowVideoController;
 use App\Http\Front\Controllers\Videos\VideoIndexController;
+use App\Http\Front\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
+
+Route::post('paddle/webhook', WebhookController::class);
 
 Route::view('/', 'front.pages.home.index')->name('home');
 
