@@ -14,8 +14,8 @@ class CreatePurchasesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('purchasable_id');
+            $table->foreign('purchasable_id')->references('id')->on('purchasables');
 
             $table->unsignedBigInteger('license_id')->nullable();
             $table->foreign('license_id')->references('id')->on('licenses');

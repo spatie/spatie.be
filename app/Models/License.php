@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class License extends Model implements AuthenticatableContract
 {
@@ -15,9 +16,9 @@ class License extends Model implements AuthenticatableContract
         'satis_authentication_count' => 'integer',
     ];
 
-    public function product(): BelongsTo
+    public function purchasable(): BelongsTo
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Purchasable::class);
     }
 
     public function user(): BelongsTo

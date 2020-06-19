@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Product extends Model implements HasMedia, Sortable
+class Purchasable extends Model implements HasMedia, Sortable
 {
     use InteractsWithMedia, SortableTrait;
 
@@ -19,23 +19,22 @@ class Product extends Model implements HasMedia, Sortable
 
     public $with = [
         'media',
-        'purchasables',
     ];
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('product-image')
+        $this->addMediaCollection('purchasable-image')
             ->singleFile()
             ->withResponsiveImages();
     }
 
     public function getImageAttribute()
     {
-        return $this->getFirstMediaUrl('product-image');
+        return $this->getFirstMediaUrl('purchasable-image');
     }
 
-    public function purchasables(): HasMany
+    public function product(): BelongsTo
     {
-        return $this->hasMany(Purchasable::class);
+        return $this->belongsTo(Product::class);
     }
 }

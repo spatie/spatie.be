@@ -15,8 +15,8 @@ class Purchase extends Model
         return $this->belongsTo(License::class);
     }
 
-    public function product(): BelongsTo
+    public function purchasable(): BelongsTo
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Purchasable::class);
     }
 }

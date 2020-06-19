@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Models\License;
 use App\Models\Product;
+use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
@@ -17,16 +18,16 @@ class HandlePurchaseAction
         $this->createLicenseAction = $createLicenseAction;
     }
 
-    public function execute(User $user, Product $product, PaddlePayload $paddlePayload): Purchase
+    public function execute(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
     {
-        if ($product->requires_license) {
-            $license = $this->createOrRenewLicense($user, $product);
+        if ($purchasable->requires_license) {
+            $license = $this->createOrRenewLicense($user, $purchasable);
         }
 
         return Purchase::create([
             'license_id' => optional($license)->id,
             'user_id' => $user->id,
-            'product_id' => $product->id,
+            'product_id' => $purchasable->id,
             'receipt_url' => $paddlePayload->receipt_url,
             'payment_method' => $paddlePayload->payment_method,
             'paddle_alert_id' => $paddlePayload->alert_id,
@@ -38,12 +39,12 @@ class HandlePurchaseAction
 
     }
 
-    protected function createOrRenewLicense(User $user, Product $product): License
+    protected function createOrRenewLicense(User $user, Purchasable $purchasable): License
     {
-        if ($license = $user->licenses()->firstWhere('product_id', $product->id)) {
+        if ($license = $user->licenses()->firstWhere('purchasable_id', $purchasable->id)) {
             return $license->renew();
         }
 
-        return $this->createLicenseAction->execute($user, $product);
+        return $this->createLicenseAction->execute($user, $purchasable);
     }
 }

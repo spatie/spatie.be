@@ -1,7 +1,9 @@
 <?php
 
 use App\Models\Insight;
+use App\Models\License;
 use App\Models\Product;
+use App\Models\Purchasable;
 use App\Models\User;
 use Illuminate\Support\Str;
 
@@ -9,7 +11,7 @@ use Illuminate\Support\Str;
 $factory->define(\App\Models\Purchase::class, function (Faker\Generator $faker) {
     return [
         'user_id' => factory(User::class),
-        'product_id' => factory(Product::class),
+        'purchasable_id' => factory(Purchasable::class),
         'license_id' => $faker->boolean ? factory(License::class) : null,
         'payment_method' => $faker->creditCardType,
         'receipt_url' => $faker->url,

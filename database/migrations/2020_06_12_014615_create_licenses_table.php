@@ -14,8 +14,8 @@ class CreateLicensesTable extends Migration
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('purchasable_id');
+            $table->foreign('purchasable_id')->references('id')->on('purchasables')->onDelete('cascade');
 
             $table->string('key');
             $table->integer('satis_authentication_count')->default(0);

@@ -5,6 +5,7 @@ namespace App\Support\Paddle;
 use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Models\Product;
+use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 
@@ -27,7 +28,7 @@ class ProcessPaymentSucceededJob
             return;
         }
 
-        if (! $product = Product::where('paddle_product_id', $paddlePayload->product_id)->first()) {
+        if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
             return;
         }
 
@@ -35,7 +36,7 @@ class ProcessPaymentSucceededJob
             return;
         }
 
-        if (! $product = Product::where('paddle_product_id', $paddlePayload->product_id)->first()) {
+        if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
             return;
         }
 
@@ -43,6 +44,6 @@ class ProcessPaymentSucceededJob
             throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
         }
 
-        app(HandlePurchaseAction::class)->execute($user, $product, $paddlePayload);
+        app(HandlePurchaseAction::class)->execute($user, $purchasable, $paddlePayload);
     }
 }
