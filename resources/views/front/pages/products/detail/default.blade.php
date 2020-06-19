@@ -3,5 +3,7 @@
         {{ $product->description }}
     </x-slot>
 
-    This is the default product template
+    @if ($product->paddle_product_id)
+        @include('front.pages.products.partials.priceCard')
+    @endif
 </div>

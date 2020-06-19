@@ -1,3 +1,7 @@
+@push('head')
+    @paddleJS
+@endpush
+
 <x-page
         :title="$product->title"
         background="/backgrounds/home.jpg"

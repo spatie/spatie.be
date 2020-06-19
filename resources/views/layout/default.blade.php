@@ -14,6 +14,7 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
 
     @include('layout.partials.analytics')
+    @stack('head')
 </head>
 
 <body class="flex flex-col min-h-screen">
