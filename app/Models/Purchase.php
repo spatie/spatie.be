@@ -21,6 +21,11 @@ class Purchase extends Model
         return $this->belongsTo(Purchasable::class);
     }
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function scopeWhereUser(Builder $builder, User $user): Builder
     {
         return $builder->where('user_id', $user->id);

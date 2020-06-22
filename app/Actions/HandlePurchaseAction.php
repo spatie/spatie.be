@@ -20,14 +20,14 @@ class HandlePurchaseAction
 
     public function execute(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
     {
-        if ($purchasable->requires_license) {
-            $license = $this->createOrRenewLicense($user, $purchasable);
-        }
+        $licenseId = $purchasable->requires_license
+            ? $this->createOrRenewLicense($user, $purchasable)->id
+            : null;
 
         return Purchase::create([
-            'license_id' => optional($license)->id,
+            'license_id' => $licenseId,
             'user_id' => $user->id,
-            'product_id' => $purchasable->id,
+            'purchasable_id' => $purchasable->id,
             'receipt_url' => $paddlePayload->receipt_url,
             'payment_method' => $paddlePayload->payment_method,
             'paddle_alert_id' => $paddlePayload->alert_id,
@@ -41,7 +41,12 @@ class HandlePurchaseAction
 
     protected function createOrRenewLicense(User $user, Purchasable $purchasable): License
     {
-        if ($license = $user->licenses()->firstWhere('purchasable_id', $purchasable->id)) {
+        $license = License::query()
+            ->where('purchasable_id', $purchasable->id)
+            ->where('user_id', $user->id)
+            ->first();
+
+        if ($license !== null) {
             return $license->renew();
         }
 
