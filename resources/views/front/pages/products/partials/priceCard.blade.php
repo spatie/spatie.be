@@ -16,8 +16,8 @@
                                 Buy
                             </x-paddle-button>
                             <span class="text-lg leading-none">
-                                <span class="" data-id="current-currency"></span>
-                                <span class="" data-id="current-price"></span>
+                                <span class="" data-id="current-currency-{{ $purchasable->id }}"></span>
+                                <span class="" data-id="current-price-{{ $purchasable->id }}"></span>
                             </span>
                         </h2>
                     </div>
@@ -61,7 +61,7 @@
         let currencySymbol = priceString.substring(0,indexOFirstDigitInString);
         currencySymbol = currencySymbol.replace('US', '');
 
-        document.querySelector('[data-id="current-currency"]').innerHTML = currencySymbol;
-        document.querySelector('[data-id="current-price"]').innerHTML = price;
+        document.querySelector('[data-id="current-currency-{{ $purchasable->id}}"]').innerHTML = currencySymbol;
+        document.querySelector('[data-id="current-price-{{ $purchasable->id }}"]').innerHTML = price;
     });
 </script>
