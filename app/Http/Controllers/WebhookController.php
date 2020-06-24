@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Front\Controllers;
+namespace App\Http\Controllers;
 
 use App\Actions\HandlePurchaseAction;
 use App\Support\Paddle\ProcessPaymentSucceededJob;

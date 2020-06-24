@@ -9,25 +9,17 @@ class RouteServiceProvider extends ServiceProvider
 {
     public function map()
     {
-        $this->mapAdminRoutes();
-
-        $this->mapFrontRoutes();
+        $this->mapWebRoutes();
 
         $this->mapApiRoutes();
 
         $this->mapRedirectsForOldSite();
     }
 
-    protected function mapAdminRoutes()
-    {
-        Route::middleware(['web', 'admin', 'auth.basic', 'spatieMembers'])
-            ->group(base_path('routes/admin.php'));
-    }
-
-    protected function mapFrontRoutes()
+    protected function mapWebRoutes()
     {
         Route::middleware(['web'])
-            ->group(base_path('routes/front.php'));
+            ->group(base_path('routes/web.php'));
     }
 
     protected function mapApiRoutes()

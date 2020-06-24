@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Front\Controllers\Videos;
+namespace App\Http\Controllers\Videos;
 
 use App\Models\Series;
 
