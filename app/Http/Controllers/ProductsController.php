@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\Purchase;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class ProductsController
 {
@@ -13,11 +14,18 @@ class ProductsController
     {
         $products = Product::orderBy('sort_order')->get();
 
-        $purchases = $request->user()
-            ? Purchase::with('purchasable.product')->whereUser($request->user())->get()
-            : [];
+        $purchasesPerProduct = $this->getPurchasesPerProduct();
 
-        return view('front.pages.products.index', compact('products', 'purchases'));
+        return view('front.pages.products.index', compact('products', 'purchasesPerProduct'));
+    }
+
+    protected function getPurchasesPerProduct(): Collection
+    {
+        if (! request()->user()) {
+            return collect();
+        }
+
+        return Purchase::with('purchasable.product')->whereUser(request()->user())->get()->groupBy('purchasable.product_id');
     }
 
     public function show(Product $product)
