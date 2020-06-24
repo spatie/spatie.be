@@ -1,13 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Videos;
+namespace App\Http\Controllers;
 
 use App\Models\Series;
 use App\Models\Video;
 
-class ShowVideoController
+class VideosController
 {
-    public function __invoke(Series $series, Video $video)
+    public function index()
+    {
+        return view('front.pages.videos.index', [
+            'allSeries' => Series::get(),
+        ]);
+    }
+
+    public function show(Series $series, Video $video)
     {
         $previousVideo = $video->getPrevious();
         $nextVideo = $video->getNext();

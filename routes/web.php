@@ -10,8 +10,7 @@ use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\Videos\ShowVideoController;
-use App\Http\Controllers\Videos\VideoIndexController;
+use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
@@ -81,8 +80,8 @@ Route::get('login/github', [GithubSocialiteController::class, 'redirect'])->name
 Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/videos', VideoIndexController::class)->name('videos.index');
-Route::get('/videos/{series:slug}/{video:slug}', ShowVideoController::class)->name('videos.show');
+Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
+Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show'])->name('videos.show');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
