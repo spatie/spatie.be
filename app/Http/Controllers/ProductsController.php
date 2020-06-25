@@ -11,6 +11,7 @@ class ProductsController
     {
         $products = Product::orderBy('sort_order')->get();
 
+        $purchasesPerProduct = collect();
         if ($request->user()) {
             $purchasesPerProduct = $request->user()
                 ->purchases()
