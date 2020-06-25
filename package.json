@@ -20,6 +20,7 @@
     "vue-data-component": "1.0.0-alpha.20"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "postcss-preset-env": "^6.7.0"
   }
 }

@@ -8,6 +8,10 @@ module.exports = {
         gridRowEnd: false,
     },
 
+    plugins: [
+        require('@tailwindcss/custom-forms')
+    ],
+
     theme: {
         colors: {
             transparent: 'transparent',

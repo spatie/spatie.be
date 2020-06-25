@@ -15,7 +15,7 @@
 
                 <div>
                     <label for="current_password">Current password</label>
-                    <input type="password" name="current_password" id="current_password">
+                    <input class="form-input" type="password" name="current_password" id="current_password">
                     @error('current_password')
                         <p class="text-red">{{ $message }}</p>
                     @enderror
@@ -23,7 +23,7 @@
 
                 <div>
                     <label for="password">New password</label>
-                    <input type="password" name="password" id="password">
+                    <input class="form-input" type="password" name="password" id="password">
                     @error('password')
                         <p class="text-red">{{ $message }}</p>
                     @enderror
@@ -31,7 +31,7 @@
 
                 <div>
                     <label for="password_confirmation">New password confirmation</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation">
+                    <input class="form-input" type="password" name="password_confirmation" id="password_confirmation">
                     @error('password_confirmation')
                         <p class="text-red">{{ $message }}</p>
                     @enderror

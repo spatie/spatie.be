@@ -12,7 +12,7 @@
 
             <div>
                 <label for="name">Name</label>
-                <input type="text" name="name" id="name" required>
+                <input class="form-input" type="text" name="name" id="name" required>
                 @error('name')
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
@@ -20,7 +20,7 @@
 
             <div>
                 <label for="email">Your email</label>
-                <input type="email" name="email" id="email" required>
+                <input class="form-input" type="email" name="email" id="email" required>
                 @error('email')
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
@@ -28,7 +28,7 @@
 
             <div>
                 <label for="password">Choose password</label>
-                <input type="password" name="password" id="password" required>
+                <input class="form-input" type="password" name="password" id="password" required>
                 @error('password')
                     <div class="text-red-500">{{ $message }}</div>
                 @enderror
@@ -36,7 +36,7 @@
 
             <div>
                 <label for="password_confirmation">Confirm password</label>
-                <input type="password" name="password_confirmation" id="password_confirmation" required>
+                <input class="form-input" type="password" name="password_confirmation" id="password_confirmation" required>
                 @error('password_confirmation')
                 <div class="text-red-500">{{ $message }}</div>
                 @enderror
@@ -44,7 +44,7 @@
 
             <div>
                 <label for="newsletter">
-                    <input type="checkbox" name="newsletter" id="newsletter">
+                    <input class="form-checkbox" type="checkbox" name="newsletter" id="newsletter">
                     Keep me in the loop when there is new Spatie content
                 </label>
             </div>

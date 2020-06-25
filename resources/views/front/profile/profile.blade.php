@@ -23,18 +23,18 @@
 
                 <div>
                     <label for="name">Your name</label>
-                    <input type="text" name="name" id="name" value="{{ auth()->user()->name }}">
+                    <input class="form-input" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
                 </div>
 
                 <div>
                     <label for="email">Your email</label>
-                    <input type="email" name="email" id="email" value="{{ auth()->user()->email }}">
+                    <input class="form-input" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
                 </div>
 
                 <div>
                     <label for="newsletter">
                         <!-- @TODO: Check Mailcoach if user is subscribed -->
-                        <input type="checkbox" name="newsletter" id="newsletter">
+                        <input class="form-checkbox" type="checkbox" name="newsletter" id="newsletter">
                         Keep me in the loop when there is new Spatie content
                     </label>
                 </div>

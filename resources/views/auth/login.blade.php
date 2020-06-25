@@ -15,12 +15,12 @@
 
             <div>
                 <label for="email">Your email</label>
-                <input type="email" name="email" id="email">
+                <input class="form-input" type="email" name="email" id="email">
             </div>
 
             <div>
                 <label for="password">Password <a href="{{ route('forgot-password') }}">Can't recall, send me a link</a></label>
-                <input type="password" name="password" id="password">
+                <input class="form-input" type="password" name="password" id="password">
             </div>
 
             <button type="submit">Log in</button>
