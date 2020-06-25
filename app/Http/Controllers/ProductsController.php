@@ -24,6 +24,7 @@ class ProductsController
 
     public function show(Request $request, Product $product)
     {
+        $purchases = collect();
         if ($request->user()) {
             $purchases = $request->user()
                 ->purchases()
