@@ -2,26 +2,26 @@
         title="Reset password"
         background="/backgrounds/home.jpg"
 >
-    <div class="wrap">
+    <div class="wrap my-6">
         @if (session('status'))
             <div class="" role="alert">
                 {{ session('status') }}
             </div>
         @endif
 
-        <div class="">
+        <h1 class="text-xl">
             {{ __('Reset Password') }}
-        </div>
+        </h1>
 
-        <form class="" method="POST" action="{{ route('password.email') }}">
+        <form class="space-y-6" method="POST" action="{{ route('password.email') }}">
             @csrf
 
-            <div class="">
+            <div class="grid">
                 <label for="email" class="">
                     {{ __('E-Mail Address') }}:
                 </label>
 
-                <input id="email" type="email" class="@error('email')@enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                <input id="email" type="email" class="form-input @error('email') border-red @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                 @error('email')
                 <p class="">
@@ -30,16 +30,14 @@
                 @enderror
             </div>
 
-            <div class="">
-                <button type="submit" class="">
+            <div class="flex space-x-4 items-center">
+                <button type="submit" class="bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm">
                     {{ __('Send Password Reset Link') }}
                 </button>
 
-                <p class="">
-                    <a class="" href="{{ route('login') }}">
-                        {{ __('Back to login') }}
-                    </a>
-                </p>
+                <a class="text-blue" href="{{ route('login') }}">
+                    {{ __('Back to login') }}
+                </a>
             </div>
         </form>
     </div>
