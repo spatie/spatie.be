@@ -2,7 +2,9 @@
         title="Products"
         background="/backgrounds/home.jpg"
 >
-    @includeWhen($purchasesPerProduct->isNotEmpty(), "front.pages.products.partials.purchases", ['purchasesPerProduct' => $purchasesPerProduct])
+    @auth
+        @includeWhen($purchasesPerProduct->isNotEmpty(), "front.pages.products.partials.purchases", ['purchasesPerProduct' => $purchasesPerProduct])
+    @endauth
 
     <div class="section-group wrap flex grid grid-cols-3 gap-4">
         @foreach ($products as $product)

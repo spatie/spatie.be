@@ -43,6 +43,6 @@ class User extends Authenticatable
 
     public function purchases(): HasMany
     {
-        return $this->hasMany(Purchase::class);
+        return $this->hasMany(Purchase::class)->with('purchasable.product');
     }
 }

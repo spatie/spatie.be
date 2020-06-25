@@ -26,8 +26,13 @@ class Purchase extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function scopeWhereUser(Builder $builder, User $user): Builder
+    public function scopeWhereUser(Builder $query, User $user)
     {
-        return $builder->where('user_id', $user->id);
+        $query->where('user_id', $user->id);
+    }
+
+    public function scopeForProduct(Builder $query, Product $product)
+    {
+        $query->whereHas('purchasable', fn(Builder $query) => $query->where('product_id', $product->id));
     }
 }
