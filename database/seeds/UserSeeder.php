@@ -42,7 +42,7 @@ class UserSeeder extends Seeder
             factory(Purchase::class)->create([
                 'user_id' => $user->id,
                 'purchasable_id' => $purchase->id,
-                'license_id' => optional($license)->id,
+                'license_id' => optional($license ?? null)->id,
             ]);
         });
     }

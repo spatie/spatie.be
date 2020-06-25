@@ -18,22 +18,13 @@
                         /** @var \App\Models\Purchasable $purchasable */
                         $purchasable = $purchase->purchasable;
                     @endphp
+
                     <div class="flex justify-between">
                         <a href="{{ route('products.show', $product) }}">
                             <h2>{{ $purchasable->title }}</h2>
                         </a>
 
-                        @if($purchasable->requires_license)
-                            <a href="{{ action([\App\Http\Controllers\ProductsController::class, 'show'], $product) }}"
-                               class="bg-grey-lighter p-2">
-                                Manage licenses
-                            </a>
-                        @else
-                            <a href="{{ action([\App\Http\Controllers\ProductsController::class, 'show'], $product) }}"
-                               class="bg-grey-lighter p-2">
-                                Show details
-                            </a>
-                        @endif
+                        @include('front.pages.products.partials.purchaseActions')
                     </div>
                 @endforeach
             </div>

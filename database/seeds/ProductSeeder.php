@@ -75,9 +75,9 @@ class ProductSeeder extends Seeder
         factory(Purchasable::class)->create([
             'type' => PurchasableType::TYPE_VIDEOS,
             'title' => 'Only the videos',
-            'description' => 'Videos license',
+            'description' => 'Videos',
             'paddle_product_id' => '579713',
-            'requires_license' => true,
+            'requires_license' => false,
             'product_id' => $mailCoach->id,
         ]);
     }
