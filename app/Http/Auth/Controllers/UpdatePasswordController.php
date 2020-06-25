@@ -10,7 +10,7 @@ class UpdatePasswordController
 {
     public function show()
     {
-        return view('auth.password');
+        return view('front.profile.password');
     }
 
     public function update(Request $request)

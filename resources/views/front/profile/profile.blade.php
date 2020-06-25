@@ -4,7 +4,7 @@
 >
 
     <div class="wrap flex">
-        @include('auth.partials.sidebar')
+        @include('front.profile.partials.sidebar')
 
         <div class="ml-4">
             <h1>My profile</h1>

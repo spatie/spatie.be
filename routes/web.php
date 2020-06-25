@@ -2,15 +2,16 @@
 
 use App\Http\Auth\Controllers\ForgotPasswordController;
 use App\Http\Auth\Controllers\LoginController;
-use App\Http\Auth\Controllers\ProfileController;
+use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\GithubSocialiteController;
-use App\Http\Auth\Controllers\LogoutController;
+use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
@@ -61,14 +62,16 @@ Route::prefix('vacancies')->group(function () {
     })->name('vacancies.show');
 });
 
-Route::group(['middleware' => 'auth'], function () {
-    Route::get('profile', [ProfileController::class, 'show'])->name('profile');
-    Route::put('profile', [ProfileController::class, 'update'])->name('profile');
+Route::group(['middleware' => 'auth', 'prefix' => 'profile'], function () {
+    Route::get('/', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/', [ProfileController::class, 'update'])->name('profile');
     Route::get('disconnect', [ProfileController::class, 'disconnect'])->name('github-disconnect');
-    Route::delete('profile', [ProfileController::class, 'delete'])->name('profile');
+    Route::delete('/', [ProfileController::class, 'delete'])->name('profile');
 
-    Route::get('profile/password', [UpdatePasswordController::class, 'show'])->name('profile.password');
-    Route::put('profile/password', [UpdatePasswordController::class, 'update'])->name('profile.password');
+    Route::get('password', [UpdatePasswordController::class, 'show'])->name('profile.password');
+    Route::put('password', [UpdatePasswordController::class, 'update'])->name('profile.password');
+
+    Route::get('invoices', InvoicesController::class)->name('invoices');
 });
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

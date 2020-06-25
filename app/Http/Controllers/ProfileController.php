@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Auth\Controllers;
+namespace App\Http\Controllers;
 
 use App\Http\Auth\Requests\ProfileRequest;
 
@@ -8,7 +8,7 @@ class ProfileController
 {
     public function show()
     {
-        return view('auth.profile');
+        return view('front.profile.profile');
     }
 
     public function update(ProfileRequest $profileRequest)
