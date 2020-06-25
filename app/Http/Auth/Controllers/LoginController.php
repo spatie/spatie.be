@@ -12,10 +12,20 @@ class LoginController extends Controller
 {
     use AuthenticatesUsers, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $redirectTo = '/';
-
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        session()->flash('next', request('next'));
+
+        return view('auth.login');
+    }
+
+    public function redirectPath()
+    {
+        return session('next', route('home'));
     }
 }

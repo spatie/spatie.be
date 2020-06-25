@@ -34,7 +34,7 @@
                         </p>
                     </div>
                     <h2 class="title-xl | grid-text-right">
-                        <a href="{{ route('login') }}">Log in</a>
+                        <a href="{{ route('login') }}?next={{ url()->current() }}">Log in</a>
                     </h2>
                 </div>
             </div>
