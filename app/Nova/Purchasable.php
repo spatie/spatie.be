@@ -31,6 +31,8 @@ class Purchasable extends Resource
         return [
             ID::make()->sortable(),
 
+            BelongsTo::make('Product'),
+
             Text::make('Title')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -62,8 +64,6 @@ class Purchasable extends Resource
 
             Markdown::make('Description'),
             Boolean::make('Requires license'),
-
-            BelongsTo::make('Product'),
         ];
     }
 
