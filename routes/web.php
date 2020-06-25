@@ -5,6 +5,7 @@ use App\Http\Auth\Controllers\LoginController;
 use App\Http\Auth\Controllers\ProfileController;
 use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
+use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\GithubSocialiteController;
 use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Controllers\OpenSourceController;
@@ -56,7 +57,7 @@ Route::prefix('vacancies')->group(function () {
             abort(404);
         }
 
-        return view("front.pages.vacancies.{$slug}");
+        return view($view);
     })->name('vacancies.show');
 });
 
@@ -65,6 +66,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('profile', [ProfileController::class, 'update'])->name('profile');
     Route::get('disconnect', [ProfileController::class, 'disconnect'])->name('github-disconnect');
     Route::delete('profile', [ProfileController::class, 'delete'])->name('profile');
+
+    Route::get('profile/password', [UpdatePasswordController::class, 'show'])->name('profile.password');
+    Route::put('profile/password', [UpdatePasswordController::class, 'update'])->name('profile.password');
 });
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
