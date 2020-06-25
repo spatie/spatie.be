@@ -9,9 +9,10 @@
         <div class="ml-4">
             <h1>Invoices</h1>
 
+            <?php /** @var \Laravel\Paddle\Transaction $transaction */?>
             @forelse ($transactions as $transaction)
                 <div>
-                    <span>{{ $transaction->date()->toFormattedDateString() }}</span>
+                    <span>{{ $transaction->date()->toDayDateTimeString() }}</span>
                     <span>{{ $transaction->amount() }}</span>
                     <span><a href="{{ $transaction->receipt() }}" target="_blank">Download</a></span>
                 </div>
