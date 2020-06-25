@@ -37,4 +37,9 @@ class Purchasable extends Model implements HasMedia, Sortable
     {
         return $this->belongsTo(Product::class);
     }
+
+    public function buildSortQuery()
+    {
+        return static::query()->where('product_id', $this->product_id);
+    }
 }

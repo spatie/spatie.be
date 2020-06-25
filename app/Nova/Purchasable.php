@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Enums\PurchasableType;
-use App\Models\Product as EloquentProduct;
 use App\Models\Purchasable as EloquentPurchasable;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -22,8 +21,6 @@ class Purchasable extends Resource
     public static $model = EloquentPurchasable::class;
 
     public static $title = 'name';
-
-    public static $displayInNavigation = false;
 
     public static $search = [
         'id', 'title',
