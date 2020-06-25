@@ -6,10 +6,6 @@
 }
 
 @responsive {
-    .grid {
-        display: grid;
-    }
-
     .grid-template {
         grid-template: var(--rows) / var(--cols);
     }
@@ -55,63 +51,63 @@
     }
 
     .gap-1 {
-        grid-gap: config('padding.1') !important;
+        grid-gap: theme('padding.1') !important;
     }
 
     .gapy-1 {
-        grid-row-gap: config('padding.1') !important;
+        grid-row-gap: theme('padding.1') !important;
     }
 
     .gapx-1 {
-        grid-column-gap: config('padding.1') !important;
+        grid-column-gap: theme('padding.1') !important;
     }
 
     .gap-2 {
-        grid-gap: config('padding.2') !important;
+        grid-gap: theme('padding.2') !important;
     }
 
     .gapy-2 {
-        grid-row-gap: config('padding.2') !important;
+        grid-row-gap: theme('padding.2') !important;
     }
 
     .gapx-2 {
-        grid-column-gap: config('padding.2') !important;
+        grid-column-gap: theme('padding.2') !important;
     }
 
     .gap-4 {
-        grid-gap: config('padding.4') !important;
+        grid-gap: theme('padding.4') !important;
     }
 
     .gapy-4 {
-        grid-row-gap: config('padding.4') !important;
+        grid-row-gap: theme('padding.4') !important;
     }
 
     .gapx-4 {
-        grid-column-gap: config('padding.4') !important;
+        grid-column-gap: theme('padding.4') !important;
     }
 
     .gap-8 {
-        grid-gap: config('padding.8') !important;
+        grid-gap: theme('padding.8') !important;
     }
 
     .gapy-8 {
-        grid-row-gap: config('padding.8') !important;
+        grid-row-gap: theme('padding.8') !important;
     }
 
     .gapx-8 {
-        grid-column-gap: config('padding.8') !important;
+        grid-column-gap: theme('padding.8') !important;
     }
 
     .gap-16 {
-        grid-gap: config('padding.16') !important;
+        grid-gap: theme('padding.16') !important;
     }
 
     .gapy-16 {
-        grid-row-gap: config('padding.16') !important;
+        grid-row-gap: theme('padding.16') !important;
     }
 
     .gapx-16 {
-        grid-column-gap: config('padding.16') !important;
+        grid-column-gap: theme('padding.16') !important;
     }
 
     /* change order */

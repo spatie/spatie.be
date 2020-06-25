@@ -11,9 +11,9 @@
 
     &:after {
         @apply absolute;
-        @apply pin-t;
-        @apply pin-b;
-        @apply pin-l;
+        @apply top-0;
+        @apply bottom-0;
+        @apply left-0;
         @apply w-2px;
         @apply opacity-25;
         @apply rounded;

@@ -1,6 +1,6 @@
 .wallpaper {
     @apply absolute;
-    @apply pin;
+    @apply inset-0;
     @apply z-back;
     @apply overflow-hidden;
 

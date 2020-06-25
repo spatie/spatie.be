@@ -24,7 +24,7 @@
     @supports (display: grid) {
         @apply absolute;
         @apply block;
-        @apply pin-r;
+        @apply right-0;
         @apply text-grey-light;
         @apply pointer-events-none;
     }

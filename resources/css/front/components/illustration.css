@@ -28,7 +28,7 @@
                 @apply absolute;
                 @apply w-full;
                 @apply h-full;
-                @apply pin;
+                @apply inset-0;
                 @apply object-fit-cover;
                 max-height: none;
             }

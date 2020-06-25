@@ -20,19 +20,19 @@
 }
 
 .bullets-green {
-    --bullet-color: config(colors.green);
+    --bullet-color: theme(colors.green);
 }
 
 .bullets-pink {
-    --bullet-color: config(colors.pink);
+    --bullet-color: theme(colors.pink);
 }
 
 .bullets-blue {
-    --bullet-color: config(colors.blue);
+    --bullet-color: theme(colors.blue);
 }
 
 .bullets-grey {
-    --bullet-color: config(colors.grey);
+    --bullet-color: theme(colors.grey);
 }
 
 .bullets-white {

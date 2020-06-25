@@ -1,41 +1,41 @@
 @variants hover, group-hover {
     .fill-blue {
-        fill: config('colors.blue');
+        fill: theme('colors.blue');
     }
 
     .fill-pink {
-        fill: config('colors.pink');
+        fill: theme('colors.pink');
     }
 
     .fill-pink-dark {
-        fill: config('colors.pink-dark');
+        fill: theme('colors.pink-dark');
     }
 
     .fill-red {
-        fill: config('colors.red');
+        fill: theme('colors.red');
     }
 
     .fill-grey {
-        fill: config('colors.grey');
+        fill: theme('colors.grey');
     }
 
     .fill-grey-light {
-        fill: config('colors.grey-light');
+        fill: theme('colors.grey-light');
     }
 
     .fill-grey-lighter {
-        fill: config('colors.grey-lighter');
+        fill: theme('colors.grey-lighter');
     }
 
     .fill-white {
-        fill: config('colors.white');
+        fill: theme('colors.white');
     }
 
     .fill-green {
-        fill: config('colors.green');
+        fill: theme('colors.green');
     }
 
     .fill-green-dark {
-        fill: config('colors.green-dark');
+        fill: theme('colors.green-dark');
     }
 }

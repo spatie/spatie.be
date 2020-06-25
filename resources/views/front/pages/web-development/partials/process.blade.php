@@ -61,7 +61,7 @@
             <p class="">
                 Accuse us of job protection, but our most successful projects are never finished. Maintenance and further improvements are key for any online project.
             </p>
-            <div class="hidden | md:block absolute pin-b w-full" style="right: 100%;">
+            <div class="hidden | md:block absolute bottom-0 w-full" style="right: 100%;">
                 <img src="/images/process-06.svg" class="illustration-svg w-full">
             </div>
         </div>

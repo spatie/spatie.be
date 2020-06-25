@@ -13,11 +13,13 @@
     "laravel-mix": "^2.0.0",
     "laravel-mix-purgecss": "^2.2.0",
     "object-fit-images": "^2.5.9",
-    "postcss-cssnext": "^3.0.2",
     "postcss-easy-import": "^3.0.0",
     "prettier": "^1.10.2",
-    "tailwindcss": "^0.6.4",
+    "tailwindcss": "^1.0",
     "vue": "^2.5.0",
     "vue-data-component": "1.0.0-alpha.20"
+  },
+  "devDependencies": {
+    "postcss-preset-env": "^6.7.0"
   }
 }
