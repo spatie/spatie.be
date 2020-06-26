@@ -38,4 +38,9 @@ class Product extends Model implements HasMedia, Sortable
     {
         return $this->hasMany(Purchasable::class);
     }
+
+    public function requiresLicense(): bool
+    {
+        return $this->purchasables->contains(fn (Purchasable $purchasable) => $purchasable->requires_license);
+    }
 }
