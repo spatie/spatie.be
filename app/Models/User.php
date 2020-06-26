@@ -36,6 +36,11 @@ class User extends Authenticatable
         return Member::where('github', $this->github_username)->exists();
     }
 
+    public function owns(Purchasable $purchasable): bool
+    {
+        return $this->purchases()->where('purchasable_id', $purchasable->id)->exists();
+    }
+
     public function licenses(): HasMany
     {
         return $this->hasMany(License::class);

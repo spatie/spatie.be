@@ -38,6 +38,16 @@ class Purchasable extends Model implements HasMedia, Sortable
         return $this->belongsTo(Purchasable::class, 'renewal_purchasable_id');
     }
 
+    public function originalPurchasable()
+    {
+        return $this->hasOne(Purchasable::class, 'renewal_purchasable_id');
+    }
+
+    public function isRenewal(): bool
+    {
+        return $this->originalPurchasable()->exists();
+    }
+
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
