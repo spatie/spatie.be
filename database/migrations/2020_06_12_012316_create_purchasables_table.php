@@ -11,6 +11,8 @@ class CreatePurchasablesTable extends Migration
         Schema::create('purchasables', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('renewal_purchasable_id')->nullable()->constrained('purchasables', 'id');
+
             $table->string('title');
             $table->text('description');
             $table->integer('sort_order');
@@ -19,10 +21,9 @@ class CreatePurchasablesTable extends Migration
             $table->string('paddle_product_id');
 
             $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
 
             $table->timestamps();
-
-            $table->foreign('product_id')->references('id')->on('products')->cascadeOnDelete();
         });
     }
 }

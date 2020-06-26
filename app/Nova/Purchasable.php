@@ -20,7 +20,7 @@ class Purchasable extends Resource
 
     public static $model = EloquentPurchasable::class;
 
-    public static $title = 'name';
+    public static $title = 'title';
 
     public static $search = [
         'id', 'title',
@@ -31,11 +31,14 @@ class Purchasable extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Product'),
-
             Text::make('Title')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
+            BelongsTo::make('Purchasable for renewal', 'renewalPurchasable', Purchasable::class)
+                ->nullable(),
+
+            BelongsTo::make('Product'),
 
             Text::make('Paddle id', 'paddle_product_id')
                 ->sortable()

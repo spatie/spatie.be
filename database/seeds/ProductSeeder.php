@@ -36,6 +36,15 @@ class ProductSeeder extends Seeder
             'action_label' => 'Medialibrary.pro',
         ]);
 
+        $mailCoachSingleDomainRenewal = factory(Purchasable::class)->create([
+            'type' => PurchasableType::TYPE_STANDARD_RENEWAL,
+            'title' => 'Mailcoach single domain renewal',
+            'description' => 'Standard renewal license',
+            'paddle_product_id' => '579712',
+            'requires_license' => true,
+            'product_id' => $mailCoach->id,
+        ]);
+
         factory(Purchasable::class)->create([
             'type' => PurchasableType::TYPE_STANDARD,
             'title' => 'Mailcoach single domain',
@@ -43,13 +52,14 @@ class ProductSeeder extends Seeder
             'paddle_product_id' => '578345',
             'requires_license' => true,
             'product_id' => $mailCoach->id,
+            'renewal_purchasable_id' => $mailCoachSingleDomainRenewal->id,
         ]);
 
-        factory(Purchasable::class)->create([
-            'type' => PurchasableType::TYPE_STANDARD_RENEWAL,
-            'title' => 'Mailcoach single domain renewal',
-            'description' => 'Standard renewal license',
-            'paddle_product_id' => '579712',
+        $mailCoachUnlimitedDomainsRenewal = factory(Purchasable::class)->create([
+            'type' => PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+            'title' => 'Mailcoach unlimited domains renewal',
+            'description' => 'Unlimited domains renewal license',
+            'paddle_product_id' => '594796',
             'requires_license' => true,
             'product_id' => $mailCoach->id,
         ]);
@@ -61,15 +71,7 @@ class ProductSeeder extends Seeder
             'paddle_product_id' => '594793',
             'requires_license' => true,
             'product_id' => $mailCoach->id,
-        ]);
-
-        factory(Purchasable::class)->create([
-            'type' => PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
-            'title' => 'Mailcoach unlimited domains renewal',
-            'description' => 'Unlimited domains renewal license',
-            'paddle_product_id' => '594796',
-            'requires_license' => true,
-            'product_id' => $mailCoach->id,
+            'renewal_purchasable_id' => $mailCoachUnlimitedDomainsRenewal->id,
         ]);
 
         factory(Purchasable::class)->create([
