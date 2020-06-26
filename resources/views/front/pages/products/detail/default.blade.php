@@ -3,6 +3,7 @@
         {{ $product->description }}
     </x-slot>
 
+    {{ $product->getFirstMedia('product-image') }}
     <h1>{{ $product->title }}</h1>
     <div>{{ $product->description }}</div>
 
