@@ -5,6 +5,7 @@ namespace App\Models;
 use DateTimeInterface;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class License extends Model implements AuthenticatableContract
@@ -19,6 +20,11 @@ class License extends Model implements AuthenticatableContract
     public function purchasable(): BelongsTo
     {
         return $this->belongsTo(Purchasable::class);
+    }
+
+    public function scopeForProduct(Builder $query, Product $product)
+    {
+        $query->whereHas('purchasable', fn (Builder $query) => $query->where('product_id', $product->id));
     }
 
     public function user(): BelongsTo

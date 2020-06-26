@@ -36,9 +36,9 @@ class User extends Authenticatable
         return Member::where('github', $this->github_username)->exists();
     }
 
-    public function licenses(): HasManyThrough
+    public function licenses(): HasMany
     {
-        return $this->hasManyThrough(License::class, Purchase::class);
+        return $this->hasMany(License::class);
     }
 
     public function purchases(): HasMany

@@ -24,14 +24,21 @@ class ProductsController
 
     public function show(Request $request, Product $product)
     {
-        $purchases = collect();
+        $purchases = $licenses = collect();
+
         if ($request->user()) {
             $purchases = $request->user()
                 ->purchases()
                 ->forProduct($product)
                 ->get();
+
+            $licenses = $request->user()
+                ->licenses()
+                ->with(['purchasable'])
+                ->forProduct($product)
+                ->get();
         }
 
-        return view('front.pages.products.show', compact('product', 'purchases'));
+        return view('front.pages.products.show', compact('product', 'purchases', 'licenses'));
     }
 }
