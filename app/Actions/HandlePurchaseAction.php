@@ -11,18 +11,18 @@ use Exception;
 
 class HandlePurchaseAction
 {
-    protected CreateLicenseAction $createLicenseAction;
+    protected HandlePurchaseLicensingAction $handlePurchaseLicensingAction;
 
-    public function __construct(CreateLicenseAction $createLicenseAction)
+    public function __construct(HandlePurchaseLicensingAction $handlePurchaseLicensingAction)
     {
-        $this->createLicenseAction = $createLicenseAction;
+        $this->handlePurchaseLicensingAction = $handlePurchaseLicensingAction;
     }
 
     public function execute(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
     {
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
-        $purchase = $this->handleLicensing($purchase);
+        $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
         return $purchase;
     }
@@ -41,43 +41,5 @@ class HandlePurchaseAction
             'earnings' => $paddlePayload->earnings,
             'paddle_webhook_payload' => $paddlePayload->toArray(),
         ]);
-    }
-
-    protected function handleLicensing(Purchase $purchase): Purchase
-    {
-        $purchasableToLicense = $purchase->purchasable->isRenewal()
-            ? $purchase->purchasable->originalPurchasable
-            : $purchase->purchasable;
-
-        if ($purchase->purchasable->isRenewal()) {
-            $this->ensureUserOwnsPurchasableToRenew($purchase->user, $purchasableToLicense);
-        }
-
-        $license = $this->createOrRenewLicense($purchase->user, $purchasableToLicense);
-
-        $purchase->update(['license_id' => $license->id]);
-
-        return $purchase;
-    }
-
-    protected function createOrRenewLicense(User $user, Purchasable $purchasable): License
-    {
-        $license = License::query()
-            ->where('purchasable_id', $purchasable->id)
-            ->where('user_id', $user->id)
-            ->first();
-
-        if ($license !== null) {
-            return $license->renew();
-        }
-
-        return $this->createLicenseAction->execute($user, $purchasable);
-    }
-
-    protected function ensureUserOwnsPurchasableToRenew(User $user, $purchasableToRenew): void
-    {
-        if (! $user->owns($purchasableToRenew)) {
-            throw new Exception("User {$user->id} doesn't own purchasable {$purchasableToRenew->id} to renew.");
-        }
     }
 }
