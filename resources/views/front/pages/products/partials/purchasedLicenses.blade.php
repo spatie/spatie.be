@@ -5,10 +5,7 @@
         <div>
             <h3 class="text-xl">{{ $purchasableTitle }}</h3>
             @foreach ($licensesPerPurchasable as $license)
-                <div>
-                    <code class="font-mono">{{ $license->key }}</code>
-                    <button class="bg-grey-lighter p-2">Renew</button>
-                </div>
+                @include('front.pages.products.partials.purchasedLicense', ['license' => $license])
             @endforeach
         </div>
     @endforeach

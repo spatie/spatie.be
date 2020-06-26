@@ -36,6 +36,7 @@ class UserSeeder extends Seeder
             if ($purchase->requires_license) {
                 $license = factory(License::class)->create([
                     'purchasable_id' => $purchase->id,
+                    'user_id' => $user->id,
                 ]);
             }
 
