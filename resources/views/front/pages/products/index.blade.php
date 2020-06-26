@@ -8,14 +8,16 @@
 
     <div class="section-group wrap flex grid grid-cols-3 gap-4">
         @foreach ($products as $product)
-            <div class="block bg-white shadow p-4">
-                <a href="{{ route('products.show', $product) }}">
+            <div class="flex flex-col bg-white shadow">
+                <a class="mb-4" href="{{ route('products.show', $product) }}">
                     {{ $product->getFirstMedia('product-image') }}
-                    <h2>{{ $product->title }}</h2>
-                    <p>{{ $product->description }}</p>
+                    <div class="p-4">
+                        <h2 class="text-2xl mb-2">{{ $product->title }}</h2>
+                        <p class="text-base">{{ $product->description }}</p>
+                    </div>
                 </a>
-                <a class="block" href="{{ $product->url }}">{{ $product->url }}</a>
-                <a class="block" href="{{ $product->action_url }}">{{ $product->action_label }}</a>
+                <a class="text-blue underline px-4 mb-4" href="{{ $product->url }}">{{ $product->url }}</a>
+                <a class="mr-auto mt-auto ml-4 mb-4 bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm" href="{{ $product->action_url }}">{{ $product->action_label }}</a>
             </div>
         @endforeach
     </div>
