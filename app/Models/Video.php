@@ -25,7 +25,7 @@ class Video extends Model implements Sortable
     ];
 
     public $sortable = [
-        'order_column_name' => 'sort',
+        'order_column_name' => 'sort_order',
         'sort_when_creating' => true,
     ];
 

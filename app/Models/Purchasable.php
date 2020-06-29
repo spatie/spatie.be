@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\MediaLibrary\HasMedia;
@@ -41,6 +42,11 @@ class Purchasable extends Model implements HasMedia, Sortable
     public function originalPurchasable()
     {
         return $this->hasOne(Purchasable::class, 'renewal_purchasable_id');
+    }
+
+    public function series(): BelongsToMany
+    {
+        return $this->belongsToMany(Series::class);
     }
 
     public function isRenewal(): bool

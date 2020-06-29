@@ -6,6 +6,7 @@ use App\Enums\PurchasableType;
 use App\Models\Purchasable as EloquentPurchasable;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -42,6 +43,8 @@ class Purchasable extends Resource
 
             BelongsTo::make('Product'),
 
+            BelongsToMany::make('Series'),
+
             Text::make('Paddle id', 'paddle_product_id')
                 ->sortable()
                 ->rules('required', 'max:255'),
@@ -70,49 +73,5 @@ class Purchasable extends Resource
             Markdown::make('Description'),
             Boolean::make('Requires license'),
         ];
-    }
-
-    /**
-     * Get the cards available for the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function actions(Request $request)
-    {
-        return [];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\MediaLibrary\HasMedia;
@@ -15,13 +16,18 @@ class Series extends Model implements HasMedia, Sortable
     protected $guarded = [];
 
     public $sortable = [
-        'order_column_name' => 'sort',
+        'order_column_name' => 'sort_order',
         'sort_when_creating' => true,
     ];
 
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function purchasables(): BelongsToMany
+    {
+        return $this->belongsToMany(Purchasable::class);
     }
 
     public function videos()

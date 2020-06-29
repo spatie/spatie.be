@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Models\Series as EloquentSeries;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -30,6 +31,8 @@ class Series extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            BelongsToMany::make('Purchasables'),
 
             Text::make('Title')
                 ->sortable()
