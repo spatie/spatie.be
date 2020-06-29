@@ -10,7 +10,7 @@ class VideosController
     public function index()
     {
         return view('front.pages.videos.index', [
-            'allSeries' => Series::get(),
+            'allSeries' => Series::with(['purchasables', 'videos'])->get(),
         ]);
     }
 

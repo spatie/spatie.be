@@ -18,7 +18,7 @@
                             {{ $series->videos()->count() }}
                             {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
 
-                            @if($series->slug === 'building-mailcoach' || $series->slug === 'laravel-package-training')
+                            @if($series->purchasables->count())
                                 <span class="ml-1 bg-green-lightest text-green text-xs font-normal py-1 px-2 rounded-full">Part of a course</span>
                             @endif
                             @if($series->videos->where('display', \App\Models\Enums\VideoDisplayEnum::SPONSORS)->count())
