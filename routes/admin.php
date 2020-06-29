@@ -2,6 +2,8 @@
 
 use App\Http\Admin\Controllers\PostcardController;
 
+Route::redirect('login', 'nova/login')->name('login');
+
 Route::permanentRedirect('admin', 'admin/postcards');
 
 Route::get('admin/postcards', [PostcardController::class, 'index']);
