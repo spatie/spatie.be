@@ -2,26 +2,49 @@
 
 namespace App\Models;
 
+use App\Actions\UpdateVideoDetailsAction;
 use App\Http\Controllers\VideosController;
+use App\Models\Enums\VideoDisplayEnum;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use League\CommonMark\CommonMarkConverter;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
-class Video extends Model
+class Video extends Model implements Sortable
 {
+    use SortableTrait;
+
     protected $guarded = [];
 
     protected $casts = [
         'sort' => 'integer',
-        'only_for_sponsors' => 'boolean',
+    ];
+
+    public $sortable = [
+        'order_column_name' => 'sort',
+        'sort_when_creating' => true,
     ];
 
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    protected static function booted()
+    {
+        static::creating(function (Video $video) {
+            if (! $video->title) {
+                $video->title = 'New video';
+                $video->slug = 'new-video';
+                $video->runtime = 0;
+            }
+        });
+
+        static::saved(fn (Video $video) => app(UpdateVideoDetailsAction::class)->execute($video));
     }
 
     public function series()
@@ -100,14 +123,21 @@ class Video extends Model
 
     public function canBeSeenByCurrentUser(): bool
     {
-        if (! $this->only_for_sponsors) {
+        if ($this->display === VideoDisplayEnum::FREE) {
             return true;
         }
 
-        if (! auth()->user()) {
-            return false;
+        if ($this->display === VideoDisplayEnum::SPONSORS) {
+            return auth()->user()->isSponsoring();
         }
 
-        return auth()->user()->isSponsoring();
+        //@TODO: Check licensing
+
+        return false;
+    }
+
+    public function buildSortQuery()
+    {
+        return static::query()->where('series_id', $this->series_id);
     }
 }

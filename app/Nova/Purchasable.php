@@ -18,6 +18,8 @@ class Purchasable extends Resource
 {
     use HasSortableRows;
 
+    public static $group = "Products";
+
     public static $model = EloquentPurchasable::class;
 
     public static $title = 'title';

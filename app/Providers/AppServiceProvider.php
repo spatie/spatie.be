@@ -2,10 +2,8 @@
 
 namespace App\Providers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use Laravel\Horizon\Horizon;
 use Spatie\Flash\Flash;
 
 class AppServiceProvider extends ServiceProvider

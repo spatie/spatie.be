@@ -17,6 +17,8 @@ class Product extends Resource
 {
     use HasSortableRows;
 
+    public static $group = "Products";
+
     public static $model = EloquentProduct::class;
 
     public static $title = 'title';
