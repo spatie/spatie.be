@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -42,5 +43,10 @@ class Product extends Model implements HasMedia, Sortable
     public function requiresLicense(): bool
     {
         return $this->purchasables->contains(fn (Purchasable $purchasable) => $purchasable->requires_license);
+    }
+
+    public function getUrl(): string
+    {
+        return action([ProductsController::class, 'show'], $this);
     }
 }

@@ -24,13 +24,22 @@
                     <div class="w-full shadow-lg bg-white overflow-hidden" id="player"
                          style="height: 0; padding-bottom: 56.25%;">
                         @if ($currentVideo->canBeSeenByCurrentUser())
-                            <iframe class="absolute pin w-full h-full"
+                            <iframe class="absolute inset-0 w-full h-full"
                                     src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
                                     allowfullscreen allowtransparency></iframe>
                         @else
-                            <div class="absolute pin flex justify-center items-center inset-dark z-10 p-8">
+                            <div class="absolute inset-0 flex justify-center items-center inset-dark z-10 p-8">
                                 <div class="flex flex-col items-center text-center">
-                                    @if(session()->has('not-a-sponsor'))
+                                    @if ($currentVideo->display === \App\Models\Enums\VideoDisplayEnum::LICENSE)
+                                        <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is part of a course.</h4>
+                                        <p class="hidden md:block text-center">
+                                            You'll need to buy the course to view this video!
+                                        </p>
+                                        <a class="mt-2 md:mt-0 font-sans-bold cursor-pointer md:border-l-2 md:border-green-dark bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full @guest md:rounded-l-none @endguest text-white"
+                                           href="{{ $series->purchasables->first()->product->getUrl() }}">
+                                            <span>Buy a license</span>
+                                        </a>
+                                    @elseif(session()->has('not-a-sponsor'))
                                         <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">Aaaaw… you're
                                             not a sponsor yet.</h4>
                                         <p class="hidden md:block text-center">

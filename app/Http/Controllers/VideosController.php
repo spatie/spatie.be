@@ -23,6 +23,8 @@ class VideosController
         $title = $currentVideo->title;
         $description = $currentVideo->description;
 
+        $series->load(['purchasables.product']);
+
         return view('front.pages.videos.show', compact(
             'title',
             'description',
