@@ -21,6 +21,9 @@
                             @if($series->slug === 'building-mailcoach' || $series->slug === 'laravel-package-training')
                                 <span class="ml-1 bg-green-lightest text-green text-xs font-normal py-1 px-2 rounded-full">Part of a course</span>
                             @endif
+                            @if($series->videos->where('display', \App\Models\Enums\VideoDisplayEnum::SPONSORS)->count())
+                                <span class="ml-1 bg-pink-lightest text-pink text-xs font-normal py-1 px-2 rounded-full">Sponsor content</span>
+                            @endif
                         </div>
                     </h2>
                     <p class="mt-4">

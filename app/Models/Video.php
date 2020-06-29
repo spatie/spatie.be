@@ -55,8 +55,8 @@ class Video extends Model implements Sortable
     public function getPrevious(): ?Video
     {
         return Video::where('series_id', $this->series_id)
-            ->where('sort', '<', $this->sort)
-            ->orderByDesc('sort')
+            ->where('sort_order', '<', $this->sort_order)
+            ->orderByDesc('sort_order')
             ->limit(1)
             ->first();
     }
@@ -64,8 +64,8 @@ class Video extends Model implements Sortable
     public function getNext(): ?Video
     {
         return Video::where('series_id', $this->series_id)
-            ->where('sort', '>', $this->sort)
-            ->orderBy('sort')
+            ->where('sort_order', '>', $this->sort_order)
+            ->orderBy('sort_order')
             ->limit(1)
             ->first();
     }

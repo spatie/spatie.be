@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\SubscribeUserToNewsletterAction;
+use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Http\Auth\Requests\ProfileRequest;
 
 class ProfileController
@@ -13,11 +15,14 @@ class ProfileController
 
     public function update(ProfileRequest $profileRequest)
     {
-        auth()->user()->update($profileRequest->except('newsletter'));
+        /** @var \App\Models\User $user */
+        $user = $profileRequest->user();
 
         if ($profileRequest->get('newsletter')) {
-            // @todo: Check if user was subscribed and needs to be unsubscribed or vise versa
+            app(SubscribeUserToNewsletterAction::class)->execute($user);
         }
+
+        $user->update($profileRequest->except('newsletter'));
 
         flash()->success('Profile updated successfully.');
 

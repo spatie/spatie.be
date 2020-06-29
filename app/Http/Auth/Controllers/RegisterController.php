@@ -2,6 +2,7 @@
 
 namespace App\Http\Auth\Controllers;
 
+use App\Actions\SubscribeUserToNewsletterAction;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -10,6 +11,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
+use Spatie\Mailcoach\Models\EmailList;
 
 class RegisterController extends Controller
 {
@@ -40,10 +42,10 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function registered(Request $request, $user)
+    protected function registered(Request $request, User $user)
     {
         if ($request->get('newsletter')) {
-            // TODO: Subscribe user to Mailcoach list
+            app(SubscribeUserToNewsletterAction::class)->execute($user);
         }
     }
 }

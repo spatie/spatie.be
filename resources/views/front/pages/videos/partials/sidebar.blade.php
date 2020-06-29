@@ -5,6 +5,12 @@
             <li class="{{ isset($currentVideo) && $currentVideo->id === $video->id ? "font-sans-bold" : "" }}">
                 <a class="block" href="{{ route('videos.show', [$series, $video]) }}">
                     {{ $video->title }}
+                    @if($video->display === \App\Models\Enums\VideoDisplayEnum::FREE)
+                        <span class="ml-1 bg-green-lightest text-green text-xs font-normal py-1 px-2 rounded-full">Free</span>
+                    @endif
+                    @if($video->display === \App\Models\Enums\VideoDisplayEnum::SPONSORS)
+                        <span class="ml-1 bg-pink-lightest text-pink text-xs font-normal py-1 px-2 rounded-full">Sponsors</span>
+                    @endif
                 </a>
             </li>
         @empty
