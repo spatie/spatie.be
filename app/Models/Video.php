@@ -127,11 +127,17 @@ class Video extends Model implements Sortable
             return true;
         }
 
+        $userOwnsSeries = $this->series->purchasables
+                ->filter(fn (Purchasable $purchasable) => auth()->user()->owns($purchasable))
+                ->count() > 0;
+
         if ($this->display === VideoDisplayEnum::SPONSORS) {
-            return auth()->user()->isSponsoring();
+            return auth()->user()->isSponsoring() || $userOwnsSeries;
         }
 
-        //@TODO: Check licensing
+        if ($this->display === VideoDisplayEnum::LICENSE) {
+            return $userOwnsSeries;
+        }
 
         return false;
     }
