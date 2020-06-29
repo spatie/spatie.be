@@ -16,7 +16,7 @@ class ImportFromMailCoachDatabaseCommand extends Command
     {
         $connection = $this->argument('connection');
 
-        if (!config("database.connections.{$connection}")) {
+        if (! config("database.connections.{$connection}")) {
             $this->error("Database connection {$connection} does not exist.");
 
             return;
@@ -26,7 +26,7 @@ class ImportFromMailCoachDatabaseCommand extends Command
 
         $list = DB::connection($connection)->selectOne('SELECT * FROM `mailcoach_email_lists` WHERE id = ?', [$listId]);
 
-        if (!$list) {
+        if (! $list) {
             $this->error("List with id {$listId} does not exist on {$connection}.");
 
             return;
@@ -35,7 +35,7 @@ class ImportFromMailCoachDatabaseCommand extends Command
         $subscribers = DB::connection($connection)
             ->selectOne('SELECT COUNT(*) AS count FROM `mailcoach_subscribers` WHERE email_list_id = ?', [$listId]);
 
-        if (!$this->confirm("You are about to import `{$list->name}` with {$subscribers->count} subscribers from {$connection}.")) {
+        if (! $this->confirm("You are about to import `{$list->name}` with {$subscribers->count} subscribers from {$connection}.")) {
             return;
         }
 
