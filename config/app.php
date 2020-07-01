@@ -159,6 +159,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Providers\NovaServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -179,7 +180,7 @@ return [
         App\Services\Vimeo\VimeoServiceProvider::class,
         App\Providers\BladeComponentsServiceProvider::class,
         App\Providers\LivewireServiceProvider::class,
-        App\Providers\NovaServiceProvider::class,
+        App\Providers\MailcoachServiceProvider::class,
     ],
 
     /*

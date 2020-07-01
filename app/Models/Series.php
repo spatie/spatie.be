@@ -32,7 +32,7 @@ class Series extends Model implements HasMedia, Sortable
 
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasMany(Video::class)->orderBy('sort_order');
     }
 
     public function getUrlAttribute(): string
