@@ -40,6 +40,7 @@ class Postcard extends Resource
                     return function () use ($request, $postcard) {
                         $postcard
                             ->addMedia($request->file('image'))
+                            ->withResponsiveImages()
                             ->toMediaCollection();
                     };
                 })

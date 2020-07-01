@@ -47,6 +47,7 @@ class Series extends Resource
                     return function () use ($request, $series) {
                         $series
                             ->addMedia($request->file('image'))
+                            ->withResponsiveImages()
                             ->toMediaCollection();
                     };
                 })

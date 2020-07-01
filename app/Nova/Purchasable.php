@@ -56,6 +56,7 @@ class Purchasable extends Resource
                     return function () use ($request, $product) {
                         $product
                             ->addMedia($request->file('image'))
+                            ->withResponsiveImages()
                             ->toMediaCollection('purchasable-image');
                     };
                 })

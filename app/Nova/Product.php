@@ -46,6 +46,7 @@ class Product extends Resource
                     return function () use ($request, $product) {
                         $product
                             ->addMedia($request->file('image'))
+                            ->withResponsiveImages()
                             ->toMediaCollection('product-image');
                     };
                 })
