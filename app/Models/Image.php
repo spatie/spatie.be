@@ -11,14 +11,6 @@ class Image extends Model implements HasMedia
 {
     use InteractsWithMedia;
 
-    public function registerMediaConversions(Media $media = null): void
-    {
-        $this
-            ->addMediaConversion('thumb')
-            ->withResponsiveImages()
-            ->nonQueued();
-    }
-
     public static function boot()
     {
         parent::boot();

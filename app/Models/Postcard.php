@@ -20,7 +20,6 @@ class Postcard extends Model implements HasMedia
     {
         $this
             ->addMediaConversion('thumb')
-            ->withResponsiveImages()
             ->width(200)
             ->height(200)
             ->nonQueued();
