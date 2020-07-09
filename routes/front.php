@@ -9,6 +9,8 @@ use App\Http\Front\Controllers\Videos\ShowVideoController;
 use App\Http\Front\Controllers\Videos\VideoIndexController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect('login', '/nova/login')->name('login');
+
 Route::mailcoach('mailcoach');
 
 Route::view('/', 'front.pages.home.index')->name('home');
