@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\File;
 use React\ChildProcess\Process;
 use React\EventLoop\Factory;
 use function React\Promise\all;
@@ -28,8 +29,8 @@ class ImportDocsFromRepositoriesCommand extends Command
             foreach ($repository['branches'] as $branch => $alias) {
                 $process = new Process(<<<BASH
                     mkdir -p storage/docs/{$repository['name']}/{$alias} \
-                    && mkdir -p storage/temp/{$repository['name']}/{$alias} \
-                    && cd storage/temp/{$repository['name']}/{$alias} \
+                    && mkdir -p storage/docs-temp/{$repository['name']}/{$alias} \
+                    && cd storage/docs-temp/{$repository['name']}/{$alias} \
                     && git init \
                     && git config core.sparseCheckout true \
                     && echo "/docs" >> .git/info/sparse-checkout \
@@ -37,15 +38,20 @@ class ImportDocsFromRepositoriesCommand extends Command
                     && git pull origin ${branch} \
                     && cp -r docs/* ../../../docs/{$repository['name']}/{$alias} \
                     && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md
-                BASH);
+                BASH
+                );
 
                 $processes[] = childProcessPromise($loop, $process);
             }
         }
 
-        all($processes)->then(function ($output) {
-            dump($output);
-        });
+        all($processes)
+            ->then(function ($output) {
+                $this->info('Fetched docs from all repositories.');
+            })
+            ->always(function () {
+                File::deleteDirectory(storage_path('docs-temp/'));
+            });
 
         $loop->run();
     }
