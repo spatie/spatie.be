@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\InstagramPhotosController;
+use App\Http\Front\Controllers\DocsController;
 use App\Http\Front\Controllers\GithubSocialiteController;
 use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Front\Controllers\OpenSourceController;
@@ -58,6 +59,8 @@ Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/videos', VideoIndexController::class)->name('videos.index');
 Route::get('/videos/{series:slug}/{video:slug}', ShowVideoController::class)->name('videos.show');
+
+Route::get('/docs/{documentationPage}', DocsController::class)->where('documentationPage', '.*');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');

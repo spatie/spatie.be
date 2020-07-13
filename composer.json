@@ -47,6 +47,7 @@
         "spatie/laravel-tail": "^4.2",
         "spatie/packagist-api": "^1.0",
         "spatie/schema-org": "^2.0",
+        "spatie/sheets": "^1.6",
         "spatie/valuestore": "^1.2",
         "wyrihaximus/react-child-process-promise": "^2.0",
         "zendframework/zend-feed": "^2.9",

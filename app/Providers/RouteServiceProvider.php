@@ -4,9 +4,21 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sheets\Sheets;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    public function boot()
+    {
+        parent::boot();
+
+        Route::bind('documentationPage', function ($path) {
+            return $this->app->make(Sheets::class)
+                    ->collection('docs')
+                    ->get($path) ?? abort(404);
+        });
+    }
+
     public function map()
     {
         $this->mapAdminRoutes();
