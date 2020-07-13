@@ -35,6 +35,8 @@
         "php-http/guzzle6-adapter": "^1.1",
         "php-http/message": "^1.7",
         "predis/predis": "^1.1",
+        "react/child-process": "^0.6.1",
+        "react/promise": "^2.8",
         "spatie/laravel-backup": "^6.8",
         "spatie/laravel-mailcoach": "^2.21",
         "spatie/laravel-mailcoach-mailgun-feedback": "^2.2",
@@ -46,6 +48,7 @@
         "spatie/packagist-api": "^1.0",
         "spatie/schema-org": "^2.0",
         "spatie/valuestore": "^1.2",
+        "wyrihaximus/react-child-process-promise": "^2.0",
         "zendframework/zend-feed": "^2.9",
         "zendframework/zend-http": "^2.7"
     },
