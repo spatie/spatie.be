@@ -7,6 +7,8 @@
 /storage/*.key
 /storage/app/packageCount.json
 /storage/app/peace.json
+/storage/docs
+/storage/temp
 /vendor
 /.idea
 /.vagrant
