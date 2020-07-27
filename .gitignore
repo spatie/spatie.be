@@ -20,4 +20,5 @@ _ide_helper.php
 _ide_helper_models.php
 /public/images/medialibrary/
 /storage/medialibrary/temp
+/storage/media-library/temp
 .php_cs.cache
