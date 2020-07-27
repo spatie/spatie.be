@@ -56,9 +56,9 @@ a.link-underline,
 a.link-black,
 .links-black a {
     --link-color: theme(colors.black);
-    --link-color-hover: color(theme(colors.black) a(0.75));
-    --link-border-color: color(theme(colors.black) a(0.25));
-    --link-border-color-hover: color(theme(colors.black) a(0.5));
+    --link-color-hover: theme(colors.black)bf;
+    --link-border-color: theme(colors.black)40;
+    --link-border-color-hover: theme(colors.black)80;
 }
 
 .link-blue,
@@ -66,8 +66,8 @@ a.link-blue,
 .links-blue a {
     --link-color: theme(colors.blue);
     --link-color-hover: theme(colors.blue-dark);
-    --link-border-color: color(theme(colors.blue) a(0.25));
-    --link-border-color-hover: color(theme(colors.blue) a(0.5));
+    --link-border-color: theme(colors.blue)40;
+    --link-border-color-hover: theme(colors.blue)80;
 }
 
 .link-pink,
@@ -75,8 +75,8 @@ a.link-pink,
 .links-pink a {
     --link-color: theme(colors.pink);
     --link-color-hover: theme(colors.pink-dark);
-    --link-border-color: color(theme(colors.pink) a(0.25));
-    --link-border-color-hover: color(theme(colors.pink) a(0.5));
+    --link-border-color: theme(colors.pink)40;
+    --link-border-color-hover: theme(colors.pink)80;
 }
 
 .link-red,
@@ -84,8 +84,8 @@ a.link-red,
 .links-red a {
     --link-color: theme(colors.red);
     --link-color-hover: theme(colors.red-dark);
-    --link-border-color: color(theme(colors.red) a(0.25));
-    --link-border-color-hover: color(theme(colors.red) a(0.5));
+    --link-border-color: theme(colors.red)40;
+    --link-border-color-hover: theme(colors.red)80;
 }
 
 .link-green,
@@ -93,17 +93,17 @@ a.link-green,
 .links-green a {
     --link-color: theme(colors.green);
     --link-color-hover: theme(colors.green-dark);
-    --link-border-color: color(theme(colors.green) a(0.25));
-    --link-border-color-hover: color(theme(colors.green) a(0.5));
+    --link-border-color: theme(colors.green)40;
+    --link-border-color-hover: theme(colors.green)80;
 }
 
 .link-white,
 a.link-white,
 .links-white a {
     --link-color: theme(colors.white);
-    --link-color-hover: color(theme(colors.white) a(0.8));
-    --link-border-color: color(theme(colors.white) a(0.5));
-    --link-border-color-hover: color(theme(colors.white) a(0.25));
+    --link-color-hover: theme(colors.white)d9;
+    --link-border-color: theme(colors.white)80;
+    --link-border-color-hover: theme(colors.white)40;
 }
 
 .link-grey,
@@ -111,6 +111,6 @@ a.link-grey,
 .links-grey a {
     --link-color: theme(colors.grey);
     --link-color-hover: theme(colors.grey-dark);
-    --link-border-color: color(theme(colors.grey) a(0.25));
-    --link-border-color-hover: color(theme(colors.grey) a(0.5));
+    --link-border-color: theme(colors.grey)40;
+    --link-border-color-hover: theme(colors.grey)80;
 }

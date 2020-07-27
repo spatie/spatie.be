@@ -23,7 +23,7 @@ img.zoom-img {
 
 .zoom-overlay {
     z-index: 420;
-    background-color: color(theme(colors.white) a(0.9));
+    background-color: theme(colors.white)e6;
     position: fixed;
     top: 0;
     left: 0;

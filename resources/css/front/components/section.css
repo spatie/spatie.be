@@ -49,8 +49,8 @@
         height: 24rem;
         background: linear-gradient(
             to bottom,
-            color(theme(colors.white) a(0) 30%),
-            color(theme(colors.grey-lightest) a(0.85))
+            theme(colors.white)00,
+            theme(colors.grey-lightest)d9
         );
     }
 
@@ -78,8 +78,8 @@
         height: 8rem;
         background: linear-gradient(
             to bottom,
-            color(theme(colors.white) a(0) 30%),
-            color(theme(colors.grey-lightest) a(0.85))
+            theme(colors.white)00,
+            theme(colors.grey-lightest)d9
         );
     }
 

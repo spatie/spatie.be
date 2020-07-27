@@ -13,7 +13,7 @@
         @apply w-screen;
         @apply min-h-screen;
         @apply cursor-pointer;
-        background-color: color(theme(colors.black) a(0.9));
+        background-color: theme(colors.black)e6;
         backdrop-filter: grayscale(1);
     }
 
