@@ -184,19 +184,6 @@ class VideoSeeder extends Seeder
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:49"
           ],
-          [
-            "series_id" => 5,
-            "vimeo_id" => "419946519",
-            "title" => "laravel-multitenancy",
-            "slug" => "laravel-multitenancy",
-            "description" => "[Our laravel-multitenancy package](https://docs.spatie.be/laravel-multitenancy) can make any Laravel app tenant aware. The philosophy of this package is that it should only provide the bare essentials to enable multitenancy.\n\nIn this video Freek will show how to use the package and how it works under the hood.\n\n## Links\n\n- [laravel-multitenancy docs](https://docs.spatie.be/laravel-multitenancy)\n- [An unopinionated package to make Laravel apps tenant aware](https://freek.dev/1661-an-unopinionated-package-to-make-laravel-apps-tenant-aware)\n- [Mohamed Said's videos on multitenancy](https://www.youtube.com/watch?v=592EgykFOz4)\n- [Tom Schlick's talk on multitenancy at Laracon US 2017](https://www.youtube.com/watch?v=UgWpS4xBiuU)",
-            "sort_order" => 1,
-            "runtime" => 1396,
-            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
-            "display" => "free",
-            "created_at" => "2020-06-29 11:42:57",
-            "updated_at" => "2020-06-29 13:19:50"
-          ]
         ]);
     }
 }
