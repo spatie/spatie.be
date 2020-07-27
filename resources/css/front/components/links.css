@@ -35,7 +35,7 @@ a.link-underline,
 .links-underline a {
     @apply link-base;
     text-decoration: underline;
-    text-decoration-skip: ink;
+    text-decoration-skip-ink: auto;
     text-decoration-color: var(--link-border-color);
 
     &:focus {
