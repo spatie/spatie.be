@@ -30,7 +30,9 @@ return [
                 ['id' => '425400766', 'only_for_sponsors' => true], // Using lookup tables
                 ['id' => '420490355', 'only_for_sponsors' => true], // Refactor complex conditionals
                 ['id' => '424357726', 'only_for_sponsors' => true], // Getting auto completion on models and API resources
-                ['id' => '424351669', 'only_for_sponsors' => true], // use Blade components for layouts
+                ['id' => '424351669', 'only_for_sponsors' => false], // use Blade components for layouts
+                ['id' => '442086778', 'only_for_sponsors' => false], // Exploring Form Requests
+                ['id' => '442066850', 'only_for_sponsors' => false], // Customising Eloquent collections
             ],
         ],
 
