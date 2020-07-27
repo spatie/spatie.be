@@ -37,6 +37,6 @@ class Series extends Model implements HasMedia, Sortable
 
     public function getUrlAttribute(): string
     {
-        return optional($this->videos->first())->url;
+        return optional($this->videos->first())->url ?? '';
     }
 }

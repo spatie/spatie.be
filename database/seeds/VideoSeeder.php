@@ -26,7 +26,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
             "display" => "license",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 15:56:44"
+            "updated_at" => "2020-06-29 15:56:44",
           ],
           [
             "series_id" => 1,
@@ -39,7 +39,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/895914160_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:45"
+            "updated_at" => "2020-06-29 13:19:45",
           ],
           [
             "series_id" => 1,
@@ -52,7 +52,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/900440479_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:45"
+            "updated_at" => "2020-06-29 13:19:45",
           ],
           [
             "series_id" => 1,
@@ -65,7 +65,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/905264552_200x150.jpg?r=pad",
             "display" => "free",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 14:25:08"
+            "updated_at" => "2020-06-29 14:25:08",
           ],
           [
             "series_id" => 1,
@@ -78,7 +78,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/905267048_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 14:25:08"
+            "updated_at" => "2020-06-29 14:25:08",
           ],
           [
             "series_id" => 1,
@@ -91,7 +91,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/905365734_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:47"
+            "updated_at" => "2020-06-29 13:19:47",
           ],
           [
             "series_id" => 2,
@@ -104,7 +104,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/843810342_200x150.jpg?r=pad",
             "display" => "free",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:47"
+            "updated_at" => "2020-06-29 13:19:47",
           ],
           [
             "series_id" => 3,
@@ -117,7 +117,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/902987575_200x150.jpg?r=pad",
             "display" => "free",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:47"
+            "updated_at" => "2020-06-29 13:19:47",
           ],
           [
             "series_id" => 3,
@@ -130,7 +130,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/902910218_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:48"
+            "updated_at" => "2020-06-29 13:19:48",
           ],
           [
             "series_id" => 3,
@@ -143,7 +143,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/895751943_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:48"
+            "updated_at" => "2020-06-29 13:19:48",
           ],
           [
             "series_id" => 3,
@@ -156,7 +156,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/901251293_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:49"
+            "updated_at" => "2020-06-29 13:19:49",
           ],
           [
             "series_id" => 3,
@@ -169,7 +169,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/901241986_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:49"
+            "updated_at" => "2020-06-29 13:19:49",
           ],
           [
             "series_id" => 4,
@@ -182,7 +182,7 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/900409866_200x150.jpg?r=pad",
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 13:19:49"
+            "updated_at" => "2020-06-29 13:19:49",
           ],
         ]);
     }
