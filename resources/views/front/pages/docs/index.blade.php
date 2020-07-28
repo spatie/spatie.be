@@ -14,9 +14,11 @@
                 <ul>
                     @foreach($repositories as $repository)
                         <li>
-                            <a href="{{ action([\App\Http\Front\Controllers\DocsController::class, 'show'], $repository->slug) }}">
+                            <a href="{{ action([\App\Http\Front\Controllers\DocsController::class, 'repository'], $repository->slug) }}">
                                 {{ $repository->slug }}
                             </a>
+
+                            <p>{{ $repository->aliases->last()->slogan }}</p>
                         </li>
                     @endforeach
                 </ul>

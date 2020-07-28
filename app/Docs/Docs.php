@@ -11,7 +11,7 @@ class Docs
 
     public function __construct(Sheets $sheets)
     {
-        $this->pages = $sheets->collection('docs')->all();
+        $this->pages = $sheets->collection('docs')->all()->sortBy('weight');
     }
 
     public function pages(): Collection
@@ -19,31 +19,30 @@ class Docs
         return $this->pages;
     }
 
-    public function getRepositories(): Collection
-    {
-        return $this->pages
-            ->map(fn (DocumentationPage $documentationPage) => $documentationPage->repository)
-            ->values()
-            ->unique()
-            ->map(function (string $repository) {
-                $versions = $this->pages
-                    ->filter(fn (DocumentationPage $page) => $page->repository === $repository)
-                    ->map(fn (DocumentationPage $page) => $page->alias)
-                    ->values()
-                    ->unique()
-                    ->toArray();
-
-                return new Repository($repository, $versions);
-            });
-    }
-
     public function getRepository(string $slug): Repository
     {
         return $this->getRepositories()->firstWhere('slug', $slug);
     }
 
-    public function getVersions(string $repository): array
+    public function getRepositories(): Collection
     {
-        return $this->getRepository($repository)->versions;
+        return $this->pages
+            ->pluck('repository')
+            ->unique()
+            ->map(function (string $repository) {
+                $aliases = $this->pages
+                    ->where('repository', $repository)
+                    ->whereNotNull('alias')
+                    ->groupBy(fn (DocumentationPage $page) => $page->alias)
+                    ->map(function (Collection $pages, string $alias) {
+                        $index = $pages->firstWhere('slug', '_index');
+                        $pages = $pages->where('slug', '<>', '_index');
+
+                        return new Alias($index->title, $index->slogan, $index->branch, $pages);
+                    })
+                    ->sortBy('slug');
+
+                return new Repository($repository, $aliases);
+            });
     }
 }

@@ -18,20 +18,6 @@ class DocumentationPage extends Sheet
         return $this->getSectionAttribute() === '_root';
     }
 
-    public function getRepositoryAttribute(): string
-    {
-        [$repository] = explode('/', $this->slug);
-
-        return $repository;
-    }
-
-    public function getAliasAttribute(): string
-    {
-        [, $alias] = explode('/', $this->slug);
-
-        return $alias;
-    }
-
     public function getPageAttribute(): string
     {
         return Str::after($this->slug, "{$this->getRepositoryAttribute()}/{$this->getAliasAttribute()}/");
@@ -51,9 +37,9 @@ class DocumentationPage extends Sheet
     public function getUrlAttribute(): ?string
     {
         return action([DocsController::class, 'show'], [
-            'repository' => $this->getRepositoryAttribute(),
-            'alias' => $this->getAliasAttribute(),
-            'page' => $this->getPageAttribute(),
+            'repository' => $this->repository,
+            'alias' => $this->alias,
+            'slug' => $this->slug,
         ]);
     }
 }

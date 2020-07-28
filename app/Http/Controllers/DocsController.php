@@ -19,33 +19,38 @@ class DocsController
 
     public function repository(string $repository, ?string $alias = null, Docs $docs)
     {
-        /** @var DocumentationPage $page */
-        $page = $docs->pages()
-            ->filter(fn (DocumentationPage $page) => $page->isRootSection())
-            ->filter(fn (DocumentationPage $page) => ! $page->isIndex())
-            ->filter(fn(DocumentationPage $page) => $page->getRepositoryAttribute() === $repository)
-            ->when($alias, function (Collection $pages) use ($alias) {
-                return $pages->filter(fn(DocumentationPage $page) => $page->getAliasAttribute() === $alias);
-            })
-            ->sortBy('weight')
-            ->first();
+        $repository = $docs->getRepository($repository);
 
-        return redirect($page->getUrlAttribute(), Response::HTTP_PERMANENTLY_REDIRECT);
+        abort_unless($repository, 404, 'Repository not found');
+
+        if ($alias) {
+            $alias = $repository->getAlias($alias);
+
+            abort_unless($alias, 404, 'Alias not found');
+        } else {
+            $alias = $repository->aliases->last();
+        }
+
+        return redirect()->action([DocsController::class, 'show'], [
+            $repository->slug,
+            $alias->slug,
+            $alias->pages->first()->slug,
+        ]);
     }
 
-    public function show(string $repository, string $alias, string $page, Docs $docs, Sheets $sheets)
+    public function show(string $repository, string $alias, string $slug, Docs $docs, Sheets $sheets)
     {
-        $path = "{$repository}/{$alias}/{$page}";
+        $path = "{$repository}/{$alias}/{$slug}";
 
-        $page = $sheets->collection('docs')->get($path) ?? abort(404);
+        $slug = $sheets->collection('docs')->get($path) ?? abort(404);
 
         $repositories = $docs->getRepositories();
 
-        $navigation = $this->getNavigation($page, $docs);
+        $navigation = $this->getNavigation($slug, $docs);
 
-        $versions = $docs->getVersions($page->repository);
+        $versions = $docs->getVersions($slug->repository);
 
-        return view('front.pages.docs.show', compact('page', 'repositories', 'navigation', 'versions'));
+        return view('front.pages.docs.show', compact('slug', 'repositories', 'navigation', 'versions'));
     }
 
     private function getNavigation(DocumentationPage $page, Docs $docs): array

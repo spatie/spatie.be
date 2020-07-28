@@ -93,7 +93,7 @@ Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show
 
 Route::get('/docs', [DocsController::class, 'index']);
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
-Route::get('/docs/{repository}/{alias}/{page}', [DocsController::class, 'show'])->where('page', '.*');
+Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('page', '.*');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
