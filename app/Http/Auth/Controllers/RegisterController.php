@@ -11,7 +11,6 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
-use Spatie\Mailcoach\Models\EmailList;
 
 class RegisterController extends Controller
 {

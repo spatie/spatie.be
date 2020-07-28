@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\Insight;
-use App\Models\Product;
 use App\Models\Purchasable;
 use App\Models\User;
 use Illuminate\Support\Str;

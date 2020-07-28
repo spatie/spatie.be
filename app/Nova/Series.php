@@ -22,7 +22,6 @@ class Series extends Resource
 
     public static $title = 'title';
 
-
     public static $search = [
         'id', 'title',
     ];

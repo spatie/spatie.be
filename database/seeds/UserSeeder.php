@@ -1,7 +1,6 @@
 <?php
 
 use App\Models\License;
-use App\Models\Product;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
@@ -17,7 +16,7 @@ class UserSeeder extends Seeder
             'willem',
             'rias',
             'alex',
-            'ruben'
+            'ruben',
         ])->map(fn (string $name) => User::create([
             'name' => ucfirst($name),
             'email' => "${name}@spatie.be",

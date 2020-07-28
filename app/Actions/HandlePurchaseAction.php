@@ -2,12 +2,10 @@
 
 namespace App\Actions;
 
-use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
-use Exception;
 
 class HandlePurchaseAction
 {

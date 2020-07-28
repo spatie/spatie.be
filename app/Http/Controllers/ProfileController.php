@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Actions\SubscribeUserToNewsletterAction;
-use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Http\Auth\Requests\ProfileRequest;
 
 class ProfileController

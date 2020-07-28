@@ -3,11 +3,8 @@
 namespace App\Docs;
 
 use App\Http\Front\Controllers\DocsController;
-use Github\Api\Repo;
 use Illuminate\Support\Str;
-use PhpParser\Comment\Doc;
 use Spatie\Sheets\Sheet;
-use Spatie\Sheets\Sheets;
 
 class DocumentationPage extends Sheet
 {

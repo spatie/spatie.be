@@ -1,6 +1,5 @@
 <?php
 
-use App\Models\Insight;
 use Illuminate\Support\Str;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */

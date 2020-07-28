@@ -4,10 +4,8 @@ namespace App\Support\Paddle;
 
 use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
-use App\Models\Product;
 use App\Models\Purchasable;
 use App\Models\Purchase;
-use App\Models\User;
 
 class ProcessPaymentSucceededJob
 {

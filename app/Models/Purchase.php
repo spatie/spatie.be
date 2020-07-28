@@ -33,6 +33,6 @@ class Purchase extends Model
 
     public function scopeForProduct(Builder $query, Product $product)
     {
-        $query->whereHas('purchasable', fn(Builder $query) => $query->where('product_id', $product->id));
+        $query->whereHas('purchasable', fn (Builder $query) => $query->where('product_id', $product->id));
     }
 }

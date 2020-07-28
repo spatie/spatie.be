@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use Exception;
-use Spatie\WebhookClient\Models\WebhookCall;
 
 class CouldNotHandlePaymentSucceeded extends Exception
 {

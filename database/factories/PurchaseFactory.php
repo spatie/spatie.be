@@ -1,11 +1,8 @@
 <?php
 
-use App\Models\Insight;
 use App\Models\License;
-use App\Models\Product;
 use App\Models\Purchasable;
 use App\Models\User;
-use Illuminate\Support\Str;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
 $factory->define(\App\Models\Purchase::class, function (Faker\Generator $faker) {

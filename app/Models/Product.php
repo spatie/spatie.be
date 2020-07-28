@@ -23,9 +23,15 @@ class Product extends Model implements HasMedia, Sortable
         'purchasables',
     ];
 
+    /**
+     * @var mixed
+     */
+    private $purchasables;
+
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('product-image')
+        $this
+            ->addMediaCollection('product-image')
             ->singleFile()
             ->withResponsiveImages();
     }

@@ -27,7 +27,8 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         foreach ($repositories as $repository) {
             foreach ($repository['branches'] as $branch => $alias) {
-                $process = new Process(<<<BASH
+                $process = new Process(
+                    <<<BASH
                     mkdir -p storage/docs/{$repository['name']}/{$alias} \
                     && mkdir -p storage/docs-temp/{$repository['name']}/{$alias} \
                     && cd storage/docs-temp/{$repository['name']}/{$alias} \
