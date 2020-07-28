@@ -16,6 +16,14 @@
                             <ul class="grid gap-4 links-blue links-underline bullets bullets-blue">
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                                    <a class="text-xl font-sans-bold" href="https://laravel-beyond-crud.com">
+                                        Laravel Beyond CRUD</a>
+                                    <br><span class="text-base">Learn how to build larger-than-average Laravel applications 
+                                        and maintain them for years to come.<br>
+                                       Coming <strong>September 2020</strong>.</span>
+                                </li>
+                                <li>
+                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     <a class="text-xl font-sans-bold" href="https://laravelpackage.training">
                                         Laravel Package Training</a>
                                     <br><span class="text-base">Become the next package maestro. 
