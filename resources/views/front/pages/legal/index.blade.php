@@ -16,10 +16,10 @@
             </p>
         </div>
     </section>
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         <section>
-            <div class="wrap-6 | items-start">
-                <div class="sm:spanx-3 | line-l">
+            <div class="wrap wrap-6 | items-start">
+                <div class="sm:col-span-3 | line-l">
                     <h2 class="title-sm">
                         General conditions
                     </h2>
@@ -32,7 +32,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="sm:spanx-3 | line-l">
+                <div class="sm:col-span-3 | line-l">
                     <h2 class="title-sm">
                         Policies & disclaimers
                     </h2>

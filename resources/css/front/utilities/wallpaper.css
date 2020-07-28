@@ -3,8 +3,8 @@
     @apply inset-0;
     @apply z-back;
     @apply overflow-hidden;
+}
 
-    & img {
-        @apply w-full;
-    }
+.wallpaper img {
+    @apply w-full;
 }

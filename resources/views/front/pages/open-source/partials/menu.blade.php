@@ -1,3 +1,3 @@
-<div class="banner-menu | print:hidden">
+<div class="banner-menu gradient gradient-pink | print:hidden">
   {{ Menu::opensource() }}
 </div>

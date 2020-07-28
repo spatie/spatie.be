@@ -1,7 +1,7 @@
 <section id="proof" class="section">
     <div class="wrap">
-        <div class="inset-blue">
-            <div class="wrap-inset md:items-center" style="--cols: 1fr 1fr">
+        <div class="card gradient gradient-blue text-black">
+            <div class="wrap-card grid md:grid-cols-2 gap-8 md:items-center">
                 <h2 class="title-xl">
                     Need <br>proof?
                 </h2>

@@ -1,4 +1,4 @@
-<div class="section-group wrap">
+<div class="section section-group wrap">
     <h2>Purchases</h2>
 
     <div>

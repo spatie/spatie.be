@@ -2,8 +2,8 @@
     <div class="wrap">
         <h3 class="title line-after mb-12">Some of our clients</h3>
     </div>
-    <div class="wrap-6 items-start">
-        <div class="line-l | sm:spanx-2">
+    <div class="wrap wrap-6 items-start">
+        <div class="line-l | sm:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Corporate</h3>
                 <ul class="links-underline links-black">
@@ -34,7 +34,7 @@
                 </ul>
             </div>
         </div>
-        <div class="line-l | sm:spanx-2">
+        <div class="line-l | sm:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Public</h3>
                 <ul class="leading-loose links-underline links-black">
@@ -61,7 +61,7 @@
                 </ul>
             </div>
         </div>
-        <div class="line-l | sm:spanx-2">
+        <div class="line-l | sm:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Creative</h3>
                 <ul class="leading-loose links-underline links-black">

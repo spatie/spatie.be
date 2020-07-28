@@ -1,0 +1,89 @@
+/* Hide illustrations for older browsers without grid */
+
+.illustration {
+    @apply hidden;
+    @apply bg-white;
+    @apply border-white;
+    @apply border-solid;
+    @apply shadow-lg;
+    @apply max-w-1/2;
+    @apply mx-auto;
+}
+
+.illustration img {
+    page-break-inside: avoid;
+}
+
+.illustration.is-postcard-without-caption {
+    border-width: 1em 1em 3em;
+}
+
+.illustration.is-postcard {
+    @apply block; /* Show postcards for older browsers */
+    border-width: 1em;
+}
+
+@screen sm {
+    .illustration.h-full img {
+        @apply absolute;
+        @apply w-full;
+        @apply h-full;
+        @apply inset-0;
+        @apply object-cover;
+        max-height: none;
+    }
+}
+
+@screen print {
+    .illustration {
+        @apply shadow; /* Large shadow doesn't print so well */
+        max-height: 7cm !important;
+    }
+}
+
+.illustration-svg {
+    @apply hidden;
+}
+
+@supports (display: grid) {
+    .illustration {
+        @apply block;
+    }
+
+    .illustration.is-rotated {
+        @apply mt-16;
+        transform: rotate(-2deg) translateY(-2rem);
+    }
+
+    .illustration.is-left {
+        transform-origin: 0 100%;
+    }
+
+    .illustration.is-right {
+        transform-origin: 100% 0;
+    }
+
+    .illustration-svg {
+        @apply block;
+    }
+}
+
+@screen sm {
+    @supports (display: grid) {
+        .illustration {
+            @apply max-w-none;
+        }
+
+        .illustration.is-left {
+            border-left-width: 0 !important;
+        }
+
+        .illustration.is-right {
+            border-right-width: 0 !important;
+        }
+
+        .illustration.is-rotated {
+            @apply mt-8;
+        }
+    }
+}

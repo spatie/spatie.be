@@ -5,7 +5,7 @@
 >
     @include('front.pages.open-source.partials.banner-postcards')
 
-    <div class="section-group py-0">
+    <div class="section section-group py-0">
         @include('front.pages.open-source.partials.postcard-intro')
 
         @if (count($countries))

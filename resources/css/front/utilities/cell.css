@@ -13,7 +13,6 @@
     .cells {
         @screen md {
             @apply grid;
-            @apply grid-cols;
         }
     }
 

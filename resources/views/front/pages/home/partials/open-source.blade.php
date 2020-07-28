@@ -1,6 +1,6 @@
 <section id="open-source" class="section">
-    <div class="wrap-8">
-        <div class="sm:spanx-3 sm:startx-2">
+    <div class="wrap wrap-8">
+        <div class="sm:col-span-3 sm:col-start-2">
             <div class="markup links-underline links-blue">
                <h2 class="title-2xl">From the <br>
                 (open) source
@@ -10,7 +10,7 @@
                     Our <a href="http://git-awards.com/users?utf8=✓&type=world&language=php">top ranking</a> amongst PHP developers on GitHub makes us very proud.
                 </p>
             </div>
-            <div class="inset-blue mt-16">
+            <div class="card gradient gradient-blue text-black mt-16">
                 <h3 class="title-sm">
                     Learn more
                 </h3>
@@ -22,12 +22,12 @@
                 </ul>
             </div>
         </div>
-        <div class="hidden | sm:block sm:spanx-3 sm:startx-6">
+        <div class="hidden | sm:block sm:col-span-3 sm:col-start-6">
             <a class="illustration is-right is-rotated is-postcard-without-caption h-full" href="{{ route('open-source.postcards') }}" title="Postcards">
                 {{ image('open-source.jpg') }}
             </a>
         </div>
-        <div class="hidden | sm:block sm:spanx-5 sm:startx-4 | text-right text-sm links-underline links-blue">
+        <div class="hidden | sm:block sm:col-span-5 sm:col-start-4 | text-right text-sm links-underline links-blue">
             <p class="mt-2 pr-16">Check out the <a href="{{ route('open-source.postcards') }}" >postcards</a><br> 
             we get from kind users all over the world.</p>
         </div>

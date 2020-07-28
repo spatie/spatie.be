@@ -16,10 +16,10 @@
         </div>
     </section>
 
-    <div class="section-group pt-0 section-fade">
+    <div class="section section-group pt-0 section-fade">
         <section id="intro" class="section">
-            <div class="wrap-6">
-                <div class="sm:spanx-4">
+            <div class="wrap wrap-6">
+                <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <h2 class="font-serif text-3xl text-green line-l">
                             Say out loud:
@@ -50,7 +50,7 @@
         </section>
     </div>
 
-    <div class="section-group">
+    <div class="section section-group">
         @include('front.pages.web-development.partials.stack')
         @include('front.pages.vacancies.partials.cta', ['github' => true ])
     </div>

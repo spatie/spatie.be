@@ -2,8 +2,8 @@
     <div class="wrap">
         <h3 class="title line-after mb-12">Our technology stack</h3>
     </div>
-    <div class="wrap-6 items-start">
-        <div class="line-l | sm:spanx-3 | md:spanx-2">
+    <div class="wrap wrap-6 items-start">
+        <div class="line-l | sm:col-span-3 | md:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Backend</h3>
                 <ul class="bullets-inline bullets-blue">
@@ -33,7 +33,7 @@
                 </ul>
             </div>
         </div>
-        <div class="line-l | sm:spanx-3 | md:spanx-2">
+        <div class="line-l | sm:col-span-3 | md:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Integrations</h3>
                 <ul class="bullets-inline bullets-blue">
@@ -53,7 +53,7 @@
                 </ul>
             </div>
         </div>
-        <div class="line-l | sm:spanx-3 | md:spanx-2">
+        <div class="line-l | sm:col-span-3 | md:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Server</h3>
                 <ul class="bullets-inline bullets-blue">

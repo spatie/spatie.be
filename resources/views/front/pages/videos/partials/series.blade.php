@@ -2,9 +2,9 @@
     <div class="wrap">
         <h2 class="title line-after mb-12">Available series</h2>
     </div>
-    <div class="wrap-6 | items-start markup-lists">
+    <div class="wrap wrap-6 | items-start markup-lists">
         @foreach($allSeries as $series)
-            <div class="sm:spanx-3">
+            <div class="sm:col-span-3">
                 {{--
                 <a href="{{ $series->url }}" class="illustration">
                     {{ image("/video-series/{$series->slug}.jpg") }}

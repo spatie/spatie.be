@@ -19,10 +19,10 @@
         </div>
     </section>
 
-    <div class="section-group pt-0 section-fade">
+    <div class="section section-group pt-0 section-fade">
         <section id="intro" class="section">
-            <div class="wrap-6">
-                <div class="sm:spanx-4">
+            <div class="wrap wrap-6">
+                <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <h2 class="font-serif text-3xl text-green line-l">
                             Zeg luidop:
@@ -68,8 +68,8 @@
         </section>
         <section id="offer" class="section">
             <section class=section>
-                <div class="wrap-6 grid-flow-dense">
-                    <div class="sm:spanx-4">
+                <div class="wrap wrap-6 sm:grid-flow-col-dense">
+                    <div class="sm:col-span-4">
                         <div class="markup links-underline links-blue">
                             <h2 class="title-2xl">Basisbehoeften: <br>
                                 voldaan
@@ -100,8 +100,8 @@
                 </div>
             </section>
             <section class=section>
-                <div class="wrap-8 grid-flow-dense">
-                    <div class="sm:spanx-4 sm:startx-4">
+                <div class="wrap wrap-8 sm:grid-flow-col-dense">
+                    <div class="sm:col-span-4 sm:col-start-4">
                         <div class="markup links-underline links-blue">
                             <h3 class="title">Extra saus</h3>
 
@@ -134,7 +134,7 @@
                             </p>
                         </div>
                     </div>
-                    <div class="sm:spanx-3 sm:startx-1">
+                    <div class="sm:col-span-3 sm:col-start-1">
                         <div class="illustration is-left is-postcard is-rotated h-full | sm:mr-8">
                             {{ image('italian.jpg') }}
                         </div>
@@ -144,13 +144,13 @@
         </section>
     </div>
 
-    <div class="section-group">
+    <div class="section section-group">
         <section id="stack" class="section">
             <div class="wrap">
                 <h3 class="title line-after mb-12">Technology stack</h3>
             </div>
-            <div class="wrap-6 items-start">
-                <div class="line-l | sm:spanx-3 | md:spanx-2">
+            <div class="wrap wrap-6 items-start">
+                <div class="line-l | sm:col-span-3 | md:col-span-2">
                     <div class="markup text-sm">
                         <h3 class="title-sm">Frontend</h3>
                         <ul class="bullets-inline bullets-blue">
@@ -173,7 +173,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="line-l | sm:spanx-3 | md:spanx-2">
+                <div class="line-l | sm:col-span-3 | md:col-span-2">
                     <div class="markup text-sm">
                         <h3 class="title-sm">Backend</h3>
                         <ul class="bullets-inline bullets-blue">
@@ -197,7 +197,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="line-l | sm:spanx-3 | md:spanx-2">
+                <div class="line-l | sm:col-span-3 | md:col-span-2">
                     <div class="markup text-sm">
                         <h3 class="title-sm">Server</h3>
                         <ul class="bullets-inline bullets-blue">
@@ -213,14 +213,14 @@
         </section>
         <section id="cta" class="section">
             <div class="wrap">
-                <div class="inset-green">
-                    <div class="wrap-inset md:items-end" style="--cols: 1fr 1fr">
+                <div class="card gradient gradient-green text-white">
+                    <div class="wrap-card grid md:grid-cols-2 gap-8 md:items-end">
                         <div class="links-underline links-white">
                             <p class="text-2xl">
                                 Mail ons een korte motivatie, CV en GitHub details.
                             </p>
                         </div>
-                        <h2 class="title-xl | grid-text-right">
+                        <h2 class="title-xl | md:text-right">
                             <a class="link-white link-underline" href="{{ mailto(
         'Ik ben een goede match!',
         'Dit wordt iets! Stuur ons:

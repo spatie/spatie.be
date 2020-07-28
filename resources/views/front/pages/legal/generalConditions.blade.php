@@ -16,7 +16,7 @@
             </p>
         </div>
     </section>
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         <section class=section>
             <div class="wrap">
                 <div class="markup markup-lists markup-titles links-underline links-blue">

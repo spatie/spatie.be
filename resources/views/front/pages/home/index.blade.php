@@ -9,7 +9,7 @@
     @include('front.pages.home.partials.banner')
     @include('front.pages.home.partials.news')
 
-    <div class="section-group section-fade">
+    <div class="section section-group section-fade">
         @include('front.pages.home.partials.portfolio')
         @include('front.pages.home.partials.cta')
         @include('front.pages.home.partials.clients')

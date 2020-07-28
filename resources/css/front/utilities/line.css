@@ -8,8 +8,9 @@
 
 .line-l {
     @apply pl-4;
+}
 
-    &:after {
+.line-l:after {
         @apply absolute;
         @apply top-0;
         @apply bottom-0;
@@ -18,23 +19,24 @@
         @apply opacity-25;
         @apply rounded;
         @apply bg-grey;
-        content: '';
-    }
+        content: '';   
 }
 
 .line-l-white {
     @apply line-l;
+}
 
-    &:after {
+
+.line-l-white:after {
         @apply bg-white;
     }
-}
 
 .line-before {
     display: flex;
     align-items: center;
+}
 
-    &:before {
+.line-before:before {
         @apply bg-grey;
         @apply text-grey;
         content: '';
@@ -44,13 +46,13 @@
         border-radius: 4px;
         margin-right: 1rem;
     }
-}
 
 .line-after {
     display: flex;
     align-items: center;
+}
 
-    &:after {
+.line-after:after {
         @apply bg-grey;
         content: '';
         flex-grow: 1;
@@ -58,5 +60,4 @@
         opacity: 0.25;
         margin-left: 1rem;
         border-radius: 4px;
-    }
 }

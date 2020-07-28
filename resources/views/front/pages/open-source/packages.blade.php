@@ -8,7 +8,7 @@
 
     @include('front.pages.open-source.partials.banner-packages')
 
-    <div class="section-group pt-0 section-fade">
+    <div class="section section-group pt-0 section-fade">
         <section class="section">
             <livewire:repositories />
         </section>

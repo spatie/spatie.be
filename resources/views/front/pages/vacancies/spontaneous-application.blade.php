@@ -15,10 +15,10 @@
         </div>
     </section>
 
-    <div class="section-group pt-0 section-fade">
+    <div class="section section-group pt-0 section-fade">
         <section id="intro" class="section">
-            <div class="wrap-6">
-                <div class="sm:spanx-4">
+            <div class="wrap wrap-6">
+                <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <p class="text-2xl">
                             Even if there is no vacancy, we're always interested in new talent with job titles we
@@ -52,7 +52,7 @@
         </section>
     </div>
 
-    <div class="section-group">
+    <div class="section section-group">
         @include('front.pages.web-development.partials.stack')
         @include('front.pages.vacancies.partials.cta')
     </div>

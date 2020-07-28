@@ -1,10 +1,10 @@
-<footer class="bg-grey-lightest gradient-linear shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none" style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;">
+<footer class="bg-grey-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none" style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;">
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
         <div class="wrap links links-grey leading-loose | md:leading-normal">
             @include('layout.partials.menu')
             <hr class="my-8 h-2px text-grey opacity-25 rounded | print:text-black" style="page-break-after: avoid;">
-            <div class="grid gapy-4 text-sm | sm:grid-repeat sm:gapx-8 | md:flex flex-row-reverse justify-between" style="--col-repeat:2;--row-repeat:1;">
-                <address class="grid gapy-4 | sm:gap-0 | md:grid-flow-column md:gapx-8 md:text-right">
+            <div class="grid gap-4 text-sm | sm:grid-cols-2 sm:gap-8 | md:flex flex-row-reverse justify-between">
+                <address class="grid gap-4 | sm:gap-0 | md:grid-flow-col md:gap-8 md:text-right">
                     <div>
                         <a class="group flex items-end | md:flex-row-reverse" href="https://goo.gl/maps/A2zoLK3nVF9V8jydA" target="_blank" rel="nofollow noreferrer noopener">
                             <span>
@@ -12,7 +12,7 @@
                                 <br>
                                 2018 Antwerp, Belgium
                             </span>
-                            <span class="icon px-1 fill-current text-grey-lighter group-hover:fill-current text-pink transition-fill transition-100 | print:hidden">
+                            <span class="icon px-1 fill-current text-grey-lighter group-hover:text-pink transition-all transition-100 | print:hidden">
                                 {{ svg('icons/fas-map-marker-alt') }}
                             </span>
                         </a>
@@ -23,7 +23,7 @@
                         <a href="#tel">+32 3 292 56 79</a>
                     </div>
                 </address>
-                <ul class="hidden grid-flow-column gapx-8 | sm:block md:order-0 md:grid | print:hidden">
+                <ul class="hidden grid-flow-col gap-8 | sm:block md:order-0 md:grid | print:hidden">
                     <li>
                         <a href="https://github.com/spatie" target="_blank" rel="nofollow noreferrer noopener">
                             GitHub

@@ -6,13 +6,13 @@
 
     @include('front.pages.open-source.partials.banner-support')
 
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         <section id="resources" class="section">
             <div class="wrap">
                 <div class="markup links-underline links-blue">
                     
-                    <div class="mb-16 inset-blue">
-                        <div class="wrap-inset md:items-center" style="--cols: 1fr">
+                    <div class="mb-16 card gradient gradient-blue text-black">
+                        <div class="wrap-card md:items-center">
                             <ul class="grid gap-4 links-blue links-underline bullets bullets-blue">
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 

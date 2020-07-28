@@ -4,7 +4,7 @@
             <a class="link-underline link-black" href="{{ route('web-development') }}#clients">Clients we work with</a>
         </h2>
     </div>
-    <div class="wrap-logos mt-8">
+    <div class="wrap wrap-logos mt-8">
         <a href="https://mutsy.com" target="_blank" rel="noreferrer noopener">{{ svg('clients/mutsy') }}</a>
         <a href="https://krauthammer.com" target="_blank" rel="noreferrer noopener">{{ svg('clients/krauthammer') }}</a>
         <a href="https://vlaanderen.be" target="_blank" rel="noreferrer noopener">{{ svg('clients/vlaanderen') }}</a>

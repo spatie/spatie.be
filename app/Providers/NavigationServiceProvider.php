@@ -17,6 +17,12 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('videos.index', 'Videos')
                 ->route('web-development', 'Web development')
 
+                ->setActiveFromRequest()
+                ->addClass($properties['class'] ?? '');
+        });
+
+        Menu::macro('service', function (array $properties = []) {
+            return Menu::new()
                 ->route('about', 'About us')
                 ->setActiveFromRequest()
                 ->addClass($properties['class'] ?? '');

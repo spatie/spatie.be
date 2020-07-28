@@ -1,12 +1,12 @@
 <section id="portfolio" class="section">
-<div class="wrap-8 section">
-        <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
+<div class="wrap wrap-8 section">
+        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://laravel-beyond-crud.com" class="illustration is-left h-full" title="Laravel Beyond CRUD" target="_blank"
             rel="nofollow noreferrer noopener">
                 {{ image('portfolio/crud.jpg') }}
             </a>
         </div>
-        <div class="sm:spanx-3 sm:startx-5 | self-center">
+        <div class="sm:col-span-3 sm:col-start-5 | self-center">
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Laravel Beyond CRUD
@@ -19,21 +19,21 @@
                     <br>Written and presented by Brent Roose.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://laravel-beyond-crud.com" target="_blank"
                             rel="nofollow noreferrer noopener">laravel-beyond-crud.com</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    <div class="wrap-8 grid-flow-dense section">
-        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
             <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank"
             rel="nofollow noreferrer noopener">
                 {{ image('portfolio/laravel-package-training.jpg') }}
             </a>
         </div>
-        <div class="sm:startx-2 sm:spanx-3 | self-center">
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Laravel Package Training
@@ -53,14 +53,14 @@
         </div>
     </div>
 
-    <div class="wrap-8 section">
-        <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
+    <div class="wrap wrap-8 section">
+        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank"
             rel="nofollow noreferrer noopener">
                 {{ image('portfolio/mailcoach.jpg') }}
             </a>
         </div>
-        <div class="sm:spanx-3 sm:startx-5 | self-center">
+        <div class="sm:col-span-3 sm:col-start-5 | self-center">
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Newsletter software and package
@@ -81,14 +81,14 @@
         </div>
     </div>
 
-    <div class="wrap-8 grid-flow-dense section">
-        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
             <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
             rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flare.jpg') }}
             </a>
         </div>
-        <div class="sm:startx-2 sm:spanx-3 | self-center">
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Ignition + Flare
@@ -112,14 +112,14 @@
         </div>
     </div>
 
-    <div class="wrap-8 section">
-        <div class="sm:spanx-4 | md:startx-2 md:spanx-3 md:-ml-32 md:mr-16">
+    <div class="wrap wrap-8 section">
+        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
             rel="nofollow noreferrer noopener">
                 {{ image('portfolio/stmpd.jpg') }}
             </a>
         </div>
-        <div class="sm:spanx-3 sm:startx-5 | self-center">
+        <div class="sm:col-span-3 sm:col-start-5 | self-center">
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Soundcloud Demo Platform
@@ -144,35 +144,5 @@
         </div>
     </div>
 
-{{--
-    <div class="wrap-8 grid-flow-dense section">
-        <div class="sm:startx-5 sm:spanx-4 | md:spanx-3 md:ml-16 md:-mr-32">
-            <a href="https://my.artassistant.com" target="_blank" rel="nofollow noreferrer noopener"
-                class="illustration is-right h-full" title="my.artassistant.com">
-                {{ image('portfolio/artassistant.jpg') }}
-            </a>
-        </div>
-        <div class="sm:startx-2 sm:spanx-3 | self-center">
-            <div class="markup links-blue links-underline | sm:grid-text-right">
-                <h3 class="title">
-                    Art Transaction Platform
-                    <div class="title-subtext text-pink-dark">
-                        <span class="font-normal">Using</span> Laravel, Vue, Stripe
-                    </div>
-                </h3>
-                <p class="text-lg">
-                    ArtAssistant is the one-stop shop for the world of art, offering different services such as
-                    valuation, trading and lending of artworks.
-                    We assisted this startup with the development of a 'collection manager' that facilitates selling and
-                    exposing artwork as a gallery owner.
-                </p>
-                <ul class="text-lg mt-8 inline-block">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://my.artassistant.com" target="_blank"
-                            rel="nofollow noreferrer noopener">my.artassistant.com</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    --}}
+
 </section>

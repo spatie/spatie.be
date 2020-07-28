@@ -15,15 +15,11 @@ img.zoom-img {
     cursor: pointer;
     cursor: -webkit-zoom-out;
     cursor: -moz-zoom-out;
-
-    @include mq(s) {
-        cursor: default;
-    }
 }
 
 .zoom-overlay {
     z-index: 420;
-    background-color: theme(colors.white)e6;
+    background-color: theme('colors.white')e6;
     position: fixed;
     top: 0;
     left: 0;

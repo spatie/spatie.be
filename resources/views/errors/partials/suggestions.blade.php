@@ -1,6 +1,6 @@
 <section id="resources" class="section">
     <div class="wrap">
-        <div class="inset-green">
+        <div class="card gradient gradient-green text-white">
             <div class="grid-rows gap-8 | md:grid-cols md:items-center" style="--cols: 1fr 1fr">
                 <h2 class="title-xl">
                     A few <br>suggestions

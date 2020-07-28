@@ -17,7 +17,7 @@
             </p>
         </div>
     </section>
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         @include('front.pages.vacancies.partials.jobs')
     </div>
 

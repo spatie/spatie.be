@@ -1,0 +1,133 @@
+    .markup .title {
+        @apply mb-8;
+    }
+
+    .markup .title-sm {
+        @apply mb-4;
+    }
+
+    .markup address:not(:last-child),
+    .markup p:not(:last-child),
+    .markup ol:not(:last-child),
+    .markup ul:not(:last-child) {
+            margin-bottom: 1.5em;
+        
+    }
+
+    .markup strong {
+        @apply font-sans;
+        @apply font-bold;
+    }
+
+    .markup em {
+        @apply font-sans;
+        @apply font-normal;
+    }
+
+    .markup sub,
+    .markup sup {
+        @apply text-xs;
+    }
+
+
+    .markup-titles h1 {
+        @apply text-4xl;
+        @apply font-serif;
+        @apply font-bold;
+        @apply leading-tight;
+        @apply mb-16;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    @screen sm {
+        .markup-titles h1 {
+            @apply text-5xl;
+        }
+    }
+
+    .markup-titles h1:not(:first-child) {
+            @apply mt-32;
+            page-break-before: always;
+        }
+    
+
+    .markup-titles h2 {
+        @apply text-2xl;
+    @apply font-sans;
+    @apply font-bold;
+    @apply leading-tight;
+        @apply mb-8;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    .markup-titles h2:not(:first-child) {
+            @apply mt-16;
+        }
+    
+
+    .markup-titles h2 + h3 {
+        @apply mt-8;
+    }
+
+    .markup-titles h3 {
+        @apply font-sans;
+    @apply font-bold;
+    @apply uppercase;
+    @apply leading-tight;
+        @apply mb-4;
+        @apply mt-16;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+    .markup-titles h4 {
+        @apply text-xs;
+    @apply font-sans;
+    @apply font-bold;
+    @apply uppercase;
+    @apply leading-tight;
+    @apply mt-2;
+        @apply mb-2;
+        @apply mt-8;
+        page-break-inside: avoid;
+        page-break-after: avoid;
+    }
+
+ 
+    .markup-lists li:not(:last-child) {
+        margin-bottom: 0.35em;
+    }
+
+    .markup-lists ul li {
+        padding-left: 1em;
+    }
+
+    .markup-lists ul li:before {
+        @apply text-blue;
+        content: '•';
+        left: 0;
+        position: absolute;
+        opacity: 0.75;
+    }
+
+    .markup-lists ol {
+        --counter-reset: ol;
+        --counter-increment: ol;
+        --counter-style: decimal;
+
+        counter-reset: var(--counter-reset);
+    }
+
+    .markup-lists ol > li {
+        --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';
+
+        counter-increment: var(--counter-increment);
+        padding-left: 2.5rem;
+    }
+
+
+.markup-list-compact li {
+    padding-left: 1.5em !important;
+}

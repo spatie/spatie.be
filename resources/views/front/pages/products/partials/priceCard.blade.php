@@ -4,14 +4,14 @@
 
         <section id="cta" class="section">
             <div class="wrap">
-                <div class="inset-green">
-                    <div class="wrap-inset md:items-end" style="--cols: 1fr 2fr">
+                <div class="card gradient gradient-green text-white">
+                    <div class="wrap-card grid gap-8 md:grid-cols-2 md:items-end">
                         <div class="links-underline links-white">
                             <p class="text-2xl">
                                 {{ $purchasable->title }}
                             </p>
                         </div>
-                        <h2 class="title-xl | grid-text-right">
+                        <h2 class="title-xl md:text-right">
                             <x-paddle-button :url="$payLink" data-theme="none">
                                 Buy
                             </x-paddle-button>
@@ -26,14 +26,14 @@
         </section>
     @else
         <div class="wrap">
-            <div class="inset-green">
-                <div class="wrap-inset md:items-end" style="--cols: 1fr 2fr">
+            <div class="card gradient gradient-green text-white">
+                <div class="wrap-card grid gap-8 md:grid-cols-2 md:items-end">
                     <div class="links-underline links-white">
                         <p class="text-2xl">
                             Please log in to purchase {{ $purchasable->title }}
                         </p>
                     </div>
-                    <h2 class="title-xl | grid-text-right">
+                    <h2 class="title-xl md:text-right">
                         <a href="{{ route('login') }}?next={{ url()->current() }}">Log in</a>
                     </h2>
                 </div>

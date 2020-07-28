@@ -6,7 +6,7 @@
         @includeWhen($purchasesPerProduct->isNotEmpty(), "front.pages.products.partials.purchases", ['purchasesPerProduct' => $purchasesPerProduct])
     @endauth
 
-    <div class="section-group wrap flex grid grid-cols-3 gap-4">
+    <div class="section section-group wrap flex grid grid-cols-3 gap-4">
         @foreach ($products as $product)
             <div class="flex flex-col bg-white shadow">
                 <a class="mb-4" href="{{ route('products.show', $product) }}">

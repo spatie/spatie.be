@@ -2,21 +2,19 @@
     --bullet-color: inherit;
 }
 
-.bullets {
-    & li {
+.bullets li {
         padding-left: 1em;
+}
 
-        & .icon {
+.bullets li .icon {
             @apply pr-2;
             fill: var(--bullet-color);
             left: 0;
             position: absolute;
         }
 
-        &:not(:last-child) {
-            margin-bottom: 0.35em;
-        }
-    }
+.bullets li:not(:last-child) {
+    margin-bottom: 0.35em;
 }
 
 .bullets-green {
@@ -41,17 +39,17 @@
 
 .bullets-inline {
     @apply leading-loose;
+}
 
-    & li {
+.bullets-inline li {
         display: inline-block;
 
-        &:not(:last-child) {
-            &:after {
-                @apply char-separator;
-                margin: 0 0.5em;
-                content: '•';
-                color: var(--bullet-color);
-            }
-        }
-    }
+       
+}
+
+.bullets-inline li:not(:last-child):after {
+            @apply text-blue;
+            margin: 0 0.5em;
+            content: '•';
+            color: var(--bullet-color);
 }

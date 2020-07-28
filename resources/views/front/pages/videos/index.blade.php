@@ -6,7 +6,7 @@
 
     @include('front.pages.videos.partials.banner')
 
-    <div class="section-group pt-0 section-fade-sm z-10">
+    <div class="section section-group pt-0 section-fade-sm z-10">
         @include('front.pages.videos.partials.intro')
     </div>
 

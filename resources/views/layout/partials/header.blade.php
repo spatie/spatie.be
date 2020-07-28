@@ -1,4 +1,20 @@
-<header class="flex-none header z-10 px-8 pt-8 links links-blue | sm:px-16 | md:py-8 md:bg-white md:shadow-light | print:bg-transparent print:shadow-none" role="navigation">
+{{-- <header class="flex-none bg-white">
+    <div class="wrap | md:flex">
+
+        <a class="flex-shrink-0 logo h-8 w-20 mr-16 mb-8 block | md:mb-0" href="/" title="Home">
+            @svg('logo')
+        </a>
+
+        <div>
+            @include('layout.partials.service')
+        </div>
+
+    </div>
+</header>
+--}}
+
+
+<header class="px-8 pt-8 flex-none z-10 links links-blue | sm:px-16 | md:py-8 md:bg-white md:shadow-light | print:bg-transparent print:shadow-none" role="navigation">
     <div class="leading-loose | md:leading-none md:flex md:items-center">
         <a class="flex-shrink-0 logo h-8 w-20 mr-16 mb-8 block | md:mb-0" href="/" title="Home">
             @svg('logo')

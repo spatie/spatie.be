@@ -1,4 +1,4 @@
-<div id="{{ $member->slug }}" class="sm:spanx-3 items-start pb-16">
+<div id="{{ $member->slug }}" class="sm:col-span-3 items-start pb-16">
         <div class="flex items-center mb-4">
             <div class="flex-none avatar mr-4">
                 {{ gravatar_img($member->email) }}

@@ -12,16 +12,7 @@ mix.version()
     .options({
         // Our own set of PostCSS plugins.
         postCss: [
-            require('postcss-easy-import')(),
             require('tailwindcss'),
-            require('postcss-preset-env')({
-                stage: 3,
-                features: {
-                    rem: false,
-                    preserve: true,
-                    warnings: false,
-                },
-            }),
         ],
 
         // CSSNext already processes our css with Autoprefixer, so we don't

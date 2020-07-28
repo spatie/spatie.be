@@ -7,12 +7,12 @@
 
     @include('front.pages.about.partials.banner')
 
-    <div class="mt-4 section-group section-fade">
+    <div class="mt-4 section section-group section-fade">
         @include('front.pages.vacancies.partials.jobs')
         @include('front.pages.about.partials.team')
     </div>
 
-    <div class="section-group">
+    <div class="section section-group">
         @include('front.pages.about.partials.outro')
         @include('front.pages.about.partials.cta')
     </div>

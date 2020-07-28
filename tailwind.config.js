@@ -62,8 +62,7 @@ module.exports = {
 
         fontFamily: {
             sans: [
-                'Gotham Narrow SSm A',
-                'Gotham Narrow SSm B',
+                'Inter',
                 '-apple-system',
                 'BlinkMacSystemFont',
                 'Segoe UI',
@@ -77,8 +76,7 @@ module.exports = {
                 'sans-serif',
             ],
             serif: [
-                'Chronicle Display A',
-                'Chronicle Display B',
+                'Playfair Display',
                 'Constantia',
                 'Lucida Bright',
                 'Lucidabright',

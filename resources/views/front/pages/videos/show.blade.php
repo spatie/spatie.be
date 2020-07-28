@@ -17,8 +17,8 @@
 
     <div class="pb-16 md:pb-24 xl:pb-32">
         <section id="video">
-            <div class="wrap-8 items-start">
-                <div class="pt-8 md:pt-0 sm:startx-2 sm:spanx-3 | md:spanx-4 | lg:spanx-5">
+            <div class="wrap wrap-8 items-start">
+                <div class="pt-8 md:pt-0 sm:col-start-2 sm:col-span-3 | md:col-start-2 md:col-span-4 | lg:col-start-2 lg:col-span-5">
                     @include('front.pages.videos.partials.vimeo')
 
                     <div class="w-full shadow-lg bg-white overflow-hidden" id="player"
@@ -28,7 +28,7 @@
                                     src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
                                     allowfullscreen allowtransparency></iframe>
                         @else
-                            <div class="absolute inset-0 flex justify-center items-center inset-dark z-10 p-8">
+                            <div class="absolute inset-0 flex justify-center items-center gradient gradient-dark text-white z-10 p-8">
                                 <div class="flex flex-col items-center text-center">
                                     @if ($currentVideo->display === \App\Models\Enums\VideoDisplayEnum::LICENSE)
                                         <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is part of a course.</h4>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
 
-                <div class="z-10 banner-menu | print:hidden">
+                <div class="z-10 banner-menu gradient gradient-pink | print:hidden">
                     @include('front.pages.videos.partials.sidebar')
                 </div>
 

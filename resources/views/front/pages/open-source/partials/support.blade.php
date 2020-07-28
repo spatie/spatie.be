@@ -1,6 +1,6 @@
 <section id="support" class="section">
-    <div class="wrap-8">
-        <div class="sm:spanx-3 sm:startx-2">
+    <div class="wrap wrap-8">
+        <div class="sm:col-span-3 sm:col-start-2">
             <div class="markup links-underline links-blue">
                 <h2 class="title-2xl">Support us
                 </h2>
@@ -16,7 +16,7 @@
                 </p>
             </div>
         </div>
-        <div class="sm:spanx-3 sm:startx-6">
+        <div class="sm:col-span-3 sm:col-start-6">
             <a class="illustration is-right is-rotated is-postcard-without-caption h-full" href="https://github.com/sponsors/spatie">
                 {{ image('support.jpg') }}
             </a>

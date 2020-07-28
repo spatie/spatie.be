@@ -11,7 +11,7 @@
 
     {{ $page->repository }}
 
-    <div class="section-group wrap md:grid md:grid-cols" style="--cols: 1fr 2fr">
+    <div class="section section-group wrap md:grid md:grid-cols" style="--cols: 1fr 2fr">
         <div>
             @include('front.pages.docs.partials.navigation')
         </div>

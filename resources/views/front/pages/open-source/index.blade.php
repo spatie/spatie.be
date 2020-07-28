@@ -10,7 +10,7 @@
 
     @include('front.pages.open-source.partials.banner')
 
-    <div class="section-group pt-0 section-fade">
+    <div class="section section-group pt-0 section-fade">
         <section class="section">
             <div class="wrap">
                 <h3 class="title-sm mb-4">Our current favorites</h3>

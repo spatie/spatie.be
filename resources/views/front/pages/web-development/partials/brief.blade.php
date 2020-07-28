@@ -1,11 +1,11 @@
 <section id="brief" class="section">
-    <div class="wrap-8">
-        <div class="sm:spanx-3">
+    <div class="wrap wrap-8">
+        <div class="sm:col-span-3">
             <span class="illustration is-left is-rotated is-postcard-without-caption h-full">
                 {{ image('hire.jpg') }}
             </span>
         </div>
-        <div class="sm:spanx-3 sm:startx-5">
+        <div class="sm:col-span-3 sm:col-start-5">
             <h2 class="title-2xl">
                 Hire <br>a team
             </h2>
@@ -24,8 +24,8 @@
         </div>
     </div>
     <div class="wrap mt-32">
-        <div class="inset-green">
-            <div class="wrap-inset md:items-start" style="--cols: 1fr 1fr">
+        <div class="card gradient gradient-green text-white">
+            <div class="wrap-card grid md:grid-cols-2 gap-8 md:items-start">
                 <h2 class="title-xl">
                     <a class="link-white link-underline" href="{{ mailto(
 'Potential project brief',

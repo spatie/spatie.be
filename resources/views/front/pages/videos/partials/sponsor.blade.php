@@ -1,14 +1,14 @@
 @guest
     <section id="access" class="-mt-8 md:-mt-16 z-10">
         <div class="wrap">
-            <div class="inset-green">
-                <div class="wrap-inset md:items-center" style="--cols: 1fr auto">
+            <div class="card gradient gradient-green text-white">
+                <div class="wrap-card grid gap-8 md:grid-cols-2 md:items-center">
                     @if(session()->has('not-a-sponsor'))
                         <h2 class="title-xl">
                             Become a sponsor
                         </h2>
 
-                        <a class="mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="_blank">
+                        <a class="font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white" href="https://github.com/sponsors/spatie" target="_blank">
                             <span class="mr-3 h-6 w-6 text-white">
                                 {{ svg('github') }}
                             </span>                                                
@@ -20,7 +20,7 @@
                         Get full access
                     </h2>
 
-                     <div class="mt-8 md:flex">
+                     <div class="md:flex">
                         <a class="font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full md:rounded-r-none text-white" href="/login/github">
                             <span class="mr-3 h-6 w-6 text-white">
                                 {{ svg('github') }}
