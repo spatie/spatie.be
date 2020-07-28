@@ -2,7 +2,9 @@
 
 namespace App\Http\Api;
 
-class SatisAuthenticationController
+use Illuminate\Routing\Controller;
+
+class SatisAuthenticationController extends Controller
 {
     public function __construct()
     {

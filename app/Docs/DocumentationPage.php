@@ -13,6 +13,11 @@ class DocumentationPage extends Sheet
         return Str::endsWith($this->slug, '_index');
     }
 
+    public function isRootSection(): bool
+    {
+        return $this->getSectionAttribute() === '_root';
+    }
+
     public function getRepositoryAttribute(): string
     {
         [$repository] = explode('/', $this->slug);
@@ -25,6 +30,11 @@ class DocumentationPage extends Sheet
         [, $alias] = explode('/', $this->slug);
 
         return $alias;
+    }
+
+    public function getPageAttribute(): string
+    {
+        return Str::after($this->slug, "{$this->getRepositoryAttribute()}/{$this->getAliasAttribute()}/");
     }
 
     public function getSectionAttribute(): ?string
@@ -40,8 +50,10 @@ class DocumentationPage extends Sheet
 
     public function getUrlAttribute(): ?string
     {
-        $path = Str::beforeLast($this->getPath(), '.md');
-
-        return action(DocsController::class, ['documentationPage' => $path]);
+        return action([DocsController::class, 'show'], [
+            'repository' => $this->getRepositoryAttribute(),
+            'alias' => $this->getAliasAttribute(),
+            'page' => $this->getPageAttribute(),
+        ]);
     }
 }

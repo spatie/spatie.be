@@ -14,6 +14,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Front\Controllers\DocsController;
 use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
@@ -89,6 +90,10 @@ Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
 Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show'])->name('videos.show');
+
+Route::get('/docs', [DocsController::class, 'index']);
+Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
+Route::get('/docs/{repository}/{alias}/{page}', [DocsController::class, 'show'])->where('page', '.*');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');

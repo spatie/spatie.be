@@ -6278,16 +6278,16 @@
         },
         {
             "name": "spatie/laravel-model-cleanup",
-            "version": "3.0.6",
+            "version": "3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-model-cleanup.git",
-                "reference": "2244b0a1cc7fc008df41fc5a53401881fb6f99a5"
+                "reference": "d0e50fdb8f6f8460ecb1e6ae26f2a784933f6898"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-model-cleanup/zipball/2244b0a1cc7fc008df41fc5a53401881fb6f99a5",
-                "reference": "2244b0a1cc7fc008df41fc5a53401881fb6f99a5",
+                "url": "https://api.github.com/repos/spatie/laravel-model-cleanup/zipball/d0e50fdb8f6f8460ecb1e6ae26f2a784933f6898",
+                "reference": "d0e50fdb8f6f8460ecb1e6ae26f2a784933f6898",
                 "shasum": ""
             },
             "require": {
@@ -6342,7 +6342,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-07-23T19:15:04+00:00"
+            "time": "2020-07-28T10:41:54+00:00"
         },
         {
             "name": "spatie/laravel-query-builder",
