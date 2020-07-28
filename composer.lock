@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b3458546c4d774ae8e4f71a76a6982b1",
+    "content-hash": "89b7cdd1736502669db6ba32a262437f",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1834,28 +1834,28 @@
         },
         {
             "name": "laravel/cashier-paddle",
-            "version": "v1.0.0-beta.2",
+            "version": "v1.0.0-beta",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-paddle.git",
-                "reference": "4525c5de2afced821a0ba48da6f2c096a658220c"
+                "reference": "e85d632e95fd56f6b676672284458de9228f8f1d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-paddle/zipball/4525c5de2afced821a0ba48da6f2c096a658220c",
-                "reference": "4525c5de2afced821a0ba48da6f2c096a658220c",
+                "url": "https://api.github.com/repos/laravel/cashier-paddle/zipball/e85d632e95fd56f6b676672284458de9228f8f1d",
+                "reference": "e85d632e95fd56f6b676672284458de9228f8f1d",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-openssl": "*",
-                "guzzlehttp/guzzle": "^6.5|^7.0",
-                "illuminate/contracts": "^7.9",
-                "illuminate/database": "^7.9",
-                "illuminate/http": "^7.9",
-                "illuminate/routing": "^7.9",
-                "illuminate/support": "^7.9",
-                "illuminate/view": "^7.9",
+                "guzzlehttp/guzzle": "^6.5",
+                "illuminate/contracts": "^7.0",
+                "illuminate/database": "^7.0",
+                "illuminate/http": "^7.0",
+                "illuminate/routing": "^7.0",
+                "illuminate/support": "^7.0",
+                "illuminate/view": "^7.0",
                 "moneyphp/money": "^3.2",
                 "nesbot/carbon": "^2.0",
                 "php": "^7.2",
@@ -1907,7 +1907,7 @@
                 "laravel",
                 "paddle"
             ],
-            "time": "2020-07-20T14:39:00+00:00"
+            "time": "2020-06-05T13:40:34+00:00"
         },
         {
             "name": "laravel/framework",
