@@ -214,7 +214,7 @@
         <section id="cta" class="section">
             <div class="wrap">
                 <div class="card gradient gradient-green text-white">
-                    <div class="wrap-card grid md:grid-cols-2 gap-8 md:items-end">
+                    <div class="wrap-card grid md:grid-cols-2 md:items-end">
                         <div class="links-underline links-white">
                             <p class="text-2xl">
                                 Mail ons een korte motivatie, CV en GitHub details.

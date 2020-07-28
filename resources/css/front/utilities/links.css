@@ -1,6 +1,4 @@
 :root {
-    --link-color: currentcolor;
-    --link-color-hover: currentcolor;
     --link-border-color: currentcolor;
     --link-border-color-hover: currentcolor;
 }
@@ -8,7 +6,7 @@
 .link-base {
     cursor: pointer;
     transition: color 0.1s ease, text-decoration-color 0.1s ease;
-    color: var(--link-color);
+    color: currentcolor;
 }
 
 .link,
@@ -21,12 +19,6 @@ a.link,
 a.link:focus,
 .links a:focus {
     outline: 0;
-}
-
-.link:hover,
-a.link:hover,
-.links a:hover {
-    color: var(--link-color-hover);
 }
 
 .link:active,
@@ -51,13 +43,6 @@ a.link-underline:focus,
     outline: 0;
 }
 
-.link-underline:hover,
-a.link-underline:hover,
-.links-underline a:hover {
-    color: var(--link-color-hover);
-    text-decoration-color: var(--link-border-color-hover);
-}
-
 .link-underline:active,
 a.link-underline:active,
 .links-underline a:active {
@@ -67,62 +52,98 @@ a.link-underline:active,
 .link-black,
 a.link-black,
 .links-black a {
-    --link-color: theme(colors.black);
-    --link-color-hover: theme(colors.black)bf;
+    @apply text-black;
     --link-border-color: theme(colors.black)40;
-    --link-border-color-hover: theme(colors.black)80;
+}
+
+.link-black:hover,
+a.link-black:hover,
+.links-black a:hover {
+    @apply text-opacity-75;
+    --link-border-color: theme(colors.black)80;
 }
 
 .link-blue,
 a.link-blue,
 .links-blue a {
-    --link-color: theme(colors.blue);
-    --link-color-hover: theme(colors.blue-dark);
+    @apply text-blue;
     --link-border-color: theme(colors.blue)40;
-    --link-border-color-hover: theme(colors.blue)80;
+}
+
+.link-blue:hover,
+a.link-blue:hover,
+.links-blue a:hover {
+    @apply text-blue-dark;
+    --link-border-color: theme(colors.blue)80;
 }
 
 .link-pink,
 a.link-pink,
 .links-pink a {
-    --link-color: theme(colors.pink);
-    --link-color-hover: theme(colors.pink-dark);
+    @apply text-pink;
     --link-border-color: theme(colors.pink)40;
-    --link-border-color-hover: theme(colors.pink)80;
+}
+
+.link-pink:hover,
+a.link-pink:hover,
+.links-pink a:hover {
+    @apply text-pink-dark;
+    --link-border-color: theme(colors.pink)80;
 }
 
 .link-red,
 a.link-red,
 .links-red a {
-    --link-color: theme(colors.red);
-    --link-color-hover: theme(colors.red-dark);
+    @apply text-red;
     --link-border-color: theme(colors.red)40;
-    --link-border-color-hover: theme(colors.red)80;
+}
+
+.link-red:hover,
+a.link-red:hover,
+.links-red a:hover {
+    @apply text-red-dark;
+    --link-border-color: theme(colors.red)80;
 }
 
 .link-green,
 a.link-green,
 .links-green a {
-    --link-color: theme(colors.green);
-    --link-color-hover: theme(colors.green-dark);
+    @apply text-green;
     --link-border-color: theme(colors.green)40;
-    --link-border-color-hover: theme(colors.green)80;
 }
 
-.link-white,
-a.link-white,
-.links-white a {
-    --link-color: theme(colors.white);
-    --link-color-hover: theme(colors.white)d9;
-    --link-border-color: theme(colors.white)80;
-    --link-border-color-hover: theme(colors.white)40;
+.link-green:hover,
+a.link-green:hover,
+.links-green a:hover {
+    @apply text-green-dark;
+    --link-border-color: theme(colors.green)80;
 }
 
 .link-grey,
 a.link-grey,
 .links-grey a {
-    --link-color: theme(colors.grey);
-    --link-color-hover: theme(colors.grey-dark);
+    @apply text-grey;
     --link-border-color: theme(colors.grey)40;
-    --link-border-color-hover: theme(colors.grey)80;
+}
+
+.link-grey:hover,
+a.link-grey:hover,
+.links-grey a:hover {
+    @apply text-grey-dark;
+    --link-border-color: theme(colors.grey)80;
+}
+
+.link-white,
+a.link-white,
+.links-white a {
+    @apply text-white;
+
+    --link-border-color: theme(colors.white)80;
+}
+
+.link-white:hover,
+a.link-white:hover,
+.links-white a:hover {
+    @apply text-opacity-50;
+    --link-border-color: theme(colors.white)40;
 }

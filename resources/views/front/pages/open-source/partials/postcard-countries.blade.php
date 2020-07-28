@@ -1,6 +1,6 @@
 <div class="wrap mt-16">
     <div class="card gradient gradient-blue text-black pb-16">
-        <div class="wrap-card grid md:grid-cols-2 gap-8 md:items-center">
+        <div class="wrap-card grid md:grid-cols-2 md:items-center">
             <h2 class="title-xl">
                 Most active <br>countries
             </h2>

@@ -1,4 +1,6 @@
 module.exports = {
+    important: true,
+    
     variants: ['responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
 
     plugins: [
@@ -62,7 +64,8 @@ module.exports = {
 
         fontFamily: {
             sans: [
-                'Inter',
+                'Gotham Narrow SSm A',
+                'Gotham Narrow SSm B',
                 '-apple-system',
                 'BlinkMacSystemFont',
                 'Segoe UI',
@@ -76,7 +79,8 @@ module.exports = {
                 'sans-serif',
             ],
             serif: [
-                'Playfair Display',
+                'Chronicle Display A',
+                'Chronicle Display B',
                 'Constantia',
                 'Lucida Bright',
                 'Lucidabright',
@@ -147,11 +151,6 @@ module.exports = {
                 none: 'none',
                 '16': '4rem',
                 '24': '6rem',
-            },
-
-            transitionProperty: {
-                'border': 'border',
-                'fill': 'fill',
             },
 
             zIndex: {

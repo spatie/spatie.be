@@ -23,29 +23,35 @@
                         <a href="#tel">+32 3 292 56 79</a>
                     </div>
                 </address>
-                <ul class="hidden grid-flow-col gap-8 | sm:block md:order-0 md:grid | print:hidden">
-                    <li>
-                        <a href="https://github.com/spatie" target="_blank" rel="nofollow noreferrer noopener">
-                            GitHub
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
-                            Instagram
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://twitter.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
-                            Twitter
-                        </a>
-                    </li>
-                </ul>
+                <div class="hidden | md:grid md:grid-flow-col md:gap-6 | print:hidden">
+                    @include('layout.partials.service')
+                </div>
+                
             </div>
         </div>
     </div>
-    <div class="wrap links links-grey text-xs py-4 opacity-50 | print:hidden">
-        <a href="{{ route('legal.privacy') }}">Privacy</a>
-        <a class="ml-4" href="{{ route('legal.disclaimer') }}">Disclaimer</a>
+
+    <div class="wrap">
+        <ul class="grid md:grid-flow-col justify-center md:gap-6 links links-grey text-xs py-4 opacity-50 | print:hidden">
+            <li>
+                <a href="https://github.com/spatie" target="_blank" rel="nofollow noreferrer noopener">
+                    GitHub
+                </a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
+                    Instagram
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
+                    Twitter
+                </a>
+            </li>
+            <li class="opacity-50">•</li>
+            <li><a href="{{ route('legal.privacy') }}">Privacy</a></li>
+            <li><a href="{{ route('legal.disclaimer') }}">Disclaimer</a></li>
+        </ul>
     </div>
 </footer>
 

@@ -25,7 +25,7 @@
     </div>
     <div class="wrap mt-32">
         <div class="card gradient gradient-green text-white">
-            <div class="wrap-card grid md:grid-cols-2 gap-8 md:items-start">
+            <div class="wrap-card grid md:grid-cols-2 md:items-start">
                 <h2 class="title-xl">
                     <a class="link-white link-underline" href="{{ mailto(
 'Potential project brief',

@@ -5,8 +5,7 @@
     @include('layout.partials.meta')
 
     <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:400,700|Playfair+Display:400,700&amp;display=swap">
-    
+    <link rel="stylesheet" href="https://cloud.typography.com/6194432/6145752/css/fonts.css">
     <livewire:styles>
 
     @include('layout.partials.favicons')

@@ -1,7 +1,7 @@
 <section id="resources" class="section">
     <div class="wrap">
         <div class="card gradient gradient-blue text-black">
-            <div class="wrap-card grid md:grid-cols-2 gap-8 md:items-center">
+            <div class="wrap-card grid md:grid-cols-2 md:items-center">
                 <h2 class="title-xl">
                     Popular <br>Resources
                 </h2>

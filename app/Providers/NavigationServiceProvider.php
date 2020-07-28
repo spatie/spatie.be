@@ -23,6 +23,7 @@ class NavigationServiceProvider extends ServiceProvider
 
         Menu::macro('service', function (array $properties = []) {
             return Menu::new()
+                ->route('docs', 'Docs')
                 ->route('about', 'About us')
                 ->setActiveFromRequest()
                 ->addClass($properties['class'] ?? '');
@@ -40,7 +41,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->setActiveClass('font-bold')
                 ->each(function (Link $link) {
                     if ($link->isActive()) {
-                        $link->prepend('<span class="absolute pin-l -ml-4 icon fill-white">' . svg('icons/far-angle-right') . '</span>');
+                        $link->prepend('<span class="absolute left-0 -ml-4 icon fill-current text-white">' . svg('icons/far-angle-right') . '</span>');
                     }
                 });
         });

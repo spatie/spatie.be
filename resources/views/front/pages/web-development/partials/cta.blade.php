@@ -1,7 +1,7 @@
 <section id="cta" class="z-10 section">
     <div class="wrap">
         <div class="card gradient gradient-green text-white">
-            <div class="wrap-card grid gap-8 md:grid-cols-2 md:items-end">
+            <div class="wrap-card grid md:grid-cols-2 md:items-end">
                 <p class="text-2xl">
                     Do you think this approach <br>would fit you?
                 </p>

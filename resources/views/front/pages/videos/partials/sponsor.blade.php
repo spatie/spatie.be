@@ -2,7 +2,7 @@
     <section id="access" class="-mt-8 md:-mt-16 z-10">
         <div class="wrap">
             <div class="card gradient gradient-green text-white">
-                <div class="wrap-card grid gap-8 md:grid-cols-2 md:items-center">
+                <div class="wrap-card grid md:grid-cols-2 md:items-center">
                     @if(session()->has('not-a-sponsor'))
                         <h2 class="title-xl">
                             Become a sponsor

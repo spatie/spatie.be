@@ -1,7 +1,7 @@
 <section id="cta" class="z-10 mt-32">
     <div class="wrap">
         <div class="card gradient gradient-green text-white">
-            <div class="wrap-card grid gap-8 md:grid-cols-2 md:items-center">
+            <div class="wrap-card grid md:grid-cols-2 md:items-center">
                 <p class="text-2xl">
                     Discuss your idea with us
                     <br class="hidden | sm:inline">

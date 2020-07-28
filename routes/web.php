@@ -97,3 +97,6 @@ Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('
 Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 
 Route::view('offline', 'errors.offline')->name('offline');
+
+// Dummy route
+Route::view('/', 'front.pages.home.index')->name('docs');
