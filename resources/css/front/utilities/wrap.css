@@ -20,7 +20,7 @@
     opacity: 0.75;
 }
 
-.wrap-logos img {
+.wrap-logos svg {
     @apply w-48;
 }
 
@@ -84,5 +84,6 @@
         @apply grid;
         @apply gap-8;
         justify-content: center;
+        justify-items: center;
     }
 }

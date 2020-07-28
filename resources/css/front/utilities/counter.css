@@ -37,6 +37,12 @@
     padding-left: 7.5rem; /* more room for romans on H1 */
 }
 
+.counters h1:before {
+    left: 0;
+    position: absolute;
+    content: var(--counter-content);
+}
+
 .counters h2,
 .counters .counters-level-1:not(ol),
 .counters .counters-level-1 > li {
@@ -48,6 +54,17 @@
     counter-increment: var(--counter-increment);
     padding-left: 2.5rem;
 }
+
+.counters h2:before,
+.counters .counters-level-1:not(ol):before,
+.counters .counters-level-1 > li:before {
+    left: 0;
+    position: absolute;
+    content: var(--counter-content);
+}
+
+
+
 .counters h3,
 .counters .counters-level-2:not(ol),
 .counters .counters-level-2 > li {
@@ -59,6 +76,14 @@
 
     counter-increment: var(--counter-increment);
     padding-left: 2.5rem;
+}
+
+.counters h3:before,
+.counters .counters-level-2:not(ol):before,
+.counters .counters-level-2 > li:before {
+    left: 0;
+    position: absolute;
+    content: var(--counter-content);
 }
 
 /* Use !important to work in markup-list as well */

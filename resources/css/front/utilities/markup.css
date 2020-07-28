@@ -127,6 +127,12 @@
         padding-left: 2.5rem;
     }
 
+    .markup-lists ol > li:before {
+        left: 0;
+        position: absolute;
+        content: var(--counter-content);
+    }
+
 
 .markup-list-compact li {
     padding-left: 1.5em !important;
