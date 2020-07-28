@@ -7,9 +7,9 @@
         <div class="wrap">
             <p class="mt-4">
                 <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos</a>
-                <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
+                <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
                 <span>{{ $series->title }}</span>
-                <span class="icon mx-2 opacity-50 fill-blue">{{ svg('icons/far-angle-right') }}</span>
+                <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
                 <span class="font-sans-bold">{{ $currentVideo->title }}</span>
             </p>
         </div>
@@ -44,7 +44,7 @@
                                             not a sponsor yet.</h4>
                                         <p class="hidden md:block text-center">
                                             Become one to get access to this video right away!
-                                            <span class="fill-pink icon">
+                                            <span class="fill-current text-pink icon">
                                                     {{ svg('icons/fas-heart') }}
                                                 </span>
                                         </p>
@@ -60,7 +60,7 @@
                                             exclusively for GitHub sponsors.</h4>
                                         <p class="hidden md:block text-center">
                                             Sponsorships make videos like these possible!
-                                            <span class="fill-pink icon">
+                                            <span class="fill-current text-pink icon">
                                                     {{ svg('icons/fas-heart') }}
                                                 </span>
                                         </p>
@@ -108,7 +108,7 @@
                     <div class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
                         @if ($previousVideo)
                             <a class="mb-2 md:w-1/2 md:pr-4 flex items-center" href="{{ $previousVideo->url }}">
-                                <span class="w-1 fill-blue mr-1 hidden | md:inline-block">
+                                <span class="w-1 fill-current text-blue mr-1 hidden | md:inline-block">
                                     {{ svg('icons/far-angle-left') }}
                                 </span>
                                 <span class="truncate"><span class="font-semibold md:hidden">Previous: </span>{{ $previousVideo->title }}</span>
@@ -118,7 +118,7 @@
                             <a class="mb-2 md:w-1/2 md:pl-4 flex items-center md:justify-end ml-auto"
                                href="{{ $nextVideo->url }}">
                                 <span class="truncate"><span class="font-semibold md:hidden">Next: </span>{{ $nextVideo->title  }}</span>
-                                <span class="w-1 fill-blue ml-1 hidden | md:inline-block">
+                                <span class="w-1 fill-current text-blue ml-1 hidden | md:inline-block">
                                     {{ svg('icons/far-angle-right') }}
                                 </span>
                             </a>

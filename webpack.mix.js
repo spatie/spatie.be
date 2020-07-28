@@ -18,7 +18,6 @@ mix.version()
                 stage: 3,
                 features: {
                     rem: false,
-                    'nesting-rules': true,
                     preserve: true,
                     warnings: false,
                 },

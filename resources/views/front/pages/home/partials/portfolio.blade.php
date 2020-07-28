@@ -45,7 +45,7 @@
                     Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://laravelpackage.training" target="_blank"
                             rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
                 </ul>
@@ -73,7 +73,7 @@
                     It can be used as a separate app or integrated in your own Laravel application, and couples with Amazon SES, Mailgun or Sendgrid.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://mailcoach.app" target="_blank"
                             rel="nofollow noreferrer noopener">mailcoach.app</a></li>
                 </ul>
@@ -104,7 +104,7 @@
                     team to fix them.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://flareapp.io" target="_blank"
                             rel="nofollow noreferrer noopener">flareapp.io</a></li>
                 </ul>
@@ -136,7 +136,7 @@
                     application.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://demo.stmpdrcrds.com" target="_blank"
                             rel="nofollow noreferrer noopener">demo.stmpdrcrds.com</a></li>
                 </ul>
@@ -167,7 +167,7 @@
                     exposing artwork as a gallery owner.
                 </p>
                 <ul class="text-lg mt-8 inline-block">
-                    <li><span class="icon fill-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://my.artassistant.com" target="_blank"
                             rel="nofollow noreferrer noopener">my.artassistant.com</a></li>
                 </ul>

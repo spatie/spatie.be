@@ -12,7 +12,7 @@
             2018 Antwerp
             <br>
             Belgium
-            <span class="icon px-2 fill-pink group-hover:opacity-75 transition-fill transition-fast">
+            <span class="icon px-2 fill-current text-pink group-hover:opacity-75 transition-fill transition-100">
                 {{ svg('icons/fas-map-marker-alt') }}
             </span>
         </span>

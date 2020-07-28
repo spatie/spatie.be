@@ -3,7 +3,7 @@
         <div class="wrap flex justify-center mb-8">
             <input
                 type="search"
-                class="border-2 border-grey-lighter bg-white rounded-full p-4 outline-0 focus:border-blue transition-border-color transition-fast"
+                class="border-2 border-grey-lighter bg-white rounded-full p-4 outline-0 focus:border-blue transition-border transition-100"
                 placeholder="Search packages..."
                 wire:model="search"
             >
@@ -23,7 +23,7 @@
                         <option value="-stars">by popularity</option>
                         <option value="-repository_created_at">by date</option>
                     </select>
-                    <span class="sort-arrow w-2 h-2 fill-green">
+                    <span class="sort-arrow w-2 h-2 fill-current text-green">
                     {{ svg('icons/far-angle-down') }}</span>
                 </div>
             </div>
@@ -49,11 +49,11 @@
                             @if($repository->downloads)
                                 <span>
                                     {{ number_format($repository->downloads, 0, '.', ' ') }}
-                                    <span class="icon fill-grey" style="transform: translateY(-1px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
+                                    <span class="icon fill-current text-grey" style="transform: translateY(-1px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
                                     <span class="char-separator">•</span>
                                 </span>
                             @endif
-                            {{ number_format($repository->stars, 0, '.', ' ') }} <span class="icon fill-grey" style="transform: translateY(-2px)">{{ svg('icons/fal-star') }}</span>
+                            {{ number_format($repository->stars, 0, '.', ' ') }} <span class="icon fill-current text-grey" style="transform: translateY(-2px)">{{ svg('icons/fal-star') }}</span>
                             @if($repository->has_issues)
                                 <a href="{{ $repository->issues_url }}" target="_blank" rel="nofollow noreferrer noopener"
                                     class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">

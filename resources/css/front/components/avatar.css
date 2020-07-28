@@ -15,7 +15,7 @@
         top: -5%;
         left: -5%;
         max-width: none;
-        @apply object-fit-cover;
+        @apply object-cover;
         object-position: center;
         @apply rounded-full;
     }

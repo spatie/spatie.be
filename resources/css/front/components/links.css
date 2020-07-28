@@ -15,18 +15,24 @@
 a.link,
 .links a {
     @apply link-base;
+}
 
-    &:focus {
-        outline: 0;
-    }
+.link:focus,
+a.link:focus,
+.links a:focus {
+    outline: 0;
+}
 
-    &:hover {
-        color: var(--link-color-hover);
-    }
+.link:hover,
+a.link:hover,
+.links a:hover {
+    color: var(--link-color-hover);
+}
 
-    &:active {
-        top: 1px;
-    }
+.link:active,
+a.link:active,
+.links a:active {
+    top: 1px;
 }
 
 /* repetition, because we cannot @apply with pseudo classes in Tailwind for now */
@@ -37,19 +43,25 @@ a.link-underline,
     text-decoration: underline;
     text-decoration-skip-ink: auto;
     text-decoration-color: var(--link-border-color);
+}
 
-    &:focus {
-        outline: 0;
-    }
+.link-underline:focus,
+a.link-underline:focus,
+.links-underline a:focus {
+    outline: 0;
+}
 
-    &:hover {
-        color: var(--link-color-hover);
-        text-decoration-color: var(--link-border-color-hover);
-    }
+.link-underline:hover,
+a.link-underline:hover,
+.links-underline a:hover {
+    color: var(--link-color-hover);
+    text-decoration-color: var(--link-border-color-hover);
+}
 
-    &:active {
-        top: 1px;
-    }
+.link-underline:active,
+a.link-underline:active,
+.links-underline a:active {
+    top: 1px;
 }
 
 .link-black,

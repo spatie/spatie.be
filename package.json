@@ -15,7 +15,7 @@
     "object-fit-images": "^2.5.9",
     "postcss-easy-import": "^3.0.0",
     "prettier": "^1.10.2",
-    "tailwindcss": "^1.0",
+    "tailwindcss": "^1.5",
     "vue": "^2.5.0",
     "vue-data-component": "1.0.0-alpha.20"
   },

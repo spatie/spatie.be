@@ -1,13 +1,6 @@
 module.exports = {
     variants: ['responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
 
-    corePlugins: {
-        gridRow: false,
-        gap: false,
-        gridRowStart: false,
-        gridRowEnd: false,
-    },
-
     plugins: [
         require('@tailwindcss/custom-forms')
     ],
@@ -156,6 +149,11 @@ module.exports = {
                 none: 'none',
                 '16': '4rem',
                 '24': '6rem',
+            },
+
+            transitionProperty: {
+                'border': 'border',
+                'fill': 'fill',
             },
 
             zIndex: {

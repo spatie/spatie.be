@@ -29,7 +29,7 @@
                 @apply w-full;
                 @apply h-full;
                 @apply inset-0;
-                @apply object-fit-cover;
+                @apply object-cover;
                 max-height: none;
             }
         }

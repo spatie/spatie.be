@@ -1,7 +1,0 @@
-:root {
-    --angle: 0;
-}
-
-.transform-rotate {
-    transform: rotate(var(--angle));
-}

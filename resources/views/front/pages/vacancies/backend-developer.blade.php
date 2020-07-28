@@ -9,7 +9,7 @@
                 Backend developer
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
                         href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
                 {{-- <span class="ml-2 line-l"><a class="link-underline link-blue" href="/vacancies/backend-developer-nl">Nederlandse versie</a></span> --}}
             </p>
