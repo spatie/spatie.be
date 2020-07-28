@@ -5,8 +5,12 @@
 
     <nav class="nav_menu">
         <ul class="bg-blue-dark text-white">
-            @foreach($versions as $version)
-                <li>{{ $version }}</li>
+            @foreach($repository->aliases as $alias)
+                <li>
+                    <a href="{{ action([\App\Http\Front\Controllers\DocsController::class, 'repository'], [$repository->slug, $alias->slug]) }}">
+                        {{ $alias->slug }} ({{ $alias->branch }})
+                    </a>
+                </li>
             @endforeach
         </ul>
 

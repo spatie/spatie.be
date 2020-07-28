@@ -13,25 +13,15 @@ class DocumentationPage extends Sheet
         return Str::endsWith($this->slug, '_index');
     }
 
-    public function isRootSection(): bool
-    {
-        return $this->getSectionAttribute() === '_root';
-    }
-
-    public function getPageAttribute(): string
-    {
-        return Str::after($this->slug, "{$this->getRepositoryAttribute()}/{$this->getAliasAttribute()}/");
-    }
-
-    public function getSectionAttribute(): ?string
+    public function getSectionAttribute(): string
     {
         $parts = explode('/', $this->slug);
 
-        if (count($parts) === 3) {
+        if (count($parts) === 1) {
             return '_root';
         }
 
-        return array_reverse($parts)[1];
+        return $parts[0];
     }
 
     public function getUrlAttribute(): ?string

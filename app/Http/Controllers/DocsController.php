@@ -40,23 +40,23 @@ class DocsController
 
     public function show(string $repository, string $alias, string $slug, Docs $docs, Sheets $sheets)
     {
-        $path = "{$repository}/{$alias}/{$slug}";
+        $repository = $docs->getRepository($repository);
 
-        $slug = $sheets->collection('docs')->get($path) ?? abort(404);
+        $alias = $repository->getAlias($alias);
+
+        $pages = $alias->pages;
+
+        $page = $pages->firstWhere('slug', $slug);
 
         $repositories = $docs->getRepositories();
 
-        $navigation = $this->getNavigation($slug, $docs);
+        $navigation = $this->getNavigation($pages);
 
-        $versions = $docs->getVersions($slug->repository);
-
-        return view('front.pages.docs.show', compact('slug', 'repositories', 'navigation', 'versions'));
+        return view('front.pages.docs.show', compact('page', 'repositories', 'repository', 'pages', 'navigation'));
     }
 
-    private function getNavigation(DocumentationPage $page, Docs $docs): array
+    private function getNavigation(Collection $pages): array
     {
-        $pages = $docs->pages()->where('repository', $page->repository)->where('alias', $page->alias);
-
         $navigation = [];
 
         foreach ($pages as $page) {
