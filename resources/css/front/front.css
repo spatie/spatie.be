@@ -13,6 +13,7 @@
 @import './utilities/gradient.css';
 @import './utilities/icon.css';
 @import './utilities/illustration.css';
+@import './utilities/justify-items.css';
 @import './utilities/line.css';
 @import './utilities/links.css';
 @import './utilities/markup.css';
@@ -23,3 +24,9 @@
 @import './utilities/wallpaper.css';
 @import './utilities/wrap.css';
 @import './utilities/zoom.css';
+
+/* scrap */
+
+.bg-multiply {
+    background-blend-mode: multiply;
+}
