@@ -29,8 +29,8 @@
     --bullet-color: theme(colors.blue);
 }
 
-.bullets-grey {
-    --bullet-color: theme(colors.grey);
+.bullets-gray {
+    --bullet-color: theme(colors.gray);
 }
 
 .bullets-white {

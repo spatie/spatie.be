@@ -1,6 +1,6 @@
-<footer class="bg-grey-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none" style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;">
+<footer class="bg-gray-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none" style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;">
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
-        <div class="wrap links links-grey text-grey leading-loose | md:leading-normal">
+        <div class="wrap links links-gray text-gray leading-loose | md:leading-normal">
             <div class="grid grid-cols-2 items-start text-sm | md:flex md:justify-between">
                 @include('layout.partials.menu')
 
@@ -8,7 +8,7 @@
                     @include('layout.partials.service')
                 </div>
             </div>
-            <hr class="my-8 h-2px text-grey opacity-25 rounded | print:text-black" style="page-break-after: avoid;">
+            <hr class="my-8 h-2px text-gray opacity-25 rounded | print:text-black" style="page-break-after: avoid;">
             <div class="grid gap-4 text-sm | sm:grid-cols-2 sm:gap-8 | md:flex flex-row-reverse justify-between">
                 <address class="grid gap-4 | sm:gap-0 | md:grid-flow-col md:gap-8 md:text-right">
                     <div>
@@ -18,7 +18,7 @@
                                 <br>
                                 2018 Antwerp, Belgium
                             </span>
-                            <span class="icon px-1 fill-current text-grey-lighter group-hover:text-pink transition-all transition-100 | print:hidden">
+                            <span class="icon mb-px px-1 fill-current text-gray-lighter group-hover:text-pink transition-all transition-100 | print:hidden">
                                 {{ svg('icons/fas-map-marker-alt') }}
                             </span>
                         </a>
@@ -51,7 +51,7 @@
     </div>
 
     <div class="wrap">
-        <ul class="grid md:grid-flow-col justify-start links links-grey text-xs py-4 opacity-50 | md:justify-end md:gap-6 | print:hidden">
+        <ul class="grid md:grid-flow-col justify-start links links-gray text-xs py-4 opacity-50 | md:justify-end md:gap-6 | print:hidden">
             <li><a href="{{ route('legal.privacy') }}">Privacy</a></li>
             <li><a href="{{ route('legal.disclaimer') }}">Disclaimer</a></li>
         </ul>

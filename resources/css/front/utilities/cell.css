@@ -5,7 +5,7 @@
 
 .cell-r {
     @apply border-b-2;
-    @apply border-grey-lightest;
+    @apply border-gray-lightest;
     @apply pb-4;
 }
 
@@ -19,14 +19,14 @@
     .cell-l {
         @screen md {
             @apply border-b-2;
-            @apply border-grey-lightest;
+            @apply border-gray-lightest;
         }
     }
 
     .cell {
         @screen md {
             @apply border-b-2;
-            @apply border-grey-lightest;
+            @apply border-gray-lightest;
             @apply px-4;
             @apply py-4;
         }

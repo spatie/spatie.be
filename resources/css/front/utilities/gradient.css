@@ -32,12 +32,12 @@
     @apply bg-blue-lightest;
 }
 
-.gradient-grey {
+.gradient-gray {
     --gradient-angle: 120deg;
     --gradient-from: #f3efea;
     --gradient-to: #e1ded9;
 
-    @apply bg-grey-lighter;
+    @apply bg-gray-lighter;
 
 }
 
@@ -46,6 +46,6 @@
     --gradient-from: #31302f;
     --gradient-to: #172a3d;
 
-    @apply bg-grey-dark;
+    @apply bg-gray-dark;
 
 }

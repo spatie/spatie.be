@@ -5,7 +5,7 @@
 </p>
 
 @if (sponsorIsViewingPage())
-    <p class="mt-2 text-xs text-grey">
+    <p class="mt-2 text-xs text-gray">
         As a sponsor, you can get 15$ off with following coupon:
         <span class="mt-2 font-mono opacity-75">{{ config('services.promo_codes.package_training') }}</span>
     </p>

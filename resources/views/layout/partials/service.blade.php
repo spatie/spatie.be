@@ -1,7 +1,7 @@
    
-    <a href="{{ route('docs') }}">Docs</a>
-
     <a href="{{ route('about') }}">About us</a>
+    
+    <a href="{{ route('docs') }}">Docs</a>
 
     @auth
         <a href="{{ route('profile') }}">

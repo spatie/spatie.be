@@ -124,7 +124,7 @@
                                 </li>
                             </ul>
 
-                            <p class="mt-16 text-sm text-grey">
+                            <p class="mt-16 text-sm text-gray">
                                 We zijn niet op zoek naar remote work of relocatie; deeltijds thuiswerken is
                                 bespreekbaar.
                                 <br>
@@ -231,7 +231,7 @@
                         </h2>
                     </div>
                 </div>
-                <p class="mt-8 text-xs text-grey">
+                <p class="mt-8 text-xs text-gray">
                     Elke sollicitatie wordt beantwoord <br>en confidentieel behandeld.
                 </p>
             </div>

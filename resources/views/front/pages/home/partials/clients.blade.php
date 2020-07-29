@@ -1,6 +1,6 @@
 <section id="clients" class="section">
     <div class="wrap">
-        <h2 class="title-sm | text-center text-grey">
+        <h2 class="title-sm | text-center text-gray">
             <a class="link-underline link-black" href="{{ route('web-development') }}#clients">Clients we work with</a>
         </h2>
     </div>

@@ -91,7 +91,7 @@ Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
 Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show'])->name('videos.show');
 
-Route::get('/docs', [DocsController::class, 'index']);
+Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
 Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('page', '.*');
 
@@ -102,6 +102,3 @@ Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('
 Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 
 Route::view('offline', 'errors.offline')->name('offline');
-
-// Dummy route
-Route::view('/', 'front.pages.home.index')->name('docs');

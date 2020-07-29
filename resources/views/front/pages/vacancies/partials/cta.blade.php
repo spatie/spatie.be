@@ -22,7 +22,7 @@
                 </h2>
             </div>
         </div>
-        <p class="mt-8 text-xs text-grey">
+        <p class="mt-8 text-xs text-gray">
             Every application will receive a response <br>and will be handled confidentially.
         </p>
     </div>

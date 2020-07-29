@@ -14,7 +14,7 @@
                 <div class="mt-8 line-l">
                     <h2 class="title-sm">
                         <a href="{{ $series->url }}">{{ $series->title }}</a>
-                        <div class="title-subtext text-grey">
+                        <div class="title-subtext text-gray">
                             {{ $series->videos()->count() }}
                             {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
 

@@ -57,7 +57,7 @@
             <div class="wrap">
                 <div class="markup links-underline links-blue">
                     <p class="text-lg">
-                        The easiest way to support us financially is by buying or subscribing to one of our paid products.
+                        The easiest way to support us financially is by buying or subscribing to one of our paid <a href="{{ route('products.index') }}">products</a>.
                         We tried to put as much love into these as in our open source work—and we hope it shows.
                     </p>
                     <p class="text-lg">

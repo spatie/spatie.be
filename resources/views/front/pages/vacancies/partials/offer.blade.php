@@ -35,7 +35,7 @@
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Monthly Italian lunch with the team; wine from a chicken jug</li>
                 </ul>
 
-                <p class="mt-16 text-sm text-grey">
+                <p class="mt-16 text-sm text-gray">
                     We are not looking into remote work or relocation at this point, but partial work from home is an option.
                     <br>
                     Knowledge of Dutch is mandatory.

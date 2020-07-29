@@ -1,6 +1,6 @@
 module.exports = {
     important: true,
-    
+
     variants: ['responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
 
     plugins: [
@@ -20,13 +20,13 @@ module.exports = {
             gold: '#a89f81',
             'gold-darkest': '#51492c',
 
-            'grey-lightest': '#f3efea',
-            'grey-lighter': '#cbd2ce',
-            'grey-light': '#b8bfbb',
-            grey: '#767575',
-            'grey-dark': '#686666',
-            'grey-darker': '#4c534f',
-            'grey-darkest': '#171e1a',
+            'gray-lightest': '#f3efea',
+            'gray-lighter': '#cbd2ce',
+            'gray-light': '#b8bfbb',
+            gray: '#767575',
+            'gray-dark': '#686666',
+            'gray-darker': '#4c534f',
+            'gray-darkest': '#171e1a',
 
             'blue-lightest': '#cae1e8',
             'blue-lighter': '#22a4c9',

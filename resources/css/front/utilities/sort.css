@@ -3,13 +3,13 @@
     @apply flex;
     @apply items-center;
     @apply border-b;
-    @apply border-grey-lighter;
+    @apply border-gray-lighter;
 }
 
 .sort-select {
     @apply font-sans;
     @apply lowercase;
-    @apply text-grey;
+    @apply text-gray;
     @apply bg-transparent;
     @apply appearance-none;
 
@@ -25,7 +25,7 @@
         @apply absolute;
         @apply block;
         @apply right-0;
-        @apply text-grey-light;
+        @apply text-gray-light;
         @apply pointer-events-none;
     }
 }

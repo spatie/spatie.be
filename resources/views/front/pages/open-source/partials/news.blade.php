@@ -15,7 +15,7 @@
                             {{ $issue->title }}
                         </a>
                         <br>
-                        <span class="text-xs text-grey">
+                        <span class="text-xs text-gray">
                             <a href="{{ $issue->repository->url }}" target="_blank" rel="nofollow noreferrer noopener">
                                 {{ $issue->repository->name }}
                             </a>

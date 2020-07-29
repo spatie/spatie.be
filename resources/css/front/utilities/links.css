@@ -119,18 +119,18 @@ a.link-green:hover,
     --link-border-color: theme(colors.green)80;
 }
 
-.link-grey,
-a.link-grey,
-.links-grey a {
-    @apply text-grey;
-    --link-border-color: theme(colors.grey)40;
+.link-gray,
+a.link-gray,
+.links-gray a {
+    @apply text-gray;
+    --link-border-color: theme(colors.gray)40;
 }
 
-.link-grey:hover,
-a.link-grey:hover,
-.links-grey a:hover {
-    @apply text-grey-dark;
-    --link-border-color: theme(colors.grey)80;
+.link-gray:hover,
+a.link-gray:hover,
+.links-gray a:hover {
+    @apply text-gray-dark;
+    --link-border-color: theme(colors.gray)80;
 }
 
 .link-white,

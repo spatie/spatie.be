@@ -3,7 +3,7 @@
         <div class="wrap flex justify-center mb-8">
             <input
                 type="search"
-                class="border-2 border-grey-lighter bg-white rounded-full p-4 outline-0 focus:border-blue transition-border transition-100"
+                class="border-2 border-gray-lighter bg-white rounded-full p-4 outline-0 focus:border-blue transition-border transition-100"
                 placeholder="Search packages..."
                 wire:model="search"
             >
@@ -39,7 +39,7 @@
                                 {{ $repository->name }}
                             </a>
                         </div>
-                        <div class="text-xs mt-2 text-grey">
+                        <div class="text-xs mt-2 text-gray">
                             @if($repository->language)
                                 <span class="font-bold">
                                     {{ $repository->language }}
@@ -49,11 +49,11 @@
                             @if($repository->downloads)
                                 <span>
                                     {{ number_format($repository->downloads, 0, '.', ' ') }}
-                                    <span class="icon fill-current text-grey" style="transform: translateY(-1px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
+                                    <span class="icon fill-current text-gray" style="transform: translateY(-1px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
                                     <span class="char-separator">•</span>
                                 </span>
                             @endif
-                            {{ number_format($repository->stars, 0, '.', ' ') }} <span class="icon fill-current text-grey" style="transform: translateY(-2px)">{{ svg('icons/fal-star') }}</span>
+                            {{ number_format($repository->stars, 0, '.', ' ') }} <span class="icon fill-current text-gray" style="transform: translateY(-2px)">{{ svg('icons/fal-star') }}</span>
                             @if($repository->has_issues)
                                 <a href="{{ $repository->issues_url }}" target="_blank" rel="nofollow noreferrer noopener"
                                     class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
@@ -69,7 +69,7 @@
                     </div>
                     <div class="cell">
                         {{ $repository->description }}
-                        <div class="text-xs mt-2 text-grey">
+                        <div class="text-xs mt-2 text-gray">
                             @foreach($repository->topics as $topic)
                                 <span>
                                     {{ $topic }}
@@ -83,13 +83,13 @@
                     <div class="cell-r mt-4 flex flex-col justify-center | md:mt-0 md:grid-text-right">
                         @if($repository->blogpost_url)
                             <a href="{{ $repository->blogpost_url }}" target="_blank" rel="nofollow noreferrer noopener"
-                                class="link-underline link-grey text-xs">
+                                class="link-underline link-gray text-xs">
                                 Introduction
                             </a>
                         @endif
                         @if($repository->documentation_url)
                             <a href="{{ $repository->documentation_url }}" target="_blank" rel="nofollow noreferrer noopener"
-                                class="link-underline link-grey text-xs">
+                                class="link-underline link-gray text-xs">
                                 Documentation
                             </a>
                         @endif
@@ -98,7 +98,7 @@
             @endforeach
         </div>
         @unless(count($repositories))
-            <p class="mt-12 text-lg text-grey">
+            <p class="mt-12 text-lg text-gray">
                 Apparently there's not a Spatie package for everything! <br>
                 Maybe check back later.
             </p>

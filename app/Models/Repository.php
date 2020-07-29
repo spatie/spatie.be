@@ -59,7 +59,7 @@ class Repository extends Model
             'JavaScript' => 'orange',
         ];
 
-        return $colors[$this->language] ?? 'grey';
+        return $colors[$this->language] ?? 'gray';
     }
 
     public static function getTotalDownloads(): int

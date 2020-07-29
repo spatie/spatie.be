@@ -24,7 +24,7 @@
                     Apply for an internship
                 </a>
                 <br>
-    <span class="text-xs text-grey">Antwerp</span>
+    <span class="text-xs text-gray">Antwerp</span>
             </p>
         </div>
     </div>

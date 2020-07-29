@@ -14,7 +14,7 @@
                     <li>Integrating services</li>
                 </ul>
             </div>
-            <div class="text-grey">
+            <div class="text-gray">
                 <h3 class=title-sm>Not our cup of tea</h3>
                 <ul class="mt-4 line-l">
                     <li>Wordpress themes</li>

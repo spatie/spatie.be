@@ -48,7 +48,7 @@
     @apply bottom-0;
     content: '';
     height: 24rem;
-    background: linear-gradient(to bottom, theme('colors.white') 00, theme('colors.grey-lightest')d9);
+    background: linear-gradient(to bottom, theme('colors.white')00, theme('colors.gray-lightest')d9);
 }
 
 /* fake inset shadow at the bottom */
@@ -71,7 +71,7 @@
     @apply bottom-0;
     content: '';
     height: 8rem;
-    background: linear-gradient(to bottom, theme('colors.white') 00, theme('colors.grey-lightest')d9);
+    background: linear-gradient(to bottom, theme('colors.white')00, theme('colors.gray-lightest')d9);
 }
 
 /* fake inset shadow at the bottom */

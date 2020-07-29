@@ -1,4 +1,4 @@
-<p class="text-2xl mt-12 grid-rows gapx-16 gapy-4 | md:mt-16 md:grid-cols justify-start items-start" style="--cols: auto auto auto">
+<p class="text-2xl mt-12 grid col-gap-16 row-gap-4 | md:mt-16 md:grid-flow-col justify-start items-start">
     <span>
         <a class="link link-black" href="mailto:info@spatie.be">info@spatie.be</a>
         <br>
@@ -19,12 +19,12 @@
     </a>
     @isset($financialContacts)
         <span class="text-xs mt-2 leading-loose">
-            <span class="w-8 inline-block text-grey">VAT</span> BE0809.387.596
+            <span class="w-8 inline-block text-gray">VAT</span> BE0809.387.596
             <br>
             {{-- IBAN nr spaced out for readability but selectable with double click. --}}
-            <span class="w-8 inline-block text-grey">IBAN</span> BE66<span class=ml-1>3631</span><span class=ml-1>2787</span><span class=ml-1>5443</span>
+            <span class="w-8 inline-block text-gray">IBAN</span> BE66<span class=ml-1>3631</span><span class=ml-1>2787</span><span class=ml-1>5443</span>
             <br>
-            <span class="w-8 inline-block text-grey">BIC</span> BBRUBEBB
+            <span class="w-8 inline-block text-gray">BIC</span> BBRUBEBB
         </span>
     @endisset
 </p>

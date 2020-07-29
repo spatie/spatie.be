@@ -3,7 +3,7 @@
     @apply h-2px;
     @apply opacity-25;
     @apply rounded;
-    @apply bg-grey;
+    @apply bg-gray;
 }
 
 .line-l {
@@ -18,7 +18,7 @@
         @apply w-2px;
         @apply opacity-25;
         @apply rounded;
-        @apply bg-grey;
+        @apply bg-gray;
         content: '';   
 }
 
@@ -37,8 +37,8 @@
 }
 
 .line-before:before {
-        @apply bg-grey;
-        @apply text-grey;
+        @apply bg-gray;
+        @apply text-gray;
         content: '';
         flex-grow: 1;
         height: 2px;
@@ -53,7 +53,7 @@
 }
 
 .line-after:after {
-        @apply bg-grey;
+        @apply bg-gray;
         content: '';
         flex-grow: 1;
         height: 2px;
