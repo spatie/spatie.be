@@ -30,3 +30,8 @@
 .bg-multiply {
     background-blend-mode: multiply;
 }
+
+a:active,
+button:active {
+    transform: translateY(1px)
+}

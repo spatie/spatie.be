@@ -1,44 +1,51 @@
 <x-page
         title="Reset password"
-        background="/backgrounds/home.jpg"
+        background="/backgrounds/auth.jpg"
 >
-    <div class="wrap my-6">
-        @if (session('status'))
-            <div class="" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
 
-        <h1 class="text-xl">
-            {{ __('Reset Password') }}
-        </h1>
+    <section id="banner" class="banner" role="banner">
+        <div class="wrap">
+            <h1 class="banner-slogan">
+                Can't get in?
+            </h1>
+            <p class="banner-intro">
+                Don't worry, we know the bouncer.
+            </p>
+            <p class="mt-4">
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                        href="{{ route('login')}}" class="link-underline link-blue">{{ __('Back to login') }}</a>
+            </p>
+        </div>
+    </section>
 
-        <form class="space-y-6" method="POST" action="{{ route('password.email') }}">
-            @csrf
+    <section class="wrap pt-0 z-10 -mb-6">
+        <div class="card py-12 gradient gradient-green shadow-lg text-white">
+            <h2 class="title mb-8">
+                {{ __('Reset Password') }}
+            </h2>
 
-            <div class="grid">
-                <label for="email" class="">
-                    {{ __('E-Mail Address') }}:
-                </label>
+                @if (session('status'))
+                <div class="text-lg mb-8" role="alert">
+                    {{ session('status') }}
+                </div>
+            @endif
+            
+            <form class="space-y-6" method="POST" action="{{ route('password.email') }}">
+                @csrf
 
-                <input id="email" type="email" class="form-input @error('email') border-red @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
+                <div class="flex">
+                    <input id="email" placeholder={{ __('E-Mail Address') }} type="email" class="flex-grow mr-2 form-input @error('email') border-pink @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                    <x-button type="submit">
+                        {{ __('Send Password Reset Link') }}
+                    </x-button>
+                </div>
+                
                 @error('email')
-                <p class="">
-                    {{ $message }}
-                </p>
+                    <p class="my-8 text-pink text-sm">
+                        {{ $message }}
+                    </p>
                 @enderror
-            </div>
-
-            <div class="flex space-x-4 items-center">
-                <button type="submit" class="bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm">
-                    {{ __('Send Password Reset Link') }}
-                </button>
-
-                <a class="text-blue" href="{{ route('login') }}">
-                    {{ __('Back to login') }}
-                </a>
-            </div>
-        </form>
-    </div>
+            </form>
+        </div>
+    </section>
 </x-page>

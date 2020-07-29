@@ -159,5 +159,74 @@ module.exports = {
                 postcard: 700,
             },
         },
+
+        customForms: (theme) => ({
+            default: {
+                input: {
+                    color: theme('colors.black'),
+                    borderWidth: '2px',
+                    borderRadius: theme('borderRadius.sm'),
+                    borderColor: theme('colors.gray-light'),
+                    height: theme('spacing.10'),
+                    paddingLeft: theme('spacing.2'),
+                    paddingRight: theme('spacing.2'),
+                    '&:focus': {
+                        borderColor: theme('colors.blue-light'),
+                        outline: 'none',
+                        boxShadow: 'none', 
+                    },
+                },
+                textarea: {
+                    color: theme('colors.black'),
+                    borderRadius: theme('borderRadius.sm'),
+                    borderColor: theme('colors.gray-light'),
+                    height: theme('spacing.32'),
+                    paddingLeft: theme('spacing.2'),
+                    paddingRight: theme('spacing.2'),
+                    '&:focus': {
+                        borderColor: theme('colors.blue'),
+                        outline: 'none',
+                        boxShadow: 'none', 
+                    },
+                },
+                select: {
+                    color: theme('colors.black'),
+                    borderRadius: theme('borderRadius.sm'),
+                    borderColor: theme('colors.gray-light'),
+                    height: theme('spacing.10'),
+                    paddingLeft: theme('spacing.2'),
+                    paddingRight: theme('spacing.2'),
+                    '&:focus': {
+                        borderColor: theme('colors.blue'),
+                        outline: 'none',
+                        boxShadow: 'none', 
+                    },
+                },
+                checkbox: {
+                    borderRadius: theme('borderRadius.sm'),
+                    borderColor: theme('colors.gray-light'),
+                    color: theme('colors.blue'),
+                    height: theme('spacing.8'),
+                    width: theme('spacing.8'),
+                    '&:focus': {
+                        borderColor: theme('colors.blue'),
+                        outline: 'none',
+                        boxShadow: 'none', 
+                    },
+                },
+                radio: {
+                    borderRadius: theme('borderRadius.full'),
+                    borderColor: theme('colors.gray-light'),
+                    color: theme('colors.blue'),
+                    height: theme('spacing.8'),
+                    width: theme('spacing.8'),
+                    '&:focus': {
+                        borderColor: theme('colors.blue'),
+                        outline: 'none',
+                        boxShadow: 'none', 
+                    },
+                },
+            },
+        }),
     },
 };

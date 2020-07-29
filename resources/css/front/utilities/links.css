@@ -21,12 +21,6 @@ a.link:focus,
     outline: 0;
 }
 
-.link:active,
-a.link:active,
-.links a:active {
-    top: 1px;
-}
-
 /* repetition, because we cannot @apply with pseudo classes in Tailwind for now */
 .link-underline,
 a.link-underline,
