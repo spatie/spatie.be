@@ -1,6 +1,6 @@
 <x-page
         :title="$currentVideo->title"
-        background="/backgrounds/video-detail.jpg"
+        background="/backgrounds/video-blur.jpg"
         :description="$currentVideo->description"
 >
     <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">

@@ -1,6 +1,6 @@
 <x-page
         title="Videos"
-        background="/backgrounds/videos.jpg"
+        background="/backgrounds/video.jpg"
         description="Learn Laravel best practices from open source veterans SPATIE"
 >
 

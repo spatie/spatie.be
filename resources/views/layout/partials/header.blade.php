@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="wrap | md:hidden | print:hidden">
-        <hr class="mt-8 h-2px opacity-50 rounded text-blue">
+        <hr class="mt-8 h-2px opacity-25 rounded text-gray">
     </div>
 </header>
 
