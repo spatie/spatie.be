@@ -36,11 +36,11 @@
         <div class="wrap">
 
             @if (auth()->user()->isSponsoring())
-                <div class="px-3 py-2 rounded gradient gradient-blue flex items-center">
+                <div class="px-4 py-3 rounded gradient gradient-dark text-gray-lighter flex items-center">
                 <span class="mr-2 icon text-pink">
                     {{ svg('icons/fas-heart') }}
                 </span>
-                <span class="font-bold">
+                <span>
                 Thank you so much for being our sponsor, {{ auth()->user()->name ?? auth()->user()->github_username }}!
                 </span>
                 </div>
@@ -75,7 +75,7 @@
                 @csrf
                 @method('DELETE')
 
-                <button class="link-underline link-pink" type="submit" onclick="return confirm('Are you sure you want to delete your account?')">Delete my account</button>
+                <button class="link-underline link-red" type="submit" onclick="return confirm('Are you sure you want to delete your account?')">Delete my account</button>
             </form>
         </div>
     <section>

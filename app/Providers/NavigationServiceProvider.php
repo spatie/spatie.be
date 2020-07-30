@@ -28,14 +28,9 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
                 ->route('open-source.support', 'Support us')
-                ->addClass('leading-loose links-underline links-white')
                 ->setActiveFromRequest('/open-source')
-                ->setActiveClass('font-bold')
-                ->each(function (Link $link) {
-                    if ($link->isActive()) {
-                        $link->prepend('<span class="absolute left-0 -ml-4 icon fill-current text-white">' . svg('icons/far-angle-right') . '</span>');
-                    }
-                });
+                ->setActiveClass('submenu-active')
+                ;
         });
 
         Menu::macro('profile', function () {

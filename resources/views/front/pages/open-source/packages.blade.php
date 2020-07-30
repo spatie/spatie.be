@@ -6,6 +6,8 @@
         Search in our massive list of open source packages for Laravel & JavaScript.
     </x-slot>
 
+    @include('front.pages.open-source.partials.menu')
+
     @include('front.pages.open-source.partials.banner-packages')
 
     <div class="section section-group pt-0 section-fade">

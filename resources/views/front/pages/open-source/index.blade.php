@@ -8,6 +8,8 @@
         to support us.
     </x-slot>
 
+    @include('front.pages.open-source.partials.menu')
+    
     @include('front.pages.open-source.partials.banner')
 
     <div class="section section-group pt-0 section-fade">

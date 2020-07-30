@@ -88,15 +88,15 @@ a.link-pink:hover,
 .link-red,
 a.link-red,
 .links-red a {
-    @apply text-red;
-    --link-border-color: theme(colors.red)40;
+    @apply text-pink-dark;
+    --link-border-color: theme(colors.pink-dark)40;
 }
 
 .link-red:hover,
 a.link-red:hover,
 .links-red a:hover {
-    @apply text-red-dark;
-    --link-border-color: theme(colors.red)80;
+    @apply text-pink;
+    --link-border-color: theme(colors.pink)80;
 }
 
 .link-green,

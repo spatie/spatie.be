@@ -3,7 +3,7 @@
         <div class="wrap flex justify-center mb-8">
             <input
                 type="search"
-                class="border-2 border-gray-lighter bg-white rounded-full p-4 outline-0 focus:border-blue transition-border transition-100"
+                class="form-input rounded-full px-4"
                 placeholder="Search packages..."
                 wire:model="search"
             >
