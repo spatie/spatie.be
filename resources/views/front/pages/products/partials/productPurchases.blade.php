@@ -1,6 +1,6 @@
-<div class="block bg-white shadow p-4 mb-4">
-    <a href="{{ route('products.show', $product) }}">
-        <h2>{{ $product->title }}</h2>
+<div class="line-l">
+    <a class="link-underline link-black" href="{{ route('products.show', $product) }}">
+        <h2 class="title-sm">{{ $product->title }}</h2>
     </a>
 
     @foreach($purchasesForProduct as $purchase)
@@ -9,12 +9,14 @@
             $purchasable = $purchase->purchasable;
         @endphp
 
-        <div class="flex justify-between">
+        <div class="mt-4 flex justify-start">
             <a href="{{ route('products.show', $product) }}">
-                <h2>{{ $purchasable->title }}</h2>
+                {{ $purchasable->title }}
             </a>
 
-            @include('front.pages.products.partials.purchaseActions')
+            <span class="ml-4">
+                @include('front.pages.products.partials.purchaseActions')
+            </span>
         </div>
     @endforeach
 </div>

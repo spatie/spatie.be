@@ -17,8 +17,11 @@
 
     <div class="pb-16 md:pb-24 xl:pb-32">
         <section id="video">
-            <div class="wrap wrap-8 items-start">
-                <div class="pt-8 md:pt-0 sm:col-start-2 sm:col-span-3 | md:col-start-2 md:col-span-4 | lg:col-start-2 lg:col-span-5">
+            <div class="wrap wrap-6 items-stretch">
+                <div class="z-10 | md:col-span-2 | print:hidden">
+                    @include('front.pages.videos.partials.sidebar')
+                </div>
+                <div class="pt-8 | md:pt-0 md:col-start-3 md:col-span-4">
                     @include('front.pages.videos.partials.vimeo')
 
                     <div class="w-full shadow-lg bg-white overflow-hidden" id="player"
@@ -87,18 +90,6 @@
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
 
-                    @if($series->slug === 'laravel-package-training')
-                        <div class="my-8">
-                            @include('front.pages.videos.partials.packageTrainingPromo')
-                        </div>
-                    @endif
-
-                    @if($series->slug === 'building-mailcoach')
-                        <div class="my-8">
-                            @include('front.pages.videos.partials.mailcoachPromo')
-                        </div>
-                    @endif
-
                     <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
                         {!! $currentVideo->formatted_description !!}
                     </div>
@@ -126,9 +117,6 @@
                     </div>
                 </div>
 
-                <div class="z-10 banner-menu gradient gradient-pink | print:hidden">
-                    @include('front.pages.videos.partials.sidebar')
-                </div>
 
             </div>
         </section>

@@ -1,5 +1,5 @@
 <section id="series" class="section">
-    <div class="wrap wrap-6 | items-start markup-lists">
+    <div class="wrap wrap-6 col-gap-6 row-gap-16 | items-start markup-lists">
         @foreach($allSeries as $series)
             <div class="sm:col-span-3">
                 {{--
@@ -8,7 +8,7 @@
                 </a>
                 --}}
 
-                <div class="mt-8 line-l">
+                <div class="line-l">
                     <h2 class="title-sm">
                         <a href="{{ $series->url }}">{{ $series->title }}</a>
                         <div class="title-subtext text-gray">

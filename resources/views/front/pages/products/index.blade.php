@@ -1,24 +1,52 @@
 <x-page
         title="Products"
-        background="/backgrounds/home.jpg"
+        background="/backgrounds/product.jpg"
+        description="Section with all our paid products"
 >
-    @auth
-        @includeWhen($purchasesPerProduct->isNotEmpty(), "front.pages.products.partials.purchases", ['purchasesPerProduct' => $purchasesPerProduct])
-    @endauth
+    <section id="banner" class="banner" role="banner">
+        <div class="wrap">
+            <h1 class="banner-slogan">
+                Our products
+            </h1>
+            <p class="banner-intro">
+            Welcome to our little shop
+            </p>
+        </div>
+    </section>
 
-    <div class="section section-group wrap flex grid grid-cols-3 gap-4">
-        @foreach ($products as $product)
-            <div class="flex flex-col bg-white shadow">
-                <a class="mb-4" href="{{ route('products.show', $product) }}">
-                    {{ $product->getFirstMedia('product-image') }}
-                    <div class="p-4">
-                        <h2 class="text-2xl mb-2">{{ $product->title }}</h2>
-                        <p class="text-base">{{ $product->description }}</p>
-                    </div>
-                </a>
-                <a class="text-blue underline px-4 mb-4" href="{{ $product->url }}">{{ $product->url }}</a>
-                <a class="mr-auto mt-auto ml-4 mb-4 bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm" href="{{ $product->action_url }}">{{ $product->action_label }}</a>
+
+    <section class="section section-group">
+
+
+            <div class="wrap">
+                @auth
+                    @includeWhen($purchasesPerProduct->isNotEmpty(), "front.pages.products.partials.purchases", ['purchasesPerProduct' => $purchasesPerProduct])
+
+                    @if($purchasesPerProduct->isNotEmpty())
+                        <h2 class="mt-16 title line-after mb-12">All products</h2>
+                    @endif
+                @endauth    
+
+                <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
+                    @foreach ($products as $product)
+                        <div class="line-l">
+                            <a href="{{ route('products.show', $product) }}">
+                                {{ $product->getFirstMedia('product-image') }}
+                                <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>
+                                <p class="mt-4">{{ $product->description }}</p>
+                            </a>
+                            <p class="mt-2">
+                                <a class="link-blue link-underline text-xs" target="_blank" href="{{ $product->url }}">{{ $product->url }}</a>
+                            </p>
+                            <p class="mt-4">
+                                <a href="{{ $product->action_url }}">
+                                    <x-button>{{ $product->action_label }}</x-button>
+                                </a>
+                            </p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        @endforeach
-    </div>
+        </section>    
+    
 </x-page>

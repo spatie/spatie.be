@@ -4,7 +4,7 @@
             How to <br>support us
         </h1>
         <p class="banner-intro">
-            Visit our little shop      
+            Keep us going
         </p>
     </div>
 </section>

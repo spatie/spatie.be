@@ -15,7 +15,7 @@
 }
 
 .section-group .section:first-child {
-    @apply mt-0;
+    @apply pt-0;
 }
 
 .banner + .section-group {
@@ -24,19 +24,19 @@
 
 .section-group .section {
     @apply py-0;
-    @apply mt-16;
+    @apply pt-16;
 
     overflow: visible;
 }
 @screen sm {
     .section-group .section {
-        @apply mt-24;
+        @apply pt-24;
     }
 }
 
 @screen xl {
     .section-group .section {
-        @apply mt-32;
+        @apply pt-32;
     }
 }
 
