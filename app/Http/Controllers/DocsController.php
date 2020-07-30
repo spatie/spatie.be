@@ -52,7 +52,7 @@ class DocsController
 
         $navigation = $this->getNavigation($pages);
 
-        return view('front.pages.docs.show', compact('page', 'repositories', 'repository', 'pages', 'navigation'));
+        return view('front.pages.docs.show', compact('page', 'repositories', 'repository', 'pages', 'navigation', 'alias'));
     }
 
     private function getNavigation(Collection $pages): array

@@ -38,7 +38,7 @@ class Docs
                         $index = $pages->firstWhere('slug', '_index');
                         $pages = $pages->where('slug', '<>', '_index');
 
-                        return new Alias($index->title, $index->slogan, $index->branch, $pages);
+                        return new Alias($index->title, $index->slogan, $index->branch, $index->githubUrl, $pages);
                     })
                     ->sortBy('slug');
 
