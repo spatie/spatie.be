@@ -37,5 +37,15 @@ class NavigationServiceProvider extends ServiceProvider
                     }
                 });
         });
+
+        Menu::macro('profile', function () {
+            return Menu::new()
+                ->route('profile', 'Profile')
+                ->route('profile.password', 'Password')
+                ->route('invoices', 'Invoices')
+                ->setActiveFromRequest('/profile')
+                ->setActiveClass('submenu-active')
+                ;
+        });
     }
 }

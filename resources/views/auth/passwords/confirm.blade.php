@@ -21,14 +21,14 @@
                 @csrf
 
                 <x-field>
-                    <label for="password" class="flex items-baseline justify-between">
+                    <x-label for="password" class="flex items-baseline justify-between">
                         {{ __('Password') }}
                         @if (Route::has('password.request'))
                             <a class="link-white link-underline text-sm" href="{{ route('password.request') }}">
                                 {{ __('Forgot Your Password?') }}
                             </a>
                         @endif
-                    </label>
+                    </x-label>
 
                     <input id="password" type="password" class="@error('password') @enderror" name="password" required autocomplete="new-password">
 

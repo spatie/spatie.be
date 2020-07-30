@@ -52,15 +52,17 @@
                     @csrf
 
                     <x-field>
-                        <label for="email">Your email</label>
+                        <x-label for="email">Your email</x-label>
                         <input class="form-input" autofocus type="email" name="email" id="email">
                     </x-field>
 
                     <x-field>
-                        <label for="password" class="flex items-baseline justify-between">
-                            Password 
+                        <div class="flex items-baseline justify-between">
+                            <x-label for="password">
+                                Password 
+                            </x-label>
                             <a class="ml-4 link-white link-underline text-sm" tabindex="3" href="{{ route('forgot-password') }}">Can't recall, send me a link</a>
-                        </label>
+                        </div>
                         <input class="form-input" type="password" name="password" id="password">
                     </x-field>
 

@@ -23,9 +23,9 @@
                         <input type="hidden" name="token" value="{{ $token ?? request('token') }}">
 
                         <x-field>
-                            <label for="email">
+                            <x-label for="email">
                                 {{ __('E-Mail Address') }}:
-                            </label>
+                            </x-label>
 
                             <input id="email" type="email" class="form-input w-full @error('email') border-pink @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
@@ -37,9 +37,9 @@
                         </x-field>
 
                         <x-field>
-                            <label for="password">
+                            <x-label for="password">
                                 {{ __('Password') }}:
-                            </label>
+                            </x-label>
 
                             <input id="password" type="password" class="form-input w-full @error('password') border-pink @enderror" name="password" required autocomplete="new-password">
 
@@ -51,9 +51,9 @@
                         </x-field>
 
                         <x-field>
-                            <label for="password-confirm">
+                            <x-label for="password-confirm">
                                 {{ __('Confirm Password') }}:
-                            </label>
+                            </x-label>
 
                             <input id="password-confirm" type="password" class="form-input w-full" name="password_confirmation" required autocomplete="new-password">
                         </x-field>

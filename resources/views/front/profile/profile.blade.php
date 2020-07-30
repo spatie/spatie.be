@@ -1,55 +1,82 @@
 <x-page
         title="Profile"
-        background="/backgrounds/home.jpg"
+        background="/backgrounds/auth.jpg"
 >
 
-    <div class="wrap flex">
-        @include('front.profile.partials.sidebar')
+    @include('front.profile.partials.subnav')
 
-        <div class="my-6 ml-4 space-y-6">
-            <h1 class="mb-6 text-xl">My profile</h1>
-
-            @if (auth()->user()->github_id)
-                GitHub: {{ auth()->user()->github_username }}
-                <a class="bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm" href="{{ route('github-disconnect') }}">Disconnect</a>
-            @else
-                <a class="bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm" href="{{ route('github-login') }}">Link to Github account</a>
-                <p>This way we can detect your sponsor status, and you won’t need a password anymore to login</p>
-            @endif
-
-            <div class="flex items-end">
-                <form class="space-y-6" action="{{ route('profile') }}" method="POST">
-                    @csrf
-                    @method('PUT')
-
-                    <div class="grid">
-                        <label for="name">Your name</label>
-                        <input class="form-input" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
-                    </div>
-
-                    <div class="grid">
-                        <label for="email">Your email</label>
-                        <input class="form-input" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
-                    </div>
-
-                    <div>
-                        <label for="newsletter">
-                            <!-- @TODO: Check Mailcoach if user is subscribed -->
-                            <input class="form-checkbox" type="checkbox" name="newsletter" id="newsletter">
-                            Keep me in the loop when there is new Spatie content
-                        </label>
-                    </div>
-
-                    <button class="bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm" type="submit">Save</button>
-                </form>
-
-                <form class="text-right mb-3" action="{{ route('profile') }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-
-                    <button class="text-red text-sm" type="submit" onclick="return confirm('Are you sure you want to delete your account?')">Delete my account</button>
-                </form>
+    <section id="banner" class="banner" role="banner">
+        <div class="wrap">
+            <h1 class="banner-slogan">
+                My profile
+            </h1>
+            <div class="mt-4">
+                @if (auth()->user()->github_id)
+                    <span class="flex items-center">
+                        <span class="icon fill-current w-4 mr-2">
+                            {{ svg('github') }}
+                        </span>
+                        <span class="font-bold">{{ auth()->user()->github_username }}</span>
+                        <a class="ml-4 link-blue link-underline" href="{{ route('github-disconnect') }}">Disconnect from GitHub</a>
+                    </span>
+                @else
+                    <a class="link-blue link-underline flex items-center" href="{{ route('github-login') }}">
+                        <span class="icon fill-current w-4 mr-2">
+                            {{ svg('github') }}
+                        </span>
+                        Connect to GitHub account
+                    </a>
+                    <p class="mt-1 text-sm text-gray">Log in without password and check your sponsor status.</p>
+                @endif
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="section section-group pt-0">
+        <div class="wrap">
+
+            @if (auth()->user()->isSponsoring())
+                <div class="px-3 py-2 rounded gradient gradient-blue flex items-center">
+                <span class="mr-2 icon text-pink">
+                    {{ svg('icons/fas-heart') }}
+                </span>
+                <span class="font-bold">
+                Thank you so much for being our sponsor, {{ auth()->user()->name ?? auth()->user()->github_username }}!
+                </span>
+                </div>
+            @endif
+
+            <form class="space-y-6" action="{{ route('profile') }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <x-field>
+                    <x-label for="name">Your name</x-label>
+                    <input class="form-input" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
+                </x-field>
+
+                <x-field>
+                    <x-label for="email">Your email</x-label>
+                    <input class="form-input" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
+                </x-field>
+
+                <x-field>
+                    <label for="newsletter">
+                        <!-- @TODO: Check Mailcoach if user is subscribed -->
+                        <input class="form-checkbox" type="checkbox" name="newsletter" id="newsletter">
+                        Keep me in the loop when there is new Spatie content
+                    </label>
+                </x-field>
+
+                <x-button type="submit">Save profile</x-button>
+            </form>
+
+            <form class="absolute bottom-0 right-0 pr-8 | sm:pr-16" action="{{ route('profile') }}" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button class="link-underline link-pink" type="submit" onclick="return confirm('Are you sure you want to delete your account?')">Delete my account</button>
+            </form>
+        </div>
+    <section>
 </x-page>

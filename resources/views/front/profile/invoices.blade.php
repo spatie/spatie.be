@@ -1,24 +1,34 @@
 <x-page
         title="Invoices"
-        background="/backgrounds/home.jpg"
+        background="/backgrounds/auth.jpg"
 >
+    <?php /** @var \Laravel\Paddle\Transaction $transaction */?>
 
-    <div class="wrap flex">
-        @include('front.profile.partials.sidebar')
+    @include('front.profile.partials.subnav')
 
-        <div class="ml-4">
-            <h1>Invoices</h1>
-
-            <?php /** @var \Laravel\Paddle\Transaction $transaction */?>
+    <section id="banner" class="banner" role="banner">
+        <div class="wrap">
+            <h1 class="banner-slogan">
+                Invoices
+            </h1>
             @forelse ($transactions as $transaction)
-                <div>
-                    <span>{{ $transaction->paid_at->toFormattedDateString() }}</span>
-                    <span>{{ $transaction->amount() }}</span>
-                    <span><a href="{{ $transaction->receipt_url }}" target="_blank">Download</a></span>
-                </div>
             @empty
-                <p>No invoices yet, take a look at our <a href="{{ route('products.index') }}">products</a>!</p>
+                <p class="banner-intro">No invoices yet, take a look at <a class="link-underline link-blue" href="{{ route('products.index') }}">our products</a>.</p>
             @endforelse
         </div>
-    </div>
+    </section>
+
+    <section class="section section-group pt-0">
+        <div class="wrap">
+               
+            @forelse ($transactions as $transaction)
+                <div class="grid grid-cols-3 py-3 border-b-2 border-gray-lighter">
+                    <span class="font-bold">{{ $transaction->paid_at->toFormattedDateString() }}</span>
+                    <span>{{ $transaction->amount() }}</span>
+                    <span><a class="link-underline link-blue" href="{{ $transaction->receipt_url }}" target="_blank">Download</a></span>
+                </div>
+            @empty
+            @endforelse
+        </div>
+    </section>
 </x-page>

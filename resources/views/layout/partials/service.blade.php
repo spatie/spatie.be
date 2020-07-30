@@ -20,7 +20,7 @@
             @csrf
             <button type="submit">
                 <span class="icon fill-current hover:text-pink-dark" title="Log out">
-                <span class="mr-2 md:hidden">Log out</span> 
+                    <span class="mr-2 md:hidden">Log out</span> 
                     {{ svg('icons/fas-power-off') }}
                 </span>
             </button>
