@@ -4,12 +4,6 @@
     @apply rounded-lg;
 }
 
-@screen lg {
-    .card {
-        @apply -mx-8;
-    }
-}
-
 @screen print {
     .card {
         page-break-after: avoid;

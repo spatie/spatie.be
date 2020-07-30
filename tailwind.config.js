@@ -120,6 +120,7 @@ module.exports = {
 
         extend: {
             fontSize: {
+                'xxs': '.55rem', // small!
                 '6xl': '5rem', // large!
             },
 

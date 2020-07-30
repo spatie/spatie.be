@@ -1,0 +1,19 @@
+.tag {
+    @apply text-xxs ;
+    @apply font-normal ;
+    @apply py-1 ;
+    @apply px-2 ;
+    @apply rounded-full;
+}
+
+.tag-green {
+    @apply bg-green-lightest ;
+    @apply bg-opacity-75;
+    @apply text-green ;
+}
+
+.tag-pink {
+    @apply bg-pink-lightest ;
+    @apply bg-opacity-75;
+    @apply text-pink-dark ;
+}

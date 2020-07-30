@@ -33,19 +33,9 @@
     </section>
 
     <section class="section section-group pt-0">
+        @include('front.profile.partials.sponsor')
+        
         <div class="wrap">
-
-            @if (auth()->user()->isSponsoring())
-                <div class="px-4 py-3 rounded gradient gradient-dark text-gray-lighter flex items-center">
-                <span class="mr-2 icon text-pink">
-                    {{ svg('icons/fas-heart') }}
-                </span>
-                <span>
-                Thank you so much for being our sponsor, {{ auth()->user()->name ?? auth()->user()->github_username }}!
-                </span>
-                </div>
-            @endif
-
             <form class="space-y-6" action="{{ route('profile') }}" method="POST">
                 @csrf
                 @method('PUT')

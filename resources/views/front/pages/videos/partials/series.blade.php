@@ -1,7 +1,4 @@
 <section id="series" class="section">
-    <div class="wrap">
-        <h2 class="title line-after mb-12">Available series</h2>
-    </div>
     <div class="wrap wrap-6 | items-start markup-lists">
         @foreach($allSeries as $series)
             <div class="sm:col-span-3">
@@ -19,10 +16,10 @@
                             {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
 
                             @if($series->purchasables->count())
-                                <span class="ml-1 bg-green-lightest text-green text-xs font-normal py-1 px-2 rounded-full">Part of a course</span>
+                                <span class="ml-1 tag tag-green">Part of a course</span>
                             @endif
                             @if($series->videos->where('display', \App\Models\Enums\VideoDisplayEnum::SPONSORS)->count())
-                                <span class="ml-1 bg-pink-lightest text-pink text-xs font-normal py-1 px-2 rounded-full">Sponsor content</span>
+                                <span class="ml-1  tag tag-pink">Sponsor content</span>
                             @endif
                         </div>
                     </h2>
