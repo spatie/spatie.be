@@ -11,10 +11,13 @@ class Repository
     /** @var \App\Docs\Alias[] */
     public Collection $aliases;
 
-    public function __construct(string $slug, Collection $aliases)
+    public ?string $category;
+
+    public function __construct(string $slug, Collection $aliases, DocumentationPage $index)
     {
         $this->slug = $slug;
         $this->aliases = $aliases;
+        $this->category = $index->category ?? null;
     }
 
     public function getAlias(string $alias): ?Alias

@@ -16,8 +16,10 @@ class DocumationPathParser implements PathParser
         $alias = $parts[1];
 
         if (count($parts) <= 2) {
+            $slug = Str::before($alias, '.md');
+
             return [
-                'slug' => $alias,
+                'slug' => $slug,
                 'repository' => $repository,
                 'alias' => null,
             ];

@@ -42,7 +42,12 @@ class Docs
                     })
                     ->sortBy('slug');
 
-                return new Repository($repository, $aliases);
+                $index = $this->pages
+                    ->where('repository', $repository)
+                    ->whereNull('alias')
+                    ->firstWhere('slug', '_index');
+
+                return new Repository($repository, $aliases, $index);
             });
     }
 }

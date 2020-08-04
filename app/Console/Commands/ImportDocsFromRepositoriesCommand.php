@@ -59,33 +59,6 @@ class ImportDocsFromRepositoriesCommand extends Command
 
     private function getRepositories(): array
     {
-        $repositories = [
-            [
-                "name" => "laravel-backup",
-                "repository" => "spatie/laravel-backup",
-                "branches" => [
-                    "master" => "v6",
-                    "v5" => "v5",
-                    "v4" => "v4",
-                    "v3" => "v3",
-                ],
-                "category" => "Laravel",
-            ],
-            [
-                "name" => "laravel-medialibrary",
-                "repository" => "spatie/laravel-medialibrary",
-                "branches" => [
-                    "master" => "v8",
-                    "v7" => "v7",
-                    "v6" => "v6",
-                    "v5" => "v5",
-                    "v4" => "v4",
-                    "v3" => "v3",
-                ],
-                "category" => "Laravel",
-            ],
-        ];
-
-        return $repositories;
+        return config('docs.repositories');
     }
 }
