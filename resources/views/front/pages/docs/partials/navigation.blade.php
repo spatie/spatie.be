@@ -4,15 +4,6 @@
                 src="https://d33wubrfki0l68.cloudfront.net/dc2ab82b48c72af8e3fa738348653bf0b08a011c/6eae2/images/package-training.jpg"></a>
 
     <nav class="nav_menu">
-        <ul class="bg-blue-dark text-white">
-            @foreach($repository->aliases as $alias)
-                <li>
-                    <a href="{{ action([\App\Http\Front\Controllers\DocsController::class, 'repository'], [$repository->slug, $alias->slug]) }}">
-                        {{ $alias->slug }} ({{ $alias->branch }})
-                    </a>
-                </li>
-            @endforeach
-        </ul>
 
         @foreach($navigation as $key => $section)
             @if ($key !== '_root')

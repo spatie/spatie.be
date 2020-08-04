@@ -1,29 +1,44 @@
-<x-page
-        title="{{ $page->title }}"
-        background="/backgrounds/about.jpg">
+<x-page title="{{ $page->title }} | {{ $repository->slug }}" background="/backgrounds/docs.jpg">
     <x-slot name="description">
-        This is a placeholder
+        {{ $repository->slug }}
     </x-slot>
 
-{{--    @include('front.pages.about.partials.banner')--}}
-
-    {{ $page->alias }}
-
-    {{ $page->repository }}
-
-    <div class="section section-group wrap md:grid md:grid-cols" style="--cols: 1fr 2fr">
-        <div>
-            @include('front.pages.docs.partials.navigation')
-        </div>
-
-
-        <div>
-            <article class="article">
-                {!! $page->contents !!}
-            </article>
-
+    <section id="banner" class="banner" role="banner">
+        <div class="wrap">
+            <h1 class="banner-slogan">
+                {{ $page->title }}
+            </h1>
+            <p class="banner-intro">
+                {{ $alias->slogan }}
+            </p>
             <div>
-                <a href="{{ $alias->githubUrl }}/blob/{{$alias->slug}}/docs/{{ $page->slug }}.md" target="_blank">Edit on github</a>
+                <select name="alias">
+                    @foreach($repository->aliases as $alias)
+                        <option value="{{ $alias->slug }}">
+                            {{ $alias->slug }} ({{ $alias->branch }})
+                        </option>
+                    @endforeach
+                </select>
             </div>
-    </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="wrap">
+            <div class="grid grid-cols-3 gap-8">
+                <div class="col-span-1">
+                    @include('front.pages.docs.partials.navigation')
+                </div>
+                <div class="col-span-2 markup markup-titles markup-lists markup-links markup-code">
+                    {!! $page->contents !!}
+                    <p>
+                        <a href="{{ $alias->githubUrl }}/blob/{{$alias->slug}}/docs/{{ $page->slug }}.md" target="_blank">Edit on github</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </x-page>
+
