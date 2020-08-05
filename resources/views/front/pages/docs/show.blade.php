@@ -25,12 +25,15 @@
 
     <section class="section">
         <div class="wrap">
-            <div class="grid grid-cols-3 gap-8">
+            <div class="grid grid-cols-3 gap-16">
                 <div class="col-span-1">
                     @include('front.pages.docs.partials.navigation')
                 </div>
                 <div class="col-span-2 markup markup-titles markup-lists markup-links markup-code">
+                    <h2 class="title text-4xl">{{ $page->title }}</h2>
+
                     {!! $page->contents !!}
+
                     <p>
                         <a href="{{ $alias->githubUrl }}/blob/{{$alias->slug}}/docs/{{ $page->slug }}.md" target="_blank">Edit on github</a>
                     </p>
