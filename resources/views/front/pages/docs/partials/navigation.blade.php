@@ -7,10 +7,10 @@
 
         @foreach($navigation as $key => $section)
             @if ($key !== '_root')
-                <strong>{{ $section['_index']['title'] }}</strong>
+                <h2 class="title-sm text-sm mb-4">{{ $section['_index']['title'] }}</h2>
             @endif
 
-            <ul>
+            <ul class="mb-10 links-blue @if($key !== '_root') pl-4 border-l-2 border-gray-lightest @endif">
                 @foreach($section['pages'] as $page)
                     <li><a href="{{ $page->url }}">{{ $page->title }}</a></li>
                 @endforeach

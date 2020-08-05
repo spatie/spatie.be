@@ -6,7 +6,7 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                {{ $page->title }}
+                {{ $repository->slug }}
             </h1>
             <p class="banner-intro">
                 {{ $alias->slogan }}
