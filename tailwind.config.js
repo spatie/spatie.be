@@ -174,7 +174,7 @@ module.exports = {
                     '&:focus': {
                         borderColor: theme('colors.blue-light'),
                         outline: 'none',
-                        boxShadow: 'none', 
+                        boxShadow: 'none',
                     },
                 },
                 textarea: {
@@ -187,7 +187,7 @@ module.exports = {
                     '&:focus': {
                         borderColor: theme('colors.blue'),
                         outline: 'none',
-                        boxShadow: 'none', 
+                        boxShadow: 'none',
                     },
                 },
                 select: {
@@ -200,7 +200,7 @@ module.exports = {
                     '&:focus': {
                         borderColor: theme('colors.blue'),
                         outline: 'none',
-                        boxShadow: 'none', 
+                        boxShadow: 'none',
                     },
                 },
                 checkbox: {
@@ -212,7 +212,7 @@ module.exports = {
                     '&:focus': {
                         borderColor: theme('colors.blue'),
                         outline: 'none',
-                        boxShadow: 'none', 
+                        boxShadow: 'none',
                     },
                 },
                 radio: {
@@ -224,7 +224,7 @@ module.exports = {
                     '&:focus': {
                         borderColor: theme('colors.blue'),
                         outline: 'none',
-                        boxShadow: 'none', 
+                        boxShadow: 'none',
                     },
                 },
             },

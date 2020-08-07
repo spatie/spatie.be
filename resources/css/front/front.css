@@ -2,6 +2,7 @@
 
 @import './bootstrap.css';
 
+@import './utilities/algolia.css';
 @import './utilities/avatar.css';
 @import './utilities/banner.css';
 @import './utilities/bullets.css';

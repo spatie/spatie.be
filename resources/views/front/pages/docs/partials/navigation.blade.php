@@ -1,5 +1,5 @@
 <div class="nav">
-    <input type="search" class="form-input rounded-sm w-full py-0 px-2" placeholder="Search packages...">
+    <input type="search" class="form-input rounded-sm w-full py-0 px-2" id="algolia-search" placeholder="Search packages...">
 
     <a href="https://laravelpackage.training?utm_source=docs.spatie.be"><img
                 style="margin: 2em 0;"
