@@ -9,6 +9,7 @@ return [
             'disk' => 'docs',
             'sheet_class' => \App\Docs\DocumentationPage::class,
             'path_parser' => \App\Docs\DocumationPathParser::class,
+            'content_parser' => \App\Docs\ContentParser::class,
         ],
 
         /*

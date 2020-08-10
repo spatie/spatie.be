@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 @import './bootstrap.css';
+@import './highlight.css';
 
 @import './utilities/algolia.css';
 @import './utilities/avatar.css';
