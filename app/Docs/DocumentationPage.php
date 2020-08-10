@@ -2,7 +2,7 @@
 
 namespace App\Docs;
 
-use App\Http\Front\Controllers\DocsController;
+use App\Http\Controllers\DocsController;
 use Illuminate\Support\Str;
 use Spatie\Sheets\Sheet;
 

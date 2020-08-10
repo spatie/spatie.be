@@ -2,7 +2,6 @@
 
 namespace App\Docs;
 
-use App\Http\Front\Controllers\DocsController;
 use Illuminate\Support\Collection;
 
 class Alias
