@@ -14,7 +14,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
-use App\Http\Front\Controllers\DocsController;
+use App\Http\Controllers\DocsController;
 use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
