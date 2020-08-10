@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Docs\Docs;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use React\ChildProcess\Process;
@@ -49,6 +50,11 @@ class ImportDocsFromRepositoriesCommand extends Command
         all($processes)
             ->then(function ($output) {
                 $this->info('Fetched docs from all repositories.');
+
+                $this->info('Caching Sheets.');
+                cache()->forget('docs');
+                app(Docs::class);
+                $this->info('Done caching Sheets.');
             })
             ->always(function () {
                 File::deleteDirectory(storage_path('docs-temp/'));

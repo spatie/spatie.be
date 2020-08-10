@@ -11,7 +11,9 @@ class Docs
 
     public function __construct(Sheets $sheets)
     {
-        $this->pages = $sheets->collection('docs')->all()->sortBy('weight');
+        $this->pages = cache()->rememberForever('docs', function () use ($sheets) {
+            return $sheets->collection('docs')->all()->sortBy('weight');
+        });
     }
 
     public function pages(): Collection
