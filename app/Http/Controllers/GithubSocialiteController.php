@@ -44,9 +44,11 @@ class GithubSocialiteController
             'is_sponsor' => $isSponsor,
         ]);
 
-        ($user->is_sponsor || $user->isSpatieMember())
-            ? auth()->login($user)
-            : session()->flash('not-a-sponsor');
+        if (! $user->is_sponsor && ! $user->isSpatieMember()) {
+            session()->flash('not-a-sponsor');
+        }
+
+        auth()->login($user);
 
         return redirect()->to(session('before-github-redirect', route('videos.index')));
     }
