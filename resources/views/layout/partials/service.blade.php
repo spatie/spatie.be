@@ -17,16 +17,6 @@
                 {{ svg('icons/fas-user') }}
             </span>
         </a>
-        
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button type="submit">
-                <span class="icon fill-current hover:text-pink-dark" title="Log out">
-                    <span class="mr-2 md:hidden">Log out</span> 
-                    {{ svg('icons/fas-power-off') }}
-                </span>
-            </button>
-        </form>
     @else
         <a href="{{ route('login') }}">
             <span class="icon fill-current" title="Log in">
