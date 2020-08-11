@@ -65,6 +65,11 @@ return [
             'root' => storage_path('docs'),
         ],
 
+        'guidelines' => [
+            'driver' => 'local',
+            'root' => resource_path('views/front/pages/guidelines/pages'),
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

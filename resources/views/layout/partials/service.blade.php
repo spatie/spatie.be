@@ -3,6 +3,8 @@
     
     <a href="{{ route('docs') }}">Docs</a>
 
+    <a href="{{ route('guidelines') }}">Guidelines</a>
+
     @auth
         <a href="{{ route('profile') }}">
             <span class="icon fill-current" title="Profile">

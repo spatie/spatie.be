@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Docs;
+namespace App\Support\Sheets;
 
 use Illuminate\Support\HtmlString;
 use League\CommonMark\Block\Element\FencedCode;
@@ -21,7 +21,7 @@ class ContentParser implements \Spatie\Sheets\ContentParser
         $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer());
         $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer());
 
-        $this->commonMarkConverter = $commonMarkConverter = new CommonMarkConverter([], $environment);
+        $this->commonMarkConverter = new CommonMarkConverter([], $environment);
     }
 
     public function parse(string $contents): array

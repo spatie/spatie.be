@@ -15,6 +15,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\DocsController;
+use App\Http\Controllers\GuidelinesController;
 use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
@@ -94,6 +95,9 @@ Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
 Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*');
+
+Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
+Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
