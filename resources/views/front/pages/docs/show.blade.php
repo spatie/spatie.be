@@ -16,25 +16,27 @@
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
-            <h1 class="banner-slogan">
-                {{ $repository->slug }}
+            <h1 class="banner-slogan flex items-center justify-between">
+                {{ ucfirst($repository->slug) }}
+                <div class="text-base font-normal leading-normal select">
+                    <select name="alias">
+                        @foreach($repository->aliases as $alias)
+                            <option value="{{ $alias->slug }}">
+                                {{ $alias->slug }} ({{ $alias->branch }})
+                            </option>
+                        @endforeach
+                    </select>
+                    <span class="select-arrow">
+                    {{ svg('icons/far-angle-down') }}</span>
+                </div>
             </h1>
-            <p class="banner-intro">
+            <div class="banner-intro ">
                 {{ $alias->slogan }}
-            </p>
-            <div>
-                <select name="alias">
-                    @foreach($repository->aliases as $alias)
-                        <option value="{{ $alias->slug }}">
-                            {{ $alias->slug }} ({{ $alias->branch }})
-                        </option>
-                    @endforeach
-                </select>
             </div>
         </div>
     </section>
 
-    <section class="section">
+    <section class="section pt-0">
         <div class="wrap">
             <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-16">
                 <div class="col-span-1">

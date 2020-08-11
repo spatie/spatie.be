@@ -1,4 +1,4 @@
 .char-separator {
-    @apply text-blue;
+    @apply text-gray;
     margin: 0 0.15em;
 }
