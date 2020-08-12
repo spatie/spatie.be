@@ -1,4 +1,4 @@
-<x-page title="{{ $page->title }}" background="/backgrounds/docs.jpg">
+<x-page title="{{ $page->title }}" background="/backgrounds/guidelines-blur.jpg">
     <x-slot name="description">
         {{ $page->description }}
     </x-slot>
