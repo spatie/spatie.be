@@ -8,25 +8,26 @@
             <h1 class="banner-slogan">
                 {{ $page->title }}
             </h1>
-            <p class="banner-intro">
-                {{ $page->description }}
+            <p class="mt-4 flex justify-start gap-8">
+                <span>
+                    <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('guidelines')}}" class="link-underline link-blue">Guidelines overview</a>
+                </span>
+                <span class="mx-2 text-blue-lighter">|</span>
+                 <a class="flex items-center link-blue link-underline" href="https://github.com/spatie/spatie.be/edit/master/resources/views/front/pages/guidelines/pages/{{ $page->slug }}.md"
+                            target="_blank">
+                            Edit 
+                            <span class="ml-1 w-4 h-4">
+                                {{ svg('github') }}
+                            </span>
+                        </a>
             </p>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="wrap">
-            <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-16">
-                <div class="col-span-2 markup markup-titles markup-lists markup-links markup-code">
-                    {{ $page->contents }}
-
-                    <p>
-                        <a href="https://github.com/spatie/spatie.be/edit/master/resources/views/front/pages/guidelines/pages/{{ $page->slug }}.md"
-                            target="_blank">Edit on github</a>
-                    </p>
-                </div>
+            
+            <div class="mt-16 markup-titles markup-lists markup-code links-blue links-underline">
+                {{ $page->contents }}
             </div>
+
         </div>
     </section>
+
 </x-page>
 

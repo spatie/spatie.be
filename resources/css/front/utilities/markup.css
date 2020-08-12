@@ -137,3 +137,19 @@
 .markup-list-compact li {
     padding-left: 1.5em !important;
 }
+
+.markup-code code:not(.hljs) {
+    @apply text-blue-dark;
+    @apply font-mono;
+    @apply px-1;
+}
+
+.markup-code .article_badges {
+    @apply flex;
+    @apply flex-wrap;
+}
+
+.markup-code .article_badges img {
+    @apply mb-2;
+    @apply mr-4;
+}

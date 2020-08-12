@@ -1,5 +1,4 @@
 .select {
-    @apply ml-2;
     @apply inline-flex;
     @apply items-center;
     @apply border-2;
@@ -7,7 +6,7 @@
     @apply bg-white;
     @apply px-2;
     @apply py-1;
-    @apply rounded;
+    @apply rounded-sm;
 }
 
 .select select {

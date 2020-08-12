@@ -6,15 +6,18 @@
 
 .hljs {
     display: block;
-    background: white;
-    padding: 0.5em;
-    color: #333333;
     overflow-x: auto;
+    @apply my-8;
+    @apply p-6;
+    @apply bg-gray-lightest;
+    @apply bg-opacity-50;
+    @apply text-sm;
+    @apply font-mono;
 }
 
 .hljs-comment,
 .hljs-meta {
-    color: #969896;
+    @apply text-gray-light;
 }
 
 .hljs-variable,
@@ -22,29 +25,29 @@
 .hljs-strong,
 .hljs-emphasis,
 .hljs-quote {
-    color: #df5000;
+    @apply text-pink;
 }
 
 .hljs-keyword,
 .hljs-selector-tag,
 .hljs-type {
-    color: #d73a49;
+    @apply text-pink-dark;
 }
 
 .hljs-literal,
 .hljs-symbol,
 .hljs-bullet,
 .hljs-attribute {
-    color: #0086b3;
+    @apply text-blue;
 }
 
 .hljs-section,
 .hljs-name {
-    color: #63a35c;
+    @apply text-green;
 }
 
 .hljs-tag {
-    color: #333333;
+    @apply text-gray-darker;
 }
 
 .hljs-title,
@@ -53,17 +56,17 @@
 .hljs-selector-class,
 .hljs-selector-attr,
 .hljs-selector-pseudo {
-    color: #6f42c1;
+    @apply text-orange;
 }
 
 .hljs-addition {
-    color: #55a532;
-    background-color: #eaffea;
+    @apply text-green;
+    @apply text-green-lightest;
 }
 
 .hljs-deletion {
-    color: #bd2c00;
-    background-color: #ffecec;
+    @apply text-pink-dark;
+    @apply text-pink-lightest;
 }
 
 .hljs-link {
@@ -71,9 +74,9 @@
 }
 
 .hljs-number {
-    color: #005cc5;
+    @apply text-blue-light;
 }
 
 .hljs-string {
-    color: #032f62;
+    @apply text-blue-dark;
 }

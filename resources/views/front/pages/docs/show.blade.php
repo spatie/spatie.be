@@ -2,7 +2,7 @@
     /** @var \App\Docs\Repository $repository */
 @endphp
 
-<x-page title="{{ $page->title }} | {{ $repository->slug }}" background="/backgrounds/docs.jpg">
+<x-page title="{{ $page->title }} | {{ $repository->slug }}" background="/backgrounds/docs-blur.jpg">
 {{--    @push('head')--}}
 {{--        <link--}}
 {{--                rel="stylesheet"--}}
@@ -14,47 +14,53 @@
         {{ $repository->slug }}
     </x-slot>
 
-    <section id="banner" class="banner" role="banner">
+    <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
-            <h1 class="banner-slogan flex items-center justify-between">
-                {{ ucfirst($repository->slug) }}
-                <div class="text-base font-normal leading-normal select">
-                    <select name="alias">
-                        @foreach($repository->aliases as $alias)
-                            <option value="{{ $alias->slug }}">
-                                {{ $alias->slug }} ({{ $alias->branch }})
-                            </option>
-                        @endforeach
-                    </select>
-                    <span class="select-arrow">
-                    {{ svg('icons/far-angle-down') }}</span>
+            <p class="mt-4">
+                <a href="{{ route('docs')}}" class="link-underline link-blue">Docs</a>
+                <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+                <span>{{ ucfirst($repository->slug) }}</span>
+                @foreach($navigation as $key => $section)
+                    @foreach($section['pages'] as $navItem)
+                        @if($page->slug === $navItem->slug)
+                            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+                            <span>{{ $navItem->title }}</span>
+                        @endif
+                    @endforeach
+                @endforeach
+            </p>
+        </div>
+    </section>
+
+    <section class="wrap grid pb-24 gap-8 md:grid-cols-3 items-stretch">
+        <div class="z-10 | print:hidden">
+             @include('front.pages.docs.partials.navigation')
+        </div>
+        <div class="md:col-span-2">
+            {{-- Only show for intro page --}}
+            <div class="mb-16">
+                <h1 class="banner-slogan text-6xl">
+                    {{ ucfirst($repository->slug) }}
+                </h1>
+                <div class="banner-intro flex items-center justify-start">
+                    {{ $alias->slogan }}  
                 </div>
-            </h1>
-            <div class="banner-intro ">
-                {{ $alias->slogan }}
+            </div>
+            <h2 class="title text-4xl mb-8">{{ $page->title }}</h2>
+
+            {{-- Else
+                <h1 class="title text-4xl mb-8">{{ $page->title }}</h1>
+            --}}
+
+            {{-- Endif --}}
+
+            <div class="markup-titles markup-lists markup-code links-blue links-underline">
+                {!! $page->contents !!}
             </div>
         </div>
     </section>
 
-    <section class="section pt-0">
-        <div class="wrap">
-            <div class="grid grid-cols-1 sm:grid-cols-3 sm:gap-16">
-                <div class="col-span-1">
-                    @include('front.pages.docs.partials.navigation')
-                </div>
-                <div class="col-span-2 markup markup-titles markup-lists markup-links markup-code">
-                    <h2 class="title text-4xl">{{ $page->title }}</h2>
-
-                    {!! $page->contents !!}
-
-                    <p>
-                        <a href="{{ $alias->githubUrl }}/blob/{{$alias->slug}}/docs/{{ $page->slug }}.md"
-                           target="_blank">Edit on github</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+    
 
     <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 
