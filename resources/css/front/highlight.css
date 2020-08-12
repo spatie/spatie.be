@@ -56,7 +56,7 @@
 .hljs-selector-class,
 .hljs-selector-attr,
 .hljs-selector-pseudo {
-    @apply text-orange;
+    @apply text-purple;
 }
 
 .hljs-addition {

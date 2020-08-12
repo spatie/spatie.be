@@ -22,14 +22,14 @@
         content: '';   
 }
 
-.line-l-white {
-    @apply line-l;
-}
-
-
 .line-l-white:after {
         @apply bg-white;
     }
+
+
+.line-l-green:after {
+    @apply bg-green-light;
+}
 
 .line-before {
     display: flex;

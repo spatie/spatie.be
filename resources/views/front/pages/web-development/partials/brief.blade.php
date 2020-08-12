@@ -38,7 +38,7 @@
 Anything that helps us to start straightforward!'
 ) }}">Brief us</a> your project
                 </h2>
-                <div class="line-l-white">
+                <div class="line-l line-l-white">
                     <h3 class="title-sm">
                         Topics to discuss
                     </h3>

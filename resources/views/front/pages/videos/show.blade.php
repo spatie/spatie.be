@@ -5,10 +5,16 @@
 >
     <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
-            <p class="mt-4">
-                <a href="{{ route('videos.index')}}" class="link-underline link-blue">Videos</a>
+            <p class="mt-4 links-underline links-blue">
+                <a href="{{ route('videos.index')}}">Videos</a>
                 <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
-                <span>{{ $series->title }}</span>
+
+                @if(true OR $series->purchasables->count())
+                    <a href="" class="">{{ $series->title }}</a>
+                @else
+                    <span>{{ $series->title }}</span>
+                @endif
+
                 <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
                 <span class="font-sans-bold">{{ $currentVideo->title }}</span>
             </p>

@@ -132,7 +132,7 @@ class Video extends Model implements Sortable
                 ->count() > 0;
 
         if ($this->display === VideoDisplayEnum::SPONSORS) {
-            return auth()->user()->isSponsoring() || $userOwnsSeries;
+            return auth()->user() && auth()->user()->isSponsoring() || $userOwnsSeries;
         }
 
         if ($this->display === VideoDisplayEnum::LICENSE) {

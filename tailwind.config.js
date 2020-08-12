@@ -52,6 +52,8 @@ module.exports = {
             'green-light': '#57c9a5',
             green: '#21b989',
             'green-dark': '#0a8867',
+
+            'purple' : '#885de3',
         },
 
         screens: {

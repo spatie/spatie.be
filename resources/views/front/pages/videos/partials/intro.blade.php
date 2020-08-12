@@ -1,6 +1,11 @@
 <section id="intro" class="section">
     <div class="wrap">
-        <h2 class="title-2xl">Exclusive content</h2>
+        <h2 class="title-2xl inline-flex">
+            <span class="icon text-pink text-4xl mr-4">
+                {{ svg('icons/fas-heart') }}
+            </span>
+            Exclusive content
+        </h2>
     </div>
     <div class="wrap wrap-6">
         <div class="sm:col-span-4">
