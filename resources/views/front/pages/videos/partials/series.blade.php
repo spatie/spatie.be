@@ -3,7 +3,7 @@
         @foreach($allSeries as $series)
             <div>
                 @if(true OR $series->purchasables->count())
-                    <div class="line-l line-l-green py-4 bg-green-lightest bg-opacity-50">
+                    <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                         <h2 class="title-sm">
                             <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
@@ -12,15 +12,17 @@
                                 {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
                                 </span>
 
-                                <span class="ml-1 tag tag-green">Paid course</span>
-
-                                @if($series->videos->where('display', \App\Models\Enums\VideoDisplayEnum::SPONSORS)->count())
-                                    <span title="Series has extra content for sponsors" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
-                                        <span style="font-size: .6rem" class="icon text-pink">
-                                            {{ svg('icons/fas-heart') }}
-                                        </span>
+                                <span title="Part of course" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
+                                    <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
+                                        {{-- If not bought --}}
+                                        {{ svg('icons/fas-lock-alt') }}
+                                        {{-- Else  
+                                         svg('icons/fas-lock-open-alt') --}}
+                                         {{-- Endif  --}}
                                     </span>
-                                @endif
+                                </span>
+
+                               
                             </div>
                         </h2>
                         <p class="mt-4">

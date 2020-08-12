@@ -11,6 +11,7 @@
                     @if($video->display === \App\Models\Enums\VideoDisplayEnum::FREE)
                         <span class="hidden tag tag-green">Free</span>
                     @endif
+
                     @if($video->display === \App\Models\Enums\VideoDisplayEnum::SPONSORS)
                         <span title="Exclusive for sponsors" class="w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
                             <span style="font-size: .6rem" class="icon text-pink">
@@ -18,6 +19,22 @@
                             </span>
                         </span>
                     @endif
+
+                    @if(true or $video->display === \App\Models\Enums\VideoDisplayEnum::LICENSE &&  ! $video->canBeSeenByCurrentUser() )
+                        <span title="Part of course" class="w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
+                            <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
+                                {{ svg('icons/fas-lock-alt') }}
+                            </span>
+                        </span>
+                    @endif
+
+                    {{-- If bought and finished --}}
+                    <span title="Part of course" class="absolute left-0 top-0 -ml-10 w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
+                        <span style="font-size: .75rem;" class="text-green">
+                            ✓
+                        </span>
+                    </span>
+                    {{-- Endif --}}
                 </a>
             </li>
         @empty
