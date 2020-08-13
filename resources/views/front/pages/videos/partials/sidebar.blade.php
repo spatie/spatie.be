@@ -29,8 +29,8 @@
                     @endif
 
                     {{-- If bought and finished --}}
-                    <span title="Part of course" class="absolute left-0 top-0 -ml-10 w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
-                        <span style="font-size: .75rem;" class="text-white">
+                    <span title="Completed" style="left: calc(-1.5em - 1.5rem)" class="absolute top-0 w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
+                        <span style="font-size: 0.75rem" class="text-white">
                             ✓
                         </span>
                     </span>
