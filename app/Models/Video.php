@@ -154,6 +154,10 @@ class Video extends Model implements Sortable
         /** @var \App\Models\User $currentUser */
         $currentUser = auth()->user();
 
+        if (! $currentUser) {
+            return false;
+        }
+
         return $currentUser->completedVideos()->where('video_id', $this->id)->exists();
     }
 
@@ -161,6 +165,10 @@ class Video extends Model implements Sortable
     {
         /** @var \App\Models\User $currentUser */
         $currentUser = auth()->user();
+
+        if (! $currentUser) {
+            return $this;
+        }
 
         $currentUser->completedVideos()->syncWithoutDetaching($this);
 
