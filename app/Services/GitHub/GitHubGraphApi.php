@@ -29,9 +29,9 @@ class GitHubGraphApi
                     'name' => $sponsor['sponsorEntity']['name'],
                     'email' => $sponsor['sponsorEntity']['email'],
                     'avatar' => $sponsor['sponsorEntity']['avatarUrl'],
-                    'company' => $sponsor['sponsorEntity']['company'],
-                    'location' => $sponsor['sponsorEntity']['location'],
-                    'website' => $sponsor['sponsorEntity']['websiteUrl'],
+                    'company' => $sponsor['sponsorEntity']['company'] ?? '',
+                    'location' => $sponsor['sponsorEntity']['location'] ?? '',
+                    'website' => $sponsor['sponsorEntity']['websiteUrl'] ?? '',
                     'created_at' => $sponsor['createdAt'],
                     'url' => $sponsor['sponsorEntity']['url'],
                 ];
