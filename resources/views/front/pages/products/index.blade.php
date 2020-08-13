@@ -6,10 +6,10 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                Our products
+                Welcome in <br>our store
             </h1>
             <p class="banner-intro">
-            Welcome to our little shop
+                By artisans for artisans
             </p>
         </div>
     </section>
@@ -27,20 +27,24 @@
                     @endif
                 @endauth    
 
-                <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
+                <div class="grid col-gap-6 row-gap-8 | sm:grid-cols-2 items-stretch">
                     @foreach ($products as $product)
-                        <div class="line-l">
+                        <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                             <a href="{{ route('products.show', $product) }}">
                                 {{ $product->getFirstMedia('product-image') }}
                                 <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>
                                 <p class="mt-4">{{ $product->description }}</p>
                             </a>
-                            <p class="mt-2">
-                                <a class="link-blue link-underline text-xs" target="_blank" href="{{ $product->url }}">{{ $product->url }}</a>
-                            </p>
-                            <p class="mt-4">
+                            {{--
+                            <p>
+                                <a class="link-gray link-underline text-xs" target="_blank" href="{{ $product->url }}">{{ $product->url }}</a>
+                            </p>--}}
+                            <p class="mt-4 flex items-center space-x-4">
                                 <a href="{{ $product->action_url }}">
                                     <x-button>{{ $product->action_label }}</x-button>
+                                </a>
+                                <a class="link-green link-underline" href="{{ route('products.show', $product) }}">
+                                    Learn more
                                 </a>
                             </p>
                         </div>

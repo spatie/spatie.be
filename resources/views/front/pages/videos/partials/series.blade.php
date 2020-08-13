@@ -28,9 +28,9 @@
                         </p>
 
                         @if (! $series->isOwnedByCurrentUser())
-                            <p class="mt-4 links-underline link-blue">
+                            <p class="mt-4 links-underline link-green">
                                 <a href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $series->videos()->count()) }}</a>
-                                <span class="text-blue-light">|</span>
+                                <span class="text-green-light px-1">|</span>
                                 <a href="{{ $series->purchaseLink() }}">About this course</a>
                             </p>
                             <p class="mt-4">
