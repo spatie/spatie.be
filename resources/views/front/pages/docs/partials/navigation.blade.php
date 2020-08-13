@@ -1,10 +1,9 @@
 <nav class="h-full px-4 py-6 bg-white bg-opacity-50 shadow-light rounded-sm">
-    
     <div class="flex items-center pb-4 border-b-2 border-gray-lighter">
         <div class="text-xs font-normal leading-normal select">
-            <select name="alias" onChange="location=this.options[this.selectedIndex].value">
+            <select name="alias" onChange="location='/docs/{{ $repository->slug }}/' + this.options[this.selectedIndex].value">
                 @foreach($repository->aliases as $alias)
-                    <option value="{{ $alias->slug }}">
+                    <option value="{{ $alias->slug }}" {{ $page->alias === $alias->slug ? 'selected="selected"' : '' }}>
                         {{ $alias->slug }} ({{ $alias->branch }})
                     </option>
                 @endforeach
