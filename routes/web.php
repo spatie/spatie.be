@@ -12,6 +12,7 @@ use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\DocsController;
@@ -90,6 +91,7 @@ Route::get('login/github/callback', [GithubSocialiteController::class, 'callback
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
+Route::get('/videos/{series:slug}', [SeriesController::class, 'show'])->name('series.show');
 Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show'])->name('videos.show');
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');

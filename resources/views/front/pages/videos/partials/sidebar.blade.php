@@ -20,7 +20,7 @@
                         </span>
                     @endif
 
-                    @if(true or $video->display === \App\Models\Enums\VideoDisplayEnum::LICENSE &&  ! $video->canBeSeenByCurrentUser() )
+                    @if($video->display === \App\Models\Enums\VideoDisplayEnum::LICENSE &&  ! $video->canBeSeenByCurrentUser() )
                         <span title="Part of course" class="w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
                             <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
                                 {{ svg('icons/fas-lock-alt') }}
@@ -42,12 +42,12 @@
         @endforelse
     </ol>
 
-    @if(true OR $series->purchasables->count() and $notbought)
-
+    {{-- @todo: If not bought --}}
+    @if($series->isPurchasable() && isset($currentVideo))
         <div class="mt-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
             This is a sample of a <a href="" class="link-green link-underline">paid course</a>.
             <div class="mt-2">
-                <a class="grid">
+                <a href="{{ $series->purchaseLink() }}" class="grid">
                     <x-button>
                         Buy entire course
                     </x-button>

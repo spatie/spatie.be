@@ -1,6 +1,7 @@
 <?php
 
 
+use App\Models\Enums\VideoDisplayEnum;
 use App\Models\Series;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
@@ -184,6 +185,82 @@ class VideoSeeder extends Seeder
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:49",
           ],
+        ]);
+
+
+        $seriesWithFreeVideosAndSponsoredVideos = Series::create([
+            'title' => 'Free + Sponsored',
+            'slug' => 'free-sponsored',
+            'description' => 'A series with 2 free videos and 1 sponsored only video',
+            'sort_order' => '0',
+        ]);
+
+        Video::create([
+            "series_id" => $seriesWithFreeVideosAndSponsoredVideos->id,
+            "vimeo_id" => "419946519",
+            "title" => "Free video 1",
+            "slug" => "free-video-1",
+            "runtime" => 1396,
+            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "display" => VideoDisplayEnum::FREE,
+        ]);
+
+        Video::create([
+            "series_id" => $seriesWithFreeVideosAndSponsoredVideos->id,
+            "vimeo_id" => "419946519",
+            "title" => "Free video 2",
+            "slug" => "free-video-2",
+            "runtime" => 1396,
+            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "display" => VideoDisplayEnum::FREE,
+        ]);
+
+        Video::create([
+            "series_id" => $seriesWithFreeVideosAndSponsoredVideos->id,
+            "vimeo_id" => "419946519",
+            "title" => "Sponsor only video",
+            "slug" => "sponsor-only-video",
+            "runtime" => 1396,
+            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "display" => VideoDisplayEnum::SPONSORS,
+        ]);
+
+        $courseWithFreeSamples = Series::create([
+            'title' => 'Course with samples',
+            'slug' => 'course-with-samples',
+            'description' => 'A course with samples',
+            'sort_order' => '0',
+        ]);
+        $courseWithFreeSamples->purchasables()->attach(\App\Models\Purchasable::whereType('videos')->first());
+
+        Video::create([
+            "series_id" => $courseWithFreeSamples->id,
+            "vimeo_id" => "419946519",
+            "title" => "Free sample 1",
+            "slug" => "free-sample-1",
+            "runtime" => 1396,
+            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "display" => VideoDisplayEnum::FREE,
+        ]);
+
+        Video::create([
+            "series_id" => $courseWithFreeSamples->id,
+            "vimeo_id" => "419946519",
+            "title" => "Free sample for sponsors",
+            "slug" => "free-sample-for-sponsors",
+            "runtime" => 1396,
+            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "display" => VideoDisplayEnum::SPONSORS,
+        ]);
+
+        Video::create([
+            "series_id" => $courseWithFreeSamples->id,
+            "vimeo_id" => "419946519",
+            "title" => "Course only video",
+            "slug" => "course-only-video",
+            "runtime" => 1396,
+            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "display" => VideoDisplayEnum::LICENSE,
         ]);
     }
 }

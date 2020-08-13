@@ -2,7 +2,7 @@
     <div class="wrap grid sm:grid-cols-2 col-gap-6 row-gap-8 | items-start markup-lists">
         @foreach($allSeries as $series)
             <div>
-                @if(true OR $series->purchasables->count())
+                @if($series->isPurchasable())
                     <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                         <h2 class="title-sm">
                             <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
@@ -21,8 +21,6 @@
                                          {{-- Endif  --}}
                                     </span>
                                 </span>
-
-                               
                             </div>
                         </h2>
                         <p class="mt-4">
@@ -36,7 +34,7 @@
                             <a href="">About this course</a>
                         </p>
                         <p class="mt-4">
-                            <a>
+                            <a href="{{ $series->purchaseLink() }}">
                             <x-button>
                                 Buy course
                             </x-button>
@@ -48,7 +46,7 @@
 
                         {{-- Else  
                             <p class="mt-4 links-underline link-blue">
-                                <a href="">About this course</a>
+                                <a href="{{ $series->purchaseLink() }}">About this course</a>
                             </p>
                             <p class="mt-4">
                                 <a>
@@ -73,7 +71,7 @@
                                     {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
                                     </span>
 
-                                    @if($series->videos->where('display', \App\Models\Enums\VideoDisplayEnum::SPONSORS)->count())
+                                    @if($series->hasSponsoredContent())
                                         <span title="Series has extra content for sponsors" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
                                             <span style="font-size: .6rem" class="icon text-pink">
                                                 {{ svg('icons/fas-heart') }}

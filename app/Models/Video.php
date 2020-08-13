@@ -127,6 +127,10 @@ class Video extends Model implements Sortable
             return true;
         }
 
+        if (! auth()->check()) {
+            return false;
+        }
+
         $userOwnsSeries = $this->series->purchasables
                 ->filter(fn (Purchasable $purchasable) => auth()->user()->owns($purchasable))
                 ->count() > 0;

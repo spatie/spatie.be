@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Enums\VideoDisplayEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\EloquentSortable\Sortable;
@@ -37,6 +38,25 @@ class Series extends Model implements HasMedia, Sortable
 
     public function getUrlAttribute(): string
     {
-        return optional($this->videos->first())->url ?? '';
+        return route('series.show', $this);
+    }
+
+    public function isPurchasable(): bool
+    {
+        return $this->purchasables()->count() > 0;
+    }
+
+    public function purchaseLink(): string
+    {
+        if (! $this->isPurchasable()) {
+            return '';
+        }
+
+        return route('products.show', $this->purchasables->first()->product);
+    }
+
+    public function hasSponsoredContent(): bool
+    {
+        return $this->videos->where('display', VideoDisplayEnum::SPONSORS)->count() > 0;
     }
 }
