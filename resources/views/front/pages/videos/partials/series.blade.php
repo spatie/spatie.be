@@ -15,10 +15,11 @@
                                 <span title="Part of course" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
                                     <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
                                         {{-- If not bought --}}
-                                        {{ svg('icons/fas-lock-alt') }}
-                                        {{-- Else  
-                                         svg('icons/fas-lock-open-alt') --}}
-                                         {{-- Endif  --}}
+                                        @if ($series->isOwnedByCurrentUser())
+                                            {{ svg('icons/fas-lock-open-alt') }}
+                                        @else
+                                            {{ svg('icons/fas-lock-alt') }}
+                                        @endif
                                     </span>
                                 </span>
                             </div>
@@ -27,38 +28,34 @@
                             {{ $series->description }}
                         </p>
 
-                        {{-- If not bought --}}
-                        <p class="mt-4 links-underline link-blue">
-                            <a href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $series->videos()->count()) }}</a>
-                            <span class="text-blue-light">|</span>
-                            <a href="">About this course</a>
-                        </p>
-                        <p class="mt-4">
-                            <a href="{{ $series->purchaseLink() }}">
-                            <x-button>
-                                Buy course
-                            </x-button>
-                            </a>
-                        </p>
-                        @if (true OR sponsorIsViewingPage())
-                            @include('front.pages.videos.partials.sponsorDiscount')
-                        @endif
-
-                        {{-- Else  
+                        @if (! $series->isOwnedByCurrentUser())
                             <p class="mt-4 links-underline link-blue">
+                                <a href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $series->videos()->count()) }}</a>
+                                <span class="text-blue-light">|</span>
                                 <a href="{{ $series->purchaseLink() }}">About this course</a>
                             </p>
                             <p class="mt-4">
-                                <a>
+                                <a href="{{ $series->purchaseLink() }}">
+                                    <x-button>
+                                        Buy course
+                                    </x-button>
+                                </a>
+                            </p>
+                            @if (sponsorIsViewingPage())
+                                @include('front.pages.videos.partials.sponsorDiscount')
+                            @endif
+                        @else
+                            <p class="mt-4 links-underline link-blue">
+                                <a href="{{ $series->url }}">About this course</a>
+                            </p>
+                            <p class="mt-4">
+                                <a href="{{ $series->url }}">
                                 <x-button>
                                     Start course
                                 </x-button>
                                 </a>
                             </p>
-                        --}}
-
-                        {{-- Endif  --}}
-
+                        @endif
                     </div>
                 @else
                     <div class="py-4">

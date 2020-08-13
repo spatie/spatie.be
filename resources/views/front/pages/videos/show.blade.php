@@ -9,11 +9,7 @@
                 <a href="{{ route('videos.index')}}">Videos</a>
                 <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
 
-                @if(true OR $series->purchasables->count())
-                    <a href="" class="">{{ $series->title }}</a>
-                @else
-                    <span>{{ $series->title }}</span>
-                @endif
+                <a href="{{ route('series.show', $series) }}" class="">{{ $series->title }}</a>
 
                 <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
                 <span class="font-sans-bold">{{ $currentVideo->title }}</span>
@@ -122,8 +118,6 @@
                         @endif
                     </div>
                 </div>
-
-
             </div>
         </section>
     </div>

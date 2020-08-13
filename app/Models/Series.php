@@ -59,4 +59,15 @@ class Series extends Model implements HasMedia, Sortable
     {
         return $this->videos->where('display', VideoDisplayEnum::SPONSORS)->count() > 0;
     }
+
+    public function isOwnedByCurrentUser(): bool
+    {
+        if (! auth()->check()) {
+            return false;
+        }
+
+        return $this->purchasables
+                ->filter(fn (Purchasable $purchasable) => auth()->user()->owns($purchasable))
+                ->count() > 0;
+    }
 }
