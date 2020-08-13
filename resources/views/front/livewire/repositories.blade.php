@@ -1,30 +1,29 @@
 <div>
     @if($this->filterable)
-        <div class="wrap flex justify-center mb-8">
-            <input
-                type="search"
-                class="form-input rounded-full px-4"
-                placeholder="Search packages..."
-                wire:model="search"
-            >
+        <div class="wrap flex justify-start mb-8">
+            
         </div>
         <div class="wrap">
-            <div class="flex items-baseline">
-                <h3 class="title-sm mb-4 mr-1">
-                    @if($this->search)
-                        Filtered {{ $this->type === 'projects' ? 'Projects' : 'Packages' }}
-                    @else
-                        All {{ $this->type === 'projects' ? 'Projects' : 'Packages' }}
-                    @endif
-                </h3>
-                <div class="select">
-                    <select wire:model="sort">
-                        <option value="name">by name</option>
-                        <option value="-stars">by popularity</option>
-                        <option value="-repository_created_at">by date</option>
-                    </select>
-                    <span class="select-arrow">
-                    {{ svg('icons/far-angle-down') }}</span>
+            <div class="flex items-baseline justify-between mb-8">
+                <input
+                type="search"
+                class="form-input px-4"
+                placeholder="Search packages..."
+                wire:model="search"
+                >
+                <div class="ml-6">
+                    <label for="sort" class="text-gray mr-2">
+                            Sort
+                    </label>
+                    <div class="select">
+                        <select name="sort" wire:model="sort">
+                            <option value="name">by name</option>
+                            <option value="-stars">by popularity</option>
+                            <option value="-repository_created_at">by date</option>
+                        </select>
+                        <span class="select-arrow">
+                        {{ svg('icons/far-angle-down') }}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +31,7 @@
     <div class="wrap">
         <div>
             @foreach($repositories as $repository)
-                <div class="cells" style="--cols: 3fr 3fr 1fr">
+                <div class="cells" style="grid-template-columns: 3fr 3fr 1fr">
                     <div class="cell-l">
                         <div>
                             <a class="font-sans-bold link-underline link-blue" href="{{ $repository->url }}" target="_blank" rel="nofollow noreferrer noopener">

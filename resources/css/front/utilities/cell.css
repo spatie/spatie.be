@@ -10,30 +10,28 @@
 }
 
 @supports (display: grid) {
-    .cells {
-        @screen md {
+    @screen md {
+        .cells {
             @apply grid;
         }
-    }
 
-    .cell-l {
-        @screen md {
+        .cell-l {
             @apply border-b-2;
             @apply border-gray-lightest;
         }
-    }
+    
 
-    .cell {
-        @screen md {
+   
+        .cell {
             @apply border-b-2;
             @apply border-gray-lightest;
             @apply px-4;
             @apply py-4;
         }
-    }
+    
 
-    .cell-r {
-        @screen md {
+   
+        .cell-r {
             @apply py-4;
             @apply pl-4;
         }
