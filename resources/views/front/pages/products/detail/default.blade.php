@@ -19,7 +19,7 @@
                 {{ $product->description }}
             </p>
             <p class="mt-0">
-                <a href="{{ $product->url }}" target="_blank" class="link-underline link-gray">{{ $product->url }}</a>
+                <a href="{{ $product->url }}" target="_blank" class="link-underline link-black">{{ $product->url }}</a>
             </p>
         </div>
     </section>
