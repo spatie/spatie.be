@@ -14,7 +14,6 @@
 
                                 <span title="Part of course" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
                                     <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
-                                        {{-- If not bought --}}
                                         @if ($series->isOwnedByCurrentUser())
                                             {{ svg('icons/fas-lock-open-alt') }}
                                         @else
