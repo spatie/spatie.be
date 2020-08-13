@@ -90,7 +90,9 @@
                         @endif
                     </div>
 
-                    <livewire:video-completed-button :video="$currentVideo" />
+                    @auth
+                        <livewire:video-completed-button :video="$currentVideo" />
+                    @endauth
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
 
