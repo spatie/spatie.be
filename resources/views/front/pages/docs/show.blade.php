@@ -39,17 +39,17 @@
         <div class="md:col-span-2">
             {{-- Only show for intro page --}}
             <div class="mb-16">
-                <h1 class="banner-slogan text-6xl">
+                <h1 class="banner-slogan">
                     {{ ucfirst($repository->slug) }}
                 </h1>
                 <div class="banner-intro flex items-center justify-start">
                     {{ $alias->slogan }}  
                 </div>
             </div>
-            <h2 class="title text-4xl mb-8">{{ $page->title }}</h2>
+            <h2 class="title-xl mb-8">{{ $page->title }}</h2>
 
             {{-- Else
-                <h1 class="title text-4xl mb-8">{{ $page->title }}</h1>
+                <h1 class="title-xl mb-8">{{ $page->title }}</h1>
             --}}
 
             {{-- Endif --}}

@@ -1,5 +1,5 @@
    
-    <a href="{{ route('about') }}">About us</a>
+    <a href="{{ route('about') }}">About</a>
     
     <a href="{{ route('docs') }}">Docs</a>
 

@@ -9,15 +9,16 @@
     overflow-x: auto;
     @apply my-8;
     @apply p-6;
-    @apply bg-gray-lightest;
-    @apply bg-opacity-50;
+    @apply bg-blue-lightest;
+    @apply bg-opacity-25;
     @apply text-sm;
     @apply font-mono;
 }
 
 .hljs-comment,
 .hljs-meta {
-    @apply text-gray-light;
+    @apply text-gray;
+    @apply text-opacity-50;
 }
 
 .hljs-variable,
