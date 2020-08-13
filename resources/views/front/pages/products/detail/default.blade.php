@@ -19,6 +19,10 @@
             </p>
         </div>
     </section>
+
+    @auth
+        @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
+    @endauth
     
     @if($product->purchasables->count())
         <section class="mb-16 pt-0 pb-8 section-fade">
@@ -57,8 +61,3 @@
             </div>
         </div>
 
-    @auth
-        <div class="wrap">
-            @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
-        </div>
-    @endauth

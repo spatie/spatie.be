@@ -1,4 +1,4 @@
-<h2 class="title line-after mb-12">Your purchases</h2>
+<h2 class="title line-after mb-12">My purchases</h2>
 
 <ul class="grid gap-6">
     @foreach ($purchasesPerProduct as $productId => $purchasesForProduct)

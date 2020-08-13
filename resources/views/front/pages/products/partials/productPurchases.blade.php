@@ -1,7 +1,23 @@
 <div class="mb-8">
-    <a class="link-underline link-black" href="{{ route('products.show', $product) }}">
-        <h2 class="title-sm">{{ $product->title }}</h2>
-    </a>
+
+        <div class="flex items-baseline space-x-4">
+            <h2 class="title-sm mb-0">
+                {{ $product->title }}     
+            </h2>
+
+            <a href="{{ route('products.show', $product) }}#purchases"
+            class="link-blue link-underline">
+                Manage 
+                {{ \Illuminate\Support\Str::plural('purchase', $purchasesForProduct->count()) }}
+            </a>
+
+            <span class="mx-2 text-gray-light">|</span>
+            <a href=""
+            class="link-blue link-underline">
+                Watch course
+            </a>
+        </div>
+
 
     @foreach($purchasesForProduct as $purchase)
         @php
@@ -11,7 +27,7 @@
 
         <div class="cells grid-cols-2">
             <div class="cell-l">
-                <a href="{{ route('products.show', $product) }}">
+                <a class="link-black link-underline" href="{{ route('products.show', $product) }}#purchases">
                     {{ $purchasable->title }}
                 </a>
                 <div class="text-xs text-gray">
@@ -23,7 +39,7 @@
             </div>
 
             <span  class="cell-r flex justify-end">
-                @include('front.pages.products.partials.purchaseActions')
+                {{-- @include('front.pages.products.partials.purchaseActions') --}}
             </span>
         </div>
     @endforeach

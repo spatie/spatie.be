@@ -24,7 +24,7 @@ class ProductSeeder extends Seeder
             'description' => 'Self-host your email marketing software',
             'url' => 'https://mailcoach.app',
             'action_url' => '',
-            'action_label' => 'Buy license',
+            'action_label' => 'Buy license or course',
         ]);
 
         factory(Product::class)->create([
