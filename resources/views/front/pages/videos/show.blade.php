@@ -26,10 +26,10 @@
                 <div class="pt-8 | md:pt-0 md:col-start-3 md:col-span-4">
                     @include('front.pages.videos.partials.vimeo')
 
-                    <div class="w-full shadow-lg bg-white overflow-hidden" id="player"
+                    <div class="w-full shadow-lg bg-white overflow-hidden" id="vimeo"
                          style="height: 0; padding-bottom: 56.25%;">
                         @if ($currentVideo->canBeSeenByCurrentUser())
-                            <iframe class="absolute inset-0 w-full h-full"
+                            <iframe id="player" class="absolute inset-0 w-full h-full"
                                     src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
                                     allowfullscreen allowtransparency></iframe>
                         @else
@@ -89,6 +89,8 @@
                             </div>
                         @endif
                     </div>
+
+                    <livewire:video-completed-button :video="$currentVideo" />
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
 

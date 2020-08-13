@@ -148,4 +148,32 @@ class Video extends Model implements Sortable
     {
         return static::query()->where('series_id', $this->series_id);
     }
+
+    public function hasBeenCompletedByCurrentUser(): bool
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        return $currentUser->completedVideos()->where('video_id', $this->id)->exists();
+    }
+
+    public function markAsCompletedForCurrentUser(): self
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        $currentUser->completedVideos()->syncWithoutDetaching($this);
+
+        return $this;
+    }
+
+    public function markAsUncompletedForCurrentUser(): self
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        $currentUser->completedVideos()->detach($this);
+
+        return $this;
+    }
 }

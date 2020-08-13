@@ -30,6 +30,7 @@
     @include('layout.partials.footer')
 
     <livewire:scripts>
+    @stack('scripts')
 
     {!! schema()->localBusiness() !!}
 </body>
