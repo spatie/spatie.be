@@ -15,7 +15,7 @@ class ProductSeeder extends Seeder
             'description' => 'Laravel Error Tracking',
             'url' => 'https://flareapp.io',
             'action_url' => 'https://flareapp.io',
-            'action_label' => 'Flare',
+            'action_label' => 'Visit flareapp.io',
         ]);
 
         $mailCoach = factory(Product::class)->create([
@@ -23,8 +23,8 @@ class ProductSeeder extends Seeder
             'slug' => 'mailcoach',
             'description' => 'Self-host your email marketing software',
             'url' => 'https://mailcoach.app',
-            'action_url' => 'https://mailcoach.app',
-            'action_label' => 'Mailcoach',
+            'action_url' => '',
+            'action_label' => 'Buy license',
         ]);
 
         factory(Product::class)->create([
@@ -32,8 +32,8 @@ class ProductSeeder extends Seeder
             'slug' => 'medialibrary_pro',
             'description' => 'Every picture needs a frame',
             'url' => 'https://medialibrary.pro',
-            'action_url' => 'https://medialibrary.pro',
-            'action_label' => 'Medialibrary.pro',
+            'action_url' => '',
+            'action_label' => 'Buy license',
         ]);
 
         $mailCoachSingleDomainRenewal = factory(Purchasable::class)->create([

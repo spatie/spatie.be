@@ -134,7 +134,9 @@
     }
 
 
-.markup-list-compact li {
+
+    .markup-lists-compact li,
+    .markup-list-compact li {
     padding-left: 1.5em !important;
 }
 

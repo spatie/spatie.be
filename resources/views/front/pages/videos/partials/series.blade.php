@@ -28,25 +28,20 @@
                         </p>
 
                         @if (! $series->isOwnedByCurrentUser())
-                            <p class="mt-4 links-underline link-green">
-                                <a href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $series->videos()->count()) }}</a>
-                                <span class="text-green-light px-1">|</span>
-                                <a href="{{ $series->purchaseLink() }}">About this course</a>
-                            </p>
-                            <p class="mt-4">
+
+                            <p class="mt-4 flex items-center space-x-4">
                                 <a href="{{ $series->purchaseLink() }}">
                                     <x-button>
                                         Buy course
                                     </x-button>
                                 </a>
+                                <a class="link-green link-underline" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $series->videos()->count()) }}</a>
+
                             </p>
                             @if (sponsorIsViewingPage())
                                 @include('front.pages.videos.partials.sponsorDiscount')
                             @endif
                         @else
-                            <p class="mt-4 links-underline link-blue">
-                                <a href="{{ $series->url }}">About this course</a>
-                            </p>
                             <p class="mt-4">
                                 <a href="{{ $series->url }}">
                                 <x-button>

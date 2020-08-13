@@ -12,7 +12,7 @@
                 <a href="{{ route('series.show', $series) }}" class="">{{ $series->title }}</a>
 
                 <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
-                <span class="font-sans-bold">{{ $currentVideo->title }}</span>
+                <span>{{ $currentVideo->title }}</span>
             </p>
         </div>
     </section>
@@ -91,7 +91,9 @@
                     </div>
 
                     @auth
-                        <livewire:video-completed-button :video="$currentVideo" />
+                        <div class="mt-4 flex justify-end">
+                            <livewire:video-completed-button :video="$currentVideo" />
+                        </div>
                     @endauth
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>

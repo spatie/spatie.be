@@ -21,10 +21,12 @@
                     @include('front.pages.videos.partials.sidebar')
                 </div>
                 <div class="pt-8 | md:pt-0 md:col-start-3 md:col-span-4">
-                    <h2 class="title line-after mt-12">{{ $series->title }}</h2>
+                    <h2 class="title-xl">{{ $series->title }}</h2>
 
                     <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
                         {!! $series->description !!}
+
+                        <p class="mt-4">Pick a topic from the menu to get started.</p>
                     </div>
                 </div>
             </div>

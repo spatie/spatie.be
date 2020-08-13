@@ -35,17 +35,20 @@
                                 <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>
                                 <p class="mt-4">{{ $product->description }}</p>
                             </a>
-                            {{--
-                            <p>
-                                <a class="link-gray link-underline text-xs" target="_blank" href="{{ $product->url }}">{{ $product->url }}</a>
-                            </p>--}}
+
                             <p class="mt-4 flex items-center space-x-4">
-                                <a href="{{ $product->action_url }}">
-                                    <x-button>{{ $product->action_label }}</x-button>
-                                </a>
-                                <a class="link-green link-underline" href="{{ route('products.show', $product) }}">
-                                    Learn more
-                                </a>
+                                @if($product->action_url)
+                                    <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}">
+                                        <x-button>{{ $product->action_label }}</x-button>
+                                    </a>
+                                    <a class="link-green link-underline" href="{{ route('products.show', $product) }}">
+                                        Read more
+                                    </a>
+                                @else
+                                    <a href="{{ route('products.show', $product) }}">
+                                        <x-button>{{ $product->action_label }}</x-button>
+                                    </a>
+                                @endif
                             </p>
                         </div>
                     @endforeach
