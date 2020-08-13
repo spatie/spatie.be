@@ -73,6 +73,8 @@ class Purchasable extends Resource
 
             Markdown::make('Description'),
             Boolean::make('Requires license'),
+
+            Text::make('Sponsor Coupon')->help('For display purposes only, you still need to create this in Paddle.'),
         ];
     }
 }
