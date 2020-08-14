@@ -60,6 +60,7 @@ class Product extends Resource
                 }),
 
             Markdown::make('Description'),
+            Markdown::make('Long Description'),
 
             Boolean::make('External'),
             Text::make('Url')->hideFromIndex(),
