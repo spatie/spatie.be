@@ -39,7 +39,7 @@
         <div class="section pt-0 wrap wrap-8 sm:grid-flow-col-dense">
             <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
                 <div class="illustration is-left" title="Project">
-                    {{ image('portfolio/flare.jpg') }}
+                    {{ $product->getFirstMedia('product-image') }}
                 </div>
             </div>
             <div class="sm:col-start-2 sm:col-span-3">
