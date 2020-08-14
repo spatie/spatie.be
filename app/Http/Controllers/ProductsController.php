@@ -14,7 +14,7 @@ class ProductsController
         $purchasesPerProduct = collect();
         if ($request->user()) {
             $purchasesPerProduct = $request->user()
-                ->purchases()
+                ->purchasesWithoutRenewals()
                 ->get()
                 ->groupBy('purchasable.product_id');
         }
@@ -28,12 +28,12 @@ class ProductsController
 
         if ($request->user()) {
             $purchases = $request->user()
-                ->purchases()
+                ->purchasesWithoutRenewals()
                 ->forProduct($product)
                 ->get();
 
             $licenses = $request->user()
-                ->licenses()
+                ->licensesWithoutRenewals()
                 ->with(['purchasable'])
                 ->forProduct($product)
                 ->get();

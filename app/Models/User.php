@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Enums\PurchasableType;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,9 +48,29 @@ class User extends Authenticatable
         return $this->hasMany(License::class);
     }
 
+    public function licensesWithoutRenewals(): HasMany
+    {
+        return $this->hasMany(License::class)->whereHas('purchasable', function (Builder $query) {
+            $query->whereNotIn('type', [
+                PurchasableType::TYPE_STANDARD_RENEWAL,
+                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+            ]);
+        });
+    }
+
     public function purchases(): HasMany
     {
         return $this->hasMany(Purchase::class)->with('purchasable.product');
+    }
+
+    public function purchasesWithoutRenewals(): HasMany
+    {
+        return $this->hasMany(Purchase::class)->whereHas('purchasable', function (Builder $query) {
+            $query->whereNotIn('type', [
+                PurchasableType::TYPE_STANDARD_RENEWAL,
+                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+            ]);
+        });
     }
 
     public function completedVideos(): BelongsToMany

@@ -24,7 +24,7 @@
         @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
     @endauth
     
-    @if($product->purchasables->count())
+    @if($product->purchasablesWithoutRenewals->count())
         <section class="mb-16 pt-0 pb-8 section-fade">
             <div class="wrap grid md:grid-cols-3 gap-8 justify-center">
 
