@@ -28,7 +28,7 @@
         <section class="mb-16 pt-0 pb-8 section-fade">
             <div class="wrap grid md:grid-cols-3 gap-8 justify-center">
 
-                @foreach($product->purchasables as $purchasable)
+                @foreach($product->purchasablesWithoutRenewals as $purchasable)
                     @include('front.pages.products.partials.priceCard')
                 @endforeach
 
