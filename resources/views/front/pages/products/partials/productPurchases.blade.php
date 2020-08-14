@@ -11,11 +11,12 @@
                 {{ \Illuminate\Support\Str::plural('purchase', $purchasesForProduct->count()) }}
             </a>
 
-            <span class="mx-2 text-gray-light">|</span>
-            <a href=""
-            class="link-blue link-underline">
-                Watch course
-            </a>
+            @if ($purchasesForProduct->filter(fn (\App\Models\Purchase $purchase) => $purchase->hasAccessToVideos())->count() > 0)
+                <span class="mx-2 text-gray-light">|</span>
+                <a href="{{ $purchasesForProduct->first()->purchasable->series->first()->url }}" class="link-blue link-underline">
+                    Watch course
+                </a>
+            @endif
         </div>
 
 

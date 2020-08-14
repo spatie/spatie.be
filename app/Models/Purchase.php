@@ -35,4 +35,9 @@ class Purchase extends Model
     {
         $query->whereHas('purchasable', fn (Builder $query) => $query->where('product_id', $product->id));
     }
+
+    public function hasAccessToVideos(): bool
+    {
+        return $this->purchasable->series->count() > 0;
+    }
 }

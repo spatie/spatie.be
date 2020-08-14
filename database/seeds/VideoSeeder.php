@@ -2,6 +2,9 @@
 
 
 use App\Models\Enums\VideoDisplayEnum;
+use App\Models\Product;
+use App\Models\Purchasable;
+use App\Models\Purchase;
 use App\Models\Series;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
@@ -11,9 +14,12 @@ class VideoSeeder extends Seeder
     public function run()
     {
         Series::create(['title' => 'Laravel Package Training', 'slug' => 'laravel-package-training', 'description' => 'Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!', 'sort_order' => '0']);
-        Series::create(['title' => 'Building Mailcoach', 'slug' => 'building-mailcoach', 'description' => 'Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.', 'sort_order' => '1']);
+        $mailcoach = Series::create(['title' => 'Building Mailcoach', 'slug' => 'building-mailcoach', 'description' => 'Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.', 'sort_order' => '1']);
         Series::create(['title' => 'Readable Laravel', 'slug' => 'readable-laravel', 'description' => 'In this series, we\'ll explore best practices on how to write maintainable and readable code.', 'sort_order' => '2']);
         Series::create(['title' => 'Show me the code', 'slug' => 'show-me-the-code', 'description' => 'Here are some problems that we solved in an elegant way', 'sort_order' => '3']);
+
+        $mailcoachProduct = Product::where('slug', 'mailcoach')->first();
+        $mailcoach->purchasables()->attach(Purchasable::where('product_id', $mailcoachProduct->id)->get());
 
         Video::insert([
           [
@@ -231,7 +237,7 @@ class VideoSeeder extends Seeder
             'description' => 'A course with samples',
             'sort_order' => '0',
         ]);
-        $courseWithFreeSamples->purchasables()->attach(\App\Models\Purchasable::whereType('videos')->first());
+        $courseWithFreeSamples->purchasables()->attach(Purchasable::whereType('videos')->first());
 
         Video::create([
             "series_id" => $courseWithFreeSamples->id,
