@@ -40,7 +40,10 @@ class ProductSeeder extends Seeder
         $mailCoachSingleDomainRenewal = factory(Purchasable::class)->create([
             'type' => PurchasableType::TYPE_STANDARD_RENEWAL,
             'title' => 'Mailcoach single domain renewal',
-            'description' => 'Standard renewal license',
+            'description' => '- Is valid for one domain or subdomain
+- Includes the package, app and videos
+- Includes 1 year of updates and access to our private repository
+- Is renewable if you want to stay on the latest release',
             'paddle_product_id' => '579712',
             'requires_license' => true,
             'product_id' => $mailCoach->id,

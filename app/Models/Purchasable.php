@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\MediaLibrary\HasMedia;
@@ -62,5 +63,10 @@ class Purchasable extends Model implements HasMedia, Sortable
     public function buildSortQuery()
     {
         return static::query()->where('product_id', $this->product_id);
+    }
+
+    public function getDescriptionAttribute(string $value)
+    {
+        return Markdown::parse($value);
     }
 }

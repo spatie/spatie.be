@@ -6,12 +6,7 @@
     <h2 class="title-sm mb-6">{{ $purchasable->title }}</h2>
     
     <div class="markup-lists markup-lists-compact text-xs">
-        <ul>
-            <li>Is valid for one domain or subdomain</li>
-            <li>Includes the package, app and videos</li>
-            <li>Includes 1 year of updates and access to our private repository</li>
-            <li>Is renewable if you want to stay on the latest release</li>
-        </ul>
+        {{ $purchasable->description }}
     </div>
 
     <div class="mt-6 flex justify-center">

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Http\Controllers\ProductsController;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\MediaLibrary\HasMedia;
@@ -54,5 +55,15 @@ class Product extends Model implements HasMedia, Sortable
     public function getUrl(): string
     {
         return action([ProductsController::class, 'show'], $this);
+    }
+
+    public function getDescriptionAttribute(string $value)
+    {
+        return Markdown::parse($value);
+    }
+
+    public function getLongDescriptionAttribute(string $value)
+    {
+        return Markdown::parse($value);
     }
 }
