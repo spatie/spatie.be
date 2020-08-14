@@ -37,7 +37,7 @@
                             </a>
 
                             <p class="mt-4 flex items-center space-x-4">
-                                @if($product->action_url)
+                                @if($product->external && $product->action_url)
                                     <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}">
                                         <x-button>{{ $product->action_label }}</x-button>
                                     </a>

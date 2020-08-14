@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Models\Product as EloquentProduct;
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -59,6 +60,8 @@ class Product extends Resource
                 }),
 
             Markdown::make('Description'),
+
+            Boolean::make('External'),
             Text::make('Url')->hideFromIndex(),
             Text::make('Action url')->hideFromIndex(),
             Text::make('Action label')->hideFromIndex(),

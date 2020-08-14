@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
             'url' => 'https://flareapp.io',
             'action_url' => 'https://flareapp.io',
             'action_label' => 'Visit flareapp.io',
+            'external' => true,
         ]);
 
         $mailCoach = factory(Product::class)->create([
