@@ -1,3 +1,6 @@
+@auth
+    @php($payLink = auth()->user()->chargeProduct($purchasable->paddle_product_id))
+@endauth
 
 <div class="bg-white shadow-lg px-8 py-6">
     <h2 class="title-sm mb-6">{{ $purchasable->title }}</h2>
@@ -12,54 +15,26 @@
     </div>
 
     <div class="mt-6 flex justify-center">
-        <x-button>
-            Buy for $149
-        </x-button>
+        @auth
+            <x-paddle-button :url="$payLink" data-theme="none">
+                <span>Buy for&nbsp;</span>
+                <span class="leading-none">
+                    <span class="" data-id="current-currency-{{ $purchasable->id }}"></span>
+                    <span class="" data-id="current-price-{{ $purchasable->id }}"></span>
+                </span>
+            </x-paddle-button>
+        @else
+            <a href="{{ route('login') }}">
+                <x-button>
+                    <span>Buy for&nbsp;</span>
+                    <span class="leading-none">
+                        <span class="" data-id="current-currency-{{ $purchasable->id }}"></span>
+                        <span class="" data-id="current-price-{{ $purchasable->id }}"></span>
+                    </span>
+                </x-button>
+            </a>
+        @endauth
     </div>
-</div>
-
-<div class="hidden my-8">
-    @auth
-        @php($payLink = auth()->user()->chargeProduct($purchasable->paddle_product_id))
-
-        <section id="cta" class="section">
-            <div class="wrap">
-                <div class="card gradient gradient-green text-white">
-                    <div class="wrap-card grid md:grid-cols-2 md:items-end">
-                        <div class="links-underline links-white">
-                            <p class="text-2xl">
-                                {{ $purchasable->title }}
-                            </p>
-                        </div>
-                        <h2 class="title-xl md:text-right">
-                            <x-paddle-button :url="$payLink" data-theme="none">
-                                Buy
-                            </x-paddle-button>
-                            <span class="text-lg leading-none">
-                                <span class="" data-id="current-currency-{{ $purchasable->id }}"></span>
-                                <span class="" data-id="current-price-{{ $purchasable->id }}"></span>
-                            </span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </section>
-    @else
-        <div class="wrap">
-            <div class="card gradient gradient-green text-white">
-                <div class="wrap-card grid md:grid-cols-2 md:items-end">
-                    <div class="links-underline links-white">
-                        <p class="text-2xl">
-                            Please log in to purchase {{ $purchasable->title }}
-                        </p>
-                    </div>
-                    <h2 class="title-xl md:text-right">
-                        <a href="{{ route('login') }}?next={{ url()->current() }}">Log in</a>
-                    </h2>
-                </div>
-            </div>
-        </div>
-    @endauth
 </div>
 
 <script type="text/javascript">
