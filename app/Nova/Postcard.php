@@ -12,6 +12,8 @@ class Postcard extends Resource
 {
     public static $model = EloquentPostcard::class;
 
+    public static $group = 'Postcards';
+
     public static $title = 'sender';
 
     public static $search = [
