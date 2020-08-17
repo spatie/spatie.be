@@ -13,7 +13,7 @@
         </div>
         <a class="ml-auto flex items-center text-xs link-gray link-underline" href="{{ $alias->githubUrl }}/blob/{{$alias->slug}}/docs/{{ $page->slug }}.md"
             target="_blank">
-            Edit 
+            Edit
             <span class="ml-1 w-4 h-4">
                 {{ svg('github') }}
             </span>

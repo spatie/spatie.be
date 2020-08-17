@@ -21,6 +21,18 @@ class NavigationServiceProvider extends ServiceProvider
                 ->addClass($properties['class'] ?? '');
         });
 
+        Menu::macro('service', function (array $properties = []) {
+            return Menu::new()
+                ->route('about', 'About')
+                ->route('docs', 'Docs')
+                ->route('guidelines', 'Guidelines')
+
+                ->withoutWrapperTag()
+                ->withoutParentTag()
+                ->setActiveClassOnLink()
+                ->setActiveFromRequest();
+        });
+
         Menu::macro('opensource', function () {
             return Menu::new()
                 ->route('open-source.index', 'Overview')
