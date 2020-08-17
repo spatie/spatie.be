@@ -38,7 +38,9 @@ class Docs
                     ->groupBy(fn (DocumentationPage $page) => $page->alias)
                     ->map(function (Collection $pages, string $alias) {
                         $index = $pages->firstWhere('slug', '_index');
-                        $pages = $pages->where('slug', '<>', '_index');
+                        $pages = $pages
+                            ->where('slug', '<>', '_index')
+                            ->sortBy(fn(DocumentationPage $page) => $page->weight ?? PHP_INT_MAX);
 
                         return new Alias($index->title, $index->slogan, $index->branch, $index->githubUrl, $pages);
                     })

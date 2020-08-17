@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
-use Illuminate\Http\Response;
 use Illuminate\Support\Collection;
 use Spatie\Sheets\Sheets;
 
@@ -28,13 +27,13 @@ class DocsController
 
             abort_unless($alias, 404, 'Alias not found');
         } else {
-            $alias = $repository->aliases->last();
+            $alias = $repository->aliases->first();
         }
 
         return redirect()->action([DocsController::class, 'show'], [
             $repository->slug,
             $alias->slug,
-            $alias->pages->first()->slug,
+            $alias->pages->where('section', '_root')->first()->slug,
         ]);
     }
 
@@ -55,18 +54,19 @@ class DocsController
         return view('front.pages.docs.show', compact('page', 'repositories', 'repository', 'pages', 'navigation', 'alias'));
     }
 
-    private function getNavigation(Collection $pages): array
+    private function getNavigation(Collection $pages): Collection
     {
-        $navigation = [];
+        $navigation = $pages
+            ->reduce(function (array $navigation, DocumentationPage $page) {
+                if ($page->isIndex()) {
+                    $navigation[$page->section]['_index'] = $page;
+                } else {
+                    $navigation[$page->section]['pages'][] = $page;
+                }
 
-        foreach ($pages as $page) {
-            if ($page->isIndex()) {
-                $navigation[$page->section]['_index'] = $page;
-            } else {
-                $navigation[$page->section]['pages'][] = $page;
-            }
-        }
+                return $navigation;
+            }, []);
 
-        return $navigation;
+        return collect($navigation)->sortBy(fn (array $pages) => $pages['_index']->weight ?? -1);
     }
 }
