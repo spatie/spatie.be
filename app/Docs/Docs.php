@@ -50,6 +50,7 @@ class Docs
                     ->firstWhere('slug', '_index');
 
                 return new Repository($repository, $aliases, $index);
-            });
+            })
+            ->sortBy('slug');
     }
 }
