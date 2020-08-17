@@ -2,9 +2,9 @@
     <div class="flex items-center pb-4 border-b-2 border-gray-lighter">
         <div class="text-xs font-normal leading-normal select">
             <select name="alias" onChange="location='/docs/{{ $repository->slug }}/' + this.options[this.selectedIndex].value">
-                @foreach($repository->aliases as $alias)
-                    <option value="{{ $alias->slug }}" {{ $page->alias === $alias->slug ? 'selected="selected"' : '' }}>
-                        {{ $alias->slug }} ({{ $alias->branch }})
+                @foreach($repository->aliases as $aliasOption)
+                    <option value="{{ $aliasOption->slug }}" {{ $page->alias === $aliasOption->slug ? 'selected="selected"' : '' }}>
+                        {{ $aliasOption->slug }} ({{ $aliasOption->branch }})
                     </option>
                 @endforeach
             </select>
@@ -19,7 +19,6 @@
             </span>
         </a>
     </div>
-
 
     <div class="sticky top-0 pt-4 ">
     <input type="search" class="text-xs form-input w-full h-8 py-0 px-2 mb-8" id="algolia-search" placeholder="Search…">

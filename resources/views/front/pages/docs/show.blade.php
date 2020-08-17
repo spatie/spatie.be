@@ -14,23 +14,7 @@
         {{ $repository->slug }}
     </x-slot>
 
-    <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
-        <div class="wrap">
-            <p class="mt-4">
-                <a href="{{ route('docs')}}" class="link-underline link-blue">Docs</a>
-                <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
-                <span>{{ ucfirst($repository->slug) }}</span>
-                @foreach($navigation as $key => $section)
-                    @foreach($section['pages'] as $navItem)
-                        @if($page->slug === $navItem->slug)
-                            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
-                            <span>{{ $navItem->title }}</span>
-                        @endif
-                    @endforeach
-                @endforeach
-            </p>
-        </div>
-    </section>
+    @include('front.pages.docs.partials.breadcrumbs')
 
     <section class="wrap grid pb-24 gap-8 md:grid-cols-3 items-stretch">
         <div class="z-10 | print:hidden">
@@ -43,7 +27,7 @@
                     {{ ucfirst($repository->slug) }}
                 </h1>
                 <div class="banner-intro flex items-center justify-start">
-                    {{ $alias->slogan }}  
+                    {{ $alias->slogan }}
                 </div>
             </div>
             <h2 class="title-xl mb-8">{{ $page->title }}</h2>
@@ -60,7 +44,7 @@
         </div>
     </section>
 
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 

@@ -19,6 +19,11 @@ class DocumentationPage extends Sheet
         return Str::endsWith($this->slug, '_index');
     }
 
+    public function isRootPage(): bool
+    {
+        return $this->section === '_root';
+    }
+
     public function getSectionAttribute(): string
     {
         $parts = explode('/', $this->slug);
