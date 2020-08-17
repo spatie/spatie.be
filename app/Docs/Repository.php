@@ -16,7 +16,7 @@ class Repository
     public function __construct(string $slug, Collection $aliases, DocumentationPage $index)
     {
         $this->slug = $slug;
-        $this->aliases = $aliases;
+        $this->aliases = $aliases->sortByDesc('slug');
         $this->category = $index->category ?? null;
     }
 
