@@ -1,4 +1,5 @@
 /node_modules
+/public/docs
 /public/css
 /public/js
 /public/hot

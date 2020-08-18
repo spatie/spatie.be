@@ -39,7 +39,8 @@ class ImportDocsFromRepositoriesCommand extends Command
                     && git remote add -f origin https://{$accessToken}@github.com/spatie/{$repository['name']}.git \
                     && git pull origin ${branch} \
                     && cp -r docs/* ../../../docs/{$repository['name']}/{$alias} \
-                    && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md
+                    && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md \
+                    && find . -not -name '*.md' | cpio -pdm ../../../../public/docs/{$repository['name']}/{$alias}/
                 BASH
                 );
 
@@ -49,6 +50,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         all($processes)
             ->then(function ($output) {
+                print_r($output);
                 $this->info('Fetched docs from all repositories.');
 
                 $this->info('Caching Sheets.');
