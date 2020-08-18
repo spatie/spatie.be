@@ -40,7 +40,8 @@ class ImportDocsFromRepositoriesCommand extends Command
                     && git pull origin ${branch} \
                     && cp -r docs/* ../../../docs/{$repository['name']}/{$alias} \
                     && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md \
-                    && find . -not -name '*.md' | cpio -pdm ../../../../public/docs/{$repository['name']}/{$alias}/
+                    && cd docs/ \
+                    && find . -not -name '*.md' | cpio -pdm ../../../../../public/docs/{$repository['name']}/{$alias}/
                 BASH
                 );
 

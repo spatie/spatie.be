@@ -18,6 +18,7 @@ class ContentParser implements \Spatie\Sheets\ContentParser
     public function __construct()
     {
         $environment = Environment::createCommonMarkEnvironment();
+//        $environment->addInlineRenderer(Image::class, new ImageRenderer());
         $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer());
         $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer());
 
