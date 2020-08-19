@@ -10,7 +10,7 @@ mix.version()
     .version()
 
     .options({
-        // Our own set of PostCSS plugins.
+    // Our own set of PostCSS plugins.
         postCss: [
             require('tailwindcss'),
         ],
