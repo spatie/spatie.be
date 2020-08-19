@@ -1,6 +1,6 @@
 const { mix } = require('laravel-mix');
 
-require('laravel-mix-purgecss');
+// require('laravel-mix-purgecss');
 
 mix.version()
 
@@ -47,7 +47,7 @@ mix.version()
         },
     })
 
-    .purgeCss({
-        only: ['css/front.css'],
-        whitelistPatterns: [/active/, /grid-span/, /fancybox/, /char-/, /fill-/],
-    });
+    // .purgeCss({
+    //     only: ['css/front.css'],
+    //     whitelistPatterns: [/active/, /grid-span/, /fancybox/, /char-/, /fill-/],
+    // });
