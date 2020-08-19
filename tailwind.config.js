@@ -1,6 +1,9 @@
 module.exports = {
     important: true,
 
+    // Purge already runs in our webpack config (I think)
+    purge: false,
+
     variants: ['responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
 
     plugins: [
