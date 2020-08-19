@@ -1,23 +1,21 @@
 {
   "private": true,
   "scripts": {
-    "format": "prettier --write \"**/*.{css,js,vue}\"",
+    "format": "prettier --write \"**/*.{css,js}\"",
     "dev": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "watch": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
   },
   "dependencies": {
-    "caniuse-lite": "^1.0.30000697",
-    "cross-env": "^5.1.0",
-    "laravel-mix": "^4.0.7",
-    "laravel-mix-purgecss": "^4.2.0",
+    "cross-env": "^7.0",
+    "laravel-mix": "^5.0.1",
+    "laravel-mix-purgecss": "^5.0.0",
     "object-fit-images": "^2.5.9",
     "prettier": "^1.10.2",
     "tailwindcss": "^1.5"
   },
   "devDependencies": {
     "@babel/preset-env": "^7.11.0",
-    "@tailwindcss/custom-forms": "^0.2.1",
-    "vue-template-compiler": "^2.6.11"
+    "@tailwindcss/custom-forms": "^0.2.1"
   }
 }
