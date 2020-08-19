@@ -54,11 +54,12 @@ mkdir {{ $newReleaseDir }}
 # Clone the repo
 git clone --depth 1 git@github.com:{{ $repository }} {{ $newReleaseName }}
 
+cd {{ $newReleaseDir }}
+
 # Checkout correct branch
 git checkout add-customer-site
 
 # Configure sparse checkout
-cd {{ $newReleaseDir }}
 git config core.sparsecheckout true
 echo "*" > .git/info/sparse-checkout
 echo "!storage" >> .git/info/sparse-checkout
