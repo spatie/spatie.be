@@ -16,7 +16,7 @@
     "laravel-mix-purgecss": "^5.0.0",
     "object-fit-images": "^2.5.9",
     "prettier": "^1.10.2",
-    "tailwindcss": "1.4.6",
+    "tailwindcss": "^1.5",
     "@babel/preset-env": "^7.11.0",
     "@tailwindcss/custom-forms": "^0.2.1",
     "vue-template-compiler": "^2.6.11"
