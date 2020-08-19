@@ -19,6 +19,8 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\GuidelinesController;
 use Illuminate\Support\Facades\Route;
 
+Route::demoAccess('/omed');
+
 Route::mailcoach('mailcoach');
 
 Route::post('paddle/webhook', WebhookController::class);
