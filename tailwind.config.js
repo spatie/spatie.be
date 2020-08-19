@@ -1,14 +1,25 @@
 module.exports = {
     important: true,
 
-    // Purge already runs in our webpack config (I think)
-    purge: false,
+    purge: ['./resources/**/*.blade.php', './resources/**/*.js'],
 
-    variants: ['responsive', 'group-hover', 'group-focus', 'focus-within', 'first', 'last', 'odd', 'even', 'hover', 'focus', 'active', 'visited', 'disabled'],
-
-    plugins: [
-        require('@tailwindcss/custom-forms')
+    variants: [
+        'responsive',
+        'group-hover',
+        'group-focus',
+        'focus-within',
+        'first',
+        'last',
+        'odd',
+        'even',
+        'hover',
+        'focus',
+        'active',
+        'visited',
+        'disabled',
     ],
+
+    plugins: [require('@tailwindcss/custom-forms')],
 
     theme: {
         colors: {
@@ -56,7 +67,7 @@ module.exports = {
             green: '#21b989',
             'green-dark': '#0a8867',
 
-            'purple' : '#885de3',
+            purple: '#885de3',
         },
 
         screens: {
@@ -125,7 +136,7 @@ module.exports = {
 
         extend: {
             fontSize: {
-                'xxs': '.55rem', // small!
+                xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
             },
 
@@ -166,7 +177,7 @@ module.exports = {
             },
         },
 
-        customForms: (theme) => ({
+        customForms: theme => ({
             default: {
                 input: {
                     color: theme('colors.black'),
