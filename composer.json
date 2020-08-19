@@ -43,6 +43,7 @@
         "spatie/commonmark-highlighter": "^2.1",
         "spatie/eloquent-sortable": "^3.8",
         "spatie/laravel-backup": "^6.8",
+        "spatie/laravel-demo-mode": "^2.6",
         "spatie/laravel-mailcoach": "^2.21",
         "spatie/laravel-mailcoach-mailgun-feedback": "^2.2",
         "spatie/laravel-mailcoach-monaco": "^1.0",
