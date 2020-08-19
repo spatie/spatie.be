@@ -11,6 +11,5 @@ mix.js('resources/js/front/app.js', 'public/js')
     ])
     .version()
     .purgeCss({
-        enabled: false, // temp disable
         whitelistPatterns: [/active/, /grid-span/, /fancybox/, /char-/, /fill-/],
     });
