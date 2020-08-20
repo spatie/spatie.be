@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Paddle\Receipt;
 
 class Purchase extends Model
 {
@@ -24,6 +25,11 @@ class Purchase extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function receipt(): BelongsTo
+    {
+        return $this->belongsTo(Receipt::class);
     }
 
     public function scopeWhereUser(Builder $query, User $user)

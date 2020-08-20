@@ -6,6 +6,7 @@ use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use Laravel\Paddle\Receipt;
 
 class ProcessPaymentSucceededJob
 {
@@ -30,7 +31,7 @@ class ProcessPaymentSucceededJob
             return;
         }
 
-        if (Purchase::where('paddle_alert_id', $paddlePayload->alert_id)->first()) {
+        if (Receipt::where('order_id', $paddlePayload->order_id)->first()) {
             return;
         }
 

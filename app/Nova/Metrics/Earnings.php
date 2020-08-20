@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
 use Laravel\Nova\Metrics\Value;
+use Laravel\Paddle\Receipt;
 
 class Earnings extends Trend
 {
@@ -19,7 +20,7 @@ class Earnings extends Trend
     public function calculate(NovaRequest $request)
     {
         return $this
-            ->sumByDays($request, Purchase::class, DB::raw('(earnings/100)'))
+            ->sumByDays($request, Receipt::class, DB::raw('(amount - tax)'))
             ->euros()
             ->showSumValue();
     }

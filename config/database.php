@@ -67,7 +67,7 @@ return [
             'driver' => 'mysql',
             'url' => null,
             'host' => env('DB_MAILCOACH_IMPORT_HOST'),
-            'port' => '3306',
+            'port' => env('DB_MAILCOACH_IMPORT_PORT'),
             'database' => env('DB_MAILCOACH_IMPORT_DATABASE', 'mailcoach'),
             'username' => env('DB_MAILCOACH_IMPORT_USERNAME', 'forge'),
             'password' => env('DB_MAILCOACH_IMPORT_PASSWORD'),

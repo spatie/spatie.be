@@ -6,6 +6,7 @@ use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
+use Laravel\Paddle\Receipt;
 
 class HandlePurchaseAction
 {
@@ -27,17 +28,13 @@ class HandlePurchaseAction
 
     protected function createPurchase(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
     {
+        $receipt = Receipt::where('order_id', $paddlePayload->order_id)->first();
+
         return Purchase::create([
             'license_id' => null,
             'user_id' => $user->id,
             'purchasable_id' => $purchasable->id,
-            'receipt_url' => $paddlePayload->receipt_url,
-            'payment_method' => $paddlePayload->payment_method,
-            'paddle_alert_id' => $paddlePayload->alert_id,
-            'paddle_fee' => $paddlePayload->fee,
-            'payment_tax' => $paddlePayload->payment_tax,
-            'earnings' => $paddlePayload->earnings,
-            'paddle_webhook_payload' => $paddlePayload->toArray(),
+            'receipt_id' => $receipt->id,
         ]);
     }
 }
