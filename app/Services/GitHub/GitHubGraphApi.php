@@ -29,7 +29,7 @@ class GitHubGraphApi
                     'name' => $sponsor['sponsorEntity']['name'],
                     'email' => $sponsor['sponsorEntity']['email'],
                     'avatar' => $sponsor['sponsorEntity']['avatarUrl'],
-                    'company' => $sponsor['sponsorEntity']['company'],
+                    'company' => $sponsor['sponsorEntity']['company'] ?? null,
                     'location' => $sponsor['sponsorEntity']['location'],
                     'website' => $sponsor['sponsorEntity']['websiteUrl'],
                     'created_at' => $sponsor['createdAt'],
