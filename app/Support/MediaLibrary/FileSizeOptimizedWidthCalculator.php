@@ -4,7 +4,6 @@ namespace App\Support\MediaLibrary;
 
 use Illuminate\Support\Collection;
 use Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthCalculator as BaseFileSizeOptimizedWidthCalculator;
-use Spatie\MediaLibrary\Support\ImageFactory;
 
 class FileSizeOptimizedWidthCalculator extends BaseFileSizeOptimizedWidthCalculator
 {
