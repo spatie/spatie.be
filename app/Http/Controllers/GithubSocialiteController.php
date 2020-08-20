@@ -16,7 +16,9 @@ class GithubSocialiteController
             session()->put('auth-user-email', auth()->user()->email);
         }
 
-        return Socialite::driver('github')->redirect();
+        return Socialite::driver('github')
+            ->redirectUrl(action([GithubSocialiteController::class, 'callback']))
+            ->redirect();
     }
 
     public function callback()
