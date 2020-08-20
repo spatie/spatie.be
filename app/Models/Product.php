@@ -66,13 +66,13 @@ class Product extends Model implements HasMedia, Sortable
         return action([ProductsController::class, 'show'], $this);
     }
 
-    public function getDescriptionAttribute(string $value)
+    public function getDescriptionAttribute(?string $value)
     {
-        return Markdown::parse($value);
+        return Markdown::parse($value ?? '');
     }
 
-    public function getLongDescriptionAttribute(string $value)
+    public function getLongDescriptionAttribute(?string $value)
     {
-        return Markdown::parse($value);
+        return Markdown::parse($value ?? '');
     }
 }

@@ -30,7 +30,7 @@ class Purchase extends Resource
             Text::make('Earnings'),
 
             BelongsTo::make('Purchasable'),
-            BelongsTo::make('License'),
+            BelongsTo::make('License')->nullable(),
             BelongsTo::make('User'),
             BelongsTo::make('Receipt'),
         ];

@@ -19,6 +19,25 @@ class ProductSeeder extends Seeder
             'external' => true,
         ]);
 
+        $beyondCrud = factory(Product::class)->create([
+            'title' => 'Laravel Beyond CRUD',
+            'slug' => 'laravel-beyond-crud',
+            'description' => 'Learn how to build larger-than-average Laravel applications and maintain them for years to come.',
+            'url' => 'https://laravel-beyond-crud.com/',
+            'action_url' => '',
+            'action_label' => 'Buy course',
+        ]);
+
+        factory(Purchasable::class)->create([
+            'type' => PurchasableType::TYPE_STANDARD,
+            'title' => 'Laravel Beyond CRUD course access',
+            'description' => 'Course access',
+            'paddle_product_id' => '578345',
+            'requires_license' => false,
+            'product_id' => $beyondCrud->id,
+            'renewal_purchasable_id' => null,
+        ]);
+
         $mailCoach = factory(Product::class)->create([
             'title' => 'Mailcoach',
             'slug' => 'mailcoach',
