@@ -16,11 +16,6 @@ class Postcard extends Model implements HasMedia
         'media',
     ];
 
-    public function registerMediaConversions(Media $media = null): void
-    {
-        //
-    }
-
     public function getSenderAttribute(): string
     {
         return collect(explode(',', $this->attributes['sender']))
