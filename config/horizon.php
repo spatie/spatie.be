@@ -76,7 +76,7 @@ return [
                 'connection' => 'redis',
                 'queue' => ['default'],
                 'balance' => 'simple',
-                'processes' => 2,
+                'processes' => 5,
                 'tries' => 3,
             ],
             'mailcoach' => [
