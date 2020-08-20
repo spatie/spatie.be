@@ -150,11 +150,12 @@ class ImportPurchasesFromExternalDBCommand extends Command
                 'updated_at' => $purchase->updated_at,
             ]);
 
-            Purchase::create([
+            Purchase::firstOrCreate([
                 'user_id' => $user->id,
                 'purchasable_id' => $purchasable->id,
-                'license_id' => isset($license) ? $license->id : null,
                 'receipt_id' => $receipt->id,
+            ], [
+                'license_id' => isset($license) ? $license->id : null,
                 'created_at' => $purchase->created_at,
                 'updated_at' => $purchase->updated_at,
                 'paddle_webhook_payload' => $payload,
