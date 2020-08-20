@@ -78,6 +78,7 @@ return [
                 'balance' => 'simple',
                 'processes' => 5,
                 'tries' => 1,
+                'timeout' => 60 * 10,
             ],
             'mailcoach' => [
                 'connection' => 'mailcoach-redis',
