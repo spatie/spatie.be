@@ -26,6 +26,9 @@ class Purchase extends Resource
         return [
             ID::make()->sortable(),
 
+            Text::make('Paddle Fee'),
+            Text::make('Earnings'),
+
             BelongsTo::make('Purchasable'),
             BelongsTo::make('License'),
             BelongsTo::make('User'),

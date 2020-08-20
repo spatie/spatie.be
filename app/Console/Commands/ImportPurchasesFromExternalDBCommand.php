@@ -157,6 +157,9 @@ class ImportPurchasesFromExternalDBCommand extends Command
                 'receipt_id' => $receipt->id,
                 'created_at' => $purchase->created_at,
                 'updated_at' => $purchase->updated_at,
+                'paddle_webhook_payload' => $payload,
+                'paddle_fee' => $payload['fee'] ?? 0,
+                'earnings' => $payload['earnings'] ?? 0, // Cannot check earnings for these
             ]);
 
             $this->getOutput()->progressAdvance(1);

@@ -12,15 +12,11 @@ class RemovePaddleColumnsFromPurchasesTable extends Migration
             $table->dropColumn([
                 'payment_method',
                 'receipt_url',
-                'paddle_webhook_payload',
-                'paddle_fee',
                 'payment_tax',
-                'earnings',
                 'paddle_alert_id',
             ]);
 
             $table->foreignId('receipt_id')->after('license_id');
-
             $table->foreign('receipt_id')->references('id')->on('receipts');
         });
     }

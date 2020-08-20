@@ -35,6 +35,9 @@ class HandlePurchaseAction
             'user_id' => $user->id,
             'purchasable_id' => $purchasable->id,
             'receipt_id' => $receipt->id,
+            'paddle_webhook_payload' => $paddlePayload,
+            'paddle_fee' => $paddlePayload->fee,
+            'earnings' => $paddlePayload->earnings,
         ]);
     }
 }

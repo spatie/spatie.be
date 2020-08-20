@@ -3,6 +3,7 @@
 namespace App\Nova\Metrics;
 
 use App\Models\Purchase;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
@@ -20,8 +21,16 @@ class Earnings extends Trend
     public function calculate(NovaRequest $request)
     {
         return $this
-            ->sumByDays($request, Receipt::where('amount', '!=', '0'), DB::raw('amount - tax'))
-            ->euros()
+            ->sumByDays(
+                $request,
+                Purchase::query()
+                    ->where('earnings', '!=', '0')
+                    ->whereHas('receipt', function (Builder $query) {
+                        $query->where('currency', 'USD');
+                    }),
+                'earnings'
+            )
+            ->dollars()
             ->showSumValue();
     }
 
