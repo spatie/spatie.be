@@ -4,6 +4,7 @@ namespace App\Nova\Metrics;
 
 use App\Models\Product;
 use App\Models\Purchase;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Partition;
 
@@ -20,6 +21,9 @@ class PurchasesPerProduct extends Partition
         return $this->count(
             $request,
             Purchase::query()
+                ->whereHas('receipt', function (Builder $query) {
+                    $query->where('amount', '!=', 0);
+                })
                 ->select('purchases.*', 'purchasables.product_id')
                 ->join('purchasables', 'purchasables.id', '=', 'purchases.purchasable_id'),
             'product_id'

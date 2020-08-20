@@ -10,6 +10,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Laravel\Paddle\Receipt;
 
@@ -39,24 +40,36 @@ class ImportPurchasesFromExternalDBCommand extends Command
         $purchases = DB::connection($this->argument('db'))
             ->table('purchases')
             ->leftJoin('users', 'purchases.user_id', '=', 'users.id')
-            ->leftJoin('products', 'products.id', '=', 'purchases.product_id')
-            ->leftJoin('licenses', 'licenses.id', '=', 'purchases.license_id')
-            ->select(
-                'purchases.*',
-                DB::raw('users.email as user_email'),
-                DB::raw('users.password as user_password'),
-                DB::raw('users.name as user_name'),
-                DB::raw('users.github_username as user_github_username'),
-                DB::raw('users.github_id as user_github_id'),
-                DB::raw('products.paddle_product_id as product_paddle_id'),
-                DB::raw('products.name as product_name'),
-                DB::raw('products.type as product_type'),
+            ->leftJoin('products', 'products.id', '=', 'purchases.product_id');
+
+        if (Schema::connection($this->argument('db'))->hasTable('licenses')) {
+            $purchases = $purchases->leftJoin('licenses', 'licenses.id', '=', 'purchases.license_id');
+        }
+
+        $purchases = $purchases->select(
+            'purchases.*',
+            DB::raw('users.email as user_email'),
+            DB::raw('users.password as user_password'),
+            DB::raw('users.name as user_name'),
+            DB::raw('users.github_username as user_github_username'),
+            DB::raw('users.github_id as user_github_id'),
+            DB::raw('users.created_at as user_created_at'),
+            DB::raw('products.paddle_product_id as product_paddle_id'),
+            DB::raw('products.name as product_name'),
+            DB::raw('products.type as product_type'),
+        );
+
+        if (Schema::connection($this->argument('db'))->hasTable('licenses')) {
+            $purchases = $purchases->addSelect([
                 DB::raw('licenses.uuid as license_uuid'),
                 DB::raw('licenses.domain as license_domain'),
                 DB::raw('licenses.key as license_key'),
-                DB::raw('licenses.expires_at as license_expires_at')
-            )
-            ->get();
+                DB::raw('licenses.expires_at as license_expires_at'),
+                DB::raw('licenses.created_at as license_created_at'),
+            ]);
+        }
+
+        $purchases = $purchases->get();
 
         $this->getOutput()->progressStart(count($purchases));
 
@@ -69,6 +82,7 @@ class ImportPurchasesFromExternalDBCommand extends Command
                 'password' => $purchase->user_password,
                 'github_username' => $purchase->user_github_username,
                 'github_id' => $purchase->user_github_id,
+                'created_at' => $purchase->user_created_at,
             ]);
 
             $purchasable = Purchasable::query()
@@ -96,16 +110,28 @@ class ImportPurchasesFromExternalDBCommand extends Command
                 ]);
             }
 
-            if ($purchase->license_key) {
+            if (isset($purchase->license_key) && $purchase->license_key) {
                 $license = License::create([
                     'user_id' => $user->id,
                     'purchasable_id' => $purchasable->id,
                     'key' => $purchase->license_key,
                     'expires_at' => $purchase->license_expires_at,
+                    'created_at' => $purchase->license_created_at,
                 ]);
             }
 
-            $payload = json_decode($purchase->paddle_webhook_payload, true);
+            if (isset($purchase->paddle_webhook_payload)) {
+                $payload = json_decode($purchase->paddle_webhook_payload ?? $purchase->paddle_response, true);
+            } else {
+                $payload = json_decode($purchase->paddle_response, true);
+                $payload = array_merge($payload['order'], [
+                    'checkout_id' => $payload['checkout']['checkout_id'],
+                    'sale_gross' => $payload['order']['total'],
+                    'payment_tax' => $payload['order']['total_tax'],
+                    'quantity' => 1,
+                    'event_time' => Carbon::parse($payload['order']['completed']['date'], 'UTC'),
+                ]);
+            }
 
             $receipt = Receipt::firstOrCreate([
                 'order_id' => $payload['order_id'],
@@ -120,6 +146,8 @@ class ImportPurchasesFromExternalDBCommand extends Command
                 'quantity' => (int) $payload['quantity'],
                 'receipt_url' => $payload['receipt_url'],
                 'paid_at' => Carbon::createFromFormat('Y-m-d H:i:s', $payload['event_time'], 'UTC'),
+                'created_at' => $purchase->created_at,
+                'updated_at' => $purchase->updated_at,
             ]);
 
             Purchase::create([
@@ -127,6 +155,8 @@ class ImportPurchasesFromExternalDBCommand extends Command
                 'purchasable_id' => $purchasable->id,
                 'license_id' => isset($license) ? $license->id : null,
                 'receipt_id' => $receipt->id,
+                'created_at' => $purchase->created_at,
+                'updated_at' => $purchase->updated_at,
             ]);
 
             $this->getOutput()->progressAdvance(1);

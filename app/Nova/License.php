@@ -15,7 +15,7 @@ class License extends Resource
 
     public static $model = EloquentLicense::class;
 
-    //public static $title = 'title';
+    public static $title = 'key';
 
     public static $search = [
         'id', 'title',

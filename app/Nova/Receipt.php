@@ -5,15 +5,17 @@ namespace App\Nova;
 use App\Models\Purchase as EloquentPurchase;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Paddle\Receipt as PaddleReceipt;
 
-class Purchase extends Resource
+class Receipt extends Resource
 {
     public static $group = "Products";
 
-    public static $model = EloquentPurchase::class;
+    public static $model = PaddleReceipt::class;
 
     //public static $title = 'title';
 
@@ -26,10 +28,10 @@ class Purchase extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Purchasable'),
-            BelongsTo::make('License'),
-            BelongsTo::make('User'),
-            BelongsTo::make('Receipt'),
+            Number::make('Amount'),
+            Number::make('Tax'),
+            Text::make('Currency'),
+            Text::make('Receipt Url'),
         ];
     }
 }

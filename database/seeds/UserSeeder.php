@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         ]))->each(function (User $user) {
             $randomPurchasables = Purchasable::query()->inRandomOrder()->take(random_int(0, 5))->get();
 
-            $this->createPurchases($user, $randomPurchasables);
+            //$this->createPurchases($user, $randomPurchasables);
         });
     }
 

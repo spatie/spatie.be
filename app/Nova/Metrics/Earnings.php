@@ -20,7 +20,7 @@ class Earnings extends Trend
     public function calculate(NovaRequest $request)
     {
         return $this
-            ->sumByDays($request, Receipt::class, DB::raw('(amount - tax)'))
+            ->sumByDays($request, Receipt::where('amount', '!=', '0'), DB::raw('amount - tax'))
             ->euros()
             ->showSumValue();
     }
