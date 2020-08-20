@@ -47,7 +47,7 @@ class Postcard extends Resource
                     };
                 })
                 ->thumbnail(function ($value, $disk, EloquentPostcard $postcard) {
-                    return $postcard->getFirstMediaUrl('default', 'thumb');
+                    return $postcard->getFirstMediaUrl('default');
                 })
                 ->preview(function ($value, $disk) {
                     return $value;
