@@ -18,11 +18,7 @@ class Postcard extends Model implements HasMedia
 
     public function registerMediaConversions(Media $media = null): void
     {
-        $this
-            ->addMediaConversion('thumb')
-            ->width(200)
-            ->height(200)
-            ->nonQueued();
+        //
     }
 
     public function getSenderAttribute(): string
