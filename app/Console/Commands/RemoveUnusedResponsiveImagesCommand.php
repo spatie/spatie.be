@@ -13,7 +13,7 @@ class RemoveUnusedResponsiveImagesCommand extends Command
 
     public function handle()
     {
-        Postcard::each(function (Postcard $postcard ) {
+        Postcard::each(function (Postcard $postcard) {
             $postcard->clearMediaCollection('thumb');
         });
     }
