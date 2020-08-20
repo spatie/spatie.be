@@ -16,9 +16,7 @@ class GithubSocialiteController
             session()->put('auth-user-email', auth()->user()->email);
         }
 
-        return Socialite::driver('github')
-            ->redirectUrl(action([GithubSocialiteController::class, 'callback']))
-            ->redirect();
+        return Socialite::driver('github')->redirect();
     }
 
     public function callback()
@@ -46,7 +44,7 @@ class GithubSocialiteController
             'is_sponsor' => $isSponsor,
         ]);
 
-        if (! $user->is_sponsor && ! $user->isSpatieMember()) {
+        if (!$user->is_sponsor && !$user->isSpatieMember()) {
             session()->flash('not-a-sponsor');
         }
 
