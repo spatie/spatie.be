@@ -111,10 +111,11 @@ class ImportPurchasesFromExternalDBCommand extends Command
             }
 
             if (isset($purchase->license_key) && $purchase->license_key) {
-                $license = License::create([
+                $license = License::firstOrCreate([
                     'user_id' => $user->id,
                     'purchasable_id' => $purchasable->id,
                     'key' => $purchase->license_key,
+                ], [
                     'expires_at' => $purchase->license_expires_at,
                     'created_at' => $purchase->license_created_at,
                 ]);
