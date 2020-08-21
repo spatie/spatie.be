@@ -11,7 +11,7 @@
         <section id="resources" class="section">
             <div class="wrap">
                 <div class="markup links-underline links-blue">
-                    
+
                     <div class="mb-16 card gradient gradient-blue text-black">
                         <div class="wrap-card md:items-center">
                             <ul class="grid gap-4 links-blue links-underline bullets bullets-blue">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
 
             <div class="wrap">
                 <div class="markup links-underline links-blue">
