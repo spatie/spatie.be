@@ -28,6 +28,9 @@ class Purchasable extends Model implements HasMedia, Sortable
         $this->addMediaCollection('purchasable-image')
             ->singleFile()
             ->withResponsiveImages();
+
+        $this->addMediaCollection('downloads')
+            ->useDisk('purchasable_downloads');
     }
 
     public function getImageAttribute()

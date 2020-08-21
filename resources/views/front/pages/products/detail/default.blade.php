@@ -1,4 +1,4 @@
-    
+
     <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
             <p class="mt-4 links-underline links-blue">
@@ -23,7 +23,11 @@
     @auth
         @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
     @endauth
-    
+
+    @auth
+        @include('front.pages.products.partials.purchasedProducts', ['purchases' => $purchases])
+    @endauth
+
     @if($product->purchasablesWithoutRenewals->count())
         <section class="mb-16 pt-0 pb-8 section-fade">
             <div class="wrap grid md:grid-cols-3 gap-8 justify-center">

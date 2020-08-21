@@ -53,6 +53,11 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'purchasable_downloads' => [
+            'driver' => 'local',
+            'root' => storage_path('app/purchasable_downloads'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

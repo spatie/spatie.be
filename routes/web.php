@@ -6,7 +6,10 @@ use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
+use App\Http\Controllers\DocsController;
+use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\GithubSocialiteController;
+use App\Http\Controllers\GuidelinesController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
@@ -15,8 +18,6 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
-use App\Http\Controllers\DocsController;
-use App\Http\Controllers\GuidelinesController;
 use Illuminate\Support\Facades\Route;
 
 Route::demoAccess('/demo');
@@ -26,7 +27,6 @@ Route::mailcoach('mailcoach');
 Route::post('paddle/webhook', WebhookController::class);
 
 Route::middleware('demoMode')->group(function () {
-
     Route::view('/', 'front.pages.home.index')->name('home');
 
     Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
@@ -42,7 +42,11 @@ Route::middleware('demoMode')->group(function () {
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductsController::class, 'index'])->name('products.index');
         Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
+
+        Route::get('{product:slug}/purchases/{purchase}/download/{media}', DownloadPurchasableController::class)
+            ->middleware('auth');
     });
+
 
     Route::prefix('open-source')->group(function () {
         Route::get('/', [OpenSourceController::class, 'index'])->name('open-source.index');
@@ -61,7 +65,7 @@ Route::middleware('demoMode')->group(function () {
         Route::get('{slug}', function ($slug) {
             $view = "front.pages.vacancies.{$slug}";
 
-            if (!view()->exists($view)) {
+            if (! view()->exists($view)) {
                 abort(404);
             }
 
