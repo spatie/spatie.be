@@ -25,7 +25,7 @@ class NavigationServiceProvider extends ServiceProvider
             return Menu::new()
                 ->route('about', 'About')
                 ->route('docs', 'Docs')
-                ->route('guidelines', 'Guidelines')
+                //->route('guidelines', 'Guidelines')
 
                 ->withoutWrapperTag()
                 ->withoutParentTag()
