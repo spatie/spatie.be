@@ -29,7 +29,7 @@
                                     <br><span class="text-base">Become the next package maestro. 
                                         <br>
                                         Learn how to build reusable components like we build them.<br>
-                                        For only <strong>$79</strong>.</span>
+                                        For only <strong>$149</strong>.</span>
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
