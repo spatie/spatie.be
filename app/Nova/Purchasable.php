@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Enums\PurchasableType;
 use App\Models\Purchasable as EloquentPurchasable;
+use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
@@ -73,6 +74,8 @@ class Purchasable extends Resource
 
             Markdown::make('Description'),
             Boolean::make('Requires license'),
+
+            Files::make('Downloads'),
 
             Text::make('Sponsor Coupon')->help('For display purposes only, you still need to create this in Paddle.'),
         ];

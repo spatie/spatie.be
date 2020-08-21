@@ -46,5 +46,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'spatieMembers' => OnlyForSpatie::class,
         'demoMode' => \Spatie\DemoMode\DemoMode::class,
+        'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
     ];
 }

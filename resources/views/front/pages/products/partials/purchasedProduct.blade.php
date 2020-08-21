@@ -1,5 +1,7 @@
 @php
     /** @var \App\Models\Purchase $purchase */
+
+    $purchasable = $purchase->purchasable;
 @endphp
 
 <div class="cells grid-cols-2">
@@ -10,13 +12,27 @@
             Purchases at {{ $purchase->created_at->format('d/m/Y') }}
         </div>
         <div>
-            @foreach($purchase->purchasable->getMedia('downloads') as $download)
-                {{ $download->id }}
-            @endforeach
+            <ul>
+                @foreach($purchasable->getMedia('downloads') as $download)
+                    @php
+                        $downloadUrl =  URL::temporarySignedRoute(
+                            'purchase.download',
+                            now()->addMinutes(30),
+                            [$purchasable->product, $purchase, $download]
+                        );
+                    @endphp
+
+                    <li>
+                        <a download="download" href="{{ $downloadUrl }}">
+                            Download {{$download->name}}
+                        </a>
+                    </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 
-    <span  class="cell-r flex justify-end space-x-4">
+    <span class="cell-r flex justify-end space-x-4">
         <x-button>
             Watch videos
         </x-button>

@@ -43,8 +43,9 @@ Route::middleware('demoMode')->group(function () {
         Route::get('/', [ProductsController::class, 'index'])->name('products.index');
         Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
 
-        Route::get('{product:slug}/purchases/{purchase}/download/{media}', DownloadPurchasableController::class)
-            ->middleware('auth');
+        Route::get('{product:slug}/purchases/{purchase}/download/{file}', DownloadPurchasableController::class)
+            ->middleware(['auth', 'signed'])
+            ->name('purchase.download');
     });
 
 

@@ -18,6 +18,7 @@
         "aws/aws-sdk-php": "^3.140",
         "barryvdh/laravel-debugbar": "^3.0",
         "doctrine/dbal": "^2.8",
+        "ebess/advanced-nova-media-library": "^3.2",
         "facade/ignition": "^2.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
