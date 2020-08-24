@@ -47,7 +47,7 @@
                 </div>
             </div>
             <div class="sm:col-start-2 sm:col-span-3">
-                <div class="markup links-blue links-underline | sm:grid-text-right">
+                <div class="markup markup-lists links-blue links-underline | sm:grid-text-right">
                     {{ $product->formattedLongDescription }}
 
                     <p class="mt-4 flex items-center space-x-4">
