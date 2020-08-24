@@ -23,11 +23,7 @@ class Earnings extends Trend
         return $this
             ->sumByDays(
                 $request,
-                Purchase::query()
-                    ->where('earnings', '!=', '0')
-                    ->whereHas('receipt', function (Builder $query) {
-                        $query->where('currency', 'USD');
-                    }),
+                Purchase::where('earnings', '!=', '0'),
                 'earnings'
             )
             ->dollars()
