@@ -40,7 +40,7 @@
                                         <p class="hidden md:block text-center">
                                             You'll need to buy the course to view this video!
                                         </p>
-                                        <a class="mt-2 md:mt-0 font-sans-bold cursor-pointer md:border-l-2 md:border-green-dark bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full @guest md:rounded-l-none @endguest text-white"
+                                        <a class="mt-4 md:mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white"
                                            href="{{ $series->purchasables->first()->product->getUrl() }}">
                                             <span>Buy a license</span>
                                         </a>

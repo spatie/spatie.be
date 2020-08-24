@@ -12,7 +12,7 @@
                     With a growing portfolio of {{ App\Models\Repository::count() }} packages, maintaining and supporting all issues and updates has become a substantial portion of our workload.<br>
                 </p>
                 <p class="text-lg">
-                    You can <a href="{{ route('open-source.support') }}">support us</a> with sponsorships or by buying one of our paid products.
+                    You can <a href="{{ route('open-source.support') }}">support us</a> with sponsorships or by buying one of our <a href="{{ route('products.index') }}">paid products</a>.
                 </p>
             </div>
         </div>
