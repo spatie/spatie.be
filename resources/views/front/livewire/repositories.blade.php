@@ -17,6 +17,7 @@
                     </label>
                     <div class="select">
                         <select name="sort" wire:model="sort">
+                            <option value="-downloads">by downloads</option>
                             <option value="name">by name</option>
                             <option value="-stars">by popularity</option>
                             <option value="-repository_created_at">by date</option>

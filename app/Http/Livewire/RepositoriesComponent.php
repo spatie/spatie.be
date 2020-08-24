@@ -12,7 +12,7 @@ class RepositoriesComponent extends Component
     public $search = '';
 
     /** @var string */
-    public $sort = 'name';
+    public $sort = '-downloads';
 
     /** @var string */
     public $type = 'packages';
