@@ -16,8 +16,6 @@
 
 
     <section class="section section-group">
-
-
             <div class="wrap">
                 @auth
                     @includeWhen($purchasesPerProduct->isNotEmpty(), "front.pages.products.partials.purchases", ['purchasesPerProduct' => $purchasesPerProduct])
@@ -31,7 +29,9 @@
                     @foreach ($products as $product)
                         <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                             <a href="{{ route('products.show', $product) }}">
-                                {{ $product->getFirstMedia('product-image') }}
+                                <div class="mb-4">
+                                    {{ $product->getFirstMedia('product-image') }}
+                                </div>
                                 <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>
                                 <p class="mt-4">{{ $product->formattedDescription }}</p>
                             </a>
