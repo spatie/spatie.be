@@ -2,7 +2,7 @@
     @php($payLink = auth()->user()->chargeProduct($purchasable->paddle_product_id))
 @endauth
 
-<div class="flex flex-col bg-white shadow-lg px-8 py-6">
+<div class="mb-8 mx-3 max-w-md flex flex-col bg-white shadow-lg px-8 py-6">
     <h2 class="flex-0 title-sm mb-4 h-10">{{ $purchasable->title }}</h2>
     
     <div class="flex-grow markup-lists markup-lists-compact text-xs">
