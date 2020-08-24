@@ -36,7 +36,7 @@ class RepositoriesComponent extends Component
         $type = 'packages',
         $filterable = true,
         $highlighted = false,
-        $sort = 'name'
+        $sort = '-downloads'
     ) {
         $this->type = $type;
         $this->filterable = $filterable;
