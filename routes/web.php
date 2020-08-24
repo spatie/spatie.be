@@ -15,6 +15,7 @@ use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
@@ -25,6 +26,10 @@ Route::demoAccess('/demo');
 Route::mailcoach('mailcoach');
 
 Route::post('paddle/webhook', WebhookController::class);
+
+Route::domain('docs.spatie.be')->group(function () {
+    Route::get('/{url}', RedirectDocsDomainController::class)->where('url', '.*');
+});
 
 Route::middleware('demoMode')->group(function () {
     Route::view('/', 'front.pages.home.index')->name('home');
