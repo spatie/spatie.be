@@ -24,13 +24,14 @@ class Video extends Resource
     public static $title = 'title';
 
     public static $search = [
-        'id', 'title',
+        'id', 'title', 'chapter',
     ];
 
     public function fields(Request $request)
     {
         return [
             BelongsTo::make('Series', 'series', Series::class)->sortable(),
+
 
             Text::make('Title')
                 ->sortable()
@@ -56,6 +57,8 @@ class Video extends Resource
                 })
                 ->hideWhenUpdating()
                 ->hideWhenCreating(),
+
+            Text::make('Chapter')->sortable(),
 
             Text::make('vimeo_id')
                 ->sortable()

@@ -2,14 +2,14 @@
     @php($payLink = auth()->user()->chargeProduct($purchasable->paddle_product_id))
 @endauth
 
-<div class="bg-white shadow-lg px-8 py-6">
-    <h2 class="title-sm mb-6 min-h-10">{{ $purchasable->title }}</h2>
+<div class="flex flex-col bg-white shadow-lg px-8 py-6">
+    <h2 class="flex-0 title-sm mb-4 h-10">{{ $purchasable->title }}</h2>
     
-    <div class="markup-lists markup-lists-compact text-xs">
+    <div class="flex-grow markup-lists markup-lists-compact text-xs">
         {!! $purchasable->formattedDescription !!}
     </div>
 
-    <div class="mt-6 flex justify-center">
+    <div class="flex-0 mt-6 flex justify-center">
         @auth
             <x-paddle-button :url="$payLink" data-theme="none">
                 <x-button>
