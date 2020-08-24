@@ -16,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
 
         Flash::levels([
             'success' => 'success',
+            'error' => 'error',
         ]);
     }
 }

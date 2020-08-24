@@ -45,6 +45,7 @@
         "spatie/eloquent-sortable": "^3.8",
         "spatie/laravel-backup": "^6.8",
         "spatie/laravel-demo-mode": "^2.6",
+        "spatie/laravel-flash": "^1.6",
         "spatie/laravel-mailcoach": "^2.21",
         "spatie/laravel-mailcoach-mailgun-feedback": "^2.2",
         "spatie/laravel-mailcoach-monaco": "^1.0",
@@ -61,13 +62,13 @@
         "zendframework/zend-http": "^2.7"
     },
     "require-dev": {
-        "facade/ignition": "^2.0",
         "friendsofphp/php-cs-fixer": "^2.4",
         "fzaninotto/faker": "^1.4",
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^4.1",
         "phpunit/phpunit": "^8.5",
         "psalm/plugin-laravel": "^1.2",
+        "spatie/laravel-log-dumper": "^1.3",
         "vimeo/psalm": "^3.11"
     },
     "repositories": [

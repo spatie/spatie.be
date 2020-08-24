@@ -14,6 +14,8 @@ class LogoutController extends Controller
 
     protected function loggedOut()
     {
+        flash()->success('You have been logged out!');
+
         return back();
     }
 }

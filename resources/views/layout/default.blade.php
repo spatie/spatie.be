@@ -22,6 +22,7 @@
     @include('layout.partials.wallpaper')
     
     @include('layout.partials.header')
+    @include('layout.partials.flash')
 
     <div class="flex-grow" role="main">
         {{ $slot }}
