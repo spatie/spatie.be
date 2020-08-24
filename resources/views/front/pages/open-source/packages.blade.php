@@ -11,6 +11,8 @@
     @include('front.pages.open-source.partials.banner-packages')
 
     <div class="section section-group pt-0 section-fade">
+        @include('front.pages.open-source.partials.packages-intro')
+
         <section class="section">
             <livewire:repositories />
         </section>
