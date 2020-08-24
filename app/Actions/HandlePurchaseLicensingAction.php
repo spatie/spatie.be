@@ -24,6 +24,8 @@ class HandlePurchaseLicensingAction
         }
 
         $this->handleLicensing($purchase);
+
+        return $purchase;
     }
 
     protected function handleLicensing(Purchase $purchase): Purchase
