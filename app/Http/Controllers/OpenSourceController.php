@@ -7,19 +7,6 @@ use App\Models\Issue;
 
 class OpenSourceController
 {
-    public function index()
-    {
-        $issues = Issue::latest()->take(2)->get();
-
-        /** @var Contributor $contributor */
-        $contributor = Contributor::first();
-
-        return view('front.pages.open-source.index', [
-            'issues' => $issues,
-            'contributor' => $contributor,
-        ]);
-    }
-
     public function packages()
     {
         return view('front.pages.open-source.packages');

@@ -50,10 +50,9 @@ Route::middleware('demoMode')->group(function () {
 
 
     Route::prefix('open-source')->group(function () {
-        Route::get('/', [OpenSourceController::class, 'index'])->name('open-source.index');
-        Route::get('postcards', [PostcardController::class, 'index'])->name('open-source.postcards');
-        Route::get('packages', [OpenSourceController::class, 'packages'])->name('open-source.packages');
+        Route::get('/', [OpenSourceController::class, 'packages'])->name('open-source.packages');
         Route::get('projects', [OpenSourceController::class, 'projects'])->name('open-source.projects');
+        Route::get('postcards', [PostcardController::class, 'index'])->name('open-source.postcards');
         Route::get('support-us', [OpenSourceController::class, 'support'])->name('open-source.support');
     });
 
