@@ -22,7 +22,7 @@ class PurchasesPerProduct extends Partition
             $request,
             Purchase::query()
                 ->whereHas('receipt', function (Builder $query) {
-                    $query->where('earnings', '!=', 0);
+                    $query->where('amount', '!=', 0);
                 })
                 ->select('purchases.*', 'purchasables.product_id')
                 ->join('purchasables', 'purchasables.id', '=', 'purchases.purchasable_id'),
