@@ -26,7 +26,7 @@
                                     {{ svg('icons/fas-heart') }}
                                 </span>
                                 <span>
-                                    Thank you so much for being our sponsor, {{ auth()->user()->name ?? auth()->user()->github_username }}!
+                                    Thank you so much for being our sponsor!
                                 </span>
                             </div>
                         @else
