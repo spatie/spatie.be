@@ -26,6 +26,6 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        return session('next', route('home'));
+        return session('next', route('products.index'));
     }
 }
