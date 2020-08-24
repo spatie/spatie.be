@@ -9,8 +9,7 @@ class UnsubscribeUserFromNewsletterAction
 {
     public function execute(User $user): User
     {
-        /** @todo how do we get the specific list? */
-        $emailList = EmailList::first();
+        $emailList = EmailList::firstWhere('name', 'Spatie');
 
         if ($emailList->isSubscribed($user->email)) {
             $emailList->unsubscribe($user->email);

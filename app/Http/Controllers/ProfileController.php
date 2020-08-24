@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actions\SubscribeUserToNewsletterAction;
+use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Http\Auth\Requests\ProfileRequest;
 
 class ProfileController
@@ -17,9 +18,9 @@ class ProfileController
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
 
-        if ($profileRequest->get('newsletter')) {
-            app(SubscribeUserToNewsletterAction::class)->execute($user);
-        }
+        $profileRequest->get('newsletter')
+            ? app(SubscribeUserToNewsletterAction::class)->execute($user)
+            : app(UnsubscribeUserFromNewsletterAction::class)->execute($user);
 
         $user->update($profileRequest->except('newsletter'));
 
