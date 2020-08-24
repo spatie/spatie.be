@@ -29,7 +29,7 @@
                     @foreach ($products as $product)
                         <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                             <a href="{{ route('products.show', $product) }}">
-                                <div class="mb-4">
+                                <div class="mb-6">
                                     {{ $product->getFirstMedia('product-image') }}
                                 </div>
                                 <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>

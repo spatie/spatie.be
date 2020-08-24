@@ -14,9 +14,9 @@
             <h1 class="banner-slogan">
                 {{ $product->title }}
             </h1>
-            <p class="banner-intro">
+            <div class="banner-intro">
                 {{ $product->formattedDescription }}
-            </p>
+            </div>
         </div>
     </section>
 
