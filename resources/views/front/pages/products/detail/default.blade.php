@@ -29,7 +29,7 @@
     @endauth
 
     @if($product->purchasablesWithoutRenewals->count())
-        <section class="mb-16 pt-0 section-fade">
+        <section class="md:-mt-8 mb-16 pt-0 section-fade">
             <div class="wrap">
                 <div class="-mx-3 flex items-stretch justify-center">
                 @foreach($product->purchasablesWithoutRenewals as $purchasable)
