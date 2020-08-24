@@ -146,7 +146,7 @@ class Video extends Model implements Sortable
 
     public function buildSortQuery()
     {
-        return static::query()->where('series_id', $this->series_id);
+        return static::query()->where('series_id', $this->series_id)->where('chapter', $this->chapter);
     }
 
     public function hasBeenCompletedByCurrentUser(): bool
