@@ -75,6 +75,6 @@ class User extends Authenticatable
 
     public function completedVideos(): BelongsToMany
     {
-        return $this->belongsToMany(Video::class, 'video_completions');
+        return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
     }
 }
