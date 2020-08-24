@@ -23,9 +23,7 @@ class HandlePurchaseLicensingAction
             throw new Exception("Purchase {$purchase->id} already has a license ({$purchase->license_id})");
         }
 
-        $this->handleLicensing($purchase);
-
-        return $purchase;
+        return $this->handleLicensing($purchase);
     }
 
     protected function handleLicensing(Purchase $purchase): Purchase
