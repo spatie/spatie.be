@@ -15,7 +15,7 @@
                     Learn more
                 </h3>
                 <ul class="mt-4 text-lg bullets bullets-blue links-underline links-black">
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.index') }}">Open source packages</a></li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.packages') }}">Open source packages</a></li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('products.index') }}">Our products</a> and  <a href="{{ route('videos.index') }}">videos</a></li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('web-development') }}">Laravel, React &amp; Vue development</a></li>
                 </ul>

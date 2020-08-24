@@ -6,7 +6,7 @@
         <div class="sm:col-span-6">
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    We are truly a household name in the community, having contributed over <a href="{{ route('open-source.index') }}">
+                    We are truly a household name in the community, having contributed over <a href="{{ route('open-source.packages') }}">
                     {{ App\Models\Repository::count() }} packages</a> that have been downloaded <strong>{{ App\Models\Repository::humanReadableDownloadCount() }} times</strong> by peer developers.
                 </p>
                 <p class="text-lg">
