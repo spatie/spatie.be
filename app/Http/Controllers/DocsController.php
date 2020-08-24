@@ -51,7 +51,9 @@ class DocsController
 
         $navigation = $this->getNavigation($pages);
 
-        return view('front.pages.docs.show', compact('page', 'repositories', 'repository', 'pages', 'navigation', 'alias'));
+        $showBigTitle = $page->slug === $navigation['_root']['pages'][0]->slug;
+
+        return view('front.pages.docs.show', compact('page', 'repositories', 'repository', 'pages', 'navigation', 'alias', 'showBigTitle'));
     }
 
     private function getNavigation(Collection $pages): Collection

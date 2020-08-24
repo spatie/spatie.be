@@ -21,7 +21,8 @@
              @include('front.pages.docs.partials.navigation')
         </div>
         <div class="md:col-span-2">
-            {{-- Only show for intro page --}}
+
+            @if($showBigTitle)
             <div class="mb-16">
                 <h1 class="banner-slogan">
                     {{ ucfirst($repository->slug) }}
@@ -30,6 +31,8 @@
                     {{ $alias->slogan }}
                 </div>
             </div>
+            @endif
+
             <h2 class="title-xl mb-8">{{ $page->title }}</h2>
 
             {{-- Else
