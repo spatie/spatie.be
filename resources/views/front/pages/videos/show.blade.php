@@ -90,11 +90,11 @@
                         @endif
                     </div>
 
-                    @auth
+                    @if ($currentVideo->canBeSeenByCurrentUser())
                         <div class="mt-4 flex justify-end">
                             <livewire:video-completed-button :video="$currentVideo" />
                         </div>
-                    @endauth
+                    @endif
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
 

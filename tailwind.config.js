@@ -170,6 +170,11 @@ module.exports = {
                 '24': '6rem',
             },
 
+            minHeight: {
+                '10': '2.5rem',
+            },
+
+
             zIndex: {
                 auto: 'auto',
                 back: -1,
