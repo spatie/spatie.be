@@ -15,40 +15,14 @@
                     <div class="mb-16 card gradient gradient-blue text-black">
                         <div class="wrap-card md:items-center">
                             <ul class="grid gap-4 links-blue links-underline bullets bullets-blue">
-                                <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    <a class="text-xl font-sans-bold" href="https://laravel-beyond-crud.com">
-                                        Laravel Beyond CRUD</a>
-                                    <br><span class="text-base">Learn how to build larger-than-average Laravel applications 
-                                        and maintain them for years to come.<br>
-                                       Coming <strong>September 2020</strong>.</span>
-                                </li>
-                                <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    <a class="text-xl font-sans-bold" href="https://laravelpackage.training">
-                                        Laravel Package Training</a>
-                                    <br><span class="text-base">Become the next package maestro. 
-                                        <br>
-                                        Learn how to build reusable components like we build them.<br>
-                                        For only <strong>$79</strong>.</span>
-                                </li>
-                                <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    <a class="text-xl font-sans-bold" href="https://mailcoach.app/register">
-                                        Mailcoach.app</a>
-                                    <br><span class="text-base">Self-host your email newsletter campaigns. 
-                                        <br>
-                                        Includes <a href="https://mailcoach.app/videos">a video course</a> on how to improve your Laravel skills.<br>
-                                        For only <strong>$149</strong>.</span>
-                                </li>
-                                <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    <a class="text-xl font-sans-bold" href="https://flareapp.io/register">Flareapp.io</a>
-                                    <br>
-                                    <span class="text-base">Error tracker for Laravel, made together with <a href="https://beyondco.de" target="_blank" rel="nofollow noreferrer noopener">Beyondco.de</a>
-                                    <br>
-                                    From <strong>$29/Mo</strong>.</span>
-                                </li>
+                                @foreach ($products as $product)
+                                    <li>
+                                        <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                                        <a class="text-xl font-sans-bold" href="{{ route('products.show', $product) }}">
+                                            {{ $product->title }}</a>
+                                        <br><span class="text-base">{{ $product->formattedDescription }}</span>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
