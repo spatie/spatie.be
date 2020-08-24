@@ -5,6 +5,6 @@ justify-center flex items-center
 px-6 h-10 
 font-sans-bold text-white
 transition-bg duration-300
-focus:outline-none focus:border-blue-light">
+focus:outline-none focus:border-blue-light whitespace-no-wrap">
     {{ $slot }}
 </button>
