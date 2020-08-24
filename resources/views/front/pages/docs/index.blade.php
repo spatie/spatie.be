@@ -1,8 +1,4 @@
 <x-page title="Documentation" background="/backgrounds/docs.jpg">
-    {{--    <x-slot name="description">--}}
-    {{--        This is a placeholder--}}
-    {{--    </x-slot>--}}
-
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
