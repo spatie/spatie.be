@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contributor;
 use App\Models\Issue;
+use App\Models\Product;
 
 class OpenSourceController
 {
@@ -21,8 +22,11 @@ class OpenSourceController
     {
         $contributor = Contributor::first();
 
+        $products = Product::orderBy('sort_order')->get();
+
         return view('front.pages.open-source.support', [
             'contributor' => $contributor,
+            'products' => $products,
         ]);
     }
 }
