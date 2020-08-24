@@ -3,7 +3,7 @@
 @endauth
 
 <div class="bg-white shadow-lg px-8 py-6">
-    <h2 class="title-sm mb-6">{{ $purchasable->title }}</h2>
+    <h2 class="title-sm mb-6 min-h-10">{{ $purchasable->title }}</h2>
     
     <div class="markup-lists markup-lists-compact text-xs">
         {!! $purchasable->formattedDescription !!}
