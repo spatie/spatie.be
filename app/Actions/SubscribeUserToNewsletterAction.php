@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Models\User;
 use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Models\Subscriber;
 
 class SubscribeUserToNewsletterAction
 {
@@ -11,7 +12,10 @@ class SubscribeUserToNewsletterAction
     {
         $emailList = EmailList::firstWhere('name', 'Spatie');
 
-        $emailList->subscribe($user->email);
+
+        Subscriber::createWithEmail($user->email)
+            ->skipConfirmation()
+            ->subscribeTo($emailList);
 
         return $user;
     }

@@ -7,6 +7,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this
+            ->call(EmailListSeeder::class)
             ->call(MembersSeeder::class)
             ->call(InsightsSeeder::class)
             ->call(RepositoriesSeeder::class)
