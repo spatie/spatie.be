@@ -9,6 +9,7 @@ class CreateVideoCompletionsTable extends Migration
     public function up()
     {
         Schema::create('video_completions', function (Blueprint $table) {
+            $table->id();
             $table->unsignedInteger('user_id');
             $table->unsignedBigInteger('video_id');
             $table->timestamps();
