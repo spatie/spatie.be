@@ -30,7 +30,7 @@
                         <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                             <a href="{{ route('products.show', $product) }}">
                                 <div class="pt-4 pb-8 px-12">
-                                    <span class="shadow-lg">{{ $product->getFirstMedia('product-image') }}</span>
+                                    <div class="shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
                                 </div>
                                 <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>
                                 <p class="mt-4">{{ $product->formattedDescription }}</p>
