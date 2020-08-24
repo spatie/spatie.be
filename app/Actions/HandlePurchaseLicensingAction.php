@@ -23,10 +23,6 @@ class HandlePurchaseLicensingAction
             throw new Exception("Purchase {$purchase->id} already has a license ({$purchase->license_id})");
         }
 
-        if (! $purchase->purchasable->requires_license) {
-            return $purchase;
-        }
-
         return $this->handleLicensing($purchase);
     }
 
@@ -35,6 +31,10 @@ class HandlePurchaseLicensingAction
         $purchasableToLicense = $purchase->purchasable->isRenewal()
             ? $purchase->purchasable->originalPurchasable
             : $purchase->purchasable;
+
+        if (! $purchasableToLicense->requires_license) {
+            return $purchase;
+        }
 
         if ($purchase->purchasable->isRenewal()) {
             $this->ensureUserOwnsPurchasableToRenew($purchase->user, $purchasableToLicense);
