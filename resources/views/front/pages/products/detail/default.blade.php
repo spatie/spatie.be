@@ -29,12 +29,13 @@
     @endauth
 
     @if($product->purchasablesWithoutRenewals->count())
-        <section class="mb-16 pt-0 pb-8 section-fade">
-            <div class="wrap grid md:grid-cols-3 gap-8 justify-center">
-
+        <section class="mb-16 pt-0 section-fade">
+            <div class="wrap">
+                <div class="-mx-3 flex items-stretch justify-center">
                 @foreach($product->purchasablesWithoutRenewals as $purchasable)
                     @include('front.pages.products.partials.priceCard')
                 @endforeach
+                </div>
 
             </div>
         </section>
