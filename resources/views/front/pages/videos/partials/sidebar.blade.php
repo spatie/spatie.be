@@ -5,7 +5,7 @@
     <ol class="text-xs grid gap-2 links-blue markup-list-compact">
         @forelse ($series->videos->groupBy('chapter') as $chapter => $videosPerChapter)
             @if ($chapter)
-                <h3 class="title-sm text-xs">
+                <h3 class="title-subtext mt-6 mb-2">
                     {{ $chapter }}
                 </h3>
             @endif
