@@ -195,6 +195,7 @@ module.exports = {
                 },
                 textarea: {
                     color: theme('colors.black'),
+                    borderWidth: '2px',
                     borderRadius: theme('borderRadius.sm'),
                     borderColor: theme('colors.gray-light'),
                     height: theme('spacing.32'),
@@ -208,6 +209,7 @@ module.exports = {
                 },
                 select: {
                     color: theme('colors.black'),
+                    borderWidth: '2px',
                     borderRadius: theme('borderRadius.sm'),
                     borderColor: theme('colors.gray-light'),
                     height: theme('spacing.10'),
@@ -220,6 +222,7 @@ module.exports = {
                     },
                 },
                 checkbox: {
+                    borderWidth: '2px',
                     borderRadius: theme('borderRadius.sm'),
                     borderColor: theme('colors.gray-light'),
                     color: theme('colors.blue'),
@@ -232,6 +235,7 @@ module.exports = {
                     },
                 },
                 radio: {
+                    borderWidth: '2px',
                     borderRadius: theme('borderRadius.full'),
                     borderColor: theme('colors.gray-light'),
                     color: theme('colors.blue'),
