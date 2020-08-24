@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
+use Laravel\Paddle\Cashier;
 use Spatie\Mailcoach\Models\EmailList;
 
 class User extends Authenticatable
@@ -24,6 +25,15 @@ class User extends Authenticatable
     public $casts = [
         'is_admin' => 'bool',
     ];
+
+    public function getPayLinkForProductId(string $productId)
+    {
+        return $this->chargeProduct($productId, [
+            'quantity_variable' => false,
+            'customer_email' => auth()->user()->email,
+            'marketing_consent' => true,
+        ]);
+    }
 
     public function isSponsoring(): bool
     {

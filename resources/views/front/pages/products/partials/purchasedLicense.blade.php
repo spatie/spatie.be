@@ -1,9 +1,3 @@
-@php
-    /** @var \App\Models\License $license */
-
-    $payLink = auth()->user()->chargeProduct($license->purchasable->paddle_product_id)
-@endphp
-
 <div class="cells grid-cols-2">
     <div class="cell-l">
         <code class="font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
@@ -16,7 +10,9 @@
     </div>
 
     <span  class="cell-r flex justify-end space-x-4">
-        <x-paddle-button :url="$payLink" data-theme="none">
+        <x-paddle-button
+                :url="auth()->user()->getPayLinkForProductId($license->purchasable->paddle_product_id)"
+                data-theme="none">
             <x-button>
                     Renew for 
                     <span class="ml-1 text-lg leading-none">

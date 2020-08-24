@@ -1,7 +1,3 @@
-@auth
-    @php($payLink = auth()->user()->chargeProduct($purchasable->paddle_product_id))
-@endauth
-
 <div class="mb-8 mx-3 max-w-md flex flex-col bg-white shadow-lg px-8 py-6">
     <h2 class="flex-0 title-sm mb-4 h-10">{{ $purchasable->title }}</h2>
     
@@ -11,7 +7,7 @@
 
     <div class="flex-0 mt-6 flex justify-center">
         @auth
-            <x-paddle-button :url="$payLink" data-theme="none">
+            <x-paddle-button :url="auth()->user()->getPayLinkForProductId($purchasable->paddle_product_id)" data-theme="none">
                 <x-button>
                     <span>Buy for&nbsp;</span>
                     <span data-id="current-currency-{{ $purchasable->id }}"></span>
