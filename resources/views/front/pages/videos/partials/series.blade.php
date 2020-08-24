@@ -24,7 +24,7 @@
                             </div>
                         </h2>
                         <p class="mt-4">
-                            {{ $series->description }}
+                            {{ $series->formattedDescription }}
                         </p>
 
                         @if (! $series->isOwnedByCurrentUser())
@@ -72,7 +72,7 @@
                                 </div>
                             </h2>
                             <p class="mt-4">
-                                {{ $series->description }}
+                                {{ $series->formattedDescription }}
                             </p>
                             <p class="mt-4">
                                 <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('videos', $series->videos()->count()) }}</a>

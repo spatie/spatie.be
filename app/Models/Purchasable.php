@@ -68,8 +68,8 @@ class Purchasable extends Model implements HasMedia, Sortable
         return static::query()->where('product_id', $this->product_id);
     }
 
-    public function getDescriptionAttribute(string $value)
+    public function getFormattedDescriptionAttribute()
     {
-        return Markdown::parse($value);
+        return Markdown::parse($this->description);
     }
 }

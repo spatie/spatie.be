@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Enums\VideoDisplayEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\MediaLibrary\HasMedia;
@@ -69,5 +70,10 @@ class Series extends Model implements HasMedia, Sortable
         return $this->purchasables
                 ->filter(fn (Purchasable $purchasable) => auth()->user()->owns($purchasable))
                 ->count() > 0;
+    }
+
+    public function getFormattedDescriptionAttribute()
+    {
+        return Markdown::parse($this->description);
     }
 }

@@ -33,7 +33,7 @@
                             <a href="{{ route('products.show', $product) }}">
                                 {{ $product->getFirstMedia('product-image') }}
                                 <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>
-                                <p class="mt-4">{{ $product->description }}</p>
+                                <p class="mt-4">{{ $product->formattedDescription }}</p>
                             </a>
 
                             <p class="mt-4 flex items-center space-x-4">

@@ -6,7 +6,7 @@
     <h2 class="title-sm mb-6">{{ $purchasable->title }}</h2>
     
     <div class="markup-lists markup-lists-compact text-xs">
-        {!! $purchasable->description !!}
+        {!! $purchasable->formattedDescription !!}
     </div>
 
     <div class="mt-6 flex justify-center">
