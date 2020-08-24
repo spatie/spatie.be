@@ -48,7 +48,7 @@
             </div>
             <div class="sm:col-start-2 sm:col-span-3">
                 <div class="markup links-blue links-underline | sm:grid-text-right">
-                    {{ $product->formattedDescription }}
+                    {{ $product->formattedLongDescription }}
 
                     <p class="mt-4 flex items-center space-x-4">
                         @if($product->action_url)
