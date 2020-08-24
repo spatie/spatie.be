@@ -53,7 +53,7 @@
                 <x-field>
                     <label for="newsletter">
                         <!-- @TODO: Check Mailcoach if user is subscribed -->
-                        <input class="form-checkbox" type="checkbox" name="newsletter" id="newsletter">
+                        <input class="form-checkbox" type="checkbox" name="newsletter" id="newsletter" {{ auth()->user()->isSubscribedToNewsletter() ? 'checked' : ''}}>
                         Keep me in the loop when there is new Spatie content
                     </label>
                 </x-field>

@@ -9,8 +9,8 @@ class SubscribeUserToNewsletterAction
 {
     public function execute(User $user): User
     {
-        /** @todo how do we get the specific list? */
-        $emailList = EmailList::first();
+        $emailList = EmailList::firstWhere('name', 'Spatie');
+
         $emailList->subscribe($user->email);
 
         return $user;

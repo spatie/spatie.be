@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
+use Spatie\Mailcoach\Models\EmailList;
 
 class User extends Authenticatable
 {
@@ -31,6 +32,14 @@ class User extends Authenticatable
         }
 
         return (bool) $this->is_sponsor;
+    }
+
+    public function isSubscribedToNewsletter(): bool
+    {
+        /** @var EmailList $emailList */
+        $emailList = EmailList::firstWhere('name', 'Spatie');
+
+        return $emailList->isSubscribed($this->email);
     }
 
     public function isSpatieMember(): bool
