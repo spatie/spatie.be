@@ -59,7 +59,7 @@ module.exports = {
 
             'pink-lightest': '#f2d8db',
             pink: '#dd9099',
-            'pink-dark': '#B95661',
+            'pink-dark': '#8d3b44',
 
             'green-lightest': '#daefe8',
             'green-lighter': '#94dac4',

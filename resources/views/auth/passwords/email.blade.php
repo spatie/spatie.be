@@ -41,7 +41,7 @@
                 </div>
                 
                 @error('email')
-                    <p class="my-8 text-pink text-sm">
+                    <p class="my-8 text-pink-dark text-sm">
                         {{ $message }}
                     </p>
                 @enderror

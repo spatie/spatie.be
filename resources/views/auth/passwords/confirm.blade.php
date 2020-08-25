@@ -33,7 +33,7 @@
                     <input id="password" type="password" class="@error('password') @enderror" name="password" required autocomplete="new-password">
 
                     @error('password')
-                        <p class="my-8 text-pink text-sm">
+                        <p class="my-8 text-pink-dark text-sm">
                             {{ $message }}
                         </p>
                     @enderror
