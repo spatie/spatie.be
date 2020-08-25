@@ -20,12 +20,15 @@
     <section class="wrap pt-0 z-10 -mb-6">
         <div class="card py-12 gradient gradient-green shadow-lg text-white md:flex items-stretch">
             <div>
+                <h2 class="title mb-8">
+                    Log in with Github
+                </h2>
                 <a href="{{ route('github-login') }}">
                     <x-button>
                         <span class="mr-3 icon w-6 opacity">
                             {{ svg('github') }}
                         </span>
-                        Log in to Github
+                        Log in with Github
                     </x-button>
                 </a>
             </div>
