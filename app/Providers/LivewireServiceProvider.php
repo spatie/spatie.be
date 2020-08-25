@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Livewire\DomainComponent;
 use App\Http\Livewire\RepositoriesComponent;
 use App\Http\Livewire\VideoCompletedButtonComponent;
 use Illuminate\Support\ServiceProvider;
@@ -13,5 +14,6 @@ class LivewireServiceProvider extends ServiceProvider
     {
         Livewire::component('repositories', RepositoriesComponent::class);
         Livewire::component('video-completed-button', VideoCompletedButtonComponent::class);
+        Livewire::component('domain', DomainComponent::class);
     }
 }
