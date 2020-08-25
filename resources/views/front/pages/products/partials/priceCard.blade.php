@@ -1,9 +1,10 @@
-<div class="mb-8 md:mb-0 mx-3 max-w-md flex flex-col bg-white shadow-lg px-8 py-6" style="bottom: -1rem">
-    <h2 class="flex-0 font-bold {{ $large? 'text-2xl' : 'text-lg'}} mb-4 h-10">
+<div class="{{ $first? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 mx-2 max-w-md flex flex-col bg-white shadow-lg px-8" 
+    style="bottom: {{ $first? '-2rem' : '-1rem' }}">
+    <h2 class="flex-0 flex items-center font-bold {{ $first? 'text-2xl' : 'text-lg'}} mb-4 min-h-10">
         {{ $purchasable->title }}
     </h2>
     
-    <div class="flex-grow markup-lists markup-lists-compact text-xs">
+    <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         {!! $purchasable->formattedDescription !!}
     </div>
 
