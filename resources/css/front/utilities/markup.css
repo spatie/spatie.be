@@ -141,9 +141,11 @@
 }
 
 .markup-code code:not(.hljs) {
-    @apply text-blue-dark;
-    @apply font-mono;
+    @apply bg-blue-lightest;
+    @apply bg-opacity-25;
+    @apply -mx-1;
     @apply px-1;
+    @apply font-mono;
 }
 
 .markup-code .article_badges {

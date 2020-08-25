@@ -32,13 +32,13 @@ html {
 
 @screen lg {
     html {
-        font-size: 1.3vw;
+        font-size: 1.2vw;
     }
 }
 
 @screen xl {
     html {
-        font-size: 21px;
+        font-size: 18px;
     }
 }
 

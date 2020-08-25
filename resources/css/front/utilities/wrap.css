@@ -4,7 +4,7 @@
     @apply max-w-columns;
 }
 
-@screen sm {
+@screen lg {
     .wrap {
         @apply px-16;
     }

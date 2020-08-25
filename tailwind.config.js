@@ -154,13 +154,13 @@ module.exports = {
                 sm: '25rem', // xl/2 - half gap
                 md: '40rem',
                 lg: '50rem',
-                xl: '52rem',
+                xl: '56rem',
                 '2xl': '70rem',
                 '3xl': '80rem',
                 '4xl': '90rem',
                 '5xl': '100rem',
                 '1/2': '50vw',
-                columns: '60rem', // xl + (2 * large gap)
+                columns: '64rem', // xl + (2 * large gap)
                 logoclient: '8rem',
             },
 
