@@ -40,7 +40,7 @@ class Docs
                         $index = $pages->firstWhere('slug', '_index');
                         $pages = $pages
                             ->where('slug', '<>', '_index')
-                            ->sortBy(fn(DocumentationPage $page) => $page->weight ?? PHP_INT_MAX);
+                            ->sortBy(fn (DocumentationPage $page) => $page->weight ?? PHP_INT_MAX);
 
                         return new Alias($index->title, $index->slogan, $index->branch, $index->githubUrl, $pages);
                     })

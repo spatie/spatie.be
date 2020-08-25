@@ -2,10 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\Purchase as EloquentPurchase;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;

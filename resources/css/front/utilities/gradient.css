@@ -38,7 +38,6 @@
     --gradient-to: #e1ded9;
 
     @apply bg-gray-lighter;
-
 }
 
 .gradient-dark {
@@ -47,5 +46,4 @@
     --gradient-to: #172a3d;
 
     @apply bg-gray-dark;
-
 }

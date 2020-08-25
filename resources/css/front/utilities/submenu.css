@@ -1,4 +1,4 @@
-.submenu-wrap{
+.submenu-wrap {
     @apply sticky;
     @apply top-0;
     @apply z-10;
@@ -16,7 +16,7 @@
     }
 }
 
-.submenu{
+.submenu {
     @apply px-6;
     @apply py-4;
     @apply rounded-b;
@@ -24,17 +24,17 @@
 }
 
 .submenu,
-.submenu ul{  
+.submenu ul {
     @apply grid;
     @apply grid-flow-col;
     @apply gap-4;
 }
 
-@screen md{
+@screen md {
     .submenu,
-    .submenu ul{  
+    .submenu ul {
         @apply gap-8;
-    } 
+    }
 }
 
 .submenu li a {

@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
-use Laravel\Paddle\Cashier;
 use Spatie\Mailcoach\Models\EmailList;
 
 class User extends Authenticatable

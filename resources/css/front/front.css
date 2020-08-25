@@ -38,15 +38,15 @@
 
 a:active,
 button:active {
-    transform: translateY(1px)
+    transform: translateY(1px);
 }
 
 /* Permalinks in front of markdown title */
 a.anchor-link {
     @apply border-0 text-sm opacity-50 no-underline pr-2 font-light absolute text-right;
     right: 100%;
-    top: .3em;
-    font-size: .75em;
+    top: 0.3em;
+    font-size: 0.75em;
     height: 1em;
     width: 1em;
 }

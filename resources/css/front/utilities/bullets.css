@@ -3,15 +3,15 @@
 }
 
 .bullets li {
-        padding-left: 1em;
+    padding-left: 1em;
 }
 
 .bullets li .icon {
-            @apply pr-2;
-            fill: var(--bullet-color);
-            left: 0;
-            position: absolute;
-        }
+    @apply pr-2;
+    fill: var(--bullet-color);
+    left: 0;
+    position: absolute;
+}
 
 .bullets li:not(:last-child) {
     margin-bottom: 0.35em;
@@ -42,14 +42,12 @@
 }
 
 .bullets-inline li {
-        display: inline-block;
-
-       
+    display: inline-block;
 }
 
 .bullets-inline li:not(:last-child):after {
-            @apply text-blue;
-            margin: 0 0.5em;
-            content: '•';
-            color: var(--bullet-color);
+    @apply text-blue;
+    margin: 0 0.5em;
+    content: '•';
+    color: var(--bullet-color);
 }

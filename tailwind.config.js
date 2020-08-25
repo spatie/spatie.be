@@ -174,7 +174,6 @@ module.exports = {
                 '10': '2.5rem',
             },
 
-
             zIndex: {
                 auto: 'auto',
                 back: -1,

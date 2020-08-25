@@ -9,7 +9,7 @@
 
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
-    background-color: theme(colors.white)d9;
+    background-color: theme(colors.white) d9;
 }
 
 /* Single suggestion */
@@ -52,8 +52,8 @@
 }
 
 .algolia-docsearch-suggestion--subcategory-inline:after {
-     content: ' › ';
- }
+    content: ' › ';
+}
 
 .algolia-docsearch-suggestion--title {
     @apply inline text-black;

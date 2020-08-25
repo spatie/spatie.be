@@ -3,12 +3,9 @@
 namespace App\Nova\Metrics;
 
 use App\Models\Purchase;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\DB;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
 use Laravel\Nova\Metrics\Value;
-use Laravel\Paddle\Receipt;
 
 class Earnings extends Trend
 {

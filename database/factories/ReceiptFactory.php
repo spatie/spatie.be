@@ -1,7 +1,5 @@
 <?php
 
-use App\Models\License;
-use App\Models\Purchasable;
 use App\Models\User;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */

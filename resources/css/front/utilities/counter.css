@@ -63,8 +63,6 @@
     content: var(--counter-content);
 }
 
-
-
 .counters h3,
 .counters .counters-level-2:not(ol),
 .counters .counters-level-2 > li {

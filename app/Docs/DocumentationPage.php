@@ -4,12 +4,6 @@ namespace App\Docs;
 
 use App\Http\Controllers\DocsController;
 use Illuminate\Support\Str;
-use League\CommonMark\Block\Element\FencedCode;
-use League\CommonMark\Block\Element\IndentedCode;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
-use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
-use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 use Spatie\Sheets\Sheet;
 
 class DocumentationPage extends Sheet

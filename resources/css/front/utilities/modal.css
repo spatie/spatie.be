@@ -14,7 +14,7 @@
     @apply w-screen;
     @apply min-h-screen;
     @apply cursor-pointer;
-    background-color: theme('colors.black')e6;
+    background-color: theme('colors.black') e6;
     backdrop-filter: grayscale(1);
 }
 

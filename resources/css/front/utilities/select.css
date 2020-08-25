@@ -41,8 +41,6 @@
     }
 }
 
-
-
 .select select:active + .select-arrow {
     transform: rotate(180deg);
 }

@@ -3,8 +3,6 @@
 namespace App\Http\Livewire;
 
 use App\Models\License;
-use App\Models\Repository;
-use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class DomainComponent extends Component

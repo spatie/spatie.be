@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Series;
-use App\Models\Video;
 
 class SeriesController
 {

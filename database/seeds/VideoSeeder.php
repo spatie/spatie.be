@@ -4,7 +4,6 @@
 use App\Models\Enums\VideoDisplayEnum;
 use App\Models\Product;
 use App\Models\Purchasable;
-use App\Models\Purchase;
 use App\Models\Series;
 use App\Models\Video;
 use Illuminate\Database\Seeder;

@@ -11,7 +11,6 @@ use League\CommonMark\Inline\Renderer\InlineRendererInterface;
 use League\CommonMark\Util\ConfigurationAwareInterface;
 use League\CommonMark\Util\ConfigurationInterface;
 use League\CommonMark\Util\RegexHelper;
-use Spatie\Url\Url;
 
 class ImageRenderer implements InlineRendererInterface, ConfigurationAwareInterface
 {
