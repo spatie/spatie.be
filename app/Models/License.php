@@ -54,6 +54,10 @@ class License extends Model implements AuthenticatableContract
 
     public function isExpired(): bool
     {
-        return optional($this->expires_at)->isPast() ?? false;
+        if (is_null($this->expires_at)) {
+            return false;
+        }
+
+        return $this->expires_at->isPast();
     }
 }

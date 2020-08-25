@@ -10,8 +10,6 @@
                 @endforeach
             </div>
         @endforeach
-
-        <h2 class="title line-after mt-16 mb-12">Buy additional licenses</h2>
     </section>
 @endif
 

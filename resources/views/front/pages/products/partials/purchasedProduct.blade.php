@@ -1,6 +1,5 @@
 @php
     /** @var \App\Models\Purchase $purchase */
-
     $purchasable = $purchase->purchasable;
 @endphp
 
@@ -9,7 +8,7 @@
         <div class="text-xs text-gray">
             {{ request()->user()->email }}
             <span class="char-searator mx-1">•</span>
-            Purchases at {{ $purchase->created_at->format('d/m/Y') }}
+            Purchased on {{ $purchase->created_at->format('Y-m-d') }}
         </div>
         <div>
             <ul>
@@ -32,9 +31,13 @@
         </div>
     </div>
 
-    <span class="cell-r flex justify-end space-x-4">
-        <x-button>
-            Watch videos
-        </x-button>
-    </span>
+    @if ($purchasable->series->count())
+        <div class="cell-r flex justify-end space-x-4">
+            <a href="{{ route('series.show', $purchasable->series->first()) }}">
+                <x-button>
+                    Watch videos
+                </x-button>
+            </a>
+        </div>
+    @endif
 </div>

@@ -2,29 +2,40 @@
     <div class="cell-l">
         <code class="font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
         <div class="text-xs text-gray">
-            vanbockstal.be
-            <span class="char-searator mx-1">•</span>
-            Expires at {{ $license->expires_at->format('d/m/Y') }}
-            <span class="text-pink-dark">Expires since {{ $license->expires_at->format('d/m/Y') }}</span>
+            @if ($license->domain)
+                {{ $license->domain }}
+                <span class="char-searator mx-1">•</span>
+            @endif
+            @if ($license->isExpired())
+                <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
+            @else
+                Expires at {{ $license->expires_at->format('Y-m-d') }}
+            @endif
         </div>
     </div>
 
     <span  class="cell-r flex justify-end space-x-4">
-        <x-paddle-button
-                :url="auth()->user()->getPayLinkForProductId($license->purchasable->paddle_product_id)"
-                data-theme="none">
-            <x-button>
-                    Renew for 
-                    <span class="ml-1 text-lg leading-none">
-                        <span class="" data-id="current-currency-{{ $license->purchasable->id }}"></span>
-                        <span class="" data-id="current-price-{{ $license->purchasable->id }}"></span>
-                    </span>
-                </x-button>
-        </x-paddle-button>
+        @if ($license->purchasable->renewalPurchasable)
+            <x-paddle-button
+                    :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)"
+                    data-theme="none">
+                <x-button>
+                        Renew for
+                        <span class="ml-1 text-lg leading-none">
+                            <span class="" data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id }}"></span>
+                            <span class="" data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"></span>
+                        </span>
+                    </x-button>
+            </x-paddle-button>
+        @endif
 
-        <x-button>
-            Watch videos
-        </x-button>
+        @if ($license->purchasable->series->count())
+            <a href="{{ route('series.show', $license->purchasable->series->first()) }}">
+                <x-button>
+                    Watch videos
+                </x-button>
+            </a>
+        @endif
     </span>
 </div>
 
@@ -36,7 +47,7 @@
         return string.indexOf(firstDigit);
     }
 
-    Paddle.Product.Prices({{ $license->purchasable->paddle_product_id }}, function(prices) {
+    Paddle.Product.Prices({{ $license->purchasable->renewalPurchasable->paddle_product_id }}, function(prices) {
         console.log('license renewal', prices);
         let priceString = prices.price.net;
 
@@ -48,7 +59,7 @@
         let currencySymbol = priceString.substring(0,indexOFirstDigitInString);
         currencySymbol = currencySymbol.replace('US', '');
 
-        document.querySelector('[data-id="current-currency-{{ $license->purchasable->id}}"]').innerHTML = currencySymbol;
-        document.querySelector('[data-id="current-price-{{ $license->purchasable->id }}"]').innerHTML = price;
+        document.querySelector('[data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id}}"]').innerHTML = currencySymbol;
+        document.querySelector('[data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"]').innerHTML = price;
     });
 </script>
