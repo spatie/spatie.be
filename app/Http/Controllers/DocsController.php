@@ -47,6 +47,8 @@ class DocsController
 
         $page = $pages->firstWhere('slug', $slug);
 
+        abort_unless($page, 404);
+
         $repositories = $docs->getRepositories();
 
         $navigation = $this->getNavigation($pages);
