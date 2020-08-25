@@ -9,7 +9,7 @@
                     {{ svg('icons/fas-heart') }}
                 </span>
             @endif
-            {{ svg('icons/fas-user') }}
+            {{ svg('icons/fal-user') }}
         </span>
     </a>
 @else
