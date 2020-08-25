@@ -52,7 +52,7 @@ cd {{ $releasesDir }}
 mkdir {{ $newReleaseDir }}
 
 # Clone the repo
-git clone --depth 1 --branch add-customer-site git@github.com:{{ $repository }} {{ $newReleaseName }}
+git clone --depth 1 --branch master git@github.com:{{ $repository }} {{ $newReleaseName }}
 
 # Configure sparse checkout
 cd {{ $newReleaseDir }}
@@ -152,7 +152,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +6 | xargs -d "\n" rm -rf
 @task('deployOnlyCode',['on' => 'remote'])
 {{ logMessage("💻  Deploying code changes...") }}
 cd {{ $currentDir }}
-git pull origin add-customer-site
+git pull origin master
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
