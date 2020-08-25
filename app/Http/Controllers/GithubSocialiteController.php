@@ -35,17 +35,15 @@ class GithubSocialiteController
             'is_sponsor' => $isSponsor,
         ]);
 
-        if (!$user->is_sponsor && !$user->isSpatieMember()) {
+        if (! $user->is_sponsor && ! $user->isSpatieMember()) {
             session()->flash('not-a-sponsor');
         }
-
-
 
         auth()->login($user);
 
         flash()->success('You have been logged in');
 
-        return redirect()->to(session('before-github-redirect', route('videos.index')));
+        return redirect()->to(session('before-github-redirect', route('products.index')));
     }
 
     protected function retrieveUser($gitHubUser): User
