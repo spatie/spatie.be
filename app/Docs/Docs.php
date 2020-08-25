@@ -11,9 +11,13 @@ class Docs
 
     public function __construct(Sheets $sheets)
     {
-        $this->pages = cache()->store('docs')->rememberForever('docs', function () use ($sheets) {
-            return $sheets->collection('docs')->all()->sortBy('weight');
-        });
+        $pages = cache()->store('docs')->get('docs');
+
+        if (is_null($pages)) {
+            throw new \RuntimeException('Docs  cache is invalid');
+        }
+
+        $this->pages = $pages;
     }
 
     public function pages(): Collection
