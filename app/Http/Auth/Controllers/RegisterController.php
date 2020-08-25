@@ -43,6 +43,8 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, User $user)
     {
+        flash()->success('You are now logged in');
+
         if ($request->get('newsletter')) {
             app(SubscribeUserToNewsletterAction::class)->execute($user);
         }
