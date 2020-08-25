@@ -6,7 +6,7 @@
                     <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
-                                <div class="shadow-lg">{{ $series->getFirstMedia('image') }}</div>
+                                <div class="shadow-lg">{{ $series->getFirstMedia('series-image') }}</div>
                             </div>
                             <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
@@ -55,35 +55,33 @@
                         @endif
                     </div>
                 @else
-                    <div class="py-4">
-                        <div class="line-l">
-                            <h2 class="title-sm">
-                                <div class="-mt-8 pb-8 px-12">
-                                    <div class="shadow-lg">{{ $series->getFirstMedia('image') }}</div>
-                                </div>
-                                <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
-                                <div class="title-subtext text-gray flex items-center">
-                                    <span>
-                                    {{ $series->videos()->count() }}
-                                    {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
-                                    </span>
+                    <div class="line-l py-4">
+                        <h2 class="title-sm">
+                            <div class="-mt-8 pb-8 px-12">
+                                <div class="shadow-lg">{{ $series->getFirstMedia('series-image') }}</div>
+                            </div>
+                            <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
+                            <div class="title-subtext text-gray flex items-center">
+                                <span>
+                                {{ $series->videos()->count() }}
+                                {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                                </span>
 
-                                    @if($series->hasSponsoredContent())
-                                        <span title="Series has extra content for sponsors" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
-                                            <span style="font-size: .6rem" class="icon text-pink">
-                                                {{ svg('icons/fas-heart') }}
-                                            </span>
+                                @if($series->hasSponsoredContent())
+                                    <span title="Series has extra content for sponsors" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
+                                        <span style="font-size: .6rem" class="icon text-pink">
+                                            {{ svg('icons/fas-heart') }}
                                         </span>
-                                    @endif
-                                </div>
-                            </h2>
-                            <p class="mt-4">
-                                {{ $series->formattedDescription }}
-                            </p>
-                            <p class="mt-4">
-                                <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('videos', $series->videos()->count()) }}</a>
-                            </p>
-                        </div>
+                                    </span>
+                                @endif
+                            </div>
+                        </h2>
+                        <p class="mt-4">
+                            {{ $series->formattedDescription }}
+                        </p>
+                        <p class="mt-4">
+                            <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('videos', $series->videos()->count()) }}</a>
+                        </p>
                     </div>
                 @endif
 
