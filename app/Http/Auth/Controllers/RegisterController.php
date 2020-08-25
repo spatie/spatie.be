@@ -43,10 +43,12 @@ class RegisterController extends Controller
 
     protected function registered(Request $request, User $user)
     {
-        flash()->success('You are now logged in');
+        flash()->success('Your account was created and you are now logged in');
 
         if ($request->get('newsletter')) {
             app(SubscribeUserToNewsletterAction::class)->execute($user);
         }
+
+        return redirect()->route('products.index');
     }
 }
