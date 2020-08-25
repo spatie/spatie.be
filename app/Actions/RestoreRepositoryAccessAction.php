@@ -5,7 +5,6 @@ namespace App\Actions;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
-use Illuminate\Database\Eloquent\Builder;
 
 class RestoreRepositoryAccessAction
 {
