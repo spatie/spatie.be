@@ -47,7 +47,9 @@ class DocsController
 
         $page = $pages->firstWhere('slug', $slug);
 
-        abort_unless($page, 404);
+        if (! $page) {
+            return redirect()->action([DocsController::class, 'repository'], [$repository->slug, $alias->slug]);
+        }
 
         $repositories = $docs->getRepositories();
 
