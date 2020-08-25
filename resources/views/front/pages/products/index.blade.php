@@ -14,7 +14,6 @@
         </div>
     </section>
 
-
     <section class="section overflow-visible section-group">
             <div class="wrap">
                 @auth
