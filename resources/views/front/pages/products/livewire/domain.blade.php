@@ -5,6 +5,7 @@
             class="text-xs form-input w-full h-8 py-0 px-2 mb-8"
             placeholder="Domain"
             wire:model="domain"
+            wire:keydown.enter="save"
         >
         <a href="#" class="cursor-pointer
 bg-green-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm
@@ -19,7 +20,7 @@ focus:outline-none focus:border-blue-light whitespace-no-wrap" wire:click.preven
     </div>
 @else
     <div class="inline-flex">
-        <span>{{ $domain ?? 'no domain set' }}&nbsp;</span>
+        <span>{{ $domain ?: 'no domain set' }}&nbsp;</span>
         <a href="#" class="text-green-dark underline" wire:click.prevent="edit">
             edit
         </a>

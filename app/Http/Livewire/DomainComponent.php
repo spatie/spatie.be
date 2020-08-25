@@ -10,7 +10,7 @@ use Livewire\Component;
 class DomainComponent extends Component
 {
     /** @var null|string */
-    public $domain = null;
+    public $domain = '';
 
     /** @var null|License */
     public $license = null;
