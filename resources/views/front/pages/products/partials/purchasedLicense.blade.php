@@ -15,21 +15,27 @@
     </div>
 
     <span  class="cell-r flex justify-end space-x-4">
-        <x-paddle-button
-                :url="auth()->user()->getPayLinkForProductId($license->purchasable->paddle_product_id)"
-                data-theme="none">
-            <x-button>
-                    Renew for 
-                    <span class="ml-1 text-lg leading-none">
-                        <span class="" data-id="current-currency-{{ $license->purchasable->id }}"></span>
-                        <span class="" data-id="current-price-{{ $license->purchasable->id }}"></span>
-                    </span>
-                </x-button>
-        </x-paddle-button>
+        @if ($license->purchasable->renewalPurchasable)
+            <x-paddle-button
+                    :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)"
+                    data-theme="none">
+                <x-button>
+                        Renew for
+                        <span class="ml-1 text-lg leading-none">
+                            <span class="" data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id }}"></span>
+                            <span class="" data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"></span>
+                        </span>
+                    </x-button>
+            </x-paddle-button>
+        @endif
 
-        <x-button>
-            Watch videos
-        </x-button>
+        @if ($license->purchasable->series->count())
+            <a href="{{ route('series.show', $license->purchasable->series->first()) }}" class="cell-r flex justify-end space-x-4">
+            <x-button>
+                Watch videos
+            </x-button>
+        </a>
+        @endif
     </span>
 </div>
 
