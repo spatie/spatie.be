@@ -33,8 +33,10 @@
                 </a>
                 @if ($purchase->license)
                     <div class="text-xs text-gray">
-                        {{ $purchase->license->domain }}
-                        <span class="char-searator mx-1">•</span>
+                        @if ($purchase->license->domain)
+                            {{ $purchase->license->domain }}
+                            <span class="char-searator mx-1">•</span>
+                        @endif
                         @if ($purchase->license->isExpired())
                             <span class="text-pink-dark">Expired since {{ $purchase->license->expires_at->format('Y-m-d') }}</span>
                         @else

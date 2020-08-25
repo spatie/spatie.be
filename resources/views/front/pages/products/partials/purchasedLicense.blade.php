@@ -2,10 +2,15 @@
     <div class="cell-l">
         <code class="font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
         <div class="text-xs text-gray">
-            vanbockstal.be
-            <span class="char-searator mx-1">•</span>
-            Expires at {{ $license->expires_at->format('d/m/Y') }}
-            <span class="text-pink-dark">Expires since {{ $license->expires_at->format('d/m/Y') }}</span>
+            @if ($license->domain)
+                {{ $license->domain }}
+                <span class="char-searator mx-1">•</span>
+            @endif
+            @if ($license->isExpired())
+                <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
+            @else
+                Expires at {{ $license->expires_at->format('Y-m-d') }}
+            @endif
         </div>
     </div>
 
