@@ -2,8 +2,10 @@
     <div class="sm:col-span-6">
         <div class="markup links-underline links-blue">
             <p class="text-lg">
+                For most of our projects we use Laravel. We are actively contributing to this awesome ecosystem.
+                <br/><br/>
                 Whenever we see functionality in our Laravel, PHP and JavaScript projects that could be useful to others, we extract it to a package.
-                <br>
+                <br><br/>
                 Pretty sure there's something here for your projects!
             </p>
         </div>
