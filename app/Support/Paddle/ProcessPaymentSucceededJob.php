@@ -28,26 +28,25 @@ class ProcessPaymentSucceededJob implements ShouldQueue
     {
         $paddlePayload = new PaddlePayload($this->payload);
         $passthrough = json_decode($paddlePayload->passthrough, true);
-        $model = config('cashier.model');
 
         if ($paddlePayload->alert_name !== 'payment_succeeded') {
-            logger('Alert name not equal to payment_succeeded');
             return;
         }
 
         if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
-            logger('No purchasable with paddle_product_id ' . $paddlePayload->product_id);
             return;
         }
 
-        if (! Receipt::where('order_id', $paddlePayload->order_id)->first()) {
-            logger('No receipt with order_id ' . $paddlePayload->order_id);
+        if (! $receipt = Receipt::where('order_id', $paddlePayload->order_id)->first()) {
             return;
         }
 
         if (! $user = (new $passthrough['billable_type'])->find($passthrough['billable_id'])) {
-            logger('No user with id ' . $passthrough['billable_id']);
             throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
+        }
+
+        if (Purchase::where('user_id', $user->id)->where('purchasable_id', $purchasable->id)->where('receipt_id', $receipt->id)->exists()) {
+            return;
         }
 
         app(HandlePurchaseAction::class)->execute($user, $purchasable, $paddlePayload);
