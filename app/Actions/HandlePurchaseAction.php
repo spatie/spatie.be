@@ -35,7 +35,7 @@ class HandlePurchaseAction
             'user_id' => $user->id,
             'purchasable_id' => $purchasable->id,
             'receipt_id' => $receipt->id,
-            'paddle_webhook_payload' => $paddlePayload,
+            'paddle_webhook_payload' => $paddlePayload->toArray(),
             'paddle_fee' => $paddlePayload->balance_fee,
             'earnings' => $paddlePayload->balance_earnings,
         ]);

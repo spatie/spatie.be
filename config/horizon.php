@@ -90,6 +90,25 @@ return [
             ],
         ],
 
+        'staging' => [
+            'supervisor-1' => [
+                'connection' => 'redis',
+                'queue' => ['default'],
+                'balance' => 'simple',
+                'processes' => 5,
+                'tries' => 1,
+                'timeout' => 60 * 10,
+            ],
+            'mailcoach' => [
+                'connection' => 'mailcoach-redis',
+                'queue' => ['send-campaign', 'send-mail', 'mailcoach-feedback', 'mailcoach'],
+                'balance' => 'auto',
+                'processes' => 3,
+                'tries' => 1,
+                'timeout' => 60 * 60,
+            ],
+        ],
+
         'local' => [
             'supervisor-1' => [
                 'connection' => 'redis',
