@@ -51,6 +51,8 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         all($processes)
             ->then(function ($output) {
+                print_r($output);
+
                 $this->info('Fetched docs from all repositories.');
 
                 $this->info('Caching Sheets.');
