@@ -68,6 +68,15 @@ class License extends Model implements AuthenticatableContract
         $query->where('expires_at', '<', now());
     }
 
+    public function scopeWhereNotExpired(Builder $query)
+    {
+        $query->where(function (Builder $query) {
+            $query
+                ->whereNull('expires_at')
+                ->orWhere('expires_at', '>', now());
+        });
+    }
+
     public function getName(): string
     {
         return "{$this->purchasable->product->title}: {$this->purchasable->title}";

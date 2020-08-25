@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
+use Illuminate\Database\Eloquent\Builder;
 
 class RestoreRepositoryAccessAction
 {
@@ -21,6 +22,10 @@ class RestoreRepositoryAccessAction
             ->where('has_repository_access', false)
             ->each(function (Purchase $purchase) use ($user) {
                 if (! $purchase->purchasable->repository_access) {
+                    return;
+                }
+
+                if ($purchase->license && $purchase->license->isExpired()) {
                     return;
                 }
 
