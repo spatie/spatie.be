@@ -31,22 +31,22 @@ class ProcessPaymentSucceededJob implements ShouldQueue
         $model = config('cashier.model');
 
         if ($paddlePayload->alert_name !== 'payment_succeeded') {
+            logger('Alert name not equal to payment_succeeded');
             return;
         }
 
         if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
+            logger('No purchasable with paddle_product_id ' . $paddlePayload->product_id);
             return;
         }
 
         if (Receipt::where('order_id', $paddlePayload->order_id)->first()) {
+            logger('No receipt with order_id ' . $paddlePayload->order_id);
             return;
         }
 
-        if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
-            return;
-        }
-
-        if (! $user = (new $model)->find($passthrough['customer_id'])) {
+        if (! $user = (new $model)->find($passthrough['billable_id'])) {
+            logger('No user with id ' . $passthrough['billable_id']);
             throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
         }
 
