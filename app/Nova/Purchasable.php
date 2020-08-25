@@ -80,6 +80,8 @@ class Purchasable extends Resource
                     Text::make('Label'),
                 ]),
 
+            Text::make('Repository access'),
+
             Text::make('Sponsor Coupon')->help('For display purposes only, you still need to create this in Paddle.'),
         ];
     }
