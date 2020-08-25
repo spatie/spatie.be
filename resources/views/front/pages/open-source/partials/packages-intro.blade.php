@@ -2,13 +2,13 @@
     <div class="sm:col-span-6">
         <div class="markup links-underline links-blue">
             <p class="text-lg">
-                For most of our projects we use Laravel. We are actively contributing to this awesome ecosystem.
-                <p>
-            <p class="text-lg">
-                Whenever we see functionality in our Laravel, PHP and JavaScript projects that could be useful to others, we extract it to a package.
+            We like to use Laravel for most of our projects and love to contribute to the awesome Laravel ecosystem. That's also why we have been building Laravel and PHP packages since 2015.
             </p>
             <p class="text-lg">
-                Pretty sure there's something here for your projects!
+            Almost every new package arises from client work. When we discover functionality in client projects that is useful for others, we extract it to an open source package.
+            </p>
+            <p class="text-lg">
+            Have a look around; we're pretty sure there's something here that will suit your project!
             </p>
         </div>
     </div>
