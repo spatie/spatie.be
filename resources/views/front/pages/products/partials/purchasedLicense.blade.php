@@ -30,11 +30,11 @@
         @endif
 
         @if ($license->purchasable->series->count())
-            <a href="{{ route('series.show', $license->purchasable->series->first()) }}" class="cell-r flex justify-end space-x-4">
-            <x-button>
-                Watch videos
-            </x-button>
-        </a>
+            <a href="{{ route('series.show', $license->purchasable->series->first()) }}">
+                <x-button>
+                    Watch videos
+                </x-button>
+            </a>
         @endif
     </span>
 </div>
