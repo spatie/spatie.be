@@ -10,6 +10,7 @@ class Purchase extends Model
 {
     protected $casts = [
         'paddle_webhook_payload' => 'array',
+        'has_repository_access' => 'boolean',
     ];
 
     public function license(): BelongsTo
