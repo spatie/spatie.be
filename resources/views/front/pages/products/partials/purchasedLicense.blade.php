@@ -9,7 +9,7 @@
             @if ($license->isExpired())
                 <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
             @else
-                Expires at {{ $license->expires_at->format('Y-m-d') }}
+                Expires on {{ $license->expires_at->format('Y-m-d') }}
             @endif
         </div>
     </div>
