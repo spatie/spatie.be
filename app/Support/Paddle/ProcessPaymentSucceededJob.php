@@ -40,7 +40,7 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        if (Receipt::where('order_id', $paddlePayload->order_id)->first()) {
+        if (! Receipt::where('order_id', $paddlePayload->order_id)->first()) {
             logger('No receipt with order_id ' . $paddlePayload->order_id);
             return;
         }
