@@ -1,5 +1,5 @@
 <x-page
-        title="Packages"
+        title="Laravel, PHP and JavaScript Packages"
         background="/backgrounds/open-source.jpg"
 >
     <x-slot name="description">
