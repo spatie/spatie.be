@@ -35,7 +35,7 @@ class NavigationServiceProvider extends ServiceProvider
 
         Menu::macro('opensource', function () {
             return Menu::new()
-                ->route('open-source.packages', 'Packages')
+                ->route('open-source.packages', 'Laravel and PHP Packages')
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
                 ->route('open-source.support', 'Support us')
