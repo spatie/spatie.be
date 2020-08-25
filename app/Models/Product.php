@@ -63,6 +63,20 @@ class Product extends Model implements HasMedia, Sortable
         return $this->purchasables->contains(fn (Purchasable $purchasable) => $purchasable->requires_license);
     }
 
+    public function hasSeries(): bool
+    {
+        return $this->purchasables->contains(fn (Purchasable $purchasable) => $purchasable->series->count() > 0);
+    }
+
+    public function firstSeries(): ?Series
+    {
+        if (! $this->hasSeries()) {
+            return null;
+        }
+
+        return $this->purchasables->first(fn (Purchasable $purchasable) => $purchasable->series->count() > 0)->series;
+    }
+
     public function getUrl(): string
     {
         return action([ProductsController::class, 'show'], $this);

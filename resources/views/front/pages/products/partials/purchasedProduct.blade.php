@@ -32,9 +32,11 @@
         </div>
     </div>
 
-    <span class="cell-r flex justify-end space-x-4">
-        <x-button>
-            Watch videos
-        </x-button>
-    </span>
+    @if ($product->hasSeries())
+        <a href="{{ route('series.show', $product->firstSeries()) }}" class="cell-r flex justify-end space-x-4">
+            <x-button>
+                Watch videos
+            </x-button>
+        </a>
+    @endif
 </div>
