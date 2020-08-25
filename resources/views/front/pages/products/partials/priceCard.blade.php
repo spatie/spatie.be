@@ -1,5 +1,7 @@
-<div class="mb-8 mx-3 max-w-md flex flex-col bg-white shadow-lg px-8 py-6">
-    <h2 class="flex-0 title-sm mb-4 h-10">{{ $purchasable->title }}</h2>
+<div class="mb-8 md:mb-0 mx-3 max-w-md flex flex-col bg-white shadow-lg px-8 py-6" style="bottom: -1rem">
+    <h2 class="flex-0 font-bold {{ $large? 'text-2xl' : 'text-lg'}} mb-4 h-10">
+        {{ $purchasable->title }}
+    </h2>
     
     <div class="flex-grow markup-lists markup-lists-compact text-xs">
         {!! $purchasable->formattedDescription !!}
