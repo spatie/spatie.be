@@ -39,8 +39,8 @@ deployOnlyCode
 
 @task('startDeployment', ['on' => 'local'])
 {{ logMessage("🏃  Starting deployment...") }}
-git checkout add-customer-site
-git pull origin add-customer-site
+git checkout master
+git pull origin master
 @endtask
 
 @task('cloneRepository', ['on' => 'remote'])
