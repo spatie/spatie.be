@@ -47,7 +47,7 @@
         return string.indexOf(firstDigit);
     }
 
-    Paddle.Product.Prices({{ $license->purchasable->paddle_product_id }}, function(prices) {
+    Paddle.Product.Prices({{ $license->purchasable->renewalPurchasable->paddle_product_id }}, function(prices) {
         console.log('license renewal', prices);
         let priceString = prices.price.net;
 
