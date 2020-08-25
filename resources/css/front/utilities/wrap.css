@@ -58,7 +58,7 @@
 
     @screen sm {
         .wrap-8 {
-            grid-template-columns: minmax(0, 1fr) repeat(6, minmax(min-content, 8.25rem)) minmax(0, 1fr);
+            grid-template-columns: minmax(0, 1fr) repeat(6, minmax(min-content, 9rem)) minmax(0, 1fr);
             @apply px-0;
             max-width: none;
         }
@@ -66,7 +66,7 @@
 
     @screen lg {
         .wrap-8 {
-            grid-template-columns: minmax(2rem, 1fr) repeat(6, minmax(min-content, 8.25rem)) minmax(2rem, 1fr);
+            grid-template-columns: minmax(2rem, 1fr) repeat(6, minmax(min-content, 8.33rem)) minmax(2rem, 1fr);
         }
     }
 
