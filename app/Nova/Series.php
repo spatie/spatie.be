@@ -47,7 +47,7 @@ class Series extends Resource
                         $series
                             ->addMedia($request->file('image'))
                             ->withResponsiveImages()
-                            ->toMediaCollection();
+                            ->toMediaCollection('series-image');
                     };
                 })
                 ->thumbnail(function ($value) {
@@ -56,7 +56,7 @@ class Series extends Resource
                 ->preview(function ($value, $disk) {
                     return $value;
                 })->delete(function ($request, EloquentSeries $series) {
-                    $series->deleteMedia($series->getFirstMedia());
+                    $series->deleteMedia($series->getFirstMedia('series-image'));
 
                     return [];
                 }),

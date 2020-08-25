@@ -22,9 +22,26 @@ class Series extends Model implements HasMedia, Sortable
         'sort_when_creating' => true,
     ];
 
+    protected $with = [
+        'media',
+    ];
+
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this
+            ->addMediaCollection('series-image')
+            ->singleFile()
+            ->withResponsiveImages();
+    }
+
+    public function getImageAttribute()
+    {
+        return $this->getFirstMediaUrl('series-image');
     }
 
     public function purchasables(): BelongsToMany
