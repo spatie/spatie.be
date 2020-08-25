@@ -2,6 +2,24 @@
     <h2 class="title-sm text-sm mb-4">
         {{ $series->title }}
     </h2>
+
+    @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
+        <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
+            These are samples of a <a href="{{ $series->purchaseLink() }}" class="link-green link-underline">paid course</a>.
+            <div class="mt-2">
+                <a href="{{ $series->purchaseLink() }}" class="grid">
+                    <x-button>
+                        Buy entire course
+                    </x-button>
+                </a>
+            </div>
+
+            @if (sponsorIsViewingPage())
+                @include('front.pages.videos.partials.sponsorDiscount')
+            @endif
+        </div>
+    @endif
+
     <ol class="text-xs grid gap-2 links-blue markup-list-compact">
         @forelse ($series->videos->groupBy('chapter') as $chapter => $videosPerChapter)
             @if ($chapter)
@@ -49,20 +67,4 @@
         @endforelse
     </ol>
 
-    @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
-        <div class="mt-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
-            These are samples of a <a href="{{ $series->purchaseLink() }}" class="link-green link-underline">paid course</a>.
-            <div class="mt-2">
-                <a href="{{ $series->purchaseLink() }}" class="grid">
-                    <x-button>
-                        Buy entire course
-                    </x-button>
-                </a>
-            </div>
-
-            @if (sponsorIsViewingPage())
-                @include('front.pages.videos.partials.sponsorDiscount')
-            @endif
-        </div>
-    @endif
 </nav>
