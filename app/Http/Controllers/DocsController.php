@@ -47,6 +47,10 @@ class DocsController
 
         $page = $pages->firstWhere('slug', $slug);
 
+        if (! $page) {
+            return redirect()->action([DocsController::class, 'repository'], [$repository->slug, $alias->slug]);
+        }
+
         $repositories = $docs->getRepositories();
 
         $navigation = $this->getNavigation($pages);

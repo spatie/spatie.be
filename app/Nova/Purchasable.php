@@ -75,7 +75,10 @@ class Purchasable extends Resource
             Markdown::make('Description'),
             Boolean::make('Requires license'),
 
-            Files::make('Downloads'),
+            Files::make('Downloads')
+                ->customPropertiesFields([
+                    Text::make('Label'),
+                ]),
 
             Text::make('Sponsor Coupon')->help('For display purposes only, you still need to create this in Paddle.'),
         ];

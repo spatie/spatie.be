@@ -37,7 +37,7 @@
                         @endif
 
                         @if($video->display === \App\Models\Enums\VideoDisplayEnum::SPONSORS)
-                            <span title="Exclusive for sponsors" class="w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
+                            <span title="Exclusive for sponsors" class="absolute w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
                                 <span style="font-size: .6rem" class="icon text-pink">
                                     {{ svg('icons/fas-heart') }}
                                 </span>
@@ -45,7 +45,7 @@
                         @endif
 
                         @if($video->display === \App\Models\Enums\VideoDisplayEnum::LICENSE &&  ! $video->canBeSeenByCurrentUser() )
-                            <span title="Part of course" class="w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
+                            <span title="Part of course" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
                                 <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
                                     {{ svg('icons/fas-lock-alt') }}
                                 </span>
@@ -53,8 +53,8 @@
                         @endif
 
                         @if($video->display === \App\Models\Enums\VideoDisplayEnum::AUTH &&  ! $video->canBeSeenByCurrentUser() )
-                            <span title="Only members" class="w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
-                                <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
+                            <span title="Only members" class="absolute w-4 h-4 inline-flex items-center justify-center bg-blue-lightest rounded-full">
+                                <span style="font-size: .6rem; top: -.1rem" class="icon text-blue">
                                     {{ svg('icons/fas-user') }}
                                 </span>
                             </span>

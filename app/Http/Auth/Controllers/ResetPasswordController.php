@@ -12,10 +12,13 @@ class ResetPasswordController extends Controller
 {
     use ResetsPasswords, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    protected $redirectTo = '/';
-
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function redirectTo()
+    {
+        return route('profile');
     }
 }

@@ -51,7 +51,6 @@ Route::prefix('products')->group(function () {
         ->name('purchase.download');
 });
 
-
 Route::prefix('open-source')->group(function () {
     Route::get('/', [OpenSourceController::class, 'packages'])->name('open-source.packages');
     Route::get('projects', [OpenSourceController::class, 'projects'])->name('open-source.projects');

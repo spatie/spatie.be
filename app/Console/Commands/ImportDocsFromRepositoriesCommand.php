@@ -2,12 +2,12 @@
 
 namespace App\Console\Commands;
 
-use App\Docs\Docs;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
 use React\ChildProcess\Process;
 use React\EventLoop\Factory;
 use function React\Promise\all;
+use Spatie\Sheets\Sheets;
 use function WyriHaximus\React\childProcessPromise;
 
 class ImportDocsFromRepositoriesCommand extends Command
@@ -51,12 +51,14 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         all($processes)
             ->then(function ($output) {
-                print_r($output);
                 $this->info('Fetched docs from all repositories.');
 
                 $this->info('Caching Sheets.');
-                cache()->store('docs')->forget('docs');
-                app(Docs::class);
+
+                $pages = app(Sheets::class)->collection('docs')->all()->sortBy('weight');
+
+                cache()->store('docs')->forever('docs', $pages);
+
                 $this->info('Done caching Sheets.');
             })
             ->always(function () {
