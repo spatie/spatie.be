@@ -43,11 +43,17 @@
                 <x-field>
                     <x-label for="name">Your name</x-label>
                     <input class="form-input" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
+                    @error('name')
+                        <div class="text-pink-dark">{{ $message }}</div>
+                    @enderror
                 </x-field>
 
                 <x-field>
                     <x-label for="email">Your email</x-label>
                     <input class="form-input" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
+                    @error('email')
+                        <div class="text-pink-dark">{{ $message }}</div>
+                    @enderror
                 </x-field>
 
                 <x-field>
