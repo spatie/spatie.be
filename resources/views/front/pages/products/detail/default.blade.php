@@ -34,9 +34,9 @@
                 @if ($licenses->count() || $purchases->count())
                     <h2 class="title line-after mt-16 mb-12">Buy additional licenses</h2>
                 @endif
-                <div class="md:-mx-3 md:flex items-stretch justify-center">
+                <div class="md:-mx-2 md:flex items-stretch justify-center">
                 @foreach($product->purchasablesWithoutRenewals as $purchasable)
-                    @include('front.pages.products.partials.priceCard', ["large" => $loop->first])
+                    @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
                 @endforeach
                 </div>
 
