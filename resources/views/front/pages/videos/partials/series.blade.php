@@ -1,10 +1,13 @@
-<section id="series" class="section">
-    <div class="wrap grid sm:grid-cols-2 col-gap-6 row-gap-8 | items-start markup-lists">
+<section id="series" class="section overflow-visible">
+    <div class="wrap grid sm:grid-cols-2 col-gap-6 row-gap-16 | items-start markup-lists">
         @foreach($allSeries as $series)
             <div>
                 @if($series->isPurchasable())
                     <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                         <h2 class="title-sm">
+                            <div class="-mt-8 pb-8 px-12">
+                                <div class="shadow-lg">{{ $series->getFirstMedia('image') }}</div>
+                            </div>
                             <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
                                 <span>
@@ -55,6 +58,9 @@
                     <div class="py-4">
                         <div class="line-l">
                             <h2 class="title-sm">
+                                <div class="-mt-8 pb-8 px-12">
+                                    <div class="shadow-lg">{{ $series->getFirstMedia('image') }}</div>
+                                </div>
                                 <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
                                 <div class="title-subtext text-gray flex items-center">
                                     <span>
