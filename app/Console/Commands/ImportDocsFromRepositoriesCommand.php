@@ -55,7 +55,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                 $this->info('Fetched docs from all repositories.');
 
                 $this->info('Caching Sheets.');
-                cache()->forget('docs');
+                cache('docs')->forget('docs');
                 app(Docs::class);
                 $this->info('Done caching Sheets.');
             })
