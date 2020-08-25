@@ -59,7 +59,7 @@
         let currencySymbol = priceString.substring(0,indexOFirstDigitInString);
         currencySymbol = currencySymbol.replace('US', '');
 
-        document.querySelector('[data-id="current-currency-{{ $license->purchasable->id}}"]').innerHTML = currencySymbol;
-        document.querySelector('[data-id="current-price-{{ $license->purchasable->id }}"]').innerHTML = price;
+        document.querySelector('[data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id}}"]').innerHTML = currencySymbol;
+        document.querySelector('[data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"]').innerHTML = price;
     });
 </script>
