@@ -52,6 +52,14 @@
                             </span>
                         @endif
 
+                        @if($video->display === \App\Models\Enums\VideoDisplayEnum::AUTH &&  ! $video->canBeSeenByCurrentUser() )
+                            <span title="Only members" class="w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
+                                <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
+                                    {{ svg('icons/fas-user') }}
+                                </span>
+                            </span>
+                        @endif
+
                         @if($video->hasBeenCompletedByCurrentUser())
                             <span title="Completed" style="left: calc(-1.5em - 1.5rem)" class="absolute top-0 w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
                                 <span style="font-size: 0.75rem" class="text-white">

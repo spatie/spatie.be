@@ -67,6 +67,7 @@ class Video extends Resource
             Select::make('Display')
                 ->options([
                     VideoDisplayEnum::FREE => 'Free',
+                    VideoDisplayEnum::AUTH => 'Logged in users',
                     VideoDisplayEnum::SPONSORS => 'Sponsors & License holders',
                     VideoDisplayEnum::LICENSE => 'Only license holders',
                 ])

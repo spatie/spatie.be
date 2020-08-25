@@ -44,6 +44,15 @@
                                            href="{{ $series->purchasables->first()->product->getUrl() }}">
                                             <span>Buy a license</span>
                                         </a>
+                                    @elseif ($currentVideo->display === \App\Models\Enums\VideoDisplayEnum::AUTH)
+                                        <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is only for members.</h4>
+                                        <p class="hidden md:block text-center">
+                                            You'll need to log in to view this video!
+                                        </p>
+                                        <a class="mt-4 md:mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white"
+                                           href="{{ route('login') }}">
+                                            <span>Log in</span>
+                                        </a>
                                     @elseif(session()->has('not-a-sponsor'))
                                         <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">Aaaaw… you're
                                             not a sponsor yet.</h4>

@@ -131,6 +131,10 @@ class Video extends Model implements Sortable
             return false;
         }
 
+        if ($this->display === VideoDisplayEnum::AUTH) {
+            return true;
+        }
+
         $userOwnsSeries = $this->series->isOwnedByCurrentUser();
 
         if ($this->display === VideoDisplayEnum::SPONSORS) {
