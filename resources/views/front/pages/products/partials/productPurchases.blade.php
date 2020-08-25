@@ -31,12 +31,17 @@
                 <a class="link-black link-underline" href="{{ route('products.show', $product) }}#purchases">
                     {{ $purchasable->title }}
                 </a>
-                <div class="text-xs text-gray">
-                    vanbockstal.be
-                    <span class="char-searator mx-1">•</span>
-                    Valid until 03/09/2020
-                    <span class="text-pink-dark">Expired since 03/09/2020</span>
-                </div>
+                @if ($purchase->license)
+                    <div class="text-xs text-gray">
+                        {{ $purchase->license->domain }}
+                        <span class="char-searator mx-1">•</span>
+                        @if ($purchase->license->isExpired())
+                            <span class="text-pink-dark">Expired since {{ $purchase->license->expires_at->format('Y-m-d') }}</span>
+                        @else
+                            Valid until {{ $purchase->license->expires_at->format('Y-m-d') }}
+                        @endif
+                    </div>
+                @endif
             </div>
 
             <span  class="cell-r flex justify-end">

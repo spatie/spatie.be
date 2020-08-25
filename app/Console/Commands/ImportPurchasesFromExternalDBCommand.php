@@ -115,6 +115,7 @@ class ImportPurchasesFromExternalDBCommand extends Command
                     'user_id' => $user->id,
                     'purchasable_id' => $purchasable->id,
                     'key' => $purchase->license_key,
+                    'domain' => $purchase->license_domain,
                 ], [
                     'expires_at' => $purchase->license_expires_at,
                     'created_at' => $purchase->license_created_at,
