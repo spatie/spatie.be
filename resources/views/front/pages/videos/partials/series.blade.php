@@ -6,7 +6,9 @@
                     <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
-                                <div class="shadow-lg">{{ $series->getFirstMedia('series-image') }}</div>
+                                <div class="shadow-lg">
+                                    <a href="{{ $series->url }}">{{ $series->getFirstMedia('series-image') }}</a>
+                                </div>
                             </div>
                             <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
@@ -58,7 +60,9 @@
                     <div class="line-l py-4 bg-white bg-opacity-50">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
-                                <div class="shadow-lg">{{ $series->getFirstMedia('series-image') }}</div>
+                                <div class="shadow-lg">
+                                    <a href="{{ $series->url }}">{{ $series->getFirstMedia('series-image') }}</a>
+                                </div>
                             </div>
                             <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
