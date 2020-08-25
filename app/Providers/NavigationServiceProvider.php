@@ -47,6 +47,7 @@ class NavigationServiceProvider extends ServiceProvider
             return Menu::new()
                 ->route('profile', 'Profile')
                 ->route('profile.password', 'Password')
+                ->route('purchases', 'Purchases')
                 ->route('invoices', 'Invoices')
                 ->setActiveFromRequest('/profile')
                 ->setActiveClass('submenu-active')

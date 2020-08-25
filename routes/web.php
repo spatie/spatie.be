@@ -15,6 +15,7 @@ use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\VideosController;
@@ -84,6 +85,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'profile'], function () {
     Route::get('password', [UpdatePasswordController::class, 'show'])->name('profile.password');
     Route::put('password', [UpdatePasswordController::class, 'update'])->name('profile.password');
 
+    Route::get('purchases', PurchasesController::class)->name('purchases');
     Route::get('invoices', InvoicesController::class)->name('invoices');
 });
 
