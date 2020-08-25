@@ -9,8 +9,6 @@ class RedirectDocsDomainController
 {
     public function __invoke(string $url = '')
     {
-        $url = Str::beforeLast($url, '/');
-
         return Redirect::to("https://spatie.be/docs/{$url}", 301);
     }
 }
