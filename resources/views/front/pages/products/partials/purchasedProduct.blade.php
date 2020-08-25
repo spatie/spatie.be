@@ -1,6 +1,5 @@
 @php
     /** @var \App\Models\Purchase $purchase */
-
     $purchasable = $purchase->purchasable;
 @endphp
 
@@ -32,8 +31,8 @@
         </div>
     </div>
 
-    @if ($product->hasSeries())
-        <a href="{{ route('series.show', $product->firstSeries()) }}" class="cell-r flex justify-end space-x-4">
+    @if ($purchasable->series->count())
+        <a href="{{ route('series.show', $purchasable->series->first()) }}" class="cell-r flex justify-end space-x-4">
             <x-button>
                 Watch videos
             </x-button>
