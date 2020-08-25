@@ -31,17 +31,14 @@
                     {{ $alias->slogan }}
                 </div>
             </div>
-            @endif
 
             <h2 class="title-xl mb-8">{{ $page->title }}</h2>
 
-            {{-- Else
+            @else
                 <h1 class="title-xl mb-8">{{ $page->title }}</h1>
-            --}}
+            @endif
 
-            {{-- Endif --}}
-
-            <div class="markup-titles markup-lists markup-code links-blue links-underline">
+            <div class="markup markup-titles markup-lists markup-code links-blue links-underline">
                 {!! $page->contents !!}
             </div>
         </div>
