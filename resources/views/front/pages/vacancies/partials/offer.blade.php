@@ -1,6 +1,6 @@
 <section class=section>
-    <div class="wrap-6 grid-flow-dense">
-        <div class="sm:spanx-4">
+    <div class="wrap wrap-6 sm:grid-flow-col-dense">
+        <div class="sm:col-span-4">
             <div class="markup links-underline links-blue">
                <h2 class="title-2xl">Basic needs <br>
                 fulfilled
@@ -20,8 +20,8 @@
     </div>
 </section>
 <section class=section>
-    <div class="wrap-8 grid-flow-dense">
-        <div class="sm:spanx-4 sm:startx-4">
+    <div class="wrap wrap-8 sm:grid-flow-col-dense">
+        <div class="sm:col-span-4 sm:col-start-4">
             <div class="markup links-underline links-blue">
                 <h3 class="title">Extras that will feel familiar quickly</h3>
 
@@ -35,7 +35,7 @@
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Monthly Italian lunch with the team; wine from a chicken jug</li>
                 </ul>
 
-                <p class="mt-16 text-sm text-grey">
+                <p class="mt-16 text-sm text-gray">
                     We are not looking into remote work or relocation at this point, but partial work from home is an option.
                     <br>
                     Knowledge of Dutch is mandatory.
@@ -44,7 +44,7 @@
                 </p>
             </div>
         </div>
-        <div class="sm:spanx-3 sm:startx-1">
+        <div class="sm:col-span-3 sm:col-start-1">
             <div class="illustration is-left is-postcard is-rotated h-full | sm:mr-8">
                 {{ image('italian.jpg') }}
             </div>

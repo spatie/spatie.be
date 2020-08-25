@@ -12,31 +12,46 @@ class NavigationServiceProvider extends ServiceProvider
     {
         Menu::macro('main', function (array $properties = []) {
             return Menu::new()
-                ->route('home', 'Home')
-                ->route('web-development', 'Web development')
-                ->route('open-source.index', 'Open source')
+                ->route('products.index', 'Products')
+                ->route('open-source.packages', 'Open source')
                 ->route('videos.index', 'Videos')
+                ->route('web-development', 'Web development')
 
-                ->route('about', 'About us')
                 ->setActiveFromRequest()
                 ->addClass($properties['class'] ?? '');
         });
 
+        Menu::macro('service', function (array $properties = []) {
+            return Menu::new()
+                ->route('about', 'About')
+                ->route('docs', 'Docs')
+                //->route('guidelines', 'Guidelines')
+
+                ->withoutWrapperTag()
+                ->withoutParentTag()
+                ->setActiveClassOnLink()
+                ->setActiveFromRequest();
+        });
+
         Menu::macro('opensource', function () {
             return Menu::new()
-                ->route('open-source.index', 'Overview')
                 ->route('open-source.packages', 'Packages')
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard wall')
                 ->route('open-source.support', 'Support us')
-                ->addClass('leading-loose links-underline links-white')
                 ->setActiveFromRequest('/open-source')
-                ->setActiveClass('font-bold')
-                ->each(function (Link $link) {
-                    if ($link->isActive()) {
-                        $link->prepend('<span class="absolute pin-l -ml-4 icon fill-white">' . svg('icons/far-angle-right') . '</span>');
-                    }
-                });
+                ->setActiveClass('submenu-active')
+                ;
+        });
+
+        Menu::macro('profile', function () {
+            return Menu::new()
+                ->route('profile', 'Profile')
+                ->route('profile.password', 'Password')
+                ->route('invoices', 'Invoices')
+                ->setActiveFromRequest('/profile')
+                ->setActiveClass('submenu-active')
+                ;
         });
     }
 }

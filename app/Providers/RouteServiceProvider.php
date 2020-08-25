@@ -4,28 +4,41 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
+use Spatie\Sheets\Sheets;
 
 class RouteServiceProvider extends ServiceProvider
 {
+    public function boot()
+    {
+        parent::boot();
+
+        Route::bind('documentationPage', function ($path) {
+            return $this->app->make(Sheets::class)
+                    ->collection('docs')
+                    ->get($path) ?? abort(404);
+        });
+    }
+
     public function map()
     {
-        $this->mapAdminRoutes();
+        $this->mapWebRoutes();
 
-        $this->mapFrontRoutes();
+        $this->mapApiRoutes();
 
         $this->mapRedirectsForOldSite();
     }
 
-    protected function mapAdminRoutes()
-    {
-        Route::middleware(['web', 'admin', 'auth.basic', 'spatieMembers'])
-            ->group(base_path('routes/admin.php'));
-    }
-
-    protected function mapFrontRoutes()
+    protected function mapWebRoutes()
     {
         Route::middleware(['web'])
-            ->group(base_path('routes/front.php'));
+            ->group(base_path('routes/web.php'));
+    }
+
+    protected function mapApiRoutes()
+    {
+        Route::middleware(['api'])
+            ->prefix('api')
+            ->group(base_path('routes/api.php'));
     }
 
     protected function mapRedirectsForOldSite()

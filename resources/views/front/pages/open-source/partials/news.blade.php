@@ -1,6 +1,6 @@
 <section id=news class="section">
-    <div class="wrap-6">
-        <div class="sm:spanx-3">
+    <div class="wrap wrap-6">
+        <div class="sm:col-span-3">
             <div class="line-l">
                 <h2 class="title-sm">
                     <a href='https://github.com/issues?q=is%3Aopen+is%3Aissue+user%3Aspatie+is%3Apublic+label%3A%22good+first+issue%22'
@@ -15,7 +15,7 @@
                             {{ $issue->title }}
                         </a>
                         <br>
-                        <span class="text-xs text-grey">
+                        <span class="text-xs text-gray">
                             <a href="{{ $issue->repository->url }}" target="_blank" rel="nofollow noreferrer noopener">
                                 {{ $issue->repository->name }}
                             </a>
@@ -45,7 +45,7 @@
                 </div>
             @endif
         </div>
-        <div class="sm:spanx-3">
+        <div class="sm:col-span-3">
             <div class="line-l pt-8 | sm:pt-0">
                 @include('front.pages.open-source.partials.insights')
             </div>

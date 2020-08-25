@@ -2,20 +2,21 @@
 
 namespace App\Http\Auth\Controllers;
 
+use App\Actions\SubscribeUserToNewsletterAction;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController
+class RegisterController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, RegistersUsers;
 
-    use RegistersUsers;
-
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     public function __construct()
     {
@@ -38,5 +39,16 @@ class RegisterController
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+    }
+
+    protected function registered(Request $request, User $user)
+    {
+        flash()->success('Your account was created and you are now logged in');
+
+        if ($request->get('newsletter')) {
+            app(SubscribeUserToNewsletterAction::class)->execute($user);
+        }
+
+        return redirect()->route('products.index');
     }
 }

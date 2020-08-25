@@ -59,7 +59,7 @@ class Repository extends Model
             'JavaScript' => 'orange',
         ];
 
-        return $colors[$this->language] ?? 'grey';
+        return $colors[$this->language] ?? 'gray';
     }
 
     public static function getTotalDownloads(): int
@@ -111,7 +111,7 @@ class Repository extends Model
             return;
         }
 
-        collect(['name', 'stars', 'repository_created_at'])->first(function (string $validSort) use ($sort) {
+        collect(['name', 'stars', 'repository_created_at', 'downloads'])->first(function (string $validSort) use ($sort) {
             return ltrim($sort, '-') === $validSort;
         }, function () use ($sort) {
             throw new BadMethodCallException('Not allowed to sort by `' . $sort . '`');

@@ -1,7 +1,52 @@
 @charset 'UTF-8';
 
 @import './bootstrap.css';
-@import './utilities/*';
-@import './components/*';
+@import './highlight.css';
 
-@tailwind utilities;
+@import './utilities/algolia.css';
+@import './utilities/avatar.css';
+@import './utilities/banner.css';
+@import './utilities/bullets.css';
+@import './utilities/card.css';
+@import './utilities/cell.css';
+@import './utilities/char.css';
+@import './utilities/counter.css';
+@import './utilities/flash.css';
+@import './utilities/font.css';
+@import './utilities/gradient.css';
+@import './utilities/icon.css';
+@import './utilities/illustration.css';
+@import './utilities/justify-items.css';
+@import './utilities/line.css';
+@import './utilities/links.css';
+@import './utilities/markup.css';
+@import './utilities/modal.css';
+@import './utilities/section.css';
+@import './utilities/select.css';
+@import './utilities/submenu.css';
+@import './utilities/tag.css';
+@import './utilities/title.css';
+@import './utilities/wallpaper.css';
+@import './utilities/wrap.css';
+@import './utilities/zoom.css';
+
+/* scrap */
+
+.bg-multiply {
+    background-blend-mode: multiply;
+}
+
+a:active,
+button:active {
+    transform: translateY(1px)
+}
+
+/* Permalinks in front of markdown title */
+a.anchor-link {
+    @apply border-0 text-sm opacity-50 no-underline pr-2 font-light absolute text-right;
+    right: 100%;
+    top: .3em;
+    font-size: .75em;
+    height: 1em;
+    width: 1em;
+}

@@ -2,26 +2,49 @@
 
 namespace App\Models;
 
-use App\Http\Front\Controllers\Videos\ShowVideoController;
+use App\Actions\UpdateVideoDetailsAction;
+use App\Http\Controllers\VideosController;
+use App\Models\Enums\VideoDisplayEnum;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use League\CommonMark\CommonMarkConverter;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
-class Video extends Model
+class Video extends Model implements Sortable
 {
+    use SortableTrait;
+
     protected $guarded = [];
 
     protected $casts = [
         'sort' => 'integer',
-        'only_for_sponsors' => 'boolean',
+    ];
+
+    public $sortable = [
+        'order_column_name' => 'sort_order',
+        'sort_when_creating' => true,
     ];
 
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    protected static function booted()
+    {
+        static::creating(function (Video $video) {
+            if (! $video->title) {
+                $video->title = 'New video';
+                $video->slug = 'new-video';
+                $video->runtime = 0;
+            }
+        });
+
+        static::saved(fn (Video $video) => app(UpdateVideoDetailsAction::class)->execute($video));
     }
 
     public function series()
@@ -32,8 +55,8 @@ class Video extends Model
     public function getPrevious(): ?Video
     {
         return Video::where('series_id', $this->series_id)
-            ->where('sort', '<', $this->sort)
-            ->orderByDesc('sort')
+            ->where('sort_order', '<', $this->sort_order)
+            ->orderByDesc('sort_order')
             ->limit(1)
             ->first();
     }
@@ -41,15 +64,15 @@ class Video extends Model
     public function getNext(): ?Video
     {
         return Video::where('series_id', $this->series_id)
-            ->where('sort', '>', $this->sort)
-            ->orderBy('sort')
+            ->where('sort_order', '>', $this->sort_order)
+            ->orderBy('sort_order')
             ->limit(1)
             ->first();
     }
 
     public function getUrlAttribute(): string
     {
-        return action(ShowVideoController::class, [$this->series, $this]);
+        return action([VideosController::class, 'show'], [$this->series, $this]);
     }
 
     protected function getDownloadUrls(): Collection
@@ -100,14 +123,65 @@ class Video extends Model
 
     public function canBeSeenByCurrentUser(): bool
     {
-        if (! $this->only_for_sponsors) {
+        if ($this->display === VideoDisplayEnum::FREE) {
             return true;
         }
 
-        if (! auth()->user()) {
+        if (! auth()->check()) {
             return false;
         }
 
-        return auth()->user()->isSponsoring();
+        $userOwnsSeries = $this->series->isOwnedByCurrentUser();
+
+        if ($this->display === VideoDisplayEnum::SPONSORS) {
+            return auth()->user()->isSponsoring() || $userOwnsSeries;
+        }
+
+        if ($this->display === VideoDisplayEnum::LICENSE) {
+            return $userOwnsSeries;
+        }
+
+        return false;
+    }
+
+    public function buildSortQuery()
+    {
+        return static::query()->where('series_id', $this->series_id)->where('chapter', $this->chapter);
+    }
+
+    public function hasBeenCompletedByCurrentUser(): bool
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        if (! $currentUser) {
+            return false;
+        }
+
+        return $currentUser->completedVideos()->where('video_id', $this->id)->exists();
+    }
+
+    public function markAsCompletedForCurrentUser(): self
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        if (! $currentUser) {
+            return $this;
+        }
+
+        $currentUser->completedVideos()->syncWithoutDetaching($this);
+
+        return $this;
+    }
+
+    public function markAsUncompletedForCurrentUser(): self
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        $currentUser->completedVideos()->detach($this);
+
+        return $this;
     }
 }

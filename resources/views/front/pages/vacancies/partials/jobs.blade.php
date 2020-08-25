@@ -1,6 +1,6 @@
 <section id="jobs">
-    <div class="wrap-6 | items-start">
-        <div class="sm:spanx-3 | line-l">
+    <div class="wrap wrap-6 | items-start">
+        <div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
                 Vacancies at Spatie
                 <div class="title-subtext text-pink-dark">
@@ -9,7 +9,7 @@
             </h2>
             @include('front.pages.vacancies.partials.list')
         </div>
-        <div class="sm:spanx-3 | line-l">
+        <div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
                 Internships
                 <div class="title-subtext text-pink-dark">
@@ -24,7 +24,7 @@
                     Apply for an internship
                 </a>
                 <br>
-    <span class="text-xs text-grey">Antwerp</span>
+    <span class="text-xs text-gray">Antwerp</span>
             </p>
         </div>
     </div>

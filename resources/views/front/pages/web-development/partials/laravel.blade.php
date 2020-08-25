@@ -1,8 +1,8 @@
 
 
 <section id="laravel" class="section mt-8">
-    <div class="wrap-6">
-        <div class="sm:spanx-3">
+    <div class="wrap wrap-6">
+        <div class="sm:col-span-3">
             <div class="markup links-underline links-blue">
                 <div class="flex justify-start z-10 | sm:justify-end sm:-mr-8">
                     <div class="illustration-svg">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="sm:spanx-3">
+        <div class="sm:col-span-3">
             <div class="markup links-underline links-blue">
                 <div class="flex justify-start | sm:-ml-2">
                     <div class="flex sm:flex-col">

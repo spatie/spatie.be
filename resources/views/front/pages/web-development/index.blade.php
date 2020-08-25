@@ -8,7 +8,7 @@
 
     @include('front.pages.web-development.partials.banner')
 
-    <div class="section-group pt-0 section-fade">
+    <div class="section section-group pt-0 section-fade">
         @include('front.pages.web-development.partials.intro')
         @include('front.pages.web-development.partials.cta')
         @include('front.pages.web-development.partials.clients')

@@ -1,5 +1,5 @@
-<div class="inset-green mx-0">
-    <div class="wrap-inset md:items-start" style="--cols: auto 1fr">
+<div class="card gradient gradient-green text-white mx-0">
+    <div class="wrap-card grid md:grid-cols-2 md:items-start">
         <a class="font-sans-bold bg-white hover:text-green-dark justify-center flex items-center px-6 py-2 rounded-full text-green text-xl"
            href="https://mailcoach.app/videos">
             Get all videos

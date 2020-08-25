@@ -15,8 +15,17 @@ class Postcard extends Model implements HasMedia
         'media',
     ];
 
+    public function getImageAttribute()
+    {
+        return $this->getFirstMediaUrl();
+    }
+
     public function getSenderAttribute(): string
     {
+        if (! isset($this->attributes['sender'])) {
+            return '';
+        }
+
         return collect(explode(',', $this->attributes['sender']))
             ->map(function ($sender) {
                 $sender = trim($sender);

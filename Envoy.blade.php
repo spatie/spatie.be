@@ -4,7 +4,7 @@ require __DIR__.'/vendor/autoload.php';
 $server = "spatie.be";
 $userAndServer = 'forge@'. $server;
 $repository = "spatie/spatie.be";
-$baseDir = "/home/forge/spatie.be";
+$baseDir = "/home/forge/2020.spatie.be";
 $releasesDir = "{$baseDir}/releases";
 $currentDir = "{$baseDir}/current";
 $newReleaseName = date('Ymd-His');
@@ -39,8 +39,8 @@ deployOnlyCode
 
 @task('startDeployment', ['on' => 'local'])
 {{ logMessage("🏃  Starting deployment...") }}
-git checkout master
-git pull origin master
+git checkout add-customer-site
+git pull origin add-customer-site
 @endtask
 
 @task('cloneRepository', ['on' => 'remote'])
@@ -52,7 +52,7 @@ cd {{ $releasesDir }}
 mkdir {{ $newReleaseDir }}
 
 # Clone the repo
-git clone --depth 1 git@github.com:{{ $repository }} {{ $newReleaseName }}
+git clone --depth 1 --branch add-customer-site git@github.com:{{ $repository }} {{ $newReleaseName }}
 
 # Configure sparse checkout
 cd {{ $newReleaseDir }}
@@ -127,7 +127,6 @@ php artisan db:seed --class MembersSeeder --force
 ln -nfs {{ $newReleaseDir }} {{ $currentDir }}
 cd {{ $newReleaseDir }}
 
-php artisan update-videos
 php artisan horizon:terminate
 php artisan config:clear
 php artisan cache:clear
@@ -153,8 +152,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +6 | xargs -d "\n" rm -rf
 @task('deployOnlyCode',['on' => 'remote'])
 {{ logMessage("💻  Deploying code changes...") }}
 cd {{ $currentDir }}
-git pull origin master
-php artisan update-videos
+git pull origin add-customer-site
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache

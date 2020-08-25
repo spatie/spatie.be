@@ -4,8 +4,8 @@
             About <br>Spatie
         </h2>
     </div>
-    <div class="wrap-6 | items-start">
-        <div class="sm:spanx-4">
+    <div class="wrap wrap-6 | items-start">
+        <div class="sm:col-span-4">
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
                     We design, build and support websites, webshops and applications —since 2004.
@@ -24,8 +24,8 @@
                 </p>
             </div>
         </div>
-        <div class="line-l | sm:spanx-2 sm:startx-5">
-            <p class="markup text-grey text-xs">
+        <div class="line-l | sm:col-span-2 sm:col-start-5">
+            <p class="markup text-gray text-xs">
                 ‘Spatie’ is Dutch for ‘space’, the character between 2 words.
                 <br>You pronounce it /'spɑːsiː/.
             </p>

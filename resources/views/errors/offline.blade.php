@@ -10,7 +10,7 @@
         </div>
     </section>
 
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         <section class=section>
             <div class="wrap">
                 <p class="text-2xl">

@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
@@ -13,6 +14,8 @@ class User extends Resource
     public static $model = \App\Models\User::class;
 
     public static $title = 'name';
+
+    public static $group = "Users";
 
     public static $search = [
         'id', 'name', 'email',
@@ -39,6 +42,9 @@ class User extends Resource
                 ->onlyOnForms()
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
+
+            HasMany::make('Purchases'),
+            HasMany::make('Licenses'),
         ];
     }
 

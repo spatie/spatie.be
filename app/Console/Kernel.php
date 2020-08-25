@@ -7,6 +7,7 @@ use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
 use App\Console\Commands\ImportRandomContributorCommand;
+use App\Console\Commands\SendLicenseExpirationNotificationsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
@@ -25,6 +26,8 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportRandomContributorCommand::class)->hourly();
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->daily();
+
+        $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
     }
 
     protected function commands()

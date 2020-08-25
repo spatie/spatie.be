@@ -1,0 +1,83 @@
+/**
+ * GitHub Gist Theme
+ * Author : Anthony Attard - https://github.com/AnthonyAttard
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
+
+.hljs {
+    display: block;
+    overflow-x: auto;
+    @apply my-8;
+    @apply p-6;
+    @apply bg-blue-lightest;
+    @apply bg-opacity-25;
+    @apply text-sm;
+    @apply font-mono;
+}
+
+.hljs-comment,
+.hljs-meta {
+    @apply text-gray;
+    @apply text-opacity-50;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-strong,
+.hljs-emphasis,
+.hljs-quote {
+    @apply text-pink;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-type {
+    @apply text-pink-dark;
+}
+
+.hljs-literal,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-attribute {
+    @apply text-blue;
+}
+
+.hljs-section,
+.hljs-name {
+    @apply text-green;
+}
+
+.hljs-tag {
+    @apply text-gray-darker;
+}
+
+.hljs-title,
+.hljs-attr,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo {
+    @apply text-purple;
+}
+
+.hljs-addition {
+    @apply text-green;
+    @apply text-green-lightest;
+}
+
+.hljs-deletion {
+    @apply text-pink-dark;
+    @apply text-pink-lightest;
+}
+
+.hljs-link {
+    text-decoration: underline;
+}
+
+.hljs-number {
+    @apply text-blue-light;
+}
+
+.hljs-string {
+    @apply text-blue-dark;
+}

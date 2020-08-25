@@ -1,0 +1,5 @@
+@responsive {
+    .justify-items-end {
+        justify-items: end;
+    }
+}

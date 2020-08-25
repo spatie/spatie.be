@@ -1,18 +1,24 @@
 @push('scripts')
 <script src="https://player.vimeo.com/api/player.js"></script>
 <script>
-    var iframe = document.querySelector('iframe');
-    var player = new Vimeo.Player(iframe);
+    var vimeoWrapper = document.querySelector('#vimeo');
+    var player = new Vimeo.Player(document.querySelector('#player'));
+
     if (localStorage.getItem('spatie.videos.rate')) {
         player.setPlaybackRate(localStorage.getItem('spatie.videos.rate'))
     }
+
     // Automatically send the user to the next video after completion.
     player.on('ended', function() {
+        let completeButton = document.querySelector('.complete');
+
+        if (completeButton) {
+            completeButton.click();
+        }
+
         // Don't the next link if there is none
         @if ($nextVideo)
             location.href = '{{ route('videos.show', [$nextVideo->series, $nextVideo]) }}';
-        @else
-            return;
         @endif
     });
 

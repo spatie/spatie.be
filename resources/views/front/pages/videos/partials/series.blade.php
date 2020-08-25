@@ -1,64 +1,86 @@
 <section id="series" class="section">
-    <div class="wrap">
-        <h2 class="title line-after mb-12">Available series</h2>
-    </div>
-    <div class="wrap-6 | items-start markup-lists">
+    <div class="wrap grid sm:grid-cols-2 col-gap-6 row-gap-8 | items-start markup-lists">
         @foreach($allSeries as $series)
-            <div class="sm:spanx-3">
-                {{--
-                <a href="{{ $series->url }}" class="illustration">
-                    {{ image("/video-series/{$series->slug}.jpg") }}
-                </a>
-                --}}
+            <div>
+                @if($series->isPurchasable())
+                    <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
+                        <h2 class="title-sm">
+                            <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
+                            <div class="title-subtext text-gray flex items-center">
+                                <span>
+                                {{ $series->videos()->count() }}
+                                {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                                </span>
 
-                <div class="mt-8 line-l">
-                    <h2 class="title-sm">
-                        <a href="{{ $series->url }}">{{ $series->title }}</a>
-                        <div class="title-subtext text-grey">
-                            {{ $series->videos()->count() }}
-                            {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                                <span title="Part of course" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
+                                    <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
+                                        @if ($series->isOwnedByCurrentUser())
+                                            {{ svg('icons/fas-lock-open-alt') }}
+                                        @else
+                                            {{ svg('icons/fas-lock-alt') }}
+                                        @endif
+                                    </span>
+                                </span>
+                            </div>
+                        </h2>
+                        <p class="mt-4">
+                            {{ $series->formattedDescription }}
+                        </p>
 
-                            @if($series->slug === 'building-mailcoach' || $series->slug === 'laravel-package-training')
-                                <span class="ml-1 bg-green-lightest text-green text-xs font-normal py-1 px-2 rounded-full">Part of a course</span>
+                        @if (! $series->isOwnedByCurrentUser())
+
+                            <p class="mt-4 flex items-center space-x-4">
+                                <a href="{{ $series->purchaseLink() }}">
+                                    <x-button>
+                                        Buy course
+                                    </x-button>
+                                </a>
+                                <a class="link-green link-underline" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $series->videos()->count()) }}</a>
+
+                            </p>
+                            @if (sponsorIsViewingPage())
+                                @include('front.pages.videos.partials.sponsorDiscount')
                             @endif
+                        @else
+                            <p class="mt-4">
+                                <a href="{{ $series->url }}">
+                                <x-button>
+                                    Start course
+                                </x-button>
+                                </a>
+                            </p>
+                        @endif
+                    </div>
+                @else
+                    <div class="py-4">
+                        <div class="line-l">
+                            <h2 class="title-sm">
+                                <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
+                                <div class="title-subtext text-gray flex items-center">
+                                    <span>
+                                    {{ $series->videos()->count() }}
+                                    {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                                    </span>
+
+                                    @if($series->hasSponsoredContent())
+                                        <span title="Series has extra content for sponsors" class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
+                                            <span style="font-size: .6rem" class="icon text-pink">
+                                                {{ svg('icons/fas-heart') }}
+                                            </span>
+                                        </span>
+                                    @endif
+                                </div>
+                            </h2>
+                            <p class="mt-4">
+                                {{ $series->formattedDescription }}
+                            </p>
+                            <p class="mt-4">
+                                <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('videos', $series->videos()->count()) }}</a>
+                            </p>
                         </div>
-                    </h2>
-                    <p class="mt-4">
-                        {{ $series->description }}
-                    </p>
-                    <p class="mt-4">
-                        <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}</a>
-                    </p>
-                    @if($series->slug === 'building-mailcoach')
-                        <p class="">
-                            <a class="link-underline link-blue" href="https://mailcoach.app/videos">
-                                Buy the entire course at <strong>mailcoach.app/videos</strong>
-                            </a>
-                        </p>
+                    </div>
+                @endif
 
-                        @if (sponsorIsViewingPage())
-                            <p class="mt-2 text-xs text-grey">
-                                As a sponsor, you can get 15$ off with following coupon:
-                                <span class="mt-2 font-mono opacity-75">{{ config('services.promo_codes.package_training') }}</span>
-                            </p>
-                        @endif
-                    @endif
-
-                    @if($series->slug === 'laravel-package-training')
-                        <p class="">
-                            <a class="link-underline link-blue" href="https://laravelpackage.training">
-                                Buy the entire course at <strong>laravelpackage.training</strong>
-                            </a>
-                        </p>
-
-                        @if (sponsorIsViewingPage())
-                            <p class="mt-2 text-xs text-grey">
-                                As a sponsor, you can get 15$ off with following coupon:
-                                <span class="mt-2 font-mono opacity-75">{{ config('services.promo_codes.package_training') }}</span>
-                            </p>
-                        @endif
-                    @endif
-                </div>
             </div>
         @endforeach
     </div>

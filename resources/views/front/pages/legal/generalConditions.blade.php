@@ -11,12 +11,12 @@
                 and conditions
             </h1>
             <p class="mt-4 | print:hidden">
-                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
                         href="{{ route('legal.index')}}" class="link-underline link-blue">Legal overview</a>
             </p>
         </div>
     </section>
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         <section class=section>
             <div class="wrap">
                 <div class="markup markup-lists markup-titles links-underline links-blue">

@@ -53,11 +53,26 @@ return [
             'root' => storage_path('app'),
         ],
 
+        'purchasable_downloads' => [
+            'driver' => 'local',
+            'root' => storage_path('app/purchasable_downloads'),
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
+        ],
+
+        'docs' => [
+            'driver' => 'local',
+            'root' => storage_path('docs'),
+        ],
+
+        'guidelines' => [
+            'driver' => 'local',
+            'root' => resource_path('views/front/pages/guidelines/pages'),
         ],
 
         's3' => [

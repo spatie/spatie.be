@@ -1,9 +1,9 @@
-@isset($background)
-    <div class="wallpaper">
+@if($background && $image = image($background))
+    <div class="wallpaper opacity-50 | md:opacity-100">
         {{-- wallpaper is always 100vw, so we don't need pragmatic srcset sizes --}}
-        <img srcset="{{ image($background)->getSrcset() }}" src="{{ image($background)->getUrl() }}" width="2400" sizes="100vw" alt="">
+        <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="">
     </div>
-@endisset
+@endif
 
 @isset($backgroundOffline)
     <div class="wallpaper">

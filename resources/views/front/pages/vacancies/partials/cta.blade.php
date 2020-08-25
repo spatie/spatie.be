@@ -1,7 +1,7 @@
 <section id="cta" class="section">
     <div class="wrap">
-        <div class="inset-green">
-            <div class="wrap-inset md:items-end" style="--cols: 1fr 1fr">
+        <div class="card gradient gradient-green text-white">
+            <div class="wrap-card grid md:grid-cols-2 md:items-end">
                 <div class="links-underline links-white">
                     <p class="text-2xl">
                         @isset($github)
@@ -11,7 +11,7 @@
                         @endisset
                     </p>
                 </div>
-                <h2 class="title-xl | grid-text-right">
+                <h2 class="title-xl md:text-right">
                     <a class="link-white link-underline" href="{{ mailto(
 'I would be a good match!',
 'This is exiting! Send us:
@@ -22,7 +22,7 @@
                 </h2>
             </div>
         </div>
-        <p class="mt-8 text-xs text-grey">
+        <p class="mt-8 text-xs text-gray">
             Every application will receive a response <br>and will be handled confidentially.
         </p>
     </div>

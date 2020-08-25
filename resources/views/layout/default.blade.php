@@ -14,13 +14,15 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
 
     @include('layout.partials.analytics')
+    @stack('head')
 </head>
 
 <body class="flex flex-col min-h-screen">
+    <script>/* Empty script tag because Firefox has a FOUC */</script>
     @include('layout.partials.wallpaper')
     
-    @include('layout.partials.status')
     @include('layout.partials.header')
+    @include('layout.partials.flash')
 
     <div class="flex-grow" role="main">
         {{ $slot }}
@@ -29,6 +31,7 @@
     @include('layout.partials.footer')
 
     <livewire:scripts>
+    @stack('scripts')
 
     {!! schema()->localBusiness() !!}
 </body>

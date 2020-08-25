@@ -15,7 +15,7 @@
         </div>
     </section>
 
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         @include('errors.partials.suggestions')
 
         <section class=section>

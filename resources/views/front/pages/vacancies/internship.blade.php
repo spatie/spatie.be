@@ -13,16 +13,16 @@
                 Internships <br>in Antwerp
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
                         href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
             </p>
         </div>
     </section>
 
-    <div class="section-group pt-0">
+    <div class="section section-group pt-0">
         <section id="intro" class="section">
-            <div class="wrap-6">
-                <div class="sm:spanx-4">
+            <div class="wrap wrap-6">
+                <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <h3 class="title">Backend, frontend or full-stack student?</h3>
                         <p class="text-lg">
