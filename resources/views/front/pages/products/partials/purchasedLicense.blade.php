@@ -1,13 +1,13 @@
 <div class="cells grid-cols-2">
     <div class="cell-l">
         <code class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
-        <div class="text-xs text-gray">
+        <div class="flex items-center text-xs text-gray">
             <livewire:domain :license="$license" />
-            
+
             @if ($license->isExpired())
                 <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
             @else
-                Expires on {{ $license->expires_at->format('Y-m-d') }}
+                <span>Expires on {{ $license->expires_at->format('Y-m-d') }}</span>
             @endif
         </div>
     </div>

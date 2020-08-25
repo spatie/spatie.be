@@ -23,5 +23,6 @@
         <a href="#" class="ml-1 link-blue link-underline" wire:click.prevent="edit">
             Edit
         </a>
-        <span class="char-separator mx-1">•</span>
 @endif
+
+<span class="char-separator mx-2">•</span>
