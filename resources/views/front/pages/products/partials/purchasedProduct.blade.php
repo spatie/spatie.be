@@ -32,10 +32,12 @@
     </div>
 
     @if ($purchasable->series->count())
-        <a href="{{ route('series.show', $purchasable->series->first()) }}" class="cell-r flex justify-end space-x-4">
-            <x-button>
-                Watch videos
-            </x-button>
-        </a>
+        <div class="cell-r flex justify-end space-x-4">
+            <a href="{{ route('series.show', $purchasable->series->first()) }}">
+                <x-button>
+                    Watch videos
+                </x-button>
+            </a>
+        </div>
     @endif
 </div>
