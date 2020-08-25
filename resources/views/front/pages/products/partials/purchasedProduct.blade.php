@@ -32,7 +32,7 @@
 
         <a class="link" download="download" href="{{ $downloadUrl }}">
             <x-button>
-                Download {{$download->name}}
+                Download {{ $download->getCustomProperty('label') ?? $download->name }}
             </x-button>
         </a>
     @endforeach
