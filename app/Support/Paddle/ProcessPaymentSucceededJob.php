@@ -6,10 +6,17 @@ use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Bus\Dispatchable;
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Queue\SerializesModels;
 use Laravel\Paddle\Receipt;
 
-class ProcessPaymentSucceededJob
+class ProcessPaymentSucceededJob implements ShouldQueue
 {
+    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
     private array $payload;
 
     public function __construct(array $payload)
