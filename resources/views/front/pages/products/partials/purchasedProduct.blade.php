@@ -8,7 +8,7 @@
         <div class="text-xs text-gray">
             {{ request()->user()->email }}
             <span class="char-searator mx-1">•</span>
-            Purchases at {{ $purchase->created_at->format('d/m/Y') }}
+            Purchased on {{ $purchase->created_at->format('Y-m-d') }}
         </div>
         <div>
             <ul>
