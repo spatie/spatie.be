@@ -22,7 +22,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $repositories = $this->getRepositories();
 
-        $accessToken = env('GITHUB_ACCESS_TOKEN');
+        $accessToken = config('services.github.docs_access_token');
 
         $processes = [];
 
