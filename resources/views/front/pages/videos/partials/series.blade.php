@@ -40,8 +40,10 @@
                                         Buy course
                                     </x-button>
                                 </a>
-                                <a class="link-green link-underline" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $series->videos()->count()) }}</a>
-
+                                @php($freeVideoCount = $series->videos->filter(fn ($video) => in_array($video->display, [\App\Models\Enums\VideoDisplayEnum::FREE, \App\Models\Enums\VideoDisplayEnum::AUTH]))->count())
+                                @if ($freeVideoCount > 0)
+                                    <a class="link-green link-underline" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $freeVideoCount) }}</a>
+                                @endif
                             </p>
                             @if (sponsorIsViewingPage())
                                 @include('front.pages.videos.partials.sponsorDiscount')
