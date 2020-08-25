@@ -143,9 +143,9 @@
 .markup-code code:not(.hljs) {
     @apply bg-blue-lightest;
     @apply bg-opacity-25;
-    @apply -mx-1;
     @apply px-1;
     @apply font-mono;
+    @apply rounded-sm;
 }
 
 .markup-code .article_badges {
