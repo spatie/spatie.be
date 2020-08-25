@@ -9,7 +9,7 @@ use Spatie\MediaLibrary\ResponsiveImages\Jobs\GenerateResponsiveImagesJob;
 
 class RegeneratePostcardResponsiveImagesCommand extends Command
 {
-    protected $signature = 'postcards:regenerate {--id}';
+    protected $signature = 'postcards:regenerate {--id=}';
 
     protected $description = 'Regenerates the responsive images for all the postcards';
 
