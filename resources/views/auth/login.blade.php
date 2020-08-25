@@ -53,7 +53,12 @@
 
                     <x-field>
                         <x-label for="email">Your email</x-label>
-                        <input class="form-input" autofocus type="email" name="email" id="email">
+                        <input class="form-input" autofocus type="email" name="email" id="email" required>
+                        @error('email')
+                            <p class="text-pink text-sm">
+                                {{ $message }}
+                            </p>
+                        @enderror
                     </x-field>
 
                     <x-field>
@@ -63,7 +68,12 @@
                             </x-label>
                             <a class="ml-4 link-white link-underline text-sm" tabindex="3" href="{{ route('forgot-password') }}">Can't recall, send me a link</a>
                         </div>
-                        <input class="form-input" type="password" name="password" id="password">
+                        <input class="form-input" type="password" name="password" id="password" required>
+                        @error('password')
+                            <p class="text-pink text-sm">
+                                {{ $message }}
+                            </p>
+                        @enderror
                     </x-field>
 
                     <x-button>Log in</x-button>
