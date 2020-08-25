@@ -4,7 +4,7 @@ require __DIR__.'/vendor/autoload.php';
 $server = "spatie.be";
 $userAndServer = 'forge@'. $server;
 $repository = "spatie/spatie.be";
-$baseDir = "/home/forge/2020.spatie.be";
+$baseDir = "/home/forge/spatie.be";
 $releasesDir = "{$baseDir}/releases";
 $currentDir = "{$baseDir}/current";
 $newReleaseName = date('Ymd-His');
