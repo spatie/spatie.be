@@ -39,7 +39,11 @@ class GithubSocialiteController
             session()->flash('not-a-sponsor');
         }
 
+
+
         auth()->login($user);
+
+        flash()->success('You have been logged in');
 
         return redirect()->to(session('before-github-redirect', route('videos.index')));
     }
