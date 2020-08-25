@@ -22,9 +22,11 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $repositories = $this->getRepositories();
 
-        $accessToken = env('GITHUB_ACCESS_TOKEN');
+        $accessToken = config('services.github.docs_access_token');
 
         $processes = [];
+
+        $publicDocsAssetPath = public_path('docs');
 
         foreach ($repositories as $repository) {
             foreach ($repository['branches'] as $branch => $alias) {
@@ -41,7 +43,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                     && cp -r docs/* ../../../docs/{$repository['name']}/{$alias} \
                     && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md \
                     && cd docs/ \
-                    && find . -not -name '*.md' | cpio -pdm ../../../../../public/docs/{$repository['name']}/{$alias}/
+                    && find . -not -name '*.md' | cpio -pdm {$publicDocsAssetPath}/{$repository['name']}/{$alias}/
                 BASH
                 );
 
@@ -51,6 +53,8 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         all($processes)
             ->then(function ($output) {
+                print_r($output);
+
                 $this->info('Fetched docs from all repositories.');
 
                 $this->info('Caching Sheets.');

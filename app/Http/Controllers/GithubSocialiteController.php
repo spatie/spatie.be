@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
 use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
@@ -34,6 +35,8 @@ class GithubSocialiteController
             'avatar' => $gitHubUser->avatar,
             'is_sponsor' => $isSponsor,
         ]);
+
+        app(RestoreRepositoryAccessAction::class)->execute($user);
 
         if (! $user->is_sponsor && ! $user->isSpatieMember()) {
             session()->flash('not-a-sponsor');

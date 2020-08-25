@@ -70,4 +70,27 @@ class GitHubApi
 
         return $api->show($username);
     }
+
+    public function inviteToRepo(string $gitHubUsername, string $repository)
+    {
+        [$organisation, $repository] = explode('/', $repository);
+
+        $this->client->repo()->collaborators()->add(
+            $organisation,
+            $repository,
+            $gitHubUsername,
+            ['permission' => 'pull']
+        );
+    }
+
+    public function revokeAccessToRepo(string $gitHubUsername, string $repository)
+    {
+        [$organisation, $repository] = explode('/', $repository);
+
+        $this->client->repo()->collaborators()->remove(
+            $organisation,
+            $repository,
+            $gitHubUsername,
+        );
+    }
 }

@@ -1,7 +1,7 @@
 <x-page
         title="Products"
         background="/backgrounds/product.jpg"
-        description="Section with all our paid products"
+        description="Welcome in our store, by artisans for artisans. Get access to our paid products, courses and ebooks"
 >
     <section id="banner" class="banner" role="banner">
         <div class="wrap">

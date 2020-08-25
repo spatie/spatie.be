@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
+use App\Services\GitHub\GitHubApi;
 use App\Support\Paddle\PaddlePayload;
 use Laravel\Paddle\Receipt;
 
@@ -12,9 +13,18 @@ class HandlePurchaseAction
 {
     protected HandlePurchaseLicensingAction $handlePurchaseLicensingAction;
 
-    public function __construct(HandlePurchaseLicensingAction $handlePurchaseLicensingAction)
-    {
+    protected RestoreRepositoryAccessAction $restoreRepositoryAccessAction;
+
+    protected GitHubApi $gitHubApi;
+
+    public function __construct(
+        HandlePurchaseLicensingAction $handlePurchaseLicensingAction,
+        RestoreRepositoryAccessAction $restoreRepositoryAccessAction,
+        GitHubApi $gitHubApi
+    ) {
         $this->handlePurchaseLicensingAction = $handlePurchaseLicensingAction;
+        $this->restoreRepositoryAccessAction = $restoreRepositoryAccessAction;
+        $this->gitHubApi = $gitHubApi;
     }
 
     public function execute(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
@@ -22,6 +32,10 @@ class HandlePurchaseAction
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
+
+        if ($purchasable->repository_access && $user->github_username) {
+            $this->restoreRepositoryAccessAction->execute($user);
+        }
 
         return $purchase;
     }
