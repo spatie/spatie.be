@@ -37,7 +37,7 @@
                         @endif
 
                         @if($video->display === \App\Models\Enums\VideoDisplayEnum::SPONSORS &&  ! $video->canBeSeenByCurrentUser())
-                            <span title="Exclusive for sponsors" style="left: calc(-1.5em - 1.5rem)" class="absolute w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
+                            <span title="Exclusive for sponsors" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute  w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
                                 <span style="font-size: .6rem" class="icon text-pink">
                                     {{ svg('icons/fas-heart') }}
                                 </span>
@@ -45,23 +45,23 @@
                         @endif
 
                         @if($video->display === \App\Models\Enums\VideoDisplayEnum::LICENSE &&  ! $video->canBeSeenByCurrentUser() )
-                            <span title="Part of course" style="left: calc(-1.5em - 1.5rem)" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
-                                <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
+                            <span title="Part of course" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
+                                <span style="font-size: .6rem" class="icon text-green">
                                     {{ svg('icons/fas-lock-alt') }}
                                 </span>
                             </span>
                         @endif
 
                         @if($video->display === \App\Models\Enums\VideoDisplayEnum::AUTH &&  ! $video->canBeSeenByCurrentUser() )
-                            <span title="Only members" style="left: calc(-1.5em - 1.5rem)" class="absolute w-4 h-4 inline-flex items-center justify-center bg-blue-lightest rounded-full">
-                                <span style="font-size: .6rem; top: -.1rem" class="icon text-blue">
+                            <span title="Only members" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-blue-lightest rounded-full">
+                                <span style="font-size: .6rem" class="icon text-blue">
                                     {{ svg('icons/fas-user') }}
                                 </span>
                             </span>
                         @endif
 
                         @if($video->hasBeenCompletedByCurrentUser())
-                            <span title="Completed" style="left: calc(-1.5em - 1.5rem)" class="absolute top-0 w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
+                            <span title="Completed" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
                                 <span style="font-size: 0.75rem" class="text-white">
                                     ✓
                                 </span>
