@@ -26,6 +26,8 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $processes = [];
 
+        $publicDocsAssetPath = public_path('docs');
+
         foreach ($repositories as $repository) {
             foreach ($repository['branches'] as $branch => $alias) {
                 $process = new Process(
@@ -41,7 +43,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                     && cp -r docs/* ../../../docs/{$repository['name']}/{$alias} \
                     && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md \
                     && cd docs/ \
-                    && find . -not -name '*.md' | cpio -pdm ../../../../../public/docs/{$repository['name']}/{$alias}/
+                    && find . -not -name '*.md' | cpio -pdm {$publicDocsAssetPath}/{$repository['name']}/{$alias}/
                 BASH
                 );
 
