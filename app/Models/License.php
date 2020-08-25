@@ -15,6 +15,8 @@ class License extends Model implements AuthenticatableContract
     protected $casts = [
         'expires_at' => 'datetime',
         'satis_authentication_count' => 'integer',
+        'expiration_warning_mail_sent_at' => 'datetime',
+        'expiration_mail_sent_at' => 'datetime',
     ];
 
     public function purchasable(): BelongsTo
@@ -59,5 +61,10 @@ class License extends Model implements AuthenticatableContract
         }
 
         return $this->expires_at->isPast();
+    }
+
+    public function getName(): string
+    {
+        return "{$this->purchasable->product->title}: {$this->purchasable->title}";
     }
 }
