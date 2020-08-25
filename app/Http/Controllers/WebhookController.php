@@ -19,8 +19,11 @@ class WebhookController extends CashierWebhookController
 
     public function handlePaymentSucceeded($payload)
     {
+        logger('handlePaymentSucceeded');
+
         parent::handlePaymentSucceeded($payload);
 
+        logger('dispatching job');
         dispatch(new ProcessPaymentSucceededJob($payload));
     }
 }
