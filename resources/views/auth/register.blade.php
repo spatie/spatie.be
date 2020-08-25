@@ -31,7 +31,7 @@
                 <x-label for="name">Name</x-label>
                 <input class="form-input" type="text" name="name" id="name" required>
                 @error('name')
-                    <div class="text-red-500">{{ $message }}</div>
+                    <div class="text-pink-dark">{{ $message }}</div>
                 @enderror
             </x-field>
 
@@ -39,7 +39,7 @@
                 <x-label for="email">Your email</x-label>
                 <input class="form-input" type="email" name="email" id="email" required>
                 @error('email')
-                    <div class="text-red-500">{{ $message }}</div>
+                    <div class="text-pink-dark">{{ $message }}</div>
                 @enderror
             </x-field>
 
@@ -48,7 +48,7 @@
                     <x-label for="password">Choose password</x-label>
                     <input class="form-input" type="password" name="password" id="password" required>
                     @error('password')
-                        <div class="text-red-500">{{ $message }}</div>
+                        <div class="text-pink-dark">{{ $message }}</div>
                     @enderror
                 </x-field>
 
@@ -56,7 +56,7 @@
                     <x-label for="password_confirmation">Confirm password</x-label>
                     <input class="form-input" type="password" name="password_confirmation" id="password_confirmation" required>
                     @error('password_confirmation')
-                    <div class="text-red-500">{{ $message }}</div>
+                    <div class="text-pink-dark">{{ $message }}</div>
                     @enderror
                 </x-field>
             </div>

@@ -55,7 +55,7 @@
                         <x-label for="email">Your email</x-label>
                         <input class="form-input" autofocus type="email" name="email" id="email" required>
                         @error('email')
-                            <p class="text-pink text-sm">
+                            <p class="text-pink-dark text-sm">
                                 {{ $message }}
                             </p>
                         @enderror
@@ -70,7 +70,7 @@
                         </div>
                         <input class="form-input" type="password" name="password" id="password" required>
                         @error('password')
-                            <p class="text-pink text-sm">
+                            <p class="text-pink-dark text-sm">
                                 {{ $message }}
                             </p>
                         @enderror
