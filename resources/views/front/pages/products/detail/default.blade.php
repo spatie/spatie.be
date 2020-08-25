@@ -29,7 +29,7 @@
     @endauth
 
     @if($product->purchasablesWithoutRenewals->count())
-        <section class="md:-mt-8 mb-16 pt-0 section-fade">
+        <section class="md:-mt-8 mb-24 pt-0 section-fade">
             <div class="wrap">
                 @if ($licenses->count() || $purchases->count())
                     <h2 class="title line-after mt-16 mb-12">Buy additional licenses</h2>
