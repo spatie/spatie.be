@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68dfd0fe9e782f90d9ae16ad9d1ececf",
+    "content-hash": "ac9057a034f66b3b2c0f0e86aa16d8d0",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1931,28 +1931,28 @@
         },
         {
             "name": "laravel/cashier-paddle",
-            "version": "v1.0.0-beta.2",
+            "version": "v1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-paddle.git",
-                "reference": "4525c5de2afced821a0ba48da6f2c096a658220c"
+                "reference": "641587f214f5400ad33d7d7b975cdaafda9dec41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-paddle/zipball/4525c5de2afced821a0ba48da6f2c096a658220c",
-                "reference": "4525c5de2afced821a0ba48da6f2c096a658220c",
+                "url": "https://api.github.com/repos/laravel/cashier-paddle/zipball/641587f214f5400ad33d7d7b975cdaafda9dec41",
+                "reference": "641587f214f5400ad33d7d7b975cdaafda9dec41",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "ext-openssl": "*",
                 "guzzlehttp/guzzle": "^6.5|^7.0",
-                "illuminate/contracts": "^7.9",
-                "illuminate/database": "^7.9",
-                "illuminate/http": "^7.9",
-                "illuminate/routing": "^7.9",
-                "illuminate/support": "^7.9",
-                "illuminate/view": "^7.9",
+                "illuminate/contracts": "^7.9|^8.0",
+                "illuminate/database": "^7.9|^8.0",
+                "illuminate/http": "^7.9|^8.0",
+                "illuminate/routing": "^7.9|^8.0",
+                "illuminate/support": "^7.9|^8.0",
+                "illuminate/view": "^7.9|^8.0",
                 "moneyphp/money": "^3.2",
                 "nesbot/carbon": "^2.0",
                 "php": "^7.2",
@@ -1962,7 +1962,7 @@
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench": "^5.0",
+                "orchestra/testbench": "^5.0|^6.0",
                 "phpunit/phpunit": "^8.0|^9.0"
             },
             "suggest": {
@@ -2004,20 +2004,20 @@
                 "laravel",
                 "paddle"
             ],
-            "time": "2020-07-20T14:39:00+00:00"
+            "time": "2020-08-25T09:38:11+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v7.25.0",
+            "version": "v7.26.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "fdf3d4a40447eb286ba3820768306cae64bcc0b3"
+                "reference": "f64299a11dedaaadf1cfff07b2b3220a9b791837"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/fdf3d4a40447eb286ba3820768306cae64bcc0b3",
-                "reference": "fdf3d4a40447eb286ba3820768306cae64bcc0b3",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f64299a11dedaaadf1cfff07b2b3220a9b791837",
+                "reference": "f64299a11dedaaadf1cfff07b2b3220a9b791837",
                 "shasum": ""
             },
             "require": {
@@ -2123,6 +2123,7 @@
                 "nyholm/psr7": "Required to use PSR-7 bridging features (^1.2).",
                 "pda/pheanstalk": "Required to use the beanstalk queue driver (^4.0).",
                 "phpunit/phpunit": "Required to use assertions and run tests (^8.4|^9.0).",
+                "predis/predis": "Required to use the predis connector (^1.1.2).",
                 "psr/http-message": "Required to allow Storage::put to accept a StreamInterface (^1.0).",
                 "pusher/pusher-php-server": "Required to use the Pusher broadcast driver (^4.0).",
                 "symfony/cache": "Required to PSR-6 cache bridge (^5.0).",
@@ -2161,7 +2162,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-08-11T13:43:10+00:00"
+            "time": "2020-08-25T13:44:44+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -2312,26 +2313,26 @@
         },
         {
             "name": "laravel/slack-notification-channel",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/slack-notification-channel.git",
-                "reference": "d0a7f53342a5daa74e43e1b08dc8a7e83db152d8"
+                "reference": "98e0fe5c8dda645e6af914285af7b742e167462a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/slack-notification-channel/zipball/d0a7f53342a5daa74e43e1b08dc8a7e83db152d8",
-                "reference": "d0a7f53342a5daa74e43e1b08dc8a7e83db152d8",
+                "url": "https://api.github.com/repos/laravel/slack-notification-channel/zipball/98e0fe5c8dda645e6af914285af7b742e167462a",
+                "reference": "98e0fe5c8dda645e6af914285af7b742e167462a",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^6.0|^7.0",
-                "illuminate/notifications": "~5.8.0|^6.0|^7.0",
+                "illuminate/notifications": "~5.8.0|^6.0|^7.0|^8.0",
                 "php": "^7.1.3"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^7.0|^8.0"
+                "phpunit/phpunit": "^7.0|^8.0|^9.0"
             },
             "type": "library",
             "extra": {
@@ -2365,7 +2366,7 @@
                 "notifications",
                 "slack"
             ],
-            "time": "2020-06-30T20:34:53+00:00"
+            "time": "2020-08-25T18:21:34+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -2498,27 +2499,27 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.1.0",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba"
+                "reference": "fb1404f04ece6eee128e3fb750d3a1e064238b33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/da9350533d0da60d5dc42fb7de9c561c72129bba",
-                "reference": "da9350533d0da60d5dc42fb7de9c561c72129bba",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/fb1404f04ece6eee128e3fb750d3a1e064238b33",
+                "reference": "fb1404f04ece6eee128e3fb750d3a1e064238b33",
                 "shasum": ""
             },
             "require": {
-                "illuminate/console": "^7.0",
-                "illuminate/filesystem": "^7.0",
-                "illuminate/support": "^7.0",
+                "illuminate/console": "^7.0|^8.0",
+                "illuminate/filesystem": "^7.0|^8.0",
+                "illuminate/support": "^7.0|^8.0",
                 "php": "^7.2.5"
             },
             "require-dev": {
                 "mockery/mockery": "^1.0",
-                "phpunit/phpunit": "^8.0"
+                "phpunit/phpunit": "^8.0|^9.0"
             },
             "type": "library",
             "extra": {
@@ -2549,7 +2550,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-06-30T20:56:33+00:00"
+            "time": "2020-08-25T18:30:43+00:00"
         },
         {
             "name": "league/commonmark",
@@ -6080,9 +6081,9 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.mailcoach.app/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-41c3644cd7dfcb1564d38ad356cec3d56e3233b6-zip-15cc1a.zip",
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-41c3644cd7dfcb1564d38ad356cec3d56e3233b6-zip-15cc1a.zip",
                 "reference": "41c3644cd7dfcb1564d38ad356cec3d56e3233b6",
-                "shasum": "d65550c0bc52831d6204e9033387f24b2d136fd4"
+                "shasum": "2ffb7db9778da752b0bbf7608d221b7017a3cc53"
             },
             "require": {
                 "cakephp/chronos": "^1.2.8|^2.0",
@@ -14553,9 +14554,7 @@
     ],
     "aliases": [],
     "minimum-stability": "beta",
-    "stability-flags": {
-        "laravel/cashier-paddle": 10
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

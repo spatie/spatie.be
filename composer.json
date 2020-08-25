@@ -24,7 +24,7 @@
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
         "knplabs/github-api": "^2.8",
-        "laravel/cashier-paddle": "v1.0.0-beta.2",
+        "laravel/cashier-paddle": "v1.0.0",
         "laravel/framework": "^7.0",
         "laravel/horizon": "^4.0",
         "laravel/nova": "^3.6",
@@ -73,7 +73,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://satis.mailcoach.app"
+            "url": "https://satis.spatie.be"
         },
         {
             "type": "composer",
