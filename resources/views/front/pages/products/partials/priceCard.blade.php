@@ -1,4 +1,4 @@
-<div class="{{ $first? 'mb-12 z-10' : 'mb-8' }} md:mb-0 mx-2 max-w-md flex flex-col bg-white shadow-lg px-8 py-6" 
+<div class="{{ $first? 'mb-12 md:-mt-8 md:z-10' : 'mb-8' }} md:mb-0 mx-2 max-w-md flex flex-col bg-white shadow-lg px-8 py-6" 
     style="bottom: {{ $first? '-2rem' : '-1rem' }}">
     <h2 class="flex-0 font-bold {{ $first? 'text-2xl' : 'text-lg'}} mb-4 h-10">
         {{ $purchasable->title }}
