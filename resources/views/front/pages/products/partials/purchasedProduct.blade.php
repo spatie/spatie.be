@@ -37,13 +37,21 @@
             </a>
         @endforeach
 
-        @if ($purchasable->has_repository_access)
-            <a href="https://github.com/{$purchasable->repository_access}">
-                <x-button>
-                    Repository
-                </x-button>
-            </a>
-        @endif
-    
+        @if ($purchasable->repository_access)
+            @if ($purchase->has_repository_access)
+                    <a href="https://github.com/{$purchasable->repository_access}">
+                        <x-button>
+                            Repository
+                        </x-button>
+                    </a>
+
+                @else
+                    <a href="{{ route('github-login') }}">">
+                        <x-button>
+                            Connect to GitHub to access {{ $purchasable->repository_access }}
+                        </x-button>
+                    </a>
+                @endif
+            @endif
     </div>
 </div>

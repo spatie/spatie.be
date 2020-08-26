@@ -17,6 +17,8 @@ class RestoreRepositoryAccessAction
 
     public function execute(User $user)
     {
+        info('executing access');
+
         $user->purchases
             ->where('has_repository_access', false)
             ->each(function (Purchase $purchase) use ($user) {
