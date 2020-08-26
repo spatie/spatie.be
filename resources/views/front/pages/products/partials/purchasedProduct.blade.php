@@ -37,7 +37,7 @@
             </a>
         @endforeach
 
-        @if ($purchasable->repository_access)
+        @if ($purchasable->has_repository_access)
             <a href="https://github.com/{$purchasable->repository_access}">
                 <x-button>
                     Repository
