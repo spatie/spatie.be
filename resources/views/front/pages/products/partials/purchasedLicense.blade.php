@@ -35,9 +35,9 @@
             </a>
         @endif
 
-        @if ($purchasable->repository_access)
-            @if ($purchase->has_repository_access)
-                <a href="https://github.com/{{ $purchasable->repository_access }}">
+        @if ($license->purchasable->repository_access)
+            @if ($license->purchase->has_repository_access)
+                <a href="https://github.com/{{ $license->purchasable->repository_access }}">
                     <x-button>
                         Repository
                     </x-button>
