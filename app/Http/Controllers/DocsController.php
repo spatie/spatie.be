@@ -20,12 +20,12 @@ class DocsController
     {
         $repository = $docs->getRepository($repository);
 
-        abort_unless($repository, 404, 'Repository not found');
+        abort_if(is_null($repository), 404, 'Repository not found');
 
         if ($alias) {
             $alias = $repository->getAlias($alias);
 
-            abort_unless($alias, 404, 'Alias not found');
+            abort_if(is_null($alias), 404, 'Alias not found');
         } else {
             $alias = $repository->aliases->first();
         }
@@ -41,7 +41,11 @@ class DocsController
     {
         $repository = $docs->getRepository($repository);
 
+        abort_if(is_null($repository), 404, 'Repository not found');
+
         $alias = $repository->getAlias($alias);
+
+        abort_if(is_null($alias), 404, 'Alias not found');
 
         $pages = $alias->pages;
 

@@ -25,7 +25,7 @@ class Docs
         return $this->pages;
     }
 
-    public function getRepository(string $slug): Repository
+    public function getRepository(string $slug): ?Repository
     {
         return $this->getRepositories()->firstWhere('slug', $slug);
     }
