@@ -8,6 +8,7 @@ use Illuminate\Console\Command;
 use Zend\Feed\Exception\ExceptionInterface;
 use Zend\Feed\Reader\Entry\AbstractEntry;
 use Zend\Feed\Reader\Reader;
+use Zend\Http\Client\Adapter\Exception\TimeoutException;
 
 class ImportInsightsCommand extends Command
 {
@@ -36,7 +37,7 @@ class ImportInsightsCommand extends Command
 
                         $this->info("Imported `{$insight->title}`");
                     }
-                } catch (ExceptionInterface $exception) {
+                } catch (ExceptionInterface | TimeoutException $exception) {
                     $this->error("Could not load {$feedUrl}");
                 }
             });
