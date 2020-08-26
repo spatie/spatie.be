@@ -13,29 +13,37 @@
     </div>
 
     <div class="cell-r flex justify-end space-x-4">
-    @if ($purchasable->series->count())
-            <a href="{{ route('series.show', $purchasable->series->first()) }}">
+        @if ($purchasable->series->count())
+                <a href="{{ route('series.show', $purchasable->series->first()) }}">
+                    <x-button>
+                        Videos
+                    </x-button>
+                </a>
+        @endif
+        
+        @foreach($purchasable->getMedia('downloads') as $download)
+                @php
+                    $downloadUrl =  URL::temporarySignedRoute(
+                        'purchase.download',
+                        now()->addMinutes(30),
+                        [$purchasable->product, $purchase, $download]
+                    );
+                @endphp
+
+            <a class="link" download="download" href="{{ $downloadUrl }}">
                 <x-button>
-                    Watch videos
+                    Download {{ $download->getCustomProperty('label') ?? $download->name }}
                 </x-button>
             </a>
-    @endif
-    
-    @foreach($purchasable->getMedia('downloads') as $download)
-            @php
-                $downloadUrl =  URL::temporarySignedRoute(
-                    'purchase.download',
-                    now()->addMinutes(30),
-                    [$purchasable->product, $purchase, $download]
-                );
-            @endphp
+        @endforeach
 
-        <a class="link" download="download" href="{{ $downloadUrl }}">
-            <x-button>
-                Download {{ $download->getCustomProperty('label') ?? $download->name }}
-            </x-button>
-        </a>
-    @endforeach
+        @if ($purchasable->repository_access)
+            <a href="https://github.com/{$purchasable->repository_access}">
+                <x-button>
+                    Repository
+                </x-button>
+            </a>
+        @endif
     
     </div>
 </div>
