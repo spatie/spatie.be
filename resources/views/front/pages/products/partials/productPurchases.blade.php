@@ -26,29 +26,26 @@
             $purchasable = $purchase->purchasable;
         @endphp
 
-        <div class="cells grid-cols-2">
+        @if ($purchase->license)
+        <div class="cells">
             <div class="cell-l">
                 <a class="link-black link-underline" href="{{ route('products.show', $product) }}#purchases">
                     {{ $purchasable->title }}
                 </a>
-                @if ($purchase->license)
-                    <div class="text-xs text-gray">
-                        @if ($purchase->license->domain)
-                            {{ $purchase->license->domain }}
-                            <span class="char-searator mx-1">•</span>
-                        @endif
-                        @if ($purchase->license->isExpired())
-                            <span class="text-pink-dark">Expired since {{ $purchase->license->expires_at->format('Y-m-d') }}</span>
-                        @else
-                            Valid until {{ $purchase->license->expires_at->format('Y-m-d') }}
-                        @endif
-                    </div>
-                @endif
+                
+                <div class="text-xs text-gray">
+                    @if ($purchase->license->domain)
+                        {{ $purchase->license->domain }}
+                        <span class="char-searator mx-1">•</span>
+                    @endif
+                    @if ($purchase->license->isExpired())
+                        <span class="text-pink-dark">Expired since {{ $purchase->license->expires_at->format('Y-m-d') }}</span>
+                    @else
+                        Valid until {{ $purchase->license->expires_at->format('Y-m-d') }}
+                    @endif
+                </div>
             </div>
-
-            <span  class="cell-r flex justify-end">
-                {{-- @include('front.pages.products.partials.purchaseActions') --}}
-            </span>
         </div>
+        @endif
     @endforeach
 </div>

@@ -30,7 +30,15 @@
         @if ($license->purchasable->series->count())
             <a href="{{ route('series.show', $license->purchasable->series->first()) }}">
                 <x-button>
-                    Watch videos
+                    Videos
+                </x-button>
+            </a>
+        @endif
+
+        @if ($license->purchasable->repository_access)
+            <a href="https://github.com/{$purchasable->repository_access}">
+                <x-button>
+                    Repository
                 </x-button>
             </a>
         @endif
