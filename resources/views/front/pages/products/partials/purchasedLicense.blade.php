@@ -36,18 +36,18 @@
         @endif
 
         @if ($license->purchasable->repository_access)
-            @if ($license->purchase->has_repository_access)
+{{--            @if ($license->purchase->has_repository_access)--}}
                 <a href="https://github.com/{{ $license->purchasable->repository_access }}">
                     <x-button>
                         Repository
                     </x-button>
                 </a>
 
-            @else
-                <a class="link-blue link-underline" href="{{ route('github-login') }}">
-                    Connect to GitHub to access repo
-                </a>
-            @endif
+{{--            @else--}}
+{{--                <a class="link-blue link-underline" href="{{ route('github-login') }}">--}}
+{{--                    Connect to GitHub to access repo--}}
+{{--                </a>--}}
+{{--            @endif--}}
         @endif
     </span>
 </div>
