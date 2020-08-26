@@ -10,9 +10,6 @@
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Laravel Beyond CRUD
-                    <div class="title-subtext text-pink-dark">
-                        <span class="font-normal">Coming</span> september
-                    </div>
                 </h3>
                 <p class="text-lg">
                     Learn how to build larger-than-average Laravel applications in our new book and video course. The knowledge in this course is built from the years of experience our team has building large, robust applications.
