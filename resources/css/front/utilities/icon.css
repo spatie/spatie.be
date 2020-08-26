@@ -10,4 +10,5 @@
     width: auto;
     fill: inherit;
     display: inline-block;
+    overflow: visible;
 }
