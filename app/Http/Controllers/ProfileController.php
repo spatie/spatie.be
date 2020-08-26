@@ -43,7 +43,15 @@ class ProfileController
 
     public function delete()
     {
-        auth()->user()->delete();
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
+        $user->purchases()->delete();
+        $user->licenses()->delete();
+        $user->receipts()->delete();
+        $user->completedVideos()->sync([]);
+        $user->delete();
+
         auth()->logout();
 
         flash()->success('Account deleted.');
