@@ -24,6 +24,14 @@ class ProductsController
 
     public function show(Request $request, Product $product)
     {
+        if (request()->get('purchase') === 'success') {
+            sleep(3);
+
+            flash()->success('Purchase successful');
+
+            return redirect()->route('products.show', $product);
+        }
+
         $purchases = $licenses = collect();
 
         if ($request->user()) {
