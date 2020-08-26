@@ -42,7 +42,7 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return $this->purchases()->where('has_repository_access')->exists();
+        return $this->purchases()->where('has_repository_access', true)->exists();
     }
 
     public function renew(): self
