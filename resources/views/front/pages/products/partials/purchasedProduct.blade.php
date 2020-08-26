@@ -48,7 +48,7 @@
                 @else
                     <a href="{{ route('github-login') }}">
                         <x-button>
-                            Connect to GitHub to access {{ $purchasable->repository_access }}
+                            Connect to GitHub to access repo
                         </x-button>
                     </a>
                 @endif
