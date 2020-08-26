@@ -28,7 +28,10 @@ class RestoreRepositoryAccessAction
                     return;
                 }
 
-                $this->gitHubApi->inviteToRepo($user->github_username, $purchase->purchasable->repository_access);
+                $this->gitHubApi->inviteToRepo(
+                    $user->github_username,
+                    $purchase->purchasable->repository_access
+                );
 
                 $purchase->update(['has_repository_access' => true]);
             });
