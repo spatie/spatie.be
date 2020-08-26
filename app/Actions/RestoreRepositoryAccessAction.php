@@ -20,20 +20,26 @@ class RestoreRepositoryAccessAction
         $user->purchases
             ->where('has_repository_access', false)
             ->each(function (Purchase $purchase) use ($user) {
-                if (! $purchase->purchasable->repository_access) {
+                info('checking repository access');
+                if (!$purchase->purchasable->repository_access) {
+                    info('purchasable has no repository access');
                     return;
                 }
 
                 if ($purchase->license && $purchase->license->isExpired()) {
+                    info('license has expired');
                     return;
                 }
 
+                info('inviting to repo');
                 $this->gitHubApi->inviteToRepo(
                     $user->github_username,
                     $purchase->purchasable->repository_access
                 );
+                info('invited to repo');
 
                 $purchase->update(['has_repository_access' => true]);
+                info('has_repository_access updated');
             });
     }
 }
