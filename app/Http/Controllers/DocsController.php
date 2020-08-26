@@ -41,7 +41,11 @@ class DocsController
     {
         $repository = $docs->getRepository($repository);
 
+        abort_if(is_null($repository), 404, 'Repository not found');
+
         $alias = $repository->getAlias($alias);
+
+        abort_if(is_null($alias), 404, 'Alias not found');
 
         $pages = $alias->pages;
 
