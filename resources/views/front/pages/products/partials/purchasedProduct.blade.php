@@ -46,10 +46,8 @@
                     </a>
 
                 @else
-                    <a href="{{ route('github-login') }}">
-                        <x-button>
-                            Connect to GitHub to access repo
-                        </x-button>
+                    <a class="link-blue link-underline" href="{{ route('github-login') }}">
+                        Connect to GitHub to access repo
                     </a>
                 @endif
             @endif
