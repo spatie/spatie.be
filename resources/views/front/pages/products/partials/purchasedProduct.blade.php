@@ -39,7 +39,7 @@
 
         @if ($purchasable->repository_access)
             @if ($purchase->has_repository_access)
-                    <a href="https://github.com/{$purchasable->repository_access}">
+                    <a href="https://github.com/{{ $purchasable->repository_access }}">
                         <x-button>
                             Repository
                         </x-button>
