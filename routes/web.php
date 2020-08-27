@@ -11,6 +11,7 @@ use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\GithubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
 use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\IsValidLicenseController;
 use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
@@ -25,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 Route::mailcoach('mailcoach');
 
 Route::post('paddle/webhook', WebhookController::class);
+
+Route::get('is-valid-license/{license}', IsValidLicenseController::class);
 
 Route::domain('docs.spatie.be')->group(function () {
     Route::get('/{url}', RedirectDocsDomainController::class)->where('url', '.*');
