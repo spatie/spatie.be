@@ -20,7 +20,7 @@
 <body class="flex flex-col min-h-screen">
     <script>/* Empty script tag because Firefox has a FOUC */</script>
     @include('layout.partials.wallpaper')
-    
+
     @include('layout.partials.header')
     @include('layout.partials.flash')
 
