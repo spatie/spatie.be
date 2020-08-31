@@ -11,7 +11,7 @@
             <span class="select-arrow">
             {{ svg('icons/far-angle-down') }}</span>
         </div>
-        <a class="ml-auto flex items-center text-xs link-gray link-underline" href="{{ $alias->githubUrl }}/blob/{{$alias->slug}}/docs/{{ $page->slug }}.md"
+        <a class="ml-auto flex items-center text-xs link-gray link-underline" href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md"
             target="_blank">
             Edit
             <span class="ml-1 w-4 h-4">
