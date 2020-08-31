@@ -23,8 +23,8 @@ class ContentParser implements \Spatie\Sheets\ContentParser
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addInlineRenderer(Image::class, new ImageRenderer());
         $environment->addInlineRenderer(Link::class, new LinkRenderer());
-        $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer(['html', 'php', 'js', 'jsx']));
-        $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer(['html', 'php', 'js', 'jsx']));
+        $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer(['html', 'php', 'js', 'jsx', 'css']));
+        $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer(['html', 'php', 'js', 'jsx', 'css']));
         $environment->addExtension(new HeadingPermalinkExtension());
 
         $config = [
