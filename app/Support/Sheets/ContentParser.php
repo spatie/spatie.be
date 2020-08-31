@@ -9,6 +9,7 @@ use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Inline\Element\Image;
+use League\CommonMark\Inline\Element\Link;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
 use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
@@ -21,6 +22,7 @@ class ContentParser implements \Spatie\Sheets\ContentParser
     {
         $environment = Environment::createCommonMarkEnvironment();
         $environment->addInlineRenderer(Image::class, new ImageRenderer());
+        $environment->addInlineRenderer(Link::class, new LinkRenderer());
         $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer());
         $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer());
         $environment->addExtension(new HeadingPermalinkExtension());
