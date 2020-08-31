@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\ImportDocsFromRepositoriesCommand;
 use App\Console\Commands\ImportGitHubIssuesCommand;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportInsightsCommand;
@@ -28,6 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportGitHubRepositoriesCommand::class)->daily();
 
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
+        $schedule->command(ImportDocsFromRepositoriesCommand::class)->everyFiveMinutes();
     }
 
     protected function commands()
