@@ -37,7 +37,7 @@ class DocsController
         ]);
     }
 
-    public function show(string $repository, string $alias, string $slug, Docs $docs, Sheets $sheets)
+    public function show(string $repository, string $alias, string $slug, Docs $docs)
     {
         $repository = $docs->getRepository($repository);
 
@@ -61,7 +61,15 @@ class DocsController
 
         $showBigTitle = $page->slug === $navigation['_root']['pages'][0]->slug;
 
-        return view('front.pages.docs.show', compact('page', 'repositories', 'repository', 'pages', 'navigation', 'alias', 'showBigTitle'));
+        return view('front.pages.docs.show', compact(
+            'page',
+            'repositories',
+            'repository',
+            'pages',
+            'navigation',
+            'alias',
+            'showBigTitle'
+        ));
     }
 
     private function getNavigation(Collection $pages): Collection
