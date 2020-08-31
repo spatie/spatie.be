@@ -34,6 +34,7 @@
         "laravel/ui": "^2.0",
         "livewire/livewire": "^1.0",
         "myclabs/php-enum": "^1.5",
+        "ohdearapp/ohdear-php-sdk": "^3.0",
         "optimistdigital/nova-sortable": "^1.4",
         "pda/pheanstalk": "^4.0",
         "php-http/guzzle6-adapter": "^1.1",
