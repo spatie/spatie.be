@@ -83,5 +83,4 @@
     .algolia-autocomplete .algolia-docsearch-suggestion--text {
         @apply block text-sm;
     }
-
 }
