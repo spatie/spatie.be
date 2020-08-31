@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <span  class="cell-r flex justify-end space-x-4">
+    <span class="cell-r grid gap-4 justify-start md:grid-flow-col md:justify-end">
         @if ($license->purchasable->renewalPurchasable)
             <x-paddle-button
                     :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)"
