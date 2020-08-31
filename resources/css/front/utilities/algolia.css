@@ -6,10 +6,7 @@
 /* The entire dropdown container */
 .ds-dropdown-menu {
     @apply shadow-md border-2 border-gray-lighter rounded-sm overflow-hidden mt-2 w-full;
-
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-    background-color: theme(colors.white) d9;
+    @apply bg-white;
 }
 
 /* Single suggestion */
@@ -84,10 +81,7 @@
     }
 
     .algolia-autocomplete .algolia-docsearch-suggestion--text {
-        @apply block text-gray text-sm;
+        @apply block text-sm;
     }
 
-    .algolia-docsearch-suggestion--title {
-        @apply font-bold;
-    }
 }
