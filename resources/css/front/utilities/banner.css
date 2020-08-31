@@ -16,7 +16,7 @@
 .banner-slogan {
     @apply font-serif;
     @apply font-bold;
-    line-height: 0.9;
+    @apply leading-none;
     @apply text-4xl;
 }
 @screen sm {

@@ -1,11 +1,10 @@
 <section id="banner" class="banner" role="banner">
     <div class="wrap">
         <h1 class="banner-slogan">
-            No frills,<br>
-            just proven expertise
+            Solid expertise <br>in Laravel
         </h1>
         <p class="banner-intro">
-            We craft websites &amp; web applications <br>using Laravel, React &amp; Vue
+            We craft web applications, courses  <br>&amp; open source packages in the Laravel ecosystem
         </p>
     </div>
 </section>
