@@ -36,8 +36,8 @@ class LinkRenderer implements InlineRendererInterface, ConfigurationAwareInterfa
             $attrs['href'] = $inline->getUrl();
         }
 
-        if (Str::startsWith($attrs['href'], '/')) {
-            $attrs['href'] = '/docs'.$attrs['href'];
+        if (Str::startsWith($attrs['href'], '/docs')) {
+            $attrs['href'] = Str::start($attrs['href'], '/docs');
         }
 
         if (isset($inline->data['title'])) {
