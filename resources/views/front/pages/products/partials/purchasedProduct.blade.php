@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <div class="cell-r flex justify-end space-x-4">
+    <div class="cell-r grid gap-4 justify-start md:grid-flow-col md:justify-end">
         @if ($purchasable->series->count())
                 <a href="{{ route('series.show', $purchasable->series->first()) }}">
                     <x-button>
@@ -46,10 +46,8 @@
                     </a>
 
                 @else
-                    <a href="{{ route('github-login') }}">
-                        <x-button>
-                            Connect to GitHub to access repo
-                        </x-button>
+                    <a class="link-blue link-underline" href="{{ route('github-login') }}">
+                        Connect to GitHub to access repo
                     </a>
                 @endif
             @endif

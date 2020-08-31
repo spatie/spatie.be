@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <span  class="cell-r flex justify-end space-x-4">
+    <span class="cell-r grid gap-4 justify-start md:grid-flow-col md:justify-end">
         @if ($license->purchasable->renewalPurchasable)
             <x-paddle-button
                     :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)"
@@ -36,11 +36,18 @@
         @endif
 
         @if ($license->purchasable->repository_access)
-            <a href="https://github.com/{$purchasable->repository_access}">
-                <x-button>
-                    Repository
-                </x-button>
-            </a>
+            @if ($license->hasRepositoryAccess())
+                <a href="https://github.com/{{ $license->purchasable->repository_access }}">
+                    <x-button>
+                        Repository
+                    </x-button>
+                </a>
+
+            @else
+                <a class="link-blue link-underline" href="{{ route('github-login') }}">
+                    Connect to GitHub to access repo
+                </a>
+            @endif
         @endif
     </span>
 </div>

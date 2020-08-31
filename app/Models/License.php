@@ -7,6 +7,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class License extends Model implements AuthenticatableContract
 {
@@ -32,6 +33,16 @@ class License extends Model implements AuthenticatableContract
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
+    public function hasRepositoryAccess(): bool
+    {
+        return $this->purchases()->where('has_repository_access', true)->exists();
     }
 
     public function renew(): self

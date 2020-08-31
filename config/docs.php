@@ -182,5 +182,13 @@ return [
             ],
             "category" => "Laravel",
         ],
+        [
+            "name" => "typescript-transformer",
+            "repository" => "spatie/typescript-transformer",
+            "branches" => [
+                "master" => "v1",
+            ],
+            "category" => "General PHP",
+        ],
     ],
 ];

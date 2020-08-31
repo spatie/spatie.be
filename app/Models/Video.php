@@ -54,20 +54,28 @@ class Video extends Model implements Sortable
 
     public function getPrevious(): ?Video
     {
-        return Video::where('series_id', $this->series_id)
-            ->where('sort_order', '<', $this->sort_order)
-            ->orderByDesc('sort_order')
-            ->limit(1)
-            ->first();
+        $orderedVideos = $this->series->videos->groupBy('chapter')->flatten();
+
+        $currentIndex = $orderedVideos->search(fn (Video $video) => $video->is($this));
+
+        if ($currentIndex === 0) {
+            return null;
+        }
+
+        return $orderedVideos[$currentIndex - 1];
     }
 
     public function getNext(): ?Video
     {
-        return Video::where('series_id', $this->series_id)
-            ->where('sort_order', '>', $this->sort_order)
-            ->orderBy('sort_order')
-            ->limit(1)
-            ->first();
+        $orderedVideos = $this->series->videos->groupBy('chapter')->flatten();
+
+        $currentIndex = $orderedVideos->search(fn (Video $video) => $video->is($this));
+
+        if ($currentIndex === $orderedVideos->keys()->last()) {
+            return null;
+        }
+
+        return $orderedVideos[$currentIndex + 1];
     }
 
     public function getUrlAttribute(): string

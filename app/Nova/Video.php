@@ -32,7 +32,6 @@ class Video extends Resource
         return [
             BelongsTo::make('Series', 'series', Series::class)->sortable(),
 
-
             Text::make('Title')
                 ->sortable()
                 ->hideWhenCreating()
@@ -63,6 +62,10 @@ class Video extends Resource
             Text::make('vimeo_id')
                 ->sortable()
                 ->rules('required', 'max:255'),
+
+            Number::make('sort_order')
+                ->readonly()
+                ->sortable(),
 
             Select::make('Display')
                 ->options([

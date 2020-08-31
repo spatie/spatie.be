@@ -42,7 +42,7 @@ class GithubSocialiteController
             session()->flash('not-a-sponsor');
         }
 
-        auth()->login($user);
+        auth()->login($user, true);
 
         flash()->success('You have been logged in');
 
