@@ -133,12 +133,27 @@
     padding-left: 1.5em !important;
 }
 
-.markup-code code:not(.hljs) {
+/* inline code */
+
+.markup-code :not(pre) code {
     @apply bg-blue-lightest;
     @apply bg-opacity-25;
     @apply px-1;
     @apply font-mono;
     @apply rounded-sm;
+}
+
+/* block code */
+
+.markup-code > pre > code {
+    display: block;
+    overflow-x: auto;
+    @apply my-8;
+    @apply p-6;
+    @apply bg-blue-lightest;
+    @apply bg-opacity-25;
+    @apply text-sm;
+    @apply font-mono;
 }
 
 .markup-code .article_badges {
