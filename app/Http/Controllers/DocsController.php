@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
 use Illuminate\Support\Collection;
-use Spatie\Sheets\Sheets;
 
 class DocsController
 {
