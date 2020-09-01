@@ -25,7 +25,7 @@ class LicenseIsAboutToExpireNotification extends Notification
         return ['mail'];
     }
 
-    public function toMail(Notifiable $notifiable): MailMessage
+    public function toMail($notifiable): MailMessage
     {
         $name = $this->license->getName();
 
