@@ -6,7 +6,6 @@ use App\Http\Controllers\ProductsController;
 use App\Models\License;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 
 class LicenseIsAboutToExpireNotification extends Notification
