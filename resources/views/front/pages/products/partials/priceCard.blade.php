@@ -12,7 +12,7 @@
         @auth
             <x-paddle-button :url="auth()->user()->getPayLinkForProductId($purchasable->paddle_product_id)" data-theme="none">
                 <x-button>
-                    <span>Buy for&nbsp;</span>
+                    <span class="font-normal">Buy for&nbsp;</span>
                     <span data-id="current-currency-{{ $purchasable->id }}"></span>
                     <span data-id="current-price-{{ $purchasable->id }}"></span>
                 </x-button>
@@ -20,12 +20,16 @@
         @else
             <a href="{{ route('login') }}">
                 <x-button>
-                    <span>Buy for&nbsp;</span>
+                    <span class="font-normal">Buy for&nbsp;</span>
                     <span data-id="current-currency-{{ $purchasable->id }}"></span>
                     <span data-id="current-price-{{ $purchasable->id }}"></span>
                 </x-button>
             </a>
         @endauth
+    </div>
+
+    <div class="flex-0 text-xs text-gray-light mt-6">
+        Prices exclusive of VAT <br>for buyers without a valid VAT number
     </div>
 </div>
 
