@@ -42,7 +42,7 @@
             </div>
         </section>
 
-        <div class="section md:-mt-8 pt-0 pb-12 wrap">
+        <div class="section md:-mt-8 pt-0 pb-16 wrap">
             <div class="flex-0 text-xs text-gray-light mt-6">
                 Prices exclusive of VAT for buyers without a valid VAT number.
             </div>
