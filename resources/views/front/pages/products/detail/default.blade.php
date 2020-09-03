@@ -39,9 +39,14 @@
                         @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
                     @endforeach
                 </div>
-
             </div>
         </section>
+
+        <div class="section pt-0 pb-12 wrap">
+            <div class="flex-0 text-xs text-gray-light mt-6">
+                Prices exclusive of VAT <br>for buyers without a valid VAT number
+            </div>
+        </div>
     @endif
 
         <div class="section pt-0 wrap wrap-8 sm:grid-flow-col-dense">

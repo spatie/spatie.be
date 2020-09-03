@@ -7,12 +7,6 @@
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         {!! $purchasable->formattedDescription !!}
     </div>
-
-    @if($first)
-    <div class="flex-0 text-xs text-gray-light mt-6">
-        Prices exclusive of VAT <br>for buyers without a valid VAT number
-    </div>
-    @endif
     
     <div class="flex-0 mt-6 flex justify-center">
         @auth
