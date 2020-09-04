@@ -29,7 +29,7 @@ class LicenseExpiredNotification extends Notification
     {
         $name = $this->license->getName();
 
-        $siteUrl = url();
+        $siteUrl = url('/');
 
         return (new MailMessage)
             ->subject("Your {$name} license has expired")
