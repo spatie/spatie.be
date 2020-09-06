@@ -32,7 +32,8 @@ class ImportDocsFromRepositoriesCommand extends Command
             foreach ($repository['branches'] as $branch => $alias) {
                 $process = new Process(
                     <<<BASH
-                    mkdir -p storage/docs/{$repository['name']}/{$alias} \
+                    rm -rf storage/docs/{$repository['name']}/{$alias} \
+                    && mkdir -p storage/docs/{$repository['name']}/{$alias} \
                     && mkdir -p storage/docs-temp/{$repository['name']}/{$alias} \
                     && cd storage/docs-temp/{$repository['name']}/{$alias} \
                     && git init \

@@ -7,12 +7,12 @@
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         {!! $purchasable->formattedDescription !!}
     </div>
-
+    
     <div class="flex-0 mt-6 flex justify-center">
         @auth
             <x-paddle-button :url="auth()->user()->getPayLinkForProductId($purchasable->paddle_product_id)" data-theme="none">
                 <x-button>
-                    <span>Buy for&nbsp;</span>
+                    <span class="font-normal">Buy for&nbsp;</span>
                     <span data-id="current-currency-{{ $purchasable->id }}"></span>
                     <span data-id="current-price-{{ $purchasable->id }}"></span>
                 </x-button>
@@ -20,7 +20,7 @@
         @else
             <a href="{{ route('login') }}">
                 <x-button>
-                    <span>Buy for&nbsp;</span>
+                    <span class="font-normal">Buy for&nbsp;</span>
                     <span data-id="current-currency-{{ $purchasable->id }}"></span>
                     <span data-id="current-price-{{ $purchasable->id }}"></span>
                 </x-button>
