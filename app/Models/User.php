@@ -13,7 +13,7 @@ use Spatie\Mailcoach\Models\EmailList;
 
 class User extends Authenticatable
 {
-    use Notifiable, Billable;
+    use Notifiable, Billable, Notifiable;
 
     protected $guarded = [];
 
