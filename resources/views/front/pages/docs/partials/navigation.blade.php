@@ -16,7 +16,7 @@
                 target="_blank">
                 Edit
             </a>
-            <a class="ml-2 flex text-xs link-gray" href="{{ $alias->githubUrl }}"
+            <a class="ml-2 flex text-xs link-gray" href="{{ $alias->githubUrl }}/tree/{{$alias->branch}}"
                 target="_blank">
                 <span class="w-4 h-4">
                     {{ svg('github') }}
