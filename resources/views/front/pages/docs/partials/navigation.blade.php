@@ -11,13 +11,18 @@
             <span class="select-arrow">
             {{ svg('icons/far-angle-down') }}</span>
         </div>
-        <a class="ml-auto flex items-center text-xs link-gray link-underline" href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md"
-            target="_blank">
-            Edit
-            <span class="ml-1 w-4 h-4">
-                {{ svg('github') }}
-            </span>
-        </a>
+        <div class="ml-auto flex items-center">
+            <a class="text-xs link-gray link-underline" href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md"
+                target="_blank">
+                Edit
+            </a>
+            <a class="ml-2 flex text-xs link-gray" href="{{ $alias->githubUrl }}"
+                target="_blank">
+                <span class="w-4 h-4">
+                    {{ svg('github') }}
+                </span>
+            </a>
+        </div>
     </div>
 
     <div class="sticky top-0 pt-4 ">
