@@ -135,7 +135,8 @@ return [
             "name" => "laravel-query-builder",
             "repository" => "spatie/laravel-query-builder",
             "branches" => [
-                "master" => "v2",
+                "master" => "v3",
+                "v1" => "v2",
             ],
             "category" => "Laravel",
         ],
