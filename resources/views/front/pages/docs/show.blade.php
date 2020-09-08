@@ -37,10 +37,8 @@
             </div>
         </div>
     </section>
-    
-    {{--
-        @include('front.pages.docs.banners.medialibrary')
-    --}}
+
+    @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
 
     <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 
