@@ -1,16 +1,36 @@
 <?php
 
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\User;
 use Laravel\Paddle\Receipt;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(\App\Models\Purchase::class, function (Faker\Generator $faker) {
-    return [
-        'user_id' => factory(User::class),
-        'purchasable_id' => factory(Purchasable::class),
-        'license_id' => $faker->boolean ? factory(License::class) : null,
-        'receipt_id' => factory(Receipt::class),
+
+class PurchaseFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = \App\Models\Purchase::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+        'user_id' => User::factory(),
+        'purchasable_id' => Purchasable::factory(),
+        'license_id' => $this->faker->boolean ? License::factory() : null,
+        'receipt_id' => Receipt::factory(),
     ];
-});
+    }
+}

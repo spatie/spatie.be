@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
@@ -12,6 +13,8 @@ use Illuminate\Support\Str;
 
 class Repository extends Model
 {
+    use HasFactory;
+
     use RepositoryPresenter;
 
     protected $casts = [

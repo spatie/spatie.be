@@ -7,6 +7,6 @@ class InsightsSeeder extends Seeder
 {
     public function run()
     {
-        factory(Insight::class, 50)->create();
+        Insight::factory()->times(50)->create();
     }
 }

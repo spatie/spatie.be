@@ -6,7 +6,7 @@ class PostcardsSeeder extends DatabaseSeeder
 {
     public function run()
     {
-        factory(Postcard::class, 3)
+        Postcard::factory()->times(3)
             ->create()
             ->each(function (Postcard $postcard) {
                 $postcard

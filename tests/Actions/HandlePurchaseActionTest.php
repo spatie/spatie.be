@@ -22,7 +22,7 @@ class HandlePurchaseActionTest extends TestCase
 
         $this->action = resolve(HandlePurchaseAction::class);
 
-        $this->user = factory(User::class)->create();
+        $this->user = User::factory()->create();
 
         $this->payload = new PaddlePayload([
             'receipt_url' => 'https://spatie.be',
@@ -37,7 +37,7 @@ class HandlePurchaseActionTest extends TestCase
     /** @test */
     public function it_can_create_a_purchase()
     {
-        $purchasable = factory(Purchasable::class)->create([
+        $purchasable = Purchasable::factory()->create([
             'requires_license' => false,
         ]);
 
@@ -63,7 +63,7 @@ class HandlePurchaseActionTest extends TestCase
     /** @test */
     public function it_can_create_a_purchase_with_license()
     {
-        $purchasable = factory(Purchasable::class)->create([
+        $purchasable = Purchasable::factory()->create([
             'requires_license' => true,
         ]);
 

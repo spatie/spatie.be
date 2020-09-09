@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Enums\PurchasableType;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -13,6 +14,8 @@ use Spatie\Mailcoach\Models\EmailList;
 
 class User extends Authenticatable
 {
+    use HasFactory;
+
     use Notifiable, Billable, Notifiable;
 
     protected $guarded = [];

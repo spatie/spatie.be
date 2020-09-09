@@ -33,13 +33,13 @@ class UserSeeder extends Seeder
     {
         $randomPurchasables->each(function (Purchasable $purchase) use ($user) {
             if ($purchase->requires_license) {
-                $license = factory(License::class)->create([
+                $license = License::factory()->create([
                     'purchasable_id' => $purchase->id,
                     'user_id' => $user->id,
                 ]);
             }
 
-            factory(Purchase::class)->create([
+            Purchase::factory()->create([
                 'user_id' => $user->id,
                 'purchasable_id' => $purchase->id,
                 'license_id' => optional($license ?? null)->id,

@@ -7,6 +7,6 @@ class ContributorSeeder extends Seeder
 {
     public function run()
     {
-        factory(Contributor::class, 1)->create();
+        Contributor::factory()->times(1)->create();
     }
 }

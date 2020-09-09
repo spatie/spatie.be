@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Paddle\Receipt;
 
 class Purchase extends Model
 {
+    use HasFactory;
+
     protected $casts = [
         'paddle_webhook_payload' => 'array',
         'has_repository_access' => 'boolean',
