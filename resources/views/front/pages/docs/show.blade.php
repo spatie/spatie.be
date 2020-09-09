@@ -3,12 +3,6 @@
 @endphp
 
 <x-page title="{{ $page->title }} | {{ $repository->slug }}" background="/backgrounds/docs-blur.jpg">
-{{--    @push('head')--}}
-{{--        <link--}}
-{{--                rel="stylesheet"--}}
-{{--                href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css"--}}
-{{--        />--}}
-{{--    @endpush--}}
 
     <x-slot name="description">
         {{ $repository->slug }}
@@ -23,16 +17,16 @@
         <div class="md:col-span-2">
 
             @if($showBigTitle)
-            <div class="mb-16">
-                <h1 class="banner-slogan">
-                    {{ ucfirst($repository->slug) }}
-                </h1>
-                <div class="banner-intro flex items-center justify-start">
-                    {{ $alias->slogan }}
+                <div class="mb-16">
+                    <h1 class="banner-slogan">
+                        {{ ucfirst($repository->slug) }}
+                    </h1>
+                    <div class="banner-intro flex items-center justify-start">
+                        {{ $alias->slogan }}
+                    </div>
                 </div>
-            </div>
 
-            <h2 class="title-xl mb-8">{{ $page->title }}</h2>
+                <h2 class="title-xl mb-8">{{ $page->title }}</h2>
 
             @else
                 <h1 class="title-xl mb-8">{{ $page->title }}</h1>
@@ -44,7 +38,7 @@
         </div>
     </section>
 
-
+    @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
 
     <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 

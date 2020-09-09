@@ -11,39 +11,39 @@
             <span class="select-arrow">
             {{ svg('icons/far-angle-down') }}</span>
         </div>
-        <a class="ml-auto flex items-center text-xs link-gray link-underline" href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md"
-            target="_blank">
-            Edit
-            <span class="ml-1 w-4 h-4">
-                {{ svg('github') }}
-            </span>
-        </a>
+        <div class="ml-auto flex items-center">
+            <a class="text-xs link-gray link-underline" href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md"
+                target="_blank">
+                Edit
+            </a>
+            <a class="ml-2 flex text-xs link-gray" href="{{ $alias->githubUrl }}/tree/{{$alias->branch}}"
+                target="_blank">
+                <span class="w-4 h-4">
+                    {{ svg('github') }}
+                </span>
+            </a>
+        </div>
     </div>
 
     <div class="sticky top-0 pt-4 ">
-    <input type="search" class="text-xs form-input w-full h-8 py-0 px-2 mb-8" id="algolia-search" placeholder="Search…">
-    <ol class="text-xs grid gap-2 links-blue">
-        @foreach($navigation as $key => $section)
-            @if ($key !== '_root')
-                <h2 class="title-sm text-sm">{{ $section['_index']['title'] }}</h2>
-            @endif
+        <input type="search" class="text-xs form-input w-full h-8 py-0 px-2 mb-8" id="algolia-search" placeholder="Search…">
+        <ol class="text-xs grid gap-2 links-blue">
+            @foreach($navigation as $key => $section)
+                @if ($key !== '_root')
+                    <h2 class="title-sm text-sm">{{ $section['_index']['title'] }}</h2>
+                @endif
 
-            <ul class="mb-6 space-y-1 links-blue @if($key !== '_root') pl-3 border-l-2 border-gray-lighter border-opacity-75 @endif">
-                @foreach($section['pages'] as $navItem)
-                    <li class="leading-snug">
-                        <a href="{{ $navItem->url }}" class="@if($page->slug === $navItem->slug) font-bold @endif">
-                            {{ $navItem->title }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-        @endforeach
-    </ol>
-
-    <a href="https://laravelpackage.training?utm_source=docs.spatie.be"><img
-                class="mb-8"
-                src="https://d33wubrfki0l68.cloudfront.net/dc2ab82b48c72af8e3fa738348653bf0b08a011c/6eae2/images/package-training.jpg"></a>
-
+                <ul class="mb-6 space-y-1 links-blue @if($key !== '_root') pl-3 border-l-2 border-gray-lighter border-opacity-75 @endif">
+                    @foreach($section['pages'] as $navItem)
+                        <li class="leading-snug">
+                            <a href="{{ $navItem->url }}" class="@if($page->slug === $navItem->slug) font-bold @endif">
+                                {{ $navItem->title }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            @endforeach
+        </ol>
     </div>
 
 </nav>
