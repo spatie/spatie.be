@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Database\Seeders\DatabaseSeeder;
 use App\Models\Postcard;
 
 class PostcardsSeeder extends DatabaseSeeder

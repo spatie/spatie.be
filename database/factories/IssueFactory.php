@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\Issue;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
 

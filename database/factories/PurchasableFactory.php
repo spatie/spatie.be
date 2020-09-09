@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Enums\PurchasableType;
 use App\Models\Product;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
 
@@ -26,7 +26,7 @@ class PurchasableFactory extends Factory
     {
         $title = "{$this->faker->jobTitle} as a service";
 
-    return [
+        return [
         'title' => $title,
         'product_id' => Product::factory(),
         'type' => PurchasableType::TYPE_UNLIMITED_DOMAINS,

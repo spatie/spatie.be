@@ -1,8 +1,8 @@
 <?php
 
 namespace Database\Factories;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
 
@@ -24,7 +24,7 @@ class UserFactory extends Factory
     {
         $name = $this->faker->firstName;
 
-    return [
+        return [
         'name' => ucfirst($name),
         'email' => "${name}@spatie.be",
         'password' => bcrypt('password'),

@@ -25,7 +25,7 @@ class ProductFactory extends Factory
     {
         $title = "{$this->faker->jobTitle} as a service";
 
-    return [
+        return [
         'title' => $title,
         'description' => $this->faker->text,
         'url' => $this->faker->url,

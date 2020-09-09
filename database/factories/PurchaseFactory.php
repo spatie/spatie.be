@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Laravel\Paddle\Receipt;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
