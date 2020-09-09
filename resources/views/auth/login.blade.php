@@ -44,7 +44,7 @@
 
                 <p>
                     <a class="link-underline link-white" href="{{ route('register') }}">
-                        No account yet? Create one first
+                        No account yet? Create one first. It's free!
                     </a>
                 </p>
 
