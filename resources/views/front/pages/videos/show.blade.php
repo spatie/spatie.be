@@ -51,7 +51,7 @@
                                         </p>
                                         <a class="mt-4 md:mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white"
                                            href="{{ route('login') }}">
-                                            <span>Log in</span>
+                                            <span>Log in or create a free account</span>
                                         </a>
                                     @elseif(session()->has('not-a-sponsor'))
                                         <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">Aaaaw… you're
