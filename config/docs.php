@@ -170,7 +170,8 @@ return [
             "name" => "laravel-dashboard",
             "repository" => "spatie/laravel-dashboard",
             "branches" => [
-                "master" => "v1",
+                "master" => "v2",
+                "v1" => "v1",
             ],
             "category" => "Laravel",
         ],
