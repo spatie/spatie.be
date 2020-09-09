@@ -1,5 +1,8 @@
 <?php
 
+namespace Database\Seeders;
+
+use Database\Seeders\ContributorSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

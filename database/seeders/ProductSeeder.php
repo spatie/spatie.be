@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Enums\PurchasableType;
 use App\Models\Product;
 use App\Models\Purchasable;
