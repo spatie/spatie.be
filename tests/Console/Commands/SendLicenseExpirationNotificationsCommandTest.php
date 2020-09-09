@@ -17,8 +17,8 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
     {
         Notification::fake();
 
-        $licenseAboutToExpire = factory(License::class)->create(['expires_at' => now()->addDays(13)]);
-        $licenseValidForALongTime = factory(License::class)->create(['expires_at' => now()->addMonth()]);
+        $licenseAboutToExpire = License::factory()->create(['expires_at' => now()->addDays(13)]);
+        $licenseValidForALongTime = License::factory()->create(['expires_at' => now()->addMonth()]);
 
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
@@ -31,7 +31,7 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
     {
         Notification::fake();
 
-        $licenseAboutToExpire = factory(License::class)->create(['expires_at' => now()->addDays(13)]);
+        $licenseAboutToExpire = License::factory()->create(['expires_at' => now()->addDays(13)]);
 
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
@@ -44,8 +44,8 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
     {
         Notification::fake();
 
-        $expiredLicense = factory(License::class)->create(['expires_at' => now()->subHour()]);
-        $licenseValidForALongTime = factory(License::class)->create(['expires_at' => now()->addMonth()]);
+        $expiredLicense = License::factory()->create(['expires_at' => now()->subHour()]);
+        $licenseValidForALongTime = License::factory()->create(['expires_at' => now()->addMonth()]);
 
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
@@ -58,7 +58,7 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
     {
         Notification::fake();
 
-        $expiredLicense = factory(License::class)->create(['expires_at' => now()->subHour()]);
+        $expiredLicense = License::factory()->create(['expires_at' => now()->subHour()]);
 
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);

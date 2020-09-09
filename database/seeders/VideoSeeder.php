@@ -1,6 +1,8 @@
 <?php
 
 
+namespace Database\Seeders;
+
 use App\Models\Enums\VideoDisplayEnum;
 use App\Models\Product;
 use App\Models\Purchasable;

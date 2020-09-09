@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Contributor;
 use Illuminate\Database\Seeder;
 
@@ -7,6 +9,6 @@ class ContributorSeeder extends Seeder
 {
     public function run()
     {
-        factory(Contributor::class, 1)->create();
+        Contributor::factory()->times(1)->create();
     }
 }

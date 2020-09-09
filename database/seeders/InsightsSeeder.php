@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Insight;
 use Illuminate\Database\Seeder;
 
@@ -7,6 +9,6 @@ class InsightsSeeder extends Seeder
 {
     public function run()
     {
-        factory(Insight::class, 50)->create();
+        Insight::factory()->times(50)->create();
     }
 }

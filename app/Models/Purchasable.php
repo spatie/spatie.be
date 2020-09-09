@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Mail\Markdown;
@@ -12,6 +13,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Purchasable extends Model implements HasMedia, Sortable
 {
+    use HasFactory;
+
     use InteractsWithMedia, SortableTrait;
 
     public $sortable = [
