@@ -7,7 +7,7 @@
 
     <script>
         setTimeout(function(){
-            document.querySelector(".flash").classList.add("flash-hidden");
+            document.querySelector(".flash-wrap").classList.add("flash-hidden");
         }, 5000);
     </script>
 @endif

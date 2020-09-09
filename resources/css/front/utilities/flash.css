@@ -6,21 +6,21 @@
     @apply flex;
     @apply justify-end;
     @apply z-50;
-}
-
-.flash {
     @apply transition-transform;
     @apply duration-300;
-    @apply rounded-bl-sm;
-    @apply shadow-lg;
-    @apply px-6;
-    @apply py-4;
-    background-image: linear-gradient(var(--gradient-angle), var(--gradient-from), var(--gradient-to));
 }
 
 .flash-hidden {
     @apply transform;
     @apply translate-x-full;
+}
+
+.flash {
+    @apply rounded-bl-sm;
+    @apply shadow-lg;
+    @apply px-6;
+    @apply py-4;
+    background-image: linear-gradient(var(--gradient-angle), var(--gradient-from), var(--gradient-to));
 }
 
 .flash-success {
