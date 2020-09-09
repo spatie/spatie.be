@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Enums\PurchasableType;
 use App\Http\Controllers\ProductsController;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
@@ -13,6 +14,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Product extends Model implements HasMedia, Sortable
 {
+    use HasFactory;
+
     use InteractsWithMedia, SortableTrait;
 
     public $sortable = [

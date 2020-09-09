@@ -21,8 +21,8 @@ class CreateLicenseActionTest extends TestCase
     /** @test */
     public function it_can_create_a_license()
     {
-        $user = factory(User::class)->create();
-        $purchasable = factory(Purchasable::class)->create();
+        $user = User::factory()->create();
+        $purchasable = Purchasable::factory()->create();
 
         $license = $this->action->execute($user, $purchasable);
 

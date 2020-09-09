@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Enums\PurchasableType;
 use App\Models\Product;
 use App\Models\Purchasable;
@@ -9,7 +11,7 @@ class ProductSeeder extends Seeder
 {
     public function run()
     {
-        $flare = factory(Product::class)->create([
+        $flare = Product::factory()->create([
             'title' => 'Flare',
             'slug' => 'flare',
             'description' => 'Laravel Error Tracking',
@@ -19,7 +21,7 @@ class ProductSeeder extends Seeder
             'external' => true,
         ]);
 
-        $beyondCrud = factory(Product::class)->create([
+        $beyondCrud = Product::factory()->create([
             'title' => 'Laravel Beyond CRUD',
             'slug' => 'laravel-beyond-crud',
             'description' => 'Learn how to build larger-than-average Laravel applications and maintain them for years to come.',
@@ -28,7 +30,7 @@ class ProductSeeder extends Seeder
             'action_label' => 'Buy course',
         ]);
 
-        factory(Purchasable::class)->create([
+        Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_STANDARD,
             'title' => 'Laravel Beyond CRUD course access',
             'description' => 'Course access',
@@ -38,7 +40,7 @@ class ProductSeeder extends Seeder
             'renewal_purchasable_id' => null,
         ]);
 
-        $mailCoach = factory(Product::class)->create([
+        $mailCoach = Product::factory()->create([
             'title' => 'Mailcoach',
             'slug' => 'mailcoach',
             'description' => 'Self-host your email marketing software',
@@ -47,7 +49,7 @@ class ProductSeeder extends Seeder
             'action_label' => 'Buy license or course',
         ]);
 
-        factory(Product::class)->create([
+        Product::factory()->create([
             'title' => 'Medialibrary.pro',
             'slug' => 'medialibrary_pro',
             'description' => 'Every picture needs a frame',
@@ -56,7 +58,7 @@ class ProductSeeder extends Seeder
             'action_label' => 'Buy license',
         ]);
 
-        $mailCoachSingleDomainRenewal = factory(Purchasable::class)->create([
+        $mailCoachSingleDomainRenewal = Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_STANDARD_RENEWAL,
             'title' => 'Mailcoach single domain renewal',
             'description' => '- Is valid for one domain or subdomain
@@ -68,7 +70,7 @@ class ProductSeeder extends Seeder
             'product_id' => $mailCoach->id,
         ]);
 
-        factory(Purchasable::class)->create([
+        Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_STANDARD,
             'title' => 'Mailcoach single domain',
             'description' => 'Standard license',
@@ -78,7 +80,7 @@ class ProductSeeder extends Seeder
             'renewal_purchasable_id' => $mailCoachSingleDomainRenewal->id,
         ]);
 
-        $mailCoachUnlimitedDomainsRenewal = factory(Purchasable::class)->create([
+        $mailCoachUnlimitedDomainsRenewal = Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
             'title' => 'Mailcoach unlimited domains renewal',
             'description' => 'Unlimited domains renewal license',
@@ -87,7 +89,7 @@ class ProductSeeder extends Seeder
             'product_id' => $mailCoach->id,
         ]);
 
-        factory(Purchasable::class)->create([
+        Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_UNLIMITED_DOMAINS,
             'title' => 'Mailcoach unlimited domains',
             'description' => 'Unlimited domains license',
@@ -97,7 +99,7 @@ class ProductSeeder extends Seeder
             'renewal_purchasable_id' => $mailCoachUnlimitedDomainsRenewal->id,
         ]);
 
-        factory(Purchasable::class)->create([
+        Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_VIDEOS,
             'title' => 'Only the videos',
             'description' => 'Videos',

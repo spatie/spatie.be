@@ -1,16 +1,36 @@
 <?php
 
+namespace Database\Factories;
+
 use App\Models\Issue;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /* @var Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(Issue::class, function (Faker\Generator $faker) {
-    return [
+
+class IssueFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = Issue::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
         'repository_id' => function () {
-            return factory(Issue::class)->create()->id;
+            return Issue::factory()->create()->id;
         },
-        'number' => $faker->numberBetween(1, 1000),
-        'title' => $faker->sentence,
-        'url' => $faker->url,
+        'number' => $this->faker->numberBetween(1, 1000),
+        'title' => $this->faker->sentence,
+        'url' => $this->faker->url,
 
     ];
-});
+    }
+}
