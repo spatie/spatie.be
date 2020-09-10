@@ -1,6 +1,6 @@
 ---
 title: JavaScript
-description: Get scripty
+description: Get scripty!
 weight: 2
 ---
 

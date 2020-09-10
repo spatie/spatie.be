@@ -1,6 +1,6 @@
 ---
 title: Laravel & PHP
-description: Artisanal
+description: Artisanal baked code
 weight: 1
 ---
 
