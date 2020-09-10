@@ -4,197 +4,49 @@ description: Get scripty!
 weight: 2
 ---
 
-## ESLint
+## Code style
 
-This guide should be used side by side with our base ESLint configuration file, which has its own repository and is available on npm.
+[Prettier](https://prettier.io) determines our code style. While Prettier's output isn't always the prettiest, it's consistent and removes all (meaningless) discussion about code style.
 
-[https://github.com/spatie/eslint-config-spatie](https://github.com/spatie/eslint-config-spatie)
+We try to stick to Prettier's defaults, but have a few overrides to keep our JavaScript code style consistent with PHP.
 
-```
-yarn add --dev eslint-config-spatie
-```
+The first two rules are actually configured with `.editorconfig`. We use 4 spaces as indentation.
 
-Most projects have a lint script available in their `package.json`.
-
-```
-eslint resources/assets/js --ext .js,.vue --fix && exit 0
+```txt
+indent_size = 4
 ```
 
-## Code Style
+Since we use 4 spaces instead of the default 2, the default 80 character line length can be a bit short (especially when writing templates in JSX).
 
-### Spacing and Indentation in Functions and Control Statements
-
-Code must be indented with 4 spaces.
-
-```js
-// Good
-function greet(name) {
-    return `Hello ${name}!`;
-}
-
-// Bad, only 2 spaces.
-function greet(name) {
-  return `Hello ${name}!`;
-}
-```
-
-When it comes to spaces around symbols or keywords, the rule of thumb is: add them. Everything in this section should be handled by ESLint.
-
-```js
-// Good
-if (true) {
-    // ...
-} else {
-    // ...
-}
-
-// Bad, needs more spaces.
-if(true){
-    // ...
-}else{
-    // ...
-}
-```
-
-Infix operators need room to breath.
-
-```js
-// Good
-const two = 1 + 1;
-
-// Bad, needs more spaces.
-const two = 1+1;
-```
-
-Opening braces should always be on the same line as their corresponding statement or declaration (known as *the one true brace style*).
-
-```js
-// Good
-if (true) {
-    // ...
-}
-
-// Bad
-if (true)
+```json
 {
-    // ...
+    "printWidth": 120
 }
 ```
 
-Named functions don't have a space before their parameters. Anonymous ones do.
+Finally, we prefer single quotes over double quotes for consistency with PHP.
 
-```js
-// Good
-function save(user) {
-    // ...
-}
-
-// Bad, no space before the parameters.
-function save (user) {
-    // ...
+```json
+{
+    "singleQuote": true
 }
 ```
 
-```js
-// Good
-save(user, function (response) {
-    // ...
-});
-
-// Bad, anonymous functions require a space before the parameters.
-save(user, function(response) {
-    // ...
-});
-```
-
-### Spacing and Indentation in Objects and Arrays
-
-Objects and arrays require spaces between their braces and brackets. Arrays that contain an object or another array mustn't have a space between the brackets. Multiline objects and arrays require trailing commas.
-
-```js
-// Good
-const person = { name: 'Sebastian', job: 'Developer' };
-
-// Bad, no spaces between parentheses.
-const person = {name: 'Sebastian', job: 'Developer'};
-```
-
-```js
-// Good
-const person = {
-    name: 'Sebastian',
-    job: 'Developer',
-};
-
-// Bad, no trailing comma.
-const person = {
-    name: 'Sebastian',
-    job: 'Developer'
-};
-```
-
-```js
-// Good
-const pairs = [['a', 'b'], ['c', 'd']];
-const people = [{ name: 'Sebastian' }, { name: 'Willem' }];
-
-// Bad, no extra spaces if the array contains arrays or objects.
-const pairs = [ ['a', 'b'], ['c', 'd'] ];
-const people = [ { name: 'Sebastian' }, { name: 'Willem' } ];
-```
-
-### Line Length
-
-Lines shouldn't be longer than 100 characters, and mustn't be longer than 120 characters (this isn't enforced by ESLint). Comments mustn't be longer than 80 characters.
-
-### Quotes
-
-Use single quotes if possible. If you need multiline strings or interpolation, use template strings.
-
-```js
-// Good
-const company = 'Spatie';
-
-// Bad, single quotes can be used here.
-const company = "Spatie";
-
-// Bad, single quotes can be used here.
-const company = `Spatie`;
-```
-
-```js
-// Good
-function greet(name) {
-    return `Hello ${name}!`;
-}
-
-// Bad, template strings are preferred.
-function greet(name) {
-    return 'Hello ' + name + '!';
-}
-```
-
-Also, when writing html templates (or jsx for that matter), start multiline templates on a new line if possible.
-
-```js
-function createLabel(text) {
-    return `
-        <div class="label">
-            ${text}
-        </div>
-    `;
-}
-```
-
-### Semicolons
-
-Always.
-
-### Variable Assignment
+### Variable assignment
 
 Prefer `const` over `let`. Only use `let` to indicate that a variable will be reassigned. Never use `var`.
 
-### Variable Names
+```js
+// Good
+const person = { name: 'Sebastian' };
+person.name = 'Seb';
+
+// Bad, the variable was never reassigned
+let person = { name: 'Sebastian' };
+person.name = 'Seb';
+```
+
+### Variable names
 
 Variable names generally shouldn't be abbreviated.
 
@@ -246,7 +98,7 @@ if (one == another) {
 }
 ```
 
-### Function Keyword vs. Arrow Functions
+### Function keyword vs. arrow functions
 
 Function declarations should use the function keyword.
 
@@ -283,10 +135,10 @@ export function query(selector) {
 
 // This one's a bit longer, having everything on one line feels a bit heavy.
 // It's not easily scannable unlike the previous example.
-export const query = selector => document.querySelector(selector);
+export const query = (selector) => document.querySelector(selector);
 ```
 
-Higher-order functions can use arrow functions if it improves readability.
+Higher-order functions may use arrow functions if it improves readability.
 
 ```js
 function sum(a, b) {
@@ -294,7 +146,7 @@ function sum(a, b) {
 }
 
 // Good
-const adder = a => b => sum(a, b);
+const adder = (a) => (b) => sum(a, b);
 
 // Ok, but unnecessarily noisy.
 function adder(a) {
@@ -307,7 +159,7 @@ function adder(a) {
 Anonymous functions should use arrow functions.
 
 ```js
-['a', 'b'].map(a => a.toUpperCase());
+['a', 'b'].map((a) => a.toUpperCase());
 ```
 
 Unless they need access to `this`.
@@ -342,48 +194,7 @@ export default {
 };
 ```
 
-### Arrow Function Parameter Brackets
-
-An arrow function's parameter brackets must be omitted if the function is a one-liner.
-
-```js
-// Good
-['a', 'b'].map(a => a.toUpperCase());
-
-// Bad, the parentheses are noisy.
-['a', 'b'].map((a) => a.toUpperCase());
-```
-
-If the arrow function has its own block, parameters must be surrounded by brackets.
-
-```js
-// Good, although according to this style guide you shouldn't be using an
-// arrow function here!
-const saveUser = (user) => {
-    //
-};
-
-// Bad
-const saveUser = user => {
-    //
-};
-```
-
-If you're writing a higher order function, you should omit the parentheses even if the returned function has braces.
-
-```js
-// Good
-const adder = a => b => {
-    sum(a, b);
-};
-
-// Bad, looks inconsistent in this context.
-const adder = a => (b) => {
-    sum(a, b);
-};
-```
-
-### Object and Array Destructuring
+### Object and array destructuring
 
 Destructuring is preferred over assigning variables to the corresponding keys.
 
@@ -410,40 +221,3 @@ function uploader({
     // ...
 }
 ```
-
-### Vue templates
-
-If a Vue component has so many props (or listeners, directives, ...) that they don't fit on one line anymore you need to put every prop on its own line. Every line needs to be intended with 4 spaces. The closing `>` goes on a new unintended line followed by the closing tag.
-
-```html
-<template>
-    <!-- Good -->
-    <my-component myProp="value"></my-component>
-</template>
-```
-
-```html
-<template>
-    <!-- Good -->
-    <my-component
-        v-if="shouldDisplay"
-        myProp="value"
-        @change="handleEvent"
-    ></my-component>
-</template>
-```
-
-```html
-<template>
-    <!-- Bad: wrong indentation, closing `>` is not correct placed -->
-    <my-component
-            v-if="shouldDisplay"
-            myProp="value"
-            @change="handleEvent">
-    </my-component>
-</template>
-```
-
-## Credits
-
-This style guide is mainly inspired by the [Airbnb JavaScript Style Guide](https://github.com/airbnb/javascript), and [Benjamin De Cock's frontend guidelines](https://github.com/bendc/frontend-guidelines).
