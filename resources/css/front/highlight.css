@@ -62,12 +62,14 @@
 
 .hljs-addition {
     @apply text-green;
-    @apply text-green-lightest;
+    @apply bg-green-lightest;
+    @apply bg-opacity-50;
 }
 
 .hljs-deletion {
     @apply text-pink-dark;
-    @apply text-pink-lightest;
+    @apply bg-pink-lightest;
+    @apply bg-opacity-50;
 }
 
 .hljs-link {
