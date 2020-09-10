@@ -461,9 +461,9 @@ return [
 // Bad: creating a new config file: `weyland-yutani.php`
 
 return [
-        'weyland_yutani' => [
-            'token' => env('WEYLAND_YUTANI_TOKEN')
-        ],  
+    'weyland_yutani' => [
+        'token' => env('WEYLAND_YUTANI_TOKEN')
+    ],  
 ]
 ```
 
