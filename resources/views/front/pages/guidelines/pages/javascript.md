@@ -115,7 +115,7 @@ const scrollTo = (offset) => {
 };
 ```
 
-Terse, single line functions can also use the arrow syntax. There's no hard rule here.
+Terse, single line functions may also use the arrow syntax. There's no hard rule here.
 
 ```js
 // Good
