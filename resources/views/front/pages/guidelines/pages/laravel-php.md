@@ -14,12 +14,24 @@ Code style must follow [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http:
 
 ### Class defaults
 
-By default, we don't use `final`. For our open source stuff, we assume that all our users know they are responsible for writing tests for any overwritten behaviour.
+By default, we don't use `final`. In our team, there aren't many benefits that `final` offers as we don't rely too much on inheritance. For our open source stuff, we assume that all our users know they are responsible for writing tests for any overwritten behaviour.
 
 ### Void return types
 
-If a method return nothing, it should be indicated with `void`.
+If a method returns nothing, it should be indicated with `void`.
 This makes it more clear to the users of your code what your intention was when writing it.
+
+```php
+// good
+
+// in a Laravel model
+public function scopeArchived(Builder $query): void
+{
+    $query->
+        ...
+}
+```
+
 
 ## Typed properties
 
@@ -93,30 +105,7 @@ Always use fully qualified class names in docblocks.
  */
 ```
 
-Docblocks for class variables are required, as there's currently no other way to typehint these.
-
-```php
-// Good
-
-class Foo
-{
-    /** @var \Spatie\Url\Url */
-    private $url;
-
-    /** @var string */
-    private $name;
-}
-
-// Bad
-
-class Foo
-{
-    private $url;
-    private $name;
-}
-```
-
-When possible, docblocks should be written on one line.
+Using multiple lines for a docblock, might draw too much attention to it. When possible, docblocks should be written on one line.
 
 ```php
 // Good
@@ -141,6 +130,27 @@ If a variable has multiple types, the most common occurring type should be first
 // Bad
 
 /** @var null|\Spatie\Goo\Bar */
+```
+
+## Traits
+
+Each applied trait should go on its own line, and the `use` keyword should be used for each of them. This will result in clean diffs when traits are added or removed.
+
+```php
+// Bad
+
+class MyClass {
+    use TraitA;
+    use TraitB;
+}
+```
+
+```php
+// Bad
+
+class MyClass {
+    use TraitA, TraitB;
+}
 ```
 
 ## Strings
@@ -255,6 +265,29 @@ else {
 }
 ```
 
+Another option to refactor an `else` away is using a ternary
+
+```php
+// Bad
+
+if ($condition) {
+    $this->doSomething();
+} 
+else {
+    $this->doSomethingElse();
+}
+
+
+```
+
+```php
+// Good
+
+$condition
+    ? $this->doSomething();
+    : $this->doSomethingElse();
+```
+
 
 ### Compound ifs
 
@@ -285,8 +318,6 @@ if ($conditionA && $conditionB && $conditionC) {
 }
 ```
 
-
-
 ## Comments
 
 Comments should be avoided as much as possible by writing expressive code. If you do need to use a comment, format it like this:
@@ -301,9 +332,22 @@ Comments should be avoided as much as possible by writing expressive code. If yo
  */
 ```
 
+A possible strategy to refactor away a comment is to create a function with name that describes the comment
+
+```php
+// Good
+$this->calculateLoans();
+```
+
+```php
+// Bad
+
+// Start calculation loads
+```
+
 ## Whitespace
 
-Statements should have to breathe. In general always add blank lines between statements, unless they're a sequence of single-line equivalent operations. This isn't something enforceable, it's a matter of what looks best in its context.
+Statements should be allowed to breathe. In general always add blank lines between statements, unless they're a sequence of single-line equivalent operations. This isn't something enforceable, it's a matter of what looks best in its context.
 
 ```php
 // Good
@@ -387,6 +431,42 @@ return [
 
 Avoid using the `env` helper outside of configuration files. Create a configuration value from the `env` variable like above.
 
+When adding config values for a specific service them to the `services` config file. Do not create a new config file.
+
+```php
+// Good: adding credentials to `config/services.php`
+return [
+     'ses' => [
+            'key' => env('SES_AWS_ACCESS_KEY_ID'),
+            'secret' => env('SES_AWS_SECRET_ACCESS_KEY'),
+            'region' => env('SES_AWS_DEFAULT_REGION', 'us-east-1'),
+        ],
+    
+    'github' => [
+        'username' => env('GITHUB_USERNAME'),
+        'token' => env('GITHUB_TOKEN'),
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_CALLBACK_URL'),
+        'docs_access_token' => env('GITHUB_ACCESS_TOKEN'),
+    ],
+    
+    'weyland_yutani' => [
+        'token' => env('WEYLAND_YUTANI_TOKEN')
+    ],   
+];
+```
+
+```php
+// Bad: creating a new config file: `weyland-yutani.php`
+
+return [
+        'weyland_yutani' => [
+            'token' => env('WEYLAND_YUTANI_TOKEN')
+        ],  
+]
+```
+
 ## Artisan commands
 
 The names given to artisan commands should all be kebab-cased.
@@ -411,7 +491,26 @@ public function handle()
 }
 ```
 
-If possible use a descriptive success message eg. `Old records deleted`.
+When the main function of a result is processing items, consider adding output inside of the loop, so progress can be tracked. Put the output before the actual process. If something goes wrong, this makes it easy to know which item caused the error.
+
+At the end of the command, provide a summary on how much processing was done.
+
+```php
+// in a Command
+public function handle()
+    {
+    $this->comment("Start processing items...")
+
+    // do some work
+    $items->each(function(Item $item) {
+        $this->info("Processing item id `{$item-id}`...")
+
+        $this->processItem($item)
+    });
+
+    $this->comment("Processed {$item->count()} items.");
+}
+```
 
 ## Routing
 
@@ -552,7 +651,7 @@ class OpenSourceController
 When using multiple rules for one field in a form request, avoid using `|`, always use array notation. Using an array notation will make it easier to apply custom rule classes to a field.
 
 ```php
-// good
+// Good
 public function rules()
 {
     return [
@@ -560,7 +659,7 @@ public function rules()
     ];
 }
 
-// bad
+// Bad
 public function rules()
 {
     return [
