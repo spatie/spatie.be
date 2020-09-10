@@ -49,5 +49,7 @@
             </div>
         </div>
     </section>
+
+    @include('front.pages.docs.banners.randomBanner')
 </x-page>
 

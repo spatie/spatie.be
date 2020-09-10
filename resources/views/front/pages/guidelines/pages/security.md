@@ -4,9 +4,7 @@ description: There's no key under the mat
 weight: 4
 ---
 
-# Security
-
-This section of the guidelines documents some of the best practices to work securely.
+This section of the guidelines documents some of our best practices to work securely.
 
 ## Passwords
 
