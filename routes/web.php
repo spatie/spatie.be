@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
+use App\Http\Controllers\RedirectGuidelinesDomainController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
@@ -31,6 +32,10 @@ Route::get('is-valid-license/{license}', IsValidLicenseController::class);
 
 Route::domain('docs.spatie.be')->group(function () {
     Route::get('/{url}', RedirectDocsDomainController::class)->where('url', '.*');
+});
+
+Route::domain('guidelines.spatie.be')->group(function () {
+    Route::get('/{url}', RedirectGuidelinesDomainController::class)->where('url', '.*');
 });
 
 Route::view('/', 'front.pages.home.index')->name('home');
