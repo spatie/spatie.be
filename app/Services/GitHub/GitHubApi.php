@@ -19,6 +19,7 @@ class GitHubApi
     public function fetchPublicRepositories(string $username): Collection
     {
         $api = $this->client->api('organization');
+        info('using github token fetchPublicRepositories');
 
         $paginator = new ResultPager($this->client);
 
@@ -32,6 +33,8 @@ class GitHubApi
     public function fetchOpenIssues(string $username, string $repository, array $labelFilters = []): Collection
     {
         $api = $this->client->api('issue');
+        info('using github token fetchOpenIssues');
+
 
         $paginator = new ResultPager($this->client);
 
@@ -51,6 +54,7 @@ class GitHubApi
     public function fetchRepositoryTopics(string $username, string $repository): Collection
     {
         $api = $this->client->api('repository');
+        info('using github token fetchRepositoryTopics');
 
         return collect($api->topics($username, $repository)['names'] ?? []);
     }
@@ -58,6 +62,7 @@ class GitHubApi
     public function fetchRepositoryContributors(string $username, string $repository): Collection
     {
         $api = $this->client->api('repository');
+        info('using github token fetchRepositoryContributors');
 
         $paginator = new ResultPager($this->client);
 
@@ -67,6 +72,8 @@ class GitHubApi
     public function getUser($username)
     {
         $api = $this->client->api('user');
+        info('using github token getUser');
+
 
         return $api->show($username);
     }
@@ -75,6 +82,7 @@ class GitHubApi
     {
         [$organisation, $repository] = explode('/', $repository);
 
+        info('using github token inviteToRepo');
         $this->client->repo()->collaborators()->add(
             $organisation,
             $repository,
@@ -92,5 +100,6 @@ class GitHubApi
             $repository,
             $gitHubUsername,
         );
+        info('using github token revokeAccessToRepo');
     }
 }

@@ -42,6 +42,7 @@ class GitHubGraphApi
     public function fetchRawSponsors($runningSponsors = [], $afterCursor = null)
     {
         $afterCursor = json_encode($afterCursor);
+        info('Using github api token to get sponsors');
         $response = Http::withToken(config('services.github.token'))
             ->post('https://api.github.com/graphql', [
                 'query' => <<<EOT
