@@ -16,7 +16,7 @@ class GitHubGraphApi
 
     public function getAllSponsors(): array
     {
-        return Cache::remember('sponsors', now()->addMonth(), function () {
+        return Cache::remember('sponsors', now()->addMinute(), function () {
             return array_map(function ($sponsor) {
                 return [
                     'id' => $sponsor['sponsorEntity']['id'],
