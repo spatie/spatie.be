@@ -4,26 +4,6 @@ description: Artisanal
 weight: 1
 ---
 
-- [About Laravel](#about-laravel)
-- [General PHP Rules](#general-php-rules)
-- [Class defaults](#class-defaults)
-- [Typed properties](#typed-properties)
-- [Docblocks](#docblocks)
-- [Strings](#strings)
-- [If statements](#if-statements)
-- [Ternary operators](#ternary-operators)
-- [Comments](#comments)
-- [Configuration](#configuration)
-- [Artisan commands](#artisan-commands)
-- [Routing](#routing)
-- [Controllers](#controllers)
-- [Views](#views)
-- [Validation](#validation)
-- [Blade templates](#blade-templates)
-- [Authorization](#authorization)
-- [Translations](#translations)
-- [Naming classes](#naming-classes)
-
 ## About Laravel
 
 First and foremost, Laravel provides the most value when you write things the way Laravel intended you to write. If there's a documented way to achieve something, follow it. Whenever you do something differently, make sure you have a justification for *why* you didn't follow the defaults.

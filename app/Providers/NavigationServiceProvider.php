@@ -25,9 +25,9 @@ class NavigationServiceProvider extends ServiceProvider
             return Menu::new()
                 ->route('about', 'About')
                 ->route('docs', 'Docs')
+                ->route('guidelines', 'Guidelines')
                 ->addIf(auth()->check(), View::create('layout.partials.navigation.profileIcon', ['url' => route('profile')]))
                 ->addIf(! auth()->check(), View::create('layout.partials.navigation.loginIcon', ['url' => route('login')]))
-                //->route('guidelines', 'Guidelines')
 
                 ->withoutWrapperTag()
                 ->withoutParentTag()

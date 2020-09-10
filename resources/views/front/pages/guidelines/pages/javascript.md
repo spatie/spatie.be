@@ -4,19 +4,6 @@ description: Get scripty
 weight: 2
 ---
 
-- [Spacing and Indentation in Functions and Control Statements](#spacing-and-indentation-in-functions-and-control-statements)
-- [Spacing and Indentation in Objects and Arrays](#spacing-and-indentation-in-objects-and-arrays)
-- [Line Length](#line-length)
-- [Quotes](#quotes)
-- [Semicolons](#semicolons)
-- [Variable Assignment](#variable-assignment)
-- [Variable Names](#variable-names)
-- [Comparisons](#comparisons)
-- [Function Keyword vs. Arrow Functions](#function-keyword-vs-arrow-functions)
-- [Arrow Function Parameter Brackets](#arrow-function-parameter-brackets)
-- [Object and Array Destructuring](#object-and-array-destructuring)
-- [Vue templates](#vue-templates)
-
 ## ESLint
 
 This guide should be used side by side with our base ESLint configuration file, which has its own repository and is available on npm.

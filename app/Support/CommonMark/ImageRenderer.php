@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Support\Sheets;
+namespace App\Support\CommonMark;
 
 use Illuminate\Support\Str;
 use League\CommonMark\ElementRendererInterface;
