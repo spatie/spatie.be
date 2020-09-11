@@ -6,6 +6,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -20,18 +21,19 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        session()->flash('next', request('next'));
+        session()->flash('next', request('next') ?? url()->previous());
 
         return view('auth.login');
     }
 
-    public function redirectPath()
+    protected function sendLoginResponse(Request $request)
     {
-        return session('next', route('products.index'));
-    }
+        $request->session()->regenerate();
 
-    protected function authenticated(Request $request, $user)
-    {
+        $this->clearLoginAttempts($request);
+
         flash()->success('You are now logged in');
+
+        return redirect()->to(session()->get('next', route('products.index')));
     }
 }

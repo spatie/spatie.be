@@ -12,7 +12,7 @@ class GithubSocialiteController
 {
     public function redirect()
     {
-        session()->put('before-github-redirect', url()->previous());
+        session()->reflash();
 
         if (auth()->check()) {
             session()->put('auth-user-email', auth()->user()->email);
@@ -46,7 +46,7 @@ class GithubSocialiteController
 
         flash()->success('You have been logged in');
 
-        return redirect()->to(session('before-github-redirect', route('products.index')));
+        return redirect()->to(session('next', route('products.index')));
     }
 
     protected function retrieveUser($gitHubUser): User

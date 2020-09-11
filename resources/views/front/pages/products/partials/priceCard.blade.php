@@ -18,7 +18,7 @@
                 </x-button>
             </x-paddle-button>
         @else
-            <a href="{{ route('login') }}">
+            <a href="{{ route('login') }}?next={{ url()->current() }}">
                 <x-button>
                     <span class="font-normal">Buy for&nbsp;</span>
                     <span data-id="current-currency-{{ $purchasable->id }}"></span>
