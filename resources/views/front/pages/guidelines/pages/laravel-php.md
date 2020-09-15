@@ -4,10 +4,6 @@ description: Artisanal baked code
 weight: 1
 ---
 
-## About Laravel
-
-First and foremost, Laravel provides the most value when you write things the way Laravel intended you to write. If there's a documented way to achieve something, follow it. Whenever you do something differently, make sure you have a justification for *why* you didn't follow the defaults.
-
 ## General PHP Rules
 
 Code style must follow [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http://www.php-fig.org/psr/psr-2/) and [PSR-12](https://www.php-fig.org/psr/psr-12/). Generally speaking, everything string-like that's not public-facing should use camelCase. Detailed examples on these are spread throughout the guide in their relevant sections.
@@ -137,7 +133,7 @@ If a variable has multiple types, the most common occurring type should be first
 Each applied trait should go on its own line, and the `use` keyword should be used for each of them. This will result in clean diffs when traits are added or removed.
 
 ```php
-// Bad
+// Good
 
 class MyClass {
     use TraitA;
@@ -174,10 +170,6 @@ Every portion of a ternary expression should be on its own line unless it's a re
 
 ```php
 // Good
-$result = $object instanceof Model
-    ? $object->name
-    : 'A default value';
-
 $name = $isFoo ? 'foo' : 'bar';
 
 // Bad
@@ -521,14 +513,18 @@ https://spatie.be/open-source
 https://spatie.be/jobs/front-end-developer
 ```
 
-Route names must use camelCase.
+Prefer to use the route tuple notation when possible.
 
 ```php
+# Good
+Route::get('open-source', [OpenSourceController::class, 'index']);
+
+# Bad
 Route::get('open-source', 'OpenSourceController@index')->name('openSource');
 ```
 
 ```html
-<a href="{{ route('openSource') }}">
+<a href="{{ action([\App\Http\Controllers\OpenSourceController::class, 'index']) }}">
     Open Source
 </a>
 ```
@@ -537,30 +533,30 @@ All routes have an http verb, that's why we like to put the verb first when defi
 
 ```php
 // good: all http verbs come first
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('open-source', 'OpenSourceController@index')->name('openSource');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('open-source', [OpenSourceController::class, 'index'])->name('openSource');
 
 // bad: http verbs not easily scannable
-Route::name('home')->get('/', 'HomeController@index');
-Route::name('openSource')->get('OpenSourceController@index');
+Route::name('home')->get('/', [HomeController::class, 'index']);
+Route::name('openSource')->get([OpenSourceController::class, 'index']);
 ```
 
 Route parameters should use camelCase.
 
 ```php
-Route::get('news/{newsItem}', 'NewsItemsController@index');
+Route::get('news/{newsItem}', [NewsItemsController::class, 'index']);
 ```
 
 A route url should not start with `/` unless the url would be an empty string.
 
 ```php
 // good
-Route::get('/', 'HomeController@index');
-Route::get('open-source', 'OpenSourceController@index');
+Route::get('/', [HomeController::class, 'index']);
+Route::get('open-source', [OpenSourceController::class, 'index']);
 
 //bad
-Route::get('', 'HomeController@index');
-Route::get('/open-source', 'OpenSourceController@index');
+Route::get('', [HomeController::class, 'index']);
+Route::get('/open-source', [OpenSourceController::class, 'index']);
 ```
 
 ## Controllers
