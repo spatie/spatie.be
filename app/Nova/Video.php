@@ -7,6 +7,7 @@ use App\Models\Video as EloquentVideo;
 use App\Nova\Filters\SeriesFilter;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
@@ -46,6 +47,8 @@ class Video extends Resource
                 ->sortable()
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
+
+            Boolean::make('Downloadable'),
 
             Image::make('Thumbnail')
                 ->thumbnail(function ($value) {

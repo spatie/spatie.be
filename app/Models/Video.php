@@ -22,6 +22,7 @@ class Video extends Model implements Sortable
 
     protected $casts = [
         'sort' => 'integer',
+        'downloadable' => 'boolean',
     ];
 
     public $sortable = [
