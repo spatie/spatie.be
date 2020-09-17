@@ -36,7 +36,8 @@
                             <div class="absolute inset-0 flex justify-center items-center gradient gradient-dark text-white z-10 p-8">
                                 <div class="flex flex-col items-center text-center">
                                     @if ($currentVideo->display === \App\Models\Enums\VideoDisplayEnum::LICENSE)
-                                        <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is part of a course.</h4>
+                                        <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is
+                                            part of a course.</h4>
                                         <p class="hidden md:block text-center">
                                             You'll need to buy the course to view this video!
                                         </p>
@@ -45,7 +46,8 @@
                                             <span>Buy a license</span>
                                         </a>
                                     @elseif ($currentVideo->display === \App\Models\Enums\VideoDisplayEnum::AUTH)
-                                        <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is only for members.</h4>
+                                        <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is
+                                            only for members.</h4>
                                         <p class="hidden md:block text-center">
                                             You'll need to log in to view this video!
                                         </p>
@@ -100,9 +102,22 @@
                     </div>
 
                     @if ($currentVideo->canBeSeenByCurrentUser())
-                        <div class="mt-4 flex justify-end">
-                            <livewire:video-completed-button :video="$currentVideo" />
+                        <div class="flex items-center mt-4">
+                            <div class="text-xs links-underline links-blue space-y-1">
+                                @if(true or $currentVideo->downloadable)
+                                    <div class="flex space-x-2">
+                                        <span class="text-gray">Download video:</span>
+                                        <a href="{{ $currentVideo->download_hd_url }}">HD</a>
+                                        <span class="char-separator">|</span>
+                                        <a href="{{ $currentVideo->download_sd_url }}">SD</a>
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="ml-auto">
+                                <livewire:video-completed-button :video="$currentVideo"/>
+                            </div>
                         </div>
+
                     @endif
 
                     <h2 class="title line-after mt-12">{{ $currentVideo->title }}</h2>
