@@ -137,7 +137,7 @@ If a variable has multiple types, the most common occurring type should be first
 Each applied trait should go on its own line, and the `use` keyword should be used for each of them. This will result in clean diffs when traits are added or removed.
 
 ```php
-// Bad
+// Good
 
 class MyClass {
     use TraitA;
