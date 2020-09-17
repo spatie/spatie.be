@@ -9,13 +9,14 @@ return [
             'disk' => 'docs',
             'sheet_class' => \App\Docs\DocumentationPage::class,
             'path_parser' => \App\Docs\DocumationPathParser::class,
-            'content_parser' => \App\Support\Sheets\ContentParser::class,
+            'content_parser' => \App\Docs\DocumentationContentParser::class,
         ],
 
         'guidelines' => [
             'disk' => 'guidelines',
+            'sheet_class' => \App\Guidelines\GuidelinesPage::class,
             'path_parser' => \Spatie\Sheets\PathParsers\SlugParser::class,
-            'content_parser' => \App\Support\Sheets\ContentParser::class,
+            'content_parser' => \App\Guidelines\GuidelinesContentParser::class,
         ],
 
         /*
