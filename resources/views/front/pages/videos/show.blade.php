@@ -102,19 +102,18 @@
                     </div>
 
                     @if ($currentVideo->canBeSeenByCurrentUser())
-                        <div class="flex">
-                            <div class="text-xs links-underline links-blue mt-4 flex flex-col space-y-1">
-                                @if($currentVideo->downloadable)
-                                    <div>
-                                        <a href="{{ $currentVideo->download_hd_url }}">Download HD</a>
-                                    </div>
-                                    <div>
-                                        <a href="{{ $currentVideo->download_sd_url }}">Download SD</a>
+                        <div class="flex items-center mt-4">
+                            <div class="text-xs links-underline links-blue space-y-1">
+                                @if(true or $currentVideo->downloadable)
+                                    <div class="flex space-x-2">
+                                        <span class="text-gray">Download video:</span>
+                                        <a href="{{ $currentVideo->download_hd_url }}">HD</a>
+                                        <span class="char-separator">|</span>
+                                        <a href="{{ $currentVideo->download_sd_url }}">SD</a>
                                     </div>
                                 @endif
                             </div>
-                            <div class="flex-1"></div>
-                            <div class="mt-4">
+                            <div class="ml-auto">
                                 <livewire:video-completed-button :video="$currentVideo"/>
                             </div>
                         </div>
