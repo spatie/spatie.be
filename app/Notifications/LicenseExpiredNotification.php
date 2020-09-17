@@ -7,7 +7,6 @@ use App\Models\License;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 
 class LicenseExpiredNotification extends Notification
