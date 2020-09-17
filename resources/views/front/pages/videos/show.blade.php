@@ -104,7 +104,7 @@
                     @if ($currentVideo->canBeSeenByCurrentUser())
                         <div class="flex items-center mt-4">
                             <div class="text-xs links-underline links-blue space-y-1">
-                                @if(true or $currentVideo->downloadable)
+                                @if($currentVideo->downloadable)
                                     <div class="flex space-x-2">
                                         <span class="text-gray">Download video:</span>
                                         <a href="{{ $currentVideo->download_hd_url }}">HD</a>
