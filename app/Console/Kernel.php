@@ -22,11 +22,11 @@ class Kernel extends ConsoleKernel
         $schedule->command('mailcoach:send-email-list-summary-mail')->mondays()->at('9:00');
         $schedule->command('mailcoach:delete-old-unconfirmed-subscribers')->daily();
 
-        $schedule->command(ImportGitHubIssuesCommand::class)->hourly();
+        $schedule->command(ImportGitHubIssuesCommand::class)->daily();
         $schedule->command(ImportInsightsCommand::class)->hourly();
         $schedule->command(ImportRandomContributorCommand::class)->hourly();
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
-        $schedule->command(ImportGitHubRepositoriesCommand::class)->daily();
+        $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
 
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
         $schedule->command(ImportDocsFromRepositoriesCommand::class)->everyFiveMinutes();
