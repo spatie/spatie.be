@@ -33,6 +33,10 @@ Route::domain('docs.spatie.be')->group(function () {
     Route::get('/{url}', RedirectDocsDomainController::class)->where('url', '.*');
 });
 
+Route::domain('guidelines.spatie.be')->group(function () {
+        Route::permanentRedirect('/{url}', 'https://spatie.be/guidelines');
+});
+
 Route::view('/', 'front.pages.home.index')->name('home');
 
 Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
