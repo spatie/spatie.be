@@ -3,8 +3,8 @@
 namespace App\Http\Api;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Redis;
 use Illuminate\Validation\UnauthorizedException;
+use Spatie\Valuestore\Valuestore;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class GithubController
@@ -14,14 +14,14 @@ class GithubController
         $this->ensureValidRequest($request);
 
         $payload = json_decode($request->getContent(), true);
-
         $updatedRepository = $payload['repository']['full_name'];
 
-        $repositories = json_decode(Redis::get('repositories:updated'), true);
+        $valueStore = Valuestore::make('storage/value_store.json');
+        $repositories = $valueStore->get('updated_repositories');
 
         $repositories[$updatedRepository] = true;
 
-        Redis::set('repositories:updated', json_encode($repositories));
+        $valueStore->put('updated_repositories', $repositories);
     }
 
     protected function ensureValidRequest(Request $request): void

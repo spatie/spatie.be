@@ -4,11 +4,11 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Redis;
 use React\ChildProcess\Process;
 use React\EventLoop\Factory;
 use function React\Promise\all;
 use Spatie\Sheets\Sheets;
+use Spatie\Valuestore\Valuestore;
 use function WyriHaximus\React\childProcessPromise;
 
 class ImportDocsFromRepositoriesCommand extends Command
@@ -21,8 +21,14 @@ class ImportDocsFromRepositoriesCommand extends Command
     {
         $loop = Factory::create();
 
-        $updatedRepositories = json_decode(Redis::get('repositories:updated'), true);
-        $repositoriesWithDocs = $this->getRepositories();
+        $valueStore = Valuestore::make('storage/value_store.json');
+        $updatedRepositories = $valueStore->get('updated_repositories');
+
+        if ($updatedRepositories === null) {
+            return;
+        }
+
+        $repositoriesWithDocs = collect($this->getRepositories())->keyBy('name');
 
         $accessToken = config('services.github.docs_access_token');
 
@@ -31,7 +37,6 @@ class ImportDocsFromRepositoriesCommand extends Command
         $publicDocsAssetPath = public_path('docs');
 
         foreach (array_keys($updatedRepositories) as $repositoryName) {
-            // @todo change docs.php and use repo name as key for easier search
             $repository = $repositoriesWithDocs[$repositoryName];
 
             foreach ($repository['branches'] as $branch => $alias) {
@@ -77,7 +82,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $loop->run();
 
-        Redis::set('repositories:updated', '{}');
+        $valueStore->flush();
     }
 
     private function getRepositories(): array
