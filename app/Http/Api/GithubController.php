@@ -11,7 +11,7 @@ class GithubController
 {
     public function __invoke(Request $request)
     {
-        $this->validate($request);
+        $this->ensureValidRequest($request);
 
         $payload = json_decode($request->getContent(), true);
 
@@ -24,7 +24,7 @@ class GithubController
         Redis::set('repositories:updated', json_encode($repositories));
     }
 
-    private function validate(Request $request): void
+    protected function ensureValidRequest(Request $request): void
     {
         $signature = $request->headers->get('X-Hub-Signature');
 
@@ -35,7 +35,7 @@ class GithubController
         $signatureParts = explode('=', $signature);
 
         if (count($signatureParts) !== 2) {
-            throw new BadRequestHttpException('signature has an invalid format');
+            throw new BadRequestHttpException('Signature has an invalid format');
         }
 
         $knownSignature = hash_hmac('sha1', $request->getContent(), config('services.github.webhook_secret'));

@@ -7,7 +7,7 @@ use Tests\TestCase;
 class GithubTest extends TestCase
 {
     /** @test */
-    public function it_can_receive_a_webhook(): void
+    public function it_can_receive_a_webhook()
     {
         $data = [
             "repository" => [
@@ -15,8 +15,8 @@ class GithubTest extends TestCase
             ],
         ];
 
-        $response = $this->post('api/webhooks/github', $data);
-
-        $response->assertStatus(200);
+        $this->post('api/webhooks/github', $data)
+            ->assertStatus(200)
+        ;
     }
 }

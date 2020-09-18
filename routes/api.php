@@ -7,5 +7,5 @@ use Illuminate\Support\Facades\Route;
 Route::post('satis/authenticate', SatisAuthenticationController::class);
 
 Route::prefix('webhooks')->group(function () {
-    Route::post('/github', GithubController::class);
+    Route::post('github', GithubController::class);
 });

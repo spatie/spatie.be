@@ -30,7 +30,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $publicDocsAssetPath = public_path('docs');
 
-        foreach ($updatedRepositories as $repositoryName => $val) {
+        foreach (array_keys($updatedRepositories) as $repositoryName) {
             // @todo change docs.php and use repo name as key for easier search
             $repository = $repositoriesWithDocs[$repositoryName];
 
