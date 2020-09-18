@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redis;
 use React\ChildProcess\Process;
 use React\EventLoop\Factory;
 use function React\Promise\all;
@@ -20,7 +21,8 @@ class ImportDocsFromRepositoriesCommand extends Command
     {
         $loop = Factory::create();
 
-        $repositories = $this->getRepositories();
+        $updatedRepositories = json_decode(Redis::get('repositories:updated'), true);
+        $repositoriesWithDocs = $this->getRepositories();
 
         $accessToken = config('services.github.docs_access_token');
 
@@ -28,7 +30,10 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $publicDocsAssetPath = public_path('docs');
 
-        foreach ($repositories as $repository) {
+        foreach ($updatedRepositories as $repositoryName => $val) {
+            // @todo change docs.php and use repo name as key for easier search
+            $repository = $repositoriesWithDocs[$repositoryName];
+
             foreach ($repository['branches'] as $branch => $alias) {
                 $process = new Process(
                     <<<BASH
@@ -71,6 +76,8 @@ class ImportDocsFromRepositoriesCommand extends Command
             });
 
         $loop->run();
+
+        Redis::set('repositories:updated', '{}');
     }
 
     private function getRepositories(): array

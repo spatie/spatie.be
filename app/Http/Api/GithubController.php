@@ -17,12 +17,11 @@ class GithubController
 
         $updatedRepository = $payload['repository']['full_name'];
 
-        $redis = Redis::connection();
-        $repositories = $redis->client()->get('repositories:updated');
+        $repositories = json_decode(Redis::get('repositories:updated'), true);
 
         $repositories[$updatedRepository] = true;
 
-        $redis->client()->set('repositories:updated', $repositories);
+        Redis::set('repositories:updated', json_encode($repositories));
     }
 
     private function validate(Request $request): void

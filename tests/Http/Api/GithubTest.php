@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Http\Webhooks;
+namespace Tests\Http\Api;
 
 use Tests\TestCase;
 
@@ -9,10 +9,14 @@ class GithubTest extends TestCase
     /** @test */
     public function it_can_receive_a_webhook(): void
     {
-        $data = [];
-        $response = $this->post('/webhooks/github', $data);
+        $data = [
+            "repository" => [
+                "full_name" => "laravel-medialibrary",
+            ],
+        ];
 
-        dd($response->content());
+        $response = $this->post('api/webhooks/github', $data);
+
         $response->assertStatus(200);
     }
 }
