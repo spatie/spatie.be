@@ -34,7 +34,7 @@ Route::domain('docs.spatie.be')->group(function () {
 });
 
 Route::domain('guidelines.spatie.be')->group(function () {
-        Route::permanentRedirect('/{url}', 'https://spatie.be/guidelines');
+    Route::permanentRedirect('{url?}', 'https://spatie.be/guidelines');
 });
 
 Route::view('/', 'front.pages.home.index')->name('home');
