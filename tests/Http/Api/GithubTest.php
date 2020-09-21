@@ -6,7 +6,6 @@ use Tests\TestCase;
 
 class GithubTest extends TestCase
 {
-    /** @test */
     public function it_can_receive_a_webhook()
     {
         $data = [

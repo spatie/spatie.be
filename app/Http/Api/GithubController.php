@@ -14,7 +14,11 @@ class GithubController
         $this->ensureValidRequest($request);
 
         $payload = json_decode($request->getContent(), true);
-        $updatedRepository = $payload['repository']['full_name'];
+        $updatedRepository = $payload['repository']['full_name'] ?? null;
+
+        if ($updatedRepository === null) {
+            return;
+        }
 
         $valueStore = Valuestore::make('storage/value_store.json');
         $repositories = $valueStore->get('updated_repositories');
