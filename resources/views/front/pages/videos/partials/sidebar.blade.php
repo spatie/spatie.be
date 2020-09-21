@@ -9,7 +9,7 @@
             <div class="mt-2">
                 <a href="{{ $series->purchaseLink() }}" class="grid">
                     <x-button>
-                        Buy entire course
+                        Buy<span class="sm:hidden md:inline">&nbsp;entire course</span>
                     </x-button>
                 </a>
             </div>
