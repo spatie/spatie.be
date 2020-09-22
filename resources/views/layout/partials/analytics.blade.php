@@ -1,4 +1,4 @@
-@if(app()->environment('production') || true)
+@if(app()->environment('production'))
     <script type="text/javascript">
         var _paq = _paq || [];
 
