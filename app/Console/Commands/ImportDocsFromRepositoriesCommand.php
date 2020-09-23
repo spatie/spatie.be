@@ -37,7 +37,11 @@ class ImportDocsFromRepositoriesCommand extends Command
         $publicDocsAssetPath = public_path('docs');
 
         foreach (array_keys($updatedRepositories) as $repositoryName) {
-            $repository = $repositoriesWithDocs[$repositoryName];
+            $repository = $repositoriesWithDocs[$repositoryName] ?? null;
+
+            if ($repository === null) {
+                continue;
+            }
 
             foreach ($repository['branches'] as $branch => $alias) {
                 $process = new Process(
