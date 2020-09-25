@@ -2,6 +2,7 @@
 
 namespace App\Http\Api;
 
+use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Http\Request;
 use Illuminate\Validation\UnauthorizedException;
 use Spatie\Valuestore\Valuestore;
@@ -20,12 +21,7 @@ class GithubController
             return;
         }
 
-        $valueStore = Valuestore::make('storage/value_store.json');
-        $repositories = $valueStore->get('updated_repositories');
-
-        $repositories[$updatedRepository] = true;
-
-        $valueStore->put('updated_repositories', $repositories);
+        UpdatedRepositoriesValueStore::make()->store($updatedRepository['name']);
     }
 
     protected function ensureValidRequest(Request $request): void
