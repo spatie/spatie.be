@@ -15,7 +15,7 @@ class UpdatedRepositoriesValueStore
 
     public function __construct()
     {
-        $this->valueStore = Valuestore::make('storage/updatesRepositories.json');
+        $this->valueStore = Valuestore::make(storage_path('app/updatesRepositories.json'));
     }
 
     public function getNames(): array
