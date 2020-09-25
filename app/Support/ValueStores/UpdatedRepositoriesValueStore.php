@@ -34,7 +34,7 @@ class UpdatedRepositoriesValueStore
         return $this;
     }
 
-    public function flush()
+    public function flush(): void
     {
         $this->valueStore->flush();
     }
