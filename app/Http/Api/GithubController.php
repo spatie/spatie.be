@@ -5,7 +5,6 @@ namespace App\Http\Api;
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Http\Request;
 use Illuminate\Validation\UnauthorizedException;
-use Spatie\Valuestore\Valuestore;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class GithubController
