@@ -7,8 +7,8 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
 use React\ChildProcess\Process;
-use React\EventLoop\ExtEvLoop;
 use React\EventLoop\Factory;
+use React\EventLoop\StreamSelectLoop;
 use function React\Promise\all;
 use Spatie\Sheets\Sheets;
 use function WyriHaximus\React\childProcessPromise;
@@ -40,7 +40,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
     protected function convertRepositoriesToProcesses(
         UpdatedRepositoriesValueStore $updatedRepositories,
-        ExtEvLoop $loop
+        StreamSelectLoop $loop
     ): Collection {
         $repositoriesWithDocs = $this->getRepositoriesWitDocs();
 

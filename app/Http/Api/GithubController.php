@@ -20,7 +20,7 @@ class GithubController
             return;
         }
 
-        UpdatedRepositoriesValueStore::make()->store($updatedRepository['name']);
+        UpdatedRepositoriesValueStore::make()->store($updatedRepository);
     }
 
     protected function ensureValidRequest(Request $request): void
