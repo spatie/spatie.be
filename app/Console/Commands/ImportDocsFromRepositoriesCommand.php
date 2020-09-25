@@ -80,7 +80,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
     protected function getRepositoriesWitDocs(): Collection
     {
-        return collect(config('docs.repositories'))->keyBy('name');
+        return collect(config('docs.repositories'))->keyBy('repository');
     }
 
     protected function createProcessComponent(array $repository, string $branch, string $alias): Process

@@ -10,7 +10,7 @@ class GithubTest extends TestCase
     {
         $data = [
             "repository" => [
-                "full_name" => "laravel-medialibrary",
+                "full_name" => "spatie/laravel-medialibrary",
             ],
         ];
 
