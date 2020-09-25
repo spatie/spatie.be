@@ -24,7 +24,6 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(ImportGitHubIssuesCommand::class)->daily();
         $schedule->command(ImportInsightsCommand::class)->hourly();
-        $schedule->command(ImportRandomContributorCommand::class)->hourly();
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
 
