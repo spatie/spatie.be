@@ -2,6 +2,14 @@
     <script type="text/javascript">
         var _paq = _paq || [];
 
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const referrerOverride = urlParams.get('referrer_override');
+
+        if (referrerOverride) {
+            _paq.push(['setReferrerUrl', referrerOverride]);
+        }
+
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
