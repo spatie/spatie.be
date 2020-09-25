@@ -24,6 +24,7 @@ class ProductsController
 
     public function show(Request $request, Product $product)
     {
+        // OLD: Remove me
         if (request()->get('purchase') === 'success') {
             sleep(3);
 
@@ -31,6 +32,7 @@ class ProductsController
 
             return redirect()->route('products.show', $product);
         }
+        // END-OLD
 
         $purchases = $licenses = collect();
 

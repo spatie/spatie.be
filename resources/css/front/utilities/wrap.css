@@ -47,7 +47,7 @@
 
     @screen sm {
         .wrap-6 {
-            grid-template-columns: repeat(6, minmax(min-content, 7rem));
+            grid-template-columns: repeat(6, 1fr);
         }
     }
 

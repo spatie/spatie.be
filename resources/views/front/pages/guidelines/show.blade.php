@@ -13,9 +13,9 @@
         </div>
     </section>
 
-    <section class="wrap grid pb-24 gap-8 md:grid-cols-3 items-stretch">
+    <section class="wrap md:grid pb-24 gap-8 md:grid-cols-3 items-stretch">
         <div class="z-10 | print:hidden">
-            <nav class="h-full px-4 py-6 bg-white bg-opacity-50 shadow-light rounded-sm">
+            <nav class="h-full md:px-4 py-6 md:bg-white md:bg-opacity-50 shadow-light rounded-sm">
                 <div class="flex items-center pb-4 border-b-2 border-gray-lighter">
                     <a class="ml-auto flex items-center" href="https://github.com/spatie/spatie.be/edit/master/resources/views/front/pages/guidelines/pages/{{ $page->slug }}.md" rel="nofollow noreferer">
                         <span class="text-xs link-gray link-underline">

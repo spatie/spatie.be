@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -51,6 +52,11 @@ class Purchasable extends Model implements HasMedia, Sortable
         return $this->hasOne(Purchasable::class, 'renewal_purchasable_id');
     }
 
+    public function purchases(): HasMany
+    {
+        return $this->hasMany(Purchase::class);
+    }
+
     public function series(): BelongsToMany
     {
         return $this->belongsToMany(Series::class);
@@ -74,5 +80,12 @@ class Purchasable extends Model implements HasMedia, Sortable
     public function getFormattedDescriptionAttribute()
     {
         return Markdown::parse($this->description);
+    }
+
+    public function getAverageEarnings(): int
+    {
+        $avgEarnings = $this->purchases()->average('earnings');
+
+        return (int) round($avgEarnings);
     }
 }
