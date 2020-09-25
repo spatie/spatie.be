@@ -2,7 +2,6 @@
 
 namespace App\Support\ValueStores;
 
-use Illuminate\Support\Collection;
 use Spatie\Valuestore\Valuestore;
 
 class UpdatedRepositoriesValueStore
@@ -39,6 +38,4 @@ class UpdatedRepositoriesValueStore
     {
         $this->valueStore->flush();
     }
-
-
 }

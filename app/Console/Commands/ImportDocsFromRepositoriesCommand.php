@@ -35,7 +35,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $updatedRepositories->flush();
 
-        $this->info('All done');
+        $this->info('All done!');
     }
 
     protected function convertRepositoriesToProcesses(
