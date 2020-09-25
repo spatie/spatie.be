@@ -37,6 +37,7 @@ return [
         'client_secret' => env('GITHUB_CLIENT_SECRET'),
         'redirect' => env('GITHUB_CALLBACK_URL'),
         'docs_access_token' => env('GITHUB_ACCESS_TOKEN'),
+        'webhook_secret' => env('GITHUB_WEBHOOK_SECRET'),
     ],
 
     'vimeo' => [
