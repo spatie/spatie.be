@@ -29,7 +29,7 @@ class UpdatedRepositoriesValueStore
 
         $updatedRepositoryNames[] = $name;
 
-        $this->valueStore->put('updatedRepositoryNames', $updatedRepositoryNames);
+        $this->valueStore->put('updatedRepositoryNames', array_unique($updatedRepositoryNames));
 
         return $this;
     }
