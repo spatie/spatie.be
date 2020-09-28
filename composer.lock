@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3208a92e687e8289417239affde615c2",
+    "content-hash": "970b17ff822d51f96330b3d1e08a61cf",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -111,6 +111,59 @@
                 "stack"
             ],
             "time": "2020-05-31T07:17:05+00:00"
+        },
+        {
+            "name": "aws/aws-php-sns-message-validator",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aws/aws-php-sns-message-validator.git",
+                "reference": "ba6810807ac8936317021ccc14cdb1297d525ae1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aws/aws-php-sns-message-validator/zipball/ba6810807ac8936317021ccc14cdb1297d525ae1",
+                "reference": "ba6810807ac8936317021ccc14cdb1297d525ae1",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": ">=5.4",
+                "psr/http-message": "^1.0"
+            },
+            "require-dev": {
+                "guzzlehttp/psr7": "^1.4",
+                "phpunit/phpunit": "^4.0",
+                "squizlabs/php_codesniffer": "^2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Aws\\Sns\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Amazon Web Services",
+                    "homepage": "http://aws.amazon.com"
+                }
+            ],
+            "description": "Amazon SNS message validation for PHP",
+            "homepage": "http://aws.amazon.com/sdkforphp",
+            "keywords": [
+                "SNS",
+                "amazon",
+                "aws",
+                "cloud",
+                "message",
+                "sdk",
+                "webhooks"
+            ],
+            "time": "2019-11-08T16:44:11+00:00"
         },
         {
             "name": "aws/aws-sdk-php",
@@ -6811,6 +6864,82 @@
                 }
             ],
             "time": "2020-09-28T07:46:45+00:00"
+        },
+        {
+            "name": "spatie/laravel-mailcoach-ses-feedback",
+            "version": "2.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-mailcoach-ses-feedback.git",
+                "reference": "52690e53581dfad9b5936082aa215cc111de6d8c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach-ses-feedback/spatie-laravel-mailcoach-ses-feedback-52690e53581dfad9b5936082aa215cc111de6d8c-zip-fc4140.zip",
+                "reference": "52690e53581dfad9b5936082aa215cc111de6d8c",
+                "shasum": "3f599dde92d43d7a09a407af518e5a9e66fa4cce"
+            },
+            "require": {
+                "aws/aws-php-sns-message-validator": "^1.6",
+                "ext-json": "*",
+                "illuminate/http": "^8.0",
+                "php": "^7.4",
+                "spatie/laravel-mailcoach": "^3.0",
+                "spatie/laravel-webhook-client": "^2.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.16",
+                "fzaninotto/faker": "^1.9",
+                "laravel/legacy-factories": "^1.0.4",
+                "orchestra/testbench": "^6.0",
+                "phpunit/phpunit": "^9.0",
+                "symfony/var-dumper": "^5.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\MailcoachSesFeedback\\MailcoachSesFeedbackServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\MailcoachSesFeedback\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Spatie\\MailcoachSesFeedback\\Tests\\": "tests"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "test-coverage": [
+                    "vendor/bin/phpunit --coverage-html coverage"
+                ]
+            },
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Process feedback for email campaigns sent using Amazon SES",
+            "homepage": "https://github.com/spatie/laravel-mailcoach-ses-feedback",
+            "keywords": [
+                "laravel-mailcoach-ses-feedback",
+                "spatie"
+            ],
+            "support": {
+                "source": "https://github.com/spatie/laravel-mailcoach-ses-feedback/tree/master",
+                "issues": "https://github.com/spatie/laravel-mailcoach-ses-feedback/issues"
+            },
+            "time": "2020-09-25T12:42:53+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",

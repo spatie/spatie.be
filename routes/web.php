@@ -24,6 +24,7 @@ use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
+Route::sesFeedback('ses-feedback');
 Route::mailcoach('mailcoach');
 
 Route::post('paddle/webhook', WebhookController::class);

@@ -49,6 +49,7 @@
         "spatie/laravel-mailcoach": "^3.x-dev",
         "spatie/laravel-mailcoach-mailgun-feedback": "^2.2",
         "spatie/laravel-mailcoach-monaco": "^1.0",
+        "spatie/laravel-mailcoach-ses-feedback": "^2.0",
         "spatie/laravel-medialibrary": "^8.7",
         "spatie/laravel-menu": "^3.4",
         "spatie/laravel-schedule-monitor": "^1.0",
