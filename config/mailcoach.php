@@ -18,6 +18,10 @@ return [
      */
     'transactional_mailer' => null,
 
+    'ses_feedback' => [
+        'configuration_set' => 'Mailcoach',
+    ],
+
     /*
      * The date format used on all screens of the UI
      */
