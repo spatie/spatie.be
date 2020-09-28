@@ -12,6 +12,7 @@ class UpdateMailcoachTables extends Migration
         Schema::table('mailcoach_campaigns', function (Blueprint $table) {
             $table->string('reply_to_email')->nullable();
             $table->string('reply_to_name')->nullable();
+            $table->string('send_batch_id')->nullable();
             $table->timestamp('all_jobs_added_to_batch_at')->nullable();
         });
 
