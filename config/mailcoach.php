@@ -19,7 +19,7 @@ return [
     'transactional_mailer' => null,
 
     'ses_feedback' => [
-        'configuration_set' => 'Mailcoach',
+        'configuration_set' => 'mailcoach',
     ],
 
     /*
