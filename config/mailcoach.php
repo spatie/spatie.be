@@ -123,10 +123,16 @@ return [
      *  to add your own middleware to this stack or override any of the existing middleware.
      */
     'middleware' => [
-        'web',
-        Spatie\Mailcoach\Http\App\Middleware\Authenticate::class,
-        Spatie\Mailcoach\Http\App\Middleware\Authorize::class,
-        Spatie\Mailcoach\Http\App\Middleware\SetMailcoachDefaults::class,
+        'web' => [
+            'web',
+            Spatie\Mailcoach\Http\App\Middleware\Authenticate::class,
+            Spatie\Mailcoach\Http\App\Middleware\Authorize::class,
+            Spatie\Mailcoach\Http\App\Middleware\SetMailcoachDefaults::class,
+        ],
+        'api' => [
+            'api',
+            'auth:sanctum',
+        ]
     ],
 
     /*
