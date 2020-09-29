@@ -75,7 +75,7 @@
                 </h3>
                 <p class="text-lg">
                     Mailcoach is a self-hosted dashboard to setup mailing lists, send out newsletter campaigns and track the success.
-                    It can be used as a separate app or integrated in your own Laravel application, and couples with Amazon SES, Mailgun or Sendgrid.
+                    It can be used as a separate app or integrated in your own Laravel application, has an API and couples with Amazon SES, Mailgun, Postmark or Sendgrid.
                 </p>
                 <ul class="text-lg mt-8">
                     <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
