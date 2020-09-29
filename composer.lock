@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "970b17ff822d51f96330b3d1e08a61cf",
+    "content-hash": "da1f5d6ba089ede4d0c664374701a9b7",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -6596,17 +6596,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "v3.x-dev",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "ee5a51693ce19fe32268eb66f2d2530ab674d53e"
+                "reference": "58e6ff0c947fa3c31e64d0559079c3184175ae3c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-ee5a51693ce19fe32268eb66f2d2530ab674d53e-zip-d601ab.zip",
-                "reference": "ee5a51693ce19fe32268eb66f2d2530ab674d53e",
-                "shasum": "dbdf35df1f803cb9e2ea1a913e8ea41b6ada9e67"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-58e6ff0c947fa3c31e64d0559079c3184175ae3c-zip-76e905.zip",
+                "reference": "58e6ff0c947fa3c31e64d0559079c3184175ae3c",
+                "shasum": "425d0bce9b1542a1e15e3295fef4fc9cf054bbd0"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -6709,10 +6709,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/v3",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/3.0.2",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2020-09-28T08:56:27+00:00"
+            "time": "2020-09-29T09:52:28+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -15106,8 +15106,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "ebess/advanced-nova-media-library": 20,
-        "knplabs/github-api": 20,
-        "spatie/laravel-mailcoach": 20
+        "knplabs/github-api": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
@@ -15119,5 +15118,5 @@
     "platform-overrides": {
         "php": "7.4.3"
     },
-    "plugin-api-version": "1.1.0"
+    "plugin-api-version": "2.0.0"
 }

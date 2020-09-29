@@ -46,7 +46,7 @@
         "spatie/eloquent-sortable": "^3.8",
         "spatie/laravel-backup": "^6.11",
         "spatie/laravel-flash": "^1.7",
-        "spatie/laravel-mailcoach": "^3.x-dev",
+        "spatie/laravel-mailcoach": "^3.0",
         "spatie/laravel-mailcoach-mailgun-feedback": "^2.2",
         "spatie/laravel-mailcoach-monaco": "^1.0",
         "spatie/laravel-mailcoach-ses-feedback": "^2.0",
