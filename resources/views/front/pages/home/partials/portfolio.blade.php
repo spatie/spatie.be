@@ -26,28 +26,33 @@
             </div>
         </div>
     </div>
+    
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank"
+            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
             rel="nofollow noreferrer noopener">
-                {{ image('portfolio/laravel-package-training.jpg') }}
+                {{ image('portfolio/flare.jpg') }}
             </a>
         </div>
         <div class="sm:col-start-2 sm:col-span-3 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
-                    Laravel Package Training
+                    Ignition + Flare
                     <div class="title-subtext text-pink-dark">
-                        <span class="font-normal">4 hours of </span>premium video content
+                        Error page<span class="font-normal"> + </span>tracker <span class="font-normal">for
+                            Laravel</span>
                     </div>
                 </h3>
                 <p class="text-lg">
-                    Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
+                    Ignition is a free and shareable error page that ships with Laravel 6 and up. It's built to keep you
+                    focused on finding a solution.
+                    It also couples with an online service —Flare— that tracks production errors and lets you work in
+                    team to fix them.
                 </p>
                 <ul class="text-lg mt-8">
                     <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://laravelpackage.training" target="_blank"
-                            rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
+                            href="https://flareapp.io" target="_blank"
+                            rel="nofollow noreferrer noopener">flareapp.io</a></li>
                 </ul>
             </div>
         </div>
@@ -83,30 +88,26 @@
 
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
+            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank"
             rel="nofollow noreferrer noopener">
-                {{ image('portfolio/flare.jpg') }}
+                {{ image('portfolio/laravel-package-training.jpg') }}
             </a>
         </div>
         <div class="sm:col-start-2 sm:col-span-3 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
-                    Ignition + Flare
+                    Laravel Package Training
                     <div class="title-subtext text-pink-dark">
-                        Error page<span class="font-normal"> + </span>tracker <span class="font-normal">for
-                            Laravel</span>
+                        <span class="font-normal">4 hours of </span>premium video content
                     </div>
                 </h3>
                 <p class="text-lg">
-                    Ignition is a free and shareable error page that ships with Laravel 6 and up. It's built to keep you
-                    focused on finding a solution.
-                    It also couples with an online service —Flare— that tracks production errors and lets you work in
-                    team to fix them.
+                    Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
                 </p>
                 <ul class="text-lg mt-8">
                     <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://flareapp.io" target="_blank"
-                            rel="nofollow noreferrer noopener">flareapp.io</a></li>
+                            href="https://laravelpackage.training" target="_blank"
+                            rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
                 </ul>
             </div>
         </div>
@@ -143,6 +144,5 @@
             </div>
         </div>
     </div>
-
 
 </section>
