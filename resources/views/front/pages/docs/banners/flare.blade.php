@@ -7,7 +7,7 @@
                 </div>
                 <div>
                     <div>
-                        <span class="font-semibold">Flare</span> is the error tracker tailored for Laravel 
+                        <span class="font-semibold">Flare</span> is an error tracker especially made for Laravel 
                         
                     </div>
                 </div>
