@@ -8,6 +8,7 @@ Route::prefix('opensource')->group(function () {
     Route::permanentRedirect('laravel', '/open-source');
     Route::permanentRedirect('javascript', '/open-source');
     Route::permanentRedirect('postcards', '/open-source/postcards');
+    Route::permanentRedirect('packages', '/open-source');
 });
 
 collect(['en', 'nl'])->each(function (string $locale) {
