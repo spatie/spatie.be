@@ -2,10 +2,7 @@
 
 namespace App\Notifications;
 
-use App\Http\Controllers\ProductsController;
-use App\Models\License;
 use App\Models\Subscriber;
-use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;

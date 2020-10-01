@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
         ],
         SubscribedEvent::class => [
 
-        ]
+        ],
     ];
 
     /**
