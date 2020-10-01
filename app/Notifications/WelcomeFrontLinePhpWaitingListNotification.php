@@ -21,6 +21,8 @@ class WelcomeFrontLinePhpWaitingListNotification extends Notification
 
     public function toMail(Subscriber $notifiable): MailMessage
     {
+        info('sending welcome mail');
+
         return (new MailMessage)
             ->subject("Welcome")
             ->greeting('Hi!')
