@@ -21,9 +21,10 @@ class WelcomeFrontLinePhpWaitingListNotification extends Notification
         return (new MailMessage)
             ->subject("You are now subscribed to the Front Line PHP waiting list")
             ->greeting('Hi!')
-            ->line("Thank you for subscribing to the Front line PHP waiting list. We are very excited about PHP 8 and can't wait to share our insights and knowledge with you.")
+            ->line("Thank you for subscribing to the Front line PHP waiting list. In the coming weeks we'll send you a couple of previews, and of course we'll notify you as soon as the course is available.")
             ->line('We would like to offer you this coupon code, that grants your a 25% discount on all products in our store:')
             ->line('WAITING-FOR-FRONT-LINE-PHP')
-            ->action('Visit our store', route('products.index'));
+            ->action('Visit our store', route('products.index'))
+            ->line("We are very excited about PHP 8 and can't wait to share our insights and knowledge with you.");
     }
 }
