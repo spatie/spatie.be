@@ -1,10 +1,12 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 Route::prefix('opensource')->group(function () {
     Route::permanentRedirect('/', '/open-source');
-    Route::permanentRedirect('php', '/open-source/packages');
-    Route::permanentRedirect('laravel', '/open-source/packages');
-    Route::permanentRedirect('javascript', '/open-source/packages');
+    Route::permanentRedirect('php', '/open-source');
+    Route::permanentRedirect('laravel', '/open-source');
+    Route::permanentRedirect('javascript', '/open-source');
     Route::permanentRedirect('postcards', '/open-source/postcards');
 });
 
@@ -14,9 +16,9 @@ collect(['en', 'nl'])->each(function (string $locale) {
 
         Route::prefix('opensource')->group(function () {
             Route::permanentRedirect('/', '/open-source');
-            Route::permanentRedirect('php', '/open-source/packages');
-            Route::permanentRedirect('laravel', '/open-source/packages');
-            Route::permanentRedirect('javascript', '/open-source/packages');
+            Route::permanentRedirect('php', '/open-source');
+            Route::permanentRedirect('laravel', '/open-source');
+            Route::permanentRedirect('javascript', '/open-source');
             Route::permanentRedirect('postcards', '/open-source/postcards');
         });
 
