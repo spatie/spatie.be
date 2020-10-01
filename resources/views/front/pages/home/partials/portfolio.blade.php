@@ -26,61 +26,7 @@
             </div>
         </div>
     </div>
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
-        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank"
-            rel="nofollow noreferrer noopener">
-                {{ image('portfolio/laravel-package-training.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline | sm:grid-text-right">
-                <h3 class="title">
-                    Laravel Package Training
-                    <div class="title-subtext text-pink-dark">
-                        <span class="font-normal">4 hours of </span>premium video content
-                    </div>
-                </h3>
-                <p class="text-lg">
-                    Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://laravelpackage.training" target="_blank"
-                            rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 section">
-        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank"
-            rel="nofollow noreferrer noopener">
-                {{ image('portfolio/mailcoach.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-span-3 sm:col-start-5 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Newsletter software and package
-                    <div class="title-subtext text-pink-dark">
-                        <span class="font-normal">Including</span> video course
-                    </div>
-                </h3>
-                <p class="text-lg">
-                    Mailcoach is a self-hosted dashboard to setup mailing lists, send out newsletter campaigns and track the success.
-                    It can be used as a separate app or integrated in your own Laravel application, and couples with Amazon SES, Mailgun or Sendgrid.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://mailcoach.app" target="_blank"
-                            rel="nofollow noreferrer noopener">mailcoach.app</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
+    
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
             <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
@@ -107,6 +53,61 @@
                     <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
                             href="https://flareapp.io" target="_blank"
                             rel="nofollow noreferrer noopener">flareapp.io</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap wrap-8 section">
+        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
+            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank"
+            rel="nofollow noreferrer noopener">
+                {{ image('portfolio/mailcoach.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-span-3 sm:col-start-5 | self-center">
+            <div class="markup links-blue links-underline">
+                <h3 class="title">
+                    Newsletter software and package
+                    <div class="title-subtext text-pink-dark">
+                        <span class="font-normal">Including</span> video course
+                    </div>
+                </h3>
+                <p class="text-lg">
+                    Mailcoach is a self-hosted dashboard to setup mailing lists, send out newsletter campaigns and track the success.
+                    It can be used as a separate app or integrated in your own Laravel application, has an API and couples with Amazon SES, Mailgun, Postmark or Sendgrid.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                            href="https://mailcoach.app" target="_blank"
+                            rel="nofollow noreferrer noopener">mailcoach.app</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
+            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank"
+            rel="nofollow noreferrer noopener">
+                {{ image('portfolio/laravel-package-training.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
+            <div class="markup links-blue links-underline | sm:grid-text-right">
+                <h3 class="title">
+                    Laravel Package Training
+                    <div class="title-subtext text-pink-dark">
+                        <span class="font-normal">4 hours of </span>premium video content
+                    </div>
+                </h3>
+                <p class="text-lg">
+                    Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
+                            href="https://laravelpackage.training" target="_blank"
+                            rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
                 </ul>
             </div>
         </div>
@@ -143,6 +144,5 @@
             </div>
         </div>
     </div>
-
 
 </section>

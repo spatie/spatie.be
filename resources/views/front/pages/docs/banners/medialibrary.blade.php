@@ -17,7 +17,7 @@
                     Learn&nbsp;more
                 </button>
             </a>
-            <button class="absolute top-0 right-0 mr-1 opacity-50" onClick="this.parentElement.remove(); r">&times;</button>
+            <button class="absolute top-0 right-0 mr-1 opacity-50" onClick="this.parentElement.remove();">&times;</button>
         </div>
     </div>
 </aside>

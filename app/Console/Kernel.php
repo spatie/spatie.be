@@ -7,7 +7,6 @@ use App\Console\Commands\ImportGitHubIssuesCommand;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
-use App\Console\Commands\ImportRandomContributorCommand;
 use App\Console\Commands\SendLicenseExpirationNotificationsCommand;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -21,6 +20,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('mailcoach:send-campaign-summary-mail')->hourly();
         $schedule->command('mailcoach:send-email-list-summary-mail')->mondays()->at('9:00');
         $schedule->command('mailcoach:delete-old-unconfirmed-subscribers')->daily();
+        $schedule->command('mailcoach:cleanup-processed-feedback')->hourly();
 
         $schedule->command(ImportGitHubIssuesCommand::class)->daily();
         $schedule->command(ImportInsightsCommand::class)->hourly();

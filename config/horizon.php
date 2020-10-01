@@ -80,9 +80,17 @@ return [
                 'tries' => 1,
                 'timeout' => 60 * 10,
             ],
-            'mailcoach' => [
+            'mailcoach-general' => [
                 'connection' => 'mailcoach-redis',
-                'queue' => ['send-campaign', 'send-mail', 'mailcoach-feedback', 'mailcoach'],
+                'queue' => ['mailcoach', 'mailcoach-feedback', 'send-mail'],
+                'balance' => 'auto',
+                'processes' => 10,
+                'tries' => 2,
+                'timeout' => 60 * 60,
+            ],
+            'mailcoach-heavy' => [
+                'connection' => 'mailcoach-redis',
+                'queue' => ['send-campaign'],
                 'balance' => 'auto',
                 'processes' => 3,
                 'tries' => 1,
@@ -99,9 +107,17 @@ return [
                 'tries' => 1,
                 'timeout' => 60 * 10,
             ],
-            'mailcoach' => [
+            'mailcoach-general' => [
                 'connection' => 'mailcoach-redis',
-                'queue' => ['send-campaign', 'send-mail', 'mailcoach-feedback', 'mailcoach'],
+                'queue' => ['mailcoach', 'mailcoach-feedback', 'send-mail'],
+                'balance' => 'auto',
+                'processes' => 10,
+                'tries' => 2,
+                'timeout' => 60 * 60,
+            ],
+            'mailcoach-heavy' => [
+                'connection' => 'mailcoach-redis',
+                'queue' => ['send-campaign'],
                 'balance' => 'auto',
                 'processes' => 3,
                 'tries' => 1,

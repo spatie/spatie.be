@@ -98,6 +98,11 @@ rm -rf {{ $newReleaseDir }}/public/images/medialibrary
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/persistent/medialibrary public/images/medialibrary
 
+# Remove the public/docs directory and replace with persistent data
+rm -rf {{ $newReleaseDir }}/public/docs
+cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/persistent/public/docs public/docs
+
 # Import the environment config
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/.env .env
