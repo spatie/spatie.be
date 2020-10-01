@@ -11,7 +11,7 @@ Route::prefix('opensource')->group(function () {
     Route::permanentRedirect('packages', '/open-source');
 });
 
-Route::get('open-source/packages', '/packages');
+Route::permanentRedirect('open-source/packages', '/packages');
 
 collect(['en', 'nl'])->each(function (string $locale) {
     Route::prefix($locale)->group(function () {
