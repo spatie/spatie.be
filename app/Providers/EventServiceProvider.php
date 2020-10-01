@@ -21,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         SubscribedEvent::class => [
-            SendCoupon::class
+            SendCoupon::class,
         ],
     ];
 
