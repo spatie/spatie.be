@@ -16,6 +16,8 @@ class ImportGitHubIssuesCommand extends Command
 
     protected $description = 'Import issues.';
 
+    protected $tries = 1;
+
     public function handle(GitHubApi $api)
     {
         $this->info('Importing good first issues from GitHub...');

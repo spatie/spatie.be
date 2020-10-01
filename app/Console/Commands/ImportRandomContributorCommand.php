@@ -13,6 +13,8 @@ class ImportRandomContributorCommand extends Command
 
     protected $description = 'Import random contributor.';
 
+    protected $tries = 1;
+
     public function handle(GitHubApi $api)
     {
         $this->info('Importing random contributor from GitHub...');

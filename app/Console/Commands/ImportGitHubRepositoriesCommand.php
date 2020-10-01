@@ -15,6 +15,8 @@ class ImportGitHubRepositoriesCommand extends Command
 
     protected $description = 'Import public repositories';
 
+    protected $tries = 1;
+
     public function handle(GitHubApi $api)
     {
         $this->info('Syncing all public repositories...');
