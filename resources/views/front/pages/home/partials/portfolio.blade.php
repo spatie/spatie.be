@@ -1,8 +1,36 @@
 <section id="portfolio" class="section">
-<div class="wrap wrap-8 section">
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
+            <a href="https://front-line-php.com" class="illustration is-left h-full" title="front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/flphp.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
+            <div class="markup links-blue links-underline | sm:grid-text-right">
+                <h3 class="title">
+                    Front Line PHP
+                    <div class="title-subtext text-pink-dark">
+                        Book<span class="font-normal"> + </span>free videos <span class="font-normal">on PHP 8</span>
+                    </div>
+                </h3>
+                <p class="text-lg font-semibold">
+                    Launching in december 2020! </p>
+                <p class="text-lg">
+                    An ebook by Brent Roose on cutting edge tactics in upcoming PHP&nbsp;8, accompanied by free videos with practical examples by Freek Van der Herten.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li class="flex items-baseline">
+                        <span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> 
+                        <span class="ml-1">Subscribe at <a href="https://front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">front-line-php.com</a> to get previews and early access.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://laravel-beyond-crud.com" class="illustration is-left h-full" title="Laravel Beyond CRUD" target="_blank"
-            rel="nofollow noreferrer noopener">
+            <a href="https://laravel-beyond-crud.com" class="illustration is-left h-full" title="Laravel Beyond CRUD" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/crud.jpg') }}
             </a>
         </div>
@@ -19,18 +47,15 @@
                     <br>Written and presented by Brent Roose.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://laravel-beyond-crud.com" target="_blank"
-                            rel="nofollow noreferrer noopener">laravel-beyond-crud.com</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://laravel-beyond-crud.com" target="_blank" rel="nofollow noreferrer noopener">laravel-beyond-crud.com</a></li>
                 </ul>
             </div>
         </div>
     </div>
-    
+
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
-            rel="nofollow noreferrer noopener">
+            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flare.jpg') }}
             </a>
         </div>
@@ -50,9 +75,7 @@
                     team to fix them.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://flareapp.io" target="_blank"
-                            rel="nofollow noreferrer noopener">flareapp.io</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://flareapp.io" target="_blank" rel="nofollow noreferrer noopener">flareapp.io</a></li>
                 </ul>
             </div>
         </div>
@@ -60,8 +83,7 @@
 
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank"
-            rel="nofollow noreferrer noopener">
+            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/mailcoach.jpg') }}
             </a>
         </div>
@@ -78,9 +100,7 @@
                     It can be used as a separate app or integrated in your own Laravel application, has an API and couples with Amazon SES, Mailgun, Postmark or Sendgrid.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://mailcoach.app" target="_blank"
-                            rel="nofollow noreferrer noopener">mailcoach.app</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">mailcoach.app</a></li>
                 </ul>
             </div>
         </div>
@@ -88,8 +108,7 @@
 
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank"
-            rel="nofollow noreferrer noopener">
+            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/laravel-package-training.jpg') }}
             </a>
         </div>
@@ -105,9 +124,7 @@
                     Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://laravelpackage.training" target="_blank"
-                            rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://laravelpackage.training" target="_blank" rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
                 </ul>
             </div>
         </div>
@@ -115,8 +132,7 @@
 
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank"
-            rel="nofollow noreferrer noopener">
+            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/stmpd.jpg') }}
             </a>
         </div>
@@ -129,17 +145,14 @@
                     </div>
                 </h3>
                 <p class="text-lg">
-                    For Martin Garrix' record label <a href="https://stmpdrcrds.com" target="_blank"
-                        rel="nofollow noreferrer noopener">stmpdrcrds.com</a> we made a workflow application to
+                    For Martin Garrix' record label <a href="https://stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">stmpdrcrds.com</a> we made a workflow application to
                     streamline their demo track influx.
                     <br>
                     Crew members can listen and evaluate SoundCloud tracks by upcoming talents, submitted to the
                     application.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a
-                            href="https://demo.stmpdrcrds.com" target="_blank"
-                            rel="nofollow noreferrer noopener">demo.stmpdrcrds.com</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://demo.stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">demo.stmpdrcrds.com</a></li>
                 </ul>
             </div>
         </div>
