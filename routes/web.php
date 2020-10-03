@@ -19,6 +19,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchasablesController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
+use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
@@ -77,7 +78,7 @@ Route::prefix('vacancies')->group(function () {
     Route::get('{slug}', function ($slug) {
         $view = "front.pages.vacancies.{$slug}";
 
-        if (!view()->exists($view)) {
+        if (! view()->exists($view)) {
             abort(404);
         }
 
@@ -127,5 +128,7 @@ Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
 Route::view('disclaimer', 'front.pages.legal.disclaimer')->name('legal.disclaimer');
 Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('legal.conditions');
 Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
+
+Route::get('github-click/{repository}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::view('offline', 'errors.offline')->name('offline');

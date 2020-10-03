@@ -17,7 +17,7 @@ class AdFactory extends Factory
         return [
             'name' => $this->faker->word,
             'image' => $this->faker->word,
-            'url' => $this->faker->url,
+            'click_redirect_url' => $this->faker->url,
             'active' => $this->faker->boolean(90),
         ];
     }

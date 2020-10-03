@@ -33,9 +33,9 @@ class Ad extends Resource
 
             Image::make('Image')->disk('public'),
 
-            Text::make('Url')->rules('required', 'max:255'),
+            Text::make('Click Redirect URL')->rules('required', 'max:255', 'url'),
 
-            Boolean::make('Active')
+            Boolean::make('Active'),
 
             HasMany::make('Repositories'),
         ];
