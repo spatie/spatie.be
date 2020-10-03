@@ -31,7 +31,7 @@ class Ad extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Image::make('Image')->disk('public'),
+            Image::make('Image')->disk('github_ads'),
 
             Text::make('Click Redirect URL')->rules('required', 'max:255', 'url'),
 
