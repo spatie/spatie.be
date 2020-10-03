@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Actions\SyncRepositoryAdImageToGitHubAdsDisk;
+use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
@@ -30,7 +30,7 @@ class Repository extends Model
         self::saved(function (Repository $repository) {
             $repository->load('ad');
 
-            app(SyncRepositoryAdImageToGitHubAdsDisk::class)->execute($repository);
+            app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
         });
     }
 

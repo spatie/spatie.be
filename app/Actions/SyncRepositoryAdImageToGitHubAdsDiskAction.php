@@ -2,11 +2,12 @@
 
 namespace App\Actions;
 
+use App\Actions\GitHubAds\DeleteRepositoryAdImageAction;
 use App\Models\Repository;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 
-class SyncRepositoryAdImageToGitHubAdsDisk
+class SyncRepositoryAdImageToGitHubAdsDiskAction
 {
     public Filesystem $disk;
 

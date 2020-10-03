@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Actions\SyncRepositoryAdImageToGitHubAdsDisk;
+use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
 use App\Models\Ad;
 use App\Models\Enums\RepositoryType;
 use App\Models\Repository;
@@ -41,7 +41,7 @@ class RepositoryFactory extends Factory
         return $this->afterCreating(function (Repository $repository) {
             $repository->load('ad');
 
-            app(SyncRepositoryAdImageToGitHubAdsDisk::class)->execute($repository);
+            app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
         });
     }
 }
