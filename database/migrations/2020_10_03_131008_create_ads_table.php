@@ -15,5 +15,10 @@ class CreateAdsTable extends Migration
             $table->string('image');
             $table->timestamps();
         });
+
+        Schema::table('repositories', function(Blueprint $table) {
+            $table->unsignedBigInteger('ad_id')->nullable();
+            $table->foreign('ad_id')->references('id')->on('ads');
+        });
     }
 }

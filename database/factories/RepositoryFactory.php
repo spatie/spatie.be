@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Ad;
 use App\Models\Enums\RepositoryType;
 use App\Models\Repository;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -13,7 +14,7 @@ class RepositoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->word,
+            'name' => $this->faker->words(5, true),
             'description' => $this->faker->sentence,
             'documentation_url' => $this->faker->boolean ? $this->faker->url : null,
             'blogpost_url' => $this->faker->boolean ? $this->faker->url : null,
