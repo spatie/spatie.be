@@ -38,7 +38,6 @@ class RepositoryTest extends TestCase
     /** @test */
     public function it_will_delete_the_ad_image_on_disk_when_an_ad_is_detached_from_a_repository()
     {
-        /** @var Ad $ad */
         $repository = Repository::factory()->withAd()->create();
         $this->adImagesDisk->assertExists($repository->gitHubAdImagePath());
 
