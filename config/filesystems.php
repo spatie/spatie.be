@@ -48,6 +48,11 @@ return [
             'root' => storage_path('app/backups'),
         ],
 
+        'github_ads' => [
+            'driver' => 'local',
+            'root' => storage_path('app/github_ads'),
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

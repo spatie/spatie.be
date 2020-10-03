@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Actions\SyncRepositoryAdImageToGitHubAdsDisk;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
@@ -24,6 +25,15 @@ class Repository extends Model
         'repository_created_at' => 'datetime',
     ];
 
+    public static function booted()
+    {
+        self::saved(function (Repository $repository) {
+            $repository->load('ad');
+
+            app(SyncRepositoryAdImageToGitHubAdsDisk::class)->execute($repository);
+        });
+    }
+
     protected $with = ['issues'];
 
     public function issues(): HasMany
@@ -33,7 +43,7 @@ class Repository extends Model
 
     public function ad(): BelongsTo
     {
-        return $this->belongsTo(Ad::class);
+        return $this->belongsTo(Ad::class, 'ad_id');
     }
 
     public function getIssuesUrlAttribute()
@@ -130,5 +140,23 @@ class Repository extends Model
             ltrim($sort, '-'),
             Str::startsWith($sort, '-') ? 'desc' : 'asc'
         );
+    }
+
+    public function hasAdWithImage(): bool
+    {
+        if (! $ad = $this->ad) {
+            return false;
+        }
+
+        if (! $ad->image) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function gitHubAdImagePath(): string
+    {
+        return Str::slug($this->name) . ".jpg";
     }
 }

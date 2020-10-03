@@ -31,7 +31,7 @@ class Ad extends Resource
                 ->sortable()
                 ->rules('required', 'max:255'),
 
-            Image::make('Image'),
+            Image::make('Image')->disk('public'),
 
             Text::make('Url')->rules('required', 'max:255'),
 
