@@ -23,6 +23,11 @@ class Repository extends Model
         'new' => 'boolean',
         'topics' => 'array',
         'repository_created_at' => 'datetime',
+        'ad_should_be_randomized' => 'boolean',
+    ];
+
+    protected $attributes = [
+        'ad_should_be_randomized' => true,
     ];
 
     public static function booted()
@@ -32,6 +37,11 @@ class Repository extends Model
 
             app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
         });
+    }
+
+    public function scopeAdShouldBeRandomized(Builder $query): void
+    {
+        $query->where('ad_should_be_randomized', true);
     }
 
     protected $with = ['issues'];

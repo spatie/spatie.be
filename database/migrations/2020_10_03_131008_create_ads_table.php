@@ -13,11 +13,13 @@ class CreateAdsTable extends Migration
             $table->string('name');
             $table->string('url');
             $table->string('image');
+            $table->boolean('active')->default(true);
             $table->timestamps();
         });
 
-        Schema::table('repositories', function(Blueprint $table) {
+        Schema::table('repositories', function (Blueprint $table) {
             $table->unsignedBigInteger('ad_id')->nullable();
+            $table->boolean('ad_should_be_randomized')->default(true);
             $table->foreign('ad_id')->references('id')->on('ads');
         });
     }

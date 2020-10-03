@@ -18,7 +18,22 @@ class AdFactory extends Factory
             'name' => $this->faker->word,
             'image' => $this->faker->word,
             'url' => $this->faker->url,
+            'active' => $this->faker->boolean(90),
         ];
+    }
+
+    public function active(): self
+    {
+        return $this->state([
+            'active' => true,
+        ]);
+    }
+
+    public function inactive(): self
+    {
+        return $this->state([
+            'active' => false,
+        ]);
     }
 
     public function configure()

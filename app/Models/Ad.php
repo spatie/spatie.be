@@ -7,12 +7,21 @@ use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Builder;
 
 class Ad extends Model
 {
     use HasFactory;
 
     public $guarded = [];
+
+    protected $casts = [
+        'active' => 'boolean'
+    ];
+
+    protected $attributes = [
+        'active' => true
+    ];
 
     public static function booted()
     {
@@ -29,6 +38,11 @@ class Ad extends Model
                 app(DeleteRepositoryAdImageAction::class)->execute($repository);
             });
         });
+    }
+
+    public function scopeActive(Builder $query): void
+    {
+        $query->where('active', true);
     }
 
     public function repositories(): HasMany

@@ -35,6 +35,8 @@ class Ad extends Resource
 
             Text::make('Url')->rules('required', 'max:255'),
 
+            Boolean::make('Active')
+
             HasMany::make('Repositories'),
         ];
     }
