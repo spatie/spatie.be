@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Actions\SyncRepositoryAdImageToGitHubAdsDisk;
 use App\Models\Ad;
 use App\Models\Enums\RepositoryType;
 use App\Models\Repository;
@@ -26,5 +27,21 @@ class RepositoryFactory extends Factory
             'language' => $this->faker->randomElement(['php', 'javascript']),
             'type' => $this->faker->randomElement(RepositoryType::toArray()),
         ];
+    }
+
+    public function withAd()
+    {
+        return $this->state([
+            'ad_id' => Ad::factory()->create()->id,
+        ]);
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function (Repository $repository) {
+            $repository->load('ad');
+
+            app(SyncRepositoryAdImageToGitHubAdsDisk::class)->execute($repository);
+        });
     }
 }

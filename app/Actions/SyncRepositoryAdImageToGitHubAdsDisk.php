@@ -24,6 +24,8 @@ class SyncRepositoryAdImageToGitHubAdsDisk
 
     protected function updateAdForRepository(Repository $repository): void
     {
+        $this->disk->delete($repository->gitHubAdImagePath());
+
         $this->disk->copy(
             $repository->ad->image,
             $repository->gitHubAdImagePath(),
