@@ -31,7 +31,6 @@ class Repository extends Resource
             BelongsTo::make('Ad'),
 
             Boolean::make('Ad should be randomized'),
-
         ];
     }
 }
