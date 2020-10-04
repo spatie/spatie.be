@@ -129,6 +129,6 @@ Route::view('disclaimer', 'front.pages.legal.disclaimer')->name('legal.disclaime
 Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('legal.conditions');
 Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 
-Route::get('github-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
+Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::view('offline', 'errors.offline')->name('offline');
