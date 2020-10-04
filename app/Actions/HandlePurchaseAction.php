@@ -33,7 +33,6 @@ class HandlePurchaseAction
 
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
-        info('handling repository_access');
         if ($purchasable->repository_access && $user->github_username) {
             $this->restoreRepositoryAccessAction->execute($user);
         }

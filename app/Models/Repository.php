@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -21,13 +23,37 @@ class Repository extends Model
         'new' => 'boolean',
         'topics' => 'array',
         'repository_created_at' => 'datetime',
+        'ad_should_be_randomized' => 'boolean',
     ];
+
+    protected $attributes = [
+        'ad_should_be_randomized' => true,
+    ];
+
+    public static function booted()
+    {
+        self::saved(function (Repository $repository) {
+            $repository->load('ad');
+
+            app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
+        });
+    }
+
+    public function scopeAdShouldBeRandomized(Builder $query): void
+    {
+        $query->where('ad_should_be_randomized', true);
+    }
 
     protected $with = ['issues'];
 
     public function issues(): HasMany
     {
         return $this->hasMany(Issue::class);
+    }
+
+    public function ad(): BelongsTo
+    {
+        return $this->belongsTo(Ad::class, 'ad_id');
     }
 
     public function getIssuesUrlAttribute()
@@ -124,5 +150,23 @@ class Repository extends Model
             ltrim($sort, '-'),
             Str::startsWith($sort, '-') ? 'desc' : 'asc'
         );
+    }
+
+    public function hasAdWithImage(): bool
+    {
+        if (! $ad = $this->ad) {
+            return false;
+        }
+
+        if (! $ad->image) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function gitHubAdImagePath(): string
+    {
+        return Str::slug($this->name) . ".jpg";
     }
 }

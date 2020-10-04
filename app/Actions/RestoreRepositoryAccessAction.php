@@ -17,8 +17,6 @@ class RestoreRepositoryAccessAction
 
     public function execute(User $user)
     {
-        info('executing access');
-
         $user->purchases
             ->where('has_repository_access', false)
             ->each(function (Purchase $purchase) use ($user) {
@@ -35,15 +33,12 @@ class RestoreRepositoryAccessAction
                     return;
                 }
 
-                info('inviting to repo');
                 $this->gitHubApi->inviteToRepo(
                     $user->github_username,
                     $purchase->purchasable->repository_access
                 );
-                info('invited to repo');
 
                 $purchase->update(['has_repository_access' => true]);
-                info('has_repository_access updated');
             });
     }
 }
