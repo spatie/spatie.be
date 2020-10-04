@@ -50,7 +50,7 @@ return [
 
         'github_ads' => [
             'driver' => env('GITHUB_ADS_DISK_DRIVER'),
-            'root' => storage_path(env('GITHUB_ADS_DISK_ROOT')),
+            'root' => env('GITHUB_ADS_DISK_ROOT') ? storage_path(env('GITHUB_ADS_DISK_ROOT')) : '',
             'key' => env('GITHUB_ADS_DISK_KEY'),
             'secret' => env('GITHUB_ADS_DISK_SECRET'),
             'region' => env('GITHUB_ADS_DISK_REGION'),
