@@ -14,8 +14,6 @@ class RepositoriesSeeder extends Seeder
         Repository::factory()->times(200)->create()
             ->each(function (Repository $repository) {
                 if (faker()->boolean(20)) {
-
-
                     Issue::factory()->create([
                         'repository_id' => $repository->id,
                     ]);
