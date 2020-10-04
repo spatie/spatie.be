@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Text;
 
 class Repository extends Resource
@@ -28,6 +29,9 @@ class Repository extends Resource
                 ->rules('required', 'max:255'),
 
             BelongsTo::make('Ad'),
+
+            Boolean::make('Ad should be randomized'),
+
         ];
     }
 }
