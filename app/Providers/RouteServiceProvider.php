@@ -24,9 +24,11 @@ class RouteServiceProvider extends ServiceProvider
                     ->get($path) ?? abort(404);
         });
 
+        /*
         Route::bind('repository', function (string $repositoryName) {
             return Repository::where('name', $repositoryName)->first() ?? new Repository();
         });
+        */
     }
 
     public function map()
