@@ -3,7 +3,6 @@
 namespace App\Console;
 
 use App\Console\Commands\ImportDocsFromRepositoriesCommand;
-use App\Console\Commands\ImportGitHubIssuesCommand;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
@@ -23,7 +22,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('mailcoach:delete-old-unconfirmed-subscribers')->daily();
         $schedule->command('mailcoach:cleanup-processed-feedback')->hourly();
 
-        $schedule->command(ImportGitHubIssuesCommand::class)->daily();
         $schedule->command(ImportInsightsCommand::class)->hourly();
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();

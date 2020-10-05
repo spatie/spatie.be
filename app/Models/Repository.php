@@ -44,26 +44,9 @@ class Repository extends Model
         $query->where('ad_should_be_randomized', true);
     }
 
-    protected $with = ['issues'];
-
-    public function issues(): HasMany
-    {
-        return $this->hasMany(Issue::class);
-    }
-
     public function ad(): BelongsTo
     {
         return $this->belongsTo(Ad::class, 'ad_id');
-    }
-
-    public function getIssuesUrlAttribute()
-    {
-        return $this->url . '/issues?q=is%3Aopen+is%3Aissue+label%3A"good+first+issue"';
-    }
-
-    public function hasIssues(): bool
-    {
-        return count($this->issues) > 0;
     }
 
     public function getSlug(): string

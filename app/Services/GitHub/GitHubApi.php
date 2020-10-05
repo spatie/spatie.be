@@ -30,27 +30,6 @@ class GitHubApi
         });
     }
 
-    public function fetchOpenIssues(string $username, string $repository, array $labelFilters = []): Collection
-    {
-        $api = $this->client->api('issue');
-        info('using github token fetchOpenIssues');
-
-
-        $paginator = new ResultPager($this->client);
-
-        $issues = $paginator->fetchAll($api, 'all', [$username, $repository, ['state' => 'open']]);
-
-        return collect($issues)->filter(function (array $issue) use ($labelFilters) {
-            if (! $labelFilters) {
-                return true;
-            }
-
-            return collect($issue['labels'] ?? [])->filter(function (array $label) use ($labelFilters) {
-                return in_array($label['name'] ?? null, $labelFilters);
-            })->isNotEmpty();
-        });
-    }
-
     public function fetchRepositoryTopics(string $username, string $repository): Collection
     {
         $api = $this->client->api('repository');
