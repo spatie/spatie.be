@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Contributor;
 use App\Models\Product;
 
 class OpenSourceController
