@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
 
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
-        $schedule->command(ImportDocsFromRepositoriesCommand::class)->everyFiveMinutes();
+        $schedule->command(ImportDocsFromRepositoriesCommand::class)->everyThirtyMinutes();
         $schedule->job(RandomizeAdsOnGitHubRepositoriesJob::class)->weekly();
     }
 
