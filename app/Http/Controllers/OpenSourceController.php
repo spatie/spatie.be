@@ -19,12 +19,9 @@ class OpenSourceController
 
     public function support()
     {
-        $contributor = Contributor::first();
-
         $products = Product::orderBy('sort_order')->get();
 
         return view('front.pages.open-source.support', [
-            'contributor' => $contributor,
             'products' => $products,
         ]);
     }
