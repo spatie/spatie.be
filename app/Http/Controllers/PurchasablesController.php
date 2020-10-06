@@ -12,10 +12,7 @@ class PurchasablesController
     {
         sleep(3);
 
-        if ($purchasable->analytics_goal_id) {
-            session()->flash('completed_goal_id', $purchasable->analytics_goal_id);
-            session()->flash('completed_goal_earnings', $purchasable->getAverageEarnings());
-        }
+        session()->flash('sold_purchasable', $purchasable);
 
         flash()->success('Purchase successful');
 

@@ -84,8 +84,6 @@ class Purchasable extends Resource
             Text::make('Repository access'),
 
             Text::make('Sponsor coupon')->help('For display purposes only, you still need to create this in Paddle.'),
-
-            Number::make('Analytics goal ID')->help('Create a goal in Matomo first.'),
         ];
     }
 }
