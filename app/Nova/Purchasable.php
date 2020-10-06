@@ -54,7 +54,7 @@ class Purchasable extends Resource
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentPurchasable $product) {
-                    return function () use ($request, $product) {
+                    return function () use ($request, $product): void {
                         $product
                             ->addMedia($request->file('image'))
                             ->withResponsiveImages()

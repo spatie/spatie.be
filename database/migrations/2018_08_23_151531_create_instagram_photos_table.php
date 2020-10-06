@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateInstagramPhotosTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('instagram_photos', function (Blueprint $table) {
@@ -21,15 +16,5 @@ class CreateInstagramPhotosTable extends Migration
             $table->timestamp('taken_at');
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('instagram_photos');
     }
 }

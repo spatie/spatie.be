@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,8 +16,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Purchasable extends Model implements HasMedia, Sortable
 {
     use HasFactory;
-
-    use InteractsWithMedia, SortableTrait;
+    use InteractsWithMedia;
+    use SortableTrait;
 
     public $sortable = [
         'order_column_name' => 'sort_order',
@@ -29,11 +30,13 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public function registerMediaCollections(): void
     {
-        $this->addMediaCollection('purchasable-image')
+        $this
+            ->addMediaCollection('purchasable-image')
             ->singleFile()
             ->withResponsiveImages();
 
-        $this->addMediaCollection('downloads')
+        $this
+            ->addMediaCollection('downloads')
             ->useDisk('purchasable_downloads');
     }
 

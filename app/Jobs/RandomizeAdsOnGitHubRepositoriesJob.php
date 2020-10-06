@@ -12,13 +12,16 @@ use Illuminate\Queue\SerializesModels;
 
 class RandomizeAdsOnGitHubRepositoriesJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public function handle()
     {
         $ads = Ad::active()->get();
 
-        Repository::adShouldBeRandomized()->each(function (Repository $repository) use ($ads) {
+        Repository::adShouldBeRandomized()->each(function (Repository $repository) use ($ads): void {
             $repository->ad()->associate($ads->random());
             $repository->save();
         });

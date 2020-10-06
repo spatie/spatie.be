@@ -41,7 +41,7 @@ class Product extends Resource
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentProduct $product) {
-                    return function () use ($request, $product) {
+                    return function () use ($request, $product): void {
                         $product
                             ->addMedia($request->file('image'))
                             ->withResponsiveImages()

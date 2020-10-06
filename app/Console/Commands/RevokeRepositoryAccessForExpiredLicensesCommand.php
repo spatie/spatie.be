@@ -11,7 +11,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
 {
     public $signature = 'revoke-repository-access-for-expired-licenses';
 
-    public function handle(GitHubApi $gitHubApi)
+    public function handle(GitHubApi $gitHubApi): void
     {
         $this->info('Revoking access to repositories for expired licenses...');
 
@@ -20,7 +20,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
             ->where('has_repository_access', true)
             ->cursor()
             ->each(
-                function (Purchase $purchase) use ($gitHubApi) {
+                function (Purchase $purchase) use ($gitHubApi): void {
                     $gitHubApi->revokeAccessToRepo(
                         $purchase->user->github_username,
                         $purchase->purchasable->repository_access

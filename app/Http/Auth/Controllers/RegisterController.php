@@ -14,7 +14,10 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, RegistersUsers;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
+    use RegistersUsers;
 
     protected $redirectTo = '/';
 

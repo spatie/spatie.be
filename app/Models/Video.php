@@ -18,8 +18,6 @@ class Video extends Model implements Sortable
 {
     use SortableTrait;
 
-    protected $guarded = [];
-
     protected $casts = [
         'sort' => 'integer',
         'downloadable' => 'boolean',
@@ -35,9 +33,9 @@ class Video extends Model implements Sortable
         return 'slug';
     }
 
-    protected static function booted()
+    protected static function booted(): void
     {
-        static::creating(function (Video $video) {
+        static::creating(function (Video $video): void {
             if (! $video->title) {
                 $video->title = 'New video';
                 $video->slug = 'new-video';

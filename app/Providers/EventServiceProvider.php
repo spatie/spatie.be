@@ -10,11 +10,6 @@ use Spatie\Mailcoach\Events\SubscribedEvent;
 
 class EventServiceProvider extends ServiceProvider
 {
-    /**
-     * The event listener mappings for the application.
-     *
-     * @var array
-     */
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
@@ -23,13 +18,4 @@ class EventServiceProvider extends ServiceProvider
             SendCoupon::class,
         ],
     ];
-
-    /**
-     * Register any events for your application.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-    }
 }

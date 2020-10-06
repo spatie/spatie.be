@@ -10,18 +10,12 @@ use Laravel\Nova\Metrics\Partition;
 
 class PurchasesPerProduct extends Partition
 {
-    /**
-     * Calculate the value of the metric.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @return mixed
-     */
     public function calculate(NovaRequest $request)
     {
         return $this->count(
             $request,
             Purchase::query()
-                ->whereHas('receipt', function (Builder $query) {
+                ->whereHas('receipt', function (Builder $query): void {
                     $query->where('amount', '!=', 0);
                 })
                 ->select('purchases.*', 'purchasables.product_id')
@@ -32,11 +26,6 @@ class PurchasesPerProduct extends Partition
         });
     }
 
-    /**
-     * Get the URI key for the metric.
-     *
-     * @return string
-     */
     public function uriKey()
     {
         return 'purchases-per-product';

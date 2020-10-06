@@ -3,18 +3,18 @@
 namespace App\Docs;
 
 use Illuminate\Support\Collection;
-use Spatie\Sheets\Sheets;
+use RuntimeException;
 
 class Docs
 {
     private Collection $pages;
 
-    public function __construct(Sheets $sheets)
+    public function __construct()
     {
         $pages = cache()->store('docs')->get('docs');
 
         if (is_null($pages)) {
-            throw new \RuntimeException('Docs  cache is invalid');
+            throw new RuntimeException('Docs cache is invalid');
         }
 
         $this->pages = $pages;
@@ -35,7 +35,7 @@ class Docs
         return $this->pages
             ->pluck('repository')
             ->unique()
-            ->map(function (string $repository) {
+            ->map(function (string $repository): Repository {
                 $aliases = $this->pages
                     ->where('repository', $repository)
                     ->whereNotNull('alias')
@@ -44,7 +44,7 @@ class Docs
                         $index = $pages->firstWhere('slug', '_index');
                         $pages = $pages
                             ->where('slug', '<>', '_index')
-                            ->sortBy(fn (DocumentationPage $page) => $page->weight ?? PHP_INT_MAX);
+                            ->sortBy(fn (DocumentationPage $page): int => $page->weight ?? PHP_INT_MAX);
 
                         return new Alias($index->title, $index->slogan, $index->branch, $index->githubUrl, $pages);
                     })

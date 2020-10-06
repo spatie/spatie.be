@@ -39,7 +39,7 @@ class Postcard extends Resource
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentPostcard $postcard) {
-                    return function () use ($request, $postcard) {
+                    return function () use ($request, $postcard): void {
                         $postcard
                             ->addMedia($request->file('image'))
                             ->withResponsiveImages()

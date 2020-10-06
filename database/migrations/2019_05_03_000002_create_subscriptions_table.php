@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateSubscriptionsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('subscriptions', function (Blueprint $table) {
@@ -30,15 +25,5 @@ class CreateSubscriptionsTable extends Migration
 
             $table->unique(['user_id', 'paddle_id']);
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('subscriptions');
     }
 }

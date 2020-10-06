@@ -21,7 +21,7 @@ class ImportInsightsCommand extends Command
         $this->info('Syncing insights from RSS feeds...');
 
         collect(config('services.rss'))
-            ->each(function (string $feedUrl) {
+            ->each(function (string $feedUrl): void {
                 try {
                     $feed = Reader::import($feedUrl);
 

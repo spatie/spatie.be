@@ -10,9 +10,9 @@ class DocsController
 {
     public function index(Docs $docs)
     {
-        $repositories = $docs->getRepositories();
-
-        return view('front.pages.docs.index', compact('repositories'));
+        return view('front.pages.docs.index', [
+            'repositories' => $docs->getRepositories(),
+        ]);
     }
 
     public function repository(string $repository, ?string $alias = null, Docs $docs)
@@ -50,7 +50,7 @@ class DocsController
 
         $page = $pages->firstWhere('slug', $slug);
 
-        if (! $page) {
+        if (!$page) {
             return redirect()->action([DocsController::class, 'repository'], [$repository->slug, $alias->slug]);
         }
 
@@ -84,6 +84,6 @@ class DocsController
                 return $navigation;
             }, []);
 
-        return collect($navigation)->sortBy(fn (array $pages) => $pages['_index']->weight ?? -1);
+        return collect($navigation)->sortBy(fn(array $pages) => $pages['_index']->weight ?? -1);
     }
 }

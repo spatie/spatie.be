@@ -11,7 +11,7 @@ use Illuminate\Support\Collection;
 
 class UserSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         collect([
             'freek',
@@ -24,16 +24,16 @@ class UserSeeder extends Seeder
             'email' => "${name}@spatie.be",
             'password' => bcrypt('password'),
             'is_admin' => true,
-        ]))->each(function (User $user) {
+        ]))->each(function (User $user): void {
             $randomPurchasables = Purchasable::query()->inRandomOrder()->take(random_int(0, 5))->get();
 
             //$this->createPurchases($user, $randomPurchasables);
         });
     }
 
-    protected function createPurchases(User $user, Collection $randomPurchasables)
+    protected function createPurchases(User $user, Collection $randomPurchasables): void
     {
-        $randomPurchasables->each(function (Purchasable $purchase) use ($user) {
+        $randomPurchasables->each(function (Purchasable $purchase) use ($user): void {
             if ($purchase->requires_license) {
                 $license = License::factory()->create([
                     'purchasable_id' => $purchase->id,

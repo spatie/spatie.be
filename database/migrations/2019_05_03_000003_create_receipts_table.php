@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateReceiptsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('receipts', function (Blueprint $table) {
@@ -30,15 +25,5 @@ class CreateReceiptsTable extends Migration
 
             $table->index(['billable_id', 'billable_type']);
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('receipts');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Support\CommonMark;
 
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use League\CommonMark\ElementRendererInterface;
 use League\CommonMark\HtmlElement;
 use League\CommonMark\Inline\Element\AbstractInline;
@@ -16,17 +17,11 @@ class LinkRenderer implements InlineRendererInterface, ConfigurationAwareInterfa
 {
     /** @var ConfigurationInterface */
     protected $config;
-
-    /**
-     * @param Link $inline
-     * @param ElementRendererInterface $htmlRenderer
-     *
-     * @return HtmlElement
-     */
+    
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         if (! ($inline instanceof Link)) {
-            throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
+            throw new InvalidArgumentException('Incompatible inline type: ' . \get_class($inline));
         }
 
         $attrs = $inline->getData('attributes', []);
@@ -51,7 +46,7 @@ class LinkRenderer implements InlineRendererInterface, ConfigurationAwareInterfa
         return new HtmlElement('a', $attrs, $htmlRenderer->renderInlines($inline->children()));
     }
 
-    public function setConfiguration(ConfigurationInterface $configuration)
+    public function setConfiguration(ConfigurationInterface $configuration): void
     {
         $this->config = $configuration;
     }

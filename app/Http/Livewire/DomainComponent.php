@@ -7,24 +7,20 @@ use Livewire\Component;
 
 class DomainComponent extends Component
 {
-    /** @var null|string */
+    /** @var string|null */
     public $domain = '';
 
-    /** @var null|License */
+    /** @var License|null */
     public $license = null;
 
     /** @var bool */
     public $editing = false;
 
-    public function mount(License $license)
+    public function mount(License $license): void
     {
         $this->license = $license;
-        $this->domain = $license->domain;
-    }
 
-    public function render()
-    {
-        return view('front.pages.products.livewire.domain');
+        $this->domain = $license->domain;
     }
 
     public function edit(): void
@@ -37,5 +33,10 @@ class DomainComponent extends Component
         $this->license->update(['domain' => $this->domain]);
 
         $this->editing = false;
+    }
+
+    public function render()
+    {
+        return view('front.pages.products.livewire.domain');
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Actions\GitHubAds\DeleteRepositoryAdImageAction;
 use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,8 +12,6 @@ class Ad extends Model
 {
     use HasFactory;
 
-    public $guarded = [];
-
     protected $casts = [
         'active' => 'boolean',
     ];
@@ -23,9 +20,9 @@ class Ad extends Model
         'active' => true,
     ];
 
-    public static function booted()
+    public static function booted(): void
     {
-        self::saved(function (Ad $ad) {
+        self::saved(function (Ad $ad): void {
             if (in_array('image', $ad->getChanges())) {
                 $ad->repositories->each(function (Repository $repository) {
                     app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
@@ -33,7 +30,7 @@ class Ad extends Model
             }
         });
 
-        self::deleting(function (Ad $ad) {
+        self::deleting(function (Ad $ad): void {
             $ad->repositories->each(function (Repository $repository) {
                 app(DeleteRepositoryAdImageAction::class)->execute($repository);
             });

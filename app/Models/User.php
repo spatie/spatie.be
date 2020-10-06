@@ -15,10 +15,9 @@ use Spatie\Mailcoach\Models\EmailList;
 class User extends Authenticatable
 {
     use HasFactory;
-
-    use Notifiable, Billable, Notifiable;
-
-    protected $guarded = [];
+    use Notifiable;
+    use Billable;
+    use Notifiable;
 
     protected $hidden = [
         'password', 'remember_token',
@@ -75,7 +74,7 @@ class User extends Authenticatable
 
     public function licensesWithoutRenewals(): HasMany
     {
-        return $this->hasMany(License::class)->whereHas('purchasable', function (Builder $query) {
+        return $this->hasMany(License::class)->whereHas('purchasable', function (Builder $query): void {
             $query->whereNotIn('type', [
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
@@ -90,7 +89,7 @@ class User extends Authenticatable
 
     public function purchasesWithoutRenewals(): HasMany
     {
-        return $this->hasMany(Purchase::class)->whereHas('purchasable', function (Builder $query) {
+        return $this->hasMany(Purchase::class)->whereHas('purchasable', function (Builder $query): void {
             $query->whereNotIn('type', [
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,

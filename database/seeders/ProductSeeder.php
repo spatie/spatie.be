@@ -9,7 +9,7 @@ use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $flare = Product::factory()->create([
             'title' => 'Flare',

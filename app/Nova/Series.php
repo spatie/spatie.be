@@ -43,7 +43,7 @@ class Series extends Resource
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentSeries $series) {
-                    return function () use ($request, $series) {
+                    return function () use ($request, $series): void {
                         $series
                             ->addMedia($request->file('image'))
                             ->withResponsiveImages()

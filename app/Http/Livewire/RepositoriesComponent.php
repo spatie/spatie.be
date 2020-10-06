@@ -25,19 +25,12 @@ class RepositoriesComponent extends Component
 
     protected $updatesQueryString = ['search', 'sort'];
 
-    public function render()
-    {
-        return view('front.livewire.repositories', [
-            'repositories' => $this->getRepositories(),
-        ]);
-    }
-
     public function mount(
         $type = 'packages',
         $filterable = true,
         $highlighted = false,
         $sort = '-downloads'
-    ) {
+    ): void {
         $this->type = $type;
         $this->filterable = $filterable;
         $this->highlighted = $highlighted;
@@ -62,5 +55,12 @@ class RepositoriesComponent extends Component
             ->applySort($this->sort);
 
         return $query->get();
+    }
+
+    public function render()
+    {
+        return view('front.livewire.repositories', [
+            'repositories' => $this->getRepositories(),
+        ]);
     }
 }

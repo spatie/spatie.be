@@ -15,9 +15,10 @@ use League\CommonMark\Inline\Element\Image;
 use League\CommonMark\Inline\Element\Link;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
 use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
+use Spatie\Sheets\ContentParser;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
-class GuidelinesContentParser implements \Spatie\Sheets\ContentParser
+class GuidelinesContentParser implements ContentParser
 {
     protected CommonMarkConverter $commonMarkConverter;
 

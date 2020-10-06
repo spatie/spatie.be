@@ -9,7 +9,7 @@ use Spatie\Mailcoach\Models\Subscriber as MailcoachSubscriber;
 
 class SendCoupon
 {
-    public function handle(SubscribedEvent $event)
+    public function handle(SubscribedEvent $event): void
     {
         if ($event->subscriber->hasTag('front-line-php-waiting-list')) {
             $this->upcastSubscriber($event->subscriber)->notify(new WelcomeFrontLinePhpWaitingListNotification());

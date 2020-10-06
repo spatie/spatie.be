@@ -8,6 +8,7 @@ use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
@@ -15,7 +16,6 @@ use Illuminate\Support\Str;
 class Repository extends Model
 {
     use HasFactory;
-
     use RepositoryPresenter;
 
     protected $casts = [
@@ -87,27 +87,27 @@ class Repository extends Model
         return $this;
     }
 
-    public function scopeVisible(Builder $builder)
+    public function scopeVisible(Builder $builder): void
     {
         $builder->where('visible', true);
     }
 
-    public function scopePackages(Builder $builder)
+    public function scopePackages(Builder $builder): void
     {
         $builder->where('type', RepositoryType::PACKAGE);
     }
 
-    public function scopeProjects(Builder $builder)
+    public function scopeProjects(Builder $builder): void
     {
         $builder->where('type', RepositoryType::PROJECT);
     }
 
-    public function scopeHighlighted(Builder $builder)
+    public function scopeHighlighted(Builder $builder): void
     {
         $builder->where('highlighted', true);
     }
 
-    public function scopeSearch(Builder $builder, string $search)
+    public function scopeSearch(Builder $builder, string $search): void
     {
         if (! $search) {
             return;
@@ -116,7 +116,7 @@ class Repository extends Model
         $builder->where('name', 'LIKE', "%{$search}%");
     }
 
-    public function scopeApplySort(Builder $builder, string $sort)
+    public function scopeApplySort(Builder $builder, string $sort): void
     {
         if (! $sort) {
             return;

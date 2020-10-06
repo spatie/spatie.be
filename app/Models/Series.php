@@ -13,9 +13,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Series extends Model implements HasMedia, Sortable
 {
-    use InteractsWithMedia, SortableTrait;
-
-    protected $guarded = [];
+    use InteractsWithMedia;
+    use SortableTrait;
 
     public $sortable = [
         'order_column_name' => 'sort_order',

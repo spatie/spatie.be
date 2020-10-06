@@ -62,7 +62,7 @@ class ImportDocsFromRepositoriesCommand extends Command
     protected function wrapInPromise(Collection $processes): void
     {
         all($processes->toArray())
-            ->then(function () {
+            ->then(function (): void {
                 $this->info('Fetched docs from all repositories.');
 
                 $this->info('Caching Sheets.');
@@ -73,7 +73,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
                 $this->info('Done caching Sheets.');
             })
-            ->always(function () {
+            ->always(function (): void {
                 File::deleteDirectory(storage_path('docs-temp/'));
             });
     }

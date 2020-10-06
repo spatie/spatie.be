@@ -27,7 +27,7 @@ class ImportPackagistDownloadsCommand extends Command
             ->map(function ($packageName) use ($packagist) {
                 return $packagist->getPackage($packageName)['package'];
             })
-            ->each(function ($package) {
+            ->each(function ($package): void {
                 $name = explode('/', $package['name'])[1];
 
                 $this->comment("Getting downloads for `{$name}`");

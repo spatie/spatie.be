@@ -11,7 +11,7 @@ jobs:
         name: PHPUnit
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v2
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
@@ -26,7 +26,7 @@ jobs:
                   mysql  -u root -proot -e 'CREATE DATABASE IF NOT EXISTS sail_tests;'
 
             - name: Cache composer dependencies
-              uses: actions/cache@v1
+              uses: actions/cache@v2
               with:
                   path: vendor
                   key: composer-${{ hashFiles('composer.lock') }}

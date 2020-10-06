@@ -12,7 +12,7 @@ use Illuminate\Database\Seeder;
 
 class VideoSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         Series::create(['title' => 'Laravel Package Training', 'slug' => 'laravel-package-training', 'description' => 'Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!', 'sort_order' => '0']);
         $mailcoach = Series::create(['title' => 'Building Mailcoach', 'slug' => 'building-mailcoach', 'description' => 'Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.', 'sort_order' => '1']);

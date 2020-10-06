@@ -17,8 +17,13 @@ class Alias
     /** @var \App\Docs\DocumentationPage[] */
     public Collection $pages;
 
-    public function __construct(string $slug, string $slogan, string $branch, string $githubUrl, Collection $pages)
-    {
+    public function __construct(
+        string $slug,
+        string $slogan,
+        string $branch,
+        string $githubUrl,
+        Collection $pages
+    ) {
         $this->slug = $slug;
         $this->slogan = $slogan;
         $this->branch = $branch;

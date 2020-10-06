@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class InsightsSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         Insight::factory()->times(50)->create();
     }

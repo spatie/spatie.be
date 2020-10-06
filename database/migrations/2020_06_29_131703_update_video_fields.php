@@ -14,7 +14,7 @@ class UpdateVideoFields extends Migration
             $table->string('display')->after('only_for_sponsors')->default(VideoDisplayEnum::LICENSE);
         });
 
-        Video::each(function (Video $video) {
+        Video::each(function (Video $video): void {
             $video->update([
                 'display' => $video->only_for_sponsors ? VideoDisplayEnum::SPONSORS : VideoDisplayEnum::FREE,
             ]);

@@ -13,6 +13,6 @@ class SatisAuthenticationController extends Controller
 
     public function __invoke()
     {
-        return response('valid', 200);
+        return response('valid');
     }
 }

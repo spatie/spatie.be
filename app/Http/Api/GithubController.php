@@ -9,7 +9,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class GithubController
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): void
     {
         $this->ensureValidRequest($request);
 

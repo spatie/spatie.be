@@ -11,7 +11,10 @@ use Illuminate\Routing\Controller;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthenticatesUsers;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     public function __construct()
     {

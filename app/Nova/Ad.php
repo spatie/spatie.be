@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Models\Ad as EloquentAd;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
@@ -10,7 +11,7 @@ use Laravel\Nova\Fields\Text;
 
 class Ad extends Resource
 {
-    public static $model = \App\Models\Ad::class;
+    public static $model = EloquentAd::class;
 
     public static $title = 'name';
 

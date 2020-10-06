@@ -17,7 +17,7 @@ class WebhookController extends CashierWebhookController
         $this->handlePurchaseAction = $handlePurchaseAction;
     }
 
-    public function handlePaymentSucceeded($payload)
+    public function handlePaymentSucceeded($payload): void
     {
         parent::handlePaymentSucceeded($payload);
 

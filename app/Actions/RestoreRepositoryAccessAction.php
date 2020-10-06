@@ -15,11 +15,11 @@ class RestoreRepositoryAccessAction
         $this->gitHubApi = $gitHubApi;
     }
 
-    public function execute(User $user)
+    public function execute(User $user): void
     {
         $user->purchases
             ->where('has_repository_access', false)
-            ->each(function (Purchase $purchase) use ($user) {
+            ->each(function (Purchase $purchase) use ($user): void {
                 info('checking repository access');
                 if (! $purchase->purchasable->repository_access) {
                     info('purchasable has no repository access');

@@ -10,7 +10,10 @@ use Illuminate\Routing\Controller;
 
 class LogoutController extends Controller
 {
-    use AuthenticatesUsers, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthenticatesUsers;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     protected function loggedOut()
     {

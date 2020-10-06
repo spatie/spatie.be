@@ -9,9 +9,12 @@ class VideosController
 {
     public function index()
     {
-        return view('front.pages.videos.index', [
-            'allSeries' => Series::with(['purchasables', 'videos'])->orderBy('sort_order')->get(),
-        ]);
+        $allSeries =  Series::with(['purchasables', 'videos'])
+            ->orderBy('sort_order')
+            ->get();
+
+
+        return view('front.pages.videos.index', compact('allSeries'));
     }
 
     public function show(Series $series, Video $video)

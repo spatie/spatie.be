@@ -16,15 +16,15 @@ class ViewServiceProvider extends ServiceProvider
             return "<?php echo svg({$expression}); ?>";
         });
 
-        View::composer('front.pages.open-source.partials.insights', function ($view) {
+        View::composer('front.pages.open-source.partials.insights', function ($view): void {
             $view->with('insights', Insight::getLatest());
         });
 
-        View::composer('front.pages.home.partials.news', function ($view) {
+        View::composer('front.pages.home.partials.news', function ($view): void {
             $view->with('insights', Insight::getLatest());
         });
 
-        View::composer('front.pages.about.partials.team', function ($view) {
+        View::composer('front.pages.about.partials.team', function ($view): void {
             $view->with('members', Member::orderBy('first_name')->get());
         });
     }

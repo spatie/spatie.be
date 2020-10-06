@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\PurchasableType;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
@@ -15,8 +16,8 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Product extends Model implements HasMedia, Sortable
 {
     use HasFactory;
-
-    use InteractsWithMedia, SortableTrait;
+    use InteractsWithMedia;
+    use SortableTrait;
 
     public $sortable = [
         'order_column_name' => 'sort_order',
@@ -28,9 +29,6 @@ class Product extends Model implements HasMedia, Sortable
         'purchasables',
     ];
 
-    /**
-     * @var mixed
-     */
     private $purchasables;
 
     public function registerMediaCollections(): void

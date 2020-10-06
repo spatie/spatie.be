@@ -54,7 +54,7 @@ class UpdateMailcoachTables extends Migration
             $table->index('external_id');
         });
 
-        Campaign::each(function (Campaign $campaign) {
+        Campaign::each(function (Campaign $campaign): void {
             $campaign->update([
                 'open_rate' => $campaign->open_rate * 100,
                 'click_rate' => $campaign->click_rate * 100,
