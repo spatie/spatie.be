@@ -2,8 +2,6 @@
     ->setActiveClass('font-sans-bold')
 }}
 
-
-
 @auth
     <div class="py-2 px-8 md:px-16 flex items-center justify-end bg-blue-darker links-white links-underline text-white text-xs">
         @if (auth()->user()->isSponsoring())

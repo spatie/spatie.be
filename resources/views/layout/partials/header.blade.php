@@ -1,19 +1,3 @@
-{{-- <header class="flex-none bg-white">
-    <div class="wrap | md:flex">
-
-        <a class="flex-shrink-0 logo h-8 w-20 mr-16 mb-8 block | md:mb-0" href="/" title="Home">
-            @svg('logo')
-        </a>
-
-        <div>
-            @include('layout.partials.service')
-        </div>
-
-    </div>
-</header>
---}}
-
-
 <header class="pt-8 flex-none z-10 | md:bg-white md:shadow-light md:py-8 | print:bg-transparent print:shadow-none" role="navigation">
     <div class="wrap leading-loose | md:leading-none md:flex md:items-stretch">
         <a class="flex-shrink-0 logo h-8 w-20 mr-16 mb-8 block | md:mb-0 md:w-48 md:h-auto" href="/" title="Home">

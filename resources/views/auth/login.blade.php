@@ -39,7 +39,7 @@
             </div>
             <div class="flex-grow">
                 <h2 class="title mb-8">
-                    Log in with email 
+                    Log in with email
                 </h2>
 
                 <p>
@@ -55,24 +55,25 @@
                         <x-label for="email">Your email</x-label>
                         <input class="form-input" autofocus type="email" name="email" id="email" required>
                         @error('email')
-                            <p class="text-pink-dark text-sm">
-                                {{ $message }}
-                            </p>
+                        <p class="text-pink-dark text-sm">
+                            {{ $message }}
+                        </p>
                         @enderror
                     </x-field>
 
                     <x-field>
                         <div class="flex items-baseline justify-between">
                             <x-label for="password">
-                                Password 
+                                Password
                             </x-label>
-                            <a class="ml-4 link-white link-underline text-sm" tabindex="3" href="{{ route('forgot-password') }}">Can't recall, send me a link</a>
+                            <a class="ml-4 link-white link-underline text-sm" tabindex="3"
+                               href="{{ route('forgot-password') }}">Can't recall, send me a link</a>
                         </div>
                         <input class="form-input" type="password" name="password" id="password" required>
                         @error('password')
-                            <p class="text-pink-dark text-sm">
-                                {{ $message }}
-                            </p>
+                        <p class="text-pink-dark text-sm">
+                            {{ $message }}
+                        </p>
                         @enderror
                     </x-field>
 
