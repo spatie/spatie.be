@@ -12,7 +12,6 @@ use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;
@@ -84,8 +83,6 @@ class Purchasable extends Resource
             Text::make('Repository access'),
 
             Text::make('Sponsor coupon')->help('For display purposes only, you still need to create this in Paddle.'),
-
-            Number::make('Analytics goal ID')->help('Create a goal in Matomo first.'),
         ];
     }
 }

@@ -8,9 +8,28 @@
 
         gtag('config', 'UA-131225353-2');
 
-        @if(session()->has('completed_goal_id'))
-            {{-- TODO --}}
-            {{--_paq.push(['trackGoal', {{session()->get('completed_goal_id')}}, {{ session()->get('completed_goal_earnings', 0) }}]);--}}
+        @if(session()->has('sold_purchasable'))
+            @php
+                /** @var \App\Models\Purchasable $purchasable */
+                $purchasable = session()->get('sold_purchasable')
+            @endphp
+
+            gtag('event', 'purchase', {
+                "transaction_id": "{{session()->getId()}}_{{$purchasable->id}}",
+                "affiliation": "Spatie.be",
+                "value": {{ $purchasable->getAverageEarnings() }},
+                "currency": "EUR",
+                "tax": 0.0,
+                "shipping": 0.0,
+                "items": [
+                    {
+                        "id": "{{ $purchasable->id }}",
+                        "name": "{{ $purchasable->title }}",
+                        "quantity": 1,
+                        "price": {{ $purchasable->getAverageEarnings() }}
+                    }
+                ]
+            });
         @endif
     </script>
 @endif
