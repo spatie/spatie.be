@@ -9,7 +9,7 @@ class VideosController
 {
     public function index()
     {
-        $allSeries =  Series::with(['purchasables', 'videos'])
+        $allSeries = Series::with(['purchasables', 'videos'])
             ->orderBy('sort_order')
             ->get();
 

@@ -50,7 +50,7 @@ class DocsController
 
         $page = $pages->firstWhere('slug', $slug);
 
-        if (!$page) {
+        if (! $page) {
             return redirect()->action([DocsController::class, 'repository'], [$repository->slug, $alias->slug]);
         }
 
@@ -84,6 +84,6 @@ class DocsController
                 return $navigation;
             }, []);
 
-        return collect($navigation)->sortBy(fn(array $pages) => $pages['_index']->weight ?? -1);
+        return collect($navigation)->sortBy(fn (array $pages) => $pages['_index']->weight ?? -1);
     }
 }
