@@ -26,7 +26,7 @@
                         "id": "{{ $purchasable->id }}",
                         "name": "{{ $purchasable->title }}",
                         "quantity": 1,
-                        "price": '{{ $purchasable->getAverageEarnings() }}'
+                        "price": {{ $purchasable->getAverageEarnings() }}
                     }
                 ]
             });
