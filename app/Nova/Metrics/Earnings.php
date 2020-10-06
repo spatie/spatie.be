@@ -5,7 +5,6 @@ namespace App\Nova\Metrics;
 use App\Models\Purchase;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
-use Laravel\Nova\Metrics\Value;
 
 class Earnings extends Trend
 {
