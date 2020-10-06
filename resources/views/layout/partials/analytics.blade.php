@@ -15,7 +15,7 @@
             @endphp
 
             gtag('event', 'purchase', {
-                "transaction_id": "{{session()->getId()}}_{{$purchasable->id}}", // session id + purchasable id?
+                "transaction_id": "{{session()->getId()}}_{{$purchasable->id}}",
                 "affiliation": "Spatie.be",
                 "value": {{ $purchasable->getAverageEarnings() }},
                 "currency": "EUR",
