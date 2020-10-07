@@ -23,9 +23,22 @@ class SatisAuthenticationController extends Controller
 
         $package = $this->getRequestedPackage($request);
 
-        if (! $license->purchasable->includesPackageAccess($package)) {
-            abort(401);
-        }
+        /*
+         * Composer can only store one authentication method per repository.
+         * This means the user is probably gonna try to authenticate with a license
+         * key for the wrong package. We have to check the user's other licenses
+         * as well.
+         */
+        $hasAccess = License::query()
+            ->with(['purchasable'])
+            ->whereNotExpired()
+            ->where('user_id', $license->user_id)
+            ->get()
+            ->contains(
+                fn (License $license) => $license->purchasable->includesPackageAccess($package)
+            );
+
+        abort_unless($hasAccess, 401);
 
         return response('valid');
     }
