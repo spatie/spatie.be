@@ -16,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
                 ->where('key', $request->getPassword())
                 ->first();
 
-            if (!$license) {
+            if (! $license) {
                 abort(401, 'License key invalid');
             }
 
