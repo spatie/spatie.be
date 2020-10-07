@@ -3,9 +3,7 @@
 namespace Tests\Actions;
 
 use App\Actions\UpdateVideoDetailsAction;
-use App\Models\Purchasable;
 use App\Models\Series;
-use App\Models\User;
 use App\Models\Video;
 use App\Services\Vimeo\Vimeo;
 use Mockery\MockInterface;

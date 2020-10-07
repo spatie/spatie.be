@@ -7,7 +7,6 @@ use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Laravel\Paddle\Receipt;
 
 class PurchaseFactory extends Factory
 {

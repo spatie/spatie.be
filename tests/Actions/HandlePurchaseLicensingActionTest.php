@@ -3,12 +3,10 @@
 namespace Tests\Actions;
 
 use App\Actions\HandlePurchaseLicensingAction;
-use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use Database\Factories\ReceiptFactory;
-use Laravel\Paddle\Receipt;
 use Tests\TestCase;
 
 class HandlePurchaseLicensingActionTest extends TestCase
