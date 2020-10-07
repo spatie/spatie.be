@@ -1,10 +1,6 @@
 name: PHPUnit
 
-on:
-    push:
-        paths:
-            - '**.php'
-            - 'phpunit.xml'
+on: [push]
 
 jobs:
     phpunit:
