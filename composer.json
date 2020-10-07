@@ -18,6 +18,7 @@
         "abraham/twitteroauth": "^1.0",
         "aws/aws-sdk-php": "^3.152",
         "barryvdh/laravel-debugbar": "^3.0",
+        "dillingham/nova-items-field": "^0.6.0",
         "doctrine/dbal": "^2.10",
         "ebess/advanced-nova-media-library": "dev-master",
         "facade/ignition": "^2.3.6",

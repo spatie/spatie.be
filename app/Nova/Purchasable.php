@@ -14,6 +14,7 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use NovaItemsField\Items;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class Purchasable extends Resource
@@ -81,6 +82,8 @@ class Purchasable extends Resource
                 ]),
 
             Text::make('Repository access'),
+
+            Items::make('Satis packages'),
 
             Text::make('Sponsor coupon')->help('For display purposes only, you still need to create this in Paddle.'),
         ];

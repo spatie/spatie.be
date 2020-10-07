@@ -24,6 +24,10 @@ class Purchasable extends Model implements HasMedia, Sortable
         'sort_when_creating' => true,
     ];
 
+    public $casts = [
+        'satis_packages' => 'array',
+    ];
+
     public $with = [
         'media',
     ];
@@ -90,5 +94,15 @@ class Purchasable extends Model implements HasMedia, Sortable
         $avgEarnings = $this->purchases()->average('earnings');
 
         return (int) round($avgEarnings);
+    }
+
+    /**
+     * @param string $package Package name in following format: `spatie/laravel-mailcoach`
+     *
+     * @return bool
+     */
+    public function includesPackageAccess(string $package): bool
+    {
+        return in_array($package, $this->satis_packages ?? []);
     }
 }

@@ -12,9 +12,11 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         Auth::viaRequest('license-key', function (Request $request) {
-            $license = License::query()->where('key', $request->getPassword())->first();
+            $license = License::query()
+                ->where('key', $request->getPassword())
+                ->first();
 
-            if (! $license) {
+            if (!$license) {
                 abort(401, 'License key invalid');
             }
 
