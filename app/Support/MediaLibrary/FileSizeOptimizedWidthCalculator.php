@@ -26,7 +26,7 @@ class FileSizeOptimizedWidthCalculator extends BaseFileSizeOptimizedWidthCalcula
 
             $newWidth = (int) floor(sqrt(($predictedFileSize / $pixelPrice) / $ratio));
 
-            if ($this->finishedCalculating($predictedFileSize, $newWidth)) {
+            if ($this->finishedCalculating((int) $predictedFileSize, $newWidth)) {
                 return $targetWidths;
             }
 

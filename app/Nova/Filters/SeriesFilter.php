@@ -17,6 +17,6 @@ class SeriesFilter extends Filter
 
     public function options(Request $request)
     {
-        return Series::pluck('id', 'title');
+        return Series::pluck('id', 'title')->toArray();
     }
 }

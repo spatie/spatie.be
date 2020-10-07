@@ -59,7 +59,7 @@ class Postcard extends Model implements HasMedia
     public static function getTopCountries(): Collection
     {
         return Postcard::query()
-            ->select('country', DB::raw('COUNT(country) as postcard_count'))
+            ->select(['country', DB::raw('COUNT(country) as postcard_count')])
             ->groupBy('country')
             ->orderByDesc('postcard_count')
             ->take(3)

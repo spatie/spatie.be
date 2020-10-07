@@ -46,6 +46,7 @@ class DocsController
 
         abort_if(is_null($alias), 404, 'Alias not found');
 
+        /** @var Collection $pages */
         $pages = $alias->pages;
 
         $page = $pages->firstWhere('slug', $slug);

@@ -37,7 +37,7 @@ class Purchasable extends Resource
 
             Text::make('Title')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             BelongsTo::make('Purchasable for renewal', 'renewalPurchasable', Purchasable::class)
                 ->nullable(),
@@ -48,9 +48,9 @@ class Purchasable extends Resource
 
             Text::make('Paddle id', 'paddle_product_id')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
-            Select::make('Type')->options(PurchasableType::getLabels()) ->rules('required'),
+            Select::make('Type')->options(PurchasableType::getLabels())->rules(['required']),
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentPurchasable $product) {

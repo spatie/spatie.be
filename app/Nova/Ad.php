@@ -26,11 +26,11 @@ class Ad extends Resource
         return [
             Text::make('Name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Image::make('Image')->disk('github_ads'),
 
-            Text::make('Click Redirect URL')->rules('required', 'max:255', 'url'),
+            Text::make('Click Redirect URL')->rules(['required', 'max:255', 'url']),
 
             Boolean::make('Active'),
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2d180e04ab042390aceb4e421adeea0e",
+    "content-hash": "9f67e10caa57e7d2dd5cddb39fcb81d9",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -170,16 +170,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.158.1",
+            "version": "3.158.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "55ae8bdf2eb2f9774193fa79c6fc436835c42db4"
+                "reference": "ac883fef515dc92785136f251a8337b33bff1d54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/55ae8bdf2eb2f9774193fa79c6fc436835c42db4",
-                "reference": "55ae8bdf2eb2f9774193fa79c6fc436835c42db4",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/ac883fef515dc92785136f251a8337b33bff1d54",
+                "reference": "ac883fef515dc92785136f251a8337b33bff1d54",
                 "shasum": ""
             },
             "require": {
@@ -251,7 +251,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-10-02T18:16:40+00:00"
+            "time": "2020-10-06T18:16:08+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -688,6 +688,75 @@
                 }
             ],
             "time": "2020-08-23T12:54:47+00:00"
+        },
+        {
+            "name": "composer/package-versions-deprecated",
+            "version": "1.11.99",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/composer/package-versions-deprecated.git",
+                "reference": "c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/composer/package-versions-deprecated/zipball/c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855",
+                "reference": "c8c9aa8a14cc3d3bec86d0a8c3fa52ea79936855",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.1.0 || ^2.0",
+                "php": "^7 || ^8"
+            },
+            "replace": {
+                "ocramius/package-versions": "1.11.99"
+            },
+            "require-dev": {
+                "composer/composer": "^1.9.3 || ^2.0@dev",
+                "ext-zip": "^1.13",
+                "phpunit/phpunit": "^6.5 || ^7"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "PackageVersions\\Installer",
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PackageVersions\\": "src/PackageVersions"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com"
+                },
+                {
+                    "name": "Jordi Boggiano",
+                    "email": "j.boggiano@seld.be"
+                }
+            ],
+            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
+            "funding": [
+                {
+                    "url": "https://packagist.com",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/composer",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/composer/composer",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-08-25T05:50:16+00:00"
         },
         {
             "name": "container-interop/container-interop",
@@ -2218,16 +2287,16 @@
         },
         {
             "name": "laravel/cashier-paddle",
-            "version": "v1.2.1",
+            "version": "v1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/cashier-paddle.git",
-                "reference": "6abef0bb57839d4c71402e3c3f5eeb3ee94c260e"
+                "reference": "80f080077e63ef20373e371a206abc9ac32451e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/cashier-paddle/zipball/6abef0bb57839d4c71402e3c3f5eeb3ee94c260e",
-                "reference": "6abef0bb57839d4c71402e3c3f5eeb3ee94c260e",
+                "url": "https://api.github.com/repos/laravel/cashier-paddle/zipball/80f080077e63ef20373e371a206abc9ac32451e4",
+                "reference": "80f080077e63ef20373e371a206abc9ac32451e4",
                 "shasum": ""
             },
             "require": {
@@ -2291,20 +2360,20 @@
                 "laravel",
                 "paddle"
             ],
-            "time": "2020-09-29T17:20:53+00:00"
+            "time": "2020-10-06T15:25:14+00:00"
         },
         {
             "name": "laravel/framework",
-            "version": "v8.8.0",
+            "version": "v8.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "0bdd5c6f12cb7cb6644e484169656245af417735"
+                "reference": "8a6bf870bcfa1597e514a9c7ee6df44db98abb54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/0bdd5c6f12cb7cb6644e484169656245af417735",
-                "reference": "0bdd5c6f12cb7cb6644e484169656245af417735",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/8a6bf870bcfa1597e514a9c7ee6df44db98abb54",
+                "reference": "8a6bf870bcfa1597e514a9c7ee6df44db98abb54",
                 "shasum": ""
             },
             "require": {
@@ -2454,20 +2523,20 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-10-02T14:33:08+00:00"
+            "time": "2020-10-06T14:22:36+00:00"
         },
         {
             "name": "laravel/horizon",
-            "version": "v5.2.0",
+            "version": "v5.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/horizon.git",
-                "reference": "839bf8b142585f7be142090d4d05c341a4595fae"
+                "reference": "8fbe70580d653e0f5c33ed9b151f6eebc16dfbf2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/horizon/zipball/839bf8b142585f7be142090d4d05c341a4595fae",
-                "reference": "839bf8b142585f7be142090d4d05c341a4595fae",
+                "url": "https://api.github.com/repos/laravel/horizon/zipball/8fbe70580d653e0f5c33ed9b151f6eebc16dfbf2",
+                "reference": "8fbe70580d653e0f5c33ed9b151f6eebc16dfbf2",
                 "shasum": ""
             },
             "require": {
@@ -2527,21 +2596,21 @@
                 "laravel",
                 "queue"
             ],
-            "time": "2020-09-29T17:39:48+00:00"
+            "time": "2020-10-06T15:44:48+00:00"
         },
         {
             "name": "laravel/nova",
-            "version": "v3.11.1",
+            "version": "v3.12.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "57c67c5da3bfc9e499a81b288ab47919bfb14b4c"
+                "reference": "196b229cf6c07f889d344db9fb255496ea61c738"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-57c67c5da3bfc9e499a81b288ab47919bfb14b4c-zip-a2ec0b.zip",
-                "reference": "57c67c5da3bfc9e499a81b288ab47919bfb14b4c",
-                "shasum": "105f97de110ea795d9ec643252cd27fbc893c93e"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-196b229cf6c07f889d344db9fb255496ea61c738-zip-924cae.zip",
+                "reference": "196b229cf6c07f889d344db9fb255496ea61c738",
+                "shasum": "73fedbd73c064089eb8a8a84a492b014a5bf9aed"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2602,7 +2671,7 @@
                 "admin",
                 "laravel"
             ],
-            "time": "2020-09-29T20:34:45+00:00"
+            "time": "2020-10-06T17:10:54+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -3960,16 +4029,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "2.40.1",
+            "version": "2.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "d9a76d8b7eb0f97cf3a82529393245212f40ba3b"
+                "reference": "8690b13ad4da6d54d692afea15aab30b36fee52e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/d9a76d8b7eb0f97cf3a82529393245212f40ba3b",
-                "reference": "d9a76d8b7eb0f97cf3a82529393245212f40ba3b",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/8690b13ad4da6d54d692afea15aab30b36fee52e",
+                "reference": "8690b13ad4da6d54d692afea15aab30b36fee52e",
                 "shasum": ""
             },
             "require": {
@@ -4045,7 +4114,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-23T08:17:37+00:00"
+            "time": "2020-10-04T09:11:05+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -4098,67 +4167,6 @@
                 "php"
             ],
             "time": "2020-09-26T10:30:38+00:00"
-        },
-        {
-            "name": "ocramius/package-versions",
-            "version": "1.9.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "94c9d42a466c57f91390cdd49c81313264f49d85"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/94c9d42a466c57f91390cdd49c81313264f49d85",
-                "reference": "94c9d42a466c57f91390cdd49c81313264f49d85",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.1.0 || ^2.0",
-                "php": "^7.4.0"
-            },
-            "require-dev": {
-                "composer/composer": "^1.9.3 || ^2.0@dev",
-                "doctrine/coding-standard": "^7.0.2",
-                "ext-zip": "^1.15.0",
-                "infection/infection": "^0.15.3",
-                "phpunit/phpunit": "^9.1.1",
-                "vimeo/psalm": "^3.9.3"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "PackageVersions\\Installer",
-                "branch-alias": {
-                    "dev-master": "1.99.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PackageVersions\\": "src/PackageVersions"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com"
-                }
-            ],
-            "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
-            "funding": [
-                {
-                    "url": "https://github.com/Ocramius",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/ocramius/package-versions",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2020-06-22T14:15:44+00:00"
         },
         {
             "name": "ohdearapp/ohdear-php-sdk",
@@ -6726,17 +6734,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "3.0.6",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "bc59db4be539ba082181cf94492478baf7f7cfe8"
+                "reference": "6eae11270f8c11c66b4e173787a686a05c4a5ee5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-bc59db4be539ba082181cf94492478baf7f7cfe8-zip-eb709f.zip",
-                "reference": "bc59db4be539ba082181cf94492478baf7f7cfe8",
-                "shasum": "ad0b6e5f44999cfc1ecbd598d21f4ea6da07f722"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-6eae11270f8c11c66b4e173787a686a05c4a5ee5-zip-5c6459.zip",
+                "reference": "6eae11270f8c11c66b4e173787a686a05c4a5ee5",
+                "shasum": "2618fa09de9e4da08bb503b470a8d69463a1996e"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -6839,10 +6847,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/3.0.6",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/3.2.0",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2020-09-30T20:34:08+00:00"
+            "time": "2020-10-05T13:44:48+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -7073,16 +7081,16 @@
         },
         {
             "name": "spatie/laravel-medialibrary",
-            "version": "8.9.3",
+            "version": "8.10.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-medialibrary.git",
-                "reference": "101bb63d411db177037ef71b55c9f325c6149efd"
+                "reference": "72b408972ba0b994eb52f39d38169621699e549b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/101bb63d411db177037ef71b55c9f325c6149efd",
-                "reference": "101bb63d411db177037ef71b55c9f325c6149efd",
+                "url": "https://api.github.com/repos/spatie/laravel-medialibrary/zipball/72b408972ba0b994eb52f39d38169621699e549b",
+                "reference": "72b408972ba0b994eb52f39d38169621699e549b",
                 "shasum": ""
             },
             "require": {
@@ -7169,7 +7177,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-03T00:03:18+00:00"
+            "time": "2020-10-05T21:54:57+00:00"
         },
         {
             "name": "spatie/laravel-menu",
@@ -7308,16 +7316,16 @@
         },
         {
             "name": "spatie/laravel-query-builder",
-            "version": "3.2.4",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-query-builder.git",
-                "reference": "203d86d90eda880b8e3d55d9247ceff6512c2b94"
+                "reference": "873575ec81f1d5f9cc7591fc3a559310de93ed62"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/203d86d90eda880b8e3d55d9247ceff6512c2b94",
-                "reference": "203d86d90eda880b8e3d55d9247ceff6512c2b94",
+                "url": "https://api.github.com/repos/spatie/laravel-query-builder/zipball/873575ec81f1d5f9cc7591fc3a559310de93ed62",
+                "reference": "873575ec81f1d5f9cc7591fc3a559310de93ed62",
                 "shasum": ""
             },
             "require": {
@@ -7370,7 +7378,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-10-01T13:52:50+00:00"
+            "time": "2020-10-05T19:08:39+00:00"
         },
         {
             "name": "spatie/laravel-rate-limited-job-middleware",
@@ -8293,16 +8301,16 @@
         },
         {
             "name": "spatie/simple-excel",
-            "version": "1.7.1",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/simple-excel.git",
-                "reference": "eeb9d3eed7c301130fe6b18a1e6db54c1eab51df"
+                "reference": "8be864d06c24e47352f9f1203d53ba3297f59b11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/simple-excel/zipball/eeb9d3eed7c301130fe6b18a1e6db54c1eab51df",
-                "reference": "eeb9d3eed7c301130fe6b18a1e6db54c1eab51df",
+                "url": "https://api.github.com/repos/spatie/simple-excel/zipball/8be864d06c24e47352f9f1203d53ba3297f59b11",
+                "reference": "8be864d06c24e47352f9f1203d53ba3297f59b11",
                 "shasum": ""
             },
             "require": {
@@ -8346,7 +8354,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-08T21:15:45+00:00"
+            "time": "2020-10-04T19:04:17+00:00"
         },
         {
             "name": "spatie/ssh",
@@ -8663,7 +8671,7 @@
         },
         {
             "name": "symfony/console",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
@@ -8756,7 +8764,7 @@
         },
         {
             "name": "symfony/css-selector",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/css-selector.git",
@@ -8823,7 +8831,7 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v4.4.14",
+            "version": "v4.4.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
@@ -8958,7 +8966,7 @@
         },
         {
             "name": "symfony/dom-crawler",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/dom-crawler.git",
@@ -9034,16 +9042,16 @@
         },
         {
             "name": "symfony/error-handler",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/error-handler.git",
-                "reference": "d2f1d4996d5499f1261164d10080e4120001f041"
+                "reference": "5e4d8ef8d71822922d1eebd130219ae3491a5ca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/error-handler/zipball/d2f1d4996d5499f1261164d10080e4120001f041",
-                "reference": "d2f1d4996d5499f1261164d10080e4120001f041",
+                "url": "https://api.github.com/repos/symfony/error-handler/zipball/5e4d8ef8d71822922d1eebd130219ae3491a5ca9",
+                "reference": "5e4d8ef8d71822922d1eebd130219ae3491a5ca9",
                 "shasum": ""
             },
             "require": {
@@ -9101,11 +9109,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-27T03:44:28+00:00"
+            "time": "2020-10-02T08:49:02+00:00"
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -9268,7 +9276,7 @@
         },
         {
             "name": "symfony/finder",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -9406,16 +9414,16 @@
         },
         {
             "name": "symfony/http-foundation",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "6cca6b2e4b69fc5bace160d14cf1ee5f71483db4"
+                "reference": "353b42e7b4fd1c898aab09a059466c9cea74039b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/6cca6b2e4b69fc5bace160d14cf1ee5f71483db4",
-                "reference": "6cca6b2e4b69fc5bace160d14cf1ee5f71483db4",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/353b42e7b4fd1c898aab09a059466c9cea74039b",
+                "reference": "353b42e7b4fd1c898aab09a059466c9cea74039b",
                 "shasum": ""
             },
             "require": {
@@ -9477,20 +9485,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-13T05:01:27+00:00"
+            "time": "2020-09-27T14:14:57+00:00"
         },
         {
             "name": "symfony/http-kernel",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-kernel.git",
-                "reference": "17227644c3c66dcf32bdfeceff4364d090cd6756"
+                "reference": "1764b87d2f10d5c9ce6e4850fe27934116d89708"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/17227644c3c66dcf32bdfeceff4364d090cd6756",
-                "reference": "17227644c3c66dcf32bdfeceff4364d090cd6756",
+                "url": "https://api.github.com/repos/symfony/http-kernel/zipball/1764b87d2f10d5c9ce6e4850fe27934116d89708",
+                "reference": "1764b87d2f10d5c9ce6e4850fe27934116d89708",
                 "shasum": ""
             },
             "require": {
@@ -9591,11 +9599,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-27T04:33:19+00:00"
+            "time": "2020-10-04T07:57:28+00:00"
         },
         {
             "name": "symfony/intl",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/intl.git",
@@ -9685,7 +9693,7 @@
         },
         {
             "name": "symfony/mime",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/mime.git",
@@ -9762,7 +9770,7 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
@@ -10688,7 +10696,7 @@
         },
         {
             "name": "symfony/process",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/process.git",
@@ -10752,16 +10760,16 @@
         },
         {
             "name": "symfony/routing",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/routing.git",
-                "reference": "d36e06eb02a55522a8eed070c1cbc3dc3c389876"
+                "reference": "720348c2ae011f8c56964c0fc3e992840cb60ccf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/routing/zipball/d36e06eb02a55522a8eed070c1cbc3dc3c389876",
-                "reference": "d36e06eb02a55522a8eed070c1cbc3dc3c389876",
+                "url": "https://api.github.com/repos/symfony/routing/zipball/720348c2ae011f8c56964c0fc3e992840cb60ccf",
+                "reference": "720348c2ae011f8c56964c0fc3e992840cb60ccf",
                 "shasum": ""
             },
             "require": {
@@ -10840,7 +10848,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-02T16:23:27+00:00"
+            "time": "2020-10-02T13:05:43+00:00"
         },
         {
             "name": "symfony/service-contracts",
@@ -10920,7 +10928,7 @@
         },
         {
             "name": "symfony/string",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/string.git",
@@ -11005,7 +11013,7 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
@@ -11097,16 +11105,16 @@
         },
         {
             "name": "symfony/translation-contracts",
-            "version": "v2.2.0",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation-contracts.git",
-                "reference": "77ce1c3627c9f39643acd9af086631f842c50c4d"
+                "reference": "e2eaa60b558f26a4b0354e1bbb25636efaaad105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/77ce1c3627c9f39643acd9af086631f842c50c4d",
-                "reference": "77ce1c3627c9f39643acd9af086631f842c50c4d",
+                "url": "https://api.github.com/repos/symfony/translation-contracts/zipball/e2eaa60b558f26a4b0354e1bbb25636efaaad105",
+                "reference": "e2eaa60b558f26a4b0354e1bbb25636efaaad105",
                 "shasum": ""
             },
             "require": {
@@ -11118,7 +11126,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 },
                 "thanks": {
                     "name": "symfony/contracts",
@@ -11168,11 +11176,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-07T11:33:47+00:00"
+            "time": "2020-09-28T13:05:58+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
@@ -11262,7 +11270,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
@@ -13451,6 +13459,146 @@
             "time": "2019-03-29T20:06:56+00:00"
         },
         {
+            "name": "orchestra/testbench",
+            "version": "v6.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/testbench.git",
+                "reference": "2a927bae79546e6d96a4a059c83bc1428bef7f5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/testbench/zipball/2a927bae79546e6d96a4a059c83bc1428bef7f5d",
+                "reference": "2a927bae79546e6d96a4a059c83bc1428bef7f5d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^8.0",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench-core": "^6.1",
+                "php": ">=7.3",
+                "phpunit/phpunit": "^8.4 || ^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "Laravel Testing Helper for Packages Development",
+            "homepage": "http://orchestraplatform.com/docs/latest/components/testbench/",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "laravel",
+                "orchestra-platform",
+                "orchestral",
+                "testing"
+            ],
+            "funding": [
+                {
+                    "url": "https://paypal.me/crynobone",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://liberapay.com/crynobone",
+                    "type": "liberapay"
+                }
+            ],
+            "time": "2020-09-28T00:46:08+00:00"
+        },
+        {
+            "name": "orchestra/testbench-core",
+            "version": "v6.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orchestral/testbench-core.git",
+                "reference": "2f62de09d1454420b59d5df5fc9b56efed22b2cc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orchestral/testbench-core/zipball/2f62de09d1454420b59d5df5fc9b56efed22b2cc",
+                "reference": "2f62de09d1454420b59d5df5fc9b56efed22b2cc",
+                "shasum": ""
+            },
+            "require": {
+                "fzaninotto/faker": "^1.9.1",
+                "php": ">=7.3",
+                "symfony/yaml": "^4.3 || ^5.0"
+            },
+            "require-dev": {
+                "laravel/framework": "^8.0",
+                "laravel/laravel": "dev-master",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/canvas": "^6.0",
+                "phpunit/phpunit": "^8.4 || ^9.0"
+            },
+            "suggest": {
+                "laravel/framework": "Required for testing (^8.0).",
+                "mockery/mockery": "Allow using Mockery for testing (^1.3.1).",
+                "orchestra/testbench-browser-kit": "Allow using legacy Laravel BrowserKit for testing (^6.0).",
+                "orchestra/testbench-dusk": "Allow using Laravel Dusk for testing (^6.0).",
+                "phpunit/phpunit": "Allow using PHPUnit for testing (^8.4 || ^9.0)."
+            },
+            "bin": [
+                "testbench"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Orchestra\\Testbench\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mior Muhammad Zaki",
+                    "email": "crynobone@gmail.com",
+                    "homepage": "https://github.com/crynobone"
+                }
+            ],
+            "description": "Testing Helper for Laravel Development",
+            "homepage": "http://orchestraplatform.com/docs/latest/components/testbench/",
+            "keywords": [
+                "BDD",
+                "TDD",
+                "laravel",
+                "orchestra-platform",
+                "orchestral",
+                "testing"
+            ],
+            "funding": [
+                {
+                    "url": "https://paypal.me/crynobone",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://liberapay.com/crynobone",
+                    "type": "liberapay"
+                }
+            ],
+            "time": "2020-09-28T00:30:48+00:00"
+        },
+        {
             "name": "phar-io/manifest",
             "version": "2.0.1",
             "source": {
@@ -14209,6 +14357,67 @@
                 }
             ],
             "time": "2020-10-02T03:54:37+00:00"
+        },
+        {
+            "name": "psalm/plugin-laravel",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/psalm/psalm-plugin-laravel.git",
+                "reference": "f31947807798182e9d7e14f28459608eb034e54b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/psalm/psalm-plugin-laravel/zipball/f31947807798182e9d7e14f28459608eb034e54b",
+                "reference": "f31947807798182e9d7e14f28459608eb034e54b",
+                "shasum": ""
+            },
+            "require": {
+                "barryvdh/laravel-ide-helper": "^2.8.0",
+                "ext-simplexml": "*",
+                "illuminate/container": "5.8.* || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/contracts": "5.8.* || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/database": "5.8.* || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/http": "5.8.* || ^6.0 || ^7.0 || ^8.0",
+                "illuminate/support": "5.8.* || ^6.0 || ^7.0 || ^8.0",
+                "orchestra/testbench": "^3.8 || ^4.0 || ^5.0 || ^6.0",
+                "php": "^7.2|^8",
+                "vimeo/psalm": "^3.13.1"
+            },
+            "require-dev": {
+                "codeception/codeception": "^4.1.6",
+                "codeception/module-asserts": "^1.0.0",
+                "codeception/module-phpbrowser": "^1.0.0",
+                "slevomat/coding-standard": "^6.2",
+                "squizlabs/php_codesniffer": "*",
+                "weirdan/codeception-psalm-module": "^0.8"
+            },
+            "type": "psalm-plugin",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.x-dev"
+                },
+                "psalm": {
+                    "pluginClass": "Psalm\\LaravelPlugin\\Plugin"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psalm\\LaravelPlugin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthew Brown",
+                    "email": "github@muglug.com"
+                }
+            ],
+            "description": "A Laravel plugin for Psalm",
+            "time": "2020-09-09T10:56:37+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -15011,16 +15220,16 @@
         },
         {
             "name": "sebastian/type",
-            "version": "2.2.2",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/type.git",
-                "reference": "e494dcaeb89d1458c9ccd8c819745245a1669aea"
+                "reference": "fa592377f3923946cb90bf1f6a71ba2e5f229909"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/e494dcaeb89d1458c9ccd8c819745245a1669aea",
-                "reference": "e494dcaeb89d1458c9ccd8c819745245a1669aea",
+                "url": "https://api.github.com/repos/sebastianbergmann/type/zipball/fa592377f3923946cb90bf1f6a71ba2e5f229909",
+                "reference": "fa592377f3923946cb90bf1f6a71ba2e5f229909",
                 "shasum": ""
             },
             "require": {
@@ -15032,7 +15241,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.3-dev"
                 }
             },
             "autoload": {
@@ -15059,7 +15268,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-09-28T06:01:38+00:00"
+            "time": "2020-10-06T08:41:03+00:00"
         },
         {
             "name": "sebastian/version",
@@ -15287,16 +15496,16 @@
         },
         {
             "name": "symfony/filesystem",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/filesystem.git",
-                "reference": "f3194303d3077829dbbc1d18f50288b2a01146f2"
+                "reference": "1a8697545a8d87b9f2f6b1d32414199cc5e20aae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/filesystem/zipball/f3194303d3077829dbbc1d18f50288b2a01146f2",
-                "reference": "f3194303d3077829dbbc1d18f50288b2a01146f2",
+                "url": "https://api.github.com/repos/symfony/filesystem/zipball/1a8697545a8d87b9f2f6b1d32414199cc5e20aae",
+                "reference": "1a8697545a8d87b9f2f6b1d32414199cc5e20aae",
                 "shasum": ""
             },
             "require": {
@@ -15347,11 +15556,11 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-09-02T16:23:27+00:00"
+            "time": "2020-09-27T14:02:37+00:00"
         },
         {
             "name": "symfony/stopwatch",
-            "version": "v5.1.6",
+            "version": "v5.1.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/stopwatch.git",
@@ -15461,33 +15670,35 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "3.12.2",
+            "version": "3.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "7c7ebd068f8acaba211d4a2c707c4ba90874fa26"
+                "reference": "d03e5ef057d6adc656c0ff7e166c50b73b4f48f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/7c7ebd068f8acaba211d4a2c707c4ba90874fa26",
-                "reference": "7c7ebd068f8acaba211d4a2c707c4ba90874fa26",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/d03e5ef057d6adc656c0ff7e166c50b73b4f48f3",
+                "reference": "d03e5ef057d6adc656c0ff7e166c50b73b4f48f3",
                 "shasum": ""
             },
             "require": {
                 "amphp/amp": "^2.1",
                 "amphp/byte-stream": "^1.5",
+                "composer/package-versions-deprecated": "^1.8.0",
                 "composer/semver": "^1.4 || ^2.0 || ^3.0",
                 "composer/xdebug-handler": "^1.1",
+                "dnoegel/php-xdg-base-dir": "^0.1.1",
                 "ext-dom": "*",
                 "ext-json": "*",
                 "ext-libxml": "*",
+                "ext-mbstring": "*",
                 "ext-simplexml": "*",
                 "ext-tokenizer": "*",
                 "felixfbecker/advanced-json-rpc": "^3.0.3",
                 "felixfbecker/language-server-protocol": "^1.4",
-                "netresearch/jsonmapper": "^1.0 || ^2.0",
-                "nikic/php-parser": "^4.3",
-                "ocramius/package-versions": "^1.2",
+                "netresearch/jsonmapper": "^1.0 || ^2.0 || ^3.0",
+                "nikic/php-parser": "4.3.* || 4.4.* || 4.5.* || 4.6.* || ^4.8",
                 "openlss/lib-array2xml": "^1.0",
                 "php": "^7.1.3|^8",
                 "sebastian/diff": "^3.0 || ^4.0",
@@ -15503,14 +15714,15 @@
                 "bamarni/composer-bin-plugin": "^1.2",
                 "brianium/paratest": "^4.0.0",
                 "ext-curl": "*",
-                "php-coveralls/php-coveralls": "^2.2",
+                "phpdocumentor/reflection-docblock": "^4.3.4 || ^5",
                 "phpmyadmin/sql-parser": "5.1.0",
                 "phpspec/prophecy": ">=1.9.0",
                 "phpunit/phpunit": "^7.5.16 || ^8.5 || ^9.0",
-                "psalm/plugin-phpunit": "^0.10",
+                "psalm/plugin-phpunit": "^0.11",
                 "slevomat/coding-standard": "^5.0",
                 "squizlabs/php_codesniffer": "^3.5",
-                "symfony/process": "^4.3"
+                "symfony/process": "^4.3",
+                "weirdan/prophecy-shim": "^1.0 || ^2.0"
             },
             "suggest": {
                 "ext-igbinary": "^2.0.5"
@@ -15554,7 +15766,7 @@
                 "inspection",
                 "php"
             ],
-            "time": "2020-07-03T16:59:07+00:00"
+            "time": "2020-09-15T13:39:50+00:00"
         },
         {
             "name": "webmozart/assert",

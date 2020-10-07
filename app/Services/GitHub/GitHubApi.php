@@ -17,6 +17,7 @@ class GitHubApi
 
     public function fetchPublicRepositories(string $username): Collection
     {
+        /** @var \Github\Api\Organization $api */
         $api = $this->client->api('organization');
 
         $paginator = new ResultPager($this->client);
@@ -30,6 +31,7 @@ class GitHubApi
 
     public function fetchRepositoryTopics(string $username, string $repository): Collection
     {
+        /** @var \Github\Api\Repo $api */
         $api = $this->client->api('repository');
 
         return collect($api->topics($username, $repository)['names'] ?? []);
@@ -37,6 +39,7 @@ class GitHubApi
 
     public function fetchRepositoryContributors(string $username, string $repository): Collection
     {
+        /** @var \Github\Api\Repo $api */
         $api = $this->client->api('repository');
 
         $paginator = new ResultPager($this->client);
@@ -46,6 +49,7 @@ class GitHubApi
 
     public function getUser($username)
     {
+        /** @var \Github\Api\User $api */
         $api = $this->client->api('user');
 
         return $api->show($username);

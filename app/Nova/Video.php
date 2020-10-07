@@ -64,7 +64,7 @@ class Video extends Resource
 
             Text::make('vimeo_id')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Number::make('sort_order')
                 ->readonly()

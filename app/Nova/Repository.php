@@ -26,7 +26,7 @@ class Repository extends Resource
         return [
             Text::make('Name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             BelongsTo::make('Ad'),
 

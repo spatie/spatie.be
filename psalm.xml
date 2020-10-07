@@ -17,13 +17,13 @@
 
     <issueHandlers>
         <!-- https://github.com/psalm/psalm-plugin-laravel/issues/62 -->
-        <InvalidArgument errorLevel="suppress" />
+        <InvalidArgument errorLevel="suppress"/>
 
         <!-- https://github.com/psalm/psalm-plugin-laravel/issues/62 -->
-        <UndefinedMagicMethod errorLevel="suppress" />
+        <UndefinedMagicMethod errorLevel="suppress"/>
 
         <!-- https://github.com/psalm/psalm-plugin-laravel/issues/62 -->
-        <UndefinedPropertyFetch errorLevel="suppress" />
+        <UndefinedPropertyFetch errorLevel="suppress"/>
 
         <!-- Suppressed until https://github.com/inertiajs/inertia-laravel/pull/112 is fixed -->
         <!-- Temporary Unsuppressed because of the rule above (https://github.com/psalm/psalm-plugin-laravel/issues/62) -->
@@ -40,5 +40,5 @@
         <ImplicitToStringCast errorLevel="suppress"/>
     </issueHandlers>
     <plugins>
-    </plugins>
+    <pluginClass class="Psalm\LaravelPlugin\Plugin"/></plugins>
 </psalm>

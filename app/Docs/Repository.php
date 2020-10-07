@@ -8,7 +8,6 @@ class Repository
 {
     public string $slug;
 
-    /** @var \App\Docs\Alias[] */
     public Collection $aliases;
 
     public ?string $category;
