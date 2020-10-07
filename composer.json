@@ -104,7 +104,7 @@
         }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm",
+        "psalm": "vendor/bin/psalm -c psalm.xml",
         "deploy": "envoy run deploy",
         "deploy-code": "envoy run deploy-code",
         "format":  "vendor/bin/php-cs-fixer fix --allow-risky=yes",
