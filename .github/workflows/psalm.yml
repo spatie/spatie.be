@@ -47,5 +47,3 @@ jobs:
 
             - name: Run psalm
               run: ./vendor/bin/psalm -c psalm.xml
-              env:
-                DB_PASSWORD: root
