@@ -16,16 +16,16 @@ class SatisAuthenticationController extends Controller
 
     public function __invoke(Authenticatable $license, Request $request)
     {
-//        /** @var $license \App\Models\License */
-//        if (!$license instanceof License) {
-//            abort(401);
-//        }
-//
-//        $package = $this->getRequestedPackage($request);
-//
-//        if (!$license->purchasable->includesPackageAccess($package)) {
-//            abort(401);
-//        }
+        /** @var $license \App\Models\License */
+        if (!$license instanceof License) {
+            abort(401);
+        }
+
+        $package = $this->getRequestedPackage($request);
+
+        if (!$license->purchasable->includesPackageAccess($package)) {
+            abort(401);
+        }
 
         return response('valid');
     }
