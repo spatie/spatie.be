@@ -3,6 +3,7 @@
 namespace Tests\Actions;
 
 use App\Actions\HandlePurchaseAction;
+use App\Actions\RestoreRepositoryAccessAction;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\User;
@@ -142,5 +143,28 @@ class HandlePurchaseActionTest extends TestCase
         );
 
         $this->assertEquals(2, $this->user->licenses()->count());
+    }
+
+    /** @test * */
+    public function it_restores_repository_access()
+    {
+        $spy = $this->spy(RestoreRepositoryAccessAction::class);
+
+        $this->action = resolve(HandlePurchaseAction::class);
+
+        $this->user->update(['github_username' => 'username']);
+
+        $purchasable = Purchasable::factory()->create([
+            'requires_license' => true,
+            'repository_access' => 'spatie/some-repository',
+        ]);
+
+        $this->action->execute(
+            $this->user,
+            $purchasable,
+            $this->payload,
+        );
+
+        $spy->shouldHaveReceived('execute')->with($this->user)->once();
     }
 }

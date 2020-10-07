@@ -19,7 +19,12 @@ class PurchaseFactory extends Factory
             'user_id' => User::factory(),
             'purchasable_id' => Purchasable::factory(),
             'license_id' => $this->faker->boolean ? License::factory() : null,
-            'receipt_id' => Receipt::factory(),
+            'receipt_id' => function () {
+                return ReceiptFactory::new()->id;
+            },
+            'paddle_webhook_payload' => [],
+            'paddle_fee' => $this->faker->randomNumber(),
+            'earnings' => $this->faker->randomNumber(),
         ];
     }
 }
