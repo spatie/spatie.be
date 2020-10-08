@@ -16,8 +16,6 @@ class SatisAuthenticationController extends Controller
 
     public function __invoke(Authenticatable $license, Request $request)
     {
-        return response('valid');
-
         /** @var $license \App\Models\License */
         if (! $license instanceof License) {
             abort(401);
