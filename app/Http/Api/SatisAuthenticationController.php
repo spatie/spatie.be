@@ -21,6 +21,10 @@ class SatisAuthenticationController extends Controller
             abort(401);
         }
 
+        if ($license->isMasterKey()) {
+            return response('valid');
+        }
+
         $package = $this->getRequestedPackage($request);
 
         /*

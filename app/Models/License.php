@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Support\Str;
 
 class License extends Model implements AuthenticatableContract
 {
@@ -31,7 +32,8 @@ class License extends Model implements AuthenticatableContract
 
     public function scopeForProduct(Builder $query, Product $product): void
     {
-        $query->whereHas('purchasable', fn (Builder $query) => $query->where('product_id', $product->id));
+        $query->whereHas('purchasable', fn(Builder $query
+        ) => $query->where('product_id', $product->id));
     }
 
     public function user(): BelongsTo
@@ -46,7 +48,9 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return $this->purchases()->where('has_repository_access', true)->exists();
+        return $this->purchases()
+            ->where('has_repository_access', true)
+            ->exists();
     }
 
     public function renew(): self
@@ -95,5 +99,10 @@ class License extends Model implements AuthenticatableContract
     public function getName(): string
     {
         return "{$this->purchasable->product->title}: {$this->purchasable->title}";
+    }
+
+    public function isMasterKey(): bool
+    {
+        return $this->key  === config('spatie.master_license_key');
     }
 }
