@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\HandlePurchaseAction;
 use App\Support\Paddle\ProcessPaymentSucceededJob;
 use Laravel\Paddle\Http\Controllers\WebhookController as CashierWebhookController;
 
