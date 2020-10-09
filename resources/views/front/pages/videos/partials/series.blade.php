@@ -3,7 +3,7 @@
         @foreach($allSeries as $series)
             <div>
                 @if($series->isPurchasable())
-                    <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
+                    <div class="flex flex-col line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
                                 <div class="shadow-lg">
@@ -28,7 +28,7 @@
                                 </span>
                             </div>
                         </h2>
-                        <p class="mt-4">
+                        <p class="flex-grow mt-4">
                             {{ $series->formattedDescription }}
                         </p>
 
@@ -59,7 +59,7 @@
                         @endif
                     </div>
                 @else
-                    <div class="line-l py-4 bg-gray-lightest bg-opacity-25">
+                    <div class="flex flex-col line-l py-4 bg-gray-lightest bg-opacity-25">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
                                 <div class="shadow-lg">
@@ -82,7 +82,7 @@
                                 @endif
                             </div>
                         </h2>
-                        <p class="mt-4">
+                        <p class="flex-grow mt-4">
                             {{ $series->formattedDescription }}
                         </p>
                         <p class="mt-4">
