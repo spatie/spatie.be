@@ -8,15 +8,6 @@ use Laravel\Paddle\Http\Controllers\WebhookController as CashierWebhookControlle
 
 class WebhookController extends CashierWebhookController
 {
-    private HandlePurchaseAction $handlePurchaseAction;
-
-    public function __construct(HandlePurchaseAction $handlePurchaseAction)
-    {
-        parent::__construct();
-
-        $this->handlePurchaseAction = $handlePurchaseAction;
-    }
-
     public function handlePaymentSucceeded($payload): void
     {
         parent::handlePaymentSucceeded($payload);
