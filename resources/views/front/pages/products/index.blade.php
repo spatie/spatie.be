@@ -26,7 +26,7 @@
 
                 <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
                     @foreach ($products as $product)
-                        <div class="flex flex-col line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
+                        <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                             <a href="{{ route('products.show', $product) }}">
                                 <div class="-mt-8 pb-8 px-12">
                                     <div class="shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
