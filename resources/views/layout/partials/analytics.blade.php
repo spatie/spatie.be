@@ -6,7 +6,11 @@
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-131225353-2');
+        gtag('config', 'UA-131225353-2', {
+            'linker': {
+                'accept_incoming': true
+            }
+        });
 
         @if(session()->has('sold_purchasable'))
             @php
