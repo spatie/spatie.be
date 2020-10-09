@@ -56,6 +56,9 @@ return [
             'region' => env('GITHUB_ADS_DISK_REGION'),
             'bucket' => env('GITHUB_ADS_DISK_BUCKET'),
             'url' => env('GITHUB_ADS_DISK_URL'),
+            'options' => [
+                'CacheControl' => 'max-age=120, s-max-age=120',
+            ],
         ],
 
         'local' => [
