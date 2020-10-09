@@ -24,6 +24,10 @@ class Product extends Model implements HasMedia, Sortable
         'sort_when_creating' => true,
     ];
 
+    public $casts = [
+        'visible' => 'boolean',
+    ];
+
     public $with = [
         'media',
         'purchasables',

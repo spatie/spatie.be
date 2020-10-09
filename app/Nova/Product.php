@@ -62,6 +62,7 @@ class Product extends Resource
             Markdown::make('Description'),
             Markdown::make('Long Description'),
 
+            Boolean::make('Visible on front', 'visible'),
             Boolean::make('External'),
             Text::make('Url')->hideFromIndex(),
             Text::make('Action url')->hideFromIndex(),
