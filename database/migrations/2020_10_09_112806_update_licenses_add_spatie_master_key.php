@@ -23,13 +23,15 @@ class UpdateLicensesAddSpatieMasterKey extends Migration
                 ->where('requires_license', true)
                 ->first();
 
-            License::firstOrCreate([
-                'user_id' => $spatie->id,
-                'key' => config('spatie.master_license_key'),
-            ], [
-                'satis_authentication_count' => 0,
-                'purchasable_id' => $purchasable->id,
-            ]);
+            if ($purchasable) {
+                License::firstOrCreate([
+                    'user_id' => $spatie->id,
+                    'key' => config('spatie.master_license_key'),
+                ], [
+                    'satis_authentication_count' => 0,
+                    'purchasable_id' => $purchasable->id,
+                ]);
+            }
         });
     }
 }
