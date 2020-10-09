@@ -59,7 +59,7 @@
                         @endif
                     </div>
                 @else
-                    <div class="line-l py-4 bg-white bg-opacity-50">
+                    <div class="line-l py-4 bg-gray-lightest bg-opacity-25">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
                                 <div class="shadow-lg">
