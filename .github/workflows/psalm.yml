@@ -1,10 +1,6 @@
 name: Psalm
 
-on:
-    push:
-        paths:
-            - '**.php'
-            - 'psalm.xml'
+on: [push]
 
 jobs:
     psalm:
@@ -33,6 +29,8 @@ jobs:
 
             - name: Run composer install
               run: composer install -n --prefer-dist
+              env:
+                COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
             - name: Prepare Laravel Application
               run: |

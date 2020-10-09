@@ -4,6 +4,7 @@ namespace App\Listeners;
 
 use App\Models\Subscriber;
 use App\Notifications\WelcomeFrontLinePhpWaitingListNotification;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Spatie\Mailcoach\Events\SubscribedEvent;
 use Spatie\Mailcoach\Models\Subscriber as MailcoachSubscriber;
 
@@ -18,6 +19,12 @@ class SendCoupon
 
     protected function upcastSubscriber(MailcoachSubscriber $subscriber): Subscriber
     {
-        return Subscriber::findByUuid($subscriber->uuid);
+        $subscriber = Subscriber::findByUuid($subscriber->uuid);
+
+        if (! $subscriber) {
+            throw (new ModelNotFoundException())->setModel(Subscriber::class);
+        }
+
+        return $subscriber;
     }
 }

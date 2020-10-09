@@ -32,7 +32,7 @@ class Ad extends Model
 
         self::deleting(function (Ad $ad): void {
             $ad->repositories->each(function (Repository $repository) {
-                app(DeleteRepositoryAdImageAction::class)->execute($repository);
+                app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
             });
         });
     }

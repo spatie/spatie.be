@@ -14,7 +14,6 @@ class Alias
 
     public string $githubUrl;
 
-    /** @var \App\Docs\DocumentationPage[] */
     public Collection $pages;
 
     public function __construct(

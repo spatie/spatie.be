@@ -14,6 +14,7 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use NovaItemsField\Items;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class Purchasable extends Resource
@@ -37,7 +38,7 @@ class Purchasable extends Resource
 
             Text::make('Title')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             BelongsTo::make('Purchasable for renewal', 'renewalPurchasable', Purchasable::class)
                 ->nullable(),
@@ -48,9 +49,9 @@ class Purchasable extends Resource
 
             Text::make('Paddle id', 'paddle_product_id')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
-            Select::make('Type')->options(PurchasableType::getLabels()) ->rules('required'),
+            Select::make('Type')->options(PurchasableType::getLabels())->rules(['required']),
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentPurchasable $product) {
@@ -81,6 +82,8 @@ class Purchasable extends Resource
                 ]),
 
             Text::make('Repository access'),
+
+            Items::make('Satis packages'),
 
             Text::make('Sponsor coupon')->help('For display purposes only, you still need to create this in Paddle.'),
         ];

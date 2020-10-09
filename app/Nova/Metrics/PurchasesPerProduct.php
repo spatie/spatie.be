@@ -18,7 +18,7 @@ class PurchasesPerProduct extends Partition
                 ->whereHas('receipt', function (Builder $query): void {
                     $query->where('amount', '!=', 0);
                 })
-                ->select('purchases.*', 'purchasables.product_id')
+                ->select(['purchases.*', 'purchasables.product_id'])
                 ->join('purchasables', 'purchasables.id', '=', 'purchases.purchasable_id'),
             'product_id'
         )->label(function ($value) {

@@ -31,18 +31,18 @@ class User extends Resource
 
             Text::make('Name')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Text::make('Email')
                 ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
+                ->rules(['required', 'email', 'max:254'])
+                ->creationRules(['unique:users,email'])
+                ->updateRules(['unique:users,email,{{resourceId}}']),
 
             Password::make('Password')
                 ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:8')
-                ->updateRules('nullable', 'string', 'min:8'),
+                ->creationRules(['required', 'string', 'min:8'])
+                ->updateRules(['nullable', 'string', 'min:8']),
 
             Boolean::make('Is admin'),
 

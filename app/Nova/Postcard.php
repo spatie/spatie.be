@@ -27,15 +27,15 @@ class Postcard extends Resource
 
             Text::make('Sender')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Text::make('City')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Text::make('Country')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentPostcard $postcard) {

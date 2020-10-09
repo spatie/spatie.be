@@ -2,6 +2,7 @@
 
 namespace App\Support\ValueStores;
 
+use Illuminate\Support\Arr;
 use Spatie\Valuestore\Valuestore;
 
 class UpdatedRepositoriesValueStore
@@ -20,7 +21,7 @@ class UpdatedRepositoriesValueStore
 
     public function getNames(): array
     {
-        return $this->valueStore->get('updatedRepositoryNames', []);
+        return Arr::wrap($this->valueStore->get('updatedRepositoryNames') ?? []);
     }
 
     public function store(string $name): self

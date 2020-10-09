@@ -30,11 +30,6 @@ class Earnings extends Trend
         ];
     }
 
-    public function cacheFor()
-    {
-        // return now()->addMinutes(5);
-    }
-
     public function uriKey()
     {
         return 'purchases';
