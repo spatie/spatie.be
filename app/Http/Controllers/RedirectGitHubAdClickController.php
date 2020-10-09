@@ -12,6 +12,6 @@ class RedirectGitHubAdClickController
             return redirect()->route('products.index');
         }
 
-        return redirect()->to($ad->click_redirect_url);
+        return redirect()->to($ad->click_redirect_url . "?utm_source=repo-{$repository->name}");
     }
 }
