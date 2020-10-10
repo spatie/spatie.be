@@ -145,7 +145,7 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertEquals(2, $this->user->licenses()->count());
     }
 
-    /** @test * */
+    /** @test */
     public function it_restores_repository_access()
     {
         $spy = $this->spy(RestoreRepositoryAccessAction::class);
