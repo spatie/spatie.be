@@ -16,7 +16,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
         $this->info('Revoking access to repositories for expired licenses...');
 
         Purchase::query()
-            ->whereHas('license', fn(Builder $query) => $query->whereExpired())
+            ->whereHas('license', fn (Builder $query) => $query->whereExpired())
             ->where('has_repository_access', true)
             ->cursor()
             ->each(function (Purchase $purchase) use ($gitHubApi) {
