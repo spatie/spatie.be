@@ -19,8 +19,7 @@ class RestoreRepositoryAccessAction
     {
         $user->purchases
             ->where('has_repository_access', false)
-            ->each(function (Purchase $purchase) use ($user)
-            {
+            ->each(function (Purchase $purchase) use ($user) {
                 if (! $purchase->purchasable->repository_access) {
                     return;
                 }
