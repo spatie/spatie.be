@@ -19,7 +19,7 @@ class RedirectGitHubAdClickControllerTest extends TestCase
 
         $this
             ->get(route('github-ad-click', $repository->name))
-            ->assertRedirect($redirectUrl);
+            ->assertRedirect("$redirectUrl?utm_source=repo-{$repository->name}");
     }
 
     /** @test */
