@@ -15,6 +15,10 @@ class GitHubSocialiteController
         session()->reflash();
 
         if (auth()->check()) {
+            /*
+             * If somebody is already logged in, the user wants to
+             * connect their GitHub profile. Remember who's logged in.
+             */
             session()->put('auth-user-email', auth()->user()->email);
         }
 
@@ -39,6 +43,10 @@ class GitHubSocialiteController
         app(RestoreRepositoryAccessAction::class)->execute($user);
 
         if (! $user->is_sponsor && ! $user->isSpatieMember()) {
+            /*
+             * Display a flash warning on the profile page that the user
+             * is not yet a sponsor
+             */
             session()->flash('not-a-sponsor');
         }
 
@@ -52,13 +60,25 @@ class GitHubSocialiteController
     protected function retrieveUser($gitHubUser): User
     {
         if (session('auth-user-email')) {
+            /*
+             * If there already was a local user created for the email used
+             * on GitHub, then let's use that local user
+             */
             return User::where('email', session('auth-user-email'))->first();
         }
 
         if ($user = User::where('github_id', $gitHubUser->id)->orWhere('email', $gitHubUser->email)->first()) {
+            /*
+             * Somebody tries to login via GitHub that already
+             * has been logged in, in the past.
+             */
             return $user;
         }
 
+        /*
+         * Somebody tries to login via GitHub that doesn't have a local user
+         * yet. Let's create a new local user.
+         */
         return User::create([
             'password' => bcrypt(Str::random()),
             'email' => $gitHubUser->email,
