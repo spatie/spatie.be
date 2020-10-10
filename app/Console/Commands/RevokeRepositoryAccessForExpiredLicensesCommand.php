@@ -11,7 +11,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
 {
     public $signature = 'revoke-repository-access-for-expired-licenses';
 
-    public function handle(GitHubApi $gitHubApi): void
+    public function handle(GitHubApi $gitHubApi)
     {
         $this->info('Revoking access to repositories for expired licenses...');
 
