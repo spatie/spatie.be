@@ -8,7 +8,7 @@ use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Facades\Socialite;
 
-class GithubSocialiteController
+class GitHubSocialiteController
 {
     public function redirect()
     {

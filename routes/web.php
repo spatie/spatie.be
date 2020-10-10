@@ -8,7 +8,7 @@ use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
-use App\Http\Controllers\GithubSocialiteController;
+use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\IsValidLicenseController;
@@ -113,8 +113,8 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkE
 Route::get('reset-password', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('login/github', [GithubSocialiteController::class, 'redirect'])->name('github-login');
-Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
+Route::get('login/github', [GitHubSocialiteController::class, 'redirect'])->name('github-login');
+Route::get('login/github/callback', [GitHubSocialiteController::class, 'callback']);
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
