@@ -6,6 +6,7 @@ use App\Console\Commands\ImportDocsFromRepositoriesCommand;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
+use App\Console\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Console\Commands\SendLicenseExpirationNotificationsCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
@@ -27,6 +28,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
 
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
+        $schedule->command(RevokeRepositoryAccessForExpiredLicensesCommand::class)->dailyAt('04:00');
         $schedule->command(ImportDocsFromRepositoriesCommand::class)->everyThirtyMinutes();
         $schedule->job(RandomizeAdsOnGitHubRepositoriesJob::class)->weekly();
     }
