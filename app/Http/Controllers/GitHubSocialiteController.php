@@ -40,6 +40,10 @@ class GitHubSocialiteController
             'is_sponsor' => $isSponsor,
         ]);
 
+        /*
+         * Make sure the user has access to all repositories that
+         * belong to past purchases.
+         */
         app(RestoreRepositoryAccessAction::class)->execute($user);
 
         if (! $user->is_sponsor && ! $user->isSpatieMember()) {
