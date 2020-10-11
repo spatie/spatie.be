@@ -6,9 +6,9 @@ use App\Models\Product;
 use App\Models\Purchasable;
 use Illuminate\Http\Request;
 
-class PurchasablesController
+class AfterPaddleSaleController
 {
-    public function afterSale(Request $request, Product $product, Purchasable $purchasable)
+    public function __invoke(Request $request, Product $product, Purchasable $purchasable)
     {
         sleep(3);
 

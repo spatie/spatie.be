@@ -16,7 +16,7 @@ use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PurchasablesController;
+use App\Http\Controllers\AfterPaddleSaleController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\RedirectGitHubAdClickController;
@@ -60,7 +60,7 @@ Route::prefix('products')->group(function () {
     Route::get('/', [ProductsController::class, 'index'])->name('products.index');
     Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
 
-    Route::get('{product:slug}/purchasables/{purchasable}/purchase-complete', [PurchasablesController::class, 'afterSale']);
+    Route::get('{product:slug}/purchasables/{purchasable}/purchase-complete', AfterPaddleSaleController::class);
 
     Route::get('{product:slug}/purchases/{purchase}/download/{file}', DownloadPurchasableController::class)
         ->middleware(['auth', 'signed'])
