@@ -15,13 +15,13 @@ class HandleGitHubWebhookController
 
         $payload = json_decode($request->getContent(), true);
 
-        $updatedRepository = $payload['repository']['full_name'] ?? null;
+        $updatedRepositoryName = $payload['repository']['full_name'] ?? null;
 
-        if ($updatedRepository === null) {
+        if ($updatedRepositoryName === null) {
             return;
         }
 
-        UpdatedRepositoriesValueStore::make()->store($updatedRepository);
+        UpdatedRepositoriesValueStore::make()->store($updatedRepositoryName);
     }
 
     protected function ensureValidRequest(Request $request): void
