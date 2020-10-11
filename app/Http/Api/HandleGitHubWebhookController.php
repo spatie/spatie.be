@@ -9,11 +9,12 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class HandleGitHubWebhookController
 {
-    public function __invoke(Request $request): void
+    public function __invoke(Request $request)
     {
         $this->ensureValidRequest($request);
 
         $payload = json_decode($request->getContent(), true);
+
         $updatedRepository = $payload['repository']['full_name'] ?? null;
 
         if ($updatedRepository === null) {
