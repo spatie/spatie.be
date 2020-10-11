@@ -19,26 +19,26 @@ class ImportDocsFromRepositoriesCommand extends Command
 
     protected $description = 'Fetches docs from all repositories in docs-repositories.json';
 
-    public function handle()
-    {
-        $this->info('Importing docs...');
+public function handle()
+{
+    $this->info('Importing docs...');
 
-        $loop = Factory::create();
+    $loop = Factory::create();
 
-        $updatedRepositoriesValueStore = UpdatedRepositoriesValueStore::make();
+    $updatedRepositoriesValueStore = UpdatedRepositoriesValueStore::make();
 
-        $updatedRepositoryNames = $updatedRepositoriesValueStore->getNames();
+    $updatedRepositoryNames = $updatedRepositoriesValueStore->getNames();
 
-        $this
-        ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
-        ->pipe(fn (Collection $processes) => $this->wrapInPromise($processes));
+    $this
+    ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
+    ->pipe(fn (Collection $processes) => $this->wrapInPromise($processes));
 
-        $loop->run();
+    $loop->run();
 
-        $updatedRepositoriesValueStore->flush();
+    $updatedRepositoriesValueStore->flush();
 
-        $this->info('All done!');
-    }
+    $this->info('All done!');
+}
 
     protected function convertRepositoriesToProcesses(
         array $updatedRepositoryNames,
