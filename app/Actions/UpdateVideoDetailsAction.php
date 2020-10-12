@@ -17,7 +17,7 @@ class UpdateVideoDetailsAction
 
     public function execute(Video $video): Video
     {
-        $video->withoutEvents(function () use ($video): void {
+        $video->withoutEvents(function () use ($video) {
             $vimeoVideo = $this->vimeo->getVideo($video->vimeo_id);
 
             $slug = Str::slug($vimeoVideo['name']);
