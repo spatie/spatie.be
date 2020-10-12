@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Paddle\Receipt;
 
@@ -36,12 +37,12 @@ class Purchase extends Model
         return $this->belongsTo(Receipt::class);
     }
 
-    public function scopeWhereUser(Builder $query, User $user)
+    public function scopeWhereUser(Builder $query, User $user): void
     {
         $query->where('user_id', $user->id);
     }
 
-    public function scopeForProduct(Builder $query, Product $product)
+    public function scopeForProduct(Builder $query, Product $product): void
     {
         $query->whereHas('purchasable', fn (Builder $query) => $query->where('product_id', $product->id));
     }

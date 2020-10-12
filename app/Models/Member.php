@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Spatie\SchemaOrg\Person;
 use Spatie\SchemaOrg\Schema;
 
@@ -36,7 +37,7 @@ class Member extends Model
                 $this->website,
                 $this->twitter ? "https://twitter.com/{$this->twitter}" : null,
             ])))
-            ->if($this->public_email, function ($person) {
+            ->if($this->public_email, function ($person): void {
                 $person->email($this->email);
             });
     }

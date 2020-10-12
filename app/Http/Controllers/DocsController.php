@@ -10,9 +10,9 @@ class DocsController
 {
     public function index(Docs $docs)
     {
-        $repositories = $docs->getRepositories();
-
-        return view('front.pages.docs.index', compact('repositories'));
+        return view('front.pages.docs.index', [
+            'repositories' => $docs->getRepositories(),
+        ]);
     }
 
     public function repository(string $repository, ?string $alias = null, Docs $docs)
@@ -46,6 +46,7 @@ class DocsController
 
         abort_if(is_null($alias), 404, 'Alias not found');
 
+        /** @var Collection $pages */
         $pages = $alias->pages;
 
         $page = $pages->firstWhere('slug', $slug);

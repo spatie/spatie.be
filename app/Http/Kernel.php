@@ -2,7 +2,6 @@
 
 namespace App\Http;
 
-use App\Http\Middleware\OnlyForSpatie;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -28,7 +27,6 @@ class Kernel extends HttpKernel
 
         'admin' => [
             \App\Http\Middleware\VerifyCsrfToken::class,
-            //\Spatie\ResponseCache\Middlewares\DoNotCacheResponse::class,
         ],
 
         'api' => [
@@ -44,7 +42,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'spatieMembers' => OnlyForSpatie::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
     ];
 }

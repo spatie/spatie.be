@@ -8,7 +8,7 @@ use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
-use App\Http\Controllers\GithubSocialiteController;
+use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\IsValidLicenseController;
@@ -16,9 +16,10 @@ use App\Http\Controllers\OpenSourceController;
 use App\Http\Controllers\PostcardController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AfterPaddleSaleController;
 use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
-use App\Http\Controllers\RedirectGuidelinesDomainController;
+use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
@@ -35,7 +36,7 @@ Route::domain('docs.spatie.be')->group(function () {
 });
 
 Route::domain('guidelines.spatie.be')->group(function () {
-    Route::get('/{url}', RedirectGuidelinesDomainController::class)->where('url', '.*');
+    Route::permanentRedirect('{url?}', 'https://spatie.be/guidelines');
 });
 
 Route::view('/', 'front.pages.home.index')->name('home');
@@ -53,6 +54,8 @@ Route::prefix('about-us')->group(function () {
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductsController::class, 'index'])->name('products.index');
     Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
+
+    Route::get('{product:slug}/purchasables/{purchasable}/purchase-complete', AfterPaddleSaleController::class);
 
     Route::get('{product:slug}/purchases/{purchase}/download/{file}', DownloadPurchasableController::class)
         ->middleware(['auth', 'signed'])
@@ -75,7 +78,7 @@ Route::prefix('vacancies')->group(function () {
     Route::get('{slug}', function ($slug) {
         $view = "front.pages.vacancies.{$slug}";
 
-        if (!view()->exists($view)) {
+        if (! view()->exists($view)) {
             abort(404);
         }
 
@@ -105,8 +108,8 @@ Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkE
 Route::get('reset-password', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::get('login/github', [GithubSocialiteController::class, 'redirect'])->name('github-login');
-Route::get('login/github/callback', [GithubSocialiteController::class, 'callback']);
+Route::get('login/github', [GitHubSocialiteController::class, 'redirect'])->name('github-login');
+Route::get('login/github/callback', [GitHubSocialiteController::class, 'callback']);
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
@@ -125,5 +128,7 @@ Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
 Route::view('disclaimer', 'front.pages.legal.disclaimer')->name('legal.disclaimer');
 Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('legal.conditions');
 Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
+
+Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::view('offline', 'errors.offline')->name('offline');

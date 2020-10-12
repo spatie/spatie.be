@@ -183,6 +183,7 @@ return [
         App\Providers\LivewireServiceProvider::class,
         App\Providers\MailcoachServiceProvider::class,
         App\Providers\HorizonServiceProvider::class,
+        \App\Providers\EventServiceProvider::class,
     ],
 
     /*

@@ -7,10 +7,6 @@ use Spatie\MediaLibrary\ResponsiveImages\WidthCalculator\FileSizeOptimizedWidthC
 
 class FileSizeOptimizedWidthCalculator extends BaseFileSizeOptimizedWidthCalculator
 {
-    /*
-     * The only difference with the base width calculator is a bigger
-     * step size resulting in fewer images.
-     */
     public float $stepSize = 0.4;
 
     public function calculateWidths(int $fileSize, int $width, int $height): Collection
@@ -30,7 +26,7 @@ class FileSizeOptimizedWidthCalculator extends BaseFileSizeOptimizedWidthCalcula
 
             $newWidth = (int) floor(sqrt(($predictedFileSize / $pixelPrice) / $ratio));
 
-            if ($this->finishedCalculating($predictedFileSize, $newWidth)) {
+            if ($this->finishedCalculating((int) $predictedFileSize, $newWidth)) {
                 return $targetWidths;
             }
 

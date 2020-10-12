@@ -40,21 +40,21 @@ class HandlePurchaseLicensingAction
             $this->ensureUserOwnsPurchasableToRenew($purchase->user, $purchasableToLicense);
         }
 
-        $license = $this->createOrRenewLicense($purchase->user, $purchasableToLicense);
+        $license = $this->createOrRenewLicense($purchase->user, $purchasableToLicense, $purchase->purchasable->isRenewal());
 
         $purchase->update(['license_id' => $license->id]);
 
         return $purchase;
     }
 
-    protected function createOrRenewLicense(User $user, Purchasable $purchasable): License
+    protected function createOrRenewLicense(User $user, Purchasable $purchasable, bool $isRenewal): License
     {
         $license = License::query()
             ->where('purchasable_id', $purchasable->id)
             ->where('user_id', $user->id)
             ->first();
 
-        if ($license !== null) {
+        if ($license !== null && $isRenewal) {
             return $license->renew();
         }
 

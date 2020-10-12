@@ -31,7 +31,7 @@ class Schema
         return Builder::postalAddress()
             ->addressLocality('Antwerp')
             ->addressRegion('Antwerp')
-            ->postalCode(2060)
+            ->postalCode('2060')
             ->streetAddress('Kruikstraat 22 bus 12')
             ->addressCountry('Belgium');
     }

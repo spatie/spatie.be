@@ -100,7 +100,7 @@ class MembersSeeder extends Seeder
         ],
     ];
 
-    public function run()
+    public function run(): void
     {
         foreach ($this->members as $email => $attributes) {
             Member::firstOrNew(['email' => $email])

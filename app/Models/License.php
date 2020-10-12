@@ -7,6 +7,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -28,9 +29,11 @@ class License extends Model implements AuthenticatableContract
         return $this->belongsTo(Purchasable::class);
     }
 
-    public function scopeForProduct(Builder $query, Product $product)
+    public function scopeForProduct(Builder $query, Product $product): void
     {
-        $query->whereHas('purchasable', fn (Builder $query) => $query->where('product_id', $product->id));
+        $query->whereHas('purchasable', fn (
+            Builder $query
+        ) => $query->where('product_id', $product->id));
     }
 
     public function user(): BelongsTo
@@ -45,7 +48,9 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return $this->purchases()->where('has_repository_access', true)->exists();
+        return $this->purchases()
+            ->where('has_repository_access', true)
+            ->exists();
     }
 
     public function renew(): self
@@ -77,14 +82,14 @@ class License extends Model implements AuthenticatableContract
         return $this->expires_at->isPast();
     }
 
-    public function scopeWhereExpired(Builder $query)
+    public function scopeWhereExpired(Builder $query): void
     {
         $query->where('expires_at', '<', now());
     }
 
-    public function scopeWhereNotExpired(Builder $query)
+    public function scopeWhereNotExpired(Builder $query): void
     {
-        $query->where(function (Builder $query) {
+        $query->where(function (Builder $query): void {
             $query
                 ->whereNull('expires_at')
                 ->orWhere('expires_at', '>', now());
@@ -94,5 +99,10 @@ class License extends Model implements AuthenticatableContract
     public function getName(): string
     {
         return "{$this->purchasable->product->title}: {$this->purchasable->title}";
+    }
+
+    public function isMasterKey(): bool
+    {
+        return $this->key === config('spatie.master_license_key');
     }
 }

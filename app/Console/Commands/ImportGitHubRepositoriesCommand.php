@@ -15,13 +15,13 @@ class ImportGitHubRepositoriesCommand extends Command
 
     protected $description = 'Import public repositories';
 
-    public function handle(GitHubApi $api)
+    public function handle(GitHubApi $api): void
     {
         $this->info('Syncing all public repositories...');
 
         $repositories = $api->fetchPublicRepositories('spatie');
 
-        $repositories->each(function (array $repositoryAttributes) use ($api) {
+        $repositories->each(function (array $repositoryAttributes) use ($api): void {
             $this->comment("Importing `{$repositoryAttributes['name']}`... ");
 
             $repository = Repository::updateOrCreate(['name' => $repositoryAttributes['name'] ?? null], [

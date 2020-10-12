@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\HasMedia;
@@ -11,7 +12,6 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 class Postcard extends Model implements HasMedia
 {
     use HasFactory;
-
     use InteractsWithMedia;
 
     public $with = [
@@ -59,7 +59,7 @@ class Postcard extends Model implements HasMedia
     public static function getTopCountries(): Collection
     {
         return Postcard::query()
-            ->select('country', DB::raw('COUNT(country) as postcard_count'))
+            ->select(['country', DB::raw('COUNT(country) as postcard_count')])
             ->groupBy('country')
             ->orderByDesc('postcard_count')
             ->take(3)

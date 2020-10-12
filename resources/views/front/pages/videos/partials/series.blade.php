@@ -1,9 +1,9 @@
 <section id="series" class="section overflow-visible">
-    <div class="wrap grid sm:grid-cols-2 col-gap-6 row-gap-16 | items-start markup-lists">
+    <div class="wrap grid sm:grid-cols-2 col-gap-6 row-gap-16 | markup-lists">
         @foreach($allSeries as $series)
             <div>
                 @if($series->isPurchasable())
-                    <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
+                    <div class="h-full line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
                                 <div class="shadow-lg">
@@ -59,7 +59,7 @@
                         @endif
                     </div>
                 @else
-                    <div class="line-l py-4 bg-white bg-opacity-50">
+                    <div class="h-full line-l py-4 bg-gray-lightest bg-opacity-25">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
                                 <div class="shadow-lg">

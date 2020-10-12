@@ -8,7 +8,7 @@ use Spatie\Mailcoach\Models\EmailList;
 
 class EmailListSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         /** @var \Spatie\Mailcoach\Models\EmailList $emailList */
         $emailList = EmailList::create([

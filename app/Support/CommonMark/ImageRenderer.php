@@ -15,13 +15,7 @@ use League\CommonMark\Util\RegexHelper;
 class ImageRenderer implements InlineRendererInterface, ConfigurationAwareInterface
 {
     protected ConfigurationInterface $config;
-
-    /**
-     * @param Image $inline
-     * @param ElementRendererInterface $htmlRenderer
-     *
-     * @return HtmlElement
-     */
+    
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         if (! ($inline instanceof Image)) {
@@ -52,7 +46,7 @@ class ImageRenderer implements InlineRendererInterface, ConfigurationAwareInterf
         return new HtmlElement('img', $attrs, '', true);
     }
 
-    public function setConfiguration(ConfigurationInterface $configuration)
+    public function setConfiguration(ConfigurationInterface $configuration): void
     {
         $this->config = $configuration;
     }

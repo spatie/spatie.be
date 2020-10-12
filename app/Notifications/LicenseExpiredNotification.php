@@ -4,9 +4,9 @@ namespace App\Notifications;
 
 use App\Http\Controllers\ProductsController;
 use App\Models\License;
+use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Notifications\Notification;
 
 class LicenseExpiredNotification extends Notification
@@ -25,7 +25,7 @@ class LicenseExpiredNotification extends Notification
         return ['mail'];
     }
 
-    public function toMail(Notifiable $notifiable): MailMessage
+    public function toMail(User $notifiable): MailMessage
     {
         $name = $this->license->getName();
 

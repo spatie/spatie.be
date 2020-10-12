@@ -10,7 +10,10 @@ use Illuminate\Routing\Controller;
 
 class ResetPasswordController extends Controller
 {
-    use ResetsPasswords, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use ResetsPasswords;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     public function __construct()
     {

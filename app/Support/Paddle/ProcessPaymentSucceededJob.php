@@ -15,7 +15,10 @@ use Laravel\Paddle\Receipt;
 
 class ProcessPaymentSucceededJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     private array $payload;
 

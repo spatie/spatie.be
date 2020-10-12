@@ -10,12 +10,12 @@ class VideoCompletedButtonComponent extends Component
     /** @var \App\Models\Video|null */
     public $video;
 
-    public function mount(Video $video)
+    public function mount(Video $video): void
     {
         $this->video = $video;
     }
 
-    public function toggleCompleted()
+    public function toggleCompleted(): void
     {
         $this->video->hasBeenCompletedByCurrentUser()
             ? $this->video->markAsUncompletedForCurrentUser()

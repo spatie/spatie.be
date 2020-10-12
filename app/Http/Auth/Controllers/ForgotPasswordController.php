@@ -10,7 +10,10 @@ use Illuminate\Routing\Controller;
 
 class ForgotPasswordController extends Controller
 {
-    use SendsPasswordResetEmails, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use SendsPasswordResetEmails;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     public function __construct()
     {

@@ -9,7 +9,9 @@ class ProductsController
 {
     public function index(Request $request)
     {
-        $products = Product::orderBy('sort_order')->get();
+        $products = Product::orderBy('sort_order')
+            ->where('visible', true)
+            ->get();
 
         $purchasesPerProduct = collect();
         if ($request->user()) {
@@ -24,14 +26,6 @@ class ProductsController
 
     public function show(Request $request, Product $product)
     {
-        if (request()->get('purchase') === 'success') {
-            sleep(3);
-
-            flash()->success('Purchase successful');
-
-            return redirect()->route('products.show', $product);
-        }
-
         $purchases = $licenses = collect();
 
         if ($request->user()) {

@@ -6,8 +6,7 @@ use GuzzleHttp\Client;
 
 class Vimeo
 {
-    /** @var \GuzzleHttp\Client */
-    private $client;
+    private Client $client;
 
     public function __construct(Client $client)
     {

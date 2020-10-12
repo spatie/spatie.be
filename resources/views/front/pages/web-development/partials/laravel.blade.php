@@ -1,5 +1,3 @@
-
-
 <section id="laravel" class="section mt-8">
     <div class="wrap wrap-6">
         <div class="sm:col-span-3">

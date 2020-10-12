@@ -8,8 +8,7 @@ use Illuminate\Support\Collection;
 
 class GitHubApi
 {
-    /** @var \Github\Client */
-    protected $client;
+    protected Client $client;
 
     public function __construct(Client $client)
     {
@@ -18,51 +17,30 @@ class GitHubApi
 
     public function fetchPublicRepositories(string $username): Collection
     {
+        /** @var \Github\Api\Organization $api */
         $api = $this->client->api('organization');
-        info('using github token fetchPublicRepositories');
 
         $paginator = new ResultPager($this->client);
 
         $repositories = $paginator->fetchAll($api, 'repositories', [$username]);
 
-        return collect($repositories)->filter(function ($repo) {
+        return collect($repositories)->filter(function ($repo): bool {
             return $repo['private'] === false;
-        });
-    }
-
-    public function fetchOpenIssues(string $username, string $repository, array $labelFilters = []): Collection
-    {
-        $api = $this->client->api('issue');
-        info('using github token fetchOpenIssues');
-
-
-        $paginator = new ResultPager($this->client);
-
-        $issues = $paginator->fetchAll($api, 'all', [$username, $repository, ['state' => 'open']]);
-
-        return collect($issues)->filter(function (array $issue) use ($labelFilters) {
-            if (! $labelFilters) {
-                return true;
-            }
-
-            return collect($issue['labels'] ?? [])->filter(function (array $label) use ($labelFilters) {
-                return in_array($label['name'] ?? null, $labelFilters);
-            })->isNotEmpty();
         });
     }
 
     public function fetchRepositoryTopics(string $username, string $repository): Collection
     {
+        /** @var \Github\Api\Repo $api */
         $api = $this->client->api('repository');
-        info('using github token fetchRepositoryTopics');
 
         return collect($api->topics($username, $repository)['names'] ?? []);
     }
 
     public function fetchRepositoryContributors(string $username, string $repository): Collection
     {
+        /** @var \Github\Api\Repo $api */
         $api = $this->client->api('repository');
-        info('using github token fetchRepositoryContributors');
 
         $paginator = new ResultPager($this->client);
 
@@ -71,18 +49,16 @@ class GitHubApi
 
     public function getUser($username)
     {
+        /** @var \Github\Api\User $api */
         $api = $this->client->api('user');
-        info('using github token getUser');
-
 
         return $api->show($username);
     }
 
-    public function inviteToRepo(string $gitHubUsername, string $repository)
+    public function inviteToRepo(string $gitHubUsername, string $repository): void
     {
         [$organisation, $repository] = explode('/', $repository);
 
-        info('using github token inviteToRepo');
         $this->client->repo()->collaborators()->add(
             $organisation,
             $repository,
@@ -91,7 +67,7 @@ class GitHubApi
         );
     }
 
-    public function revokeAccessToRepo(string $gitHubUsername, string $repository)
+    public function revokeAccessToRepo(string $gitHubUsername, string $repository): void
     {
         [$organisation, $repository] = explode('/', $repository);
 
@@ -100,6 +76,5 @@ class GitHubApi
             $repository,
             $gitHubUsername,
         );
-        info('using github token revokeAccessToRepo');
     }
 }

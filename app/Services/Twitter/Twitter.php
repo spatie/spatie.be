@@ -3,12 +3,10 @@
 namespace App\Services\Twitter;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use Log;
 
 class Twitter
 {
-    /** @var \Abraham\TwitterOAuth\TwitterOAuth */
-    protected $twitter;
+    protected TwitterOAuth $twitter;
 
     public function __construct(TwitterOAuth $twitter)
     {
@@ -18,7 +16,7 @@ class Twitter
     public function tweet(string $status)
     {
         if (! app()->environment('production')) {
-            Log::info("Tweeting {$status}");
+            info("Tweeting {$status}");
 
             return;
         }

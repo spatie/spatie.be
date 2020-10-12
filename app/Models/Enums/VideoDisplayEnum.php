@@ -4,6 +4,7 @@ namespace App\Models\Enums;
 
 use MyCLabs\Enum\Enum;
 
+/** @psalm-immutable */
 class VideoDisplayEnum extends Enum
 {
     const FREE = 'free';

@@ -2,42 +2,50 @@
 
 namespace App\Models;
 
+use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 class Repository extends Model
 {
     use HasFactory;
-
     use RepositoryPresenter;
 
     protected $casts = [
         'new' => 'boolean',
         'topics' => 'array',
         'repository_created_at' => 'datetime',
+        'ad_should_be_randomized' => 'boolean',
     ];
 
-    protected $with = ['issues'];
+    protected $attributes = [
+        'ad_should_be_randomized' => true,
+    ];
 
-    public function issues(): HasMany
+    public static function booted()
     {
-        return $this->hasMany(Issue::class);
+        self::saved(function (Repository $repository) {
+            $repository->load('ad');
+
+            app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
+        });
     }
 
-    public function getIssuesUrlAttribute()
+    public function scopeAdShouldBeRandomized(Builder $query): void
     {
-        return $this->url . '/issues?q=is%3Aopen+is%3Aissue+label%3A"good+first+issue"';
+        $query->where('ad_should_be_randomized', true);
     }
 
-    public function hasIssues(): bool
+    public function ad(): BelongsTo
     {
-        return count($this->issues) > 0;
+        return $this->belongsTo(Ad::class, 'ad_id');
     }
 
     public function getSlug(): string
@@ -79,27 +87,27 @@ class Repository extends Model
         return $this;
     }
 
-    public function scopeVisible(Builder $builder)
+    public function scopeVisible(Builder $builder): void
     {
         $builder->where('visible', true);
     }
 
-    public function scopePackages(Builder $builder)
+    public function scopePackages(Builder $builder): void
     {
         $builder->where('type', RepositoryType::PACKAGE);
     }
 
-    public function scopeProjects(Builder $builder)
+    public function scopeProjects(Builder $builder): void
     {
         $builder->where('type', RepositoryType::PROJECT);
     }
 
-    public function scopeHighlighted(Builder $builder)
+    public function scopeHighlighted(Builder $builder): void
     {
         $builder->where('highlighted', true);
     }
 
-    public function scopeSearch(Builder $builder, string $search)
+    public function scopeSearch(Builder $builder, string $search): void
     {
         if (! $search) {
             return;
@@ -108,7 +116,7 @@ class Repository extends Model
         $builder->where('name', 'LIKE', "%{$search}%");
     }
 
-    public function scopeApplySort(Builder $builder, string $sort)
+    public function scopeApplySort(Builder $builder, string $sort): void
     {
         if (! $sort) {
             return;
@@ -124,5 +132,23 @@ class Repository extends Model
             ltrim($sort, '-'),
             Str::startsWith($sort, '-') ? 'desc' : 'asc'
         );
+    }
+
+    public function hasAdWithImage(): bool
+    {
+        if (! $ad = $this->ad) {
+            return false;
+        }
+
+        if (! $ad->image) {
+            return false;
+        }
+
+        return true;
+    }
+
+    public function gitHubAdImagePath(): string
+    {
+        return Str::slug($this->name) . ".jpg";
     }
 }

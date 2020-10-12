@@ -35,15 +35,15 @@ class Series extends Resource
 
             Text::make('Title')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Text::make('Slug')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentSeries $series) {
-                    return function () use ($request, $series) {
+                    return function () use ($request, $series): void {
                         $series
                             ->addMedia($request->file('image'))
                             ->withResponsiveImages()

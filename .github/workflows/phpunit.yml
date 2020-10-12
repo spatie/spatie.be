@@ -1,17 +1,13 @@
 name: PHPUnit
 
-on:
-    push:
-        paths:
-            - '**.php'
-            - 'phpunit.xml'
+on: [push]
 
 jobs:
     phpunit:
         name: PHPUnit
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v1
+            - uses: actions/checkout@v2
 
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
@@ -23,16 +19,18 @@ jobs:
             - name: Create database
               run: |
                   sudo /etc/init.d/mysql start
-                  mysql  -u root -proot -e 'CREATE DATABASE IF NOT EXISTS sail_tests;'
+                  mysql  -u root -proot -e 'CREATE DATABASE IF NOT EXISTS spatie_tests;'
 
             - name: Cache composer dependencies
-              uses: actions/cache@v1
+              uses: actions/cache@v2
               with:
                   path: vendor
                   key: composer-${{ hashFiles('composer.lock') }}
 
             - name: Run composer install
               run: composer install -n --prefer-dist
+              env:
+                COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
             - name: Prepare Laravel Application
               run: |

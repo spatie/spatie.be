@@ -21,7 +21,7 @@ class RegeneratePostcardResponsiveImagesCommand extends Command
             return;
         }
 
-        Postcard::each(function (Postcard $postcard) {
+        Postcard::each(function (Postcard $postcard): void {
             $postcard->getMedia()->each(fn (Media $media) => dispatch(new GenerateResponsiveImagesJob($media)));
         });
     }

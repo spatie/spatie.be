@@ -8,12 +8,6 @@ use Laravel\Nova\Metrics\Trend;
 
 class VideoCompletions extends Trend
 {
-    /**
-     * Calculate the value of the metric.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @return mixed
-     */
     public function calculate(NovaRequest $request)
     {
         return $this
@@ -21,11 +15,6 @@ class VideoCompletions extends Trend
             ->showSumValue();
     }
 
-    /**
-     * Get the ranges available for the metric.
-     *
-     * @return array
-     */
     public function ranges()
     {
         return [
@@ -36,11 +25,6 @@ class VideoCompletions extends Trend
         ];
     }
 
-    /**
-     * Get the URI key for the metric.
-     *
-     * @return string
-     */
     public function uriKey()
     {
         return 'video-completions';

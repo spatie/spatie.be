@@ -11,7 +11,10 @@ use Illuminate\Routing\Controller;
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers, AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+    use AuthenticatesUsers;
+    use AuthorizesRequests;
+    use DispatchesJobs;
+    use ValidatesRequests;
 
     public function __construct()
     {
@@ -20,18 +23,19 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        session()->flash('next', request('next'));
+        session()->flash('next', request('next') ?? url()->previous());
 
         return view('auth.login');
     }
 
-    public function redirectPath()
+    protected function sendLoginResponse(Request $request)
     {
-        return session('next', route('products.index'));
-    }
+        $request->session()->regenerate();
 
-    protected function authenticated(Request $request, $user)
-    {
+        $this->clearLoginAttempts($request);
+
         flash()->success('You are now logged in');
+
+        return redirect()->to(session()->get('next', route('products.index')));
     }
 }

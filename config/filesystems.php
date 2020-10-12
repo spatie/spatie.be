@@ -48,6 +48,19 @@ return [
             'root' => storage_path('app/backups'),
         ],
 
+        'github_ads' => [
+            'driver' => env('GITHUB_ADS_DISK_DRIVER'),
+            'root' => env('GITHUB_ADS_DISK_ROOT') ? storage_path(env('GITHUB_ADS_DISK_ROOT')) : '',
+            'key' => env('GITHUB_ADS_DISK_KEY'),
+            'secret' => env('GITHUB_ADS_DISK_SECRET'),
+            'region' => env('GITHUB_ADS_DISK_REGION'),
+            'bucket' => env('GITHUB_ADS_DISK_BUCKET'),
+            'url' => env('GITHUB_ADS_DISK_URL'),
+            'options' => [
+                'CacheControl' => 'max-age=120, s-max-age=120',
+            ],
+        ],
+
         'local' => [
             'driver' => 'local',
             'root' => storage_path('app'),

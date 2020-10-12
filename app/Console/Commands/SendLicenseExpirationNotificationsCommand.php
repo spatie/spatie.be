@@ -13,7 +13,7 @@ class SendLicenseExpirationNotificationsCommand extends Command
 
     protected $description = 'Send license expiration notifications';
 
-    public function handle(): void
+    public function handle()
     {
         $this
             ->sendNotificationsForLicensesThatAreAboutToExpire()
@@ -25,7 +25,7 @@ class SendLicenseExpirationNotificationsCommand extends Command
         License::query()
             ->where('expires_at', '<=', now()->addDays(14))
             ->whereNull('expiration_warning_mail_sent_at')
-            ->each(function (License $license) {
+            ->each(function (License $license): void {
                 $license->user->notify(new LicenseIsAboutToExpireNotification($license));
                 $license->update(['expiration_warning_mail_sent_at' => now()]);
             });
@@ -38,7 +38,7 @@ class SendLicenseExpirationNotificationsCommand extends Command
         License::query()
             ->where('expires_at', '<=', now())
             ->whereNull('expiration_mail_sent_at')
-            ->each(function (License $license) {
+            ->each(function (License $license): void {
                 $license->user->notify(new LicenseExpiredNotification($license));
                 $license->update(['expiration_mail_sent_at' => now()]);
             });

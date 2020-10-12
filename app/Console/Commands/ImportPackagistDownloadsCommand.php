@@ -5,7 +5,8 @@ namespace App\Console\Commands;
 use App\Models\Repository;
 use GuzzleHttp\Client;
 use Illuminate\Console\Command;
-use Spatie\Packagist\Packagist;
+use Spatie\Packagist\PackagistClient;
+use Spatie\Packagist\PackagistUrlGenerator;
 
 class ImportPackagistDownloadsCommand extends Command
 {
@@ -18,14 +19,15 @@ class ImportPackagistDownloadsCommand extends Command
         $this->info('Importing downloads from Packagist...');
 
         $client = new Client();
+        $generator = new PackagistUrlGenerator();
 
-        $packagist = new Packagist($client);
+        $packagist = new PackagistClient($client, $generator);
 
-        collect($packagist->getPackagesByVendor('spatie')['packageNames'])
+        collect($packagist->getPackagesNamesByVendor('spatie')['packageNames'])
             ->map(function ($packageName) use ($packagist) {
-                return $packagist->findPackageByName($packageName)['package'];
+                return $packagist->getPackage($packageName)['package'];
             })
-            ->each(function ($package) {
+            ->each(function ($package): void {
                 $name = explode('/', $package['name'])[1];
 
                 $this->comment("Getting downloads for `{$name}`");

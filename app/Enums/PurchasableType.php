@@ -4,6 +4,7 @@ namespace App\Enums;
 
 use MyCLabs\Enum\Enum;
 
+/** @psalm-immutable */
 class PurchasableType extends Enum
 {
     public const TYPE_STANDARD = 'standard';

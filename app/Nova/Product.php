@@ -33,15 +33,15 @@ class Product extends Resource
 
             Text::make('Title')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Text::make('Slug')
                 ->sortable()
-                ->rules('required', 'max:255'),
+                ->rules(['required', 'max:255']),
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentProduct $product) {
-                    return function () use ($request, $product) {
+                    return function () use ($request, $product): void {
                         $product
                             ->addMedia($request->file('image'))
                             ->withResponsiveImages()
@@ -62,6 +62,7 @@ class Product extends Resource
             Markdown::make('Description'),
             Markdown::make('Long Description'),
 
+            Boolean::make('Visible on front', 'visible'),
             Boolean::make('External'),
             Text::make('Url')->hideFromIndex(),
             Text::make('Action url')->hideFromIndex(),

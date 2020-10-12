@@ -12,7 +12,7 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    protected function routes()
+    protected function routes(): void
     {
         Nova::routes()
                 ->withAuthenticationRoutes()
@@ -20,7 +20,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 ->register();
     }
 
-    protected function gate()
+    protected function gate(): void
     {
         Gate::define('viewNova', function ($user) {
             return $user->is_admin;

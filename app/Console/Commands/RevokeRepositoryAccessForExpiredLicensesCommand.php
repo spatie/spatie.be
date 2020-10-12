@@ -19,16 +19,14 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
             ->whereHas('license', fn (Builder $query) => $query->whereExpired())
             ->where('has_repository_access', true)
             ->cursor()
-            ->each(
-                function (Purchase $purchase) use ($gitHubApi) {
-                    $gitHubApi->revokeAccessToRepo(
-                        $purchase->user->github_username,
-                        $purchase->purchasable->repository_access
-                    );
+            ->each(function (Purchase $purchase) use ($gitHubApi) {
+                $gitHubApi->revokeAccessToRepo(
+                    $purchase->user->github_username,
+                    $purchase->purchasable->repository_access
+                );
 
-                    $purchase->update(['has_repository_access' => false]);
-                }
-            );
+                $purchase->update(['has_repository_access' => false]);
+            });
 
         $this->info('All done!');
     }
