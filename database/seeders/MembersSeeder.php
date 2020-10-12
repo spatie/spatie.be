@@ -77,7 +77,7 @@ class MembersSeeder extends Seeder
             'role' => 'Backend developer',
             'description' => 'Ruben knows how to write PHP. And C++. And Java. And Python. And he can talk to humans too!',
             'twitter' => 'rubenvanassche',
-            'public_email' => true,
+            'website' => 'https://rubenvanassche.com',
         ],
         
         'sebastian@spatie.be' => [
