@@ -54,6 +54,32 @@ class MembersSeeder extends Seeder
             'public_email' => true,
         ],
 
+        'niels@spatie.be' => [
+            'first_name' => 'Niels',
+            'last_name' => 'Vanpachtenbeke',
+            'role' => 'Backend developer',
+            'description' => 'The eleventh member of our team has solid experience in building modern web applications and API\'s. We have yet to find out what his scouting totem is… stay tuned!',
+            'twitter' => 'NielsVanpach',
+        ],
+
+        'rias@spatie.be' => [
+            'first_name' => 'Rias',
+            'last_name' => 'Van der Veken',
+            'role' => 'Backend developer',
+            'description' => 'Another member of the Full Stack Antwerp family in our midst: Rias brings Laravel & CMS expertise to the backend table —with a smile.',
+            'twitter' => 'riasvdv',
+            'website' => 'https://rias.be',
+        ],
+
+        'ruben@spatie.be' => [
+            'first_name' => 'Ruben',
+            'last_name' => 'Van Assche',
+            'role' => 'Backend developer',
+            'description' => 'Ruben knows how to write PHP. And C++. And Java. And Python. And he can talk to humans too!',
+            'twitter' => 'rubenvanassche',
+            'website' => 'https://rubenvanassche.com',
+        ],
+        
         'sebastian@spatie.be' => [
             'first_name' => 'Sebastian',
             'last_name' => 'De Deyne',
@@ -81,23 +107,6 @@ class MembersSeeder extends Seeder
             'public_email' => true,
         ],
 
-        'ruben@spatie.be' => [
-            'first_name' => 'Ruben',
-            'last_name' => 'Van Assche',
-            'role' => 'Backend developer',
-            'description' => 'Ruben knows how to write PHP. And C++. And Java. And Python. And he can talk to humans too!',
-            'twitter' => 'rubenvanassche',
-            'public_email' => true,
-        ],
-
-        'rias@spatie.be' => [
-            'first_name' => 'Rias',
-            'last_name' => 'Van der Veken',
-            'role' => 'Backend developer',
-            'description' => 'Another member of the Full Stack Antwerp family in our midst: Rias brings Laravel & CMS expertise to the backend table —with a smile.',
-            'twitter' => 'riasvdv',
-            'website' => 'https://rias.be',
-        ],
     ];
 
     public function run(): void
