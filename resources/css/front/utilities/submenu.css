@@ -1,0 +1,55 @@
+.submenu-wrap {
+    @apply px-8;
+    @apply mx-auto;
+    @apply max-w-columns;
+}
+
+@screen sm {
+    .submenu-wrap {
+        @apply sticky;
+        @apply top-0;
+        @apply z-10;
+        @apply flex;
+        @apply px-16;
+        @apply justify-center;
+    }
+}
+
+.submenu {
+    @apply px-6;
+    @apply py-4;
+    @apply rounded-b;
+    @apply shadow-light;
+}
+
+.submenu,
+.submenu ul {
+    @apply grid;
+    @apply gap-2;
+}
+
+@screen sm {
+    .submenu,
+    .submenu ul {
+        @apply grid-flow-col;
+        @apply gap-8;
+    }
+}
+
+.submenu li a {
+    @apply px-2;
+}
+
+.submenu li {
+    @apply rounded;
+}
+
+.submenu li:not(.submenu-active):hover {
+    @apply bg-pink-dark;
+    @apply bg-opacity-25;
+}
+
+.submenu-active {
+    @apply bg-pink-dark;
+    @apply bg-opacity-50;
+}

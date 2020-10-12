@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<psalm
+        totallyTyped="false"
+        errorLevel="4"
+        resolveFromConfigFile="true"
+        useDocblockPropertyTypes="true"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+>
+    <projectFiles>
+        <directory name="app"/>
+        <ignoreFiles>
+            <directory name="vendor"/>
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <ImplicitToStringCast errorLevel="suppress"/>
+
+        <!--
+            Suppressed because Laravel models provide magic properties,
+            and we want those to be available on model interfaces via @property doc blocks
+        -->
+        <NoInterfaceProperties errorLevel="suppress" />
+
+    </issueHandlers>
+    <plugins>
+        <pluginClass class="Psalm\LaravelPlugin\Plugin"/>
+    </plugins>
+</psalm>

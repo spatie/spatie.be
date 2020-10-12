@@ -1,0 +1,103 @@
+/* Reusable classes to apply */
+
+.counter-reset {
+    counter-reset: var(--counter-reset);
+}
+
+.counter-increment {
+    --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';
+
+    counter-increment: var(--counter-increment);
+    padding-left: 2.5rem;
+}
+
+.counter-increment:before {
+    left: 0;
+    position: absolute;
+    content: var(--counter-content);
+}
+
+/* Counters */
+
+.counters {
+    --counter-reset: level-0 level-1 level-2;
+    --counter-style: decimal;
+
+    counter-reset: var(--counter-reset);
+}
+
+.counters h1 {
+    --counter-increment: level-0;
+    --counter-reset: level-1 level-2 level-3;
+    --counter-style: upper-roman;
+    --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';
+
+    counter-reset: var(--counter-reset);
+    counter-increment: var(--counter-increment);
+    padding-left: 7.5rem; /* more room for romans on H1 */
+}
+
+.counters h1:before {
+    left: 0;
+    position: absolute;
+    content: var(--counter-content);
+}
+
+.counters h2,
+.counters .counters-level-1:not(ol),
+.counters .counters-level-1 > li {
+    --counter-increment: level-1;
+    --counter-reset: level-2 level-3;
+    --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';
+
+    counter-reset: var(--counter-reset);
+    counter-increment: var(--counter-increment);
+    padding-left: 2.5rem;
+}
+
+.counters h2:before,
+.counters .counters-level-1:not(ol):before,
+.counters .counters-level-1 > li:before {
+    left: 0;
+    position: absolute;
+    content: var(--counter-content);
+}
+
+.counters h3,
+.counters .counters-level-2:not(ol),
+.counters .counters-level-2 > li {
+    --counter-parent: level-1;
+    --counter-increment: level-2;
+    --counter-content: counter(var(--counter-parent), var(--counter-style)) '.'
+        counter(var(--counter-increment), var(--counter-style)) '.' !important;
+    --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';
+
+    counter-increment: var(--counter-increment);
+    padding-left: 2.5rem;
+}
+
+.counters h3:before,
+.counters .counters-level-2:not(ol):before,
+.counters .counters-level-2 > li:before {
+    left: 0;
+    position: absolute;
+    content: var(--counter-content);
+}
+
+/* Use !important to work in markup-list as well */
+
+.counters-lower-alpha {
+    --counter-style: lower-alpha !important;
+}
+
+.counters-upper-alpha {
+    --counter-style: upper-alpha !important;
+}
+
+.counters-lower-roman {
+    --counter-style: lower-roman !important;
+}
+
+.counters-upper-roman {
+    --counter-style: upper-roman !important;
+}

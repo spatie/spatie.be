@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    position: relative;
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+    color: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    line-height: inherit;
+}
+
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+
+html {
+    @apply font-sans;
+    @apply font-normal;
+    @apply leading-normal;
+    @apply text-black;
+
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+@screen lg {
+    html {
+        font-size: 1.2vw;
+    }
+}
+
+@screen xl {
+    html {
+        font-size: 18px;
+    }
+}
+
+@screen print {
+    html {
+        font-size: 12px;
+    }
+}
+
+select:focus,
+input:focus {
+    outline: 0;
+}
+
+::-webkit-file-upload-button {
+    @apply cursor-pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+hr {
+    border: 0;
+    background-color: currentcolor;
+}
+
+img,
+svg {
+    display: block;
+    vertical-align: middle;
+}
+
+/* From http://valhead.com/2017/06/23/reduced-motion-query/ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* Print */
+
+@screen print {
+    a {
+        color: inherit !important;
+        text-decoration: none !important;
+    }
+}
+
+@page :first {
+    margin-top: 0;
+}
+
+@page {
+    margin-left: 0;
+    margin-right: 0;
+}

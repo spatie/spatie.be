@@ -1,0 +1,38 @@
+.cell-l {
+    @apply pr-4;
+    @apply py-4;
+}
+
+.cell-r {
+    @apply border-b-2;
+    @apply border-gray-lighter;
+    @apply border-opacity-25;
+    @apply pb-4;
+}
+
+@supports (display: grid) {
+    @screen md {
+        .cells {
+            @apply grid;
+        }
+
+        .cell-l {
+            @apply border-b-2;
+            @apply border-gray-lighter;
+            @apply border-opacity-25;
+        }
+
+        .cell {
+            @apply border-b-2;
+            @apply border-gray-lighter;
+            @apply border-opacity-25;
+            @apply px-4;
+            @apply py-4;
+        }
+
+        .cell-r {
+            @apply py-4;
+            @apply pl-4;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+@responsive {
+    .gradient {
+        background-image: linear-gradient(var(--gradient-angle), var(--gradient-from), var(--gradient-to));
+    }
+
+    .gradient-none {
+        background-image: none;
+    }
+}
+
+.gradient-green {
+    --gradient-angle: 120deg;
+    --gradient-from: #21b989;
+    --gradient-to: #82d8af;
+
+    @apply bg-green;
+}
+
+.gradient-pink {
+    --gradient-angle: 120deg;
+    --gradient-from: #ddaeb4;
+    --gradient-to: #dd9099;
+
+    @apply bg-pink;
+}
+
+.gradient-blue {
+    --gradient-angle: 120deg;
+    --gradient-from: #cae1e8;
+    --gradient-to: #e2f1f3;
+
+    @apply bg-blue-lightest;
+}
+
+.gradient-gray {
+    --gradient-angle: 120deg;
+    --gradient-from: #f3efea;
+    --gradient-to: #e1ded9;
+
+    @apply bg-gray-lighter;
+}
+
+.gradient-dark {
+    --gradient-angle: 120deg;
+    --gradient-from: #31302f;
+    --gradient-to: #172a3d;
+
+    @apply bg-gray-dark;
+}

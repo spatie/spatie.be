@@ -1,0 +1,53 @@
+:root {
+    --bullet-color: inherit;
+}
+
+.bullets li {
+    padding-left: 1em;
+}
+
+.bullets li .icon {
+    @apply pr-2;
+    fill: var(--bullet-color);
+    left: 0;
+    position: absolute;
+}
+
+.bullets li:not(:last-child) {
+    margin-bottom: 0.35em;
+}
+
+.bullets-green {
+    --bullet-color: theme(colors.green);
+}
+
+.bullets-pink {
+    --bullet-color: theme(colors.pink);
+}
+
+.bullets-blue {
+    --bullet-color: theme(colors.blue);
+}
+
+.bullets-gray {
+    --bullet-color: theme(colors.gray);
+}
+
+.bullets-white {
+    --bullet-color: #fff;
+}
+
+.bullets-inline {
+    @apply leading-loose;
+}
+
+.bullets-inline li {
+    display: inline-block;
+}
+
+.bullets-inline li:not(:last-child):after {
+    @apply text-blue;
+    margin: 0 0.5em;
+    content: '•';
+    color: var(--bullet-color);
+}

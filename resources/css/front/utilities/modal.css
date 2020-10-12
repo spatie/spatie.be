@@ -1,0 +1,32 @@
+.modal {
+    @apply hidden;
+
+    z-index: 1000;
+}
+
+.modal:target {
+    @apply fixed;
+    @apply top-0;
+    @apply left-0;
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+    @apply w-screen;
+    @apply min-h-screen;
+    @apply cursor-pointer;
+    background-color: theme('colors.black') e6;
+    backdrop-filter: grayscale(1);
+}
+
+.modal:after {
+    @apply absolute;
+    @apply flex;
+    @apply items-start;
+    @apply justify-end;
+    @apply text-white;
+    top: 0.5em;
+    right: 0.5em;
+    content: '×';
+    font-size: 2rem;
+    line-height: 1;
+}

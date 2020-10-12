@@ -1,0 +1,46 @@
+.select {
+    @apply inline-flex;
+    @apply items-center;
+    @apply border-2;
+    @apply border-gray-light;
+    @apply bg-white;
+    @apply px-2;
+    @apply py-1;
+    @apply rounded-sm;
+}
+
+.select select {
+    @apply font-sans;
+    @apply lowercase;
+    @apply text-gray;
+    @apply bg-transparent;
+    @apply appearance-none;
+    -webkit-appearance: none;
+    @apply outline-none;
+}
+
+.select-arrow {
+    @apply hidden;
+}
+
+@supports (display: grid) {
+    .select select {
+        @apply pr-6;
+    }
+
+    .select-arrow {
+        @apply absolute;
+        @apply block;
+        @apply right-0;
+        @apply mr-3;
+        @apply w-2;
+        @apply h-2;
+        @apply text-blue-light;
+        @apply pointer-events-none;
+        @apply fill-current;
+    }
+}
+
+.select select:active + .select-arrow {
+    transform: rotate(180deg);
+}

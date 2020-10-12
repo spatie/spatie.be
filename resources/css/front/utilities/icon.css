@@ -1,0 +1,14 @@
+.icon {
+    margin: 0 0.15em;
+    display: inline-block;
+    vertical-align: baseline;
+    @apply fill-current;
+}
+
+.icon svg {
+    height: 0.9em;
+    width: auto;
+    fill: inherit;
+    display: inline-block;
+    overflow: visible;
+}

@@ -1,0 +1,87 @@
+.section {
+    @apply py-16;
+    overflow-x: hidden; /* prevent eg. rotated postcards to widen the layout */
+}
+@screen sm {
+    .section {
+        @apply py-24;
+    }
+}
+
+@screen xl {
+    .section {
+        @apply py-32;
+    }
+}
+
+.section-group .section:first-child {
+    @apply pt-0;
+}
+
+.banner + .section-group {
+    @apply pt-0;
+}
+
+.section-group .section {
+    @apply py-0;
+    @apply pt-16;
+
+    overflow: visible;
+}
+@screen sm {
+    .section-group .section {
+        @apply pt-24;
+    }
+}
+
+@screen xl {
+    .section-group .section {
+        @apply pt-32;
+    }
+}
+
+.section-fade:before {
+    @apply z-back;
+    @apply absolute;
+    @apply w-full;
+    @apply left-0;
+    @apply bottom-0;
+    content: '';
+    height: 24rem;
+    background: linear-gradient(to bottom, #ffffff00, #f3efead9);
+}
+
+/* fake inset shadow at the bottom */
+.section-fade:after {
+    @apply z-back;
+    @apply absolute;
+    @apply w-full;
+    @apply left-0;
+    @apply bottom-0;
+    content: '';
+    height: 4px;
+    background: linear-gradient(to bottom, rgba(76, 55, 55, 0), rgba(76, 55, 55, 0.05));
+}
+
+.section-fade-sm:before {
+    @apply z-back;
+    @apply absolute;
+    @apply w-full;
+    @apply left-0;
+    @apply bottom-0;
+    content: '';
+    height: 8rem;
+    background: linear-gradient(to bottom, #ffffff00, #f3efead9);
+}
+
+/* fake inset shadow at the bottom */
+.section-fade-sm:after {
+    @apply z-back;
+    @apply absolute;
+    @apply w-full;
+    @apply left-0;
+    @apply bottom-0;
+    content: '';
+    height: 4px;
+    background: linear-gradient(to bottom, rgba(76, 55, 55, 0), rgba(76, 55, 55, 0.05));
+}

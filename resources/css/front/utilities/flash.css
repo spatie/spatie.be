@@ -1,0 +1,50 @@
+.flash-wrap {
+    @apply fixed;
+    @apply top-0;
+    @apply left-0;
+    @apply w-full;
+    @apply flex;
+    @apply justify-end;
+    @apply z-50;
+    @apply transition-transform;
+    @apply duration-300;
+}
+
+.flash-hidden {
+    @apply transform;
+    @apply translate-x-full;
+}
+
+.flash {
+    @apply rounded-bl-sm;
+    @apply shadow-lg;
+    @apply px-6;
+    @apply py-4;
+    background-image: linear-gradient(var(--gradient-angle), var(--gradient-from), var(--gradient-to));
+}
+
+.flash-success {
+    --gradient-angle: 120deg;
+    --gradient-from: #1fc08d;
+    --gradient-to: #31b48b;
+
+    @apply bg-green;
+    @apply text-white;
+}
+
+.flash-error {
+    --gradient-angle: 120deg;
+    --gradient-from: #d1828b;
+    --gradient-to: #dd9099;
+
+    @apply bg-pink;
+    @apply text-white;
+}
+
+.flash-info {
+    --gradient-angle: 120deg;
+    --gradient-from: #cae1e8;
+    --gradient-to: #c3dbe2;
+
+    @apply bg-blue-lightest;
+}

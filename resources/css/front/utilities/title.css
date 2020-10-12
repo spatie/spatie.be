@@ -1,0 +1,70 @@
+.title-2xl {
+    @apply font-serif;
+    @apply font-bold;
+    @apply text-4xl;
+    display: inline-block;
+    margin-top: 0;
+    margin-bottom: 3rem;
+    padding-top: 0.25em;
+    line-height: 1;
+}
+
+.title-2xl:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0.083em;
+    background-color: currentcolor;
+    opacity: 0.9;
+    border-radius: 4px;
+}
+
+@screen print {
+    .title-2xl {
+        margin-top: 1cm;
+    }
+}
+
+@screen sm {
+    .title-2xl {
+        @apply text-5xl;
+    }
+}
+
+.title-xl {
+    @apply text-4xl;
+    @apply font-serif;
+    @apply font-bold;
+    @apply leading-tight;
+}
+
+@screen sm {
+    .title-xl {
+        @apply text-5xl;
+    }
+}
+
+.title {
+    @apply text-2xl;
+    @apply font-sans;
+    @apply font-bold;
+    @apply leading-tight;
+}
+
+.title-sm {
+    @apply font-sans;
+    @apply font-bold;
+    @apply uppercase;
+    @apply leading-tight;
+}
+
+.title-subtext {
+    @apply text-xs;
+    @apply font-sans;
+    @apply font-bold;
+    @apply uppercase;
+    @apply leading-tight;
+    @apply mt-2;
+}
