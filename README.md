@@ -4,26 +4,11 @@ This repo contains the source code of [our company website](https://spatie.be).
 
 ## Support us
 
-Learn how to create a package like this one, by watching our premium video course:
-
-[![Laravel Package training](https://spatie.be/github/package-training.jpg)](https://laravelpackage.training)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-medialibrary.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-medialibrary)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
 We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
-
-## Postcardware
-
-If you learn interesting stuff from our code, please send us a postcard from your hometown.
-
-Our address is:
-
-Spatie
-Kruikstraat 22, Box 12
-2018 Antwerp
-Belgium
-
-All postcards are published [on our website](https://spatie.be/en/opensource/postcards).
 
 ## Credits
 
