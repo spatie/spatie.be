@@ -9,11 +9,6 @@ use Illuminate\Routing\Controller;
 
 class SatisAuthenticationController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth:license-api');
-    }
-
     public function __invoke(Authenticatable $license, Request $request)
     {
         /** @var $license \App\Models\License */
