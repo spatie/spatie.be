@@ -16,10 +16,17 @@ class SatisAuthenticationController extends Controller
             abort(401);
         }
 
+        /*
+         * We have a master key that we use for our own projects that grants
+         * use access to anything that is available on Satis.
+         */
         if ($license->isMasterKey()) {
             return response('valid');
         }
 
+        /*
+         * Find the package that is actually being requested.
+         */
         $package = $this->getRequestedPackage($request);
 
         /*
