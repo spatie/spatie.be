@@ -23,6 +23,7 @@ class RandomizeAdsOnGitHubRepositoriesJob implements ShouldQueue
 
         Repository::adShouldBeRandomized()->each(function (Repository $repository) use ($ads): void {
             $repository->ad()->associate($ads->random());
+
             $repository->save();
         });
     }
