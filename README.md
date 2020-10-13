@@ -1,6 +1,6 @@
 # The source code of spatie.be
 
-This repo contains the source code of [our company website](https://spatie.be).
+This repo contains the source code of [our company website](https://spatie.be). [This blog post series at freek.dev](https://freek.dev/1789-selling-digital-products-using-laravel-part-1-intro-a-tour-of-spatiebe) contains a lot of info on how this code works.
 
 ## Support us
 
