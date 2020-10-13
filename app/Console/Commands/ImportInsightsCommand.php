@@ -5,10 +5,10 @@ namespace App\Console\Commands;
 use App\Models\Insight;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use Zend\Feed\Exception\ExceptionInterface;
-use Zend\Feed\Reader\Entry\AbstractEntry;
-use Zend\Feed\Reader\Reader;
-use Zend\Http\Client\Adapter\Exception\TimeoutException;
+use Laminas\Feed\Exception\ExceptionInterface;
+use Laminas\Feed\Reader\Entry\AbstractEntry;
+use Laminas\Feed\Reader\Reader;
+use Laminas\Http\Client\Adapter\Exception\TimeoutException;
 
 class ImportInsightsCommand extends Command
 {

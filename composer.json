@@ -62,8 +62,8 @@
         "spatie/sheets": "^1.6",
         "spatie/valuestore": "^1.2",
         "wyrihaximus/react-child-process-promise": "^2.0",
-        "zendframework/zend-feed": "^2.9",
-        "zendframework/zend-http": "^2.7"
+        "laminas/laminas-feed": "^2.9",
+        "laminas/laminas-http": "^2.7"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
