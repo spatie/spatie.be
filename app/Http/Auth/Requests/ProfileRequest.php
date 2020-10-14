@@ -14,4 +14,12 @@ class ProfileRequest extends FormRequest
             'newsletter' => ['nullable'],
         ];
     }
+
+    public function getUserAttributes(): array
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email,
+        ];
+    }
 }

@@ -22,7 +22,7 @@ class ProfileController
             ? app(SubscribeUserToNewsletterAction::class)->execute($user)
             : app(UnsubscribeUserFromNewsletterAction::class)->execute($user);
 
-        $user->update($profileRequest->except('newsletter'));
+        $user->update($profileRequest->getUserAttributes());
 
         flash()->success('Profile updated successfully.');
 
