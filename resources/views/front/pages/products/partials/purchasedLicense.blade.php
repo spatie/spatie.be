@@ -27,8 +27,8 @@
             </x-paddle-button>
         @endif
 
-        @if ($purchasable->getting_started_url)
-            <a class="link-blue link-underline" href="{{ $purchasable->getting_started_url }}">
+        @if ($license->purchasable->getting_started_url)
+            <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">
                 Getting started
             </a>
         @endif
