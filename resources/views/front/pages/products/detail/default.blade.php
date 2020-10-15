@@ -20,12 +20,43 @@
         </div>
     </section>
 
-    @auth
-        @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
-    @endauth
+    @if(session()->has('sold_purchasable'))
+        @php
+            /** @var \App\Models\Purchasable $purchasable */
+            $purchasable = session()->get('sold_purchasable')
+        @endphp  
+
+        <section id="cta" class="pb-16">
+            <div class="wrap">
+                <div class="card gradient gradient-green text-white">
+                    <div class="wrap-card grid md:grid-cols-2 md:items-center">
+                        <h2 class="title-xl">
+                            A Big Thanks!
+                        </h2>
+                        <p class="text-xl">
+                            Thanks for buying {{ $product->title }}. You can view details and manage your purchase below this page.
+                            
+                            @if ($purchasable->getting_started_url)
+                                <br>
+                                <a class="link-white link-underline" href="{{ $purchasable->getting_started_url }}">
+                                    Get started
+                                </a>
+                                right away!
+                            @endif
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    @endif
 
     @auth
-        @include('front.pages.products.partials.purchasedProducts', ['purchases' => $purchases])
+        @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
+
+        @if (!$licenses->count())
+            @include('front.pages.products.partials.purchasedProducts', ['purchases' => $purchases])
+        @endif
     @endauth
 
     @if($product->purchasablesWithoutRenewals->count())
