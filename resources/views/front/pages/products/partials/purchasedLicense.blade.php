@@ -12,7 +12,7 @@
         </div>
     </div>
 
-    <span class="cell-r grid gap-4 justify-start md:grid-flow-col md:justify-end">
+    <span class="cell-r grid gap-4 justify-start md:justify-end">
         @if ($license->purchasable->renewalPurchasable)
             <x-paddle-button
                     :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)"
@@ -27,22 +27,23 @@
             </x-paddle-button>
         @endif
 
+        @if ($purchasable->getting_started_url)
+            <a class="link-blue link-underline" href="{{ $purchasable->getting_started_url }}">
+                Getting started
+            </a>
+        @endif
+
         @if ($license->purchasable->series->count())
-            <a href="{{ route('series.show', $license->purchasable->series->first()) }}">
-                <x-button>
-                    Videos
-                </x-button>
+            <a class="link-blue link-underline" href="{{ route('series.show', $license->purchasable->series->first()) }}">
+                Videos
             </a>
         @endif
 
         @if ($license->purchasable->repository_access)
             @if ($license->hasRepositoryAccess())
-                <a href="https://github.com/{{ $license->purchasable->repository_access }}">
-                    <x-button>
-                        Repository
-                    </x-button>
+                <a class="link-blue link-underline" href="https://github.com/{{ $license->purchasable->repository_access }}">
+                    Repository
                 </a>
-
             @else
                 <a class="link-blue link-underline" href="{{ route('github-login') }}">
                     Connect to GitHub to access repo

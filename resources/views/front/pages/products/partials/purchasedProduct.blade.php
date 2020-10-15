@@ -12,13 +12,17 @@
         </div>
     </div>
 
-    <div class="cell-r grid gap-4 justify-start md:grid-flow-col md:justify-end">
+    <div class="cell-r grid gap-4 justify-start md:justify-end">
+        @if ($purchasable->getting_started_url)
+            <a class="link-blue link-underline" href="{{ $purchasable->getting_started_url }}">
+                Getting started
+            </a>
+        @endif
+
         @if ($purchasable->series->count())
-                <a href="{{ route('series.show', $purchasable->series->first()) }}">
-                    <x-button>
-                        Videos
-                    </x-button>
-                </a>
+            <a class="link-blue link-underline" href="{{ route('series.show', $purchasable->series->first()) }}">
+                Videos
+            </a>
         @endif
         
         @foreach($purchasable->getMedia('downloads') as $download)
@@ -30,19 +34,15 @@
                     );
                 @endphp
 
-            <a class="link" download="download" href="{{ $downloadUrl }}">
-                <x-button>
-                    Download {{ $download->getCustomProperty('label') ?? $download->name }}
-                </x-button>
+            <a class="link-blue link-underline" download="download" href="{{ $downloadUrl }}">
+                Download {{ $download->getCustomProperty('label') ?? $download->name }}
             </a>
         @endforeach
 
         @if ($purchasable->repository_access)
             @if ($purchase->has_repository_access)
-                    <a href="https://github.com/{{ $purchasable->repository_access }}">
-                        <x-button>
-                            Repository
-                        </x-button>
+                    <a class="link-blue link-underline" href="https://github.com/{{ $purchasable->repository_access }}">
+                        Repository
                     </a>
 
                 @else
