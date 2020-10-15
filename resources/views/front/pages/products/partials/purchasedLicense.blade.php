@@ -26,20 +26,23 @@
             @endif
         </div>
 
-        <p class="mt-2">
-           <div class="text-xs text-gray">License key:</div>
+        <div class="mt-2">
+            <div class="flex items-center text-xs text-gray">
+                <span>License key</span>
+                <span class="char-separator mx-2">•</span>
+
+                <livewire:domain :license="$license" />
+
+                @if ($license->isExpired())
+                    <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
+                @else
+                    <span>Expires on {{ $license->expires_at->format('Y-m-d') }}</span>
+                @endif
+            </div>
+            
             <code class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
-        </p>
-
-        <div class="flex items-center text-xs text-gray">
-            <livewire:domain :license="$license" />
-
-            @if ($license->isExpired())
-                <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
-            @else
-                <span>Expires on {{ $license->expires_at->format('Y-m-d') }}</span>
-            @endif
         </div>
+
 
     </div>
 
