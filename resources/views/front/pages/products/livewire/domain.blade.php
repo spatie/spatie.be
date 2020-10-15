@@ -3,7 +3,7 @@
         <div class="inline-flex">
             <input
                 type="search"
-                class="text-xs form-input w-full h-8 py-0 px-2 mb-8 rounded-r-none border-r-0"
+                class="text-xs form-input w-full h-8 py-0 px-2 rounded-r-none border-r-0"
                 placeholder="Domain"
                 wire:model="domain"
                 wire:keydown.enter="save"
