@@ -54,7 +54,7 @@
     @auth
         @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
 
-        @if ($licenses->empty())
+        @if (!$licenses->count())
             @include('front.pages.products.partials.purchasedProducts', ['purchases' => $purchases])
         @endif
     @endauth
