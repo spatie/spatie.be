@@ -21,8 +21,11 @@
         <div class="card py-12 gradient gradient-green shadow-lg text-white md:flex items-stretch">
             <div class="flex-grow w-full">
                 <h2 class="title mb-8">
-                    Log in with GitHub
+                    Log in
                 </h2>
+                <h3 class="title-sm mb-4">
+                    Via GitHub
+                </h3>
                 <a href="{{ route('github-login') }}">
                     <x-button>
                         <span class="mr-3 icon w-6 opacity">
@@ -32,9 +35,9 @@
                     </x-button>
                 </a>
 
-                <h2 class="title mt-12 mb-8">
-                    Log in with email
-                </h2>
+                <h3 class="mt-12 title-sm -mb-2">
+                    With Email
+                </h3>
 
                 <form class="space-y-6" action="{{ route('login') }}" method="POST">
                     @csrf
@@ -86,7 +89,7 @@
                     </a>
                 </p>
                 <p class="mt-4">
-                    A Spatie account gives you access to our free videos, and to all purchased products and licenses.
+                    A Spatie account gives you access to our free videos and to all purchased products and licenses.
                     </p>
             </div>
             
