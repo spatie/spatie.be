@@ -21,6 +21,7 @@ class PurchasableFactory extends Factory
             'type' => PurchasableType::TYPE_UNLIMITED_DOMAINS,
             'description' => $this->faker->text,
             'paddle_product_id' => (string)$this->faker->randomNumber(5),
+            'getting_started_url' => 'https://mailcoach.app/docs',
         ];
     }
 }
