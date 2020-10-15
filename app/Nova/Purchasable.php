@@ -53,7 +53,7 @@ class Purchasable extends Resource
 
             Text::make('Getting started URL')
                 ->sortable()
-                ->rules(['required', 'max:255']),
+                ->rules(['max:255']),
 
             Select::make('Type')->options(PurchasableType::getLabels())->rules(['required']),
 
