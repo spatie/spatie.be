@@ -11,7 +11,7 @@
             @endif
         </div>
 
-        <div class="mt-2 grid grid-flow-cols gap-4 justify-start">
+        <div class="mt-2 grid grid-flow-col gap-4 justify-start">
             @if ($license->purchasable->getting_started_url)
             <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">
                 Getting started
@@ -25,15 +25,15 @@
             @endif
 
             @if ($license->purchasable->repository_access)
-                @if ($license->hasRepositoryAccess())
-                <a class="link-blue link-underline" href="https://github.com/{{ $license->purchasable->repository_access }}">
-                    Repository
-                </a>
-                @else
-                <a class="link-blue link-underline" href="{{ route('github-login') }}">
-                    Connect to GitHub to access repo
-                </a>
-                @endif
+            @if ($license->hasRepositoryAccess())
+            <a class="link-blue link-underline" href="https://github.com/{{ $license->purchasable->repository_access }}">
+                Repository
+            </a>
+            @else
+            <a class="link-blue link-underline" href="{{ route('github-login') }}">
+                Connect to GitHub to access repo
+            </a>
+            @endif
             @endif
         </div>
     </div>
@@ -63,11 +63,10 @@
         return string.indexOf(firstDigit);
     }
 
-    Paddle.Product.Prices({
-        {
-            $license - > purchasable - > renewalPurchasable - > paddle_product_id
-        }
-    }, function(prices) {
+    Paddle.Product.Prices(
+        {{
+            $license->purchasable->renewalPurchasable->paddle_product_id
+        }}, function(prices) {
         console.log('license renewal', prices);
         let priceString = prices.price.net;
 

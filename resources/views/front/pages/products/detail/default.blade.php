@@ -26,7 +26,7 @@
             $purchasable = session()->get('sold_purchasable')
         @endphp  
 
-        <section id="cta" class="my-16">
+        <section id="cta" class="pb-16">
             <div class="wrap">
                 <div class="card gradient gradient-green text-white">
                     <div class="wrap-card grid md:grid-cols-2 md:items-center">
@@ -38,7 +38,7 @@
                             
                             @if ($purchasable->getting_started_url)
                                 <br>
-                                <a class="link-blue link-underline" href="{{ $purchasable->getting_started_url }}">
+                                <a class="link-white link-underline" href="{{ $purchasable->getting_started_url }}">
                                     Get started
                                 </a>
                                 right away!

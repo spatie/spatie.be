@@ -3,7 +3,7 @@
     $purchasable = $purchase->purchasable;
 @endphp
 
-<div class="cells grid-cols-2">
+<div class="cells">
     <div class="cell-l">
         <div class="text-xs text-gray">
             {{ request()->user()->email }}
@@ -11,7 +11,7 @@
             Purchased on {{ $purchase->created_at->format('Y-m-d') }}
         </div>
 
-        <div class="mt-2 grid grid-flow-cols gap-4 justify-start">
+        <div class="mt-2 grid grid-flow-col gap-4 justify-start">
             @if ($purchasable->getting_started_url)
                 <a class="link-blue link-underline" href="{{ $purchasable->getting_started_url }}">
                     Getting started
@@ -53,6 +53,4 @@
         </div>
         
     </div>
-
-    
 </div>
