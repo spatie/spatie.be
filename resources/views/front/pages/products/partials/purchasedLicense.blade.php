@@ -5,51 +5,53 @@
             <livewire:domain :license="$license" />
 
             @if ($license->isExpired())
-                <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
+            <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
             @else
-                <span>Expires on {{ $license->expires_at->format('Y-m-d') }}</span>
+            <span>Expires on {{ $license->expires_at->format('Y-m-d') }}</span>
+            @endif
+        </div>
+
+        <div class="mt-2 grid grid-flow-cols gap-4 justify-start">
+            @if ($license->purchasable->getting_started_url)
+            <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">
+                Getting started
+            </a>
+            @endif
+
+            @if ($license->purchasable->series->count())
+            <a class="link-blue link-underline" href="{{ route('series.show', $license->purchasable->series->first()) }}">
+                Videos
+            </a>
+            @endif
+
+            @if ($license->purchasable->repository_access)
+                @if ($license->hasRepositoryAccess())
+                <a class="link-blue link-underline" href="https://github.com/{{ $license->purchasable->repository_access }}">
+                    Repository
+                </a>
+                @else
+                <a class="link-blue link-underline" href="{{ route('github-login') }}">
+                    Connect to GitHub to access repo
+                </a>
+                @endif
             @endif
         </div>
     </div>
 
     <span class="cell-r grid gap-4 justify-start md:justify-end">
         @if ($license->purchasable->renewalPurchasable)
-            <x-paddle-button
-                    :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)"
-                    data-theme="none">
-                <x-button>
-                        Renew for
-                        <span class="ml-1 text-lg leading-none">
-                            <span class="" data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id }}"></span>
-                            <span class="" data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"></span>
-                        </span>
-                    </x-button>
-            </x-paddle-button>
+        <x-paddle-button :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)" data-theme="none">
+            <x-button>
+                Renew for
+                <span class="ml-1 text-lg leading-none">
+                    <span class="" data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id }}"></span>
+                    <span class="" data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"></span>
+                </span>
+            </x-button>
+        </x-paddle-button>
         @endif
 
-        @if ($license->purchasable->getting_started_url)
-            <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">
-                Getting started
-            </a>
-        @endif
 
-        @if ($license->purchasable->series->count())
-            <a class="link-blue link-underline" href="{{ route('series.show', $license->purchasable->series->first()) }}">
-                Videos
-            </a>
-        @endif
-
-        @if ($license->purchasable->repository_access)
-            @if ($license->hasRepositoryAccess())
-                <a class="link-blue link-underline" href="https://github.com/{{ $license->purchasable->repository_access }}">
-                    Repository
-                </a>
-            @else
-                <a class="link-blue link-underline" href="{{ route('github-login') }}">
-                    Connect to GitHub to access repo
-                </a>
-            @endif
-        @endif
     </span>
 </div>
 
@@ -61,7 +63,11 @@
         return string.indexOf(firstDigit);
     }
 
-    Paddle.Product.Prices({{ $license->purchasable->renewalPurchasable->paddle_product_id }}, function(prices) {
+    Paddle.Product.Prices({
+        {
+            $license - > purchasable - > renewalPurchasable - > paddle_product_id
+        }
+    }, function(prices) {
         console.log('license renewal', prices);
         let priceString = prices.price.net;
 
@@ -70,10 +76,11 @@
         let price = priceString.substring(indexOFirstDigitInString);
         price = price.replace('.00', '');
 
-        let currencySymbol = priceString.substring(0,indexOFirstDigitInString);
+        let currencySymbol = priceString.substring(0, indexOFirstDigitInString);
         currencySymbol = currencySymbol.replace('US', '');
 
         document.querySelector('[data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id}}"]').innerHTML = currencySymbol;
         document.querySelector('[data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"]').innerHTML = price;
     });
+
 </script>
