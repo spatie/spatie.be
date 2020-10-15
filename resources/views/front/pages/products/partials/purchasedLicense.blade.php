@@ -26,7 +26,7 @@
             @endif
         </div>
 
-        <p class="mt-2" >
+        <p class="mt-2">
            <div class="text-xs text-gray">License key:</div>
             <code class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
         </p>
