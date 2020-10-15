@@ -1,6 +1,6 @@
 <div class="cells grid-cols-auto-1fr">
     <div class="cell-l"> 
-        <div class="mt-2 grid grid-flow-col gap-4 justify-start">
+        <div class="grid grid-flow-col gap-4 justify-start">
             @if ($license->purchasable->getting_started_url)
                 <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">
                     Getting started
@@ -26,7 +26,7 @@
             @endif
         </div>
 
-        <p>
+        <p class="mt-2" >
            <div class="text-xs text-gray">License key:</div>
             <code class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
         </p>
