@@ -179,6 +179,10 @@ module.exports = {
                 back: -1,
                 postcard: 700,
             },
+
+            gridTemplateColumns: {
+                'auto-1fr': 'auto-1fr'
+            },
         },
 
         customForms: theme => ({

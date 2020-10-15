@@ -1,7 +1,6 @@
-<div class="cells grid-cols-2">
-    <div class="cell-l">
-        
-        <div class="mt-2 flex justify-start">
+<div class="cells grid-cols-auto-1fr">
+    <div class="cell-l"> 
+        <div class="mt-2 grid grid-flow-col gap-4 justify-start">
             @if ($license->purchasable->getting_started_url)
                 <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">
                     Getting started
@@ -28,7 +27,7 @@
         </div>
 
         <p>
-            <div class="text-xs text-gray">License key:</div>
+           <div class="text-xs text-gray">License key:</div>
             <code class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
         </p>
 
@@ -44,14 +43,14 @@
 
     </div>
 
-    <span class="cell-r ml-auto">
+    <span class="cell-r grid gap-4 justify-start md:justify-end">
         @if ($license->purchasable->renewalPurchasable)
         <x-paddle-button :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)" data-theme="none">
             <x-button>
                 Renew for
                 <span class="ml-1 text-lg leading-none">
-                    <span class="" data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id }}"></span>
-                    <span class="" data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"></span>
+                    <span class="" data-id="current-currency-{{ $license->id }}"></span>
+                    <span class="" data-id="current-price-{{ $license->id }}"></span>
                 </span>
             </x-button>
         </x-paddle-button>
@@ -84,8 +83,8 @@
         let currencySymbol = priceString.substring(0, indexOFirstDigitInString);
         currencySymbol = currencySymbol.replace('US', '');
 
-        document.querySelector('[data-id="current-currency-{{ $license->purchasable->renewalPurchasable->id}}"]').innerHTML = currencySymbol;
-        document.querySelector('[data-id="current-price-{{ $license->purchasable->renewalPurchasable->id }}"]').innerHTML = price;
+        document.querySelector('[data-id="current-currency-{{ $license->id}}"]').innerHTML = currencySymbol;
+        document.querySelector('[data-id="current-price-{{ $license->id }}"]').innerHTML = price;
     });
 
 </script>
