@@ -53,10 +53,10 @@
 
     @auth
         @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
-    @endauth
 
-    @auth
-        @include('front.pages.products.partials.purchasedProducts', ['purchases' => $purchases])
+        @if ($licenses->empty())
+            @include('front.pages.products.partials.purchasedProducts', ['purchases' => $purchases])
+        @endif
     @endauth
 
     @if($product->purchasablesWithoutRenewals->count())
