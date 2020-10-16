@@ -6,18 +6,10 @@
                     Do you think this approach <br>would fit you?
                 </p>
                 <h2 class="title-xl md:text-right">
-                   It's <a class="link-white link-underline" href="{{ mailto(
-'Time to talk!',
-'Tell us as much as you can about
-- your online project
-- your planning
-- your budget
-- …
-
-Anything that helps us to start straightforward!'
-) }}">time to talk</a>
+                   It's <a class="link-white link-underline" href="#match">time to talk</a>
                 </h2>
             </div>
         </div>
     </div>
 </section>
+
