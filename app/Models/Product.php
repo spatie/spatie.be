@@ -62,7 +62,7 @@ class Product extends Model implements HasMedia, Sortable
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
             ]);
 
-        if (! auth()->user()->isSpatieMember()) {
+        if (! auth()->user() || ! auth()->user()->isSpatieMember()) {
             $query->where('released', true);
         }
 
