@@ -55,12 +55,18 @@ class Product extends Model implements HasMedia, Sortable
 
     public function purchasablesWithoutRenewals(): HasMany
     {
-        return $this->hasMany(Purchasable::class)
+        $query = $this->hasMany(Purchasable::class)
             ->orderBy('sort_order')
             ->whereNotIn('type', [
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
             ]);
+
+        if (! auth()->user()->isSpatieMember()) {
+            $query->where('released', true);
+        }
+
+        return $query;
     }
 
     public function requiresLicense(): bool
