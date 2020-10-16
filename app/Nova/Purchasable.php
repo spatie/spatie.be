@@ -40,6 +40,8 @@ class Purchasable extends Resource
                 ->sortable()
                 ->rules(['required', 'max:255']),
 
+            Boolean::make('Released'),
+
             BelongsTo::make('Purchasable for renewal', 'renewalPurchasable', Purchasable::class)
                 ->nullable(),
 

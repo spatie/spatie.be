@@ -26,6 +26,7 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public $casts = [
         'satis_packages' => 'array',
+        'released' => 'boolean',
     ];
 
     public $with = [

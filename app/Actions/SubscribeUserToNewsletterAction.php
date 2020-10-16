@@ -12,7 +12,7 @@ class SubscribeUserToNewsletterAction
     {
         $emailList = EmailList::firstWhere('name', 'Spatie');
 
-        Subscriber::createWithEmail($user->email ?? $user->)
+        Subscriber::createWithEmail($user->email)
             ->skipConfirmation()
             ->subscribeTo($emailList);
 
