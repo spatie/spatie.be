@@ -16,14 +16,6 @@
 
     <section class="section overflow-visible section-group">
             <div class="wrap">
-                @auth
-                    @includeWhen($purchasesPerProduct->isNotEmpty(), "front.pages.products.partials.purchases", ['purchasesPerProduct' => $purchasesPerProduct])
-
-                    @if($purchasesPerProduct->isNotEmpty())
-                        <h2 class="mt-16 title line-after mb-12">All products</h2>
-                    @endif
-                @endauth    
-
                 <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
                     @foreach ($products as $product)
                         <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">

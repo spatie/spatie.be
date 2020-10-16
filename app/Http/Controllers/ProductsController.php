@@ -13,15 +13,7 @@ class ProductsController
             ->where('visible', true)
             ->get();
 
-        $purchasesPerProduct = collect();
-        if ($request->user()) {
-            $purchasesPerProduct = $request->user()
-                ->purchasesWithoutRenewals()
-                ->get()
-                ->groupBy('purchasable.product_id');
-        }
-
-        return view('front.pages.products.index', compact('products', 'purchasesPerProduct'));
+        return view('front.pages.products.index', compact('products'));
     }
 
     public function show(Request $request, Product $product)
