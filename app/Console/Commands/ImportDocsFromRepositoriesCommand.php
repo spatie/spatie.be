@@ -44,7 +44,7 @@ class ImportDocsFromRepositoriesCommand extends Command
         array $updatedRepositoryNames,
         StreamSelectLoop $loop
     ): Collection {
-        $repositoriesWithDocs = $this->getRepositoriesWitDocs();
+        $repositoriesWithDocs = $this->getRepositoriesWithDocs();
 
         return collect($updatedRepositoryNames)
             ->map(fn (string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
@@ -82,7 +82,7 @@ class ImportDocsFromRepositoriesCommand extends Command
             });
     }
 
-    protected function getRepositoriesWitDocs(): Collection
+    protected function getRepositoriesWithDocs(): Collection
     {
         return collect(config('docs.repositories'))->keyBy('repository');
     }
