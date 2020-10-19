@@ -27,7 +27,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $updatedRepositoriesValueStore = UpdatedRepositoriesValueStore::make();
 
-        $updatedRepositoryNames = $updatedRepositoriesValueStore->getNames();
+        $updatedRepositoryNames = ['laravel-medialibrary'];
 
         $this
             ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
