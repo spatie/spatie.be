@@ -18,7 +18,7 @@ class Purchase extends Resource
     //public static $title = 'title';
 
     public static $search = [
-        'id', 'title',
+        'id',
     ];
 
     public function fields(Request $request)
