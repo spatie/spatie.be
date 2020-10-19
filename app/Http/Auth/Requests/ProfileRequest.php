@@ -10,7 +10,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email:rfc,dns', 'required_if:newsletter'],
+            'email' => ['required', 'string', 'email:rfc,dns'],
             'newsletter' => ['nullable'],
         ];
     }
