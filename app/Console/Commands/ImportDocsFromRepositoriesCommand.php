@@ -58,7 +58,7 @@ class ImportDocsFromRepositoriesCommand extends Command
             ->mapSpread(function (array $repository, string $alias, string $branch) use ($loop) {
                 $process = $this->createProcessComponent($repository, $branch, $alias);
 
-                $this->info("Created import process for {$repository}");
+                $this->info("Created import process for {$repository['name']}");
 
                 return childProcessPromise($loop, $process);
             });
