@@ -23,7 +23,7 @@ return [
                 "v5" => "v5",
                 "v4" => "v4",
                 "v3" => "v3",
-                "v9" => "v9-dev",
+                "v9" => "v9",
             ],
             "category" => "Laravel",
         ],
