@@ -13,7 +13,6 @@ class VideosController
             ->orderBy('sort_order')
             ->get();
 
-
         return view('front.pages.videos.index', compact('allSeries'));
     }
 
