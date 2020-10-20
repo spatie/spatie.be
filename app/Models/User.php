@@ -47,6 +47,10 @@ class User extends Authenticatable
 
     public function isSubscribedToNewsletter(): bool
     {
+        if (! $this->email) {
+            return false;
+        }
+
         /** @var EmailList $emailList */
         $emailList = EmailList::firstWhere('name', 'Spatie');
 

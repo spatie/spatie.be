@@ -56,13 +56,14 @@
                     @enderror
                 </x-field>
 
-                <x-field>
-                    <label for="newsletter">
-                        <!-- @TODO: Check Mailcoach if user is subscribed -->
-                        <input class="form-checkbox mr-4" type="checkbox" name="newsletter" id="newsletter" {{ auth()->user()->isSubscribedToNewsletter() ? 'checked' : ''}}>
-                        Keep me in the loop when there is new Spatie content
-                    </label>
-                </x-field>
+                @if (auth()->user()->email)
+                    <x-field>
+                        <label for="newsletter">
+                            <input class="form-checkbox mr-4" type="checkbox" name="newsletter" id="newsletter" {{ auth()->user()->isSubscribedToNewsletter() ? 'checked' : ''}}>
+                            Keep me in the loop when there is new Spatie content
+                        </label>
+                    </x-field>
+                @endif
 
                 <x-button type="submit">Save profile</x-button>
             </form>
