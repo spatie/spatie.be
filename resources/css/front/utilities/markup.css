@@ -91,6 +91,10 @@
     page-break-after: avoid;
 }
 
+.markup-titles code {
+    @apply normal-case;
+}
+
 .markup-lists li:not(:last-child) {
     margin-bottom: 0.35em;
 }
