@@ -10,6 +10,7 @@ use League\CommonMark\Block\Element\IndentedCode;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
+use League\CommonMark\Extension\Table\TableExtension;
 use League\CommonMark\Inline\Element\Image;
 use League\CommonMark\Inline\Element\Link;
 use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
@@ -29,7 +30,7 @@ class DocumentationContentParser implements \Spatie\Sheets\ContentParser
 
         $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer(['html', 'php', 'js', 'ts', 'css']));
         $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer(['html', 'php', 'js', 'ts', 'css']));
-
+        $environment->addExtension(new TableExtension());
         $environment->addExtension(new HeadingPermalinkExtension());
 
         $config = [
