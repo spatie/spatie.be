@@ -33,7 +33,7 @@
                     <h2 class="title-sm text-sm">{{ $section['_index']['title'] }}</h2>
                 @endif
 
-                <ul class="mb-6 space-y-1 links-blue @if($key !== '_root') pl-3 border-l-2 border-gray-lighter border-opacity-75 @endif">
+                <ul class="mb-6 space-y-1 links-blue @if($key !== '_root') pl-2 border-l-2 border-gray-lighter border-opacity-75 @endif">
                     @foreach($section['pages'] as $navItem)
                         <li class="leading-snug">
                             <a href="{{ $navItem->url }}" class="@if($page->slug === $navItem->slug) font-bold @endif">

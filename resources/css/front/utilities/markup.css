@@ -169,3 +169,54 @@
     @apply mb-2;
     @apply mr-4;
 }
+
+/* Table styles */
+
+.markup-tables table {
+    @apply border-collapse;
+    @apply border-t;
+    @apply border-b;
+    @apply border-gray-lighter;
+    @apply w-full;
+    @apply text-xs;
+    @apply my-6;
+}
+
+.markup-tables table thead tr {
+    @apply border-b;
+    @apply border-gray-lighter;
+    font-size: 0.875em;
+}
+
+.markup-tables table th,
+.markup-tables table td {
+    @apply py-2;
+    @apply px-1;
+}
+
+@screen sm {
+    .markup-tables table th,
+    .markup-tables table td {
+        @apply px-2;
+    }
+}
+
+.markup-tables table th {
+    @apply text-left;
+    @apply font-normal;
+    @apply whitespace-no-wrap;
+    @apply uppercase;
+    @apply text-xs;
+    @apply text-gray;
+}
+
+.markup-tables table tbody tr {
+    @apply border-t;
+    @apply border-gray-lighter;
+}
+
+.markup-tables table thead .th-numeric,
+.markup-tables table tbody .td-numeric {
+    @apply text-right;
+    font-variant-numeric: tabular-nums;
+}
