@@ -185,6 +185,8 @@
 .markup-tables table thead tr {
     @apply border-b;
     @apply border-gray-lighter;
+    @apply bg-gray-lightest;
+    @apply bg-opacity-25;
     font-size: 0.875em;
 }
 
