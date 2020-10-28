@@ -17,7 +17,7 @@
                     Learn&nbsp;more
                 </button>
             </a>
-            <button class="absolute top-0 right-0 mr-2 opacity-50" onClick="this.parentElement.remove();">&times;</button>
+            @include('front.pages.docs.banners.hideButton')  
         </div>
     </div>
 </aside>
