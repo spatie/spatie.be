@@ -45,6 +45,11 @@
                                 Twitter
                             </a>
                         </li>
+                        <li>
+                            <a href="https://www.youtube.com/channel/UCoBbei3S9JLTcS2VeEOWDeQ" target="_blank" rel="nofollow noreferrer noopener">
+                                YouTube
+                            </a>
+                        </li>
                 </ul>
             </div>
         </div>
