@@ -11,7 +11,7 @@
                 </h2>
                 <p class="text-lg">
                     If you'd like to make a donation to keep us going, support us via 
-                    <a href="https://github.com/sponsors/spatie" target="_blank" rel="noreferrer noopener">Github Sponsors</a>.
+                    <a href="https://github.com/sponsors/spatie" target="_blank" rel="noreferrer noopener">GitHub Sponsors</a>.
                 </p>
                 <p>
                     All GitHub sponsors get extra access to content in our <a href="{{ route('videos.index') }}">video section</a>.
