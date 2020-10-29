@@ -10,6 +10,7 @@ class UpdatePurchasesNullableReceiptId extends Migration
     {
         Schema::table('purchases', function (Blueprint $table) {
             $table->unsignedBigInteger('receipt_id')->nullable()->change();
+            $table->json('paddle_webhook_payload')->nullable()->change();
         });
     }
 }
