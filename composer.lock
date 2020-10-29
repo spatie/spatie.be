@@ -7248,17 +7248,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "3.2.7",
+            "version": "3.2.8",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "85c8f13e9f24c3961e159cc0b27eafc0129a5cc7"
+                "reference": "3ae46bc93bc81ed6f423a5e41356bd4cb87f5fdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-85c8f13e9f24c3961e159cc0b27eafc0129a5cc7-zip-e346df.zip",
-                "reference": "85c8f13e9f24c3961e159cc0b27eafc0129a5cc7",
-                "shasum": "59659061952fc201c5fd0ff5e0614b90a66e482b"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-3ae46bc93bc81ed6f423a5e41356bd4cb87f5fdf-zip-a81303.zip",
+                "reference": "3ae46bc93bc81ed6f423a5e41356bd4cb87f5fdf",
+                "shasum": "8e696a8443fffde9c78b8a0ff49843797f1039be"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -7360,10 +7360,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/master",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/3.2.8",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2020-10-28T10:47:22+00:00"
+            "time": "2020-10-28T18:16:10+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -8214,16 +8214,16 @@
         },
         {
             "name": "spatie/laravel-validation-rules",
-            "version": "2.6.1",
+            "version": "2.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-validation-rules.git",
-                "reference": "10a5040f4a2700fafe562cc58e8d46c75042911c"
+                "reference": "9a7edb63d596bbfad1255945077f8d9bcdb6505a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-validation-rules/zipball/10a5040f4a2700fafe562cc58e8d46c75042911c",
-                "reference": "10a5040f4a2700fafe562cc58e8d46c75042911c",
+                "url": "https://api.github.com/repos/spatie/laravel-validation-rules/zipball/9a7edb63d596bbfad1255945077f8d9bcdb6505a",
+                "reference": "9a7edb63d596bbfad1255945077f8d9bcdb6505a",
                 "shasum": ""
             },
             "require": {
@@ -8270,13 +8270,17 @@
                 "laravel-validation-rules",
                 "spatie"
             ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-validation-rules/issues",
+                "source": "https://github.com/spatie/laravel-validation-rules/tree/2.7.0"
+            },
             "funding": [
                 {
                     "url": "https://github.com/spatie",
                     "type": "github"
                 }
             ],
-            "time": "2020-09-08T20:35:44+00:00"
+            "time": "2020-10-28T15:31:41+00:00"
         },
         {
             "name": "spatie/laravel-view-models",
