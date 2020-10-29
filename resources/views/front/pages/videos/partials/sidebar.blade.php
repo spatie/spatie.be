@@ -75,4 +75,17 @@
         @endforelse
     </ol>
 
+    @if($series->title == 'Front Line PHP')
+        <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
+           More videos to come!
+            <div class="mt-2">
+                <a href="https://front-line-php.com" class="grid">
+                    <x-button>
+                        Subscribe <span class="sm:hidden md:inline">&nbsp;for update</span>
+                    </x-button>
+                </a>
+            </div>
+        </div>
+    @endif
+
 </nav>
