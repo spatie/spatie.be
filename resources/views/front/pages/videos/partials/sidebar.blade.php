@@ -81,7 +81,7 @@
             <div class="mt-2">
                 <a href="https://front-line-php.com" class="grid">
                     <x-button>
-                        Subscribe <span class="sm:hidden md:inline">&nbsp;for update</span>
+                        Subscribe <span class="sm:hidden md:inline">&nbsp;for updates</span>
                     </x-button>
                 </a>
             </div>
