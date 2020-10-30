@@ -105,4 +105,13 @@ class User extends Authenticatable
     {
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
     }
+
+    public function hasAccessToUnreleasedPurchasables(): bool
+    {
+        if ($this->isSponsoring()) {
+            return true;
+        }
+
+        return $this->isSpatieMember();
+    }
 }

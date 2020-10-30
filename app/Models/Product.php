@@ -7,6 +7,7 @@ use App\Http\Controllers\ProductsController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -55,18 +56,15 @@ class Product extends Model implements HasMedia, Sortable
 
     public function purchasablesWithoutRenewals(): HasMany
     {
-        $query = $this->hasMany(Purchasable::class)
+        return $this->hasMany(Purchasable::class)
             ->orderBy('sort_order')
             ->whereNotIn('type', [
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
-            ]);
-
-        if (! auth()->user() || ! auth()->user()->isSpatieMember()) {
-            $query->where('released', true);
-        }
-
-        return $query;
+            ])
+            ->unless(optional(auth()->user())->hasAccessToUnreleasedPurchasables(), function(Builder $query) {
+                $query->where('released', true);
+            });
     }
 
     public function requiresLicense(): bool
