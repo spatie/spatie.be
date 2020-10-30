@@ -4,14 +4,14 @@
             
         </div>
         <div class="wrap">
-            <div class="flex items-baseline justify-between mb-8">
+            <div class="md:flex items-baseline justify-between mb-8">
                 <input
                 type="search"
                 class="form-input px-4"
                 placeholder="Search packages..."
                 wire:model="search"
                 >
-                <div class="ml-6">
+                <div class="mt-6 md:mt-0 md:ml-6">
                     <label for="sort" class="text-gray mr-2">
                             Sort
                     </label>
