@@ -25,3 +25,5 @@ _ide_helper_models.php
 /storage/medialibrary/temp
 /storage/media-library/temp
 .php_cs.cache
+.phpunit.result.cache
+/build/
