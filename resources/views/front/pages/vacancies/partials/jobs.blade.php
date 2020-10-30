@@ -3,18 +3,18 @@
         <div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
                 Vacancies at Spatie
-                <div class="title-subtext text-pink-dark">
+                <span class="title-subtext text-pink-dark block">
                    Currently looking for…
-                </div>
+                </span>
             </h2>
             @include('front.pages.vacancies.partials.list')
         </div>
         <div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
                 Internships
-                <div class="title-subtext text-pink-dark">
+                <span class="title-subtext text-pink-dark block">
                     Backend or frontend
-                </div>
+                </span>
             </h2>
             <p class="mt-4">
                 Are you looking to get really good in Laravel, Vue.js, PostCSS or Tailwind? We have slots available for students.

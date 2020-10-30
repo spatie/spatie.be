@@ -62,7 +62,7 @@ class Product extends Model implements HasMedia, Sortable
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
             ])
-            ->unless(optional(auth()->user())->hasAccessToUnreleasedPurchasables(), function(Builder $query) {
+            ->unless(optional(auth()->user())->hasAccessToUnreleasedPurchasables(), function (Builder $query) {
                 $query->where('released', true);
             });
     }
