@@ -9,9 +9,9 @@
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Front Line PHP
-                    <div class="title-subtext text-pink-dark">
+                    <span class="title-subtext text-pink-dark block">
                         Book<span class="font-normal"> + </span>free videos <span class="font-normal">on PHP 8</span>
-                    </div>
+                    </span>
                 </h3>
                 <p class="text-lg font-semibold">
                     Launching in december 2020! </p>
@@ -20,7 +20,7 @@
                 </p>
                 <ul class="text-lg mt-8">
                     <li class="flex items-baseline">
-                        <span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> 
+                        <span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span>
                         <span class="ml-1">Subscribe at <a href="https://front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">front-line-php.com</a> to get previews and early access.</span>
                     </li>
                 </ul>
@@ -38,9 +38,9 @@
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Laravel Beyond CRUD
-                    <div class="title-subtext text-pink-dark">
-                        <span class="font-normal">Book + Premium Video Course
-                    </div>
+                    <span class="title-subtext text-pink-dark block">
+                        Book<span class="font-normal"> + </span>Premium Video Course
+                    </span>
                 </h3>
                 <p class="text-lg">
                     Learn how to build larger-than-average Laravel applications in our new book and video course. The knowledge in this course is built from the years of experience our team has building large, robust applications.
@@ -63,10 +63,10 @@
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Ignition + Flare
-                    <div class="title-subtext text-pink-dark">
+                    <span class="title-subtext text-pink-dark block">
                         Error page<span class="font-normal"> + </span>tracker <span class="font-normal">for
                             Laravel</span>
-                    </div>
+                    </span>
                 </h3>
                 <p class="text-lg">
                     Ignition is a free and shareable error page that ships with Laravel 6 and up. It's built to keep you
@@ -91,9 +91,9 @@
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Newsletter software and package
-                    <div class="title-subtext text-pink-dark">
+                    <span class="title-subtext text-pink-dark block">
                         <span class="font-normal">Including</span> video course
-                    </div>
+                    </span>
                 </h3>
                 <p class="text-lg">
                     Mailcoach is a self-hosted dashboard to setup mailing lists, send out newsletter campaigns and track the success.
@@ -116,9 +116,9 @@
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Laravel Package Training
-                    <div class="title-subtext text-pink-dark">
+                    <span class="title-subtext text-pink-dark block">
                         <span class="font-normal">4 hours of </span>premium video content
-                    </div>
+                    </span>
                 </h3>
                 <p class="text-lg">
                     Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
@@ -140,9 +140,9 @@
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Soundcloud Demo Platform
-                    <div class="title-subtext text-pink-dark">
+                    <span class="title-subtext text-pink-dark block">
                         <span class="font-normal">Using</span> Soundcloud, Laravel, Vue
-                    </div>
+                    </span>
                 </h3>
                 <p class="text-lg">
                     For Martin Garrix' record label <a href="https://stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">stmpdrcrds.com</a> we made a workflow application to
