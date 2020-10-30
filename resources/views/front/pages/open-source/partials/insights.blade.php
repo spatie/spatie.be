@@ -1,8 +1,8 @@
 <h2 class="title-sm">
     Latest insights
-    <div class="title-subtext text-pink-dark">
+    <span class="title-subtext text-pink-dark block">
         From the team
-    </div>
+    </span>
 </h2>
 @foreach ($insights as $insight)
      <p class="mt-4">
