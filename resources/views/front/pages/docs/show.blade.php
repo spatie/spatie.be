@@ -10,11 +10,11 @@
 
     @include('front.pages.docs.partials.breadcrumbs')
 
-    <section class="wrap md:grid pb-24 gap-8 md:grid-cols-3 items-stretch">
-        <div class="z-10 | print:hidden">
+    <section class="wrap md:grid pb-24 gap-12 md:grid-cols-10 items-stretch">
+        <div class="z-10 | md:col-span-3 | print:hidden">
              @include('front.pages.docs.partials.navigation')
         </div>
-        <div class="md:col-span-2">
+        <div class="md:col-span-7">
 
             @if($showBigTitle)
                 <div class="mb-16">
@@ -32,7 +32,7 @@
                 <h1 class="title-xl mb-8">{{ $page->title }}</h1>
             @endif
 
-            <div class="markup markup-titles markup-lists markup-code links-blue links-underline">
+            <div class="markup markup-titles markup-lists markup-tables markup-code links-blue links-underline">
                 {!! $page->contents !!}
             </div>
         </div>
