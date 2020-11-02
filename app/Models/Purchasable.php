@@ -92,7 +92,7 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public function getAverageEarnings(): int
     {
-        $avgEarnings = $this->purchases()->average('earnings');
+        $avgEarnings = $this->purchases()->where('earnings', '>', 0)->average('earnings');
 
         return (int) round($avgEarnings);
     }
