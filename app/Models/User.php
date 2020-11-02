@@ -106,7 +106,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
     }
 
-    public function wantsToPrePurchaseMediaLibraryPro(): bool
+    public function canPrePurchaseMediaLibraryPro(): bool
     {
         return in_array((int)$this->id, [
             5569,
@@ -118,7 +118,7 @@ class User extends Authenticatable
 
     public function hasAccessToUnreleasedPurchasables(): bool
     {
-        if ($this->wantsToPrePurchaseMediaLibraryPro()) {
+        if ($this->canPrePurchaseMediaLibraryPro()) {
             return true;
         }
 
