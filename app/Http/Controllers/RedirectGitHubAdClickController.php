@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Repository;
-use RuntimeException;
 
 class RedirectGitHubAdClickController
 {
