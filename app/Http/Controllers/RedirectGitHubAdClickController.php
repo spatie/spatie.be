@@ -18,6 +18,6 @@ class RedirectGitHubAdClickController
             'utm_campaign' => "repo-{$repository->name}",
         ]);
 
-        return redirect()->to("{$ad->click_redfirect_url}");
+        return redirect()->to("{$ad->click_redfirect_url}?{$utmQueryString}");
     }
 }
