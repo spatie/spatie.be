@@ -9,8 +9,7 @@
 .markup address:not(:last-child),
 .markup p:not(:last-child),
 .markup ol:not(:last-child),
-.markup ul:not(:last-child)
-.markup iframe {
+.markup ul:not(:last-child) .markup iframe {
     margin-bottom: 1.5em;
 }
 
