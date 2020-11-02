@@ -12,6 +12,12 @@ class RedirectGitHubAdClickController
             return redirect()->route('products.index');
         }
 
-        return redirect()->to($ad->click_redirect_url . "?utm_source=repo-{$repository->name}");
+        $utmQueryString = http_build_query([
+            'utm_source' => 'github',
+            'utm_medium' => 'banner',
+            'utm_campaign' => "repo-{$repository->name}",
+        ]);
+
+        return redirect()->to("{$ad->click_redfirect_url}?{$utmQueryString}");
     }
 }
