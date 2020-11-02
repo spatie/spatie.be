@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Repository;
+use RuntimeException;
 
 class RedirectGitHubAdClickController
 {
@@ -18,6 +19,6 @@ class RedirectGitHubAdClickController
             'utm_campaign' => "repo-{$repository->name}",
         ]);
 
-        return redirect()->to("{$ad->click_redfirect_url}?{$utmQueryString}");
+        return redirect()->to("{$ad->click_redirect_url}?{$utmQueryString}");
     }
 }
