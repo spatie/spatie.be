@@ -42,19 +42,19 @@ class User extends Authenticatable
             return true;
         }
 
-        return (bool) $this->is_sponsor;
+        return (bool)$this->is_sponsor;
     }
 
     public function isSubscribedToNewsletter(): bool
     {
-        if (! $this->email) {
+        if (!$this->email) {
             return false;
         }
 
         /** @var EmailList $emailList */
         $emailList = EmailList::firstWhere('name', 'Spatie');
 
-        if (! $emailList) {
+        if (!$emailList) {
             return false;
         }
 
@@ -106,8 +106,22 @@ class User extends Authenticatable
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
     }
 
+    public function wantsToPrePurchaseMediaLibraryPro(): bool
+    {
+        return in_array((int)$this->id, [
+            5569,
+            829,
+            5564,
+            3818,
+        ]);
+    }
+
     public function hasAccessToUnreleasedPurchasables(): bool
     {
+        if ($this->wantsToPrePurchaseMediaLibraryPro()) {
+            return true;
+        }
+
         if ($this->isSponsoring()) {
             return true;
         }
