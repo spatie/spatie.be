@@ -18,8 +18,8 @@
         </div>
     </section>
 
-    <section class="wrap pt-0 z-10 -mb-6">
-        <div class="card py-12 gradient gradient-green shadow-lg text-white">
+    <section class="wrap pt-0 z-10 mb-12">
+        <div class="">
             <h2 class="title mb-8">
                 Create your account
             </h2>
