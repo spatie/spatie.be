@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05add0b15e369f8c0a7bc7a62916bc35",
+    "content-hash": "86ab7a9f5138990c5258e862ef0ce60f",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -6737,6 +6737,69 @@
                 "spatie"
             ],
             "time": "2019-11-21T15:49:51+00:00"
+        },
+        {
+            "name": "spatie/crypto",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/crypto.git",
+                "reference": "545f98d94e9ac46c87e19cdf64be5afe6c67dedd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/crypto/zipball/545f98d94e9ac46c87e19cdf64be5afe6c67dedd",
+                "reference": "545f98d94e9ac46c87e19cdf64be5afe6c67dedd",
+                "shasum": ""
+            },
+            "require": {
+                "ext-openssl": "*",
+                "php": "^7.4|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^9.3",
+                "symfony/var-dumper": "^5.1"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Crypto\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Encrypt and decrypt messages",
+            "homepage": "https://github.com/spatie/crypto",
+            "keywords": [
+                "crypto",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/crypto/issues",
+                "source": "https://github.com/spatie/crypto/tree/master"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/sponsors/spatie",
+                    "type": "github"
+                },
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "other"
+                }
+            ],
+            "time": "2020-11-06T23:42:34+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -16049,7 +16112,8 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "ebess/advanced-nova-media-library": 20,
-        "knplabs/github-api": 20
+        "knplabs/github-api": 20,
+        "spatie/crypto": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,

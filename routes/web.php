@@ -8,6 +8,7 @@ use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
+use App\Http\Controllers\SignedLicenseController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
 use App\Http\Controllers\InvoicesController;
@@ -30,6 +31,7 @@ Route::mailcoach('mailcoach');
 Route::post('paddle/webhook', WebhookController::class);
 
 Route::get('is-valid-license/{license}', IsValidLicenseController::class);
+Route::get('signed-license/{license}', SignedLicenseController::class);
 
 Route::domain('docs.spatie.be')->group(function () {
     Route::get('/{url}', RedirectDocsDomainController::class)->where('url', '.*');

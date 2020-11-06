@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Crypto\PrivateKey;
 
 class License extends Model implements AuthenticatableContract
 {
@@ -104,5 +105,15 @@ class License extends Model implements AuthenticatableContract
     public function isMasterKey(): bool
     {
         return $this->key === config('spatie.master_license_key');
+    }
+
+    public function getSignedLicense(): string
+    {
+        $licenseProperties = json_encode([
+            'key' => $this->key,
+            'expires_at' => $this->expires_at->timestamp,
+        ]);
+
+        return PrivateKey::fromString($this->purchasable->product->private_key)->encrypt($licenseProperties);
     }
 }
