@@ -67,6 +67,7 @@ Route::prefix('open-source')->group(function () {
     Route::get('projects', [OpenSourceController::class, 'projects'])->name('open-source.projects');
     Route::get('postcards', [PostcardController::class, 'index'])->name('open-source.postcards');
     Route::get('support-us', [OpenSourceController::class, 'support'])->name('open-source.support');
+    Route::get('testimonials', [OpenSourceController::class, 'testimonials'])->name('open-source.testimonials');
 });
 
 Route::prefix('vacancies')->group(function () {

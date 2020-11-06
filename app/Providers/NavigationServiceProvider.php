@@ -41,6 +41,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('open-source.projects', 'Projects')
                 ->route('open-source.postcards', 'Postcard Wall')
                 ->route('open-source.support', 'Support Us')
+                ->route('open-source.testimonials', 'Testimonials')
                 ->setActiveFromRequest('/open-source')
                 ->setActiveClass('submenu-active')
                 ;

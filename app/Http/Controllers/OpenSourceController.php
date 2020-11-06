@@ -24,4 +24,9 @@ class OpenSourceController
             'products' => $products,
         ]);
     }
+
+    public function testimonials()
+    {
+        return view('front.pages.open-source.testimonials');
+    }
 }
