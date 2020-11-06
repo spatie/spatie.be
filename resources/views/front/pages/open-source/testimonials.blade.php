@@ -1,5 +1,5 @@
 <x-page title="100 million downloads" background="/backgrounds/100-million.jpg" description="Celebrating 100.000.000 downloads">
-    <script src="/js/alpine.js" defer></script>
+    <script src="/alpine/alpine.js" defer></script>
 
     @include('front.pages.open-source.partials.menu')
 
