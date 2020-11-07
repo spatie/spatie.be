@@ -49,7 +49,7 @@
         "react/child-process": "^0.6.1",
         "react/promise": "^2.8",
         "spatie/commonmark-highlighter": "^2.1",
-        "spatie/crypto": "9999999-dev",
+        "spatie/crypto": "^0.0.2",
         "spatie/eloquent-sortable": "^3.8",
         "spatie/laravel-backup": "^6.11",
         "spatie/laravel-flash": "^1.7",

@@ -12,6 +12,6 @@ class SignedLicenseController
         /** @var \App\Models\License $license */
         $license = License::where('key', $license)->firstOrFail();
 
-        return response()->json($license);
+        return response()->json($license->signedLicense());
     }
 }

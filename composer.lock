@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c5e53d34752800a126b5e3ce86b3f477",
+    "content-hash": "12a9533bfa821faae45f1e1eca89754d",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -7234,7 +7234,7 @@
         },
         {
             "name": "spatie/crypto",
-            "version": "dev-master",
+            "version": "0.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crypto.git",
@@ -7254,7 +7254,6 @@
                 "phpunit/phpunit": "^9.3",
                 "symfony/var-dumper": "^5.1"
             },
-            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
@@ -7281,7 +7280,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/crypto/issues",
-                "source": "https://github.com/spatie/crypto/tree/master"
+                "source": "https://github.com/spatie/crypto/tree/0.0.2"
             },
             "funding": [
                 {
@@ -16174,8 +16173,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "ebess/advanced-nova-media-library": 20,
-        "knplabs/github-api": 20,
-        "spatie/crypto": 20
+        "knplabs/github-api": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
