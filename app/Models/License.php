@@ -109,11 +109,13 @@ class License extends Model implements AuthenticatableContract
 
     public function getSignedLicense(): string
     {
+        $privateKeyString = $this->purchasable->product->private_key;
+
         $licenseProperties = json_encode([
             'key' => $this->key,
             'expires_at' => $this->expires_at->timestamp,
         ]);
 
-        return PrivateKey::fromString($this->purchasable->product->private_key)->encrypt($licenseProperties);
+        return PrivateKey::fromString($privateKeyString)->encrypt($licenseProperties);
     }
 }
