@@ -11,5 +11,9 @@ class AddPrivateKeyToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->text('private_key')->nullable();
         });
+
+        Schema::table('licenses', function (Blueprint $table) {
+            $table->json('signed_license')->nullable();
+        });
     }
 }

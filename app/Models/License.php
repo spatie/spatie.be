@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use DateTimeInterface;
+use Exception;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Builder;
@@ -23,7 +24,21 @@ class License extends Model implements AuthenticatableContract
         'satis_authentication_count' => 'integer',
         'expiration_warning_mail_sent_at' => 'datetime',
         'expiration_mail_sent_at' => 'datetime',
+        'signed_license' => 'json',
     ];
+
+    public static function booted()
+    {
+        parent::saved(function (License $license) {
+            $privateKeyString = $license->purchasable->product->private_key;
+
+            if (! $privateKeyString) {
+                return;
+            }
+
+            static::withoutEvents(fn () => $license->updateSignedLicense());
+        });
+    }
 
     public function purchasable(): BelongsTo
     {
@@ -107,17 +122,23 @@ class License extends Model implements AuthenticatableContract
         return $this->key === config('spatie.master_license_key');
     }
 
-    public function signedLicense(): array
+    protected function updateSignedLicense()
     {
         $privateKeyString = $this->purchasable->product->private_key;
+
+        if (empty($privateKeyString)) {
+            throw new Exception("Cannot create a signed license for a product without a private key");
+        }
 
         $licenseProperties = [
             'key' => $this->key,
             'expires_at' => $this->expires_at->timestamp,
         ];
 
-        $signature = PrivateKey::fromString($privateKeyString)->sign($licenseProperties);
+        $signature = PrivateKey::fromString($privateKeyString)->sign(json_encode($licenseProperties));
 
-        return [...$licenseProperties, ...['signature' => $signature]];
+        $signedLicense = array_merge($licenseProperties, compact('signature'));
+
+        $this->update(['signed_license' => $signedLicense]);
     }
 }
