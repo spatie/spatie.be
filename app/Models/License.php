@@ -107,15 +107,17 @@ class License extends Model implements AuthenticatableContract
         return $this->key === config('spatie.master_license_key');
     }
 
-    public function getSignedLicense(): string
+    public function getSignedLicense(): array
     {
         $privateKeyString = $this->purchasable->product->private_key;
 
-        $licenseProperties = json_encode([
+        $licenseProperties = [
             'key' => $this->key,
             'expires_at' => $this->expires_at->timestamp,
-        ]);
+        ];
 
-        return PrivateKey::fromString($privateKeyString)->encrypt($licenseProperties);
+        $signature = PrivateKey::fromString($privateKeyString)->sign($licenseProperties);
+
+        return [...$licenseProperties, ...['signature' => $signature]];
     }
 }
