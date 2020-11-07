@@ -19,4 +19,9 @@ abstract class TestCase extends BaseTestCase
             return '';
         });
     }
+
+    public function getStub(string $nameOfStub): string
+    {
+        return __DIR__ . "/stubs/{$nameOfStub}";
+    }
 }
