@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Api;
+namespace App\Http\Api\Controllers;
 
 use App\Models\License;
 use Illuminate\Contracts\Auth\Authenticatable;

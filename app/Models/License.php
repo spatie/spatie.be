@@ -24,19 +24,19 @@ class License extends Model implements AuthenticatableContract
         'satis_authentication_count' => 'integer',
         'expiration_warning_mail_sent_at' => 'datetime',
         'expiration_mail_sent_at' => 'datetime',
-        'signed_license' => 'json',
     ];
 
     public static function booted()
     {
         static::saved(function (License $license) {
+
             $privateKeyString = $license->purchasable->product->private_key;
 
             if (! $privateKeyString) {
                 return;
             }
 
-            static::withoutEvents(fn () => $license->updateSignedLicense());
+            static::withoutEvents(fn () => $license->refresh()->activations->each->updateSignedActivation());
         });
     }
 
@@ -60,6 +60,11 @@ class License extends Model implements AuthenticatableContract
     public function purchases(): HasMany
     {
         return $this->hasMany(Purchase::class);
+    }
+
+    public function activations(): HasMany
+    {
+        return $this->hasMany(Activation::class);
     }
 
     public function hasRepositoryAccess(): bool
@@ -122,6 +127,11 @@ class License extends Model implements AuthenticatableContract
         return $this->key === config('spatie.master_license_key');
     }
 
+    public function maximumActivations(): int
+    {
+        return 2;
+    }
+
     protected function updateSignedLicense()
     {
         $privateKeyString = $this->purchasable->product->private_key;
@@ -140,5 +150,6 @@ class License extends Model implements AuthenticatableContract
         $signedLicense = array_merge($licenseProperties, compact('signature'));
 
         $this->update(['signed_license' => $signedLicense]);
+        dump('updated to' . $this->expires_at->timestamp . "(" . $this->expires_at->format('Y-m-d'));
     }
 }

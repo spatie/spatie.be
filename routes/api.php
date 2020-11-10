@@ -1,7 +1,10 @@
 <?php
 
-use App\Http\Api\HandleGitHubWebhookController;
-use App\Http\Api\SatisAuthenticationController;
+use App\Http\Api\Controllers\Activations\CreateActivationController;
+use App\Http\Api\Controllers\Activations\DeleteActivationController;
+use App\Http\Api\Controllers\Activations\ShowActivationController;
+use App\Http\Api\Controllers\HandleGitHubWebhookController;
+use App\Http\Api\Controllers\SatisAuthenticationController;
 use App\Http\Controllers\SignedProductLicenseController;
 use Illuminate\Support\Facades\Route;
 
@@ -12,4 +15,6 @@ Route::prefix('webhooks')->group(function () {
 });
 
 
-Route::get('product/{product}/license/{licenseKey}', SignedProductLicenseController::class);
+Route::post('activations', CreateActivationController::class);
+Route::post('activations/{activation:uuid}/show', ShowActivationController::class);
+Route::delete('activations/{activation:uuid}/delete', DeleteActivationController::class);

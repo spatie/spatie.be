@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Api;
+namespace App\Http\Api\Controllers;
 
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Http\Request;
