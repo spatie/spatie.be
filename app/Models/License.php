@@ -29,7 +29,6 @@ class License extends Model implements AuthenticatableContract
     public static function booted()
     {
         static::saved(function (License $license) {
-
             $privateKeyString = $license->purchasable->product->private_key;
 
             if (! $privateKeyString) {
