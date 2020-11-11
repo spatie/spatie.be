@@ -1,4 +1,29 @@
 <section id="portfolio" class="section">
+    <div class="wrap wrap-8 section">
+        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
+            <a href="https://medialibrary.pro" class="illustration is-left h-full" title="Media Library Pro" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/media-library-pro.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-span-3 sm:col-start-5 | self-center">
+            <div class="markup links-blue links-underline">
+                <h3 class="title">
+                    Media Library Pro
+                    <span class="title-subtext text-pink-dark block">
+                        UI components
+                    </span>
+                </h3>
+                <p class="text-lg">
+                    We made components for React, Vue 2 / 3, as well as Livewire powered Blade components for one of our most well-known packages: <a href="https://github.com/spatie/laravel-medialibrary">laravel-medialibrary</a>. 
+                    <br>All integrated seamlessly and playing nicely with your Laravel Media Models.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://medialibrary.pro" target="_blank" rel="nofollow noreferrer noopener">medialibrary.pro</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
             <a href="https://front-line-php.com" class="illustration is-left h-full" title="front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">
