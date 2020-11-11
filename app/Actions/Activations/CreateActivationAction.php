@@ -14,7 +14,7 @@ class CreateActivationAction
             throw MaximumActivationsReached::make($license);
         }
 
-        $activation =  $license->activations()->create(['name' => $name]);
+        $activation = $license->activations()->create(['name' => $name]);
 
         $activation->updateSignedActivation();
 

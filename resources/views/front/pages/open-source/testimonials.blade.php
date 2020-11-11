@@ -190,6 +190,9 @@
                         More about this may be available next year in our upcoming Tech Blog. We are looking forward to your new book about PHP. Thanks for the great work, you help us to realize big projects with a small team.<br>
                         We have violated the Postcardware so far and I apologize for that ;) We will do this after the Christmas business.
                     </p>
+                    <p>
+                        Good luck for the next 100 Mio!
+                    </p>
                     <p>Best Regards<br>
                         The LOOXIS developer team<br>
                         Christian Stefener - <a href="https://www.looxis.de">Looxis</a>
