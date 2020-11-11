@@ -106,31 +106,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
     }
 
-    public function canPrePurchaseMediaLibraryPro(): bool
-    {
-        return in_array((int)$this->id, [
-            5569,
-            829,
-            5564,
-            3818,
-            5576,
-            4264,
-            2619,
-            4827,
-            5795,
-        ]);
-    }
-
     public function hasAccessToUnreleasedPurchasables(): bool
     {
-        if ($this->canPrePurchaseMediaLibraryPro()) {
-            return true;
-        }
-
-        if ($this->isSponsoring()) {
-            return true;
-        }
-
         return $this->isSpatieMember();
     }
 }
