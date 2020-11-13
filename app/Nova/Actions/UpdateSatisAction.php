@@ -2,6 +2,7 @@
 
 namespace App\Nova\Actions;
 
+use Brightspot\Nova\Tools\DetachedActions\DetachedAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
