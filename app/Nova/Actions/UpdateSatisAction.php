@@ -6,11 +6,10 @@ use Brightspot\Nova\Tools\DetachedActions\DetachedAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
-use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Spatie\Ssh\Ssh;
 
-class UpdateSatisAction extends AcDetachedActiontion
+class UpdateSatisAction extends DetachedAction
 {
     use InteractsWithQueue;
     use Queueable;
