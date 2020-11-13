@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Nova\Actions\ImportDocsAction;
+use App\Nova\Actions\UpdateSatisAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -39,6 +40,7 @@ class Repository extends Resource
     {
         return [
             (new ImportDocsAction())->onlyOnIndexToolbar(),
+            (new UpdateSatisAction())->onlyOnIndexToolbar(),
         ];
     }
 }

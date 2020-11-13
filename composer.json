@@ -66,6 +66,7 @@
         "spatie/packagist-api": "^2.0",
         "spatie/schema-org": "^2.0",
         "spatie/sheets": "^1.6",
+        "spatie/ssh": "^1.4",
         "spatie/valuestore": "^1.2",
         "wyrihaximus/react-child-process-promise": "^2.0"
     },
