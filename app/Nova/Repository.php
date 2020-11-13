@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\ImportDocsAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -31,6 +32,13 @@ class Repository extends Resource
             BelongsTo::make('Ad'),
 
             Boolean::make('Ad should be randomized'),
+        ];
+    }
+
+    public function actions(Request $request)
+    {
+        return [
+            (new ImportDocsAction())->onlyOnIndexToolbar(),
         ];
     }
 }

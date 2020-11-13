@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "12a9533bfa821faae45f1e1eca89754d",
+    "content-hash": "00ef2dc1cb6a5235875d923b1b1f9f72",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1945,6 +1945,53 @@
                 }
             ],
             "time": "2020-10-22T13:57:20+00:00"
+        },
+        {
+            "name": "gobrightspot/nova-detached-actions",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gobrightspot/nova-detached-actions.git",
+                "reference": "dc4975cb03c761f8fd9ba7d98e75acc41306af9b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gobrightspot/nova-detached-actions/zipball/dc4975cb03c761f8fd9ba7d98e75acc41306af9b",
+                "reference": "dc4975cb03c761f8fd9ba7d98e75acc41306af9b",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^3.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Brightspot\\Nova\\Tools\\DetachedActions\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Brightspot\\Nova\\Tools\\DetachedActions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool to allow for placing actions in the Nova toolbar detached from the checkbox selection mechanism.",
+            "keywords": [
+                "detached actions",
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/gobrightspot/nova-detached-actions/issues",
+                "source": "https://github.com/gobrightspot/nova-detached-actions/tree/1.1.1"
+            },
+            "time": "2020-10-11T22:54:19+00:00"
         },
         {
             "name": "graham-campbell/result-type",
