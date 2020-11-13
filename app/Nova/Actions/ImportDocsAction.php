@@ -7,8 +7,6 @@ use Artisan;
 use Brightspot\Nova\Tools\DetachedActions\DetachedAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Collection;
-use Laravel\Nova\Fields\ActionFields;
 
 class ImportDocsAction extends DetachedAction
 {
@@ -17,18 +15,13 @@ class ImportDocsAction extends DetachedAction
 
     public function label()
     {
-        return __('Import docs');
+        return 'Import docs';
     }
 
-    public function handle(ActionFields $fields, Collection $models)
+    public function handle()
     {
         dispatch(function () {
             Artisan::call(ImportGitHubRepositoriesCommand::class);
         });
-    }
-
-    public function fields()
-    {
-        return [];
     }
 }

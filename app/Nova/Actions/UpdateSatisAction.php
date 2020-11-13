@@ -5,8 +5,6 @@ namespace App\Nova\Actions;
 use Brightspot\Nova\Tools\DetachedActions\DetachedAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Support\Collection;
-use Laravel\Nova\Fields\ActionFields;
 use Spatie\Ssh\Ssh;
 
 class UpdateSatisAction extends DetachedAction
@@ -16,10 +14,10 @@ class UpdateSatisAction extends DetachedAction
 
     public function label()
     {
-        return __('Update Satis');
+        return 'Update Satis';
     }
 
-    public function handle(ActionFields $fields, Collection $models)
+    public function handle()
     {
         dispatch(function () {
             Ssh::create('forge', 'satis.spatie.be')->execute([
@@ -27,15 +25,5 @@ class UpdateSatisAction extends DetachedAction
                 './bin/satis build',
             ]);
         });
-    }
-
-    /**
-     * Get the fields available on the action.
-     *
-     * @return array
-     */
-    public function fields()
-    {
-        return [];
     }
 }
