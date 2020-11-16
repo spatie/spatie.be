@@ -8,6 +8,7 @@ use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
+use App\Http\Controllers\SignedProductLicenseController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
 use App\Http\Controllers\InvoicesController;
@@ -67,6 +68,7 @@ Route::prefix('open-source')->group(function () {
     Route::get('projects', [OpenSourceController::class, 'projects'])->name('open-source.projects');
     Route::get('postcards', [PostcardController::class, 'index'])->name('open-source.postcards');
     Route::get('support-us', [OpenSourceController::class, 'support'])->name('open-source.support');
+    Route::get('testimonials', [OpenSourceController::class, 'testimonials'])->name('open-source.testimonials');
 });
 
 Route::prefix('vacancies')->group(function () {

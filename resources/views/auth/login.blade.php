@@ -6,18 +6,9 @@
         Log in or create a Spatie account to get access to your Spatie products and licences.
     </x-slot>
 
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                Enter the club
-            </h1>
-            <p class="banner-intro">
-                Get access to videos, products and licenses.
-            </p>
-        </div>
-    </section>
+    
 
-    <section class="wrap pt-0 z-10 -mb-6">
+    <section class="wrap pt-0 z-10 mt-6 -mb-6">
         <div class="card py-12 gradient gradient-green shadow-lg text-white md:flex items-stretch">
             <div class="flex-grow w-full">
                 <h2 class="title mb-8">

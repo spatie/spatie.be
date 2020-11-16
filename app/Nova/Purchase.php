@@ -18,7 +18,7 @@ class Purchase extends Resource
     //public static $title = 'title';
 
     public static $search = [
-        'id', 'title',
+        'id',
     ];
 
     public function fields(Request $request)
@@ -34,7 +34,7 @@ class Purchase extends Resource
             BelongsTo::make('Purchasable'),
             BelongsTo::make('License')->nullable(),
             BelongsTo::make('User'),
-            BelongsTo::make('Receipt'),
+            BelongsTo::make('Receipt')->nullable(),
         ];
     }
 }

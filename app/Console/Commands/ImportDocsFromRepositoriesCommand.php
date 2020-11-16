@@ -30,8 +30,8 @@ class ImportDocsFromRepositoriesCommand extends Command
         $updatedRepositoryNames = $updatedRepositoriesValueStore->getNames();
 
         $this
-    ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
-    ->pipe(fn (Collection $processes) => $this->wrapInPromise($processes));
+            ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
+            ->pipe(fn (Collection $processes) => $this->wrapInPromise($processes));
 
         $loop->run();
 
@@ -44,7 +44,7 @@ class ImportDocsFromRepositoriesCommand extends Command
         array $updatedRepositoryNames,
         StreamSelectLoop $loop
     ): Collection {
-        $repositoriesWithDocs = $this->getRepositoriesWitDocs();
+        $repositoriesWithDocs = $this->getRepositoriesWithDocs();
 
         return collect($updatedRepositoryNames)
             ->map(fn (string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
@@ -56,6 +56,8 @@ class ImportDocsFromRepositoriesCommand extends Command
             })
             ->mapSpread(function (array $repository, string $alias, string $branch) use ($loop) {
                 $process = $this->createProcessComponent($repository, $branch, $alias);
+
+                $this->info("Created import process for {$repository['name']} {$branch}");
 
                 return childProcessPromise($loop, $process);
             });
@@ -80,7 +82,7 @@ class ImportDocsFromRepositoriesCommand extends Command
             });
     }
 
-    protected function getRepositoriesWitDocs(): Collection
+    protected function getRepositoriesWithDocs(): Collection
     {
         return collect(config('docs.repositories'))->keyBy('repository');
     }

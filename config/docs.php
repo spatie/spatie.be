@@ -17,12 +17,14 @@ return [
             "name" => "laravel-medialibrary",
             "repository" => "spatie/laravel-medialibrary",
             "branches" => [
-                "master" => "v8",
+                "master" => "v9",
+                "v8" => "v8",
                 "v7" => "v7",
                 "v6" => "v6",
                 "v5" => "v5",
                 "v4" => "v4",
                 "v3" => "v3",
+
             ],
             "category" => "Laravel",
         ],

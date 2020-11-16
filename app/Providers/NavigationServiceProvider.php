@@ -13,9 +13,9 @@ class NavigationServiceProvider extends ServiceProvider
         Menu::macro('main', function (array $properties = []) {
             return Menu::new()
                 ->route('products.index', 'Products')
-                ->route('open-source.packages', 'Open source')
+                ->route('open-source.packages', 'Open Source')
                 ->route('videos.index', 'Videos')
-                ->route('web-development', 'Web development')
+                ->route('web-development', 'Web Development')
 
                 ->setActiveFromRequest()
                 ->addClass($properties['class'] ?? '');
@@ -39,8 +39,9 @@ class NavigationServiceProvider extends ServiceProvider
             return Menu::new()
                 ->route('open-source.packages', 'Packages')
                 ->route('open-source.projects', 'Projects')
-                ->route('open-source.postcards', 'Postcard wall')
-                ->route('open-source.support', 'Support us')
+                ->route('open-source.postcards', 'Postcard Wall')
+                ->route('open-source.support', 'Support Us')
+                ->route('open-source.testimonials', 'Testimonials')
                 ->setActiveFromRequest('/open-source')
                 ->setActiveClass('submenu-active')
                 ;

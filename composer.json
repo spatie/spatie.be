@@ -24,8 +24,11 @@
         "facade/ignition": "^2.3.6",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
+        "gobrightspot/nova-detached-actions": "^1.1",
         "guzzlehttp/guzzle": "^7.0",
         "knplabs/github-api": "dev-master#9b01208e1e5500201b45699c911ad53d08f59105",
+        "laminas/laminas-feed": "^2.9",
+        "laminas/laminas-http": "^2.7",
         "laravel/cashier-paddle": "^v1.0",
         "laravel/framework": "^8.0",
         "laravel/horizon": "^5.0",
@@ -37,14 +40,17 @@
         "league/flysystem-aws-s3-v3": "^1.0",
         "livewire/livewire": "^1.0",
         "myclabs/php-enum": "^1.5",
+        "nyholm/psr7": "^1.0",
         "ohdearapp/ohdear-php-sdk": "^3.0",
         "optimistdigital/nova-sortable": "^1.4",
         "pda/pheanstalk": "^4.0",
         "php-http/guzzle7-adapter": "^0.1.0",
         "predis/predis": "^1.1",
+        "psr/http-factory-implementation": "^1.0",
         "react/child-process": "^0.6.1",
         "react/promise": "^2.8",
         "spatie/commonmark-highlighter": "^2.1",
+        "spatie/crypto": "^0.0.2",
         "spatie/eloquent-sortable": "^3.8",
         "spatie/laravel-backup": "^6.11",
         "spatie/laravel-flash": "^1.7",
@@ -60,10 +66,9 @@
         "spatie/packagist-api": "^2.0",
         "spatie/schema-org": "^2.0",
         "spatie/sheets": "^1.6",
+        "spatie/ssh": "^1.4",
         "spatie/valuestore": "^1.2",
-        "wyrihaximus/react-child-process-promise": "^2.0",
-        "laminas/laminas-feed": "^2.9",
-        "laminas/laminas-http": "^2.7"
+        "wyrihaximus/react-child-process-promise": "^2.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
@@ -72,9 +77,7 @@
         "mockery/mockery": "^1.3.1",
         "nunomaduro/collision": "^5.0",
         "phpunit/phpunit": "^9.3",
-        "psalm/plugin-laravel": "^1.4",
-        "spatie/laravel-log-dumper": "^1.3",
-        "vimeo/psalm": "^3.11"
+        "spatie/laravel-log-dumper": "^1.3"
     },
     "repositories": [
         {

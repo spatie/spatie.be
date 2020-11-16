@@ -21,6 +21,7 @@ class ProductFactory extends Factory
             'action_url' => $this->faker->url,
             'action_label' => $this->faker->sentence(4),
             'slug' => Str::slug($title),
+            'private_key' => file_get_contents(__DIR__ . '/stubs/privateKey'),
         ];
     }
 }

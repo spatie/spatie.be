@@ -42,11 +42,15 @@ class User extends Authenticatable
             return true;
         }
 
-        return (bool) $this->is_sponsor;
+        return (bool)$this->is_sponsor;
     }
 
     public function isSubscribedToNewsletter(): bool
     {
+        if (! $this->email) {
+            return false;
+        }
+
         /** @var EmailList $emailList */
         $emailList = EmailList::firstWhere('name', 'Spatie');
 
@@ -100,5 +104,10 @@ class User extends Authenticatable
     public function completedVideos(): BelongsToMany
     {
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
+    }
+
+    public function hasAccessToUnreleasedPurchasables(): bool
+    {
+        return $this->isSpatieMember();
     }
 }
