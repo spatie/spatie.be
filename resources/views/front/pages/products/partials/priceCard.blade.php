@@ -9,34 +9,37 @@
     </div>
 
     @if ($product->hasActiveCoupon())
-        <div class="mt-4 text-gray-500 text-xs">
-            Use <code class="px-1 bg-gray-lightest">{{ $product->coupon_code }}</code> during checkout to get {{ $product->coupon_percentage }}% off
+        <div class="-mx-6 px-2 py-2 bg-green-lightest mt-4 text-black text-sm text-center">
+            Use <code class="px-1 font-semibold">{{ $product->coupon_code }}</code>
+            <br>to get <span class="font-semibold">{{ $product->coupon_percentage }}%</span> off during checkout
         </div>
     @endif
 
 
     <div class="flex-0 mt-6 flex justify-center">
-        <span data-id="original-display-{{ $purchasable->id }}" class="hidden">
-            <sup class="text-gray-500 text-xs" data-id="original-currency-{{ $purchasable->id }}"></sup><span
-                class="text-gray-500 line-through" data-id="original-price-{{ $purchasable->id }}">—</span>
+        <div>
+        <span data-id="original-display-{{ $purchasable->paddle_product_id }}" class="hidden absolute right-full mr-2">
+            <sup class="text-xs" data-id="original-currency-{{ $purchasable->paddle_product_id }}"></sup><span
+                class="font-semibold line-through" data-id="original-price-{{ $purchasable->paddle_product_id }}">—</span>
         </span>
         @auth
             <x-paddle-button :url="auth()->user()->getPayLinkForProductId($purchasable->paddle_product_id)" data-theme="none">
-                <x-button>
+                <x-button :large="true">
                     <span class="font-normal">Buy for&nbsp;</span>
-                    <span data-id="current-currency-{{ $purchasable->id }}"></span>
-                    <span data-id="current-price-{{ $purchasable->id }}"></span>
+                    <span data-id="current-currency-{{ $purchasable->paddle_product_id }}"></span>
+                    <span data-id="current-price-{{ $purchasable->paddle_product_id }}"></span>
                 </x-button>
             </x-paddle-button>
         @else
             <a href="{{ route('login') }}?next={{ url()->current() }}">
-                <x-button>
+                <x-button :large="true">
                     <span class="font-normal">Buy for&nbsp;</span>
-                    <span data-id="current-currency-{{ $purchasable->id }}"></span>
-                    <span data-id="current-price-{{ $purchasable->id }}"></span>
+                    <span data-id="current-currency-{{ $purchasable->paddle_product_id }}"></span>
+                    <span data-id="current-price-{{ $purchasable->paddle_product_id }}"></span>
                 </x-button>
             </a>
         @endauth
+        </div>
     </div>
 </div>
 
@@ -73,6 +76,6 @@
         });
     }
 
-    displayPaddleProductPrice({{ $purchasable->id }});
+    displayPaddleProductPrice({{ $purchasable->paddle_product_id }});
 
 </script>
