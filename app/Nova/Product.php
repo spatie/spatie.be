@@ -5,11 +5,14 @@ namespace App\Nova;
 use App\Models\Product as EloquentProduct;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Panel;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class Product extends Resource
@@ -67,6 +70,14 @@ class Product extends Resource
             Text::make('Url')->hideFromIndex(),
             Text::make('Action url')->hideFromIndex(),
             Text::make('Action label')->hideFromIndex(),
+
+            new Panel('Coupon', [
+                Text::make('Code', 'coupon_code')->hideFromIndex(),
+                Text::make('Label', 'coupon_label')->hideFromIndex(),
+                Number::make('Percentage', 'coupon_percentage')->hideFromIndex(),
+                DateTime::make('Valid from', 'coupon_valid_from')->hideFromIndex(),
+                DateTime::make('Expires at', 'coupon_expires_at')->hideFromIndex(),
+            ]),
 
             HasMany::make('Purchasables', 'purchasables', Purchasable::class),
         ];
