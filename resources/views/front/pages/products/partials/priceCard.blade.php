@@ -18,7 +18,7 @@
 
     <div class="flex-0 mt-6 flex justify-center">
         <div>
-        <span data-id="original-display-{{ $purchasable->paddle_product_id }}" class="hidden absolute right-full mr-2">
+        <span data-id="original-display-{{ $purchasable->paddle_product_id }}" style="top:50%; transform: translateY(-50%)" class="hidden absolute right-full mr-2">
             <sup class="text-xs" data-id="original-currency-{{ $purchasable->paddle_product_id }}"></sup><span
                 class="font-semibold line-through" data-id="original-price-{{ $purchasable->paddle_product_id }}">—</span>
         </span>
