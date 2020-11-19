@@ -26,7 +26,7 @@
             <x-paddle-button :url="auth()->user()->getPayLinkForProductId($purchasable->paddle_product_id)" data-theme="none">
                 <x-button :large="true">
                     <span class="font-normal">Buy for&nbsp;</span>
-                    <span data-id="current-currency-{{ $purchasable->paddle_product_id }}"></span>
+                    <span class="font-normal" data-id="current-currency-{{ $purchasable->paddle_product_id }}"></span>
                     <span data-id="current-price-{{ $purchasable->paddle_product_id }}"></span>
                 </x-button>
             </x-paddle-button>
@@ -34,7 +34,7 @@
             <a href="{{ route('login') }}?next={{ url()->current() }}">
                 <x-button :large="true">
                     <span class="font-normal">Buy for&nbsp;</span>
-                    <span data-id="current-currency-{{ $purchasable->paddle_product_id }}"></span>
+                    <span class="font-normal" data-id="current-currency-{{ $purchasable->paddle_product_id }}"></span>
                     <span data-id="current-price-{{ $purchasable->paddle_product_id }}"></span>
                 </x-button>
             </a>
