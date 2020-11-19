@@ -7,8 +7,19 @@
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         {!! $purchasable->formattedDescription !!}
     </div>
-    
+
+    @if ($product->hasActiveCoupon())
+        <div class="mt-4 text-gray-500 text-xs">
+            Use <code class="px-1 bg-gray-lightest">{{ $product->coupon_code }}</code> during checkout to get {{ $product->coupon_percentage }}% off
+        </div>
+    @endif
+
+
     <div class="flex-0 mt-6 flex justify-center">
+        <span data-id="original-display-{{ $purchasable->id }}" class="hidden">
+            <sup class="text-gray-500 text-xs" data-id="original-currency-{{ $purchasable->id }}"></sup><span
+                class="text-gray-500 line-through" data-id="original-price-{{ $purchasable->id }}">—</span>
+        </span>
         @auth
             <x-paddle-button :url="auth()->user()->getPayLinkForProductId($purchasable->paddle_product_id)" data-theme="none">
                 <x-button>
@@ -36,20 +47,32 @@
         return string.indexOf(firstDigit);
     }
 
-    Paddle.Product.Prices({{ $purchasable->paddle_product_id }}, function(prices) {
-        let priceString = prices.price.net;
-        let indexOFirstDigitInString = indexOfFirstDigitInString(priceString);
-        let price = priceString.substring(indexOFirstDigitInString);
-        price = price.replace('.00', '');
+    function displayPaddleProductPrice(productId) {
+        Paddle.Product.Prices(productId, function(prices) {
+            let priceString = prices.price.net;
 
-        let currencySymbol = priceString.substring(0,indexOFirstDigitInString);
-        currencySymbol = currencySymbol.replace('US', '');
+            let factor = {{ $product->hasActiveCoupon() ? (100 - $product->coupon_percentage)/100 : 1 }};
 
-        document.querySelectorAll('[data-id="current-currency-{{ $purchasable->id}}"]').forEach((element) => {
-            element.innerHTML = currencySymbol;
+            let indexOFirstDigitInString = indexOfFirstDigitInString(priceString);
+
+            let price = priceString.substring(indexOFirstDigitInString);
+            price = price.replace('.00', '').replace(/,/g, '');
+
+            let currencySymbol = priceString.substring(0, indexOFirstDigitInString);
+            currencySymbol = currencySymbol.replace('US', '');
+
+            document.querySelector(`[data-id="original-currency-${productId}"]`).innerHTML = currencySymbol;
+            document.querySelector(`[data-id="original-price-${productId}"]`).innerHTML = price;
+
+            document.querySelector(`[data-id="current-currency-${productId}"]`).innerHTML = currencySymbol;
+            document.querySelector(`[data-id="current-price-${productId}"]`).innerHTML = Math.ceil(price * factor);
+            
+            if(factor < 1) {
+                document.querySelector(`[data-id="original-display-${productId}"]`).classList.remove('hidden');
+            }
         });
-        document.querySelectorAll('[data-id="current-price-{{ $purchasable->id }}"]').forEach((element) => {
-            element.innerHTML = price;
-        });
-    });
+    }
+
+    displayPaddleProductPrice({{ $purchasable->id }});
+
 </script>
