@@ -21,7 +21,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
     public function handle()
     {
-        $this->info('Importing docs now...');
+        $this->info('Importing docs...');
 
         $loop = Factory::create();
 
@@ -46,7 +46,7 @@ class ImportDocsFromRepositoriesCommand extends Command
     ): Collection {
         $repositoriesWithDocs = $this->getRepositoriesWithDocs();
 
-        $updatedRepositoryNames = ['laravel-medialibrary'];
+        $updatedRepositoryNames = ['spatie/laravel-medialibrary'];
 
         return collect($updatedRepositoryNames)
             ->map(fn (string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
