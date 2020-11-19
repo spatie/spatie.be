@@ -181,7 +181,7 @@ module.exports = {
             },
 
             inset: {
-                full: '100%'
+                full: '100%',
             },
 
             gridTemplateColumns: {

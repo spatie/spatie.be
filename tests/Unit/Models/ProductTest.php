@@ -15,7 +15,6 @@ class ProductTest extends TestCase
         parent::setUp();
 
         $this->product = Product::factory()->create();
-
     }
 
     /** @test */
@@ -55,5 +54,4 @@ class ProductTest extends TestCase
         TestTime::addSecond();
         $this->assertFalse($this->product->hasActiveCoupon());
     }
-
 }
