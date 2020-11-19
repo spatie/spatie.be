@@ -17,14 +17,14 @@
                 class="mt-1 text-green-dark text-xs"
                 style="font-variant-numeric:tabular-nums">
                 <x-countdown :expires="$product->coupon_expires_at">
-                    <span class="font-semibold"><span
-                            x-text="timer.days">{{ $component->days() }}</span> <span class="font-normal">days</span></span>
-                    <span class="font-semibold"><span
-                            x-text="timer.hours">{{ $component->hours() }}</span> <span class="font-normal">hours</span></span>
-                    <span class="font-semibold"><span
-                            x-text="timer.minutes">{{ $component->minutes() }}</span> <span class="font-normal">minutes</span></span>
-                    <span class="font-semibold"><span
-                            x-text="timer.seconds">{{ $component->seconds() }}</span> <span class="font-normal">seconds</span></span>
+                    <span><span
+                            x-text="timer.days" class="font-mono font-semibold">{{ $component->days() }}</span> <span>days</span></span>
+                    <span><span
+                            x-text="timer.hours" class="font-mono font-semibold">{{ $component->hours() }}</span> <span>hours</span></span>
+                    <span><span
+                            x-text="timer.minutes" class="font-mono font-semibold">{{ $component->minutes() }}</span> <span>minutes</span></span>
+                    <span><span
+                            x-text="timer.seconds" class="font-mono font-semibold">{{ $component->seconds() }}</span> <span>seconds</span></span>
                 </x-countdown>
             </div>
         
