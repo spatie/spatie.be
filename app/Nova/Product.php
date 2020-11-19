@@ -72,11 +72,11 @@ class Product extends Resource
             Text::make('Action label')->hideFromIndex(),
 
             new Panel('Coupon', [
-                Text::make('Code', 'coupon_code')->hideFromIndex(),
+                Text::make('Code', 'coupon_code')->hideFromIndex()->help('Make sure you have defined this code in Paddle too'),
                 Text::make('Label', 'coupon_label')->hideFromIndex(),
                 Number::make('Percentage', 'coupon_percentage')->hideFromIndex(),
                 DateTime::make('Valid from', 'coupon_valid_from')->hideFromIndex(),
-                DateTime::make('Expires at', 'coupon_expires_at')->hideFromIndex(),
+                DateTime::make('Expires at', 'coupon_expires_at')->hideFromIndex()->help('Not specifying this field will make the coupon active indefinitely'),
             ]),
 
             HasMany::make('Purchasables', 'purchasables', Purchasable::class),
