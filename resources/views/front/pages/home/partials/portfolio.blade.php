@@ -1,11 +1,11 @@
 <section id="portfolio" class="section">
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
-        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
+        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://front-line-php.com" class="illustration is-left h-full" title="front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flphp.jpg') }}
             </a>
         </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
+        <div class="sm:col-span-3 sm:col-start-5 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
                     Front Line PHP
@@ -27,14 +27,14 @@
             </div>
         </div>
     </div>
-    
-    <div class="wrap wrap-8 section">
-        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
+
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
             <a href="https://medialibrary.pro" class="illustration is-left h-full" title="Media Library Pro" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/media-library-pro.jpg') }}
             </a>
         </div>
-        <div class="sm:col-span-3 sm:col-start-5 | self-center">
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Media Library Pro
