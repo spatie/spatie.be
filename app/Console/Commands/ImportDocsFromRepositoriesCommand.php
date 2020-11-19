@@ -21,7 +21,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
     public function handle()
     {
-        $this->info('Importing docs...');
+        $this->info('Importing docs now...');
 
         $loop = Factory::create();
 
