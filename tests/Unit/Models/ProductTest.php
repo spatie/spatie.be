@@ -37,7 +37,7 @@ class ProductTest extends TestCase
         TestTime::freeze();
 
         $this->product->update([
-            'coupon_code' => 'test',
+            'coupon_code' => 'ENJOY-FRONT-LINE-PHP',
             'coupon_percentage' => 30,
             'coupon_valid_from' => now()->addMinute(),
             'coupon_expires_at' => now()->addMinute()->addHour(),
