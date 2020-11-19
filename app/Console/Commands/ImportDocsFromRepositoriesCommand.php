@@ -46,8 +46,6 @@ class ImportDocsFromRepositoriesCommand extends Command
     ): Collection {
         $repositoriesWithDocs = $this->getRepositoriesWithDocs();
 
-        $updatedRepositoryNames = ['spatie/laravel-medialibrary'];
-
         return collect($updatedRepositoryNames)
             ->map(fn (string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
             ->filter()
