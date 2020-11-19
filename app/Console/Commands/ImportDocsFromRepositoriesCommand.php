@@ -46,7 +46,7 @@ class ImportDocsFromRepositoriesCommand extends Command
     ): Collection {
         $repositoriesWithDocs = $this->getRepositoriesWithDocs();
 
-        $updatedRepositoryNames = ['laravel-medialibrary']
+        $updatedRepositoryNames = ['laravel-medialibrary'];
 
         return collect($updatedRepositoryNames)
             ->map(fn (string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
