@@ -9,9 +9,25 @@
     </div>
 
     @if ($product->hasActiveCoupon())
-        <div class="-mx-6 px-2 py-2 bg-green-lightest mt-4 text-black text-sm text-center">
+        <div class="-mx-6 px-2 py-3 bg-green-lightest mt-4 text-black text-sm text-center">
             Use <code class="px-1 font-semibold">{{ $product->coupon_code }}</code>
             <br>to get <span class="font-semibold">{{ $product->coupon_percentage }}%</span> off during checkout
+        
+            <div
+                class="mt-1 text-green-dark text-xs"
+                style="font-variant-numeric:tabular-nums">
+                <x-countdown :expires="$product->coupon_expires_at">
+                    <span class="font-semibold"><span
+                            x-text="timer.days">{{ $component->days() }}</span> <span class="font-normal">days</span></span>
+                    <span class="font-semibold"><span
+                            x-text="timer.hours">{{ $component->hours() }}</span> <span class="font-normal">hours</span></span>
+                    <span class="font-semibold"><span
+                            x-text="timer.minutes">{{ $component->minutes() }}</span> <span class="font-normal">minutes</span></span>
+                    <span class="font-semibold"><span
+                            x-text="timer.seconds">{{ $component->seconds() }}</span> <span class="font-normal">seconds</span></span>
+                </x-countdown>
+            </div>
+        
         </div>
     @endif
 
@@ -79,3 +95,5 @@
     displayPaddleProductPrice({{ $purchasable->paddle_product_id }});
 
 </script>
+
+<script src="/alpine/alpine.js" defer></script>
