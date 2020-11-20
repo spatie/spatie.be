@@ -7,6 +7,11 @@
     </x-slot>
 
     @include('front.pages.home.partials.banner')
+    
+    <div class="mb-8">
+        @include('front.pages.products.partials.ctaBlackFriday')
+    </div>
+
     @include('front.pages.home.partials.news')
 
     <div class="section section-group section-fade">

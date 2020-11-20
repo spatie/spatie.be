@@ -14,6 +14,8 @@
         </div>
     </section>
 
+   @include('front.pages.products.partials.ctaBlackFriday')
+
     <section class="section overflow-visible section-group">
             <div class="wrap">
                 <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
