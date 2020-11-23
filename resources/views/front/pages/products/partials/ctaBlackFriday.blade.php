@@ -33,7 +33,7 @@ $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2020-11-27 23:5
                             </div>
                         </div>
                         <p class="mt-2 text-lg">
-                            Use coupon <code style="background-color: #000" class="px-2 py-1 rounded-sm text-base">BLACK-WEEK</code> during checkout.
+                            Use coupon <code style="background-color: #000" class="px-2 py-1 rounded-sm text-base">BLACK-FRIDAY</code> during checkout.
                         </p>
                     </div>
                 </div>
