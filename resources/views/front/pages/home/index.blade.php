@@ -9,7 +9,9 @@
     @include('front.pages.home.partials.banner')
     
     <div class="mb-8">
+        <a href="{{ route('products.index') }}">
         @include('front.pages.products.partials.ctaBlackFriday')
+        </a>
     </div>
 
     @include('front.pages.home.partials.news')
