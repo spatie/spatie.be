@@ -19,7 +19,7 @@ class GitHubSocialiteController
              * If somebody is already logged in, the user wants to
              * connect their GitHub profile. Remember who's logged in.
              */
-            session()->put('auth-user-email', auth()->user()->email);
+            session()->put('auth-user-id', auth()->user()->id);
         }
 
         return Socialite::driver('github')->redirect();
@@ -63,27 +63,26 @@ class GitHubSocialiteController
 
     protected function retrieveUser($gitHubUser): User
     {
-        if (session('auth-user-email')) {
+        if (session('auth-user-id')) {
             /*
              * If there already was a local user created for the email used
              * on GitHub, then let's use that local user
              */
-            return User::where('email', session('auth-user-email'))->first();
+            return User::find(session('auth-user-id'))->first();
         }
 
-        if ($user = User::where('github_id', $gitHubUser->id)->orWhere('email', $gitHubUser->email)->first()) {
+        if ($gitHubUser->email && $user = User::where('email', $gitHubUser->email)->first()) {
             /*
              * Somebody tries to login via GitHub that already
-             * has been logged in, in the past.
+             * has an account with this email. 
+             * We'll link this GitHub profile to this account.
              */
             return $user;
         }
 
-        /*
-         * Somebody tries to login via GitHub that doesn't have a local user
-         * yet. Let's create a new local user.
-         */
-        return User::create([
+        return User::firstOrCreate([
+            'github_id' => $gitHubUser->id,
+        ], [
             'password' => bcrypt(Str::random()),
             'email' => $gitHubUser->email,
             'name' => $gitHubUser->name ?? $gitHubUser->nickname,
