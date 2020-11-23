@@ -21,6 +21,8 @@
     <script>/* Empty script tag because Firefox has a FOUC */</script>
     @include('layout.partials.wallpaper')
 
+    @include('layout.partials.cta')
+
     @include('layout.partials.header')
     @include('layout.partials.flash')
 

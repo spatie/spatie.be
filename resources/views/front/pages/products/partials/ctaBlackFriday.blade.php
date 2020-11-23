@@ -41,4 +41,8 @@ $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2020-11-27 23:5
         </div>
     </section>
 
-    <script src="/alpine/alpine.js" defer></script>
+@once
+    @push('scripts')
+        <script src="/alpine/alpine.js" defer></script>
+    @endpush
+@endonce
