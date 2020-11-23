@@ -74,7 +74,7 @@ class GitHubSocialiteController
         if ($gitHubUser->email && $user = User::where('email', $gitHubUser->email)->first()) {
             /*
              * Somebody tries to login via GitHub that already
-             * has an account with this email. 
+             * has an account with this email.
              * We'll link this GitHub profile to this account.
              */
             return $user;
