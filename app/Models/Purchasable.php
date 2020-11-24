@@ -121,7 +121,7 @@ class Purchasable extends Model implements HasMedia, Sortable
     public function getPriceForIp(string $ip): array
     {
         $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
-        $countryCode = 'TH';
+
         $price = $this->prices()->firstWhere('country_code', $countryCode);
 
         if ($price) {
