@@ -29,6 +29,7 @@ class User extends Authenticatable
 
     public function getPayLinkForProductId(string $paddleProductId)
     {
+        /*
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
 
         [$amountInCents, $currency] = $purchasable->getPriceForIp(request()->ip());
@@ -40,12 +41,13 @@ class User extends Authenticatable
             $priceInDollars = $purchasable->price_in_usd_cents / 100;
             $prices[] = "USD:{$priceInDollars}";
         }
+        */
 
         return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => false,
             'customer_email' => auth()->user()->email,
             'marketing_consent' => true,
-            'prices' => $prices,
+            //'prices' => $prices,
         ]);
     }
 
