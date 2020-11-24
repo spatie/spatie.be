@@ -26,15 +26,15 @@ class Purchase extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Paddle Fee'),
-            Text::make('Earnings'),
+            Text::make('Paddle Fee')->hideFromIndex(),
+            Text::make('Earnings')->hideFromIndex(),
 
             Boolean::make('Has repository access')->readonly(),
 
             BelongsTo::make('Purchasable'),
-            BelongsTo::make('License')->nullable(),
+            BelongsTo::make('License')->hideFromIndex()->nullable(),
             BelongsTo::make('User'),
-            BelongsTo::make('Receipt')->nullable(),
+            BelongsTo::make('Receipt')->nullable()->hideFromIndex(),
         ];
     }
 }

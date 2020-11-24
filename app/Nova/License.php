@@ -29,7 +29,7 @@ class License extends Resource
             BelongsTo::make('Purchasable'),
             BelongsTo::make('User'),
 
-            Text::make('Key'),
+            Text::make('Key')->hideFromIndex(),
             Number::make('Satis Authentication Count'),
         ];
     }

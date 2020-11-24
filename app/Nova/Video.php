@@ -40,15 +40,17 @@ class Video extends Resource
 
             Text::make('Slug')
                 ->sortable()
+                ->hideFromIndex()
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
             Number::make('Runtime')
                 ->sortable()
+                ->hideFromIndex()
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
-            Boolean::make('Downloadable'),
+            Boolean::make('Downloadable')->hideFromIndex(),
 
             Image::make('Thumbnail')
                 ->thumbnail(function ($value) {
@@ -60,14 +62,16 @@ class Video extends Resource
                 ->hideWhenUpdating()
                 ->hideWhenCreating(),
 
-            Text::make('Chapter')->sortable(),
+            Text::make('Chapter')->hideFromIndex()->sortable(),
 
             Text::make('vimeo_id')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules(['required', 'max:255']),
 
             Number::make('sort_order')
                 ->readonly()
+                ->hideFromIndex()
                 ->sortable(),
 
             Select::make('Display')
