@@ -27,12 +27,25 @@ class User extends Authenticatable
         'is_admin' => 'bool',
     ];
 
-    public function getPayLinkForProductId(string $productId)
+    public function getPayLinkForProductId(string $paddleProductId)
     {
-        return $this->chargeProduct($productId, [
+        $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
+
+        [$amountInCents, $currency] = $purchasable->getPriceForIp(request()->ip());
+
+        $amountWithDecimals = $amountInCents / 100;
+
+        $prices[] = "{$currency}:{$amountWithDecimals}";
+        if ($currency !== 'USD') {
+            $priceInDollars = $purchasable->product->price_in_usd_cents / 100;
+            $prices[] = "USD:{$priceInDollars}";
+        }
+
+        return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => false,
             'customer_email' => auth()->user()->email,
             'marketing_consent' => true,
+            'prices' => $prices,
         ]);
     }
 

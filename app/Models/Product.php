@@ -29,6 +29,7 @@ class Product extends Model implements HasMedia, Sortable
         'visible' => 'boolean',
         'coupon_valid_from' => 'datetime',
         'coupon_expires_at' => 'datetime',
+        'price_in_usd_cents' => 'integer',
     ];
 
     public $with = [
