@@ -1,5 +1,5 @@
 @php
-$expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2020-11-30 23:59' );
+$expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2020-12-01 00:00' );
 @endphp
 
 <a href="{{ route('products.index') }}" class="block text-center gradient gradient-dark text-white py-2 px-6 text-sm">
