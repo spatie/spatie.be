@@ -37,7 +37,7 @@ class User extends Authenticatable
 
         $prices[] = "{$currency}:{$amountWithDecimals}";
         if ($currency !== 'USD') {
-            $priceInDollars = $purchasable->product->price_in_usd_cents / 100;
+            $priceInDollars = $purchasable->price_in_usd_cents / 100;
             $prices[] = "USD:{$priceInDollars}";
         }
 

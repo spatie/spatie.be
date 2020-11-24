@@ -11,7 +11,7 @@ class UpdateConversionRatesCommand extends Command
 {
     protected $signature = 'update-conversion-rates';
 
-    protected $description = 'Command description';
+    protected $description = 'Update conversion rates';
 
     public function handle()
     {

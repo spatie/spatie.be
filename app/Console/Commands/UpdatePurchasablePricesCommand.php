@@ -14,7 +14,7 @@ class UpdatePurchasablePricesCommand extends Command
 {
     protected $signature = 'update-purchasable-prices';
 
-    protected $description = 'Command description';
+    protected $description = 'Update purchasable prices';
 
     public function handle()
     {
@@ -26,7 +26,7 @@ class UpdatePurchasablePricesCommand extends Command
             PaddleCountries::get()->each(function (array $countryAttributes) use ($purchasable) {
                 $price = $purchasable->prices()->firstOrCreate(
                     ['country_code' => $countryAttributes['code']],
-                    ['currency_code' => 'USD', 'amount' => $purchasable->product->price_in_usd_cents],
+                    ['currency_code' => 'USD', 'amount' => $purchasable->price_in_usd_cents],
                 );
 
                 if ($price->overridden) {
@@ -34,11 +34,11 @@ class UpdatePurchasablePricesCommand extends Command
                 }
 
                 if (EuCountries::contains($countryAttributes['code'])) {
-                    $conversionRate = ConversionRate::forCurrencyCode('EUR');
+                    $conversionRate = ConversionRate::forCountryCode('BE');
 
                     $price->update([
                         'currency_code' => 'EUR',
-                        'amount' => $conversionRate->getAmountForUsd($purchasable->product->price_in_usd_cents),
+                        'amount' => $conversionRate->getAmountForUsd($purchasable->price_in_usd_cents),
                     ]);
                 }
 
@@ -47,14 +47,14 @@ class UpdatePurchasablePricesCommand extends Command
                 if (! $conversionRate) {
                     $price->update([
                         'currency_code' => 'USD',
-                        'amount' => $purchasable->product->price_in_usd_cents,
+                        'amount' => $purchasable->price_in_usd_cents,
                     ]);
 
                     return;
                 }
 
                 if (PaddleCurrencies::contains($conversionRate->currency_code)) {
-                    $amount = $conversionRate->getAmountForUsd($purchasable->product->price_in_usd_cents);
+                    $amount = $conversionRate->getAmountForUsd($purchasable->price_in_usd_cents);
 
                     $price->update([
                         'currency_code' => $conversionRate->currency_code,
@@ -66,7 +66,7 @@ class UpdatePurchasablePricesCommand extends Command
 
                 $price->update([
                     'currency_code' => 'USD',
-                    'amount' => $conversionRate->getPPPInUsd($purchasable->product->price_in_usd_cents),
+                    'amount' => $conversionRate->getPPPInUsd($purchasable->price_in_usd_cents),
                 ]);
             });
         });
