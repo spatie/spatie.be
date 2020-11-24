@@ -36,7 +36,7 @@ class PurchasablePrice extends Resource
             BelongsTo::make('purchasable'),
 
             Text::make('Country', 'country_code')->readonly()->displayUsing(function (string $countryCode) {
-                return PaddleCountries::getNameForCode($countryCode);
+                return PaddleCountries::getNameForCode($countryCode) . "(${countryCode})";
             }),
 
             Text::make('Currency code')->readonly(),
