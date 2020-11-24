@@ -64,16 +64,14 @@ class GitHubSocialiteController
     protected function retrieveUser($gitHubUser): User
     {
         if (session('auth-user-id')) {
-            logger('Retriever user found in session ' . session('auth-user-id'));
             /*
              * If there already was a local user created for the email used
              * on GitHub, then let's use that local user
              */
-            return User::find(session('auth-user-id'))->first();
+            return User::find(session('auth-user-id'));
         }
 
         if ($gitHubUser->email && $user = User::where('email', $gitHubUser->email)->first()) {
-            logger('Retriever user found with email ' . $gitHubUser->email);
             /*
              * Somebody tries to login via GitHub that already
              * has an account with this email.
@@ -81,8 +79,6 @@ class GitHubSocialiteController
              */
             return $user;
         }
-
-        logger('Retriever user find or create with ' . $gitHubUser->id);
 
         return User::firstOrCreate([
             'github_id' => $gitHubUser->id,
