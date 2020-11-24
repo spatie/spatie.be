@@ -83,6 +83,7 @@ class GitHubSocialiteController
         }
 
         logger('Retriever user find or create with ' . $gitHubUser->id);
+
         return User::firstOrCreate([
             'github_id' => $gitHubUser->id,
         ], [
