@@ -59,41 +59,48 @@
     </div>
 </div>
 
-<script type="text/javascript">
-    function indexOfFirstDigitInString(string) {
-        let firstDigit = string.match(/\d/);
+@once
+    @push('scripts')
+        <script src="/alpine/alpine.js" defer></script>
 
-        return string.indexOf(firstDigit);
-    }
+        <script type="text/javascript">
+            function indexOfFirstDigitInString(string) {
+                let firstDigit = string.match(/\d/);
 
-    function displayPaddleProductPrice(productId) {
-        Paddle.Product.Prices(productId, function(prices) {
-            let priceString = prices.price.net;
-
-            let factor = {{ $product->hasActiveCoupon() ? (100 - $product->coupon_percentage)/100 : 1 }};
-
-            let indexOFirstDigitInString = indexOfFirstDigitInString(priceString);
-
-            let price = priceString.substring(indexOFirstDigitInString);
-            price = price.replace('.00', '').replace(/,/g, '');
-
-            let currencySymbol = priceString.substring(0, indexOFirstDigitInString);
-            currencySymbol = currencySymbol.replace('US', '');
-
-            document.querySelector(`[data-id="original-currency-${productId}"]`).innerHTML = currencySymbol;
-            document.querySelector(`[data-id="original-price-${productId}"]`).innerHTML = price;
-
-            document.querySelector(`[data-id="current-currency-${productId}"]`).innerHTML = currencySymbol;
-            document.querySelector(`[data-id="current-price-${productId}"]`).innerHTML = Math.ceil(price * factor);
-            
-            if(factor < 1) {
-                document.querySelector(`[data-id="original-display-${productId}"]`).classList.remove('hidden');
+                return string.indexOf(firstDigit);
             }
-        });
-    }
 
+            function displayPaddleProductPrice(productId) {
+                Paddle.Product.Prices(productId, function(prices) {
+                    let priceString = prices.price.net;
+
+                    let factor = {{ $product->hasActiveCoupon() ? (100 - $product->coupon_percentage)/100 : 1 }};
+
+                    let indexOFirstDigitInString = indexOfFirstDigitInString(priceString);
+
+                    let price = priceString.substring(indexOFirstDigitInString);
+                    price = price.replace('.00', '').replace(/,/g, '');
+
+                    let currencySymbol = priceString.substring(0, indexOFirstDigitInString);
+                    currencySymbol = currencySymbol.replace('US', '');
+
+                    document.querySelector(`[data-id="original-currency-${productId}"]`).innerHTML = currencySymbol;
+                    document.querySelector(`[data-id="original-price-${productId}"]`).innerHTML = price;
+
+                    document.querySelector(`[data-id="current-currency-${productId}"]`).innerHTML = currencySymbol;
+                    document.querySelector(`[data-id="current-price-${productId}"]`).innerHTML = Math.ceil(price * factor);
+                    
+                    if(factor < 1) {
+                        document.querySelector(`[data-id="original-display-${productId}"]`).classList.remove('hidden');
+                    }
+                });
+            }
+        </script>
+    @endpush
+@endonce
+
+<script type="text/javascript">
+ document.addEventListener("DOMContentLoaded", function() {
     displayPaddleProductPrice({{ $purchasable->paddle_product_id }});
-
+ });
 </script>
-
-<script src="/alpine/alpine.js" defer></script>
