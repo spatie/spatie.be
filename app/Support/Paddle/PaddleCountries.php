@@ -2,7 +2,6 @@
 
 namespace App\Support\Paddle;
 
-
 use Illuminate\Support\Collection;
 
 class PaddleCountries
@@ -979,7 +978,7 @@ class PaddleCountries
 
     public static function getNameForCode(string $countryCode): string
     {
-        $country =  static::get()->first(function(array $country) use ($countryCode) {
+        $country = static::get()->first(function (array $country) use ($countryCode) {
             return $country['code'] === $countryCode;
         });
 

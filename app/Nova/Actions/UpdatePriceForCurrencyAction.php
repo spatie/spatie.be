@@ -13,7 +13,8 @@ use Laravel\Nova\Fields\Text;
 
 class UpdatePriceForCurrencyAction extends Action
 {
-    use InteractsWithQueue, Queueable;
+    use InteractsWithQueue;
+    use Queueable;
 
     public $name = 'Update prices for currency';
 
@@ -25,7 +26,7 @@ class UpdatePriceForCurrencyAction extends Action
             return;
         }
 
-        $models->each(function(Purchasable $purchasable) use ($fields) {
+        $models->each(function (Purchasable $purchasable) use ($fields) {
             $purchasable
                 ->prices()
                 ->where('currency_code', $fields->currency_code)
@@ -43,7 +44,7 @@ class UpdatePriceForCurrencyAction extends Action
         return [
             Text::make('Currency code'),
 
-            Number::make('Amount in cents')
+            Number::make('Amount in cents'),
         ];
     }
 }

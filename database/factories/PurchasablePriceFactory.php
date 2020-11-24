@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Enums\PurchasableType;
-use App\Models\Product;
 use App\Models\Purchasable;
 use App\Models\PurchasablePrice;
 use App\Support\Paddle\PaddleCountries;

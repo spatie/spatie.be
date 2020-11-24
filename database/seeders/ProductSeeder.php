@@ -38,7 +38,7 @@ class ProductSeeder extends Seeder
             'requires_license' => false,
             'product_id' => $beyondCrud->id,
             'renewal_purchasable_id' => null,
-            'price_in_usd_cents' => 24900
+            'price_in_usd_cents' => 24900,
         ]);
 
         $mailCoach = Product::factory()->create([
@@ -115,6 +115,5 @@ class ProductSeeder extends Seeder
             'action_url' => '',
             'action_label' => 'Buy license',
         ]);
-
     }
 }

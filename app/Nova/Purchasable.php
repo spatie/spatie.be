@@ -115,7 +115,7 @@ class Purchasable extends Resource
         return [
             (new UpdatePriceForCurrencyAction())
                 ->onlyOnTableRow()
-                ->confirmButtonText('Update price')
+                ->confirmButtonText('Update price'),
         ];
     }
 }

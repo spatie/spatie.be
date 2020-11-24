@@ -25,7 +25,7 @@ class PurchasablePriceControllerTest extends TestCase
             ->get(action(PurchasablePriceController::class, [$this->purchasable->id, 'BE']))
             ->assertJson([
                 'currency' => 'USD',
-                'price' => $this->purchasable->price_in_usd_cents
+                'price' => $this->purchasable->price_in_usd_cents,
             ]);
     }
 
@@ -43,7 +43,7 @@ class PurchasablePriceControllerTest extends TestCase
             ->get(action(PurchasablePriceController::class, [$this->purchasable->id, 'BE']))
             ->assertJson([
                 'currency' => 'EUR',
-                'price' => 1234
+                'price' => 1234,
             ]);
     }
 

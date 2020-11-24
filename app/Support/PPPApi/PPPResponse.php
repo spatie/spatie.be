@@ -36,6 +36,4 @@ class PPPResponse
 
         return (int) $pppAmount * 100;
     }
-
-
 }

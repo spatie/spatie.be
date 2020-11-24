@@ -7,7 +7,6 @@ use App\Models\Purchasable;
 use App\Support\Paddle\EuCountries;
 use App\Support\Paddle\PaddleCountries;
 use App\Support\Paddle\PaddleCurrencies;
-use App\Support\PPPApi\PPPApi;
 use Illuminate\Console\Command;
 
 class UpdatePurchasablePricesCommand extends Command

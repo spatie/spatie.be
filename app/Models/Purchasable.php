@@ -3,8 +3,6 @@
 namespace App\Models;
 
 use App\Support\FreeGeoIp\FreeGeoIp;
-use App\Support\Paddle\EuCountries;
-use App\Support\Paddle\PaddleCurrencies;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -123,7 +121,7 @@ class Purchasable extends Model implements HasMedia, Sortable
     public function getPriceForIp(string $ip): array
     {
         $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
-$countryCode = 'TH';
+        $countryCode = 'TH';
         $price = $this->prices()->firstWhere('country_code', $countryCode);
 
         if ($price) {

@@ -2,7 +2,6 @@
 
 namespace App\Support\PPPApi;
 
-use Exception;
 use Illuminate\Support\Facades\Http;
 
 class PPPApi
@@ -26,8 +25,5 @@ class PPPApi
         }
 
         return PPPResponse::create($rawResponse);
-
-
-
     }
 }

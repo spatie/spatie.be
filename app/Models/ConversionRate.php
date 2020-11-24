@@ -24,6 +24,5 @@ class ConversionRate extends Model
     public function getPPPInUsd(int $amountInCents): int
     {
         return (int) ($amountInCents * $this->ppp_conversion_factor);
-
     }
 }
