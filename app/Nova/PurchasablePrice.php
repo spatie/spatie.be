@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use App\Enums\PurchasableType;
 use App\Models\PurchasablePrice as EloquentPurchasablePrice;
+use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use App\Support\Paddle\PaddleCountries;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Illuminate\Http\Request;
@@ -32,7 +33,7 @@ class PurchasablePrice extends Resource
     public static $perPageViaRelationship = 30;
 
     public static $search = [
-        'id', 'title',
+        'currency_code', 'country_code',
     ];
 
     public function fields(Request $request)
@@ -42,7 +43,7 @@ class PurchasablePrice extends Resource
 
             BelongsTo::make('purchasable'),
 
-            Text::make('Country', 'country_code')->readonly()->displayUsing(function(string $countryCode) {
+            Text::make('Country', 'country_code')->readonly()->displayUsing(function (string $countryCode) {
                 return PaddleCountries::getNameForCode($countryCode);
             }),
 
@@ -51,8 +52,6 @@ class PurchasablePrice extends Resource
             Number::make('Price in cents', 'amount'),
 
             Boolean::make('Overridden')->help('When checked, this price will not be automatically updated'),
-
-
         ];
     }
 }

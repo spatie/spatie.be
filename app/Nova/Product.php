@@ -39,6 +39,7 @@ class Product extends Resource
                 ->rules(['required', 'max:255']),
             Text::make('Slug')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules(['required', 'max:255']),
 
             Image::make('Image')
@@ -65,7 +66,7 @@ class Product extends Resource
             Markdown::make('Long Description'),
 
             Boolean::make('Visible on front', 'visible'),
-            Boolean::make('External'),
+            Boolean::make('External')->hideFromIndex(),
             Text::make('Url')->hideFromIndex(),
             Text::make('Action url')->hideFromIndex(),
             Text::make('Action label')->hideFromIndex(),
