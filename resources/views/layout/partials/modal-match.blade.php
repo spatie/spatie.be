@@ -1,9 +1,14 @@
+@php
+    use Carbon\Carbon;
+    $inSixMonths = Carbon::now()->addMonths(6);
+@endphp
+
 <div id="match" class="modal" onclick="history.back()">
     <div class="mr-16 bg-white max-w-xl max-h-screen p-8 z-20 overflow-auto shadow-lg | md:p-16 md:mx-8">
         <h2 class="text-center title-xl">{{ $caption ?? 'A good match' }}</h2>
 
         <p class="mt-8 bg-green-lightest py-2 px-4 rounded text-sm">
-            We are fully booked at the moment! <br>We have room for new projects starting from <strong>May 2021</strong>.
+            We are fully booked at the moment! <br>We have room for new projects starting from <strong>{{ $inSixMonths->format('F Y') }}</strong>.
         </p>
 
         <div class="mt-8 markup grid gap-8 | md:grid-cols " style="--cols: 1fr 1fr">

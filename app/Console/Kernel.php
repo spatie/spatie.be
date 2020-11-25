@@ -8,6 +8,8 @@ use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
 use App\Console\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Console\Commands\SendLicenseExpirationNotificationsCommand;
+use App\Console\Commands\UpdateConversionRatesCommand;
+use App\Console\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -29,8 +31,10 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
         $schedule->command(RevokeRepositoryAccessForExpiredLicensesCommand::class)->dailyAt('04:00');
-        $schedule->command(ImportDocsFromRepositoriesCommand::class)->everyThirtyMinutes();
+        $schedule->command(ImportDocsFromRepositoriesCommand::class)->runInBackground()->everyThirtyMinutes();
         $schedule->job(RandomizeAdsOnGitHubRepositoriesJob::class)->weekly();
+        $schedule->command(UpdateConversionRatesCommand::class)->runInBackground()->sundays()->at('05:00');
+        $schedule->command(UpdatePurchasablePricesCommand::class)->runInBackground()->sundays()->at('06:00');
     }
 
     protected function commands(): void

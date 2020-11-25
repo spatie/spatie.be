@@ -180,6 +180,10 @@ module.exports = {
                 postcard: 700,
             },
 
+            inset: {
+                full: '100%',
+            },
+
             gridTemplateColumns: {
                 'auto-1fr': 'auto 1fr',
             },

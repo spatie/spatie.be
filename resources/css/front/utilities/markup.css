@@ -146,6 +146,7 @@
     @apply px-1;
     @apply font-mono;
     @apply rounded-sm;
+    @apply break-all;
 }
 
 /* block code */

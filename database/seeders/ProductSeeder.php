@@ -38,6 +38,7 @@ class ProductSeeder extends Seeder
             'requires_license' => false,
             'product_id' => $beyondCrud->id,
             'renewal_purchasable_id' => null,
+            'price_in_usd_cents' => 24900,
         ]);
 
         $mailCoach = Product::factory()->create([
@@ -49,13 +50,15 @@ class ProductSeeder extends Seeder
             'action_label' => 'Buy license or course',
         ]);
 
-        Product::factory()->create([
-            'title' => 'Medialibrary.pro',
-            'slug' => 'medialibrary_pro',
-            'description' => 'Every picture needs a frame',
-            'url' => 'https://medialibrary.pro',
-            'action_url' => '',
-            'action_label' => 'Buy license',
+
+        Purchasable::factory()->create([
+            'type' => PurchasableType::TYPE_VIDEOS,
+            'title' => 'Only the videos',
+            'description' => 'Videos',
+            'paddle_product_id' => '579713',
+            'requires_license' => false,
+            'product_id' => $mailCoach->id,
+            'price_in_usd_cents' => 4900,
         ]);
 
         $mailCoachSingleDomainRenewal = Purchasable::factory()->create([
@@ -68,6 +71,7 @@ class ProductSeeder extends Seeder
             'paddle_product_id' => '579712',
             'requires_license' => true,
             'product_id' => $mailCoach->id,
+            'price_in_usd_cents' => 14900,
         ]);
 
         Purchasable::factory()->create([
@@ -78,6 +82,7 @@ class ProductSeeder extends Seeder
             'requires_license' => true,
             'product_id' => $mailCoach->id,
             'renewal_purchasable_id' => $mailCoachSingleDomainRenewal->id,
+            'price_in_usd_cents' => 14900,
         ]);
 
         $mailCoachUnlimitedDomainsRenewal = Purchasable::factory()->create([
@@ -87,6 +92,8 @@ class ProductSeeder extends Seeder
             'paddle_product_id' => '594796',
             'requires_license' => true,
             'product_id' => $mailCoach->id,
+            'price_in_usd_cents' => 99900,
+
         ]);
 
         Purchasable::factory()->create([
@@ -97,15 +104,16 @@ class ProductSeeder extends Seeder
             'requires_license' => true,
             'product_id' => $mailCoach->id,
             'renewal_purchasable_id' => $mailCoachUnlimitedDomainsRenewal->id,
+            'price_in_usd_cents' => 99900,
         ]);
 
-        Purchasable::factory()->create([
-            'type' => PurchasableType::TYPE_VIDEOS,
-            'title' => 'Only the videos',
-            'description' => 'Videos',
-            'paddle_product_id' => '579713',
-            'requires_license' => false,
-            'product_id' => $mailCoach->id,
+        Product::factory()->create([
+            'title' => 'Medialibrary.pro',
+            'slug' => 'medialibrary_pro',
+            'description' => 'Every picture needs a frame',
+            'url' => 'https://medialibrary.pro',
+            'action_url' => '',
+            'action_label' => 'Buy license',
         ]);
     }
 }

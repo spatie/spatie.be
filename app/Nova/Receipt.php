@@ -25,10 +25,10 @@ class Receipt extends Resource
         return [
             ID::make()->sortable(),
 
-            Number::make('Amount'),
-            Number::make('Tax'),
-            Text::make('Currency'),
             Text::make('Receipt Url'),
+            Number::make('Amount'),
+            Number::make('Tax')->hideFromIndex(),
+            Text::make('Currency'),
         ];
     }
 }

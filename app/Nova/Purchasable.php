@@ -4,14 +4,17 @@ namespace App\Nova;
 
 use App\Enums\PurchasableType;
 use App\Models\Purchasable as EloquentPurchasable;
+use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use NovaItemsField\Items;
@@ -40,9 +43,16 @@ class Purchasable extends Resource
                 ->sortable()
                 ->rules(['required', 'max:255']),
 
+            Number::make('Price in USD cents')
+                ->required()
+                ->showOnIndex(),
+
+            HasMany::make('Purchasable prices', 'prices'),
+
             Boolean::make('Released'),
 
             BelongsTo::make('Purchasable for renewal', 'renewalPurchasable', Purchasable::class)
+                ->hideFromIndex()
                 ->nullable(),
 
             BelongsTo::make('Product'),
@@ -51,13 +61,18 @@ class Purchasable extends Resource
 
             Text::make('Paddle id', 'paddle_product_id')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules(['required', 'max:255']),
 
             Text::make('Getting started URL')
                 ->sortable()
+                ->hideFromIndex()
                 ->rules(['max:255']),
 
-            Select::make('Type')->options(PurchasableType::getLabels())->rules(['required']),
+            Select::make('Type')
+                ->options(PurchasableType::getLabels())
+                ->hideFromIndex()
+                ->rules(['required']),
 
             Image::make('Image')
                 ->store(function (Request $request, EloquentPurchasable $product) {
@@ -80,18 +95,27 @@ class Purchasable extends Resource
                 }),
 
             Markdown::make('Description'),
-            Boolean::make('Requires license'),
+            Boolean::make('Requires license')->hideFromIndex(),
 
             Files::make('Downloads')
                 ->customPropertiesFields([
                     Text::make('Label'),
                 ]),
 
-            Text::make('Repository access'),
+            Text::make('Repository access')->hideFromIndex(),
 
-            Items::make('Satis packages'),
+            Items::make('Satis packages')->hideFromIndex(),
 
-            Text::make('Sponsor coupon')->help('For display purposes only, you still need to create this in Paddle.'),
+            Text::make('Sponsor coupon')->hideFromIndex()->help('For display purposes only, you still need to create this in Paddle.'),
+        ];
+    }
+
+    public function actions(Request $request)
+    {
+        return [
+            (new UpdatePriceForCurrencyAction())
+                ->onlyOnTableRow()
+                ->confirmButtonText('Update price'),
         ];
     }
 }

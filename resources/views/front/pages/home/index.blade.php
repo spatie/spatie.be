@@ -1,12 +1,19 @@
 <x-page
         title="Websites & webapplications in Laravel"
-        background="/backgrounds/home-2020.jpg">
+        background="/backgrounds/home-black-friday.jpg">
     <x-slot name="description">
         Spatie is a digital allrounder: we design solid websites & web applications using Laravel & Vue. No frills, just
         proven expertise. From Antwerp, Belgium
     </x-slot>
 
     @include('front.pages.home.partials.banner')
+    
+    <div class="mb-8">
+        <a href="{{ route('products.index') }}">
+        @include('front.pages.products.partials.ctaBlackFriday')
+        </a>
+    </div>
+
     @include('front.pages.home.partials.news')
 
     <div class="section section-group section-fade">

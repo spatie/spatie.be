@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\FreeGeoIp\FreeGeoIp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -33,6 +34,11 @@ class Purchasable extends Model implements HasMedia, Sortable
         'media',
     ];
 
+    public static function findForPaddleProductId(string $paddleProductId): ?self
+    {
+        return static::query()->firstWhere('paddle_product_id', $paddleProductId);
+    }
+
     public function registerMediaCollections(): void
     {
         $this
@@ -43,6 +49,11 @@ class Purchasable extends Model implements HasMedia, Sortable
         $this
             ->addMediaCollection('downloads')
             ->useDisk('purchasable_downloads');
+    }
+
+    public function prices(): HasMany
+    {
+        return $this->hasMany(PurchasablePrice::class);
     }
 
     public function getImageAttribute()
@@ -94,7 +105,7 @@ class Purchasable extends Model implements HasMedia, Sortable
     {
         $avgEarnings = $this->purchases()->where('earnings', '>', 0)->average('earnings');
 
-        return (int) round($avgEarnings);
+        return (int)round($avgEarnings);
     }
 
     /**
@@ -105,5 +116,18 @@ class Purchasable extends Model implements HasMedia, Sortable
     public function includesPackageAccess(string $package): bool
     {
         return in_array($package, $this->satis_packages ?? []);
+    }
+
+    public function getPriceForIp(string $ip): array
+    {
+        $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
+
+        $price = $this->prices()->firstWhere('country_code', $countryCode);
+
+        if ($price) {
+            return [$price->amount, $price->currency_code];
+        }
+
+        return [$this->product->price, 'USD'];
     }
 }

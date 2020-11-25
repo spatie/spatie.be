@@ -18,6 +18,7 @@
         "abraham/twitteroauth": "^1.0",
         "aws/aws-sdk-php": "^3.152",
         "barryvdh/laravel-debugbar": "^3.0",
+        "blade-ui-kit/blade-ui-kit": "^0.2.0",
         "dillingham/nova-items-field": "^0.6.0",
         "doctrine/dbal": "^2.10",
         "ebess/advanced-nova-media-library": "dev-master",
@@ -67,6 +68,7 @@
         "spatie/schema-org": "^2.0",
         "spatie/sheets": "^1.6",
         "spatie/ssh": "^1.4",
+        "spatie/test-time": "^1.2",
         "spatie/valuestore": "^1.2",
         "wyrihaximus/react-child-process-promise": "^2.0"
     },

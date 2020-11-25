@@ -22,6 +22,10 @@ class VideoSeeder extends Seeder
         $mailcoachProduct = Product::where('slug', 'mailcoach')->first();
         $mailcoach->purchasables()->attach(Purchasable::where('product_id', $mailcoachProduct->id)->get());
 
+        if (empty(config('services.vimeo.secret'))) {
+            return;
+        }
+
         Video::insert([
           [
             "series_id" => 1,
