@@ -23,7 +23,6 @@ class PurchasableFactory extends Factory
             'paddle_product_id' => (string)$this->faker->randomNumber(5),
             'getting_started_url' => 'https://mailcoach.app/docs',
             'price_in_usd_cents' => $priceInCents,
-            'price_without_discount_in_usd_cents' => $priceInCents,
             'released' => true,
         ];
     }

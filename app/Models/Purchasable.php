@@ -121,12 +121,7 @@ class Purchasable extends Model implements HasMedia, Sortable
         return in_array($package, $this->satis_packages ?? []);
     }
 
-    public function getPriceWithoutDiscount(): DisplayablePrice
-    {
-        return new DisplayablePrice($this->price_without_discount_in_usd_cents, 'USD', '$');
-    }
-
-    public function getPriceForIpOfCurrentRequest(): DisplayablePrice
+    public function getPriceForCurrentRequest(): DisplayablePrice
     {
         return $this->getPriceForIp(request()->ip());
     }
@@ -140,13 +135,44 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public function getPriceForCountryCode(string $countryCode): DisplayablePrice
     {
-        $price = $this->prices()->firstWhere('country_code', $countryCode);
+        $displayablePrice = $this->getPriceWithoutDiscount($countryCode);
 
-        if ($price) {
-            return new DisplayablePrice($price->amount, $price->currency_code, $price->currency_symbol);
+        if ($this->hasActiveDiscount()) {
+            $priceWithoutDiscount = $displayablePrice->priceInCents;
+            $discount = ($priceWithoutDiscount / 100) * $this->discount_percentage;
+            $displayablePrice->priceInCents = $priceWithoutDiscount - $discount;
         }
 
-        return new DisplayablePrice($this->price_in_usd_cents, 'USD', '$');
+        return $displayablePrice;
+    }
+
+    public function getPriceWithoutDiscountForCurrentRequest(): DisplayablePrice
+    {
+        return $this->getPriceWithoutDiscountForIp(request()->ip());
+    }
+
+    public function getPriceWithoutDiscountForIp(string $ip): DisplayablePrice
+    {
+        $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
+
+        return $this->getPriceWithoutDiscount($countryCode);
+    }
+
+    public function getPriceWithoutDiscount(string $countryCode): DisplayablePrice
+    {
+        $price = $this->price_in_usd_cents;
+        $currencyCode = 'USD';
+        $currencySymbol = '$';
+
+        $purchasablePrice = $this->prices()->firstWhere('country_code', $countryCode);
+
+        if ($purchasablePrice) {
+            $price = $purchasablePrice->amount;
+            $currencyCode = $purchasablePrice->currency_code;
+            $currencySymbol = $purchasablePrice->currency_symbol;
+        }
+
+        return new DisplayablePrice($price, $currencyCode, $currencySymbol);
     }
 
     public function hasActiveDiscount(): bool

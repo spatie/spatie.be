@@ -20,7 +20,6 @@ class PurchasablePriceController
                 'discount_percentage' => $purchasable->discount_percentage,
                 'discount_expires_at' => $purchasable->discount_expires_at->timestamp,
                 'discount_name' => $purchasable->discount_name,
-                'price_without_discount_in_usd_cents' => $purchasable->price_without_discount_in_usd_cents,
             ];
         }
 

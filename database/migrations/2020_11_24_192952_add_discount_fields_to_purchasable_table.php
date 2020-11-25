@@ -9,7 +9,6 @@ class AddDiscountFieldsToPurchasableTable extends Migration
     public function up()
     {
         Schema::table('purchasables', function (Blueprint $table) {
-            $table->integer('price_without_discount_in_usd_cents');
             $table->string('discount_name')->nullable();
             $table->integer('discount_percentage')->nullable();
             $table->timestamp('discount_starts_at')->nullable();
