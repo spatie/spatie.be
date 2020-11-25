@@ -6,6 +6,7 @@ use App\Http\Api\Controllers\PriceController;
 use App\Models\Purchasable;
 use App\Models\PurchasablePrice;
 use Spatie\Snapshots\MatchesSnapshots;
+use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
 class PriceControllerTest extends TestCase
@@ -18,8 +19,10 @@ class PriceControllerTest extends TestCase
     {
         parent::setUp();
 
+        TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
+
         $this->purchasable = Purchasable::factory()->create([
-            'price_in_usd_cents' => 100,
+            'price_in_usd_cents' => 14900,
         ]);
     }
 
@@ -41,7 +44,7 @@ class PriceControllerTest extends TestCase
             'country_code' => 'BE',
             'currency_code' => 'EUR',
             'currency_symbol' => '€',
-            'amount' => 1234,
+            'amount' => 13900,
         ]);
 
         $response = $this
@@ -57,5 +60,45 @@ class PriceControllerTest extends TestCase
         $this
             ->get(action(PriceController::class, [123, 'BE']))
             ->assertNotFound();
+    }
+
+    /** @test */
+    public function it_will_return_the_correct_usd_prices_is_there_is_a_discount()
+    {
+        $this->purchasable->update([
+            'discount_percentage' => 10,
+            'discount_name' => 'Flash sale',
+            'discount_expires_at' => now()->addHour(),
+        ]);
+
+        $response = $this
+            ->get(action(PriceController::class, [$this->purchasable->id, 'BE']))
+            ->json();
+
+        $this->assertMatchesSnapshot($response);
+    }
+
+    /** @test */
+    public function it_will_return_the_correct_custom_prices_is_there_is_a_discount()
+    {
+        $this->purchasable->update([
+            'discount_percentage' => 10,
+            'discount_name' => 'Flash sale',
+            'discount_expires_at' => now()->addHour(),
+        ]);
+
+        PurchasablePrice::factory()->create([
+            'purchasable_id' => $this->purchasable->id,
+            'country_code' => 'BE',
+            'currency_code' => 'EUR',
+            'currency_symbol' => '€',
+            'amount' => 13900,
+        ]);
+
+        $response = $this
+            ->get(action(PriceController::class, [$this->purchasable->id, 'BE']))
+            ->json();
+
+        $this->assertMatchesSnapshot($response);
     }
 }

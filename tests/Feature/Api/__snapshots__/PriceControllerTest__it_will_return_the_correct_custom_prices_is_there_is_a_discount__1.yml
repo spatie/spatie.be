@@ -1,15 +1,15 @@
 actual:
-    price_in_cents: 13900
+    price_in_cents: 12510
     currency_code: EUR
     currency_symbol: €
-    formatted_price: €139
+    formatted_price: €125.10
 without_discount:
     price_in_cents: 13900
     currency_code: EUR
     currency_symbol: €
     formatted_price: €139
 discount:
-    active: false
-    percentage: null
-    name: null
-    expires_at: null
+    active: true
+    percentage: 10
+    name: 'Flash sale'
+    expires_at: 1577836800
