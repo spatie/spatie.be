@@ -135,7 +135,7 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public function getPriceForCountryCode(string $countryCode): DisplayablePrice
     {
-        $displayablePrice = $this->getPriceWithoutDiscount($countryCode);
+        $displayablePrice = $this->getPriceWithoutDiscountForCountryCode($countryCode);
 
         if ($this->hasActiveDiscount()) {
             $priceWithoutDiscount = $displayablePrice->priceInCents;
@@ -155,10 +155,10 @@ class Purchasable extends Model implements HasMedia, Sortable
     {
         $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
 
-        return $this->getPriceWithoutDiscount($countryCode);
+        return $this->getPriceWithoutDiscountForCountryCode($countryCode);
     }
 
-    public function getPriceWithoutDiscount(string $countryCode): DisplayablePrice
+    public function getPriceWithoutDiscountForCountryCode(string $countryCode): DisplayablePrice
     {
         $price = $this->price_in_usd_cents;
         $currencyCode = 'USD';

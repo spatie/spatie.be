@@ -3,38 +3,33 @@
 namespace App\Http\Api\Controllers;
 
 use App\Models\Purchasable;
-use App\Models\PurchasablePrice;
 
 class PurchasablePriceController
 {
     public function __invoke(Purchasable $purchasable, string $countryCode)
     {
-        $purchasablePrice = PurchasablePrice::firstWhere([
-            'purchasable_id' => $purchasable->id,
-            'country_code' => $countryCode,
+        $price = $purchasable->getPriceForCountryCode($countryCode);
+        $priceWithoutDiscount = $purchasable->getPriceWithoutDiscountForCountryCode($countryCode);
+
+        return response()->json([
+           'actual' => [
+               'price_in_cents' => $price->priceInCents,
+               'currency_code' => $price->currencyCode,
+               'currency_symbol' => $price->currencySymbol,
+               'formatted_price' => $price->formattedPrice(),
+           ],
+            'without_discount' => [
+                'price_in_cents' => $priceWithoutDiscount->priceInCents,
+                'currency_code' => $priceWithoutDiscount->currencyCode,
+                'currency_symbol' => $priceWithoutDiscount->currencySymbol,
+                'formatted_price' => $priceWithoutDiscount->formattedPrice(),
+            ],
+            'discount' => [
+                'active' => $purchasable->hasActiveDiscount(),
+                'percentage' => $purchasable->discount_percentage,
+                'name' => $purchasable->discount_name,
+                'expires_at' => optional($purchasable->discount_expires_at)->timestamp,
+            ],
         ]);
-
-        $discountProperties = [];
-        if ($purchasable->hasActiveDiscount()) {
-            $discountProperties = [
-                'discount_percentage' => $purchasable->discount_percentage,
-                'discount_expires_at' => $purchasable->discount_expires_at->timestamp,
-                'discount_name' => $purchasable->discount_name,
-            ];
-        }
-
-        if (! $purchasablePrice) {
-            return response()->json(array_merge($discountProperties, [
-                'currency_code' => 'USD',
-                'currency_symbol' => '$',
-                'amount' => $purchasable->price_in_usd_cents,
-            ]));
-        }
-
-        return response()->json(array_merge($discountProperties,[
-            'currency_code' => $purchasablePrice->currency_code,
-            'currency_symbol' => $purchasablePrice->currency_symbol,
-            'price' => $purchasablePrice->amount,
-        ]));
     }
 }
