@@ -23,17 +23,23 @@
             <p class="text-lg">
                 In november 2020, we crossed the barrier of 100 million downloads of our open source packages. To celebrate this milestone, we asked people on Twitter to send in their testimonials on how they use our packages.
                 <br>
-                These 10 struck a cord with us and win a custom Spatie backpack!
+                These 10 struck a chord with us and win a custom Spatie backpack!
             </p>
         </div>
     </div>
 
-    <div class="wrap" x-data="{ testimonial: 'tom' }">
+    <div id="testimonials" class="wrap" x-data="{ testimonial: 'tom' }" 
+        x-init="() => {
+            const hash = location.hash.slice(1); 
+                if(['tom','axel','tim','christian', 'alladin', 'david', 'danyell', 'craig', 'jamie', 'samy'].includes(hash)){ 
+                    testimonial = hash;
+                }
+            }">
         <div style="grid-template-columns: 4rem 1fr 4rem" class="lg:grid gap-16 | items-stretch links-blue">
             <div class="lg:-ml-16 lg:-mr-16 text-sm">
                 <ul class="pb-8 lg:pt-12 grid grid-cols-2 lg:grid-cols-1 gap-2 sticky top-0">
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'tom'" :class="{ 'font-semibold' : testimonial === 'tom' }">
+                        <a class="flex items-center" href="#tom" @click="testimonial = 'tom'" :class="{ 'font-semibold' : testimonial === 'tom' }">
                             Tom Witkowski
                             <span x-show="testimonial === 'tom'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -41,7 +47,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'axel'" :class="{ 'font-semibold' : testimonial === 'axel' }">
+                        <a class="flex items-center" href="#axel" @click="testimonial = 'axel'" :class="{ 'font-semibold' : testimonial === 'axel' }">
                             Axel Charpentier
                             <span x-show="testimonial === 'axel'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -49,7 +55,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'tim'" :class="{ 'font-semibold' : testimonial === 'tim' }">
+                        <a class="flex items-center" href="#tim" @click="testimonial = 'tim'" :class="{ 'font-semibold' : testimonial === 'tim' }">
                             Tim Sterker
                             <span x-show="testimonial === 'tim'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -57,7 +63,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'christian'" :class="{ 'font-semibold' : testimonial === 'christian' }">
+                        <a class="flex items-center" href="#christian" @click="testimonial = 'christian'" :class="{ 'font-semibold' : testimonial === 'christian' }">
                             Christian Stefener
                             <span x-show="testimonial === 'christian'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -65,7 +71,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'alladin'" :class="{ 'font-semibold' : testimonial === 'alladin' }">
+                        <a class="flex items-center" href="#alladin" @click="testimonial = 'alladin'" :class="{ 'font-semibold' : testimonial === 'alladin' }">
                             Alladin Melico
                             <span x-show="testimonial === 'alladin'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -73,7 +79,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'david'" :class="{ 'font-semibold' : testimonial === 'david' }">
+                        <a class="flex items-center" href="#david" @click="testimonial = 'david'" :class="{ 'font-semibold' : testimonial === 'david' }">
                             David Hallin
                             <span x-show="testimonial === 'david'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -81,7 +87,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'danyell'" :class="{ 'font-semibold' : testimonial === 'danyell' }">
+                        <a class="flex items-center" href="#danyell" @click="testimonial = 'danyell'" :class="{ 'font-semibold' : testimonial === 'danyell' }">
                             Danyell Noe
                             <span x-show="testimonial === 'danyell'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -89,7 +95,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'craig'" :class="{ 'font-semibold' : testimonial === 'craig' }">
+                        <a class="flex items-center" href="#craig" @click="testimonial = 'craig'" :class="{ 'font-semibold' : testimonial === 'craig' }">
                             Craig Potter
                             <span x-show="testimonial === 'craig'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -97,7 +103,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'jamie'" :class="{ 'font-semibold' : testimonial === 'jamie' }">
+                        <a class="flex items-center" href="#jamie" @click="testimonial = 'jamie'" :class="{ 'font-semibold' : testimonial === 'jamie' }">
                             Jamie Peters
                             <span x-show="testimonial === 'jamie'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -105,7 +111,7 @@
                         </a>
                     </li>
                     <li>
-                        <a class="flex items-center" href="#testimonials" @click="testimonial = 'samy'" :class="{ 'font-semibold' : testimonial === 'samy' }">
+                        <a class="flex items-center" href="#samy" @click="testimonial = 'samy'" :class="{ 'font-semibold' : testimonial === 'samy' }">
                             Samy Nitsche
                             <span x-show="testimonial === 'samy'" class="ml-2 text-pink w-4 icon">
                                 {{ svg('icons/fas-heart') }}
@@ -115,8 +121,8 @@
                 </ul>
             </div>
 
-            <div id="testimonials" class="py-24 px-16 bg-white shadow-lg text-lg markup markup-lists">
-                <div x-show="testimonial === 'tom'">
+            <div class="-mx-4 md:mx-0 bg-white shadow-lg text-lg markup markup-lists">
+                <div id="tom" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'tom'">
                     <p>
                         Hey all at Spatie,
 
@@ -125,7 +131,7 @@
 
                             <p>
                                 My story with Spatie started ~5 years ago while I've started to introduce Laravel to my colleagues as a replacement for CakePHP.
-                                On top of using packages my real Story with Spatie and therefore the start of my current carrier was in August 2016. So far I was able to filter the GitHub API this was my first interaction with you <a href="https://github.com/spatie/laravel-google-calendar/issues/6">https://github.com/spatie/laravel-google-calendar/issues/6</a> .
+                                On top of using packages my real Story with Spatie and therefore the start of my current carrier was in August 2016. So far I was able to filter the GitHub API this was my first interaction with you <a class="break-all" href="https://github.com/spatie/laravel-google-calendar/issues/6">https://github.com/spatie/laravel-google-calendar/issues/6</a> .
 
                                 <p>
                                     After this I've leveled up my PHP and Laravel skills by a thousand times. A big if not the biggest part of this process were YOU (all devs at Spatie). I've learned a lot while communicating with you, reading your code and adding my own code. After all I still assume that Spatie made my career - or at least provided everything it needed. The packages you provide are super valuable! But for me the chance to work with you is even more worth! 🚀 I still like the deep discussions with Brent, the frontend knowledge Sebastian shares and the kindness between developers Freek introduced me to.
@@ -144,7 +150,7 @@
                                             </p>
                 </div>
 
-                <div x-show="testimonial === 'axel'">
+                <div id="axel" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'axel'">
                     <p>Hello Spatie!</p>
 
                     <p>My name is Axel, I work as a backend developer in a digital agency in Paris and I wanted to say a big thank you for all your incredible work for the Laravel ecosystem.</p>
@@ -163,7 +169,7 @@
                     <p>Axel Charpentier - <a href="https://twitter.com/TheDevGrizzly">@TheDevGrizzly</a></p>
                 </div>
 
-                <div x-show="testimonial === 'tim'">
+                <div id="tim" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'tim'">
                     <p>Hi spatie team,</p>
 
                     <p>this is about the Backpack giveaway but I also take the opportunity to thank you for your great contribution to the laravel and php community & ecosystem.</p>
@@ -184,7 +190,7 @@
                         <br>Tim - <a href="https://twitter.com/tsterker">@tsterker</a></p>
                 </div>
 
-                <div x-show="testimonial === 'christian'">
+                <div id="christian" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'christian'">
                     <p>Dear Spatie Team,</p>
                     <p>We just wanted to say thanks for your great work. In every project we use Spatie packages and we can't get around it anymore. Be it fractal, failed-job-monitor or the media library.</p>
 
@@ -203,19 +209,19 @@
                     </p>
                 </div>
 
-                <div x-show="testimonial === 'alladin'">
+                <div id="alladin" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'alladin'">
                     <p>Congratulations for the 100 millionth package downloads! I’m Alladin Melico, a Bachelor of Science in Information Technology undergraduate, I used of one of Spatie’s packages of our capstone research.
                     </p>
                     <p>
-                        Hosted: <a href="https://laravel-film.herokuapp.com/">https://laravel-film.herokuapp.com/</a> <br>
-                        Repository: <a href="https://github.com/alladinmelico/laravel_movie">https://github.com/alladinmelico/laravel_movie</a>
+                        Hosted: <a class="break-all" href="https://laravel-film.herokuapp.com/">https://laravel-film.herokuapp.com/</a> <br>
+                        Repository: <a class="break-all" href="https://github.com/alladinmelico/laravel_movie">https://github.com/alladinmelico/laravel_movie</a>
                     </p>
                     <p>
                         The Spatie Laravel-Medialibrary definitely helped me on setting up photo uploading, validation, retrieving media and so much more. I know that this is a relatively small project but medialibrary saved so much of my time. Thank you!
                     </p>
                 </div>
 
-                <div x-show="testimonial === 'david'">
+                <div id="david" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'david'">
                     <p class="text-xl">
                         The biggest impact your packages have had on me is education. I use them in my projects as well, but many packages I just pulled down for fun/exploration, and it resulted in massive increases in my understanding of how laravel works and better coding practices.
                     </p>
@@ -224,7 +230,7 @@
                         <p>
                 </div>
 
-                <div x-show="testimonial === 'danyell'">
+                <div id="danyell" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'danyell'">
                     <p class="text-xl">
                         If you use no
                         @@spatie_be
@@ -250,7 +256,7 @@
                         <p>
                 </div>
 
-                <div x-show="testimonial === 'craig'">
+                <div id="craig" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'craig'">
                     <p class="text-xl">
                         I don't think there has been a project I have worked on in the last year that hasn't used at least 1 @@spatie_be package. I love how you guys make everything so simple and easy to implement so I don't have to worry about it and I can focus on getting the rest of the project done!
                     </p>
@@ -259,7 +265,7 @@
                         <p>
                 </div>
 
-                <div x-show="testimonial === 'jamie'">
+                <div id="jamie" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'jamie'">
                     <p class="text-xl">
                         My current big project uses the geocoder package to get lat/lng from a town/city/postcode, a nice php api instead calling Google directly. Mailcoach is great for bringing newsletter management in house, and test time is another favourite for testing time specific artisan commands.
                         </p>
@@ -271,8 +277,8 @@
                         <p>
                 </div>
 
-                <div x-show="testimonial === 'samy'">
-<p class="text-xl">
+                <div id="samy" class="py-12 px-4 sm:px-8 md:py-24 md:px-16" x-show="testimonial === 'samy'">
+                    <p class="text-xl">
                         Congratulations 🎈 Your packages really changed the way I work. When I need some functionality the first thing I do is checking out your packages to see if this already exists. Also I learned so much techniques from you. Thanks for everything!
                     </p>
                     <p>
