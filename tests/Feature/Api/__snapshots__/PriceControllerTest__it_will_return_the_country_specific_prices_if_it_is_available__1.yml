@@ -1,0 +1,15 @@
+actual:
+    price_in_cents: 1234
+    currency_code: EUR
+    currency_symbol: €
+    formatted_price: €12.34
+without_discount:
+    price_in_cents: 1234
+    currency_code: EUR
+    currency_symbol: €
+    formatted_price: €12.34
+discount:
+    active: false
+    percentage: null
+    name: null
+    expires_at: null

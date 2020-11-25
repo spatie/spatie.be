@@ -1,0 +1,15 @@
+actual:
+    price_in_cents: 100
+    currency_code: USD
+    currency_symbol: $
+    formatted_price: $1
+without_discount:
+    price_in_cents: 100
+    currency_code: USD
+    currency_symbol: $
+    formatted_price: $1
+discount:
+    active: false
+    percentage: null
+    name: null
+    expires_at: null

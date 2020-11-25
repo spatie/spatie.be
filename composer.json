@@ -65,6 +65,7 @@
         "spatie/laravel-stubs": "^2.0",
         "spatie/laravel-tail": "^4.2",
         "spatie/packagist-api": "^2.0",
+        "spatie/phpunit-snapshot-assertions": "^4.2",
         "spatie/schema-org": "^2.0",
         "spatie/sheets": "^1.6",
         "spatie/ssh": "^1.4",

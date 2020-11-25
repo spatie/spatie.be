@@ -4,7 +4,7 @@ namespace App\Http\Api\Controllers;
 
 use App\Models\Purchasable;
 
-class PurchasablePriceController
+class PriceController
 {
     public function __invoke(Purchasable $purchasable, string $countryCode)
     {
