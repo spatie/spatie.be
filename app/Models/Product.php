@@ -89,20 +89,4 @@ class Product extends Model implements HasMedia, Sortable
     {
         return Markdown::parse($this->long_description ?? '');
     }
-
-    public function hasActiveCoupon(): bool
-    {
-        if (! $this->coupon_code) {
-            return false;
-        }
-
-        if (! $this->coupon_percentage) {
-            return false;
-        }
-
-        return now()->between(
-            $this->coupon_valid_from ?? now()->subMinute(),
-            $this->coupon_expires_at ?? now()->addMinute(),
-        );
-    }
 }

@@ -15,6 +15,8 @@ class Purchase extends Model
     protected $casts = [
         'paddle_webhook_payload' => 'array',
         'has_repository_access' => 'boolean',
+        'discount_starts_at' => 'datetime',
+        'discount_expires_at' => 'datetime',
     ];
 
     public function license(): BelongsTo

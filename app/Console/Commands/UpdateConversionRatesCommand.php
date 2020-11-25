@@ -29,6 +29,7 @@ class UpdateConversionRatesCommand extends Command
             ConversionRate::query()->updateOrCreate([
                 'country_code' => $country['code'],
             ], [
+                'currency_symbol' => $pppResponse->currencySymbol,
                 'currency_code' => $pppResponse->currencyCode,
                 'ppp_conversion_factor' => $pppResponse->conversionFactor,
                 'exchange_rate' => $pppResponse->exchangeRate,

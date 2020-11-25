@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\DisplayablePrice;
 use App\Support\FreeGeoIp\FreeGeoIp;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -118,16 +119,47 @@ class Purchasable extends Model implements HasMedia, Sortable
         return in_array($package, $this->satis_packages ?? []);
     }
 
-    public function getPriceForIp(string $ip): array
+    public function getPriceWithoutDiscount(): DisplayablePrice
+    {
+        return new DisplayablePrice($this->price_without_discount_in_usd_cents, 'USD', '$');
+    }
+
+    public function getPriceForIpOfCurrentRequest(): DisplayablePrice
+    {
+        return $this->getPriceForIp(request()->ip());
+    }
+
+    public function getPriceForIp(string $ip): DisplayablePrice
     {
         $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
 
+        return $this->getPriceForCountryCode($countryCode);
+    }
+
+    public function getPriceForCountryCode(string $countryCode): DisplayablePrice
+    {
         $price = $this->prices()->firstWhere('country_code', $countryCode);
 
         if ($price) {
-            return [$price->amount, $price->currency_code];
+            return new DisplayablePrice($price->amount, $price->currency_code, $price->currency_symbol);
         }
 
-        return [$this->product->price, 'USD'];
+        return new DisplayablePrice($this->price_in_usd_cents, 'USD', '$');
+    }
+
+    public function hasActiveDiscount(): bool
+    {
+        if (! $this->discount_name) {
+            return false;
+        }
+
+        if (! $this->discount_percentage) {
+            return false;
+        }
+
+        return now()->between(
+            $this->discount_starts_at ?? now()->subMinute(),
+            $this->discount_expires_at ?? now()->addMinute(),
+        );
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\PurchasableType;
+use App\Support\DisplayablePrice;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -29,25 +30,21 @@ class User extends Authenticatable
 
     public function getPayLinkForProductId(string $paddleProductId)
     {
-        /*
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
 
-        [$amountInCents, $currency] = $purchasable->getPriceForIp(request()->ip());
+        $displayablePrice = $purchasable->getPriceForIp(request()->ip());
 
-        $amountWithDecimals = $amountInCents / 100;
-
-        $prices[] = "{$currency}:{$amountWithDecimals}";
-        if ($currency !== 'USD') {
-            $priceInDollars = $purchasable->price_in_usd_cents / 100;
-            $prices[] = "USD:{$priceInDollars}";
+        $prices[] = $displayablePrice->toPaddleFormat();
+        if ($displayablePrice->currencyCode !== 'USD') {
+            $dollarDisplayablePrice = new DisplayablePrice($purchasable->price_in_usd_cents, 'USD', '$');
+            $prices[] = $dollarDisplayablePrice->toPaddleFormat();
         }
-        */
 
         return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => false,
             'customer_email' => auth()->user()->email,
             'marketing_consent' => true,
-            //'prices' => $prices,
+            'prices' => $prices,
         ]);
     }
 

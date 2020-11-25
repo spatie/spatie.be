@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -17,6 +18,7 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Panel;
 use NovaItemsField\Items;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
@@ -46,6 +48,14 @@ class Purchasable extends Resource
             Number::make('Price in USD cents')
                 ->required()
                 ->showOnIndex(),
+
+            new Panel('Discount', [
+                Text::make('Price without discount in usd cents')->hideFromIndex()->help('The full price that will be displayed with a strikethrough'),
+                Text::make('Percentage', 'discount_percentage')->hideFromIndex()->help('The discount percentage to be displayed'),
+                Number::make('Percentage', 'discount_starts_at')->hideFromIndex(),
+                DateTime::make('Starts at', 'discount_starts_at')->hideFromIndex(),
+                DateTime::make('Expires at', 'discount_expires_at')->hideFromIndex()->help('Not specifying this field will make the coupon active indefinitely'),
+            ]),
 
             HasMany::make('Purchasable prices', 'prices'),
 

@@ -71,61 +71,25 @@ class Product extends Resource
             Text::make('Action url')->hideFromIndex(),
             Text::make('Action label')->hideFromIndex(),
 
-            new Panel('Coupon', [
-                Text::make('Code', 'coupon_code')->hideFromIndex()->help('Make sure you have defined this code in Paddle too'),
-                Text::make('Label', 'coupon_label')->hideFromIndex(),
-                Number::make('Percentage', 'coupon_percentage')->hideFromIndex(),
-                DateTime::make('Valid from', 'coupon_valid_from')->hideFromIndex(),
-                DateTime::make('Expires at', 'coupon_expires_at')->hideFromIndex()->help('Not specifying this field will make the coupon active indefinitely'),
-            ]),
-
             HasMany::make('Purchasables', 'purchasables', Purchasable::class),
         ];
     }
 
-    /**
-     * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
-     */
     public function cards(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
-     */
     public function filters(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
-     */
     public function lenses(Request $request)
     {
         return [];
     }
 
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return array
-     */
     public function actions(Request $request)
     {
         return [];

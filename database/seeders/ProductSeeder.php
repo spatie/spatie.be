@@ -39,6 +39,8 @@ class ProductSeeder extends Seeder
             'product_id' => $beyondCrud->id,
             'renewal_purchasable_id' => null,
             'price_in_usd_cents' => 24900,
+            'price_without_discount_in_usd_cents' => 24900,
+
         ]);
 
         $mailCoach = Product::factory()->create([
@@ -59,6 +61,8 @@ class ProductSeeder extends Seeder
             'requires_license' => false,
             'product_id' => $mailCoach->id,
             'price_in_usd_cents' => 4900,
+            'price_without_discount_in_usd_cents' => 4900,
+
         ]);
 
         $mailCoachSingleDomainRenewal = Purchasable::factory()->create([
@@ -72,6 +76,8 @@ class ProductSeeder extends Seeder
             'requires_license' => true,
             'product_id' => $mailCoach->id,
             'price_in_usd_cents' => 14900,
+            'price_without_discount_in_usd_cents' => 14900,
+
         ]);
 
         Purchasable::factory()->create([
@@ -83,6 +89,8 @@ class ProductSeeder extends Seeder
             'product_id' => $mailCoach->id,
             'renewal_purchasable_id' => $mailCoachSingleDomainRenewal->id,
             'price_in_usd_cents' => 14900,
+            'price_without_discount_in_usd_cents' => 14900,
+
         ]);
 
         $mailCoachUnlimitedDomainsRenewal = Purchasable::factory()->create([
@@ -93,7 +101,7 @@ class ProductSeeder extends Seeder
             'requires_license' => true,
             'product_id' => $mailCoach->id,
             'price_in_usd_cents' => 99900,
-
+            'price_without_discount_in_usd_cents' => 99900,
         ]);
 
         Purchasable::factory()->create([
@@ -105,6 +113,8 @@ class ProductSeeder extends Seeder
             'product_id' => $mailCoach->id,
             'renewal_purchasable_id' => $mailCoachUnlimitedDomainsRenewal->id,
             'price_in_usd_cents' => 99900,
+            'price_without_discount_in_usd_cents' => 99900,
+
         ]);
 
         Product::factory()->create([

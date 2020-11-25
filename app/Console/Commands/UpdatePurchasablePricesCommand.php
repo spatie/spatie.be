@@ -25,7 +25,11 @@ class UpdatePurchasablePricesCommand extends Command
             PaddleCountries::get()->each(function (array $countryAttributes) use ($purchasable) {
                 $price = $purchasable->prices()->firstOrCreate(
                     ['country_code' => $countryAttributes['code']],
-                    ['currency_code' => 'USD', 'amount' => $purchasable->price_in_usd_cents],
+                    [
+                        'currency_code' => 'USD',
+                        'currency_symbol' => '$',
+                        'amount' => $purchasable->price_in_usd_cents
+                    ],
                 );
 
                 if ($price->overridden) {
@@ -37,6 +41,7 @@ class UpdatePurchasablePricesCommand extends Command
 
                     $price->update([
                         'currency_code' => 'EUR',
+                        'currency_symbol' => '€',
                         'amount' => $conversionRate->getAmountForUsd($purchasable->price_in_usd_cents),
                     ]);
                 }
@@ -46,6 +51,7 @@ class UpdatePurchasablePricesCommand extends Command
                 if (! $conversionRate) {
                     $price->update([
                         'currency_code' => 'USD',
+                        'currency_symbol' => '$',
                         'amount' => $purchasable->price_in_usd_cents,
                     ]);
 
@@ -57,6 +63,8 @@ class UpdatePurchasablePricesCommand extends Command
 
                     $price->update([
                         'currency_code' => $conversionRate->currency_code,
+                        'currency_symbol' => $conversionRate->currency_symbol,
+
                         'amount' => $amount,
                     ]);
 
@@ -65,6 +73,7 @@ class UpdatePurchasablePricesCommand extends Command
 
                 $price->update([
                     'currency_code' => 'USD',
+                    'currency_symbol' => '$',
                     'amount' => $conversionRate->getPPPInUsd($purchasable->price_in_usd_cents),
                 ]);
             });

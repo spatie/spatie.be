@@ -6,22 +6,32 @@ class PPPResponse
 {
     public string $currencyCode;
 
+    public ?string $currencySymbol;
+
     public float $exchangeRate;
 
     public float $conversionFactor;
+
 
     public static function create(array $properties): self
     {
         return new static(
             $properties['ppp']['currencyMain']['code'],
+            $properties['ppp']['currencyMain']['symbol'],
             $properties['ppp']['currencyMain']['exchangeRate'],
             $properties['ppp']['pppConversionFactor'],
         );
     }
 
-    public function __construct(string $currencyCode, float $exchangeRate, float $conversionFactor)
+    public function __construct(
+        string $currencyCode,
+        ?string $currencySymbol,
+        float $exchangeRate,
+        float $conversionFactor)
     {
         $this->currencyCode = $currencyCode;
+
+        $this->currencySymbol = $currencySymbol;
 
         $this->exchangeRate = $exchangeRate;
 
