@@ -10,7 +10,7 @@
 
     @if ($purchasable->hasActiveDiscount())
         <div class="-mx-6 px-2 py-3 bg-green-lightest mt-4 text-black text-sm text-center">
-           Now <span class="font-semibold">{{ $product->coupon_percentage }}%</span> off
+           Now <span class="font-semibold">{{ $purchasable->discount_percentage }}%</span> off
 
             <div
                 class="mt-1 text-green-dark text-xs"
