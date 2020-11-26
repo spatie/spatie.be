@@ -27,8 +27,7 @@ class PPPResponse
         ?string $currencySymbol,
         float $exchangeRate,
         float $conversionFactor
-    )
-    {
+    ) {
         $this->currencyCode = $currencyCode;
 
         $this->currencySymbol = $currencySymbol;
