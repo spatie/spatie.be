@@ -50,7 +50,7 @@ class Purchasable extends Resource
                 ->showOnIndex(),
 
             new Panel('Discount', [
-                Text::make('Percentage', 'discount_percentage')->help('The discount percentage to be displayed'),
+                Text::make('Percentage', 'discount_percentage')->nullable()->help('The discount percentage to be displayed'),
                 Text::make('Name', 'discount_name')->hideFromIndex()->help('The reason for the discount'),
                 DateTime::make('Starts at', 'discount_starts_at')->nullable()->hideFromIndex(),
                 DateTime::make('Expires at', 'discount_expires_at')->nullable()->hideFromIndex()->help('Not specifying this field will make the coupon active indefinitely'),

@@ -1,8 +1,8 @@
 actual:
-    price_in_cents: 12510
+    price_in_cents: 12500
     currency_code: EUR
     currency_symbol: €
-    formatted_price: €125.10
+    formatted_price: €125
 without_discount:
     price_in_cents: 13900
     currency_code: EUR

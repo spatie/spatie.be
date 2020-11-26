@@ -1,8 +1,8 @@
 actual:
-    price_in_cents: 13410
+    price_in_cents: 13400
     currency_code: USD
     currency_symbol: $
-    formatted_price: $134.10
+    formatted_price: $134
 without_discount:
     price_in_cents: 14900
     currency_code: USD

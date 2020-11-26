@@ -140,7 +140,12 @@ class Purchasable extends Model implements HasMedia, Sortable
         if ($this->hasActiveDiscount()) {
             $priceWithoutDiscount = $displayablePrice->priceInCents;
             $discount = ($priceWithoutDiscount / 100) * $this->discount_percentage;
-            $displayablePrice->priceInCents = $priceWithoutDiscount - $discount;
+
+            $priceInCents = $priceWithoutDiscount - $discount;
+
+            $roundedPriceInCents = round($priceInCents / 100) * 100;
+
+            $displayablePrice->priceInCents = $roundedPriceInCents;
         }
 
         return $displayablePrice;
