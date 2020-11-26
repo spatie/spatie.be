@@ -31,7 +31,7 @@ class PPPResponse
         $this->currencyCode = $currencyCode;
 
         $this->currencySymbol = $currencySymbol;
-dump($this->currencySymbol);
+
         $this->exchangeRate = $exchangeRate;
 
         $this->conversionFactor = $conversionFactor;
