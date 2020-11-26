@@ -9,8 +9,6 @@ class FreeGeoIp
 {
     public static function getCountryCodeForIp(string $ip): string
     {
-        return 'BE';
-
         return Cache::remember("countryCodeIp{$ip}", 60 * 5, function () use ($ip) {
             $response = Http::get("https://freegeoip.app/json/{$ip}");
 
