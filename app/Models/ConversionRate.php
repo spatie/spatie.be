@@ -18,11 +18,20 @@ class ConversionRate extends Model
 
     public function getAmountForUsd(int $amountInCents): int
     {
-        return (int) ($amountInCents * $this->exchange_rate * $this->ppp_conversion_factor);
+        $priceInCents = (int) ($amountInCents * $this->exchange_rate * $this->ppp_conversion_factor);
+
+        $roundedPriceInCents = round($priceInCents / 100) * 100;
+
+        return $roundedPriceInCents;
     }
 
     public function getPPPInUsd(int $amountInCents): int
     {
-        return (int) ($amountInCents * $this->ppp_conversion_factor);
+        $priceInCents = (int) ($amountInCents * $this->ppp_conversion_factor);
+
+        $roundedPriceInCents = round($priceInCents / 100) * 100;
+
+        return $roundedPriceInCents;
+
     }
 }

@@ -36,10 +36,10 @@ class User extends Authenticatable
 
         $prices[] = $displayablePrice->toPaddleFormat();
         if ($displayablePrice->currencyCode !== 'USD') {
+
             $dollarDisplayablePrice = new DisplayablePrice($purchasable->price_in_usd_cents, 'USD', '$');
             $prices[] = $dollarDisplayablePrice->toPaddleFormat();
         }
-
         return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => false,
             'customer_email' => auth()->user()->email,
