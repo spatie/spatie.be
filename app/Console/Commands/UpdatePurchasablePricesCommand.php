@@ -28,7 +28,7 @@ class UpdatePurchasablePricesCommand extends Command
                     [
                         'currency_code' => 'USD',
                         'currency_symbol' => '$',
-                        'amount' => $purchasable->price_in_usd_cents
+                        'amount' => $purchasable->price_in_usd_cents,
                     ],
                 );
 
