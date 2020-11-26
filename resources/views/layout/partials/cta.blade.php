@@ -18,7 +18,6 @@ $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2020-12-01 00:0
                 <span class="font-semibold font-mono" x-text="timer.seconds">{{ $component->seconds() }}</span><span class="text-white">s</span>
             </span>
         </x-countdown>
-        – Use coupon <code class="markup-code bg-black text-xs">BLACKWEEK</code> during checkout
 </a>
 
 @once
