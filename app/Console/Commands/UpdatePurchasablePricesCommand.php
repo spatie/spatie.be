@@ -23,7 +23,7 @@ class UpdatePurchasablePricesCommand extends Command
             $this->info("Updating prices of purchasable id `{$purchasable->id}`...");
 
             PaddleCountries::get()->each(function (array $countryAttributes) use ($purchasable) {
-                $price = $purchasable->prices()->firstOrCreate(
+                $price = $purchasable->prices()->updateOrCreate(
                     ['country_code' => $countryAttributes['code']],
                     [
                         'currency_code' => 'USD',
