@@ -27,16 +27,7 @@
         <div class="card gradient gradient-green text-white">
             <div class="wrap-card grid md:grid-cols-2 md:items-start">
                 <h2 class="title-xl">
-                    <a class="link-white link-underline" href="{{ mailto(
-'Potential project brief',
-'Tell us as much as you can about
-- your online project
-- your planning
-- your budget
-- …
-
-Anything that helps us to start straightforward!'
-) }}">Brief us</a> your project
+                    <a class="link-white link-underline" href="#match">Brief us</a> your project
                 </h2>
                 <div class="line-l line-l-white">
                     <h3 class="title-sm">

@@ -8,18 +8,11 @@
                     </p>
                 </div>
                 <h2 class="ml-auto title-xl text-right">
-                    <a class="link-white link-underline" href="{{ mailto(
-'Why I\'m considering Spatie',
-'Tell us as much as you can about
-- your online project
-- your planning
-- your budget
-- …
-
-Anything that helps us to start straightforward!'
-) }}">What brought <br>you here</a>?
+                    <a class="link-white link-underline" href="#match">How can we<br> help you</a>?
                 </h2>
             </div>
         </div>
     </div>
 </section>
+
+@include('layout.partials.modal-match', ["caption" => "How can we help you?"])
