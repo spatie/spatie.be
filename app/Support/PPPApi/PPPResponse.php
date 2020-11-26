@@ -12,7 +12,6 @@ class PPPResponse
 
     public float $conversionFactor;
 
-
     public static function create(array $properties): self
     {
         return new static(
@@ -27,7 +26,8 @@ class PPPResponse
         string $currencyCode,
         ?string $currencySymbol,
         float $exchangeRate,
-        float $conversionFactor)
+        float $conversionFactor
+    )
     {
         $this->currencyCode = $currencyCode;
 

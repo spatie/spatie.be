@@ -32,6 +32,5 @@ class ConversionRate extends Model
         $roundedPriceInCents = round($priceInCents / 100) * 100;
 
         return $roundedPriceInCents;
-
     }
 }
