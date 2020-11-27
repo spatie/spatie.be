@@ -14,11 +14,21 @@
     </div>
 
     @if ($purchasable->hasActiveDiscount())
+
+        @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
+            <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
+                This price includes your personal discount.
+            </div>
+        @endif
+
         <div class="-mx-6 px-2 py-3 bg-green-lightest mt-4 text-black text-sm text-center">
             @if ($purchasable->discount_name)
                 <div>{{ $purchasable->discount_name }}</div>
             @endif
             Now <span class="font-semibold">{{ $purchasable->discount_percentage }}%</span> off
+                @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
+                    for you
+                @endif
 
             @if(optional($purchasable->discount_expires_at)->isFuture())
                 <div
@@ -42,11 +52,6 @@
 
         </div>
 
-        @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
-            <div class="-mx-6 px-2 py-3 mt-4 bg-pink-lightest text-black text-sm text-center">
-                This price has the extra discount we promised you applied to it.
-            </div>
-        @endif
     @endif
 
     <div class="flex-0 mt-6 flex justify-center">

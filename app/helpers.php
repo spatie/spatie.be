@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Image;
+use App\Models\User;
 use App\Services\Schema\Schema;
 use Faker\Factory;
 use Faker\Generator;
@@ -87,7 +88,7 @@ function sponsorIsViewingPage(): bool
     return auth()->user()->isSponsoring();
 }
 
-function current_user(): \App\Models\User
+function current_user(): ?User
 {
     return auth()->user();
 }
