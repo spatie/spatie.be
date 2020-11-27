@@ -1,6 +1,6 @@
 <x-page
-        title="Invoices"
-        background="/backgrounds/auth.jpg"
+    title="Invoices"
+    background="/backgrounds/auth.jpg"
 >
     <?php /** @var \Laravel\Paddle\Transaction $transaction */?>
 
@@ -13,21 +13,27 @@
             </h1>
             @forelse ($transactions as $transaction)
             @empty
-                <p class="banner-intro">No invoices yet, take a look at <a class="link-underline link-blue" href="{{ route('products.index') }}">our products</a>.</p>
+                <p class="banner-intro">No invoices yet, take a look at <a class="link-underline link-blue"
+                                                                           href="{{ route('products.index') }}">our
+                        products</a>.</p>
             @endforelse
         </div>
     </section>
 
     <section class="section section-group pt-0">
         <div class="wrap">
-               
+
             @forelse ($transactions as $transaction)
-                <div class="grid grid-cols-4 py-3 border-b-2 border-gray-lighter">
-                    <span class="font-bold">{{ $transaction->paid_at->toFormattedDateString() }}</span>
-                    <span class="">{{ $transaction->purchase->purchasable->product->title }} - {{ $transaction->purchase->purchasable->title }}</span>
-                    <span>{{ $transaction->amount() }}</span>
-                    <span><a class="link-underline link-blue" href="{{ $transaction->receipt_url }}" target="_blank">Download</a></span>
-                </div>
+                @if($transaction->purchase)
+                    <div class="grid grid-cols-4 py-3 border-b-2 border-gray-lighter">
+                        <span class="font-bold">{{ $transaction->paid_at->toFormattedDateString() }}</span>
+                        <span
+                            class="">{{ $transaction->purchase->purchasable->product->title }} - {{ $transaction->purchase->purchasable->title }}</span>
+                        <span>{{ $transaction->amount() }}</span>
+                        <span><a class="link-underline link-blue" href="{{ $transaction->receipt_url }}"
+                                 target="_blank">Download</a></span>
+                    </div>
+                @endif
             @empty
             @endforelse
         </div>
