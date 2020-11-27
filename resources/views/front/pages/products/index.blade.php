@@ -29,6 +29,12 @@
                                 <p class="mt-4">{{ $product->formattedDescription }}</p>
                             </a>
 
+                            @if ($purchasable = $product->purchasableWithDiscount())
+                                <p class="mt-4">
+                                    Now at <b>-{{ $purchasable->discount_percentage }}%</b>
+                                </p>
+                                @endif
+
                             <p class="mt-4 flex items-center space-x-4">
                                 @if($product->external && $product->action_url)
                                     <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}">
@@ -47,6 +53,6 @@
                     @endforeach
                 </div>
             </div>
-        </section>    
-    
+        </section>
+
 </x-page>

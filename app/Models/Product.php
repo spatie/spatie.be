@@ -89,4 +89,11 @@ class Product extends Model implements HasMedia, Sortable
     {
         return Markdown::parse($this->long_description ?? '');
     }
+
+    public function purchasableWithDiscount(): ?Purchasable
+    {
+        return $this->purchasables()
+            ->where('discount_percentage', '<>', 0)
+            ->first();
+    }
 }
