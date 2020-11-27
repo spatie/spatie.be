@@ -14,28 +14,44 @@
     </div>
 
     @if ($purchasable->hasActiveDiscount())
-        <div class="-mx-6 px-2 py-3 bg-green-lightest mt-4 text-black text-sm text-center">
-            <div>{{ $purchasable->discount_name }}</div>
-            Now <span class="font-semibold">{{ $purchasable->discount_percentage }}%</span> off
 
-            <div
-                class="mt-1 text-green-dark text-xs"
-                style="font-variant-numeric:tabular-nums">
-                <x-countdown :expires="$purchasable->discount_expires_at">
-                    <span><span
-                            x-text="timer.days" class="font-mono font-semibold">{{ $component->days() }}</span> <span>days</span></span>
-                    <span><span
-                            x-text="timer.hours" class="font-mono font-semibold">{{ $component->hours() }}</span> <span>hours</span></span>
-                    <span><span
-                            x-text="timer.minutes"
-                            class="font-mono font-semibold">{{ $component->minutes() }}</span> <span>minutes</span></span>
-                    <span><span
-                            x-text="timer.seconds"
-                            class="font-mono font-semibold">{{ $component->seconds() }}</span> <span>seconds</span></span>
-                </x-countdown>
+        @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
+            <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
+                Personal discount included!
             </div>
+        @endif
+
+        <div class="-mx-6 px-2 py-3 bg-green-lightest mt-4 text-black text-sm text-center">
+            @if ($purchasable->discount_name)
+                <div>{{ $purchasable->discount_name }}</div>
+            @endif
+            Now <span class="font-semibold">{{ $purchasable->discount_percentage }}%</span> off
+                @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
+                    for you
+                @endif
+
+            @if(optional($purchasable->currentDiscountPercentageExpiresAt())->isFuture())
+                <div
+                    class="mt-1 text-green-dark text-xs"
+                    style="font-variant-numeric:tabular-nums">
+                    <x-countdown :expires="$purchasable->currentDiscountPercentageExpiresAt()">
+                        <span><span
+                                x-text="timer.days" class="font-mono font-semibold">{{ $component->days() }}</span> <span>days</span></span>
+                        <span><span
+                                x-text="timer.hours" class="font-mono font-semibold">{{ $component->hours() }}</span> <span>hours</span></span>
+                        <span><span
+                                x-text="timer.minutes"
+                                class="font-mono font-semibold">{{ $component->minutes() }}</span> <span>minutes</span></span>
+                        <span><span
+                                x-text="timer.seconds"
+                                class="font-mono font-semibold">{{ $component->seconds() }}</span> <span>seconds</span></span>
+                    </x-countdown>
+                </div>
+            @endif
+
 
         </div>
+
     @endif
 
     <div class="flex-0 mt-6 flex justify-center">

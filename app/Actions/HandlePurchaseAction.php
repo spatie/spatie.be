@@ -12,24 +12,27 @@ use Laravel\Paddle\Receipt;
 class HandlePurchaseAction
 {
     protected HandlePurchaseLicensingAction $handlePurchaseLicensingAction;
-
     protected RestoreRepositoryAccessAction $restoreRepositoryAccessAction;
-
+    protected StartOrExtendNextPurchaseDiscountPeriodAction $startOrExtendExtraDiscountPeriodAction;
     protected GitHubApi $gitHubApi;
 
     public function __construct(
         HandlePurchaseLicensingAction $handlePurchaseLicensingAction,
         RestoreRepositoryAccessAction $restoreRepositoryAccessAction,
+        StartOrExtendNextPurchaseDiscountPeriodAction $startOrExtendExtraDiscountPeriodAction,
         GitHubApi $gitHubApi
     ) {
         $this->handlePurchaseLicensingAction = $handlePurchaseLicensingAction;
         $this->restoreRepositoryAccessAction = $restoreRepositoryAccessAction;
         $this->gitHubApi = $gitHubApi;
+        $this->startOrExtendExtraDiscountPeriodAction = $startOrExtendExtraDiscountPeriodAction;
     }
 
     public function execute(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
     {
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
+
+        $this->startOrExtendExtraDiscountPeriodAction->execute($user);
 
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 

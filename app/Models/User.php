@@ -26,6 +26,7 @@ class User extends Authenticatable
 
     public $casts = [
         'is_admin' => 'bool',
+        'next_purchase_discount_period_ends_at' => 'datetime'
     ];
 
     public function getPayLinkForProductId(string $paddleProductId)
@@ -121,5 +122,19 @@ class User extends Authenticatable
     public function hasAccessToUnreleasedPurchasables(): bool
     {
         return $this->isSpatieMember();
+    }
+
+    public function enjoysExtraDiscountOnNextPurchase(): bool
+    {
+        if (! $this->next_purchase_discount_period_ends_at) {
+            return false;
+        }
+
+        return $this->next_purchase_discount_period_ends_at->isFuture();
+    }
+
+    public function nextPurchaseDiscountPercentage(): int
+    {
+        return 10;
     }
 }

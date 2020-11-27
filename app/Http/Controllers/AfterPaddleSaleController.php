@@ -14,7 +14,7 @@ class AfterPaddleSaleController
 
         session()->flash('sold_purchasable', $purchasable);
 
-        flash()->success('Purchase successful');
+        flash()->success('Enjoy your purchase! As a thank you, you will get 10% discount on purchases in the next 24 hours!');
 
         return redirect()->route('products.show', $product);
     }
