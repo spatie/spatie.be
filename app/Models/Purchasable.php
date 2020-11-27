@@ -139,7 +139,16 @@ class Purchasable extends Model implements HasMedia, Sortable
 
         if ($this->hasActiveDiscount()) {
             $priceWithoutDiscount = $displayablePrice->priceInCents;
-            $discount = ($priceWithoutDiscount / 100) * $this->discount_percentage;
+
+            $discountPercentage = $this->discount_percentage;
+
+            if ($user = auth()->user()) {
+                if ($user->enjoysExtraDiscountOnNextPurchase()) {
+                    $discountPercentage += $user->nextPurchaseDiscountPercentage();
+                }
+            }
+
+            $discount = ($priceWithoutDiscount / 100) * $discountPercentage;
 
             $priceInCents = $priceWithoutDiscount - $discount;
 
@@ -182,6 +191,10 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public function hasActiveDiscount(): bool
     {
+        if (optional(auth()->user())->enjoysExtraDiscountOnNextPurchase()) {
+            return true;
+        }
+
         if (! $this->discount_name) {
             return false;
         }
