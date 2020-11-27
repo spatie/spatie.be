@@ -237,7 +237,7 @@ class Purchasable extends Model implements HasMedia, Sortable
             return $percentage;
         }
 
-        if (! $user->enjoysExtraDiscountOnNextPurchase())  {
+        if (! $user->enjoysExtraDiscountOnNextPurchase()) {
             return $percentage;
         }
 
