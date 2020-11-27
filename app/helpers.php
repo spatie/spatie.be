@@ -86,3 +86,8 @@ function sponsorIsViewingPage(): bool
 
     return auth()->user()->isSponsoring();
 }
+
+function current_user(): \App\Models\User
+{
+    return auth()->user();
+}
