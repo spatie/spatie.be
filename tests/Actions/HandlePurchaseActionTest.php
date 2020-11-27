@@ -4,13 +4,16 @@ namespace Tests\Actions;
 
 use App\Actions\HandlePurchaseAction;
 use App\Actions\RestoreRepositoryAccessAction;
+use App\Mail\NextPurchaseDiscountPeriodStartedMail;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
 use Database\Factories\ReceiptFactory;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Paddle\Receipt;
+use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
 class HandlePurchaseActionTest extends TestCase
@@ -166,5 +169,29 @@ class HandlePurchaseActionTest extends TestCase
         );
 
         $spy->shouldHaveReceived('execute')->with($this->user)->once();
+    }
+
+    /** @test */
+    public function it_will_start_the_next_purchase_discount_for_a_user()
+    {
+        TestTime::freeze();
+
+        Mail::fake();
+
+        $purchasable = Purchasable::factory()->create([
+            'requires_license' => false,
+        ]);
+
+        $this->assertNull($this->user->next_purchase_discount_period_ends_at);
+
+        $this->action->execute(
+            $this->user,
+            $purchasable,
+            $this->payload
+        );
+
+        $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
+
+        Mail::assertQueued(NextPurchaseDiscountPeriodStartedMail::class);
     }
 }

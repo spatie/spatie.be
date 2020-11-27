@@ -8,7 +8,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ExtraDiscountPeriodStartedMail extends Mailable implements ShouldQueue
+class NextPurchaseDiscountPeriodStartedMail extends Mailable implements ShouldQueue
 {
     use Queueable;
     use SerializesModels;
@@ -22,6 +22,8 @@ class ExtraDiscountPeriodStartedMail extends Mailable implements ShouldQueue
 
     public function build()
     {
-        return $this->view('mails.extraDiscountPeriodStarted');
+        return $this
+            ->to($this->user->email)
+            ->markdown('mails.nextPurchaseDiscountPeriodStarted');
     }
 }
