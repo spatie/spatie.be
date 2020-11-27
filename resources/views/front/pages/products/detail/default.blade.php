@@ -24,7 +24,7 @@
         @php
             /** @var \App\Models\Purchasable $purchasable */
             $purchasable = session()->get('sold_purchasable')
-        @endphp  
+        @endphp
 
         <section id="cta" class="pb-16">
             <div class="wrap">
@@ -35,7 +35,9 @@
                         </h2>
                         <p class="text-xl">
                             Thanks for buying {{ $product->title }}. You can view details and manage your purchase below this page.
-                            
+
+                            As a thank you, you will get 10% discount on purchases in the next 24 hours!
+
                             @if ($purchasable->getting_started_url)
                                 <br>
                                 <a class="link-white link-underline" href="{{ $purchasable->getting_started_url }}">
