@@ -15,7 +15,7 @@
 
     @if ($purchasable->hasActiveDiscount())
 
-        @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
+        @if(optional(current_user())->enjoysExtraDiscountOnNextPurchase())
             <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
                 Personal discount included!
             </div>
@@ -26,7 +26,7 @@
                 <div>{{ $purchasable->discount_name }}</div>
             @endif
             Now <span class="font-semibold">{{ $purchasable->discount_percentage }}%</span> off
-                @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
+                @if(optional(current_user())->enjoysExtraDiscountOnNextPurchase())
                     for you
                 @endif
 
