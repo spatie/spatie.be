@@ -31,7 +31,7 @@
 
                             @if ($purchasable = $product->purchasableWithDiscount())
                                 <p class="mt-4">
-                                    Now at <b>-{{ $purchasable->discount_percentage }}%</b>
+                                    Now at <b>-{{ $purchasable->displayableDiscountPercentage() }}%</b>
                                 </p>
                                 @endif
 

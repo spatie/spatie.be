@@ -226,4 +226,21 @@ class Purchasable extends Model implements HasMedia, Sortable
             ? $userDiscountExpiresAt
             : $purchasableDiscoutExpiresAt;
     }
+
+    public function displayableDiscountPercentage(): int
+    {
+        $percentage = $this->discount_percentage;
+
+        $user = current_user();
+
+        if (! $user) {
+            return $percentage;
+        }
+
+        if (! $user->enjoysExtraDiscountOnNextPurchase())  {
+            return $percentage;
+        }
+
+        return $percentage + $user->nextPurchaseDiscountPercentage();
+    }
 }
