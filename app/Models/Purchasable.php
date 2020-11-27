@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Support\DisplayablePrice;
 use App\Support\FreeGeoIp\FreeGeoIp;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -207,5 +208,22 @@ class Purchasable extends Model implements HasMedia, Sortable
             $this->discount_starts_at ?? now()->subMinute(),
             $this->discount_expires_at ?? now()->addMinute(),
         );
+    }
+
+    public function currentDiscountPercentageExpiresAt(): Carbon
+    {
+        $userDiscountExpiresAt = now()->subSecond();
+
+        if ($user = current_user()) {
+            if ($user->next_purchase_discount_period_ends_at) {
+                $userDiscountExpiresAt = $user->next_purchase_discount_period_ends_at;
+            }
+        }
+
+        $purchasableDiscoutExpiresAt = $this->discount_expires_at ?? now()->subSecond();
+
+        return $userDiscountExpiresAt->isAfter($purchasableDiscoutExpiresAt)
+            ? $userDiscountExpiresAt
+            : $purchasableDiscoutExpiresAt;
     }
 }

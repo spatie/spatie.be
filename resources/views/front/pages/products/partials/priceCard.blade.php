@@ -17,7 +17,7 @@
 
         @if(true || optional(current_user())->enjoysExtraDiscountOnNextPurchase())
             <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
-                This price includes your personal discount.
+                Personal discount included!
             </div>
         @endif
 
@@ -30,11 +30,11 @@
                     for you
                 @endif
 
-            @if(optional($purchasable->discount_expires_at)->isFuture())
+            @if(optional($purchasable->currentDiscountPercentageExpiresAt())->isFuture())
                 <div
                     class="mt-1 text-green-dark text-xs"
                     style="font-variant-numeric:tabular-nums">
-                    <x-countdown :expires="$purchasable->discount_expires_at">
+                    <x-countdown :expires="$purchasable->currentDiscountPercentageExpiresAt()">
                         <span><span
                                 x-text="timer.days" class="font-mono font-semibold">{{ $component->days() }}</span> <span>days</span></span>
                         <span><span
