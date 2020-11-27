@@ -31,12 +31,13 @@
                 <div class="card gradient gradient-green text-white">
                     <div class="wrap-card grid md:grid-cols-2 md:items-center">
                         <h2 class="title-xl">
-                            A Big Thanks!
+                            Thank you!
                         </h2>
                         <p class="text-xl">
                             Thanks for buying {{ $product->title }}. You can view details and manage your purchase below this page.
 
-                            As a thank you, you will get 10% discount on purchases in the next 24 hours!
+                            <br /><br />
+                            Here's a little bonus: you will get 10% discount on purchases in the next 24 hours!
 
                             @if ($purchasable->getting_started_url)
                                 <br>
