@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\License as EloquentLicense;
+use DateTime;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
@@ -31,6 +32,8 @@ class License extends Resource
 
             Text::make('Key')->hideFromIndex(),
             Number::make('Satis Authentication Count'),
+
+            DateTime::make('expires_at'),
         ];
     }
 }
