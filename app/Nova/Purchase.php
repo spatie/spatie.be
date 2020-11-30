@@ -6,6 +6,7 @@ use App\Models\Purchase as EloquentPurchase;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
@@ -35,6 +36,8 @@ class Purchase extends Resource
             BelongsTo::make('License')->hideFromIndex()->nullable(),
             BelongsTo::make('User'),
             BelongsTo::make('Receipt')->nullable()->hideFromIndex(),
+
+            DateTime::make('created_at'),
         ];
     }
 }
