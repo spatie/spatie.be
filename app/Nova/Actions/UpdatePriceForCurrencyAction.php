@@ -42,9 +42,9 @@ class UpdatePriceForCurrencyAction extends Action
     public function fields()
     {
         return [
-            Text::make('Currency code'),
-
             Number::make('Amount in cents'),
+
+            Text::make('Currency code'),
         ];
     }
 }
