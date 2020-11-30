@@ -13,6 +13,7 @@ use Database\Factories\ReceiptFactory;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Paddle\Receipt;
+use Spatie\Mailcoach\Models\EmailList;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
@@ -38,7 +39,7 @@ class HandlePurchaseActionTest extends TestCase
 
         $this->payload = new PaddlePayload([
             'receipt_url' => 'https://spatie.be',
-            'payment_method' => 'creditdard',
+            'payment_method' => 'creditcard',
             'alert_id' => 'fake_alert_id',
             'fee' => 10,
             'payment_tax' => 30,
@@ -46,6 +47,8 @@ class HandlePurchaseActionTest extends TestCase
             'balance_fee' => 10,
             'balance_earnings' => 10,
         ]);
+
+        EmailList::create(['name' => 'Spatie']);
     }
 
     /** @test */

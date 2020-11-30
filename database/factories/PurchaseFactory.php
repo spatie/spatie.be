@@ -7,6 +7,7 @@ use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Laravel\Paddle\Receipt;
 
 class PurchaseFactory extends Factory
 {
@@ -19,7 +20,7 @@ class PurchaseFactory extends Factory
             'purchasable_id' => Purchasable::factory(),
             'license_id' => $this->faker->boolean ? License::factory() : null,
             'receipt_id' => function () {
-                return ReceiptFactory::new()->id;
+                return Receipt::make()->id;
             },
             'paddle_webhook_payload' => [],
             'paddle_fee' => $this->faker->randomNumber(),

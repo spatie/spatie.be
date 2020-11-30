@@ -14,18 +14,21 @@ class HandlePurchaseAction
     protected HandlePurchaseLicensingAction $handlePurchaseLicensingAction;
     protected RestoreRepositoryAccessAction $restoreRepositoryAccessAction;
     protected StartOrExtendNextPurchaseDiscountPeriodAction $startOrExtendExtraDiscountPeriodAction;
+    protected AddPurchasedTagsToEmailListSubscriberAction $addPurchasedTagsToEmailListSubscriberAction;
     protected GitHubApi $gitHubApi;
 
     public function __construct(
         HandlePurchaseLicensingAction $handlePurchaseLicensingAction,
         RestoreRepositoryAccessAction $restoreRepositoryAccessAction,
         StartOrExtendNextPurchaseDiscountPeriodAction $startOrExtendExtraDiscountPeriodAction,
+        AddPurchasedTagsToEmailListSubscriberAction $addPurchasedTagsToEmailListSubscriberAction,
         GitHubApi $gitHubApi
     ) {
         $this->handlePurchaseLicensingAction = $handlePurchaseLicensingAction;
         $this->restoreRepositoryAccessAction = $restoreRepositoryAccessAction;
         $this->gitHubApi = $gitHubApi;
         $this->startOrExtendExtraDiscountPeriodAction = $startOrExtendExtraDiscountPeriodAction;
+        $this->addPurchasedTagsToEmailListSubscriberAction = $addPurchasedTagsToEmailListSubscriberAction;
     }
 
     public function execute(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
@@ -33,6 +36,8 @@ class HandlePurchaseAction
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
         $this->startOrExtendExtraDiscountPeriodAction->execute($user);
+
+        $this->addPurchasedTagsToEmailListSubscriberAction->execute($purchase);
 
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
