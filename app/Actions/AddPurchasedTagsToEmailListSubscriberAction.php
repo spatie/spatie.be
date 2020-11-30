@@ -51,7 +51,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
 
         return [
             "purchased-product-" . Str::slug($productName),
-            "purchased-purchasable-" . Str::slug($purchasableName),
+            "purchased-purchasable-" . Str::slug($productName) .  '-' . Str::slug($purchasableName),
         ];
     }
 }

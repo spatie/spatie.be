@@ -29,7 +29,7 @@ class AddPurchasedTagsToEmailListSubscriberActionTest extends TestCase
 
         $this->assertEquals([
             "purchased-product-" . Str::slug($purchase->purchasable->product->title),
-            "purchased-purchasable-" . Str::slug($purchase->purchasable->title),
+            "purchased-purchasable-" .Str::slug($purchase->purchasable->product->title) . '-' . Str::slug($purchase->purchasable->title),
         ], $tagNames);
     }
 
