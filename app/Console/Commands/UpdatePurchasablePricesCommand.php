@@ -31,10 +31,11 @@ class UpdatePurchasablePricesCommand extends Command
                         'amount' => $purchasable->price_in_usd_cents,
                     ],
                 );
-
+/*
                 if ($price->overridden) {
                     return;
                 }
+*/
 
                 if (EuCountries::contains($countryAttributes['code'])) {
                     $conversionRate = ConversionRate::forCountryCode('BE');
