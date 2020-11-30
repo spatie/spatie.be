@@ -14,7 +14,9 @@
         </div>
     </section>
 
+   {{--
    @include('front.pages.products.partials.ctaBlackFriday')
+   --}}
 
     <section class="section overflow-visible section-group">
             <div class="wrap">
