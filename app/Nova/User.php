@@ -39,12 +39,15 @@ class User extends Resource
                 ->creationRules(['unique:users,email'])
                 ->updateRules(['unique:users,email,{{resourceId}}']),
 
+            Text::make('GitHub username')->readonly(),
+
             Password::make('Password')
                 ->onlyOnForms()
                 ->creationRules(['required', 'string', 'min:8'])
                 ->updateRules(['nullable', 'string', 'min:8']),
 
             Boolean::make('Is admin'),
+            Boolean::make('Is sponsor')->readonly(),
 
             HasMany::make('Purchases'),
             HasMany::make('Licenses'),
