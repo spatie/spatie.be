@@ -22,6 +22,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
             $subscriber = $this->findOrCreateSubscriber($purchase->user->email, $emailList);
         } catch (CouldNotSubscribe $exception) {
             report($exception);
+
             return;
         }
 
