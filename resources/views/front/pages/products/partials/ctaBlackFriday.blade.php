@@ -7,7 +7,7 @@ $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2020-12-01 00:0
             <div class="card gradient gradient-dark text-white">
                 <div class="wrap-card grid md:grid-cols-2 md:items-center">
                     <h2 class="title-xl">
-                        Black <del class="line-through">Friday</del><br>Week
+                        Cyber Monday
                     </h2>
                     <div class="text-2xl">
                         <p>
