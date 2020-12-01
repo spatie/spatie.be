@@ -92,8 +92,6 @@ class Product extends Model implements HasMedia, Sortable
 
     public function purchasableWithDiscount(): ?Purchasable
     {
-        return $this->purchasables()
-            ->where('discount_percentage', '<>', 0)
-            ->first();
+        return collect($this->purchasables)->first(fn(Purchasable $purchasable) => $purchasable->hasActiveDiscount());
     }
 }
