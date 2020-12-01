@@ -93,7 +93,7 @@ class Product extends Model implements HasMedia, Sortable
     public function purchasableWithDiscount(): ?Purchasable
     {
         return collect($this->purchasables)
-            ->filter(fn(Purchasable $purchasable) => $purchasable->hasActiveDiscount())
+            ->filter(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount())
             ->first();
     }
 }
