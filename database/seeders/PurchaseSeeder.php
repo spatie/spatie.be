@@ -11,7 +11,7 @@ class PurchaseSeeder extends Seeder
 {
     public function run()
     {
-        User::each(function(User $user) {
+        User::each(function (User $user) {
             /** @var \App\Models\Purchasable $purchasable */
             $purchase = $user->purchases()->create([
                 'purchasable_id' => Purchasable::firstWhere('title', 'Timber')->id,
