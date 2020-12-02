@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Actions\Activations\CreateActivationAction;
 use App\Actions\CreateLicenseAction;
 use App\Models\Purchasable;
 use App\Models\User;
@@ -19,7 +20,10 @@ class PurchaseSeeder extends Seeder
                 'earnings' => 0,
             ]);
 
-            (new CreateLicenseAction())->execute($user, $purchase->purchasable);
+            $license = (new CreateLicenseAction())->execute($user, $purchase->purchasable);
+
+            (new CreateActivationAction())->execute('home', $license);
+            (new CreateActivationAction())->execute('office', $license);
         });
     }
 }

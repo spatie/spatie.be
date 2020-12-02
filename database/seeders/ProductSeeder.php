@@ -19,7 +19,7 @@ class ProductSeeder extends Seeder
             'url' => 'https://timber',
             'action_url' => '',
             'action_label' => 'Buy Timber',
-            'private_key' => 'private key',
+            'private_key' => file_get_contents(database_path('factories/stubs/privateKey')),
             'maximum_activation_count' => 2,
         ]);
 

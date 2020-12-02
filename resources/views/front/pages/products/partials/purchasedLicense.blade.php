@@ -48,14 +48,11 @@
 
         @if($license->supportsActivations())
             <div class="mt-2">
-                <div class="flex items-center text-xs text-gray">
+                <div class="items-center text-xs text-gray">
                     <div>Activations</div>
 
-                    <livewire:domain :license="$license"/>
+                    <livewire:activations :license="$license"/>
                 </div>
-
-                <code
-                    class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
             </div>
         @endif
 
