@@ -22,14 +22,25 @@ class ProductSeeder extends Seeder
             'private_key' => 'private key',
         ]);
 
+        $timberRenewalPurchasable = Purchasable::factory()->create([
+            'type' => PurchasableType::TYPE_STANDARD_RENEWAL,
+            'title' => 'Timber renewal',
+            'description' => 'Timber renewal',
+            'paddle_product_id' => '636791',
+            'requires_license' => true,
+            'product_id' => $timber->id,
+            'renewal_purchasable_id' => null,
+            'price_in_usd_cents' => 1900,
+        ]);
+
         Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_STANDARD,
             'title' => 'Timber',
             'description' => 'Timber',
-            'paddle_product_id' => '123455',
-            'requires_license' => false,
+            'paddle_product_id' => '636791',
+            'requires_license' => true,
             'product_id' => $timber->id,
-            'renewal_purchasable_id' => null,
+            'renewal_purchasable_id' => $timberRenewalPurchasable->id,
             'price_in_usd_cents' => 1900,
         ]);
 

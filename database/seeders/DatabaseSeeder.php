@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
             ->call(RepositoriesSeeder::class)
             ->call(ProductSeeder::class)
             ->call(UserSeeder::class)
+            ->call(PurchaseSeeder::class)
             ->call(VideoSeeder::class);
     }
 }
