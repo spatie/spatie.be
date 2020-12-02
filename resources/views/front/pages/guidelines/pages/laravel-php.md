@@ -132,6 +132,32 @@ If a variable has multiple types, the most common occurring type should be first
 /** @var null|\Spatie\Goo\Bar */
 ```
 
+## Constructor property promotion
+
+Use constructor property promotion if all properties can be promoted. To make it readable, put each one on a line of its own. Use a comma after the last one.
+
+```php
+// Good
+
+class MyClass {
+    public function __construct(
+        protected string $firstArgument,
+        protected string $secondArgument,
+    ) {}
+}
+
+// Bad
+
+class MyClass {
+    protected string $secondArgument
+
+    public function __construct(protected string $firstArgument, string $secondArgument)
+    {
+        $this->secondArgument = $secondArgument;
+    }
+}
+```
+
 ## Traits
 
 Each applied trait should go on its own line, and the `use` keyword should be used for each of them. This will result in clean diffs when traits are added or removed.
