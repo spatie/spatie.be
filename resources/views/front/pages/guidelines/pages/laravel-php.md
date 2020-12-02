@@ -138,7 +138,6 @@ Use constructor property promotion if all properties can be promoted. To make it
 
 ```php
 // Good
-
 class MyClass {
     public function __construct(
         protected string $firstArgument,
@@ -147,7 +146,6 @@ class MyClass {
 }
 
 // Bad
-
 class MyClass {
     protected string $secondArgument
 
