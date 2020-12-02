@@ -12,7 +12,7 @@ jobs:
             - name: Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: '7.4'
+                  php-version: '8.0'
                   extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
                   coverage: none
 
@@ -21,14 +21,8 @@ jobs:
                   sudo /etc/init.d/mysql start
                   mysql  -u root -proot -e 'CREATE DATABASE IF NOT EXISTS spatie_tests;'
 
-            - name: Cache composer dependencies
-              uses: actions/cache@v2
-              with:
-                  path: vendor
-                  key: composer-${{ hashFiles('composer.lock') }}
-
             - name: Run composer install
-              run: composer install -n --prefer-dist
+              run: composer update -n --prefer-dist
               env:
                 COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
