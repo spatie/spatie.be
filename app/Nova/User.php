@@ -19,7 +19,7 @@ class User extends Resource
     public static $group = "Users";
 
     public static $search = [
-        'id', 'name', 'email',
+        'id', 'name', 'email', 'github_username',
     ];
 
     public function fields(Request $request)
