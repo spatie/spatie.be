@@ -19,7 +19,8 @@ class PurchasesPerProduct extends Partition
                     $query->where('amount', '!=', 0);
                 })
                 ->select(['purchases.*', 'purchasables.product_id'])
-                ->join('purchasables', 'purchasables.id', '=', 'purchases.purchasable_id'),
+                ->join('purchasables', 'purchasables.id', '=', 'purchases.purchasable_id')
+                ->orderByDesc('aggregate'),
             'product_id'
         )->label(function ($value) {
             return Product::find($value)->title;
