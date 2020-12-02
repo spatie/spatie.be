@@ -11,7 +11,6 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-
         $timber = Product::factory()->create([
             'title' => 'Timber',
             'slug' => 'timber',
