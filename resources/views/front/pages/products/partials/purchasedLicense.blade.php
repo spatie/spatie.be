@@ -33,7 +33,9 @@
                 <span>License key</span>
                 <span class="char-separator mx-2">•</span>
 
+                @if (! $license->supportsActivations())
                 <livewire:domain :license="$license"/>
+                @endif
 
                 @if ($license->isExpired())
                     <span class="text-pink-dark">Expired since {{ $license->expires_at->format('Y-m-d') }}</span>
