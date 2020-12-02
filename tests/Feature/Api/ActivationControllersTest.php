@@ -17,13 +17,12 @@ class ActivationControllersTest extends TestCase
 
     public function setUp(): void
     {
-         parent::setUp();
+        parent::setUp();
 
-         $this->license = License::factory()->create();
+        $this->license = License::factory()->create();
 
-         $this->license->purchasable->product->update(['maximum_activation_count' => 2]);
+        $this->license->purchasable->product->update(['maximum_activation_count' => 2]);
     }
-
 
     /** @test */
     public function it_can_create_an_activation()
