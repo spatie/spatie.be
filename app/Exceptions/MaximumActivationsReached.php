@@ -9,6 +9,6 @@ class MaximumActivationsReached extends Exception
 {
     public static function make(License $license)
     {
-        return new static("Could not create a new activation because the maximum of {$license->maximumActivations()} was reached.");
+        return new static("Could not create a new activation because the maximum of {$license->maximumActivationCount()} was reached.");
     }
 }

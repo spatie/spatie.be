@@ -37,7 +37,7 @@ class Purchase extends Resource
             BelongsTo::make('User'),
             BelongsTo::make('Receipt')->nullable()->hideFromIndex(),
 
-            DateTime::make('created_at'),
+            DateTime::make('Created at'),
         ];
     }
 }

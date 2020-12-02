@@ -126,9 +126,14 @@ class License extends Model implements AuthenticatableContract
         return $this->key === config('spatie.master_license_key');
     }
 
-    public function maximumActivations(): int
+    public function maximumActivationCount(): int
     {
-        return 2;
+        return $this->purchasable->product->maximum_activation_count;
+    }
+
+    public function supportsActivations(): bool
+    {
+        return $this->maximumActivationCount() > 0;
     }
 
     protected function updateSignedLicense()

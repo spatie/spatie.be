@@ -20,6 +20,7 @@ class ProductSeeder extends Seeder
             'action_url' => '',
             'action_label' => 'Buy Timber',
             'private_key' => 'private key',
+            'maximum_activation_count' => 2,
         ]);
 
         $timberRenewalPurchasable = Purchasable::factory()->create([

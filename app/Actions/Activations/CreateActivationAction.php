@@ -10,7 +10,7 @@ class CreateActivationAction
 {
     public function execute(string $name, License $license): Activation
     {
-        if ($license->activations()->count() >= $license->maximumActivations()) {
+        if ($license->activations()->count() >= $license->maximumActivationCount()) {
             throw MaximumActivationsReached::make($license);
         }
 

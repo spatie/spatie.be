@@ -9,6 +9,7 @@ use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
@@ -67,6 +68,8 @@ class Product extends Resource
             Text::make('Url')->hideFromIndex(),
             Text::make('Action url')->hideFromIndex(),
             Text::make('Action label')->hideFromIndex(),
+
+            Number::make('Maximum activation count')->help('Set to 0 if the product does not support activations'),
 
             HasMany::make('Purchasables', 'purchasables', Purchasable::class),
         ];
