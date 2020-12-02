@@ -167,7 +167,8 @@ return [
             "name" => "laravel-backup-server",
             "repository" => "spatie/laravel-backup-server",
             "branches" => [
-                "master" => "v1",
+                "v2" => "master",
+                "v1" => "v1",
             ],
             "category" => "Laravel",
         ],
