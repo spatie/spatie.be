@@ -15,7 +15,7 @@ use function WyriHaximus\React\childProcessPromise;
 
 class ImportDocsFromRepositoriesCommand extends Command
 {
-    protected $signature = 'docs:import';
+    protected $signature = 'docs:import {--repo=}';
 
     protected $description = 'Fetches docs from all repositories in docs-repositories.json';
 
@@ -28,6 +28,10 @@ class ImportDocsFromRepositoriesCommand extends Command
         $updatedRepositoriesValueStore = UpdatedRepositoriesValueStore::make();
 
         $updatedRepositoryNames = $updatedRepositoriesValueStore->getNames();
+
+        if ($extraRepo = $this->option('repo')) {
+            $updatedRepositoryNames[] = $extraRepo;
+        }
 
         $this
             ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
