@@ -11,6 +11,28 @@ class ProductSeeder extends Seeder
 {
     public function run(): void
     {
+
+        $timber = Product::factory()->create([
+            'title' => 'Timber',
+            'slug' => 'timber',
+            'description' => 'Timber',
+            'url' => 'https://timber',
+            'action_url' => '',
+            'action_label' => 'Buy Timber',
+            'private_key' => 'private key',
+        ]);
+
+        Purchasable::factory()->create([
+            'type' => PurchasableType::TYPE_STANDARD,
+            'title' => 'Timber',
+            'description' => 'Timber',
+            'paddle_product_id' => '123455',
+            'requires_license' => false,
+            'product_id' => $timber->id,
+            'renewal_purchasable_id' => null,
+            'price_in_usd_cents' => 1900,
+        ]);
+
         $flare = Product::factory()->create([
             'title' => 'Flare',
             'slug' => 'flare',
