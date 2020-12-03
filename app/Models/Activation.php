@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
-use Spatie\Crypto\PrivateKey;
+use Spatie\Crypto\Rsa\PrivateKey;
 
 class Activation extends Model
 {
