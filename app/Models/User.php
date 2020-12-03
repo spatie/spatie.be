@@ -137,4 +137,9 @@ class User extends Authenticatable
     {
         return 10;
     }
+
+    public function canImpersonate(): bool
+    {
+        return $this->isSpatieMember();
+    }
 }
