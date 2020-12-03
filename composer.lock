@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1230ccd781fcf462522039c7d4a6573f",
+    "content-hash": "6ee08abf85c33803daefacb65581dc58",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -3462,17 +3462,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "3.16.0",
+            "version": "3.16.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "55c9acf9bfe5095af1d13ef96ba7f637cda8e12c"
+                "reference": "acc0c449eab85471c5497c2bda910d9d719c24e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-55c9acf9bfe5095af1d13ef96ba7f637cda8e12c-zip-320e51.zip",
-                "reference": "55c9acf9bfe5095af1d13ef96ba7f637cda8e12c",
-                "shasum": "d9835c14057f117c671cb59cf1c49403eb9b7a06"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-acc0c449eab85471c5497c2bda910d9d719c24e8-zip-f08be5.zip",
+                "reference": "acc0c449eab85471c5497c2bda910d9d719c24e8",
+                "shasum": "f4d4c8f815704fff16e8f940e77dd48d3631c01d"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -3492,7 +3492,7 @@
                 "laravel/legacy-factories": "^1.0",
                 "laravel/nova-dusk-suite": "dev-master",
                 "mockery/mockery": "^1.0",
-                "orchestra/testbench-dusk": "^6.3",
+                "orchestra/testbench-dusk": "^6.5",
                 "phpunit/phpunit": "^8.4",
                 "predis/predis": "^1.1"
             },
@@ -3549,7 +3549,7 @@
                 "admin",
                 "laravel"
             ],
-            "time": "2020-12-01T20:06:44+00:00"
+            "time": "2020-12-03T10:24:40+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -9163,16 +9163,16 @@
         },
         {
             "name": "spatie/crypto",
-            "version": "0.0.2",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crypto.git",
-                "reference": "c1115235bffdc5203511c5f5c6615a1a898560e4"
+                "reference": "fc689488384bd39e129ce1d4f147a28a840d3030"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crypto/zipball/c1115235bffdc5203511c5f5c6615a1a898560e4",
-                "reference": "c1115235bffdc5203511c5f5c6615a1a898560e4",
+                "url": "https://api.github.com/repos/spatie/crypto/zipball/fc689488384bd39e129ce1d4f147a28a840d3030",
+                "reference": "fc689488384bd39e129ce1d4f147a28a840d3030",
                 "shasum": ""
             },
             "require": {
@@ -9201,7 +9201,7 @@
                     "role": "Developer"
                 }
             ],
-            "description": "Encrypt and decrypt messages",
+            "description": "Encrypting and signing data using private/public keys",
             "homepage": "https://github.com/spatie/crypto",
             "keywords": [
                 "crypto",
@@ -9209,7 +9209,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/crypto/issues",
-                "source": "https://github.com/spatie/crypto/tree/0.0.2"
+                "source": "https://github.com/spatie/crypto/tree/2.0.0"
             },
             "funding": [
                 {
@@ -9221,7 +9221,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2020-11-07T20:04:36+00:00"
+            "time": "2020-12-03T13:38:30+00:00"
         },
         {
             "name": "spatie/db-dumper",
@@ -10632,21 +10632,21 @@
         },
         {
             "name": "spatie/laravel-stubs",
-            "version": "2.0.1",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-stubs.git",
-                "reference": "aa090cd8ce138353dd949e767b277f26270e1730"
+                "reference": "690da441bcd6374f945ed51cd9d129ae02ee3a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-stubs/zipball/aa090cd8ce138353dd949e767b277f26270e1730",
-                "reference": "aa090cd8ce138353dd949e767b277f26270e1730",
+                "url": "https://api.github.com/repos/spatie/laravel-stubs/zipball/690da441bcd6374f945ed51cd9d129ae02ee3a10",
+                "reference": "690da441bcd6374f945ed51cd9d129ae02ee3a10",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^7.2|^8.0",
-                "php": "^7.4"
+                "php": "^7.4|^8.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^2.16",
@@ -10685,7 +10685,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-stubs/issues",
-                "source": "https://github.com/spatie/laravel-stubs/tree/2.0.1"
+                "source": "https://github.com/spatie/laravel-stubs/tree/2.1.0"
             },
             "funding": [
                 {
@@ -10693,7 +10693,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-10-03T12:00:46+00:00"
+            "time": "2020-12-02T15:51:40+00:00"
         },
         {
             "name": "spatie/laravel-tail",
