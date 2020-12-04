@@ -54,8 +54,7 @@
 
                     <x-field>
                         <x-label for="email">Your email</x-label>
-                        <input class="form-input" autofocus type="email" name="email"
-                               id="email" required>
+                        <input class="form-input" autofocus type="email" name="email" id="email" required>
                         @error('email')
                         <p class="text-pink-dark text-sm">
                             {{ $message }}
@@ -68,12 +67,11 @@
                             <x-label for="password">
                                 Password
                             </x-label>
-                            <a class="ml-4 link-white link-underline text-sm" tabindex="3"
-                               href="{{ route('forgot-password') }}">Can't recall, send me
-                                a link</a>
+                            <a class="ml-4 link-white link-underline text-sm" tabindex="3" href="{{ route('forgot-password') }}">
+                                Can't recall, send me a link
+                            </a>
                         </div>
-                        <input class="form-input" type="password" name="password"
-                               id="password" required>
+                        <input class="form-input" type="password" name="password" id="password" required>
                         @error('password')
                         <p class="text-pink-dark text-sm">
                             {{ $message }}
@@ -86,11 +84,9 @@
             </div>
 
             <div class="my-8 flex items-center | md:flex-col md:my-0 md:mx-16">
-                <span
-                    class="flex-grow w-1/2 h-2px bg-white bg-opacity-25 | md:w-2px md:h-1/2"></span>
+                <span class="flex-grow w-1/2 h-2px bg-white bg-opacity-25 | md:w-2px md:h-1/2"></span>
                 <span class="text-white text-xl text-opacity-50 mx-6 my-2">OR</span>
-                <span
-                    class="flex-grow w-1/2 h-2px bg-white bg-opacity-25 | md:w-2px md:h-1/2"></span>
+                <span class="flex-grow w-1/2 h-2px bg-white bg-opacity-25 | md:w-2px md:h-1/2"></span>
             </div>
 
             <div>
