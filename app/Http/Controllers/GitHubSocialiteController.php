@@ -58,7 +58,7 @@ class GitHubSocialiteController
 
         flash()->success('You have been logged in');
 
-        return redirect()->to(session('next', route('products.index')));
+        return view('auth.gitHubCallback');
     }
 
     protected function retrieveUser($gitHubUser): User
