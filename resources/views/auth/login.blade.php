@@ -21,7 +21,7 @@
                         window.clearInterval(authCheckInterval);
                         window.location.replace('{{ session('next', route('products.index')) }}');
                     }
-                }, 1000);
+                }, 500);
             }
         </script>
     @endpush
