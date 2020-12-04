@@ -7,7 +7,7 @@ For the next 24 hours you can grab any other product of ours at an extra {{ $use
 
 Just use the same account as your previous purchase to take advantage of this offer.
 
-@component('mail::button', ['url' => route('products.index')])
+@component('mail::button', ['url' => route('products.index') . '?utm_source=promo&utm_medium=email&utm_campaign=discount-period'])
     View products
 @endcomponent
 
