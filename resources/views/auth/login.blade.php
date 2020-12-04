@@ -27,8 +27,7 @@
     @endpush
 
     <section class="wrap pt-0 z-10 mt-6 -mb-6">
-        <div
-            class="card py-12 gradient gradient-green shadow-lg text-white md:flex items-stretch">
+        <div class="card py-12 gradient gradient-green shadow-lg text-white md:flex items-stretch">
             <div class="flex-grow w-full">
                 <h2 class="title mb-8">
                     Log in
