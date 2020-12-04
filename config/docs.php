@@ -122,7 +122,8 @@ return [
             "name" => "laravel-model-states",
             "repository" => "spatie/laravel-model-states",
             "branches" => [
-                "master" => "v1",
+                "master" => "v2",
+                "v1" => "v1",
             ],
             "category" => "Laravel",
         ],
