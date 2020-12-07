@@ -238,7 +238,13 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public function displayableDiscountPercentage(): int
     {
-        $percentage = $this->discount_percentage ?? 0;
+        $percentage = 0;
+
+        $purchasableDiscountExpiresAt = $this->discount_expires_at ?? now()->addSecond();
+
+        if ($purchasableDiscountExpiresAt->isFuture()) {
+            $percentage += $this->discount_percentage ?? 0;
+        }
 
         $percentage += Referrer::getActiveReferrerDiscountPercentage($this);
 
