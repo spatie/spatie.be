@@ -15,7 +15,7 @@ class Referrer extends Model
     public $guarded = [];
 
     public $casts = [
-        'discount_period_ends_at' => 'datetime'
+        'discount_period_ends_at' => 'datetime',
     ];
 
     public function purchasables(): BelongsToMany
@@ -35,7 +35,7 @@ class Referrer extends Model
 
     public static function booted()
     {
-        static::creating(function(Referrer $referrer) {
+        static::creating(function (Referrer $referrer) {
             $referrer->uuid = (string)Str::uuid();
         });
     }
@@ -51,7 +51,7 @@ class Referrer extends Model
 
     public function getDiscountPercentage(Purchasable $purchasable): int
     {
-        if(! $this->purchasables->pluck('id')->contains($purchasable->id)) {
+        if (! $this->purchasables->pluck('id')->contains($purchasable->id)) {
             return 0;
         }
 
@@ -77,20 +77,20 @@ class Referrer extends Model
             return app()->get('activeReferrer');
         }
 
-       $activeReferrerUuid = Cookie::get('active-referrer-uuid');
+        $activeReferrerUuid = Cookie::get('active-referrer-uuid');
 
-       if (! $activeReferrerUuid) {
-           return null;
-       }
+        if (! $activeReferrerUuid) {
+            return null;
+        }
 
-       return Referrer::firstWhere(['uuid' => $activeReferrerUuid]);
+        return Referrer::firstWhere(['uuid' => $activeReferrerUuid]);
     }
 
     public function makeActive(): void
     {
         $cookie = Cookie::make('active-referrer-uuid', $this->uuid);
 
-        app()->bind('activeReferrer', function() {
+        app()->bind('activeReferrer', function () {
             return $this;
         });
 

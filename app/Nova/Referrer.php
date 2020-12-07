@@ -5,7 +5,6 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Panel;
@@ -29,7 +28,7 @@ class Referrer extends Resource
 
             Text::make('slug')
                 ->rules(['required', 'max:255'])
-                ->displayUsing(function(string $slug) {
+                ->displayUsing(function (string $slug) {
                     return url("/products?referrer={$slug}");
                 })
                 ->help("Add '?referrer=slug' to the URL to use this referrer"),

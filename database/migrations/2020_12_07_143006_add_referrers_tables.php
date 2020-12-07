@@ -8,7 +8,7 @@ class AddReferrersTables extends Migration
 {
     public function up()
     {
-        Schema::create('referrers', function(Blueprint $table) {
+        Schema::create('referrers', function (Blueprint $table) {
             $table->id();
             $table->string('slug');
             $table->string('uuid');
@@ -17,13 +17,13 @@ class AddReferrersTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create('referrer_purchasable', function(Blueprint $table) {
+        Schema::create('referrer_purchasable', function (Blueprint $table) {
             $table->foreignId('referrer_id')->constrained();
             $table->foreignId('purchasable_id')->constrained();
             $table->timestamps();
         });
 
-        Schema::create('referrer_purchases', function(Blueprint $table) {
+        Schema::create('referrer_purchases', function (Blueprint $table) {
             $table->foreignId('referrer_id')->constrained();
             $table->foreignId('purchase_id')->constrained();
             $table->timestamps();

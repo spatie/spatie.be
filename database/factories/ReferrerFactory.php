@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Models\Referrer;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class ReferrerFactory extends Factory
 {
@@ -14,7 +13,7 @@ class ReferrerFactory extends Factory
     {
         return [
             'slug' => $this->faker->slug,
-            'discount_percentage' => $this->faker->numberBetween(1, 10)
+            'discount_percentage' => $this->faker->numberBetween(1, 10),
         ];
     }
 }

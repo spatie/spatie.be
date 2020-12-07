@@ -36,7 +36,7 @@ class HandleReferrerTest extends TestCase
 
         $cookies = collect(Cookie::getQueuedCookies());
 
-        $this->assertTrue($cookies->contains(function(SymfonyCookie $cookie) use ($referrer) {
+        $this->assertTrue($cookies->contains(function (SymfonyCookie $cookie) use ($referrer) {
             return $cookie->getName() === 'active-referrer-uuid' && $cookie->getValue() === $referrer->uuid;
         }));
     }
