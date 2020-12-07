@@ -38,15 +38,15 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        if (!$purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
+        if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
             return;
         }
 
-        if (!$receipt = Receipt::where('order_id', $paddlePayload->order_id)->first()) {
+        if (! $receipt = Receipt::where('order_id', $paddlePayload->order_id)->first()) {
             return;
         }
 
-        if (!$user = (new $passthrough['billable_type'])->find($passthrough['billable_id'])) {
+        if (! $user = (new $passthrough['billable_type'])->find($passthrough['billable_id'])) {
             throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
         }
 
@@ -64,7 +64,7 @@ class ProcessPaymentSucceededJob implements ShouldQueue
 
     protected function determineReferrer($passthrough): ?Referrer
     {
-        if (!isset($passthrough['referrer_uuid'])) {
+        if (! isset($passthrough['referrer_uuid'])) {
             return null;
         }
 

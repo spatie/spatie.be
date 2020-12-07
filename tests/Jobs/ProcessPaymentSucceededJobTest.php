@@ -7,7 +7,6 @@ use App\Models\Referrer;
 use App\Models\User;
 use App\Support\Paddle\ProcessPaymentSucceededJob;
 use Database\Factories\ReceiptFactory;
-use Illuminate\Support\Arr;
 use Spatie\Mailcoach\Models\EmailList;
 use Tests\TestCase;
 
@@ -45,7 +44,7 @@ class ProcessPaymentSucceededJobTest extends TestCase
             'passthrough' => json_encode([
                 'billable_type' => get_class($this->user),
                 'billable_id' => $this->user->id,
-            ])
+            ]),
         ];
     }
 
@@ -68,7 +67,7 @@ class ProcessPaymentSucceededJobTest extends TestCase
         $this->payload['passthrough'] = json_encode([
             'billable_type' => get_class($this->user),
             'billable_id' => $this->user->id,
-            'referrer_uuid' => $referrer->uuid
+            'referrer_uuid' => $referrer->uuid,
         ]);
 
         dispatch(new ProcessPaymentSucceededJob($this->payload));
