@@ -40,4 +40,22 @@ class HandleReferrerTest extends TestCase
             return $cookie->getName() === 'active-referrer-uuid' && $cookie->getValue() === $referrer->uuid;
         }));
     }
+
+    /** @test */
+    public function it_will_use_the_value_set_in_the_cookie()
+    {
+        $purchasable = Purchasable::factory()->create();
+
+        /** @var Referrer $referrer */
+        $referrer = Referrer::factory()->create([
+            'discount_percentage' => 23,
+        ]);
+
+        $referrer->purchasables()->attach($purchasable);
+
+        $this
+            ->withCookie('active-referrer-uuid', $referrer->uuid)
+            ->get(route('products.index'))
+            ->assertSee('-23%');
+    }
 }
