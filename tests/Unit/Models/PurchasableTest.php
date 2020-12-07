@@ -3,6 +3,7 @@
 namespace Tests\Unit\Models;
 
 use App\Models\Purchasable;
+use App\Models\Referrer;
 use App\Models\User;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
@@ -66,7 +67,7 @@ class PurchasableTest extends TestCase
     public function the_next_purchase_discount_on_a_user_will_be_used()
     {
         $this->user->update([
-             'next_purchase_discount_period_ends_at' => now()->addHour(),
+            'next_purchase_discount_period_ends_at' => now()->addHour(),
         ]);
 
         $this->assertFalse($this->purchasable->hasActiveDiscount());
@@ -102,5 +103,30 @@ class PurchasableTest extends TestCase
         $this->assertEquals(7000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
         $this->actingAs($this->user);
         $this->assertEquals(6000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+    }
+
+    /** @test */
+    public function it_will_add_the_discount_of_a_referral_to_the_discount()
+    {
+        /** @var \App\Models\Referrer $referrer */
+        $referrer = Referrer::factory()->create([
+            'discount_percentage' => 10,
+        ]);
+
+        $referrer->makeActive();
+
+        $referrer->purchasables()->attach($referrer);
+
+        $this->assertTrue($this->purchasable->hasActiveDiscount());
+        $this->assertEquals(9000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+        $this->assertEquals(10, $this->purchasable->displayableDiscountPercentage());
+
+        $this->purchasable->update([
+            'discount_percentage' => 30,
+            'discount_name' => 'flash sale',
+        ]);
+
+        $this->assertEquals(6000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+        $this->assertEquals(40, $this->purchasable->displayableDiscountPercentage());
     }
 }
