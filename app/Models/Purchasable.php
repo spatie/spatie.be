@@ -30,6 +30,7 @@ class Purchasable extends Model implements HasMedia, Sortable
     public $casts = [
         'satis_packages' => 'array',
         'released' => 'boolean',
+        'discount_percentage' => 'integer',
         'discount_starts_at' => 'datetime',
         'discount_expires_at' => 'datetime',
     ];
@@ -149,6 +150,8 @@ class Purchasable extends Model implements HasMedia, Sortable
                 }
             }
 
+            $discountPercentage += Referrer::getActiveReferrerDiscountPercentage($this);
+
             $discount = ($priceWithoutDiscount / 100) * $discountPercentage;
 
             $priceInCents = $priceWithoutDiscount - $discount;
@@ -196,6 +199,12 @@ class Purchasable extends Model implements HasMedia, Sortable
             return true;
         }
 
+        if ($referrer = Referrer::findActive()) {
+            if ($referrer->hasActiveDiscount($this)) {
+                return true;
+            }
+        }
+
         if (! $this->discount_name) {
             return false;
         }
@@ -220,16 +229,18 @@ class Purchasable extends Model implements HasMedia, Sortable
             }
         }
 
-        $purchasableDiscoutExpiresAt = $this->discount_expires_at ?? now()->subSecond();
+        $purchasableDiscountExpiresAt = $this->discount_expires_at ?? now()->subSecond();
 
-        return $userDiscountExpiresAt->isAfter($purchasableDiscoutExpiresAt)
+        return $userDiscountExpiresAt->isAfter($purchasableDiscountExpiresAt)
             ? $userDiscountExpiresAt
-            : $purchasableDiscoutExpiresAt;
+            : $purchasableDiscountExpiresAt;
     }
 
     public function displayableDiscountPercentage(): int
     {
-        $percentage = $this->discount_percentage;
+        $percentage = $this->discount_percentage ?? 0;
+
+        $percentage += Referrer::getActiveReferrerDiscountPercentage($this);
 
         $user = current_user();
 

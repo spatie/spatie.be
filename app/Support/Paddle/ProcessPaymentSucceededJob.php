@@ -6,6 +6,7 @@ use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\Referrer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -30,21 +31,22 @@ class ProcessPaymentSucceededJob implements ShouldQueue
     public function handle()
     {
         $paddlePayload = new PaddlePayload($this->payload);
+
         $passthrough = json_decode($paddlePayload->passthrough, true);
 
         if ($paddlePayload->alert_name !== 'payment_succeeded') {
             return;
         }
 
-        if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
+        if (!$purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
             return;
         }
 
-        if (! $receipt = Receipt::where('order_id', $paddlePayload->order_id)->first()) {
+        if (!$receipt = Receipt::where('order_id', $paddlePayload->order_id)->first()) {
             return;
         }
 
-        if (! $user = (new $passthrough['billable_type'])->find($passthrough['billable_id'])) {
+        if (!$user = (new $passthrough['billable_type'])->find($passthrough['billable_id'])) {
             throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
         }
 
@@ -52,6 +54,20 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        app(HandlePurchaseAction::class)->execute($user, $purchasable, $paddlePayload);
+        app(HandlePurchaseAction::class)->execute(
+            $user,
+            $purchasable,
+            $paddlePayload,
+            $this->determineReferrer($passthrough),
+        );
+    }
+
+    protected function determineReferrer($passthrough): ?Referrer
+    {
+        if (!isset($passthrough['referrer_uuid'])) {
+            return null;
+        }
+
+        return Referrer::firstWhere('uuid', $passthrough['referrer_uuid']);
     }
 }

@@ -7,6 +7,7 @@ use App\Actions\RestoreRepositoryAccessAction;
 use App\Mail\NextPurchaseDiscountPeriodStartedMail;
 use App\Models\License;
 use App\Models\Purchasable;
+use App\Models\Referrer;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
 use Database\Factories\ReceiptFactory;
@@ -196,5 +197,24 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
 
         Mail::assertQueued(NextPurchaseDiscountPeriodStartedMail::class);
+    }
+
+    /** @test */
+    public function it_can_attribute_a_purchase_to_a_referrer()
+    {
+        $purchasable = Purchasable::factory()->create([
+            'requires_license' => false,
+        ]);
+
+        $referrer = Referrer::factory()->create();
+
+        $this->action->execute(
+            $this->user,
+            $purchasable,
+            $this->payload,
+            $referrer
+        );
+
+        $this->assertCount(1, $referrer->refresh()->usedForPurchases);
     }
 }
