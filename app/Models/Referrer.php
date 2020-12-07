@@ -71,7 +71,7 @@ class Referrer extends Model
         return $this->getDiscountPercentage($purchasable) > 0;
     }
 
-    public static function findActive(): ?static
+    public static function findActive(): ?self
     {
         if (app()->has('activeReferrer')) {
             return app()->get('activeReferrer');
