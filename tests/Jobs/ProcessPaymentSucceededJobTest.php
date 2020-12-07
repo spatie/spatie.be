@@ -7,6 +7,7 @@ use App\Models\Referrer;
 use App\Models\User;
 use App\Support\Paddle\ProcessPaymentSucceededJob;
 use Database\Factories\ReceiptFactory;
+use Illuminate\Support\Arr;
 use Spatie\Mailcoach\Models\EmailList;
 use Tests\TestCase;
 

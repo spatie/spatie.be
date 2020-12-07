@@ -19,7 +19,6 @@ class AfterPaddleSaleController
 
         flash()->success('Purchase successful!');
 
-
         return redirect()->route('products.show', $product);
     }
 }
