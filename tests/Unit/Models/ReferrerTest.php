@@ -40,4 +40,18 @@ class ReferrerTest extends TestCase
         $this->assertFalse($this->referrer->hasActiveDiscount($unrelatedPurchasable));
         $this->assertEquals(0, $this->referrer->getDiscountPercentage($unrelatedPurchasable));
     }
+
+    /** @test */
+    public function it_will_allow_a_discount_until_the_period_ends()
+    {
+        TestTime::addMinutes(59);
+
+        $this->assertTrue($this->referrer->hasActiveDiscount($this->purchasable));
+        $this->assertEquals(10, $this->referrer->getDiscountPercentage($this->purchasable));
+
+        TestTime::addMinute();
+
+        $this->assertFalse($this->referrer->hasActiveDiscount($this->purchasable));
+        $this->assertEquals(0, $this->referrer->getDiscountPercentage($this->purchasable));
+    }
 }
