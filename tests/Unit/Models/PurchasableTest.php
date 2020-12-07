@@ -115,7 +115,7 @@ class PurchasableTest extends TestCase
 
         $referrer->makeActive();
 
-        $referrer->purchasables()->attach($referrer);
+        $referrer->purchasables()->attach($this->purchasable);
 
         $this->assertTrue($this->purchasable->hasActiveDiscount());
         $this->assertEquals(9000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);

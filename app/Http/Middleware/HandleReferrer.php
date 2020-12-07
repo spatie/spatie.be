@@ -10,8 +10,7 @@ class HandleReferrer
 {
     public function handle(Request $request, Closure $next)
     {
-        if ($referrer = $request->referrer)
-        {
+        if ($referrer = $request->referrer) {
             /** @var Referrer $referrer */
             if ($referrer = Referrer::firstWhere(['slug' => $referrer])) {
                 $referrer->makeActive();
