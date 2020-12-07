@@ -9886,17 +9886,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "3.6.0",
+            "version": "3.6.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "a6220600cbd873baea8b8ff81b1073a892d397c9"
+                "reference": "fa8cca065de817a4fcb49f800682dfdac92d0ad2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-a6220600cbd873baea8b8ff81b1073a892d397c9-zip-77955e.zip",
-                "reference": "a6220600cbd873baea8b8ff81b1073a892d397c9",
-                "shasum": "1c6ac0dfc7d465b034f6d51f79e146cbd7f622a2"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-fa8cca065de817a4fcb49f800682dfdac92d0ad2-zip-2b61d6.zip",
+                "reference": "fa8cca065de817a4fcb49f800682dfdac92d0ad2",
+                "shasum": "ee6d99f41a31909b586ebe52d8c3912189c330c9"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -9996,10 +9996,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/3.6.0",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/3.6.1",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2020-12-07T12:46:44+00:00"
+            "time": "2020-12-07T12:57:27+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
