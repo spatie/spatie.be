@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Cookie;
@@ -9,6 +10,8 @@ use Illuminate\Support\Str;
 
 class Referrer extends Model
 {
+    use HasFactory;
+
     public $guarded = [];
 
     public $casts = [
@@ -18,6 +21,11 @@ class Referrer extends Model
     public function purchasables(): BelongsToMany
     {
         return $this->belongsToMany(Purchasable::class, 'referrer_purchasable');
+    }
+
+    public function usedForPurchases(): BelongsToMany
+    {
+        return $this->belongsToMany(Purchase::class, 'referrer_purchases');
     }
 
     public static function activeReferrerGrantsDiscount(Purchasable $purchasable): bool

@@ -47,6 +47,8 @@ class Referrer extends Resource
                     ->help('The discount percentage'),
                 DateTime::make('Expires at', 'discount_period_ends_at')->nullable()->hideFromIndex()->help('Not specifying this field will make the discount active indefinitely'),
             ]),
+
+            BelongsToMany::make('Purchases', 'usedForPurchases'),
         ];
     }
 

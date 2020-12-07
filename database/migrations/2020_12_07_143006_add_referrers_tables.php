@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddReferrersTable extends Migration
+class AddReferrersTables extends Migration
 {
     public function up()
     {
@@ -20,6 +20,13 @@ class AddReferrersTable extends Migration
         Schema::create('referrer_purchasable', function(Blueprint $table) {
             $table->foreignId('referrer_id')->constrained();
             $table->foreignId('purchasable_id')->constrained();
+            $table->timestamps();
+        });
+
+        Schema::create('referrer_purchases', function(Blueprint $table) {
+            $table->foreignId('referrer_id')->constrained();
+            $table->foreignId('purchase_id')->constrained();
+            $table->timestamps();
         });
     }
 }

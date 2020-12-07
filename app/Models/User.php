@@ -41,11 +41,18 @@ class User extends Authenticatable
             $prices[] = $dollarDisplayablePrice->toPaddleFormat();
         }
 
+        $passthrough = [];
+
+        if ($referrer = Referrer::findActive()) {
+            $passthrough['referrer_uuid'] = $referrer->uuid;
+        }
+
         return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => false,
             'customer_email' => auth()->user()->email,
             'marketing_consent' => true,
             'prices' => $prices,
+            'passthrough' => $passthrough,
         ]);
     }
 
