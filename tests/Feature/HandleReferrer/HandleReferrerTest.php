@@ -79,6 +79,5 @@ class HandleReferrerTest extends TestCase
         $referrer = $referrer->refresh();
         $this->assertEquals(2, $referrer->click_count);
         $this->assertEquals(now()->timestamp, $referrer->last_clicked_at->timestamp);
-
     }
 }

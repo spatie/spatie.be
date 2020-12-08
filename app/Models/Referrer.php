@@ -105,7 +105,7 @@ class Referrer extends Model
     {
         $this->update([
             'click_count' => $this->click_count + 1,
-            'last_clicked_at' => now()
+            'last_clicked_at' => now(),
         ]);
 
         return $this;

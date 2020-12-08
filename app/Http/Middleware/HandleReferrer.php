@@ -13,7 +13,6 @@ class HandleReferrer
         if ($referrer = $request->referrer) {
             /** @var Referrer $referrer */
             if ($referrer = Referrer::firstWhere(['slug' => $referrer])) {
-
                 $referrer
                     ->registerClick()
                     ->makeActive();
