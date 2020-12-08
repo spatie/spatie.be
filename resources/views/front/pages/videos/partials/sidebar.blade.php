@@ -14,11 +14,13 @@
                 </a>
             </div>
 
+            {{--
             @if($purchasable->displayableDiscountPercentage() > 0)
                 <p class="mt-3 text-xs text-gray">
                     Now at <b>-{{ $purchasable->displayableDiscountPercentage() }}%</b>
                 </p>
             @endif
+            --}}
         </div>
     @endif
 
