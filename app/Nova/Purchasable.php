@@ -114,8 +114,6 @@ class Purchasable extends Resource
             Text::make('Repository access')->hideFromIndex(),
 
             Items::make('Satis packages')->hideFromIndex(),
-
-            Text::make('Sponsor coupon')->hideFromIndex()->help('For display purposes only, you still need to create this in Paddle.'),
         ];
     }
 
