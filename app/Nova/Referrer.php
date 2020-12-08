@@ -28,7 +28,7 @@ class Referrer extends Resource
             ID::make()->sortable(),
 
             Text::make('slug')
-                ->rules(['required', 'max:255'])
+                ->rules(['required', 'max:255', 'unique:referrers'])
                 ->displayUsing(function (string $slug) {
                     return url("/products?referrer={$slug}");
                 })
