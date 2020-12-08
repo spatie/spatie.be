@@ -92,4 +92,9 @@ class Series extends Model implements HasMedia, Sortable
     {
         return Markdown::parse($this->description);
     }
+
+    public function purchasableWithDiscount(): ?Purchasable
+    {
+        return optional($this->purchasables()->get())->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
+    }
 }
