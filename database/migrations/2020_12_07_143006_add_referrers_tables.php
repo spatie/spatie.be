@@ -18,14 +18,14 @@ class AddReferrersTables extends Migration
         });
 
         Schema::create('referrer_purchasable', function (Blueprint $table) {
-            $table->foreignId('referrer_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('purchasable_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('referrer_id')->constrained();
+            $table->foreignId('purchasable_id')->constrained();
             $table->timestamps();
         });
 
         Schema::create('referrer_purchases', function (Blueprint $table) {
-            $table->foreignId('referrer_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('purchase_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('referrer_id')->constrained();
+            $table->foreignId('purchase_id')->constrained();
             $table->timestamps();
         });
     }
