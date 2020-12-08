@@ -30,11 +30,14 @@ class Purchasable extends Resource
 
     public static $model = EloquentPurchasable::class;
 
-    public static $title = 'title';
-
     public static $search = [
         'id', 'title',
     ];
+
+    public function title()
+    {
+        return "{$this->title} ({$this->product->title})";
+    }
 
     public function fields(Request $request)
     {
