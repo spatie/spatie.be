@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Panel;
 
@@ -45,6 +46,12 @@ class Referrer extends Resource
                     ->default(0)
                     ->help('The discount percentage'),
                 DateTime::make('Expires at', 'discount_period_ends_at')->nullable()->hideFromIndex()->help('Not specifying this field will make the discount active indefinitely'),
+            ]),
+
+            new Panel('Clicks', [
+                Number::make('Click count')->readonly(),
+
+                DateTime::make('Last clicked at')->readonly(),
             ]),
 
             BelongsToMany::make('Purchases', 'usedForPurchases'),

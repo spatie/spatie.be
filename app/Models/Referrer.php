@@ -16,6 +16,8 @@ class Referrer extends Model
 
     public $casts = [
         'discount_period_ends_at' => 'datetime',
+        'click_count' => 'integer',
+        'last_clicked_at' => 'datetime',
     ];
 
     public function purchasables(): BelongsToMany
@@ -86,7 +88,7 @@ class Referrer extends Model
         return Referrer::firstWhere(['uuid' => $activeReferrerUuid]);
     }
 
-    public function makeActive(): void
+    public function makeActive(): self
     {
         $cookie = Cookie::make('active-referrer-uuid', $this->uuid);
 
@@ -95,6 +97,18 @@ class Referrer extends Model
         });
 
         Cookie::queue($cookie);
+
+        return $this;
+    }
+
+    public function registerClick(): self
+    {
+        $this->update([
+            'click_count' => $this->click_count + 1,
+            'last_clicked_at' => now()
+        ]);
+
+        return $this;
     }
 
     public static function forgetActive(): void

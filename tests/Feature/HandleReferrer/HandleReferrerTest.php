@@ -5,6 +5,7 @@ namespace Tests\Feature\HandleReferrer;
 use App\Models\Purchasable;
 use App\Models\Referrer;
 use Illuminate\Support\Facades\Cookie;
+use Spatie\TestTime\TestTime;
 use Symfony\Component\HttpFoundation\Cookie as SymfonyCookie;
 use Tests\TestCase;
 
@@ -57,5 +58,27 @@ class HandleReferrerTest extends TestCase
             ->withCookie('active-referrer-uuid', $referrer->uuid)
             ->get(route('products.index'))
             ->assertSee('-23%');
+    }
+
+    /** @test */
+    public function it_will_register_the_click()
+    {
+        TestTime::freeze();
+
+        $referrer = Referrer::factory()->create();
+
+        $this->get(route('products.index') . "?referrer={$referrer->slug}");
+
+        $referrer = $referrer->refresh();
+        $this->assertEquals(1, $referrer->click_count);
+        $this->assertEquals(now()->timestamp, $referrer->last_clicked_at->timestamp);
+
+        TestTime::addSecond();
+        $this->get(route('products.index') . "?referrer={$referrer->slug}");
+
+        $referrer = $referrer->refresh();
+        $this->assertEquals(2, $referrer->click_count);
+        $this->assertEquals(now()->timestamp, $referrer->last_clicked_at->timestamp);
+
     }
 }
