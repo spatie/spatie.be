@@ -4,7 +4,7 @@ description: Sharing is caring
 weight: 3
 ---
 
-## Handling issues
+## Handling feedback
 
 During the lifetime of a package, many users will likely have feedback. This feedback can be split up into three big categories:
 
