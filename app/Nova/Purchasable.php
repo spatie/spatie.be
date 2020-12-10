@@ -30,11 +30,14 @@ class Purchasable extends Resource
 
     public static $model = EloquentPurchasable::class;
 
-    public static $title = 'title';
-
     public static $search = [
         'id', 'title',
     ];
+
+    public function title()
+    {
+        return "{$this->title} ({$this->product->title})";
+    }
 
     public function fields(Request $request)
     {
@@ -114,8 +117,6 @@ class Purchasable extends Resource
             Text::make('Repository access')->hideFromIndex(),
 
             Items::make('Satis packages')->hideFromIndex(),
-
-            Text::make('Sponsor coupon')->hideFromIndex()->help('For display purposes only, you still need to create this in Paddle.'),
         ];
     }
 

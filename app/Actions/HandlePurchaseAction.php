@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\Referrer;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use App\Support\Paddle\PaddlePayload;
@@ -15,6 +16,7 @@ class HandlePurchaseAction
     protected RestoreRepositoryAccessAction $restoreRepositoryAccessAction;
     protected StartOrExtendNextPurchaseDiscountPeriodAction $startOrExtendExtraDiscountPeriodAction;
     protected AddPurchasedTagsToEmailListSubscriberAction $addPurchasedTagsToEmailListSubscriberAction;
+    protected AttributePurchaseToReferrer $attributePurchaseToReferrerAction;
     protected GitHubApi $gitHubApi;
 
     public function __construct(
@@ -22,17 +24,23 @@ class HandlePurchaseAction
         RestoreRepositoryAccessAction $restoreRepositoryAccessAction,
         StartOrExtendNextPurchaseDiscountPeriodAction $startOrExtendExtraDiscountPeriodAction,
         AddPurchasedTagsToEmailListSubscriberAction $addPurchasedTagsToEmailListSubscriberAction,
+        AttributePurchaseToReferrer $attributePurchaseToReferrerAction,
         GitHubApi $gitHubApi
     ) {
         $this->handlePurchaseLicensingAction = $handlePurchaseLicensingAction;
         $this->restoreRepositoryAccessAction = $restoreRepositoryAccessAction;
-        $this->gitHubApi = $gitHubApi;
         $this->startOrExtendExtraDiscountPeriodAction = $startOrExtendExtraDiscountPeriodAction;
         $this->addPurchasedTagsToEmailListSubscriberAction = $addPurchasedTagsToEmailListSubscriberAction;
+        $this->attributePurchaseToReferrerAction = $attributePurchaseToReferrerAction;
+        $this->gitHubApi = $gitHubApi;
     }
 
-    public function execute(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
-    {
+    public function execute(
+        User $user,
+        Purchasable $purchasable,
+        PaddlePayload $paddlePayload,
+        ?Referrer $referrer = null
+    ): Purchase {
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
         $this->startOrExtendExtraDiscountPeriodAction->execute($user);
@@ -43,6 +51,10 @@ class HandlePurchaseAction
 
         if ($purchasable->repository_access && $user->github_username) {
             $this->restoreRepositoryAccessAction->execute($user);
+        }
+
+        if ($referrer) {
+            $this->attributePurchaseToReferrerAction->execute($purchase, $referrer);
         }
 
         return $purchase;

@@ -45,9 +45,6 @@
                                     <a class="link-green link-underline" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $freeVideoCount) }}</a>
                                 @endif
                             </p>
-                            @if (sponsorIsViewingPage())
-                                @include('front.pages.videos.partials.sponsorDiscount')
-                            @endif
                         @else
                             <p class="mt-4">
                                 <a href="{{ $series->url }}">

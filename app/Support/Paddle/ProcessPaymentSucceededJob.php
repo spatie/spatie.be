@@ -6,6 +6,7 @@ use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\Referrer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -30,6 +31,7 @@ class ProcessPaymentSucceededJob implements ShouldQueue
     public function handle()
     {
         $paddlePayload = new PaddlePayload($this->payload);
+
         $passthrough = json_decode($paddlePayload->passthrough, true);
 
         if ($paddlePayload->alert_name !== 'payment_succeeded') {
@@ -52,6 +54,20 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        app(HandlePurchaseAction::class)->execute($user, $purchasable, $paddlePayload);
+        app(HandlePurchaseAction::class)->execute(
+            $user,
+            $purchasable,
+            $paddlePayload,
+            $this->determineReferrer($passthrough),
+        );
+    }
+
+    protected function determineReferrer($passthrough): ?Referrer
+    {
+        if (! isset($passthrough['referrer_uuid'])) {
+            return null;
+        }
+
+        return Referrer::firstWhere('uuid', $passthrough['referrer_uuid']);
     }
 }

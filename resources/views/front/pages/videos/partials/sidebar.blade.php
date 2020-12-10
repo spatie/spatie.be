@@ -14,8 +14,10 @@
                 </a>
             </div>
 
-            @if (sponsorIsViewingPage())
-                @include('front.pages.videos.partials.sponsorDiscount')
+            @if($purchasable = $series->purchasableWithDiscount())
+                <p class="mt-3 text-xs text-gray">
+                    Now at <b>-{{ $purchasable->displayableDiscountPercentage() }}%</b>
+                </p>
             @endif
         </div>
     @endif

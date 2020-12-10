@@ -1,7 +1,7 @@
 ---
 title: Security
 description: There's no key under the mat
-weight: 4
+weight: 5
 ---
 
 This section of the guidelines documents some of our best practices to work securely.
