@@ -451,7 +451,7 @@ return [
 
 Avoid using the `env` helper outside of configuration files. Create a configuration value from the `env` variable like above.
 
-When adding config values for a specific service them to the `services` config file. Do not create a new config file.
+When adding config values for a specific service, add them to the `services` config file. Do not create a new config file.
 
 ```php
 // Good: adding credentials to `config/services.php`
