@@ -16,7 +16,7 @@
                 <p class="text-lg font-semibold">
                     Just launched! </p>
                 <p class="text-lg">
-                    An ebook by Brent Roose on cutting edge tactics in upcoming PHP&nbsp;8, accompanied by free videos with practical examples by Freek Van der Herten.
+                    An ebook by Brent Roose on cutting edge tactics in PHP&nbsp;8, accompanied by free videos with practical examples by Freek Van der Herten.
                 </p>
                 <ul class="text-lg mt-8">
                     <li class="flex items-baseline">
@@ -43,7 +43,7 @@
                     </span>
                 </h3>
                 <p class="text-lg">
-                    We made components for React, Vue 2 / 3, as well as Livewire powered Blade components for one of our most well-known packages: <a href="https://github.com/spatie/laravel-medialibrary">laravel-medialibrary</a>. 
+                    We made components for React, Vue 2 / 3, as well as Livewire powered Blade components for one of our most well-known packages: <a href="https://github.com/spatie/laravel-medialibrary">laravel-medialibrary</a>.
                     <br>All integrated seamlessly and playing nicely with your Laravel Media Models.
                 </p>
                 <ul class="text-lg mt-8">
