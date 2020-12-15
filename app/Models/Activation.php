@@ -42,6 +42,7 @@ class Activation extends Model
             'activation_code' => $this->uuid,
             'expires_at' => $this->license->expires_at->timestamp,
             'license_key' => $this->license->key,
+            'licensed_to' => $this->license->user->name
         ];
 
         ksort($activationProperties);
