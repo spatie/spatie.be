@@ -126,8 +126,7 @@ Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
 
-Route::get('/blogs', [BlogsController::class, 'index'])->name('blogs');
-//Route::get('/blogs/{blog}', [BlogsController::class, 'show']);
+Route::get('/blog', [BlogsController::class, 'index'])->name('blog');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');

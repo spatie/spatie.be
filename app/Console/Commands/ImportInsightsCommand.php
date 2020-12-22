@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Insight;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 use Laminas\Feed\Exception\ExceptionInterface;
 use Laminas\Feed\Reader\Entry\AbstractEntry;
 use Laminas\Feed\Reader\Reader;
@@ -33,6 +34,7 @@ class ImportInsightsCommand extends Command
                             'created_at' => new Carbon($entry->getDateModified()->format(DATE_ATOM)),
                             'url' => $entry->getLink(),
                             'website' => $this->getWebsite($entry),
+                            'short_summary' => $this->getShortSummary($entry),
                         ]);
 
                         $this->info("Imported `{$insight->title}`");
@@ -59,5 +61,13 @@ class ImportInsightsCommand extends Command
         $host = ltrim($host, 'www.');
 
         return $host;
+    }
+
+    protected function getShortSummary(AbstractEntry $entry): string
+    {
+        return Str::words(
+            strip_tags($entry->getContent()),
+            30
+        );
     }
 }

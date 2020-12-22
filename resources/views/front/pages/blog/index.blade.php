@@ -14,9 +14,17 @@
     <section class="section section-group">
         <div class="wrap">
             @foreach ($posts as $post)
-                <p class="mt-4">
-                    <a class="link link-black" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">{{ $post->title }}</a>
-                    <br>
+                <p class="mt-6">
+                    <a class="link link-black" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">
+                        <span class="title-sm">{{ $post->title }}</span>
+                        @if($post->short_summary)
+                            <br />
+                            <span>
+                                {{ $post->short_summary }}
+                            </span>
+                        @endif
+                    </a>
+                    <br />
                     <span class="text-xs text-gray">
                         {{ $post->created_at->format('M jS Y') }}
                         <span class="char-separator" >•</span>
@@ -25,7 +33,7 @@
                 </p>
             @endforeach
 
-                {{ $posts->links() }}
+            {{ $posts->links() }}
         </div>
     </section>
 </x-page>

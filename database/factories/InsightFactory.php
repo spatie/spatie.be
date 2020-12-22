@@ -14,6 +14,7 @@ class InsightFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'url' => $this->faker->url,
+            'short_summary' => $this->faker->sentence,
         ];
     }
 }
