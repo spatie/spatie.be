@@ -12,18 +12,20 @@
     </section>
 
     <section class="section section-group">
-        @foreach ($posts as $post)
-            <div class="wrap">
+        <div class="wrap">
+            @foreach ($posts as $post)
                 <p class="mt-4">
                     <a class="link link-black" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">{{ $post->title }}</a>
                     <br>
                     <span class="text-xs text-gray">
-                       {{ $post->created_at->format('M jS Y') }}
-                       <span class="char-separator" >•</span>
-                       <a class="link-underline link-blue" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">{{ $post->website }}</a>
+                        {{ $post->created_at->format('M jS Y') }}
+                        <span class="char-separator" >•</span>
+                        <a class="link-underline link-blue" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">{{ $post->website }}</a>
                    </span>
                 </p>
-            </div>
-        @endforeach
+            @endforeach
+
+                {{ $posts->links() }}
+        </div>
     </section>
 </x-page>
