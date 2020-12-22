@@ -26,6 +26,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('about', 'About')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
+                ->route('blogs', 'Blog')
                 ->addIf(auth()->check(), View::create('layout.partials.navigation.profileIcon', ['url' => route('profile')]))
                 ->addIf(! auth()->check(), View::create('layout.partials.navigation.loginIcon', ['url' => route('login')]))
 
