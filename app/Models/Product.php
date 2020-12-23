@@ -58,6 +58,11 @@ class Product extends Model implements HasMedia, Sortable
         return $this->hasMany(Purchasable::class)->orderBy('sort_order');
     }
 
+    public function releases(): HasMany
+    {
+        return $this->hasMany(Release::class);
+    }
+
     public function purchasablesWithoutRenewals(): HasMany
     {
         return $this->hasMany(Purchasable::class)

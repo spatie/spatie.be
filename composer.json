@@ -26,6 +26,7 @@
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
         "gobrightspot/nova-detached-actions": "^1.1",
+        "graham-campbell/markdown": "^13.1",
         "guzzlehttp/guzzle": "^7.0",
         "kabbouchi/nova-impersonate": "^1.4",
         "knplabs/github-api": "dev-master#9b01208e1e5500201b45699c911ad53d08f59105",
