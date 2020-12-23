@@ -2,9 +2,9 @@
     <div class="wrap wrap-6 gapy-0 items-end">
         <div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
-                Latest insights
+                <a href={{route('blog')}}>Latest insights</a>
                 <span class="title-subtext text-pink-dark block">
-                    From the team
+                    of the team
                 </span>
             </h2>
 
@@ -32,6 +32,9 @@
                    </span>
                </p>
            @endforeach
+        </div>
+        <div>
+             <a class="link-blue link-underline" href={{route('blog')}}>Read more</a>
         </div>
     </div>
 </section>
