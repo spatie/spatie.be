@@ -6,6 +6,7 @@ use App\Http\Api\Controllers\Activations\ShowActivationController;
 use App\Http\Api\Controllers\HandleGitHubWebhookController;
 use App\Http\Api\Controllers\PriceController;
 use App\Http\Api\Controllers\SatisAuthenticationController;
+use App\Http\Api\Controllers\ShowReleaseController;
 use App\Http\Controllers\SignedProductLicenseController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,5 @@ Route::post('activations/{activation:uuid}/show', ShowActivationController::clas
 Route::delete('activations/{activation:uuid}/delete', DeleteActivationController::class);
 
 Route::get('price/{purchasable}/{countryCode}', PriceController::class);
+
+Route::get('releases/{product}/{version}', ShowReleaseController::class);
