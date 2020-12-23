@@ -19,7 +19,7 @@ class Release extends Model
 
     public static function booted()
     {
-        static::saving(function(Release $release) {
+        static::saving(function (Release $release) {
             $release->notes_html = Markdown::convertToHtml($release->notes);
         });
     }

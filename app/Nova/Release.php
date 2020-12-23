@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use App\Nova\Actions\AttachAllPurchasablesToReferrerAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
