@@ -24,9 +24,9 @@ class NavigationServiceProvider extends ServiceProvider
         Menu::macro('service', function (array $properties = []) {
             return Menu::new()
                 ->route('about', 'About')
+                ->route('blog', 'Blog')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
-                ->route('blog', 'Blog')
                 ->addIf(auth()->check(), View::create('layout.partials.navigation.profileIcon', ['url' => route('profile')]))
                 ->addIf(! auth()->check(), View::create('layout.partials.navigation.loginIcon', ['url' => route('login')]))
 
