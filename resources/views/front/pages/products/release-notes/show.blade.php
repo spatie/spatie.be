@@ -27,7 +27,11 @@
 
     @foreach($releases as $release)
         <section class="wrap mb-16 pt-0">
-            <h2 id="{{ $release->version }}" class="title line-after mb-12">{{ $release->version }} - {{ $release->released_at->format('Y-m-d') }}</h2>
+            <h2 id="{{ $release->version }}" class="title line-after mb-12">{{ $release->version }}
+                @if($release->released_at)
+                - {{ $release->released_at->format('Y-m-d') }}
+                @endif
+            </h2>
 
             {!! $release->notes !!}
         </section>
