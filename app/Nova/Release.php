@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
@@ -32,6 +33,9 @@ class Release extends Resource
             Text::make('Version'),
 
             Boolean::make('Released')->default(false),
+
+            DateTime::make('Released at'),
+
 
             Markdown::make('Notes'),
         ];

@@ -15,6 +15,7 @@ class Release extends Model
 
     public $casts = [
         'released' => 'bool',
+        'released_at' => 'datetime',
     ];
 
     public static function booted()

@@ -5,32 +5,37 @@ namespace Database\Seeders;
 use App\Enums\PurchasableType;
 use App\Models\Product;
 use App\Models\Purchasable;
+use App\Models\Release;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder
 {
     public function run(): void
     {
-        $timber = Product::factory()->create([
-            'title' => 'Timber',
-            'slug' => 'timber',
-            'description' => 'Timber',
-            'url' => 'https://timber',
+        $ray = Product::factory()->create([
+            'title' => 'Ray',
+            'slug' => 'Ray',
+            'description' => 'Ray',
+            'url' => 'https://ray',
             'action_url' => '',
-            'action_label' => 'Buy Timber',
+            'action_label' => 'Buy Ray',
             'private_key' => file_get_contents(database_path('factories/stubs/privateKey')),
             'maximum_activation_count' => 2,
         ]);
 
-        $timberRenewalPurchasable = Purchasable::factory()->create([
+        $rayRenewalPurchasable = Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_STANDARD_RENEWAL,
-            'title' => 'Timber renewal',
-            'description' => 'Timber renewal',
+            'title' => 'Ray renewal',
+            'description' => 'Ray renewal',
             'paddle_product_id' => '636791',
             'requires_license' => true,
-            'product_id' => $timber->id,
+            'product_id' => $ray->id,
             'renewal_purchasable_id' => null,
             'price_in_usd_cents' => 1900,
+        ]);
+
+        Release::factory()->count(5)->create([
+            'product_id' => $ray->id,
         ]);
 
         Purchasable::factory()->create([
@@ -39,8 +44,8 @@ class ProductSeeder extends Seeder
             'description' => 'Timber',
             'paddle_product_id' => '636791',
             'requires_license' => true,
-            'product_id' => $timber->id,
-            'renewal_purchasable_id' => $timberRenewalPurchasable->id,
+            'product_id' => $ray->id,
+            'renewal_purchasable_id' => $rayRenewalPurchasable->id,
             'price_in_usd_cents' => 1900,
         ]);
 

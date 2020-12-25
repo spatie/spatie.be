@@ -8,6 +8,7 @@ use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
+use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\SignedProductLicenseController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
@@ -61,6 +62,8 @@ Route::prefix('products')->group(function () {
     Route::get('{product:slug}/purchases/{purchase}/download/{file}', DownloadPurchasableController::class)
         ->middleware(['auth', 'signed'])
         ->name('purchase.download');
+
+    Route::get('{product:slug}/release-notes', ShowReleaseNotesController::class)->name('product.releaseNotes');
 });
 
 Route::prefix('open-source')->group(function () {
