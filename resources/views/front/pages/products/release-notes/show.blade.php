@@ -33,7 +33,7 @@
                 @endif
             </h2>
 
-            {!! $release->notes !!}
+            {!! $release->notes_html !!}
         </section>
     @endforeach
 </x-page>
