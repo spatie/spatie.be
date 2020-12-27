@@ -6,6 +6,7 @@ use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
+use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\ShowReleaseNotesController;
@@ -127,6 +128,8 @@ Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])
 
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
+
+Route::get('/blog', [BlogsController::class, 'index'])->name('blog');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
