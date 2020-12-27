@@ -128,6 +128,14 @@ class User extends Authenticatable
 
     public function hasAccessToUnreleasedPurchasables(): bool
     {
+        $earlyAccessUserIds = [
+            15,
+        ];
+
+        if (in_array($this->id, $earlyAccessUserIds)) {
+            return true;
+        }
+
         return $this->isSpatieMember();
     }
 
