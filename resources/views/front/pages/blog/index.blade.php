@@ -3,7 +3,7 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                Latest insights 
+                Latest insights
                 <br>of the team
             </h1>
             <p class="banner-intro">
@@ -17,15 +17,15 @@
             <div class="max-w-md grid gap-6">
                 @foreach ($posts as $post)
                     <p class="">
-                        <a class="link link-black" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">
+                        <a class="link link-black link-underline" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">
                             <span class="title-sm">{{ $post->title }}</span>
-                            @if($post->short_summary)
-                                <br />
-                                <span>
-                                    {{ $post->short_summary }}
-                                </span>
-                            @endif
                         </a>
+                        @if($post->short_summary)
+                            <br />
+                            <a class="link link-black no-underline" href="{{ $post->url }}" target="_blank" rel="noreferrer noopener">
+                                {{ $post->short_summary }}
+                            </a>
+                        @endif
                         <br />
                         <span class="text-xs text-gray">
                             {{ $post->created_at->format('M jS Y') }}

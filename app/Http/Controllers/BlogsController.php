@@ -8,7 +8,7 @@ class BlogsController
 {
     public function index()
     {
-        $insights = Insight::orderBy('created_at', 'DESC')->paginate(10);
+        $insights = Insight::orderBy('created_at', 'DESC')->simplePaginate(10);
 
         return view('front.pages.blog.index', ['posts' => $insights]);
     }
