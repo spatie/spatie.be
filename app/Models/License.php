@@ -35,7 +35,11 @@ class License extends Model implements AuthenticatableContract
                 return;
             }
 
-            static::withoutEvents(fn () => $license->refresh()->activations->each->updateSignedActivation());
+            static::withoutEvents(fn () => $license
+                ->refresh()
+                ->activations
+                ->each(fn(Activation $activation) => $activation->updateSignedActivation())
+            );
         });
     }
 
@@ -154,6 +158,5 @@ class License extends Model implements AuthenticatableContract
         $signedLicense = array_merge($licenseProperties, compact('signature'));
 
         $this->update(['signed_license' => $signedLicense]);
-        dump('updated to' . $this->expires_at->timestamp . "(" . $this->expires_at->format('Y-m-d'));
     }
 }
