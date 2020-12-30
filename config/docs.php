@@ -3,6 +3,15 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-mailcoach",
+            "repository" => "spatie/laravel-mailcoach",
+            "branches" => [
+                "v4" => "v4",
+            ],
+            "category" => "Laravel",
+        ],
+    'repositories' => [
+        [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
             "branches" => [
