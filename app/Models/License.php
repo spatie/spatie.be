@@ -35,10 +35,11 @@ class License extends Model implements AuthenticatableContract
                 return;
             }
 
-            static::withoutEvents(fn () => $license
+            static::withoutEvents(
+                fn () => $license
                 ->refresh()
                 ->activations
-                ->each(fn(Activation $activation) => $activation->updateSignedActivation())
+                ->each(fn (Activation $activation) => $activation->updateSignedActivation())
             );
         });
     }
