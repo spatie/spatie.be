@@ -96,23 +96,21 @@ class ImportDocsFromRepositoriesCommand extends Command
         $accessToken = config('services.github.docs_access_token');
         $publicDocsAssetPath = public_path('docs');
 
-        $repositoryBaseDirectoryName = $repository['label'] ?? $repository['name'];
-
         return new Process(
             <<<BASH
-                    rm -rf storage/docs/{$repositoryBaseDirectoryName}/{$alias} \
-                    && mkdir -p storage/docs/{$repositoryBaseDirectoryName}/{$alias} \
-                    && mkdir -p storage/docs-temp/{$repositoryBaseDirectoryName}/{$alias} \
-                    && cd storage/docs-temp/{$repositoryBaseDirectoryName}/{$alias} \
+                    rm -rf storage/docs/{$repository['name']}/{$alias} \
+                    && mkdir -p storage/docs/{$repository['name']}/{$alias} \
+                    && mkdir -p storage/docs-temp/{$repository['name']}/{$alias} \
+                    && cd storage/docs-temp/{$repository['name']}/{$alias} \
                     && git init \
                     && git config core.sparseCheckout true \
                     && echo "/docs" >> .git/info/sparse-checkout \
-                    && git remote add -f origin https://{$accessToken}@github.com/spatie/{$repositoryBaseDirectoryName}.git \
+                    && git remote add -f origin https://{$accessToken}@github.com/spatie/{$repository['name']}.git \
                     && git pull origin ${branch} \
-                    && cp -r docs/* ../../../docs/{$repositoryBaseDirectoryName}/{$alias} \
-                    && echo "---\ntitle: {$repositoryBaseDirectoryName}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repositoryBaseDirectoryName}/_index.md \
+                    && cp -r docs/* ../../../docs/{$repository['name']}/{$alias} \
+                    && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md \
                     && cd docs/ \
-                    && find . -not -name '*.md' | cpio -pdm {$publicDocsAssetPath}/{$repositoryBaseDirectoryName}/{$alias}/
+                    && find . -not -name '*.md' | cpio -pdm {$publicDocsAssetPath}/{$repository['name']}/{$alias}/
                 BASH
         );
     }
