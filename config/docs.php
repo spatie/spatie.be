@@ -10,7 +10,6 @@ return [
             ],
             "category" => "Laravel",
         ],
-    'repositories' => [
         [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
