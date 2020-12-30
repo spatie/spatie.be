@@ -18,14 +18,5 @@ return [
             'path_parser' => \Spatie\Sheets\PathParsers\SlugParser::class,
             'content_parser' => \App\Guidelines\GuidelinesContentParser::class,
         ],
-
-        /*
-        'posts' => [
-            'disk' => 'posts',
-            'sheet_class' => App\Post::class,
-            'path_parser' => Spatie\Sheets\PathParsers\SlugWithDateParser::class,
-            'content_parser' => Spatie\Sheets\ContentParsers\MarkdownParser::class,
-            'extension' => 'txt',
-        ], */
     ],
 ];

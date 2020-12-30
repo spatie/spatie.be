@@ -4,7 +4,7 @@ return [
     'repositories' => [
         [
             "name" => "laravel-mailcoach",
-            "label" => 'Mailcoach',
+            "label" => 'mailcoach',
             "repository" => "spatie/laravel-mailcoach",
             "branches" => [
                 "v4" => "v4",
