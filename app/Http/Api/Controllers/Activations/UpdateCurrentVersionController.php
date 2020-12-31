@@ -3,7 +3,6 @@
 
 namespace App\Http\Api\Controllers\Activations;
 
-
 use App\Http\Api\Requests\Activations\UpdateCurrentVersionRequest;
 use App\Models\Activation;
 
