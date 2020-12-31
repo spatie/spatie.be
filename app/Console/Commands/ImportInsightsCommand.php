@@ -17,7 +17,9 @@ class ImportInsightsCommand extends Command
 
     protected $description = 'Import the blog posts of team members.';
 
-    public function handle()
+    private const REGEX_ADD_SPACE_AFTER_PERIOD_WHEN_MISSING = '/(\.)([[:alpha:]]{2,})/';
+
+    public function handle(): void
     {
         $this->info('Syncing insights from RSS feeds...');
 
@@ -65,9 +67,14 @@ class ImportInsightsCommand extends Command
 
     protected function getShortSummary(AbstractEntry $entry): string
     {
-        return Str::words(
-            strip_tags($entry->getContent()),
-            30
+        $summary = Str::words($entry->getContent(), 30);
+
+        $summary = html_entity_decode(strip_tags($summary));
+
+        return preg_replace(
+            self::REGEX_ADD_SPACE_AFTER_PERIOD_WHEN_MISSING,
+            '$1 $2',
+            $summary
         );
     }
 }
