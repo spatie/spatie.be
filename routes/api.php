@@ -3,6 +3,7 @@
 use App\Http\Api\Controllers\Activations\CreateActivationController;
 use App\Http\Api\Controllers\Activations\DeleteActivationController;
 use App\Http\Api\Controllers\Activations\ShowActivationController;
+use App\Http\Api\Controllers\Activations\UpdateCurrentVersionController;
 use App\Http\Api\Controllers\HandleGitHubWebhookController;
 use App\Http\Api\Controllers\PriceController;
 use App\Http\Api\Controllers\SatisAuthenticationController;
@@ -19,6 +20,8 @@ Route::prefix('webhooks')->group(function () {
 Route::post('activations', CreateActivationController::class);
 Route::post('activations/{activation:uuid}/show', ShowActivationController::class);
 Route::delete('activations/{activation:uuid}/delete', DeleteActivationController::class);
+Route::post('activations/{activation:uuid}/version', UpdateCurrentVersionController::class);
+
 
 Route::get('price/{purchasable}/{countryCode}', PriceController::class);
 
