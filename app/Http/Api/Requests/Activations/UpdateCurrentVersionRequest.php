@@ -13,6 +13,7 @@ class UpdateCurrentVersionRequest extends FormRequest
             'current_version' => ['required'],
             'arch' => [],
             'platform' => [],
+            'os_version' => [],
         ];
     }
 }

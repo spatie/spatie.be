@@ -14,7 +14,7 @@ class UpdateCurrentVersionController
            'current_version' => $request->current_version,
             'arch' => $request->arch,
             'platform' => $request->platform,
-
+            'os_version' => $request->os_version,
         ]);
 
         return response()->noContent();
