@@ -12,6 +12,9 @@ class UpdateCurrentVersionController
     {
         $activation->update([
            'current_version' => $request->current_version,
+            'arch' => $request->arch,
+            'platform' => $request->platform,
+
         ]);
 
         return response()->noContent();

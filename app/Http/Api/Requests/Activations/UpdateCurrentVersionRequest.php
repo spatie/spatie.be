@@ -11,6 +11,8 @@ class UpdateCurrentVersionRequest extends FormRequest
     {
         return [
             'current_version' => ['required'],
+            'arch' => [],
+            'platform' => [],
         ];
     }
 }
