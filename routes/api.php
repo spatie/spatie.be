@@ -19,8 +19,8 @@ Route::prefix('webhooks')->group(function () {
 
 Route::post('activations', CreateActivationController::class);
 Route::post('activations/{activation:uuid}/show', ShowActivationController::class);
-Route::delete('activations/{activation:uuid}/delete', DeleteActivationController::class);
 Route::post('activations/{activation:uuid}/version', UpdateCurrentVersionController::class);
+Route::delete('activations/{activation:uuid}', DeleteActivationController::class);
 
 
 Route::get('price/{purchasable}/{countryCode}', PriceController::class);
