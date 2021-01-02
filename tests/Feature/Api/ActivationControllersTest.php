@@ -169,21 +169,4 @@ class ActivationControllersTest extends TestCase
 
         $this->assertEquals(0, Activation::count());
     }
-
-    /** @test */
-    public function it_will_not_delete_an_activation_if_the_license_key_does_not_match()
-    {
-        /** @var Activation $activation */
-        $activation = Activation::factory()->create();
-
-        $unrelatedLicense = License::factory()->create();
-
-        $this
-            ->deleteJson(action(DeleteActivationController::class, $activation), [
-                'license_key' => $unrelatedLicense->key,
-            ])
-            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-
-        $this->assertEquals(1, Activation::count());
-    }
 }

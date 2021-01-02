@@ -10,7 +10,6 @@ class DeleteActivationRequest extends FormRequest
     public function rules()
     {
         return [
-            'license_key' => ['required', new MatchingLicense($this->activation)],
         ];
     }
 }
