@@ -63,7 +63,7 @@
         "spatie/laravel-mailcoach-ses-feedback": "^2.0",
         "spatie/laravel-medialibrary": "^9.0",
         "spatie/laravel-menu": "^3.4",
-        "spatie/laravel-schedule-monitor": "^1.0",
+        "spatie/laravel-schedule-monitor": "^2.1",
         "spatie/laravel-stubs": "^2.1",
         "spatie/laravel-tail": "^4.2",
         "spatie/packagist-api": "^2.0",
