@@ -16,7 +16,6 @@ class Kernel extends HttpKernel
         // \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
         \Fruitcake\Cors\HandleCors::class,
-        ProtectDocsOfUnreleasedPackages::class,
     ];
 
     protected $middlewareGroups = [
@@ -27,6 +26,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             HandleReferrer::class,
+            ProtectDocsOfUnreleasedPackages::class,
         ],
 
         'admin' => [
