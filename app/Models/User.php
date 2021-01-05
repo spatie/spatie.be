@@ -133,6 +133,12 @@ class User extends Authenticatable
             1137,
             769,
             762,
+            3081,
+            3507,
+            783,
+            5750,
+            1324,
+            76,
         ];
 
         if (in_array($this->id, $earlyAccessUserIds)) {
