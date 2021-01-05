@@ -10,7 +10,7 @@ class ProtectDocsOfUnreleasedPackages
 {
     public function handle(Request $request, Closure $next)
     {
-        if (! Str::startsWith($request->url(), '/docs/ray')) {
+        if (! Str::startsWith($request->url(), 'https:spatie.be/docs/ray')) {
             return $next($request);
         }
 
