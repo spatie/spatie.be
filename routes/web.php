@@ -54,10 +54,6 @@ Route::prefix('about-us')->group(function () {
     });
 });
 
-Route::get('/docs/ray', function() {
-    return 'hello';
-});
-
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductsController::class, 'index'])->name('products.index');
     Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
