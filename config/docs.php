@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "ray",
+            "repository" => "spatie/ray",
+            "branches" => [
+                "master" => "v1",
+            ],
+            "category" => "General PHP",
+        ],
+        [
             "name" => "laravel-mailcoach",
             "repository" => "spatie/laravel-mailcoach",
             "branches" => [
