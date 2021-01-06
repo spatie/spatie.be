@@ -22,7 +22,7 @@ jobs:
                   mysql  -u root -proot -e 'CREATE DATABASE IF NOT EXISTS spatie_tests;'
 
             - name: Run composer install
-              run: composer update -n --prefer-dist
+              run: composer install -n --prefer-dist
               env:
                 COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
 
