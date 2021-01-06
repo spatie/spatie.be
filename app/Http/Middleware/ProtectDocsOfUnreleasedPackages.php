@@ -10,6 +10,7 @@ class ProtectDocsOfUnreleasedPackages
 {
     public function handle(Request $request, Closure $next)
     {
+        info('in middleware');
         if (! Str::contains($request->url(), 'docs/ray')) {
             return $next($request);
         }
