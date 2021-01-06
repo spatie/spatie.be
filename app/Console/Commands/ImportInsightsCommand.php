@@ -21,6 +21,8 @@ class ImportInsightsCommand extends Command
     {
         $this->info('Syncing insights from RSS feeds...');
 
+        // Temporarily disabled until laminas-validator supports PHP8
+        /**
         collect(config('services.rss'))
             ->each(function (string $feedUrl): void {
                 try {
@@ -43,6 +45,7 @@ class ImportInsightsCommand extends Command
                     $this->error("Could not load {$feedUrl}");
                 }
             });
+         */
     }
 
     protected function sanitizeTitle(string $title): string
