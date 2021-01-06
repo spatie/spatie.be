@@ -128,6 +128,7 @@ class User extends Authenticatable
 
     public function hasAccessToUnreleasedPurchasables(): bool
     {
+        info('has access?' . $this->id);
         $earlyAccessUserIds = [
             15,
             1137,
