@@ -39,7 +39,7 @@ class ImportInsightsCommand extends Command
 
                         $this->info("Imported `{$insight->title}`");
                     }
-                } catch (\Exception) {
+                } catch (\Exception $e) {
                     $this->error("Could not load {$feedUrl}");
                 }
             });
