@@ -13,7 +13,7 @@ class ProtectDocsOfUnreleasedPackages
         if (! Str::contains($request->url(), 'docs/ray')) {
             return $next($request);
         }
-
+info('user?' . auth()->check() ? 'yes' : 'no');
         if (! $user = auth()->user()) {
             abort(403);
         }
