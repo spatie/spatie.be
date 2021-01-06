@@ -6,10 +6,8 @@ use App\Models\Insight;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-use Laminas\Feed\Exception\ExceptionInterface;
 use Laminas\Feed\Reader\Entry\AbstractEntry;
 use Laminas\Feed\Reader\Reader;
-use Laminas\Http\Client\Adapter\Exception\TimeoutException;
 
 class ImportInsightsCommand extends Command
 {
@@ -41,7 +39,7 @@ class ImportInsightsCommand extends Command
 
                         $this->info("Imported `{$insight->title}`");
                     }
-                } catch (ExceptionInterface | TimeoutException $exception) {
+                } catch (\Exception) {
                     $this->error("Could not load {$feedUrl}");
                 }
             });

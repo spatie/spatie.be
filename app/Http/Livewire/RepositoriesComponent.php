@@ -23,7 +23,7 @@ class RepositoriesComponent extends Component
     /** @var bool */
     public $highlighted = false;
 
-    protected $updatesQueryString = ['search', 'sort'];
+    protected $queryString = ['search', 'sort'];
 
     public function mount(
         $type = 'packages',
