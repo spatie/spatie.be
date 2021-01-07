@@ -129,7 +129,7 @@ class ActivationControllersTest extends TestCase
     {
         $this
             ->postJson(action(CreateActivationController::class, [
-                'name' => 'test',
+                'name' => 'Franz Thüs',
                 'license_key' => $this->license->key,
             ]))
              ->json();
