@@ -3,7 +3,6 @@
 namespace App\Http;
 
 use App\Http\Middleware\HandleReferrer;
-use App\Http\Middleware\ProtectDocsOfUnreleasedPackages;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
