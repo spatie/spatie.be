@@ -128,6 +128,8 @@ class User extends Authenticatable
 
     public function hasAccessToUnreleasedPurchasables(): bool
     {
+        return true;
+
         $earlyAccessUserIds = [
             15,
             1137,
