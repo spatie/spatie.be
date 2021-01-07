@@ -31,8 +31,10 @@
         <div class="mt-6">
             <h4 class="title-subtext">License key</h4>
             <div class="mt-4 flex items-center text-xs text-gray">
+                <code
+                    class="mb-2 break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
                 @if (! $license->supportsActivations())
-                <livewire:domain :license="$license"/>
+                    <livewire:domain :license="$license"/>
                 @endif
 
                 @if ($license->isExpired())
@@ -42,8 +44,6 @@
                 @endif
             </div>
 
-            <code
-                class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
         </div>
 
         @if($license->supportsActivations())
