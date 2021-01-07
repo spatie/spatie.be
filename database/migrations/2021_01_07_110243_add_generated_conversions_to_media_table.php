@@ -9,7 +9,7 @@ class AddGeneratedConversionsToMediaTable extends Migration
     public function up()
     {
         Schema::table('media', function (Blueprint $table) {
-            $table->json('generated_conversions')
+            $table->json('generated_conversions');
         });
     }
 }
