@@ -28,11 +28,9 @@
             @endif
         </div>
 
-        <div class="mt-2">
-            <div class="flex items-center text-xs text-gray">
-                <span>License key</span>
-                <span class="char-separator mx-2">•</span>
-
+        <div class="mt-6">
+            <h4 class="title-subtext">License key</h4>
+            <div class="mt-4 flex items-center text-xs text-gray">
                 @if (! $license->supportsActivations())
                 <livewire:domain :license="$license"/>
                 @endif
@@ -49,7 +47,7 @@
         </div>
 
         @if($license->supportsActivations())
-            <div class="mt-4">
+            <div class="mt-6">
                 <h4 class="title-subtext">Activations</h4>
 
                 <livewire:activations :license="$license"/>
