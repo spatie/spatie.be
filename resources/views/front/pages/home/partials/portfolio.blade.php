@@ -14,7 +14,8 @@
                     </span>
                 </h3>
                 <p class="text-lg">
-                    Dump debugging has evolved. Ray is a desktop app that vastly improves your debugging experience without the hassle of installing extra PHP extensions.
+                    Dump debugging has evolved.
+                    <br>Ray is a desktop app that vastly improves your debugging experience without the hassle of installing extra PHP extensions.
                 </p>
                 <ul class="text-lg mt-8">
                     <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://myray.app" target="_blank" rel="nofollow noreferrer noopener">myray.app</a></li>
