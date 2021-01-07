@@ -18,9 +18,11 @@ class ProfileController
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
 
-        $profileRequest->get('newsletter')
-            ? app(SubscribeUserToNewsletterAction::class)->execute($user)
-            : app(UnsubscribeUserFromNewsletterAction::class)->execute($user);
+        if ($user->email) {
+            $profileRequest->get('newsletter')
+                ? app(SubscribeUserToNewsletterAction::class)->execute($user)
+                : app(UnsubscribeUserFromNewsletterAction::class)->execute($user);
+        }
 
         $user->update($profileRequest->getUserAttributes());
 

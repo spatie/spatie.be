@@ -19,7 +19,7 @@ class License extends Resource
     public static $title = 'key';
 
     public static $search = [
-        'id', 'title',
+        'id', 'key', 'domain',
     ];
 
     public function fields(Request $request)
