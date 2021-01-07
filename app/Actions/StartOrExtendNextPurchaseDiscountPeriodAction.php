@@ -14,6 +14,8 @@ class StartOrExtendNextPurchaseDiscountPeriodAction
             'next_purchase_discount_period_ends_at' => now()->addHours(24),
         ]);
 
-        Mail::to($user->email)->queue(new NextPurchaseDiscountPeriodStartedMail($user));
+        if ($user->email) {
+            Mail::to($user->email)->queue(new NextPurchaseDiscountPeriodStartedMail($user));
+        }
     }
 }
