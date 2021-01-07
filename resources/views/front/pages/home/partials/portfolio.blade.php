@@ -8,9 +8,9 @@
         <div class="sm:col-start-2 sm:col-span-3 | self-center">
             <div class="markup links-blue links-underline">
                 <h3 class="title">
-                    Ray
+                    Debug with Ray
                     <span class="title-subtext text-pink-dark block">
-                        Electron app
+                        Electron app <span class="font-normal">for Mac, Windows and Linux</span>
                     </span>
                 </h3>
                 <p class="text-lg">
