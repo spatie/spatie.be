@@ -49,12 +49,10 @@
         </div>
 
         @if($license->supportsActivations())
-            <div class="mt-2">
-                <div class="items-center text-xs text-gray">
-                    <div>Activations</div>
+            <div class="mt-4">
+                <h4 class="title-subtext">Activations</h4>
 
-                    <livewire:activations :license="$license"/>
-                </div>
+                <livewire:activations :license="$license"/>
             </div>
         @endif
 

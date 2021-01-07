@@ -1,22 +1,24 @@
-<div wire:poll.5s>
+<div class="markup-tables" wire:poll.5s>
     @if(count($activations))
-        <table>
+        <table class="text-xs">
             <thead>
                 <tr>
-                    <td>Name</td>
-                    <td>Activated at</td>
-                    <td></td>
+                    <th>Name</th>
+                    <th class="th-numeric">Activated at</th>
+                    <th></th>
                 </tr>
             </thead>
             @foreach($activations as $activation)
                 <tr wire:key="{{ $activation->id }}">
                     <td>{{ $activation->name }}</td>
-                    <td>{{ $activation->created_at->format('Y-m-d H:i:s') }}</td>
-                    <td wire:click="delete({{ $activation->id }})">Delete</td>
+                    <td class="td-numeric">{{ $activation->created_at->format('Y-m-d H:i:s') }}</td>
+                    <td>
+                        <button wire:click="delete({{ $activation->id }})"class="link link-red">Delete</button>
+                    </td>
                 </tr>
             @endforeach
         </table>
     @else
-        Product has not been activated.
+        <p class="text-xs text-gray">Product has not been activated.</p>
     @endif
 </div>
