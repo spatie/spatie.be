@@ -140,3 +140,5 @@ Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::view('offline', 'errors.offline')->name('offline');
+
+Route::redirect('/docs/products/ray', '/docs/ray');
