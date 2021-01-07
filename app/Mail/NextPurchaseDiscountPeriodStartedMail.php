@@ -23,6 +23,7 @@ class NextPurchaseDiscountPeriodStartedMail extends Mailable implements ShouldQu
     public function build()
     {
         return $this
+            ->subject('Get 10% discount on your next purchase')
             ->to($this->user->email)
             ->markdown('mails.nextPurchaseDiscountPeriodStarted');
     }
