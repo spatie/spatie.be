@@ -30,6 +30,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
 
+Route::redirect('/docs/products/ray', '/docs/ray');
+
 Route::post('paddle/webhook', WebhookController::class);
 
 Route::get('is-valid-license/{license}', IsValidLicenseController::class);
@@ -141,4 +143,4 @@ Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::
 
 Route::view('offline', 'errors.offline')->name('offline');
 
-Route::redirect('/docs/products/ray', '/docs/ray');
+
