@@ -20,7 +20,6 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Panel;
 use NovaItemsField\Items;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;

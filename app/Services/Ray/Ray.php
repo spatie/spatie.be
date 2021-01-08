@@ -4,7 +4,6 @@ namespace App\Services\Ray;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
 use Symfony\Component\Yaml\Yaml;
 
 class Ray

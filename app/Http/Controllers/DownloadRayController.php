@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Purchase;
 use App\Services\Ray\Ray;
 use Illuminate\Http\Request;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class DownloadRayController
 {
