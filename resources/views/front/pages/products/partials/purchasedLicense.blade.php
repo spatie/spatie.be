@@ -1,5 +1,6 @@
 <div class="cells grid-cols-auto-1fr">
     <div class="cell-l">
+        {!! $license->purchasable->getting_started_description ?? '' !!}
         <div class="grid grid-flow-col gap-4 justify-start">
             @if ($license->purchasable->getting_started_url)
                 <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">

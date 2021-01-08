@@ -39,6 +39,8 @@
                             <br /><br />
                             Here's a little bonus: you will get 10% discount on purchases in the next 24 hours!
 
+                            {!! $purchasable->getting_started_description ?? '' !!}
+
                             @if ($purchasable->getting_started_url)
                                 <br>
                                 <a class="link-white link-underline" href="{{ $purchasable->getting_started_url }}">

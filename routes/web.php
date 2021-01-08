@@ -9,6 +9,7 @@ use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
+use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\SignedProductLicenseController;
 use App\Http\Controllers\GitHubSocialiteController;
@@ -59,6 +60,8 @@ Route::prefix('about-us')->group(function () {
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductsController::class, 'index'])->name('products.index');
     Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
+
+    Route::get('ray/download/{platform}/latest', DownloadRayController::class);
 
     Route::get('{product:slug}/purchasables/{purchasable}/purchase-complete', AfterPaddleSaleController::class);
 
