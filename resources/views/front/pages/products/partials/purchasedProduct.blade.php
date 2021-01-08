@@ -5,7 +5,7 @@
 
 <div class="cells">
     <div class="cell-l">
-
+        {!! $purchasable->getting_started_description ?? '' !!}
         <div class="grid grid-flow-col gap-4 justify-start">
             @if ($purchasable->getting_started_url)
                 <a class="link-blue link-underline" href="{{ $purchasable->getting_started_url }}">
@@ -18,7 +18,7 @@
                     Videos
                 </a>
             @endif
-            
+
             @foreach($purchasable->getMedia('downloads') as $download)
                     @php
                         $downloadUrl =  URL::temporarySignedRoute(
@@ -51,6 +51,6 @@
             <span class="char-searator mx-1">•</span>
             Purchased on {{ $purchase->created_at->format('Y-m-d') }}
         </div>
-        
+
     </div>
 </div>
