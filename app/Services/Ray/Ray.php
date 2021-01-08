@@ -62,6 +62,6 @@ class Ray
     {
         $latestVersion = $this->latestLinuxVersion();
 
-        return "{$this->baseUrl}Ray-{$latestVersion}.AppImage";
+        return "{$this->baseUrl}/Ray-{$latestVersion}.AppImage";
     }
 }
