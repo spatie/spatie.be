@@ -172,6 +172,7 @@ module.exports = {
 
             minHeight: {
                 '10': '2.5rem',
+                '12': '3rem',
             },
 
             zIndex: {
