@@ -34,9 +34,9 @@
                     </span>
                     </p>
                 @endforeach
-                <div class="mt-12">
-                {{ $posts->links() }}
-                </div>
+            </div>
+            <div class="mt-12">
+            {{ $posts->onEachSide(1)->links() }}
             </div>
         </div>
     </section>

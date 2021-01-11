@@ -79,10 +79,10 @@
         </section>
 
         <div class="section md:-mt-8 pt-0 pb-16 wrap">
-            <div class="flex-0 text-xs text-gray-light mt-6">
-                You'll get 10% extra discount when making a next purchase within 24 hours.<br />
-
-                Prices exclusive of VAT for buyers without a valid VAT number.
+            <div class="flex-0 text-xs text-gray mt-6">
+                You'll get 10% extra discount when making a next purchase within 24 hours.
+                <br />
+                VAT will be calculated during checkout by <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
 
             </div>
         </div>
