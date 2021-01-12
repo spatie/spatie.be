@@ -33,7 +33,9 @@
             <h4 class="title-subtext">License key</h4>
             <div class="mt-4 text-xs text-gray">
                 <code
-                    class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm">{{ $license->key }}</code>
+                    class="break-all font-mono text-blue bg-blue-lightest bg-opacity-25 px-2 py-1 rounded-sm"
+                >{{ $license->key }}<span id="copy-to-clipboard" class="underline select-none cursor-pointer" onclick="copyLicense()">copy</span></code>
+
                 <div class="mt-2">
                 @if (! $license->supportsActivations())
                     <livewire:domain :license="$license"/>
@@ -79,8 +81,20 @@
     </span>
 </div>
 
-
 <script type="text/javascript">
+    function copyLicense() {
+            navigator.clipboard.writeText('{{ $license->key }}')
+
+            const copyElement = document.getElementById('copy-to-clipboard');
+            copyElement.classList.add('text-green');
+            copyElement.innerText = 'copied!';
+
+            setTimeout(() => {
+                copyElement.classList.remove('text-green');
+                copyElement.innerText = 'copy';
+            }, 2000);
+        }
+
     function indexOfFirstDigitInString(string) {
         let firstDigit = string.match(/\d/);
 
