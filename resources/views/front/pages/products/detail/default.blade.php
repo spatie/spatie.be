@@ -70,7 +70,7 @@
                 @if ($licenses->count() || $purchases->count())
                     <h2 class="title line-after mt-16 mb-12">Buy extra licenses</h2>
                 @endif
-                <div class="md:-mx-2 md:grid md:grid-flow-col items-stretch justify-center">
+                <div class="md:-mx-2 md:grid md:grid-flow-col items-stretch justify-start">
                     @foreach($product->purchasablesWithoutRenewals as $purchasable)
                         @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
                     @endforeach
@@ -78,7 +78,7 @@
             </div>
         </section>
 
-        <div class="section md:-mt-8 pt-0 pb-16 wrap">
+        <div class="section md:-mt-12 pt-0 pb-16 wrap">
             <div class="flex-0 text-xs text-gray mt-6">
                 You'll get 10% extra discount when making a next purchase within 24 hours.
                 <br />
