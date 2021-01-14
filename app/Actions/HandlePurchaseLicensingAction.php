@@ -7,6 +7,7 @@ use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
+use Exception;
 
 class HandlePurchaseLicensingAction
 {
@@ -58,6 +59,11 @@ class HandlePurchaseLicensingAction
 
     protected function handleRenewal(Purchase $purchase): void
     {
+        $this->ensureUserOwnsPurchasableToRenew(
+            $purchase->user,
+            $purchase->purchasable->originalPurchasable
+        );
+
         $license = $purchase->wasMadeForLicense();
         if (! $license) {
             throw CouldNotRenewLicenseForPurchase::make($purchase);
@@ -65,6 +71,12 @@ class HandlePurchaseLicensingAction
 ray($license->expires_at);
         $license->renew();
         ray('renewing license')->model($license->fresh())->blue();
+    }
 
+    protected function ensureUserOwnsPurchasableToRenew(User $user, Purchasable $purchasableToRenew): void
+    {
+        if (! $user->owns($purchasableToRenew)) {
+            throw new Exception("User {$user->id} doesn't own purchasable {$purchasableToRenew->id} to renew.");
+        }
     }
 }
