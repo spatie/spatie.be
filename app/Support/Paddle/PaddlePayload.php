@@ -49,8 +49,18 @@ class PaddlePayload
         return $this->payload[$name] ?? null;
     }
 
+    public function quantity(): int
+    {
+        return $this->payload['quantity'] ?? 1;
+    }
+
     public function toArray(): array
     {
         return $this->payload;
+    }
+
+    public function passthrough(): array
+    {
+        return json_decode($this->passthrough, true);
     }
 }

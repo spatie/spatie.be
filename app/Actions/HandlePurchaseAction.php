@@ -40,6 +40,7 @@ class HandlePurchaseAction
         Purchasable $purchasable,
         PaddlePayload $paddlePayload,
         ?Referrer $referrer = null
+
     ): Purchase {
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
@@ -60,18 +61,23 @@ class HandlePurchaseAction
         return $purchase;
     }
 
-    protected function createPurchase(User $user, Purchasable $purchasable, PaddlePayload $paddlePayload): Purchase
-    {
+    protected function createPurchase(
+        User $user,
+        Purchasable $purchasable,
+        PaddlePayload $paddlePayload
+    ): Purchase {
         $receipt = Receipt::where('order_id', $paddlePayload->order_id)->first();
 
         return Purchase::create([
             'license_id' => null,
             'user_id' => $user->id,
             'purchasable_id' => $purchasable->id,
+            'quantity' => $paddlePayload->quantity(),
             'receipt_id' => $receipt->id,
             'paddle_webhook_payload' => $paddlePayload->toArray(),
             'paddle_fee' => $paddlePayload->balance_fee,
             'earnings' => $paddlePayload->balance_earnings,
+            'passthrough' => $paddlePayload->passthrough()
         ]);
     }
 }

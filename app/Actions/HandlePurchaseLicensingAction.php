@@ -2,11 +2,11 @@
 
 namespace App\Actions;
 
+use App\Exceptions\CouldNotRenewLicenseForPurchase;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
-use Exception;
 
 class HandlePurchaseLicensingAction
 {
@@ -19,30 +19,17 @@ class HandlePurchaseLicensingAction
 
     public function execute(Purchase $purchase): Purchase
     {
-        if ($purchase->license_id) {
-            throw new Exception("Purchase {$purchase->id} already has a license ({$purchase->license_id})");
-        }
-
-        return $this->handleLicensing($purchase);
-    }
-
-    protected function handleLicensing(Purchase $purchase): Purchase
-    {
-        $purchasableToLicense = $purchase->purchasable->isRenewal()
-            ? $purchase->purchasable->originalPurchasable
-            : $purchase->purchasable;
-
-        if (! $purchasableToLicense->requires_license) {
+        if (! $purchase->purchasable->requires_license) {
             return $purchase;
         }
 
         if ($purchase->purchasable->isRenewal()) {
-            $this->ensureUserOwnsPurchasableToRenew($purchase->user, $purchasableToLicense);
+            $this->handleRenewal($purchase);
         }
 
-        $license = $this->createOrRenewLicense($purchase->user, $purchasableToLicense, $purchase->purchasable->isRenewal());
-
-        $purchase->update(['license_id' => $license->id]);
+        foreach (range(1, $purchase->quantity) as $i) {
+            $this->createLicenseAction->execute($purchase->user, $purchase->purchasable);
+        }
 
         return $purchase;
     }
@@ -61,10 +48,14 @@ class HandlePurchaseLicensingAction
         return $this->createLicenseAction->execute($user, $purchasable);
     }
 
-    protected function ensureUserOwnsPurchasableToRenew(User $user, $purchasableToRenew): void
+    protected function handleRenewal(Purchase $purchase): void
     {
-        if (! $user->owns($purchasableToRenew)) {
-            throw new Exception("User {$user->id} doesn't own purchasable {$purchasableToRenew->id} to renew.");
+        $license = $purchase->wasMadeForLicense();
+
+        if (! $license) {
+            throw CouldNotRenewLicenseForPurchase::make($purchase);
         }
+
+        $license->renew();
     }
 }
