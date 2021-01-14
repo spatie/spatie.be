@@ -42,23 +42,29 @@ class HandlePurchaseAction
         ?Referrer $referrer = null
 
     ): Purchase {
+        ray('handling purchase');
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
-        $this->startOrExtendExtraDiscountPeriodAction->execute($user);
-
-        $this->addPurchasedTagsToEmailListSubscriberAction->execute($purchase);
-
+        ray('handle license')->purple();
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
         if ($purchasable->repository_access && $user->github_username) {
             $this->restoreRepositoryAccessAction->execute($user);
         }
 
+        ray('extend discount');
+        $this->startOrExtendExtraDiscountPeriodAction->execute($user);
+
+        ray('add tags');
+        $this->addPurchasedTagsToEmailListSubscriberAction->execute($purchase);
+
+
+
         if ($referrer) {
             $this->attributePurchaseToReferrerAction->execute($purchase, $referrer);
         }
 
-        return $purchase;
+        return $purchase->refresh();
     }
 
     protected function createPurchase(
@@ -69,7 +75,6 @@ class HandlePurchaseAction
         $receipt = Receipt::where('order_id', $paddlePayload->order_id)->first();
 
         return Purchase::create([
-            'license_id' => null,
             'user_id' => $user->id,
             'purchasable_id' => $purchasable->id,
             'quantity' => $paddlePayload->quantity(),

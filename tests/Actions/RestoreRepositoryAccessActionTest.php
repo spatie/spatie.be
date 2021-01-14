@@ -34,16 +34,17 @@ class RestoreRepositoryAccessActionTest extends TestCase
             'github_username' => 'riasvdv',
         ]);
 
-        $this->license = License::factory()->create([
-            'user_id' => $this->user->id,
-            'expires_at' => now()->addYear(),
-        ]);
 
         $this->purchase = Purchase::factory()->create([
             'user_id' => $this->user->id,
-            'license_id' => $this->license->id,
             'receipt_id' => ReceiptFactory::new()->create()->id,
             'has_repository_access' => false,
+        ]);
+
+        $this->license = License::factory()->create([
+            'purchase_id' => $this->purchase->id,
+            'user_id' => $this->user->id,
+            'expires_at' => now()->addYear(),
         ]);
     }
 

@@ -35,18 +35,25 @@ class License extends Model implements AuthenticatableContract
                 return;
             }
 
+            /*
             static::withoutEvents(
                 fn () => $license
                 ->refresh()
                 ->activations
                 ->each(fn (Activation $activation) => $activation->updateSignedActivation())
             );
+            */
         });
     }
 
     public function purchasable(): BelongsTo
     {
         return $this->belongsTo(Purchasable::class);
+    }
+
+    public function purchase(): BelongsTo
+    {
+        return $this->belongsTo(Purchase::class);
     }
 
     public function scopeForProduct(Builder $query, Product $product): void
@@ -80,11 +87,14 @@ class License extends Model implements AuthenticatableContract
 
     public function renew(): self
     {
-        $this->update([
+        $attributes = [
             'expires_at' => $this->expirationDateWhenRenewed(),
             'expiration_warning_mail_sent_at' => null,
             'expiration_mail_sent_at' => null,
-        ]);
+        ];
+
+        $this->update($attributes);
+        ray('attributes', $attributes);
 
         return $this;
     }

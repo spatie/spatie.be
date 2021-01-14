@@ -4,12 +4,13 @@ namespace Tests\Actions;
 
 use App\Actions\CreateLicenseAction;
 use App\Models\Purchasable;
+use App\Models\Purchase;
 use App\Models\User;
 use Tests\TestCase;
 
 class CreateLicenseActionTest extends TestCase
 {
-    private CreateLicenseAction $action;
+    protected CreateLicenseAction $action;
 
     protected function setUp() : void
     {
@@ -22,13 +23,13 @@ class CreateLicenseActionTest extends TestCase
     public function it_can_create_a_license()
     {
         $user = User::factory()->create();
-        $purchasable = Purchasable::factory()->create();
+        $purchase = Purchase::factory()->create();
 
-        $license = $this->action->execute($user, $purchasable);
+        $license = $this->action->execute($user, $purchase);
 
         $this->assertNotNull($license->key);
         $this->assertTrue($license->expires_at->isNextYear());
         $this->assertTrue($license->user->is($user));
-        $this->assertTrue($license->purchasable->is($purchasable));
+        $this->assertTrue($license->purchase->is($purchase));
     }
 }

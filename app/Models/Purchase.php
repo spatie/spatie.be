@@ -59,6 +59,7 @@ class Purchase extends Model
 
     public function wasMadeForLicense(): ?License
     {
+        ray($this->passthrough);
         if (! $licenseId = Arr::get($this->passthrough, 'license_id')) {
             return null;
         }

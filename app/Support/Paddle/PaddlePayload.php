@@ -61,6 +61,6 @@ class PaddlePayload
 
     public function passthrough(): array
     {
-        return json_decode($this->passthrough, true);
+        return json_decode($this->passthrough, true) ?? [];
     }
 }

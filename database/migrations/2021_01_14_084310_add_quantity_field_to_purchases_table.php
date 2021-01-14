@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\License;
+use App\Models\Purchase;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -8,14 +10,33 @@ class AddQuantityFieldToPurchasesTable extends Migration
 {
     public function up()
     {
-        Schema::table('purchases', function (Blueprint $table) {
-            $table->integer('quantity')->default(1);
-            $table->dropColumn('license_id');
-            $table->json('passthrough');
+        Schema::table('licenses', function (Blueprint $table) {
+            $table->string('name')->nullable();
+            $table->unsignedBigInteger('purchase_id')->nullable();
+
+            $table->foreign('purchase_id')->references('id')->on('purchases')->cascadeOnDelete();
         });
 
-        Schema::table('license', function (Blueprint $table) {
-            $table->string('name')->nullable();
+        License::each(function (License $license) {
+            $purchase = Purchase::where('license_id', $license->id)->first();
+
+            if (!$purchase) {
+                return;
+            }
+
+            $license->update([
+                'purchase_id' => $purchase->id,
+            ]);
         });
+
+        Schema::table('purchases', function (Blueprint $table) {
+            $table->dropForeign('purchases_license_id_foreign');
+            $table->dropColumn('license_id');
+
+            $table->integer('quantity')->default(1);
+            $table->json('passthrough')->nullable();
+        });
+
+
     }
 }
