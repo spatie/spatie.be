@@ -92,7 +92,6 @@ class License extends Model implements AuthenticatableContract
         ];
 
         $this->update($attributes);
-        ray('attributes', $attributes);
 
         return $this;
     }

@@ -12,7 +12,6 @@ class CreateLicenseAction
 {
     public function execute(User $user, Purchase $purchase): License
     {
-        ray('creating license')->orange();
         return License::create([
             'key' => Str::random(64),
             'user_id' => $user->id,

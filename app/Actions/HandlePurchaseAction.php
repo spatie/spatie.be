@@ -42,20 +42,16 @@ class HandlePurchaseAction
         ?Referrer $referrer = null
 
     ): Purchase {
-        ray('handling purchase');
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
-        ray('handle license')->purple();
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
         if ($purchasable->repository_access && $user->github_username) {
             $this->restoreRepositoryAccessAction->execute($user);
         }
 
-        ray('extend discount');
         $this->startOrExtendExtraDiscountPeriodAction->execute($user);
 
-        ray('add tags');
         $this->addPurchasedTagsToEmailListSubscriberAction->execute($purchase);
 
 

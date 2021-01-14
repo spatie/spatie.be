@@ -20,23 +20,16 @@ class HandlePurchaseLicensingAction
 
     public function execute(Purchase $purchase): Purchase
     {
-        ray('handling license')->model($purchase);
         if (! $purchase->purchasable->requires_license) {
-            ray('does not require purchase')->red();
             return $purchase;
         }
         if ($purchase->purchasable->isRenewal()) {
-
-
-            ray('is renewal')->green();
             $this->handleRenewal($purchase);
 
             return $purchase;
         }
 
-        ray('purchase quantity', $purchase->quantity);
         foreach (range(1, $purchase->quantity) as $i) {
-            ray('creating license')->blue();
             $this->createLicenseAction->execute($purchase->user, $purchase);
         }
 
@@ -68,9 +61,8 @@ class HandlePurchaseLicensingAction
         if (! $license) {
             throw CouldNotRenewLicenseForPurchase::make($purchase);
         }
-ray($license->expires_at);
+
         $license->renew();
-        ray('renewing license')->model($license->fresh())->blue();
     }
 
     protected function ensureUserOwnsPurchasableToRenew(User $user, Purchasable $purchasableToRenew): void
