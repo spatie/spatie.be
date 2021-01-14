@@ -12,7 +12,7 @@ class AddQuantityFieldToPurchasesTable extends Migration
     {
         Schema::table('licenses', function (Blueprint $table) {
             $table->string('name')->nullable();
-            $table->unsignedBigInteger('purchase_id')->nullable();
+            $table->unsignedBigInteger('purchase_id')->after('purchasable_id')->nullable();
 
             $table->foreign('purchase_id')->references('id')->on('purchases')->cascadeOnDelete();
         });
@@ -36,7 +36,5 @@ class AddQuantityFieldToPurchasesTable extends Migration
             $table->integer('quantity')->default(1);
             $table->json('passthrough')->nullable();
         });
-
-
     }
 }
