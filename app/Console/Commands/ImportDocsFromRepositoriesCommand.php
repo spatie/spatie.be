@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
@@ -80,6 +81,8 @@ class ImportDocsFromRepositoriesCommand extends Command
                 cache()->store('docs')->forever('docs', $pages);
 
                 $this->info('Done caching Sheets.');
+            }, function(Exception $exception) {
+                throw $exception;
             })
             ->always(function (): void {
                 File::deleteDirectory(storage_path('docs-temp/'));
