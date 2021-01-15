@@ -81,7 +81,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                 cache()->store('docs')->forever('docs', $pages);
 
                 $this->info('Done caching Sheets.');
-            }, function(Exception $exception) {
+            }, function (Exception $exception) {
                 throw $exception;
             })
             ->always(function (): void {
