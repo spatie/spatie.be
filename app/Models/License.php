@@ -66,11 +66,6 @@ class License extends Model implements AuthenticatableContract
         return $this->belongsTo(User::class);
     }
 
-    public function purchases(): HasMany
-    {
-        return $this->hasMany(Purchase::class);
-    }
-
     public function activations(): HasMany
     {
         return $this->hasMany(Activation::class);
@@ -78,9 +73,7 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return $this->purchases()
-            ->where('has_repository_access', true)
-            ->exists();
+        return $this->purchase->has_repository_access;
     }
 
     public function renew(): self
