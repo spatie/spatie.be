@@ -261,7 +261,7 @@ class HandlePurchaseActionTest extends TestCase
         TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
 
         $product = Product::factory()->create([
-           'slug' => 'front-line-php'
+           'slug' => 'front-line-php',
         ]);
 
         $purchasable = Purchasable::factory()->create([
@@ -301,7 +301,7 @@ class HandlePurchaseActionTest extends TestCase
         ]);
 
         $product = Product::factory()->create([
-            'slug' => 'front-line-php'
+            'slug' => 'front-line-php',
         ]);
 
         $purchasable = Purchasable::factory()->create([
@@ -320,7 +320,6 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertCount(1, $this->user->licenses);
 
         $this->assertEquals('2022-01-01 00:00:00', $existingRayLicense->refresh()->expires_at->format('Y-m-d H:i:s'));
-
     }
 
     protected function createRayPurchasable(): Purchasable
@@ -333,7 +332,5 @@ class HandlePurchaseActionTest extends TestCase
             'product_id' => $product->id,
             'type' => 'standard',
         ]);
-
-
     }
 }

@@ -89,8 +89,8 @@ class HandlePurchaseAction
     {
         /** @var Purchasable|null $rayPurchasable */
         $rayPurchasable = Purchasable::query()
-            ->whereHas('product', function(Builder $query) {
-               $query->where('slug', 'ray');
+            ->whereHas('product', function (Builder $query) {
+                $query->where('slug', 'ray');
             })
             ->where('type', 'standard')
             ->first();
