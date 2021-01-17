@@ -4,6 +4,7 @@ namespace Tests\Http;
 
 use App\Http\Controllers\AfterPaddleSaleController;
 use App\Models\Purchasable;
+use App\Models\User;
 use Tests\TestCase;
 
 class AfterPaddleSaleControllerTest extends TestCase
@@ -11,6 +12,9 @@ class AfterPaddleSaleControllerTest extends TestCase
     /** @test */
     public function the_after_paddle_sale_controller_is_valid()
     {
+        $user = User::factory()->create();
+        $this->actingAs($user);
+
         /** @var Purchasable $purchasable */
         $purchasable = Purchasable::factory()->create();
 

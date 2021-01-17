@@ -23,7 +23,11 @@
     @if(session()->has('sold_purchasable'))
         @php
             /** @var \App\Models\Purchasable $purchasable */
-            $purchasable = session()->get('sold_purchasable')
+            $purchasable = session()->get('sold_purchasable');
+
+            /** @var \App\Models\Purchase $purchase */
+            $purchase = session()->get('latest_purchase')
+
         @endphp
 
         <section id="cta" class="pb-16">
@@ -37,8 +41,11 @@
                             Thanks for buying {{ $product->title }}. You can view details and manage your purchase below this page.
 
                             <br /><br />
+                            @if(optional($purchase)->unlocksRayLicense())
+                                Your purchase also unlocked <a href="/products/ray">a license for Ray</a>.
+                                <br/><br />
+                            @endif
                             Here's a little bonus: you will get 10% discount on purchases in the next 24 hours!
-
                             {!! $purchasable->getting_started_description ?? '' !!}
 
                             @if ($purchasable->getting_started_url)

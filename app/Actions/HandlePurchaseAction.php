@@ -2,12 +2,14 @@
 
 namespace App\Actions;
 
+use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\Referrer;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use App\Support\Paddle\PaddlePayload;
+use Illuminate\Database\Eloquent\Builder;
 use Laravel\Paddle\Receipt;
 
 class HandlePurchaseAction
@@ -53,10 +55,12 @@ class HandlePurchaseAction
 
         $this->addPurchasedTagsToEmailListSubscriberAction->execute($purchase);
 
-
-
         if ($referrer) {
             $this->attributePurchaseToReferrerAction->execute($purchase, $referrer);
+        }
+
+        if ($purchase->unlocksRayLicense()) {
+            $this->createOrExtendRayLicense($user, $purchase);
         }
 
         return $purchase->refresh();
@@ -79,5 +83,27 @@ class HandlePurchaseAction
             'earnings' => $paddlePayload->balance_earnings,
             'passthrough' => $paddlePayload->passthrough(),
         ]);
+    }
+
+    public function createOrExtendRayLicense(User $user, Purchase $purchase)
+    {
+        /** @var Purchasable|null $rayPurchasable */
+        $rayPurchasable = Purchasable::query()
+            ->whereHas('product', function(Builder $query) {
+               $query->where('slug', 'ray');
+            })
+            ->where('type', 'standard')
+            ->first();
+
+        /** @var License|null $existingLicense */
+        $existingLicense = $user->licenses()->where('purchasable_id', $rayPurchasable->id)->first();
+
+        if ($existingLicense) {
+            $existingLicense->renew();
+
+            return;
+        }
+
+        app(CreateLicenseAction::class)->execute($user, $purchase, $rayPurchasable);
     }
 }
