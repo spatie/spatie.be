@@ -21,8 +21,7 @@ class RestoreRepositoryAccessAction
             ->where('has_repository_access', false)
             ->filter(fn (Purchase $purchase) => $purchase->purchasable->repository_access)
             ->filter(function (Purchase $purchase) {
-
-                foreach($purchase->licenses as $license) {
+                foreach ($purchase->licenses as $license) {
                     if (! $license->isExpired()) {
                         return true;
                     }

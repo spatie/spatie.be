@@ -20,7 +20,7 @@ class AddQuantityFieldToPurchasesTable extends Migration
         License::each(function (License $license) {
             $purchase = Purchase::where('license_id', $license->id)->first();
 
-            if (!$purchase) {
+            if (! $purchase) {
                 return;
             }
 

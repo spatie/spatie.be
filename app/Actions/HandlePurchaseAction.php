@@ -40,7 +40,6 @@ class HandlePurchaseAction
         Purchasable $purchasable,
         PaddlePayload $paddlePayload,
         ?Referrer $referrer = null
-
     ): Purchase {
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
@@ -78,7 +77,7 @@ class HandlePurchaseAction
             'paddle_webhook_payload' => $paddlePayload->toArray(),
             'paddle_fee' => $paddlePayload->balance_fee,
             'earnings' => $paddlePayload->balance_earnings,
-            'passthrough' => $paddlePayload->passthrough()
+            'passthrough' => $paddlePayload->passthrough(),
         ]);
     }
 }

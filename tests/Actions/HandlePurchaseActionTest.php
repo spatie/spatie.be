@@ -96,7 +96,7 @@ class HandlePurchaseActionTest extends TestCase
         );
 
         $this->assertCount(3, $purchase->licenses);
-        foreach($purchase->licenses as $license) {
+        foreach ($purchase->licenses as $license) {
             $this->assertTrue($license->expires_at->isNextYear());
         }
     }
@@ -144,7 +144,7 @@ class HandlePurchaseActionTest extends TestCase
         );
 
         $this->paddlePayloadAttributes['passthrough'] = json_encode([
-            'license_id' => $originalPurchase->licenses->first()->id
+            'license_id' => $originalPurchase->licenses->first()->id,
         ]);
         $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
 

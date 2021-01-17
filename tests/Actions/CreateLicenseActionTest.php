@@ -3,7 +3,6 @@
 namespace Tests\Actions;
 
 use App\Actions\CreateLicenseAction;
-use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use Tests\TestCase;

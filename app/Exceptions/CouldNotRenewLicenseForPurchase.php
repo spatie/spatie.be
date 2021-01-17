@@ -3,7 +3,6 @@
 
 namespace App\Exceptions;
 
-
 use App\Models\Purchase;
 use Exception;
 
