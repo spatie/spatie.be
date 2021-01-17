@@ -3,7 +3,7 @@
 namespace Tests\Actions;
 
 use App\Actions\StartOrExtendNextPurchaseDiscountPeriodAction;
-use App\Mail\NextPurchaseDiscountPeriodStartedMail;
+use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Spatie\TestTime\TestTime;
@@ -34,8 +34,6 @@ class StartOrExtendNextPurchaseDiscountPeriodActionTest extends TestCase
         $this->action->execute($this->user);
 
         $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
-
-        Mail::assertQueued(NextPurchaseDiscountPeriodStartedMail::class);
     }
 
     /** @test */

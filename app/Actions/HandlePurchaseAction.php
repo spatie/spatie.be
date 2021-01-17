@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Mail\PurchaseConfirmationMail;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
@@ -10,6 +11,7 @@ use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use App\Support\Paddle\PaddlePayload;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Mail;
 use Laravel\Paddle\Receipt;
 
 class HandlePurchaseAction
@@ -61,6 +63,10 @@ class HandlePurchaseAction
 
         if ($purchase->unlocksRayLicense()) {
             $this->createOrExtendRayLicense($user, $purchase);
+        }
+
+        if ($user->email) {
+            Mail::to($user->email)->queue(new PurchaseConfirmationMail($purchase));
         }
 
         return $purchase->refresh();

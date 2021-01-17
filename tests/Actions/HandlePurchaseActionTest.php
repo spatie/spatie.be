@@ -4,7 +4,7 @@ namespace Tests\Actions;
 
 use App\Actions\HandlePurchaseAction;
 use App\Actions\RestoreRepositoryAccessAction;
-use App\Mail\NextPurchaseDiscountPeriodStartedMail;
+use App\Mail\PurchaseConfirmationMail;
 use App\Models\License;
 use App\Models\Product;
 use App\Models\Purchasable;
@@ -60,6 +60,8 @@ class HandlePurchaseActionTest extends TestCase
     /** @test */
     public function it_can_create_a_purchase_without_a_license()
     {
+        Mail::fake();
+
         $purchasable = Purchasable::factory()->create([
             'requires_license' => false,
         ]);
@@ -78,6 +80,8 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertEquals($this->payload->fee, $purchase->paddle_fee);
         $this->assertEquals($this->payload->earnings, $purchase->balance_earnings);
         $this->assertEquals($this->payload->toArray(), $purchase->paddle_webhook_payload);
+
+        Mail::assertQueued(PurchaseConfirmationMail::class);
     }
 
     /** @test */
@@ -233,7 +237,7 @@ class HandlePurchaseActionTest extends TestCase
 
         $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
 
-        Mail::assertQueued(NextPurchaseDiscountPeriodStartedMail::class);
+        Mail::assertQueued(PurchaseConfirmationMail::class);
     }
 
     /** @test */
