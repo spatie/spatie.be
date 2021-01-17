@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <div class="sticky top-0 pt-4 ">
+    <div class="pt-4 ">
         <input type="search" class="text-xs form-input w-full h-8 py-0 px-2 mb-8" id="algolia-search" placeholder="Search…">
         <ol class="text-xs grid gap-2 links-blue">
             @foreach($navigation as $key => $section)

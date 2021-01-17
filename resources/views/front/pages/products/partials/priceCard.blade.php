@@ -30,7 +30,7 @@
 
         <div class="-mx-6 px-2 py-3 bg-green-lightest mt-4 text-black text-sm text-center">
             @if ($purchasable->discount_name)
-                <div>{{ $purchasable->discount_name }}</div>
+                <span>{{ $purchasable->discount_name }} <span class="char-separator">•</span> </span>
             @endif
             Now <span class="font-semibold">{{ $purchasable->displayableDiscountPercentage() }}%</span> off
                 @if(optional(current_user())->enjoysExtraDiscountOnNextPurchase())

@@ -22,7 +22,4 @@ Route::post('activations/{activation:uuid}/show', ShowActivationController::clas
 Route::post('activations/{activation:uuid}/version', UpdateCurrentVersionController::class);
 Route::delete('activations/{activation:uuid}', DeleteActivationController::class);
 
-
 Route::get('price/{purchasable}/{countryCode}', PriceController::class);
-
-Route::get('releases/{product}/{version}', ShowReleaseController::class);

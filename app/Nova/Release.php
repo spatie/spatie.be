@@ -36,7 +36,6 @@ class Release extends Resource
 
             DateTime::make('Released at'),
 
-
             Markdown::make('Notes'),
         ];
     }
