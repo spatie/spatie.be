@@ -2,9 +2,7 @@
 
 namespace App\Actions;
 
-use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
-use Illuminate\Support\Facades\Mail;
 
 class StartOrExtendNextPurchaseDiscountPeriodAction
 {

@@ -3,7 +3,6 @@
 namespace Tests\Actions;
 
 use App\Actions\StartOrExtendNextPurchaseDiscountPeriodAction;
-use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Spatie\TestTime\TestTime;

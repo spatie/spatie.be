@@ -4,7 +4,6 @@ namespace Tests\Unit\Mails;
 
 use App\Mail\PurchaseConfirmationMail;
 use App\Models\Purchase;
-use App\Models\User;
 use Tests\TestCase;
 
 class PurchaseConfirmationMailTest extends TestCase
