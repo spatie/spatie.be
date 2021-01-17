@@ -6,6 +6,7 @@ use App\Actions\HandlePurchaseAction;
 use App\Actions\RestoreRepositoryAccessAction;
 use App\Mail\NextPurchaseDiscountPeriodStartedMail;
 use App\Models\License;
+use App\Models\Product;
 use App\Models\Purchasable;
 use App\Models\Referrer;
 use App\Models\User;
@@ -20,7 +21,7 @@ use Tests\TestCase;
 
 class HandlePurchaseActionTest extends TestCase
 {
-    protected HandlePurchaseAction $action;
+    protected HandlePurchaseAction $handlePurchaseAction;
 
     protected User $user;
 
@@ -34,7 +35,7 @@ class HandlePurchaseActionTest extends TestCase
     {
         parent::setUp();
 
-        $this->action = resolve(HandlePurchaseAction::class);
+        $this->handlePurchaseAction = resolve(HandlePurchaseAction::class);
 
         $this->user = User::factory()->create();
 
@@ -63,7 +64,7 @@ class HandlePurchaseActionTest extends TestCase
             'requires_license' => false,
         ]);
 
-        $purchase = $this->action->execute(
+        $purchase = $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload
@@ -89,7 +90,7 @@ class HandlePurchaseActionTest extends TestCase
         $this->paddlePayloadAttributes['quantity'] = 3;
         $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
 
-        $purchase = $this->action->execute(
+        $purchase = $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload
@@ -108,7 +109,7 @@ class HandlePurchaseActionTest extends TestCase
             'requires_license' => true,
         ]);
 
-        $purchase = $this->action->execute(
+        $purchase = $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload
@@ -132,7 +133,7 @@ class HandlePurchaseActionTest extends TestCase
             'requires_license' => true,
         ]);
 
-        $originalPurchase = $this->action->execute(
+        $originalPurchase = $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload
@@ -148,7 +149,7 @@ class HandlePurchaseActionTest extends TestCase
         ]);
         $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
 
-        $this->action->execute(
+        $this->handlePurchaseAction->execute(
             $this->user,
             $renewalPurchasable,
             $this->payload,
@@ -171,7 +172,7 @@ class HandlePurchaseActionTest extends TestCase
             'requires_license' => true,
         ]);
 
-        $this->action->execute(
+        $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload,
@@ -179,7 +180,7 @@ class HandlePurchaseActionTest extends TestCase
 
         $this->assertEquals(1, $this->user->licenses()->count());
 
-        $this->action->execute(
+        $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload
@@ -193,7 +194,7 @@ class HandlePurchaseActionTest extends TestCase
     {
         $spy = $this->spy(RestoreRepositoryAccessAction::class);
 
-        $this->action = resolve(HandlePurchaseAction::class);
+        $this->handlePurchaseAction = resolve(HandlePurchaseAction::class);
 
         $this->user->update(['github_username' => 'username']);
 
@@ -202,7 +203,7 @@ class HandlePurchaseActionTest extends TestCase
             'repository_access' => 'spatie/some-repository',
         ]);
 
-        $this->action->execute(
+        $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload,
@@ -224,7 +225,7 @@ class HandlePurchaseActionTest extends TestCase
 
         $this->assertNull($this->user->next_purchase_discount_period_ends_at);
 
-        $this->action->execute(
+        $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload
@@ -244,7 +245,7 @@ class HandlePurchaseActionTest extends TestCase
 
         $referrer = Referrer::factory()->create();
 
-        $this->action->execute(
+        $this->handlePurchaseAction->execute(
             $this->user,
             $purchasable,
             $this->payload,
@@ -252,5 +253,87 @@ class HandlePurchaseActionTest extends TestCase
         );
 
         $this->assertCount(1, $referrer->refresh()->usedForPurchases);
+    }
+
+    /** @test */
+    public function buying_certain_products_will_also_create_a_ray_license()
+    {
+        TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
+
+        $product = Product::factory()->create([
+           'slug' => 'front-line-php'
+        ]);
+
+        $purchasable = Purchasable::factory()->create([
+            'requires_license' => false,
+            'product_id' => $product->id,
+        ]);
+
+        $rayPurchasable = $this->createRayPurchasable();
+
+        $this->handlePurchaseAction->execute(
+            $this->user,
+            $purchasable,
+            $this->payload
+        );
+
+        $this->user->refresh();
+
+        $this->assertCount(1, $this->user->purchases);
+        $this->assertCount(1, $this->user->licenses);
+
+        $license = $this->user->licenses->first();
+        $this->assertEquals($license->purchasable->id, $rayPurchasable->id);
+        $this->assertEquals('2021-01-01 00:00:00', $license->expires_at->format('Y-m-d H:i:s'));
+    }
+
+    /** @test */
+    public function buying_certain_products_will_extend_an_existing_ray_license()
+    {
+        TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
+
+        $rayPurchasable = $this->createRayPurchasable();
+
+        $existingRayLicense = $this->user->licenses()->create([
+            'purchasable_id' => $rayPurchasable->id,
+            'key' => 'test_key',
+            'expires_at' => now()->addYear(),
+        ]);
+
+        $product = Product::factory()->create([
+            'slug' => 'front-line-php'
+        ]);
+
+        $purchasable = Purchasable::factory()->create([
+            'requires_license' => false,
+            'product_id' => $product->id,
+        ]);
+
+        $this->handlePurchaseAction->execute(
+            $this->user,
+            $purchasable,
+            $this->payload
+        );
+
+        $this->user->refresh();
+
+        $this->assertCount(1, $this->user->licenses);
+
+        $this->assertEquals('2022-01-01 00:00:00', $existingRayLicense->refresh()->expires_at->format('Y-m-d H:i:s'));
+
+    }
+
+    protected function createRayPurchasable(): Purchasable
+    {
+        $product = Product::factory()->create([
+            'slug' => 'ray',
+        ]);
+
+        return Purchasable::factory()->create([
+            'product_id' => $product->id,
+            'type' => 'standard',
+        ]);
+
+
     }
 }

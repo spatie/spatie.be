@@ -17,6 +17,9 @@ class AfterPaddleSaleController
 
         session()->flash('sold_purchasable', $purchasable);
 
+        session()->flash('latest_purchase', current_user()->purchases()->latest()->first());
+
+
         flash()->success('Purchase successful!');
 
         return redirect()->route('products.show', $product);
