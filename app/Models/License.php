@@ -49,6 +49,11 @@ class License extends Model implements AuthenticatableContract
         return $this->belongsTo(Purchasable::class);
     }
 
+    public function purchase(): BelongsTo
+    {
+        return $this->belongsTo(Purchase::class);
+    }
+
     public function scopeForProduct(Builder $query, Product $product): void
     {
         $query->whereHas('purchasable', fn (
@@ -80,11 +85,13 @@ class License extends Model implements AuthenticatableContract
 
     public function renew(): self
     {
-        $this->update([
+        $attributes = [
             'expires_at' => $this->expirationDateWhenRenewed(),
             'expiration_warning_mail_sent_at' => null,
             'expiration_mail_sent_at' => null,
-        ]);
+        ];
+
+        $this->update($attributes);
 
         return $this;
     }

@@ -15,6 +15,8 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
+        ray()->newScreen('Debugging tests');
+
         $this->swap(Mix::class, function () {
             return '';
         });

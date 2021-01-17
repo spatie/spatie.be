@@ -20,7 +20,16 @@ class RestoreRepositoryAccessAction
         $user->purchases
             ->where('has_repository_access', false)
             ->filter(fn (Purchase $purchase) => $purchase->purchasable->repository_access)
-            ->reject(fn (Purchase $purchase) => $purchase->license && $purchase->license->isExpired())
+            ->filter(function (Purchase $purchase) {
+
+                foreach($purchase->licenses as $license) {
+                    if (! $license->isExpired()) {
+                        return true;
+                    }
+                }
+
+                return false;
+            })
             ->each(function (Purchase $purchase) use ($user) {
                 $this->gitHubApi->inviteToRepo(
                     $user->github_username,

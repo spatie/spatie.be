@@ -21,19 +21,6 @@ class HandlePurchaseLicensingActionTest extends TestCase
     }
 
     /** @test * */
-    public function it_throws_when_a_purchase_already_has_a_license()
-    {
-        $purchase = Purchase::make([
-            'id' => 1,
-            'license_id' => 1,
-        ]);
-
-        $this->expectExceptionMessage("Purchase {$purchase->id} already has a license ({$purchase->license_id})");
-
-        $this->action->execute($purchase);
-    }
-
-    /** @test * */
     public function it_throws_when_renewing_a_purchasable_that_the_user_doesnt_own()
     {
         $user = User::factory()->create();

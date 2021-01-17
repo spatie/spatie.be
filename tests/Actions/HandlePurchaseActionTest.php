@@ -20,13 +20,15 @@ use Tests\TestCase;
 
 class HandlePurchaseActionTest extends TestCase
 {
-    private HandlePurchaseAction $action;
+    protected HandlePurchaseAction $action;
 
-    private User $user;
+    protected User $user;
 
-    private Receipt $receipt;
+    protected Receipt $receipt;
 
-    private PaddlePayload $payload;
+    protected array $paddlePayloadAttributes;
+
+    protected PaddlePayload $payload;
 
     protected function setUp(): void
     {
@@ -38,7 +40,7 @@ class HandlePurchaseActionTest extends TestCase
 
         $this->receipt = ReceiptFactory::new()->create();
 
-        $this->payload = new PaddlePayload([
+        $this->paddlePayloadAttributes = [
             'receipt_url' => 'https://spatie.be',
             'payment_method' => 'creditcard',
             'alert_id' => 'fake_alert_id',
@@ -47,13 +49,15 @@ class HandlePurchaseActionTest extends TestCase
             'order_id' => $this->receipt->order_id,
             'balance_fee' => 10,
             'balance_earnings' => 10,
-        ]);
+        ];
+
+        $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
 
         EmailList::create(['name' => 'Spatie']);
     }
 
     /** @test */
-    public function it_can_create_a_purchase()
+    public function it_can_create_a_purchase_without_a_license()
     {
         $purchasable = Purchasable::factory()->create([
             'requires_license' => false,
@@ -65,7 +69,7 @@ class HandlePurchaseActionTest extends TestCase
             $this->payload
         );
 
-        $this->assertNull($purchase->license);
+        $this->assertCount(0, $purchase->licenses);
         $this->assertTrue($purchase->user->is($this->user));
         $this->assertTrue($purchase->purchasable->is($purchasable));
 
@@ -73,6 +77,28 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertEquals($this->payload->fee, $purchase->paddle_fee);
         $this->assertEquals($this->payload->earnings, $purchase->balance_earnings);
         $this->assertEquals($this->payload->toArray(), $purchase->paddle_webhook_payload);
+    }
+
+    /** @test */
+    public function it_can_create_a_purchase_for_multiple_purchasables_at_once()
+    {
+        $purchasable = Purchasable::factory()->create([
+            'requires_license' => true,
+        ]);
+
+        $this->paddlePayloadAttributes['quantity'] = 3;
+        $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
+
+        $purchase = $this->action->execute(
+            $this->user,
+            $purchasable,
+            $this->payload
+        );
+
+        $this->assertCount(3, $purchase->licenses);
+        foreach($purchase->licenses as $license) {
+            $this->assertTrue($license->expires_at->isNextYear());
+        }
     }
 
     /** @test */
@@ -88,8 +114,8 @@ class HandlePurchaseActionTest extends TestCase
             $this->payload
         );
 
-        $this->assertNotNull($purchase->license);
-        $this->assertTrue($purchase->license->expires_at->isNextYear());
+        $this->assertCount(1, $purchase->licenses);
+        $this->assertTrue($purchase->licenses->first()->expires_at->isNextYear());
     }
 
     /** @test */
@@ -106,23 +132,33 @@ class HandlePurchaseActionTest extends TestCase
             'requires_license' => true,
         ]);
 
-        $purchase = $this->action->execute(
+        $originalPurchase = $this->action->execute(
             $this->user,
             $purchasable,
-            $this->payload,
+            $this->payload
+        );
+        $this->assertCount(1, $originalPurchase->licenses);
+        $this->assertEquals(
+            Date::create(2021, 01, 01),
+            $originalPurchase->licenses->first()->fresh()->expires_at
         );
 
-        $license = $purchase->license;
-
-        $this->assertEquals(Date::create(2021, 01, 01), $license->fresh()->expires_at);
+        $this->paddlePayloadAttributes['passthrough'] = json_encode([
+            'license_id' => $originalPurchase->licenses->first()->id
+        ]);
+        $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
 
         $this->action->execute(
             $this->user,
             $renewalPurchasable,
-            $this->payload
+            $this->payload,
         );
 
-        $this->assertEquals(Date::create(2022, 01, 01), $license->fresh()->expires_at);
+        $this->assertEquals(
+            Date::create(2022, 01, 01),
+            $originalPurchase->licenses->first()->fresh()->expires_at
+        );
+
         $this->assertEquals(1, License::count());
     }
 

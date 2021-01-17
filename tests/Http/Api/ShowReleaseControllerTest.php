@@ -21,17 +21,6 @@ class ShowReleaseControllerTest extends TestCase
     }
 
     /** @test */
-    public function it_can_show_release_notes_for_a_released_release()
-    {
-        $response = $this
-            ->get("/api/releases/{$this->release->product->id}/0.0.1")
-            ->assertSuccessful()
-            ->json();
-
-        $this->assertEquals('<h2>Version 0.0.1</h2>' . PHP_EOL, $response['notes']);
-    }
-
-    /** @test */
     public function it_will_return_404_when_requesting_a_non_existent_version()
     {
         $this

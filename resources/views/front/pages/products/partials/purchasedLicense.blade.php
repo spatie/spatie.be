@@ -65,10 +65,14 @@
     <span class="cell-r grid gap-4 justify-start md:justify-end">
         @if ($license->purchasable->renewalPurchasable)
             <x-paddle-button
-                :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id)"
+                :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id,$license)"
                 data-theme="none">
             <x-button>
-                Renew for
+                @if ($license->isExpired())
+                    Renew for
+                @else
+                    Extend for
+                @endif
                 <span class="ml-1 text-lg leading-none">
                     <span class="" data-id="current-currency-{{ $license->id }}"></span>
                     <span class="" data-id="current-price-{{ $license->id }}"></span>

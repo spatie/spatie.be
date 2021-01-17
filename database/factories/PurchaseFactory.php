@@ -18,7 +18,6 @@ class PurchaseFactory extends Factory
         return [
             'user_id' => User::factory(),
             'purchasable_id' => Purchasable::factory(),
-            'license_id' => $this->faker->boolean ? License::factory() : null,
             'receipt_id' => function () {
                 return Receipt::make()->id;
             },

@@ -20,7 +20,7 @@ class PurchaseSeeder extends Seeder
                 'earnings' => 0,
             ]);
 
-            $license = (new CreateLicenseAction())->execute($user, $purchase->purchasable);
+            $license = (new CreateLicenseAction())->execute($user, $purchase);
 
             (new CreateActivationAction())->execute('home', $license);
             (new CreateActivationAction())->execute('office', $license);

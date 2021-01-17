@@ -29,7 +29,7 @@ class User extends Authenticatable
         'next_purchase_discount_period_ends_at' => 'datetime',
     ];
 
-    public function getPayLinkForProductId(string $paddleProductId)
+    public function getPayLinkForProductId(string $paddleProductId, License $license = null)
     {
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
 
@@ -47,8 +47,12 @@ class User extends Authenticatable
             $passthrough['referrer_uuid'] = $referrer->uuid;
         }
 
+        if ($license) {
+            $passthrough['license_id'] = $license->id;
+        }
+
         return $this->chargeProduct($paddleProductId, [
-            'quantity_variable' => false,
+            'quantity_variable' => ! $purchasable->isRenewal(),
             'customer_email' => auth()->user()->email,
             'marketing_consent' => true,
             'prices' => $prices,
