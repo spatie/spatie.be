@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\License;
-use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

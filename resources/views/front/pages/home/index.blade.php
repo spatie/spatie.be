@@ -10,9 +10,7 @@
 
     <div class="mb-8">
         <a href="{{ route('products.index') }}">
-            {{--
-        @include('front.pages.products.partials.ctaBlackFriday')
-        --}}
+        @include('front.pages.products.partials.ctaLaraconEU')
         </a>
     </div>
 

@@ -14,9 +14,8 @@
         </div>
     </section>
 
-   {{--
-   @include('front.pages.products.partials.ctaBlackFriday')
-   --}}
+   
+   @include('front.pages.products.partials.ctaLaraconEU')
 
     <section class="section overflow-visible section-group">
             <div class="wrap">
