@@ -34,7 +34,6 @@ class RestoreRepositoryAccessActionTest extends TestCase
             'github_username' => 'riasvdv',
         ]);
 
-
         $this->purchase = Purchase::factory()->create([
             'user_id' => $this->user->id,
             'receipt_id' => ReceiptFactory::new()->create()->id,

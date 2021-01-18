@@ -45,9 +45,7 @@
                                 Your purchase also unlocked <a href="/products/ray">a license for Ray</a>.
                                 <br/><br />
                             @endif
-                            Here's a little bonus: you will get 10% discount on purchases in the next 24 hours!
-                            {!! $purchasable->getting_started_description ?? '' !!}
-
+                            Here's a little bonus: you will get a 10% discount on purchases in the next 24 hours!
                             @if ($purchasable->getting_started_url)
                                 <br>
                                 <a class="link-white link-underline" href="{{ $purchasable->getting_started_url }}">
@@ -64,6 +62,12 @@
     @endif
 
     @auth
+        <section class="wrap mb-16 pt-0">
+            @if($licenses->count())
+                {!! $licenses->first()->purchasable->getting_started_description ?? '' !!}
+            @endif
+        </section>
+
         @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
 
         @if (!$licenses->count())

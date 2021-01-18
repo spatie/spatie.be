@@ -11,14 +11,13 @@ class AfterPaddleSaleController
 {
     public function __invoke(Request $request, Product $product, Purchasable $purchasable)
     {
-        sleep(3);
+        sleep(4);
 
         Referrer::forgetActive();
 
         session()->flash('sold_purchasable', $purchasable);
 
         session()->flash('latest_purchase', current_user()->purchases()->latest()->first());
-
 
         flash()->success('Purchase successful!');
 
