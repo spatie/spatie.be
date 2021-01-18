@@ -73,7 +73,7 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return $this->purchase->has_repository_access;
+        return optional($this->purchase)->has_repository_access;
     }
 
     public function renew(): self
