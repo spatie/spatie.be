@@ -17,13 +17,23 @@
     <section id="cta" class="pb-16">
         Event sourcing is an amazing set of techniques that allows you to model business processes in elegant way. Using event sourcing it's easy to make decisions based on what happened in the past.
 
-        In this premium course, we'll walk you through all the basics. Though the knowledge presented is framework agnostic, the examples will be Laravel specific
+        In this premium course, we'll walk you through all the basics.
+
+        Though the knowledge presented is framework agnostic, the examples will embrace Laravel.
+
+        The course will include a cart package that will be event sourced and can be used in your e-commerce projects.
+
+        Created by the team that brought you [Laravel Beyond CRUD](https://laravel-beyond-crud.com), [Front Line PHP](https://front-line-php.com) and [Laravel Package Training](https://laravelpackage.traing)
+
+        Coming summer 2021
+
+        Want to get started with event sourcing already? Check out [our free, open source laravel-event-sourcing package](https://spatie.be/docs/laravel-event-sourcing).
 
         @if(session()->has('subscribed'))
-            Thank you for subscribing!
+            Thank you for subscribing! We'll keep you in the loop!
 
             @if(auth()->user())
-                For the next 24 hours, you can buy any of our products with an extra %10 discount.
+                For the next 24 hours, you can buy any of <a href="{{ route('products.index') }}">our products</a> with an extra %10 discount.
             @endif
         @else
             <form class="space-y-6" method="POST">
