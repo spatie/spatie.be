@@ -24,7 +24,7 @@ class EventSourcingController
 
         $subscriber->addTag('event-sourcing-waiting-list');
 
-        if(auth()->user()) {
+        if (auth()->user()) {
             (new StartOrExtendNextPurchaseDiscountPeriodAction())->execute(auth()->user());
         }
 
