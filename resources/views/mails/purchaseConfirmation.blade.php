@@ -1,5 +1,5 @@
 @component('mail::message')
-# "Getting started with {$purchase->purchasable->product->name}!"
+# "Getting started with {{ $purchase->purchasable->product->title }}!"
 
 Thank you so much for your purchase. This means a lot to us!
 

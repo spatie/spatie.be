@@ -22,7 +22,7 @@ class PurchaseConfirmationMail extends Mailable implements ShouldQueue
     public function build()
     {
         return $this
-            ->subject("Getting started with {$this->purchase->purchasable->product->name}")
+            ->subject("Getting started with {$this->purchase->purchasable->product->title}")
             ->to($this->purchase->user->email)
             ->markdown('mails.purchaseConfirmation');
     }
