@@ -10,6 +10,7 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
+use App\Http\Controllers\EventSourcingController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\SignedProductLicenseController;
 use App\Http\Controllers\GitHubSocialiteController;
@@ -145,5 +146,9 @@ Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::view('offline', 'errors.offline')->name('offline');
+
+Route::get('event-sourcing', [EventSourcingController::class, 'show']);
+Route::post('event-sourcing', [EventSourcingController::class, 'subscribe']);
+
 
 
