@@ -21,8 +21,8 @@ class GiftRayToSponsorsCommand extends Command
 
         User::query()
             ->cursor()
-            ->filter(fn(User $user) => $user->isSponsoring())
-            ->filter(fn(User $user) => is_null($user->sponsor_gift_given_at))
+            ->filter(fn (User $user) => $user->isSponsoring())
+            ->filter(fn (User $user) => is_null($user->sponsor_gift_given_at))
             ->each(function (User $user) use ($rayPurchasable) {
                 $this->comment("Handing Ray to user {$user->id} ($user->email)");
 
