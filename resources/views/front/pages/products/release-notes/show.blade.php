@@ -25,15 +25,18 @@
         </div>
     </section>
 
-    @foreach($releases as $release)
-        <section class="wrap mb-16 pt-0">
-            <h2 id="{{ $release->version }}" class="title line-after mb-12">{{ $release->version }}
-                @if($release->released_at)
-                - {{ $release->released_at->format('Y-m-d') }}
-                @endif
-            </h2>
+    <section class="wrap links-blue links-underline markup markup-code markup-lists">
+        @foreach($releases as $release)
+            <div class="mb-16 pt-0">
+                <h2 id="{{ $release->version }}" class="title line-after mb-12">{{ $release->version }}
+                    @if($release->released_at)
+                    - {{ $release->released_at->format('Y-m-d') }}
+                    @endif
+                </h2>
 
-            {!! $release->notes_html !!}
-        </section>
-    @endforeach
+                {!! $release->notes_html !!}
+
+            </div>
+        @endforeach
+    </section>
 </x-page>
