@@ -27,6 +27,7 @@ class User extends Authenticatable
     public $casts = [
         'is_admin' => 'bool',
         'next_purchase_discount_period_ends_at' => 'datetime',
+        'sponsor_gift_given_at' => 'datetime',
     ];
 
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
