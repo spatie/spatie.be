@@ -21,6 +21,10 @@ abstract class Resource extends NovaResource
         if (static::$defaultSort && empty($request->get('orderBy'))) {
             $query->getQuery()->orders = [];
 
+            if (static::$defaultSortDirection === 'desc') {
+                return $query->orderByDesc(static::$defaultSort);
+            }
+
             return $query->orderBy(static::$defaultSort);
         }
 

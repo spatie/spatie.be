@@ -18,6 +18,9 @@ class Release extends Resource
 
     public static $group = "Products";
 
+    public static $defaultSort = 'id';
+
+    public static $defaultSortDirection = 'desc';
 
     public static $search = [
         'id', 'version', 'notes',
