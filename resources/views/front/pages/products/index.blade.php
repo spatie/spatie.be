@@ -13,9 +13,8 @@
             </p>
         </div>
     </section>
-
    
-   @include('front.pages.products.partials.ctaLaraconEU')
+   {{-- @include('front.pages.products.partials.ctaLaraconEU') --}}
 
     <section class="section overflow-visible section-group">
             <div class="wrap">
