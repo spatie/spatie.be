@@ -31,8 +31,10 @@ class DocsController
                 return $alias->branch !== 'v9';
             });
         }
+
         ray($repository, 'remote');
         ld($repository, 'repository');
+
         return redirect()->action([DocsController::class, 'show'], [
             $repository->slug,
             $alias->slug,
