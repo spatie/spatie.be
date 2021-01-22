@@ -32,6 +32,7 @@ class DocsController
             });
         }
         ray($repository, 'remote');
+        ld($repository, 'repository');
         return redirect()->action([DocsController::class, 'show'], [
             $repository->slug,
             $alias->slug,
