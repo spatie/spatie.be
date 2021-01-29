@@ -1,6 +1,7 @@
 <div class="line-l">
         <a href="{{ action([\App\Http\Controllers\DocsController::class, 'repository'], $repository->slug) }}">
             <h2 class="title-sm link-black link-underline">{{ $repository->slug }}</h2>
+            @php(var_dump($repository))
             <p class="mt-4">{{ $repository->aliases->last()->slogan }}</p>
         </a>
         <div class="mt-2 text-xs grid grid-flow-col gap-2 justify-start items-center">
@@ -12,5 +13,5 @@
                 </span>
             @endforeach
         </div>
-    
+
 </div>
