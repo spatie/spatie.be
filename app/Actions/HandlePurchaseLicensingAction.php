@@ -20,12 +20,13 @@ class HandlePurchaseLicensingAction
 
     public function execute(Purchase $purchase): Purchase
     {
-        if (! $purchase->purchasable->requires_license) {
-            return $purchase;
-        }
         if ($purchase->purchasable->isRenewal()) {
             $this->handleRenewal($purchase);
 
+            return $purchase;
+        }
+
+        if (! $purchase->purchasable->requires_license) {
             return $purchase;
         }
 
