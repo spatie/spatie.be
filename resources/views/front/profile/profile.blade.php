@@ -34,7 +34,7 @@
 
     <section class="section section-group pt-0">
         @include('front.profile.partials.sponsor')
-        
+
         <div class="wrap">
             <form class="space-y-6" action="{{ route('profile') }}" method="POST">
                 @csrf
@@ -42,7 +42,7 @@
 
                 <x-field>
                     <x-label for="name">Your name</x-label>
-                    <input class="form-input" type="text" name="name" id="name" value="{{ auth()->user()->name }}">
+                    <input class="form-input" type="text" name="name" id="name" value="{{ old('name', auth()->user()->name) }}">
                     @error('name')
                         <div class="text-pink-dark">{{ $message }}</div>
                     @enderror
@@ -50,7 +50,7 @@
 
                 <x-field>
                     <x-label for="email">Your email</x-label>
-                    <input class="form-input" type="email" name="email" id="email" value="{{ auth()->user()->email }}">
+                    <input class="form-input" type="email" name="email" id="email" value="{{ old('email', auth()->user()->email) }}">
                     @error('email')
                         <div class="text-pink-dark">{{ $message }}</div>
                     @enderror

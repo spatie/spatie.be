@@ -3,6 +3,7 @@
 namespace App\Http\Auth\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class ProfileRequest extends FormRequest
 {
@@ -10,7 +11,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email:rfc,dns'],
+            'email' => ['required', 'string', 'email:rfc,dns', Rule::unique('users', 'email')->whereNot('id', auth()->user()->id)],
             'newsletter' => ['nullable'],
         ];
     }
