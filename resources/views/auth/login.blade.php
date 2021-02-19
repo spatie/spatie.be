@@ -32,17 +32,35 @@
                 <h2 class="title mb-8">
                     Log in
                 </h2>
-                <h3 class="title-sm mb-4">
-                    Via GitHub
-                </h3>
-                <a href="{{ route('github-login') }}" onclick="event.preventDefault(); showGitHubAuthWindow()">
-                    <x-button>
-                        <span class="mr-3 icon w-6 opacity">
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="title-sm mb-4">
+                            Via GitHub
+                        </h3>
+                        <a href="{{ route('github-login') }}" onclick="event.preventDefault(); showGitHubAuthWindow()">
+                            <x-button>
+                        <span class="-ml-4 mr-3 icon w-5 mb-1 opacity">
                             {{ svg('github') }}
                         </span>
-                        Log in with GitHub
-                    </x-button>
-                </a>
+                                Log in with GitHub
+                            </x-button>
+                        </a>
+                    </div>
+                    <div>
+                        <h3 class="title-sm mb-4">
+                            Via Apple
+                        </h3>
+                        <a href="{{ route('apple-login') }}">
+                            <x-button>
+                        <span class="-ml-3 mr-3 icon w-4 mb-1 opacity">
+                            {{ svg('apple') }}
+                        </span>
+                                Sign-in with Apple
+                            </x-button>
+                        </a>
+                    </div>
+                </div>
 
                 <h3 class="mt-12 title-sm -mb-2">
                     With Email
