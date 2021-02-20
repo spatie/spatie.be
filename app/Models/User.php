@@ -16,7 +16,6 @@ use Spatie\Mailcoach\Models\EmailList;
 class User extends Authenticatable
 {
     use HasFactory;
-    use Notifiable;
     use Billable;
     use Notifiable;
 
