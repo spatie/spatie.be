@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use App\Models\License;
+use App\Support\Socialite\SignInWithAppleProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
-use App\Support\Socialite\SignInWithAppleProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {

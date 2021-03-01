@@ -3,16 +3,15 @@
 namespace App\Support\Socialite;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
-use Laravel\Socialite\Two\User;
 use Laravel\Socialite\Two\AbstractProvider;
 use Laravel\Socialite\Two\ProviderInterface;
+use Laravel\Socialite\Two\User;
 
 class SignInWithAppleProvider extends AbstractProvider implements ProviderInterface
 {
-    protected $encodingType   = PHP_QUERY_RFC3986;
+    protected $encodingType = PHP_QUERY_RFC3986;
     protected $scopeSeparator = ' ';
-    protected $scopes         = ['name', 'email'];
+    protected $scopes = ['name', 'email'];
 
     protected function getAuthUrl($state)
     {
@@ -27,9 +26,9 @@ class SignInWithAppleProvider extends AbstractProvider implements ProviderInterf
     protected function getCodeFields($state = null)
     {
         return array_merge([
-            'client_id'     => $this->clientId,
-            'redirect_uri'  => $this->redirectUrl,
-            'scope'         => $this->formatScopes($this->getScopes(), $this->scopeSeparator),
+            'client_id' => $this->clientId,
+            'redirect_uri' => $this->redirectUrl,
+            'scope' => $this->formatScopes($this->getScopes(), $this->scopeSeparator),
             'response_type' => 'code',
             'response_mode' => 'form_post',
         ], $this->usesState() ? ['state' => $state] : [], $this->parameters);
@@ -82,8 +81,8 @@ class SignInWithAppleProvider extends AbstractProvider implements ProviderInterf
         }
 
         return (new User)->setRaw($user)->map([
-            'id'    => $user['sub'],
-            'name'  => $fullName ?? null,
+            'id' => $user['sub'],
+            'name' => $fullName ?? null,
             'email' => $user['email'] ?? null,
         ]);
     }

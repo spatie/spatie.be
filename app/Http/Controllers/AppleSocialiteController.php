@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
-use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 use Laravel\Socialite\Facades\Socialite;
