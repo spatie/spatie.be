@@ -7,6 +7,7 @@
             'front.pages.docs.banners.crud',
             'front.pages.docs.banners.flare',
             'front.pages.docs.banners.mailcoach',
+            'front.pages.docs.banners.ray',
         ]))
     @endif
 @endunless
