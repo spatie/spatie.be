@@ -10,12 +10,14 @@ class ProfileController
 {
     public function show()
     {
+        ray()->showQueries();
+
         return view('front.profile.profile');
     }
 
     public function update(ProfileRequest $profileRequest)
     {
-        ray()->showQueries();
+
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
 
