@@ -15,8 +15,6 @@ class ProfileController
 
     public function update(ProfileRequest $profileRequest)
     {
-        ray($profileRequest->validated());
-
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
 
