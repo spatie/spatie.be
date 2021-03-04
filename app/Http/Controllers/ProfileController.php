@@ -18,7 +18,6 @@ class ProfileController
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
 
-        ray($profileRequest->validated(), $user);
         if ($user->email) {
             $profileRequest->get('newsletter')
                 ? app(SubscribeUserToNewsletterAction::class)->execute($user)
