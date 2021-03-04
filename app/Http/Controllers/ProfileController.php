@@ -10,17 +10,15 @@ class ProfileController
 {
     public function show()
     {
-        ray()->showQueries();
-
         return view('front.profile.profile');
     }
 
     public function update(ProfileRequest $profileRequest)
     {
-
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
 
+        ray($profileRequest->validated(), $user);
         if ($user->email) {
             $profileRequest->get('newsletter')
                 ? app(SubscribeUserToNewsletterAction::class)->execute($user)
