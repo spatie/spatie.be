@@ -19,6 +19,8 @@ class ImportInsightsCommand extends Command
 
     public function handle(): void
     {
+        ray('Greetings from the remote server');
+
         $this->info('Syncing insights from RSS feeds...');
 
         collect(config('services.rss'))
