@@ -15,8 +15,7 @@ class ProfileController
 
     public function update(ProfileRequest $profileRequest)
     {
-        ray($profileRequest->validated());
-
+        ray()->showQueries();
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
 
