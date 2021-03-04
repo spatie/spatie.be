@@ -183,16 +183,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.173.18",
+            "version": "3.173.21",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0ac9f1d2778034a2ef0a2bb8e098818d7b1a76e8"
+                "reference": "914c68fb45bd4d1141d6c48ca9c88e0e9f426611"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0ac9f1d2778034a2ef0a2bb8e098818d7b1a76e8",
-                "reference": "0ac9f1d2778034a2ef0a2bb8e098818d7b1a76e8",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/914c68fb45bd4d1141d6c48ca9c88e0e9f426611",
+                "reference": "914c68fb45bd4d1141d6c48ca9c88e0e9f426611",
                 "shasum": ""
             },
             "require": {
@@ -200,9 +200,9 @@
                 "ext-pcre": "*",
                 "ext-simplexml": "*",
                 "guzzlehttp/guzzle": "^5.3.3|^6.2.1|^7.0",
-                "guzzlehttp/promises": "^1.0",
-                "guzzlehttp/psr7": "^1.4.1",
-                "mtdowling/jmespath.php": "^2.5",
+                "guzzlehttp/promises": "^1.4.0",
+                "guzzlehttp/psr7": "^1.7.0",
+                "mtdowling/jmespath.php": "^2.6",
                 "php": ">=5.5"
             },
             "require-dev": {
@@ -267,9 +267,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.18"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.173.21"
             },
-            "time": "2021-02-26T19:12:35+00:00"
+            "time": "2021-03-03T19:19:53+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -1848,16 +1848,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.13",
+            "version": "2.5.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "5e9ef386aaad9985cee2ac23281a27568d083b7e"
+                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/5e9ef386aaad9985cee2ac23281a27568d083b7e",
-                "reference": "5e9ef386aaad9985cee2ac23281a27568d083b7e",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/17097f7a83e200d90d1cf9f4d1b35c1001513a47",
+                "reference": "17097f7a83e200d90d1cf9f4d1b35c1001513a47",
                 "shasum": ""
             },
             "require": {
@@ -1921,7 +1921,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2021-02-16T12:46:19+00:00"
+            "time": "2021-03-04T08:48:01+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -3553,16 +3553,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v8.29.0",
+            "version": "v8.30.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e"
+                "reference": "ab7e1c19ee0403e15fc59983b7ccb86d85db45e6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d2eba352b3b3a3c515b18c5726b373fe5026733e",
-                "reference": "d2eba352b3b3a3c515b18c5726b373fe5026733e",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/ab7e1c19ee0403e15fc59983b7ccb86d85db45e6",
+                "reference": "ab7e1c19ee0403e15fc59983b7ccb86d85db45e6",
                 "shasum": ""
             },
             "require": {
@@ -3717,7 +3717,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2021-02-23T14:27:41+00:00"
+            "time": "2021-03-03T14:59:13+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3953,16 +3953,16 @@
         },
         {
             "name": "laravel/socialite",
-            "version": "v5.2.1",
+            "version": "v5.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/socialite.git",
-                "reference": "8aa705d771f127317f60887515cfb2f777653ce5"
+                "reference": "8d25d574b4f2005411c0b9cb527ef5e745c1b07d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/socialite/zipball/8aa705d771f127317f60887515cfb2f777653ce5",
-                "reference": "8aa705d771f127317f60887515cfb2f777653ce5",
+                "url": "https://api.github.com/repos/laravel/socialite/zipball/8d25d574b4f2005411c0b9cb527ef5e745c1b07d",
+                "reference": "8d25d574b4f2005411c0b9cb527ef5e745c1b07d",
                 "shasum": ""
             },
             "require": {
@@ -4018,20 +4018,20 @@
                 "issues": "https://github.com/laravel/socialite/issues",
                 "source": "https://github.com/laravel/socialite"
             },
-            "time": "2021-02-22T14:22:51+00:00"
+            "time": "2021-03-02T16:50:47+00:00"
         },
         {
             "name": "laravel/tinker",
-            "version": "v2.6.0",
+            "version": "v2.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/tinker.git",
-                "reference": "daae1c43f1300fe88c05d83db6f3d8f76677ad88"
+                "reference": "04ad32c1a3328081097a181875733fa51f402083"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/tinker/zipball/daae1c43f1300fe88c05d83db6f3d8f76677ad88",
-                "reference": "daae1c43f1300fe88c05d83db6f3d8f76677ad88",
+                "url": "https://api.github.com/repos/laravel/tinker/zipball/04ad32c1a3328081097a181875733fa51f402083",
+                "reference": "04ad32c1a3328081097a181875733fa51f402083",
                 "shasum": ""
             },
             "require": {
@@ -4084,9 +4084,9 @@
             ],
             "support": {
                 "issues": "https://github.com/laravel/tinker/issues",
-                "source": "https://github.com/laravel/tinker/tree/v2.6.0"
+                "source": "https://github.com/laravel/tinker/tree/v2.6.1"
             },
-            "time": "2021-01-26T20:35:18+00:00"
+            "time": "2021-03-02T16:53:12+00:00"
         },
         {
             "name": "laravel/ui",
@@ -5646,16 +5646,16 @@
         },
         {
             "name": "ohdearapp/ohdear-php-sdk",
-            "version": "3.1.0",
+            "version": "3.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ohdearapp/ohdear-php-sdk.git",
-                "reference": "a707adbfa2272e3a7b12bab5eb419dd326b47397"
+                "reference": "b5e7561947e04428e022c3d9271a0859a6d9c930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ohdearapp/ohdear-php-sdk/zipball/a707adbfa2272e3a7b12bab5eb419dd326b47397",
-                "reference": "a707adbfa2272e3a7b12bab5eb419dd326b47397",
+                "url": "https://api.github.com/repos/ohdearapp/ohdear-php-sdk/zipball/b5e7561947e04428e022c3d9271a0859a6d9c930",
+                "reference": "b5e7561947e04428e022c3d9271a0859a6d9c930",
                 "shasum": ""
             },
             "require": {
@@ -5696,9 +5696,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ohdearapp/ohdear-php-sdk/issues",
-                "source": "https://github.com/ohdearapp/ohdear-php-sdk/tree/3.1.0"
+                "source": "https://github.com/ohdearapp/ohdear-php-sdk/tree/3.1.2"
             },
-            "time": "2021-02-09T16:04:50+00:00"
+            "time": "2021-03-02T13:05:05+00:00"
         },
         {
             "name": "opis/closure",
@@ -10040,19 +10040,20 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "6.14.4",
+            "version": "6.15.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "54bdd6d1f460ff16dc1322bbb249be46b2b28b7b"
+                "reference": "85f653df9c44b46e7829413f652e5b3f8fe98448"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/54bdd6d1f460ff16dc1322bbb249be46b2b28b7b",
-                "reference": "54bdd6d1f460ff16dc1322bbb249be46b2b28b7b",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/85f653df9c44b46e7829413f652e5b3f8fe98448",
+                "reference": "85f653df9c44b46e7829413f652e5b3f8fe98448",
                 "shasum": ""
             },
             "require": {
+                "ext-zip": "^1.14.0",
                 "illuminate/console": "^6.0|^7.0|^8.0",
                 "illuminate/contracts": "^6.0|^7.0|^8.0",
                 "illuminate/events": "^6.0|^7.0|^8.0",
@@ -10113,7 +10114,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-backup/issues",
-                "source": "https://github.com/spatie/laravel-backup/tree/6.14.4"
+                "source": "https://github.com/spatie/laravel-backup/tree/6.15.0"
             },
             "funding": [
                 {
@@ -10125,7 +10126,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-01-29T07:29:58+00:00"
+            "time": "2021-03-02T21:25:20+00:00"
         },
         {
             "name": "spatie/laravel-feed",
@@ -12055,16 +12056,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.20.1",
+            "version": "1.21.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "f51ef21fe88c4d4628f1656a73db540fdbc28773"
+                "reference": "9ed03dd8d7aa1fed5e947c6a5aa637a54a179009"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/f51ef21fe88c4d4628f1656a73db540fdbc28773",
-                "reference": "f51ef21fe88c4d4628f1656a73db540fdbc28773",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/9ed03dd8d7aa1fed5e947c6a5aa637a54a179009",
+                "reference": "9ed03dd8d7aa1fed5e947c6a5aa637a54a179009",
                 "shasum": ""
             },
             "require": {
@@ -12114,7 +12115,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.20.1"
+                "source": "https://github.com/spatie/ray/tree/1.21.1"
             },
             "funding": [
                 {
@@ -12126,7 +12127,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-02-26T11:06:59+00:00"
+            "time": "2021-03-03T12:49:16+00:00"
         },
         {
             "name": "spatie/schema-org",
