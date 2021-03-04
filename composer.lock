@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2dd62c8d22cc22dbde409b6f5312b12c",
+    "content-hash": "57d1c22a31ba62f4cc7c842d5ee42440",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -11120,16 +11120,16 @@
         },
         {
             "name": "spatie/laravel-ray",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ray.git",
-                "reference": "1c5bc1785a06dac98fdbdff0b067a126dd6a81d0"
+                "reference": "b70f3cfb0a3a06c2fcd3a1974d6ca7cba3204504"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/1c5bc1785a06dac98fdbdff0b067a126dd6a81d0",
-                "reference": "1c5bc1785a06dac98fdbdff0b067a126dd6a81d0",
+                "url": "https://api.github.com/repos/spatie/laravel-ray/zipball/b70f3cfb0a3a06c2fcd3a1974d6ca7cba3204504",
+                "reference": "b70f3cfb0a3a06c2fcd3a1974d6ca7cba3204504",
                 "shasum": ""
             },
             "require": {
@@ -11140,7 +11140,7 @@
                 "illuminate/support": "^7.20|^8.13",
                 "php": "^7.3|^8.0",
                 "spatie/backtrace": "^1.0",
-                "spatie/ray": "^1.20",
+                "spatie/ray": "^1.21.2",
                 "symfony/stopwatch": "4.2|^5.1",
                 "zbateson/mail-mime-parser": "^1.3.1"
             },
@@ -11184,7 +11184,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-ray/issues",
-                "source": "https://github.com/spatie/laravel-ray/tree/1.13.0"
+                "source": "https://github.com/spatie/laravel-ray/tree/1.14.0"
             },
             "funding": [
                 {
@@ -11196,7 +11196,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-02-22T12:05:12+00:00"
+            "time": "2021-03-04T11:11:21+00:00"
         },
         {
             "name": "spatie/laravel-schedule-monitor",
@@ -12056,16 +12056,16 @@
         },
         {
             "name": "spatie/ray",
-            "version": "1.21.1",
+            "version": "1.21.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ray.git",
-                "reference": "9ed03dd8d7aa1fed5e947c6a5aa637a54a179009"
+                "reference": "829676b1b6791aba6660fcca6f553d72c894a0ae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ray/zipball/9ed03dd8d7aa1fed5e947c6a5aa637a54a179009",
-                "reference": "9ed03dd8d7aa1fed5e947c6a5aa637a54a179009",
+                "url": "https://api.github.com/repos/spatie/ray/zipball/829676b1b6791aba6660fcca6f553d72c894a0ae",
+                "reference": "829676b1b6791aba6660fcca6f553d72c894a0ae",
                 "shasum": ""
             },
             "require": {
@@ -12115,7 +12115,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/ray/issues",
-                "source": "https://github.com/spatie/ray/tree/1.21.1"
+                "source": "https://github.com/spatie/ray/tree/1.21.2"
             },
             "funding": [
                 {
@@ -12127,7 +12127,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-03-03T12:49:16+00:00"
+            "time": "2021-03-04T11:06:19+00:00"
         },
         {
             "name": "spatie/schema-org",
