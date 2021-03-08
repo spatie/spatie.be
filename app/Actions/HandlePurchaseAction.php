@@ -45,6 +45,8 @@ class HandlePurchaseAction
         PaddlePayload $paddlePayload,
         ?Referrer $referrer = null
     ): Purchase {
+        ray('handling purchase', $purchasable);
+
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
