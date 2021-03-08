@@ -1,3 +1,8 @@
+@php
+    $priceWithoutDiscount = $license->purchasable->getPriceWithoutDiscountForCurrentRequest();
+    $price = $license->purchasable->getPriceForCurrentRequest()
+@endphp
+
 <div class="cells grid-cols-auto-1fr">
     <div class="cell-l">
         <div class="grid grid-flow-col gap-4 justify-start">
@@ -73,8 +78,7 @@
                     Extend for
                 @endif
                 <span class="ml-1 text-lg leading-none">
-                    <span class="" data-id="current-currency-{{ $license->id }}"></span>
-                    <span class="" data-id="current-price-{{ $license->id }}"></span>
+                    {{ $price->formattedPrice() }}
                 </span>
             </x-button>
         </x-paddle-button>
@@ -83,43 +87,3 @@
 
     </span>
 </div>
-
-<script type="text/javascript">
-    function copyLicense(element, licenseKey) {
-        navigator.clipboard.writeText(licenseKey)
-
-        element.classList.add('text-green');
-        element.innerText = 'copied!';
-
-        setTimeout(() => {
-            element.classList.remove('text-green');
-            element.innerText = 'copy';
-        }, 2000);
-    }
-
-    function indexOfFirstDigitInString(string) {
-        let firstDigit = string.match(/\d/);
-
-        return string.indexOf(firstDigit);
-    }
-
-    Paddle.Product.Prices(
-        {{
-            $license->purchasable->renewalPurchasable->paddle_product_id
-        }}, function (prices) {
-            console.log('license renewal', prices);
-            let priceString = prices.price.net;
-
-            let indexOFirstDigitInString = indexOfFirstDigitInString(priceString);
-
-            let price = priceString.substring(indexOFirstDigitInString);
-            price = price.replace('.00', '');
-
-            let currencySymbol = priceString.substring(0, indexOFirstDigitInString);
-            currencySymbol = currencySymbol.replace('US', '');
-
-            document.querySelector('[data-id="current-currency-{{ $license->id}}"]').innerHTML = currencySymbol;
-            document.querySelector('[data-id="current-price-{{ $license->id }}"]').innerHTML = price;
-        });
-
-</script>
