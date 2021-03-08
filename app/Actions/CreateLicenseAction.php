@@ -15,18 +15,20 @@ class CreateLicenseAction
     {
         ray('creating license');
 
+        $purchasableId = $purchasable ? $purchasable->id : $purchase->purchasable->id;
+
         return License::create([
             'key' => Str::random(64),
             'user_id' => $user->id,
             'purchase_id' => optional($purchase)->id,
-            'purchasable_id' => $purchasable ? $purchasable->id : $purchase->purchasable->id,
-            'expires_at' => $this->expiresAt($purchasable),
+            'purchasable_id' => $purchasableId,
+            'expires_at' => $this->expiresAt($purchasableId),
         ]);
     }
 
-    protected function expiresAt(?Purchasable $purchasable): Carbon
+    protected function expiresAt(int $purchasableId): Carbon
     {
-        if (optional($purchasable)->id === 18) {
+        if ($purchasableId === 18) {
             return now()->addYears(20);
         }
 
