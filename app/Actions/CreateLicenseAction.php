@@ -23,9 +23,9 @@ class CreateLicenseAction
         ]);
     }
 
-    protected function expiresAt(Purchasable $purchasable): Carbon
+    protected function expiresAt(?Purchasable $purchasable): Carbon
     {
-        if ($purchasable->id === 18) {
+        if (optional($purchasable)->id === 18) {
             return now()->addYears(20);
         }
 
