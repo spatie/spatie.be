@@ -29,7 +29,7 @@ class CreateLicenseAction
     protected function expiresAt(int $purchasableId): Carbon
     {
         if ($purchasableId === 18) {
-            return now()->addYears(20);
+            return Carbon::createFromFormat('Y-m-d H:i:s', '2038-01-19 00:00:00');
         }
 
         return now()->addYear();
