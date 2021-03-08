@@ -6,6 +6,7 @@ use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class CreateLicenseAction
@@ -17,7 +18,16 @@ class CreateLicenseAction
             'user_id' => $user->id,
             'purchase_id' => optional($purchase)->id,
             'purchasable_id' => $purchasable ? $purchasable->id : $purchase->purchasable->id,
-            'expires_at' => now()->addYear(),
+            'expires_at' => $this->expiresAt($purchasable),
         ]);
+    }
+
+    protected function expiresAt(Purchasable $purchasable): Carbon
+    {
+        if ($purchasable->id === 18) {
+            return now()->addYears(20);
+        }
+
+        return now()->addYear();
     }
 }
