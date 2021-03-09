@@ -1,6 +1,8 @@
 import images from './images';
+import docs from './docs';
 
 window.addEventListener('load', images);
+window.addEventListener('load', docs);
 
 /*
 if ('serviceWorker' in navigator) {

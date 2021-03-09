@@ -64,6 +64,8 @@ class DocsController
 
         $showBigTitle = $page->slug === $navigation['_root']['pages'][0]->slug;
 
+        $tableOfContents = $this->extractTableOfContents($page->contents);
+
         return view('front.pages.docs.show', compact(
             'page',
             'repositories',
@@ -71,7 +73,8 @@ class DocsController
             'pages',
             'navigation',
             'alias',
-            'showBigTitle'
+            'showBigTitle',
+            'tableOfContents'
         ));
     }
 
@@ -89,5 +92,14 @@ class DocsController
             }, []);
 
         return collect($navigation)->sortBy(fn (array $pages) => $pages['_index']->weight ?? -1);
+    }
+
+    private function extractTableOfContents(string $contents)
+    {
+        $matches = [];
+
+        preg_match_all('/<h2><a.*id="([^"]+)".*>#<\/a>([^<]+)/', $contents, $matches);
+
+        return array_combine($matches[1], $matches[2]);
     }
 }
