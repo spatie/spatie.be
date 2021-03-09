@@ -1,15 +1,15 @@
 import partition from 'lodash/partition';
 
-export default function () {
+export default function() {
     let elementsInView = [];
     const navLinks = [...document.querySelectorAll('.docs-submenu-item')];
 
     navLinks.forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
 
             document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+                behavior: 'smooth',
             });
         });
     });
@@ -64,4 +64,3 @@ export default function () {
         return window.pageYOffset + element.getBoundingClientRect().top;
     }
 }
-
