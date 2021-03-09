@@ -57,9 +57,7 @@ return [
             "name" => "laravel-tags",
             "repository" => "spatie/laravel-tags",
             "branches" => [
-                "v3" => "master",
-                "v2" => "v2",
-                "v1" => "v1",
+                "v4" => "master",
             ],
             "category" => "Laravel",
         ],
