@@ -83,6 +83,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                 $this->info('Done caching Sheets.');
             }, function (Exception $exception) {
                 report($exception);
+
                 throw $exception;
             })
             ->always(function (): void {
