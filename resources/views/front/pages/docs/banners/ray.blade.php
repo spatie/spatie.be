@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <a href="https://rayapp.com">
+            <a href="https://myray.app">
                 <button class="mt-2 md:mt-0 ml-4 px-2 py-1 rounded text-orange-dark bg-white uppercase tracking-wide font-semibold">
                     Learn&nbsp;more
                 </button>
