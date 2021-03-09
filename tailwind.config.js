@@ -160,7 +160,7 @@ module.exports = {
                 '4xl': '90rem',
                 '5xl': '100rem',
                 '1/2': '50vw',
-                columns: '68rem', // xl + (2 * large gap)
+                columns: '80rem', // xl + (2 * large gap)
                 logoclient: '8rem',
             },
 

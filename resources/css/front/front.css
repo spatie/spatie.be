@@ -50,3 +50,7 @@ a.anchor-link {
     height: 1em;
     width: 1em;
 }
+
+.docs-submenu-item.is-active {
+    @apply text-blue;
+}

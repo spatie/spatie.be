@@ -11,11 +11,10 @@
     @include('front.pages.docs.partials.breadcrumbs')
 
     <section class="wrap md:grid pb-24 gap-12 md:grid-cols-10 items-stretch">
-        <div class="z-10 | md:col-span-3 | print:hidden">
+        <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
              @include('front.pages.docs.partials.navigation')
         </div>
-        <div class="md:col-span-7">
-
+        <article class="md:col-span-7 lg:col-span-6">
             @if($showBigTitle)
                 <div class="mb-16">
                     <h1 class="banner-slogan">
@@ -35,7 +34,28 @@
             <div class="markup markup-titles markup-lists markup-tables markup-code links-blue links-underline">
                 {!! $page->contents !!}
             </div>
-        </div>
+
+        </article>
+        <aside class="hidden lg:block lg:pb-16 lg:w-48 lg:col-span-2 md:w-64 print-hidden">
+            @if(count($tableOfContents))
+                <div class="sticky top-0 py-6">
+                    <div class="pl-4 border-l">
+                        <h3 class="mb-3 text-gray font-semibold uppercase tracking-wider text-xs">
+                            On this page
+                        </h3>
+                        <ul class="grid gap-2">
+                            @foreach($tableOfContents as $fragment => $title)
+                                <li class="truncate text-sm">
+                                    <a href="#{{ $fragment }}" class="docs-submenu-item">
+                                        {{ $title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
+            @endif
+        </aside>
     </section>
 
      @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
