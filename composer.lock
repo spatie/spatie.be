@@ -9841,16 +9841,16 @@
         },
         {
             "name": "spatie/enum",
-            "version": "3.7.1",
+            "version": "3.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/enum.git",
-                "reference": "c86b1fd251ccbb0cc7237d3376a75a6e28ad051c"
+                "reference": "cfbcf53147d993fa6120e73018c8d6d6e9218b20"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/enum/zipball/c86b1fd251ccbb0cc7237d3376a75a6e28ad051c",
-                "reference": "c86b1fd251ccbb0cc7237d3376a75a6e28ad051c",
+                "url": "https://api.github.com/repos/spatie/enum/zipball/cfbcf53147d993fa6120e73018c8d6d6e9218b20",
+                "reference": "cfbcf53147d993fa6120e73018c8d6d6e9218b20",
                 "shasum": ""
             },
             "require": {
@@ -9913,24 +9913,25 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-02-12T10:20:29+00:00"
+            "time": "2021-03-10T16:48:55+00:00"
         },
         {
             "name": "spatie/image",
-            "version": "1.10.2",
+            "version": "1.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image.git",
-                "reference": "12662673fbe649bffcd3a24188a404dc31fa118c"
+                "reference": "7ea129bc7b7521864c5a540e3b1c14ea194316d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image/zipball/12662673fbe649bffcd3a24188a404dc31fa118c",
-                "reference": "12662673fbe649bffcd3a24188a404dc31fa118c",
+                "url": "https://api.github.com/repos/spatie/image/zipball/7ea129bc7b7521864c5a540e3b1c14ea194316d3",
+                "reference": "7ea129bc7b7521864c5a540e3b1c14ea194316d3",
                 "shasum": ""
             },
             "require": {
                 "ext-exif": "*",
+                "ext-json": "*",
                 "ext-mbstring": "*",
                 "league/glide": "^1.6",
                 "php": "^7.2|^8.0",
@@ -9940,7 +9941,8 @@
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.0|^9.0",
-                "symfony/var-dumper": "^4.0|^5.0"
+                "symfony/var-dumper": "^4.0|^5.0",
+                "vimeo/psalm": "^4.6"
             },
             "type": "library",
             "autoload": {
@@ -9968,7 +9970,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image/issues",
-                "source": "https://github.com/spatie/image/tree/1.10.2"
+                "source": "https://github.com/spatie/image/tree/1.10.4"
             },
             "funding": [
                 {
@@ -9980,7 +9982,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-26T07:53:19+00:00"
+            "time": "2021-03-10T16:11:40+00:00"
         },
         {
             "name": "spatie/image-optimizer",
@@ -10341,13 +10343,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "b62e4d3d4db81a4ee500e5bb51f336834a9ea205"
+                "reference": "49a5c05474dd1498984d6ee7bbc1b611371677c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-b62e4d3d4db81a4ee500e5bb51f336834a9ea205-zip-3dd5ca.zip",
-                "reference": "b62e4d3d4db81a4ee500e5bb51f336834a9ea205",
-                "shasum": "2c1f43c1bdd316a808a44eaa24a34619f7f80380"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-49a5c05474dd1498984d6ee7bbc1b611371677c7-zip-c18757.zip",
+                "reference": "49a5c05474dd1498984d6ee7bbc1b611371677c7",
+                "shasum": "ca0201fe0c6326d2c1647a1ab8dea9abb5f98a61"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -10456,7 +10458,7 @@
                 "source": "https://github.com/spatie/laravel-mailcoach/tree/v4",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2021-03-10T15:32:53+00:00"
+            "time": "2021-03-10T16:33:51+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
