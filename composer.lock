@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a6886a20445bd6e9070918783eb7d01a",
+    "content-hash": "5d81d4a0c665dc0d81eac985e118e751",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -10608,17 +10608,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach-ses-feedback",
-            "version": "3.0.0",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-mailcoach-ses-feedback.git",
-                "reference": "b74a05238de69f6f2a3717467d90da97bfcd269b"
+                "reference": "8f721255c96a3b2c9fca140db97284f8d93c388c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach-ses-feedback/spatie-laravel-mailcoach-ses-feedback-b74a05238de69f6f2a3717467d90da97bfcd269b-zip-3d5ba5.zip",
-                "reference": "b74a05238de69f6f2a3717467d90da97bfcd269b",
-                "shasum": "fd63b7b918120e5dfa771c1ff8ad22b8baa4f90a"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach-ses-feedback/spatie-laravel-mailcoach-ses-feedback-8f721255c96a3b2c9fca140db97284f8d93c388c-zip-220995.zip",
+                "reference": "8f721255c96a3b2c9fca140db97284f8d93c388c",
+                "shasum": "ceec42837061056e35a9dbe7040109cd34bbb832"
             },
             "require": {
                 "aws/aws-php-sns-message-validator": "^1.6",
@@ -10674,10 +10674,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach-ses-feedback/tree/3.0.0",
+                "source": "https://github.com/spatie/laravel-mailcoach-ses-feedback/tree/3.0.1",
                 "issues": "https://github.com/spatie/laravel-mailcoach-ses-feedback/issues"
             },
-            "time": "2021-03-10T09:09:54+00:00"
+            "time": "2021-03-10T15:27:45+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
