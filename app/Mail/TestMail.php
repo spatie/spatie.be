@@ -22,6 +22,6 @@ class TestMail extends Mailable
     {
         return $this
             ->trackOpensAndClicks()
-            ->view('mails.test');
+            ->markdown('mails.test');
     }
 }

@@ -6,7 +6,7 @@ use App\Mail\TestMail;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Mail;
 
-class SendTestMail extends Command
+class SendTestMailCommand extends Command
 {
     protected $signature = 'send-test-mail';
 
