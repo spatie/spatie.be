@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
+use Spatie\Mailcoach\Domain\Campaign\Models\Campaign;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,18 @@ use Illuminate\Support\Facades\Artisan;
 |
 */
 
-Artisan::command('inspire', function () {
-    $this->comment(Inspiring::quote());
-})->purpose('Display an inspiring quote');
+Artisan::command('migrate-mailcoach', function () {
+    Campaign::each(function (Campaign $campaign) {
+        if ($campaign->segment_class === 'Spatie\Mailcoach\Support\Segments\SubscribersWithTagsSegment') {
+            $campaign->update([
+                'segment_class' => 'Spatie\Mailcoach\Domain\Audience\Support\Segments\SubscribersWithTagsSegment',
+            ]);
+        }
+
+        if ($campaign->segment_class === 'Spatie\Mailcoach\Support\Segments\EverySubscriberSegment') {
+            $campaign->update([
+                'segment_class' => 'Spatie\Mailcoach\Domain\Audience\Support\Segments\EverySubscriberSegment',
+            ]);
+        }
+    });
+});

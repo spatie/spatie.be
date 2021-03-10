@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
-use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
 class User extends Authenticatable
 {

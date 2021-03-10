@@ -5,8 +5,8 @@ namespace App\Listeners;
 use App\Models\Subscriber;
 use App\Notifications\WelcomeFrontLinePhpWaitingListNotification;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Spatie\Mailcoach\Events\SubscribedEvent;
-use Spatie\Mailcoach\Models\Subscriber as MailcoachSubscriber;
+use Spatie\Mailcoach\Domain\Audience\Events\SubscribedEvent;
+use Spatie\Mailcoach\Domain\Audience\Models\Subscriber as MailcoachSubscriber;
 
 class SendCoupon
 {

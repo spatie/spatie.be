@@ -26,9 +26,25 @@
                 </div>
 
                 <h2 class="title-xl mb-8">{{ $page->title }}</h2>
-
             @else
                 <h1 class="title-xl mb-8">{{ $page->title }}</h1>
+            @endif
+
+            @if(count($tableOfContents))
+                <div class="lg:hidden p-6 bg-blue-lightest rounded-sm bg-opacity-25 mb-8">
+                    <h3 class="mb-2 text-gray font-semibold uppercase tracking-wider text-xs">
+                        On this page
+                    </h3>
+                    <ol class="grid gap-1">
+                        @foreach($tableOfContents as $fragment => $title)
+                            <li class="text-sm">
+                                <a href="#{{ $fragment }}">
+                                    {{ $title }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ol>
+                </div>
             @endif
 
             <div class="markup markup-titles markup-lists markup-tables markup-code links-blue links-underline">
@@ -36,16 +52,16 @@
             </div>
 
         </article>
-        <aside class="hidden lg:block lg:pb-16 lg:w-48 lg:col-span-2 md:w-64 print-hidden">
-            @if(count($tableOfContents))
+        @if(count($tableOfContents))
+            <aside class="hidden lg:block pt-16 w-full pb-16 col-span-2 print-hidden">
                 <div class="sticky top-0 py-6">
-                    <div class="pl-4 border-l">
+                    <div class="pl-4 border-l-2 border-gray-lighter">
                         <h3 class="mb-3 text-gray font-semibold uppercase tracking-wider text-xs">
                             On this page
                         </h3>
                         <ul class="grid gap-2">
                             @foreach($tableOfContents as $fragment => $title)
-                                <li class="truncate text-sm">
+                                <li class="text-sm">
                                     <a href="#{{ $fragment }}" class="docs-submenu-item">
                                         {{ $title }}
                                     </a>
@@ -54,8 +70,8 @@
                         </ul>
                     </div>
                 </div>
-            @endif
-        </aside>
+            </aside>
+        @endif
     </section>
 
      @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])

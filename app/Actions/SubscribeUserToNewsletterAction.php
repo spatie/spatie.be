@@ -3,8 +3,8 @@
 namespace App\Actions;
 
 use App\Models\User;
-use Spatie\Mailcoach\Models\EmailList;
-use Spatie\Mailcoach\Models\Subscriber;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
 
 class SubscribeUserToNewsletterAction
 {
