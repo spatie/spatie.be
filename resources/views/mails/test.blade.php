@@ -1,9 +1,12 @@
+@component('mail::message')
 # Test mail
 
-Here is your test mail
+Your order has been shipped!
 
-<a href="https://spatie.be">Visit our website</a>
+@component('mail::button', ['url' => 'https://spatie.be'])
+    View Order
+@endcomponent
 
 Thanks,<br>
 {{ config('app.name') }}
-
+@endcomponent
