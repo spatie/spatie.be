@@ -16,7 +16,7 @@ use function WyriHaximus\React\childProcessPromise;
 
 class ImportDocsFromRepositoriesCommand extends Command
 {
-    protected $signature = 'docs:import {--repo=}';
+    protected $signature = 'docs:import {--repo=} {--all}';
 
     protected $description = 'Fetches docs from all repositories in docs-repositories.json';
 
@@ -34,9 +34,17 @@ class ImportDocsFromRepositoriesCommand extends Command
             $updatedRepositoryNames[] = $extraRepo;
         }
 
+        if ($this->option('all')) {
+            $updatedRepositoryNames = collect(config('docs.repositories'))
+                ->map(function (array $repository) {
+                    return $repository['repository'];
+                })
+                ->toArray();
+        }
+
         $this
             ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
-            ->pipe(fn (Collection $processes) => $this->wrapInPromise($processes));
+            ->pipe(fn(Collection $processes) => $this->wrapInPromise($processes));
 
         $loop->run();
 
@@ -48,15 +56,16 @@ class ImportDocsFromRepositoriesCommand extends Command
     protected function convertRepositoriesToProcesses(
         array $updatedRepositoryNames,
         StreamSelectLoop $loop
-    ): Collection {
+    ): Collection
+    {
         $repositoriesWithDocs = $this->getRepositoriesWithDocs();
 
         return collect($updatedRepositoryNames)
-            ->map(fn (string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
+            ->map(fn(string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
             ->filter()
             ->flatMap(function (array $repository) {
                 return collect($repository['branches'])
-                    ->map(fn (string $alias, string $branch) => [$repository, $alias, $branch])
+                    ->map(fn(string $alias, string $branch) => [$repository, $alias, $branch])
                     ->toArray();
             })
             ->mapSpread(function (array $repository, string $alias, string $branch) use ($loop) {
