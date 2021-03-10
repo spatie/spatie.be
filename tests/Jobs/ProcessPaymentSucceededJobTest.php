@@ -7,7 +7,7 @@ use App\Models\Referrer;
 use App\Models\User;
 use App\Support\Paddle\ProcessPaymentSucceededJob;
 use Database\Factories\ReceiptFactory;
-use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
 class ProcessPaymentSucceededJobTest extends TestCase
