@@ -24,6 +24,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('mailcoach:send-email-list-summary-mail')->mondays()->at('9:00');
         $schedule->command('mailcoach:delete-old-unconfirmed-subscribers')->daily();
         $schedule->command('mailcoach:cleanup-processed-feedback')->hourly();
+        $schedule->command('mailcoach:run-automation-triggers')->everyMinute()->runInBackground();
+        $schedule->command('mailcoach:run-automation-actions')->everyMinute()->runInBackground();
+        $schedule->command('mailcoach:calculate-automation-mail-statistics')->everyMinute();
 
         $schedule->command(ImportInsightsCommand::class)->hourly();
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
