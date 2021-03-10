@@ -3,14 +3,15 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Spatie\Mailcoach\Domain\TransactionalMail\Mails\Concerns\StoresMail;
 
 class TestMail extends Mailable
 {
-    use Queueable, SerializesModels, StoresMail;
+    use Queueable;
+    use SerializesModels;
+    use StoresMail;
 
     public function __construct()
     {
