@@ -44,7 +44,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $this
             ->convertRepositoriesToProcesses($updatedRepositoryNames, $loop)
-            ->pipe(fn(Collection $processes) => $this->wrapInPromise($processes));
+            ->pipe(fn (Collection $processes) => $this->wrapInPromise($processes));
 
         $loop->run();
 
@@ -56,16 +56,15 @@ class ImportDocsFromRepositoriesCommand extends Command
     protected function convertRepositoriesToProcesses(
         array $updatedRepositoryNames,
         StreamSelectLoop $loop
-    ): Collection
-    {
+    ): Collection {
         $repositoriesWithDocs = $this->getRepositoriesWithDocs();
 
         return collect($updatedRepositoryNames)
-            ->map(fn(string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
+            ->map(fn (string $repositoryName) => $repositoriesWithDocs[$repositoryName] ?? null)
             ->filter()
             ->flatMap(function (array $repository) {
                 return collect($repository['branches'])
-                    ->map(fn(string $alias, string $branch) => [$repository, $alias, $branch])
+                    ->map(fn (string $alias, string $branch) => [$repository, $alias, $branch])
                     ->toArray();
             })
             ->mapSpread(function (array $repository, string $alias, string $branch) use ($loop) {
