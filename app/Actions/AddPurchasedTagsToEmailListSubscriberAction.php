@@ -5,8 +5,8 @@ namespace App\Actions;
 use App\Models\Purchase;
 use App\Models\Subscriber;
 use Illuminate\Support\Str;
-use Spatie\Mailcoach\Exceptions\CouldNotSubscribe;
-use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Exceptions\CouldNotSubscribe;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
 class AddPurchasedTagsToEmailListSubscriberAction
 {

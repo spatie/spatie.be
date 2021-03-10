@@ -3,7 +3,7 @@
 namespace App\Actions;
 
 use App\Models\User;
-use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
 class UnsubscribeUserFromNewsletterAction
 {

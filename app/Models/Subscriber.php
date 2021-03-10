@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Notifications\Notifiable;
-use Spatie\Mailcoach\Models\Subscriber as MailcoachSubscriber;
+use Spatie\Mailcoach\Domain\Audience\Models\Subscriber as MailcoachSubscriber;
 
 class Subscriber extends MailcoachSubscriber
 {

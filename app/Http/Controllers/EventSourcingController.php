@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Actions\StartOrExtendNextPurchaseDiscountPeriodAction;
 use App\Http\Requests\EventSourcingRequest;
-use Spatie\Mailcoach\Models\EmailList;
-use Spatie\Mailcoach\Models\Subscriber;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
 
 class EventSourcingController
 {
