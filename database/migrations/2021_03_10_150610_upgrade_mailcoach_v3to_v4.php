@@ -93,6 +93,11 @@ class UpgradeMailcoachV3toV4 extends Migration
                 ->after('automation_mail_id');
         });
 
+        Schema::table('mailcoach_sends', function (Blueprint $table) {
+            $table->unsignedBigInteger('campaign_id')->nullable()->change();
+            $table->unsignedBigInteger('subscriber_id')->nullable()->change();
+        });
+
         Schema::table('mailcoach_subscriber_imports', function (Blueprint $table) {
             $table->boolean('replace_tags')->default(false)->after('unsubscribe_others');
         });
@@ -294,10 +299,10 @@ class UpgradeMailcoachV3toV4 extends Migration
         Schema::table('mailcoach_subscribers', function (Blueprint $table) {
             $table->index(
                 [
-                'email_list_id',
-                'subscribed_at',
-                'unsubscribed_at',
-            ],
+                    'email_list_id',
+                    'subscribed_at',
+                    'unsubscribed_at',
+                ],
                 'email_list_subscribed_index'
             );
         });
