@@ -3,9 +3,9 @@
 namespace Tests\Actions;
 
 use App\Actions\UnsubscribeUserFromNewsletterAction;
+use App\Models\Subscriber;
 use App\Models\User;
-use Spatie\Mailcoach\Models\EmailList;
-use Spatie\Mailcoach\Models\Subscriber;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
 class UnSubscribeUserFromNewsletterActionTest extends TestCase

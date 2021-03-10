@@ -290,5 +290,14 @@ class UpgradeMailcoachV3toV4 extends Migration
             $table->text('test_using_mailable')->nullable();
             $table->timestamps();
         });
+
+        Schema::table('mailcoach_subscribers', function (Blueprint $table) {
+            $table->index([
+                'email_list_id',
+                'subscribed_at',
+                'unsubscribed_at'
+            ],
+                'email_list_subscribed_index');
+        });
     }
 }

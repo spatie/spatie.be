@@ -4,7 +4,7 @@ namespace Tests\Actions;
 
 use App\Actions\SubscribeUserToNewsletterAction;
 use App\Models\User;
-use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
 class SubscribeUserToNewsletterActionTest extends TestCase

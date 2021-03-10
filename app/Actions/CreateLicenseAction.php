@@ -13,8 +13,6 @@ class CreateLicenseAction
 {
     public function execute(User $user, ?Purchase $purchase = null, ?Purchasable $purchasable = null): License
     {
-        ray('creating license');
-
         $purchasableId = $purchasable ? $purchasable->id : $purchase->purchasable->id;
 
         return License::create([

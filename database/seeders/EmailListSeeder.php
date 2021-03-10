@@ -4,13 +4,12 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
 class EmailListSeeder extends Seeder
 {
     public function run(): void
     {
-        /** @var \Spatie\Mailcoach\Models\EmailList $emailList */
         $emailList = EmailList::create([
             'name' => 'Spatie',
             'requires_confirmation' => true,

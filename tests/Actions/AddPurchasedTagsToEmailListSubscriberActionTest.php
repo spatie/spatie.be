@@ -6,7 +6,7 @@ use App\Actions\AddPurchasedTagsToEmailListSubscriberAction;
 use App\Models\Purchase;
 use App\Models\Subscriber;
 use Illuminate\Support\Str;
-use Spatie\Mailcoach\Models\EmailList;
+use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
 class AddPurchasedTagsToEmailListSubscriberActionTest extends TestCase
