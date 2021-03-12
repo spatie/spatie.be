@@ -52,6 +52,7 @@ return [
         'https://www.stitcher.io/rss',
         'https://alexvanderbist.com/feed',
         'https://rias.be/feed',
+        'https://rubenvanassche.com/rss/',
     ],
 
     'instagram' => [
