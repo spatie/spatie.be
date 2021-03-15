@@ -1,39 +1,33 @@
 @if(app()->environment('production'))
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131225353-2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'UA-131225353-2', {
-            'linker': {
-                'accept_incoming': true
-            }
-        });
+        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-WGCBMG');</script>
 
         @if(session()->has('sold_purchasable'))
-            @php
-                /** @var \App\Models\Purchasable $purchasable */
-                $purchasable = session()->get('sold_purchasable')
-            @endphp
+            <script>
+                @php
+                    /** @var \App\Models\Purchasable $purchasable */
+                    $purchasable = session()->get('sold_purchasable')
+                @endphp
 
-            gtag('event', 'purchase', {
-                "transaction_id": "{{session()->getId()}}_{{$purchasable->id}}",
-                "affiliation": "Spatie.be",
-                "value": {{ $purchasable->getAverageEarnings() }},
-                "currency": "EUR",
-                "tax": 0.0,
-                "shipping": 0.0,
-                "items": [
-                    {
-                        "id": "{{ $purchasable->id }}",
-                        "name": "{{ $purchasable->product->title }} | {{ $purchasable->title }}",
-                        "quantity": 1,
-                        "price": {{ $purchasable->getAverageEarnings() }}
-                    }
-                ]
-            });
+                window.dataLayer = window.dataLayer || [];
+                dataLayer.push({
+                    'event': 'purchase',
+                    'transactionId': "{{session()->getId()}}_{{$purchasable->id}}",
+                    'transactionAffiliation': 'Spatie.be',
+                    'transactionTotal': {{ $purchasable->getAverageEarnings() }},
+                    'transactionProducts': [
+                        {
+                            "id": "{{ $purchasable->id }}",
+                            "sku": "{{ $purchasable->id }}",
+                            "name": "{{ $purchasable->product->title }} | {{ $purchasable->title }}",
+                            "quantity": 1,
+                            "price": {{ $purchasable->getAverageEarnings() }}
+                        }
+                    ]
+                });
+            </script>
         @endif
-    </script>
 @endif

@@ -18,6 +18,11 @@
 </head>
 
 <body class="flex flex-col min-h-screen">
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGCBMG"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
     <script>/* Empty script tag because Firefox has a FOUC */</script>
     @include('layout.partials.wallpaper')
 
