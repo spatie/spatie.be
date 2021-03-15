@@ -15,18 +15,22 @@
                 window.dataLayer = window.dataLayer || [];
                 dataLayer.push({
                     'event': 'purchase',
-                    'transactionId': "{{session()->getId()}}_{{$purchasable->id}}",
-                    'transactionAffiliation': 'Spatie.be',
-                    'transactionTotal': {{ $purchasable->getAverageEarnings() }},
-                    'transactionProducts': [
-                        {
-                            "id": "{{ $purchasable->id }}",
-                            "sku": "{{ $purchasable->id }}",
-                            "name": "{{ $purchasable->product->title }} | {{ $purchasable->title }}",
-                            "quantity": 1,
-                            "price": {{ $purchasable->getAverageEarnings() }}
-                        }
-                    ]
+                    'ecommerce': {
+                        'actionField': {
+                            'id': "{{session()->getId()}}_{{$purchasable->id}}",
+                            'affiliation': 'Spatie.be',
+                            'revenue': {{ $purchasable->getAverageEarnings() }},
+                        },
+                        'products': [
+                            {
+                                "id": "{{ $purchasable->id }}",
+                                "sku": "{{ $purchasable->id }}",
+                                "name": "{{ $purchasable->product->title }} | {{ $purchasable->title }}",
+                                "quantity": 1,
+                                "price": {{ $purchasable->getAverageEarnings() }}
+                            }
+                        ]
+                    }
                 });
             </script>
         @endif
