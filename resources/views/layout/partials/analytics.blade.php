@@ -16,20 +16,22 @@
                 dataLayer.push({
                     'event': 'purchase',
                     'ecommerce': {
-                        'actionField': {
-                            'id': "{{session()->getId()}}_{{$purchasable->id}}",
-                            'affiliation': 'Spatie.be',
-                            'revenue': {{ $purchasable->getAverageEarnings() }},
-                        },
-                        'products': [
-                            {
-                                "id": "{{ $purchasable->id }}",
-                                "sku": "{{ $purchasable->id }}",
-                                "name": "{{ $purchasable->product->title }} | {{ $purchasable->title }}",
-                                "quantity": 1,
-                                "price": {{ $purchasable->getAverageEarnings() }}
-                            }
-                        ]
+                        'purchase': {
+                            'actionField': {
+                                'id': "{{session()->getId()}}_{{$purchasable->id}}",
+                                'affiliation': 'Spatie.be',
+                                'revenue': {{ $purchasable->getAverageEarnings() }},
+                            },
+                            'products': [
+                                {
+                                    "id": "{{ $purchasable->id }}",
+                                    "sku": "{{ $purchasable->id }}",
+                                    "name": "{{ $purchasable->product->title }} | {{ $purchasable->title }}",
+                                    "quantity": 1,
+                                    "price": {{ $purchasable->getAverageEarnings() }}
+                                }
+                            ]
+                        }
                     }
                 });
             </script>
