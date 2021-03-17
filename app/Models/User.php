@@ -31,10 +31,11 @@ class User extends Authenticatable
 
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
     {
+
+
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
 
         $displayablePrice = $purchasable->getPriceForIp(request()->ip());
-
         $prices[] = $displayablePrice->toPaddleFormat();
         if ($displayablePrice->currencyCode !== 'USD') {
             $dollarDisplayablePrice = new DisplayablePrice($purchasable->price_in_usd_cents, 'USD', '$');
@@ -50,6 +51,9 @@ class User extends Authenticatable
         if ($license) {
             $passthrough['license_id'] = $license->id;
         }
+
+        ray('prices', $prices);
+        ray('passthrouhg', $passthrough);
 
         return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => ! $purchasable->isRenewal(),
