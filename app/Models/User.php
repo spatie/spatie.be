@@ -31,8 +31,6 @@ class User extends Authenticatable
 
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
     {
-
-
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
 
         $displayablePrice = $purchasable->getPriceForIp(request()->ip());
