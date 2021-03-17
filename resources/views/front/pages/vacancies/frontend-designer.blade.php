@@ -20,6 +20,8 @@
                             Design and implement beautiful web applications in the best conditions
                         </h2>
 
+                        <p class="mt-16 font-semibold">No recruiters please. Thank you.</p>
+
                         <div class="mt-16">
                             <h3 class="title">This is us</h3>
 
@@ -30,16 +32,16 @@
                             </p>
 
                             <p>
-                                A few examples of what we're up to:
+                                A few examples of what we're building:
                             </p>
 
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> commercial tools we build, like <a href="https://myray.app" target="_blank" rel="noopener nofollow">Ray</a>, <a href="https://mailcoach.app" target="_blank" rel="noopener nofollow">Mailcoach</a>, <a href="https://flareapp.io" target="_blank" rel="noopener nofollow">Flare</a> or <a href="https://medialibrary.pro" target="_blank" rel="noopener nofollow">Medialibrary Pro</a>;</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> courses we made, like <a href="https://laravel-beyond-crud.com" target="_blank" rel="noopener nofollow">Laravel Beyond CRUD</a>, 
-                                <a href="https://laravelpackage.training" target="_blank" rel="noopener nofollow">Laravel Package Training</a>, <a href="https://front-line-php.com" target="_blank" rel="noopener nofollow">Front Line PHP</a> and the upcoming Event Sourcing in Laravel;
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>commercial tools, like <a href="https://myray.app" target="_blank" rel="noopener nofollow">Ray</a>, <a href="https://mailcoach.app" target="_blank" rel="noopener nofollow">Mailcoach</a>, <a href="https://flareapp.io" target="_blank" rel="noopener nofollow">Flare</a> or <a href="https://medialibrary.pro" target="_blank" rel="noopener nofollow">Medialibrary Pro</a>;</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>(video) courses and books, like <a href="https://laravel-beyond-crud.com" target="_blank" rel="noopener nofollow">Laravel Beyond CRUD</a>, 
+                                <a href="https://laravelpackage.training" target="_blank" rel="noopener nofollow">Laravel Packagre Training</a>, <a href="https://front-line-php.com" target="_blank" rel="noopener nofollow">Front Line PHP</a> and the upcoming Event Sourcing in Laravel;
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> applications for international names like Tomorrowland, Krauthammer or Martin Garrix;</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Our enormous collection of <a href="{{ route('open-source.packages') }}">open source packages</a> and <a href="{{ route('open-source.projects') }}">projects</a>.</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>applications for international names like Tomorrowland, Krauthammer or Martin Garrix;</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> an enormous collection of <a href="{{ route('open-source.packages') }}">open source packages</a> and <a href="{{ route('open-source.projects') }}">projects</a>.</li>
                             </ul>
 
                     
