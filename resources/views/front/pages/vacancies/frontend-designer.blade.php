@@ -86,7 +86,7 @@
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> get €1500,- personal budget every year for trainings &amp; conferences like
                                     dotJS/dotCSS, nordic.JS, Frontend United;
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> spend 4h/week on experiment and open source work;</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> spend 4h/week on experiments and open source work;</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> be part of a team that has made its name in open source.</li>
                             </ul>
 
@@ -114,7 +114,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    GitHub plays a big part in our daily workflow to collaborate on projects, besides Slack and Basecamp. Be sure to include your GitHub profile in your application if you have one.
+                                    GitHub plays a big part in our daily workflow to collaborate on projects, besides Slack and Basecamp. If you happen to have a GitHub profile, be sure to include it in your application.
                                 </li>
                             </ul>
 
