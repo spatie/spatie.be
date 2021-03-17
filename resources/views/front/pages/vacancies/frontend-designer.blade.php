@@ -36,7 +36,7 @@
                             <ul class="bullets bullets-green">
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> commercial tools we build, like <a href="https://myray.app" target="_blank" rel="noopener nofollow">Ray</a>, <a href="https://mailcoach.app" target="_blank" rel="noopener nofollow">Mailcoach</a>, <a href="https://flareapp.io" target="_blank" rel="noopener nofollow">Flare</a> or <a href="https://medialibrary.pro" target="_blank" rel="noopener nofollow">Medialibrary Pro</a>;</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> courses we made, like <a href="https://laravel-beyond-crud.com" target="_blank" rel="noopener nofollow">Laravel Beyond CRUD</a>, 
-                                <a href="https://laravelpackage.training" target="_blank" rel="noopener nofollow">Laravel Packagre Training</a>, <a href="https://front-line-php.com" target="_blank" rel="noopener nofollow">Front Line PHP</a> and the upcoming Event Sourcing in Laravel;
+                                <a href="https://laravelpackage.training" target="_blank" rel="noopener nofollow">Laravel Package Training</a>, <a href="https://front-line-php.com" target="_blank" rel="noopener nofollow">Front Line PHP</a> and the upcoming Event Sourcing in Laravel;
                                 </li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> applications for international names like Tomorrowland, Krauthammer or Martin Garrix;</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Our enormous collection of <a href="{{ route('open-source.packages') }}">open source packages</a> and <a href="{{ route('open-source.projects') }}">projects</a>.</li>
@@ -49,7 +49,7 @@
                         <div class="mt-16">
                             <h3 class="title">Stuff you'd be working on</h3>
                             <p>
-                                We are looking for someone who will be working at the front-of-the-front-end (See this <a href="https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/">definition</a> by Brad Frost). In our case, this means you…
+                                We are looking for someone who will be working at the front-of-the-front-end (see this <a href="https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/">definition</a> by Brad Frost). In our case, this means you…
                             </p>
 
                             <ul class="bullets bullets-green">
@@ -77,7 +77,7 @@
 
 
                             <p>
-                                We don't take on just any new project but only those where you and the entire team can learn something new. We always work with the latest versions of software so you can keep your knowledge up to date, and make use of the newest features. We take this 'stay up-to-date' mentality very serious:
+                                We don't take on just any new project but only those where you and the entire team can learn something new. We always work with the latest versions of software so you can keep your knowledge up to date, and make use of the newest features. We take this 'stay up to date' mentality very serious:
                             </p>
 
                             <ul class="bullets bullets-green">
@@ -100,7 +100,7 @@
                             <ul class="bullets bullets-green">
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You have a great taste. You have an eye for novelties without disregarding classics and proven patterns. In the work we do, functionality almost always wins. This doens't mean there's no room for details or surprises.
+                                    You have a great taste. You have an eye for novelties without disregarding classics and proven patterns. In the work we do, functionality almost always wins. This doesn't mean there's no room for details or surprises.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
@@ -108,7 +108,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    We use <a href="https://tailwindcss.com" target="_blank" rel="noopener nofollow">Tailwind CSS</a> and <a href="https://reactjs.org" target="_blank" rel="noopener nofollow">React</a> or <a href="https://vuejs.org" target="_blank" rel="noopener nofollow">Vue</a> on the front end. Bonus points if you have some experience in one of these frameworks.
+                                    We use <a href="https://tailwindcss.com" target="_blank" rel="noopener nofollow">Tailwind CSS</a> and <a href="https://reactjs.org" target="_blank" rel="noopener nofollow">React</a> or <a href="https://vuejs.org" target="_blank" rel="noopener nofollow">Vue</a> on the frontend. Bonus points if you have some experience in one of these frameworks.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
