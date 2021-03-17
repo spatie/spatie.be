@@ -108,7 +108,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    We use <a href="https://tailwindcss.com" target="_blank" rel="noopener nofollow">Tailwind CSS</a> and <a href="https://reactjs.org" target="_blank" rel="noopener nofollow">React</a> or <a href="https://vuejs.org" target="_blank" rel="noopener nofollow">Vue</a> on the frontend. Bonus points if you have some experience in one of these frameworks.
+                                    We use <a href="https://tailwindcss.com" target="_blank" rel="noopener nofollow">Tailwind CSS</a> and <a href="https://reactjs.org" target="_blank" rel="noopener nofollow">React</a>, <a href="https://vuejs.org" target="_blank" rel="noopener nofollow">Vue</a> or <a href="https://github.com/alpinejs/alpine" target="_blank" rel="noopener nofollow">Alpine</a> on the frontend. Bonus points if you have some experience in one of these frameworks.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
