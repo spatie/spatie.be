@@ -50,9 +50,6 @@ class User extends Authenticatable
             $passthrough['license_id'] = $license->id;
         }
 
-        ray('prices', $prices);
-        ray('passthrouhg', $passthrough);
-
         return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => ! $purchasable->isRenewal(),
             'customer_email' => auth()->user()->email,
