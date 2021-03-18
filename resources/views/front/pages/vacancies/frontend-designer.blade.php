@@ -17,7 +17,7 @@
                 <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <h2 class="font-serif text-3xl text-green line-l">
-                            Design and implement beautiful web applications in the best conditions
+                            Design and implementation for beautiful web applications in the best of conditions
                         </h2>
 
                         <p class="mt-16 font-semibold">No recruiters please. Thank you.</p>
@@ -36,11 +36,11 @@
                             </p>
 
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>commercial tools, like <a href="https://myray.app" target="_blank" rel="noopener nofollow">Ray</a>, <a href="https://mailcoach.app" target="_blank" rel="noopener nofollow">Mailcoach</a>, <a href="https://flareapp.io" target="_blank" rel="noopener nofollow">Flare</a> or <a href="https://medialibrary.pro" target="_blank" rel="noopener nofollow">Medialibrary Pro</a>;</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>commercial tools, like <a href="https://myray.app" target="_blank" rel="noopener nofollow">Ray</a>, <a href="https://mailcoach.app" target="_blank" rel="noopener nofollow">Mailcoach</a>, <a href="https://flareapp.io" target="_blank" rel="noopener nofollow">Flare</a> and <a href="https://medialibrary.pro" target="_blank" rel="noopener nofollow">Media Library Pro</a>;</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>(video) courses and books, like <a href="https://laravel-beyond-crud.com" target="_blank" rel="noopener nofollow">Laravel Beyond CRUD</a>, 
                                 <a href="https://laravelpackage.training" target="_blank" rel="noopener nofollow">Laravel Package Training</a>, <a href="https://front-line-php.com" target="_blank" rel="noopener nofollow">Front Line PHP</a> and the upcoming Event Sourcing in Laravel;
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>applications for international names like Tomorrowland, Krauthammer or Martin Garrix;</li>
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>applications for international names like Tomorrowland, Krauthammer and Martin Garrix;</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> an enormous collection of <a href="{{ route('open-source.packages') }}">open source packages</a> and <a href="{{ route('open-source.projects') }}">projects</a>.</li>
                             </ul>
 
@@ -57,15 +57,15 @@
                             <ul class="bullets bullets-green">
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    … work on personality for our own products —sketch logos, pick fonts, define color palettes, provide illustrations, or create short video reels;
+                                    … work on personality for our own products —sketch logos, pick fonts, define color palettes, provide illustrations or create short video reels;
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    discuss and design UIs —from idea, prototype to implementation. We use paper, Figma, Illustrator but are open for any tool that gets the job done;
+                                    discuss and design UIs — from idea, to prototype, to implementation. We use paper, Figma and Illustrator, but are open for any tool that gets the job done;
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    think about how this clean UI fits in a robust UX. Consider the entire strategy from intake to checkout, and work on the information architecture. Look at concepts like performance, fallbacks, and overall experience;
+                                    think about how this clean UI fits in a robust UX. Consider the entire strategy from intake to checkout, and work on the information architecture. Look at concepts like performance, fallbacks and overall experience;
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
@@ -73,7 +73,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    play with new technologies, try out stuff that won't make production or work on your secret side project – as long as you'll show it to the team once it's done.
+                                    play with new technologies, try out stuff that won't make production or work on your secret side project — as long as you'll show it to the team once it's done.
                                 </li>
                             </ul>
 
@@ -83,8 +83,8 @@
                             </p>
 
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> get €1500,- personal budget every year for trainings &amp; conferences like
-                                    dotJS/dotCSS, nordic.JS, Frontend United;
+                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> get a € 1500,- personal budget every year for trainings &amp; conferences like
+                                    dotJS/dotCSS, nordic.JS or Frontend United;
                                 </li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> spend 4h/week on experiments and open source work;</li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> be part of a team that has made its name in open source.</li>
