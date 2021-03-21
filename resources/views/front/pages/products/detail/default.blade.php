@@ -83,7 +83,9 @@
                 @endif
                 <div class="md:-mx-2 md:grid md:grid-flow-col items-stretch justify-start">
                     @foreach($product->purchasablesWithoutRenewals as $purchasable)
+                        @if ($purchasable->released)
                         @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
+                        @endif
                     @endforeach
                 </div>
             </div>
