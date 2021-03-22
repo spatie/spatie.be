@@ -216,5 +216,16 @@ return [
             ],
             "category" => "General PHP",
         ],
+        [
+            "name" => "laravel-menu",
+            "repository" => "spatie/laravel-menu",
+            "branches" => [
+                "master" => "v4",
+                "v3" => "v3",
+                "v2" => "v2",
+                "v1" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
     ],
 ];
