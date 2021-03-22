@@ -1,6 +1,6 @@
 
 <p class="mt-4">
-    It's rather full-house at the moment, but why don't you try to squeeze your way in?
+    Will you become our 12th team member?
 </p>
 <p class="mt-4">
     <a class="link-underline link-blue" href="{{ route('vacancies.show', 'frontend-designer') }}">Frontend designer</a>
