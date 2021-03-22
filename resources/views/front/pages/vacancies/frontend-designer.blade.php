@@ -117,8 +117,6 @@
                                     GitHub plays a big part in our daily workflow to collaborate on projects, besides Slack and Basecamp. If you happen to have a GitHub profile, be sure to include it in your application.
                                 </li>
                             </ul>
-
-                        
                         </div>
                     </div>
                 </div>
