@@ -17,7 +17,9 @@ class AfterPaddleSaleController
 
         session()->flash('sold_purchasable', $purchasable);
 
-        session()->flash('latest_purchase', current_user()->purchases()->latest()->first());
+        if (current_user()) {
+            session()->flash('latest_purchase', current_user()->purchases()->latest()->first());
+        }
 
         flash()->success('Purchase successful!');
 
