@@ -20,7 +20,12 @@
                             Design and implementation for beautiful web applications in the best of conditions
                         </h2>
 
-                        <p class="mt-16 font-semibold">No recruiters please. Thank you.</p>
+                        <p class="mt-16 font-semibold">
+                            No recruiters please. Thank you.
+                            <br>
+                            Knowledge of Dutch is mandatory for this position.
+                        </p>
+
 
                         <div class="mt-16">
                             <h3 class="title">This is us</h3>
@@ -129,7 +134,7 @@
 
     <div class="section section-group">
         @include('front.pages.web-development.partials.stack')
-        @include('front.pages.vacancies.partials.cta', ['github' => true ])
+        @include('front.pages.vacancies.partials.cta')
     </div>
 
 </x-page>
