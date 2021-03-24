@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "103dc4234636c84183b28459d769caf4",
+    "content-hash": "dbc5b52d3d2b0b5327f3451138acb0c9",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -10341,17 +10341,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "4.0.6",
+            "version": "4.0.7",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "52a357b8c65d7542c390a871e1569b22fc01bd62"
+                "reference": "74ef2ee55e7a8aca1f439c56b4c6386821e23f73"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-52a357b8c65d7542c390a871e1569b22fc01bd62-zip-900d07.zip",
-                "reference": "52a357b8c65d7542c390a871e1569b22fc01bd62",
-                "shasum": "9ba20d58b80fea800d29200622442cde4c1218fa"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-74ef2ee55e7a8aca1f439c56b4c6386821e23f73-zip-a3ec7f.zip",
+                "reference": "74ef2ee55e7a8aca1f439c56b4c6386821e23f73",
+                "shasum": "721ada9d390ef3081ad79a4b7278552126361425"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -10459,10 +10459,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.0.6",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.0.7",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2021-03-24T14:16:33+00:00"
+            "time": "2021-03-24T14:56:18+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
