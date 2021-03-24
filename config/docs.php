@@ -14,7 +14,7 @@ return [
             "name" => "laravel-mailcoach",
             "repository" => "spatie/laravel-mailcoach",
             "branches" => [
-                "v4" => "v4",
+                "master" => "v4",
             ],
             "category" => "Laravel",
         ],
