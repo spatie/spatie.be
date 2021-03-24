@@ -1,5 +1,6 @@
 <x-page
-        title="Products"
+        ogImage="https://spatie.be/images/og-store.png"
+        title="Applications and digital courses built for modern developers"
         background="/backgrounds/product.jpg"
         description="Welcome in our store, by artisans for artisans. Get access to our paid products, courses and ebooks"
 >
@@ -9,11 +10,11 @@
                 Welcome in <br>our store
             </h1>
             <p class="banner-intro">
-                By artisans for artisans
+                Applications and digital courses built for modern developers
             </p>
         </div>
     </section>
-   
+
    {{-- @include('front.pages.products.partials.ctaLaraconEU') --}}
 
     <section class="section overflow-visible section-group">
