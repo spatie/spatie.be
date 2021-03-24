@@ -2,9 +2,9 @@
     <div class="wrap wrap-6 sm:grid-flow-col-dense">
         <div class="sm:col-span-4">
             <div class="markup links-underline links-blue">
-               <h2 class="title-2xl">Basic needs <br>
-                fulfilled
+               <h2 class="title-2xl">Our offer
                 </h2>
+                
                 <ul class="bullets bullets-green">
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package that can be tailored to your personal needs</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
@@ -15,17 +15,11 @@
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Internet at home</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
                 </ul>
-            </div>
-        </div>
-    </div>
-</section>
-<section class=section>
-    <div class="wrap wrap-8 sm:grid-flow-col-dense">
-        <div class="sm:col-span-4 sm:col-start-4">
-            <div class="markup links-underline links-blue">
-                <h3 class="title">Extras that will feel familiar quickly</h3>
+
+                <h3 class="mt-16 title">Extras that will feel familiar quickly</h3>
 
                 <ul class="bullets bullets-green">
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Partially remote work to help you get in the zone or combine work and family</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A modern office in the center of Antwerp, right in between 2 train stations</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Standing desks and a roof terrace</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A genuine drive to learn from each other: code reviews, in-house presentations and chit-chat on Slack</li>
@@ -42,11 +36,6 @@
                     <br>
                     You may start immediately.
                 </p>
-            </div>
-        </div>
-        <div class="sm:col-span-3 sm:col-start-1">
-            <div class="illustration is-left is-postcard is-rotated h-full | sm:mr-8">
-                {{ image('italian.jpg') }}
             </div>
         </div>
     </div>

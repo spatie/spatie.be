@@ -28,6 +28,7 @@ class License extends Resource
             ID::make()->sortable(),
 
             BelongsTo::make('Purchasable'),
+            BelongsTo::make('Purchase'),
             BelongsTo::make('User'),
 
             Text::make('Key')->hideFromIndex(),
