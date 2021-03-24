@@ -110,7 +110,8 @@ return [
             "name" => "menu",
             "repository" => "spatie/menu",
             "branches" => [
-                "master" => "v2",
+                "master" => "v3",
+                "v2" => "v2",
                 "v1" => "v1",
             ],
             "category" => "General PHP",
