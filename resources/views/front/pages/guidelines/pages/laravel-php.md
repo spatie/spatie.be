@@ -16,6 +16,20 @@ Code style must follow [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http:
 
 By default, we don't use `final`. In our team, there aren't many benefits that `final` offers as we don't rely too much on inheritance. For our open source stuff, we assume that all our users know they are responsible for writing tests for any overwritten behaviour.
 
+### Nullable and union types
+
+Whenever possible use the short nullable notation of a type, instead of using a union of the type with `null`.
+
+```php
+// in a class
+
+// good
+public ?string $variable;
+
+// good
+public string | null $variable;
+```
+
 ### Void return types
 
 If a method returns nothing, it should be indicated with `void`.
