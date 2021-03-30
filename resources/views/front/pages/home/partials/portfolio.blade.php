@@ -23,31 +23,27 @@
             </div>
         </div>
     </div>
-    
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+
+    <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://front-line-php.com" class="illustration is-left h-full" title="front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/flphp.jpg') }}
+            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/mailcoach-v4.jpg') }}
             </a>
         </div>
         <div class="sm:col-span-3 sm:col-start-5 | self-center">
-            <div class="markup links-blue links-underline | sm:grid-text-right">
+            <div class="markup links-blue links-underline">
                 <h3 class="title">
-                    Front Line PHP
+                    Self-host your email marketing platform
                     <span class="title-subtext text-pink-dark block">
-                        Book<span class="font-normal"> + </span>free videos <span class="font-normal">on PHP 8</span>
+                        <span class="font-normal">New features in</span> v4
                     </span>
                 </h3>
-                <p class="text-lg font-semibold">
-                    Just launched! </p>
                 <p class="text-lg">
-                    An ebook by Brent Roose on cutting edge tactics in PHP&nbsp;8, accompanied by free videos with practical examples by Freek Van der Herten.
+                    Mailcoach is privacy-focused, self-hosted dashboard to setup mailing lists, send out newsletters, drip campaigns, transactional mails and track the success.<p> <p class="text-lg">
+                    It can be used as a separate app or integrated in your own Laravel application, has an API and couples with Amazon SES, Mailgun, Postmark, Sendgrid or your own SMTP server.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li class="flex items-baseline">
-                        <span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span>
-                        <span class="ml-1"><a href="https://front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">front-line-php.com</a></span>
-                    </li>
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">mailcoach.app</a></li>
                 </ul>
             </div>
         </div>
@@ -131,26 +127,30 @@
         </div>
     </div>
 
-    <div class="wrap wrap-8 section">
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/mailcoach.jpg') }}
+            <a href="https://front-line-php.com" class="illustration is-left h-full" title="front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/flphp.jpg') }}
             </a>
         </div>
         <div class="sm:col-span-3 sm:col-start-5 | self-center">
-            <div class="markup links-blue links-underline">
+            <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
-                    Newsletter software and package
+                    Front Line PHP
                     <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">Including</span> video course
+                        Book<span class="font-normal"> + </span>free videos <span class="font-normal">on PHP 8</span>
                     </span>
                 </h3>
+                <p class="text-lg font-semibold">
+                    Just launched! </p>
                 <p class="text-lg">
-                    Mailcoach is a self-hosted dashboard to setup mailing lists, send out newsletter campaigns and track the success.
-                    It can be used as a separate app or integrated in your own Laravel application, has an API and couples with Amazon SES, Mailgun, Postmark or Sendgrid.
+                    An ebook by Brent Roose on cutting edge tactics in PHP&nbsp;8, accompanied by free videos with practical examples by Freek Van der Herten.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">mailcoach.app</a></li>
+                    <li class="flex items-baseline">
+                        <span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span>
+                        <span class="ml-1"><a href="https://front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">front-line-php.com</a></span>
+                    </li>
                 </ul>
             </div>
         </div>
