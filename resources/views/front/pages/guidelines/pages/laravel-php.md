@@ -26,7 +26,7 @@ Whenever possible use the short nullable notation of a type, instead of using a 
 // good
 public ?string $variable;
 
-// good
+// bad
 public string | null $variable;
 ```
 
