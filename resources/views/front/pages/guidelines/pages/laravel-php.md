@@ -376,7 +376,7 @@ $this->calculateLoans();
 ```php
 // Bad
 
-// Start calculation loads
+// Start calculating loans
 ```
 
 ## Test classes
