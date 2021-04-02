@@ -214,6 +214,7 @@ return [
             "repository" => "spatie/typescript-transformer",
             "branches" => [
                 "master" => "v1",
+                "v2" => "v2",
             ],
             "category" => "General PHP",
         ],
