@@ -225,10 +225,9 @@
     font-variant-numeric: tabular-nums;
 }
 
-
 .markup-embeds iframe {
-    max-width: 100% ! important;
-    height: auto ! important;
+    max-width: 100% !important;
+    height: auto !important;
     width: 100%;
     aspect-ratio: attr(width) / attr(height);
 }
