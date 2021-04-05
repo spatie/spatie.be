@@ -47,7 +47,8 @@
                 </div>
             @endif
 
-            <div class="markup markup-titles markup-lists markup-tables markup-code links-blue links-underline">
+            <div class="markup markup-titles markup-lists markup-tables markup-code markup-embeds
+             links-blue links-underline">
                 {!! $page->contents !!}
             </div>
 
