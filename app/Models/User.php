@@ -26,6 +26,7 @@ class User extends Authenticatable
         'is_admin' => 'bool',
         'next_purchase_discount_period_ends_at' => 'datetime',
         'sponsor_gift_given_at' => 'datetime',
+        'has_access_to_unreleased_products' => 'boolean',
     ];
 
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
@@ -128,33 +129,9 @@ class User extends Authenticatable
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
     }
 
-    public function hasAccessToUnreleasedPurchasables(): bool
+    public function hasAccessToUnreleasedProducts(): bool
     {
-        return true;
-
-        $earlyAccessUserIds = [
-            15,
-            1137,
-            769,
-            762,
-            3081,
-            3507,
-            783,
-            5750,
-            1324,
-            76,
-            1068,
-            91,
-            1688,
-            1068,
-            7999,
-        ];
-
-        if (in_array($this->id, $earlyAccessUserIds)) {
-            return true;
-        }
-
-        return $this->isSpatieMember();
+        return $this->has_access_to_unreleased_products;
     }
 
     public function enjoysExtraDiscountOnNextPurchase(): bool

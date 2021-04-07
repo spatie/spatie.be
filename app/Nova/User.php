@@ -17,7 +17,7 @@ class User extends Resource
 
     public static $title = 'name';
 
-    public static $group = "Users";
+    public static $group = 'Users';
 
     public static $search = [
         'id', 'name', 'email', 'github_username',
@@ -39,6 +39,8 @@ class User extends Resource
                 ->rules(['required', 'email', 'max:254'])
                 ->creationRules(['unique:users,email'])
                 ->updateRules(['unique:users,email,{{resourceId}}']),
+
+            Boolean::make('Has access to unreleased products'),
 
             Text::make('GitHub username')->readonly(),
 

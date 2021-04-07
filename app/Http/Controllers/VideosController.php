@@ -10,6 +10,7 @@ class VideosController
     public function index()
     {
         $allSeries = Series::with(['purchasables', 'videos'])
+            ->where('visible', true)
             ->orderBy('sort_order')
             ->get();
 
