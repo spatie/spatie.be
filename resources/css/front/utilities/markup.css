@@ -224,3 +224,7 @@
     @apply text-right;
     font-variant-numeric: tabular-nums;
 }
+
+.markup-embeds iframe {
+    width: 100%;
+}

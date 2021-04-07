@@ -11,7 +11,7 @@ class EventSourcingController
 {
     public function show()
     {
-        return view('front.pages.event-sourcing.index');
+        return redirect()->to('https://event-sourcing-laravel.com/');
     }
 
     public function subscribe(EventSourcingRequest $request)
