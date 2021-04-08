@@ -9,9 +9,6 @@ class ProductsController
 {
     public function index(Request $request)
     {
-        ray()->showQueries();
-
-
         $products = Product::orderBy('sort_order')
             ->where('visible', true)
             ->get();
