@@ -9,7 +9,8 @@ class ProductsController
 {
     public function index(Request $request)
     {
-        ray('we are on the produts page');
+        ray()->showQueries();
+
 
         $products = Product::orderBy('sort_order')
             ->where('visible', true)
