@@ -17,7 +17,7 @@ class Ray
         return $this->$method();
     }
 
-    public function latestMacosVersion(): string
+    public function latestMacosIntelVersion(): string
     {
         return Cache::remember('latest-mac-version', 60, function () {
             $yaml = Http::get("{$this->baseUrl}/latest-mac.yml")->body();
@@ -26,11 +26,27 @@ class Ray
         });
     }
 
-    public function getDownloadLinkMacos(): string
+    public function getDownloadLinkMacosIntel(): string
     {
-        $latestVersion = $this->latestMacosVersion();
+        $latestVersion = $this->latestMacosIntelVersion();
 
         return "{$this->baseUrl}/Ray-{$latestVersion}.dmg";
+    }
+
+    public function latestMacosAppleSiliconVersion(): string
+    {
+        return Cache::remember('latest-mac-version', 60, function () {
+            $yaml = Http::get("{$this->baseUrl}/arm64/latest-mac.yml")->body();
+
+            return Yaml::parse($yaml)['version'];
+        });
+    }
+
+    public function getDownloadLinkMacosAppleSilicon(): string
+    {
+        $latestVersion = $this->latestMacosIntelVersion();
+
+        return "{$this->baseUrl}/arm64/Ray-{$latestVersion}.dmg";
     }
 
     public function latestWindowsVersion(): string
