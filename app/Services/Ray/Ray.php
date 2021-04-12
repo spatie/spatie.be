@@ -46,7 +46,7 @@ class Ray
     {
         $latestVersion = $this->latestMacosIntelVersion();
 
-        return "{$this->baseUrl}/arm64/Ray-{$latestVersion}.dmg";
+        return "{$this->baseUrl}/arm64/Ray-{$latestVersion}-arm64.dmg";
     }
 
     public function latestWindowsVersion(): string
