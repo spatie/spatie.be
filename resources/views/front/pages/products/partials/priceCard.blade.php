@@ -67,12 +67,6 @@
 
     <div class="flex-0 mt-6 flex justify-center">
         <div class="w-full flex justify-center">
-            @if($purchasable->hasActiveDiscount())
-                <span style="top:50%; transform: translateY(-50%)" class="absolute right-full mr-2">
-            <span
-                class="font-semibold line-through">{{ $priceWithoutDiscount->formattedPrice() }}</span>
-        </span>
-            @endif
             @auth
                 @if (isset($payLink))
                     <div class="w-full">
@@ -87,6 +81,11 @@
                                             Subtotal
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                            @if($purchasable->hasActiveDiscount())
+                                                <span class="mr-2">
+                                                    <span class="font-semibold line-through">{{ $priceWithoutDiscount->formattedPrice() }}</span>
+                                                </span>
+                                            @endif
                                             <span id="subtotal" class="text-blue"></span>
                                         </dd>
                                     </div>
