@@ -5,6 +5,6 @@ justify-center flex items-center
 {{ $attributes['large'] ? 'px-4 min-h-12 text-xl shadow-lg' : 'px-6 min-h-10' }}
 font-sans-bold text-white
 transition-bg duration-300
-focus:outline-none focus:border-blue-light whitespace-no-wrap " {{ $attributes }}>
+focus:outline-none focus:border-blue-light whitespace-no-wrap">
     {{ $slot }}
 </button>
