@@ -10,7 +10,8 @@ class DownloadRayController
     public function __invoke(Request $request, Ray $ray, string $platform)
     {
         abort_unless(in_array($platform, [
-            'macos',
+            'macosIntel',
+            'macosAppleSilicon',
             'windows',
             'linux',
         ]), 404);
