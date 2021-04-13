@@ -68,20 +68,18 @@
 
     <span class="cell-r grid gap-4 justify-start md:justify-end">
         @if ($license->purchasable->renewalPurchasable)
-            <x-paddle-button
-                :url="auth()->user()->getPayLinkForProductId($license->purchasable->renewalPurchasable->paddle_product_id,$license)"
-                data-theme="none">
-            <x-button>
-                @if ($license->isExpired())
-                    Renew for
-                @else
-                    Extend for
-                @endif
-                <span class="ml-1 text-lg leading-none">
-                    {{ $price->formattedPrice() }}
-                </span>
-            </x-button>
-        </x-paddle-button>
+            <a href="{{ route('products.buy', [$license->purchasable->product, $license->purchasable->renewalPurchasable, $license]) }}">
+                <x-button>
+                    @if ($license->isExpired())
+                            Renew for
+                        @else
+                            Extend for
+                        @endif
+                    <span class="ml-1 text-lg leading-none">
+                        {{ $price->formattedPrice() }}
+                    </span>
+                </x-button>
+            </a>
         @endif
 
 

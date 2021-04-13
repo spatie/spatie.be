@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\License;
 use App\Models\Product;
+use App\Models\Purchasable;
 use Illuminate\Http\Request;
 
 class ProductsController
@@ -34,5 +36,19 @@ class ProductsController
         }
 
         return view('front.pages.products.show', compact('product', 'purchases', 'licenses'));
+    }
+
+    public function buy(Request $request, Product $product, Purchasable $purchasable, License $license = null)
+    {
+        if (! $product->purchasables->contains($purchasable)) {
+            abort(404);
+        }
+
+        $payLink = auth()->user()->getPayLinkForProductId(
+            $purchasable->paddle_product_id,
+            $license
+        );
+
+        return view('front.pages.products.buy', compact('product', 'purchasable', 'license', 'payLink'));
     }
 }
