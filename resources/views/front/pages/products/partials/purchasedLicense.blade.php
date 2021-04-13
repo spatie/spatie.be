@@ -85,3 +85,17 @@
 
     </span>
 </div>
+
+<script type="text/javascript">
+    function copyLicense(element, licenseKey) {
+        navigator.clipboard.writeText(licenseKey)
+
+        element.classList.add('text-green');
+        element.innerText = 'copied!';
+
+        setTimeout(() => {
+            element.classList.remove('text-green');
+            element.innerText = 'copy';
+        }, 2000);
+    }
+</script>
