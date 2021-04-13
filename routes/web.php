@@ -61,6 +61,7 @@ Route::prefix('about-us')->group(function () {
 Route::prefix('products')->group(function () {
     Route::get('/', [ProductsController::class, 'index'])->name('products.index');
     Route::get('{product:slug}', [ProductsController::class, 'show'])->name('products.show');
+    Route::get('{product:slug}/buy/{purchasable}/{license?}', [ProductsController::class, 'buy'])->name('products.buy');
 
     Route::get('ray/download/{platform}/latest', DownloadRayController::class);
 
