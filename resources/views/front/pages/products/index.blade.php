@@ -22,9 +22,9 @@
                 <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
                     @foreach ($products as $product)
                         <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
-                            <a href="{{ route('products.show', $product) }}">
-                                <div class="-mt-8 pb-8 px-12">
-                                    <div class="shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
+                            <a href="{{ route('products.show', $product) }}" class="group">
+                                <div class="-mt-8 pb-8 px-12 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
+                                    <div class="shadow-md group-hover:shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
                                 </div>
                                 <h2 class="title-sm link-black link-underline">{{ $product->title }}</h2>
                                 <p class="mt-4">{{ $product->formattedDescription }}</p>
