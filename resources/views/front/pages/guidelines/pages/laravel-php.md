@@ -268,14 +268,14 @@ In general, `else` should be avoided because it makes code less readable. In mos
 ```php
 // Good
 
-if (! $conditionBA) {
-   // conditionB A failed
+if (! $conditionA) {
+   // condition A failed
 
    return;
 }
 
 if (! $conditionB) {
-   // conditionB A passed, B failed
+   // condition A passed, B failed
 
    return;
 }
@@ -291,11 +291,11 @@ if ($conditionA) {
       // condition A and B passed
    }
    else {
-     // conditionB A passed, B failed
+     // condition A passed, B failed
    }
 }
 else {
-   // conditionB A failed
+   // condition A failed
 }
 ```
 
