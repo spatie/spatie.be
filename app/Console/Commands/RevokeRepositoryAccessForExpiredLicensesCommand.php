@@ -20,6 +20,11 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
             ->whereExpired()
             ->cursor()
             ->each(function (License $license) use ($gitHubApi) {
+                if ($license->purchase->user->licenses()->whereNotExpired()->where('purchasable_id', $license->purchasable_id)->exists()) {
+                    // User has another license for this repo
+                    return;
+                }
+
                 $gitHubApi->revokeAccessToRepo(
                     $license->purchase->user->github_username,
                     $license->purchase->purchasable->repository_access
