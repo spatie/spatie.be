@@ -174,14 +174,6 @@ return [
             "category" => "Laravel",
         ],
         [
-            "name" => "laravel-resource-links",
-            "repository" => "spatie/laravel-resource-links",
-            "branches" => [
-                "master" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
             "name" => "laravel-backup-server",
             "repository" => "spatie/laravel-backup-server",
             "branches" => [
