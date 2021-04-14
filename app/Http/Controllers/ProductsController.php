@@ -44,6 +44,10 @@ class ProductsController
             abort(404);
         }
 
+        if (! auth()->check()) {
+            return redirect(route('login') . "?next=" . route('products.buy', [$product, $purchasable]));
+        }
+
         $payLink = auth()->user()->getPayLinkForProductId(
             $purchasable->paddle_product_id,
             $license
