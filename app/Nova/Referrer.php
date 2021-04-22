@@ -20,7 +20,7 @@ class Referrer extends Resource
     public static $group = "Referrers";
 
     public static $search = [
-        'id', 'slug', 'uuid', 'github_username',
+        'id', 'slug', 'uuid',
     ];
 
     public function fields(Request $request)
