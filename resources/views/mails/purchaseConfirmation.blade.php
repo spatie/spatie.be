@@ -4,7 +4,7 @@ Thank you so much for your purchase. This means a lot to us!
 You can manage your purchase [on our website]({{ route('products.show', $purchase->purchasable->product) }})
 
 @if($purchase->unlocksRayLicense())
-    Your purchase also includes one license for Ray, which you can manage [here](https://spatie.be/products/ray).
+Your purchase also includes one license for Ray, which you can manage [here](https://spatie.be/products/ray).
 @endif
 
 As an extra bonus, you can grab any other product of ours at an extra {{ $purchase->user->nextPurchaseDiscountPercentage() }}% discount for the next 24 hours.
