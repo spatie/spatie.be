@@ -33,7 +33,6 @@ $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-01-20 00:0
                                 </x-countdown>
                             </div>
                         </div>
-                        <p class="mt-1 text-sm"> … and get a free Ray license when buying a book or course!</p>
                     </div>
                 </div>
             </div>

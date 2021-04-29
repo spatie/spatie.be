@@ -72,10 +72,6 @@ class Purchase extends Model
 
     public function unlocksRayLicense(): bool
     {
-        return in_array($this->purchasable->product->slug, [
-            'front-line-php',
-            'laravel-beyond-crud',
-            'laravel-package-training',
-        ]);
+        return false;
     }
 }
