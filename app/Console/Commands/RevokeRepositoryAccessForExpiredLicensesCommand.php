@@ -14,11 +14,6 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
 {
     public $signature = 'revoke-repository-access-for-expired-licenses';
 
-    public function __construct(private Log $log)
-    {
-        parent::__construct();
-    }
-
     public function handle(GitHubApi $gitHubApi): void
     {
         $this->info('Revoking access to repositories for expired licenses...');
@@ -28,11 +23,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
             ->whereExpired()
             ->cursor()
             ->each(function (License $license) use ($gitHubApi) {
-                if ($license->purchase->user->licenses()
-                    ->whereNotExpired()
-                    ->where('purchasable_id', $license->purchasable_id)
-                    ->exists()) {
-                    // User has another license for this repo
+                if ($this->userHasAnotherLicense($license)) {
                     return;
                 }
 
@@ -43,7 +34,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                     );
                 } catch (RuntimeException $e) {
                     if ($e->getMessage() !== "Not Found") {
-                        $this->log::alert(
+                        Log::alert(
                             "We could not revoke access for {$license->purchase->user->github_username}
                              to {$license->purchase->purchasable->repository_access}"
                         );
@@ -51,7 +42,6 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                         return;
                     }
 
-                    // User does not exist on Github anymore
                     $this->unsetGithubUsername($license->purchase->user);
                 }
 
@@ -61,7 +51,15 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
         $this->info('All done!');
     }
 
-    private function unsetGithubUsername(User $user): void
+    protected function userHasAnotherLicense(License $license): bool
+    {
+        return $license->purchase->user->licenses()
+            ->whereNotExpired()
+            ->where('purchasable_id', $license->purchasable_id)
+            ->exists();
+    }
+
+    protected function unsetGithubUsername(User $user): void
     {
         $user->github_username = null;
 
