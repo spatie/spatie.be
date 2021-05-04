@@ -19,6 +19,7 @@ class UserSeeder extends Seeder
             'rias',
             'alex',
             'ruben',
+            'niels',
         ])->map(fn (string $name) => User::create([
             'name' => ucfirst($name),
             'email' => "${name}@spatie.be",
@@ -27,7 +28,7 @@ class UserSeeder extends Seeder
         ]))->each(function (User $user): void {
             $randomPurchasables = Purchasable::query()->inRandomOrder()->take(random_int(0, 5))->get();
 
-            //$this->createPurchases($user, $randomPurchasables);
+            $this->createPurchases($user, $randomPurchasables);
         });
     }
 
@@ -35,7 +36,7 @@ class UserSeeder extends Seeder
     {
         $randomPurchasables->each(function (Purchasable $purchase) use ($user): void {
             if ($purchase->requires_license) {
-                $license = License::factory()->create([
+                License::factory()->create([
                     'purchasable_id' => $purchase->id,
                     'user_id' => $user->id,
                 ]);
@@ -44,7 +45,10 @@ class UserSeeder extends Seeder
             Purchase::factory()->create([
                 'user_id' => $user->id,
                 'purchasable_id' => $purchase->id,
-                'license_id' => optional($license ?? null)->id,
+                'paddle_fee' => 0,
+                'earnings' => 0,
+                'quantity' => 1,
+                'has_repository_access' => false,
             ]);
         });
     }
