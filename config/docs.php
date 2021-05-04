@@ -65,7 +65,8 @@ return [
             "name" => "laravel-activitylog",
             "repository" => "spatie/laravel-activitylog",
             "branches" => [
-                "master" => "v3",
+                "master" => "v4",
+                "v3" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
             ],
