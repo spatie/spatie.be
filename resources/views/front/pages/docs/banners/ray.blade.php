@@ -16,7 +16,7 @@
                     Learn&nbsp;more
                 </button>
             </a>
-            {{-- @include('front.pages.docs.banners.hideButton') --}}
+            @include('front.pages.docs.banners.hideButton')
         </div>
     </div>
 </aside>

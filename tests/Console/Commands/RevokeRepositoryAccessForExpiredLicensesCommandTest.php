@@ -6,6 +6,7 @@ use App\Console\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Models\License;
 use App\Services\GitHub\GitHubApi;
 use Mockery\MockInterface;
+use RuntimeException;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
@@ -69,6 +70,23 @@ class RevokeRepositoryAccessForExpiredLicensesCommandTest extends TestCase
         $this->apiSpy->shouldNotHaveReceived('revokeAccessToRepo');
 
         $this->assertTrue($this->license->purchase->has_repository_access);
+    }
+
+    /** @test */
+    public function it_will_reset_the_username_and_revoke_access_if_the_user_was_not_found_on_github()
+    {
+        $this->assertNotNull($this->license->purchase->user->github_username);
+
+        $this->apiSpy
+            ->shouldReceive('revokeAccessToRepo')
+            ->andThrow(new RuntimeException('Not Found'));
+
+        $this->artisan(RevokeRepositoryAccessForExpiredLicensesCommand::class);
+
+        $this->license->refresh();
+
+        $this->assertNull($this->license->purchase->user->github_username);
+        $this->assertFalse($this->license->purchase->has_repository_access);
     }
 
     /** @test */
