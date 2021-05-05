@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dbc5b52d3d2b0b5327f3451138acb0c9",
+    "content-hash": "f3eae09c07950a1a0a67180fbbde254e",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -10128,6 +10128,75 @@
                 }
             ],
             "time": "2021-04-15T09:31:32+00:00"
+        },
+        {
+            "name": "spatie/laravel-disable-floc",
+            "version": "0.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-disable-floc.git",
+                "reference": "993ce0ffb929042b6e589a95dfd82ce5d921f56e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-disable-floc/zipball/993ce0ffb929042b6e589a95dfd82ce5d921f56e",
+                "reference": "993ce0ffb929042b6e589a95dfd82ce5d921f56e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^7.30|^8.37",
+                "php": "^7.3|^7.4|^8.0"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.2",
+                "nunomaduro/collision": "^5.3",
+                "orchestra/testbench": "^6.15",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.9"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\DisableFloc\\DisableFlocServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\DisableFloc\\": "src",
+                    "Spatie\\DisableFloc\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Automatically disable Google's floc in Laravel apps",
+            "homepage": "https://github.com/spatie/laravel-disable-floc",
+            "keywords": [
+                "laravel",
+                "laravel-disable-floc",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-disable-floc/issues",
+                "source": "https://github.com/spatie/laravel-disable-floc/tree/0.0.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-05-05T17:29:09+00:00"
         },
         {
             "name": "spatie/laravel-feed",

@@ -56,6 +56,7 @@
         "spatie/crypto": "^2.0.0",
         "spatie/eloquent-sortable": "^3.8",
         "spatie/laravel-backup": "^6.11",
+        "spatie/laravel-disable-floc": "^0.0.2",
         "spatie/laravel-flash": "^1.7",
         "spatie/laravel-mailcoach": "^4.0.7",
         "spatie/laravel-mailcoach-mailgun-feedback": "^3.0",
