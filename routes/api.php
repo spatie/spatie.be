@@ -7,6 +7,7 @@ use App\Http\Api\Controllers\Activations\UpdateCurrentVersionController;
 use App\Http\Api\Controllers\HandleGitHubWebhookController;
 use App\Http\Api\Controllers\PriceController;
 use App\Http\Api\Controllers\SatisAuthenticationController;
+use App\Http\Api\Controllers\ShowLicenseController;
 use App\Http\Api\Controllers\ShowReleaseController;
 use App\Http\Controllers\SignedProductLicenseController;
 use Illuminate\Support\Facades\Route;
@@ -23,3 +24,5 @@ Route::post('activations/{activation:uuid}/version', UpdateCurrentVersionControl
 Route::delete('activations/{activation:uuid}', DeleteActivationController::class);
 
 Route::get('price/{purchasable}/{countryCode}', PriceController::class);
+
+Route::get('license/{license:key}', ShowLicenseController::class);
