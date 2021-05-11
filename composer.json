@@ -53,10 +53,10 @@
         "spatie/commonmark-highlighter": "^2.1",
         "spatie/crypto": "^2.0.0",
         "spatie/eloquent-sortable": "^3.8",
-        "spatie/laravel-backup": "^6.11",
+        "spatie/laravel-backup": "^7.0",
         "spatie/laravel-disable-floc": "^1.0",
         "spatie/laravel-flash": "^1.7",
-        "spatie/laravel-mailcoach": "^4.0.7",
+        "spatie/laravel-mailcoach": "dev-master as 4.0.7",
         "spatie/laravel-mailcoach-mailgun-feedback": "^3.0",
         "spatie/laravel-mailcoach-monaco": "^2.0",
         "spatie/laravel-mailcoach-ses-feedback": "^3.0.1",
@@ -117,6 +117,10 @@
         }
     },
     "repositories": [
+        {
+            "type": "path",
+            "url": "../laravel-mailcoach"
+        },
         {
             "type": "composer",
             "url": "https://satis.spatie.be"
