@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
             ->call(EmailListSeeder::class)
             ->call(MembersSeeder::class)
             ->call(InsightsSeeder::class)
+            ->call(PlaylistSeeder::class)
             ->call(RepositoriesSeeder::class)
             ->call(ProductSeeder::class)
             ->call(UserSeeder::class)
