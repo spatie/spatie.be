@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d8b5a8dc3a4e5bbb81be7fce99eca3b5",
+    "content-hash": "8c80f3869e0e9db54a5f59eca0472392",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -273,16 +273,16 @@
         },
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.5.5",
+            "version": "v3.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "6420113d90bb746423fa70b9940e9e7c26ebc121"
+                "reference": "88fd9cfa144b06b2549e9d487fdaec68265e791e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/6420113d90bb746423fa70b9940e9e7c26ebc121",
-                "reference": "6420113d90bb746423fa70b9940e9e7c26ebc121",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/88fd9cfa144b06b2549e9d487fdaec68265e791e",
+                "reference": "88fd9cfa144b06b2549e9d487fdaec68265e791e",
                 "shasum": ""
             },
             "require": {
@@ -342,7 +342,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
-                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.5.5"
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.5.7"
             },
             "funding": [
                 {
@@ -350,7 +350,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-04-07T11:19:20+00:00"
+            "time": "2021-05-13T20:18:35+00:00"
         },
         {
             "name": "blade-ui-kit/blade-ui-kit",
@@ -10467,13 +10467,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "6fea949dbf222a971af450bb0ed8f908ba7dc2b7"
+                "reference": "3ad7ccbe7f860b3ffe8f34e0a9a780ccbb4d0929"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-6fea949dbf222a971af450bb0ed8f908ba7dc2b7-zip-55c954.zip",
-                "reference": "6fea949dbf222a971af450bb0ed8f908ba7dc2b7",
-                "shasum": "c7b892d1e717e1fa33843f0101bf7473223f7be9"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-3ad7ccbe7f860b3ffe8f34e0a9a780ccbb4d0929-zip-43ee5e.zip",
+                "reference": "3ad7ccbe7f860b3ffe8f34e0a9a780ccbb4d0929",
+                "shasum": "1f71709b96a0c7e2d3c165d51133ccdaf17b6bfe"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -10581,10 +10581,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.4.0",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.4.1",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2021-05-12T18:57:00+00:00"
+            "time": "2021-05-14T12:54:07+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -11396,16 +11396,16 @@
         },
         {
             "name": "spatie/laravel-schedule-monitor",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-schedule-monitor.git",
-                "reference": "715ff63157234cce660151956cb6dd6c7af12ea3"
+                "reference": "cc65f9822d0e0b69043372d6c7d3e8dbd072f85d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-schedule-monitor/zipball/715ff63157234cce660151956cb6dd6c7af12ea3",
-                "reference": "715ff63157234cce660151956cb6dd6c7af12ea3",
+                "url": "https://api.github.com/repos/spatie/laravel-schedule-monitor/zipball/cc65f9822d0e0b69043372d6c7d3e8dbd072f85d",
+                "reference": "cc65f9822d0e0b69043372d6c7d3e8dbd072f85d",
                 "shasum": ""
             },
             "require": {
@@ -11418,7 +11418,7 @@
                 "laravel/legacy-factories": "^1.0.4",
                 "mockery/mockery": "^1.4",
                 "ohdearapp/ohdear-php-sdk": "^3.0",
-                "orchestra/testbench": "^6.0",
+                "orchestra/testbench": "^6.8",
                 "phpunit/phpunit": "^9.3",
                 "spatie/phpunit-snapshot-assertions": "^4.2",
                 "spatie/test-time": "^1.2",
@@ -11460,7 +11460,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-schedule-monitor/issues",
-                "source": "https://github.com/spatie/laravel-schedule-monitor/tree/2.2.1"
+                "source": "https://github.com/spatie/laravel-schedule-monitor/tree/2.3.0"
             },
             "funding": [
                 {
@@ -11468,7 +11468,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-29T10:44:13+00:00"
+            "time": "2021-05-13T11:57:52+00:00"
         },
         {
             "name": "spatie/laravel-schemaless-attributes",
