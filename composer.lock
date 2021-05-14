@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c993502c6c050c623ec4a1ab97a7fe18",
+    "content-hash": "d8b5a8dc3a4e5bbb81be7fce99eca3b5",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -5708,22 +5708,23 @@
         },
         {
             "name": "optimistdigital/nova-sortable",
-            "version": "1.6.2",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/optimistdigital/nova-sortable.git",
-                "reference": "a9023629805eaeecf7cb3be0a3639bd91875f493"
+                "reference": "657f30a37bc3bb51bee89d94ef39b0a564a1b0e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/optimistdigital/nova-sortable/zipball/a9023629805eaeecf7cb3be0a3639bd91875f493",
-                "reference": "a9023629805eaeecf7cb3be0a3639bd91875f493",
+                "url": "https://api.github.com/repos/optimistdigital/nova-sortable/zipball/657f30a37bc3bb51bee89d94ef39b0a564a1b0e8",
+                "reference": "657f30a37bc3bb51bee89d94ef39b0a564a1b0e8",
                 "shasum": ""
             },
             "require": {
-                "laravel/nova": "^2.0.11 || ^3.0",
-                "php": ">=7.1.0",
-                "spatie/eloquent-sortable": "^3.9.0"
+                "laravel/nova": "^3.0",
+                "optimistdigital/nova-translations-loader": "^3.0.0",
+                "php": ">=7.3.0",
+                "spatie/eloquent-sortable": "^3.10.0|^4.0"
             },
             "type": "library",
             "extra": {
@@ -5751,7 +5752,7 @@
             ],
             "support": {
                 "issues": "https://github.com/optimistdigital/nova-sortable/issues",
-                "source": "https://github.com/optimistdigital/nova-sortable/tree/1.6.2"
+                "source": "https://github.com/optimistdigital/nova-sortable/tree/2.3.1"
             },
             "funding": [
                 {
@@ -5759,7 +5760,55 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-25T12:52:11+00:00"
+            "time": "2021-05-07T12:51:37+00:00"
+        },
+        {
+            "name": "optimistdigital/nova-translations-loader",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/optimistdigital/nova-translations-loader.git",
+                "reference": "ce511b1685bd975ec0f86087bbec33949ad04730"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/optimistdigital/nova-translations-loader/zipball/ce511b1685bd975ec0f86087bbec33949ad04730",
+                "reference": "ce511b1685bd975ec0f86087bbec33949ad04730",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^7.0 || ^8.0",
+                "laravel/nova": "^3.0",
+                "php": ">=7.2.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [],
+                    "aliases": []
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OptimistDigital\\NovaTranslationsLoader\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "This Laravel Nova package helps developers load translations into their packages.",
+            "keywords": [
+                "laravel",
+                "nova",
+                "optimistdigital",
+                "translations"
+            ],
+            "support": {
+                "issues": "https://github.com/optimistdigital/nova-translations-loader/issues",
+                "source": "https://github.com/optimistdigital/nova-translations-loader/tree/3.1.0"
+            },
+            "time": "2020-11-20T10:46:16+00:00"
         },
         {
             "name": "paragonie/constant_time_encoding",
@@ -6249,16 +6298,16 @@
         },
         {
             "name": "php-http/guzzle7-adapter",
-            "version": "0.1.1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-http/guzzle7-adapter.git",
-                "reference": "1967de656b9679a2a6a66d0e4e16fa99bbed1ad1"
+                "reference": "fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-http/guzzle7-adapter/zipball/1967de656b9679a2a6a66d0e4e16fa99bbed1ad1",
-                "reference": "1967de656b9679a2a6a66d0e4e16fa99bbed1ad1",
+                "url": "https://api.github.com/repos/php-http/guzzle7-adapter/zipball/fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01",
+                "reference": "fb075a71dbfa4847cf0c2938c4e5a9c478ef8b01",
                 "shasum": ""
             },
             "require": {
@@ -6305,9 +6354,9 @@
             ],
             "support": {
                 "issues": "https://github.com/php-http/guzzle7-adapter/issues",
-                "source": "https://github.com/php-http/guzzle7-adapter/tree/0.1.1"
+                "source": "https://github.com/php-http/guzzle7-adapter/tree/1.0.0"
             },
-            "time": "2020-10-21T17:30:51+00:00"
+            "time": "2021-03-09T07:35:15+00:00"
         },
         {
             "name": "php-http/httplug",
@@ -17600,16 +17649,16 @@
         },
         {
             "name": "wulfheart/pretty_routes",
-            "version": "0.1.3",
+            "version": "0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Wulfheart/pretty-routes.git",
-                "reference": "8aa0e3e8af82929765edeadad4d04eeffa7cfc08"
+                "reference": "e257fac400db2c696ddaec197e634b1fc7c40d22"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Wulfheart/pretty-routes/zipball/8aa0e3e8af82929765edeadad4d04eeffa7cfc08",
-                "reference": "8aa0e3e8af82929765edeadad4d04eeffa7cfc08",
+                "url": "https://api.github.com/repos/Wulfheart/pretty-routes/zipball/e257fac400db2c696ddaec197e634b1fc7c40d22",
+                "reference": "e257fac400db2c696ddaec197e634b1fc7c40d22",
                 "shasum": ""
             },
             "require": {
@@ -17663,9 +17712,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Wulfheart/pretty-routes/issues",
-                "source": "https://github.com/Wulfheart/pretty-routes/tree/0.1.3"
+                "source": "https://github.com/Wulfheart/pretty-routes/tree/0.3.0"
             },
-            "time": "2021-04-29T19:24:03+00:00"
+            "time": "2021-05-03T09:19:08+00:00"
         }
     ],
     "aliases": [
