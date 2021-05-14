@@ -13,8 +13,9 @@
 
     <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
     <script src="{{ mix('/js/app.js') }}" defer></script>
+    <script src="/scope.js" defer></script>
 
-    @include('layout.partials.analytics')
+        @include('layout.partials.analytics')
     @stack('head')
 </head>
 
