@@ -11,26 +11,19 @@ return [
              * You can also pass an argument to that method:
              * ['App\Model@getAllFeedItems', 'argument']
              */
-            'items' => '',
+            'items' => \App\Models\Insight::class . '@getFeedItems',
 
             /*
              * The feed will be available on this url.
              */
-            'url' => '',
+            'url' => '/feed',
 
-            'title' => 'My feed',
-            'description' => 'The description of the feed.',
-            'language' => 'en-US',
+            'title' => 'All blogposts of the Spatie team',
 
             /*
              * The view that will render the feed.
              */
-            'view' => 'feed::atom',
-
-            /*
-             * The type to be used in the <link> tag
-             */
-            'type' => 'application/atom+xml',
+            'view' => 'feed::feed',
         ],
     ],
 ];

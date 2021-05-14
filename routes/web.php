@@ -32,6 +32,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
 
+Route::feeds();
+
 Route::redirect('/docs/products/ray', '/docs/ray');
 
 Route::post('paddle/webhook', WebhookController::class);
