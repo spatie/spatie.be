@@ -33,6 +33,6 @@ class Insight extends Model implements Feedable
 
     public static function getFeedItems(): Collection
     {
-        return self::getLatest();
+        return self::latest()->get();
     }
 }
