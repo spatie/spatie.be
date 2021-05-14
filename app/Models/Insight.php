@@ -23,7 +23,7 @@ class Insight extends Model implements Feedable
     public function toFeedItem(): FeedItem
     {
         return FeedItem::create()
-            ->id($this->id)
+            ->id($this->url)
             ->title($this->title)
             ->summary($this->short_summary)
             ->updated($this->updated_at)
