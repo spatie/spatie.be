@@ -12,6 +12,7 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\EventSourcingController;
+use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
@@ -142,6 +143,8 @@ Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guideli
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
 
 Route::get('/blog', [BlogsController::class, 'index'])->name('blog');
+
+Route::get('/music', MusicController::class)->name('music');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');
