@@ -48,6 +48,15 @@ class NavigationServiceProvider extends ServiceProvider
                 ;
         });
 
+        Menu::macro('blog', function () {
+            return Menu::new()
+                ->route('blog', 'Latest Insights')
+                ->route('music', 'Corporate Melodies')
+                ->setActiveFromRequest('/blog')
+                ->setActiveClass('submenu-active')
+                ;
+        });
+
         Menu::macro('profile', function () {
             return Menu::new()
                 ->route('profile', 'Profile')

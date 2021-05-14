@@ -10,6 +10,6 @@ class MusicController
     {
         $playlists = Playlist::query()->latest()->get();
 
-        return view('front.pages.music.index', ['playlists' => $playlists]);
+        return view('front.pages.blog.music', ['playlists' => $playlists]);
     }
 }

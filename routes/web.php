@@ -143,8 +143,7 @@ Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guideli
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
 
 Route::get('/blog', [BlogsController::class, 'index'])->name('blog');
-
-Route::get('/music', MusicController::class)->name('music');
+Route::get('/blog/music', MusicController::class)->name('music');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');

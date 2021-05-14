@@ -1,5 +1,9 @@
 <x-page title="Blog" background="/backgrounds/blogs.jpg">
     <!-- @todo replace background -->
+
+    @include('front.pages.blog.partials.menu')
+
+
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
