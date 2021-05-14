@@ -262,6 +262,8 @@ class HandlePurchaseActionTest extends TestCase
     /** @test */
     public function buying_certain_products_will_also_create_a_ray_license()
     {
+        $this->markTestSkipped('unlocksRayLicense is currently disabled.');
+
         TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
 
         $product = Product::factory()->create([
@@ -294,6 +296,8 @@ class HandlePurchaseActionTest extends TestCase
     /** @test */
     public function buying_certain_products_will_extend_an_existing_ray_license()
     {
+        $this->markTestSkipped('unlocksRayLicense is currently disabled.');
+
         TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
 
         $rayPurchasable = $this->createRayPurchasable();
