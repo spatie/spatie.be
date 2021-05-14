@@ -13,12 +13,12 @@ class Playlist extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
+    public $with = [
+        'media',
+    ];
+
     public function getImageAttribute()
     {
         return $this->getFirstMediaUrl();
     }
-
-    public $with = [
-        'media',
-    ];
 }
