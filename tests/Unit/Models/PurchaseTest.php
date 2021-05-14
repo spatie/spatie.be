@@ -10,6 +10,8 @@ class PurchaseTest extends TestCase
     /** @test */
     public function a_purchase_can_unlock_a_ray_license()
     {
+        $this->markTestSkipped('unlocksRayLicense is currently disabled.');
+
         /** @var \App\Models\Purchase $purchase */
         $purchase = Purchase::factory()->create();
 
