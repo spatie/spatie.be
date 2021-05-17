@@ -95,8 +95,10 @@
             <div class="flex-0 text-xs text-gray mt-6">
                 You'll get 10% extra discount when making a next purchase within 24 hours.
                 <br />
-                We offer a 10 day money-back guarantee
+                @if($product->hasGuarantee())
+                On this product, we offer a 10 day money-back guarantee
                 <br />
+                @endif
                 VAT will be calculated during checkout by <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
 
             </div>

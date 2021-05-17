@@ -48,6 +48,16 @@ class Product extends Model implements HasMedia, Sortable
             ->withResponsiveImages();
     }
 
+    public function hasGuarantee(): bool
+    {
+        return in_array($this->slug, [
+            'ray',
+            'media-library-pro',
+            'laravel-backup-server',
+            'mailcoach',
+        ]);
+    }
+
     public function getImageAttribute()
     {
         return $this->getFirstMediaUrl('product-image');
