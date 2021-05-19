@@ -27,6 +27,7 @@ use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\TechnologiesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
@@ -160,5 +161,5 @@ Route::view('offline', 'errors.offline')->name('offline');
 Route::get('event-sourcing', [EventSourcingController::class, 'show']);
 Route::post('event-sourcing', [EventSourcingController::class, 'subscribe']);
 
-
+Route::get('technologies', [TechnologiesController::class, 'index']);
 
