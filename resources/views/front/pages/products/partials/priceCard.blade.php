@@ -81,6 +81,14 @@
                                 <dl class="divide-y divide-gray-lighter">
                                     <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                                         <dt class="text-sm font-medium text-gray-dark">
+                                            Quantity
+                                        </dt>
+                                        <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                            <input class="w-8" type="number" id="quantity" name="quantity" value="1">
+                                        </dd>
+                                    </div>
+                                    <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                                        <dt class="text-sm font-medium text-gray-dark">
                                             Subtotal
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
@@ -121,15 +129,26 @@
                                 updatePrices(eventData);
                             }
                         });
-                        Paddle.Checkout.open({
+
+                        let options = {
                             override: '{{ $payLink }}',
+                            allowQuantity: true,
                             method: 'inline',
+                            quantity: 1,
                             product: {{ $purchasable->paddle_product_id }},
                             disableLogout: true,
                             email: '{{ auth()->user()->email }}',
                             frameTarget: 'checkout-container',
                             frameInitialHeight: 0,
                             frameStyle: 'width:100%; min-width:100%; background-color: transparent; border: none;'
+                        };
+                        Paddle.Checkout.open(options);
+
+                        document.getElementById("quantity").addEventListener('change', function (event) {
+                            options.quantity = event.target.value;
+                            Paddle.Checkout.open(options);
+                            document.getElementById('loading').classList.remove('hidden');
+                            document.getElementById('prices').classList.add('hidden');
                         });
 
                         function updatePrices(data) {
