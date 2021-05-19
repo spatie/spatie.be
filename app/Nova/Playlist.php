@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\Playlist as EloquentPlaylist;
-use App\Models\Postcard as EloquentPostcard;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -18,7 +17,7 @@ class Playlist extends Resource
     public static $title = 'name';
 
     public static $search = [
-        'id', 'name'
+        'id', 'name',
     ];
 
     public function fields(Request $request)

@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Insight;
 use App\Models\Playlist;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
