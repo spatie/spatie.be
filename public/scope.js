@@ -1,4 +1,4 @@
-var url = (new URL(document.location));
+/*var url = (new URL(document.location));
 var params = url.searchParams;
 
 var xhr = new XMLHttpRequest();
@@ -11,4 +11,4 @@ xhr.send(JSON.stringify({
     utm_campaign: params.get('utm_campaign'),
     utm_source: params.get('utm_source'),
     utm_medium: params.get('utm_medium'),
-}));
+}));*/
