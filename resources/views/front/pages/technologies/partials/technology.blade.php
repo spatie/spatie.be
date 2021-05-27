@@ -24,8 +24,10 @@
         </div>
         <div class="mt-4 flex">
             <div class="flex -space-x-2">
-                <a class="flex-none avatar-sm hover:z-10" title="Niels" href="/">{{ gravatar_img('niels@spatie.be') }}</a>
-                <a class="flex-none avatar-sm hover:z-10" title="Willem" href="/">{{ gravatar_img('willem@spatie.be') }}</a>
+                <x-avatar name="Niels" href=""/>
+                <x-avatar name="Willem" href=""/>
+                <x-avatar name="Freek" href=""/>
+               
             </div>
             <span class="ml-2 text-xs text-gray">recommend this</span>
         </div>
