@@ -1,11 +1,19 @@
 <section id="banner" class="banner" role="banner">
     <div class="wrap">
         <h1 class="banner-slogan">
-            Tech stack
+            Our technology <br>stack
         </h1>
         <p class="banner-intro">
-            We use a lot of different tools to get our work done.<br>
-            Here’s a list of our global company setup, so you can see how we run things at the office (or at home!).
+            Tools to get our work done, at home or in the office
+        </p>
+        <p class="mt-4 links-underline links-blue space-x-2">
+            <a href="#frontend">Frontend</a> 
+            <span class="char-separator">|</span>
+            <a href="#backend">Backend</a>
+            <span class="char-separator">|</span>
+            <a href="#integrations">Integrations</a>
+            <span class="char-separator">|</span>
+            <a href="#integrations">Devops</a>
         </p>
     </div>
 </section>

@@ -21,18 +21,18 @@
     @apply rounded-full;
 }
 
-.mini-avatar {
+.avatar-sm {
     @apply rounded-full;
-    @apply w-8;
-    @apply h-8;
+    @apply w-6;
+    @apply h-6;
     @apply overflow-hidden;
-    @apply border-2;
+    @apply border;
     @apply border-white;
     @apply shadow-lg;
     @apply flex-shrink-0;
 }
 
-.mini-avatar img {
+.avatar-sm img {
     @apply absolute;
     width: 110%;
     height: 110%;

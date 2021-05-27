@@ -161,5 +161,5 @@ Route::view('offline', 'errors.offline')->name('offline');
 Route::get('event-sourcing', [EventSourcingController::class, 'show']);
 Route::post('event-sourcing', [EventSourcingController::class, 'subscribe']);
 
-Route::get('technologies', [TechnologiesController::class, 'index']);
+Route::get('uses', [TechnologiesController::class, 'index'])->name('uses');
 

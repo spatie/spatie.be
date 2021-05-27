@@ -44,7 +44,6 @@
                     <li>Teamleader</li>
                     <li>Exact Online</li>
                     <li>One Signal</li>
-                    <li>MailChimp</li>
                     <li>Sendgrid</li>
                     <li>Google Maps</li>
                     <li>Google Analytics</li>
@@ -55,7 +54,7 @@
         </div>
         <div class="line-l | sm:col-span-3 | md:col-span-2">
             <div class="markup text-sm">
-                <h3 class="title-sm">Server</h3>
+                <h3 class="title-sm">Devops</h3>
                 <ul class="bullets-inline bullets-blue">
                     <li>AWS</li>
                     <li>Digital Ocean</li>
@@ -68,5 +67,8 @@
                 </ul>
             </div>
         </div>
+        <div class="sm:absolute sm:mr-8 lg:mr-16 right-0 bottom-0">
+            <a class="text-sm link-blue link-underline link-dimmed" href={{ route('uses') }}>More on our stack</a>
+       </div>
     </div>
 </section>
