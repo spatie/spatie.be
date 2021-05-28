@@ -1,6 +1,7 @@
 @setup
 require __DIR__.'/vendor/autoload.php';
 
+$branch = "main";
 $server = "spatie.be";
 $userAndServer = 'forge@'. $server;
 $repository = "spatie/spatie.be";
@@ -39,8 +40,8 @@ deployOnlyCode
 
 @task('startDeployment', ['on' => 'local'])
 {{ logMessage("🏃  Starting deployment...") }}
-git checkout master
-git pull origin master
+git checkout {{ $branch }}
+git pull origin {{ $branch }}
 @endtask
 
 @task('cloneRepository', ['on' => 'remote'])
@@ -52,7 +53,7 @@ cd {{ $releasesDir }}
 mkdir {{ $newReleaseDir }}
 
 # Clone the repo
-git clone --depth 1 --branch master git@github.com:{{ $repository }} {{ $newReleaseName }}
+git clone --depth 1 --branch {{ $branch }} git@github.com:{{ $repository }} {{ $newReleaseName }}
 
 # Configure sparse checkout
 cd {{ $newReleaseDir }}
@@ -158,7 +159,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +4 | xargs -d "\n" rm -rf
 @task('deployOnlyCode',['on' => 'remote'])
 {{ logMessage("💻  Deploying code changes...") }}
 cd {{ $currentDir }}
-git pull origin master
+git pull origin {{ $branch }}
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
