@@ -1,6 +1,6 @@
 <x-page
     title="Technology Stack"
-    background="/backgrounds/about.jpg">
+    background="/backgrounds/uses.jpg">
     <x-slot name="description">
         Tools we use to get our work done –at home or in the office
     </x-slot>
