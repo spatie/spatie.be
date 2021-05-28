@@ -5,7 +5,7 @@
     <div class="wrap wrap-6 items-start">
 
         @foreach([0, 1,] as $technology)
-            @include('front.pages.technologies.partials.technology')
+            @include('front.pages.uses.partials.technology')
         @endforeach
     </div>
 </section>

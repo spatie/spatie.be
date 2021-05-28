@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-class TechnologiesController
+class UsesController
 {
     public function index()
     {
-        return view('front.pages.technologies.index');
+        return view('front.pages.uses.index');
     }
 }
