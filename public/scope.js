@@ -11,4 +11,5 @@ xhr.send(JSON.stringify({
     utm_campaign: params.get('utm_campaign'),
     utm_source: params.get('utm_source'),
     utm_medium: params.get('utm_medium'),
+    site_uuid: 'ae746250-2e0f-473d-aa41-57f4691080cc',
 }));
