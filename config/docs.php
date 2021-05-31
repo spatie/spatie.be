@@ -6,7 +6,7 @@ return [
             "name" => "ray",
             "repository" => "spatie/ray",
             "branches" => [
-                "master" => "v1",
+                "main" => "v1",
             ],
             "category" => "General PHP",
         ],
