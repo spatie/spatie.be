@@ -57,6 +57,7 @@
         "spatie/laravel-backup": "^7.0",
         "spatie/laravel-disable-floc": "^1.0",
         "spatie/laravel-feed": "^4.0",
+        "spatie/laravel-enum": "^2.5",
         "spatie/laravel-flash": "^1.7",
         "spatie/laravel-mailcoach": "dev-master as 4.0.7",
         "spatie/laravel-mailcoach-mailgun-feedback": "^3.0",
