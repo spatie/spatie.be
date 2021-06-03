@@ -5,9 +5,10 @@ namespace App\Models\Enums;
 use Spatie\Enum\Laravel\Enum;
 
 /**
- * @method static self FRONTEND()
- * @method static self BACKEND()
- * @method static self DEVOPS()
- * @method static self INTEGRATIONS()
+ * @method static self frontend()
+ * @method static self backend()
+ * @method static self devops()
+ * @method static self tools()
+ * @method static self integrations()
  */
 class TechnologyType extends Enum {}

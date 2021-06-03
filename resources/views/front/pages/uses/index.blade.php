@@ -10,8 +10,9 @@
     <div class="mt-4 section section-group section-fade">
         @include('front.pages.uses.partials.frontend')
         @include('front.pages.uses.partials.backend')
-        @include('front.pages.uses.partials.integrations')
         @include('front.pages.uses.partials.devops')
+        @include('front.pages.uses.partials.tools')
+        @include('front.pages.uses.partials.integrations')
     </div>
 
 </x-page>
