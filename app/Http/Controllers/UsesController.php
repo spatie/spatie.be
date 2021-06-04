@@ -9,7 +9,7 @@ class UsesController
     public function index()
     {
         $technologies = Technology::all()
-            ->groupBy('type');
+            ->groupBy(fn (Technology $tech) => $tech->type->value);
 
         return view('front.pages.uses.index', compact('technologies'));
     }

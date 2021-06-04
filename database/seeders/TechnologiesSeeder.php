@@ -100,15 +100,13 @@ class TechnologiesSeeder extends Seeder
 
     public function run(): void
     {
-        $technologies = $this->technologies();
-
-        foreach ($technologies as $technology) {
+        foreach ($this->technologies() as $technology) {
             Technology::firstOrNew(['name' => $technology['name']])
                 ->fill($technology)
                 ->save();
         }
 
-        Technology::whereNotIn('name', array_column($technologies, 'name'))
+        Technology::whereNotIn('name', array_column($this->technologies(), 'name'))
             ->delete();
     }
 }
