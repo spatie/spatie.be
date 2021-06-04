@@ -167,7 +167,7 @@ return [
             "name" => "laravel-event-sourcing",
             "repository" => "spatie/laravel-event-sourcing",
             "branches" => [
-                "master" => "v4",
+                "main" => "v4",
                 "v3" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
