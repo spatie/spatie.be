@@ -4,11 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
     "content-hash": "c0f2d727457ceae3466760e18c91507e",
-=======
-    "content-hash": "77aaad0798c920ef3913ff59d8545dbc",
->>>>>>> create a technology model with a seeder
     "packages": [
         {
             "name": "abraham/twitteroauth",

@@ -4,7 +4,7 @@
     </div>
     <div class="wrap wrap-6 items-start">
 
-        @foreach($technologies['backend'] as $technology)
+        @foreach($technologies->get('backend') as $technology)
             @include('front.pages.uses.partials.technology')
         @endforeach
     </div>

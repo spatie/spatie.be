@@ -1,3 +1,5 @@
+<?php /** @var \Illuminate\Support\Collection $technologies */ ?>
+
 <x-page
     title="Technology Stack"
     background="/backgrounds/uses.jpg">
