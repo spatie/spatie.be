@@ -1,7 +1,7 @@
 <x-page
-        :title="$currentVideo->title"
-        background="/backgrounds/video-blur.jpg"
-        :description="$currentVideo->description"
+    :title="$currentVideo->title"
+    background="/backgrounds/video-blur.jpg"
+    :description="$currentVideo->description"
 >
     <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
@@ -33,7 +33,8 @@
                                     src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
                                     allowfullscreen allowtransparency></iframe>
                         @else
-                            <div class="absolute inset-0 flex justify-center items-center gradient gradient-dark text-white z-10 p-8">
+                            <div
+                                class="absolute inset-0 flex justify-center items-center gradient gradient-dark text-white z-10 p-8">
                                 <div class="flex flex-col items-center text-center">
                                     @if ($currentVideo->display === \App\Models\Enums\VideoDisplayEnum::LICENSE)
                                         <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is
@@ -113,9 +114,12 @@
                                     </div>
                                 @endif
                             </div>
-                            <div class="ml-auto">
-                                <livewire:video-completed-button :video="$currentVideo"/>
-                            </div>
+
+                            @if(auth()->user())
+                                <div class="ml-auto">
+                                    <livewire:video-completed-button :video="$currentVideo"/>
+                                </div>
+                            @endif
                         </div>
 
                     @endif
@@ -128,7 +132,8 @@
 
                     <hr class="mt-12 line-after"/>
 
-                    <div class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
+                    <div
+                        class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
                         @if ($previousVideo)
                             <a class="mb-2 md:w-1/2 md:pr-4 flex items-center" href="{{ $previousVideo->url }}">
                                 <span class="w-1 fill-current text-blue mr-1 hidden | md:inline-block">
