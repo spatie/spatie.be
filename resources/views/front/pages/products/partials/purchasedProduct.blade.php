@@ -53,8 +53,14 @@
                             Connect to GitHub to get access to the {{ $purchasable->repository_access }} repo
                         </a>
                     @endif
-                    @endif
                 </div>
+            @endif
+
+                @if ($purchasable->extra_links)
+                    {!! $purchasable->extra_links !!}
+                @endif
+
+
         </div>
         <div class="mt-2 text-xs text-gray">
             {{ request()->user()->email }}
