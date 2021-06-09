@@ -6,17 +6,21 @@
 <div class="cells">
     <div class="cell-l">
         {!! $purchasable->getting_started_description ?? '' !!}
-        <div class="grid grid-flow-col gap-4 justify-start">
+        <div>
             @if ($purchasable->getting_started_url)
+                <div>
                 <a class="link-blue link-underline" href="{{ $purchasable->getting_started_url }}">
                     Getting started
                 </a>
+                </div>
             @endif
 
             @if ($purchasable->series->count())
+                <div>
                 <a class="link-blue link-underline" href="{{ route('series.show', $purchasable->series->first()) }}">
                     Watch course videos
                 </a>
+                </div>
             @endif
 
             @foreach($purchasable->getMedia('downloads') as $download)
@@ -28,12 +32,15 @@
                         );
                     @endphp
 
-                <a class="link-blue link-underline" download="download" href="{{ $downloadUrl }}">
-                    Download {{ $download->getCustomProperty('label') ?? $download->name }}
-                </a>
+                <div>
+                    <a class="link-blue link-underline" download="download" href="{{ $downloadUrl }}">
+                        Download {{ $download->getCustomProperty('label') ?? $download->name }}
+                    </a>
+                </div>
             @endforeach
 
             @if ($purchasable->repository_access)
+                <div>
                 @if ($purchase->has_repository_access)
                         <a class="link-blue link-underline" href="https://github.com/{{ $purchasable->repository_access }}">
                             Visit {{ $purchasable->repository_access }} on GitHub
@@ -45,6 +52,7 @@
                         </a>
                     @endif
                 @endif
+                </div>
         </div>
         <div class="mt-2 text-xs text-gray">
             {{ request()->user()->email }}
