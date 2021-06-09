@@ -20,10 +20,8 @@
                             Design and implementation for beautiful web applications in the best of conditions
                         </h2>
 
-                        <p class="mt-16 font-semibold">
-                            No recruiters please. Thank you.
-                            <br>
-                            Knowledge of Dutch is mandatory for this position.
+                        <p class="mt-16 font-semibold bg-green text-white px-4 py-2 rounded">
+                            This position has been filled. Thank you!
                         </p>
 
 

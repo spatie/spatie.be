@@ -8,11 +8,13 @@
                 </span>
             </h2>
 
+            {{--
             <p class="mt-4">
                 <a class="llink link-black" href="{{ route('vacancies.show', 'frontend-designer') }}"><strong class="font-semibold">Now hiring</strong>: Frontend designer</a>
                 <br>
                 <span class="text-xs text-gray">Antwerp / Partially remote</span>
             </p>
+            --}}
 
             @foreach ($insights->slice(0, 2) as $insight)
                 <p class="mt-4">
