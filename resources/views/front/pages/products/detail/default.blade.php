@@ -122,7 +122,7 @@
                             </a>
                         @elseif ($product->url)
                             <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->url }}">
-                                <span class="icon fill-current text-pink-dark mr-1">{{ svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
+                                <span class="icon fill-current text-pink-dark mr-2">{{ svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
                             </a>
                         @endif
                     </p>
