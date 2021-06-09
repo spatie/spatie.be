@@ -18,23 +18,6 @@ class AppServiceProvider extends ServiceProvider
             return optional($user)->is_admin;
         });
 
-
-
-        foreach (range(1, 5) as $i) {
-            $command = new class($i) extends Command {
-                public $signature = "dynamic-command";
-
-                public function __construct($i)
-                {
-                    $this->signature = 'dynamic-command-' . $i;
-
-                    parent::__construct();
-                }
-            };
-        }
-
-        $this->commands(get_class($command));
-
         Flash::levels([
             'success' => 'success',
             'error' => 'error',
