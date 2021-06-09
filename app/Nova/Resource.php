@@ -9,7 +9,7 @@ abstract class Resource extends NovaResource
 {
     public static $defaultSort = 'id'; // Update to your default column
 
-    public static $defaultSortDirection = 'asc';
+    public static $defaultSortDirection = 'desc';
 
     /**
      * Build an "index" query for the given resource.
