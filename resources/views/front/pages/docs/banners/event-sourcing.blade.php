@@ -7,7 +7,7 @@
                 </div>
                 <div>
                     <div>
-                        Check out our upcoming course on
+                        Check out our course on
                         <span class="font-semibold">Event Sourcing in Laravel</span>
                     </div>
                 </div>
