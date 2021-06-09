@@ -10,12 +10,12 @@
                 <h3 class="title">
                     Event Sourcing in Laravel
                     <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">New</span> course
+                        <span class="font-normal">New</span> book + video course
                     </span>
                 </h3>
                 <p class="text-lg">
                     Learn how to implement Event Sourcing in large Laravel applications in this extended course by Brent.<p> <p class="text-lg">
-                    This premium course includes an beautifully designed ebook, videos demo application.
+                    This premium course includes an beautifully designed ebook, videos and a demo application with a shoppping cart example.
                 </p>
                 <ul class="text-lg mt-8">
                     <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://event-sourcing-laravel.com" target="_blank" rel="nofollow noreferrer noopener">event-sourcing-laravel.com</a></li>
