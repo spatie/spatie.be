@@ -75,7 +75,7 @@
         @endif
     @endauth
 
-    @if($product->purchasables()->first()->type !== 'videos')
+    @if($purchases->count() === 0 || $product->purchasables()->first()->type !== 'videos' )
         <section class="md:-mt-8 mb-24 pt-0 section-fade">
             <div class="wrap">
                 @if ($licenses->count() || $purchases->count())
