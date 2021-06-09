@@ -36,7 +36,7 @@
             @if ($purchasable->repository_access)
                 @if ($purchase->has_repository_access)
                         <a class="link-blue link-underline" href="https://github.com/{{ $purchasable->repository_access }}">
-                            Repository
+                            Visit {{ $purchasable->repository_access }} on GitHub
                         </a>
 
                     @else
