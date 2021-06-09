@@ -15,7 +15,7 @@
 
             @if ($purchasable->series->count())
                 <a class="link-blue link-underline" href="{{ route('series.show', $purchasable->series->first()) }}">
-                    Videos
+                    Watch course videos
                 </a>
             @endif
 
