@@ -41,7 +41,7 @@
 
                     @else
                         <a class="link-blue link-underline" href="{{ route('github-login') }}">
-                            Connect to GitHub to access repo
+                            Connect to GitHub to get access to the {{ $purchasable->repository_access }} repo
                         </a>
                     @endif
                 @endif
