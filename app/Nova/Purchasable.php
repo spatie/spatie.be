@@ -111,10 +111,7 @@ class Purchasable extends Resource
                     ->autoHeight()
                     ->hideFromIndex(),
 
-                Code::make('Extra links')
-                    ->sortable()
-                    ->language('html')
-                    ->autoHeight()
+                Text::make('Extra links')
                     ->hideFromIndex(),
 
                 Markdown::make('Description'),
