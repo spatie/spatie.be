@@ -45,7 +45,7 @@
             {{ $product->getFirstMedia('product-image') }}
         </div>
 
-        <div class="markup markup-lists links-blue links-underline | sm:grid-text-right">
+        <div class="markup markup-titles markup-lists links-blue links-underline | sm:grid-text-right">
             {{ $product->formattedLongDescription }}
 
             <p class="mt-4 flex items-center space-x-4">
@@ -59,7 +59,7 @@
                         <span class="icon fill-current text-pink-dark">
                             {{ svg('icons/far-angle-right') }}
                         </span>
-                        {{ $product->url }}
+                        {{ Str::after($product->url, 'https://') }}
                     </a>
                 @endif
             </p>
