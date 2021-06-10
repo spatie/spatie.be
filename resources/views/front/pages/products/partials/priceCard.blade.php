@@ -195,3 +195,9 @@
         </div>
     </div>
 </div>
+
+@once
+    @push('scripts')
+        <script src="/alpine/alpine.js" defer></script>
+    @endpush
+@endonce
