@@ -57,7 +57,7 @@ return [
             'bucket' => env('GITHUB_ADS_DISK_BUCKET'),
             'url' => env('GITHUB_ADS_DISK_URL'),
             'options' => [
-                'CacheControl' => 'max-age=120, s-max-age=120',
+                'CacheControl' => 'max-age=120, s-maxage=120',
             ],
         ],
 
