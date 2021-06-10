@@ -106,7 +106,7 @@
     @endif
 
         <div class="section pt-0">
-            <div class="wrap grid gap-12 sm:grid-cols-2">
+            <div class="wrap grid gap-12 sm:grid-cols-2 items-start">
                 <div class="markup markup-titles markup-lists links-blue links-underline | sm:grid-text-right">
                     {{ $product->formattedLongDescription }}
 
