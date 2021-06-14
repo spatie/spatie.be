@@ -28,7 +28,7 @@ class Insight extends Model implements Feedable
             ->summary($this->short_summary)
             ->updated($this->updated_at)
             ->link($this->url)
-            ->author($this->website);
+            ->authorName($this->website ?? '');
     }
 
     public static function getFeedItems(): Collection
