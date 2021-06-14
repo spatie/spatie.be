@@ -9,13 +9,16 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Spatie\ArtisanDispatchable\Jobs\ArtisanDispatchable;
 
-class RandomizeAdsOnGitHubRepositoriesJob implements ShouldQueue
+class RandomizeAdsOnGitHubRepositoriesJob implements ShouldQueue, ArtisanDispatchable
 {
     use Dispatchable;
     use InteractsWithQueue;
     use Queueable;
     use SerializesModels;
+
+    protected $artisanName = 'randomize-github-ads';
 
     public function handle()
     {

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4f76040bdaebc0e201d503f6513f2ab",
+    "content-hash": "c0f2d727457ceae3466760e18c91507e",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -10093,6 +10093,79 @@
             "time": "2021-04-22T06:17:27+00:00"
         },
         {
+            "name": "spatie/laravel-artisan-dispatchable",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-artisan-dispatchable.git",
+                "reference": "e2d280a15c231aedf1a07c346bae8ab8a3ee0d4f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-artisan-dispatchable/zipball/e2d280a15c231aedf1a07c346bae8ab8a3ee0d4f",
+                "reference": "e2d280a15c231aedf1a07c346bae8ab8a3ee0d4f",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^8.46",
+                "illuminate/contracts": "^8.46",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.4.3",
+                "spatie/phpunit-snapshot-assertions": "^4.2"
+            },
+            "require-dev": {
+                "brianium/paratest": "^6.2",
+                "nunomaduro/collision": "^5.3",
+                "orchestra/testbench": "^6.15",
+                "phpunit/phpunit": "^9.3",
+                "spatie/laravel-ray": "^1.9",
+                "vimeo/psalm": "^4.4"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\ArtisanDispatchable\\ArtisanDispatchableServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ArtisanDispatchable\\": "src",
+                    "Spatie\\ArtisanDispatchable\\Database\\Factories\\": "database/factories"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Dispatch Laravel jobs via Artisan",
+            "homepage": "https://github.com/spatie/laravel-artisan-dispatchable",
+            "keywords": [
+                "laravel",
+                "laravel-artisan-dispatchable",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-artisan-dispatchable/issues",
+                "source": "https://github.com/spatie/laravel-artisan-dispatchable/tree/1.0.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-06-14T14:57:54+00:00"
+        },
+        {
             "name": "spatie/laravel-backup",
             "version": "7.6.0",
             "source": {
@@ -17672,5 +17745,5 @@
     "platform-overrides": {
         "php": "8.0"
     },
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
