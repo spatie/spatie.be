@@ -4,7 +4,7 @@ namespace App\Domain\Experience\Events;
 
 use Spatie\EventSourcing\StoredEvents\ShouldBeStored;
 
-class ExperienceGainedEvent extends ShouldBeStored
+class ExperienceEarnedEvent extends ShouldBeStored
 {
     public function __construct(
         public string $email,
