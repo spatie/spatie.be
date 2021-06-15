@@ -2,22 +2,19 @@
 
 namespace App\Domain\Experience;
 
-use App\Domain\Experience\Enums\ExperienceType;
+use App\Domain\Experience\Commands\AddUserExperience;
 use App\Domain\Experience\Events\ExperienceGainedEvent;
 use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class UserExperience extends AggregateRoot
 {
-    public function add(
-        string $email,
-        ?int $userId,
-        ExperienceType $type,
-    ): self {
+    public function add(AddUserExperience $command): self
+    {
         $this->recordThat(new ExperienceGainedEvent(
-            email: $email,
-            userId: $userId,
-            amount: $type->getAmount(),
-            type: $type->value,
+            email: $command->getEmail(),
+            userId: $command->getUserId(),
+            amount: $command->getAmount(),
+            type: $command->getTypeName(),
         ));
 
         return $this;

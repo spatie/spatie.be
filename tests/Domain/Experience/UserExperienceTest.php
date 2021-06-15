@@ -2,10 +2,12 @@
 
 namespace Tests\Domain\Experience;
 
+use App\Domain\Experience\Commands\AddUserExperience;
 use App\Domain\Experience\Enums\ExperienceType;
 use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Domain\Experience\UserExperience;
 use App\Support\Uuid;
+use Spatie\EventSourcing\Commands\CommandBus;
 use Tests\TestCase;
 
 class UserExperienceTest extends TestCase
@@ -15,15 +17,13 @@ class UserExperienceTest extends TestCase
     {
         $uuid = Uuid::new();
 
-        $experience = UserExperience::retrieve($uuid);
+        $bus = app(CommandBus::class);
 
-        $experience
-            ->add(
-                email: 'test@spatie.be',
-                userId: null,
-                type: ExperienceType::PullRequest(),
-            )
-            ->persist();
+        $bus->dispatch(new AddUserExperience(
+            uuid: $uuid,
+            email: 'test@spatie.be',
+            type: ExperienceType::PullRequest(),
+        ));
 
         $this->assertDatabaseHas((new UserExperienceProjection())->getTable(), [
             'email' => 'test@spatie.be',
