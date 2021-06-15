@@ -6,8 +6,6 @@ use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Enums\ExperienceType;
-use App\Domain\Experience\Events\AchievementUnlocked;
-use App\Domain\Experience\Events\ExperienceEarned;
 use App\Domain\Experience\ExperienceAggregateRoot;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
