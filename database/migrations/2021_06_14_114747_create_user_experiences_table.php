@@ -12,7 +12,7 @@ class CreateUserExperiencesTable extends Migration
             $table->id();
             $table->string('email');
             $table->unsignedInteger('user_id')->nullable();
-            $table->smallInteger('amount');
+            $table->integer('amount');
             $table->string('type');
             $table->timestamps();
 
