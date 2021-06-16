@@ -21,18 +21,8 @@ class AddExperience
 
     public function __construct(
         #[AggregateUuid] public string $uuid,
-        private UserExperienceId $userExperienceId,
-        private int $amount,
+        public UserExperienceId $userExperienceId,
+        public int $amount,
     ) {
-    }
-
-    public function getUserExperienceId(): UserExperienceId
-    {
-        return $this->userExperienceId;
-    }
-
-    public function getAmount(): int
-    {
-        return $this->amount;
     }
 }

@@ -30,7 +30,7 @@ class ExperienceAchievementUnlocker
                 continue;
             }
 
-            if (UserAchievementProjection::forUser($userExperienceId)->andSlug($achievement->getSlug())->exists()) {
+            if (UserAchievementProjection::forUser($userExperienceId)->andSlug($achievement->slug)->exists()) {
                 continue;
             }
 

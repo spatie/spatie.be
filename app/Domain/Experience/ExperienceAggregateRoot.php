@@ -33,8 +33,8 @@ class ExperienceAggregateRoot extends AggregateRoot
         $previousCount = $this->experienceCount;
 
         $this->recordThat(new ExperienceEarned(
-            id: $command->getUserExperienceId(),
-            amount: $command->getAmount(),
+            id: $command->userExperienceId,
+            amount: $command->amount,
         ));
 
         $currentCount = $this->experienceCount;
@@ -42,13 +42,13 @@ class ExperienceAggregateRoot extends AggregateRoot
         $achievement = $this->experienceAchievementUnlocker->achievementToBeUnlocked(
             previousCount: $previousCount,
             currentCount: $currentCount,
-            userExperienceId: $command->getUserExperienceId()
+            userExperienceId: $command->userExperienceId
         );
 
         if ($achievement) {
             $this->unlockAchievement(new UnlockAchievement(
                 $this->uuid(),
-                $command->getUserExperienceId(),
+                $command->userExperienceId,
                 $achievement,
             ));
         }
@@ -64,10 +64,10 @@ class ExperienceAggregateRoot extends AggregateRoot
     public function unlockAchievement(UnlockAchievement $command): self
     {
         $this->recordThat(new AchievementUnlocked(
-            id: $command->getUserExperienceId(),
-            slug: $command->getAchievement()->getSlug(),
-            title: $command->getAchievement()->getTitle(),
-            description: $command->getAchievement()->getDescription(),
+            id: $command->userExperienceId,
+            slug: $command->achievement->slug,
+            title: $command->achievement->title,
+            description: $command->achievement->description,
         ));
 
         return $this;
@@ -76,19 +76,19 @@ class ExperienceAggregateRoot extends AggregateRoot
     public function registerPullRequest(RegisterPullRequest $command): self
     {
         $this->recordThat(new PullRequestMerged(
-            id: $command->getUserExperienceId(),
+            id: $command->userExperienceId,
         ));
 
         $achievement = $this->pullRequestAchievementUnlocker->achievementToBeUnlocked(
             pullRequestCount: $this->pullRequestCount,
-            userExperienceId: $command->getUserExperienceId()
+            userExperienceId: $command->userExperienceId,
         );
 
         if ($achievement) {
             $this->unlockAchievement(new UnlockAchievement(
-                $this->uuid(),
-                $command->getUserExperienceId(),
-                $achievement,
+                uuid: $this->uuid(),
+                userExperienceId: $command->userExperienceId,
+                achievement: $achievement,
             ));
         }
 

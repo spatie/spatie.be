@@ -12,12 +12,7 @@ class RegisterPullRequest
 {
     public function __construct(
         #[AggregateUuid] public string $uuid,
-        private string $email,
+        public UserExperienceId $userExperienceId,
     ) {
-    }
-
-    public function getUserExperienceId(): UserExperienceId
-    {
-        return UserExperienceId::make($this->email);
     }
 }
