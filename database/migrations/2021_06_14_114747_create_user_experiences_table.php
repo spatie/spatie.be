@@ -13,7 +13,6 @@ class CreateUserExperiencesTable extends Migration
             $table->string('email');
             $table->unsignedInteger('user_id')->nullable();
             $table->integer('amount');
-            $table->string('type');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

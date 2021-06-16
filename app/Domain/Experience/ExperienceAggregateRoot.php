@@ -35,7 +35,6 @@ class ExperienceAggregateRoot extends AggregateRoot
         $this->recordThat(new ExperienceEarned(
             id: $command->getUserExperienceId(),
             amount: $command->getAmount(),
-            type: $command->getType()->value,
         ));
 
         $currentCount = $this->experienceCount;

@@ -5,7 +5,6 @@ namespace Tests\Domain\Experience;
 use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\UnlockAchievement;
-use App\Domain\Experience\Enums\ExperienceType;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
@@ -24,13 +23,13 @@ class ExperienceAggregateRootTest extends TestCase
 
         $bus->dispatch(new AddExperience(
             $uuid,
-            'test@spatie.be',
-            ExperienceType::PullRequest()
+            new UserExperienceId('test@spatie.be'),
+            50
         ));
 
         $this->assertDatabaseHas((new UserExperienceProjection())->getTable(), [
             'email' => 'test@spatie.be',
-            'amount' => ExperienceType::PullRequest()->getAmount(),
+            'amount' => 50,
         ]);
     }
 
@@ -67,17 +66,17 @@ class ExperienceAggregateRootTest extends TestCase
             ));
         }
 
-        $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+        $this->assertDatabaseHas(UserAchievementProjection::class, [
             'email' => 'test@spatie.be',
             'slug' => '10-pull-requests',
         ]);
 
-        $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+        $this->assertDatabaseHas(UserAchievementProjection::class, [
             'email' => 'test@spatie.be',
             'slug' => '50-pull-requests',
         ]);
 
-        $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+        $this->assertDatabaseHas(UserAchievementProjection::class, [
             'email' => 'test@spatie.be',
             'slug' => '100-pull-requests',
         ]);
@@ -94,13 +93,18 @@ class ExperienceAggregateRootTest extends TestCase
             $bus->dispatch(new AddExperience(
                 $uuid,
                 new UserExperienceId('test@spatie.be'),
-                ExperienceType::PullRequest(),
+                50,
             ));
         }
 
-        $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+        $this->assertDatabaseHas(UserAchievementProjection::class, [
             'email' => 'test@spatie.be',
             'slug' => '100-experience',
+        ]);
+
+        $this->assertDatabaseMissing(UserAchievementProjection::class, [
+            'email' => 'test@spatie.be',
+            'slug' => '1000-experience',
         ]);
     }
 }

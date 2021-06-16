@@ -10,7 +10,6 @@ class ExperienceEarned extends ShouldBeStored
     public function __construct(
         public UserExperienceId $id,
         public int $amount,
-        public string $type,
     ) {
     }
 }

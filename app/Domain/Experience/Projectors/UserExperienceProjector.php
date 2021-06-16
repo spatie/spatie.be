@@ -16,7 +16,6 @@ class UserExperienceProjector extends Projector
                 'email' => $event->id->email,
                 'user_id' => $event->id->userId,
                 'amount' => $event->amount,
-                'type' => $event->type,
             ]);
     }
 }

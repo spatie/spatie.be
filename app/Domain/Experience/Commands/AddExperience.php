@@ -11,10 +11,18 @@ use Spatie\EventSourcing\Commands\HandledBy;
 #[HandledBy(ExperienceAggregateRoot::class)]
 class AddExperience
 {
+    public static function fromType(
+        string $uuid,
+        UserExperienceId $userExperienceId,
+        ExperienceType $experienceType
+    ): self {
+        return new self($uuid, $userExperienceId, $experienceType->getAmount());
+    }
+
     public function __construct(
         #[AggregateUuid] public string $uuid,
         private UserExperienceId $userExperienceId,
-        private ExperienceType $type,
+        private int $amount,
     ) {
     }
 
@@ -25,11 +33,6 @@ class AddExperience
 
     public function getAmount(): int
     {
-        return $this->type->getAmount();
-    }
-
-    public function getType(): ExperienceType
-    {
-        return $this->type;
+        return $this->amount;
     }
 }
