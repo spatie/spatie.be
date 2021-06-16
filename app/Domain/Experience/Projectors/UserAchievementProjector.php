@@ -14,8 +14,8 @@ class UserAchievementProjector extends Projector
         UserAchievementProjection::new()
             ->writeable()
             ->create([
-                'email' => $event->email,
-                'user_id' => $event->userId,
+                'email' => $event->id->email,
+                'user_id' => $event->id->userId,
                 'title' => $event->title,
             ]);
     }

@@ -4,6 +4,7 @@ namespace Tests\Factories\Events;
 
 use App\Domain\Experience\Enums\ExperienceType;
 use App\Domain\Experience\Events\ExperienceEarned;
+use App\Domain\Experience\ValueObjects\UserExperienceId;
 
 class ExperienceEarnedFactory
 {
@@ -19,8 +20,7 @@ class ExperienceEarnedFactory
     public function create(): ExperienceEarned
     {
         return new ExperienceEarned(
-            $this->email,
-            null,
+            new UserExperienceId($this->email, null),
             $this->amount,
             ExperienceType::PullRequest(),
         );

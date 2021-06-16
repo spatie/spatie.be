@@ -2,9 +2,8 @@
 
 namespace Tests\Factories\Events;
 
-use App\Domain\Experience\Enums\ExperienceType;
 use App\Domain\Experience\Events\AchievementUnlocked;
-use App\Domain\Experience\Events\ExperienceEarned;
+use App\Domain\Experience\ValueObjects\UserExperienceId;
 
 class AchievementUnlockedFactory
 {
@@ -20,8 +19,7 @@ class AchievementUnlockedFactory
     public function create(): AchievementUnlocked
     {
         return new AchievementUnlocked(
-            $this->email,
-            null,
+            new UserExperienceId($this->email, null),
             $this->title,
         );
     }

@@ -3,7 +3,7 @@
 namespace App\Domain\Experience\Commands;
 
 use App\Domain\Experience\ExperienceAggregateRoot;
-use App\Models\User;
+use App\Domain\Experience\ValueObjects\UserExperienceId;
 use Spatie\EventSourcing\Commands\AggregateUuid;
 use Spatie\EventSourcing\Commands\HandledBy;
 
@@ -16,13 +16,8 @@ class RegisterPullRequest
     ) {
     }
 
-    public function getEmail(): string
+    public function getUserExperienceId(): UserExperienceId
     {
-        return $this->email;
-    }
-
-    public function getUserId(): ?int
-    {
-        return User::query()->where('email', $this->email)->first()?->id;
+        return UserExperienceId::make($this->email);
     }
 }

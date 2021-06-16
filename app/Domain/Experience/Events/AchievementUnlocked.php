@@ -2,13 +2,13 @@
 
 namespace App\Domain\Experience\Events;
 
+use App\Domain\Experience\ValueObjects\UserExperienceId;
 use Spatie\EventSourcing\StoredEvents\ShouldBeStored;
 
 class AchievementUnlocked extends ShouldBeStored
 {
     public function __construct(
-        public string $email,
-        public ?int $userId,
+        public UserExperienceId $id,
         public string $title,
     ) {
     }

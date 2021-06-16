@@ -21,8 +21,7 @@ class ExperienceAggregateRoot extends AggregateRoot
         $previousAmount = $this->amount;
 
         $this->recordThat(new ExperienceEarned(
-            email: $command->getEmail(),
-            userId: $command->getUserId(),
+            id: $command->getUserExperienceId(),
             amount: $command->getAmount(),
             type: $command->getType(),
         ));
@@ -30,7 +29,7 @@ class ExperienceAggregateRoot extends AggregateRoot
         if ($previousAmount < 100 && $this->amount >= 100) {
             $this->unlockAchievement(new UnlockAchievement(
                 $this->uuid(),
-                $command->getEmail(),
+                $command->getUserExperienceId()->email,
                 '100 XP!'
             ));
         }
@@ -38,7 +37,7 @@ class ExperienceAggregateRoot extends AggregateRoot
         if ($previousAmount < 1000 && $this->amount >= 1000) {
             $this->unlockAchievement(new UnlockAchievement(
                 $this->uuid(),
-                $command->getEmail(),
+                $command->getUserExperienceId()->email,
                 '1000 XP!'
             ));
         }
@@ -54,8 +53,7 @@ class ExperienceAggregateRoot extends AggregateRoot
     public function unlockAchievement(UnlockAchievement $command): self
     {
         $this->recordThat(new AchievementUnlocked(
-            email: $command->getEmail(),
-            userId: $command->getUserId(),
+            id: $command->getUserExperienceId(),
             title: $command->getTitle(),
         ));
 
@@ -65,14 +63,13 @@ class ExperienceAggregateRoot extends AggregateRoot
     public function registerPullRequest(RegisterPullRequest $command): self
     {
         $this->recordThat(new PullRequestMerged(
-            email: $command->getEmail(),
-            userId: $command->getUserId(),
+            id: $command->getUserExperienceId(),
         ));
 
         if ($this->pullRequestCount === 10) {
             $this->unlockAchievement(new UnlockAchievement(
                 $this->uuid(),
-                $command->getEmail(),
+                $command->getUserExperienceId()->email,
                 '10 PRs!'
             ));
         }
@@ -80,7 +77,7 @@ class ExperienceAggregateRoot extends AggregateRoot
         if ($this->pullRequestCount === 100) {
             $this->unlockAchievement(new UnlockAchievement(
                 $this->uuid(),
-                $command->getEmail(),
+                $command->getUserExperienceId()->email,
                 'Package master!'
             ));
         }
