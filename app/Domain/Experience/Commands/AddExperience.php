@@ -13,14 +13,14 @@ class AddExperience
 {
     public function __construct(
         #[AggregateUuid] public string $uuid,
-        private string $email,
+        private UserExperienceId $userExperienceId,
         private ExperienceType $type,
     ) {
     }
 
     public function getUserExperienceId(): UserExperienceId
     {
-        return UserExperienceId::make($this->email);
+        return $this->userExperienceId;
     }
 
     public function getAmount(): int

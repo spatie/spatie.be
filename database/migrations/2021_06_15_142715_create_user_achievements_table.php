@@ -12,7 +12,9 @@ class CreateUserAchievementsTable extends Migration
             $table->id();
             $table->string('email');
             $table->unsignedInteger('user_id')->nullable();
+            $table->string('slug');
             $table->string('title');
+            $table->string('description');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

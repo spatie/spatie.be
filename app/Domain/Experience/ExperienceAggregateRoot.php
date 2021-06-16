@@ -2,6 +2,8 @@
 
 namespace App\Domain\Experience;
 
+use App\Domain\Experience\Achievements\ExperienceAchievementUnlocker;
+use App\Domain\Experience\Achievements\PullRequestAchievementUnlocker;
 use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\UnlockAchievement;
@@ -12,33 +14,43 @@ use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class ExperienceAggregateRoot extends AggregateRoot
 {
-    private int $amount = 0;
+    private int $experienceCount = 0;
 
     private int $pullRequestCount = 0;
 
+    private PullRequestAchievementUnlocker $pullRequestAchievementUnlocker;
+
+    private ExperienceAchievementUnlocker $experienceAchievementUnlocker;
+
+    public function __construct()
+    {
+        $this->pullRequestAchievementUnlocker = new PullRequestAchievementUnlocker();
+        $this->experienceAchievementUnlocker = new ExperienceAchievementUnlocker();
+    }
+
     public function add(AddExperience $command): self
     {
-        $previousAmount = $this->amount;
+        $previousCount = $this->experienceCount;
 
         $this->recordThat(new ExperienceEarned(
             id: $command->getUserExperienceId(),
             amount: $command->getAmount(),
-            type: $command->getType(),
+            type: $command->getType()->value,
         ));
 
-        if ($previousAmount < 100 && $this->amount >= 100) {
-            $this->unlockAchievement(new UnlockAchievement(
-                $this->uuid(),
-                $command->getUserExperienceId()->email,
-                '100 XP!'
-            ));
-        }
+        $currentCount = $this->experienceCount;
 
-        if ($previousAmount < 1000 && $this->amount >= 1000) {
+        $achievement = $this->experienceAchievementUnlocker->achievementToBeUnlocked(
+            previousCount: $previousCount,
+            currentCount: $currentCount,
+            userExperienceId: $command->getUserExperienceId()
+        );
+
+        if ($achievement) {
             $this->unlockAchievement(new UnlockAchievement(
                 $this->uuid(),
-                $command->getUserExperienceId()->email,
-                '1000 XP!'
+                $command->getUserExperienceId(),
+                $achievement,
             ));
         }
 
@@ -47,14 +59,16 @@ class ExperienceAggregateRoot extends AggregateRoot
 
     protected function applyExperienceEarned(ExperienceEarned $event): void
     {
-        $this->amount += $event->amount;
+        $this->experienceCount += $event->amount;
     }
 
     public function unlockAchievement(UnlockAchievement $command): self
     {
         $this->recordThat(new AchievementUnlocked(
             id: $command->getUserExperienceId(),
-            title: $command->getTitle(),
+            slug: $command->getAchievement()->getSlug(),
+            title: $command->getAchievement()->getTitle(),
+            description: $command->getAchievement()->getDescription(),
         ));
 
         return $this;
@@ -66,19 +80,16 @@ class ExperienceAggregateRoot extends AggregateRoot
             id: $command->getUserExperienceId(),
         ));
 
-        if ($this->pullRequestCount === 10) {
-            $this->unlockAchievement(new UnlockAchievement(
-                $this->uuid(),
-                $command->getUserExperienceId()->email,
-                '10 PRs!'
-            ));
-        }
+        $achievement = $this->pullRequestAchievementUnlocker->achievementToBeUnlocked(
+            pullRequestCount: $this->pullRequestCount,
+            userExperienceId: $command->getUserExperienceId()
+        );
 
-        if ($this->pullRequestCount === 100) {
+        if ($achievement) {
             $this->unlockAchievement(new UnlockAchievement(
                 $this->uuid(),
-                $command->getUserExperienceId()->email,
-                'Package master!'
+                $command->getUserExperienceId(),
+                $achievement,
             ));
         }
 

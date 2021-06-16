@@ -9,7 +9,9 @@ class AchievementUnlocked extends ShouldBeStored
 {
     public function __construct(
         public UserExperienceId $id,
+        public string $slug,
         public string $title,
+        public string $description,
     ) {
     }
 }

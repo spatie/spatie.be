@@ -2,7 +2,7 @@
 
 namespace App\Domain\Experience\Achievements;
 
-class PullRequestAchievement implements Achievement
+class ExperienceAchievement implements Achievement
 {
     public function __construct(
         private string $slug,
@@ -12,9 +12,9 @@ class PullRequestAchievement implements Achievement
     ) {
     }
 
-    public function matches(int $count): bool
+    public function matches(int $previousCount, int $currentCount): bool
     {
-        return $count === $this->countRequirement;
+        return $previousCount < $this->countRequirement && $currentCount >= $this->countRequirement;
     }
 
     public function getSlug(): string

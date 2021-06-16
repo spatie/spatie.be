@@ -2,6 +2,7 @@
 
 namespace App\Domain\Experience\Commands;
 
+use App\Domain\Experience\Achievements\Achievement;
 use App\Domain\Experience\ExperienceAggregateRoot;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 use Spatie\EventSourcing\Commands\AggregateUuid;
@@ -12,18 +13,18 @@ class UnlockAchievement
 {
     public function __construct(
         #[AggregateUuid] public string $uuid,
-        private string $email,
-        private string $title,
+        private UserExperienceId $userExperienceId,
+        private Achievement $achievement,
     ) {
     }
 
     public function getUserExperienceId(): UserExperienceId
     {
-        return UserExperienceId::make($this->email);
+        return $this->userExperienceId;
     }
 
-    public function getTitle(): string
+    public function getAchievement(): Achievement
     {
-        return $this->title;
+        return $this->achievement;
     }
 }

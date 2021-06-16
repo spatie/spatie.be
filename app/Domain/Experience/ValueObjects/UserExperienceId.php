@@ -8,7 +8,7 @@ class UserExperienceId
 {
     public function __construct(
         public string $email,
-        public ?int $userId,
+        public ?int $userId = null,
     ) {
     }
 

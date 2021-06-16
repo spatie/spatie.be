@@ -6,13 +6,11 @@ use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Enums\ExperienceType;
-use App\Domain\Experience\ExperienceAggregateRoot;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
+use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Support\Uuid;
 use Spatie\EventSourcing\Commands\CommandBus;
-use Tests\Factories\Events\AchievementUnlockedFactory;
-use Tests\Factories\Events\ExperienceEarnedFactory;
 use Tests\TestCase;
 
 class ExperienceAggregateRootTest extends TestCase
@@ -56,7 +54,7 @@ class ExperienceAggregateRootTest extends TestCase
     }
 
     /** @test */
-    public function test_100_pull_requests()
+    public function test_100_pull_requests_achievement()
     {
         $uuid = Uuid::new();
 
@@ -71,29 +69,38 @@ class ExperienceAggregateRootTest extends TestCase
 
         $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
             'email' => 'test@spatie.be',
-            'title' => 'Package master!',
+            'slug' => '10-pull-requests',
+        ]);
+
+        $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+            'email' => 'test@spatie.be',
+            'slug' => '50-pull-requests',
+        ]);
+
+        $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+            'email' => 'test@spatie.be',
+            'slug' => '100-pull-requests',
         ]);
     }
 
     /** @test */
-    public function test_achievement_for_100_xp()
+    public function test_100_xp_achievement()
     {
         $uuid = Uuid::new();
 
-        $experienceEarnedFactory = ExperienceEarnedFactory::new();
+        $bus = app(CommandBus::class);
 
-        ExperienceAggregateRoot::fake($uuid)
-            ->given(
-                $experienceEarnedFactory->withAmount(60)->create(),
-            )
-            ->when(function (ExperienceAggregateRoot $aggregateRoot) use ($uuid) {
-                $aggregateRoot->add(
-                    new AddExperience($uuid, 'test@spatie.be', ExperienceType::PullRequest())
-                );
-            })
-            ->assertRecorded([
-                $experienceEarnedFactory->withAmount(50)->create(),
-                AchievementUnlockedFactory::new()->withTitle('100 XP!')->create(),
-            ]);
+        foreach (range(1, 2) as $i) {
+            $bus->dispatch(new AddExperience(
+                $uuid,
+                new UserExperienceId('test@spatie.be'),
+                ExperienceType::PullRequest(),
+            ));
+        }
+
+        $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+            'email' => 'test@spatie.be',
+            'slug' => '100-experience',
+        ]);
     }
 }
