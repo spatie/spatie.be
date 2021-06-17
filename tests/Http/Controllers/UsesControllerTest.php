@@ -26,7 +26,6 @@ class UsesControllerTest extends TestCase
             ->assertOk()
             ->assertSee($technologies[0]['name'])
             ->assertSee($technologies[1]['website_url'])
-            ->assertSee($technologies[2]['image_url'])
-            ->assertSee($technologies[3]['description']);
+            ->assertSee($technologies[2]['description']);
     }
 }
