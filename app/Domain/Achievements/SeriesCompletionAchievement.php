@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Experience\Achievements;
+namespace App\Domain\Achievements;
 
 use App\Models\Series;
 use App\Models\User;

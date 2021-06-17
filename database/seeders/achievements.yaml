@@ -1,0 +1,56 @@
+achievements:
+  100-experience:
+    type: Experience
+    title: 100 XP
+    description: "You've collected 100 XP"
+    data:
+      amountRequired: 100
+
+  1000-experience:
+    type: Experience
+    title: 1000 XP
+    description: "You've collected 1000 XP"
+    data:
+      amountRequired: 1000
+
+  10_000-experience:
+    type: Experience
+    title: 10.000 XP
+    description: "You've collected 10.000 XP"
+    data:
+      amountRequired: 10_000
+
+  100_000-experience:
+    type: Experience
+    title: 100.000 XP
+    description: "You've collected 100.000 XP"
+    data:
+      amountRequired: 100_000
+
+  10-pull-requests:
+    type: PullRequest
+    title: 10 Pull Requests!
+    description: "10 of your PRs were merged into our packages!"
+    data:
+      amountRequired: 10
+
+  20-pull-requests:
+    type: PullRequest
+    title: 20 Pull Requests!
+    description: "20 of your PRs were merged into our packages!"
+    data:
+      amountRequired: 20
+
+  50-pull-requests:
+    type: PullRequest
+    title: 50 Pull Requests!
+    description: "50 of your PRs were merged into our packages!"
+    data:
+      amountRequired: 50
+
+  100-pull-requests:
+    type: PullRequest
+    title: 100 Pull Requests!
+    description: "100 of your PRs were merged into our packages!"
+    data:
+      amountRequired: 100

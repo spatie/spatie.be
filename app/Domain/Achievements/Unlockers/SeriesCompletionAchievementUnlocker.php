@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Domain\Experience\Achievements;
+namespace App\Domain\Achievements\Unlockers;
 
+use App\Domain\Achievements\SeriesCompletionAchievement;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Models\Series;
 

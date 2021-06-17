@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Domain\Experience\Achievements;
+namespace App\Domain\Achievements\Unlockers;
 
+use App\Domain\Achievements\ExperienceAchievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 
 class ExperienceAchievementUnlocker
 {
     /**
-     * @return \App\Domain\Experience\Achievements\ExperienceAchievement[]
+     * @return \App\Domain\Achievements\ExperienceAchievement[]
      */
     private function getAchievements(): array
     {
