@@ -100,10 +100,19 @@ class TechnologiesSeeder extends Seeder
 
     public function run(): void
     {
-        foreach ($this->technologies() as $technology) {
-            Technology::firstOrNew(['name' => $technology['name']])
-                ->fill($technology)
-                ->save();
+        foreach ($this->technologies() as $data) {
+            $imageUrl = $data['image_url'];
+
+            unset($data['image_url']);
+
+             $technology = Technology::firstOrNew(['name' => $data['name']])
+                ->fill($data);
+
+             $technology->save();
+
+             $technology
+                 ->addMediaFromUrl($imageUrl)
+                ->toMediaCollection('avatar');
         }
 
         Technology::whereNotIn('name', array_column($this->technologies(), 'name'))

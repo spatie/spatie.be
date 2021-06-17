@@ -15,7 +15,6 @@ class CreateTechnologiesTable extends Migration
             $table->string('name');
             $table->string('type');
             $table->string('website_url');
-            $table->string('image_url');
             $table->text('description');
             $table->json('recommended_by');
 
