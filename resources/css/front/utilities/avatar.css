@@ -20,3 +20,26 @@
     object-position: center;
     @apply rounded-full;
 }
+
+.avatar-sm {
+    @apply rounded-full;
+    @apply w-6;
+    @apply h-6;
+    @apply overflow-hidden;
+    @apply border;
+    @apply border-white;
+    @apply shadow-lg;
+    @apply flex-shrink-0;
+}
+
+.avatar-sm img {
+    @apply absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    max-width: none;
+    @apply object-cover;
+    object-position: center;
+    @apply rounded-full;
+}

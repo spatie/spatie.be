@@ -13,14 +13,7 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
-        collect([
-            'freek',
-            'willem',
-            'rias',
-            'alex',
-            'ruben',
-            'niels',
-        ])->map(fn (string $name) => User::create([
+        collect(config('team.members'))->map(fn (string $name) => User::create([
             'name' => ucfirst($name),
             'email' => "${name}@spatie.be",
             'password' => bcrypt('password'),

@@ -27,5 +27,7 @@ class ViewServiceProvider extends ServiceProvider
         View::composer('front.pages.about.partials.team', function ($view): void {
             $view->with('members', Member::orderBy('first_name')->get());
         });
+
+        Blade::component('components.avatar', 'avatar');
     }
 }
