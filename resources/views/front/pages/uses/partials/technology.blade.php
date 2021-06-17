@@ -3,7 +3,8 @@
 <div id="mailcoach" class="sm:col-span-3 items-start pb-16">
     <div class="flex items-center mb-4">
         <div class="flex-none avatar mr-4">
-            <img src="{{ $technology->image_url }}" alt="{{ $technology->name }}">
+
+            <img src="{{ $technology->avatar }}" alt="{{ $technology->name }}">
         </div>
         <div>
             <h3 class="title-sm">
