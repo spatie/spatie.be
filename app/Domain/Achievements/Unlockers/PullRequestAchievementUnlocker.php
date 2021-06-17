@@ -3,7 +3,6 @@
 namespace App\Domain\Achievements\Unlockers;
 
 use App\Domain\Achievements\PullRequestAchievement;
-use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 
 class PullRequestAchievementUnlocker
