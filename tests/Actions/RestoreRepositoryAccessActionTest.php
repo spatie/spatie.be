@@ -78,6 +78,7 @@ class RestoreRepositoryAccessActionTest extends TestCase
     {
         $this->purchase->purchasable->update([
             'repository_access' => 'spatie/spatie.be',
+            'requires_license' => true,
         ]);
 
         $this->license->update(['expires_at' => now()->subDay()]);
