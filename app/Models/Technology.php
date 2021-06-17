@@ -14,7 +14,7 @@ class Technology extends Model implements HasMedia
     use InteractsWithMedia;
 
     public $casts = [
-        'type' => TechnologyType::class,
+        'type' => TechnologyType::class.':nullable',
         'recommended_by' => 'array',
     ];
 

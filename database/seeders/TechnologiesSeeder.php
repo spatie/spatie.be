@@ -17,7 +17,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::frontend(),
                 'website_url' => 'https://tailwindcss.com/',
                 'image_url' => 'https://pbs.twimg.com/profile_images/1278691829135876097/I4HKOLJw_400x400.png',
-                'recommended_by' => ['Willem'],
+                'recommended_by' => ['willem'],
                 'description' => 'A description why we use Tailwind',
             ],
             [
@@ -25,7 +25,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::frontend(),
                 'website_url' => 'https://vitejs.dev/',
                 'image_url' => 'https://vitejs.dev/logo.svg',
-                'recommended_by' => ['Sebastian', 'Adriaan'],
+                'recommended_by' => ['sebastian', 'adriaan'],
                 'description' => 'A description why we use Vite.js',
             ],
             [
@@ -33,7 +33,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::frontend(),
                 'website_url' => 'https://reactjs.org/',
                 'image_url' => 'https://vitejs.dev/logo.svg',
-                'recommended_by' => ['Sebastian', 'Adriaan', 'Rias'],
+                'recommended_by' => ['sebastian', 'adriaan', 'rias'],
                 'description' => 'A description why we use React.js',
             ],
             [
@@ -41,7 +41,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::frontend(),
                 'website_url' => 'https://www.typescriptlang.org/',
                 'image_url' => 'https://vitejs.dev/logo.svg',
-                'recommended_by' => ['Sebastian', 'Adriaan'],
+                'recommended_by' => ['sebastian', 'adriaan'],
                 'description' => 'A description why we use Typescript',
             ],
             [
@@ -49,7 +49,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::frontend(),
                 'website_url' => 'https://www.typescriptlang.org/',
                 'image_url' => 'https://vitejs.dev/logo.svg',
-                'recommended_by' => ['Sebastian', 'Adriaan'],
+                'recommended_by' => ['sebastian', 'adriaan'],
                 'description' => 'A description why we use Yarn',
             ],
 
@@ -59,7 +59,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::backend(),
                 'website_url' => 'https://laravel.com/',
                 'image_url' => 'https://laravel.com/img/logomark.min.svg',
-                'recommended_by' => ['Freek', 'Sebastian', 'Alex', 'Brent', 'Ruben', 'Rias', 'Niels'],
+                'recommended_by' => ['freek', 'sebastian', 'alex', 'brent', 'ruben', 'rias', 'niels'],
                 'description' => 'A description why we use Laravel',
             ],
 
@@ -69,7 +69,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::devops(),
                 'website_url' => 'https://ohdear.app/',
                 'image_url' => 'https://ohdear.app/img/logo/ohdear-logo-white-transparant.svg',
-                'recommended_by' => ['Freek'],
+                'recommended_by' => ['freek'],
                 'description' => 'A description why we use Oh dear',
             ],
 
@@ -79,7 +79,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::integrations(),
                 'website_url' => 'https://mailcoach.app/',
                 'image_url' => 'https://i.ytimg.com/vi/b3ZDyewAJYc/maxresdefault.jpg',
-                'recommended_by' => ['Freek', 'Wouter', 'Brent', 'Jef'],
+                'recommended_by' => ['freek', 'wouter', 'brent', 'jef'],
                 'description' => 'We would be crazy to use Mailchimp for our mailings.
                 That’s why we built Mailcoach.
                 It’s our answer to self-host your email marketing while cutting the cost.',
@@ -90,7 +90,7 @@ class TechnologiesSeeder extends Seeder
                 'type' => TechnologyType::tools(),
                 'website_url' => 'https://streamyard.com/',
                 'image_url' => 'https://streamyard.com/static/img/7b107537a14784d40bde2496b4b284d9.svg',
-                'recommended_by' => ['Freek', 'Brent'],
+                'recommended_by' => ['freek', 'brent'],
                 'description' => 'Most of our live streams are hosted on Streamyard.
                 It’s a quick and easy way to create professional livestreams instantly. We also host livestreams on YouTube.',
             ]

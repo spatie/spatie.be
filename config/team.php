@@ -8,6 +8,10 @@ return [
         'sebastian',
         'brent',
         'alex',
-        'harish',
+        'wouter',
+        'ruben',
+        'adriaan',
+        'rias',
+        'niels',
     ],
 ];

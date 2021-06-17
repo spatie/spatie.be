@@ -9,6 +9,8 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
+use OptimistDigital\MultiselectField\Multiselect;
 
 class Technology extends Resource
 {
@@ -31,13 +33,30 @@ class Technology extends Resource
                 ->sortable()
                 ->rules(['required', 'max:255']),
 
+            Textarea::make('Description')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules(['required']),
+
             Select::make('Type')
                 ->sortable()
+                ->nullable(false)
                 ->rules(['required'])
-                ->options(TechnologyType::toArray()),
+                ->options(TechnologyType::toLabels()),
 
             Text::make('Website Url', 'website_url')
                 ->rules(['required', 'max:255', 'url']),
+
+            Multiselect::make('Recommended by')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules(['required'])
+                ->saveAsJSON()
+                ->options(
+                    collect(config('team.members'))->mapWithKeys(function (string $name) {
+                        return [$name => ucfirst($name)];
+                    })
+                ),
 
             Image::make('Avatar')
                 ->store(function (Request $request, EloquentTechnology $technology) {

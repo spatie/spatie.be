@@ -11,4 +11,16 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self tools()
  * @method static self integrations()
  */
-class TechnologyType extends Enum {}
+class TechnologyType extends Enum
+{
+    public static function toLabels(): array
+    {
+        return [
+            'frontend'=> 'Frontend',
+            'backend' => 'Backend',
+            'devops' => 'Devops',
+            'tools' => 'Tools',
+            'integrations' => 'Integrations',
+        ];
+    }
+}
