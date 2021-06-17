@@ -2,9 +2,9 @@
 
 namespace App\Domain\Experience;
 
-use App\Domain\Achievements\Unlockers\ExperienceAchievementUnlocker;
-use App\Domain\Achievements\Unlockers\PullRequestAchievementUnlocker;
-use App\Domain\Achievements\Unlockers\SeriesCompletionAchievementUnlocker;
+use App\Domain\Achievements\Experience\ExperienceAchievementUnlocker;
+use App\Domain\Achievements\PullRequest\PullRequestAchievementUnlocker;
+use App\Domain\Achievements\Series\SeriesCompletionAchievementUnlocker;
 use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;

@@ -2,7 +2,7 @@
 
 namespace Tests\Domain\Experience;
 
-use App\Domain\Achievements\SeriesCompletionAchievement;
+use App\Domain\Achievements\Series\SeriesCompletionAchievement;
 use App\Models\Series;
 use App\Models\User;
 use App\Models\Video;

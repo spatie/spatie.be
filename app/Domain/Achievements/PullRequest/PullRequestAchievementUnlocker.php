@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Domain\Achievements\Unlockers;
+namespace App\Domain\Achievements\PullRequest;
 
-use App\Domain\Achievements\PullRequestAchievement;
+use App\Domain\Achievements\PullRequest\PullRequestAchievement;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 
 class PullRequestAchievementUnlocker
 {
     /**
-     * @return \App\Domain\Achievements\PullRequestAchievement[]
+     * @return \App\Domain\Achievements\PullRequest\PullRequestAchievement[]
      */
     private function getAchievements(): array
     {

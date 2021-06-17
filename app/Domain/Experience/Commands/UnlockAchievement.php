@@ -2,9 +2,9 @@
 
 namespace App\Domain\Experience\Commands;
 
-use App\Domain\Achievements\ExperienceAchievement;
-use App\Domain\Achievements\PullRequestAchievement;
-use App\Domain\Achievements\SeriesCompletionAchievement;
+use App\Domain\Achievements\Experience\ExperienceAchievement;
+use App\Domain\Achievements\PullRequest\PullRequestAchievement;
+use App\Domain\Achievements\Series\SeriesCompletionAchievement;
 use App\Domain\Experience\ExperienceAggregateRoot;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 use Spatie\EventSourcing\Commands\AggregateUuid;

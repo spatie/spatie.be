@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Achievements;
+namespace App\Domain\Achievements\PullRequest;
 
 class PullRequestAchievement
 {
