@@ -35,7 +35,7 @@ class AdminsOnlyTest extends TestCase
     }
 
     /** @test */
-    public function it_will_not_pass_when_no_user_is_logged_in(): void
+    public function it_will_not_pass_when_no_user_is_logged_in()
     {
         $this->expectException(AuthenticationException::class);
 
@@ -45,7 +45,7 @@ class AdminsOnlyTest extends TestCase
     }
 
     /** @test */
-    public function it_will_not_pass_when_the_user_is_not_an_admin(): void
+    public function it_will_not_pass_when_the_user_is_not_an_admin()
     {
         $this->expectException(AuthenticationException::class);
 
