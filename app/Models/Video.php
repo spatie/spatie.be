@@ -190,7 +190,7 @@ class Video extends Model implements Sortable
             return $this;
         }
 
-        $currentUser->completedVideos()->syncWithoutDetaching($this);
+        $currentUser->completeVideo($this);
 
         return $this;
     }

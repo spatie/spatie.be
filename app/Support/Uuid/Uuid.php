@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Support;
+namespace App\Support\Uuid;
 
-class Uuid
+use Illuminate\Contracts\Database\Eloquent\Castable;
+
+class Uuid implements Castable
 {
     private function __construct(
         private string $uuid,
@@ -22,6 +24,11 @@ class Uuid
     public function __toString(): string
     {
         return $this->uuid;
+    }
+
+    public static function castUsing(array $arguments): UuidCaster
+    {
+        return new UuidCaster();
     }
 }
 

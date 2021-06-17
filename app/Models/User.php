@@ -2,7 +2,11 @@
 
 namespace App\Models;
 
+use App\Domain\Experience\Commands\RegisterVideoCompletion;
+use App\Domain\Experience\Projections\UserAchievementProjection;
+use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Enums\PurchasableType;
+use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,7 +31,19 @@ class User extends Authenticatable
         'next_purchase_discount_period_ends_at' => 'datetime',
         'sponsor_gift_given_at' => 'datetime',
         'has_access_to_unreleased_products' => 'boolean',
+        'uuid' => Uuid::class,
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::saving(function (User $user) {
+            if ($user->uuid === null) {
+                $user->uuid = (string) Uuid::new();
+            }
+        });
+    }
 
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
     {
@@ -170,6 +186,19 @@ class User extends Authenticatable
             'video_id' => $video->id,
         ]);
 
+        command(new RegisterVideoCompletion(
+            uuid: $this->uuid,
+            userExperienceId: UserExperienceId::fromUser($this),
+            videoId: $video->id
+        ));
+
         return $this;
+    }
+
+    public function hasAchievement(object $achievement): bool
+    {
+        return UserAchievementProjection::forUser(UserExperienceId::fromUser($this))
+            ->andSlug($achievement->slug)
+            ->exists();
     }
 }

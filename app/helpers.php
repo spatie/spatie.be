@@ -6,6 +6,7 @@ use App\Services\Schema\Schema;
 use Faker\Factory;
 use Faker\Generator;
 use Illuminate\Support\HtmlString;
+use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 function svg($filename): HtmlString
@@ -62,7 +63,7 @@ function mailto(string $subject, string $body): string
 
     $body = rawurlencode(htmlspecialchars_decode($body));
 
-    return "mailto:info@spatie.be?subject={$subject}&body={$body}" ;
+    return "mailto:info@spatie.be?subject={$subject}&body={$body}";
 }
 
 function schema(): Schema
@@ -76,7 +77,7 @@ function formatBytes($size, $precision = 2)
     $base = log((float) $size, 1024);
     $suffixes = ['', 'K', 'M', 'G', 'T'];
 
-    return round(pow(1024, $base - floor($base)), $precision) .' '. $suffixes[floor($base)];
+    return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
 }
 
 function sponsorIsViewingPage(): bool
@@ -91,4 +92,11 @@ function sponsorIsViewingPage(): bool
 function current_user(): ?User
 {
     return auth()->user();
+}
+
+function command(object $command): void
+{
+    $bus = app(CommandBus::class);
+
+    $bus->dispatch($command);
 }

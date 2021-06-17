@@ -25,7 +25,7 @@ class PullRequestAchievementUnlocker
         UserExperienceId $userExperienceId
     ): ?PullRequestAchievement {
         foreach ($this->getAchievements() as $achievement) {
-            if (UserAchievementProjection::forUser($userExperienceId)->andSlug($achievement->slug)->exists()) {
+            if ($userExperienceId->getUser()->hasAchievement($achievement)) {
                 continue;
             }
 

@@ -8,7 +8,7 @@ use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
-use App\Support\Uuid;
+use App\Support\Uuid\Uuid;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Tests\TestCase;
 

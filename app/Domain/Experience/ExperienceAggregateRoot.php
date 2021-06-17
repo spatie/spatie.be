@@ -4,8 +4,10 @@ namespace App\Domain\Experience;
 
 use App\Domain\Experience\Achievements\ExperienceAchievementUnlocker;
 use App\Domain\Experience\Achievements\PullRequestAchievementUnlocker;
+use App\Domain\Experience\Achievements\SeriesCompletionAchievementUnlocker;
 use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
+use App\Domain\Experience\Commands\RegisterVideoCompletion;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Events\ExperienceEarned;
@@ -13,6 +15,10 @@ use App\Domain\Experience\Events\PullRequestMerged;
 use App\Domain\Experience\Events\SeriesCompleted;
 use App\Domain\Experience\Events\VideoCompleted;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
+use App\Models\Series;
+use App\Models\User;
+use App\Models\Video;
+use App\Models\VideoCompletion;
 use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class ExperienceAggregateRoot extends AggregateRoot
@@ -25,10 +31,13 @@ class ExperienceAggregateRoot extends AggregateRoot
 
     private ExperienceAchievementUnlocker $experienceAchievementUnlocker;
 
+    private SeriesCompletionAchievementUnlocker $seriesCompletionAchievementUnlocker;
+
     public function __construct()
     {
         $this->pullRequestAchievementUnlocker = new PullRequestAchievementUnlocker();
         $this->experienceAchievementUnlocker = new ExperienceAchievementUnlocker();
+        $this->seriesCompletionAchievementUnlocker = new SeriesCompletionAchievementUnlocker();
     }
 
     public function add(AddExperience $command): self
@@ -50,9 +59,9 @@ class ExperienceAggregateRoot extends AggregateRoot
 
         if ($achievement) {
             $this->unlockAchievement(new UnlockAchievement(
-                $this->uuid(),
-                $command->userExperienceId,
-                $achievement,
+                uuid: $this->uuid(),
+                userExperienceId: $command->userExperienceId,
+                achievement: $achievement,
             ));
         }
 
@@ -104,15 +113,26 @@ class ExperienceAggregateRoot extends AggregateRoot
     }
 
     public function registerVideoCompletion(
-        UserExperienceId $userExperienceId,
-        int $videoId,
-        int $seriesId,
+        RegisterVideoCompletion $command
     ): self {
+        $user = User::query()->findOrFail($command->userExperienceId->userId);
+
+        $video = Video::query()->findOrFail($command->videoId);
+
+        $series = Series::query()->findOrFail($video->series_id);
+
         $this->recordThat(new VideoCompleted(
-            $userExperienceId,
-            $videoId,
-            $seriesId,
+            userExperienceId: $command->userExperienceId,
+            videoId: $command->videoId,
+            seriesId: $video->series_id,
         ));
+
+        if ($user->hasCompleted($series)) {
+            $this->registerSeriesCompletion(
+                userExperienceId: $command->userExperienceId,
+                seriesId: $video->series_id,
+            );
+        }
 
         return $this;
     }
@@ -121,10 +141,25 @@ class ExperienceAggregateRoot extends AggregateRoot
         UserExperienceId $userExperienceId,
         int $seriesId,
     ): self {
+        $series = Series::query()->findOrFail($seriesId);
+
         $this->recordThat(new SeriesCompleted(
-            $userExperienceId,
-            $seriesId,
+            userExperienceId: $userExperienceId,
+            seriesId: $seriesId,
         ));
+
+        $achievement = $this->seriesCompletionAchievementUnlocker->achievementToBeUnlocked(
+            $series,
+            $userExperienceId
+        );
+
+        if ($achievement) {
+            $this->unlockAchievement(new UnlockAchievement(
+                uuid: $this->uuid(),
+                userExperienceId: $userExperienceId,
+                achievement: $achievement,
+            ));
+        }
 
         return $this;
     }

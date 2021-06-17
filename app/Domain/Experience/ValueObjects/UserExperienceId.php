@@ -19,4 +19,18 @@ class UserExperienceId
             userId: User::query()->where('email', $email)->first()?->id,
         );
     }
+
+    public static function fromUser(User $user): self
+    {
+        return new self($user->email, $user->id);
+    }
+
+    public function getUser(): ?User
+    {
+        if ($this->userId) {
+            return User::query()->findOrFail($this->userId);
+        }
+
+        return User::query()->where('email', $this->email)->first();
+    }
 }
