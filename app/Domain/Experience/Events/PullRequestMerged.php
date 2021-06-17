@@ -8,7 +8,7 @@ use Spatie\EventSourcing\StoredEvents\ShouldBeStored;
 class PullRequestMerged extends ShouldBeStored
 {
     public function __construct(
-        public UserExperienceId $id,
+        public UserExperienceId $userExperienceId,
     ) {
     }
 }

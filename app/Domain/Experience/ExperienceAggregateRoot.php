@@ -10,6 +10,9 @@ use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Events\ExperienceEarned;
 use App\Domain\Experience\Events\PullRequestMerged;
+use App\Domain\Experience\Events\SeriesCompleted;
+use App\Domain\Experience\Events\VideoCompleted;
+use App\Domain\Experience\ValueObjects\UserExperienceId;
 use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class ExperienceAggregateRoot extends AggregateRoot
@@ -33,7 +36,7 @@ class ExperienceAggregateRoot extends AggregateRoot
         $previousCount = $this->experienceCount;
 
         $this->recordThat(new ExperienceEarned(
-            id: $command->userExperienceId,
+            userExperienceId: $command->userExperienceId,
             amount: $command->amount,
         ));
 
@@ -64,7 +67,7 @@ class ExperienceAggregateRoot extends AggregateRoot
     public function unlockAchievement(UnlockAchievement $command): self
     {
         $this->recordThat(new AchievementUnlocked(
-            id: $command->userExperienceId,
+            userExperienceId: $command->userExperienceId,
             slug: $command->achievement->slug,
             title: $command->achievement->title,
             description: $command->achievement->description,
@@ -76,7 +79,7 @@ class ExperienceAggregateRoot extends AggregateRoot
     public function registerPullRequest(RegisterPullRequest $command): self
     {
         $this->recordThat(new PullRequestMerged(
-            id: $command->userExperienceId,
+            userExperienceId: $command->userExperienceId,
         ));
 
         $achievement = $this->pullRequestAchievementUnlocker->achievementToBeUnlocked(
@@ -98,5 +101,31 @@ class ExperienceAggregateRoot extends AggregateRoot
     protected function applyPullRequestMerged(PullRequestMerged $event): void
     {
         $this->pullRequestCount++;
+    }
+
+    public function registerVideoCompletion(
+        UserExperienceId $userExperienceId,
+        int $videoId,
+        int $seriesId,
+    ): self {
+        $this->recordThat(new VideoCompleted(
+            $userExperienceId,
+            $videoId,
+            $seriesId,
+        ));
+
+        return $this;
+    }
+
+    public function registerSeriesCompletion(
+        UserExperienceId $userExperienceId,
+        int $seriesId,
+    ): self {
+        $this->recordThat(new SeriesCompleted(
+            $userExperienceId,
+            $seriesId,
+        ));
+
+        return $this;
     }
 }

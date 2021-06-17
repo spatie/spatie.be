@@ -65,7 +65,7 @@ class User extends Authenticatable
             return true;
         }
 
-        return (bool)$this->is_sponsor;
+        return (bool) $this->is_sponsor;
     }
 
     public function isSubscribedToNewsletter(): bool
@@ -151,5 +151,25 @@ class User extends Authenticatable
     public function canImpersonate(): bool
     {
         return $this->isSpatieMember();
+    }
+
+    public function hasCompleted(Series $series): bool
+    {
+        return Video::query()
+            ->where('series_id', $series->id)
+            ->whereDoesntHave('completions', function (Builder|VideoCompletion $builder) {
+                return $builder->where('user_id', $this->id);
+            })
+            ->doesntExist();
+    }
+
+    public function completeVideo(Video $video): self
+    {
+        VideoCompletion::create([
+            'user_id' => $this->id,
+            'video_id' => $video->id,
+        ]);
+
+        return $this;
     }
 }

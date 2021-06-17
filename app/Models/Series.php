@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Enums\VideoDisplayEnum;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Mail\Markdown;
@@ -15,6 +16,7 @@ class Series extends Model implements HasMedia, Sortable
 {
     use InteractsWithMedia;
     use SortableTrait;
+    use HasFactory;
 
     public $sortable = [
         'order_column_name' => 'sort_order',
