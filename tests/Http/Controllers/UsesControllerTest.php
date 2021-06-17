@@ -5,6 +5,7 @@ namespace Tests\Http\Controllers;
 use App\Http\Controllers\UsesController;
 use App\Models\Enums\TechnologyType;
 use App\Models\Technology;
+use App\Models\User;
 use Tests\TestCase;
 
 class UsesControllerTest extends TestCase
@@ -12,6 +13,8 @@ class UsesControllerTest extends TestCase
     /** @test */
     public function it_can_show_the_uses_page()
     {
+        $this->actingAs(User::factory()->make(['is_admin' => true]));
+
         $technologies = [];
 
         foreach (TechnologyType::toArray() as $type) {
