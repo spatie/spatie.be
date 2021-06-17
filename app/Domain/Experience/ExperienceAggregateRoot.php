@@ -77,6 +77,7 @@ class ExperienceAggregateRoot extends AggregateRoot
     {
         $this->recordThat(new AchievementUnlocked(
             userExperienceId: $command->userExperienceId,
+            achievementId: $command->achievement->id,
             slug: $command->achievement->slug,
             title: $command->achievement->title,
             description: $command->achievement->description,

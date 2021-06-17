@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Domain\Achievements\Observer\SeriesAchievementsObserver;
 use App\Models\Enums\VideoDisplayEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -26,6 +27,13 @@ class Series extends Model implements HasMedia, Sortable
     protected $with = [
         'media',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        self::observe(SeriesAchievementsObserver::class);
+    }
 
     public function getRouteKeyName()
     {

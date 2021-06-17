@@ -3,6 +3,7 @@
 namespace App\Domain\Experience\Commands;
 
 use App\Domain\Achievements\Experience\ExperienceAchievement;
+use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Achievements\PullRequest\PullRequestAchievement;
 use App\Domain\Achievements\Series\SeriesCompletionAchievement;
 use App\Domain\Experience\ExperienceAggregateRoot;
@@ -16,7 +17,7 @@ class UnlockAchievement
     public function __construct(
         #[AggregateUuid] public string $uuid,
         public UserExperienceId $userExperienceId,
-        public ExperienceAchievement|PullRequestAchievement|SeriesCompletionAchievement $achievement,
+        public Achievement $achievement,
     ) {
     }
 }

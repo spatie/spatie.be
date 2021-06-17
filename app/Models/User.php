@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
@@ -195,7 +196,7 @@ class User extends Authenticatable
         return $this;
     }
 
-    public function hasAchievement(object $achievement): bool
+    public function hasAchievement(Achievement $achievement): bool
     {
         return UserAchievementProjection::forUser(UserExperienceId::fromUser($this))
             ->andSlug($achievement->slug)

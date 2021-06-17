@@ -2,6 +2,7 @@
 
 namespace Tests\Domain\Experience;
 
+use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Achievements\Series\SeriesCompletionAchievement;
 use App\Models\Series;
 use App\Models\User;
@@ -41,9 +42,9 @@ class VideoCompletionTest extends TestCase
         /** @var \App\Models\User $user */
         $user = User::factory()->create();
 
-        $user->completeVideo($this->videoA);
+        $achievement = Achievement::forSeries($this->series)->first();
 
-        $achievement = new SeriesCompletionAchievement($this->series);
+        $user->completeVideo($this->videoA);
 
         $this->assertFalse($user->hasAchievement($achievement));
 
