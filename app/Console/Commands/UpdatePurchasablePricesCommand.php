@@ -38,9 +38,6 @@ class UpdatePurchasablePricesCommand extends Command
 
                 if (EuCountries::contains($countryAttributes['code'])) {
                     $conversionRate = ConversionRate::forCountryCode('BE');
-ray($countryAttributes['code']);
-ray($conversionRate);
-ray($purchasable);
                     $price->update([
                         'currency_code' => 'EUR',
                         'currency_symbol' => '€',
