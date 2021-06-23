@@ -34,7 +34,7 @@ return [
             "name" => "laravel-medialibrary",
             "repository" => "spatie/laravel-medialibrary",
             "branches" => [
-                "master" => "v9",
+                "main" => "v9",
                 "v8" => "v8",
                 "v7" => "v7",
                 "v6" => "v6",
