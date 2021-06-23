@@ -48,8 +48,8 @@ class UpdateConversionRatesCommand extends Command
             return 1;
         }
 
-        if ($factor < 0.2) {
-            return 0.2;
+        if ($factor < 0.4) {
+            return 0.4;
         }
 
         return $factor;
