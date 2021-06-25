@@ -177,7 +177,8 @@ Each applied trait should go on its own line, and the `use` keyword should be us
 ```php
 // Good
 
-class MyClass {
+class MyClass
+{
     use TraitA;
     use TraitB;
 }
@@ -186,7 +187,8 @@ class MyClass {
 ```php
 // Bad
 
-class MyClass {
+class MyClass
+{
     use TraitA, TraitB;
 }
 ```
