@@ -36,7 +36,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                     if ($exception->getMessage() !== 'Not Found') {
                         Log::alert(
                             "We could not revoke access for {$license->purchase->user->github_username}
-                             to {$license->purchase->purchasable->repository_access}"
+                             to {$license->purchase->purchasable->repository_access}. Exception: {$exception->getMessage()}"
                         );
 
                         return;
