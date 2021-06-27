@@ -25,17 +25,17 @@ If the repo concerns something else, for example a package, its name should be k
 
 ## Branches
 
-If you're going to remember one thing in this guide, remember this: **Once a project has gone live, the master branch must always be stable**. It should be safe to deploy the master branch to production at all times. All branches are assumed to be active; stale branches should get cleaned up accordingly.
+If you're going to remember one thing in this guide, remember this: **Once a project has gone live, the main branch must always be stable**. It should be safe to deploy the main branch to production at all times. All branches are assumed to be active; stale branches should get cleaned up accordingly.
 
 ### Projects in initial development
 
-Projects that aren't live yet have at least two branches: `master` and `develop`. Avoid committing directly on the master branch, always commit through develop.
+Projects that aren't live yet have at least two branches: `main` and `develop`. Avoid committing directly on the main branch, always commit through develop.
 
-Feature branches are optional, if you'd like to create a feature branch, make sure it's branched from `develop`, not `master`.
+Feature branches are optional, if you'd like to create a feature branch, make sure it's branched from `develop`, not `main`.
 
 ### Live projects
 
-Once a project goes live, the `develop` branch gets deleted. All future commits to `master` must be added through a feature branch. In most cases, it's preferred to squash your commits on merge.
+Once a project goes live, the `develop` branch gets deleted. All future commits to `main` must be added through a feature branch. In most cases, it's preferred to squash your commits on merge.
 
 There's no strict ruling on feature branch names, just make sure it's clear enough to know what they're for. Branches may only contain lowercase letters and hyphens.
 
@@ -54,7 +54,7 @@ Merging branches via GitHub pull requests isn't a requirement, but can be useful
 
 Ideally, rebase your branch regularly to reduce the chance of merge conflicts.
 
-- If you want to deploy a feature branch to master, use `git merge <branch> --squash`
+- If you want to deploy a feature branch to main, use `git merge <branch> --squash`
 - If your push is denied, rebase your branch first using `git rebase`
 
 ## Commits
