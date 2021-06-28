@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1184f109916237b3b8b5aa17e647d7f9",
+    "content-hash": "1f9567799077aef4c995c13ae6143a00",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -857,6 +857,68 @@
             },
             "abandoned": "psr/container",
             "time": "2017-02-14T19:40:03+00:00"
+        },
+        {
+            "name": "coroowicaksono/chart-js-integration",
+            "version": "v0.3.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/coroo/nova-chartjs.git",
+                "reference": "909728b5bad8d6e33a1fae525288c66b3544eb20"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/coroo/nova-chartjs/zipball/909728b5bad8d6e33a1fae525288c66b3544eb20",
+                "reference": "909728b5bad8d6e33a1fae525288c66b3544eb20",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Coroowicaksono\\ChartJsIntegration\\CardServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Coroowicaksono\\ChartJsIntegration\\": "src/",
+                    "Coroowicaksono\\ChartJsIntegration\\Api\\": "src/api"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kuncoro Wicaksono",
+                    "email": "coroo.wicaksono@gmail.com",
+                    "role": "Software Engineer"
+                }
+            ],
+            "description": "A Simple Dashboard Chart in Laravel Nova using Chart JS. Starting create your own dashboard with Chart JS Integration can save your time and help you maintain consistency across standard elements such as Bar, Stacked, Line, Area, Doughnut and Pie Chart.",
+            "homepage": "https://github.com/coroo",
+            "keywords": [
+                "chart js",
+                "laravel",
+                "nova",
+                "stacked chart"
+            ],
+            "support": {
+                "issues": "https://github.com/coroo/nova-chartjs/issues",
+                "source": "https://github.com/coroo/nova-chartjs/tree/v0.3.4"
+            },
+            "funding": [
+                {
+                    "url": "https://www.buymeacoffee.com/coroowicaksono",
+                    "type": "custom"
+                }
+            ],
+            "time": "2021-02-11T13:26:13+00:00"
         },
         {
             "name": "dillingham/nova-items-field",

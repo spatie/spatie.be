@@ -13,6 +13,7 @@ use App\Console\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Spatie\ScheduleMonitor\Commands\CleanLogCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -32,6 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
 
+        $schedule->command(CleanLogCommand::class)->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
         $schedule->command(RevokeRepositoryAccessForExpiredLicensesCommand::class)->dailyAt('04:00');
         $schedule->command(ImportDocsFromRepositoriesCommand::class)->runInBackground()->everyThirtyMinutes();
