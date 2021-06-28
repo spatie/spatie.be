@@ -44,7 +44,7 @@ class PurchasesPerProductPerDay
         ];
 
         $purchasesByProduct = $purchases->sortBy('title')->groupBy('title');
-        $days = $purchases->groupBy('day')->keys()->values();
+        $days = $purchases->groupBy('day')->keys()->sort()->values();
 
         $data = $purchasesByProduct->map(function (Collection $purchasesOfProduct, $title) use ($colors, $purchasesByProduct, $days) {
             return [

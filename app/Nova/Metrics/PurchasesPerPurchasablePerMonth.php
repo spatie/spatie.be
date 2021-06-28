@@ -49,7 +49,7 @@ class PurchasesPerPurchasablePerMonth
         ];
 
         $purchasesByProduct = $purchases->sortBy('title')->groupBy('title');
-        $months = $purchases->groupBy('month')->keys()->values();
+        $months = $purchases->groupBy('month')->keys()->sort()->values();
 
         $data = $purchasesByProduct->map(function (Collection $purchasesOfProduct, $title) use ($colors, $purchasesByProduct, $months) {
             return [
