@@ -57,6 +57,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     public function register()
     {
-        Nova::style('admin', public_path('css/nova.css'));
+        Nova::style('admin', public_path('nova.css'));
     }
 }
