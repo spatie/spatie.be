@@ -2,13 +2,8 @@
 
 namespace App\Providers;
 
-use App\Nova\Metrics\Earnings;
+use App\Nova\Dashboards\Sales;
 use App\Nova\Metrics\NewUsers;
-use App\Nova\Metrics\PurchasesPerProduct;
-use App\Nova\Metrics\PurchasesPerProductPerDay;
-use App\Nova\Metrics\PurchasesPerProductPerMonth;
-use App\Nova\Metrics\PurchasesPerPurchasablePerDay;
-use App\Nova\Metrics\PurchasesPerPurchasablePerMonth;
 use App\Nova\Metrics\VideoCompletions;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
@@ -35,19 +30,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new NewUsers(),
-            new Earnings(),
-            new PurchasesPerProduct(),
             new VideoCompletions(),
-            PurchasesPerProductPerDay::create(),
-            PurchasesPerPurchasablePerDay::create(),
-            PurchasesPerProductPerMonth::create(),
-            PurchasesPerPurchasablePerMonth::create(),
         ];
     }
 
     protected function dashboards()
     {
-        return [];
+        return [
+            new Sales(),
+        ];
     }
 
     public function tools()

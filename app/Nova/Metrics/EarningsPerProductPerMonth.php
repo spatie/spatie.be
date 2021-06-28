@@ -7,7 +7,7 @@ use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
-class PurchasesPerProductPerMonth extends StackedChartMetric
+class EarningsPerProductPerMonth extends StackedChartMetric
 {
     private Collection $data;
 
@@ -17,9 +17,8 @@ class PurchasesPerProductPerMonth extends StackedChartMetric
             ->select([
                 DB::raw("products.title as title"),
                 DB::raw("date_format(purchases.created_at, '%Y-%m') as month"),
-                DB::raw('sum(quantity) as count'),
+                DB::raw('sum(earnings) as earnings'),
             ])
-            ->where('earnings', '>', '0')
             ->join('purchasables', 'purchasables.id', '=', 'purchases.purchasable_id')
             ->join('products', 'products.id', '=', 'purchasables.product_id')
             ->where('purchases.created_at', '>=', now()->subYear())
@@ -29,7 +28,7 @@ class PurchasesPerProductPerMonth extends StackedChartMetric
 
     protected function getTitle(): string
     {
-        return 'Purchases per product per month';
+        return 'Earnings per product per month';
     }
 
     protected function getLabels(): array
@@ -43,7 +42,7 @@ class PurchasesPerProductPerMonth extends StackedChartMetric
             return [
                 'label' => $title,
                 'data' => collect($this->getLabels())->map(function (string $month) use ($purchasesOfProduct) {
-                    return (int) ($purchasesOfProduct->where('month', $month)->first()?->count ?? 0);
+                    return round($purchasesOfProduct->where('month', $month)->first()?->earnings ?? 0, 2);
                 })->toArray(),
             ];
         })->values()->toArray();
