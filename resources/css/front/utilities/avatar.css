@@ -64,5 +64,4 @@
     max-width: none;
     @apply object-cover;
     object-position: center;
-    @apply rounded-full;
 }
