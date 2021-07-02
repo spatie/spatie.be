@@ -46,8 +46,8 @@
 
 .avatar-square {
     @apply rounded-lg;
-    @apply w-16;
-    @apply h-16;
+    @apply w-12;
+    @apply h-12;
     @apply overflow-hidden;
     @apply border-2;
     @apply border-white;
