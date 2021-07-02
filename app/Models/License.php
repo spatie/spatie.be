@@ -24,6 +24,7 @@ class License extends Model implements AuthenticatableContract
         'satis_authentication_count' => 'integer',
         'expiration_warning_mail_sent_at' => 'datetime',
         'expiration_mail_sent_at' => 'datetime',
+        'second_expiration_mail_sent_at' => 'datetime',
     ];
 
     public static function booted()
@@ -82,6 +83,7 @@ class License extends Model implements AuthenticatableContract
             'expires_at' => $this->expirationDateWhenRenewed(),
             'expiration_warning_mail_sent_at' => null,
             'expiration_mail_sent_at' => null,
+            'second_expiration_mail_sent_at' => null,
         ];
 
         $this->update($attributes);
