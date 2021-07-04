@@ -2,9 +2,8 @@
 
 namespace App\Providers;
 
-use App\Nova\Metrics\Earnings;
+use App\Nova\Dashboards\Sales;
 use App\Nova\Metrics\NewUsers;
-use App\Nova\Metrics\PurchasesPerProduct;
 use App\Nova\Metrics\VideoCompletions;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Nova;
@@ -31,15 +30,15 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     {
         return [
             new NewUsers(),
-            new Earnings(),
-            new PurchasesPerProduct(),
             new VideoCompletions(),
         ];
     }
 
     protected function dashboards()
     {
-        return [];
+        return [
+            new Sales(),
+        ];
     }
 
     public function tools()
@@ -49,5 +48,6 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     public function register()
     {
+        Nova::style('admin', public_path('nova.css'));
     }
 }

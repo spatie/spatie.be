@@ -1,9 +1,8 @@
 <?php /** @var \App\Models\Technology $technology */ ?>
 
-<div id="mailcoach" class="sm:col-span-3 items-start pb-16">
+<div id="mailcoach" class="sm:col-span-3 items-start pb-6">
     <div class="flex items-center mb-4">
-        <div class="flex-none avatar mr-4">
-
+        <div class="flex-none avatar-square bg-white mr-4">
             <img src="{{ $technology->avatar }}" alt="{{ $technology->name }}">
         </div>
         <div>
@@ -23,7 +22,7 @@
                 {{ $technology->description }}
             </p>
         </div>
-        <div class="mt-4 flex">
+        <div class="mt-2 flex">
             <div class="flex -space-x-2">
                 @foreach($technology->recommended_by as $name)
                     <x-avatar name="{{ $name }}" href=""/>

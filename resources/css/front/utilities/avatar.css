@@ -43,3 +43,25 @@
     object-position: center;
     @apply rounded-full;
 }
+
+.avatar-square {
+    @apply rounded-lg;
+    @apply w-12;
+    @apply h-12;
+    @apply overflow-hidden;
+    @apply border-2;
+    @apply border-white;
+    @apply shadow-lg;
+    @apply flex-shrink-0;
+}
+
+.avatar-square img {
+    @apply absolute;
+    width: 110%;
+    height: 110%;
+    top: -5%;
+    left: -5%;
+    max-width: none;
+    @apply object-cover;
+    object-position: center;
+}

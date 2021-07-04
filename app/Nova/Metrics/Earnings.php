@@ -16,7 +16,7 @@ class Earnings extends Trend
                 Purchase::where('earnings', '!=', '0'),
                 'earnings'
             )
-            ->euros()
+            ->dollars()
             ->showSumValue();
     }
 
