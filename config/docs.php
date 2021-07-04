@@ -85,7 +85,7 @@ return [
             "name" => "laravel-server-monitor",
             "repository" => "spatie/laravel-server-monitor",
             "branches" => [
-                "master" => "v1",
+                "main" => "v1",
             ],
             "category" => "Laravel",
         ],
