@@ -34,9 +34,9 @@ class LicenseExpiredNotification extends Notification
         return (new MailMessage)
             ->subject("Your {$name} license has expired")
             ->greeting('Hi!')
-            ->line("Your {$name} license has expired")
-            ->line("If you want to keep receiving updates, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license")
-            ->action('License overview', action([ProductsController::class, 'show'], $this->license->purchasable->product))
+            ->line("Just a reminder to inform you that your {$name} license has expired.")
+            ->line("If you want to keep receiving updates, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license.")
+            ->action('Renew now', action([ProductsController::class, 'show'], $this->license->purchasable->product))
             ->line("Thank you for using {$this->license->purchasable->product->title}!");
     }
 }
