@@ -11,9 +11,12 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use OptimistDigital\MultiselectField\Multiselect;
+use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class Technology extends Resource
 {
+    use HasSortableRows;
+
     public static $model = EloquentTechnology::class;
 
     public static $group = 'Technologies';
