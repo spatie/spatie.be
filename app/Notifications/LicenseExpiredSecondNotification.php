@@ -37,6 +37,7 @@ class LicenseExpiredSecondNotification extends Notification
             ->line("A quick -and last- reminder to tell you that your {$name} license has expired now.")
             ->line("At this point, you won't be receiving future updates for {$name}.")
             ->line("You can visit the license overview on the [spatie.be]({$siteUrl}) site anytime to reactivate updates.")
+            ->line($this->license->purchasable->renewal_mail_incentive)
             ->action('Renew now', action([ProductsController::class, 'show'], $this->license->purchasable->product))
             ->line("Thank you for using {$this->license->purchasable->product->title}!");
     }
