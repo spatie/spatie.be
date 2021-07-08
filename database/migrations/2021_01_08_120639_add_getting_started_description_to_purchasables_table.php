@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGettingStartedDescriptionToPurchasablesTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -12,4 +12,4 @@ class AddGettingStartedDescriptionToPurchasablesTable extends Migration
             $table->text('getting_started_description')->after('getting_started_url')->nullable();
         });
     }
-}
+};

@@ -5,7 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAppleIdColumnToUsersTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -13,4 +13,4 @@ class AddAppleIdColumnToUsersTable extends Migration
             $table->string('apple_id')->after('updated_at')->nullable();
         });
     }
-}
+};

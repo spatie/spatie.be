@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSecondExpirationMailSentAtToLicensesTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -12,4 +12,4 @@ class AddSecondExpirationMailSentAtToLicensesTable extends Migration
             $table->dateTime('second_expiration_mail_sent_at')->after('expiration_mail_sent_at')->nullable();
         });
     }
-}
+};

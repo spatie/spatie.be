@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddSortingToTechnologies extends Migration
+return new class extends Migration
 {
     public function up(): void
     {
@@ -14,4 +14,4 @@ class AddSortingToTechnologies extends Migration
 
         DB::statement('UPDATE technologies SET sort_order = id');
     }
-}
+};

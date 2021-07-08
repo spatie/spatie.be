@@ -8,7 +8,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
-class UpdateLicensesAddSpatieMasterKey extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -34,4 +34,4 @@ class UpdateLicensesAddSpatieMasterKey extends Migration
             }
         });
     }
-}
+};
