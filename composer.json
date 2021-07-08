@@ -61,7 +61,7 @@
         "spatie/laravel-enum": "^2.5",
         "spatie/laravel-feed": "^4.0",
         "spatie/laravel-flash": "^1.7",
-        "spatie/laravel-mailcoach": "dev-master as 4.0.7",
+        "spatie/laravel-mailcoach": "^4.0.7",
         "spatie/laravel-mailcoach-mailgun-feedback": "^3.0",
         "spatie/laravel-mailcoach-monaco": "^2.0",
         "spatie/laravel-mailcoach-ses-feedback": "^3.0.1",
