@@ -104,7 +104,7 @@ Route::prefix('vacancies')->group(function () {
     })->name('vacancies.show');
 });
 
-Route::group(['middleware' => 'auth', 'prefix' => 'profile'], function () {
+Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('/', [ProfileController::class, 'show'])->name('profile');
     Route::put('/', [ProfileController::class, 'update'])->name('profile');
     Route::get('disconnect', [ProfileController::class, 'disconnect'])->name('github-disconnect');
