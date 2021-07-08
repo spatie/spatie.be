@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\License;
 use App\Notifications\LicenseExpiredNotification;
+use App\Notifications\LicenseExpiredSecondNotification;
 use App\Notifications\LicenseIsAboutToExpireNotification;
 use Illuminate\Console\Command;
 
@@ -17,7 +18,8 @@ class SendLicenseExpirationNotificationsCommand extends Command
     {
         $this
             ->sendNotificationsForLicensesThatAreAboutToExpire()
-            ->sendNotificationsForLicensesThatHaveExpired();
+            ->sendNotificationsForLicensesThatHaveExpired()
+            ->sendSecondNotificationsForLicensesThatHaveExpired();
     }
 
     protected function sendNotificationsForLicensesThatAreAboutToExpire(): self
@@ -41,6 +43,19 @@ class SendLicenseExpirationNotificationsCommand extends Command
             ->each(function (License $license): void {
                 $license->user->notify(new LicenseExpiredNotification($license));
                 $license->update(['expiration_mail_sent_at' => now()]);
+            });
+
+        return $this;
+    }
+
+    protected function sendSecondNotificationsForLicensesThatHaveExpired(): self
+    {
+        License::query()
+            ->where('expires_at', '<=', now()->subDays(14))
+            ->whereNull('second_expiration_mail_sent_at')
+            ->each(function (License $license): void {
+                $license->user->notify(new LicenseExpiredSecondNotification($license));
+                $license->update(['second_expiration_mail_sent_at' => now()]);
             });
 
         return $this;

@@ -10,7 +10,7 @@ use Illuminate\Mail\Markdown;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class LicenseExpiredNotification extends Notification
+class LicenseExpiredSecondNotification extends Notification
 {
     use Queueable;
 
@@ -34,9 +34,10 @@ class LicenseExpiredNotification extends Notification
 
         return (new MailMessage)
             ->subject("Your {$name} license has expired")
-            ->greeting('Hi!')
-            ->line("Just a reminder to inform you that your {$name} license has expired.")
-            ->line("If you want to keep receiving updates, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license.")
+            ->greeting('Hi again!')
+            ->line("A quick -and last- reminder to tell you that your {$name} license has expired now.")
+            ->line("At this point, you won't be receiving future updates for {$name}.")
+            ->line("You can visit the license overview on the [spatie.be]({$siteUrl}) site anytime to reactivate updates.")
             ->line(Markdown::parse($this->license->purchasable->renewal_mail_incentive))
             ->action('Renew now', action([ProductsController::class, 'show'], $this->license->purchasable->product))
             ->line("Thank you for using {$this->license->purchasable->product->title}!");
