@@ -27,6 +27,8 @@ class Technology extends Resource
         'id', 'name',
     ];
 
+    public static array $orderBy = ['type' => 'asc', 'sort_order' => 'asc'];
+
     public function fields(Request $request): array
     {
         return [

@@ -7,29 +7,21 @@ use Laravel\Nova\Resource as NovaResource;
 
 abstract class Resource extends NovaResource
 {
-    public static $defaultSort = 'id'; // Update to your default column
-
-    public static $defaultSortDirection = 'desc';
+    public static array $orderBy = ['id' => 'desc'];
 
     /**
-     * Build an "index" query for the given resource.
+     * Apply any applicable orderings to the query.
      *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
      * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @param  array  $orderings
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public static function indexQuery(NovaRequest $request, $query)
+    protected static function applyOrderings($query, array $orderings)
     {
-        if (static::$defaultSort && empty($request->get('orderBy'))) {
-            $query->getQuery()->orders = [];
-
-            if (static::$defaultSortDirection === 'desc') {
-                return $query->orderByDesc(static::$defaultSort);
-            }
-
-            return $query->orderBy(static::$defaultSort);
+        if (empty($orderings) && property_exists(static::class, 'orderBy')) {
+            $orderings = static::$orderBy;
         }
 
-        return $query;
+        return parent::applyOrderings($query, $orderings);
     }
 }
