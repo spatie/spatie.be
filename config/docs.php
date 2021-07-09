@@ -148,7 +148,7 @@ return [
             "name" => "laravel-permission",
             "repository" => "spatie/laravel-permission",
             "branches" => [
-                "master" => "v4",
+                "main" => "v4",
                 "v3" => "v3",
                 "v2" => "v2",
             ],
