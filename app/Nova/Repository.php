@@ -17,7 +17,7 @@ class Repository extends Resource
 
     public static $group = "GitHub";
 
-    public static $defaultSort = 'name';
+    public static string $defaultSort = 'name';
 
     public static $search = [
        'name', 'description',
