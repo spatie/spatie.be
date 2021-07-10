@@ -22,7 +22,7 @@ return [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
             "branches" => [
-                "master" => "v7",
+                "main" => "v7",
                 "v6" => "v6",
                 "v5" => "v5",
                 "v4" => "v4",
