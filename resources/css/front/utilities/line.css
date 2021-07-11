@@ -1,11 +1,3 @@
-.line {
-    @apply my-16;
-    @apply h-2px;
-    @apply opacity-25;
-    @apply rounded;
-    @apply bg-gray;
-}
-
 .line-l {
     @apply pl-4;
 }
