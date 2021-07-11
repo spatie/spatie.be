@@ -19,6 +19,7 @@
     "lodash": "^4.17.21",
     "object-fit-images": "^2.5.9",
     "prettier": "^1.10.2",
+    "shiki": "^0.9.5",
     "tailwindcss": "^1.7",
     "vue-template-compiler": "^2.6.11"
   }

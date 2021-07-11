@@ -5,16 +5,13 @@ namespace App\Guidelines;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\HtmlString;
-use League\CommonMark\Block\Element\FencedCode;
-use League\CommonMark\Block\Element\IndentedCode;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use League\CommonMark\Inline\Element\Image;
 use League\CommonMark\Inline\Element\Link;
-use Spatie\CommonMarkHighlighter\FencedCodeRenderer;
-use Spatie\CommonMarkHighlighter\IndentedCodeRenderer;
+use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
 use Spatie\Sheets\ContentParser;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
@@ -29,8 +26,7 @@ class GuidelinesContentParser implements ContentParser
         $environment->addInlineRenderer(Image::class, new ImageRenderer());
         $environment->addInlineRenderer(Link::class, new LinkRenderer());
 
-        $environment->addBlockRenderer(FencedCode::class, new FencedCodeRenderer(['html', 'php', 'js', 'ts', 'css']));
-        $environment->addBlockRenderer(IndentedCode::class, new IndentedCodeRenderer(['html', 'php', 'js', 'ts', 'css']));
+        $environment->addExtension(new HighlightCodeExtension('github-light'));
 
         $environment->addExtension(new HeadingPermalinkExtension());
         $environment->addExtension(new TableOfContentsExtension());

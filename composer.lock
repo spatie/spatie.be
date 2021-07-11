@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df32835675c7aa750e1baefac726cd6d",
+    "content-hash": "6338297ca047389b57c83123fd65cf6b",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -183,16 +183,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.185.8",
+            "version": "3.185.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "d30661623a1835ba4bb406675f865c4b40b4b425"
+                "reference": "667a83e4a18cb75db3ce74162efc97123da96261"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/d30661623a1835ba4bb406675f865c4b40b4b425",
-                "reference": "d30661623a1835ba4bb406675f865c4b40b4b425",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/667a83e4a18cb75db3ce74162efc97123da96261",
+                "reference": "667a83e4a18cb75db3ce74162efc97123da96261",
                 "shasum": ""
             },
             "require": {
@@ -267,9 +267,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.8"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.185.10"
             },
-            "time": "2021-07-07T18:14:28+00:00"
+            "time": "2021-07-09T19:21:22+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -4682,16 +4682,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.5.2",
+            "version": "v2.5.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "be82e2ad86903fbae0297a16e43e97cf25350d24"
+                "reference": "1ca6757c78dbead4db7f52a72dabb8b27efcb3f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/be82e2ad86903fbae0297a16e43e97cf25350d24",
-                "reference": "be82e2ad86903fbae0297a16e43e97cf25350d24",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/1ca6757c78dbead4db7f52a72dabb8b27efcb3f6",
+                "reference": "1ca6757c78dbead4db7f52a72dabb8b27efcb3f6",
                 "shasum": ""
             },
             "require": {
@@ -4742,7 +4742,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.5.2"
+                "source": "https://github.com/livewire/livewire/tree/v2.5.3"
             },
             "funding": [
                 {
@@ -4750,7 +4750,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-07T17:04:26+00:00"
+            "time": "2021-07-08T13:58:45+00:00"
         },
         {
             "name": "lorisleiva/cron-translator",
@@ -8679,82 +8679,6 @@
             "time": "2020-05-04T10:17:57+00:00"
         },
         {
-            "name": "scrivo/highlight.php",
-            "version": "v9.18.1.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/scrivo/highlight.php.git",
-                "reference": "44a3d4136edb5ad8551590bf90f437db80b2d466"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/scrivo/highlight.php/zipball/44a3d4136edb5ad8551590bf90f437db80b2d466",
-                "reference": "44a3d4136edb5ad8551590bf90f437db80b2d466",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-mbstring": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8|^5.7",
-                "sabberworm/php-css-parser": "^8.3",
-                "symfony/finder": "^2.8|^3.4",
-                "symfony/var-dumper": "^2.8|^3.4"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Highlight\\": "",
-                    "HighlightUtilities\\": ""
-                },
-                "files": [
-                    "HighlightUtilities/functions.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Geert Bergman",
-                    "homepage": "http://www.scrivo.org/",
-                    "role": "Project Author"
-                },
-                {
-                    "name": "Vladimir Jimenez",
-                    "homepage": "https://allejo.io",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Martin Folkers",
-                    "homepage": "https://twobrain.io",
-                    "role": "Contributor"
-                }
-            ],
-            "description": "Server side syntax highlighter that supports 185 languages. It's a PHP port of highlight.js",
-            "keywords": [
-                "code",
-                "highlight",
-                "highlight.js",
-                "highlight.php",
-                "syntax"
-            ],
-            "support": {
-                "issues": "https://github.com/scrivo/highlight.php/issues",
-                "source": "https://github.com/scrivo/highlight.php"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/allejo",
-                    "type": "github"
-                }
-            ],
-            "time": "2020-12-22T19:20:29+00:00"
-        },
-        {
             "name": "sebastian/cli-parser",
             "version": "1.0.1",
             "source": {
@@ -9781,33 +9705,35 @@
             "time": "2021-05-19T12:49:10+00:00"
         },
         {
-            "name": "spatie/commonmark-highlighter",
-            "version": "2.1.1",
+            "name": "spatie/commonmark-shiki-highlighter",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spatie/commonmark-highlighter.git",
-                "reference": "4090c552b983d58a76a7063519fe7aa977bdcf1e"
+                "url": "https://github.com/spatie/commonmark-shiki-highlighter.git",
+                "reference": "23f45ea3ff8edcf3dc05fd19f9cf6fc72a86cf64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/commonmark-highlighter/zipball/4090c552b983d58a76a7063519fe7aa977bdcf1e",
-                "reference": "4090c552b983d58a76a7063519fe7aa977bdcf1e",
+                "url": "https://api.github.com/repos/spatie/commonmark-shiki-highlighter/zipball/23f45ea3ff8edcf3dc05fd19f9cf6fc72a86cf64",
+                "reference": "23f45ea3ff8edcf3dc05fd19f9cf6fc72a86cf64",
                 "shasum": ""
             },
             "require": {
-                "league/commonmark": "^1.5",
-                "php": "^7.2|^8.0",
-                "scrivo/highlight.php": "^9.18.1.4"
+                "league/commonmark": "^1.6.5",
+                "php": "^8.0",
+                "spatie/shiki-php": "^1.1.1",
+                "symfony/process": "^5.3"
             },
             "require-dev": {
-                "larapack/dd": "^1.0",
-                "phpunit/phpunit": "^8.5|^9.4",
-                "spatie/phpunit-snapshot-assertions": "^2.0|^4.0"
+                "friendsofphp/php-cs-fixer": "^2.19",
+                "phpunit/phpunit": "^9.5",
+                "spatie/phpunit-snapshot-assertions": "^4.2.7",
+                "spatie/ray": "^1.28"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Spatie\\CommonMarkHighlighter\\": "src"
+                    "Spatie\\CommonMarkShikiHighlighter\\": "src"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -9816,23 +9742,27 @@
             ],
             "authors": [
                 {
-                    "name": "Sebastian De Deyne",
-                    "email": "sebastian@spatie.be",
-                    "homepage": "https://spatie.be",
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
                     "role": "Developer"
                 }
             ],
-            "description": "Highlight your markdown code blocks with league/commonmark",
-            "homepage": "https://github.com/spatie/commonmark-highlighter",
+            "description": "Highlight code blocks with league/commonmark and Shiki",
+            "homepage": "https://github.com/spatie/commonmark-shiki-highlighter",
             "keywords": [
-                "commonmark-highlighter",
+                "commonmark-shiki-highlighter",
                 "spatie"
             ],
             "support": {
-                "issues": "https://github.com/spatie/commonmark-highlighter/issues",
-                "source": "https://github.com/spatie/commonmark-highlighter/tree/2.1.1"
+                "source": "https://github.com/spatie/commonmark-shiki-highlighter/tree/1.1.1"
             },
-            "time": "2020-11-11T21:55:01+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-11T09:34:56+00:00"
         },
         {
             "name": "spatie/crypto",
@@ -12525,16 +12455,16 @@
         },
         {
             "name": "spatie/phpunit-snapshot-assertions",
-            "version": "4.2.6",
+            "version": "4.2.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/phpunit-snapshot-assertions.git",
-                "reference": "811d4edee3e62618e037d75ed33d2b7fb5191aad"
+                "reference": "981fa0e0a432315064db00b6b97a4f11f3b0c0fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/811d4edee3e62618e037d75ed33d2b7fb5191aad",
-                "reference": "811d4edee3e62618e037d75ed33d2b7fb5191aad",
+                "url": "https://api.github.com/repos/spatie/phpunit-snapshot-assertions/zipball/981fa0e0a432315064db00b6b97a4f11f3b0c0fd",
+                "reference": "981fa0e0a432315064db00b6b97a4f11f3b0c0fd",
                 "shasum": ""
             },
             "require": {
@@ -12579,7 +12509,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/phpunit-snapshot-assertions/issues",
-                "source": "https://github.com/spatie/phpunit-snapshot-assertions/tree/4.2.6"
+                "source": "https://github.com/spatie/phpunit-snapshot-assertions/tree/4.2.7"
             },
             "funding": [
                 {
@@ -12587,7 +12517,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-04-20T07:53:05+00:00"
+            "time": "2021-07-09T08:38:04+00:00"
         },
         {
             "name": "spatie/query-string",
@@ -12870,6 +12800,69 @@
                 }
             ],
             "time": "2020-12-04T13:39:58+00:00"
+        },
+        {
+            "name": "spatie/shiki-php",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/shiki-php.git",
+                "reference": "71b75d91de2926fd3fd7428e590047f87fff5066"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/shiki-php/zipball/71b75d91de2926fd3fd7428e590047f87fff5066",
+                "reference": "71b75d91de2926fd3fd7428e590047f87fff5066",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^v3.0",
+                "pestphp/pest": "^1.8",
+                "phpunit/phpunit": "^9.5",
+                "spatie/pest-plugin-snapshots": "^1.1",
+                "spatie/ray": "^1.10"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\ShikiPhp\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rias Van der Veken",
+                    "email": "rias@spatie.be",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Highlight code using Shiki in PHP",
+            "homepage": "https://github.com/spatie/shiki-php",
+            "keywords": [
+                "shiki",
+                "spatie"
+            ],
+            "support": {
+                "source": "https://github.com/spatie/shiki-php/tree/1.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-07-10T12:16:38+00:00"
         },
         {
             "name": "spatie/simple-excel",
@@ -16681,30 +16674,27 @@
         },
         {
             "name": "zbateson/mail-mime-parser",
-            "version": "1.3.1",
+            "version": "1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/mail-mime-parser.git",
-                "reference": "706964d904798b8c22d63f62f0ec5f5bc84e30d9"
+                "reference": "8eb590750772849189c7fa30ed52bcdcd2c9d1ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/706964d904798b8c22d63f62f0ec5f5bc84e30d9",
-                "reference": "706964d904798b8c22d63f62f0ec5f5bc84e30d9",
+                "url": "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/8eb590750772849189c7fa30ed52bcdcd2c9d1ef",
+                "reference": "8eb590750772849189c7fa30ed52bcdcd2c9d1ef",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/psr7": "^1.0",
+                "guzzlehttp/psr7": "^1.7.0|^2.0",
                 "php": ">=5.4",
                 "zbateson/mb-wrapper": "^1.0.1",
-                "zbateson/stream-decorators": "^1.0.4"
+                "zbateson/stream-decorators": "^1.0.6"
             },
             "require-dev": {
-                "jms/serializer": "^1.1",
                 "mikey179/vfsstream": "^1.6.0",
-                "phing/phing": "^2.15.0",
-                "phpdocumentor/phpdocumentor": "^2.9.0",
-                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.5"
+                "sanmai/phpunit-legacy-adapter": "^6.3 || ^8"
             },
             "suggest": {
                 "ext-iconv": "For best support/performance",
@@ -16752,7 +16742,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-12-02T21:55:45+00:00"
+            "time": "2021-07-08T19:06:28+00:00"
         },
         {
             "name": "zbateson/mb-wrapper",
@@ -16823,25 +16813,25 @@
         },
         {
             "name": "zbateson/stream-decorators",
-            "version": "1.0.4",
+            "version": "1.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/stream-decorators.git",
-                "reference": "6f54738dfecc65e1d5bfb855035836748083a6dd"
+                "reference": "3403c4323bd1cd15fe54348b031b26b064c706af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/stream-decorators/zipball/6f54738dfecc65e1d5bfb855035836748083a6dd",
-                "reference": "6f54738dfecc65e1d5bfb855035836748083a6dd",
+                "url": "https://api.github.com/repos/zbateson/stream-decorators/zipball/3403c4323bd1cd15fe54348b031b26b064c706af",
+                "reference": "3403c4323bd1cd15fe54348b031b26b064c706af",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/psr7": "^1.0.0",
+                "guzzlehttp/psr7": "^1.7.0|^2.0",
                 "php": ">=5.4",
                 "zbateson/mb-wrapper": "^1.0.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.7 || ^6.5 || ^7.5"
+                "sanmai/phpunit-legacy-adapter": "^6.3 || ^8"
             },
             "type": "library",
             "autoload": {
@@ -16872,7 +16862,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zbateson/stream-decorators/issues",
-                "source": "https://github.com/zbateson/stream-decorators/tree/master"
+                "source": "https://github.com/zbateson/stream-decorators/tree/1.0.6"
             },
             "funding": [
                 {
@@ -16880,7 +16870,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-08-10T18:59:43+00:00"
+            "time": "2021-07-08T19:01:59+00:00"
         }
     ],
     "packages-dev": [
