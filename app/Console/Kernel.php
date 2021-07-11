@@ -4,6 +4,7 @@ namespace App\Console;
 
 use App\Console\Commands\ImportDocsFromRepositoriesCommand;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
+use App\Console\Commands\ImportGuideLinesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
 use App\Console\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
@@ -32,6 +33,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportInsightsCommand::class)->hourly();
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
+        $schedule->command(ImportGuideLinesCommand::class)->weekly();
 
         $schedule->command(CleanLogCommand::class)->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
