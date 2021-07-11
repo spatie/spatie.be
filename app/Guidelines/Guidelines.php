@@ -12,9 +12,7 @@ class Guidelines
 
     public function __construct(Sheets $sheets)
     {
-        $this->pages = cache()->rememberForever('guidelines', function () use ($sheets): Collection {
-            return $sheets->collection('guidelines')->all()->sortBy('weight');
-        });
+        $this->pages = cache()->store('guidelines')->get('guidelines');
     }
 
     public function pages(): Collection

@@ -57,6 +57,11 @@ return [
             'path' => storage_path('framework/cache/docs'),
         ],
 
+        'guidelines' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/guidelines'),
+        ],
+
         'memcached' => [
             'driver' => 'memcached',
             'persistent_id' => env('MEMCACHED_PERSISTENT_ID'),
