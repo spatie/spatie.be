@@ -2865,7 +2865,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-18T19:40:43+00:00"
+            "time": "2021-07-11T19:56:43+00:00"
         },
         {
             "name": "lab404/laravel-impersonate",
@@ -10767,17 +10767,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "4.5.0",
+            "version": "4.5.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "4fba57ba9d7f6b6b37c54a12b4a172fe0c92acb6"
+                "reference": "2479546c111471654d52ec3e1949f44de28aa1a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-4fba57ba9d7f6b6b37c54a12b4a172fe0c92acb6-zip-76f789.zip",
-                "reference": "4fba57ba9d7f6b6b37c54a12b4a172fe0c92acb6",
-                "shasum": "6182bc0541669bc498358fb0dc97f6591e9e6770"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-2479546c111471654d52ec3e1949f44de28aa1a1-zip-c22b86.zip",
+                "reference": "2479546c111471654d52ec3e1949f44de28aa1a1",
+                "shasum": "9551b466d410a0d4b98b2f2af6f23695c19c156c"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -10885,10 +10885,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.5.0",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.5.1",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2021-06-21T07:26:50+00:00"
+            "time": "2021-07-12T10:52:16+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -12867,16 +12867,16 @@
         },
         {
             "name": "spatie/shiki-php",
-            "version": "1.1.3",
+            "version": "1.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/shiki-php.git",
-                "reference": "0b521ef5932574e83d99586c539843a4a9f19666"
+                "reference": "828b6d6da583c54b58e982b642dc4b62ee90d3a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/shiki-php/zipball/0b521ef5932574e83d99586c539843a4a9f19666",
-                "reference": "0b521ef5932574e83d99586c539843a4a9f19666",
+                "url": "https://api.github.com/repos/spatie/shiki-php/zipball/828b6d6da583c54b58e982b642dc4b62ee90d3a1",
+                "reference": "828b6d6da583c54b58e982b642dc4b62ee90d3a1",
                 "shasum": ""
             },
             "require": {
@@ -12918,7 +12918,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/shiki-php/tree/1.1.3"
+                "source": "https://github.com/spatie/shiki-php/tree/1.1.5"
             },
             "funding": [
                 {
@@ -12926,7 +12926,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-11T13:32:48+00:00"
+            "time": "2021-07-12T11:32:18+00:00"
         },
         {
             "name": "spatie/simple-excel",
