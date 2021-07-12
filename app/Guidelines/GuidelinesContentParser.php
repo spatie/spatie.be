@@ -19,7 +19,6 @@ class GuidelinesContentParser implements ContentParser
 
     public function __construct()
     {
-        /** @var MarkdownRenderer $renderer */
         $this->markdownRenderer = app(MarkdownRenderer::class)
             ->addExtension(new TableOfContentsExtension())
             ->addExtension(new HeadingPermalinkExtension())
