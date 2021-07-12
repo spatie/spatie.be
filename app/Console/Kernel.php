@@ -38,7 +38,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(CleanLogCommand::class)->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
         $schedule->command(RevokeRepositoryAccessForExpiredLicensesCommand::class)->dailyAt('04:00');
-        $schedule->command(ImportDocsFromRepositoriesCommand::class)->runInBackground()->everyThirtyMinutes();
+        $schedule->command(ImportDocsFromRepositoriesCommand::class)->runInBackground()->daily();
         $schedule->job(RandomizeAdsOnGitHubRepositoriesJob::class)->weekly();
         $schedule->command(UpdateConversionRatesCommand::class)->runInBackground()->sundays()->at('05:00');
         $schedule->command(UpdatePurchasablePricesCommand::class)->runInBackground()->sundays()->at('06:00');
