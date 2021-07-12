@@ -52,6 +52,11 @@ return [
             'path' => storage_path('framework/cache/data'),
         ],
 
+        'markdown' => [
+            'driver' => 'file',
+            'path' => storage_path('framework/cache/markdown'),
+        ],
+
         'docs' => [
             'driver' => 'file',
             'path' => storage_path('framework/cache/docs'),

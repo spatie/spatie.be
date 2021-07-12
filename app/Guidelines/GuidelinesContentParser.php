@@ -2,60 +2,49 @@
 
 namespace App\Guidelines;
 
-use App\Support\CommonMark\ImageRenderer;
-use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\HtmlString;
-use League\CommonMark\CommonMarkConverter;
-use League\CommonMark\Environment;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
-use League\CommonMark\Inline\Element\Image;
-use League\CommonMark\Inline\Element\Link;
-use Spatie\CommonMarkShikiHighlighter\HighlightCodeExtension;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sheets\ContentParser;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class GuidelinesContentParser implements ContentParser
 {
-    protected CommonMarkConverter $commonMarkConverter;
+    protected MarkdownRenderer $markdownRenderer;
 
     public function __construct()
     {
-        $environment = Environment::createCommonMarkEnvironment();
+        /** @var MarkdownRenderer $renderer */
+        $this->markdownRenderer = app(MarkdownRenderer::class)
+            ->addExtension(new TableOfContentsExtension())
+            ->addExtension(new HeadingPermalinkExtension())
+            ->commonmarkOptions([
+                'heading_permalink' => [
+                    'html_class' => 'anchor-link',
+                    'symbol' => '#',
+                ],
 
-        $environment->addInlineRenderer(Image::class, new ImageRenderer());
-        $environment->addInlineRenderer(Link::class, new LinkRenderer());
+                'table_of_contents' => [
+                    'html_class' => 'text-xs space-y-1 links-blue',
+                    'position' => 'top',
+                    'style' => 'bullet',
+                    'min_heading_level' => 2,
+                    'max_heading_level' => 2,
+                    'normalize' => 'flat',
+                    'placeholder' => null,
+                ],
+            ]);
 
-        $environment->addExtension(new HighlightCodeExtension('github-light'));
-
-        $environment->addExtension(new HeadingPermalinkExtension());
-        $environment->addExtension(new TableOfContentsExtension());
-
-        $config = [
-            'heading_permalink' => [
-                'html_class' => 'anchor-link',
-                'symbol' => '#',
-            ],
-
-            'table_of_contents' => [
-                'html_class' => 'text-xs space-y-1 links-blue',
-                'position' => 'top',
-                'style' => 'bullet',
-                'min_heading_level' => 2,
-                'max_heading_level' => 2,
-                'normalize' => 'flat',
-                'placeholder' => null,
-            ],
-        ];
-
-        $this->commonMarkConverter = new CommonMarkConverter($config, $environment);
+        //$environment->addInlineRenderer(Image::class, new ImageRenderer());
+        //$environment->addInlineRenderer(Link::class, new LinkRenderer());
     }
 
     public function parse(string $contents): array
     {
         $document = YamlFrontMatter::parse($contents);
 
-        $htmlContents = $this->commonMarkConverter->convertToHtml($document->body());
+        $htmlContents = $this->markdownRenderer->toHtml($document->body());
 
         return array_merge(
             $document->matter(),
