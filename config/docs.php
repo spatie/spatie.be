@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-markdown",
+            "repository" => "spatie/laravel-markdown",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "ray",
             "repository" => "spatie/ray",
             "branches" => [
