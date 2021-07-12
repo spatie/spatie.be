@@ -26,15 +26,14 @@ class DocumentationContentParser implements ContentParser
         $this->markdownRenderer = app(MarkdownRenderer::class)
             ->addExtension(new TableExtension())
             ->addExtension(new HeadingPermalinkExtension())
+            ->addInlineRenderer(Image::class, new ImageRenderer())
+            ->addInlineRenderer(Link::class, new LinkRenderer())
             ->commonmarkOptions([
                 'heading_permalink' => [
                     'html_class' => 'anchor-link',
                     'symbol' => '#',
                 ]
             ]);
-
-        // $environment->addInlineRenderer(Image::class, new ImageRenderer());
-        // $environment->addInlineRenderer(Link::class, new LinkRenderer());
     }
 
     public function parse(string $contents): array

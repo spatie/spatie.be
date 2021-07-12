@@ -11113,16 +11113,16 @@
         },
         {
             "name": "spatie/laravel-markdown",
-            "version": "1.0.1",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-markdown.git",
-                "reference": "6be53fe474ac340be7d6b4834f0f62c4fbd430c2"
+                "reference": "625e9fe30b745538b7e1da33ef0b2cfb58e231d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-markdown/zipball/6be53fe474ac340be7d6b4834f0f62c4fbd430c2",
-                "reference": "6be53fe474ac340be7d6b4834f0f62c4fbd430c2",
+                "url": "https://api.github.com/repos/spatie/laravel-markdown/zipball/625e9fe30b745538b7e1da33ef0b2cfb58e231d0",
+                "reference": "625e9fe30b745538b7e1da33ef0b2cfb58e231d0",
                 "shasum": ""
             },
             "require": {
@@ -11175,7 +11175,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-markdown/tree/1.0.1"
+                "source": "https://github.com/spatie/laravel-markdown/tree/1.1.0"
             },
             "funding": [
                 {
@@ -11183,7 +11183,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-12T13:53:41+00:00"
+            "time": "2021-07-12T14:29:55+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
