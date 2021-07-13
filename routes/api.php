@@ -4,18 +4,18 @@ use App\Http\Api\Controllers\Activations\CreateActivationController;
 use App\Http\Api\Controllers\Activations\DeleteActivationController;
 use App\Http\Api\Controllers\Activations\ShowActivationController;
 use App\Http\Api\Controllers\Activations\UpdateCurrentVersionController;
-use App\Http\Api\Controllers\HandleGitHubWebhookController;
+use App\Http\Api\Controllers\HandleGitHubPullRequestWebhookController;
+use App\Http\Api\Controllers\HandleGitHubRepositoryWebhookController;
 use App\Http\Api\Controllers\PriceController;
 use App\Http\Api\Controllers\SatisAuthenticationController;
 use App\Http\Api\Controllers\ShowLicenseController;
-use App\Http\Api\Controllers\ShowReleaseController;
-use App\Http\Controllers\SignedProductLicenseController;
 use Illuminate\Support\Facades\Route;
 
 Route::post('satis/authenticate', SatisAuthenticationController::class)->middleware('auth:license-api');
 
 Route::prefix('webhooks')->group(function () {
-    Route::post('github', HandleGitHubWebhookController::class);
+    Route::post('github', HandleGitHubRepositoryWebhookController::class);
+    Route::post('github/pull-requests', HandleGitHubPullRequestWebhookController::class);
 });
 
 Route::post('activations', CreateActivationController::class);
