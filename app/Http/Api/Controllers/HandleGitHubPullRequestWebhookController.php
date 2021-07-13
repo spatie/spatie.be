@@ -41,11 +41,15 @@ class HandleGitHubPullRequestWebhookController
 
         Log::info("User found, dispatching command.");
 
-        $this->bus->dispatch(RegisterPullRequest::forUser($user));
+        $this->bus->dispatch(RegisterPullRequest::forUser($user, $payload['pull_request']['url'] ?? ''));
     }
 
     protected function ensureValidRequest(Request $request): void
     {
+        if (app()->environment('local')) {
+            return;
+        }
+        
         $signature = $request->headers->get('X-Hub-Signature');
 
         if ($signature === null) {

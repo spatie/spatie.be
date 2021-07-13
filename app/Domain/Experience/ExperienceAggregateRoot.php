@@ -88,6 +88,7 @@ class ExperienceAggregateRoot extends AggregateRoot
     {
         $this->recordThat(new PullRequestMerged(
             userId: $command->userId,
+            reference: $command->reference,
         ));
 
         $achievement = $this->pullRequestAchievementUnlocker->achievementToBeUnlocked(

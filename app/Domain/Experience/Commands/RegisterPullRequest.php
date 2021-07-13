@@ -11,7 +11,7 @@ use Spatie\EventSourcing\Commands\HandledBy;
 #[HandledBy(ExperienceAggregateRoot::class)]
 class RegisterPullRequest
 {
-    public static function forUser(User $user): self
+    public static function forUser(User $user, string $reference): self
     {
         if (! $user->uuid) {
             $user->uuid = (string) Uuid::new();
@@ -21,12 +21,14 @@ class RegisterPullRequest
         return new self(
             uuid: $user->uuid,
             userId: $user->id,
+            reference: $reference,
         );
     }
 
     public function __construct(
         #[AggregateUuid] public string $uuid,
         public int $userId,
+        public string $reference,
     ) {
     }
 }
