@@ -66,6 +66,7 @@ class ExperienceAggregateRootTest extends TestCase
             $bus->dispatch(new RegisterPullRequest(
                 $uuid,
                 1,
+                ''
             ));
         }
 
