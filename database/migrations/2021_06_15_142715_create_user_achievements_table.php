@@ -9,7 +9,7 @@ class CreateUserAchievementsTable extends Migration
     public function up()
     {
         Schema::create('user_achievements', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('uuid')->index();
             $table->unsignedInteger('user_id');
             $table->unsignedBigInteger('achievement_id')->nullable();
             $table->string('slug');

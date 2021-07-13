@@ -9,7 +9,7 @@ class CreateUserExperiencesTable extends Migration
     public function up()
     {
         Schema::create('user_experiences', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('uuid')->index();
             $table->unsignedInteger('user_id');
             $table->integer('amount');
             $table->timestamps();

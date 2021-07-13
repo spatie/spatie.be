@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
 use App\Domain\Experience\Projections\UserAchievementProjection;
+use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Enums\PurchasableType;
 use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
@@ -200,5 +202,15 @@ class User extends Authenticatable
         return UserAchievementProjection::forUser($this->id)
             ->andSlug($achievement->slug)
             ->exists();
+    }
+
+    public function experience(): HasOne
+    {
+        return $this->hasOne(UserExperienceProjection::class);
+    }
+
+    public function achievements(): HasMany
+    {
+        return $this->hasMany(UserAchievementProjection::class);
     }
 }

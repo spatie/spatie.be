@@ -4,6 +4,7 @@ namespace App\Domain\Experience\Projectors;
 
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Projections\UserAchievementProjection;
+use App\Support\Uuid\Uuid;
 use Spatie\EventSourcing\EventHandlers\Projectors\Projector;
 
 class UserAchievementProjector extends Projector
@@ -13,6 +14,7 @@ class UserAchievementProjector extends Projector
         UserAchievementProjection::new()
             ->writeable()
             ->create([
+                'uuid' => (string) Uuid::new(),
                 'user_id' => $event->userId,
                 'achievement_id' => $event->achievementId,
                 'slug' => $event->slug,

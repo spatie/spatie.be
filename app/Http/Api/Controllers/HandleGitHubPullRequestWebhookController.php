@@ -32,9 +32,10 @@ class HandleGitHubPullRequestWebhookController
 
         Log::info("Was merged, resolving user…");
 
-        $user = User::whereGithubId($payload['sender']['id']);
+        $user = User::whereGithubId($payload['sender']['id'])->first();
 
         if (! $user) {
+            Log::info("User not found for GH id {$payload['sender']['id']}");
             return;
         }
 
