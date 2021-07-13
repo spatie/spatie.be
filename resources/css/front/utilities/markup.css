@@ -92,6 +92,21 @@
     page-break-after: avoid;
 }
 
+.markup-titles h2 .heading-permalink,
+.markup-titles h3 .heading-permalink,
+.markup-titles h4 .heading-permalink {
+    @apply hidden;
+    @apply text-gray-lighter !important;
+    @apply no-underline !important;
+    @apply ml-1;
+}
+
+.markup-titles h2:hover .heading-permalink,
+.markup-titles h3:hover .heading-permalink,
+.markup-titles h4:hover .heading-permalink {
+    @apply inline-block;
+}
+
 .markup-titles code {
     @apply normal-case;
 }
