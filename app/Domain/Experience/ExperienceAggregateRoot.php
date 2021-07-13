@@ -21,13 +21,6 @@ use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class ExperienceAggregateRoot extends AggregateRoot
 {
-    protected SeriesCompletionAchievementUnlocker $seriesCompletionAchievementUnlocker;
-
-    public function __construct()
-    {
-        $this->seriesCompletionAchievementUnlocker = new SeriesCompletionAchievementUnlocker();
-    }
-
     public function add(AddExperience $command): self
     {
         $this->recordThat(new ExperienceEarned(
