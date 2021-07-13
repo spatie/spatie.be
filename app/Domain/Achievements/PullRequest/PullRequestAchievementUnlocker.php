@@ -2,40 +2,19 @@
 
 namespace App\Domain\Achievements\PullRequest;
 
-use App\Domain\Achievements\PullRequest\PullRequestAchievement;
+use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 
 class PullRequestAchievementUnlocker
 {
-    /**
-     * @return \App\Domain\Achievements\PullRequest\PullRequestAchievement[]
-     */
-    private function getAchievements(): array
-    {
-        return [
-            new PullRequestAchievement('10-pull-requests', '10 Pull Requests', "You've got ten merged pull requests!", 10),
-            new PullRequestAchievement('50-pull-requests', '50 Pull Requests', "You've got fifty merged pull requests!", 50),
-            new PullRequestAchievement('100-pull-requests', '100 Pull Requests', "You've got a hundred merged pull requests!", 100),
-            new PullRequestAchievement('200-pull-requests', '200 Pull Requests', "You've got two hundred merged pull requests!", 200),
-        ];
-    }
-
     public function achievementToBeUnlocked(
         int $pullRequestCount,
         UserExperienceId $userExperienceId
-    ): ?PullRequestAchievement {
-        foreach ($this->getAchievements() as $achievement) {
-            if ($userExperienceId->getUser()->hasAchievement($achievement)) {
-                continue;
-            }
-
-            if (! $achievement->matches($pullRequestCount)) {
-                continue;
-            }
-
-            return $achievement;
-        }
-
-        return null;
+    ): ?Achievement {
+        return Achievement::forPullRequest()
+            ->get()
+            ->filter(fn (Achievement $achievement) => $achievement->data['count_requirement'] <= $pullRequestCount)
+            ->reject(fn(Achievement $achievement) => $achievement->receivedBy($userExperienceId))
+            ->first();
     }
 }

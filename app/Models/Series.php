@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Domain\Achievements\Observer\SeriesAchievementsObserver;
+use App\Domain\Achievements\Series\SeriesAchievementsObserver;
 use App\Models\Enums\VideoDisplayEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

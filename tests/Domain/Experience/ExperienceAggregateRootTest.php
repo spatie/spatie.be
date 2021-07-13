@@ -2,6 +2,7 @@
 
 namespace Tests\Domain\Experience;
 
+use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\UnlockAchievement;
@@ -9,6 +10,7 @@ use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Support\Uuid\Uuid;
+use Database\Seeders\AchievementSeeder;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Tests\TestCase;
 
@@ -42,19 +44,21 @@ class ExperienceAggregateRootTest extends TestCase
 
         $bus->dispatch(new UnlockAchievement(
             $uuid,
-            'test@spatie.be',
-            'A'
+            UserExperienceId::make('test@spatie.be'),
+            Achievement::factory()->create()
         ));
 
         $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
             'email' => 'test@spatie.be',
-            'title' => 'A',
+            'title' => 'test',
         ]);
     }
 
     /** @test */
     public function test_100_pull_requests_achievement()
     {
+        (new AchievementSeeder())->run();
+
         $uuid = Uuid::new();
 
         $bus = app(CommandBus::class);
@@ -62,7 +66,7 @@ class ExperienceAggregateRootTest extends TestCase
         foreach (range(1, 100) as $i) {
             $bus->dispatch(new RegisterPullRequest(
                 $uuid,
-                'test@spatie.be',
+                UserExperienceId::make('test@spatie.be'),
             ));
         }
 
@@ -85,6 +89,8 @@ class ExperienceAggregateRootTest extends TestCase
     /** @test */
     public function test_100_xp_achievement()
     {
+        (new AchievementSeeder())->run();
+
         $uuid = Uuid::new();
 
         $bus = app(CommandBus::class);

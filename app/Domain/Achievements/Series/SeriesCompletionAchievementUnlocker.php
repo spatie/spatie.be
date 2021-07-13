@@ -22,13 +22,7 @@ class SeriesCompletionAchievementUnlocker
             return null;
         }
 
-        $type = $achievement->type;
-
-        if (! $type instanceof SeriesAchievementType) {
-            throw new Exception('This is not valid');
-        }
-
-        if ($user->hasAchievement($achievement)) {
+        if ($achievement->receivedBy($userExperienceId)) {
             return null;
         }
 

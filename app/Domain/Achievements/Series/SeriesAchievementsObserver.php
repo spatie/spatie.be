@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Achievements\Observer;
+namespace App\Domain\Achievements\Series;
 
 use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Achievements\States\SeriesAchievementType;
