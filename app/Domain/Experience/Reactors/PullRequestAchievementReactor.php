@@ -19,8 +19,10 @@ class PullRequestAchievementReactor extends Reactor
 
     public function __invoke(PullRequestMerged $event): void
     {
+        $query = new PullRequestCountQuery($event->aggregateRootUuid());
+
         $achievement = $this->unlocker->achievementToBeUnlocked(
-            pullRequestCount: (new PullRequestCountQuery($event->aggregateRootUuid()))->count(),
+            pullRequestCount: $query->count(),
             userId: $event->userId,
         );
 
