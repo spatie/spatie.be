@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateStoredEventsTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -23,4 +23,4 @@ class CreateStoredEventsTable extends Migration
             $table->unique(['aggregate_uuid', 'aggregate_version']);
         });
     }
-}
+};

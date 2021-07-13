@@ -21,15 +21,15 @@ use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class ExperienceAggregateRoot extends AggregateRoot
 {
-    private int $experienceCount = 0;
+    protected int $experienceCount = 0;
 
-    private int $pullRequestCount = 0;
+    protected int $pullRequestCount = 0;
 
-    private PullRequestAchievementUnlocker $pullRequestAchievementUnlocker;
+    protected PullRequestAchievementUnlocker $pullRequestAchievementUnlocker;
 
-    private ExperienceAchievementUnlocker $experienceAchievementUnlocker;
+    protected ExperienceAchievementUnlocker $experienceAchievementUnlocker;
 
-    private SeriesCompletionAchievementUnlocker $seriesCompletionAchievementUnlocker;
+    protected SeriesCompletionAchievementUnlocker $seriesCompletionAchievementUnlocker;
 
     public function __construct()
     {

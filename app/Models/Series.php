@@ -28,10 +28,8 @@ class Series extends Model implements HasMedia, Sortable
         'media',
     ];
 
-    protected static function boot()
+    protected static function booted()
     {
-        parent::boot();
-
         self::observe(SeriesAchievementsObserver::class);
     }
 

@@ -36,10 +36,8 @@ class User extends Authenticatable
         'uuid' => Uuid::class,
     ];
 
-    protected static function boot()
+    protected static function booted()
     {
-        parent::boot();
-
         self::saving(function (User $user) {
             if ($user->uuid === null) {
                 $user->uuid = (string) Uuid::new();

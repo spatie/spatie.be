@@ -3,6 +3,7 @@
 namespace App\Support\Uuid;
 
 use Illuminate\Contracts\Database\Eloquent\Castable;
+use Ramsey\Uuid\Uuid as RamseyUuid;
 
 class Uuid implements Castable
 {
@@ -18,7 +19,7 @@ class Uuid implements Castable
 
     public static function new(): self
     {
-        return new self(\Ramsey\Uuid\Uuid::uuid4()->toString());
+        return new self(RamseyUuid::uuid4()->toString());
     }
 
     public function __toString(): string

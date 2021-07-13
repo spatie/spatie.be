@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserAchievementsTable extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -21,4 +21,4 @@ class CreateUserAchievementsTable extends Migration
             $table->foreign('achievement_id')->references('id')->on('achievements');
         });
     }
-}
+};

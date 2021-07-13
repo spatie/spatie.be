@@ -6,6 +6,7 @@ use App\Http\Api\Controllers\HandleGitHubPullRequestWebhookController;
 use App\Http\Kernel;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
 
 class SendTestPullRequestWebhookCommand extends Command
 {
@@ -19,16 +20,14 @@ class SendTestPullRequestWebhookCommand extends Command
             return;
         }
 
-        if ($this->option('failed')) {
-            $payload = file_get_contents(storage_path('app/pull_requests/fail.json'));
-        } else {
-            $payload = file_get_contents(storage_path('app/pull_requests/success.json'));
-        }
+        $payload = $this->option('failed')
+            ? file_get_contents(storage_path('app/pull_requests/fail.json'))
+            : file_get_contents(storage_path('app/pull_requests/success.json'));
 
         $kernel = app(Kernel::class);
 
         $kernel->handle(Request::createFromBase(
-            \Symfony\Component\HttpFoundation\Request::create(
+            SymfonyRequest::create(
                 uri: action(HandleGitHubPullRequestWebhookController::class),
                 method: 'POST',
                 content: $payload,
