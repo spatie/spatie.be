@@ -3,6 +3,7 @@
 namespace Tests\Domain\Experience;
 
 use App\Domain\Achievements\Models\Achievement;
+use App\Domain\Experience\Enums\ExperienceType;
 use App\Models\Series;
 use App\Models\User;
 use App\Models\Video;
@@ -50,6 +51,36 @@ class VideoCompletionTest extends TestCase
         $user->completeVideo($this->videoB);
 
         $this->assertTrue($user->hasAchievement($achievement));
+    }
+
+    /** @test */
+    public function experience_is_gained_per_completion()
+    {
+        /** @var \App\Models\User $user */
+        $user = User::factory()->create();
+
+        $user->completeVideo($this->videoA);
+
+        $this->assertEquals(ExperienceType::VideoCompletion()->getAmount(), $user->experience->amount);
+    }
+
+    /** @test */
+    public function experience_is_gained_per_series()
+    {
+        /** @var \App\Models\User $user */
+        $user = User::factory()->create();
+
+        $user->completeVideo($this->videoA);
+        $user->completeVideo($this->videoB);
+
+        $expectedAmount =
+            2 * ExperienceType::VideoCompletion()->getAmount()
+            + ExperienceType::SeriesCompletion()->getAmount();
+
+        $this->assertEquals(
+            $expectedAmount,
+            $user->experience->amount
+        );
     }
 
     // TODO: what if a user uncompletes a video?
