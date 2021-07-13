@@ -4,7 +4,6 @@ namespace App\Domain\Experience\Commands;
 
 use App\Domain\Experience\ExperienceAggregateRoot;
 use App\Models\User;
-use App\Support\Uuid\Uuid;
 use Spatie\EventSourcing\Commands\AggregateUuid;
 use Spatie\EventSourcing\Commands\HandledBy;
 
@@ -13,13 +12,8 @@ class RegisterPullRequest
 {
     public static function forUser(User $user, string $reference): self
     {
-        if (! $user->uuid) {
-            $user->uuid = (string) Uuid::new();
-            $user->save();
-        }
-
         return new self(
-            uuid: $user->uuid,
+            uuid: $user->resolveUuid(),
             userId: $user->id,
             reference: $reference,
         );

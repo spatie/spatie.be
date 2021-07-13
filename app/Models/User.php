@@ -47,6 +47,16 @@ class User extends Authenticatable
         });
     }
 
+    public function resolveUuid(): string
+    {
+        if (! $this->uuid) {
+            $this->uuid = (string) Uuid::new();
+            $this->save();
+        }
+
+        return $this->uuid;
+    }
+
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
     {
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
@@ -188,9 +198,8 @@ class User extends Authenticatable
             'video_id' => $video->id,
         ]);
 
-        command(new RegisterVideoCompletion(
-            uuid: $this->uuid,
-            userId: $this->id,
+        command(RegisterVideoCompletion::forUser(
+            user: $this,
             videoId: $video->id
         ));
 
