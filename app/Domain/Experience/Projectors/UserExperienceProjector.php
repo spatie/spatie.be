@@ -13,8 +13,7 @@ class UserExperienceProjector extends Projector
         UserExperienceProjection::new()
             ->writeable()
             ->create([
-                'email' => $event->userExperienceId->email,
-                'user_id' => $event->userExperienceId->userId,
+                'user_id' => $event->userId,
                 'amount' => $event->amount,
             ]);
     }

@@ -6,7 +6,6 @@ use App\Domain\Achievements\States\AchievementType;
 use App\Domain\Achievements\States\ExperienceAchievementType;
 use App\Domain\Achievements\States\PullRequestAchievementType;
 use App\Domain\Experience\Projections\UserAchievementProjection;
-use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Models\Series;
 use Database\Factories\AchievementFactory;
 use Illuminate\Database\Eloquent\Builder;
@@ -37,9 +36,9 @@ class Achievement extends Model
         $builder->where('type', ExperienceAchievementType::getMorphClass());
     }
 
-    public function receivedBy(UserExperienceId $userExperienceId): bool
+    public function receivedBy(int $userId): bool
     {
-        return UserAchievementProjection::forUser($userExperienceId)
+        return UserAchievementProjection::forUser($userId)
             ->andSlug($this->slug)
             ->exists();
     }

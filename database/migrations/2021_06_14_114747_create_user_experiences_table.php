@@ -10,13 +10,11 @@ class CreateUserExperiencesTable extends Migration
     {
         Schema::create('user_experiences', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('user_id');
             $table->integer('amount');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->index('email');
         });
     }
 }

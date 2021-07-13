@@ -8,7 +8,6 @@ use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
-use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Support\Uuid\Uuid;
 use Database\Seeders\AchievementSeeder;
 use Spatie\EventSourcing\Commands\CommandBus;
@@ -25,12 +24,12 @@ class ExperienceAggregateRootTest extends TestCase
 
         $bus->dispatch(new AddExperience(
             $uuid,
-            new UserExperienceId('test@spatie.be'),
+            1,
             50
         ));
 
         $this->assertDatabaseHas((new UserExperienceProjection())->getTable(), [
-            'email' => 'test@spatie.be',
+            'user_id' => 1,
             'amount' => 50,
         ]);
     }
@@ -44,12 +43,12 @@ class ExperienceAggregateRootTest extends TestCase
 
         $bus->dispatch(new UnlockAchievement(
             $uuid,
-            UserExperienceId::make('test@spatie.be'),
+            1,
             Achievement::factory()->create()
         ));
 
         $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
-            'email' => 'test@spatie.be',
+            'user_id' => 1,
             'title' => 'test',
         ]);
     }
@@ -66,22 +65,22 @@ class ExperienceAggregateRootTest extends TestCase
         foreach (range(1, 100) as $i) {
             $bus->dispatch(new RegisterPullRequest(
                 $uuid,
-                UserExperienceId::make('test@spatie.be'),
+                1,
             ));
         }
 
         $this->assertDatabaseHas(UserAchievementProjection::class, [
-            'email' => 'test@spatie.be',
+            'user_id' => 1,
             'slug' => '10-pull-requests',
         ]);
 
         $this->assertDatabaseHas(UserAchievementProjection::class, [
-            'email' => 'test@spatie.be',
+            'user_id' => 1,
             'slug' => '50-pull-requests',
         ]);
 
         $this->assertDatabaseHas(UserAchievementProjection::class, [
-            'email' => 'test@spatie.be',
+            'user_id' => 1,
             'slug' => '100-pull-requests',
         ]);
     }
@@ -98,18 +97,18 @@ class ExperienceAggregateRootTest extends TestCase
         foreach (range(1, 2) as $i) {
             $bus->dispatch(new AddExperience(
                 $uuid,
-                new UserExperienceId('test@spatie.be'),
+                1,
                 50,
             ));
         }
 
         $this->assertDatabaseHas(UserAchievementProjection::class, [
-            'email' => 'test@spatie.be',
+            'user_id' => 1,
             'slug' => '100-experience',
         ]);
 
         $this->assertDatabaseMissing(UserAchievementProjection::class, [
-            'email' => 'test@spatie.be',
+            'user_id' => 1,
             'slug' => '1000-experience',
         ]);
     }

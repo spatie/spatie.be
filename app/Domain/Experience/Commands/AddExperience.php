@@ -4,7 +4,6 @@ namespace App\Domain\Experience\Commands;
 
 use App\Domain\Experience\Enums\ExperienceType;
 use App\Domain\Experience\ExperienceAggregateRoot;
-use App\Domain\Experience\ValueObjects\UserExperienceId;
 use Spatie\EventSourcing\Commands\AggregateUuid;
 use Spatie\EventSourcing\Commands\HandledBy;
 
@@ -13,15 +12,15 @@ class AddExperience
 {
     public static function fromType(
         string $uuid,
-        UserExperienceId $userExperienceId,
+        int $userId,
         ExperienceType $experienceType
     ): self {
-        return new self($uuid, $userExperienceId, $experienceType->getAmount());
+        return new self($uuid, $userId, $experienceType->getAmount());
     }
 
     public function __construct(
         #[AggregateUuid] public string $uuid,
-        public UserExperienceId $userExperienceId,
+        public int $userId,
         public int $amount,
     ) {
     }

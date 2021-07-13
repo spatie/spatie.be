@@ -3,18 +3,16 @@
 namespace App\Domain\Achievements\Series;
 
 use App\Domain\Achievements\Models\Achievement;
-use App\Domain\Achievements\States\SeriesAchievementType;
-use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Models\Series;
-use Exception;
+use App\Models\User;
 
 class SeriesCompletionAchievementUnlocker
 {
     public function achievementToBeUnlocked(
         Series $series,
-        UserExperienceId $userExperienceId,
+        int $userId,
     ): ?Achievement {
-        $user = $userExperienceId->getUser();
+        $user = User::find($userId);
 
         $achievement = Achievement::forSeries($series)->first();
 
@@ -22,7 +20,7 @@ class SeriesCompletionAchievementUnlocker
             return null;
         }
 
-        if ($achievement->receivedBy($userExperienceId)) {
+        if ($achievement->receivedBy($userId)) {
             return null;
         }
 

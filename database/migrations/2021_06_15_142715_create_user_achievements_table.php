@@ -10,8 +10,7 @@ class CreateUserAchievementsTable extends Migration
     {
         Schema::create('user_achievements', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
-            $table->unsignedInteger('user_id')->nullable();
+            $table->unsignedInteger('user_id');
             $table->unsignedBigInteger('achievement_id')->nullable();
             $table->string('slug');
             $table->string('title');
@@ -20,7 +19,6 @@ class CreateUserAchievementsTable extends Migration
 
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('achievement_id')->references('id')->on('achievements');
-            $table->index('email');
         });
     }
 }

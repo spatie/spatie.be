@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Domain\Achievements\Models\Achievement;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
 use App\Domain\Experience\Projections\UserAchievementProjection;
-use App\Domain\Experience\ValueObjects\UserExperienceId;
 use App\Enums\PurchasableType;
 use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
@@ -189,7 +188,7 @@ class User extends Authenticatable
 
         command(new RegisterVideoCompletion(
             uuid: $this->uuid,
-            userExperienceId: UserExperienceId::fromUser($this),
+            userId: $this->id,
             videoId: $video->id
         ));
 
@@ -198,7 +197,7 @@ class User extends Authenticatable
 
     public function hasAchievement(Achievement $achievement): bool
     {
-        return UserAchievementProjection::forUser(UserExperienceId::fromUser($this))
+        return UserAchievementProjection::forUser($this->id)
             ->andSlug($achievement->slug)
             ->exists();
     }
