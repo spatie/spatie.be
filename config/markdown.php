@@ -28,7 +28,12 @@ return [
      *
      * More info: https://github.com/spatie/laravel-markdown#passing-options-to-commonmark
      */
-    'commonmark_options' => [],
+    'commonmark_options' => [
+        'heading_permalink' => [
+            'inner_contents' => '#',
+            'insert' => 'after',
+        ],
+    ],
 
     /*
      * Rendering markdown to HTML can be resource intensive. By default
