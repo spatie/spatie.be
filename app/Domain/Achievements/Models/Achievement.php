@@ -2,9 +2,8 @@
 
 namespace App\Domain\Achievements\Models;
 
-use App\Domain\Achievements\States\AchievementType;
-use App\Domain\Achievements\States\ExperienceAchievementType;
-use App\Domain\Achievements\States\PullRequestAchievementType;
+use App\Domain\Achievements\Enums\AchievementType;
+use App\Domain\Experience\Enums\ExperienceType;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Models\Series;
 use Database\Factories\AchievementFactory;
@@ -28,12 +27,12 @@ class Achievement extends Model
 
     public function scopeForPullRequest(Builder|Achievement $builder): void
     {
-        $builder->where('type', PullRequestAchievementType::getMorphClass());
+        $builder->where('type', AchievementType::PullRequest());
     }
 
     public function scopeForExperience(Builder|Achievement $builder): void
     {
-        $builder->where('type', ExperienceAchievementType::getMorphClass());
+        $builder->where('type', AchievementType::Experience());
     }
 
     public function receivedBy(int $userId): bool

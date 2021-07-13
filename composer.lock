@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a59ad84ea4aa5f6ad039aa90104e98f",
+    "content-hash": "39df31bad0a77fa8471ceac0fc5217cb",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -4610,16 +4610,16 @@
         },
         {
             "name": "livewire/livewire",
-            "version": "v2.5.4",
+            "version": "v2.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/livewire/livewire.git",
-                "reference": "bec4e175c7d1a35e1f0c11ce76341b21e54509dc"
+                "reference": "de192292d68276d831e5fd9824c80c3b78a21ddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/livewire/livewire/zipball/bec4e175c7d1a35e1f0c11ce76341b21e54509dc",
-                "reference": "bec4e175c7d1a35e1f0c11ce76341b21e54509dc",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/de192292d68276d831e5fd9824c80c3b78a21ddf",
+                "reference": "de192292d68276d831e5fd9824c80c3b78a21ddf",
                 "shasum": ""
             },
             "require": {
@@ -4670,7 +4670,7 @@
             "description": "A front-end framework for Laravel.",
             "support": {
                 "issues": "https://github.com/livewire/livewire/issues",
-                "source": "https://github.com/livewire/livewire/tree/v2.5.4"
+                "source": "https://github.com/livewire/livewire/tree/v2.5.5"
             },
             "funding": [
                 {
@@ -4678,7 +4678,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-12T21:16:06+00:00"
+            "time": "2021-07-13T05:03:28+00:00"
         },
         {
             "name": "lorisleiva/cron-translator",
@@ -10224,16 +10224,16 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "7.6.0",
+            "version": "7.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "39dc00988cd28e7cd06237dae27bf463fa9420fd"
+                "reference": "555718d1cfeab7ef10f83a97595ec57310101cfb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/39dc00988cd28e7cd06237dae27bf463fa9420fd",
-                "reference": "39dc00988cd28e7cd06237dae27bf463fa9420fd",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/555718d1cfeab7ef10f83a97595ec57310101cfb",
+                "reference": "555718d1cfeab7ef10f83a97595ec57310101cfb",
                 "shasum": ""
             },
             "require": {
@@ -10303,7 +10303,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-backup/issues",
-                "source": "https://github.com/spatie/laravel-backup/tree/7.6.0"
+                "source": "https://github.com/spatie/laravel-backup/tree/7.6.1"
             },
             "funding": [
                 {
@@ -10315,7 +10315,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-06-01T19:58:35+00:00"
+            "time": "2021-07-13T09:54:16+00:00"
         },
         {
             "name": "spatie/laravel-disable-floc",
@@ -11447,77 +11447,6 @@
                 }
             ],
             "time": "2020-11-27T08:37:00+00:00"
-        },
-        {
-            "name": "spatie/laravel-model-states",
-            "version": "2.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-model-states.git",
-                "reference": "42e8a8446ab60894683de32568869d2f5d7f654c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-model-states/zipball/42e8a8446ab60894683de32568869d2f5d7f654c",
-                "reference": "42e8a8446ab60894683de32568869d2f5d7f654c",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "facade/ignition-contracts": "^1.0",
-                "illuminate/contracts": "^8.0",
-                "illuminate/database": "^8.0",
-                "illuminate/support": "^8.0",
-                "php": "^7.4|^8.0",
-                "spatie/laravel-package-tools": "^1.1"
-            },
-            "require-dev": {
-                "orchestra/testbench": "^6.0",
-                "phpunit/phpunit": "^9.3",
-                "symfony/var-dumper": "^5.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\ModelStates\\ModelStatesServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\ModelStates\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Brent Roose",
-                    "email": "brent@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "State support for Eloquent models",
-            "homepage": "https://github.com/spatie/laravel-model-states",
-            "keywords": [
-                "spatie",
-                "state"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-model-states/issues",
-                "source": "https://github.com/spatie/laravel-model-states/tree/2.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                }
-            ],
-            "time": "2021-04-21T10:35:35+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
@@ -17700,16 +17629,16 @@
         },
         {
             "name": "filp/whoops",
-            "version": "2.13.0",
+            "version": "2.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
-                "reference": "2edbc73a4687d9085c8f20f398eebade844e8424"
+                "reference": "fdf92f03e150ed84d5967a833ae93abffac0315b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/2edbc73a4687d9085c8f20f398eebade844e8424",
-                "reference": "2edbc73a4687d9085c8f20f398eebade844e8424",
+                "url": "https://api.github.com/repos/filp/whoops/zipball/fdf92f03e150ed84d5967a833ae93abffac0315b",
+                "reference": "fdf92f03e150ed84d5967a833ae93abffac0315b",
                 "shasum": ""
             },
             "require": {
@@ -17759,7 +17688,7 @@
             ],
             "support": {
                 "issues": "https://github.com/filp/whoops/issues",
-                "source": "https://github.com/filp/whoops/tree/2.13.0"
+                "source": "https://github.com/filp/whoops/tree/2.14.0"
             },
             "funding": [
                 {
@@ -17767,7 +17696,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-06-04T12:00:00+00:00"
+            "time": "2021-07-13T12:00:00+00:00"
         },
         {
             "name": "justinrainbow/json-schema",

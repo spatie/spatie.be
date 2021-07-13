@@ -3,7 +3,7 @@
 namespace App\Domain\Achievements\Series;
 
 use App\Domain\Achievements\Models\Achievement;
-use App\Domain\Achievements\States\SeriesAchievementType;
+use App\Domain\Achievements\Enums\AchievementType;
 use App\Models\Series;
 
 class SeriesAchievementsObserver
@@ -18,7 +18,7 @@ class SeriesAchievementsObserver
             'slug' => "series-completed-{$series->id}",
             'title' => "{$series->title} completed!",
             'description' => "You've watched all videos in {$series->title}",
-            'type' => SeriesAchievementType::class,
+            'type' => AchievementType::Series(),
             'data' => ['series_id' => $series->id],
         ]);
     }

@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Domain\Achievements\Models\Achievement;
-use App\Domain\Achievements\States\SeriesAchievementType;
+use App\Domain\Achievements\Enums\AchievementType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class AchievementFactory extends Factory
@@ -16,7 +16,7 @@ class AchievementFactory extends Factory
             'title' => 'test',
             'description' => 'test',
             'slug' => 'test',
-            'type' => SeriesAchievementType::class,
+            'type' => AchievementType::Series(),
             'data' => [],
         ];
     }

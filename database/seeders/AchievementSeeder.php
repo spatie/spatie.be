@@ -3,8 +3,7 @@
 namespace Database\Seeders;
 
 use App\Domain\Achievements\Models\Achievement;
-use App\Domain\Achievements\States\ExperienceAchievementType;
-use App\Domain\Achievements\States\PullRequestAchievementType;
+use App\Domain\Achievements\Enums\AchievementType;
 use Illuminate\Database\Seeder;
 
 class AchievementSeeder extends Seeder
@@ -20,7 +19,7 @@ class AchievementSeeder extends Seeder
                     'slug' => $slug,
                     'title' => $title,
                     'description' => $description,
-                    'type' => ExperienceAchievementType::class,
+                    'type' => AchievementType::Experience(),
                     'data' => ['count_requirement' => $requiredCount],
                 ]);
             });
@@ -37,7 +36,7 @@ class AchievementSeeder extends Seeder
                     'slug' => $slug,
                     'title' => $title,
                     'description' => $description,
-                    'type' => PullRequestAchievementType::class,
+                    'type' => AchievementType::PullRequest(),
                     'data' => ['count_requirement' => $requiredCount],
                 ]);
             });
