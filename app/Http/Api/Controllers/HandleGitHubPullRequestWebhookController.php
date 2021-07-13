@@ -49,7 +49,7 @@ class HandleGitHubPullRequestWebhookController
         if (app()->environment('local')) {
             return;
         }
-        
+
         $signature = $request->headers->get('X-Hub-Signature');
 
         if ($signature === null) {
