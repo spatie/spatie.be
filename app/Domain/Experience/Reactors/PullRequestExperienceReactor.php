@@ -10,8 +10,9 @@ use Spatie\EventSourcing\EventHandlers\Reactors\Reactor;
 
 class PullRequestExperienceReactor extends Reactor
 {
-    public function __construct(private CommandBus $bus)
-    {
+    public function __construct(
+        protected CommandBus $bus
+    ) {
     }
 
     public function __invoke(PullRequestMerged $event): void

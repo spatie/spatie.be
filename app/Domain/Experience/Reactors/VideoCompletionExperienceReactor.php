@@ -10,7 +10,7 @@ use Spatie\EventSourcing\EventHandlers\Reactors\Reactor;
 
 class VideoCompletionExperienceReactor extends Reactor
 {
-    public function __construct(private CommandBus $bus)
+    public function __construct(protected CommandBus $bus)
     {
     }
 
