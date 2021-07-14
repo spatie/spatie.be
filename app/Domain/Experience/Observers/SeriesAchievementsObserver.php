@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Domain\Achievements\Series;
+namespace App\Domain\Experience\Observers;
 
-use App\Domain\Achievements\Models\Achievement;
-use App\Domain\Achievements\Enums\AchievementType;
+use App\Domain\Experience\Models\Achievement;
+use App\Domain\Experience\Enums\AchievementType;
 use App\Models\Series;
 
 class SeriesAchievementsObserver

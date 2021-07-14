@@ -2,7 +2,7 @@
 
 namespace Tests\Domain\Experience;
 
-use App\Domain\Achievements\Models\Achievement;
+use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;

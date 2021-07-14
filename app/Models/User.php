@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Domain\Achievements\Models\Achievement;
+use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;

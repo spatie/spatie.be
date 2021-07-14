@@ -2,7 +2,7 @@
 
 namespace Tests\Domain\Experience;
 
-use App\Domain\Achievements\Models\Achievement;
+use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Enums\ExperienceType;
 use App\Models\Series;
 use App\Models\User;

@@ -2,7 +2,7 @@
 
 namespace Tests\Models;
 
-use App\Domain\Achievements\Models\Achievement;
+use App\Domain\Experience\Models\Achievement;
 use App\Models\Series;
 use Tests\TestCase;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Domain\Achievements\Enums;
+namespace App\Domain\Experience\Enums;
 
 use Spatie\Enum\Laravel\Enum;
 

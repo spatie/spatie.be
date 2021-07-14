@@ -2,7 +2,7 @@
 
 namespace App\Domain\Experience\Reactors;
 
-use App\Domain\Achievements\PullRequest\PullRequestAchievementUnlocker;
+use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\EventQueries\PullRequestCountQuery;
 use App\Domain\Experience\Events\PullRequestMerged;
@@ -13,7 +13,6 @@ class PullRequestAchievementReactor extends Reactor
 {
     public function __construct(
         protected CommandBus $bus,
-        protected PullRequestAchievementUnlocker $unlocker
     ) {
     }
 
@@ -21,7 +20,7 @@ class PullRequestAchievementReactor extends Reactor
     {
         $query = new PullRequestCountQuery($event->aggregateRootUuid());
 
-        $achievement = $this->unlocker->achievementToBeUnlocked(
+        $achievement = $this->resolveAchievement(
             pullRequestCount: $query->count(),
             userId: $event->userId,
         );
@@ -35,5 +34,16 @@ class PullRequestAchievementReactor extends Reactor
             userId: $event->userId,
             achievement: $achievement,
         ));
+    }
+
+    protected function resolveAchievement(
+        int $pullRequestCount,
+        int $userId
+    ): ?Achievement {
+        return Achievement::forPullRequest()
+            ->get()
+            ->filter(fn (Achievement $achievement) => $achievement->data['count_requirement'] <= $pullRequestCount)
+            ->reject(fn(Achievement $achievement) => $achievement->receivedBy($userId))
+            ->first();
     }
 }

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Domain\Achievements\Models;
+namespace App\Domain\Experience\Models;
 
-use App\Domain\Achievements\Enums\AchievementType;
-use App\Domain\Experience\Enums\ExperienceType;
+use App\Domain\Experience\Enums\AchievementType;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Models\Series;
 use Database\Factories\AchievementFactory;

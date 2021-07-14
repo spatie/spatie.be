@@ -2,7 +2,7 @@
 
 namespace App\Domain\Experience\Commands;
 
-use App\Domain\Achievements\Models\Achievement;
+use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\ExperienceAggregateRoot;
 use Spatie\EventSourcing\Commands\AggregateUuid;
 use Spatie\EventSourcing\Commands\HandledBy;
