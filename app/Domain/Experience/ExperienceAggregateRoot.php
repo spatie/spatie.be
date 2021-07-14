@@ -2,7 +2,6 @@
 
 namespace App\Domain\Experience;
 
-use App\Domain\Achievements\Series\SeriesCompletionAchievementUnlocker;
 use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\RegisterSeriesCompletion;
@@ -21,7 +20,7 @@ use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class ExperienceAggregateRoot extends AggregateRoot
 {
-    public function add(AddExperience $command): self
+    public function addExperience(AddExperience $command): self
     {
         $this->recordThat(new ExperienceEarned(
             userId: $command->userId,
