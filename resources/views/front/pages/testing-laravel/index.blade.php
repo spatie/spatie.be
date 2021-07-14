@@ -1,7 +1,7 @@
 <x-page
-    title="Testing Laravel"
+    title="Testing Laravel - A premium video course by Spatie"
     background="/backgrounds/event-sourcing.jpg"
-    description="Testing Laravel"
+    description="In this premium video course you'll learn how to test your Laravel applications using PHPUnit and Pest"
 >
     <section id="banner" class="banner" role="banner">
         <div class="wrap max-w-lg">
