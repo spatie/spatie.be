@@ -10,9 +10,8 @@ class PullRequestCountQuery extends EventQuery
 {
     private int $count = 0;
 
-    public function __construct(
-        string $aggregateUuid
-    ) {
+    public function __construct(string $aggregateUuid)
+    {
         EloquentStoredEvent::query()
             ->whereAggregateRoot($aggregateUuid)
             ->whereEvent(PullRequestMerged::class)
