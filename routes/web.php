@@ -11,7 +11,7 @@ use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
-use App\Http\Controllers\EventSourcingController;
+use App\Http\Controllers\TestingLaravelController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
@@ -159,8 +159,8 @@ Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::
 
 Route::view('offline', 'errors.offline')->name('offline');
 
-Route::get('event-sourcing', [EventSourcingController::class, 'show']);
-Route::post('event-sourcing', [EventSourcingController::class, 'subscribe']);
+Route::get('testing-laravel', [TestingLaravelController::class, 'show']);
+Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 
 Route::get('uses', [UsesController::class, 'index'])->name('uses')->middleware(AdminsOnly::class);
 

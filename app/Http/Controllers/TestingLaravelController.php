@@ -3,18 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Actions\StartOrExtendNextPurchaseDiscountPeriodAction;
-use App\Http\Requests\EventSourcingRequest;
+use App\Http\Requests\TestingLaravel;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
 
-class EventSourcingController
+class TestingLaravelController
 {
     public function show()
     {
-        return redirect()->to('https://event-sourcing-laravel.com/');
+        return view('front.pages.testing-laravel.index');
     }
 
-    public function subscribe(EventSourcingRequest $request)
+    public function subscribe(TestingLaravel $request)
     {
         $emailList = EmailList::firstWhere('name', 'Spatie');
 
@@ -22,11 +22,7 @@ class EventSourcingController
             ->skipConfirmation()
             ->subscribeTo($emailList);
 
-        $subscriber->addTag('event-sourcing-waiting-list');
-
-        if (auth()->user()) {
-            (new StartOrExtendNextPurchaseDiscountPeriodAction())->execute(auth()->user());
-        }
+        $subscriber->addTag('testing-laravel-waiting-list');
 
         session()->flash('subscribed');
 
