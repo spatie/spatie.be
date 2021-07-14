@@ -2,6 +2,7 @@
 
 namespace App\Domain\Experience\Models;
 
+use App\Domain\Experience\Achievements\AchievementResolver;
 use App\Domain\Experience\Enums\AchievementType;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Models\Series;
@@ -18,6 +19,13 @@ class Achievement extends Model
         'type' => AchievementType::class,
         'data' => 'array',
     ];
+
+    public static function resolve(object $command): ?self
+    {
+        $resolver = app(AchievementResolver::class);
+
+        return $resolver->handle($command);
+    }
 
     public function scopeForSeries(Builder $builder, Series $series): void
     {

@@ -2,6 +2,7 @@
 
 namespace App\Domain\Experience\Reactors;
 
+use App\Domain\Experience\Achievements\PullRequestAchievement;
 use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\EventQueries\PullRequestCountQuery;
@@ -20,10 +21,10 @@ class PullRequestAchievementReactor extends Reactor
     {
         $query = new PullRequestCountQuery($event->aggregateRootUuid());
 
-        $achievement = $this->resolveAchievement(
+        $achievement = Achievement::resolve(new PullRequestAchievement(
             pullRequestCount: $query->count(),
             userId: $event->userId,
-        );
+        ));
 
         if (! $achievement) {
             return;
@@ -34,16 +35,5 @@ class PullRequestAchievementReactor extends Reactor
             userId: $event->userId,
             achievement: $achievement,
         ));
-    }
-
-    protected function resolveAchievement(
-        int $pullRequestCount,
-        int $userId
-    ): ?Achievement {
-        return Achievement::forPullRequest()
-            ->get()
-            ->filter(fn (Achievement $achievement) => $achievement->data['count_requirement'] <= $pullRequestCount)
-            ->reject(fn(Achievement $achievement) => $achievement->receivedBy($userId))
-            ->first();
     }
 }
