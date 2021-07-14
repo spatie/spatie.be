@@ -16,20 +16,17 @@
 
     <section class="pb-16">
         <div class="wrap max-w-lg markup links-underline links-blue">
-
-        @if(session()->has('subscribed'))
-
-        <div class="card gradient gradient-green text-white">
-            <div class="wrap-card grid md:grid-cols-2 md:items-center">
-                <h2 class="title-xl">
-                    Thank you!
-                </h2>
-                <p class="text-xl">
-                    Thank you for subscribing. We'll keep you in the loop!
-                </p>
-            </div>
-        </div>
-
+            @if(session()->has('subscribed'))
+                <div class="card gradient gradient-green text-white">
+                    <div class="wrap-card grid md:grid-cols-2 md:items-center">
+                        <h2 class="title-xl">
+                            Thank you!
+                        </h2>
+                        <p class="text-xl">
+                            Thank you for subscribing. We'll keep you in the loop!
+                        </p>
+                    </div>
+                </div>
             @else
                 <h2 class="title-sm">Keep me informed</h2>
                 <form class="flex items-end" method="POST">
@@ -44,36 +41,31 @@
                     <x-button type="submit">Submit</x-button>
                 </form>
                 <p class="mt-2 text-sm text-gray">
-                    Expect maximum 3 mails about this course in the next few months.
+                    Expect maximum 3 emails about this course in the next few months.
                 </p>
-
             @endif
 
             <p class="mt-12 text-lg">
-                Knowing how to write automated tests is a fundamental skill for any developer. By adding a quality test suite to your application you'll end up with <b>less bugs</b> in production. It allows you to <b>refactor</b> even the critical parts of your code without having to be scared.
+                Knowing how to write automated tests is a fundamental skill for any developer. By adding a quality test suite to your application you'll end up with <strong>less bugs</strong> in production. It allows you to <strong>refactor</strong> even the critical parts of your code without having to be scared.
             </p>
 
             <p class="text-lg">
-                In this premium course, you'll learn how to test your Laravel application <b>from scratch</b>. After we've covered the basics, we'll show you <b>how we test our Laravel apps</b> at Spatie. We'll cover snapshot testing, pragmatic mocks,  testing domain code, setting up CI, and much more. We'll also walk you through the <b>tests of real-world applications</b>.
-                <br>
-
+                In this premium course, you'll learn how to test your Laravel application <strong>from scratch</strong>. After we've covered the basics, we'll show you <strong>how we test our Laravel apps</strong> at Spatie. We'll cover snapshot testing, pragmatic mocks, testing domain code, setting up CI, and much more. We'll also walk you through the <strong>tests of real-world applications</strong>.
             </p>
 
             <p class="text-lg">
-                PHPUnit is currently the de-facto standard test runner in the PHP / Laravel world. Recently, an alternative test runner, called PEST, was introduced with a focus on improving DX. We think that adoption of PEST will grow in the future. That's why you'll get <b>two flavours of the entire course</b>: in one we'll focus on <b>PHPUnit</b>, in the other we'll focus on <b>PEST</b>. We'll also show you how to convert a PHPUnit testsuite to Pest.
+                PHPUnit is currently the de facto standard test runner in the PHP/Laravel world. Recently PEST was introduced: an alternative with a focus on improving developer experience. We believe that adoption of PEST will grow in the future. That's why you'll get <strong>two flavours of the entire course</strong>: in one we'll handle <strong>PHPUnit</strong>, in the other we'll focus on <strong>PEST</strong>. We'll also show you how to convert a PHPUnit test suite to Pest.
             </p>
 
-            <span>
+            <p class="mt-16 line-after">
                 Created by the team that brought you:
+            <p>
             <ul>
                 <li><a href="https://laravel-beyond-crud.com">Laravel Beyond CRUD</a></li>
-                <li><a href="https://event-sourcing-laravel">Event Sourcing in Laravel</a></li>
+                <li><a href="https://event-sourcing-laravel.com">Event Sourcing in Laravel</a></li>
                 <li><a href="https://front-line-php.com">Front Line PHP</a></li>
                 <li><a href="https://laravelpackage.training">Laravel Package Training</a></li>
             </ul>
-            </span>
-
-
         </div>
     </section>
 </x-page>
