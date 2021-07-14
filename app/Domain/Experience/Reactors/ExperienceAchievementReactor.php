@@ -5,7 +5,6 @@ namespace App\Domain\Experience\Reactors;
 use App\Domain\Achievements\Experience\ExperienceAchievementUnlocker;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\EventQueries\ExperienceAmountQuery;
-use App\Domain\Experience\EventQueries\PullRequestCountQuery;
 use App\Domain\Experience\Events\ExperienceEarned;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\EventSourcing\EventHandlers\Reactors\Reactor;
