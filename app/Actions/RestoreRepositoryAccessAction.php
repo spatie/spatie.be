@@ -34,10 +34,14 @@ class RestoreRepositoryAccessAction
                 return false;
             })
             ->each(function (Purchase $purchase) use ($user) {
-                $this->gitHubApi->inviteToRepo(
-                    $user->github_username,
-                    $purchase->purchasable->repository_access
-                );
+                $repositories = explode(', ', $purchase->purchasable->repository_access);
+
+                foreach($repositories as $repository) {
+                    $this->gitHubApi->inviteToRepo(
+                        $user->github_username,
+                        $repository
+                    );
+                }
 
                 $purchase->update(['has_repository_access' => true]);
             });
