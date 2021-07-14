@@ -50,7 +50,7 @@
             </p>
 
             <p class="text-lg">
-                In this premium course, you'll learn how to test your Laravel application <strong>from scratch</strong>. After we've covered the basics, we'll show you more<strong>advanced subjects</strong>. You'll see how we test our applications at Spatie. We'll cover snapshot testing, mocks, APIs,  testing domain code, setting up CI, and much more. We'll also walk you through the <strong>tests of real-world applications</strong>.
+                In this premium course, you'll learn how to test your Laravel application <strong>from scratch</strong>. After we've covered the basics, we'll show you more <strong>advanced subjects</strong>. You'll see how we test our applications at Spatie. We'll cover snapshot testing, mocks, APIs,  testing domain code, setting up CI, and much more. We'll also walk you through the <strong>tests of real-world applications</strong>.
             </p>
 
             <p class="text-lg">
