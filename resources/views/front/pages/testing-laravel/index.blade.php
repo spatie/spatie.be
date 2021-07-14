@@ -54,7 +54,7 @@
             </p>
 
             <p class="text-lg">
-                PHPUnit is currently the de facto standard test runner in the PHP/Laravel world. Recently PEST was introduced: an alternative with a focus on improving developer experience. We believe that adoption of PEST will grow in the future. That's why you'll get <strong>two flavours</strong> of the entire course: in one we'll handle <strong>PHPUnit</strong>, in the other we'll focus on <strong>PEST</strong>. We'll also show you how to convert a PHPUnit test suite to Pest.
+                PHPUnit is currently the de facto standard test runner in the PHP/Laravel world. Recently Pest was introduced: an alternative with a focus on improving developer experience. We believe that adoption of Pest will grow in the future. That's why you'll get <strong>two flavours</strong> of the entire course: in one we'll handle <strong>PHPUnit</strong>, in the other we'll focus on <strong>Pest</strong>. We'll also show you how to convert a PHPUnit test suite to Pest.
             </p>
 
             <p class="mt-16 line-after">
