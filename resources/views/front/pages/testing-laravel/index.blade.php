@@ -1,4 +1,5 @@
 <x-page
+    ogImage="https://spatie.be/images/og-image-testing.jpg"
     title="Testing Laravel - A premium video course by Spatie"
     background="/backgrounds/event-sourcing.jpg"
     description="In this premium video course you'll learn how to test your Laravel applications using PHPUnit and Pest"
