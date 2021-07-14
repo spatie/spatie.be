@@ -50,7 +50,7 @@
             @endif
 
             <p class="mt-12 text-lg">
-                Learning how to write automated tests is a fundamental skill for any developer. By adding a quality test suite to your application you'll end up with <b>less bugs</b> in production. It allows you to <b>refactor</b> even the critical parts of your code without having to be scared.
+                Knowing how to write automated tests is a fundamental skill for any developer. By adding a quality test suite to your application you'll end up with <b>less bugs</b> in production. It allows you to <b>refactor</b> even the critical parts of your code without having to be scared.
             </p>
 
             <p class="text-lg">
