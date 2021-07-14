@@ -46,15 +46,15 @@
             @endif
 
             <p class="mt-12 text-lg">
-                Knowing how to write automated tests is a fundamental skill for any developer. By adding a quality test suite to your application you'll end up with <strong>less bugs</strong> in production. It allows you to <strong>refactor</strong> even the critical parts of your code without having to be scared.
+                Knowing how to write automated tests is a fundamental skill for any developer. By adding a quality test suite to your application you'll end up with <strong>less bugs</strong> in production. It allows you to <strong>refactor with confidence</strong> using a test suite that has your back.
             </p>
 
             <p class="text-lg">
-                In this premium course, you'll learn how to test your Laravel application <strong>from scratch</strong>. After we've covered the basics, we'll show you <strong>how we test our Laravel apps</strong> at Spatie. We'll cover snapshot testing, pragmatic mocks, testing domain code, setting up CI, and much more. We'll also walk you through the <strong>tests of real-world applications</strong>.
+                In this premium course, you'll learn how to test your Laravel application <strong>from scratch</strong>. After we've covered the basics, we'll show you more<strong>advanced subject</strong>. You'll see how we test our applications at Spatie. We'll cover snapshot testing, mocks, APIs,  testing domain code, setting up CI, and much more. We'll also walk you through the <strong>tests of real-world applications</strong>.
             </p>
 
             <p class="text-lg">
-                PHPUnit is currently the de facto standard test runner in the PHP/Laravel world. Recently PEST was introduced: an alternative with a focus on improving developer experience. We believe that adoption of PEST will grow in the future. That's why you'll get <strong>two flavours of the entire course</strong>: in one we'll handle <strong>PHPUnit</strong>, in the other we'll focus on <strong>PEST</strong>. We'll also show you how to convert a PHPUnit test suite to Pest.
+                PHPUnit is currently the de facto standard test runner in the PHP/Laravel world. Recently PEST was introduced: an alternative with a focus on improving developer experience. We believe that adoption of PEST will grow in the future. That's why you'll get <strong>two flavours</strong> of the entire course: in one we'll handle <strong>PHPUnit</strong>, in the other we'll focus on <strong>PEST</strong>. We'll also show you how to convert a PHPUnit test suite to Pest.
             </p>
 
             <p class="mt-16 line-after">
