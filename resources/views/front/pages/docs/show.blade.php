@@ -15,6 +15,23 @@
              @include('front.pages.docs.partials.navigation')
         </div>
         <article class="md:col-span-7 lg:col-span-6">
+            <div class="mb-12 p-4 flex text-sm bg-white bg-opacity-50  rounded-sm markup-code">
+                <div class="h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
+                <div class="ml-4">
+                    <p>
+                    This is the documentation for <strong>v.{3}</strong>.
+                    You can switch versions in the menu <span class="hidden md:inline">on the right</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
+                    <br>
+                    Check your current version via following command:
+                    </p>
+                    <div class="mt-2">
+                        <code class="bg-blue-lightest bg-opacity-50 px-2 py-1">
+                            composer show {spatie/laravel-activitylog}
+                        </code>
+                    </div>
+                </div>
+            </div>
+
             @if($showBigTitle)
                 <div class="mb-16">
                     <h1 class="banner-slogan">
@@ -54,9 +71,9 @@
 
         </article>
         @if(count($tableOfContents))
-            <aside class="hidden lg:block pt-16 w-full pb-16 col-span-2 print-hidden">
+            <aside class="hidden lg:block w-full pb-16 col-span-2 print-hidden">
                 <div class="sticky top-0 py-6">
-                    <div class="pl-4 border-l-2 border-gray-lighter">
+                    <div class="pl-4 border-l-2 border-gray-light border-opacity-50">
                         <h3 class="mb-3 text-gray font-semibold uppercase tracking-wider text-xs">
                             On this page
                         </h3>
