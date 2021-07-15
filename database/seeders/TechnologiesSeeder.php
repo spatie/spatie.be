@@ -63,20 +63,28 @@ class TechnologiesSeeder extends Seeder
                 'description' => 'A description why we use Laravel',
             ],
 
-            // Devops
+            // Desktop apps
             [
                 'name' => 'Oh dear',
-                'type' => TechnologyType::devops(),
+                'type' => TechnologyType::apps(),
                 'website_url' => 'https://ohdear.app/',
                 'image_url' => 'https://ohdear.app/img/logo/ohdear-logo-white-transparant.svg',
                 'recommended_by' => ['freek'],
                 'description' => 'A description why we use Oh dear',
             ],
-
-            // Integrations
+            // services
+            [
+                'name' => 'Streamyard',
+                'type' => TechnologyType::services(),
+                'website_url' => 'https://streamyard.com/',
+                'image_url' => 'https://streamyard.com/static/img/7b107537a14784d40bde2496b4b284d9.svg',
+                'recommended_by' => ['freek', 'brent'],
+                'description' => 'Most of our live streams are hosted on Streamyard.
+                It’s a quick and easy way to create professional livestreams instantly. We also host livestreams on YouTube.',
+            ],
             [
                 'name' => 'Mailcoach',
-                'type' => TechnologyType::integrations(),
+                'type' => TechnologyType::services(),
                 'website_url' => 'https://mailcoach.app/',
                 'image_url' => 'https://i.ytimg.com/vi/b3ZDyewAJYc/maxresdefault.jpg',
                 'recommended_by' => ['freek', 'wouter', 'brent', 'jef'],
@@ -84,16 +92,6 @@ class TechnologiesSeeder extends Seeder
                 That’s why we built Mailcoach.
                 It’s our answer to self-host your email marketing while cutting the cost.',
             ],
-            // Tools
-            [
-                'name' => 'Streamyard',
-                'type' => TechnologyType::tools(),
-                'website_url' => 'https://streamyard.com/',
-                'image_url' => 'https://streamyard.com/static/img/7b107537a14784d40bde2496b4b284d9.svg',
-                'recommended_by' => ['freek', 'brent'],
-                'description' => 'Most of our live streams are hosted on Streamyard.
-                It’s a quick and easy way to create professional livestreams instantly. We also host livestreams on YouTube.',
-            ]
 
         ];
     }
