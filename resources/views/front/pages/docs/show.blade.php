@@ -16,12 +16,13 @@
              @include('front.pages.docs.partials.navigation')
         </div>
         <article class="md:col-span-7 lg:col-span-6">
+            @if(count($repository->aliases) > 1)
             <div class="mb-12 p-4 flex text-sm bg-white bg-opacity-50 rounded-sm md:shadow-light markup-code">
                 <div class="flex-none h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
                 <div class="ml-4">
                     <p>
                     This is the documentation for <strong>{{ $page->alias }}</strong> @if($page->alias !== $latestVersion->slug)but the latest version is
-                        <strong>{{ $latestVersion->slug }}</strong> @endif.
+                        <strong>{{ $latestVersion->slug }}</strong>@endif.
                     You can switch versions in the menu <span class="hidden md:inline">on the left</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
                     Check your current version with the following command:
                     </p>
@@ -32,6 +33,7 @@
                     </div>
                 </div>
             </div>
+            @endif
 
             @if($showBigTitle)
                 <div class="mb-16">
