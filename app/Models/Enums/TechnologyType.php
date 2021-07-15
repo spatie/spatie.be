@@ -9,7 +9,6 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self backend()
  * @method static self devops()
  * @method static self tools()
- * @method static self integrations()
  */
 class TechnologyType extends Enum
 {
@@ -20,7 +19,6 @@ class TechnologyType extends Enum
             'backend' => 'Backend',
             'devops' => 'Devops',
             'tools' => 'Tools',
-            'integrations' => 'Integrations',
         ];
     }
 }
