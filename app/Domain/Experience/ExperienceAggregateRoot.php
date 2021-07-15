@@ -20,6 +20,14 @@ use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
 class ExperienceAggregateRoot extends AggregateRoot
 {
+    protected array $completedVideos = [];
+
+    protected array $completedSeries = [];
+
+    protected array $unlockedAchievements = [];
+
+    protected array $mergedPullRequests = [];
+
     public function addExperience(AddExperience $command): self
     {
         $this->recordThat(new ExperienceEarned(
@@ -32,6 +40,10 @@ class ExperienceAggregateRoot extends AggregateRoot
 
     public function unlockAchievement(UnlockAchievement $command): self
     {
+        if ($this->unlockedAchievements[$command->achievement->id] ?? false) {
+            return $this;
+        }
+
         $this->recordThat(new AchievementUnlocked(
             userId: $command->userId,
             achievementId: $command->achievement->id,
@@ -43,8 +55,17 @@ class ExperienceAggregateRoot extends AggregateRoot
         return $this;
     }
 
+    protected function applyAchievementUnlocked(AchievementUnlocked $event): void
+    {
+        $this->unlockedAchievements[$event->achievementId] = true;
+    }
+
     public function registerPullRequest(RegisterPullRequest $command): self
     {
+        if ($this->mergedPullRequests[$command->reference] ?? false) {
+            return $this;
+        }
+
         $this->recordThat(new PullRequestMerged(
             userId: $command->userId,
             reference: $command->reference,
@@ -53,8 +74,17 @@ class ExperienceAggregateRoot extends AggregateRoot
         return $this;
     }
 
+    protected function applyPullRequestMerged(PullRequestMerged $event): void
+    {
+        $this->mergedPullRequests[$event->reference] = true;
+    }
+
     public function registerVideoCompletion(RegisterVideoCompletion $command): self
     {
+        if ($this->completedVideos[$command->videoId] ?? false) {
+            return $this;
+        }
+
         $video = Video::query()->findOrFail($command->videoId);
 
         $this->recordThat(new VideoCompleted(
@@ -66,8 +96,17 @@ class ExperienceAggregateRoot extends AggregateRoot
         return $this;
     }
 
+    protected function applyVideoCompletion(VideoCompleted $event): void
+    {
+        $this->completedVideos[$event->videoId] = true;
+    }
+
     public function registerSeriesCompletion(RegisterSeriesCompletion $command): self
     {
+        if ($this->completedSeries[$command->seriesId] ?? false) {
+            return $this;
+        }
+
         $user = User::query()->findOrFail($command->userId);
 
         $series = Series::query()->findOrFail($command->seriesId);
@@ -82,5 +121,10 @@ class ExperienceAggregateRoot extends AggregateRoot
         ));
 
         return $this;
+    }
+
+    protected function applySeriesCompletion(SeriesCompleted $event): void
+    {
+        $this->completedSeries[$event->seriesId] = true;
     }
 }
