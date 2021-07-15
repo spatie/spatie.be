@@ -10,6 +10,7 @@
 
     @include('front.pages.docs.partials.breadcrumbs')
 
+    @php($latestVersion = $repository->aliases->first())
     <section class="wrap md:grid pb-24 gap-12 md:grid-cols-10 items-stretch">
         <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
              @include('front.pages.docs.partials.navigation')
@@ -19,13 +20,14 @@
                 <div class="flex-none h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
                 <div class="ml-4">
                     <p>
-                    This is the documentation for <strong>v.{3}</strong> {but latest version is v4}.
+                    This is the documentation for <strong>{{ $page->alias }}</strong> @if($page->alias !== $latestVersion->slug)but latest version is
+                        <strong>{{ $latestVersion->slug }}</strong> @endif.
                     You can switch versions in the menu <span class="hidden md:inline">on the left</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
                     Check your current version via following command:
                     </p>
                     <div class="mt-2">
                         <code class="bg-blue-lightest bg-opacity-50 px-2 py-1">
-                            composer show {spatie/laravel-activitylog}
+                            composer show spatie/{{ $repository->slug }}
                         </code>
                     </div>
                 </div>
