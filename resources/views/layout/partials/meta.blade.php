@@ -12,3 +12,11 @@
 <meta property="og:image" content="{{ $ogImage ?? url('/images/og-image.jpg') }}"/>
 <meta property="og:url" content="{{ request()->getUri() }}"/>
 <meta property="og:type" content="website" />
+
+@if (isset($canonical) && $canonical)
+    <link rel="canonical" href="{{ $canonical }}" />
+@endif
+
+@if (isset($noIndex) && $noIndex)
+    <meta name="robots" content="noindex">
+@endif

@@ -1,16 +1,20 @@
 @php
     /** @var \App\Docs\Repository $repository */
+    $latestVersion = $repository->aliases->first()
 @endphp
 
-<x-page title="{{ $page->title }} | {{ $repository->slug }}" background="/backgrounds/docs-blur.jpg">
-
+<x-page
+    title="{{ $page->title }} | {{ $repository->slug }}"
+    background="/backgrounds/docs-blur.jpg"
+    :no-index="$page->alias !== $latestVersion->slug"
+    canonical="{{ url('/docs/' . $repository->slug . '/' . $latestVersion->slug . '/' . $page->slug) }}"
+>
     <x-slot name="description">
         {{ $repository->slug }}
     </x-slot>
 
     @include('front.pages.docs.partials.breadcrumbs')
 
-    @php($latestVersion = $repository->aliases->first())
     <section class="wrap md:grid pb-24 gap-12 md:grid-cols-10 items-stretch">
         <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
              @include('front.pages.docs.partials.navigation')
