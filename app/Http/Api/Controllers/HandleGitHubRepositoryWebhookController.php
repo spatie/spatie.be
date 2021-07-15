@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class HandleGitHubWebhookController
+class HandleGitHubRepositoryWebhookController
 {
     public function __invoke(Request $request)
     {
