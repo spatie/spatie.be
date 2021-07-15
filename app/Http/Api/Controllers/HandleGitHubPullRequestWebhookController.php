@@ -18,30 +18,19 @@ class HandleGitHubPullRequestWebhookController
 
     public function __invoke(Request $request)
     {
-        Log::info("PR webhook received");
-
         $this->ensureValidRequest($request);
-
-        Log::info("PR webhook valid");
 
         $payload = json_decode($request->getContent(), true);
 
         if (! ($payload['pull_request']['merged'] ?? null)) {
-            Log::info("Not a merged PR");
-
             return;
         }
-
-        Log::info("Was merged, resolving user…");
 
         $user = User::whereGithubId($payload['sender']['id'])->first();
 
         if (! $user) {
-            Log::info("User not found for GH id {$payload['sender']['id']}");
             return;
         }
-
-        Log::info("User found, dispatching command.");
 
         $this->bus->dispatch(RegisterPullRequest::forUser($user, $payload['pull_request']['url'] ?? ''));
     }
