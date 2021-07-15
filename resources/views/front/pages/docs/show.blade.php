@@ -21,7 +21,7 @@
                 <div class="flex-none h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
                 <div class="ml-4">
                     <p>
-                    This is the documentation for <strong>{{ $page->alias }}</strong> @if($page->alias !== $latestVersion->slug)but the latest version is
+                    This is the documentation for <strong>{{ $page->alias }}</strong>@if($page->alias !== $latestVersion->slug) but the latest version is
                         <strong>{{ $latestVersion->slug }}</strong>@endif.
                     You can switch versions in the menu <span class="hidden md:inline">on the left</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
                     Check your current version with the following command:
