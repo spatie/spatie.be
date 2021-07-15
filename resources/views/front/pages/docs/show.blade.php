@@ -20,7 +20,7 @@
                 <div class="ml-4">
                     <p>
                     This is the documentation for <strong>v.{3}</strong>.
-                    You can switch versions in the menu <span class="hidden md:inline">on the right</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
+                    You can switch versions in the menu <span class="hidden md:inline">on the left</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
                     <br>
                     Check your current version via following command:
                     </p>
