@@ -7,8 +7,8 @@ use Spatie\Enum\Laravel\Enum;
 /**
  * @method static self frontend()
  * @method static self backend()
- * @method static self devops()
- * @method static self tools()
+ * @method static self services()
+ * @method static self apps()
  */
 class TechnologyType extends Enum
 {
@@ -17,8 +17,8 @@ class TechnologyType extends Enum
         return [
             'frontend'=> 'Frontend',
             'backend' => 'Backend',
-            'devops' => 'Devops',
-            'tools' => 'Tools',
+            'services' => 'Services',
+            'apps' => 'Desktop apps',
         ];
     }
 }

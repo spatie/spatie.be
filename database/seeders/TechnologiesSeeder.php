@@ -63,19 +63,19 @@ class TechnologiesSeeder extends Seeder
                 'description' => 'A description why we use Laravel',
             ],
 
-            // Devops
+            // Desktop apps
             [
                 'name' => 'Oh dear',
-                'type' => TechnologyType::devops(),
+                'type' => TechnologyType::apps(),
                 'website_url' => 'https://ohdear.app/',
                 'image_url' => 'https://ohdear.app/img/logo/ohdear-logo-white-transparant.svg',
                 'recommended_by' => ['freek'],
                 'description' => 'A description why we use Oh dear',
             ],
-            // Tools
+            // services
             [
                 'name' => 'Streamyard',
-                'type' => TechnologyType::tools(),
+                'type' => TechnologyType::services(),
                 'website_url' => 'https://streamyard.com/',
                 'image_url' => 'https://streamyard.com/static/img/7b107537a14784d40bde2496b4b284d9.svg',
                 'recommended_by' => ['freek', 'brent'],
@@ -84,7 +84,7 @@ class TechnologiesSeeder extends Seeder
             ],
             [
                 'name' => 'Mailcoach',
-                'type' => TechnologyType::tools(),
+                'type' => TechnologyType::services(),
                 'website_url' => 'https://mailcoach.app/',
                 'image_url' => 'https://i.ytimg.com/vi/b3ZDyewAJYc/maxresdefault.jpg',
                 'recommended_by' => ['freek', 'wouter', 'brent', 'jef'],

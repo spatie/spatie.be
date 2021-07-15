@@ -10,10 +10,10 @@
     @include('front.pages.uses.partials.banner')
 
     <div class="mt-4 section section-group section-fade">
-        @foreach (\App\Models\Enums\TechnologyType::toArray() as $type)
+        @foreach (\App\Models\Enums\TechnologyType::toLabels() as $type => $label)
             <section id="{{ $type }}" class="section">
                 <div class="wrap">
-                    <h2 class="title line-after mb-12">{{ ucfirst($type) }}</h2>
+                    <h2 class="title line-after mb-12">{{ $label }}</h2>
                 </div>
                 <div class="wrap wrap-6 items-start">
 
