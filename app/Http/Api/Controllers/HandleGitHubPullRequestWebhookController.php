@@ -27,6 +27,8 @@ class HandleGitHubPullRequestWebhookController
         $payload = json_decode($request->getContent(), true);
 
         if (! ($payload['pull_request']['merged'] ?? null)) {
+            Log::info("Not a merged PR");
+
             return;
         }
 
