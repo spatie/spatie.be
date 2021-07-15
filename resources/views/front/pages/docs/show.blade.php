@@ -16,12 +16,11 @@
         </div>
         <article class="md:col-span-7 lg:col-span-6">
             <div class="mb-12 p-4 flex text-sm bg-white bg-opacity-50 rounded-sm md:shadow-light markup-code">
-                <div class="h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
+                <div class="flex-none h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
                 <div class="ml-4">
                     <p>
-                    This is the documentation for <strong>v.{3}</strong>.
+                    This is the documentation for <strong>v.{3}</strong> {but latest version is v4}.
                     You can switch versions in the menu <span class="hidden md:inline">on the left</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
-                    <br>
                     Check your current version via following command:
                     </p>
                     <div class="mt-2">
