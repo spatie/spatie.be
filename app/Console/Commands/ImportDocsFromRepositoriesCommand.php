@@ -65,6 +65,7 @@ class ImportDocsFromRepositoriesCommand extends Command
             ->flatMap(function (array $repository) {
                 return collect($repository['branches'])
                     ->map(fn (string $alias, string $branch) => [$repository, $alias, $branch])
+                    ->values()
                     ->toArray();
             })
             ->mapSpread(function (array $repository, string $alias, string $branch) use ($loop) {
