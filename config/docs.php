@@ -129,7 +129,7 @@ return [
             "name" => "image",
             "repository" => "spatie/image",
             "branches" => [
-                "master" => "v1",
+                "main" => "v1",
             ],
             "category" => "General PHP",
         ],
