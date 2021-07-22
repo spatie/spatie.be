@@ -39,8 +39,14 @@ return new class extends Migration
         });
 
         Schema::table('purchases', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Bundle::class)->after('purchasable_id');
+            $table->foreignIdFor(\App\Models\Bundle::class)->after('purchasable_id')->nullable();
             $table->foreignIdFor(\App\Models\Purchasable::class)->nullable()->change();
+        });
+
+        Schema::create('referrer_bundle', function(Blueprint $table) {
+            $table->foreignIdFor(\App\Models\Referrer::class);
+            $table->foreignIdFor(\App\Models\Bundle::class);
+            $table->timestamps();
         });
     }
 };

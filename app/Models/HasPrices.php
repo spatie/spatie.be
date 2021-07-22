@@ -26,7 +26,6 @@ trait HasPrices
     public function getPriceForCountryCode(string $countryCode): DisplayablePrice
     {
         $displayablePrice = $this->getPriceWithoutDiscountForCountryCode($countryCode);
-
         if ($this->hasActiveDiscount()) {
             $priceWithoutDiscount = $displayablePrice->priceInCents;
 

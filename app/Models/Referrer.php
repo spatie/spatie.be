@@ -58,7 +58,7 @@ class Referrer extends Model
 
     public function getDiscountPercentage(Model $model): int
     {
-        if (! $this->purchasables->pluck('id')->contains($model->id) || ! $this->bundles->pluck('id')->contains($model->id)) {
+        if (! $this->purchasables->pluck('id')->contains($model->id) && ! $this->bundles->pluck('id')->contains($model->id)) {
             return 0;
         }
 
