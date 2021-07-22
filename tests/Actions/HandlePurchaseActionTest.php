@@ -5,6 +5,7 @@ namespace Tests\Actions;
 use App\Actions\HandlePurchaseAction;
 use App\Actions\RestoreRepositoryAccessAction;
 use App\Mail\PurchaseConfirmationMail;
+use App\Models\Bundle;
 use App\Models\License;
 use App\Models\Product;
 use App\Models\Purchasable;
@@ -328,6 +329,74 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertCount(1, $this->user->licenses);
 
         $this->assertEquals('2022-01-01 00:00:00', $existingRayLicense->refresh()->expires_at->format('Y-m-d H:i:s'));
+    }
+
+    /** @test * */
+    public function it_can_process_a_bundle_purchase()
+    {
+        Mail::fake();
+
+        /** @var Bundle $bundle */
+        $bundle = Bundle::factory()->create();
+
+        $purchasable1 = Purchasable::factory()->create([
+            'requires_license' => false,
+        ]);
+
+        $purchasable2 = Purchasable::factory()->create([
+            'requires_license' => false,
+        ]);
+
+        $bundle->purchasables()->sync([$purchasable1->id, $purchasable2->id]);
+
+        $purchase = $this->handlePurchaseAction->execute(
+            $this->user,
+            $bundle,
+            $this->payload
+        );
+
+        $this->assertCount(0, $purchase->licenses);
+        $this->assertTrue($purchase->user->is($this->user));
+        $this->assertTrue($purchase->bundle->is($bundle));
+
+        $this->assertEquals($this->receipt->id, $purchase->receipt->id);
+        $this->assertEquals($this->payload->fee, $purchase->paddle_fee);
+        $this->assertEquals($this->payload->earnings, $purchase->balance_earnings);
+        $this->assertEquals($this->payload->toArray(), $purchase->paddle_webhook_payload);
+
+        Mail::assertQueued(PurchaseConfirmationMail::class, 2);
+    }
+
+    /** @test * */
+    public function it_can_process_a_bundle_purchase_with_licenses()
+    {
+        Mail::fake();
+
+        /** @var Bundle $bundle */
+        $bundle = Bundle::factory()->create();
+
+        $purchasable1 = Purchasable::factory()->create([
+            'requires_license' => true,
+        ]);
+
+        $purchasable2 = Purchasable::factory()->create([
+            'requires_license' => true,
+        ]);
+
+        $bundle->purchasables()->sync([$purchasable1->id, $purchasable2->id]);
+
+        $purchase = $this->handlePurchaseAction->execute(
+            $this->user,
+            $bundle,
+            $this->payload
+        );
+
+        $this->assertCount(2, $purchase->licenses);
+        $this->assertCount(2, $this->user->licenses);
+        $this->assertTrue($purchase->user->is($this->user));
+        $this->assertTrue($purchase->bundle->is($bundle));
+
+        $this->assertTrue($purchase->licenses->first()->expires_at->isNextYear());
     }
 
     protected function createRayPurchasable(): Purchasable

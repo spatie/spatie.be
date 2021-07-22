@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\Subscriber;
 use Illuminate\Support\Str;
@@ -47,12 +48,14 @@ class AddPurchasedTagsToEmailListSubscriberAction
 
     protected function getTagNames(Purchase $purchase): array
     {
-        $productName = $purchase->purchasable->product->title;
-        $purchasableName = $purchase->purchasable->title;
+        return $purchase->getPurchasables()->flatMap(function (Purchasable $purchasable) {
+            $productName = $purchasable->product->title;
+            $purchasableName = $purchasable->title;
 
-        return [
-            "purchased-product-" . Str::slug($productName),
-            "purchased-purchasable-" . Str::slug($productName) .  '-' . Str::slug($purchasableName),
-        ];
+            return [
+                "purchased-product-" . Str::slug($productName),
+                "purchased-purchasable-" . Str::slug($productName) .  '-' . Str::slug($purchasableName),
+            ];
+        })->toArray();
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Mail\PurchaseConfirmationMail;
+use App\Models\Bundle;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
@@ -41,7 +42,7 @@ class HandlePurchaseAction
 
     public function execute(
         User $user,
-        Purchasable $purchasable,
+        Bundle|Purchasable $purchasable,
         PaddlePayload $paddlePayload,
         ?Referrer $referrer = null
     ): Purchase {
@@ -49,8 +50,11 @@ class HandlePurchaseAction
 
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
-        if ($purchasable->repository_access && $user->github_username) {
-            $this->restoreRepositoryAccessAction->execute($user);
+        $purchasables = $purchase->getPurchasables();
+        foreach ($purchasables as $purchasable) {
+            if ($purchasable->repository_access && $user->github_username) {
+                $this->restoreRepositoryAccessAction->execute($user);
+            }
         }
 
         $this->startOrExtendExtraDiscountPeriodAction->execute($user);
@@ -66,7 +70,9 @@ class HandlePurchaseAction
         }
 
         if ($user->email) {
-            Mail::to($user->email)->queue(new PurchaseConfirmationMail($purchase));
+            foreach ($purchasables as $purchasable) {
+                Mail::to($user->email)->queue(new PurchaseConfirmationMail($purchase, $purchasable));
+            }
         }
 
         return $purchase->refresh();
@@ -74,21 +80,28 @@ class HandlePurchaseAction
 
     protected function createPurchase(
         User $user,
-        Purchasable $purchasable,
+        Bundle|Purchasable $purchasable,
         PaddlePayload $paddlePayload
     ): Purchase {
         $receipt = Receipt::where('order_id', $paddlePayload->order_id)->first();
 
-        return Purchase::create([
+        $data = [
             'user_id' => $user->id,
-            'purchasable_id' => $purchasable->id,
             'quantity' => $paddlePayload->quantity(),
             'receipt_id' => $receipt->id,
             'paddle_webhook_payload' => $paddlePayload->toArray(),
             'paddle_fee' => $paddlePayload->balance_fee,
             'earnings' => $paddlePayload->balance_earnings,
             'passthrough' => $paddlePayload->passthrough(),
-        ]);
+        ];
+
+        if ($purchasable instanceof Bundle) {
+            $data['bundle_id'] = $purchasable->id;
+        } else {
+            $data['purchasable_id'] = $purchasable->id;
+        }
+
+        return Purchase::create($data);
     }
 
     public function createOrExtendRayLicense(User $user, Purchase $purchase)

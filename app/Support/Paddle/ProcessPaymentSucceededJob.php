@@ -2,8 +2,10 @@
 
 namespace App\Support\Paddle;
 
+use App\Actions\HandleBundlePurchaseAction;
 use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
+use App\Models\Bundle;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\Referrer;
@@ -38,7 +40,10 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        if (! $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first()) {
+        $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first();
+        $bundle = Bundle::where('paddle_product_id', $paddlePayload->bundle_id)->first();
+
+        if (! $purchasable && ! $bundle) {
             return;
         }
 
@@ -50,13 +55,31 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
         }
 
-        if (Purchase::where('user_id', $user->id)->where('purchasable_id', $purchasable->id)->where('receipt_id', $receipt->id)->exists()) {
-            return;
+        if ($purchasable) {
+            $purchaseForPurchasable = Purchase::where('user_id', $user->id)
+                ->where('purchasable_id', $purchasable->id)
+                ->where('receipt_id', $receipt->id)
+                ->exists();
+
+            if ($purchaseForPurchasable) {
+                return;
+            }
+        }
+
+        if ($bundle) {
+            $purchaseForBundle = Purchase::where('user_id', $user->id)
+                ->where('bundle_id', $bundle->id)
+                ->where('receipt_id', $receipt->id)
+                ->exists();
+
+            if ($purchaseForBundle) {
+                return;
+            }
         }
 
         app(HandlePurchaseAction::class)->execute(
             $user,
-            $purchasable,
+            $bundle ?? $purchasable,
             $paddlePayload,
             $this->determineReferrer($passthrough),
         );

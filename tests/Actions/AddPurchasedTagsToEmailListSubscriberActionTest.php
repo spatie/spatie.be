@@ -34,6 +34,33 @@ class AddPurchasedTagsToEmailListSubscriberActionTest extends TestCase
     }
 
     /** @test */
+    public function it_will_add_tags_for_a_bundle_purchase()
+    {
+        /** @var EmailList $emailList */
+        $emailList = EmailList::create(['name' => 'Spatie']);
+
+        $purchase = Purchase::factory()->forBundle()->create();
+
+        (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+
+        $this->assertTrue($emailList->isSubscribed($purchase->user->email));
+
+        $subscriber = Subscriber::findForEmail($purchase->user->email, $emailList);
+
+        $tagNames = $subscriber->tags->pluck('name')->toArray();
+
+        $purchasable1 = $purchase->bundle->purchasables->first();
+        $purchasable2 = $purchase->bundle->purchasables->skip(1)->first();
+
+        $this->assertEqualsCanonicalizing([
+            "purchased-product-" . Str::slug($purchasable1->product->title),
+            "purchased-product-" . Str::slug($purchasable2->product->title),
+            "purchased-purchasable-" .Str::slug($purchasable1->product->title) . '-' . Str::slug($purchasable1->title),
+            "purchased-purchasable-" .Str::slug($purchasable2->product->title) . '-' . Str::slug($purchasable2->title),
+        ], $tagNames);
+    }
+
+    /** @test */
     public function the_AddPurchasedTagsToEmailListSubscriberAction_is_idempotent()
     {
         /** @var EmailList $emailList */

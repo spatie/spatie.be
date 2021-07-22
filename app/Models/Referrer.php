@@ -25,6 +25,11 @@ class Referrer extends Model
         return $this->belongsToMany(Purchasable::class, 'referrer_purchasable');
     }
 
+    public function bundles(): BelongsToMany
+    {
+        return $this->belongsToMany(Bundle::class, 'referrer_bundle');
+    }
+
     public function usedForPurchases(): BelongsToMany
     {
         return $this->belongsToMany(Purchase::class, 'referrer_purchases');
@@ -42,18 +47,18 @@ class Referrer extends Model
         });
     }
 
-    public static function getActiveReferrerDiscountPercentage(Purchasable $purchasable): int
+    public static function getActiveReferrerDiscountPercentage(Model $model): int
     {
         if (! $referrer = static::findActive()) {
             return 0;
         }
 
-        return $referrer->getDiscountPercentage($purchasable);
+        return $referrer->getDiscountPercentage($model);
     }
 
-    public function getDiscountPercentage(Purchasable $purchasable): int
+    public function getDiscountPercentage(Model $model): int
     {
-        if (! $this->purchasables->pluck('id')->contains($purchasable->id)) {
+        if (! $this->purchasables->pluck('id')->contains($model->id) || ! $this->bundles->pluck('id')->contains($model->id)) {
             return 0;
         }
 
@@ -68,9 +73,9 @@ class Referrer extends Model
         return 0;
     }
 
-    public function hasActiveDiscount(Purchasable $purchasable): bool
+    public function hasActiveDiscount(Model $model): bool
     {
-        return $this->getDiscountPercentage($purchasable) > 0;
+        return $this->getDiscountPercentage($model) > 0;
     }
 
     public static function findActive(): ?self
