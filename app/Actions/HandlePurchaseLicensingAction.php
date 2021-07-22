@@ -20,11 +20,7 @@ class HandlePurchaseLicensingAction
 
     public function execute(Purchase $purchase): Purchase
     {
-        $purchasables = $purchase->bundle
-            ? $purchase->bundle->purchasables
-            : collect([$purchase->purchasable]);
-
-        $purchasables->each(function (Purchasable $purchasable) use ($purchase) {
+        $purchase->getPurchasables()->each(function (Purchasable $purchasable) use ($purchase) {
             if ($purchasable->isRenewal()) {
                 $this->handleRenewal($purchase);
 
