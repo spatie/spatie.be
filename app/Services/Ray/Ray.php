@@ -48,7 +48,7 @@ class Ray
     public function getDownloadLinkMacosAppleSilicon(): string
     {
         /** Hardcoded for now, replace when building new version */
-        return 'https://ray-app.s3.eu-west-1.amazonaws.com/Ray-1.14.7.dmg';
+        return 'https://ray-app.s3.eu-west-1.amazonaws.com/Ray-1.16.0.dmg';
 
         $latestVersion = $this->latestMacosIntelVersion();
 
