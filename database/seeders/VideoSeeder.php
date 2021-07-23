@@ -196,6 +196,19 @@ class VideoSeeder extends Seeder
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:49",
           ],
+          [
+            "series_id" => 4,
+            "vimeo_id" => "423805273",
+            "title" => "Video 2",
+            "slug" => "video-2",
+            "description" => "Whenever you finish viewing a video in the Laravel Package Training video section, that video will be marked as completed. You can also manually mark a video as (un)completed.\n\nThis video shows how we used Livewire to build that behaviour. We assume that you are already familiar with the general concepts of Livewire.\n\n## Links\n\n- [Laravel Package Training](https://laravelpackage.training)\n- [Livewire](https://laravel-livewire.com)",
+            "sort_order" => 0,
+            "runtime" => 344,
+            "thumbnail" => "https://i.vimeocdn.com/video/900409866_200x150.jpg?r=pad",
+            "display" => "sponsors",
+            "created_at" => "2020-06-24 12:48:52",
+            "updated_at" => "2020-06-29 13:19:49",
+          ],
         ]);
 
 

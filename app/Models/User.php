@@ -2,11 +2,17 @@
 
 namespace App\Models;
 
+use App\Domain\Experience\Models\Achievement;
+use App\Domain\Experience\Commands\RegisterVideoCompletion;
+use App\Domain\Experience\Projections\UserAchievementProjection;
+use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Enums\PurchasableType;
+use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Paddle\Billable;
@@ -27,7 +33,27 @@ class User extends Authenticatable
         'next_purchase_discount_period_ends_at' => 'datetime',
         'sponsor_gift_given_at' => 'datetime',
         'has_access_to_unreleased_products' => 'boolean',
+        'uuid' => Uuid::class,
     ];
+
+    protected static function booted()
+    {
+        self::saving(function (User $user) {
+            if ($user->uuid === null) {
+                $user->uuid = (string) Uuid::new();
+            }
+        });
+    }
+
+    public function resolveUuid(): string
+    {
+        if (! $this->uuid) {
+            $this->uuid = (string) Uuid::new();
+            $this->save();
+        }
+
+        return $this->uuid;
+    }
 
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
     {
@@ -65,7 +91,7 @@ class User extends Authenticatable
             return true;
         }
 
-        return (bool)$this->is_sponsor;
+        return (bool) $this->is_sponsor;
     }
 
     public function isSubscribedToNewsletter(): bool
@@ -151,5 +177,47 @@ class User extends Authenticatable
     public function canImpersonate(): bool
     {
         return $this->isSpatieMember();
+    }
+
+    public function hasCompleted(Series $series): bool
+    {
+        return Video::query()
+            ->where('series_id', $series->id)
+            ->whereDoesntHave('completions', function (Builder|VideoCompletion $builder) {
+                return $builder->where('user_id', $this->id);
+            })
+            ->doesntExist();
+    }
+
+    public function completeVideo(Video $video): self
+    {
+        VideoCompletion::create([
+            'user_id' => $this->id,
+            'video_id' => $video->id,
+        ]);
+
+        command(RegisterVideoCompletion::forUser(
+            user: $this,
+            videoId: $video->id
+        ));
+
+        return $this;
+    }
+
+    public function hasAchievement(Achievement $achievement): bool
+    {
+        return UserAchievementProjection::forUser($this->id)
+            ->andSlug($achievement->slug)
+            ->exists();
+    }
+
+    public function experience(): HasOne
+    {
+        return $this->hasOne(UserExperienceProjection::class);
+    }
+
+    public function achievements(): HasMany
+    {
+        return $this->hasMany(UserAchievementProjection::class);
     }
 }

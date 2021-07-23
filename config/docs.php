@@ -22,7 +22,7 @@ return [
             "name" => "laravel-mailcoach",
             "repository" => "spatie/laravel-mailcoach",
             "branches" => [
-                "master" => "v4",
+                "main" => "v4",
             ],
             "category" => "Laravel",
         ],
@@ -129,7 +129,7 @@ return [
             "name" => "image",
             "repository" => "spatie/image",
             "branches" => [
-                "master" => "v1",
+                "main" => "v1",
             ],
             "category" => "General PHP",
         ],

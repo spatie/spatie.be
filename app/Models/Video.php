@@ -6,7 +6,10 @@ use App\Actions\UpdateVideoDetailsAction;
 use App\Http\Controllers\VideosController;
 use App\Models\Enums\VideoDisplayEnum;
 use App\Services\Vimeo\Vimeo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -16,6 +19,7 @@ use Spatie\EloquentSortable\SortableTrait;
 
 class Video extends Model implements Sortable
 {
+    use HasFactory;
     use SortableTrait;
 
     protected $casts = [
@@ -46,9 +50,14 @@ class Video extends Model implements Sortable
         static::saved(fn (Video $video) => app(UpdateVideoDetailsAction::class)->execute($video));
     }
 
-    public function series()
+    public function series(): BelongsTo
     {
         return $this->belongsTo(Series::class);
+    }
+
+    public function completions(): HasMany
+    {
+        return $this->hasMany(VideoCompletion::class);
     }
 
     public function getPrevious(): ?Video
@@ -181,7 +190,7 @@ class Video extends Model implements Sortable
             return $this;
         }
 
-        $currentUser->completedVideos()->syncWithoutDetaching($this);
+        $currentUser->completeVideo($this);
 
         return $this;
     }
