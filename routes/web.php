@@ -159,8 +159,12 @@ Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::
 
 Route::view('offline', 'errors.offline')->name('offline');
 
+Route::permanentRedirect('testing-laravel', 'https://testing-laravel.com');
+
+/*
 Route::get('testing-laravel', [TestingLaravelController::class, 'show']);
 Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
+*/
 
 Route::get('uses', [UsesController::class, 'index'])->name('uses')->middleware(AdminsOnly::class);
 
