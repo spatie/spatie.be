@@ -22,6 +22,6 @@ class AfterPaddleBundleSaleController
 
         flash()->success('Purchase successful!');
 
-        return redirect()->route('products.show', $bundle->purchasables->first()->product);
+        return redirect()->route('purchases');
     }
 }
