@@ -28,6 +28,7 @@ namespace App\Support\Paddle;
  * @property string $payment_method
  * @property string $payment_tax
  * @property string $product_id
+ * @property string $bundle_id
  * @property string $product_name
  * @property string $quantity
  * @property string $receipt_url
