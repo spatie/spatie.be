@@ -168,12 +168,14 @@ class User extends Authenticatable
 
     public function purchasesWithoutRenewals(): HasMany
     {
-        return $this->hasMany(Purchase::class)->whereHas('purchasable', function (Builder $query): void {
-            $query->whereNotIn('type', [
-                PurchasableType::TYPE_STANDARD_RENEWAL,
-                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
-            ]);
-        })->orWhereHas('bundle');
+        return $this->hasMany(Purchase::class)->where(function (Builder $query) {
+            $query->whereHas('purchasable', function (Builder $query): void {
+                $query->whereNotIn('type', [
+                    PurchasableType::TYPE_STANDARD_RENEWAL,
+                    PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+                ]);
+            })->orWhereHas('bundle');
+        });
     }
 
     public function completedVideos(): BelongsToMany
