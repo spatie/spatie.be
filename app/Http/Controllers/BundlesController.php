@@ -13,7 +13,7 @@ class BundlesController
     public function show(Bundle $bundle)
     {
         if (! auth()->check()) {
-            return redirect(route('login') . "?next=" . route('bundles.buy', [$bundle]));
+            return redirect(route('login') . "?next=" . route('bundles.show', [$bundle]));
         }
 
         $payLink = auth()->user()->getPayLinkForBundle($bundle);
