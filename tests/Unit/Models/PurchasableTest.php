@@ -2,6 +2,7 @@
 
 namespace Tests\Unit\Models;
 
+use App\Models\Bundle;
 use App\Models\Purchasable;
 use App\Models\Referrer;
 use App\Models\User;
@@ -133,5 +134,32 @@ class PurchasableTest extends TestCase
 
         $this->assertEquals(5000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
         $this->assertEquals(50, $this->purchasable->displayableDiscountPercentage());
+    }
+
+    /** @test */
+    public function it_will_apply_discounts_to_bundles()
+    {
+        $this->user->update([
+            'next_purchase_discount_period_ends_at' => now()->addHour(),
+        ]);
+        $this->actingAs($this->user);
+
+        /** @var \App\Models\Referrer $referrer */
+        $referrer = Referrer::factory()->create([
+            'discount_percentage' => 10,
+        ]);
+
+        $referrer->makeActive();
+
+        /** @var \App\Models\Bundle $bundle */
+        $bundle = Bundle::factory()->create([
+            'price_in_usd_cents' => 10000,
+        ]);
+
+        $referrer->bundles()->attach($bundle);
+
+        $this->assertTrue($bundle->hasActiveDiscount());
+        $this->assertEquals(8000, $bundle->getPriceForCountryCode('BE')->priceInCents);
+        $this->assertEquals(20, $bundle->displayableDiscountPercentage());
     }
 }

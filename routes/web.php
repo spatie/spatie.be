@@ -6,8 +6,10 @@ use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
+use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\AppleSocialiteController;
 use App\Http\Controllers\BlogsController;
+use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
@@ -77,6 +79,11 @@ Route::prefix('products')->group(function () {
         ->name('purchase.download');
 
     Route::get('{product:slug}/release-notes', ShowReleaseNotesController::class)->name('product.releaseNotes');
+});
+
+Route::prefix('bundles')->group(function () {
+    Route::get('{bundle:slug}', [BundlesController::class, 'show'])->name('bundles.show');
+    Route::get('{bundle:slug}/purchase-complete', AfterPaddleBundleSaleController::class);
 });
 
 Route::prefix('open-source')->group(function () {

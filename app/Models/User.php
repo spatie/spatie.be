@@ -85,6 +85,32 @@ class User extends Authenticatable
         ]);
     }
 
+    public function getPayLinkForBundle(Bundle $bundle)
+    {
+        $displayablePrice = $bundle->getPriceForIp(request()->ip());
+        $prices[] = $displayablePrice->toPaddleFormat();
+        if ($displayablePrice->currencyCode !== 'USD') {
+            $dollarDisplayablePrice = $bundle->getPriceForCountryCode('US');
+            $prices[] = $dollarDisplayablePrice->toPaddleFormat();
+        }
+
+        $passthrough = [];
+
+        $passthrough['bundle_id'] = $bundle->id;
+
+        if ($referrer = Referrer::findActive()) {
+            $passthrough['referrer_uuid'] = $referrer->uuid;
+        }
+
+        return $this->chargeProduct($bundle->paddle_product_id, [
+            'quantity_variable' => false,
+            'customer_email' => auth()->user()->email,
+            'marketing_consent' => true,
+            'prices' => $prices,
+            'passthrough' => $passthrough,
+        ]);
+    }
+
     public function isSponsoring(): bool
     {
         if ($this->isSpatieMember()) {
@@ -147,7 +173,7 @@ class User extends Authenticatable
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
             ]);
-        });
+        })->orWhereHas('bundle');
     }
 
     public function completedVideos(): BelongsToMany

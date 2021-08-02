@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bundle;
 use App\Models\License;
 use App\Models\Product;
 use App\Models\Purchasable;
@@ -15,7 +16,11 @@ class ProductsController
             ->where('visible', true)
             ->get();
 
-        return view('front.pages.products.index', compact('products'));
+        $bundles = Bundle::orderBy('sort_order')
+            ->where('visible', true)
+            ->get();
+
+        return view('front.pages.products.index', compact('products', 'bundles'));
     }
 
     public function show(Request $request, Product $product)

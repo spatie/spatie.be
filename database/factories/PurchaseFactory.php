@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Bundle;
 use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
@@ -24,5 +25,15 @@ class PurchaseFactory extends Factory
             'paddle_fee' => $this->faker->randomNumber(),
             'earnings' => $this->faker->randomNumber(),
         ];
+    }
+
+    public function forBundle()
+    {
+        return $this->state(function (array $attributes) {
+            return [
+                'purchasable_id' => null,
+                'bundle_id' => Bundle::factory()->has(Purchasable::factory()->count(2)),
+            ];
+        });
     }
 }

@@ -22,7 +22,7 @@
                     @foreach ($purchasesPerProduct as $productId => $purchasesForProduct)
                         @php
                             /** @var \App\Models\Product $product */
-                            $product = $purchasesForProduct->first()->purchasable->product;
+                            $product = $purchasesForProduct->first()['product'];
                         @endphp
                         <li>
                             @include('front.pages.products.partials.productPurchases')
