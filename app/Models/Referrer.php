@@ -47,7 +47,7 @@ class Referrer extends Model
         });
     }
 
-    public static function getActiveReferrerDiscountPercentage(Model $model): int
+    public static function getActiveReferrerDiscountPercentage(Purchasable|Bundle $model): int
     {
         if (! $referrer = static::findActive()) {
             return 0;
@@ -56,7 +56,7 @@ class Referrer extends Model
         return $referrer->getDiscountPercentage($model);
     }
 
-    public function getDiscountPercentage(Model $model): int
+    public function getDiscountPercentage(Purchasable|Bundle $model): int
     {
         if (! $this->purchasables->pluck('id')->contains($model->id) && ! $this->bundles->pluck('id')->contains($model->id)) {
             return 0;
@@ -73,7 +73,7 @@ class Referrer extends Model
         return 0;
     }
 
-    public function hasActiveDiscount(Model $model): bool
+    public function hasActiveDiscount(Purchasable|Bundle $model): bool
     {
         return $this->getDiscountPercentage($model) > 0;
     }
