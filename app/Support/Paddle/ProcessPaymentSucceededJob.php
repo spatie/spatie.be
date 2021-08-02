@@ -2,7 +2,6 @@
 
 namespace App\Support\Paddle;
 
-use App\Actions\HandleBundlePurchaseAction;
 use App\Actions\HandlePurchaseAction;
 use App\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Models\Bundle;
@@ -40,12 +39,8 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        $purchasable = isset($passthrough['product_id'])
-            ? Purchasable::where('paddle_product_id', $passthrough['product_id'])->first()
-            : null;
-        $bundle = isset($passthrough['bundle_id'])
-            ? Bundle::where('paddle_product_id', $passthrough['bundle_id'])->first()
-            : null;
+        $purchasable = Purchasable::where('paddle_product_id', $paddlePayload->product_id)->first();
+        $bundle = Bundle::where('paddle_product_id', $paddlePayload->product_id)->first();
 
         if (! $purchasable && ! $bundle) {
             return;
