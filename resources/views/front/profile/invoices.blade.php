@@ -27,8 +27,11 @@
                 @if($transaction->purchase)
                     <div class="grid grid-cols-4 py-3 border-b-2 border-gray-lighter">
                         <span class="font-bold">{{ $transaction->paid_at->toFormattedDateString() }}</span>
-                        <span
-                            class="">{{ $transaction->purchase->purchasable->product->title }} - {{ $transaction->purchase->purchasable->title }}</span>
+                        @if ($transaction->purchase->purchasable_id)
+                            <span class="">{{ $transaction->purchase->purchasable->product->title }} - {{ $transaction->purchase->purchasable->title }}</span>
+                        @elseif($transaction->purchase->bundle_id)
+                            <span class="">{{ $transaction->purchase->bundle->title }}</span>
+                        @endif
                         <span>{{ $transaction->amount() }}</span>
                         <span><a class="link-underline link-blue" href="{{ $transaction->receipt_url }}"
                                  target="_blank">Download</a></span>
