@@ -163,7 +163,7 @@ class User extends Authenticatable
 
     public function purchases(): HasMany
     {
-        return $this->hasMany(Purchase::class)->with('purchasable.product');
+        return $this->hasMany(Purchase::class)->with(['purchasable.product', 'bundle']);
     }
 
     public function purchasesWithoutRenewals(): HasMany
