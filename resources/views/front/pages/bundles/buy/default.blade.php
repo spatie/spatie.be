@@ -39,6 +39,7 @@
         </div>
     </div>
     <div class="col-span-9 sm:col-start-1 sm:col-span-4" style="bottom: -1rem">
+        <style>.illustration img { width: 100%; }</style>
         <div class="illustration is-left mb-12" title="Project">
             {{ $bundle->getFirstMedia('image') }}
         </div>
