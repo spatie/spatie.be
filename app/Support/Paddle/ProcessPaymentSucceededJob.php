@@ -40,8 +40,12 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        $purchasable = Purchasable::where('paddle_product_id', $passthrough['product_id'])->first();
-        $bundle = Bundle::where('paddle_product_id', $passthrough['bundle_id'])->first();
+        $purchasable = isset($passthrough['product_id'])
+            ? Purchasable::where('paddle_product_id', $passthrough['product_id'])->first()
+            : null;
+        $bundle = isset($passthrough['bundle_id'])
+            ? Bundle::where('paddle_product_id', $passthrough['bundle_id'])->first()
+            : null;
 
         if (! $purchasable && ! $bundle) {
             return;
