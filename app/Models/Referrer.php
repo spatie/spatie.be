@@ -35,7 +35,7 @@ class Referrer extends Model
         return $this->belongsToMany(Purchase::class, 'referrer_purchases');
     }
 
-    public static function activeReferrerGrantsDiscount(Purchasable $purchasable): bool
+    public static function activeReferrerGrantsDiscount(Purchasable|Bundle $purchasable): bool
     {
         return static::getActiveReferrerDiscountPercentage($purchasable) > 0;
     }
