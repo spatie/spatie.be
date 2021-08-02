@@ -17,30 +17,32 @@
 
    {{-- @include('front.pages.products.partials.ctaLaraconEU') --}}
 
-    <section class="section overflow-visible section-group">
-        <div class="wrap">
-            <h2 class="text-2xl mb-6">Take a look at our bundle promotions!</h2>
-            <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
-                @foreach ($bundles as $bundle)
-                    <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
-                        <a href="{{ route('bundles.show', $bundle) }}" class="group">
-                            <div class="-mt-8 pb-8 px-12 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
-                                <div class="shadow-md group-hover:shadow-lg">{{ $bundle->getFirstMedia('image') }}</div>
-                            </div>
-                            <h2 class="title-sm link-black link-underline">{{ $bundle->title }}</h2>
-                            <p class="mt-4">{{ $bundle->formattedDescription }}</p>
-                        </a>
-
-                        <p class="mt-4 flex items-center space-x-4">
-                            <a href="{{ route('bundles.show', $bundle) }}">
-                                <x-button>Buy</x-button>
+    @if (count($bundles))
+        <section class="section overflow-visible section-group">
+            <div class="wrap">
+                <h2 class="text-2xl mb-6">Take a look at our bundle promotions!</h2>
+                <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
+                    @foreach ($bundles as $bundle)
+                        <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
+                            <a href="{{ route('bundles.show', $bundle) }}" class="group">
+                                <div class="-mt-8 pb-8 px-12 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
+                                    <div class="shadow-md group-hover:shadow-lg">{{ $bundle->getFirstMedia('image') }}</div>
+                                </div>
+                                <h2 class="title-sm link-black link-underline">{{ $bundle->title }}</h2>
+                                <p class="mt-4">{{ $bundle->formattedDescription }}</p>
                             </a>
-                        </p>
-                    </div>
-                @endforeach
+
+                            <p class="mt-4 flex items-center space-x-4">
+                                <a href="{{ route('bundles.show', $bundle) }}">
+                                    <x-button>Buy</x-button>
+                                </a>
+                            </p>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     <section class="section overflow-visible section-group">
             <div class="wrap">
