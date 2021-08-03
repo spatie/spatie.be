@@ -85,6 +85,32 @@ class User extends Authenticatable
         ]);
     }
 
+    public function getPayLinkForBundle(Bundle $bundle)
+    {
+        $displayablePrice = $bundle->getPriceForIp(request()->ip());
+        $prices[] = $displayablePrice->toPaddleFormat();
+        if ($displayablePrice->currencyCode !== 'USD') {
+            $dollarDisplayablePrice = $bundle->getPriceForCountryCode('US');
+            $prices[] = $dollarDisplayablePrice->toPaddleFormat();
+        }
+
+        $passthrough = [];
+
+        $passthrough['bundle_id'] = $bundle->id;
+
+        if ($referrer = Referrer::findActive()) {
+            $passthrough['referrer_uuid'] = $referrer->uuid;
+        }
+
+        return $this->chargeProduct($bundle->paddle_product_id, [
+            'quantity_variable' => false,
+            'customer_email' => auth()->user()->email,
+            'marketing_consent' => true,
+            'prices' => $prices,
+            'passthrough' => $passthrough,
+        ]);
+    }
+
     public function isSponsoring(): bool
     {
         if ($this->isSpatieMember()) {
@@ -137,16 +163,18 @@ class User extends Authenticatable
 
     public function purchases(): HasMany
     {
-        return $this->hasMany(Purchase::class)->with('purchasable.product');
+        return $this->hasMany(Purchase::class)->with(['purchasable.product', 'bundle']);
     }
 
     public function purchasesWithoutRenewals(): HasMany
     {
-        return $this->hasMany(Purchase::class)->whereHas('purchasable', function (Builder $query): void {
-            $query->whereNotIn('type', [
-                PurchasableType::TYPE_STANDARD_RENEWAL,
-                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
-            ]);
+        return $this->hasMany(Purchase::class)->where(function (Builder $query) {
+            $query->whereHas('purchasable', function (Builder $query): void {
+                $query->whereNotIn('type', [
+                    PurchasableType::TYPE_STANDARD_RENEWAL,
+                    PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+                ]);
+            })->orWhereHas('bundle');
         });
     }
 

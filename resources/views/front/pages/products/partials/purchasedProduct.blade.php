@@ -1,8 +1,9 @@
 @php
-    /** @var \App\Models\Purchase $purchase */
-    $purchasable = $purchase->purchasable;
+    /** @var \Illuminate\Support\Collection<\App\Models\Purchase> $purchase */
+    $purchasables = $purchase->getPurchasablesForProduct($product);
 @endphp
 
+@foreach ($purchasables as $purchasable)
 <div class="cells">
     <div class="cell-l">
         {!! $purchasable->getting_started_description ?? '' !!}
@@ -70,3 +71,4 @@
 
     </div>
 </div>
+@endforeach

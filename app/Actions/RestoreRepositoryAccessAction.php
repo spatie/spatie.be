@@ -2,6 +2,7 @@
 
 namespace App\Actions;
 
+use App\Models\Purchasable;
 use App\Models\Purchase;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
@@ -17,24 +18,23 @@ class RestoreRepositoryAccessAction
 
     public function execute(User $user): void
     {
-        $user->purchases
-            ->where('has_repository_access', false)
-            ->filter(fn (Purchase $purchase) => $purchase->purchasable->repository_access)
-            ->filter(function (Purchase $purchase) {
-                if (! $purchase->purchasable->requires_license) {
-                    return true;
+        $purchases = $user->purchases->where('has_repository_access', false);
+
+        $purchases->each(function (Purchase $purchase) use ($user) {
+            $purchase->getPurchasables()->each(function (Purchasable $purchasable) use ($user, $purchase) {
+                if (! $purchasable->repository_access) {
+                    return;
                 }
 
-                foreach ($purchase->licenses as $license) {
-                    if (! $license->isExpired()) {
-                        return true;
-                    }
+                $hasActiveLicense = $purchase->licenses()
+                    ->where('purchasable_id', $purchasable->id)
+                    ->whereNotExpired()
+                    ->exists();
+                if ($purchasable->requires_license && !$hasActiveLicense) {
+                    return;
                 }
 
-                return false;
-            })
-            ->each(function (Purchase $purchase) use ($user) {
-                $repositories = explode(', ', $purchase->purchasable->repository_access);
+                $repositories = explode(', ', $purchasable->repository_access);
 
                 foreach($repositories as $repository) {
                     $this->gitHubApi->inviteToRepo(
@@ -45,5 +45,6 @@ class RestoreRepositoryAccessAction
 
                 $purchase->update(['has_repository_access' => true]);
             });
+        });
     }
 }

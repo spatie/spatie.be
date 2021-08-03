@@ -13,7 +13,7 @@ class PurchaseConfirmationMailTest extends TestCase
     {
         $purchase = Purchase::factory()->create();
 
-        $mailable = new PurchaseConfirmationMail($purchase);
+        $mailable = new PurchaseConfirmationMail($purchase, $purchase->purchasable);
 
         $this->assertIsString($mailable->render());
     }

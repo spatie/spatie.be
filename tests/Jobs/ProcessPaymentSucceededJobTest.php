@@ -2,6 +2,7 @@
 
 namespace Tests\Jobs;
 
+use App\Models\Bundle;
 use App\Models\Purchasable;
 use App\Models\Referrer;
 use App\Models\User;
@@ -56,6 +57,24 @@ class ProcessPaymentSucceededJobTest extends TestCase
         dispatch(new ProcessPaymentSucceededJob($this->payload));
 
         $this->assertCount(1, $this->user->refresh()->purchases);
+    }
+
+    /** @test */
+    public function it_can_handle_an_incoming_bundle_payment()
+    {
+        Bundle::factory()->create([
+            'paddle_product_id' => 123,
+        ]);
+
+        $payload = $this->payload;
+        $payload['product_id'] = 123;
+
+        $this->assertCount(0, $this->user->refresh()->purchases);
+
+        dispatch(new ProcessPaymentSucceededJob($payload));
+
+        $this->assertCount(1, $this->user->refresh()->purchases);
+        $this->assertNotNull($this->user->refresh()->purchases->first()->bundle_id);
     }
 
     /** @test */

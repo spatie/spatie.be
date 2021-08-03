@@ -5,7 +5,7 @@
         @foreach ($purchases as $purchase)
             @php /** @var \App\Models\Purchase $purchase */ @endphp
             <div class="mb-8">
-                <h3 class="title-sm">{{ $purchase->purchasable->title }}</h3>
+                <h3 class="title-sm">{{ $purchase->getPurchasablesForProduct($product)->first()->title }}</h3>
                 @include('front.pages.products.partials.purchasedProduct', ['purchase' => $purchase])
             </div>
         @endforeach

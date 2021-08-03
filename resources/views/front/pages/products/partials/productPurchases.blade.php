@@ -2,37 +2,40 @@
 
         <div class="flex items-baseline space-x-4">
             <h2 class="title-sm mb-0">
-                {{ $product->title }}     
+                {{ $product->title }}
             </h2>
 
             <a href="{{ route('products.show', $product) }}#purchases"
             class="link-blue link-underline">
-                Manage 
+                Manage
                 {{ \Illuminate\Support\Str::plural('purchase', $purchasesForProduct->count()) }}
             </a>
 
-            @if ($purchasesForProduct->filter(fn (\App\Models\Purchase $purchase) => $purchase->hasAccessToVideos())->count() > 0)
+            @if ($purchasesForProduct->pluck('purchase')->filter(fn (\App\Models\Purchase $purchase) => $purchase->hasAccessToVideos())->count() > 0)
                 <span class="mx-2 text-gray-light">|</span>
-                <a href="{{ $purchasesForProduct->first()->purchasable->series->first()->url }}" class="link-blue link-underline">
+                <a href="{{ $purchasesForProduct->first()['purchase']->getPurchasables()->first()->series->first()->url }}" class="link-blue link-underline">
                     Watch course
                 </a>
             @endif
         </div>
 
 
-    @foreach($purchasesForProduct as $purchase)
+    @foreach($purchasesForProduct as $data)
         @php
-            /** @var \App\Models\Purchasable $purchasable */
-            $purchasable = $purchase->purchasable;
+            /** @var \App\Models\Purchase $purchase */
+            $purchase = $data['purchase'];
+
+            /** @var \Illuminate\Support\Collection $purchasables */
+            $purchasables = $purchase->getPurchasables();
         @endphp
 
         @if ($purchase->license)
         <div class="cells">
             <div class="cell-l">
                 <a class="link-black link-underline" href="{{ route('products.show', $product) }}#purchases">
-                    {{ $purchasable->title }}
+                    {{ $purchasables->first()->title }}
                 </a>
-                
+
                 <div class="text-xs text-gray">
                     @if ($purchase->license->domain)
                         {{ $purchase->license->domain }}

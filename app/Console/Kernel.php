@@ -9,6 +9,7 @@ use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
 use App\Console\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Console\Commands\SendLicenseExpirationNotificationsCommand;
+use App\Console\Commands\UpdateBundlePricesCommand;
 use App\Console\Commands\UpdateConversionRatesCommand;
 use App\Console\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
@@ -42,6 +43,7 @@ class Kernel extends ConsoleKernel
         $schedule->job(RandomizeAdsOnGitHubRepositoriesJob::class)->weekly();
         $schedule->command(UpdateConversionRatesCommand::class)->runInBackground()->sundays()->at('05:00');
         $schedule->command(UpdatePurchasablePricesCommand::class)->runInBackground()->sundays()->at('06:00');
+        $schedule->command(UpdateBundlePricesCommand::class)->runInBackground()->sundays()->at('06:30');
     }
 
     protected function commands(): void
