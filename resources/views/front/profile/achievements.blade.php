@@ -10,6 +10,10 @@
             <h1 class="banner-slogan">
                 My achievements
             </h1>
+
+            <a href="{{ action([\App\Http\Controllers\PublicProfileController::class, 'show'], $user->uuid) }}">
+                Share my profile
+            </a>
         </div>
     </section>
 

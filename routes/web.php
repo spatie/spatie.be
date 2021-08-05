@@ -14,6 +14,7 @@ use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
+use App\Http\Controllers\PublicProfileController;
 use App\Http\Controllers\TestingLaravelController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ShowReleaseNotesController;
@@ -126,6 +127,8 @@ Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('purchases', PurchasesController::class)->name('purchases');
     Route::get('invoices', InvoicesController::class)->name('invoices');
 });
+
+Route::get('/profile/{userUuid}', [PublicProfileController::class, 'show']);
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login');
