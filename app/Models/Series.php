@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\DataTransferObjects\SeriesProgress;
 use App\Domain\Experience\Observers\SeriesAchievementsObserver;
 use App\Models\Enums\VideoDisplayEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -104,5 +105,15 @@ class Series extends Model implements HasMedia, Sortable
     public function purchasableWithDiscount(): ?Purchasable
     {
         return optional($this->purchasables()->get())->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
+    }
+
+    public function getProgress(?User $user = null): SeriesProgress
+    {
+        $user ??= current_user();
+
+        return new SeriesProgress(
+            total: $this->videos->count(),
+            completed: $user->getCompletedVideosForSeries($this)->count(),
+        );
     }
 }

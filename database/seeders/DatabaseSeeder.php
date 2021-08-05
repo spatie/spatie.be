@@ -16,11 +16,11 @@ class DatabaseSeeder extends Seeder
             ->call(PlaylistSeeder::class)
             ->call(RepositoriesSeeder::class)
             ->call(ProductSeeder::class)
+            ->call(AchievementSeeder::class)
             ->call(UserSeeder::class)
             ->call(PurchaseSeeder::class)
             ->call(VideoSeeder::class)
             ->call(TechnologiesSeeder::class)
-            ->call(AchievementSeeder::class)
             ->call(VideoSeeder::class);
     }
 }

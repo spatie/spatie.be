@@ -1,6 +1,11 @@
+@php
+/** @var \App\Models\Series $series */
+@endphp
+
 <nav class="sticky top-0 px-4 py-6 bg-white bg-opacity-50 shadow-light rounded-sm markup-lists">
     <h2 class="title-sm text-sm mb-4">
-        {{ $series->title }}
+        {{-- TODO: style progress bar --}}
+        {{ $series->title }} ({{ $series->getProgress()->completed }} / {{ $series->getProgress()->total }})
     </h2>
 
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())

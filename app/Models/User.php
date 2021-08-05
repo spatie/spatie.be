@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Paddle\Billable;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
@@ -247,5 +248,11 @@ class User extends Authenticatable
     public function achievements(): HasMany
     {
         return $this->hasMany(UserAchievementProjection::class);
+    }
+
+    public function getCompletedVideosForSeries(Series $series): Collection
+    {
+        return $this->completedVideos
+            ->filter(fn (Video $video) => $video->series_id === $series->id);
     }
 }
