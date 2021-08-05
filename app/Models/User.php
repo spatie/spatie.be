@@ -250,6 +250,11 @@ class User extends Authenticatable
         return $this->hasMany(UserAchievementProjection::class);
     }
 
+    public function getAvailableAchievements(): Collection
+    {
+        return Achievement::availableForUser($this)->get();
+    }
+
     public function getCompletedVideosForSeries(Series $series): Collection
     {
         return $this->completedVideos

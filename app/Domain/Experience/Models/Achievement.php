@@ -6,10 +6,12 @@ use App\Domain\Experience\Achievements\AchievementResolver;
 use App\Domain\Experience\Enums\AchievementType;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Models\Series;
+use App\Models\User;
 use Database\Factories\AchievementFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 
 class Achievement extends Model
 {
@@ -42,6 +44,11 @@ class Achievement extends Model
         $builder->where('type', AchievementType::Experience());
     }
 
+    public function scopeAvailableForUser(Builder|Achievement $builder, User $user): void
+    {
+        $builder->whereNotIn('id', $user->achievements->pluck('achievement_id'));
+    }
+
     public function receivedBy(int $userId): bool
     {
         return UserAchievementProjection::forUser($userId)
@@ -52,5 +59,23 @@ class Achievement extends Model
     protected static function newFactory()
     {
         return new AchievementFactory();
+    }
+
+    public function getImageUrl(): ?string
+    {
+        if (! $this->image_path) {
+            return null;
+        }
+
+        return Storage::disk('public')->url($this->image_path);
+    }
+
+    public function getAttachmentUrl(): ?string
+    {
+        if (! $this->attachment_path) {
+            return null;
+        }
+
+        return Storage::disk('public')->url($this->attachment_path);
     }
 }

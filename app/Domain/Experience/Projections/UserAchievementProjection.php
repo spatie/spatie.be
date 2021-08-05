@@ -29,23 +29,11 @@ class UserAchievementProjection extends Projection
 
     public function getImageUrl(): ?string
     {
-        $imagePath = $this->achievement->image_path;
-
-        if (! $imagePath) {
-            return null;
-        }
-
-        return Storage::disk('public')->url($imagePath);
+        return $this->achievement?->getImageUrl();
     }
 
     public function getAttachmentUrl(): ?string
     {
-        $attachmentPath = $this->achievement->attachment_path;
-
-        if (! $attachmentPath) {
-            return null;
-        }
-
-        return Storage::disk('public')->url($attachmentPath);
+        return $this->achievement?->getAttachmentUrl();
     }
 }

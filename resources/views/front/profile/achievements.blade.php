@@ -43,4 +43,16 @@
             @endforeach
         </div>
     <section>
+
+    <section class="section section-group pt-0 mt-4">
+        <div class="wrap">
+            <strong>Achievements you can still get</strong>
+
+            <ul>
+                @foreach ($user->getAvailableAchievements() as $availableAchievement)
+                    <li>{{ $availableAchievement->title }}</li>
+                @endforeach
+            </ul>
+        </div>
+    <section>
 </x-page>
