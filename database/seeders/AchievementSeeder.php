@@ -5,11 +5,16 @@ namespace Database\Seeders;
 use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Enums\AchievementType;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class AchievementSeeder extends Seeder
 {
     public function run(): void
     {
+        if (! file_exists(Storage::disk('public')->path('achievement.png'))) {
+            Storage::disk('public')->put('achievement.png', file_get_contents(__DIR__ . '/achievement.png'));
+        }
+
         collect([
             ['100-experience', '100 XP!', "You've earned a 100 XP points", 100],
             ['1000-experience', '1000 XP!', "You've earned a 1000 XP points", 1000],
@@ -21,9 +26,10 @@ class AchievementSeeder extends Seeder
                     'description' => $description,
                     'type' => AchievementType::Experience(),
                     'data' => ['count_requirement' => $requiredCount],
+                    'image_path' => 'achievement.png',
+                    'attachment_path' => 'achievement.png',
                 ]);
             });
-
 
         collect([
             ['10-pull-requests', '10 Pull Requests', "You've got ten merged pull requests!", 10,],
@@ -38,6 +44,8 @@ class AchievementSeeder extends Seeder
                     'description' => $description,
                     'type' => AchievementType::PullRequest(),
                     'data' => ['count_requirement' => $requiredCount],
+                    'image_path' => 'achievement.png',
+                    'attachment_path' => 'achievement.png',
                 ]);
             });
     }

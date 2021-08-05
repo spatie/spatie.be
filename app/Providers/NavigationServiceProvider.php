@@ -60,6 +60,7 @@ class NavigationServiceProvider extends ServiceProvider
         Menu::macro('profile', function () {
             return Menu::new()
                 ->route('profile', 'Profile')
+                ->route('achievements', 'Achievements')
                 ->route('profile.password', 'Password')
                 ->route('purchases', 'Purchases')
                 ->route('invoices', 'Invoices')

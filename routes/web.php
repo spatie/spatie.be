@@ -6,6 +6,7 @@ use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
+use App\Http\Controllers\AchievementsController;
 use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\AppleSocialiteController;
 use App\Http\Controllers\BlogsController;
@@ -114,6 +115,7 @@ Route::prefix('vacancies')->group(function () {
 Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('/', [ProfileController::class, 'show'])->name('profile');
     Route::put('/', [ProfileController::class, 'update'])->name('profile');
+    Route::get('/achievements', [AchievementsController::class, 'show'])->name('achievements');
     Route::get('disconnect', [ProfileController::class, 'disconnect'])->name('github-disconnect');
     Route::get('disconnect-apple', [ProfileController::class, 'disconnectApple'])->name('apple-disconnect');
     Route::delete('/', [ProfileController::class, 'delete'])->name('profile');
