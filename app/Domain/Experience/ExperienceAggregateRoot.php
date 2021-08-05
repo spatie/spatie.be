@@ -6,7 +6,9 @@ use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\RegisterSeriesCompletion;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
+use App\Domain\Experience\Commands\SaveAchievementOgImage;
 use App\Domain\Experience\Commands\UnlockAchievement;
+use App\Domain\Experience\Events\AchievementOgImageSaved;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Events\ExperienceEarned;
 use App\Domain\Experience\Events\PullRequestMerged;
@@ -126,5 +128,16 @@ class ExperienceAggregateRoot extends AggregateRoot
     protected function applySeriesCompletion(SeriesCompleted $event): void
     {
         $this->completedSeries[$event->seriesId] = true;
+    }
+
+    public function saveAchievementOgImage(SaveAchievementOgImage $command): self
+    {
+        $this->recordThat(new AchievementOgImageSaved(
+            userUuid: $command->uuid,
+            userAchievementUuid: $command->userAchievementUuid,
+            imagePath: $command->imagePath,
+        ));
+
+        return $this;
     }
 }

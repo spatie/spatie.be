@@ -39,10 +39,16 @@
                         {{ $achievement->created_at->format('Y-m-d') }}
                     </p>
 
-                    @if($attachmentUrl = $achievement->getAttachmentUrl())
-                        {{-- Should this be a download link or just a new tab? --}}
-                        <a href="{{ $attachmentUrl }}" target="_blank" rel="noopener noreferrer">Download your certificate</a>
-                    @endif
+                    <div>
+                        @if($attachmentUrl = $achievement->getAttachmentUrl())
+                            {{-- Should this be a download link or just a new tab? --}}
+                            <a href="{{ $attachmentUrl }}" target="_blank" rel="noopener noreferrer">Download your certificate</a>
+                        @endif
+                    </div>
+
+                    <div>
+                        <a href="{{ $achievement->getShareUrl() }}" target="_blank" rel="noopener noreferrer">Share</a>
+                    </div>
                 </div>
             @endforeach
         </div>

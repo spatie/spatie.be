@@ -12,5 +12,9 @@ return new class extends Migration
             $table->string('image_path')->nullable()->after('type');
             $table->string('attachment_path')->nullable()->after('image_path');
         });
+
+        Schema::table('user_achievements', function (Blueprint $table) {
+            $table->string('og_image_path')->nullable()->after('description');
+        });
     }
 };

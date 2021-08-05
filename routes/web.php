@@ -129,6 +129,8 @@ Route::middleware('auth')->prefix('profile')->group(function () {
 });
 
 Route::get('/profile/{userUuid}', [PublicProfileController::class, 'show']);
+Route::get('/profile/{userUuid}/{slug}', [PublicProfileController::class, 'achievement']);
+Route::get('/profile/{userUuid}/{slug}/meta', [PublicProfileController::class, 'meta']);
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login'])->name('login');
