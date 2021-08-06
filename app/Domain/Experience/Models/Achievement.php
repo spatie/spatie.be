@@ -69,13 +69,4 @@ class Achievement extends Model
 
         return Storage::disk('public')->url($this->image_path);
     }
-
-    public function getAttachmentUrl(): ?string
-    {
-        if (! $this->attachment_path) {
-            return null;
-        }
-
-        return Storage::disk('public')->url($this->attachment_path);
-    }
 }

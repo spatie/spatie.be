@@ -27,7 +27,7 @@ class AchievementSeeder extends Seeder
                     'type' => AchievementType::Experience(),
                     'data' => ['count_requirement' => $requiredCount],
                     'image_path' => 'achievement.png',
-                    'attachment_path' => 'achievement.png',
+                    'certificate_template_path' => 'front.achievements.certificatePlaceholder',
                 ]);
             });
 
@@ -45,7 +45,7 @@ class AchievementSeeder extends Seeder
                     'type' => AchievementType::PullRequest(),
                     'data' => ['count_requirement' => $requiredCount],
                     'image_path' => 'achievement.png',
-                    'attachment_path' => 'achievement.png',
+                    'certificate_template_path' => 'front.achievements.certificatePlaceholder',
                 ]);
             });
     }

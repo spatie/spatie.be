@@ -40,9 +40,9 @@
                     </p>
 
                     <div>
-                        @if($attachmentUrl = $achievement->getAttachmentUrl())
+                        @if($certificateUrl = $achievement->getCertificateUrl())
                             {{-- Should this be a download link or just a new tab? --}}
-                            <a href="{{ $attachmentUrl }}" target="_blank" rel="noopener noreferrer">Download your certificate</a>
+                            <a href="{{ $certificateUrl }}" target="_blank" rel="noopener noreferrer">Download your certificate</a>
                         @endif
                     </div>
 

@@ -10,11 +10,12 @@ return new class extends Migration
     {
         Schema::table('achievements', function (Blueprint $table) {
             $table->string('image_path')->nullable()->after('type');
-            $table->string('attachment_path')->nullable()->after('image_path');
+            $table->string('certificate_template_path')->nullable()->after('image_path');
         });
 
         Schema::table('user_achievements', function (Blueprint $table) {
             $table->string('og_image_path')->nullable()->after('description');
+            $table->string('certificate_path')->nullable()->after('og_image_path');
         });
     }
 };

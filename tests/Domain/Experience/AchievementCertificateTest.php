@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Storage;
 use Spatie\EventSourcing\StoredEvents\HandleStoredEventJob;
 use Tests\TestCase;
 
-class AchievementOgImageTest extends TestCase
+class AchievementCertificateTest extends TestCase
 {
     /** @test */
-    public function og_image_reactor_is_queued()
+    public function certificate_reactor_is_queued()
     {
         $achievement = AchievementFactory::new()->create();
 
@@ -30,9 +30,11 @@ class AchievementOgImageTest extends TestCase
     }
 
     /** @test */
-    public function og_image_is_stored_on_the_filesystem()
+    public function certificate_is_stored_on_the_filesystem()
     {
-        $achievement = AchievementFactory::new()->create();
+        $achievement = AchievementFactory::new()->create([
+            'certificate_template_path' => 'front.achievements.certificatePlaceholder',
+        ]);
 
         $user = UserFactory::new()->create();
 
@@ -43,6 +45,25 @@ class AchievementOgImageTest extends TestCase
         /** @var \App\Domain\Experience\Projections\UserAchievementProjection $userAchievement */
         $userAchievement = $user->achievements()->where('achievement_id', $achievement->id)->first();
 
-        $storage->assertExists($userAchievement->getOgImagePath());
+        $storage->assertExists($userAchievement->getCertificatePath());
+    }
+
+    /** @test */
+    public function certificate_is_not_stored_when_no_template_was_set()
+    {
+        $achievement = AchievementFactory::new()->create([
+            'certificate_template_path' => null,
+        ]);
+
+        $user = UserFactory::new()->create();
+
+        $storage = Storage::fake('public');
+
+        command(new UnlockAchievement($user->uuid, $user->id, $achievement));
+
+        /** @var \App\Domain\Experience\Projections\UserAchievementProjection $userAchievement */
+        $userAchievement = $user->achievements()->where('achievement_id', $achievement->id)->first();
+
+        $storage->assertMissing($userAchievement->getCertificatePath());
     }
 }

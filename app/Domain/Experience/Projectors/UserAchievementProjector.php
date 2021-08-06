@@ -2,6 +2,7 @@
 
 namespace App\Domain\Experience\Projectors;
 
+use App\Domain\Experience\Events\AchievementCertificateSaved;
 use App\Domain\Experience\Events\AchievementOgImageSaved;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Projections\UserAchievementProjection;
@@ -30,6 +31,15 @@ class UserAchievementProjector extends Projector
             ->writeable()
             ->update([
                 'og_image_path' => $event->imagePath,
+            ]);
+    }
+
+    public function onAchievementCertificateSaved(AchievementCertificateSaved $event): void
+    {
+        UserAchievementProjection::query()->where('uuid', $event->userAchievementUuid)->first()
+            ->writeable()
+            ->update([
+                'certificate_path' => $event->certificatePath,
             ]);
     }
 }

@@ -8,4 +8,9 @@ class BrowsershotFake extends Browsershot
     {
         return '';
     }
+
+    public function pdf(): string
+    {
+        return '';
+    }
 }

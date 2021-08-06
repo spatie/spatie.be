@@ -2,7 +2,7 @@
 
 namespace App\Domain\Experience\Reactors;
 
-use App\Domain\Experience\Commands\SaveAchievementOgImage;
+use App\Domain\Experience\Commands\SaveAchievementCertificate;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Models\User;
@@ -11,7 +11,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Storage;
 use Spatie\EventSourcing\EventHandlers\Reactors\Reactor;
 
-class AchievementOgImageReactor extends Reactor implements ShouldQueue
+class AchievementCertificateReactor extends Reactor implements ShouldQueue
 {
     public function __construct(private Browsershot $browsershot)
     {
@@ -24,32 +24,30 @@ class AchievementOgImageReactor extends Reactor implements ShouldQueue
         /** @var \App\Domain\Experience\Projections\UserAchievementProjection $userAchievement */
         $userAchievement = $user->achievements()->where('slug', $event->slug)->firstOrFail();
 
-        $path = $userAchievement->getOgImagePath();
+        if ($userAchievement->achievement->certificate_template_path === null) {
+            return;
+        }
 
-        $this->generateImage($user, $userAchievement, $path);
+        $this->generateCertificate($userAchievement);
 
-        command(SaveAchievementOgImage::forUserAchievement(
+        command(SaveAchievementCertificate::forUserAchievement(
             userAchievement: $userAchievement,
         ));
     }
 
-    public function generateImage(
-        User $user,
+    private function generateCertificate(
         UserAchievementProjection $userAchievement,
-        string $path,
     ) {
         Storage::disk('public')->put(
-            $path,
+            $userAchievement->getCertificatePath(),
             $this->browsershot
                 ->setHtml(
-                    view('front.profile.achievementOgImage', [
+                    view($userAchievement->achievement->certificate_template_path, [
                         'achievement' => $userAchievement,
-                        'user' => $user,
+                        'user' => $userAchievement->user,
                     ])->render()
                 )
-                ->devicePixelRatio(2)
-                ->windowSize(1200, 630)
-                ->screenshot()
+                ->pdf()
         );
     }
 }

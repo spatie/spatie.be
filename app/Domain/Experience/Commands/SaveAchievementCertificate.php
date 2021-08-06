@@ -8,10 +8,10 @@ use Spatie\EventSourcing\Commands\AggregateUuid;
 use Spatie\EventSourcing\Commands\HandledBy;
 
 #[HandledBy(ExperienceAggregateRoot::class)]
-class SaveAchievementOgImage
+class SaveAchievementCertificate
 {
     public static function forUserAchievement(
-        UserAchievementProjection $userAchievement,
+        UserAchievementProjection $userAchievement
     ): self {
         return new self(
             $userAchievement->user->uuid,

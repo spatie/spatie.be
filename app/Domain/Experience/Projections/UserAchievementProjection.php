@@ -34,9 +34,13 @@ class UserAchievementProjection extends Projection
         return $this->achievement?->getImageUrl();
     }
 
-    public function getAttachmentUrl(): ?string
+    public function getCertificateUrl(): ?string
     {
-        return $this->achievement?->getAttachmentUrl();
+        if ($this->certificate_path === null) {
+            return null;
+        }
+
+        return Storage::disk('public')->url($this->certificate_path);
     }
 
     public function user(): BelongsTo
@@ -54,11 +58,16 @@ class UserAchievementProjection extends Projection
 
     public function getOgImagePath(): string
     {
-        return "achievements/{$this->user_id}-{$this->achievement_id}.png";
+        return "achievements/og-{$this->user_id}-{$this->achievement_id}.png";
     }
 
     public function getOgImageUrl(): ?string
     {
         return Storage::disk('public')->url($this->getOgImagePath());
+    }
+
+    public function getCertificatePath(): string
+    {
+        return "achievements/certificate-{$this->user_id}-{$this->achievement_id}.pdf";
     }
 }

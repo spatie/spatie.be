@@ -6,8 +6,10 @@ use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\RegisterSeriesCompletion;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
+use App\Domain\Experience\Commands\SaveAchievementCertificate;
 use App\Domain\Experience\Commands\SaveAchievementOgImage;
 use App\Domain\Experience\Commands\UnlockAchievement;
+use App\Domain\Experience\Events\AchievementCertificateSaved;
 use App\Domain\Experience\Events\AchievementOgImageSaved;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Events\ExperienceEarned;
@@ -134,8 +136,19 @@ class ExperienceAggregateRoot extends AggregateRoot
     {
         $this->recordThat(new AchievementOgImageSaved(
             userUuid: $command->uuid,
-            userAchievementUuid: $command->userAchievementUuid,
-            imagePath: $command->imagePath,
+            userAchievementUuid: $command->userAchievement->uuid,
+            imagePath: $command->userAchievement->getOgImagePath(),
+        ));
+
+        return $this;
+    }
+
+    public function saveAchievementCertificate(SaveAchievementCertificate $command): self
+    {
+        $this->recordThat(new AchievementCertificateSaved(
+            userUuid: $command->uuid,
+            userAchievementUuid: $command->userAchievement->uuid,
+            certificatePath: $command->userAchievement->getCertificatePath(),
         ));
 
         return $this;
