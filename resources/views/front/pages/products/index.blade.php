@@ -17,10 +17,13 @@
 
    {{-- @include('front.pages.products.partials.ctaLaraconEU') --}}
 
+    <div class="section section-group">
     @if (count($bundles))
-        <section class="section overflow-visible section-group">
+        <section class="section overflow-visible">
             <div class="wrap">
-                <h2 class="text-2xl mb-6">Take a look at our bundle promotions!</h2>
+                <h2 class="title line-after mb-12">Check our bundle promotions!</h2>
+            </div>
+            <div class="wrap">
                 <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
                     @foreach ($bundles as $bundle)
                         <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
@@ -44,9 +47,13 @@
         </section>
     @endif
 
-    <section class="section overflow-visible section-group">
+    <section class="section overflow-visible">
+            @if (count($bundles))
             <div class="wrap">
-                <h2 class="text-2xl mb-12">All of our products</h2>
+                <h2 class="title line-after mb-12">All of our products</h2>
+            </div>
+            @endif
+            <div class="wrap">
                 <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
                     @foreach ($products as $product)
                         <div class="line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
@@ -83,5 +90,6 @@
                 </div>
             </div>
         </section>
+        </div>
 
 </x-page>
