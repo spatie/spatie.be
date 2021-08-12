@@ -143,7 +143,13 @@ class User extends Authenticatable
 
     public function owns(Purchasable $purchasable): bool
     {
-        return $this->purchases()->where('purchasable_id', $purchasable->id)->exists();
+        foreach ($this->purchases as $purchase) {
+            if ($purchase->getPurchasables()->contains($purchasable)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function licenses(): HasMany

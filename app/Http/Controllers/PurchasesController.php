@@ -15,21 +15,13 @@ class PurchasesController
             ->with(['purchasable', 'bundle'])
             ->get()
             ->flatMap(function (Purchase $purchase) {
-                if ($purchase->bundle) {
-                    return $purchase->bundle->purchasables->map(function (Purchasable $purchasable) use ($purchase) {
-                        return [
-                            'product_id' => $purchasable->product_id,
-                            'purchase' => $purchase,
-                            'product' => $purchasable->product,
-                        ];
-                    });
-                }
-
-                return [[
-                    'product_id' => $purchase->purchasable->product_id,
-                    'purchase' => $purchase,
-                    'product' => $purchase->purchasable->product,
-                ]];
+                return $purchase->getPurchasables()->map(function (Purchasable $purchasable) use ($purchase) {
+                    return [
+                        'product_id' => $purchasable->product_id,
+                        'purchase' => $purchase,
+                        'product' => $purchasable->product,
+                    ];
+                });
             })->mapToGroups(fn(array $data) => [$data['product_id'] => [
                 'purchase' => $data['purchase'],
                 'product' => $data['product'],

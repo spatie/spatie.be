@@ -13,7 +13,7 @@
 
             @if ($purchasesForProduct->pluck('purchase')->filter(fn (\App\Models\Purchase $purchase) => $purchase->hasAccessToVideos())->count() > 0)
                 <span class="mx-2 text-gray-light">|</span>
-                <a href="{{ $purchasesForProduct->first()['purchase']->getPurchasables()->first()->series->first()->url }}" class="link-blue link-underline">
+                <a href="{{ $product->purchasables->filter(fn ($purchasable) => $purchasable->series)->first()?->series->first()->url }}" class="link-blue link-underline">
                     Watch course
                 </a>
             @endif
