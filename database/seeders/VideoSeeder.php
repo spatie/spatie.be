@@ -286,5 +286,22 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
             "display" => VideoDisplayEnum::LICENSE,
         ]);
+
+        $seriesWithOnevideo = Series::create([
+            'title' => 'One video',
+            'slug' => 'one-video',
+            'description' => 'A series with 1 video',
+            'sort_order' => '0',
+        ]);
+
+        Video::create([
+            "series_id" => $seriesWithOnevideo->id,
+            "vimeo_id" => "419946519",
+            "title" => "One video A",
+            "slug" => "one-video-a",
+            "runtime" => 1396,
+            "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "display" => VideoDisplayEnum::FREE,
+        ]);
     }
 }

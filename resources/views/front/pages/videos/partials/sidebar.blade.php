@@ -5,7 +5,7 @@
 <nav class="sticky top-0 px-4 py-6 bg-white bg-opacity-50 shadow-light rounded-sm markup-lists">
     <h2 class="title-sm text-sm mb-4">
         {{-- TODO: style progress bar --}}
-        {{ $series->title }} ({{ $series->getProgress()->completed }} / {{ $series->getProgress()->total }})
+        {{ $series->title }} @if($series->getProgress())({{ $series->getProgress()->completed }} / {{ $series->getProgress()->total }})@endif
     </h2>
 
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())

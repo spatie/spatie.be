@@ -15,11 +15,12 @@ class SeriesAchievementsObserver
         }
 
         Achievement::create([
-            'slug' => "series-completed-{$series->id}",
+            'slug' => $series->getAchievementSlug(),
             'title' => "{$series->title} completed!",
             'description' => "You've watched all videos in {$series->title}",
             'type' => AchievementType::Series(),
             'data' => ['series_id' => $series->id],
+            'certificate_template_path' => 'front.achievements.certificatePlaceholder',
         ]);
     }
 }

@@ -117,6 +117,7 @@ Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('/', [ProfileController::class, 'show'])->name('profile');
     Route::put('/', [ProfileController::class, 'update'])->name('profile');
     Route::get('/achievements', [AchievementsController::class, 'show'])->name('achievements');
+    Route::get('/achievement/{slug}/certificate', [AchievementsController::class, 'certificateDownload'])->name('achievement.certificate');
     Route::get('disconnect', [ProfileController::class, 'disconnect'])->name('github-disconnect');
     Route::get('disconnect-apple', [ProfileController::class, 'disconnectApple'])->name('apple-disconnect');
     Route::delete('/', [ProfileController::class, 'delete'])->name('profile');
@@ -152,6 +153,7 @@ Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
 Route::get('/videos/{series:slug}', [SeriesController::class, 'show'])->name('series.show');
+Route::get('/videos/{series:slug}/completed', [SeriesController::class, 'completed'])->name('series.completed');
 Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show'])->name('videos.show');
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');

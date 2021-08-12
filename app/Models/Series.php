@@ -107,13 +107,22 @@ class Series extends Model implements HasMedia, Sortable
         return optional($this->purchasables()->get())->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
     }
 
-    public function getProgress(?User $user = null): SeriesProgress
+    public function getProgress(?User $user = null): ?SeriesProgress
     {
         $user ??= current_user();
+
+        if (! $user) {
+            return null;
+        }
 
         return new SeriesProgress(
             total: $this->videos->count(),
             completed: $user->getCompletedVideosForSeries($this)->count(),
         );
+    }
+
+    public function getAchievementSlug(): string
+    {
+        return "series-completed-{$this->id}";
     }
 }

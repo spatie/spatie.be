@@ -52,7 +52,7 @@
                 </div>
             @endforeach
         </div>
-    <section>
+    </section>
 
     <section class="section section-group pt-0 mt-4">
         <div class="wrap">
@@ -64,5 +64,5 @@
                 @endforeach
             </ul>
         </div>
-    <section>
+    </section>
 </x-page>

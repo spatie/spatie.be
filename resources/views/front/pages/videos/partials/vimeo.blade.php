@@ -19,6 +19,8 @@
         // Don't the next link if there is none
         @if ($nextVideo)
             location.href = '{{ route('videos.show', [$nextVideo->series, $nextVideo]) }}';
+        @else
+            location.href = '{{ action([\App\Http\Controllers\SeriesController::class, 'completed'], $series) }}'
         @endif
     });
 

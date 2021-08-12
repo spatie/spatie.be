@@ -10,4 +10,15 @@ class AchievementsController
             'user' => current_user(),
         ]);
     }
+
+    public function certificateDownload(string $slug)
+    {
+        $user = current_user();
+
+        $userAchievement = $user->achievements()->where('slug', $slug)->firstOrFail();
+
+        return view('front.profile.achievementCertificate', [
+            'achievement' => $userAchievement,
+        ]);
+    }
 }

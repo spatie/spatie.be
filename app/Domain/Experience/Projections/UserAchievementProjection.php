@@ -34,6 +34,11 @@ class UserAchievementProjection extends Projection
         return $this->achievement?->getImageUrl();
     }
 
+    public function hasCertificate(): bool
+    {
+        return $this->certificate_path !== null;
+    }
+
     public function getCertificateUrl(): ?string
     {
         if ($this->certificate_path === null) {
