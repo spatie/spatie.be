@@ -34,6 +34,7 @@ class Purchase extends Resource
             Boolean::make('Has repository access')->readonly(),
 
             BelongsTo::make('Purchasable'),
+            BelongsTo::make('Bundle'),
             HasMany::make('Licenses')->hideFromIndex()->nullable(),
             BelongsTo::make('User'),
             BelongsTo::make('Receipt')->nullable()->hideFromIndex(),
