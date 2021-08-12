@@ -144,7 +144,7 @@ class User extends Authenticatable
     public function owns(Purchasable $purchasable): bool
     {
         foreach ($this->purchases as $purchase) {
-            if ($purchase->getPurchasables()->contains($purchasable)) {
+            if ($purchase->getPurchasables()->pluck('id')->contains($purchasable->id)) {
                 return true;
             }
         }
