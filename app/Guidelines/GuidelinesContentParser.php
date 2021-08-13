@@ -36,8 +36,8 @@ class GuidelinesContentParser implements ContentParser
                     'style' => 'bullet',
                     'min_heading_level' => 2,
                     'max_heading_level' => 2,
-                    'normalize' => 'flat',
                     'placeholder' => null,
+                    'normalize' => 'flat',
                 ],
             ]);
     }
