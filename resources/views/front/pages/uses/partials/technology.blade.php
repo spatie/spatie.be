@@ -28,7 +28,7 @@
                     <x-avatar name="{{ $name }}" href=""/>
                 @endforeach
             </div>
-            <span class="ml-2 text-xs text-gray">recommend this</span>
+            <span class="ml-2 text-xs text-gray">{{ count($technology->recommended_by) > 1 ? 'recommend' : 'recommends' }} this</span>
         </div>
     </div>
 </div>
