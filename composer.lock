@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "39df31bad0a77fa8471ceac0fc5217cb",
+    "content-hash": "b0b1d87bf6e293b799f9331ea3401f48",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -11130,16 +11130,16 @@
         },
         {
             "name": "spatie/laravel-markdown",
-            "version": "1.1.0",
+            "version": "1.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-markdown.git",
-                "reference": "625e9fe30b745538b7e1da33ef0b2cfb58e231d0"
+                "reference": "de6b2cee86fdc4ac37b136f388a2b5d7ed0cbaed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-markdown/zipball/625e9fe30b745538b7e1da33ef0b2cfb58e231d0",
-                "reference": "625e9fe30b745538b7e1da33ef0b2cfb58e231d0",
+                "url": "https://api.github.com/repos/spatie/laravel-markdown/zipball/de6b2cee86fdc4ac37b136f388a2b5d7ed0cbaed",
+                "reference": "de6b2cee86fdc4ac37b136f388a2b5d7ed0cbaed",
                 "shasum": ""
             },
             "require": {
@@ -11192,7 +11192,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-markdown/tree/1.1.0"
+                "source": "https://github.com/spatie/laravel-markdown/tree/1.1.2"
             },
             "funding": [
                 {
@@ -11200,7 +11200,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-07-12T14:29:55+00:00"
+            "time": "2021-08-13T14:18:40+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
