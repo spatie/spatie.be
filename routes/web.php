@@ -173,5 +173,5 @@ Route::get('testing-laravel', [TestingLaravelController::class, 'show']);
 Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 */
 
-Route::get('uses', [UsesController::class, 'index'])->name('uses')->middleware(AdminsOnly::class);
+Route::get('uses', [UsesController::class, 'index'])->name('uses');
 
