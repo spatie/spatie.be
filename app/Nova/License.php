@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\License as EloquentLicense;
+use App\Domain\Shop\Models\License as EloquentLicense;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;

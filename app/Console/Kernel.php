@@ -7,11 +7,11 @@ use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportGuideLinesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
-use App\Console\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
-use App\Console\Commands\SendLicenseExpirationNotificationsCommand;
-use App\Console\Commands\UpdateBundlePricesCommand;
-use App\Console\Commands\UpdateConversionRatesCommand;
-use App\Console\Commands\UpdatePurchasablePricesCommand;
+use App\Domain\Shop\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
+use App\Domain\Shop\Commands\SendLicenseExpirationNotificationsCommand;
+use App\Domain\Shop\Commands\UpdateBundlePricesCommand;
+use App\Domain\Shop\Commands\UpdateConversionRatesCommand;
+use App\Domain\Shop\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -49,6 +49,7 @@ class Kernel extends ConsoleKernel
     protected function commands(): void
     {
         $this->load(__DIR__ . '/Commands');
+        $this->load(__DIR__ . '/../Domain/Shop/Commands');
 
         require base_path('routes/console.php');
     }

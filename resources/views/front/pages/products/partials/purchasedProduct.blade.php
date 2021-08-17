@@ -1,5 +1,5 @@
 @php
-    /** @var \App\Models\PurchaseAssignment $assignment */
+    /** @var \App\Domain\Shop\Models\PurchaseAssignment $assignment */
     $purchasable = $assignment->purchasable;
 @endphp
 

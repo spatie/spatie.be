@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Enums\PurchasableType;
-use App\Models\Product;
-use App\Models\Purchasable;
-use App\Models\Release;
+use App\Domain\Shop\Enums\PurchasableType;
+use App\Domain\Shop\Models\Product;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Release;
 use Illuminate\Database\Seeder;
 
 class ProductSeeder extends Seeder

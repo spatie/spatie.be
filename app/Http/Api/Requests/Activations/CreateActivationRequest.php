@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\Requests\Activations;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateActivationRequest extends FormRequest

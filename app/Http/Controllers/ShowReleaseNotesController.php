@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
+use App\Domain\Shop\Models\Product;
 
 class ShowReleaseNotesController
 {

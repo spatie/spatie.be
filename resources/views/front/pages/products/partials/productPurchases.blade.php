@@ -11,7 +11,7 @@
         </a>
 
         @php
-            $purchasesWithVideos = $purchasesForProduct->pluck('purchase')->filter(fn (\App\Models\Purchase $purchase) => $purchase->hasAccessToVideos())
+            $purchasesWithVideos = $purchasesForProduct->pluck('purchase')->filter(fn (\App\Domain\Shop\Models\Purchase $purchase) => $purchase->hasAccessToVideos())
         @endphp
         @if ($purchasesWithVideos->count() > 0)
             <span class="mx-2 text-gray-light">|</span>
@@ -23,7 +23,7 @@
 
     @foreach($purchasesForProduct as $data)
         @php
-            /** @var \App\Models\Purchase $purchase */
+            /** @var \App\Domain\Shop\Models\Purchase $purchase */
             $purchase = $data['purchase'];
 
             /** @var \Illuminate\Support\Collection $purchasables */

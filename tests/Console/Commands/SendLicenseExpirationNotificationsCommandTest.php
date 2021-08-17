@@ -2,8 +2,8 @@
 
 namespace Tests\Console\Commands;
 
-use App\Console\Commands\SendLicenseExpirationNotificationsCommand;
-use App\Models\License;
+use App\Domain\Shop\Commands\SendLicenseExpirationNotificationsCommand;
+use App\Domain\Shop\Models\License;
 use App\Notifications\LicenseExpiredNotification;
 use App\Notifications\LicenseExpiredSecondNotification;
 use App\Notifications\LicenseIsAboutToExpireNotification;

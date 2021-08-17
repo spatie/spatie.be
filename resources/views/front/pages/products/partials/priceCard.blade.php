@@ -24,7 +24,7 @@
             </div>
         @endif
 
-        @if(\App\Models\Referrer::activeReferrerGrantsDiscount($purchasable))
+        @if(\App\Domain\Shop\Models\Referrer::activeReferrerGrantsDiscount($purchasable))
             <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
                 Extra discount included!
             </div>

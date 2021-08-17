@@ -2,11 +2,11 @@
 
 namespace Tests\Feature\Api;
 
+use App\Domain\Shop\Models\Activation;
+use App\Domain\Shop\Models\License;
 use App\Http\Api\Controllers\Activations\CreateActivationController;
 use App\Http\Api\Controllers\Activations\DeleteActivationController;
 use App\Http\Api\Controllers\Activations\ShowActivationController;
-use App\Models\Activation;
-use App\Models\License;
 use Spatie\Crypto\Rsa\PublicKey;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;

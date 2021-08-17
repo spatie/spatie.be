@@ -12,7 +12,7 @@ use Laravel\Nova\Fields\Text;
 
 class Release extends Resource
 {
-    public static $model = \App\Models\Release::class;
+    public static $model = \App\Domain\Shop\Models\Release::class;
 
     public static $title = 'version';
 

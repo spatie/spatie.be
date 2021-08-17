@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\Api;
 
+use App\Domain\Shop\Models\Activation;
 use App\Http\Api\Controllers\Activations\UpdateCurrentVersionController;
-use App\Models\Activation;
 use Tests\TestCase;
 
 class UpdateCurrentVersionControllerTest extends TestCase

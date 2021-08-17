@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use Livewire\Component;
 
 class ActivationsComponent extends Component

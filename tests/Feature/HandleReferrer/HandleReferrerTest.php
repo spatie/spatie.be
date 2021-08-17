@@ -2,8 +2,8 @@
 
 namespace Tests\Feature\HandleReferrer;
 
-use App\Models\Purchasable;
-use App\Models\Referrer;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Referrer;
 use Illuminate\Support\Facades\Cookie;
 use Spatie\TestTime\TestTime;
 use Symfony\Component\HttpFoundation\Cookie as SymfonyCookie;

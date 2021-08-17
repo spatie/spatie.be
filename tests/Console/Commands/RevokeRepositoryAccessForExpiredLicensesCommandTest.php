@@ -2,8 +2,8 @@
 
 namespace Tests\Console\Commands;
 
-use App\Console\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
-use App\Models\License;
+use App\Domain\Shop\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
+use App\Domain\Shop\Models\License;
 use App\Services\GitHub\GitHubApi;
 use Mockery\MockInterface;
 use RuntimeException;

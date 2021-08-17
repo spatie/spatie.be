@@ -2,9 +2,9 @@
 
 namespace Tests\Feature\Api;
 
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\PurchasablePrice;
 use App\Http\Api\Controllers\PriceController;
-use App\Models\Purchasable;
-use App\Models\PurchasablePrice;
 use Spatie\Snapshots\MatchesSnapshots;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;

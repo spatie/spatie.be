@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\Models\Purchasable;
+use App\Domain\Shop\Models\Purchasable;
 
 class PriceController
 {

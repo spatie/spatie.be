@@ -21,10 +21,10 @@
 
 @if(session()->has('sold_purchasable'))
     @php
-        /** @var \App\Models\Purchasable $purchasable */
+        /** @var \App\Domain\Shop\Models\Purchasable $purchasable */
         $purchasable = session()->get('sold_purchasable');
 
-        /** @var \App\Models\Purchase $purchase */
+        /** @var \App\Domain\Shop\Models\Purchase $purchase */
         $purchase = session()->get('latest_purchase')
 
     @endphp

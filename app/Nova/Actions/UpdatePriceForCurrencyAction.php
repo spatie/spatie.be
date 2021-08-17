@@ -2,7 +2,7 @@
 
 namespace App\Nova\Actions;
 
-use App\Models\Purchasable;
+use App\Domain\Shop\Models\Purchasable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;

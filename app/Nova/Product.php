@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\Product as EloquentProduct;
+use App\Domain\Shop\Models\Product as EloquentProduct;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;

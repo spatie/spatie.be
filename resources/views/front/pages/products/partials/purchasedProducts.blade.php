@@ -3,7 +3,7 @@
         <h2 class="title line-after mb-12">My purchases</h2>
 
         @foreach ($assignments as $assignment)
-            @php /** @var \App\Models\PurchaseAssignment $assignment */ @endphp
+            @php /** @var \App\Domain\Shop\Models\PurchaseAssignment $assignment */ @endphp
             <div class="mb-8">
                 <h3 class="title-sm">{{ $assignment->purchasable->title }}</h3>
                 @include('front.pages.products.partials.purchasedProduct', ['assignment' => $assignment])

@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\License;
-use App\Models\Purchasable;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Purchasable;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;

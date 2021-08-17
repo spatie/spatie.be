@@ -8,7 +8,7 @@
         @if(session()->has('sold_purchasable'))
             <script>
                 @php
-                    /** @var \App\Models\Purchasable $purchasable */
+                    /** @var \App\Domain\Shop\Models\Purchasable $purchasable */
                     $purchasable = session()->get('sold_purchasable')
                 @endphp
 
