@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use App\Models\License;
-use App\Models\Purchasable;
-use App\Models\Purchase;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;

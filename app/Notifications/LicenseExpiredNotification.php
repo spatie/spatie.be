@@ -2,8 +2,8 @@
 
 namespace App\Notifications;
 
+use App\Domain\Shop\Models\License;
 use App\Http\Controllers\ProductsController;
-use App\Models\License;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Markdown;

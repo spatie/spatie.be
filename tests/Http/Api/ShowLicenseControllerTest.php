@@ -2,7 +2,7 @@
 
 namespace Tests\Http\Api;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use Tests\TestCase;
 
 class ShowLicenseControllerTest extends TestCase

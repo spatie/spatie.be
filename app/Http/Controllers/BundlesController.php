@@ -2,11 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bundle;
-use App\Models\License;
-use App\Models\Product;
-use App\Models\Purchasable;
-use Illuminate\Http\Request;
+use App\Domain\Shop\Models\Bundle;
 
 class BundlesController
 {

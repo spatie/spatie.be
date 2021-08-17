@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\PurchasablePrice as EloquentPurchasablePrice;
+use App\Domain\Shop\Models\PurchasablePrice as EloquentPurchasablePrice;
 use App\Support\Paddle\PaddleCountries;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;

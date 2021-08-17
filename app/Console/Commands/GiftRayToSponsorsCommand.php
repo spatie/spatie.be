@@ -2,10 +2,11 @@
 
 namespace App\Console\Commands;
 
-use App\Actions\CreateLicenseAction;
-use App\Models\License;
-use App\Models\Purchasable;
-use App\Models\Purchase;
+use App\Domain\Shop\Actions\CreateLicenseAction;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use Illuminate\Console\Command;
 
@@ -26,11 +27,11 @@ class GiftRayToSponsorsCommand extends Command
             ->each(function (User $user) use ($rayPurchasable) {
                 $this->comment("Handing Ray to user {$user->id} ($user->email)");
 
-                /** @var \App\Models\License|null $existingLicense */
-                $existingLicense = $user->licenses()->where('purchasable_id', $rayPurchasable->id)->first();
+                /** @var \App\Domain\Shop\Models\PurchaseAssignment $existingAssignment */
+                $existingAssignment = $user->assignments()->where('purchasable_id', $rayPurchasable->id)->first();
 
-                $existingLicense
-                    ? $this->renewExistingLicense($existingLicense)
+                $existingAssignment
+                    ? $this->renewExistingLicense($existingAssignment)
                     : $this->createNewLicense($user, $rayPurchasable);
 
                 $user->update(['sponsor_gift_given_at' => now()]);
@@ -39,9 +40,9 @@ class GiftRayToSponsorsCommand extends Command
         $this->info('All done!');
     }
 
-    protected function renewExistingLicense(License $license): void
+    protected function renewExistingLicense(PurchaseAssignment $assignment): void
     {
-        $license->renew();
+        $assignment->licenses()->first()->renew();
 
         $this->comment('Renewed existing Ray license.');
     }
@@ -59,7 +60,13 @@ class GiftRayToSponsorsCommand extends Command
             'passthrough' => null,
         ]);
 
-        app(CreateLicenseAction::class)->execute($user, $purchase, $purchasable);
+        $purchaseAssignment = PurchaseAssignment::create([
+            'user_id' => $user->id,
+            'purchase_id' => $purchase->id,
+            'purchasable_id' => $purchasable->id,
+        ]);
+
+        app(CreateLicenseAction::class)->execute($purchaseAssignment);
 
         $this->comment('New license created.');
     }

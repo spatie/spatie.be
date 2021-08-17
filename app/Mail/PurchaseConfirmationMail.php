@@ -2,8 +2,8 @@
 
 namespace App\Mail;
 
-use App\Models\Purchasable;
-use App\Models\Purchase;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;

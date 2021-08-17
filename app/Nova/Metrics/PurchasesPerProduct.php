@@ -2,8 +2,8 @@
 
 namespace App\Nova\Metrics;
 
-use App\Models\Product;
-use App\Models\Purchase;
+use App\Domain\Shop\Models\Product;
+use App\Domain\Shop\Models\Purchase;
 use Illuminate\Database\Eloquent\Builder;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Partition;

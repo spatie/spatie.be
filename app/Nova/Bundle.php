@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\Bundle as EloquentBundle;
+use App\Domain\Shop\Models\Bundle as EloquentBundle;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;

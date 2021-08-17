@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -11,7 +11,7 @@ class SatisAuthenticationController extends Controller
 {
     public function __invoke(Authenticatable $license, Request $request)
     {
-        /** @var $license \App\Models\License */
+        /** @var $license \App\Domain\Shop\Models\License */
         if (! $license instanceof License) {
             abort(401);
         }

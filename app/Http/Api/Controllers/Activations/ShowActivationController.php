@@ -2,8 +2,8 @@
 
 namespace App\Http\Api\Controllers\Activations;
 
+use App\Domain\Shop\Models\Activation;
 use App\Http\Api\Requests\Activations\ShowActivationRequest;
-use App\Models\Activation;
 
 class ShowActivationController
 {

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bundle;
-use App\Models\License;
-use App\Models\Product;
-use App\Models\Purchasable;
-use App\Models\PurchaseAssignment;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Product;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Http\Request;
 
 class ProductsController

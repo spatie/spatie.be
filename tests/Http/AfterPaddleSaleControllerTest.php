@@ -2,8 +2,8 @@
 
 namespace Tests\Http;
 
+use App\Domain\Shop\Models\Purchasable;
 use App\Http\Controllers\AfterPaddleSaleController;
-use App\Models\Purchasable;
 use App\Models\User;
 use Tests\TestCase;
 

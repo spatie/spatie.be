@@ -2,8 +2,8 @@
 
 namespace App\Nova\Actions;
 
-use App\Models\Purchasable;
-use App\Models\Referrer;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Referrer;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;

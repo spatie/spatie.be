@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\License;
-use App\Models\Purchasable;
-use App\Models\Purchase;
-use App\Models\PurchaseAssignment;
-use App\Models\User;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;

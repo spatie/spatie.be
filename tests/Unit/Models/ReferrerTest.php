@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Purchasable;
-use App\Models\Referrer;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Referrer;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 

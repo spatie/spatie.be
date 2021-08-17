@@ -2,11 +2,17 @@
 
 namespace App\Models;
 
-use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
+use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
-use App\Enums\PurchasableType;
+use App\Domain\Shop\Enums\PurchasableType;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Domain\Shop\Models\Referrer;
 use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

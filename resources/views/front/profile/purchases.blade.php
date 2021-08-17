@@ -21,7 +21,7 @@
                 <ul class="grid gap-6">
                     @foreach ($purchasesPerProduct as $productId => $purchasesForProduct)
                         @php
-                            /** @var \App\Models\Product $product */
+                            /** @var \App\Domain\Shop\Models\Product $product */
                             $product = $purchasesForProduct->first()['product'];
                         @endphp
                         <li>

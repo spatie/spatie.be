@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bundle;
-use App\Models\Referrer;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\Referrer;
 use Illuminate\Http\Request;
 
 class AfterPaddleBundleSaleController

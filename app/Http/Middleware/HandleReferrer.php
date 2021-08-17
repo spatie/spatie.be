@@ -2,7 +2,7 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Referrer;
+use App\Domain\Shop\Models\Referrer;
 use Closure;
 use Illuminate\Http\Request;
 

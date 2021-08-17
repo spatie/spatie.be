@@ -2,8 +2,8 @@
 
 namespace App\Http\Api\Controllers\Activations;
 
-use App\Actions\Activations\CreateActivationAction;
-use App\Exceptions\MaximumActivationsReached;
+use App\Domain\Shop\Actions\CreateActivationAction;
+use App\Domain\Shop\Exceptions\MaximumActivationsReached;
 use App\Http\Api\Requests\Activations\CreateActivationRequest;
 use Illuminate\Validation\ValidationException;
 

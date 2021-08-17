@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use App\Models\User;
 use App\Notifications\LicenseExpiredNotification;
 use App\Notifications\LicenseExpiredSecondNotification;

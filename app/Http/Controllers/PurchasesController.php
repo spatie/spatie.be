@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Purchasable;
-use App\Models\Purchase;
-use App\Models\PurchaseAssignment;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Http\Request;
 
 class PurchasesController
