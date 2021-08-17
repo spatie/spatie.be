@@ -6,6 +6,7 @@ use App\Exceptions\CouldNotRenewLicenseForPurchase;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use App\Models\User;
 use Exception;
 
@@ -20,35 +21,45 @@ class HandlePurchaseLicensingAction
 
     public function execute(Purchase $purchase): Purchase
     {
-        $purchase->getPurchasables()->each(function (Purchasable $purchasable) use ($purchase) {
-            if ($purchasable->isRenewal()) {
-                $this->handleRenewal($purchase);
+        $purchase->assignments()->each(function (PurchaseAssignment $assignment) use ($purchase) {
+            if ($assignment->purchasable->isRenewal()) {
+                $this->handleRenewal($assignment);
 
                 return;
             }
 
-            if (! $purchasable->requires_license) {
+            if (! $assignment->purchasable->requires_license) {
                 return;
             }
 
-            foreach ($purchase->recipients as $recipient) {
-                $this->createLicenseAction->execute($recipient, $purchase, $purchasable);
-            }
+            $this->createLicenseAction->execute($assignment);
         });
+
+        if ($purchase->assignments()->count() < $purchase->quantity) {
+            $assignment = $purchase->assignments->first();
+
+            if (! $assignment->purchasable->requires_license) {
+                return $purchase;
+            }
+
+            foreach (range($purchase->assignments()->count(), $purchase->quantity - 1) as $i) {
+                $this->createLicenseAction->execute($assignment);
+            }
+        }
 
         return $purchase;
     }
 
-    protected function handleRenewal(Purchase $purchase): void
+    protected function handleRenewal(PurchaseAssignment $assignment): void
     {
         $this->ensureUserOwnsPurchasableToRenew(
-            $purchase->user,
-            $purchase->purchasable->originalPurchasable
+            $assignment->user,
+            $assignment->purchasable->originalPurchasable
         );
 
-        $license = $purchase->wasMadeForLicense();
+        $license = $assignment->purchase->wasMadeForLicense();
         if (! $license) {
-            throw CouldNotRenewLicenseForPurchase::make($purchase);
+            throw CouldNotRenewLicenseForPurchase::make($assignment->purchase);
         }
 
         $license->renew();

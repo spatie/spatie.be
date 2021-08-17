@@ -5,6 +5,7 @@ namespace Tests\Actions;
 use App\Actions\HandlePurchaseLicensingAction;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use App\Models\User;
 use Database\Factories\ReceiptFactory;
 use Tests\TestCase;
@@ -41,6 +42,12 @@ class HandlePurchaseLicensingActionTest extends TestCase
             'paddle_webhook_payload' => [],
             'paddle_fee' => 0,
             'earnings' => 0,
+        ]);
+
+        PurchaseAssignment::create([
+            'user_id' => $user->id,
+            'purchasable_id' => $renewable->id,
+            'purchase_id' => $purchase->id,
         ]);
 
         $this->expectExceptionMessage("User {$user->id} doesn't own purchasable {$purchasable->id} to renew.");

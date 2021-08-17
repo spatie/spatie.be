@@ -5,6 +5,7 @@ namespace Tests\Actions;
 use App\Actions\RestoreRepositoryAccessAction;
 use App\Models\License;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use Database\Factories\ReceiptFactory;
@@ -23,6 +24,8 @@ class RestoreRepositoryAccessActionTest extends TestCase
 
     private Purchase $purchase;
 
+    private PurchaseAssignment $assignment;
+
     protected function setUp(): void
     {
         parent::setUp();
@@ -37,18 +40,22 @@ class RestoreRepositoryAccessActionTest extends TestCase
         $this->purchase = Purchase::factory()->create([
             'user_id' => $this->user->id,
             'receipt_id' => ReceiptFactory::new()->create()->id,
-            'has_repository_access' => false,
+        ]);
+
+        $this->assignment = PurchaseAssignment::factory()->create([
+            'purchase_id' => $this->purchase->id,
+            'user_id' => $this->user->id,
+            'purchasable_id' => $this->purchase->getPurchasables()->first()->id,
         ]);
 
         $this->license = License::factory()->create([
-            'purchase_id' => $this->purchase->id,
-            'user_id' => $this->user->id,
+            'purchase_assignment_id' => $this->assignment->id,
             'expires_at' => now()->addYear(),
         ]);
     }
 
     /** @test * */
-    public function it_restores_repository_access_for_a_users_purchases()
+    public function it_restores_repository_access_for_a_users_assignments()
     {
         $this->purchase->purchasable->update([
             'repository_access' => 'spatie/spatie.be',
@@ -61,7 +68,7 @@ class RestoreRepositoryAccessActionTest extends TestCase
             'spatie/spatie.be',
         ])->once();
 
-        $this->assertTrue($this->purchase->fresh()->has_repository_access);
+        $this->assertTrue($this->assignment->fresh()->has_repository_access);
     }
 
     /** @test * */
@@ -70,7 +77,7 @@ class RestoreRepositoryAccessActionTest extends TestCase
         $this->action->execute($this->user);
 
         $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
-        $this->assertFalse($this->purchase->fresh()->has_repository_access);
+        $this->assertFalse($this->assignment->fresh()->has_repository_access);
     }
 
     /** @test * */
@@ -86,6 +93,6 @@ class RestoreRepositoryAccessActionTest extends TestCase
         $this->action->execute($this->user);
 
         $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
-        $this->assertFalse($this->purchase->fresh()->has_repository_access);
+        $this->assertFalse($this->assignment->fresh()->has_repository_access);
     }
 }

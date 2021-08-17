@@ -23,8 +23,8 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
 
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-        Notification::assertSentTo($licenseAboutToExpire->user, LicenseIsAboutToExpireNotification::class);
-        Notification::assertNotSentTo($licenseValidForALongTime->user, LicenseIsAboutToExpireNotification::class);
+        Notification::assertSentTo($licenseAboutToExpire->assignment->user, LicenseIsAboutToExpireNotification::class);
+        Notification::assertNotSentTo($licenseValidForALongTime->assignment->user, LicenseIsAboutToExpireNotification::class);
     }
 
     /** @test */
@@ -37,7 +37,7 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-        Notification::assertSentToTimes($licenseAboutToExpire->user, LicenseIsAboutToExpireNotification::class, 1);
+        Notification::assertSentToTimes($licenseAboutToExpire->assignment->user, LicenseIsAboutToExpireNotification::class, 1);
     }
 
     /** @test */
@@ -50,8 +50,8 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
 
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-        Notification::assertSentTo($expiredLicense->user, LicenseExpiredNotification::class);
-        Notification::assertNotSentTo($licenseValidForALongTime->user, LicenseExpiredNotification::class);
+        Notification::assertSentTo($expiredLicense->assignment->user, LicenseExpiredNotification::class);
+        Notification::assertNotSentTo($licenseValidForALongTime->assignment->user, LicenseExpiredNotification::class);
     }
 
     /** @test */
@@ -64,7 +64,7 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-        Notification::assertSentToTimes($expiredLicense->user, LicenseExpiredNotification::class, 1);
+        Notification::assertSentToTimes($expiredLicense->assignment->user, LicenseExpiredNotification::class, 1);
     }
 
     /** @test */
@@ -77,8 +77,8 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
 
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-        Notification::assertSentTo($expiredLicense->user, LicenseExpiredSecondNotification::class);
-        Notification::assertNotSentTo($recentlyExpiredLicense->user, LicenseExpiredSecondNotification::class);
+        Notification::assertSentTo($expiredLicense->assignment->user, LicenseExpiredSecondNotification::class);
+        Notification::assertNotSentTo($recentlyExpiredLicense->assignment->user, LicenseExpiredSecondNotification::class);
     }
 
     /** @test */
@@ -91,6 +91,6 @@ class SendLicenseExpirationNotificationsCommandTest extends TestCase
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
         Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-        Notification::assertSentToTimes($expiredLicense->user, LicenseExpiredSecondNotification::class, 1);
+        Notification::assertSentToTimes($expiredLicense->assignment->user, LicenseExpiredSecondNotification::class, 1);
     }
 }

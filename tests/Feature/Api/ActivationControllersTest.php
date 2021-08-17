@@ -21,7 +21,7 @@ class ActivationControllersTest extends TestCase
 
         $this->license = License::factory()->create();
 
-        $this->license->purchasable->product->update(['maximum_activation_count' => 2]);
+        $this->license->assignment->purchasable->product->update(['maximum_activation_count' => 2]);
     }
 
     /** @test */

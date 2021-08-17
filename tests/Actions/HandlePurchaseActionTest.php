@@ -9,6 +9,7 @@ use App\Models\Bundle;
 use App\Models\License;
 use App\Models\Product;
 use App\Models\Purchasable;
+use App\Models\PurchaseAssignment;
 use App\Models\Referrer;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
@@ -76,7 +77,11 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertCount(0, $purchase->licenses);
         $this->assertTrue($purchase->user->is($this->user));
         $this->assertTrue($purchase->purchasable->is($purchasable));
-        $this->assertTrue($purchase->recipients->first()->is($this->user));
+
+        $this->assertCount(1, $purchase->assignments);
+        tap($purchase->assignments()->first(), function (PurchaseAssignment $assignment) {
+            $this->assertTrue($assignment->user->is($this->user));
+        });
 
         $this->assertEquals($this->receipt->id, $purchase->receipt->id);
         $this->assertEquals($this->payload->fee, $purchase->paddle_fee);
@@ -94,6 +99,13 @@ class HandlePurchaseActionTest extends TestCase
         ]);
 
         $this->paddlePayloadAttributes['quantity'] = 3;
+        $this->paddlePayloadAttributes['passthrough'] = json_encode([
+            'emails' => [
+                'jane@doe.com',
+                'john@doe.com',
+                'jack@doe.com',
+            ],
+        ]);
         $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
 
         $purchase = $this->handlePurchaseAction->execute(
@@ -102,6 +114,30 @@ class HandlePurchaseActionTest extends TestCase
             $this->payload
         );
 
+        $this->assertCount(3, $purchase->assignments);
+        $this->assertCount(3, $purchase->licenses);
+        foreach ($purchase->licenses as $license) {
+            $this->assertTrue($license->expires_at->isNextYear());
+        }
+    }
+
+    /** @test */
+    public function it_can_create_a_purchase_for_multiple_purchasables_at_once_without_assignments()
+    {
+        $purchasable = Purchasable::factory()->create([
+            'requires_license' => true,
+        ]);
+
+        $this->paddlePayloadAttributes['quantity'] = 3;
+        $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
+
+        $purchase = $this->handlePurchaseAction->execute(
+            $this->user,
+            $purchasable,
+            $this->payload
+        );
+
+        $this->assertCount(1, $purchase->assignments);
         $this->assertCount(3, $purchase->licenses);
         foreach ($purchase->licenses as $license) {
             $this->assertTrue($license->expires_at->isNextYear());

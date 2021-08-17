@@ -26,15 +26,15 @@ class RevokeRepositoryAccessForExpiredLicensesCommandTest extends TestCase
             'expires_at' => now()->subSecond(),
         ]);
 
-        $this->license->purchase->user->update([
+        $this->license->assignment->user->update([
              'github_username' => 'dummy_username',
         ]);
 
-        $this->license->purchase->update([
+        $this->license->assignment->update([
             'has_repository_access' => true,
         ]);
 
-        $this->license->purchase->purchasable->update([
+        $this->license->assignment->purchasable->update([
             'repository_access' => 'spatie/repo',
         ]);
 
@@ -53,7 +53,31 @@ class RevokeRepositoryAccessForExpiredLicensesCommandTest extends TestCase
             'spatie/repo',
         ])->once();
 
-        $this->assertFalse($this->license->purchase->has_repository_access);
+        $this->assertFalse($this->license->assignment->has_repository_access);
+    }
+
+    /** @test */
+    public function it_will_revoke_repository_access_for_multiple_repositories()
+    {
+        $this->license->assignment->purchasable->update([
+            'repository_access' => 'spatie/repo, spatie/other-repo',
+        ]);
+
+        $this->artisan(RevokeRepositoryAccessForExpiredLicensesCommand::class);
+
+        $this->license->refresh();
+
+        $this->apiSpy->shouldHaveReceived('revokeAccessToRepo', [
+            'dummy_username',
+            'spatie/repo',
+        ])->once();
+
+        $this->apiSpy->shouldHaveReceived('revokeAccessToRepo', [
+            'dummy_username',
+            'spatie/other-repo',
+        ])->once();
+
+        $this->assertFalse($this->license->assignment->has_repository_access);
     }
 
     /** @test */
@@ -69,13 +93,13 @@ class RevokeRepositoryAccessForExpiredLicensesCommandTest extends TestCase
 
         $this->apiSpy->shouldNotHaveReceived('revokeAccessToRepo');
 
-        $this->assertTrue($this->license->purchase->has_repository_access);
+        $this->assertTrue($this->license->assignment->has_repository_access);
     }
 
     /** @test */
     public function it_will_reset_the_username_and_revoke_access_if_the_user_was_not_found_on_github()
     {
-        $this->assertNotNull($this->license->purchase->user->github_username);
+        $this->assertNotNull($this->license->assignment->user->github_username);
 
         $this->apiSpy
             ->shouldReceive('revokeAccessToRepo')
@@ -85,8 +109,8 @@ class RevokeRepositoryAccessForExpiredLicensesCommandTest extends TestCase
 
         $this->license->refresh();
 
-        $this->assertNull($this->license->purchase->user->github_username);
-        $this->assertFalse($this->license->purchase->has_repository_access);
+        $this->assertNull($this->license->assignment->user->github_username);
+        $this->assertFalse($this->license->assignment->has_repository_access);
     }
 
     /** @test */
@@ -100,15 +124,15 @@ class RevokeRepositoryAccessForExpiredLicensesCommandTest extends TestCase
             'expires_at' => now()->addSecond(),
         ]);
 
-        $otherLicense->purchase->user->update([
+        $otherLicense->assignment->user->update([
             'github_username' => 'dummy_username',
         ]);
 
-        $otherLicense->purchase->update([
+        $otherLicense->assignment->update([
             'has_repository_access' => true,
         ]);
 
-        $otherLicense->purchase->purchasable->update([
+        $otherLicense->assignment->purchasable->update([
             'repository_access' => 'spatie/repo',
         ]);
 
@@ -118,7 +142,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommandTest extends TestCase
 
         $this->apiSpy->shouldNotHaveReceived('revokeAccessToRepo');
 
-        $this->assertTrue($this->license->purchase->has_repository_access);
+        $this->assertTrue($this->license->assignment->has_repository_access);
 
         $otherLicense->update([
             'expires_at' => now()->subSecond(),

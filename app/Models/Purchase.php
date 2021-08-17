@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Laravel\Paddle\Receipt;
@@ -24,9 +25,9 @@ class Purchase extends Model
         'passthrough' => 'array',
     ];
 
-    public function licenses(): HasMany
+    public function licenses(): HasManyThrough
     {
-        return $this->hasMany(License::class);
+        return $this->hasManyThrough(License::class, PurchaseAssignment::class);
     }
 
     public function purchasable(): BelongsTo

@@ -3,7 +3,9 @@
 namespace Tests\Actions;
 
 use App\Actions\CreateLicenseAction;
+use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -21,14 +23,27 @@ class CreateLicenseActionTest extends TestCase
     /** @test */
     public function it_can_create_a_license()
     {
-        $user = User::factory()->create();
-        $purchase = Purchase::factory()->create();
+        $assignment = PurchaseAssignment::factory()->create();
 
-        $license = $this->action->execute($user, $purchase);
+        $license = $this->action->execute($assignment);
 
         $this->assertNotNull($license->key);
         $this->assertTrue($license->expires_at->isNextYear());
-        $this->assertTrue($license->user->is($user));
-        $this->assertTrue($license->purchase->is($purchase));
+        $this->assertTrue($license->assignment->is($assignment));
+    }
+
+    /** @test */
+    public function it_can_create_a_license_for_lifetime_purchases()
+    {
+        $assignment = PurchaseAssignment::factory()->create([
+            'purchasable_id' => Purchasable::factory()->create([
+                'is_lifetime' => true,
+            ])->id,
+        ]);
+
+        $license = $this->action->execute($assignment);
+
+        $this->assertNotNull($license->key);
+        $this->assertSame(2038, $license->expires_at->year);
     }
 }

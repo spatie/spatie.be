@@ -30,9 +30,9 @@ class PurchaseAssignment extends Model
         return $this->belongsTo(Purchasable::class);
     }
 
-    public function assignee(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function licenses(): HasMany

@@ -32,7 +32,7 @@ class Activation extends Model
 
     public function updateSignedActivation(): void
     {
-        $privateKeyString = $this->license->purchasable->product->private_key;
+        $privateKeyString = $this->license->assignment->purchasable->product->private_key;
 
         if (empty($privateKeyString)) {
             throw new Exception("Cannot create a signed license for a product without a private key");
@@ -42,7 +42,7 @@ class Activation extends Model
             'activation_code' => $this->uuid,
             'expires_at' => $this->license->expires_at->timestamp,
             'license_key' => $this->license->key,
-            'licensed_to' => Str::ascii($this->license->user->name),
+            'licensed_to' => Str::ascii($this->license->assignment->user->name),
         ];
 
         ksort($activationProperties);

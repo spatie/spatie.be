@@ -34,6 +34,7 @@ class Purchasable extends Model implements HasMedia, Sortable
         'discount_percentage' => 'integer',
         'discount_starts_at' => 'datetime',
         'discount_expires_at' => 'datetime',
+        'is_lifetime' => 'boolean',
     ];
 
     public $with = [

@@ -7,12 +7,14 @@ use App\Models\Bundle;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use App\Models\Referrer;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use App\Support\Paddle\PaddlePayload;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 use Laravel\Paddle\Receipt;
 
 class HandlePurchaseAction
@@ -48,7 +50,7 @@ class HandlePurchaseAction
     ): Purchase {
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
-        $this->attachRecipients($purchase, $paddlePayload);
+        $this->createAssignments($purchase, $paddlePayload);
 
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
@@ -125,20 +127,36 @@ class HandlePurchaseAction
             return;
         }
 
-        app(CreateLicenseAction::class)->execute($user, $purchase, $rayPurchasable);
+        /** @var PurchaseAssignment $assignment */
+        $assignment = PurchaseAssignment::query()
+            ->firstOrCreate([
+                'user_id' => $user->id,
+                'purchase_id' => $purchase->id,
+                'purchasable_id' => $rayPurchasable->id,
+            ]);
+
+        app(CreateLicenseAction::class)->execute($assignment);
     }
 
-    private function attachRecipients(Purchase $purchase, PaddlePayload $paddlePayload): void
+    private function createAssignments(Purchase $purchase, PaddlePayload $paddlePayload): void
     {
         $emails = $paddlePayload->passthrough()['emails'] ?? [$purchase->user->email];
 
         foreach ($emails as $email) {
+            // TODO: CreateUserAction with welcome mail
             $user = User::firstOrCreate([
                 'email' => $email,
+            ], [
+                'name' => $email,
+                'password' => bcrypt(Str::random(20)),
             ]);
 
-            if (! $purchase->recipients()->where('email', $email)->exists()) {
-                $purchase->recipients()->attach($user);
+            foreach ($purchase->getPurchasables() as $purchasable) {
+                PurchaseAssignment::create([
+                    'user_id' => $user->id,
+                    'purchase_id' => $purchase->id,
+                    'purchasable_id' => $purchasable->id,
+                ]);
             }
         }
     }
