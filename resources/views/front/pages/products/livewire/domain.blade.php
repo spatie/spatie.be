@@ -2,7 +2,7 @@
     @if ($editing)
         <div class="inline-flex">
             <input
-                type="input"
+                type="text"
                 class="text-xs form-input w-full h-8 py-0 px-2 rounded-r-none border-r-0"
                 placeholder="Domain"
                 wire:model="domain"

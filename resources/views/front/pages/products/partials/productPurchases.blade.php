@@ -1,24 +1,25 @@
 <div class="mb-8">
+    <div class="flex items-baseline space-x-4">
+        <h2 class="title-sm mb-0">
+            {{ $product->title }}
+        </h2>
 
-        <div class="flex items-baseline space-x-4">
-            <h2 class="title-sm mb-0">
-                {{ $product->title }}
-            </h2>
+        <a href="{{ route('products.show', $product) }}#purchases"
+        class="link-blue link-underline">
+            Manage
+            {{ \Illuminate\Support\Str::plural('purchase', $purchasesForProduct->count()) }}
+        </a>
 
-            <a href="{{ route('products.show', $product) }}#purchases"
-            class="link-blue link-underline">
-                Manage
-                {{ \Illuminate\Support\Str::plural('purchase', $purchasesForProduct->count()) }}
+        @php
+            $purchasesWithVideos = $purchasesForProduct->pluck('purchase')->filter(fn (\App\Models\Purchase $purchase) => $purchase->hasAccessToVideos())
+        @endphp
+        @if ($purchasesWithVideos->count() > 0)
+            <span class="mx-2 text-gray-light">|</span>
+            <a href="{{ $purchasesWithVideos->first()->getPurchasables()->first()->series->first()->url }}" class="link-blue link-underline">
+                Watch course
             </a>
-
-            @if ($purchasesForProduct->pluck('purchase')->filter(fn (\App\Models\Purchase $purchase) => $purchase->hasAccessToVideos())->count() > 0)
-                <span class="mx-2 text-gray-light">|</span>
-                <a href="{{ $product->purchasables->filter(fn ($purchasable) => $purchasable->series)->first()?->series->first()->url }}" class="link-blue link-underline">
-                    Watch course
-                </a>
-            @endif
-        </div>
-
+        @endif
+    </div>
 
     @foreach($purchasesForProduct as $data)
         @php

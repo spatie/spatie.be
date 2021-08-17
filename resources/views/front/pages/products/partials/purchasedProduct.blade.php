@@ -1,9 +1,8 @@
 @php
-    /** @var \Illuminate\Support\Collection<\App\Models\Purchase> $purchase */
-    $purchasables = $purchase->getPurchasablesForProduct($product);
+    /** @var \App\Models\PurchaseAssignment $assignment */
+    $purchasable = $assignment->purchasable;
 @endphp
 
-@foreach ($purchasables as $purchasable)
 <div class="cells">
     <div class="cell-l">
         {!! $purchasable->getting_started_description ?? '' !!}
@@ -21,7 +20,7 @@
                     $downloadUrl =  URL::temporarySignedRoute(
                         'purchase.download',
                         now()->addMinutes(30),
-                        [$purchasable->product, $purchase, $download]
+                        [$assignment->purchasable->product, $assignment->purchase, $download]
                     );
                 @endphp
 
@@ -43,7 +42,7 @@
 
             @if ($purchasable->repository_access)
                 <div>
-                    @if ($purchase->has_repository_access)
+                    @if ($assignment->has_repository_access)
                         <a class="link-blue link-underline"
                            href="https://github.com/{{ $purchasable->repository_access }}">
                             Visit {{ $purchasable->repository_access }} on GitHub
@@ -57,18 +56,15 @@
                 </div>
             @endif
 
-                @if ($purchasable->extra_links)
-                    {!! $purchasable->extra_links !!}
-                @endif
-
-
+            @if ($purchasable->extra_links)
+                {!! $purchasable->extra_links !!}
+            @endif
         </div>
         <div class="mt-2 text-xs text-gray">
             {{ request()->user()->email }}
             <span class="char-searator mx-1">•</span>
-            Purchased on {{ $purchase->created_at->format('Y-m-d') }}
+            Purchased on {{ $assignment->created_at->format('Y-m-d') }}
         </div>
 
     </div>
 </div>
-@endforeach

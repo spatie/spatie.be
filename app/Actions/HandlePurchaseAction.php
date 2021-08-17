@@ -48,6 +48,8 @@ class HandlePurchaseAction
     ): Purchase {
         $purchase = $this->createPurchase($user, $purchasable, $paddlePayload);
 
+        $this->attachRecipients($purchase, $paddlePayload);
+
         $purchase = $this->handlePurchaseLicensingAction->execute($purchase);
 
         $purchasables = $purchase->getPurchasables();
@@ -124,5 +126,20 @@ class HandlePurchaseAction
         }
 
         app(CreateLicenseAction::class)->execute($user, $purchase, $rayPurchasable);
+    }
+
+    private function attachRecipients(Purchase $purchase, PaddlePayload $paddlePayload): void
+    {
+        $emails = $paddlePayload->passthrough()['emails'] ?? [$purchase->user->email];
+
+        foreach ($emails as $email) {
+            $user = User::firstOrCreate([
+                'email' => $email,
+            ]);
+
+            if (! $purchase->recipients()->where('email', $email)->exists()) {
+                $purchase->recipients()->attach($user);
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -143,33 +144,22 @@ class User extends Authenticatable
 
     public function owns(Purchasable $purchasable): bool
     {
-        foreach ($this->purchases as $purchase) {
-            if ($purchase->getPurchasables()->pluck('id')->contains($purchasable->id)) {
-                return true;
-            }
-        }
-
-        return false;
+        return $this->assignments()->where('purchasable_id', $purchasable->id)->exists();
     }
 
-    public function licenses(): HasMany
+    public function licenses(): HasManyThrough
     {
-        return $this->hasMany(License::class);
-    }
-
-    public function licensesWithoutRenewals(): HasMany
-    {
-        return $this->hasMany(License::class)->whereHas('purchasable', function (Builder $query): void {
-            $query->whereNotIn('type', [
-                PurchasableType::TYPE_STANDARD_RENEWAL,
-                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
-            ]);
-        });
+        return $this->hasManyThrough(License::class, PurchaseAssignment::class);
     }
 
     public function purchases(): HasMany
     {
         return $this->hasMany(Purchase::class)->with(['purchasable.product', 'bundle']);
+    }
+
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(PurchaseAssignment::class);
     }
 
     public function purchasesWithoutRenewals(): HasMany
