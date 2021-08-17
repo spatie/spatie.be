@@ -1,7 +1,7 @@
 <x-page title="100 million downloads" background="/backgrounds/100-million.jpg" description="Celebrating 100.000.000 downloads">
     @once
         @push('scripts')
-            <script src="/alpine/alpine.js" defer></script>
+            <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         @endpush
     @endonce
 
@@ -28,10 +28,10 @@
         </div>
     </div>
 
-    <div id="testimonials" class="wrap" x-data="{ testimonial: 'tom' }" 
+    <div id="testimonials" class="wrap" x-data="{ testimonial: 'tom' }"
         x-init="() => {
-            const hash = location.hash.slice(1); 
-                if(['tom','axel','tim','christian', 'alladin', 'david', 'danyell', 'craig', 'jamie', 'samy'].includes(hash)){ 
+            const hash = location.hash.slice(1);
+                if(['tom','axel','tim','christian', 'alladin', 'david', 'danyell', 'craig', 'jamie', 'samy'].includes(hash)){
                     testimonial = hash;
                 }
             }">

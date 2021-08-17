@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -36,6 +37,11 @@ class Purchase extends Model
     public function bundle(): BelongsTo
     {
         return $this->belongsTo(Bundle::class);
+    }
+
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(PurchaseAssignment::class);
     }
 
     public function getPurchasables(): Collection

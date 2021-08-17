@@ -31,8 +31,8 @@ class HandlePurchaseLicensingAction
                 return;
             }
 
-            foreach (range(1, $purchase->quantity) as $i) {
-                $this->createLicenseAction->execute($purchase->user, $purchase, $purchasable);
+            foreach ($purchase->recipients as $recipient) {
+                $this->createLicenseAction->execute($recipient, $purchase, $purchasable);
             }
         });
 

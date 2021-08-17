@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use Illuminate\Http\Request;
 
 class PurchasesController
@@ -11,19 +12,19 @@ class PurchasesController
     public function __invoke(Request $request)
     {
         $purchasesPerProduct = $request->user()
-            ->purchasesWithoutRenewals()
-            ->with(['purchasable', 'bundle'])
+            ->assignments()
+            ->with(['purchasable.product'])
             ->get()
-            ->flatMap(function (Purchase $purchase) {
-                return $purchase->getPurchasables()->map(function (Purchasable $purchasable) use ($purchase) {
-                    return [
-                        'product_id' => $purchasable->product_id,
-                        'purchase' => $purchase,
-                        'product' => $purchasable->product,
-                    ];
-                });
+            ->flatMap(function (PurchaseAssignment $assignment) {
+                return [[
+                    'product_id' => $assignment->purchasable->product_id,
+                    'purchase' => $assignment->purchase,
+                    'purchasable' => $assignment->purchasable,
+                    'product' => $assignment->purchasable->product,
+                ]];
             })->mapToGroups(fn(array $data) => [$data['product_id'] => [
                 'purchase' => $data['purchase'],
+                'purchasable' => $data['purchasable'],
                 'product' => $data['product'],
             ]]);
 

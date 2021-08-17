@@ -76,6 +76,7 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertCount(0, $purchase->licenses);
         $this->assertTrue($purchase->user->is($this->user));
         $this->assertTrue($purchase->purchasable->is($purchasable));
+        $this->assertTrue($purchase->recipients->first()->is($this->user));
 
         $this->assertEquals($this->receipt->id, $purchase->receipt->id);
         $this->assertEquals($this->payload->fee, $purchase->paddle_fee);

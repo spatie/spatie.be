@@ -1,28 +1,28 @@
 @php
-    $priceWithoutDiscount = $license->purchasable->getPriceWithoutDiscountForCurrentRequest();
-    $price = $license->purchasable->getPriceForCurrentRequest()
+    $priceWithoutDiscount = $license->assignment->purchasable->getPriceWithoutDiscountForCurrentRequest();
+    $price = $license->assignment->purchasable->getPriceForCurrentRequest();
 @endphp
 
 <div class="cells grid-cols-auto-1fr">
     <div class="cell-l">
         <div class="grid grid-flow-col gap-4 justify-start">
-            @if ($license->purchasable->getting_started_url)
-                <a class="link-blue link-underline" href="{{ $license->purchasable->getting_started_url }}">
+            @if ($license->assignment->purchasable->getting_started_url)
+                <a class="link-blue link-underline" href="{{ $license->assignment->purchasable->getting_started_url }}">
                     Getting started
                 </a>
             @endif
 
-            @if ($license->purchasable->series->count())
+            @if ($license->assignment->purchasable->series->count())
                 <a class="link-blue link-underline"
-                   href="{{ route('series.show', $license->purchasable->series->first()) }}">
+                   href="{{ route('series.show', $license->assignment->purchasable->series->first()) }}">
                     Videos
                 </a>
             @endif
 
-            @if ($license->purchasable->repository_access)
+            @if ($license->assignment->purchasable->repository_access)
                 @if ($license->hasRepositoryAccess())
                     <a class="link-blue link-underline"
-                       href="https://github.com/{{ $license->purchasable->repository_access }}">
+                       href="https://github.com/{{ $license->assignment->purchasable->repository_access }}">
                         Repository
                     </a>
                 @else
@@ -62,27 +62,23 @@
                 <livewire:activations :license="$license"/>
             </div>
         @endif
-
-
     </div>
 
     <span class="cell-r grid gap-4 justify-start md:justify-end">
-        @if ($license->purchasable->renewalPurchasable)
-            <a href="{{ route('products.buy', [$license->purchasable->product, $license->purchasable->renewalPurchasable, $license]) }}">
+        @if ($license->assignment->purchasable->renewalPurchasable)
+            <a href="{{ route('products.buy', [$license->assignment->purchasable->product, $license->assignment->purchasable->renewalPurchasable, $license]) }}">
                 <x-button>
                     @if ($license->isExpired())
-                            Renew for
-                        @else
-                            Extend for
-                        @endif
+                        Renew for
+                    @else
+                        Extend for
+                    @endif
                     <span class="ml-1 text-lg leading-none">
                         {{ $price->formattedPrice() }}
                     </span>
                 </x-button>
             </a>
         @endif
-
-
     </span>
 </div>
 

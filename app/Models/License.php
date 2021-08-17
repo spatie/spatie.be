@@ -30,7 +30,7 @@ class License extends Model implements AuthenticatableContract
     public static function booted()
     {
         static::saved(function (License $license) {
-            $privateKeyString = $license->purchasable->product->private_key;
+            $privateKeyString = $license->assignment->purchasable->product->private_key;
 
             if (! $privateKeyString) {
                 return;
@@ -45,26 +45,16 @@ class License extends Model implements AuthenticatableContract
         });
     }
 
-    public function purchasable(): BelongsTo
+    public function assignment(): BelongsTo
     {
-        return $this->belongsTo(Purchasable::class);
-    }
-
-    public function purchase(): BelongsTo
-    {
-        return $this->belongsTo(Purchase::class);
+        return $this->belongsTo(PurchaseAssignment::class, 'purchase_assignment_id');
     }
 
     public function scopeForProduct(Builder $query, Product $product): void
     {
-        $query->whereHas('purchasable', fn (
+        $query->whereHas('assignment.purchasable', fn (
             Builder $query
         ) => $query->where('product_id', $product->id));
-    }
-
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
     }
 
     public function activations(): HasMany
@@ -74,7 +64,7 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return optional($this->purchase)->has_repository_access;
+        return optional($this->assignment)->has_repository_access;
     }
 
     public function renew(): self
@@ -125,7 +115,7 @@ class License extends Model implements AuthenticatableContract
 
     public function getName(): string
     {
-        return "{$this->purchasable->product->title}: {$this->purchasable->title}";
+        return "{$this->assignment->purchasable->product->title}: {$this->assignment->purchasable->title}";
     }
 
     public function isMasterKey(): bool
@@ -135,7 +125,7 @@ class License extends Model implements AuthenticatableContract
 
     public function maximumActivationCount(): int
     {
-        return $this->purchasable->product->maximum_activation_count;
+        return $this->assignment->purchasable->product->maximum_activation_count;
     }
 
     public function supportsActivations(): bool
@@ -145,7 +135,7 @@ class License extends Model implements AuthenticatableContract
 
     protected function updateSignedLicense()
     {
-        $privateKeyString = $this->purchasable->product->private_key;
+        $privateKeyString = $this->assignment->purchasable->product->private_key;
 
         if (empty($privateKeyString)) {
             throw new Exception("Cannot create a signed license for a product without a private key");

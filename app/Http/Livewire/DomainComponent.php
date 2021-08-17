@@ -18,6 +18,8 @@ class DomainComponent extends Component
 
     public function mount(License $license): void
     {
+        $license->refresh();
+
         $this->license = $license;
 
         $this->domain = $license->domain;
