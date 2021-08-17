@@ -52,6 +52,7 @@
         "psr/http-factory-implementation": "^1.0",
         "react/child-process": "^0.6.1",
         "react/promise": "^2.8",
+        "spatie/browsershot": "^3.49",
         "spatie/commonmark-shiki-highlighter": "^1.1",
         "spatie/crypto": "^2.0.0",
         "spatie/eloquent-sortable": "^3.8",
