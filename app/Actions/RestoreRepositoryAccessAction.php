@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 
@@ -18,33 +19,34 @@ class RestoreRepositoryAccessAction
 
     public function execute(User $user): void
     {
-        $purchases = $user->purchases->where('has_repository_access', false);
+        $assignments = $user->assignments()
+            ->with(['purchasable'])
+            ->where('has_repository_access', false)
+            ->get();
 
-        $purchases->each(function (Purchase $purchase) use ($user) {
-            $purchase->getPurchasables()->each(function (Purchasable $purchasable) use ($user, $purchase) {
-                if (! $purchasable->repository_access) {
-                    return;
-                }
+        $assignments->each(function (PurchaseAssignment $assignment) use ($user) {
+            if (! $assignment->purchasable->repository_access) {
+                return;
+            }
 
-                $hasActiveLicense = $purchase->licenses()
-                    ->where('purchasable_id', $purchasable->id)
-                    ->whereNotExpired()
-                    ->exists();
-                if ($purchasable->requires_license && !$hasActiveLicense) {
-                    return;
-                }
+            $hasActiveLicense = $assignment->licenses()
+                ->whereNotExpired()
+                ->exists();
 
-                $repositories = explode(', ', $purchasable->repository_access);
+            if ($assignment->purchasable->requires_license && !$hasActiveLicense) {
+                return;
+            }
 
-                foreach($repositories as $repository) {
-                    $this->gitHubApi->inviteToRepo(
-                        $user->github_username,
-                        $repository
-                    );
-                }
+            $repositories = explode(', ', $assignment->purchasable->repository_access);
 
-                $purchase->update(['has_repository_access' => true]);
-            });
+            foreach($repositories as $repository) {
+                $this->gitHubApi->inviteToRepo(
+                    $user->github_username,
+                    $repository
+                );
+            }
+
+            $assignment->update(['has_repository_access' => true]);
         });
     }
 }

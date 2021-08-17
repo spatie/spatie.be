@@ -62,9 +62,11 @@ class ProcessPaymentSucceededJobTest extends TestCase
     /** @test */
     public function it_can_handle_an_incoming_bundle_payment()
     {
-        Bundle::factory()->create([
+        $bundle = Bundle::factory()->create([
             'paddle_product_id' => 123,
         ]);
+
+        $bundle->purchasables()->attach(Purchasable::factory()->create());
 
         $payload = $this->payload;
         $payload['product_id'] = 123;

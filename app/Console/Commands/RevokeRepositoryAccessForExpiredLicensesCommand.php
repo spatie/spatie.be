@@ -19,7 +19,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
         $this->info('Revoking access to repositories for expired licenses...');
 
         License::query()
-            ->whereHas('purchase', fn (Builder $query) => $query->where('has_repository_access', true))
+            ->whereHas('assignment', fn (Builder $query) => $query->where('has_repository_access', true))
             ->whereExpired()
             ->cursor()
             ->each(function (License $license) use ($gitHubApi) {
@@ -28,24 +28,28 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                 }
 
                 try {
-                    $gitHubApi->revokeAccessToRepo(
-                        $license->purchase->user->github_username,
-                        $license->purchase->purchasable->repository_access
-                    );
+                    $repositories = explode(', ', $license->assignment->purchasable->repository_access);
+
+                    foreach($repositories as $repository) {
+                        $gitHubApi->revokeAccessToRepo(
+                            $license->assignment->user->github_username,
+                            $repository
+                        );
+                    }
                 } catch (RuntimeException $exception) {
                     if ($exception->getMessage() !== 'Not Found') {
                         Log::alert(
-                            "We could not revoke access for {$license->purchase->user->github_username}
-                             to {$license->purchase->purchasable->repository_access}. Exception: {$exception->getMessage()}"
+                            "We could not revoke access for {$license->assignment->user->github_username}
+                             to {$license->assignment->purchasable->repository_access}. Exception: {$exception->getMessage()}"
                         );
 
                         return;
                     }
 
-                    $this->unsetGithubUsername($license->purchase->user);
+                    $this->unsetGithubUsername($license->assignment->user);
                 }
 
-                $license->purchase->update(['has_repository_access' => false]);
+                $license->assignment->update(['has_repository_access' => false]);
             });
 
         $this->info('All done!');
@@ -53,9 +57,10 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
 
     protected function userHasAnotherLicense(License $license): bool
     {
-        return $license->purchase->user->licenses()
+        return $license->assignment->user
+            ->licenses()
             ->whereNotExpired()
-            ->where('purchasable_id', $license->purchasable_id)
+            ->whereHas('assignment', fn (Builder $query) => $query->where('purchasable_id', $license->purchasable_id))
             ->exists();
     }
 

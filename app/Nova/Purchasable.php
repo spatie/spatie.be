@@ -66,6 +66,7 @@ class Purchasable extends Resource
                 Boolean::make('Released'),
 
                 Boolean::make('Requires license')->hideFromIndex(),
+                Boolean::make('Is Lifetime')->hideFromIndex(),
 
                 Text::make('Repository access')->hideFromIndex(),
                 Items::make('Satis packages')->hideFromIndex(),

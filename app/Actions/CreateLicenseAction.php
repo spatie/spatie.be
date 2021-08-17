@@ -5,28 +5,25 @@ namespace App\Actions;
 use App\Models\License;
 use App\Models\Purchasable;
 use App\Models\Purchase;
+use App\Models\PurchaseAssignment;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class CreateLicenseAction
 {
-    public function execute(User $user, ?Purchase $purchase = null, ?Purchasable $purchasable = null): License
+    public function execute(PurchaseAssignment $assignment): License
     {
-        $purchasableId = $purchasable ? $purchasable->id : $purchase->purchasable->id;
-
         return License::create([
             'key' => Str::random(64),
-            'user_id' => $user->id,
-            'purchase_id' => optional($purchase)->id,
-            'purchasable_id' => $purchasableId,
-            'expires_at' => $this->expiresAt($purchasableId),
+            'purchase_assignment_id' => $assignment->id,
+            'expires_at' => $this->expiresAt($assignment->purchasable),
         ]);
     }
 
-    protected function expiresAt(int $purchasableId): Carbon
+    protected function expiresAt(Purchasable $purchasable): Carbon
     {
-        if ($purchasableId === 18) {
+        if ($purchasable->is_lifetime) {
             return Carbon::createFromFormat('Y-m-d H:i:s', '2038-01-19 00:00:00');
         }
 
