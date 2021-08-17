@@ -4,9 +4,9 @@ namespace Tests\Console\Commands;
 
 use App\Domain\Shop\Commands\SendLicenseExpirationNotificationsCommand;
 use App\Domain\Shop\Models\License;
-use App\Notifications\LicenseExpiredNotification;
-use App\Notifications\LicenseExpiredSecondNotification;
-use App\Notifications\LicenseIsAboutToExpireNotification;
+use App\Domain\Shop\Notifications\LicenseExpiredNotification;
+use App\Domain\Shop\Notifications\LicenseExpiredSecondNotification;
+use App\Domain\Shop\Notifications\LicenseIsAboutToExpireNotification;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;

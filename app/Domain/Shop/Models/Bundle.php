@@ -73,4 +73,9 @@ class Bundle extends Model implements HasMedia, Sortable
     {
         return Markdown::parse($this->long_description ?? '');
     }
+
+    public function getFullTitle(): string
+    {
+        return $this->title;
+    }
 }

@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Str;
-use function app;
-use function now;
 
 class Referrer extends Model
 {

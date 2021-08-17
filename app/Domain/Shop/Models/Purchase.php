@@ -12,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Laravel\Paddle\Receipt;
-use function collect;
 
 class Purchase extends Model
 {

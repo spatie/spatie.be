@@ -12,9 +12,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Spatie\Crypto\Rsa\PrivateKey;
-use function config;
-use function now;
-use function optional;
 
 class License extends Model implements AuthenticatableContract
 {

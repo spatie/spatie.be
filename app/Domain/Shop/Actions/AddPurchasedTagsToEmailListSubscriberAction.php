@@ -8,7 +8,6 @@ use App\Models\Subscriber;
 use Illuminate\Support\Str;
 use Spatie\Mailcoach\Domain\Audience\Exceptions\CouldNotSubscribe;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
-use function report;
 
 class AddPurchasedTagsToEmailListSubscriberAction
 {

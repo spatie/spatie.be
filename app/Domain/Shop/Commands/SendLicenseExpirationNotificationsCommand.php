@@ -3,11 +3,10 @@
 namespace App\Domain\Shop\Commands;
 
 use App\Domain\Shop\Models\License;
-use App\Notifications\LicenseExpiredNotification;
-use App\Notifications\LicenseExpiredSecondNotification;
-use App\Notifications\LicenseIsAboutToExpireNotification;
+use App\Domain\Shop\Notifications\LicenseExpiredNotification;
+use App\Domain\Shop\Notifications\LicenseExpiredSecondNotification;
+use App\Domain\Shop\Notifications\LicenseIsAboutToExpireNotification;
 use Illuminate\Console\Command;
-use function now;
 
 class SendLicenseExpirationNotificationsCommand extends Command
 {
