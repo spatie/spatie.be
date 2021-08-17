@@ -114,6 +114,15 @@ class Purchasable extends Model implements HasMedia, Sortable
         return (int)round($avgEarnings);
     }
 
+    public function getFullTitle(): string
+    {
+        if ($this->title === $this->product->title) {
+            return $this->title;
+        }
+
+        return "{$this->product->title} - {$this->title}";
+    }
+
     /**
      * @param string $package Package name in following format: `spatie/laravel-mailcoach`
      *

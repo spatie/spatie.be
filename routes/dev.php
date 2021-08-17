@@ -1,10 +1,10 @@
 <?php
 
 use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Notifications\LicenseExpiredNotification;
+use App\Domain\Shop\Notifications\LicenseExpiredSecondNotification;
+use App\Domain\Shop\Notifications\LicenseIsAboutToExpireNotification;
 use App\Models\User;
-use App\Notifications\LicenseExpiredNotification;
-use App\Notifications\LicenseExpiredSecondNotification;
-use App\Notifications\LicenseIsAboutToExpireNotification;
 
 Route::prefix('mails')->group(function () {
     Route::get('license-expires-soon', function () {

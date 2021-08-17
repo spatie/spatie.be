@@ -180,6 +180,16 @@ class User extends Authenticatable
         });
     }
 
+    public function assignmentsWithoutRenewals(): HasMany
+    {
+        return $this->assignments()->whereHas('purchasable', function (Builder $query): void {
+            $query->whereNotIn('type', [
+                PurchasableType::TYPE_STANDARD_RENEWAL,
+                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+            ]);
+        });
+    }
+
     public function completedVideos(): BelongsToMany
     {
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();

@@ -1,7 +1,5 @@
 @if ($licenses->count())
-    <section id="purchases" class="wrap mb-16 pt-0">
-        <h2 class="title line-after mb-12">My licenses</h2>
-
+    <section id="purchases" class="mb-16 pt-0">
         @foreach ($licenses->groupBy('assignment.purchasable.title') as $purchasableTitle => $licensesPerPurchasable)
             <div class="mb-8">
                 <h3 class="title-sm">{{ $purchasableTitle }}</h3>

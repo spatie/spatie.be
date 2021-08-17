@@ -75,4 +75,15 @@ class AddPurchasedTagsToEmailListSubscriberActionTest extends TestCase
 
         $this->assertCount(2, $emailList->subscribers->first()->tags);
     }
+
+    /** @test * */
+    public function it_doesnt_crash_if_the_user_has_no_email()
+    {
+        $purchase = Purchase::factory()->create();
+        $purchase->user->update(['email' => '']);
+
+        (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+
+        $this->expectNotToPerformAssertions();
+    }
 }

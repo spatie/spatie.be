@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Notifications;
+namespace App\Domain\Shop\Notifications;
 
 use App\Domain\Shop\Models\License;
 use App\Http\Controllers\ProductsController;
@@ -10,7 +10,7 @@ use Illuminate\Mail\Markdown;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class LicenseIsAboutToExpireNotification extends Notification
+class LicenseExpiredNotification extends Notification
 {
     use Queueable;
 
@@ -33,10 +33,10 @@ class LicenseIsAboutToExpireNotification extends Notification
         $siteUrl = url('/');
 
         return (new MailMessage)
-            ->subject("Your {$name} license is about to expire")
+            ->subject("Your {$name} license has expired")
             ->greeting('Hi!')
-            ->line("Your {$name} license expires on {$this->license->expires_at->format('Y-m-d')}.")
-            ->line("Go to your license overview on the [spatie.be]({$siteUrl}) site to renew the license and continue receiving updates.")
+            ->line("Just a reminder to inform you that your {$name} license has expired.")
+            ->line("If you want to keep receiving updates, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license.")
             ->line(Markdown::parse($this->license->purchasable->renewal_mail_incentive))
             ->action('Renew now', action([ProductsController::class, 'show'], $this->license->purchasable->product))
             ->line("Thank you for using {$this->license->purchasable->product->title}!");

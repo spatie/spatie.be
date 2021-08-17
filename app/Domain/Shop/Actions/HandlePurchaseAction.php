@@ -143,13 +143,15 @@ class HandlePurchaseAction
         $emails = $paddlePayload->passthrough()['emails'] ?? [$purchase->user->email];
 
         foreach ($emails as $email) {
-            // TODO: CreateUserAction with welcome mail
-            $user = User::firstOrCreate([
-                'email' => $email,
-            ], [
-                'name' => $email,
-                'password' => bcrypt(Str::random(20)),
-            ]);
+            $user = User::firstWhere('email', $email);
+
+            if (! $user) {
+                $user = resolve(InviteUserToShopAction::class)->execute(
+                    purchaser: $purchase->user,
+                    purchasable: $purchase->bundle ?? $purchase->purchasable,
+                    invitee: $email,
+                );
+            }
 
             foreach ($purchase->getPurchasables() as $purchasable) {
                 PurchaseAssignment::create([

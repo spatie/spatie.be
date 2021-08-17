@@ -10,19 +10,18 @@ use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Domain\Shop\Models\Referrer;
+use App\Domain\Shop\Notifications\AccountHasBeenCreatedNotification;
 use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
 use Database\Factories\ReceiptFactory;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Notification;
 use Laravel\Paddle\Receipt;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
-use function now;
-use function resolve;
-use function tap;
 
 class HandlePurchaseActionTest extends TestCase
 {
@@ -122,6 +121,31 @@ class HandlePurchaseActionTest extends TestCase
         foreach ($purchase->licenses as $license) {
             $this->assertTrue($license->expires_at->isNextYear());
         }
+    }
+
+    /** @test */
+    public function it_creates_users_that_dont_have_an_account_yet()
+    {
+        Notification::fake();
+
+        $purchasable = Purchasable::factory()->create();
+
+        $this->paddlePayloadAttributes['passthrough'] = json_encode([
+            'emails' => [
+                'jane@doe.com',
+            ],
+        ]);
+        $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
+
+        $this->handlePurchaseAction->execute(
+            $this->user,
+            $purchasable,
+            $this->payload
+        );
+
+        $user = User::firstWhere('email', 'jane@doe.com');
+
+        Notification::assertSentTo($user, AccountHasBeenCreatedNotification::class);
     }
 
     /** @test */

@@ -3,29 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Shop\Models\PurchaseAssignment;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PurchasesController
 {
     public function __invoke(Request $request)
     {
-        $purchasesPerProduct = $request->user()
-            ->assignments()
-            ->with(['purchasable.product'])
-            ->get()
-            ->flatMap(function (PurchaseAssignment $assignment) {
-                return [[
-                    'product_id' => $assignment->purchasable->product_id,
-                    'purchase' => $assignment->purchase,
-                    'purchasable' => $assignment->purchasable,
-                    'product' => $assignment->purchasable->product,
-                ]];
-            })->mapToGroups(fn(array $data) => [$data['product_id'] => [
-                'purchase' => $data['purchase'],
-                'purchasable' => $data['purchasable'],
-                'product' => $data['product'],
-            ]]);
+        $purchases = $request->user()
+            ->purchasesWithoutRenewals()
+            ->with(['bundle', 'purchasable.product', 'assignments'])
+            ->get();
 
-        return view('front.profile.purchases', compact('purchasesPerProduct'));
+        $assignments = $request->user()
+            ->assignmentsWithoutRenewals()
+            ->with(['purchasable.product', 'licenses'])
+            ->whereNotIn('purchase_id', $purchases->pluck('id'))
+            ->get()
+            ->unique('purchasable.id')
+            ->groupBy(fn (PurchaseAssignment $assignment) => $assignment->purchasable->product->title);
+
+        return view('front.profile.purchases', compact('purchases', 'assignments'));
     }
 }
