@@ -1,25 +1,13 @@
-<div class="markup-tables" wire:poll.5s>
-    @if(count($activations))
-        <table class="my-4 text-xs">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th colspan="2">Activated at</th>
-                    <th></th>
-                </tr>
-            </thead>
-            @foreach($activations as $activation)
-                <tr wire:key="{{ $activation->id }}">
-                    <td>{{ $activation->name }}</td>
-                    <td>{{ $activation->created_at->format('Y-m-d') }}</td>
-                    <td>{{ $activation->created_at->format('H:i:s') }}</td>
-                    <td>
-                        <button wire:click="delete({{ $activation->id }})"class="link link-red">Delete</button>
-                    </td>
-                </tr>
-            @endforeach
-        </table>
+<div class="max-w-full text-sm" wire:poll.5s>
+    @if ($activations->count())
+        @foreach ($activations as $activation)
+            <div class="flex justify-between items-center mb-2">
+                <p class="w-1/2 truncate">{{ $activation->name }}</p>
+                <p class="">{{ $activation->created_at->format('Y-m-d H:i') }}</p>
+                <button wire:click="delete({{ $activation->id }})" class="link link-red">Delete</button>
+            </div>
+        @endforeach
     @else
-        <p class="text-xs text-gray">Product has not been activated.</p>
+        <p class="text-sm text-gray">No activations yet.</p>
     @endif
 </div>

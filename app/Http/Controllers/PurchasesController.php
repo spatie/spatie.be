@@ -10,19 +10,23 @@ class PurchasesController
 {
     public function __invoke(Request $request)
     {
-        $purchases = $request->user()
-            ->purchasesWithoutRenewals()
-            ->with(['bundle', 'purchasable.product', 'assignments'])
-            ->get();
-
-        $assignments = $request->user()
+        $courses = $request->user()
             ->assignmentsWithoutRenewals()
-            ->with(['purchasable.product', 'licenses'])
-            ->whereNotIn('purchase_id', $purchases->pluck('id'))
+            ->with(['purchasable.product', 'purchasable.media'])
+            ->whereHas('purchasable', fn(Builder $query) => $query
+                ->whereHas('series')
+                ->orWhereHas('media', fn(Builder $query) => $query->where('collection_name', 'downloads'))
+            )
             ->get()
-            ->unique('purchasable.id')
-            ->groupBy(fn (PurchaseAssignment $assignment) => $assignment->purchasable->product->title);
+            ->unique('purchasable_id');
 
-        return view('front.profile.purchases', compact('purchases', 'assignments'));
+        $applications = $request->user()
+            ->assignmentsWithoutRenewals()
+            ->with(['purchasable.product', 'purchasable.media', 'licenses.activations'])
+            ->whereHas('licenses')
+            ->get()
+            ->groupBy('purchasable.product_id');
+
+        return view('front.profile.purchases', compact('courses', 'applications'));
     }
 }
