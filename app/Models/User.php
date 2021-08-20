@@ -22,6 +22,7 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Paddle\Billable;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
@@ -151,6 +152,11 @@ class User extends Authenticatable
     public function owns(Purchasable $purchasable): bool
     {
         return $this->assignments()->where('purchasable_id', $purchasable->id)->exists();
+    }
+
+    public function ownsAny(Collection $purchasables): bool
+    {
+        return $this->assignments()->whereIn('purchasable_id', $purchasables->pluck('id'))->exists();
     }
 
     public function licenses(): HasManyThrough

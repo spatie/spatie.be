@@ -59,18 +59,26 @@
     </section>
 @endif
 
-@auth
-    <section class="wrap mb-16 pt-0">
-        @if($assignments->count() && $getting_started_description = $assignments->first()->purchasable->getting_started_description)
-            {!! $getting_started_description !!}
-        @endif
-    </section>
-
-    @include('front.pages.products.partials.purchasedLicenses', ['licenses' => $licenses])
-
-    @if (!$licenses->count())
-        @include('front.pages.products.partials.purchasedProducts', ['assignments' => $assignments])
-    @endif
+@if (auth()->check() && auth()->user()->ownsAny($product->purchasables))
+    <div class="wrap flex w-full mb-20">
+        <div class="w-full bg-orange-dark text-white flex flex-col justify-between items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
+            <div class="flex items-center">
+                <div class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
+                    {{ svg('icons/fal-exclamation-circle') }}
+                </div>
+                <div>
+                    <div>
+                        Looking to manage your existing purchases? They've moved to <strong>your profile</strong>.
+                    </div>
+                </div>
+            </div>
+            <a href="{{ route('purchases') }}">
+                <button class="mt-2 md:mt-0 ml-4 px-2 py-1 rounded text-orange-dark bg-white uppercase tracking-wide font-semibold">
+                    Purchases
+                </button>
+            </a>
+        </div>
+    </div>
 @endauth
 
 @if($assignments->count() === 0 || $product->purchasables()->first()->type !== 'videos' )

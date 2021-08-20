@@ -1,4 +1,4 @@
-<span>
+<span class="inline-flex items-center w-full">
     @if ($editing)
         <div class="inline-flex">
             <input
@@ -24,12 +24,10 @@
             </a>
         </div>
     @else
-            <span>{{ $domain ?: 'No domain set' }}</span>
+            <span class="text-sm">{{ $domain ?: 'No domain set' }}</span>
             <a href="#"
                class="ml-1 link-blue link-underline"
                wire:click.prevent="edit"
             >Edit</a>
     @endif
-
-    <span class="char-separator mx-2">•</span>
 </span>
