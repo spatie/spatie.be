@@ -1,5 +1,5 @@
 <?php $theme ??= 'green'; ?>
-<div class="flex flex-col py-6 {{ $theme === 'white' ? 'bg-white shadow-lg' : 'bg-green-lightest line-l line-l-green pr-4 bg-opacity-50' }}">
+<div id="{{ $assignment->purchasable->product->slug }}" class="flex flex-col py-6 {{ $theme === 'white' ? 'bg-white shadow-lg' : 'bg-green-lightest line-l line-l-green pr-4 bg-opacity-50' }}">
     <div class="mb-6">
         <a href="{{ route('products.show', $assignment->purchasable->product) }}" class="group block px-4 md:px-6">
             @if (!isset($showImage) || $showImage)

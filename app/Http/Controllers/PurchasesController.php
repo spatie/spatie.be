@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;

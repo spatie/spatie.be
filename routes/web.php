@@ -86,7 +86,7 @@ Route::prefix('products')->group(function () {
 
 Route::prefix('bundles')->group(function () {
     Route::get('{bundle:slug}', [BundlesController::class, 'show'])->name('bundles.show');
-    Route::get('{bundle:slug}/purchase-complete', AfterPaddleBundleSaleController::class);
+    Route::get('{bundle:slug}/purchase-complete', AfterPaddleSaleController::class);
 });
 
 Route::prefix('open-source')->group(function () {

@@ -17,6 +17,45 @@
         </div>
     </section>
 
+    @if(session()->has('sold_purchasable'))
+        @php
+            /** @var \App\Domain\Shop\Models\Purchasable $purchasable */
+            $purchasable = session()->pull('sold_purchasable');
+
+            /** @var \App\Domain\Shop\Models\PurchaseAssignment $assignment */
+            $assignment = session()->pull('latest_assignment');
+        @endphp
+
+        <section id="cta" class="pb-16">
+            <div class="wrap">
+                <div class="card gradient gradient-green text-white">
+                    <div class="wrap-card grid md:grid-cols-2 md:items-center">
+                        <h2 class="title-xl">
+                            Thank you!
+                        </h2>
+                        <p class="text-xl">
+                            Thanks for buying <strong>{{ $purchasable instanceof \App\Domain\Shop\Models\Bundle ? $purchasable->title : $purchasable->product->title }}</strong>. You can view details and manage your purchase below this page.
+
+                            @if ($assignment)
+                                <br /><br />
+                                @if(optional($assignment->purchase)->unlocksRayLicense())
+                                    Your purchase also unlocked <a class="font-bold underline" href="#ray">a license for Ray</a>!
+                                    <br/><br />
+                                @endif
+                            @endif
+
+                            Here's a little bonus: you will get a <strong>10% discount</strong> on purchases in the next 24 hours!
+                            @if ($purchasable->getting_started_url)
+                                <br/><br/>
+                                <a class="link-white link-underline" href="{{ $purchasable->getting_started_url }}">Get started</a> right away!
+                            @endif
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
     <section class="section section-group pt-0">
         <div class="wrap max-w-md md:max-w-columns">
             <h2 class="title line-after mb-12">Courses</h2>
