@@ -41,35 +41,29 @@
     </div>
 @endauth
 
-@if($assignments->count() === 0 || $product->purchasables()->first()->type !== 'videos' )
-    <section class="md:-mt-8 mb-24 pt-0 section-fade">
-        <div class="wrap">
-            @if ($licenses->count() || $assignments->count())
-                <h2 class="title line-after mt-16 mb-12">Buy extra licenses</h2>
-            @endif
-            <div class="md:-mx-2 md:grid md:grid-flow-col items-stretch justify-start">
-                @foreach($product->purchasablesWithoutRenewals as $purchasable)
-                    @if ($purchasable->released)
+<section class="md:-mt-8 mb-24 pt-0 section-fade">
+    <div class="wrap">
+        <div class="md:-mx-2 md:grid md:grid-flow-col items-stretch justify-start">
+            @foreach($product->purchasablesWithoutRenewals as $purchasable)
+                @if ($purchasable->released)
                     @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
-                    @endif
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <div class="section md:-mt-12 pt-0 pb-16 wrap">
-        <div class="flex-0 text-xs text-gray mt-6">
-            Includes a 10% coupon for a follow-up purchase within the next 24 hours.
-            <br />
-            @if($product->hasGuarantee())
-            On this product, we offer a 10 day money-back guarantee
-            <br />
-            @endif
-            VAT will be calculated during checkout by <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
-
+                @endif
+            @endforeach
         </div>
     </div>
-@endif
+</section>
+
+<div class="section md:-mt-12 pt-0 pb-16 wrap">
+    <div class="flex-0 text-xs text-gray mt-6">
+        Includes a 10% coupon for a follow-up purchase within the next 24 hours.
+        <br />
+        @if($product->hasGuarantee())
+        On this product, we offer a 10 day money-back guarantee
+        <br />
+        @endif
+        VAT will be calculated during checkout by <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
+    </div>
+</div>
 
 <div class="section pt-0">
     <div class="wrap grid gap-12 sm:grid-cols-2 items-start">
