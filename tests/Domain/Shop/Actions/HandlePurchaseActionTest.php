@@ -463,6 +463,45 @@ class HandlePurchaseActionTest extends TestCase
         $this->assertTrue($purchase->licenses->first()->expires_at->isNextYear());
     }
 
+    /** @test * */
+    public function it_can_process_a_bundle_purchase_with_licenses_for_multiple_assignments()
+    {
+        Mail::fake();
+
+        /** @var Bundle $bundle */
+        $bundle = Bundle::factory()->create();
+
+        $purchasable1 = Purchasable::factory()->create([
+            'requires_license' => true,
+        ]);
+
+        $purchasable2 = Purchasable::factory()->create([
+            'requires_license' => true,
+        ]);
+
+        $bundle->purchasables()->sync([$purchasable1->id, $purchasable2->id]);
+
+        $this->paddlePayloadAttributes['passthrough'] = json_encode([
+            'emails' => [
+                'jane@doe.com',
+                'john@doe.com',
+            ],
+        ]);
+        $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
+
+        $purchase = $this->handlePurchaseAction->execute(
+            $this->user,
+            $bundle,
+            $this->payload
+        );
+
+        $this->assertCount(4, $purchase->assignments);
+        $this->assertTrue(User::whereEmail('jane@doe.com')->first()->owns($purchasable1));
+        $this->assertTrue(User::whereEmail('jane@doe.com')->first()->owns($purchasable2));
+        $this->assertTrue(User::whereEmail('john@doe.com')->first()->owns($purchasable1));
+        $this->assertTrue(User::whereEmail('john@doe.com')->first()->owns($purchasable2));
+    }
+
     protected function createRayPurchasable(): Purchasable
     {
         $product = Product::factory()->create([
