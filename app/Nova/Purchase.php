@@ -78,7 +78,7 @@ class Purchase extends Resource
 
             BelongsTo::make('Receipt')->nullable(),
 
-            DateTime::make('Created at')->format('d/M/YYYY hh:mm'),
+            DateTime::make('Created at')->format('DD/MM/YY HH:mm'),
         ];
     }
 }
