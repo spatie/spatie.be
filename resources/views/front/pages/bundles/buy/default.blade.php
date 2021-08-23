@@ -23,8 +23,9 @@
     <div class="col-span-9 sm:col-start-5 sm:col-span-5">
         <section class="mb-16 pt-0">
             <div class="md:-mx-2 md:grid md:grid-flow-col items-stretch justify-start">
-                @include('front.pages.bundles.partials.priceCard', [
+                @include('front.pages.products.partials.priceCard', [
                     'payLink' => $payLink,
+                    'purchasable' => $bundle,
                 ])
             </div>
         </section>
