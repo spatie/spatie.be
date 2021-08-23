@@ -10,7 +10,7 @@ use Laravel\Paddle\Receipt as PaddleReceipt;
 
 class Receipt extends Resource
 {
-    public static $group = "Products";
+    public static $group = "Sales";
 
     public static $model = PaddleReceipt::class;
 

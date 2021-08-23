@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Domain\Shop\Models\PurchasablePrice as EloquentPurchasablePrice;
+use App\Domain\Shop\Models\BundlePrice as EloquentBundlePrice;
 use App\Support\Paddle\PaddleCountries;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -12,13 +12,13 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
-class PurchasablePrice extends Resource
+class BundlePrice extends Resource
 {
     use HasSortableRows;
 
     public static $group = "Products";
 
-    public static $model = EloquentPurchasablePrice::class;
+    public static $model = EloquentBundlePrice::class;
 
     public static $title = 'country_code';
 
@@ -33,7 +33,7 @@ class PurchasablePrice extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('purchasable'),
+            BelongsTo::make('bundle'),
 
             Text::make('Country', 'country_code')->readonly()->displayUsing(function (string $countryCode) {
                 return PaddleCountries::getNameForCode($countryCode) . " (${countryCode})";
