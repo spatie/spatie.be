@@ -19,46 +19,6 @@
     </div>
 </section>
 
-@if(session()->has('sold_purchasable'))
-    @php
-        /** @var \App\Domain\Shop\Models\Purchasable $purchasable */
-        $purchasable = session()->get('sold_purchasable');
-
-        /** @var \App\Domain\Shop\Models\Purchase $purchase */
-        $purchase = session()->get('latest_purchase')
-
-    @endphp
-
-    <section id="cta" class="pb-16">
-        <div class="wrap">
-            <div class="card gradient gradient-green text-white">
-                <div class="wrap-card grid md:grid-cols-2 md:items-center">
-                    <h2 class="title-xl">
-                        Thank you!
-                    </h2>
-                    <p class="text-xl">
-                        Thanks for buying {{ $product->title }}. You can view details and manage your purchase below this page.
-
-                        <br /><br />
-                        @if(optional($purchase)->unlocksRayLicense())
-                            Your purchase also unlocked <a href="/products/ray">a license for Ray</a>.
-                            <br/><br />
-                        @endif
-                        Here's a little bonus: you will get a 10% discount on purchases in the next 24 hours!
-                        @if ($purchasable->getting_started_url)
-                            <br>
-                            <a class="link-white link-underline" href="{{ $purchasable->getting_started_url }}">
-                                Get started
-                            </a>
-                            right away!
-                        @endif
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-@endif
-
 @if (auth()->check() && auth()->user()->ownsAny($product->purchasables))
     <div class="wrap flex w-full mb-20">
         <div class="w-full bg-orange-dark text-white flex flex-col justify-between items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
