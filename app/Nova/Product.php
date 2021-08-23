@@ -71,7 +71,9 @@ class Product extends Resource
             Text::make('Action url')->hideFromIndex(),
             Text::make('Action label')->hideFromIndex(),
 
-            Number::make('Maximum activation count')->help('Set to 0 if the product does not support activations'),
+            Number::make('Maximum activation count')
+                ->hideFromIndex()
+                ->help('Set to 0 if the product does not support activations'),
 
             HasMany::make('Purchasables', 'purchasables', Purchasable::class),
             Text::make('Purchasables', function () {
