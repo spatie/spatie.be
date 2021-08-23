@@ -20,13 +20,15 @@ class PurchasesController
                 ->orWhereHas('media', fn(Builder $query) => $query->where('collection_name', 'downloads'))
             )
             ->get()
-            ->unique('purchasable_id');
+            ->unique('purchasable_id')
+            ->sortBy('purchasable.product.title');
 
         $applications = $request->user()
             ->assignmentsWithoutRenewals()
             ->with(['purchasable.product', 'purchasable.media', 'licenses.activations'])
             ->whereHas('licenses')
             ->get()
+            ->sortBy('purchasable.product.title')
             ->groupBy('purchasable.product_id');
 
         return view('front.profile.purchases', compact('courses', 'applications'));
