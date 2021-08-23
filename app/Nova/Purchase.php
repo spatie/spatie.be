@@ -16,7 +16,7 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Purchase extends Resource
 {
-    public static $group = "Products";
+    public static $group = "Sales";
 
     public static $tableStyle = 'tight';
 
@@ -62,7 +62,6 @@ class Purchase extends Resource
             Text::make('Paddle Fee')->hideFromIndex(),
             Text::make('Earnings')->hideFromIndex(),
 
-            Number::make('Quantity'),
             HasMany::make('Purchase Assignments', 'assignments', PurchaseAssignment::class),
             Text::make('Assignments', function () {
                 return $this->assignments->unique('user_id')->map(function (\App\Domain\Shop\Models\PurchaseAssignment $assignment) {
@@ -77,7 +76,7 @@ class Purchase extends Resource
                 })->join(', ');
             })->onlyOnIndex()->asHtml(),
 
-            BelongsTo::make('Receipt')->nullable()->hideFromIndex(),
+            BelongsTo::make('Receipt')->nullable(),
 
             DateTime::make('Created at')->format('d/M/YYYY hh:mm'),
         ];

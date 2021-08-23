@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\ID;
 
 class PurchaseAssignment extends Resource
 {
-    public static $group = "Products";
+    public static $group = "Sales";
 
     public static $displayInNavigation = false;
 

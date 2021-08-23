@@ -13,7 +13,7 @@ use Laravel\Nova\Fields\Text;
 
 class License extends Resource
 {
-    public static $group = "Products";
+    public static $group = "Sales";
 
     public static $model = EloquentLicense::class;
 
