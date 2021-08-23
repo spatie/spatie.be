@@ -131,10 +131,12 @@
                                                     </div>
 
                                                     <div class="w-full">
-                                                        <div class="font-bold uppercase tracking-wide mb-1">{{ $license->supportsActivations() ? 'Activations' : 'Domain' }}</div>
                                                         @if ($license->supportsActivations())
                                                             <livewire:activations :license="$license"/>
                                                         @else
+                                                            <div class="font-bold uppercase tracking-wide mb-1">
+                                                                Domain
+                                                            </div>
                                                             <livewire:domain :license="$license"/>
                                                         @endif
                                                     </div>

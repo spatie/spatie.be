@@ -1,4 +1,7 @@
 <div class="max-w-full text-sm" wire:poll.5s>
+    <div class="text-xs font-bold uppercase tracking-wide mb-1">
+        Activations ({{ $license->activations->count() }}/{{ $license->maximumActivationCount() }})
+    </div>
     @if ($activations->count())
         @foreach ($activations as $activation)
             <div class="flex justify-between items-center mb-2">
