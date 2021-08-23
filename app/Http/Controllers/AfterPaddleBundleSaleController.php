@@ -8,18 +8,18 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
 use Illuminate\Http\Request;
 
-class AfterPaddleSaleController
+class AfterPaddleBundleSaleController
 {
-    public function __invoke(Request $request, Product $product, Purchasable $purchasable)
+    public function __invoke(Request $request, Product $product, Bundle $bundle)
     {
         sleep(4);
 
         Referrer::forgetActive();
 
-        session()->flash('sold_purchasable', $purchasable);
+        session()->flash('sold_purchasable', $bundle);
 
         if (current_user()) {
-            session()->flash('latest_assignment', current_user()->assignments()->where('purchasable_id', $purchasable->id)->latest()->first());
+            session()->flash('latest_assignment', current_user()->assignments()->where('purchasable_id', $bundle->purchasables->first()->id)->latest()->first());
         }
 
         flash()->success('Purchase successful!');

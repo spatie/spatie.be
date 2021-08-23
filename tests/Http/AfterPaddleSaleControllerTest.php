@@ -20,6 +20,6 @@ class AfterPaddleSaleControllerTest extends TestCase
 
         $this
             ->get(action(AfterPaddleSaleController::class, [$purchasable->product->slug, $purchasable]))
-            ->assertRedirect(route('products.show', $purchasable->product));
+            ->assertRedirect(route('purchases'));
     }
 }
