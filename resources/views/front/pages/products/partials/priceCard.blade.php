@@ -6,8 +6,11 @@
     class="{{ isset($first) && $first ? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 md:mx-2 max-w-md flex flex-col bg-white shadow-lg px-8"
     style="bottom: {{ isset($first) && $first ? '-2rem' : '-1rem' }}">
     <h2 class="flex-0 flex items-center font-bold {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} mb-4 min-h-10">
-        {{ $purchasable->title }}
+        {{ $purchasable->title }} @isset($license)- Renewal @endisset
     </h2>
+    @isset($license)
+        <p class="text-sm -mt-6 mb-6">Renewal for license <code class="text-xs text-blue">{{ \Illuminate\Support\Str::limit($license->key, 8) }}</code></p>
+    @endisset
 
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         @if ($purchasable->originalPurchasable)
@@ -79,27 +82,29 @@
                             </div>
                             <div x-show="!loading" class="border-t border-gray-lighter px-4 py-5 sm:p-0">
                                 <dl class="divide-y divide-gray-lighter">
-                                    <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
-                                        <dt class="text-sm font-medium text-gray-dark">
-                                            Quantity
-                                        </dt>
-                                        <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                            <input class="w-8" type="number" name="quantity" x-model.number.lazy="quantity">
-                                        </dd>
-                                    </div>
-                                    <template x-for="index in parseInt(quantity)">
+                                    @if (!isset($license))
                                         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
                                             <dt class="text-sm font-medium text-gray-dark">
-                                                Recipient <span x-html="index"></span> email
+                                                Quantity
                                             </dt>
                                             <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                                <input class="text-right" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
+                                                <input class="w-8" type="number" name="quantity" x-model.number.lazy="quantity">
                                             </dd>
                                         </div>
-                                    </template>
-                                    <div class="py-2 sm:py-3 text-gray-dark text-xs">
-                                        We'll create an account for each recipient that doesn't have one yet.
-                                    </div>
+                                        <template x-for="index in parseInt(quantity)">
+                                            <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                                                <dt class="text-sm font-medium text-gray-dark">
+                                                    Recipient <span x-html="index"></span> email
+                                                </dt>
+                                                <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                                    <input class="text-right" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
+                                                </dd>
+                                            </div>
+                                        </template>
+                                        <div class="py-2 sm:py-3 text-gray-dark text-xs">
+                                            We'll create an account for each recipient that doesn't have one yet.
+                                        </div>
+                                    @endif
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
                                         <dt class="text-sm font-medium text-gray-dark">
                                             Subtotal
