@@ -86,6 +86,19 @@ class Product extends Model implements HasMedia, Sortable
             });
     }
 
+    public function renewals(): HasMany
+    {
+        return $this->hasMany(Purchasable::class)
+            ->orderBy('sort_order')
+            ->whereIn('type', [
+                PurchasableType::TYPE_STANDARD_RENEWAL,
+                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+            ])
+            ->unless(optional(auth()->user())->hasAccessToUnreleasedProducts(), function (Builder $query) {
+                $query->where('released', true);
+            });
+    }
+
     public function requiresLicense(): bool
     {
         return $this->purchasables->contains(fn (Purchasable $purchasable) => $purchasable->requires_license);

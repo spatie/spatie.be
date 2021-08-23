@@ -18,6 +18,8 @@ class PurchasablePrice extends Resource
 
     public static $group = "Products";
 
+    public static $tableStyle = 'tight';
+
     public static $model = EloquentPurchasablePrice::class;
 
     public static $title = 'country_code';

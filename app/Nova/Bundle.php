@@ -32,19 +32,6 @@ class Bundle extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Title')
-                ->sortable()
-                ->rules(['required', 'max:255']),
-            Text::make('Slug')
-                ->sortable()
-                ->hideFromIndex()
-                ->rules(['required', 'max:255']),
-
-            Text::make('Paddle id', 'paddle_product_id')
-                ->sortable()
-                ->hideFromIndex()
-                ->rules(['required', 'max:255']),
-
             Image::make('Image')
                 ->store(function (Request $request, EloquentBundle $product) {
                     return function () use ($request, $product): void {
@@ -64,6 +51,18 @@ class Bundle extends Resource
 
                     return [];
                 }),
+
+            Text::make('Title')
+                ->sortable()
+                ->rules(['required', 'max:255']),
+            Text::make('Slug')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules(['required', 'max:255']),
+
+            Text::make('Paddle id', 'paddle_product_id')
+                ->sortable()
+                ->rules(['required', 'max:255']),
 
             Markdown::make('Description'),
             Markdown::make('Long Description'),

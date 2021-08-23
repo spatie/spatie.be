@@ -18,6 +18,8 @@ class BundlePrice extends Resource
 
     public static $group = "Products";
 
+    public static $tableStyle = 'tight';
+
     public static $model = EloquentBundlePrice::class;
 
     public static $title = 'country_code';
