@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Domain\Shop\Models\License;
 use Livewire\Component;
+use Spatie\ValidationRules\Rules\Delimited;
 
 class DomainComponent extends Component
 {
@@ -25,6 +26,13 @@ class DomainComponent extends Component
         $this->domain = $license->domain;
     }
 
+    public function rules()
+    {
+        return [
+            'domain' => new Delimited('string'),
+        ];
+    }
+
     public function edit(): void
     {
         $this->editing = true;
@@ -32,6 +40,8 @@ class DomainComponent extends Component
 
     public function save(): void
     {
+        $this->validate();
+
         $this->license->update(['domain' => $this->domain]);
 
         $this->editing = false;
