@@ -59,7 +59,7 @@
     <section class="section section-group pt-0">
         <div class="wrap max-w-md md:max-w-columns">
             <h2 class="title line-after mb-12">Courses</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-8 md:gap-y-12">
                 @foreach ($courses as $course)
                     <x-purchase-assignment :assignment="$course">
                         <div class="max-w-full mt-4 items-center grid gap-y-4 md:gap-4 px-4 md:px-6">
