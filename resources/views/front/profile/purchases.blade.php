@@ -58,28 +58,7 @@
 
     <section class="section section-group pt-0">
         <div class="wrap max-w-md md:max-w-columns">
-            <h2 class="title line-after mb-12">Courses</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-8 md:gap-y-12">
-                @foreach ($courses as $course)
-                    <x-purchase-assignment :assignment="$course">
-                        <div class="max-w-full mt-4 items-center grid gap-y-4 md:gap-4 px-4 md:px-6">
-                            @foreach ($course->purchasable->series as $series)
-                                <a class="block truncate w-full text-xs md:text-base" href="{{ route('series.show', $series) }}">
-                                    <button class="w-full truncate cursor-pointer bg-green-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 font-sans-bold text-white transition-bg duration-300 focus:outline-none focus:border-blue-light whitespace-no-wrap">
-                                        @if ($series->title !== $course->purchasable->product->title)
-                                            {{ $series->title }}
-                                        @else
-                                            Video course
-                                        @endif
-                                    </button>
-                                </a>
-                            @endforeach
-                        </div>
-                    </x-purchase-assignment>
-                @endforeach
-            </div>
-
-            <h2 class="title line-after mt-20 mb-12">Applications</h2>
+            <h2 class="title line-after mb-12">Applications</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 @foreach ($applications as $product_id => $assignments)
                     <x-purchase-assignment :assignment="$assignments->first()" :showImage="false" theme="white">
@@ -146,6 +125,27 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </x-purchase-assignment>
+                @endforeach
+            </div>
+
+            <h2 class="title line-after mt-20 mb-12">Courses</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-x-8 md:gap-y-12">
+                @foreach ($courses as $course)
+                    <x-purchase-assignment :assignment="$course">
+                        <div class="max-w-full mt-4 items-center grid gap-y-4 md:gap-4 px-4 md:px-6">
+                            @foreach ($course->purchasable->series as $series)
+                                <a class="block truncate w-full text-xs md:text-base" href="{{ route('series.show', $series) }}">
+                                    <button class="w-full truncate cursor-pointer bg-green-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 font-sans-bold text-white transition-bg duration-300 focus:outline-none focus:border-blue-light whitespace-no-wrap">
+                                        @if ($series->title !== $course->purchasable->product->title)
+                                            {{ $series->title }}
+                                        @else
+                                            Video course
+                                        @endif
+                                    </button>
+                                </a>
+                            @endforeach
                         </div>
                     </x-purchase-assignment>
                 @endforeach
