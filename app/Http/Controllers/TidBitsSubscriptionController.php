@@ -13,6 +13,6 @@ class TidBitsSubscriptionController
             'email' => $email,
         ]);
 
-//        return redirect()->to()
+        return redirect()->to('https://testing-laravel.com/?tidbits=1');
     }
 }
