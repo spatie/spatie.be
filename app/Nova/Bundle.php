@@ -3,9 +3,12 @@
 namespace App\Nova;
 
 use App\Domain\Shop\Models\Bundle as EloquentBundle;
+use App\Nova\Actions\UpdateBundlePriceForCurrencyAction;
+use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
@@ -74,6 +77,7 @@ class Bundle extends Resource
             Boolean::make('Visible on front', 'visible'),
 
             BelongsToMany::make('Purchasables', 'purchasables', Purchasable::class),
+            HasMany::make('Prices', 'prices', BundlePrice::class),
         ];
     }
 
@@ -94,6 +98,10 @@ class Bundle extends Resource
 
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new UpdateBundlePriceForCurrencyAction())
+                ->showOnTableRow()
+                ->confirmButtonText('Update price'),
+        ];
     }
 }
