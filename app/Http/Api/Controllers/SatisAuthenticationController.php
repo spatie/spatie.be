@@ -4,6 +4,7 @@ namespace App\Http\Api\Controllers;
 
 use App\Domain\Shop\Models\License;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -38,7 +39,9 @@ class SatisAuthenticationController extends Controller
         $hasAccess = License::query()
             ->with(['purchasable'])
             ->whereNotExpired()
-            ->where('user_id', $license->user_id)
+            ->whereHas('assignment', function (Builder $query) use ($license) {
+                return $query->where('user_id', $license->user_id);
+            })
             ->get()
             ->contains(
                 fn (License $license) => $license->purchasable->includesPackageAccess($package)
