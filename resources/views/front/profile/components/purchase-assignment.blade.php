@@ -33,7 +33,7 @@
     {{ $slot }}
 
     @if ($assignment->purchasable->hasMedia('downloads'))
-        <div class="mt-4 px-4 md:px-6 text-xs md:text-base">
+        <div class="px-4 md:px-6 text-xs md:text-base">
             @foreach($assignment->purchasable->getMedia('downloads') as $download)
                 @php
                     $downloadUrl =  URL::temporarySignedRoute(
