@@ -185,7 +185,7 @@
                                         passthrough: JSON.stringify({
                                             emails: this.emails,
                                             billable_id: {{ auth()->user()->id }},
-                                            billable_type: '{{ \App\Models\User::class }}'
+                                            billable_type: '{{ addslashes(\App\Models\User::class) }}'
                                         }),
                                     };
                                     Paddle.Checkout.open(options);
