@@ -97,12 +97,12 @@
                                                     Recipient <span x-html="index"></span> email
                                                 </dt>
                                                 <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                                    <input class="text-right" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
+                                                    <input class="text-right w-full" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
                                                 </dd>
                                             </div>
                                         </template>
                                         <div class="py-2 sm:py-3 text-gray-dark text-xs">
-                                            We'll create an account for each recipient that doesn't have one yet.
+                                            We’ll mail each recepient with instructions on how to get started.
                                         </div>
                                     @endif
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
