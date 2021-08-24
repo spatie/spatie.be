@@ -19,7 +19,7 @@ class PurchaseAssignment extends Resource
 
     public static $model = EloquentPurchaseAssignment::class;
 
-    public static $title = 'Purchase Assignment';
+    public static $title = 'id';
 
     public static $search = [
         'id',

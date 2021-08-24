@@ -19,9 +19,13 @@ class License extends Resource
 
     public static $title = 'key';
 
+    public static $tableStyle = 'tight';
+
     public static $search = [
         'id', 'key', 'domain', 'name',
     ];
+
+    public static $with = ['assignment'];
 
     public function fields(Request $request)
     {
