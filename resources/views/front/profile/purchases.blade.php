@@ -84,10 +84,10 @@
                                     <span class="uppercase"><strong>{{ $licenses->count() }}</strong> {{ \Illuminate\Support\Str::plural('license', $licenses->count()) }} purchased</span>
                                     <a class="link-black link-underline" href="{{ route('products.show', $assignments->first()->purchasable->product) }}">Add license</a>
                                 </div>
-                                <div class="px-6 py-4">
+                                <div class="">
                                     <div class="w-full text-xs">
                                         @foreach ($licenses as $license)
-                                            <div class="border-b border-gray-lighter py-4">
+                                            <div class="px-6 py-4 border-b border-gray-lighter py-4 {{ $loop->even ? 'bg-blue-50' : '' }}">
                                                 <div class="flex flex-wrap justify-between">
                                                     <div class="w-full">
                                                         <div class="font-bold uppercase tracking-wide mb-2 flex items-center justify-between">
@@ -101,7 +101,7 @@
                                                         </div>
                                                         <div class="pb-4">
                                                             <code
-                                                                class="w-full flex items-center justify-between font-mono text-xs text-blue bg-blue-lightest bg-opacity-25 px-2 py-2 rounded-sm"
+                                                                class="w-full flex items-center justify-between font-mono text-xs text-blue {{ $loop->even ? 'bg-gray-lighter' : 'bg-blue-lightest' }} bg-opacity-25 px-2 py-2 rounded-sm"
                                                                 title="{{ $license->key }}"
                                                             >
                                                                 <span class="break-all">{{ $license->key }}</span>
