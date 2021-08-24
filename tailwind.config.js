@@ -43,7 +43,7 @@ module.exports = {
             'gray-darker': '#4c534f',
             'gray-darkest': '#171e1a',
 
-            'blue-50': '#f5fdff',
+            'blue-50': '#f7fbfc',
             'blue-lightest': '#cae1e8',
             'blue-lighter': '#22a4c9',
             'blue-light': '#22a4c9',
