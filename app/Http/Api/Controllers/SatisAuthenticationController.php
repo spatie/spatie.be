@@ -37,14 +37,13 @@ class SatisAuthenticationController extends Controller
          * as well.
          */
         $hasAccess = License::query()
-            ->with(['purchasable'])
             ->whereNotExpired()
             ->whereHas('assignment', function (Builder $query) use ($license) {
-                return $query->where('user_id', $license->user_id);
+                return $query->where('user_id', $license->assignment->user_id);
             })
             ->get()
             ->contains(
-                fn (License $license) => $license->purchasable->includesPackageAccess($package)
+                fn (License $license) => $license->assignment->purchasable->includesPackageAccess($package)
             );
 
         abort_unless($hasAccess, 401);
@@ -56,6 +55,7 @@ class SatisAuthenticationController extends Controller
     {
         $originalUrl = $request->header('X-Original-URI', '');
 
+        // For example: /dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-xxx-zip-xx.zip
         preg_match('#^/dist/(?<package>spatie/[^/]*)/#', $originalUrl, $matches);
 
         if (! key_exists('package', $matches)) {

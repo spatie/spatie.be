@@ -22,7 +22,7 @@ class AuthServiceProvider extends ServiceProvider
                 abort(401, 'License key invalid');
             }
 
-            if ($license->isExpired()) {
+            if ($license->isExpired() && !$license->isMasterKey()) {
                 abort(401, 'This license is expired');
             }
 
