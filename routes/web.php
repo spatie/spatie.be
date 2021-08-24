@@ -29,6 +29,7 @@ use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\UsesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
@@ -44,6 +45,8 @@ Route::redirect('/docs/products/ray', '/docs/ray');
 Route::post('paddle/webhook', WebhookController::class);
 
 Route::get('is-valid-license/{license}', IsValidLicenseController::class);
+
+Route::get('testing-tidbits/{email}', TidBitsSubscriptionController::class);
 
 Route::domain('docs.spatie.be')->group(function () {
     Route::get('/{url}', RedirectDocsDomainController::class)->where('url', '.*');
