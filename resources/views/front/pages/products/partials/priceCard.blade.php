@@ -201,6 +201,8 @@
 
                                         options.passthrough = JSON.stringify({
                                             emails: emails,
+                                            billable_id: {{ auth()->user()->id }},
+                                            billable_type: "App\Models\User",
                                         });
 
                                         Paddle.Checkout.open(options);
@@ -210,6 +212,8 @@
                                     this.$watch('emails', (newEmails) => {
                                         options.passthrough = JSON.stringify({
                                             emails: newEmails,
+                                            billable_id: {{ auth()->user()->id }},
+                                            billable_type: "App\Models\User"
                                         });
 
                                         self.emailsComplete = newEmails.length === newEmails.filter(email => email.length > 0).length;
