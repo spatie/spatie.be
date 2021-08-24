@@ -12,7 +12,7 @@
             @if (!$courses->count() && !$applications->count())
                 <p class="banner-intro">No purchases yet, take a look at <a class="link-underline link-blue" href="{{ route('products.index') }}">our products</a>.</p>
             @else
-                <p class="banner-intro">Here you'll find all your purchased courses and applications.</p>
+                <p class="banner-intro">Here you'll find all your purchased applications and courses.</p>
             @endif
         </div>
     </section>
