@@ -185,7 +185,7 @@
                                         passthrough: JSON.stringify({
                                             emails: this.emails,
                                             billable_id: {{ auth()->user()->id }},
-                                            billable_type: "App\Models\User"
+                                            billable_type: "App\\Models\\User"
                                         }),
                                     };
                                     Paddle.Checkout.open(options);
@@ -202,7 +202,7 @@
                                         options.passthrough = JSON.stringify({
                                             emails: emails,
                                             billable_id: {{ auth()->user()->id }},
-                                            billable_type: "App\Models\User",
+                                            billable_type: "App\\Models\\User",
                                         });
 
                                         Paddle.Checkout.open(options);
@@ -213,7 +213,7 @@
                                         options.passthrough = JSON.stringify({
                                             emails: newEmails,
                                             billable_id: {{ auth()->user()->id }},
-                                            billable_type: "App\Models\User"
+                                            billable_type: "App\\Models\\User"
                                         });
 
                                         self.emailsComplete = newEmails.length === newEmails.filter(email => email.length > 0).length;
