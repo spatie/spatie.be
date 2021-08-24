@@ -184,6 +184,8 @@
                                         frameStyle: 'width:100%; min-width:100%; background-color: transparent; border: none;',
                                         passthrough: JSON.stringify({
                                             emails: this.emails,
+                                            billable_id: {{ auth()->user()->id }},
+                                            billable_type: '{{ \App\Models\User::class }}'
                                         }),
                                     };
                                     Paddle.Checkout.open(options);
