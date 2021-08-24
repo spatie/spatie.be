@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Domain\Shop\Models\PurchasablePrice as EloquentPurchasablePrice;
+use App\Nova\Filters\PurchasableFilter;
 use App\Support\Paddle\PaddleCountries;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
@@ -46,6 +47,12 @@ class PurchasablePrice extends Resource
             Number::make('Price in cents', 'amount'),
 
             Boolean::make('Overridden')->help('When checked, this price will not be automatically updated'),
+        ];
+    }
+    public function filters(Request $request)
+    {
+        return [
+            new PurchasableFilter(),
         ];
     }
 }
