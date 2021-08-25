@@ -88,7 +88,7 @@
                                                 Quantity
                                             </dt>
                                             <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                                <input class="w-8" type="number" name="quantity" x-model.number.lazy="quantity">
+                                                <input class="w-8 show-input-number-buttons" type="number" name="quantity" x-model.number.lazy="quantity">
                                             </dd>
                                         </div>
                                         <template x-for="index in parseInt(quantity)">
