@@ -2,8 +2,8 @@
 
 namespace Tests\Http;
 
+use App\Domain\Shop\Models\Purchasable;
 use App\Http\Controllers\AfterPaddleSaleController;
-use App\Models\Purchasable;
 use App\Models\User;
 use Tests\TestCase;
 
@@ -20,6 +20,6 @@ class AfterPaddleSaleControllerTest extends TestCase
 
         $this
             ->get(action(AfterPaddleSaleController::class, [$purchasable->product->slug, $purchasable]))
-            ->assertRedirect(route('products.show', $purchasable->product));
+            ->assertRedirect(route('purchases'));
     }
 }

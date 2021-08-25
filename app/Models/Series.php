@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Domain\Experience\Observers\SeriesAchievementsObserver;
+use App\Domain\Shop\Models\Purchasable;
 use App\Models\Enums\VideoDisplayEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

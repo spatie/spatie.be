@@ -3,14 +3,16 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Paddle\Receipt as PaddleReceipt;
 
 class Receipt extends Resource
 {
-    public static $group = "Products";
+    public static $group = "Sales";
 
     public static $model = PaddleReceipt::class;
 
@@ -24,6 +26,8 @@ class Receipt extends Resource
     {
         return [
             ID::make()->sortable(),
+
+            MorphTo::make('User', 'billable'),
 
             Text::make('Receipt Url'),
             Number::make('Amount'),

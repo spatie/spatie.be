@@ -2,19 +2,27 @@
 
 namespace App\Models;
 
-use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
+use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
-use App\Enums\PurchasableType;
+use App\Domain\Shop\Enums\PurchasableType;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Domain\Shop\Models\Referrer;
 use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Paddle\Billable;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
@@ -143,27 +151,27 @@ class User extends Authenticatable
 
     public function owns(Purchasable $purchasable): bool
     {
-        return $this->purchases()->where('purchasable_id', $purchasable->id)->exists();
+        return $this->assignments()->where('purchasable_id', $purchasable->id)->exists();
     }
 
-    public function licenses(): HasMany
+    public function ownsAny(Collection $purchasables): bool
     {
-        return $this->hasMany(License::class);
+        return $this->assignments()->whereIn('purchasable_id', $purchasables->pluck('id'))->exists();
     }
 
-    public function licensesWithoutRenewals(): HasMany
+    public function licenses(): HasManyThrough
     {
-        return $this->hasMany(License::class)->whereHas('purchasable', function (Builder $query): void {
-            $query->whereNotIn('type', [
-                PurchasableType::TYPE_STANDARD_RENEWAL,
-                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
-            ]);
-        });
+        return $this->hasManyThrough(License::class, PurchaseAssignment::class);
     }
 
     public function purchases(): HasMany
     {
         return $this->hasMany(Purchase::class)->with(['purchasable.product', 'bundle']);
+    }
+
+    public function assignments(): HasMany
+    {
+        return $this->hasMany(PurchaseAssignment::class);
     }
 
     public function purchasesWithoutRenewals(): HasMany
@@ -175,6 +183,16 @@ class User extends Authenticatable
                     PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
                 ]);
             })->orWhereHas('bundle');
+        });
+    }
+
+    public function assignmentsWithoutRenewals(): HasMany
+    {
+        return $this->assignments()->whereHas('purchasable', function (Builder $query): void {
+            $query->whereNotIn('type', [
+                PurchasableType::TYPE_STANDARD_RENEWAL,
+                PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
+            ]);
         });
     }
 

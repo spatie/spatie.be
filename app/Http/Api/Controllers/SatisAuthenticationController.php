@@ -2,8 +2,9 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
@@ -11,7 +12,7 @@ class SatisAuthenticationController extends Controller
 {
     public function __invoke(Authenticatable $license, Request $request)
     {
-        /** @var $license \App\Models\License */
+        /** @var $license \App\Domain\Shop\Models\License */
         if (! $license instanceof License) {
             abort(401);
         }
@@ -36,12 +37,13 @@ class SatisAuthenticationController extends Controller
          * as well.
          */
         $hasAccess = License::query()
-            ->with(['purchasable'])
             ->whereNotExpired()
-            ->where('user_id', $license->user_id)
+            ->whereHas('assignment', function (Builder $query) use ($license) {
+                return $query->where('user_id', $license->assignment->user_id);
+            })
             ->get()
             ->contains(
-                fn (License $license) => $license->purchasable->includesPackageAccess($package)
+                fn (License $license) => $license->assignment->purchasable->includesPackageAccess($package)
             );
 
         abort_unless($hasAccess, 401);
@@ -53,6 +55,7 @@ class SatisAuthenticationController extends Controller
     {
         $originalUrl = $request->header('X-Original-URI', '');
 
+        // For example: /dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-xxx-zip-xx.zip
         preg_match('#^/dist/(?<package>spatie/[^/]*)/#', $originalUrl, $matches);
 
         if (! key_exists('package', $matches)) {

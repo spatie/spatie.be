@@ -54,3 +54,8 @@ a.anchor-link {
 .docs-submenu-item.is-active {
     @apply text-blue;
 }
+
+.show-input-number-buttons::-webkit-inner-spin-button,
+.show-input-number-buttons::-webkit-outer-spin-button {
+    opacity: 1;
+}

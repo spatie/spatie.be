@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use Illuminate\Routing\Controller;
 
 class IsValidLicenseController extends Controller

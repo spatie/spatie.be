@@ -6,8 +6,11 @@
     class="{{ isset($first) && $first ? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 md:mx-2 max-w-md flex flex-col bg-white shadow-lg px-8"
     style="bottom: {{ isset($first) && $first ? '-2rem' : '-1rem' }}">
     <h2 class="flex-0 flex items-center font-bold {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} mb-4 min-h-10">
-        {{ $purchasable->title }}
+        {{ $purchasable->title }} @isset($license)- Renewal @endisset
     </h2>
+    @isset($license)
+        <p class="text-sm -mt-6 mb-6">Renewal for license <code class="text-xs text-blue">{{ \Illuminate\Support\Str::limit($license->key, 8) }}</code></p>
+    @endisset
 
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         @if ($purchasable->originalPurchasable)
@@ -24,7 +27,7 @@
             </div>
         @endif
 
-        @if(\App\Models\Referrer::activeReferrerGrantsDiscount($purchasable))
+        @if(\App\Domain\Shop\Models\Referrer::activeReferrerGrantsDiscount($purchasable))
             <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
                 Extra discount included!
             </div>
@@ -68,129 +71,213 @@
     <div class="flex-0 mt-6 flex justify-center">
         <div class="w-full flex justify-center">
             @auth
-                @if (isset($payLink))
-                    <div class="w-full">
-                        <div id="loading" class="w-full flex items-center justify-center my-4">
+                @if (isset($payLink) && $payLink)
+                    <div class="w-full" x-data="priceCard" x-cloak>
+                        <div x-show="loading" :class="loading ? 'flex' : ''" class="w-full items-center justify-center my-4">
                             <svg class="spin w-8 h-8 opacity-75" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="spinner-third" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M478.71 364.58zm-22 6.11l-27.83-15.9a15.92 15.92 0 0 1-6.94-19.2A184 184 0 1 1 256 72c5.89 0 11.71.29 17.46.83-.74-.07-1.48-.15-2.23-.21-8.49-.69-15.23-7.31-15.23-15.83v-32a16 16 0 0 1 15.34-16C266.24 8.46 261.18 8 256 8 119 8 8 119 8 256s111 248 248 248c98 0 182.42-56.95 222.71-139.42-4.13 7.86-14.23 10.55-22 6.11z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M271.23 72.62c-8.49-.69-15.23-7.31-15.23-15.83V24.73c0-9.11 7.67-16.78 16.77-16.17C401.92 17.18 504 124.67 504 256a246 246 0 0 1-25 108.24c-4 8.17-14.37 11-22.26 6.45l-27.84-15.9c-7.41-4.23-9.83-13.35-6.2-21.07A182.53 182.53 0 0 0 440 256c0-96.49-74.27-175.63-168.77-183.38z"></path></g></svg>
                         </div>
                         <div class="bg-white overflow-hidden">
-                            <div id="free" class="hidden text-center text-gray-dark">
+                            <div x-show="free" class="text-center text-gray-dark">
                                 Free for you! 🥳
                             </div>
-                            <div id="prices" class="hidden border-t border-gray-lighter px-4 py-5 sm:p-0">
+                            <div x-show="!loading" class="border-t border-gray-lighter px-4 py-5 sm:p-0">
                                 <dl class="divide-y divide-gray-lighter">
-                                    <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
-                                        <dt class="text-sm font-medium text-gray-dark">
-                                            Quantity
-                                        </dt>
-                                        <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                            <input class="w-8" type="number" id="quantity" name="quantity" value="1">
-                                        </dd>
-                                    </div>
-                                    <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                                    @if (!isset($license))
+                                        <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                                            <dt class="text-sm font-medium text-gray-dark">
+                                                Quantity
+                                            </dt>
+                                            <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                                <input class="w-8 show-input-number-buttons" type="number" name="quantity" x-model.number.lazy="quantity">
+                                            </dd>
+                                        </div>
+                                        <template x-for="index in parseInt(quantity)">
+                                            <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                                                <dt class="text-sm font-medium text-gray-dark">
+                                                    Recipient <span x-html="index"></span> email
+                                                </dt>
+                                                <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                                    <input class="text-right w-full" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
+                                                </dd>
+                                            </div>
+                                        </template>
+                                        <div class="py-2 sm:py-3 text-gray-dark text-xs">
+                                            We’ll mail each recipient with instructions on how to get started.
+                                        </div>
+                                    @endif
+                                    <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
                                         <dt class="text-sm font-medium text-gray-dark">
                                             Subtotal
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                            @if($purchasable->hasActiveDiscount())
-                                                <span class="mr-2">
-                                                    <span class="font-semibold line-through">{{ $priceWithoutDiscount->formattedPrice() }}</span>
-                                                </span>
-                                            @endif
-                                            <span id="subtotal" class="text-blue"></span>
+                                            <span x-show="subtotalWithoutDiscount" class="mr-2">
+                                                <span class="font-semibold line-through" x-text="subtotalWithoutDiscount"></span>
+                                            </span>
+                                            <span class="text-blue" x-text="subtotal"></span>
                                         </dd>
                                     </div>
-                                    <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                                    <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
                                         <dt class="text-sm font-medium text-gray-dark">
                                             VAT
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                            <span id="tax" class="text-blue"></span>
+                                            <span class="text-blue" x-text="tax"></span>
                                         </dd>
                                     </div>
-                                    <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
+                                    <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
                                         <dt class="text-sm font-medium text-gray-dark">
                                             Total
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                            <span id="total" class="text-blue"></span>
+                                            <span class="text-blue" x-text="total"></span>
                                         </dd>
                                     </div>
                                 </dl>
-                                <p class="text-xs text-gray border-t border-gray-lighter pt-1">Prices in <span class="currency"></span></p>
+                                <p x-show="!free" class="text-xs text-gray border-t border-gray-lighter pt-1">Prices in <span x-text="currency"></span></p>
                             </div>
                         </div>
-                        <div class="checkout-container w-full"></div>
+                        <div x-show="emailsComplete && emailsLoading" :class="emailsComplete && emailsLoading ? 'flex' : ''" class="w-full items-center justify-center my-4">
+                            <svg class="spin w-8 h-8 opacity-75" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="spinner-third" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M478.71 364.58zm-22 6.11l-27.83-15.9a15.92 15.92 0 0 1-6.94-19.2A184 184 0 1 1 256 72c5.89 0 11.71.29 17.46.83-.74-.07-1.48-.15-2.23-.21-8.49-.69-15.23-7.31-15.23-15.83v-32a16 16 0 0 1 15.34-16C266.24 8.46 261.18 8 256 8 119 8 8 119 8 256s111 248 248 248c98 0 182.42-56.95 222.71-139.42-4.13 7.86-14.23 10.55-22 6.11z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M271.23 72.62c-8.49-.69-15.23-7.31-15.23-15.83V24.73c0-9.11 7.67-16.78 16.77-16.17C401.92 17.18 504 124.67 504 256a246 246 0 0 1-25 108.24c-4 8.17-14.37 11-22.26 6.45l-27.84-15.9c-7.41-4.23-9.83-13.35-6.2-21.07A182.53 182.53 0 0 0 440 256c0-96.49-74.27-175.63-168.77-183.38z"></path></g></svg>
+                        </div>
+                        <div x-show="emailsComplete">
+                            <div class="checkout-container w-full"></div>
+                        </div>
+                        <p class="py-2 sm:py-3 text-gray-dark text-sm" x-show="!emailsComplete && !loading">
+                            Please enter an email address for each recipient of the purchases. You can add the same email address multiple times if you want an account to receive it multiple times.
+                        </p>
                     </div>
                     <script type="text/javascript">
-                        Paddle.Setup({
-                            vendor: {{ config('cashier.vendor_id') }},
-                            eventCallback: function (eventData) {
-                                updatePrices(eventData);
-                            }
+                        document.addEventListener('alpine:init', () => {
+                            Alpine.data('priceCard', () => ({
+                                loading: true,
+                                quantity: 1,
+                                emails: ['{{ auth()->user()->email }}'],
+                                emailsComplete: true,
+                                emailsLoading: false,
+                                subtotal: null,
+                                initialSubtotalWithoutDiscount: {{ $purchasable->hasActiveDiscount() ? $priceWithoutDiscount->priceInCents : 'null' }},
+                                subtotalWithoutDiscount: null,
+                                tax: null,
+                                total: null,
+                                currency: 'USD',
+                                free: false,
+
+                                init() {
+                                    const self = this;
+                                    Paddle.Setup({
+                                        vendor: {{ config('cashier.vendor_id') }},
+                                        eventCallback: function (eventData) {
+                                            self.updatePrices(eventData);
+                                        }
+                                    });
+
+                                    let options = {
+                                        override: '{{ $payLink }}',
+                                        allowQuantity: true,
+                                        method: 'inline',
+                                        quantity: 1,
+                                        product: {{ $purchasable->paddle_product_id }},
+                                        disableLogout: true,
+                                        email: '{{ auth()->user()->email }}',
+                                        frameTarget: 'checkout-container',
+                                        frameInitialHeight: 0,
+                                        frameStyle: 'width:100%; min-width:100%; background-color: transparent; border: none;',
+                                        passthrough: JSON.stringify({
+                                            emails: this.emails,
+                                            billable_id: {{ auth()->user()->id }},
+                                            billable_type: "App\\Models\\User"
+                                        }),
+                                    };
+                                    Paddle.Checkout.open(options);
+
+                                    this.$watch('quantity', (newQuantity) => {
+                                        options.quantity = newQuantity;
+
+                                        let emails = [];
+                                        for (let i = 0; i < newQuantity; i++) {
+                                            emails[i] = self.emails[i] || '';
+                                        }
+                                        self.emails = emails;
+
+                                        options.passthrough = JSON.stringify({
+                                            emails: emails,
+                                            billable_id: {{ auth()->user()->id }},
+                                            billable_type: "App\\Models\\User",
+                                        });
+
+                                        Paddle.Checkout.open(options);
+                                        self.loading = true;
+                                    });
+
+                                    this.$watch('emails', (newEmails) => {
+                                        options.passthrough = JSON.stringify({
+                                            emails: newEmails,
+                                            billable_id: {{ auth()->user()->id }},
+                                            billable_type: "App\\Models\\User"
+                                        });
+
+                                        self.emailsComplete = newEmails.length === newEmails.filter(email => email.length > 0).length;
+
+                                        Paddle.Checkout.open(options);
+                                        self.emailsLoading = true;
+                                    })
+                                },
+
+                                updatePrices(data) {
+                                    this.loading = false;
+                                    this.emailsLoading = false;
+
+                                    var subtotal = data.eventData.checkout.prices.customer.total - data.eventData.checkout.prices.customer.total_tax;
+
+                                    this.currency = data.eventData.checkout.prices.customer.currency;
+
+                                    const formatter = new Intl.NumberFormat('en', { style: 'currency', currency: data.eventData.checkout.prices.customer.currency });
+
+                                    this.subtotal = formatter.format(subtotal.toFixed(2));
+                                    this.tax = formatter.format(data.eventData.checkout.prices.customer.total_tax);
+                                    this.total = formatter.format(data.eventData.checkout.prices.customer.total);
+                                    this.free = parseFloat(data.eventData.checkout.prices.customer.total) <= 0;
+
+                                    if (this.initialSubtotalWithoutDiscount) {
+                                        this.subtotalWithoutDiscount = formatter.format(this.initialSubtotalWithoutDiscount / 100 * data.eventData.product.quantity);
+                                    }
+                                }
+                            }))
                         });
-
-                        let options = {
-                            override: '{{ $payLink }}',
-                            allowQuantity: true,
-                            method: 'inline',
-                            quantity: 1,
-                            product: {{ $purchasable->paddle_product_id }},
-                            disableLogout: true,
-                            email: '{{ auth()->user()->email }}',
-                            frameTarget: 'checkout-container',
-                            frameInitialHeight: 0,
-                            frameStyle: 'width:100%; min-width:100%; background-color: transparent; border: none;'
-                        };
-                        Paddle.Checkout.open(options);
-
-                        document.getElementById("quantity").addEventListener('change', function (event) {
-                            options.quantity = event.target.value;
-                            Paddle.Checkout.open(options);
-                            document.getElementById('loading').classList.remove('hidden');
-                            document.getElementById('prices').classList.add('hidden');
-                        });
-
-                        function updatePrices(data) {
-                            document.getElementById('loading').classList.add('hidden');
-
-                            var currencyLabels = document.querySelectorAll(".currency");
-                            var subtotal = data.eventData.checkout.prices.customer.total - data.eventData.checkout.prices.customer.total_tax;
-
-                            for (var i = 0; i < currencyLabels.length; i++) {
-                                currencyLabels[i].innerHTML = data.eventData.checkout.prices.customer.currency + " ";
-                            }
-
-                            const formatter = new Intl.NumberFormat('en', { style: 'currency', currency: data.eventData.checkout.prices.customer.currency });
-
-                            if (data.eventData.checkout.prices.customer.total > 0) {
-                                document.getElementById("subtotal").innerHTML = formatter.format(subtotal.toFixed(2));
-                                document.getElementById("tax").innerHTML = formatter.format(data.eventData.checkout.prices.customer.total_tax);
-                                document.getElementById("total").innerHTML = formatter.format(data.eventData.checkout.prices.customer.total);
-
-                                document.getElementById('prices').classList.remove('hidden');
-                                document.getElementById('free').classList.add('hidden');
-                            } else {
-                                document.getElementById('prices').classList.add('hidden');
-                                document.getElementById('free').classList.remove('hidden');
-                            }
-                        }
                     </script>
                 @else
-                    <a href="{{ route('products.buy', [$product, $purchasable]) }}">
+                    @if (isset($product))
+                        <a href="{{ route('products.buy', [$product, $purchasable]) }}">
+                            <x-button :large="true">
+                                <span class="font-normal">Buy for&nbsp;</span>
+                                <span>{{ $price->formattedPrice() }}</span>
+                            </x-button>
+                        </a>
+                    @elseif ($purchasable instanceof \App\Domain\Shop\Models\Bundle)
+                        <a href="{{ route('login', ['next' => request()->url()]) }}">
+                            <x-button :large="true">
+                                <span class="font-normal">Log in to buy for&nbsp;</span>
+                                <span>{{ $price->formattedPrice() }}</span>
+                            </x-button>
+                        </a>
+                    @endif
+                @endif
+            @else
+                @if (isset($product))
+                    <a href="{{ route('login') }}?next={{ route('products.buy', [$product, $purchasable]) }}">
                         <x-button :large="true">
                             <span class="font-normal">Buy for&nbsp;</span>
                             <span>{{ $price->formattedPrice() }}</span>
                         </x-button>
                     </a>
+                @elseif ($purchasable instanceof \App\Domain\Shop\Models\Bundle)
+                    <a href="{{ route('login', ['next' => request()->url()]) }}">
+                        <x-button :large="true">
+                            <span class="font-normal">Log in to buy for&nbsp;</span>
+                            <span>{{ $price->formattedPrice() }}</span>
+                        </x-button>
+                    </a>
                 @endif
-            @else
-                <a href="{{ route('login') }}?next={{ route('products.buy', [$product, $purchasable]) }}">
-                    <x-button :large="true">
-                        <span class="font-normal">Buy for&nbsp;</span>
-                        <span>{{ $price->formattedPrice() }}</span>
-                    </x-button>
-                </a>
             @endauth
         </div>
     </div>
@@ -198,6 +285,6 @@
 
 @once
     @push('scripts')
-        <script src="/alpine/alpine.js" defer></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @endpush
 @endonce

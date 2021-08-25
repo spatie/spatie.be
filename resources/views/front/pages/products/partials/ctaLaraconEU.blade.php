@@ -41,6 +41,6 @@ $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-01-20 00:0
 
 @once
     @push('scripts')
-        <script src="/alpine/alpine.js" defer></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     @endpush
 @endonce

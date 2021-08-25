@@ -53,6 +53,7 @@ class User extends Resource
             Boolean::make('Is sponsor')->readonly(),
 
             HasMany::make('Purchases'),
+            HasMany::make('Purchase Assignments', 'assignments', PurchaseAssignment::class),
             HasMany::make('Licenses'),
 
             Impersonate::make($this)->withMeta([

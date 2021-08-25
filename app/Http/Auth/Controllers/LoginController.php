@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -23,7 +24,13 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        session()->flash('next', request('next') ?? url()->previous());
+        $previous = url()->previous();
+
+        if (Str::finish($previous, '/') === Str::finish(url('/'), '/')) {
+            $previous = route('products.index');
+        }
+
+        session()->flash('next', request('next') ?? $previous);
 
         return view('auth.login');
     }

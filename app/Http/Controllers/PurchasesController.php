@@ -2,39 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Purchasable;
-use App\Models\Purchase;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\PurchaseAssignment;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PurchasesController
 {
     public function __invoke(Request $request)
     {
-        $purchasesPerProduct = $request->user()
-            ->purchasesWithoutRenewals()
-            ->with(['purchasable', 'bundle'])
+        $courses = $request->user()
+            ->assignmentsWithoutRenewals()
+            ->with(['purchasable.product', 'purchasable.media'])
+            ->whereHas('purchasable', fn(Builder $query) => $query
+                ->whereHas('series')
+                ->orWhereHas('media', fn(Builder $query) => $query->where('collection_name', 'downloads'))
+            )
             ->get()
-            ->flatMap(function (Purchase $purchase) {
-                if ($purchase->bundle) {
-                    return $purchase->bundle->purchasables->map(function (Purchasable $purchasable) use ($purchase) {
-                        return [
-                            'product_id' => $purchasable->product_id,
-                            'purchase' => $purchase,
-                            'product' => $purchasable->product,
-                        ];
-                    });
-                }
+            ->unique('purchasable_id')
+            ->sortBy('purchasable.product.title');
 
-                return [[
-                    'product_id' => $purchase->purchasable->product_id,
-                    'purchase' => $purchase,
-                    'product' => $purchase->purchasable->product,
-                ]];
-            })->mapToGroups(fn(array $data) => [$data['product_id'] => [
-                'purchase' => $data['purchase'],
-                'product' => $data['product'],
-            ]]);
+        $applications = $request->user()
+            ->assignmentsWithoutRenewals()
+            ->with(['purchasable.product', 'purchasable.media', 'licenses.activations'])
+            ->whereHas('licenses')
+            ->get()
+            ->sortBy('purchasable.product.title')
+            ->groupBy('purchasable.product_id');
 
-        return view('front.profile.purchases', compact('purchasesPerProduct'));
+        return view('front.profile.purchases', compact('courses', 'applications'));
     }
 }

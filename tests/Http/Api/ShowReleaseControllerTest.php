@@ -2,7 +2,7 @@
 
 namespace Tests\Http\Api;
 
-use App\Models\Release;
+use App\Domain\Shop\Models\Release;
 use Tests\TestCase;
 
 class ShowReleaseControllerTest extends TestCase

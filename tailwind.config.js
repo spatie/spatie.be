@@ -34,6 +34,7 @@ module.exports = {
             gold: '#a89f81',
             'gold-darkest': '#51492c',
 
+            'gray-50': '#f8f8f8',
             'gray-lightest': '#f3efea',
             'gray-lighter': '#cbd2ce',
             'gray-light': '#b8bfbb',
@@ -42,6 +43,7 @@ module.exports = {
             'gray-darker': '#4c534f',
             'gray-darkest': '#171e1a',
 
+            'blue-50': '#f7fbfc',
             'blue-lightest': '#cae1e8',
             'blue-lighter': '#22a4c9',
             'blue-light': '#22a4c9',

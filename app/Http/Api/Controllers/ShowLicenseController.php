@@ -2,7 +2,7 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 
 class ShowLicenseController
 {

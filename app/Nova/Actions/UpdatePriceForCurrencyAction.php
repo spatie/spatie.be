@@ -2,13 +2,15 @@
 
 namespace App\Nova\Actions;
 
-use App\Models\Purchasable;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\PurchasablePrice;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 
 class UpdatePriceForCurrencyAction extends Action
@@ -20,10 +22,20 @@ class UpdatePriceForCurrencyAction extends Action
 
     public function handle(ActionFields $fields, Collection $models)
     {
-        if ($fields->currency_code === 'USD') {
-            Action::message('You should define the USD price on the purchasable itself');
+        if (! $fields->currency_code) {
+            return Action::danger('Currency code is required');
+        }
 
-            return;
+        if ($fields->currency_code === 'USD') {
+            return Action::danger('You should define the USD price on the purchasable itself');
+        }
+
+        if (! $fields->amount_in_cents) {
+            return Action::danger('Amount is required');
+        }
+
+        if (! PurchasablePrice::where('currency_code', $fields->currency_code)->exists()) {
+            return Action::danger("No purchasable price found for currency code {$fields->currency_code}");
         }
 
         $models->each(function (Purchasable $purchasable) use ($fields) {
@@ -36,7 +48,7 @@ class UpdatePriceForCurrencyAction extends Action
                 ]);
         });
 
-        Action::message('Price updated!');
+        return Action::message('Price updated!');
     }
 
     public function fields()
@@ -44,7 +56,7 @@ class UpdatePriceForCurrencyAction extends Action
         return [
             Number::make('Amount in cents'),
 
-            Text::make('Currency code'),
+            Select::make('Currency code')->options(PurchasablePrice::pluck('currency_code', 'currency_code')->unique()->sort()),
         ];
     }
 }

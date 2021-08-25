@@ -2,9 +2,9 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Bundle;
-use App\Models\Purchasable;
-use App\Models\Referrer;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Referrer;
 use App\Models\User;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
@@ -114,7 +114,7 @@ class PurchasableTest extends TestCase
         ]);
         $this->actingAs($this->user);
 
-        /** @var \App\Models\Referrer $referrer */
+        /** @var \App\Domain\Shop\Models\Referrer $referrer */
         $referrer = Referrer::factory()->create([
             'discount_percentage' => 10,
         ]);
@@ -144,14 +144,14 @@ class PurchasableTest extends TestCase
         ]);
         $this->actingAs($this->user);
 
-        /** @var \App\Models\Referrer $referrer */
+        /** @var \App\Domain\Shop\Models\Referrer $referrer */
         $referrer = Referrer::factory()->create([
             'discount_percentage' => 10,
         ]);
 
         $referrer->makeActive();
 
-        /** @var \App\Models\Bundle $bundle */
+        /** @var \App\Domain\Shop\Models\Bundle $bundle */
         $bundle = Bundle::factory()->create([
             'price_in_usd_cents' => 10000,
         ]);

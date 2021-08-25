@@ -2,7 +2,7 @@
 
 namespace Tests\Unit\Models;
 
-use App\Models\Purchase;
+use App\Domain\Shop\Models\Purchase;
 use Tests\TestCase;
 
 class PurchaseTest extends TestCase
@@ -12,7 +12,7 @@ class PurchaseTest extends TestCase
     {
         $this->markTestSkipped('unlocksRayLicense is currently disabled.');
 
-        /** @var \App\Models\Purchase $purchase */
+        /** @var \App\Domain\Shop\Models\Purchase $purchase */
         $purchase = Purchase::factory()->create();
 
         $purchase->purchasable->product->update([

@@ -141,3 +141,22 @@ a.link-white:hover,
     @apply text-opacity-50;
     --link-border-color: theme(colors.white) 40;
 }
+
+.links-button a {
+    @apply w-full truncate no-underline font-bold cursor-pointer bg-green-dark bg-opacity-75 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 text-white duration-300 whitespace-no-wrap text-xs;
+    transition: background-color;
+}
+
+@screen md {
+    .links-button a {
+        @apply text-base;
+    }
+}
+
+.links-button a:hover {
+    @apply bg-opacity-100 text-white;
+}
+
+.links-button a:focus {
+    @apply outline-none border-blue-light;
+}

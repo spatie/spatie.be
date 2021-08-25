@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\Models\Purchase;
+use App\Domain\Shop\Models\Purchase;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
 

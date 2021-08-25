@@ -23,13 +23,13 @@ return new class extends Migration
 
         Schema::create('bundle_purchasable', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Bundle::class);
-            $table->foreignIdFor(\App\Models\Purchasable::class);
+            $table->foreignIdFor(\App\Domain\Shop\Models\Bundle::class);
+            $table->foreignIdFor(\App\Domain\Shop\Models\Purchasable::class);
         });
 
         Schema::create('bundle_prices', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Bundle::class);
+            $table->foreignIdFor(\App\Domain\Shop\Models\Bundle::class);
             $table->string('country_code');
             $table->string('currency_code');
             $table->integer('amount');
@@ -39,13 +39,13 @@ return new class extends Migration
         });
 
         Schema::table('purchases', function (Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Bundle::class)->after('purchasable_id')->nullable();
-            $table->foreignIdFor(\App\Models\Purchasable::class)->nullable()->change();
+            $table->foreignIdFor(\App\Domain\Shop\Models\Bundle::class)->after('purchasable_id')->nullable();
+            $table->foreignIdFor(\App\Domain\Shop\Models\Purchasable::class)->nullable()->change();
         });
 
         Schema::create('referrer_bundle', function(Blueprint $table) {
-            $table->foreignIdFor(\App\Models\Referrer::class);
-            $table->foreignIdFor(\App\Models\Bundle::class);
+            $table->foreignIdFor(\App\Domain\Shop\Models\Referrer::class);
+            $table->foreignIdFor(\App\Domain\Shop\Models\Bundle::class);
             $table->timestamps();
         });
     }

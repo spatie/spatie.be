@@ -1,13 +1,18 @@
-<span>
+<span class="inline-flex items-center w-full">
     @if ($editing)
         <div class="inline-flex">
-            <input
-                type="input"
-                class="text-xs form-input w-full h-8 py-0 px-2 rounded-r-none border-r-0"
-                placeholder="Domain"
-                wire:model="domain"
-                wire:keydown.enter="save"
-            >
+            <div>
+                <input
+                    type="text"
+                    class="text-xs form-input w-full h-8 py-0 px-2 rounded-r-none border-r-0"
+                    placeholder="Domain"
+                    wire:model="domain"
+                    wire:keydown.enter="save"
+                >
+                @error('domain')
+                    <p class="text-red">{{ $message }}</p>
+                @enderror
+            </div>
             <a
                 href="#"
                 wire:click.prevent="save"
@@ -24,12 +29,10 @@
             </a>
         </div>
     @else
-            <span>{{ $domain ?: 'No domain set' }}</span>
+            <span class="text-sm">{{ $domain ?: 'No domain set' }}</span>
             <a href="#"
                class="ml-1 link-blue link-underline"
                wire:click.prevent="edit"
             >Edit</a>
     @endif
-
-    <span class="char-separator mx-2">•</span>
 </span>

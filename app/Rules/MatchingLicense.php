@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use App\Models\Activation;
-use App\Models\License;
+use App\Domain\Shop\Models\Activation;
+use App\Domain\Shop\Models\License;
 use Illuminate\Contracts\Validation\Rule;
 
 class MatchingLicense implements Rule

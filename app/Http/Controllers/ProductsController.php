@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Bundle;
-use App\Models\License;
-use App\Models\Product;
-use App\Models\Purchasable;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Product;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Http\Request;
 
 class ProductsController
@@ -25,22 +26,24 @@ class ProductsController
 
     public function show(Request $request, Product $product)
     {
-        $purchases = $licenses = collect();
+        $assignments = $licenses = collect();
 
         if ($request->user()) {
-            $purchases = $request->user()
-                ->purchasesWithoutRenewals()
+            $assignments = $request->user()
+                ->assignments()
+                ->with(['licenses', 'purchasable.product'])
                 ->forProduct($product)
                 ->get();
 
-            $licenses = $request->user()
-                ->licensesWithoutRenewals()
-                ->with(['purchasable'])
-                ->forProduct($product)
-                ->get();
+            $licenses = $assignments->flatMap(function (PurchaseAssignment $assignment) {
+                return $assignment->licenses->map(function (License $license) use ($assignment) {
+                    $license->setRelation('assignment', $assignment);
+                    return $license;
+                });
+            });
         }
 
-        return view('front.pages.products.show', compact('product', 'purchases', 'licenses'));
+        return view('front.pages.products.show', compact('product', 'assignments', 'licenses'));
     }
 
     public function buy(Request $request, Product $product, Purchasable $purchasable, License $license = null)

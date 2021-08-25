@@ -3,9 +3,9 @@
 
 namespace Database\Seeders;
 
+use App\Domain\Shop\Models\Product;
+use App\Domain\Shop\Models\Purchasable;
 use App\Models\Enums\VideoDisplayEnum;
-use App\Models\Product;
-use App\Models\Purchasable;
 use App\Models\Series;
 use App\Models\Video;
 use Illuminate\Database\Seeder;

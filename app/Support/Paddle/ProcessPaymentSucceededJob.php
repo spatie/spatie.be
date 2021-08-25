@@ -2,12 +2,12 @@
 
 namespace App\Support\Paddle;
 
-use App\Actions\HandlePurchaseAction;
-use App\Exceptions\CouldNotHandlePaymentSucceeded;
-use App\Models\Bundle;
-use App\Models\Purchasable;
-use App\Models\Purchase;
-use App\Models\Referrer;
+use App\Domain\Shop\Actions\HandlePurchaseAction;
+use App\Domain\Shop\Exceptions\CouldNotHandlePaymentSucceeded;
+use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\Referrer;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

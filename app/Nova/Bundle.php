@@ -2,10 +2,13 @@
 
 namespace App\Nova;
 
-use App\Models\Bundle as EloquentBundle;
+use App\Domain\Shop\Models\Bundle as EloquentBundle;
+use App\Nova\Actions\UpdateBundlePriceForCurrencyAction;
+use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
@@ -32,19 +35,6 @@ class Bundle extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Title')
-                ->sortable()
-                ->rules(['required', 'max:255']),
-            Text::make('Slug')
-                ->sortable()
-                ->hideFromIndex()
-                ->rules(['required', 'max:255']),
-
-            Text::make('Paddle id', 'paddle_product_id')
-                ->sortable()
-                ->hideFromIndex()
-                ->rules(['required', 'max:255']),
-
             Image::make('Image')
                 ->store(function (Request $request, EloquentBundle $product) {
                     return function () use ($request, $product): void {
@@ -65,6 +55,18 @@ class Bundle extends Resource
                     return [];
                 }),
 
+            Text::make('Title')
+                ->sortable()
+                ->rules(['required', 'max:255']),
+            Text::make('Slug')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules(['required', 'max:255']),
+
+            Text::make('Paddle id', 'paddle_product_id')
+                ->sortable()
+                ->rules(['required', 'max:255']),
+
             Markdown::make('Description'),
             Markdown::make('Long Description'),
 
@@ -75,6 +77,7 @@ class Bundle extends Resource
             Boolean::make('Visible on front', 'visible'),
 
             BelongsToMany::make('Purchasables', 'purchasables', Purchasable::class),
+            HasMany::make('Prices', 'prices', BundlePrice::class),
         ];
     }
 
@@ -95,6 +98,10 @@ class Bundle extends Resource
 
     public function actions(Request $request)
     {
-        return [];
+        return [
+            (new UpdateBundlePriceForCurrencyAction())
+                ->showOnTableRow()
+                ->confirmButtonText('Update price'),
+        ];
     }
 }

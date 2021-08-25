@@ -2,8 +2,8 @@
 
 namespace App\Nova;
 
-use App\Enums\PurchasableType;
-use App\Models\Purchasable as EloquentPurchasable;
+use App\Domain\Shop\Enums\PurchasableType;
+use App\Domain\Shop\Models\Purchasable as EloquentPurchasable;
 use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use App\Nova\Filters\ProductFilter;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
@@ -66,6 +66,7 @@ class Purchasable extends Resource
                 Boolean::make('Released'),
 
                 Boolean::make('Requires license')->hideFromIndex(),
+                Boolean::make('Is Lifetime')->hideFromIndex(),
 
                 Text::make('Repository access')->hideFromIndex(),
                 Items::make('Satis packages')->hideFromIndex(),

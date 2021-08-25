@@ -29,5 +29,6 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         Blade::component('components.avatar', 'avatar');
+        Blade::component('front.profile.components.purchase-assignment', 'purchase-assignment');
     }
 }

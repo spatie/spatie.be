@@ -27,7 +27,7 @@
                                 {{ __('E-Mail Address') }}:
                             </x-label>
 
-                            <input id="email" type="email" class="form-input w-full @error('email') border-pink @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
+                            <input id="email" type="email" class="form-input w-full @error('email') border-pink @enderror" @if($email) readonly="readonly" @endif name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                             @error('email')
                                 <p class="my-8 text-pink-dark text-sm">

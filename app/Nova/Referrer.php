@@ -13,7 +13,7 @@ use Laravel\Nova\Panel;
 
 class Referrer extends Resource
 {
-    public static $model = \App\Models\Referrer::class;
+    public static $model = \App\Domain\Shop\Models\Referrer::class;
 
     public static $title = 'slug';
 

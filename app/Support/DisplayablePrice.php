@@ -33,6 +33,6 @@ class DisplayablePrice
 
         $amount = Str::replaceLast('.00', '', $amount);
 
-        return "{$amount} {$this->currencyCode}";
+        return "{$this->currencySymbol} {$amount}";
     }
 }

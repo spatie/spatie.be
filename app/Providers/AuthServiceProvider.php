@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\License;
+use App\Domain\Shop\Models\License;
 use App\Support\Socialite\SignInWithAppleProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -22,7 +22,7 @@ class AuthServiceProvider extends ServiceProvider
                 abort(401, 'License key invalid');
             }
 
-            if ($license->isExpired()) {
+            if ($license->isExpired() && !$license->isMasterKey()) {
                 abort(401, 'This license is expired');
             }
 

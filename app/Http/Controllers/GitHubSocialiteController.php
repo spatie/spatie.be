@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Actions\RestoreRepositoryAccessAction;
+use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
 use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
