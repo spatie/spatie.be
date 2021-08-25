@@ -116,6 +116,10 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     public function getFullTitle(): string
     {
+        if ($this->product->title === 'Ray') {
+            return 'Ray';
+        }
+
         if ($this->title === $this->product->title) {
             return $this->title;
         }
