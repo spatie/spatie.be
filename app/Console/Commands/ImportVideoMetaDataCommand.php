@@ -7,11 +7,17 @@ use Illuminate\Console\Command;
 
 class ImportVideoMetaDataCommand extends Command
 {
-    public $signature = 'import-video-meta-data';
+    public $signature = 'import-video-meta-data {--series=}';
 
     public function handle()
     {
-        Video::each(function(Video $video) {
+        $query = Video::query();
+
+        if ($seriesId = $this->option('series')) {
+            $query->where('series_id', $seriesId);
+        }
+
+        $query->each(function(Video $video) {
             $video->touch();
 
             $this->comment("Updated `{$video->title}`");
