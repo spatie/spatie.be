@@ -110,11 +110,9 @@
                                             Subtotal
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                            @if($purchasable->hasActiveDiscount())
-                                                <span class="mr-2">
-                                                    <span class="font-semibold line-through">{{ $priceWithoutDiscount->formattedPrice() }}</span>
-                                                </span>
-                                            @endif
+                                            <span x-show="subtotalWithoutDiscount" class="mr-2">
+                                                <span class="font-semibold line-through" x-text="subtotalWithoutDiscount"></span>
+                                            </span>
                                             <span class="text-blue" x-text="subtotal"></span>
                                         </dd>
                                     </div>
@@ -157,6 +155,8 @@
                                 emailsComplete: true,
                                 emailsLoading: false,
                                 subtotal: null,
+                                initialSubtotalWithoutDiscount: {{ $purchasable->hasActiveDiscount() ? $priceWithoutDiscount->priceInCents : 'null' }},
+                                subtotalWithoutDiscount: null,
                                 tax: null,
                                 total: null,
                                 currency: 'USD',
@@ -237,6 +237,10 @@
                                     this.tax = formatter.format(data.eventData.checkout.prices.customer.total_tax);
                                     this.total = formatter.format(data.eventData.checkout.prices.customer.total);
                                     this.free = parseFloat(data.eventData.checkout.prices.customer.total) <= 0;
+
+                                    if (this.initialSubtotalWithoutDiscount) {
+                                        this.subtotalWithoutDiscount = formatter.format(this.initialSubtotalWithoutDiscount / 100 * data.eventData.product.quantity);
+                                    }
                                 }
                             }))
                         });
