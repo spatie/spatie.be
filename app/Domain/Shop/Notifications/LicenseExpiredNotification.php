@@ -37,8 +37,8 @@ class LicenseExpiredNotification extends Notification
             ->greeting('Hi!')
             ->line("Just a reminder to inform you that your {$name} license has expired.")
             ->line("If you want to keep receiving updates, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license.")
-            ->line(Markdown::parse($this->license->purchasable->renewal_mail_incentive))
-            ->action('Renew now', action([ProductsController::class, 'show'], $this->license->purchasable->product))
-            ->line("Thank you for using {$this->license->purchasable->product->title}!");
+            ->line(Markdown::parse($this->license->assignment->purchasable->renewal_mail_incentive))
+            ->action('Renew now', action([ProductsController::class, 'show'], $this->license->assignment->purchasable->product))
+            ->line("Thank you for using {$this->license->assignment->purchasable->product->title}!");
     }
 }
