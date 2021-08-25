@@ -8,6 +8,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Domain\Shop\Models\Referrer;
+use App\Domain\Shop\Notifications\PurchaseAssignedNotification;
 use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
@@ -159,6 +160,10 @@ class HandlePurchaseAction
                     'purchase_id' => $purchase->id,
                     'purchasable_id' => $purchasable->id,
                 ]);
+
+                if ($user->email !== $purchase->user->email && ! $user->wasRecentlyCreated) {
+                    $user->notify(new PurchaseAssignedNotification($purchase->user, $purchasable));
+                }
             }
         }
     }
