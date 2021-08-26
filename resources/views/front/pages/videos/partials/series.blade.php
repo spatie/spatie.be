@@ -1,16 +1,16 @@
 <section id="series" class="section overflow-visible">
-    <div class="wrap grid sm:grid-cols-2 col-gap-6 row-gap-16 | markup-lists">
+    <div class="wrap grid sm:grid-cols-2 col-gap-16 row-gap-16 | markup-lists">
         @foreach($allSeries as $series)
             <div>
                 @if($series->isPurchasable())
-                    <div class="h-full line-l line-l-green p-4 bg-green-lightest bg-opacity-50">
+                    <div class="h-full p-6 bg-white">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
                                 <div class="shadow-lg">
                                     <a href="{{ $series->url }}">{{ $series->getFirstMedia('series-image') }}</a>
                                 </div>
                             </div>
-                            <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
+                            <a class="link-black link-underline-hover" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
                                 <span>
                                 {{ $series->videos()->count() }}
@@ -56,14 +56,14 @@
                         @endif
                     </div>
                 @else
-                    <div class="h-full line-l p-4 bg-gray-lightest bg-opacity-25">
+                    <div class="h-full p-6 bg-white">
                         <h2 class="title-sm">
                             <div class="-mt-8 pb-8 px-12">
                                 <div class="shadow-lg">
                                     <a href="{{ $series->url }}">{{ $series->getFirstMedia('series-image') }}</a>
                                 </div>
                             </div>
-                            <a class="link-black link-underline" href="{{ $series->url }}">{{ $series->title }}</a>
+                            <a class="link-black link-underline-hover" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
                                 <span>
                                 {{ $series->videos()->count() }}
