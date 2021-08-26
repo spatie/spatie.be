@@ -102,7 +102,7 @@
                                             </div>
                                         </template>
                                         <div class="py-2 sm:py-3 text-gray-dark text-xs">
-                                            We’ll mail each recipient with instructions on how to get started.
+                                            We’ll mail each recipient instructions on how to get started.
                                         </div>
                                     @endif
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
