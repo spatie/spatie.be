@@ -53,14 +53,12 @@
                 @endif
             @endforeach
 
-            {{--
+
             @foreach($product->bundles() as $bundle)
                 @include('front.pages.products.partials.priceCard', [
-                   'payLink' => current_user()?->getPayLinkForBundle($bundle),
                    'purchasable' => $bundle,
                ])
             @endforeach
-            --}}
         </div>
     </div>
 </section>
