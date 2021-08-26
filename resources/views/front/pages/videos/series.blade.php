@@ -24,9 +24,22 @@
                     <h2 class="title-xl">{{ $series->title }}</h2>
 
                     <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
-                        {!! $series->formattedDescription !!}
+                        <x-markdown>{!! $series->description !!}</x-markdown>
+                    </div>
 
-                        <p class="mt-4">Pick a topic from the menu to get started.</p>
+                    <hr class="-ml-4 mt-12 line-after"/>
+
+                    <div
+                        class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
+                        @if ($series->videos->first())
+                            <a class="mb-2 md:w-1/2 md:pl-4 flex items-center md:justify-end ml-auto"
+                               href="{{ $series->videos->first()->url }}">
+                                <span class="truncate"><span class="font-semibold md:hidden"></span>{{ $series->videos->first()->title  }}</span>
+                                <span class="w-1 fill-current text-blue ml-1 hidden | md:inline-block">
+                                    {{ svg('icons/far-angle-right') }}
+                                </span>
+                            </a>
+                        @endif
                     </div>
                 </div>
             </div>
