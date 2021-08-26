@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Mail\Markdown;
+use Illuminate\Support\Collection;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 use Spatie\MediaLibrary\HasMedia;
@@ -68,6 +69,17 @@ class Product extends Model implements HasMedia, Sortable
         return $this->hasMany(Purchasable::class)->orderBy('sort_order');
     }
 
+    public function bundles(): Collection
+    {
+        /** @var \Illuminate\Support\Collection $purchasables */
+        return Bundle::query()
+            ->whereHas(
+                'purchasables',
+                fn(Builder $query) => $query->whereIn('purchasables.id', $this->purchasables()->get()->pluck('id'))
+            )
+            ->get();
+    }
+
     public function releases(): HasMany
     {
         return $this->hasMany(Release::class);
@@ -101,7 +113,7 @@ class Product extends Model implements HasMedia, Sortable
 
     public function requiresLicense(): bool
     {
-        return $this->purchasables->contains(fn (Purchasable $purchasable) => $purchasable->requires_license);
+        return $this->purchasables->contains(fn(Purchasable $purchasable) => $purchasable->requires_license);
     }
 
     public function getUrl(): string
@@ -121,6 +133,6 @@ class Product extends Model implements HasMedia, Sortable
 
     public function purchasableWithDiscount(): ?Purchasable
     {
-        return optional($this->purchasables()->get())->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
+        return optional($this->purchasables()->get())->first(fn(Purchasable $purchasable) => $purchasable->hasActiveDiscount());
     }
 }

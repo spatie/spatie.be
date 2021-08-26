@@ -21,9 +21,11 @@
 
 @if (auth()->check() && auth()->user()->ownsAny($product->purchasables))
     <div class="wrap flex w-full mb-20">
-        <div class="w-full bg-orange-dark text-white flex flex-col justify-between items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
+        <div
+            class="w-full bg-orange-dark text-white flex flex-col justify-between items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
             <div class="flex items-center">
-                <div class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
+                <div
+                    class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
                     {{ svg('icons/fal-exclamation-circle') }}
                 </div>
                 <div>
@@ -33,7 +35,8 @@
                 </div>
             </div>
             <a href="{{ route('purchases') }}">
-                <button class="mt-2 md:mt-0 ml-4 px-2 py-1 rounded text-orange-dark bg-white uppercase tracking-wide font-semibold">
+                <button
+                    class="mt-2 md:mt-0 ml-4 px-2 py-1 rounded text-orange-dark bg-white uppercase tracking-wide font-semibold">
                     Purchases
                 </button>
             </a>
@@ -49,6 +52,14 @@
                     @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
                 @endif
             @endforeach
+
+            @foreach($product->bundles() as $bundle)
+                @foreach($bundle->purchasables as $purchasable)
+                    @if ($purchasable->released)
+                        @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
+                    @endif
+                @endforeach
+            @endforeach
         </div>
     </div>
 </section>
@@ -56,12 +67,13 @@
 <div class="section md:-mt-12 pt-0 pb-16 wrap">
     <div class="flex-0 text-xs text-gray mt-6">
         Includes a 10% coupon for a follow-up purchase within the next 24 hours.
-        <br />
+        <br/>
         @if($product->hasGuarantee())
-        On this product, we offer a 10 day money-back guarantee
-        <br />
+            On this product, we offer a 10 day money-back guarantee
+            <br/>
         @endif
-        VAT will be calculated during checkout by <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
+        VAT will be calculated during checkout by <a class="underline" target="_blank"
+                                                     href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
     </div>
 </div>
 
@@ -72,12 +84,14 @@
 
             <p class="mt-4 flex items-center space-x-4">
                 @if($product->action_url)
-                    <a target="_blank" class="no-underline" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}">
+                    <a target="_blank" class="no-underline" rel="nofollow noreferrer noopener"
+                       href="{{ $product->action_url }}">
                         <x-button>{{ $product->action_label }}</x-button>
                     </a>
                 @elseif ($product->url)
                     <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->url }}">
-                        <span class="icon fill-current text-pink-dark mr-2">{{ svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
+                        <span
+                            class="icon fill-current text-pink-dark mr-2">{{ svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
                     </a>
                 @endif
             </p>
