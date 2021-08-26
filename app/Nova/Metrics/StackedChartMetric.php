@@ -38,7 +38,9 @@ abstract class StackedChartMetric
         ];
 
         $data = collect($chart->getData())->map(function (array $data, int $key) use ($colors) {
-            $data['backgroundColor'] = $colors[$key];
+            $data['backgroundColor'] = $key > count($colors)
+                ? $colors[count($colors) - $key]
+                : $colors[$key];
             return $data;
         })->toArray();
 
