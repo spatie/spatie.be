@@ -59,6 +59,13 @@ class Bundle extends Model implements HasMedia, Sortable
         return $this->belongsToMany(Purchasable::class)->orderBy('sort_order');
     }
 
+    public function formattedProductNames(): string
+    {
+        return collect($this->purchasables)
+            ->map(fn(Purchasable $purchasable) => $purchasable->product->title)
+            ->join(', ', ' and ');
+    }
+
     public function getUrl(): string
     {
         return action([BundlesController::class, 'show'], $this);
