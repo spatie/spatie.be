@@ -1,7 +1,7 @@
 @component('mail::message')
 Thank you so much for your purchase. This means a lot to us!
 
-You can manage your purchase [on our website]({{ route('products.show', $purchasable->product) }})
+You can manage your purchase [on our website]({{ route('profile') }})
 
 @if($purchase->unlocksRayLicense())
 Your purchase also includes one license for Ray, which you can manage [here](https://spatie.be/products/ray).
