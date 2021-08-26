@@ -28,7 +28,7 @@
                     @foreach ($bundles as $bundle)
                         <div class="p-6">
                             <a href="{{ route('bundles.show', $bundle) }}" class="group">
-                                <div class="-mt-8 pb-8 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
+                                <div class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
                                     <div class="shadow-md group-hover:shadow-lg">{{ $bundle->getFirstMedia('image') }}</div>
                                 </div>
                                 <h2 class="title-sm link-black link-underline-hover">{{ $bundle->title }}</h2>
@@ -58,7 +58,7 @@
                     @foreach ($products as $product)
                         <div class="p-6">
                             <a href="{{ route('products.show', $product) }}" class="group">
-                                <div class="-mt-8 pb-8 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
+                                <div class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
                                     <div class="shadow-md group-hover:shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
                                 </div>
                                 <h2 class="title-sm link-black link-underline-hover">{{ $product->title }}</h2>

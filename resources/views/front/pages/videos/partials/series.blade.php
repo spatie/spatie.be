@@ -5,7 +5,7 @@
                 @if($series->isPurchasable())
                     <div class="h-full p-6">
                         <h2 class="title-sm">
-                            <div class="-mt-8 pb-8">
+                            <div class="-mt-8 pb-6">
                                 <div class="shadow-lg">
                                     <a href="{{ $series->url }}">{{ $series->getFirstMedia('series-image') }}</a>
                                 </div>
@@ -58,7 +58,7 @@
                 @else
                     <div class="h-full p-6">
                         <h2 class="title-sm">
-                            <div class="-mt-8 pb-8">
+                            <div class="-mt-8 pb-6">
                                 <div class="shadow-lg">
                                     <a href="{{ $series->url }}">{{ $series->getFirstMedia('series-image') }}</a>
                                 </div>
