@@ -4,21 +4,21 @@ namespace App\Http\Controllers;
 
 use App\Models\Series;
 use App\Models\Video;
+use Illuminate\Database\Eloquent\Builder;
 
 class VideosController
 {
     public function index()
     {
-        $seriesQuery = Series::with(['purchasables', 'videos'])
-            ->orderBy('sort_order');
+        $allSeries = Series::with(['purchasables', 'videos'])
+            ->unless(
+                current_user()?->isSpatieMember(),
+                fn(Builder $query) => $query->where('visible', true)
+            )
+            ->orderBy('sort_order')
+            ->get();
 
-        if (! auth()->user()?->isSpatieMember()) {
-            $seriesQuery->where('visible', true);
-        }
-
-        return view('front.pages.videos.index', [
-            'allSeries' => $seriesQuery->get(),
-        ]);
+        return view('front.pages.videos.index', compact('allSeries'));
     }
 
     public function show(Series $series, Video $video)
