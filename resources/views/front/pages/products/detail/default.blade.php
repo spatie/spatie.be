@@ -54,11 +54,10 @@
             @endforeach
 
             @foreach($product->bundles() as $bundle)
-                @foreach($bundle->purchasables as $purchasable)
-                    @if ($purchasable->released)
-                        {{-- @include('front.pages.products.partials.priceCard', ["first" => $loop->first]) --}}
-                    @endif
-                @endforeach
+                @include('front.pages.products.partials.priceCard', [
+                   'payLink' => current_user()?->getPayLinkForBundle($bundle),
+                   'purchasable' => $bundle,
+               ])
             @endforeach
         </div>
     </div>
