@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Shop\Models\Product;
+use Illuminate\Database\Eloquent\Builder;
 
 class OpenSourceController
 {
@@ -18,7 +19,13 @@ class OpenSourceController
 
     public function support()
     {
-        $products = Product::orderBy('sort_order')->get();
+        $products = Product::query()
+            ->unless(
+                current_user()?->isSpatieMember(),
+                fn(Builder $query) => $query->where('visible', true)
+            )
+            ->orderBy('sort_order')
+            ->get();
 
         return view('front.pages.open-source.support', [
             'products' => $products,
