@@ -24,7 +24,10 @@ a.link:focus,
 /* repetition, because we cannot @apply with pseudo classes in Tailwind for now */
 .link-underline,
 a.link-underline,
-.links-underline a {
+.links-underline a,
+.link-underline-hover:hover,
+a.link-underline-hover:hover,
+.links-underline-hover a:hover {
     @apply link-base;
     text-decoration: underline;
     text-decoration-skip-ink: auto;
