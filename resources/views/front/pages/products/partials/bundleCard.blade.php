@@ -1,15 +1,24 @@
-<div class="mb-12 py-6 md:-mt-8 md:py-10 md:z-10 md:mb-0 md:mx-2 max-w-md flex flex-col bg-white border-2 border-green-light shadow-lg px-8" style="bottom: -2rem">
+<div class="mb-12 py-6 md:-mt-8 md:py-10 md:z-10 md:mb-0 md:mx-2 max-w-sm flex flex-col bg-white  shadow-lg px-8" style="bottom: -2rem">
     <h2 class="flex-0 flex items-center font-bold text-2xl mb-4 min-h-10">
-        Bundle upgrade
+        {{ $bundle->title }}
+        <span class="bottom-full left-0 absolute px-1 bg-blue text-white text-xxs uppercase tracking-wider">Bundle promo</span>
     </h2>
 
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         <p>
-            This product is also available in our <a class="link-blue link-underline" href="{{ route('bundles.show', $bundle) }}">{{ $bundle->title }}</a> which contains:
+            You can get a good deal when buying these products combined:
         </p>
         <ul>
             @foreach($bundle->purchasables as $purchasable)
-                <li><a class="link-blue" href="{{ route('products.show', $purchasable->product) }}">{{ $purchasable->product->title }}</a></li>
+                <li>
+                @if($purchasable->product->title !== $product->title)
+                <a class="link-black link-underline" href="{{ route('products.show', $purchasable->product) }}">{{ $purchasable->product->title }}
+                </a>
+                @else
+                <span class="font-semibold">{{ $purchasable->product->title }}</span>
+                @endif
+
+                </li>
             @endforeach
         </ul>
     </div>
