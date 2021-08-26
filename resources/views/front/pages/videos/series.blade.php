@@ -25,8 +25,6 @@
 
                     <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
                         <x-markdown>{!! $series->description !!}</x-markdown>
-
-                        <p class="mt-4">Pick a topic from the menu to get started.</p>
                     </div>
 
                     <hr class="-ml-4 mt-12 line-after"/>
