@@ -22,6 +22,7 @@ class BundleFactory extends Factory
             'slug' => Str::slug($title),
             'paddle_product_id' => (string)$this->faker->randomNumber(5),
             'price_in_usd_cents' => $priceInCents,
+            'visible' => true,
         ];
     }
 }
