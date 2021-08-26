@@ -8,10 +8,9 @@
             This product is also available in our <a class="link-blue link-underline" href="{{ route('bundles.show', $bundle) }}">{{ $bundle->title }}</a> which contains:
         </p>
         <ul>
-            {{--
             @foreach($bundle->purchasables as $purchasable)
-                <li><a href="">{{ $purchasable->product->title() }}</a></li>
-            @endforeach--}}
+                <li><a class="link-blue" href="{{ route('products.show', $purchasable->product) }}">{{ $purchasable->product->title }}</a></li>
+            @endforeach
         </ul>
     </div>
 
