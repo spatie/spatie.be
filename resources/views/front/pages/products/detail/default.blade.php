@@ -56,7 +56,7 @@
             @foreach($product->bundles() as $bundle)
                 @foreach($bundle->purchasables as $purchasable)
                     @if ($purchasable->released)
-                        @include('front.pages.products.partials.priceCard', ["first" => $loop->first])
+                        {{-- @include('front.pages.products.partials.priceCard', ["first" => $loop->first]) --}}
                     @endif
                 @endforeach
             @endforeach
