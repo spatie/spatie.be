@@ -31,10 +31,24 @@ class RouteServiceProvider extends ServiceProvider
 
     public function map(): void
     {
+        $this->removeIndexPhpFromUrl();
+        
         $this
             ->mapWebRoutes()
             ->mapApiRoutes()
             ->mapRedirectsForOldSite();
+    }
+    
+    protected function removeIndexPhpFromUrl()
+    {
+        if (Str::contains(request()->getRequestUri(), '/index.php/')) {
+            $url = str_replace('index.php/', '', request()->getRequestUri());
+
+            if (strlen($url) > 0) {
+                header("Location: $url", true, 301);
+                exit;
+            }
+        }
     }
 
     protected function mapWebRoutes(): self
