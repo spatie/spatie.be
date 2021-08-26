@@ -1,7 +1,7 @@
 <div class="mb-12 py-6 md:-mt-8 md:py-10 md:z-10 md:mb-0 md:mx-2 max-w-sm flex flex-col bg-white  shadow-lg px-8" style="bottom: -2rem">
-    <h2 class="flex-0 flex items-center font-bold text-2xl mb-4 min-h-10">
+        <span class="top-0 mt-4 left-0 absolute pl-8 pr-3 py-1 bg-green-lightest bg-opacity-50 text-green-dark text-xxs font-semibold uppercase tracking-widest">Bundle promo</span>
+    <h2 class="flex-0 flex items-center font-bold text-2xl leading-normal mb-4 min-h-10">
         {{ $bundle->title }}
-        <span class="bottom-full left-0 absolute px-1 bg-blue text-white text-xxs uppercase tracking-wider">Bundle promo</span>
     </h2>
 
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
