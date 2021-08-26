@@ -5,7 +5,7 @@
 <div
     class="{{ isset($first) && $first ? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 md:mx-2 max-w-md flex flex-col bg-white shadow-lg px-8"
     style="bottom: {{ isset($first) && $first ? '-2rem' : '-1rem' }}">
-    <h2 class="flex-0 flex items-center font-bold {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} mb-4 min-h-10">
+    <h2 class="flex-0 flex items-center font-bold {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} leading-tight mb-4 min-h-10">
         {{ $purchasable->title }} @isset($license)- Renewal @endisset
     </h2>
     @isset($license)
