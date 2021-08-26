@@ -9,13 +9,16 @@ class VideosController
 {
     public function index()
     {
-        $allSeries = Series::with(['purchasables', 'videos'])
-            ->where('visible', true)
-            ->orderBy('sort_order')
-            ->get();
+        $seriesQuery = Series::with(['purchasables', 'videos'])
+            ->orderBy('sort_order');
 
+        if (! auth()->user()?->isSpatieMember()) {
+            $seriesQuery->where('visible', true);
+        }
 
-        return view('front.pages.videos.index', compact('allSeries'));
+        return view('front.pages.videos.index', [
+            'allSeries' => $seriesQuery->get(),
+        ]);
     }
 
     public function show(Series $series, Video $video)

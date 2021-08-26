@@ -7,17 +7,26 @@ use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class ProductsController
 {
     public function index(Request $request)
     {
-        $products = Product::orderBy('sort_order')
-            ->where('visible', true)
+        $products = Product::query()
+            ->unless(
+                current_user()?->isSpatieMember(),
+                fn(Builder $query) => $query->where('visible', true)
+            )
+            ->orderBy('sort_order')
             ->get();
 
         $bundles = Bundle::orderBy('sort_order')
+            ->unless(
+                current_user()?->isSpatieMember(),
+                fn(Builder $query) => $query->where('visible', true)
+            )
             ->where('visible', true)
             ->get();
 
