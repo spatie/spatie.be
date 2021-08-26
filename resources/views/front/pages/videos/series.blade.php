@@ -24,7 +24,7 @@
                     <h2 class="title-xl">{{ $series->title }}</h2>
 
                     <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
-                        {!! $series->formattedDescription !!}
+                        <x-markdown>{!! $series->description !!}</x-markdown>
 
                         <p class="mt-4">Pick a topic from the menu to get started.</p>
                     </div>

@@ -23,6 +23,11 @@
     @endif
 
     <ol class="text-xs grid gap-2 links-blue markup-list-compact">
+        <li class="{{ request()->routeIs('series.show') ? "font-sans-bold" : "" }}">
+            <a class="block" href="{{ route('series.show', [$series]) }}">
+                <span class="mr-1">Introduction</span>
+            </a>
+        </li>
         @forelse ($series->videos->groupBy('chapter') as $chapter => $videosPerChapter)
             @if ($chapter)
                 <h3 class="title-subtext mt-6 mb-2">
