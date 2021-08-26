@@ -53,12 +53,9 @@
                 @endif
             @endforeach
 
-            {{--
             @foreach($product->bundles() as $bundle)
-                    This product is also available in our  <a href="{{ route('bundles.show', $bundle) }}">{{ $bundle->title }} bundle</a>
-                which contains {{ $bundle->formattedProductNames() }} for {{ $purchasable->getPriceForCurrentRequest()->formattedPrice() }}
+                @include('front.pages.products.partials.bundleCard', ["bundle" => $bundle])
             @endforeach
-            --}}
         </div>
     </div>
 </section>
