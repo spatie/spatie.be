@@ -5,6 +5,7 @@ namespace App\Domain\Shop\Actions;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
+use Exception;
 
 class RestoreRepositoryAccessAction
 {
@@ -23,7 +24,7 @@ class RestoreRepositoryAccessAction
             ->get();
 
         $assignments->each(function (PurchaseAssignment $assignment) use ($user) {
-            if (! $assignment->purchasable->repository_access) {
+            if (!$assignment->purchasable->repository_access) {
                 return;
             }
 
@@ -37,12 +38,22 @@ class RestoreRepositoryAccessAction
 
             $repositories = explode(', ', $assignment->purchasable->repository_access);
 
-            foreach($repositories as $repository) {
-                $this->gitHubApi->inviteToRepo(
-                    $user->github_username,
-                    $repository
-                );
+
+            foreach ($repositories as $repository) {
+                $repository = trim($repository);
+
+                try {
+                    $this->gitHubApi->inviteToRepo(
+                        $user->github_username,
+                        $repository
+                    );
+                } catch (Exception $exception) {
+                    report("Could not invite GitHub user `{$user->github_username}` to repo `{$repository}`");
+
+                    throw $exception;
+                }
             }
+
 
             $assignment->update(['has_repository_access' => true]);
         });
