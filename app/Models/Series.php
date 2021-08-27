@@ -72,9 +72,26 @@ class Series extends Model implements HasMedia, Sortable
         return $this->purchasables()->count() > 0;
     }
 
+    public function sampleVideoUrl(): ?string
+    {
+        $video = $this->videos
+            ->filter(
+                fn($video) => in_array($video->display, [
+                    VideoDisplayEnum::FREE,
+                    VideoDisplayEnum::AUTH
+                ]))
+            ->first();
+
+        if (! $video) {
+            return;
+        }
+
+        return route('videos.show', [$this->slug, $video->slug]);
+    }
+
     public function purchaseLink(): string
     {
-        if (! $this->isPurchasable()) {
+        if (!$this->isPurchasable()) {
             return '';
         }
 
@@ -88,12 +105,12 @@ class Series extends Model implements HasMedia, Sortable
 
     public function isOwnedByCurrentUser(): bool
     {
-        if (! auth()->check()) {
+        if (!auth()->check()) {
             return false;
         }
 
         return $this->purchasables
-                ->filter(fn (Purchasable $purchasable) => auth()->user()->owns($purchasable))
+                ->filter(fn(Purchasable $purchasable) => auth()->user()->owns($purchasable))
                 ->count() > 0;
     }
 
@@ -104,6 +121,6 @@ class Series extends Model implements HasMedia, Sortable
 
     public function purchasableWithDiscount(): ?Purchasable
     {
-        return optional($this->purchasables()->get())->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
+        return optional($this->purchasables()->get())->first(fn(Purchasable $purchasable) => $purchasable->hasActiveDiscount());
     }
 }

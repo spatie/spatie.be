@@ -38,7 +38,7 @@
                                 @endif
                             </div>
                         </h2>
-                        
+
                         <p class="my-4 flex items-center space-x-4">
                          @if($series->isPurchasable())
                             @if (! $series->isOwnedByCurrentUser())
@@ -47,9 +47,8 @@
                                         Buy course
                                     </x-button>
                                 </a>
-                                @php($freeVideoCount = $series->videos->filter(fn ($video) => in_array($video->display, [\App\Models\Enums\VideoDisplayEnum::FREE, \App\Models\Enums\VideoDisplayEnum::AUTH]))->count())
-                                @if ($freeVideoCount > 0)
-                                    <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('sample', $freeVideoCount) }}</a>
+                                @if ($videoUrl = $series->sampleVideoUrl())
+                                    <a class="link-underline link-blue" href="{{ $videoUrl }}">Watch sample</a>
                                 @endif
                             @else
                                     <a href="{{ $series->url }}">
@@ -66,7 +65,7 @@
                         <p class="mt-4">
                             {{ $series->formattedDescription }}
                         </p>
-                        
+
                     </div>
 
             </div>
