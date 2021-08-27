@@ -16,7 +16,7 @@ class ProductsController
     {
         $products = Product::query()
             ->unless(
-                current_user()?->isSpatieMember(),
+                current_user()?->hasAccessToUnReleasedProducts(),
                 fn(Builder $query) => $query->where('visible', true)
             )
             ->orderBy('sort_order')
@@ -24,7 +24,7 @@ class ProductsController
 
         $bundles = Bundle::orderBy('sort_order')
             ->unless(
-                current_user()?->isSpatieMember(),
+                current_user()?->hasAccessToUnReleasedProducts(),
                 fn(Builder $query) => $query->where('visible', true)
             )
             ->where('visible', true)

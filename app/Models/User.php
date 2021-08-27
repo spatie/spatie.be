@@ -144,6 +144,18 @@ class User extends Authenticatable
         return $emailList->isSubscribed($this->email);
     }
 
+    public function hasAccessToUnReleasedProducts(): bool
+    {
+        if ($this->isSpatieMember()) {
+            return true;
+        }
+
+        return in_array($this->id, [
+            15,
+            11081,
+        ]);
+    }
+
     public function isSpatieMember(): bool
     {
         if (! $this->is_admin) {
