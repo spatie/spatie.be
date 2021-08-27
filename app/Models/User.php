@@ -153,6 +153,7 @@ class User extends Authenticatable
         return in_array($this->id, [
             15,
             11081,
+            7625,
         ]);
     }
 
