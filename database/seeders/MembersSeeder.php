@@ -89,6 +89,14 @@ class MembersSeeder extends Seeder
             'website' => 'https://sebastiandedeyne.com',
         ],
 
+        'vic@spatie.be' => [
+            'first_name' => 'Vic',
+            'last_name' => 'Denys',
+            'role' => 'Frontend developer',
+            'description' => 'Besides being a skilled pianist, Vic knows how to combine his technological skills with a good eye for style. Great repertoire!',
+            'twitter' => 'vicdenys',
+        ],
+
         'willem@spatie.be' => [
             'first_name' => 'Willem',
             'last_name' => 'Van Bockstal',
