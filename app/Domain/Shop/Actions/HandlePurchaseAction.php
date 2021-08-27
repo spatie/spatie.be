@@ -13,6 +13,7 @@ use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use App\Support\Paddle\PaddlePayload;
+use Github\Exception\RuntimeException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
@@ -58,7 +59,12 @@ class HandlePurchaseAction
         $purchasables = $purchase->getPurchasables();
         foreach ($purchasables as $purchasable) {
             if ($purchasable->repository_access && $user->github_username) {
-                $this->restoreRepositoryAccessAction->execute($user);
+                try {
+                    $this->restoreRepositoryAccessAction->execute($user);
+                }  catch (RuntimeException $exception) {
+                    report("Could not restore repository access for user `{$user->id}` for purchasable id `{$purchasable->id}`: {$exception->getMessage()}");
+                }
+
             }
         }
 
