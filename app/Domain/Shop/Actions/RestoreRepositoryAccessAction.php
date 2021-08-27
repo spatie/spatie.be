@@ -36,7 +36,7 @@ class RestoreRepositoryAccessAction
                 return;
             }
 
-            $repositories = explode(', ', $assignment->purchasable->repository_access);
+            $repositories = explode(',', $assignment->purchasable->repository_access);
 
 
             foreach ($repositories as $repository) {
