@@ -83,7 +83,7 @@ class Series extends Model implements HasMedia, Sortable
             ->first();
 
         if (! $video) {
-            return;
+            return null;
         }
 
         return route('videos.show', [$this->slug, $video->slug]);
