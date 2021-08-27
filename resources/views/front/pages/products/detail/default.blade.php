@@ -71,7 +71,7 @@
             <br/>
         @endif
         VAT will be calculated during checkout by <a class="underline" target="_blank"
-                                                     href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
+                                                     href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>.
     </div>
 </div>
 

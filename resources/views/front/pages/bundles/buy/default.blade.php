@@ -35,7 +35,7 @@
                 Includes a 10% coupon for a follow-up purchase within the next 24 hours.
                 <br/>
                 VAT will be calculated during checkout by
-                <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>
+                <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>.
             </div>
         </div>
     </div>
