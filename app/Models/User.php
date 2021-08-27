@@ -146,15 +146,15 @@ class User extends Authenticatable
 
     public function hasAccessToUnReleasedProducts(): bool
     {
+        if ($this->has_access_to_unreleased_products) {
+            return true;
+        }
+
         if ($this->isSpatieMember()) {
             return true;
         }
 
-        return in_array($this->id, [
-            15,
-            11081,
-            7625,
-        ]);
+        return false;
     }
 
     public function isSpatieMember(): bool
