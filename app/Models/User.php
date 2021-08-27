@@ -217,11 +217,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
     }
 
-    public function hasAccessToUnreleasedProducts(): bool
-    {
-        return $this->has_access_to_unreleased_products;
-    }
-
     public function enjoysExtraDiscountOnNextPurchase(): bool
     {
         if (! $this->next_purchase_discount_period_ends_at) {
