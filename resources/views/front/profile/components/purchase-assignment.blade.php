@@ -16,9 +16,10 @@
         @if ($assignment->purchasable->repository_access)
             <div class="mt-6 px-4 md:px-6">
                 @if ($assignment->has_repository_access)
+                    Access has been granted to these repos on GitHub
                     @foreach(explode(',', $assignment->purchasable->repository_access) as $repository)
                         <a class="link-blue link-underline" target="_blank" href="https://github.com/{{ $repository }}">
-                            Visit {{ $repository }} on GitHub
+                            {{ $repository }}
                         </a><br/>
                     @endforeach
                 @else
