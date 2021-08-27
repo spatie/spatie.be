@@ -54,7 +54,9 @@
             @endforeach
 
             @foreach($product->bundles() as $bundle)
-                @include('front.pages.products.partials.bundleCard', ["bundle" => $bundle])
+                @if ($bundle->visible)
+                    @include('front.pages.products.partials.bundleCard', ["bundle" => $bundle])
+                @endif
             @endforeach
         </div>
     </div>
