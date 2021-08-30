@@ -16,7 +16,6 @@ use Database\Factories\ReceiptFactory;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
-use Laravel\Paddle\Receipt;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;

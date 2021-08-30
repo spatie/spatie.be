@@ -7,7 +7,6 @@ use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use Database\Factories\ReceiptFactory;
-use Mockery\MockInterface;
 use Tests\TestCase;
 
 uses(TestCase::class);

@@ -3,7 +3,6 @@
 use App\Domain\Shop\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Domain\Shop\Models\License;
 use App\Services\GitHub\GitHubApi;
-use Mockery\MockInterface;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 

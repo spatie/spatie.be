@@ -4,7 +4,6 @@ use App\Actions\UpdateVideoDetailsAction;
 use App\Models\Series;
 use App\Models\Video;
 use App\Services\Vimeo\Vimeo;
-use Mockery\MockInterface;
 use Tests\TestCase;
 
 uses(TestCase::class);

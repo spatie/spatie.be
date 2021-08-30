@@ -2,7 +2,6 @@
 
 use App\Models\Ad;
 use App\Models\Repository;
-use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
