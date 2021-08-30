@@ -26,13 +26,13 @@ test('has completed', function () {
     /** @var \App\Models\User $user */
     $user = User::factory()->create();
 
-    $this->assertFalse($user->hasCompleted($series));
+    expect($user->hasCompleted($series))->toBeFalse();
 
     $user->completeVideo($videoA);
 
-    $this->assertFalse($user->hasCompleted($series));
+    expect($user->hasCompleted($series))->toBeFalse();
 
     $user->completeVideo($videoB);
 
-    $this->assertTrue($user->hasCompleted($series));
+    expect($user->hasCompleted($series))->toBeTrue();
 });

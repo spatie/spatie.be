@@ -14,10 +14,10 @@ test('a purchase can unlock a ray license', function () {
     $purchase->purchasable->product->update([
         'slug' => 'front-line-php',
     ]);
-    $this->assertTrue($purchase->unlocksRayLicense());
+    expect($purchase->unlocksRayLicense())->toBeTrue();
 
     $purchase->purchasable->product->update([
         'slug' => 'ray',
     ]);
-    $this->assertFalse($purchase->unlocksRayLicense());
+    expect($purchase->unlocksRayLicense())->toBeFalse();
 });

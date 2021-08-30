@@ -19,7 +19,7 @@ test('experience is earned with every pull request', function () {
 
     command(RegisterPullRequest::forUser($user, 'pr'));
 
-    $this->assertEquals(ExperienceType::PullRequest()->getAmount(), $user->experience->amount);
+    expect($user->experience->amount)->toEqual(ExperienceType::PullRequest()->getAmount());
 });
 
 test('100 pull requests achievement', function () {
@@ -64,5 +64,5 @@ test('same pr cant be registered twice', function () {
         ));
     }
 
-    $this->assertEquals(1, EloquentStoredEvent::query()->whereEvent(PullRequestMerged::class)->count());
+    expect(EloquentStoredEvent::query()->whereEvent(PullRequestMerged::class)->count())->toEqual(1);
 });

@@ -20,8 +20,8 @@ it('can create a license', function () {
     $license = $this->action->execute($assignment);
 
     $this->assertNotNull($license->key);
-    $this->assertTrue($license->expires_at->isNextYear());
-    $this->assertTrue($license->assignment->is($assignment));
+    expect($license->expires_at->isNextYear())->toBeTrue();
+    expect($license->assignment->is($assignment))->toBeTrue();
 });
 
 it('can create a license for lifetime purchases', function () {
@@ -34,5 +34,5 @@ it('can create a license for lifetime purchases', function () {
     $license = $this->action->execute($assignment);
 
     $this->assertNotNull($license->key);
-    $this->assertSame(2038, $license->expires_at->year);
+    expect($license->expires_at->year)->toBe(2038);
 });

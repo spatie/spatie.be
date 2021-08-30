@@ -62,13 +62,13 @@ it('will register the click', function () {
     $this->get(route('products.index') . "?referrer={$referrer->slug}");
 
     $referrer = $referrer->refresh();
-    $this->assertEquals(1, $referrer->click_count);
-    $this->assertEquals(now()->timestamp, $referrer->last_clicked_at->timestamp);
+    expect($referrer->click_count)->toEqual(1);
+    expect($referrer->last_clicked_at->timestamp)->toEqual(now()->timestamp);
 
     TestTime::addSecond();
     $this->get(route('products.index') . "?referrer={$referrer->slug}");
 
     $referrer = $referrer->refresh();
-    $this->assertEquals(2, $referrer->click_count);
-    $this->assertEquals(now()->timestamp, $referrer->last_clicked_at->timestamp);
+    expect($referrer->click_count)->toEqual(2);
+    expect($referrer->last_clicked_at->timestamp)->toEqual(now()->timestamp);
 });

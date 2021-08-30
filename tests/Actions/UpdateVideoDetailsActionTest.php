@@ -51,10 +51,10 @@ it('updates video details', function () {
     $this->action->execute($video);
 
     tap($video->fresh(), function (Video $video) {
-        $this->assertSame('A video', $video->title);
-        $this->assertSame('a-video', $video->slug);
-        $this->assertSame('A description', $video->description);
-        $this->assertSame(123, $video->runtime);
-        $this->assertSame('https://placehold.it/200x200', $video->thumbnail);
+        expect($video->title)->toBe('A video');
+        expect($video->slug)->toBe('a-video');
+        expect($video->description)->toBe('A description');
+        expect($video->runtime)->toBe(123);
+        expect($video->thumbnail)->toBe('https://placehold.it/200x200');
     });
 });

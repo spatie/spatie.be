@@ -9,5 +9,5 @@ uses(TestCase::class);
 test('a series also creates a achievement', function () {
     $series = Series::factory()->create();
 
-    $this->assertTrue(Achievement::query()->forSeries($series)->exists());
+    expect(Achievement::query()->forSeries($series)->exists())->toBeTrue();
 });

@@ -24,7 +24,7 @@ it('will pass when a user is admin', function () {
     $response = $this->middleware->handle($request, fn (Request $request) => $request);
 
     self::assertNotNull($response);
-    self::assertInstanceOf(Request::class, $response);
+    expect($response)->toBeInstanceOf(Request::class);
 });
 
 it('will not pass when no user is logged in', function () {

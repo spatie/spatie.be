@@ -16,5 +16,5 @@ it('can update the current version', function () {
         ])
         ->assertSuccessful();
 
-    $this->assertEquals($versionNumber, $activation->refresh()->current_version);
+    expect($activation->refresh()->current_version)->toEqual($versionNumber);
 });

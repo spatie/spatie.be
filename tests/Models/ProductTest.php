@@ -14,9 +14,9 @@ it('can retrieve the bundles where a product is in', function () {
 
     $bundle->purchasables()->attach($purchasableInBundle->id);
 
-    $this->assertCount(1, $purchasableInBundle->product->bundles());
+    expect($purchasableInBundle->product->bundles())->toHaveCount(1);
 
     $purchasableNotInBundle = Purchasable::factory()->create();
-    $this->assertCount(0, $purchasableNotInBundle->product->bundles());
+    expect($purchasableNotInBundle->product->bundles())->toHaveCount(0);
 
 });

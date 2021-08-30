@@ -14,10 +14,10 @@ it('subscribes the user to the spatie email list', function () {
         'name' => 'Spatie',
     ]);
 
-    $this->assertSame(0, $emailList->subscribers()->count());
+    expect($emailList->subscribers()->count())->toBe(0);
 
     $action->execute($user);
 
-    $this->assertSame(1, $emailList->subscribers()->count());
-    $this->assertSame($user->email, $emailList->subscribers->first()->email);
+    expect($emailList->subscribers()->count())->toBe(1);
+    expect($emailList->subscribers->first()->email)->toBe($user->email);
 });

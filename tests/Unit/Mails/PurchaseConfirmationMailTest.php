@@ -11,5 +11,5 @@ test('the purchase confirmation mail can be rendered', function () {
 
     $mailable = new PurchaseConfirmationMail($purchase, $purchase->purchasable);
 
-    $this->assertIsString($mailable->render());
+    expect($mailable->render())->toBeString();
 });

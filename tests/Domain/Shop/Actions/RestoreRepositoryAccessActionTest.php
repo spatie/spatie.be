@@ -53,14 +53,14 @@ it('restores repository access for a users assignments', function () {
         'spatie/spatie.be',
     ])->once();
 
-    $this->assertTrue($this->assignment->fresh()->has_repository_access);
+    expect($this->assignment->fresh()->has_repository_access)->toBeTrue();
 });
 
 it('does nothing when the purchasable has no repository', function () {
     $this->action->execute($this->user);
 
     $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
-    $this->assertFalse($this->assignment->fresh()->has_repository_access);
+    expect($this->assignment->fresh()->has_repository_access)->toBeFalse();
 });
 
 it('does nothing when the license is expired', function () {
@@ -74,5 +74,5 @@ it('does nothing when the license is expired', function () {
     $this->action->execute($this->user);
 
     $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
-    $this->assertFalse($this->assignment->fresh()->has_repository_access);
+    expect($this->assignment->fresh()->has_repository_access)->toBeFalse();
 });

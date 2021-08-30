@@ -43,7 +43,7 @@ it('will revoke repository access for an expired license', function () {
         'spatie/repo',
     ])->once();
 
-    $this->assertFalse($this->license->assignment->has_repository_access);
+    expect($this->license->assignment->has_repository_access)->toBeFalse();
 });
 
 it('will revoke repository access for multiple repositories', function () {
@@ -65,7 +65,7 @@ it('will revoke repository access for multiple repositories', function () {
         'spatie/other-repo',
     ])->once();
 
-    $this->assertFalse($this->license->assignment->has_repository_access);
+    expect($this->license->assignment->has_repository_access)->toBeFalse();
 });
 
 it('will not revoke access for active licenses', function () {
@@ -79,7 +79,7 @@ it('will not revoke access for active licenses', function () {
 
     $this->apiSpy->shouldNotHaveReceived('revokeAccessToRepo');
 
-    $this->assertTrue($this->license->assignment->has_repository_access);
+    expect($this->license->assignment->has_repository_access)->toBeTrue();
 });
 
 it('will reset the username and revoke access if the user was not found on github', function () {
@@ -93,8 +93,8 @@ it('will reset the username and revoke access if the user was not found on githu
 
     $this->license->refresh();
 
-    $this->assertNull($this->license->assignment->user->github_username);
-    $this->assertFalse($this->license->assignment->has_repository_access);
+    expect($this->license->assignment->user->github_username)->toBeNull();
+    expect($this->license->assignment->has_repository_access)->toBeFalse();
 });
 
 it('will not revoke access if the user has a different active license', function () {
@@ -124,7 +124,7 @@ it('will not revoke access if the user has a different active license', function
 
     $this->apiSpy->shouldNotHaveReceived('revokeAccessToRepo');
 
-    $this->assertTrue($this->license->assignment->has_repository_access);
+    expect($this->license->assignment->has_repository_access)->toBeTrue();
 
     $otherLicense->update([
         'expires_at' => now()->subSecond(),

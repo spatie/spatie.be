@@ -28,7 +28,7 @@ it('can create an activation', function () {
         ->assertSuccessful()
         ->assertJsonStructure(['activation_code', 'license_key', 'expires_at', 'signature']);
 
-    $this->assertCount(1, $this->license->refresh()->activations);
+    expect($this->license->refresh()->activations)->toHaveCount(1);
 });
 
 test('the signed activation can be verified', function () {
@@ -46,7 +46,7 @@ test('the signed activation can be verified', function () {
     $verified = PublicKey::fromFile(database_path('factories/stubs/publicKey'))
         ->verify(json_encode($signedData), $signature);
 
-    $this->assertTrue($verified);
+    expect($verified)->toBeTrue();
 });
 
 it('will not create an activation when the limit has been reached', function () {
@@ -58,7 +58,7 @@ it('will not create an activation when the limit has been reached', function () 
             ]))
             ->assertSuccessful();
     }
-    $this->assertCount($this->license->maximumActivationCount(), $this->license->refresh()->activations);
+    expect($this->license->refresh()->activations)->toHaveCount($this->license->maximumActivationCount());
 
     $this
         ->postJson(action(CreateActivationController::class, [
@@ -67,7 +67,7 @@ it('will not create an activation when the limit has been reached', function () 
         ]))
         ->assertJsonValidationErrors('license_key');
 
-    $this->assertCount($this->license->maximumActivationCount(), $this->license->refresh()->activations);
+    expect($this->license->refresh()->activations)->toHaveCount($this->license->maximumActivationCount());
 });
 
 it('can show an activation', function () {
@@ -123,7 +123,7 @@ it('will regenerate the signed activation when the license is updated', function
 
     $activation = $this->license->refresh()->activations()->first();
 
-    $this->assertEquals($newExpiresAt->timestamp, $activation->refresh()->signed_activation['expires_at']);
+    expect($activation->refresh()->signed_activation['expires_at'])->toEqual($newExpiresAt->timestamp);
 
     $signedData = $activation->signed_activation;
     ksort($signedData);
@@ -135,7 +135,7 @@ it('will regenerate the signed activation when the license is updated', function
     $verified = PublicKey::fromFile(database_path('factories/stubs/publicKey'))
         ->verify(json_encode($signedData), $signature);
 
-    $this->assertTrue($verified);
+    expect($verified)->toBeTrue();
 });
 
 it('can delete an activation', function () {
@@ -148,5 +148,5 @@ it('can delete an activation', function () {
         ])
         ->assertSuccessful();
 
-    $this->assertEquals(0, Activation::count());
+    expect(Activation::count())->toEqual(0);
 });

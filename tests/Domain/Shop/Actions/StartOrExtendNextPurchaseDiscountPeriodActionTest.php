@@ -25,7 +25,7 @@ beforeEach(function () {
 it('will start the next purchase period when a purchase has been made', function () {
     $this->action->execute($this->user);
 
-    $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
+    expect($this->user->refresh()->next_purchase_discount_period_ends_at->timestamp)->toEqual(now()->addDay()->timestamp);
 });
 
 it('will extend an existing next purchase period', function () {
@@ -35,5 +35,5 @@ it('will extend an existing next purchase period', function () {
 
     $this->action->execute($this->user);
 
-    $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
+    expect($this->user->refresh()->next_purchase_discount_period_ends_at->timestamp)->toEqual(now()->addDay()->timestamp);
 });

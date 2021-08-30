@@ -19,9 +19,9 @@ it('subscribes the user to the spatie email list', function () {
         ->skipConfirmation()
         ->subscribeTo($emailList);
 
-    $this->assertSame(1, $emailList->subscribers()->count());
+    expect($emailList->subscribers()->count())->toBe(1);
 
     $action->execute($user);
 
-    $this->assertSame(0, $emailList->subscribers()->count());
+    expect($emailList->subscribers()->count())->toBe(0);
 });

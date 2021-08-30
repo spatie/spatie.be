@@ -41,7 +41,7 @@ it('will not use ads that are not active', function () {
     dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
 
     $repositories->each(function (Repository $repository) use ($activeAd) {
-        $this->assertEquals($activeAd->id, $repository->refresh()->ad_id);
+        expect($repository->refresh()->ad_id)->toEqual($activeAd->id);
     });
 });
 
@@ -55,6 +55,6 @@ it('will not update a repository whose ad should not be randomized', function ()
     dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
 
     $repositories->each(function (Repository $repository) {
-        $this->assertNull($repository->refresh()->ad_id);
+        expect($repository->refresh()->ad_id)->toBeNull();
     });
 });

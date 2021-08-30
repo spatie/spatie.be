@@ -17,7 +17,7 @@ it('will add tags for the purchasable on the mailing list', function () {
 
     (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
 
-    $this->assertTrue($emailList->isSubscribed($purchase->user->email));
+    expect($emailList->isSubscribed($purchase->user->email))->toBeTrue();
 
     $subscriber = Subscriber::findForEmail($purchase->user->email, $emailList);
 
@@ -37,7 +37,7 @@ it('will add tags for a bundle purchase', function () {
 
     (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
 
-    $this->assertTrue($emailList->isSubscribed($purchase->user->email));
+    expect($emailList->isSubscribed($purchase->user->email))->toBeTrue();
 
     $subscriber = Subscriber::findForEmail($purchase->user->email, $emailList);
 
@@ -63,9 +63,9 @@ test('the add purchased tags to email list subscriber action is idempotent', fun
     (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
     (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
 
-    $this->assertCount(1, $emailList->subscribers);
+    expect($emailList->subscribers)->toHaveCount(1);
 
-    $this->assertCount(2, $emailList->subscribers->first()->tags);
+    expect($emailList->subscribers->first()->tags)->toHaveCount(2);
 });
 
 it('doesnt crash if the user has no email', function () {

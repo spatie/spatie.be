@@ -44,11 +44,11 @@ beforeEach(function () {
 });
 
 it('can handle an incoming payment', function () {
-    $this->assertCount(0, $this->user->refresh()->purchases);
+    expect($this->user->refresh()->purchases)->toHaveCount(0);
 
     dispatch(new ProcessPaymentSucceededJob($this->payload));
 
-    $this->assertCount(1, $this->user->refresh()->purchases);
+    expect($this->user->refresh()->purchases)->toHaveCount(1);
 });
 
 it('can handle an incoming bundle payment', function () {
@@ -63,11 +63,11 @@ it('can handle an incoming bundle payment', function () {
     $payload = $this->payload;
     $payload['product_id'] = 123;
 
-    $this->assertCount(0, $this->user->refresh()->purchases);
+    expect($this->user->refresh()->purchases)->toHaveCount(0);
 
     dispatch(new ProcessPaymentSucceededJob($payload));
 
-    $this->assertCount(1, $this->user->refresh()->purchases);
+    expect($this->user->refresh()->purchases)->toHaveCount(1);
     $this->assertNotNull($this->user->refresh()->purchases->first()->bundle_id);
 });
 
@@ -83,7 +83,7 @@ it('can attribute the purchase created by the webhook to the referrer', function
 
     dispatch(new ProcessPaymentSucceededJob($this->payload));
 
-    $this->assertCount(1, $referrer->refresh()->usedForPurchases);
+    expect($referrer->refresh()->usedForPurchases)->toHaveCount(1);
 });
 
 it('will ignore an invalid referrer', function () {
@@ -98,7 +98,7 @@ it('will ignore an invalid referrer', function () {
 
     dispatch(new ProcessPaymentSucceededJob($this->payload));
 
-    $this->assertCount(1, $this->user->refresh()->purchases);
+    expect($this->user->refresh()->purchases)->toHaveCount(1);
 
-    $this->assertCount(0, $referrer->refresh()->usedForPurchases);
+    expect($referrer->refresh()->usedForPurchases)->toHaveCount(0);
 });

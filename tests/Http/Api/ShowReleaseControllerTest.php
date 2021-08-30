@@ -32,5 +32,5 @@ it('will return 404 when requesting a non released version', function () {
 it('will automatically generated a html version of the notes', function () {
     $this->release->update(['notes' => '## Title']);
 
-    $this->assertEquals('<h2>Title</h2>' . PHP_EOL, $this->release->refresh()->notes_html);
+    expect($this->release->refresh()->notes_html)->toEqual('<h2>Title</h2>' . PHP_EOL);
 });

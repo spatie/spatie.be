@@ -16,5 +16,5 @@ test('on experience earned', function () {
 
     $projector->onExperienceEarned($event);
 
-    $this->assertEquals(10, $user->refresh()->experience->amount);
+    expect($user->refresh()->experience->amount)->toEqual(10);
 });

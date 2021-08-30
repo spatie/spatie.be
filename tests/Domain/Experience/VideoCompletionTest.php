@@ -37,11 +37,11 @@ test('a series is completed when all videos are completed', function () {
 
     $user->completeVideo($this->videoA);
 
-    $this->assertFalse($user->hasAchievement($achievement));
+    expect($user->hasAchievement($achievement))->toBeFalse();
 
     $user->completeVideo($this->videoB);
 
-    $this->assertTrue($user->hasAchievement($achievement));
+    expect($user->hasAchievement($achievement))->toBeTrue();
 });
 
 test('experience is gained per completion', function () {
@@ -50,7 +50,7 @@ test('experience is gained per completion', function () {
 
     $user->completeVideo($this->videoA);
 
-    $this->assertEquals(ExperienceType::VideoCompletion()->getAmount(), $user->experience->amount);
+    expect($user->experience->amount)->toEqual(ExperienceType::VideoCompletion()->getAmount());
 });
 
 test('experience is gained per series', function () {
@@ -77,5 +77,5 @@ test('same video cant be registered twice', function () {
     $user->completeVideo($this->videoA);
     $user->completeVideo($this->videoA);
 
-    $this->assertEquals(1, EloquentStoredEvent::query()->whereEvent(VideoCompleted::class)->count());
+    expect(EloquentStoredEvent::query()->whereEvent(VideoCompleted::class)->count())->toEqual(1);
 });

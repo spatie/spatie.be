@@ -61,19 +61,19 @@ it('can create a purchase without a license', function () {
         $this->payload
     );
 
-    $this->assertCount(0, $purchase->licenses);
-    $this->assertTrue($purchase->user->is($this->user));
-    $this->assertTrue($purchase->purchasable->is($purchasable));
+    expect($purchase->licenses)->toHaveCount(0);
+    expect($purchase->user->is($this->user))->toBeTrue();
+    expect($purchase->purchasable->is($purchasable))->toBeTrue();
 
-    $this->assertCount(1, $purchase->assignments);
+    expect($purchase->assignments)->toHaveCount(1);
     tap($purchase->assignments()->first(), function (PurchaseAssignment $assignment) {
-        $this->assertTrue($assignment->user->is($this->user));
+        expect($assignment->user->is($this->user))->toBeTrue();
     });
 
-    $this->assertEquals($this->receipt->id, $purchase->receipt->id);
-    $this->assertEquals($this->payload->fee, $purchase->paddle_fee);
-    $this->assertEquals($this->payload->earnings, $purchase->balance_earnings);
-    $this->assertEquals($this->payload->toArray(), $purchase->paddle_webhook_payload);
+    expect($purchase->receipt->id)->toEqual($this->receipt->id);
+    expect($purchase->paddle_fee)->toEqual($this->payload->fee);
+    expect($purchase->balance_earnings)->toEqual($this->payload->earnings);
+    expect($purchase->paddle_webhook_payload)->toEqual($this->payload->toArray());
 
     Mail::assertQueued(PurchaseConfirmationMail::class);
 });
@@ -99,10 +99,10 @@ it('can create a purchase for multiple purchasables at once', function () {
         $this->payload
     );
 
-    $this->assertCount(3, $purchase->assignments);
-    $this->assertCount(3, $purchase->licenses);
+    expect($purchase->assignments)->toHaveCount(3);
+    expect($purchase->licenses)->toHaveCount(3);
     foreach ($purchase->licenses as $license) {
-        $this->assertTrue($license->expires_at->isNextYear());
+        expect($license->expires_at->isNextYear())->toBeTrue();
     }
 });
 
@@ -143,10 +143,10 @@ it('can create a purchase for multiple purchasables at once without assignments'
         $this->payload
     );
 
-    $this->assertCount(1, $purchase->assignments);
-    $this->assertCount(3, $purchase->licenses);
+    expect($purchase->assignments)->toHaveCount(1);
+    expect($purchase->licenses)->toHaveCount(3);
     foreach ($purchase->licenses as $license) {
-        $this->assertTrue($license->expires_at->isNextYear());
+        expect($license->expires_at->isNextYear())->toBeTrue();
     }
 });
 
@@ -161,8 +161,8 @@ it('can create a purchase with license', function () {
         $this->payload
     );
 
-    $this->assertCount(1, $purchase->licenses);
-    $this->assertTrue($purchase->licenses->first()->expires_at->isNextYear());
+    expect($purchase->licenses)->toHaveCount(1);
+    expect($purchase->licenses->first()->expires_at->isNextYear())->toBeTrue();
 });
 
 it('can renew a license', function () {
@@ -182,7 +182,7 @@ it('can renew a license', function () {
         $purchasable,
         $this->payload
     );
-    $this->assertCount(1, $originalPurchase->licenses);
+    expect($originalPurchase->licenses)->toHaveCount(1);
     $this->assertEquals(
         Date::create(2021, 01, 01),
         $originalPurchase->licenses->first()->fresh()->expires_at
@@ -204,7 +204,7 @@ it('can renew a license', function () {
         $originalPurchase->licenses->first()->fresh()->expires_at
     );
 
-    $this->assertEquals(1, License::count());
+    expect(License::count())->toEqual(1);
 });
 
 it('creates a new license even if the user already owns the purchasable', function () {
@@ -220,7 +220,7 @@ it('creates a new license even if the user already owns the purchasable', functi
         $this->payload,
     );
 
-    $this->assertEquals(1, $this->user->licenses()->count());
+    expect($this->user->licenses()->count())->toEqual(1);
 
     $this->handlePurchaseAction->execute(
         $this->user,
@@ -228,7 +228,7 @@ it('creates a new license even if the user already owns the purchasable', functi
         $this->payload
     );
 
-    $this->assertEquals(2, $this->user->licenses()->count());
+    expect($this->user->licenses()->count())->toEqual(2);
 });
 
 it('restores repository access', function () {
@@ -261,7 +261,7 @@ it('will start the next purchase discount for a user', function () {
         'requires_license' => false,
     ]);
 
-    $this->assertNull($this->user->next_purchase_discount_period_ends_at);
+    expect($this->user->next_purchase_discount_period_ends_at)->toBeNull();
 
     $this->handlePurchaseAction->execute(
         $this->user,
@@ -269,7 +269,7 @@ it('will start the next purchase discount for a user', function () {
         $this->payload
     );
 
-    $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
+    expect($this->user->refresh()->next_purchase_discount_period_ends_at->timestamp)->toEqual(now()->addDay()->timestamp);
 
     Mail::assertQueued(PurchaseConfirmationMail::class);
 });
@@ -288,7 +288,7 @@ it('can attribute a purchase to a referrer', function () {
         $referrer
     );
 
-    $this->assertCount(1, $referrer->refresh()->usedForPurchases);
+    expect($referrer->refresh()->usedForPurchases)->toHaveCount(1);
 });
 
 test('buying certain products will also create a ray license', function () {
@@ -315,12 +315,12 @@ test('buying certain products will also create a ray license', function () {
 
     $this->user->refresh();
 
-    $this->assertCount(1, $this->user->purchases);
-    $this->assertCount(1, $this->user->licenses);
+    expect($this->user->purchases)->toHaveCount(1);
+    expect($this->user->licenses)->toHaveCount(1);
 
     $license = $this->user->licenses->first();
-    $this->assertEquals($license->purchasable->id, $rayPurchasable->id);
-    $this->assertEquals('2021-01-01 00:00:00', $license->expires_at->format('Y-m-d H:i:s'));
+    expect($rayPurchasable->id)->toEqual($license->purchasable->id);
+    expect($license->expires_at->format('Y-m-d H:i:s'))->toEqual('2021-01-01 00:00:00');
 });
 
 test('buying certain products will extend an existing ray license', function () {
@@ -353,9 +353,9 @@ test('buying certain products will extend an existing ray license', function () 
 
     $this->user->refresh();
 
-    $this->assertCount(1, $this->user->licenses);
+    expect($this->user->licenses)->toHaveCount(1);
 
-    $this->assertEquals('2022-01-01 00:00:00', $existingRayLicense->refresh()->expires_at->format('Y-m-d H:i:s'));
+    expect($existingRayLicense->refresh()->expires_at->format('Y-m-d H:i:s'))->toEqual('2022-01-01 00:00:00');
 });
 
 it('can process a bundle purchase', function () {
@@ -380,14 +380,14 @@ it('can process a bundle purchase', function () {
         $this->payload
     );
 
-    $this->assertCount(0, $purchase->licenses);
-    $this->assertTrue($purchase->user->is($this->user));
-    $this->assertTrue($purchase->bundle->is($bundle));
+    expect($purchase->licenses)->toHaveCount(0);
+    expect($purchase->user->is($this->user))->toBeTrue();
+    expect($purchase->bundle->is($bundle))->toBeTrue();
 
-    $this->assertEquals($this->receipt->id, $purchase->receipt->id);
-    $this->assertEquals($this->payload->fee, $purchase->paddle_fee);
-    $this->assertEquals($this->payload->earnings, $purchase->balance_earnings);
-    $this->assertEquals($this->payload->toArray(), $purchase->paddle_webhook_payload);
+    expect($purchase->receipt->id)->toEqual($this->receipt->id);
+    expect($purchase->paddle_fee)->toEqual($this->payload->fee);
+    expect($purchase->balance_earnings)->toEqual($this->payload->earnings);
+    expect($purchase->paddle_webhook_payload)->toEqual($this->payload->toArray());
 
     Mail::assertQueued(PurchaseConfirmationMail::class, 2);
 });
@@ -414,12 +414,12 @@ it('can process a bundle purchase with licenses', function () {
         $this->payload
     );
 
-    $this->assertCount(2, $purchase->licenses);
-    $this->assertCount(2, $this->user->licenses);
-    $this->assertTrue($purchase->user->is($this->user));
-    $this->assertTrue($purchase->bundle->is($bundle));
+    expect($purchase->licenses)->toHaveCount(2);
+    expect($this->user->licenses)->toHaveCount(2);
+    expect($purchase->user->is($this->user))->toBeTrue();
+    expect($purchase->bundle->is($bundle))->toBeTrue();
 
-    $this->assertTrue($purchase->licenses->first()->expires_at->isNextYear());
+    expect($purchase->licenses->first()->expires_at->isNextYear())->toBeTrue();
 });
 
 it('can process a bundle purchase with licenses for multiple assignments', function () {
@@ -452,11 +452,11 @@ it('can process a bundle purchase with licenses for multiple assignments', funct
         $this->payload
     );
 
-    $this->assertCount(4, $purchase->assignments);
-    $this->assertTrue(User::whereEmail('jane@doe.com')->first()->owns($purchasable1));
-    $this->assertTrue(User::whereEmail('jane@doe.com')->first()->owns($purchasable2));
-    $this->assertTrue(User::whereEmail('john@doe.com')->first()->owns($purchasable1));
-    $this->assertTrue(User::whereEmail('john@doe.com')->first()->owns($purchasable2));
+    expect($purchase->assignments)->toHaveCount(4);
+    expect(User::whereEmail('jane@doe.com')->first()->owns($purchasable1))->toBeTrue();
+    expect(User::whereEmail('jane@doe.com')->first()->owns($purchasable2))->toBeTrue();
+    expect(User::whereEmail('john@doe.com')->first()->owns($purchasable1))->toBeTrue();
+    expect(User::whereEmail('john@doe.com')->first()->owns($purchasable2))->toBeTrue();
 });
 
 // Helpers

@@ -22,14 +22,14 @@ beforeEach(function () {
 });
 
 test('a discount without a percentage and name is not active', function () {
-    $this->assertFalse($this->purchasable->hasActiveDiscount());
+    expect($this->purchasable->hasActiveDiscount())->toBeFalse();
 
     $this->purchasable->update([
         'discount_percentage' => 30,
         'discount_name' => 'flash sale',
     ]);
 
-    $this->assertTrue($this->purchasable->hasActiveDiscount());
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
 });
 
 test('a discount can be valid during a certain period', function () {
@@ -41,16 +41,16 @@ test('a discount can be valid during a certain period', function () {
     ]);
 
     TestTime::addSeconds(59);
-    $this->assertFalse($this->purchasable->hasActiveDiscount());
+    expect($this->purchasable->hasActiveDiscount())->toBeFalse();
 
     TestTime::addSecond();
-    $this->assertTrue($this->purchasable->hasActiveDiscount());
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
 
     TestTime::addHour()->subSecond();
-    $this->assertTrue($this->purchasable->hasActiveDiscount());
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
 
     TestTime::addSecond();
-    $this->assertFalse($this->purchasable->hasActiveDiscount());
+    expect($this->purchasable->hasActiveDiscount())->toBeFalse();
 });
 
 test('the next purchase discount on a user will be used', function () {
@@ -58,20 +58,20 @@ test('the next purchase discount on a user will be used', function () {
         'next_purchase_discount_period_ends_at' => now()->addHour(),
     ]);
 
-    $this->assertFalse($this->purchasable->hasActiveDiscount());
-    $this->assertEquals(10000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+    expect($this->purchasable->hasActiveDiscount())->toBeFalse();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(10000);
 
     $this->actingAs($this->user);
-    $this->assertTrue($this->purchasable->hasActiveDiscount());
-    $this->assertEquals(9000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(9000);
 
     TestTime::addHour()->subSecond();
-    $this->assertEquals(9000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
-    $this->assertTrue($this->purchasable->hasActiveDiscount());
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(9000);
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
 
     TestTime::addSecond();
-    $this->assertFalse($this->purchasable->hasActiveDiscount());
-    $this->assertEquals(10000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+    expect($this->purchasable->hasActiveDiscount())->toBeFalse();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(10000);
 });
 
 test('the next purchase discount will be added to a general discount', function () {
@@ -86,9 +86,9 @@ test('the next purchase discount will be added to a general discount', function 
         'next_purchase_discount_period_ends_at' => now()->addHour(),
     ]);
 
-    $this->assertEquals(7000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(7000);
     $this->actingAs($this->user);
-    $this->assertEquals(6000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(6000);
 });
 
 it('will add the discount of a referral to all other discount', function () {
@@ -106,17 +106,17 @@ it('will add the discount of a referral to all other discount', function () {
 
     $referrer->purchasables()->attach($this->purchasable);
 
-    $this->assertTrue($this->purchasable->hasActiveDiscount());
-    $this->assertEquals(8000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
-    $this->assertEquals(20, $this->purchasable->displayableDiscountPercentage());
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(8000);
+    expect($this->purchasable->displayableDiscountPercentage())->toEqual(20);
 
     $this->purchasable->update([
         'discount_percentage' => 30,
         'discount_name' => 'flash sale',
     ]);
 
-    $this->assertEquals(5000, $this->purchasable->getPriceForCountryCode('BE')->priceInCents);
-    $this->assertEquals(50, $this->purchasable->displayableDiscountPercentage());
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(5000);
+    expect($this->purchasable->displayableDiscountPercentage())->toEqual(50);
 });
 
 it('will apply discounts to bundles', function () {
@@ -139,7 +139,7 @@ it('will apply discounts to bundles', function () {
 
     $referrer->bundles()->attach($bundle);
 
-    $this->assertTrue($bundle->hasActiveDiscount());
-    $this->assertEquals(8000, $bundle->getPriceForCountryCode('BE')->priceInCents);
-    $this->assertEquals(20, $bundle->displayableDiscountPercentage());
+    expect($bundle->hasActiveDiscount())->toBeTrue();
+    expect($bundle->getPriceForCountryCode('BE')->priceInCents)->toEqual(8000);
+    expect($bundle->displayableDiscountPercentage())->toEqual(20);
 });

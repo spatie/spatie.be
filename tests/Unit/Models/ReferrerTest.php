@@ -23,23 +23,23 @@ beforeEach(function () {
 });
 
 it('will allow a discount for a certain purchasable', function () {
-    $this->assertTrue($this->referrer->hasActiveDiscount($this->purchasable));
-    $this->assertEquals(10, $this->referrer->getDiscountPercentage($this->purchasable));
+    expect($this->referrer->hasActiveDiscount($this->purchasable))->toBeTrue();
+    expect($this->referrer->getDiscountPercentage($this->purchasable))->toEqual(10);
 
     $unrelatedPurchasable = Purchasable::factory()->create();
 
-    $this->assertFalse($this->referrer->hasActiveDiscount($unrelatedPurchasable));
-    $this->assertEquals(0, $this->referrer->getDiscountPercentage($unrelatedPurchasable));
+    expect($this->referrer->hasActiveDiscount($unrelatedPurchasable))->toBeFalse();
+    expect($this->referrer->getDiscountPercentage($unrelatedPurchasable))->toEqual(0);
 });
 
 it('will allow a discount until the period ends', function () {
     TestTime::addMinutes(59);
 
-    $this->assertTrue($this->referrer->hasActiveDiscount($this->purchasable));
-    $this->assertEquals(10, $this->referrer->getDiscountPercentage($this->purchasable));
+    expect($this->referrer->hasActiveDiscount($this->purchasable))->toBeTrue();
+    expect($this->referrer->getDiscountPercentage($this->purchasable))->toEqual(10);
 
     TestTime::addMinute();
 
-    $this->assertFalse($this->referrer->hasActiveDiscount($this->purchasable));
-    $this->assertEquals(0, $this->referrer->getDiscountPercentage($this->purchasable));
+    expect($this->referrer->hasActiveDiscount($this->purchasable))->toBeFalse();
+    expect($this->referrer->getDiscountPercentage($this->purchasable))->toEqual(0);
 });
