@@ -1,51 +1,39 @@
 <?php
 
-namespace Tests\Domain\Shop\Actions;
-
 use App\Domain\Shop\Actions\StartOrExtendNextPurchaseDiscountPeriodAction;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
+
+uses(TestCase::class);
 use function app;
 use function now;
 
-class StartOrExtendNextPurchaseDiscountPeriodActionTest extends TestCase
-{
-    private StartOrExtendNextPurchaseDiscountPeriodAction $action;
+beforeEach(function () {
+    parent::setUp();
 
-    private User $user;
+    TestTime::freeze();
 
-    public function setUp(): void
-    {
-        parent::setUp();
+    Mail::fake();
 
-        TestTime::freeze();
+    $this->user = User::factory()->create();
 
-        Mail::fake();
+    $this->action = app(StartOrExtendNextPurchaseDiscountPeriodAction::class);
+});
 
-        $this->user = User::factory()->create();
+it('will start the next purchase period when a purchase has been made', function () {
+    $this->action->execute($this->user);
 
-        $this->action = app(StartOrExtendNextPurchaseDiscountPeriodAction::class);
-    }
+    $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
+});
 
-    /** @test */
-    public function it_will_start_the_next_purchase_period_when_a_purchase_has_been_made()
-    {
-        $this->action->execute($this->user);
+it('will extend an existing next purchase period', function () {
+    $this->action->execute($this->user);
 
-        $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
-    }
+    TestTime::subHours();
 
-    /** @test */
-    public function it_will_extend_an_existing_next_purchase_period()
-    {
-        $this->action->execute($this->user);
+    $this->action->execute($this->user);
 
-        TestTime::subHours();
-
-        $this->action->execute($this->user);
-
-        $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
-    }
-}
+    $this->assertEquals(now()->addDay()->timestamp, $this->user->refresh()->next_purchase_discount_period_ends_at->timestamp);
+});

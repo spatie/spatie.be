@@ -1,20 +1,15 @@
 <?php
 
-namespace Tests\Unit\Mails;
-
 use App\Domain\Shop\Models\Purchase;
 use App\Mail\PurchaseConfirmationMail;
 use Tests\TestCase;
 
-class PurchaseConfirmationMailTest extends TestCase
-{
-    /** @test */
-    public function the_PurchaseConfirmationMail_can_be_rendered()
-    {
-        $purchase = Purchase::factory()->create();
+uses(TestCase::class);
 
-        $mailable = new PurchaseConfirmationMail($purchase, $purchase->purchasable);
+test('the purchase confirmation mail can be rendered', function () {
+    $purchase = Purchase::factory()->create();
 
-        $this->assertIsString($mailable->render());
-    }
-}
+    $mailable = new PurchaseConfirmationMail($purchase, $purchase->purchasable);
+
+    $this->assertIsString($mailable->render());
+});

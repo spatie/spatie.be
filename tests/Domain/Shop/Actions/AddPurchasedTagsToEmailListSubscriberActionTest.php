@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Domain\Shop\Actions;
-
 use App\Domain\Shop\Actions\AddPurchasedTagsToEmailListSubscriberAction;
 use App\Domain\Shop\Models\Purchase;
 use App\Models\Subscriber;
@@ -9,81 +7,72 @@ use Illuminate\Support\Str;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
-class AddPurchasedTagsToEmailListSubscriberActionTest extends TestCase
-{
-    /** @test */
-    public function it_will_add_tags_for_the_purchasable_on_the_mailing_list()
-    {
-        /** @var EmailList $emailList */
-        $emailList = EmailList::create(['name' => 'Spatie']);
+uses(TestCase::class);
 
-        $purchase = Purchase::factory()->create();
+it('will add tags for the purchasable on the mailing list', function () {
+    /** @var EmailList $emailList */
+    $emailList = EmailList::create(['name' => 'Spatie']);
 
-        (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+    $purchase = Purchase::factory()->create();
 
-        $this->assertTrue($emailList->isSubscribed($purchase->user->email));
+    (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
 
-        $subscriber = Subscriber::findForEmail($purchase->user->email, $emailList);
+    $this->assertTrue($emailList->isSubscribed($purchase->user->email));
 
-        $tagNames = $subscriber->tags->pluck('name')->toArray();
+    $subscriber = Subscriber::findForEmail($purchase->user->email, $emailList);
 
-        $this->assertEquals([
-            "purchased-product-" . Str::slug($purchase->purchasable->product->title),
-            "purchased-purchasable-" .Str::slug($purchase->purchasable->product->title) . '-' . Str::slug($purchase->purchasable->title),
-        ], $tagNames);
-    }
+    $tagNames = $subscriber->tags->pluck('name')->toArray();
 
-    /** @test */
-    public function it_will_add_tags_for_a_bundle_purchase()
-    {
-        /** @var EmailList $emailList */
-        $emailList = EmailList::create(['name' => 'Spatie']);
+    $this->assertEquals([
+        "purchased-product-" . Str::slug($purchase->purchasable->product->title),
+        "purchased-purchasable-" .Str::slug($purchase->purchasable->product->title) . '-' . Str::slug($purchase->purchasable->title),
+    ], $tagNames);
+});
 
-        $purchase = Purchase::factory()->forBundle()->create();
+it('will add tags for a bundle purchase', function () {
+    /** @var EmailList $emailList */
+    $emailList = EmailList::create(['name' => 'Spatie']);
 
-        (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+    $purchase = Purchase::factory()->forBundle()->create();
 
-        $this->assertTrue($emailList->isSubscribed($purchase->user->email));
+    (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
 
-        $subscriber = Subscriber::findForEmail($purchase->user->email, $emailList);
+    $this->assertTrue($emailList->isSubscribed($purchase->user->email));
 
-        $tagNames = $subscriber->tags->pluck('name')->toArray();
+    $subscriber = Subscriber::findForEmail($purchase->user->email, $emailList);
 
-        $purchasable1 = $purchase->bundle->purchasables->first();
-        $purchasable2 = $purchase->bundle->purchasables->skip(1)->first();
+    $tagNames = $subscriber->tags->pluck('name')->toArray();
 
-        $this->assertEqualsCanonicalizing([
-            "purchased-product-" . Str::slug($purchasable1->product->title),
-            "purchased-product-" . Str::slug($purchasable2->product->title),
-            "purchased-purchasable-" .Str::slug($purchasable1->product->title) . '-' . Str::slug($purchasable1->title),
-            "purchased-purchasable-" .Str::slug($purchasable2->product->title) . '-' . Str::slug($purchasable2->title),
-        ], $tagNames);
-    }
+    $purchasable1 = $purchase->bundle->purchasables->first();
+    $purchasable2 = $purchase->bundle->purchasables->skip(1)->first();
 
-    /** @test */
-    public function the_AddPurchasedTagsToEmailListSubscriberAction_is_idempotent()
-    {
-        /** @var EmailList $emailList */
-        $emailList = EmailList::create(['name' => 'Spatie']);
+    $this->assertEqualsCanonicalizing([
+        "purchased-product-" . Str::slug($purchasable1->product->title),
+        "purchased-product-" . Str::slug($purchasable2->product->title),
+        "purchased-purchasable-" .Str::slug($purchasable1->product->title) . '-' . Str::slug($purchasable1->title),
+        "purchased-purchasable-" .Str::slug($purchasable2->product->title) . '-' . Str::slug($purchasable2->title),
+    ], $tagNames);
+});
 
-        $purchase = Purchase::factory()->create();
+test('the add purchased tags to email list subscriber action is idempotent', function () {
+    /** @var EmailList $emailList */
+    $emailList = EmailList::create(['name' => 'Spatie']);
 
-        (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
-        (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+    $purchase = Purchase::factory()->create();
 
-        $this->assertCount(1, $emailList->subscribers);
+    (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+    (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
 
-        $this->assertCount(2, $emailList->subscribers->first()->tags);
-    }
+    $this->assertCount(1, $emailList->subscribers);
 
-    /** @test * */
-    public function it_doesnt_crash_if_the_user_has_no_email()
-    {
-        $purchase = Purchase::factory()->create();
-        $purchase->user->update(['email' => '']);
+    $this->assertCount(2, $emailList->subscribers->first()->tags);
+});
 
-        (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+it('doesnt crash if the user has no email', function () {
+    $purchase = Purchase::factory()->create();
+    $purchase->user->update(['email' => '']);
 
-        $this->expectNotToPerformAssertions();
-    }
-}
+    (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+
+    $this->expectNotToPerformAssertions();
+});

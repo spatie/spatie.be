@@ -1,27 +1,22 @@
 <?php
 
-namespace Tests\Models;
-
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Purchasable;
 use Tests\TestCase;
 
-class ProductTest extends TestCase
-{
-    /** @test */
-    public function it_can_retrieve_the_bundles_where_a_product_is_in()
-    {
-        $purchasableInBundle = Purchasable::factory()->create();
+uses(TestCase::class);
 
-        /** @var Bundle $bundle */
-        $bundle = Bundle::factory()->create();
+it('can retrieve the bundles where a product is in', function () {
+    $purchasableInBundle = Purchasable::factory()->create();
 
-        $bundle->purchasables()->attach($purchasableInBundle->id);
+    /** @var Bundle $bundle */
+    $bundle = Bundle::factory()->create();
 
-        $this->assertCount(1, $purchasableInBundle->product->bundles());
+    $bundle->purchasables()->attach($purchasableInBundle->id);
 
-        $purchasableNotInBundle = Purchasable::factory()->create();
-        $this->assertCount(0, $purchasableNotInBundle->product->bundles());
+    $this->assertCount(1, $purchasableInBundle->product->bundles());
 
-    }
-}
+    $purchasableNotInBundle = Purchasable::factory()->create();
+    $this->assertCount(0, $purchasableNotInBundle->product->bundles());
+
+});

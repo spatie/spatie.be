@@ -1,70 +1,60 @@
 <?php
 
-namespace Tests\Feature\GitHubAds;
-
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use App\Models\Ad;
 use App\Models\Repository;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-class RandomizeAdOnGitHubRepositoriesJobTest extends TestCase
-{
-    public function setUp(): void
-    {
-        parent::setUp();
+uses(TestCase::class);
 
-        Storage::fake();
-    }
+beforeEach(function () {
+    parent::setUp();
 
-    /** @test */
-    public function it_can_randomize_ads_on_GitHub_repositories()
-    {
-        Ad::factory()->count(10)->create();
+    Storage::fake();
+});
 
-        $repositories = Repository::factory()->count(10)->create([
-            'ad_should_be_randomized' => true,
-        ]);
+it('can randomize ads on git hub repositories', function () {
+    Ad::factory()->count(10)->create();
 
-        dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
+    $repositories = Repository::factory()->count(10)->create([
+        'ad_should_be_randomized' => true,
+    ]);
 
-        $repositories->each(function (Repository $repository) {
-            $this->assertNotNull($repository->refresh()->ad);
+    dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
 
-            Storage::disk('github_ads')->assertExists($repository->gitHubAdImagePath());
-        });
-    }
+    $repositories->each(function (Repository $repository) {
+        $this->assertNotNull($repository->refresh()->ad);
 
-    /** @test */
-    public function it_will_not_use_ads_that_are_not_active()
-    {
-        Ad::factory()->inactive()->count(10)->create();
+        Storage::disk('github_ads')->assertExists($repository->gitHubAdImagePath());
+    });
+});
 
-        $activeAd = Ad::factory()->active()->create();
-        $repositories = Repository::factory()->count(10)->create([
-            'ad_should_be_randomized' => true,
-        ]);
+it('will not use ads that are not active', function () {
+    Ad::factory()->inactive()->count(10)->create();
 
-        dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
+    $activeAd = Ad::factory()->active()->create();
+    $repositories = Repository::factory()->count(10)->create([
+        'ad_should_be_randomized' => true,
+    ]);
 
-        $repositories->each(function (Repository $repository) use ($activeAd) {
-            $this->assertEquals($activeAd->id, $repository->refresh()->ad_id);
-        });
-    }
+    dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
 
-    /** @test */
-    public function it_will_not_update_a_repository_whose_ad_should_not_be_randomized()
-    {
-        Ad::factory()->count(10)->create();
+    $repositories->each(function (Repository $repository) use ($activeAd) {
+        $this->assertEquals($activeAd->id, $repository->refresh()->ad_id);
+    });
+});
 
-        $repositories = Repository::factory()->count(10)->create([
-            'ad_should_be_randomized' => false,
-        ]);
+it('will not update a repository whose ad should not be randomized', function () {
+    Ad::factory()->count(10)->create();
 
-        dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
+    $repositories = Repository::factory()->count(10)->create([
+        'ad_should_be_randomized' => false,
+    ]);
 
-        $repositories->each(function (Repository $repository) {
-            $this->assertNull($repository->refresh()->ad_id);
-        });
-    }
-}
+    dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
+
+    $repositories->each(function (Repository $repository) {
+        $this->assertNull($repository->refresh()->ad_id);
+    });
+});

@@ -1,25 +1,20 @@
 <?php
 
-namespace Tests\Domain\Experience\Projectors;
-
 use App\Domain\Experience\Events\ExperienceEarned;
 use App\Domain\Experience\Projectors\UserExperienceProjector;
 use App\Models\User;
 use Tests\TestCase;
 
-class UserExperienceProjectorTest extends TestCase
-{
-    /** @test */
-    public function on_experience_earned()
-    {
-        $user = User::factory()->create();
+uses(TestCase::class);
 
-        $event = new ExperienceEarned($user->id, 10);
+test('on experience earned', function () {
+    $user = User::factory()->create();
 
-        $projector = app(UserExperienceProjector::class);
+    $event = new ExperienceEarned($user->id, 10);
 
-        $projector->onExperienceEarned($event);
+    $projector = app(UserExperienceProjector::class);
 
-        $this->assertEquals(10, $user->refresh()->experience->amount);
-    }
-}
+    $projector->onExperienceEarned($event);
+
+    $this->assertEquals(10, $user->refresh()->experience->amount);
+});

@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Domain\Shop\Actions;
-
 use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchase;
@@ -11,90 +9,70 @@ use App\Services\GitHub\GitHubApi;
 use Database\Factories\ReceiptFactory;
 use Mockery\MockInterface;
 use Tests\TestCase;
+
+uses(TestCase::class);
 use function now;
 use function resolve;
 
-class RestoreRepositoryAccessActionTest extends TestCase
-{
-    private MockInterface $apiSpy;
+beforeEach(function () {
+    parent::setUp();
 
-    private RestoreRepositoryAccessAction $action;
+    $this->apiSpy = $this->spy(GitHubApi::class);
+    $this->action = resolve(RestoreRepositoryAccessAction::class);
 
-    private User $user;
+    $this->user = User::factory()->create([
+        'github_username' => 'riasvdv',
+    ]);
 
-    private License $license;
+    $this->purchase = Purchase::factory()->create([
+        'user_id' => $this->user->id,
+        'receipt_id' => ReceiptFactory::new()->create()->id,
+    ]);
 
-    private Purchase $purchase;
+    $this->assignment = PurchaseAssignment::factory()->create([
+        'purchase_id' => $this->purchase->id,
+        'user_id' => $this->user->id,
+        'purchasable_id' => $this->purchase->getPurchasables()->first()->id,
+    ]);
 
-    private PurchaseAssignment $assignment;
+    $this->license = License::factory()->create([
+        'purchase_assignment_id' => $this->assignment->id,
+        'expires_at' => now()->addYear(),
+    ]);
+});
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+it('restores repository access for a users assignments', function () {
+    $this->purchase->purchasable->update([
+        'repository_access' => 'spatie/spatie.be',
+    ]);
 
-        $this->apiSpy = $this->spy(GitHubApi::class);
-        $this->action = resolve(RestoreRepositoryAccessAction::class);
+    $this->action->execute($this->user);
 
-        $this->user = User::factory()->create([
-            'github_username' => 'riasvdv',
-        ]);
+    $this->apiSpy->shouldHaveReceived('inviteToRepo', [
+        'riasvdv',
+        'spatie/spatie.be',
+    ])->once();
 
-        $this->purchase = Purchase::factory()->create([
-            'user_id' => $this->user->id,
-            'receipt_id' => ReceiptFactory::new()->create()->id,
-        ]);
+    $this->assertTrue($this->assignment->fresh()->has_repository_access);
+});
 
-        $this->assignment = PurchaseAssignment::factory()->create([
-            'purchase_id' => $this->purchase->id,
-            'user_id' => $this->user->id,
-            'purchasable_id' => $this->purchase->getPurchasables()->first()->id,
-        ]);
+it('does nothing when the purchasable has no repository', function () {
+    $this->action->execute($this->user);
 
-        $this->license = License::factory()->create([
-            'purchase_assignment_id' => $this->assignment->id,
-            'expires_at' => now()->addYear(),
-        ]);
-    }
+    $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
+    $this->assertFalse($this->assignment->fresh()->has_repository_access);
+});
 
-    /** @test * */
-    public function it_restores_repository_access_for_a_users_assignments()
-    {
-        $this->purchase->purchasable->update([
-            'repository_access' => 'spatie/spatie.be',
-        ]);
+it('does nothing when the license is expired', function () {
+    $this->purchase->purchasable->update([
+        'repository_access' => 'spatie/spatie.be',
+        'requires_license' => true,
+    ]);
 
-        $this->action->execute($this->user);
+    $this->license->update(['expires_at' => now()->subDay()]);
 
-        $this->apiSpy->shouldHaveReceived('inviteToRepo', [
-            'riasvdv',
-            'spatie/spatie.be',
-        ])->once();
+    $this->action->execute($this->user);
 
-        $this->assertTrue($this->assignment->fresh()->has_repository_access);
-    }
-
-    /** @test * */
-    public function it_does_nothing_when_the_purchasable_has_no_repository()
-    {
-        $this->action->execute($this->user);
-
-        $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
-        $this->assertFalse($this->assignment->fresh()->has_repository_access);
-    }
-
-    /** @test * */
-    public function it_does_nothing_when_the_license_is_expired()
-    {
-        $this->purchase->purchasable->update([
-            'repository_access' => 'spatie/spatie.be',
-            'requires_license' => true,
-        ]);
-
-        $this->license->update(['expires_at' => now()->subDay()]);
-
-        $this->action->execute($this->user);
-
-        $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
-        $this->assertFalse($this->assignment->fresh()->has_repository_access);
-    }
-}
+    $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
+    $this->assertFalse($this->assignment->fresh()->has_repository_access);
+});

@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Feature\Api;
-
 use App\Domain\Shop\Models\Activation;
 use App\Domain\Shop\Models\License;
 use App\Http\Api\Controllers\Activations\CreateActivationController;
@@ -11,162 +9,144 @@ use Spatie\Crypto\Rsa\PublicKey;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-class ActivationControllersTest extends TestCase
-{
-    private License $license;
+uses(TestCase::class);
 
-    public function setUp(): void
-    {
-        parent::setUp();
+beforeEach(function () {
+    parent::setUp();
 
-        $this->license = License::factory()->create();
+    $this->license = License::factory()->create();
 
-        $this->license->assignment->purchasable->product->update(['maximum_activation_count' => 2]);
-    }
+    $this->license->assignment->purchasable->product->update(['maximum_activation_count' => 2]);
+});
 
-    /** @test */
-    public function it_can_create_an_activation()
-    {
-        $this
-            ->postJson(action(CreateActivationController::class, [
-                'name' => 'test',
-                'license_key' => $this->license->key,
-            ]))
-            ->assertSuccessful()
-            ->assertJsonStructure(['activation_code', 'license_key', 'expires_at', 'signature']);
+it('can create an activation', function () {
+    $this
+        ->postJson(action(CreateActivationController::class, [
+            'name' => 'test',
+            'license_key' => $this->license->key,
+        ]))
+        ->assertSuccessful()
+        ->assertJsonStructure(['activation_code', 'license_key', 'expires_at', 'signature']);
 
-        $this->assertCount(1, $this->license->refresh()->activations);
-    }
+    $this->assertCount(1, $this->license->refresh()->activations);
+});
 
-    /** @test */
-    public function the_signed_activation_can_be_verified()
-    {
-        $signedData = $this
-            ->postJson(action(CreateActivationController::class, [
-                'name' => 'test',
-                'license_key' => $this->license->key,
-            ]))
-            ->json();
+test('the signed activation can be verified', function () {
+    $signedData = $this
+        ->postJson(action(CreateActivationController::class, [
+            'name' => 'test',
+            'license_key' => $this->license->key,
+        ]))
+        ->json();
 
-        $signature = $signedData['signature'];
+    $signature = $signedData['signature'];
 
-        unset($signedData['signature']);
+    unset($signedData['signature']);
 
-        $verified = PublicKey::fromFile(database_path('factories/stubs/publicKey'))
-            ->verify(json_encode($signedData), $signature);
+    $verified = PublicKey::fromFile(database_path('factories/stubs/publicKey'))
+        ->verify(json_encode($signedData), $signature);
 
-        $this->assertTrue($verified);
-    }
+    $this->assertTrue($verified);
+});
 
-    /** @test */
-    public function it_will_not_create_an_activation_when_the_limit_has_been_reached()
-    {
-        foreach (range(1, $this->license->maximumActivationCount()) as $i) {
-            $this
-                ->postJson(action(CreateActivationController::class, [
-                    'name' => 'test',
-                    'license_key' => $this->license->key,
-                ]))
-                ->assertSuccessful();
-        }
-        $this->assertCount($this->license->maximumActivationCount(), $this->license->refresh()->activations);
-
-        $this
-            ->postJson(action(CreateActivationController::class, [
-                'name' => 'test',
-                'license_key' => $this->license->key,
-            ]))
-            ->assertJsonValidationErrors('license_key');
-
-        $this->assertCount($this->license->maximumActivationCount(), $this->license->refresh()->activations);
-    }
-
-    /** @test */
-    public function it_can_show_an_activation()
-    {
-        $this->withExceptionHandling();
-
+it('will not create an activation when the limit has been reached', function () {
+    foreach (range(1, $this->license->maximumActivationCount()) as $i) {
         $this
             ->postJson(action(CreateActivationController::class, [
                 'name' => 'test',
                 'license_key' => $this->license->key,
             ]))
             ->assertSuccessful();
-
-        $activation = Activation::first();
-
-        $this
-            ->postJson(action(ShowActivationController::class, $activation), [
-                'license_key' => $this->license->key,
-            ])
-             ->assertSuccessful()
-            ->assertJsonStructure(['activation_code', 'license_key', 'expires_at', 'signature']);
     }
+    $this->assertCount($this->license->maximumActivationCount(), $this->license->refresh()->activations);
 
-    /** @test */
-    public function it_will_not_show_an_activation_if_the_license_key_does_not_match()
-    {
-        $this
-            ->postJson(action(CreateActivationController::class, [
-                'name' => 'test',
-                'license_key' => $this->license->key,
-            ]))
-            ->assertSuccessful();
+    $this
+        ->postJson(action(CreateActivationController::class, [
+            'name' => 'test',
+            'license_key' => $this->license->key,
+        ]))
+        ->assertJsonValidationErrors('license_key');
 
-        $activation = Activation::first();
+    $this->assertCount($this->license->maximumActivationCount(), $this->license->refresh()->activations);
+});
 
-        $unrelatedLicense = License::factory()->create();
+it('can show an activation', function () {
+    $this->withExceptionHandling();
 
-        $this
-            ->postJson(action(ShowActivationController::class, $activation), [
-                'license_key' => $unrelatedLicense->key,
-            ])
-            ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
-    }
+    $this
+        ->postJson(action(CreateActivationController::class, [
+            'name' => 'test',
+            'license_key' => $this->license->key,
+        ]))
+        ->assertSuccessful();
 
-    /** @test */
-    public function it_will_regenerate_the_signed_activation_when_the_license_is_updated()
-    {
-        $this
-            ->postJson(action(CreateActivationController::class, [
-                'name' => 'Franz Thüs',
-                'license_key' => $this->license->key,
-            ]))
-             ->json();
+    $activation = Activation::first();
 
-        $newExpiresAt = now();
-        $this->license->expires_at = $newExpiresAt;
-        $this->license->save();
+    $this
+        ->postJson(action(ShowActivationController::class, $activation), [
+            'license_key' => $this->license->key,
+        ])
+         ->assertSuccessful()
+        ->assertJsonStructure(['activation_code', 'license_key', 'expires_at', 'signature']);
+});
 
-        $activation = $this->license->refresh()->activations()->first();
+it('will not show an activation if the license key does not match', function () {
+    $this
+        ->postJson(action(CreateActivationController::class, [
+            'name' => 'test',
+            'license_key' => $this->license->key,
+        ]))
+        ->assertSuccessful();
 
-        $this->assertEquals($newExpiresAt->timestamp, $activation->refresh()->signed_activation['expires_at']);
+    $activation = Activation::first();
 
-        $signedData = $activation->signed_activation;
-        ksort($signedData);
+    $unrelatedLicense = License::factory()->create();
 
-        $signature = $signedData['signature'];
+    $this
+        ->postJson(action(ShowActivationController::class, $activation), [
+            'license_key' => $unrelatedLicense->key,
+        ])
+        ->assertStatus(Response::HTTP_UNPROCESSABLE_ENTITY);
+});
 
-        unset($signedData['signature']);
+it('will regenerate the signed activation when the license is updated', function () {
+    $this
+        ->postJson(action(CreateActivationController::class, [
+            'name' => 'Franz Thüs',
+            'license_key' => $this->license->key,
+        ]))
+         ->json();
 
-        $verified = PublicKey::fromFile(database_path('factories/stubs/publicKey'))
-            ->verify(json_encode($signedData), $signature);
+    $newExpiresAt = now();
+    $this->license->expires_at = $newExpiresAt;
+    $this->license->save();
 
-        $this->assertTrue($verified);
-    }
+    $activation = $this->license->refresh()->activations()->first();
 
-    /** @test */
-    public function it_can_delete_an_activation()
-    {
-        /** @var Activation $activation */
-        $activation = Activation::factory()->create();
+    $this->assertEquals($newExpiresAt->timestamp, $activation->refresh()->signed_activation['expires_at']);
 
-        $this
-            ->deleteJson(action(DeleteActivationController::class, $activation), [
-                'license_key' => $activation->license->key,
-            ])
-            ->assertSuccessful();
+    $signedData = $activation->signed_activation;
+    ksort($signedData);
 
-        $this->assertEquals(0, Activation::count());
-    }
-}
+    $signature = $signedData['signature'];
+
+    unset($signedData['signature']);
+
+    $verified = PublicKey::fromFile(database_path('factories/stubs/publicKey'))
+        ->verify(json_encode($signedData), $signature);
+
+    $this->assertTrue($verified);
+});
+
+it('can delete an activation', function () {
+    /** @var Activation $activation */
+    $activation = Activation::factory()->create();
+
+    $this
+        ->deleteJson(action(DeleteActivationController::class, $activation), [
+            'license_key' => $activation->license->key,
+        ])
+        ->assertSuccessful();
+
+    $this->assertEquals(0, Activation::count());
+});

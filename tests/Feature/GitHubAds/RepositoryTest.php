@@ -1,47 +1,37 @@
 <?php
 
-namespace Tests\Feature\GitHubAds;
-
 use App\Models\Ad;
 use App\Models\Repository;
 use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-class RepositoryTest extends TestCase
-{
-    private Filesystem $adImagesDisk;
+uses(TestCase::class);
 
-    public function setUp(): void
-    {
-        parent::setUp();
+beforeEach(function () {
+    parent::setUp();
 
-        Storage::fake('github_ads');
+    Storage::fake('github_ads');
 
-        $this->adImagesDisk = Storage::disk('github_ads');
-    }
+    $this->adImagesDisk = Storage::disk('github_ads');
+});
 
-    /** @test */
-    public function it_will_update_the_ad_image_on_disk_when_a_new_ad_is_associated_with_a_repository()
-    {
-        /** @var Ad $ad */
-        $ad = Ad::factory()->create();
+it('will update the ad image on disk when a new ad is associated with a repository', function () {
+    /** @var Ad $ad */
+    $ad = Ad::factory()->create();
 
-        /** @var Repository $repository */
-        $repository = Repository::factory()->create();
-        $this->adImagesDisk->assertMissing($repository->gitHubAdImagePath());
+    /** @var Repository $repository */
+    $repository = Repository::factory()->create();
+    $this->adImagesDisk->assertMissing($repository->gitHubAdImagePath());
 
-        $repository->update(['ad_id' => $ad->id]);
-        $this->adImagesDisk->assertExists($repository->gitHubAdImagePath());
-    }
+    $repository->update(['ad_id' => $ad->id]);
+    $this->adImagesDisk->assertExists($repository->gitHubAdImagePath());
+});
 
-    /** @test */
-    public function it_will_delete_the_ad_image_on_disk_when_an_ad_is_detached_from_a_repository()
-    {
-        $repository = Repository::factory()->withAd()->create();
-        $this->adImagesDisk->assertExists($repository->gitHubAdImagePath());
+it('will delete the ad image on disk when an ad is detached from a repository', function () {
+    $repository = Repository::factory()->withAd()->create();
+    $this->adImagesDisk->assertExists($repository->gitHubAdImagePath());
 
-        $repository->update(['ad_id' => null]);
-        $this->adImagesDisk->assertMissing($repository->gitHubAdImagePath());
-    }
-}
+    $repository->update(['ad_id' => null]);
+    $this->adImagesDisk->assertMissing($repository->gitHubAdImagePath());
+});

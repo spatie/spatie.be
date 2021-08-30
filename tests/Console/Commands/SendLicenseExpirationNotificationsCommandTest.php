@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Console\Commands;
-
 use App\Domain\Shop\Commands\SendLicenseExpirationNotificationsCommand;
 use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Notifications\LicenseExpiredNotification;
@@ -11,86 +9,73 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
-class SendLicenseExpirationNotificationsCommandTest extends TestCase
-{
-    /** @test */
-    public function it_sends_a_warning_notification_to_soon_to_expire_licenses()
-    {
-        Notification::fake();
+uses(TestCase::class);
 
-        $licenseAboutToExpire = License::factory()->create(['expires_at' => now()->addDays(13)]);
-        $licenseValidForALongTime = License::factory()->create(['expires_at' => now()->addMonth()]);
+it('sends a warning notification to soon to expire licenses', function () {
+    Notification::fake();
 
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    $licenseAboutToExpire = License::factory()->create(['expires_at' => now()->addDays(13)]);
+    $licenseValidForALongTime = License::factory()->create(['expires_at' => now()->addMonth()]);
 
-        Notification::assertSentTo($licenseAboutToExpire->assignment->user, LicenseIsAboutToExpireNotification::class);
-        Notification::assertNotSentTo($licenseValidForALongTime->assignment->user, LicenseIsAboutToExpireNotification::class);
-    }
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-    /** @test */
-    public function it_wont_send_a_warning_notification_if_it_was_already_sent()
-    {
-        Notification::fake();
+    Notification::assertSentTo($licenseAboutToExpire->assignment->user, LicenseIsAboutToExpireNotification::class);
+    Notification::assertNotSentTo($licenseValidForALongTime->assignment->user, LicenseIsAboutToExpireNotification::class);
+});
 
-        $licenseAboutToExpire = License::factory()->create(['expires_at' => now()->addDays(13)]);
+it('wont send a warning notification if it was already sent', function () {
+    Notification::fake();
 
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    $licenseAboutToExpire = License::factory()->create(['expires_at' => now()->addDays(13)]);
 
-        Notification::assertSentToTimes($licenseAboutToExpire->assignment->user, LicenseIsAboutToExpireNotification::class, 1);
-    }
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-    /** @test */
-    public function it_sends_a_notification_to_expired_licenses()
-    {
-        Notification::fake();
+    Notification::assertSentToTimes($licenseAboutToExpire->assignment->user, LicenseIsAboutToExpireNotification::class, 1);
+});
 
-        $expiredLicense = License::factory()->create(['expires_at' => now()->subHour()]);
-        $licenseValidForALongTime = License::factory()->create(['expires_at' => now()->addMonth()]);
+it('sends a notification to expired licenses', function () {
+    Notification::fake();
 
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    $expiredLicense = License::factory()->create(['expires_at' => now()->subHour()]);
+    $licenseValidForALongTime = License::factory()->create(['expires_at' => now()->addMonth()]);
 
-        Notification::assertSentTo($expiredLicense->assignment->user, LicenseExpiredNotification::class);
-        Notification::assertNotSentTo($licenseValidForALongTime->assignment->user, LicenseExpiredNotification::class);
-    }
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-    /** @test */
-    public function it_wont_send_a_notification_if_it_was_already_sent()
-    {
-        Notification::fake();
+    Notification::assertSentTo($expiredLicense->assignment->user, LicenseExpiredNotification::class);
+    Notification::assertNotSentTo($licenseValidForALongTime->assignment->user, LicenseExpiredNotification::class);
+});
 
-        $expiredLicense = License::factory()->create(['expires_at' => now()->subHour()]);
+it('wont send a notification if it was already sent', function () {
+    Notification::fake();
 
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    $expiredLicense = License::factory()->create(['expires_at' => now()->subHour()]);
 
-        Notification::assertSentToTimes($expiredLicense->assignment->user, LicenseExpiredNotification::class, 1);
-    }
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-    /** @test */
-    public function it_sends_a_second_notification_to_expired_licenses()
-    {
-        Notification::fake();
+    Notification::assertSentToTimes($expiredLicense->assignment->user, LicenseExpiredNotification::class, 1);
+});
 
-        $expiredLicense = License::factory()->create(['expires_at' => now()->subDays(14)]);
-        $recentlyExpiredLicense = License::factory()->create(['expires_at' => now()->subDays(2)]);
+it('sends a second notification to expired licenses', function () {
+    Notification::fake();
 
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    $expiredLicense = License::factory()->create(['expires_at' => now()->subDays(14)]);
+    $recentlyExpiredLicense = License::factory()->create(['expires_at' => now()->subDays(2)]);
 
-        Notification::assertSentTo($expiredLicense->assignment->user, LicenseExpiredSecondNotification::class);
-        Notification::assertNotSentTo($recentlyExpiredLicense->assignment->user, LicenseExpiredSecondNotification::class);
-    }
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
 
-    /** @test */
-    public function it_wont_send_a_second_notification_if_it_was_already_sent()
-    {
-        Notification::fake();
+    Notification::assertSentTo($expiredLicense->assignment->user, LicenseExpiredSecondNotification::class);
+    Notification::assertNotSentTo($recentlyExpiredLicense->assignment->user, LicenseExpiredSecondNotification::class);
+});
 
-        $expiredLicense = License::factory()->create(['expires_at' => now()->subDays(14)]);
+it('wont send a second notification if it was already sent', function () {
+    Notification::fake();
 
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
-        Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    $expiredLicense = License::factory()->create(['expires_at' => now()->subDays(14)]);
 
-        Notification::assertSentToTimes($expiredLicense->assignment->user, LicenseExpiredSecondNotification::class, 1);
-    }
-}
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+    Artisan::call(SendLicenseExpirationNotificationsCommand::class);
+
+    Notification::assertSentToTimes($expiredLicense->assignment->user, LicenseExpiredSecondNotification::class, 1);
+});

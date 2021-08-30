@@ -1,34 +1,27 @@
 <?php
 
-namespace Tests\Feature\GitHubAds;
-
 use App\Models\Ad;
 use App\Models\Repository;
 use Tests\TestCase;
 
-class RedirectGitHubAdClickControllerTest extends TestCase
-{
-    /** @test **/
-    public function it_will_redirect_GitHub_ad_clicks_to_the_right_url()
-    {
-        $redirectUrl = 'https://redirect.com';
+uses(TestCase::class);
 
-        $repository = Repository::factory()->create([
-            'ad_id' => Ad::factory()->create(['click_redirect_url' => $redirectUrl,]),
-        ]);
+it('will redirect git hub ad clicks to the right url', function () {
+    $redirectUrl = 'https://redirect.com';
 
-        $repoName = urlencode($repository->name);
+    $repository = Repository::factory()->create([
+        'ad_id' => Ad::factory()->create(['click_redirect_url' => $redirectUrl,]),
+    ]);
 
-        $this
-            ->get(route('github-ad-click', $repository->name))
-            ->assertRedirect("$redirectUrl?utm_source=github&utm_medium=banner&utm_campaign=repo-{$repoName}");
-    }
+    $repoName = urlencode($repository->name);
 
-    /** @test */
-    public function it_will_redirect_invalid_urls_to_the_product_page()
-    {
-        $this
-            ->get(route('github-ad-click', 'invalid'))
-            ->assertRedirect(route('products.index'));
-    }
-}
+    $this
+        ->get(route('github-ad-click', $repository->name))
+        ->assertRedirect("$redirectUrl?utm_source=github&utm_medium=banner&utm_campaign=repo-{$repoName}");
+});
+
+it('will redirect invalid urls to the product page', function () {
+    $this
+        ->get(route('github-ad-click', 'invalid'))
+        ->assertRedirect(route('products.index'));
+});

@@ -1,16 +1,11 @@
 <?php
 
-namespace Tests\Feature\Pages;
-
 use Tests\TestCase;
 
-class HomePageTest extends TestCase
-{
-    /** @test */
-    public function it_can_render_the_homepage()
-    {
-        $response = $this->get('/');
+uses(TestCase::class);
 
-        $response->assertStatus(200);
-    }
-}
+it('can render the homepage', function () {
+    $response = $this->get('/');
+
+    $response->assertStatus(200);
+});

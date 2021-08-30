@@ -1,25 +1,20 @@
 <?php
 
-namespace Tests\Feature\Api;
-
 use App\Domain\Shop\Models\Activation;
 use App\Http\Api\Controllers\Activations\UpdateCurrentVersionController;
 use Tests\TestCase;
 
-class UpdateCurrentVersionControllerTest extends TestCase
-{
-    /** @test */
-    public function it_can_update_the_current_version()
-    {
-        $activation = Activation::factory()->create();
-        $versionNumber = '1.2.3';
+uses(TestCase::class);
 
-        $this
-            ->post(action(UpdateCurrentVersionController::class, $activation->uuid), [
-                'current_version' => $versionNumber,
-            ])
-            ->assertSuccessful();
+it('can update the current version', function () {
+    $activation = Activation::factory()->create();
+    $versionNumber = '1.2.3';
 
-        $this->assertEquals($versionNumber, $activation->refresh()->current_version);
-    }
-}
+    $this
+        ->post(action(UpdateCurrentVersionController::class, $activation->uuid), [
+            'current_version' => $versionNumber,
+        ])
+        ->assertSuccessful();
+
+    $this->assertEquals($versionNumber, $activation->refresh()->current_version);
+});

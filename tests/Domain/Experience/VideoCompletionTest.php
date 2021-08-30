@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Domain\Experience;
-
 use App\Domain\Experience\Events\VideoCompleted;
 use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Enums\ExperienceType;
@@ -11,91 +9,73 @@ use App\Models\Video;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 use Tests\TestCase;
 
-class VideoCompletionTest extends TestCase
-{
-    private Series $series;
+uses(TestCase::class);
 
-    private Video $videoA;
+beforeEach(function () {
+    parent::setUp();
 
-    private Video $videoB;
+    $this->series = Series::factory()->create();
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+    $this->videoA = Video::factory()->make([
+        'series_id' => $this->series->id,
+    ]);
 
-        $this->series = Series::factory()->create();
+    $this->videoA->saveQuietly();
 
-        $this->videoA = Video::factory()->make([
-            'series_id' => $this->series->id,
-        ]);
+    $this->videoB = Video::factory()->make([
+        'series_id' => $this->series->id,
+    ]);
 
-        $this->videoA->saveQuietly();
+    $this->videoB->saveQuietly();
+});
 
-        $this->videoB = Video::factory()->make([
-            'series_id' => $this->series->id,
-        ]);
+test('a series is completed when all videos are completed', function () {
+    /** @var \App\Models\User $user */
+    $user = User::factory()->create();
 
-        $this->videoB->saveQuietly();
-    }
+    $achievement = Achievement::forSeries($this->series)->first();
 
-    /** @test */
-    public function a_series_is_completed_when_all_videos_are_completed_()
-    {
-        /** @var \App\Models\User $user */
-        $user = User::factory()->create();
+    $user->completeVideo($this->videoA);
 
-        $achievement = Achievement::forSeries($this->series)->first();
+    $this->assertFalse($user->hasAchievement($achievement));
 
-        $user->completeVideo($this->videoA);
+    $user->completeVideo($this->videoB);
 
-        $this->assertFalse($user->hasAchievement($achievement));
+    $this->assertTrue($user->hasAchievement($achievement));
+});
 
-        $user->completeVideo($this->videoB);
+test('experience is gained per completion', function () {
+    /** @var \App\Models\User $user */
+    $user = User::factory()->create();
 
-        $this->assertTrue($user->hasAchievement($achievement));
-    }
+    $user->completeVideo($this->videoA);
 
-    /** @test */
-    public function experience_is_gained_per_completion()
-    {
-        /** @var \App\Models\User $user */
-        $user = User::factory()->create();
+    $this->assertEquals(ExperienceType::VideoCompletion()->getAmount(), $user->experience->amount);
+});
 
-        $user->completeVideo($this->videoA);
+test('experience is gained per series', function () {
+    /** @var \App\Models\User $user */
+    $user = User::factory()->create();
 
-        $this->assertEquals(ExperienceType::VideoCompletion()->getAmount(), $user->experience->amount);
-    }
+    $user->completeVideo($this->videoA);
+    $user->completeVideo($this->videoB);
 
-    /** @test */
-    public function experience_is_gained_per_series()
-    {
-        /** @var \App\Models\User $user */
-        $user = User::factory()->create();
+    $expectedAmount =
+        2 * ExperienceType::VideoCompletion()->getAmount()
+        + ExperienceType::SeriesCompletion()->getAmount();
 
-        $user->completeVideo($this->videoA);
-        $user->completeVideo($this->videoB);
+    $this->assertEquals(
+        $expectedAmount,
+        $user->experience->amount
+    );
+});
 
-        $expectedAmount =
-            2 * ExperienceType::VideoCompletion()->getAmount()
-            + ExperienceType::SeriesCompletion()->getAmount();
+test('same video cant be registered twice', function () {
+    /** @var \App\Models\User $user */
+    $user = User::factory()->create();
 
-        $this->assertEquals(
-            $expectedAmount,
-            $user->experience->amount
-        );
-    }
+    $user->completeVideo($this->videoA);
+    $user->completeVideo($this->videoA);
 
-    /** @test */
-    public function same_video_cant_be_registered_twice()
-    {
-        /** @var \App\Models\User $user */
-        $user = User::factory()->create();
-
-        $user->completeVideo($this->videoA);
-        $user->completeVideo($this->videoA);
-
-        $this->assertEquals(1, EloquentStoredEvent::query()->whereEvent(VideoCompleted::class)->count());
-    }
-
-    // TODO: what if a user uncompletes a video?
-}
+    $this->assertEquals(1, EloquentStoredEvent::query()->whereEvent(VideoCompleted::class)->count());
+});
