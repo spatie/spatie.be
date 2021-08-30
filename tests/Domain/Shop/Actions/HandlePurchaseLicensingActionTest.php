@@ -9,7 +9,6 @@ use Database\Factories\ReceiptFactory;
 use Tests\TestCase;
 
 uses(TestCase::class);
-use function resolve;
 
 beforeEach(function () {
     parent::setUp();

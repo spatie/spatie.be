@@ -10,7 +10,6 @@ use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
 uses(TestCase::class);
-use function dispatch;
 
 beforeEach(function () {
     parent::setUp();

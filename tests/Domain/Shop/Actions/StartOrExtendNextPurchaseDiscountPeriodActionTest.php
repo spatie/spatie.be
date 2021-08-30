@@ -7,8 +7,6 @@ use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
 uses(TestCase::class);
-use function app;
-use function now;
 
 beforeEach(function () {
     parent::setUp();

@@ -6,7 +6,6 @@ use App\Domain\Shop\Models\PurchaseAssignment;
 use Tests\TestCase;
 
 uses(TestCase::class);
-use function resolve;
 
 beforeEach(function () {
     parent::setUp();
