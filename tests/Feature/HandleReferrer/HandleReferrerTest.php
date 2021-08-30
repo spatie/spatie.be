@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Feature\HandleReferrer;
-
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
 use Illuminate\Support\Facades\Cookie;
@@ -9,75 +7,68 @@ use Spatie\TestTime\TestTime;
 use Symfony\Component\HttpFoundation\Cookie as SymfonyCookie;
 use Tests\TestCase;
 
-class HandleReferrerTest extends TestCase
-{
-    /** @test */
-    public function it_can_handle_a_referrer()
-    {
-        $purchasable = Purchasable::factory()->create();
 
-        /** @var Referrer $referrer */
-        $referrer = Referrer::factory()->create([
-            'discount_percentage' => 23,
-        ]);
 
-        $this
-            ->get(route('products.index') . "?referrer={$referrer->slug}")
-            ->assertDontSee('-23%');
+it('can handle a referrer', function () {
+    $purchasable = Purchasable::factory()->create();
 
-        $referrer->purchasables()->attach($purchasable);
+    /** @var Referrer $referrer */
+    $referrer = Referrer::factory()->create([
+        'discount_percentage' => 23,
+    ]);
 
-        $this
-            ->get(route('products.index') . "?referrer={$referrer->slug}")
-            ->assertSee('-23%');
+    $this
+        ->get(route('products.index') . "?referrer={$referrer->slug}")
+        ->assertDontSee('-23%');
 
-        $this
-            ->get(route('products.show', $purchasable->product) . "?referrer={$referrer->slug}")
-            ->assertSee('23%');
+    $referrer->purchasables()->attach($purchasable);
 
-        $cookies = collect(Cookie::getQueuedCookies());
+    $this
+        ->get(route('products.index') . "?referrer={$referrer->slug}")
+        ->assertSee('-23%');
 
-        $this->assertTrue($cookies->contains(function (SymfonyCookie $cookie) use ($referrer) {
-            return $cookie->getName() === 'active-referrer-uuid' && $cookie->getValue() === $referrer->uuid;
-        }));
-    }
+    $this
+        ->get(route('products.show', $purchasable->product) . "?referrer={$referrer->slug}")
+        ->assertSee('23%');
 
-    /** @test */
-    public function it_will_use_the_value_set_in_the_cookie()
-    {
-        $purchasable = Purchasable::factory()->create();
+    $cookies = collect(Cookie::getQueuedCookies());
 
-        /** @var Referrer $referrer */
-        $referrer = Referrer::factory()->create([
-            'discount_percentage' => 23,
-        ]);
+    $this->assertTrue($cookies->contains(function (SymfonyCookie $cookie) use ($referrer) {
+        return $cookie->getName() === 'active-referrer-uuid' && $cookie->getValue() === $referrer->uuid;
+    }));
+});
 
-        $referrer->purchasables()->attach($purchasable);
+it('will use the value set in the cookie', function () {
+    $purchasable = Purchasable::factory()->create();
 
-        $this
-            ->withCookie('active-referrer-uuid', $referrer->uuid)
-            ->get(route('products.index'))
-            ->assertSee('-23%');
-    }
+    /** @var Referrer $referrer */
+    $referrer = Referrer::factory()->create([
+        'discount_percentage' => 23,
+    ]);
 
-    /** @test */
-    public function it_will_register_the_click()
-    {
-        TestTime::freeze();
+    $referrer->purchasables()->attach($purchasable);
 
-        $referrer = Referrer::factory()->create();
+    $this
+        ->withCookie('active-referrer-uuid', $referrer->uuid)
+        ->get(route('products.index'))
+        ->assertSee('-23%');
+});
 
-        $this->get(route('products.index') . "?referrer={$referrer->slug}");
+it('will register the click', function () {
+    TestTime::freeze();
 
-        $referrer = $referrer->refresh();
-        $this->assertEquals(1, $referrer->click_count);
-        $this->assertEquals(now()->timestamp, $referrer->last_clicked_at->timestamp);
+    $referrer = Referrer::factory()->create();
 
-        TestTime::addSecond();
-        $this->get(route('products.index') . "?referrer={$referrer->slug}");
+    $this->get(route('products.index') . "?referrer={$referrer->slug}");
 
-        $referrer = $referrer->refresh();
-        $this->assertEquals(2, $referrer->click_count);
-        $this->assertEquals(now()->timestamp, $referrer->last_clicked_at->timestamp);
-    }
-}
+    $referrer = $referrer->refresh();
+    expect($referrer->click_count)->toEqual(1);
+    expect($referrer->last_clicked_at->timestamp)->toEqual(now()->timestamp);
+
+    TestTime::addSecond();
+    $this->get(route('products.index') . "?referrer={$referrer->slug}");
+
+    $referrer = $referrer->refresh();
+    expect($referrer->click_count)->toEqual(2);
+    expect($referrer->last_clicked_at->timestamp)->toEqual(now()->timestamp);
+});

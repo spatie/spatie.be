@@ -32,6 +32,6 @@ jobs:
                   php artisan key:generate
 
             - name: Run PHPUnit
-              run: ./vendor/bin/phpunit
+              run: ./vendor/bin/pest
               env:
                   DB_PASSWORD: root

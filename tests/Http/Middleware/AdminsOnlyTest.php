@@ -1,58 +1,42 @@
 <?php
 
-namespace Tests\Http\Middleware;
-
 use App\Http\Middleware\AdminsOnly;
 use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Tests\TestCase;
 
-class AdminsOnlyTest extends TestCase
-{
-    private AdminsOnly $middleware;
+beforeEach(function () {
+    $this->middleware = new AdminsOnly();
+});
 
-    protected function setUp(): void
-    {
-        parent::setUp();
+it('will pass when a user is admin', function () {
+    $request = new Request();
 
-        $this->middleware = new AdminsOnly();
-    }
+    $request->setUserResolver(
+        fn () => User::factory()->make(['is_admin' => true])
+    );
 
-    /** @test */
-    public function it_will_pass_when_a_user_is_admin()
-    {
-        $request = new Request();
+    $response = $this->middleware->handle($request, fn (Request $request) => $request);
 
-        $request->setUserResolver(
-            fn () => User::factory()->make(['is_admin' => true])
-        );
+    self::assertNotNull($response);
+    expect($response)->toBeInstanceOf(Request::class);
+});
 
-        $response = $this->middleware->handle($request, fn (Request $request) => $request);
+it('will not pass when no user is logged in', function () {
+    $this->expectException(AuthenticationException::class);
 
-        self::assertNotNull($response);
-        self::assertInstanceOf(Request::class, $response);
-    }
+    $request = new Request();
 
-    /** @test */
-    public function it_will_not_pass_when_no_user_is_logged_in()
-    {
-        $this->expectException(AuthenticationException::class);
+    $this->middleware->handle($request, fn (Request $request) => $request);
+});
 
-        $request = new Request();
+it('will not pass when the user is not an admin', function () {
+    $this->expectException(AuthenticationException::class);
 
-        $this->middleware->handle($request, fn (Request $request) => $request);
-    }
+    $request = new Request();
 
-    /** @test */
-    public function it_will_not_pass_when_the_user_is_not_an_admin()
-    {
-        $this->expectException(AuthenticationException::class);
+    $request->setUserResolver(fn () => User::factory()->make(['is_admin' => false]));
 
-        $request = new Request();
-
-        $request->setUserResolver(fn () => User::factory()->make(['is_admin' => false]));
-
-        $this->middleware->handle($request, fn (Request $request) => $request);
-    }
-}
+    $this->middleware->handle($request, fn (Request $request) => $request);
+});

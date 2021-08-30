@@ -1,43 +1,38 @@
 <?php
 
-namespace Tests\Models;
-
 use App\Models\Series;
 use App\Models\User;
 use App\Models\Video;
 use Tests\TestCase;
 
-class UserTest extends TestCase
-{
-    /** @test */
-    public function test_has_completed()
-    {
-        /** @var \App\Models\Series $series */
-        $series = Series::factory()->create();
 
-        $videoA = Video::factory()->make([
-            'series_id' => $series->id,
-        ]);
 
-        $videoA->saveQuietly();
+test('has completed', function () {
+    /** @var \App\Models\Series $series */
+    $series = Series::factory()->create();
 
-        $videoB = Video::factory()->make([
-            'series_id' => $series->id,
-        ]);
+    $videoA = Video::factory()->make([
+        'series_id' => $series->id,
+    ]);
 
-        $videoB->saveQuietly();
+    $videoA->saveQuietly();
 
-        /** @var \App\Models\User $user */
-        $user = User::factory()->create();
+    $videoB = Video::factory()->make([
+        'series_id' => $series->id,
+    ]);
 
-        $this->assertFalse($user->hasCompleted($series));
+    $videoB->saveQuietly();
 
-        $user->completeVideo($videoA);
+    /** @var \App\Models\User $user */
+    $user = User::factory()->create();
 
-        $this->assertFalse($user->hasCompleted($series));
+    expect($user->hasCompleted($series))->toBeFalse();
 
-        $user->completeVideo($videoB);
+    $user->completeVideo($videoA);
 
-        $this->assertTrue($user->hasCompleted($series));
-    }
-}
+    expect($user->hasCompleted($series))->toBeFalse();
+
+    $user->completeVideo($videoB);
+
+    expect($user->hasCompleted($series))->toBeTrue();
+});

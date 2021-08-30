@@ -1,57 +1,44 @@
 <?php
 
-namespace Tests\Unit\Models;
-
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
-class ReferrerTest extends TestCase
-{
-    private Purchasable $purchasable;
 
-    private Referrer $referrer;
 
-    public function setUp(): void
-    {
-        parent::setUp();
+beforeEach(function () {
 
-        TestTime::freeze();
+    TestTime::freeze();
 
-        $this->purchasable = Purchasable::factory()->create();
+    $this->purchasable = Purchasable::factory()->create();
 
-        $this->referrer = Referrer::factory()->create([
-            'discount_period_ends_at' => now()->addHour(),
-            'discount_percentage' => 10,
-        ]);
+    $this->referrer = Referrer::factory()->create([
+        'discount_period_ends_at' => now()->addHour(),
+        'discount_percentage' => 10,
+    ]);
 
-        $this->referrer->purchasables()->attach($this->purchasable);
-    }
+    $this->referrer->purchasables()->attach($this->purchasable);
+});
 
-    /** @test */
-    public function it_will_allow_a_discount_for_a_certain_purchasable()
-    {
-        $this->assertTrue($this->referrer->hasActiveDiscount($this->purchasable));
-        $this->assertEquals(10, $this->referrer->getDiscountPercentage($this->purchasable));
+it('will allow a discount for a certain purchasable', function () {
+    expect($this->referrer->hasActiveDiscount($this->purchasable))->toBeTrue();
+    expect($this->referrer->getDiscountPercentage($this->purchasable))->toEqual(10);
 
-        $unrelatedPurchasable = Purchasable::factory()->create();
+    $unrelatedPurchasable = Purchasable::factory()->create();
 
-        $this->assertFalse($this->referrer->hasActiveDiscount($unrelatedPurchasable));
-        $this->assertEquals(0, $this->referrer->getDiscountPercentage($unrelatedPurchasable));
-    }
+    expect($this->referrer->hasActiveDiscount($unrelatedPurchasable))->toBeFalse();
+    expect($this->referrer->getDiscountPercentage($unrelatedPurchasable))->toEqual(0);
+});
 
-    /** @test */
-    public function it_will_allow_a_discount_until_the_period_ends()
-    {
-        TestTime::addMinutes(59);
+it('will allow a discount until the period ends', function () {
+    TestTime::addMinutes(59);
 
-        $this->assertTrue($this->referrer->hasActiveDiscount($this->purchasable));
-        $this->assertEquals(10, $this->referrer->getDiscountPercentage($this->purchasable));
+    expect($this->referrer->hasActiveDiscount($this->purchasable))->toBeTrue();
+    expect($this->referrer->getDiscountPercentage($this->purchasable))->toEqual(10);
 
-        TestTime::addMinute();
+    TestTime::addMinute();
 
-        $this->assertFalse($this->referrer->hasActiveDiscount($this->purchasable));
-        $this->assertEquals(0, $this->referrer->getDiscountPercentage($this->purchasable));
-    }
-}
+    expect($this->referrer->hasActiveDiscount($this->purchasable))->toBeFalse();
+    expect($this->referrer->getDiscountPercentage($this->purchasable))->toEqual(0);
+});

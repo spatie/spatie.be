@@ -1,48 +1,36 @@
 <?php
 
-namespace Tests\Domain\Shop\Actions;
-
 use App\Domain\Shop\Actions\CreateLicenseAction;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use Tests\TestCase;
-use function resolve;
 
-class CreateLicenseActionTest extends TestCase
-{
-    protected CreateLicenseAction $action;
 
-    protected function setUp() : void
-    {
-        parent::setUp();
 
-        $this->action = resolve(CreateLicenseAction::class);
-    }
+beforeEach(function () {
 
-    /** @test */
-    public function it_can_create_a_license()
-    {
-        $assignment = PurchaseAssignment::factory()->create();
+    $this->action = resolve(CreateLicenseAction::class);
+});
 
-        $license = $this->action->execute($assignment);
+it('can create a license', function () {
+    $assignment = PurchaseAssignment::factory()->create();
 
-        $this->assertNotNull($license->key);
-        $this->assertTrue($license->expires_at->isNextYear());
-        $this->assertTrue($license->assignment->is($assignment));
-    }
+    $license = $this->action->execute($assignment);
 
-    /** @test */
-    public function it_can_create_a_license_for_lifetime_purchases()
-    {
-        $assignment = PurchaseAssignment::factory()->create([
-            'purchasable_id' => Purchasable::factory()->create([
-                'is_lifetime' => true,
-            ])->id,
-        ]);
+    $this->assertNotNull($license->key);
+    expect($license->expires_at->isNextYear())->toBeTrue();
+    expect($license->assignment->is($assignment))->toBeTrue();
+});
 
-        $license = $this->action->execute($assignment);
+it('can create a license for lifetime purchases', function () {
+    $assignment = PurchaseAssignment::factory()->create([
+        'purchasable_id' => Purchasable::factory()->create([
+            'is_lifetime' => true,
+        ])->id,
+    ]);
 
-        $this->assertNotNull($license->key);
-        $this->assertSame(2038, $license->expires_at->year);
-    }
-}
+    $license = $this->action->execute($assignment);
+
+    $this->assertNotNull($license->key);
+    expect($license->expires_at->year)->toBe(2038);
+});

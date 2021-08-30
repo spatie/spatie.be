@@ -1,7 +1,5 @@
 <?php
 
-namespace Tests\Domain\Shop\Actions;
-
 use App\Domain\Shop\Actions\HandlePurchaseLicensingAction;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
@@ -9,50 +7,42 @@ use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use Database\Factories\ReceiptFactory;
 use Tests\TestCase;
-use function resolve;
 
-class HandlePurchaseLicensingActionTest extends TestCase
-{
-    private HandlePurchaseLicensingAction $action;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
 
-        $this->action = resolve(HandlePurchaseLicensingAction::class);
-    }
+beforeEach(function () {
 
-    /** @test * */
-    public function it_throws_when_renewing_a_purchasable_that_the_user_doesnt_own()
-    {
-        $user = User::factory()->create();
+    $this->action = resolve(HandlePurchaseLicensingAction::class);
+});
 
-        $renewable = Purchasable::factory()->create([
-            'requires_license' => true,
-        ]);
-        $purchasable = Purchasable::factory()->create([
-            'requires_license' => true,
-            'renewal_purchasable_id' => $renewable->id,
-        ]);
+it('throws when renewing a purchasable that the user doesnt own', function () {
+    $user = User::factory()->create();
 
-        $purchase = Purchase::create([
-            'id' => 1,
-            'purchasable_id' => $renewable->id,
-            'user_id' => $user->id,
-            'receipt_id' => $user->receipts()->create(ReceiptFactory::new()->make()->toArray())->id,
-            'paddle_webhook_payload' => [],
-            'paddle_fee' => 0,
-            'earnings' => 0,
-        ]);
+    $renewable = Purchasable::factory()->create([
+        'requires_license' => true,
+    ]);
+    $purchasable = Purchasable::factory()->create([
+        'requires_license' => true,
+        'renewal_purchasable_id' => $renewable->id,
+    ]);
 
-        PurchaseAssignment::create([
-            'user_id' => $user->id,
-            'purchasable_id' => $renewable->id,
-            'purchase_id' => $purchase->id,
-        ]);
+    $purchase = Purchase::create([
+        'id' => 1,
+        'purchasable_id' => $renewable->id,
+        'user_id' => $user->id,
+        'receipt_id' => $user->receipts()->create(ReceiptFactory::new()->make()->toArray())->id,
+        'paddle_webhook_payload' => [],
+        'paddle_fee' => 0,
+        'earnings' => 0,
+    ]);
 
-        $this->expectExceptionMessage("User {$user->id} doesn't own purchasable {$purchasable->id} to renew.");
+    PurchaseAssignment::create([
+        'user_id' => $user->id,
+        'purchasable_id' => $renewable->id,
+        'purchase_id' => $purchase->id,
+    ]);
 
-        $this->action->execute($purchase);
-    }
-}
+    $this->expectExceptionMessage("User {$user->id} doesn't own purchasable {$purchasable->id} to renew.");
+
+    $this->action->execute($purchase);
+});
