@@ -6,7 +6,7 @@ use App\Models\Technology;
 use App\Models\User;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 it('can show the uses page', function () {
     $this->actingAs(User::factory()->make(['is_admin' => true]));

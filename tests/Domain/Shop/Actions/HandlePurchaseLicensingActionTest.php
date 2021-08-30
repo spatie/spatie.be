@@ -8,10 +8,9 @@ use App\Models\User;
 use Database\Factories\ReceiptFactory;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->action = resolve(HandlePurchaseLicensingAction::class);
 });

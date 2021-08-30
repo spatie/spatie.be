@@ -6,10 +6,9 @@ use Illuminate\Support\Facades\Mail;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     TestTime::freeze();
 

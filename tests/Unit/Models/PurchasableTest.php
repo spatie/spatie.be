@@ -7,10 +7,9 @@ use App\Models\User;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->purchasable = Purchasable::factory()->create([
         'price_in_usd_cents' => 10000,

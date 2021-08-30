@@ -5,10 +5,9 @@ use App\Domain\Shop\Models\Referrer;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     TestTime::freeze();
 

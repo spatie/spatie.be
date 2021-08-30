@@ -5,8 +5,6 @@ use App\Domain\Experience\Projectors\UserExperienceProjector;
 use App\Models\User;
 use Tests\TestCase;
 
-uses(TestCase::class);
-
 test('on experience earned', function () {
     $user = User::factory()->create();
 

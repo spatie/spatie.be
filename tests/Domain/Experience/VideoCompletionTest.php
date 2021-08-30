@@ -9,10 +9,9 @@ use App\Models\Video;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->series = Series::factory()->create();
 

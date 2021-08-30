@@ -11,7 +11,7 @@ use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 test('experience is earned with every pull request', function () {
     /** @var \App\Models\User $user */

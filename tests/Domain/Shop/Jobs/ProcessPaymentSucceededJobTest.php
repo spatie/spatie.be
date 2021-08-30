@@ -9,10 +9,9 @@ use Database\Factories\ReceiptFactory;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $receipt = ReceiptFactory::new()->create();
 

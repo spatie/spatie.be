@@ -5,7 +5,7 @@ use App\Models\User;
 use App\Models\Video;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 test('has completed', function () {
     /** @var \App\Models\Series $series */

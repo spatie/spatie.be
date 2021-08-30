@@ -9,10 +9,9 @@ use App\Services\GitHub\GitHubApi;
 use Database\Factories\ReceiptFactory;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->apiSpy = $this->spy(GitHubApi::class);
     $this->action = resolve(RestoreRepositoryAccessAction::class);

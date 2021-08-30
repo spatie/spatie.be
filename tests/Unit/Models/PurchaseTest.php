@@ -3,7 +3,7 @@
 use App\Domain\Shop\Models\Purchase;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 test('a purchase can unlock a ray license', function () {
     $this->markTestSkipped('unlocksRayLicense is currently disabled.');

@@ -19,7 +19,7 @@ use App\Support\Uuid\Uuid;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 test('add', function () {
     $uuid = Uuid::new();

@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 it('will add tags for the purchasable on the mailing list', function () {
     /** @var EmailList $emailList */

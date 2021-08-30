@@ -7,7 +7,7 @@ use Spatie\TestTime\TestTime;
 use Symfony\Component\HttpFoundation\Cookie as SymfonyCookie;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 it('can handle a referrer', function () {
     $purchasable = Purchasable::factory()->create();

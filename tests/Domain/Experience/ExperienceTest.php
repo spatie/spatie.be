@@ -7,7 +7,7 @@ use Database\Seeders\AchievementSeeder;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 test('100 xp achievement', function () {
     (new AchievementSeeder())->run();

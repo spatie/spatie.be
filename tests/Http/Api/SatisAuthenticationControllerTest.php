@@ -4,7 +4,7 @@ use App\Domain\Shop\Models\License;
 use App\Http\Api\Controllers\SatisAuthenticationController;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 it('will abort if no license is found', function () {
     $this->markTestSkipped('To fix');

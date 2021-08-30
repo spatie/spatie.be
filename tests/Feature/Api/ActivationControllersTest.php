@@ -9,10 +9,9 @@ use Spatie\Crypto\Rsa\PublicKey;
 use Symfony\Component\HttpFoundation\Response;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->license = License::factory()->create();
 

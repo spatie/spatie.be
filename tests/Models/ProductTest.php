@@ -4,7 +4,7 @@ use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Purchasable;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 it('can retrieve the bundles where a product is in', function () {
     $purchasableInBundle = Purchasable::factory()->create();

@@ -20,10 +20,9 @@ use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->handlePurchaseAction = resolve(HandlePurchaseAction::class);
 

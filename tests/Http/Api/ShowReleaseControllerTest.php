@@ -3,10 +3,9 @@
 use App\Domain\Shop\Models\Release;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->release = Release::factory()->create([
         'released' => true,

@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Notification;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 it('sends a warning notification to soon to expire licenses', function () {
     Notification::fake();

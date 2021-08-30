@@ -6,10 +6,9 @@ use App\Models\Video;
 use App\Services\Vimeo\Vimeo;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     $this->vimeoMock = $this->mock(Vimeo::class);
     $this->action = resolve(UpdateVideoDetailsAction::class);

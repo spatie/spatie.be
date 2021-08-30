@@ -4,7 +4,7 @@ use App\Models\Ad;
 use App\Models\Repository;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 it('will redirect git hub ad clicks to the right url', function () {
     $redirectUrl = 'https://redirect.com';

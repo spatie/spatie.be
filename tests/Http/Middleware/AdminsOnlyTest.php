@@ -6,11 +6,7 @@ use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use Tests\TestCase;
 
-uses(TestCase::class);
-
 beforeEach(function () {
-    parent::setUp();
-
     $this->middleware = new AdminsOnly();
 });
 

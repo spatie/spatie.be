@@ -5,7 +5,7 @@ use App\Http\Controllers\AfterPaddleSaleController;
 use App\Models\User;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 test('the after paddle sale controller is valid', function () {
     $user = User::factory()->create();

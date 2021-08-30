@@ -6,10 +6,9 @@ use App\Services\GitHub\GitHubApi;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
 

@@ -5,10 +5,9 @@ use App\Models\Repository;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-uses(TestCase::class);
+
 
 beforeEach(function () {
-    parent::setUp();
 
     Storage::fake('github_ads');
 
