@@ -43,6 +43,8 @@ class Series extends Resource
                 ->sortable()
                 ->rules(['required', 'max:255']),
 
+            Markdown::make('Description'),
+
             Image::make('Image')
                 ->store(function (Request $request, EloquentSeries $series) {
                     return function () use ($request, $series): void {

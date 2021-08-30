@@ -1,4 +1,30 @@
 <section id="portfolio" class="section">
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
+            <a href="https://testing-laravel.com" class="illustration is-left h-full" title="Testing Laravel" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/testing-laravel.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
+            <div class="markup links-blue links-underline">
+                <h3 class="title">
+                    Testing Laravel
+                    <span class="title-subtext text-pink-dark block">
+                        Video course <span class="font-normal">+ demo app</span>
+                    </span>
+                </h3>
+                <p class="text-lg">
+                    Learn how to write quality tests in Pest and PHPUnit.
+                </p>
+                <p class="text-lg">Learn best practices for testing Laravel applications. Ship less bugs to production and refactor stuff with confidence after watching this extended video course by Freek and Brent.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://testing-laravel.com" target="_blank" rel="nofollow noreferrer noopener">testing-laravel.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
      <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://event-sourcing-laravel.com" class="illustration is-left h-full" title="event-sourcing" target="_blank" rel="nofollow noreferrer noopener">
