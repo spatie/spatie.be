@@ -1,7 +1,7 @@
 <section id="portfolio" class="section">
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://testing-laravel.app" class="illustration is-left h-full" title="Testing Laravel" target="_blank" rel="nofollow noreferrer noopener">
+            <a href="https://testing-laravel.com" class="illustration is-left h-full" title="Testing Laravel" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/testing-laravel.jpg') }}
             </a>
         </div>
@@ -19,7 +19,7 @@
                 <p class="text-lg">Learn best practices for testing Laravel applications. Ship less bugs to production and refactor stuff with confidence after watching this extended video course by Freek and Brent.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://testing-laravel.app" target="_blank" rel="nofollow noreferrer noopener">testing-laravel.com</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://testing-laravel.com" target="_blank" rel="nofollow noreferrer noopener">testing-laravel.com</a></li>
                 </ul>
             </div>
         </div>
