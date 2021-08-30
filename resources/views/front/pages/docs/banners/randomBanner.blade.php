@@ -10,6 +10,7 @@
             'front.pages.docs.banners.flare',
             'front.pages.docs.banners.mailcoach',
             'front.pages.docs.banners.ray',
+            'front.pages.docs.banners.testingLaravel',
         ]))
     @endif
 @endunless
