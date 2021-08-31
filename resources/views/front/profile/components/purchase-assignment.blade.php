@@ -10,7 +10,9 @@
                 </div>
             @endif
             <h2 class="title-sm link-black">{{ $assignment->purchasable->product->title }}</h2>
-            <p class="text-xs text-gray mt-1">Purchased on {{ $assignment->created_at->format('Y-m-d') }}</p>
+            @if($assignment->created_at)
+                <p class="text-xs text-gray mt-1">Purchased on {{ $assignment->created_at->format('Y-m-d') }}</p>
+            @endif
         </a>
 
         @if ($assignment->purchasable->repository_access)
