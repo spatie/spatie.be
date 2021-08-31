@@ -65,7 +65,7 @@ class Series extends Resource
                     return [];
                 }),
 
-            Markdown::make('Description'),
+            Markdown::make('Introduction'),
 
             HasMany::make('Videos', 'videos', Video::class),
 
