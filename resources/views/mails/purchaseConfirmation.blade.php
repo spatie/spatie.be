@@ -15,7 +15,7 @@ Just use the same account as your previous purchase to take advantage of this of
     View products
 @endcomponent
 
-@if($purchase->purchasable->id === 20)
+@if($purchasable->id === 20)
 ## Testing Laravel Q&A
 
 On 7th of October 14:00 CET, Brent & Freek will answer questions from buyers of this course in [this stream on YouTube](https://www.youtube.com/watch?v=w0TeJ7_0BMg). You can send a question by simply replying to this mail.
