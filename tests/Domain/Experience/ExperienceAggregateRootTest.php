@@ -17,9 +17,6 @@ use App\Models\Series;
 use App\Models\Video;
 use App\Support\Uuid\Uuid;
 use Spatie\EventSourcing\Commands\CommandBus;
-use Tests\TestCase;
-
-
 
 test('add', function () {
     $uuid = Uuid::new();
