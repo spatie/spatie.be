@@ -31,7 +31,7 @@ jobs:
                   cp .env.ci .env
                   php artisan key:generate
 
-            - name: Run PHPUnit
+            - name: Run tests
               run: ./vendor/bin/pest
               env:
                   DB_PASSWORD: root
