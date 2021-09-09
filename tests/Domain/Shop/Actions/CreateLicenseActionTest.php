@@ -5,10 +5,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use Tests\TestCase;
 
-
-
 beforeEach(function () {
-
     $this->action = resolve(CreateLicenseAction::class);
 });
 
@@ -17,9 +14,10 @@ it('can create a license', function () {
 
     $license = $this->action->execute($assignment);
 
-    expect($license->key)->not()->toBeNull();
-    expect($license->expires_at->isNextYear())->toBeTrue();
-    expect($license->assignment->is($assignment))->toBeTrue();
+    expect($license)
+        ->key->not()->toBeNull()
+        ->expires_at->isNextYear()->toBeTrue()
+        ->assignment->is($assignment)->toBeTrue();
 });
 
 it('can create a license for lifetime purchases', function () {
@@ -31,6 +29,7 @@ it('can create a license for lifetime purchases', function () {
 
     $license = $this->action->execute($assignment);
 
-    expect($license->key)->not()->toBeNull();
-    expect($license->expires_at->year)->toBe(2038);
+    expect($license)
+        ->key->not()->toBeNull()
+        ->expires_at->year->toBe(2038);
 });
