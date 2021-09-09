@@ -39,7 +39,7 @@ it('will return the country specific prices if they are available', function () 
         ->get(action(PriceController::class, [$this->purchasable->id, 'BE']))
         ->json();
 
-    $this->assertMatchesSnapshot($response);
+    assertMatchesSnapshot($response);
 });
 
 it('will return a 404 if the purchasable is not found', function () {
@@ -59,7 +59,7 @@ it('will return the correct usd prices is there is a discount', function () {
         ->get(action(PriceController::class, [$this->purchasable->id, 'BE']))
         ->json();
 
-    $this->assertMatchesSnapshot($response);
+    assertMatchesSnapshot($response);
 });
 
 it('will return the correct custom prices is there is a discount', function () {
@@ -81,5 +81,5 @@ it('will return the correct custom prices is there is a discount', function () {
         ->get(action(PriceController::class, [$this->purchasable->id, 'BE']))
         ->json();
 
-    $this->assertMatchesSnapshot($response);
+    assertMatchesSnapshot($response);
 });

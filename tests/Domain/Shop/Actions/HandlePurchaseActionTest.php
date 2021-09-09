@@ -181,10 +181,9 @@ it('can renew a license', function () {
         $this->payload
     );
     expect($originalPurchase->licenses)->toHaveCount(1);
-    $this->assertEquals(
-        Date::create(2021, 01, 01),
-        $originalPurchase->licenses->first()->fresh()->expires_at
-    );
+
+    expect($originalPurchase->licenses->first()->fresh()->expires_at)
+        ->toEqual(Date::create(2021, 01, 01));
 
     $this->paddlePayloadAttributes['passthrough'] = json_encode([
         'license_id' => $originalPurchase->licenses->first()->id,
@@ -197,10 +196,8 @@ it('can renew a license', function () {
         $this->payload,
     );
 
-    $this->assertEquals(
-        Date::create(2022, 01, 01),
-        $originalPurchase->licenses->first()->fresh()->expires_at
-    );
+    expect($originalPurchase->licenses->first()->fresh()->expires_at)
+        ->toEqual(Date::create(2022, 01, 01));
 
     expect(License::count())->toEqual(1);
 });

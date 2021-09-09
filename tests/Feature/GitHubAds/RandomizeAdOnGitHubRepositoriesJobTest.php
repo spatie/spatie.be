@@ -6,10 +6,7 @@ use App\Models\Repository;
 use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
-
-
 beforeEach(function () {
-
     Storage::fake();
 });
 
@@ -23,8 +20,7 @@ it('can randomize ads on git hub repositories', function () {
     dispatch(new RandomizeAdsOnGitHubRepositoriesJob());
 
     $repositories->each(function (Repository $repository) {
-        $this->assertNotNull($repository->refresh()->ad);
-
+        expect($repository->refresh()->ad)->not()->toBeNull();
         Storage::disk('github_ads')->assertExists($repository->gitHubAdImagePath());
     });
 });

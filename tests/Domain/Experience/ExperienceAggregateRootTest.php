@@ -17,6 +17,7 @@ use App\Models\Series;
 use App\Models\Video;
 use App\Support\Uuid\Uuid;
 use Spatie\EventSourcing\Commands\CommandBus;
+use function Pest\Laravel\assertDatabaseHas;
 
 test('add', function () {
     $uuid = Uuid::new();
@@ -29,7 +30,7 @@ test('add', function () {
         50
     ));
 
-    $this->assertDatabaseHas((new UserExperienceProjection())->getTable(), [
+    assertDatabaseHas((new UserExperienceProjection())->getTable(), [
         'user_id' => 1,
         'amount' => 50,
     ]);
@@ -46,7 +47,7 @@ test('unlock achievement', function () {
         Achievement::factory()->create()
     ));
 
-    $this->assertDatabaseHas((new UserAchievementProjection())->getTable(), [
+    assertDatabaseHas((new UserAchievementProjection())->getTable(), [
         'user_id' => 1,
         'title' => 'test',
     ]);

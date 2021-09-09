@@ -6,7 +6,8 @@ use App\Support\Uuid\Uuid;
 use Database\Seeders\AchievementSeeder;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Tests\TestCase;
-
+use function Pest\Laravel\assertDatabaseHas;
+use function Pest\Laravel\assertDatabaseMissing;
 
 
 test('100 xp achievement', function () {
@@ -24,12 +25,12 @@ test('100 xp achievement', function () {
         ));
     }
 
-    $this->assertDatabaseHas(UserAchievementProjection::class, [
+    assertDatabaseHas(UserAchievementProjection::class, [
         'user_id' => 1,
         'slug' => '100-experience',
     ]);
 
-    $this->assertDatabaseMissing(UserAchievementProjection::class, [
+    assertDatabaseMissing(UserAchievementProjection::class, [
         'user_id' => 1,
         'slug' => '1000-experience',
     ]);

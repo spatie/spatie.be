@@ -10,7 +10,7 @@ use Database\Seeders\AchievementSeeder;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
 use Tests\TestCase;
-
+use function Pest\Laravel\assertDatabaseHas;
 
 
 test('experience is earned with every pull request', function () {
@@ -37,17 +37,17 @@ test('100 pull requests achievement', function () {
         ));
     }
 
-    $this->assertDatabaseHas(UserAchievementProjection::class, [
+    assertDatabaseHas(UserAchievementProjection::class, [
         'user_id' => 1,
         'slug' => '10-pull-requests',
     ]);
 
-    $this->assertDatabaseHas(UserAchievementProjection::class, [
+    assertDatabaseHas(UserAchievementProjection::class, [
         'user_id' => 1,
         'slug' => '50-pull-requests',
     ]);
 
-    $this->assertDatabaseHas(UserAchievementProjection::class, [
+    assertDatabaseHas(UserAchievementProjection::class, [
         'user_id' => 1,
         'slug' => '100-pull-requests',
     ]);

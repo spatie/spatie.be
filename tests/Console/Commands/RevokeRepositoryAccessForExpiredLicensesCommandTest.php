@@ -81,7 +81,7 @@ it('will not revoke access for active licenses', function () {
 });
 
 it('will reset the username and revoke access if the user was not found on github', function () {
-    $this->assertNotNull($this->license->assignment->user->github_username);
+    expect($this->license->assignment->user->github_username)->not()->toBeNull();
 
     $this->apiSpy
         ->shouldReceive('revokeAccessToRepo')

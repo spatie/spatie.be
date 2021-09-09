@@ -63,10 +63,7 @@ test('experience is gained per series', function () {
         2 * ExperienceType::VideoCompletion()->getAmount()
         + ExperienceType::SeriesCompletion()->getAmount();
 
-    $this->assertEquals(
-        $expectedAmount,
-        $user->experience->amount
-    );
+    expect($user->experience->amount)->toEqual($expectedAmount);
 });
 
 test('same video cant be registered twice', function () {

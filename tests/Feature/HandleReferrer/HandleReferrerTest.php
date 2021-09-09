@@ -33,9 +33,9 @@ it('can handle a referrer', function () {
 
     $cookies = collect(Cookie::getQueuedCookies());
 
-    $this->assertTrue($cookies->contains(function (SymfonyCookie $cookie) use ($referrer) {
+    expect($cookies->contains(function (SymfonyCookie $cookie) use ($referrer) {
         return $cookie->getName() === 'active-referrer-uuid' && $cookie->getValue() === $referrer->uuid;
-    }));
+    }))->toBeTrue();
 });
 
 it('will use the value set in the cookie', function () {

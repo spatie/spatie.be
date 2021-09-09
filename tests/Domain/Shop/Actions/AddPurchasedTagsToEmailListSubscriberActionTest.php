@@ -8,7 +8,6 @@ use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Tests\TestCase;
 
 
-
 it('will add tags for the purchasable on the mailing list', function () {
     /** @var EmailList $emailList */
     $emailList = EmailList::create(['name' => 'Spatie']);
@@ -23,10 +22,10 @@ it('will add tags for the purchasable on the mailing list', function () {
 
     $tagNames = $subscriber->tags->pluck('name')->toArray();
 
-    $this->assertEquals([
+    expect($tagNames)->toEqual([
         "purchased-product-" . Str::slug($purchase->purchasable->product->title),
-        "purchased-purchasable-" .Str::slug($purchase->purchasable->product->title) . '-' . Str::slug($purchase->purchasable->title),
-    ], $tagNames);
+        "purchased-purchasable-" . Str::slug($purchase->purchasable->product->title) . '-' . Str::slug($purchase->purchasable->title),
+    ]);
 });
 
 it('will add tags for a bundle purchase', function () {
@@ -46,12 +45,12 @@ it('will add tags for a bundle purchase', function () {
     $purchasable1 = $purchase->bundle->purchasables->first();
     $purchasable2 = $purchase->bundle->purchasables->skip(1)->first();
 
-    $this->assertEqualsCanonicalizing([
+    expect($tagNames)->toEqualCanonicalizing([
         "purchased-product-" . Str::slug($purchasable1->product->title),
         "purchased-product-" . Str::slug($purchasable2->product->title),
-        "purchased-purchasable-" .Str::slug($purchasable1->product->title) . '-' . Str::slug($purchasable1->title),
-        "purchased-purchasable-" .Str::slug($purchasable2->product->title) . '-' . Str::slug($purchasable2->title),
-    ], $tagNames);
+        "purchased-purchasable-" . Str::slug($purchasable1->product->title) . '-' . Str::slug($purchasable1->title),
+        "purchased-purchasable-" . Str::slug($purchasable2->product->title) . '-' . Str::slug($purchasable2->title),
+    ]);
 });
 
 test('the add purchased tags to email list subscriber action is idempotent', function () {

@@ -66,7 +66,7 @@ it('can handle an incoming bundle payment', function () {
     dispatch(new ProcessPaymentSucceededJob($payload));
 
     expect($this->user->refresh()->purchases)->toHaveCount(1);
-    $this->assertNotNull($this->user->refresh()->purchases->first()->bundle_id);
+    expect($this->user->refresh()->purchases->first()->bundle_id)->not()->toBeNull();
 });
 
 it('can attribute the purchase created by the webhook to the referrer', function () {
