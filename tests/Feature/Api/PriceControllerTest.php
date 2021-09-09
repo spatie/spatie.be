@@ -6,6 +6,7 @@ use App\Http\Api\Controllers\PriceController;
 use Spatie\Snapshots\MatchesSnapshots;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
+use function Spatie\Snapshots\assertMatchesSnapshot;
 
 uses(MatchesSnapshots::class);
 
@@ -22,7 +23,7 @@ test('if there is no country specific price it will return the general usd one',
         ->get(action(PriceController::class, [$this->purchasable->id, 'BE']))
         ->json();
 
-    $this->assertMatchesSnapshot($response);
+    assertMatchesSnapshot($response);
 });
 
 it('will return the country specific prices if they are available', function () {
