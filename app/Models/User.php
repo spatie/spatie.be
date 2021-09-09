@@ -13,6 +13,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Domain\Shop\Models\Referrer;
+use App\Observers\UserObserver;
 use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -46,6 +47,8 @@ class User extends Authenticatable
 
     protected static function booted()
     {
+        self::observe(UserObserver::class);
+
         self::saving(function (User $user) {
             if ($user->uuid === null) {
                 $user->uuid = (string) Uuid::new();

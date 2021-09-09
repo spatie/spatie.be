@@ -3,6 +3,7 @@
 namespace App\Domain\Experience;
 
 use App\Domain\Experience\Commands\AddExperience;
+use App\Domain\Experience\Commands\DeleteUser;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\RegisterSeriesCompletion;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
@@ -11,6 +12,7 @@ use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Events\ExperienceEarned;
 use App\Domain\Experience\Events\PullRequestMerged;
 use App\Domain\Experience\Events\SeriesCompleted;
+use App\Domain\Experience\Events\UserDeleted;
 use App\Domain\Experience\Events\VideoCompleted;
 use App\Models\Series;
 use App\Models\User;
@@ -126,5 +128,12 @@ class ExperienceAggregateRoot extends AggregateRoot
     protected function applySeriesCompletion(SeriesCompleted $event): void
     {
         $this->completedSeries[$event->seriesId] = true;
+    }
+
+    public function deleteUser(DeleteUser $command): self
+    {
+        $this->recordThat(new UserDeleted($command->user->id));
+
+        return $this;
     }
 }

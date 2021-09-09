@@ -3,6 +3,7 @@
 namespace App\Domain\Experience\Projectors;
 
 use App\Domain\Experience\Events\ExperienceEarned;
+use App\Domain\Experience\Events\UserDeleted;
 use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Models\User;
 use Spatie\EventSourcing\EventHandlers\Projectors\Projector;
@@ -29,5 +30,12 @@ class UserExperienceProjector extends Projector
         $userExperience->writeable()->update([
             'amount' => $userExperience->amount + $event->amount
         ]);
+    }
+
+    public function onUserDeleted(UserDeleted $event): void
+    {
+        UserExperienceProjection::query()
+            ->where('user_id', $event->userId)
+            ->delete();
     }
 }

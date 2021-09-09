@@ -3,6 +3,7 @@
 namespace App\Domain\Experience\Projectors;
 
 use App\Domain\Experience\Events\AchievementUnlocked;
+use App\Domain\Experience\Events\UserDeleted;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Support\Uuid\Uuid;
 use Spatie\EventSourcing\EventHandlers\Projectors\Projector;
@@ -21,5 +22,12 @@ class UserAchievementProjector extends Projector
                 'title' => $event->title,
                 'description' => $event->description,
             ]);
+    }
+
+    public function onUserDeleted(UserDeleted $event): void
+    {
+        UserAchievementProjection::query()
+            ->where('user_id', $event->userId)
+            ->delete();
     }
 }
