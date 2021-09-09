@@ -69,13 +69,15 @@ test('deleting a user also deletes its purchases and achievements', function () 
 
     command(RegisterPullRequest::forUser($user, "PR 1"));
 
-    $this->assertEquals(1, $user->purchases()->count());
-    $this->assertEquals(1, $user->achievements()->count());
-    $this->assertEquals(1, $user->experience()->count());
+    expect($user)
+        ->purchases->toHaveCount(1)
+        ->achievements->toHaveCount(1)
+        ->experience->not()->toBeNull();
 
     $user->delete();
 
-    $this->assertEquals(0, $user->purchases()->count());
-    $this->assertEquals(0, $user->achievements()->count());
-    $this->assertEquals(0, $user->experience()->count());
+    expect($user)
+        ->purchases->fresh()->toHaveCount(0)
+        ->achievements->fresh()->toHaveCount(0)
+        ->experience->fresh()->toBeNull();
 });
