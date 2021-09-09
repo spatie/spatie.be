@@ -7,7 +7,6 @@ use Spatie\Snapshots\MatchesSnapshots;
 use Spatie\TestTime\TestTime;
 use Tests\TestCase;
 
-
 uses(MatchesSnapshots::class);
 
 beforeEach(function () {
@@ -26,7 +25,7 @@ test('if there is no country specific price it will return the general usd one',
     $this->assertMatchesSnapshot($response);
 });
 
-it('will return the country specific prices if it is available', function () {
+it('will return the country specific prices if they are available', function () {
     PurchasablePrice::factory()->create([
         'purchasable_id' => $this->purchasable->id,
         'country_code' => 'BE',
