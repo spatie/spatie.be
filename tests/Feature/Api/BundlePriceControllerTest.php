@@ -25,15 +25,7 @@ test('if there is no country specific price it will return the general usd one',
 });
 
 it('will return the country specific prices if it is available', function () {
-    $bundle = Bundle::factory()->create();
-
-    $bundlePrice = BundlePrice::factory()->create([
-        'country_code' => 'BE',
-        'amount' => 789,
-        'bundle_id' => $bundle->id,
-    ]);
-
-    get(action(BundlePriceController::class, [$bundlePrice->id, 'BE']))
+    get(action(BundlePriceController::class, [$this->bundlePrice->bundle->id, 'BE']))
         ->assertJsonPath('actual.price_in_cents', 789);
 });
 
