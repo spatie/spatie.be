@@ -26,3 +26,42 @@ If you'd like to reuse or repost something, feel free to hit us up at info@spati
 ## License
 
 This project and the Laravel framework are open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+
+## Apple sign-in
+
+Every 6 months, the token for Sign-in with Apple expires, this can be renewed using the "Spatie apple login - private key" in our team's 1Password vault and the following ruby script:
+
+```ruby
+require 'jwt'
+
+key_file = 'key.txt'
+team_id = '' # Found in the top right when signed in on the Apple developer site
+client_id = 'be.spatie.website'
+key_id = '' # The key ID, found here https://developer.apple.com/account/resources/authkeys/list
+
+ecdsa_key = OpenSSL::PKey::EC.new IO.read key_file
+
+headers = {
+'kid' => key_id
+}
+
+claims = {
+    'iss' => team_id,
+    'iat' => Time.now.to_i,
+    'exp' => Time.now.to_i + 86400*180,
+    'aud' => 'https://appleid.apple.com',
+    'sub' => client_id,
+}
+
+token = JWT.encode claims, ecdsa_key, 'ES256', headers
+
+puts token
+```
+
+Then execute it using
+
+```shell
+ruby client_secret.rb
+```
+
+Which gives you a new token that is valid for 6 months.

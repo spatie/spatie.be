@@ -15,7 +15,7 @@
         // the parent window will take care of the user.
         window.close();
     } else {
-        window.location.replace('{{ session('next', route('products.index')) }}');
+        window.location.replace('{{ route('products.index') }}');
     }
 </script>
 </body>
