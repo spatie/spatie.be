@@ -23,10 +23,10 @@ Whenever possible use the short nullable notation of a type, instead of using a 
 ```php
 // in a class
 
-// good
+// Good
 public ?string $variable;
 
-// bad
+// Bad
 public string | null $variable;
 ```
 
@@ -36,7 +36,7 @@ If a method returns nothing, it should be indicated with `void`.
 This makes it more clear to the users of your code what your intention was when writing it.
 
 ```php
-// good
+// Good
 
 // in a Laravel model
 public function scopeArchived(Builder $query): void
@@ -52,13 +52,13 @@ public function scopeArchived(Builder $query): void
 You should type a property whenever possible. Don't use a docblock.
 
 ```php
-// good
+// Good
 class Foo
 {
     public string $bar;
 }
 
-// bad
+// Bad
 class Foo
 {
     /** @var string */
@@ -348,7 +348,7 @@ if (! $conditionC) {
 ```
 
 ```php
-// bad
+// Bad
 if ($conditionA && $conditionB && $conditionC) {
   // do stuff
 }
@@ -505,11 +505,11 @@ When adding config values for a specific service, add them to the `services` con
 ```php
 // Good: adding credentials to `config/services.php`
 return [
-     'ses' => [
-            'key' => env('SES_AWS_ACCESS_KEY_ID'),
-            'secret' => env('SES_AWS_SECRET_ACCESS_KEY'),
-            'region' => env('SES_AWS_DEFAULT_REGION', 'us-east-1'),
-        ],
+    'ses' => [
+        'key' => env('SES_AWS_ACCESS_KEY_ID'),
+        'secret' => env('SES_AWS_SECRET_ACCESS_KEY'),
+        'region' => env('SES_AWS_DEFAULT_REGION', 'us-east-1'),
+    ],
     
     'github' => [
         'username' => env('GITHUB_USERNAME'),
@@ -619,11 +619,11 @@ Route::get('open-source', [OpenSourceController::class, 'index'])->name('open-so
 All routes have an http verb, that's why we like to put the verb first when defining a route. It makes a group of routes very readable. Any other route options should come after it.
 
 ```php
-// good: all http verbs come first
+// Good: all http verbs come first
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('open-source', [OpenSourceController::class, 'index'])->name('openSource');
 
-// bad: http verbs not easily scannable
+// Bad: http verbs not easily scannable
 Route::name('home')->get('/', [HomeController::class, 'index']);
 Route::name('openSource')->get([OpenSourceController::class, 'index']);
 ```
@@ -637,11 +637,11 @@ Route::get('news/{newsItem}', [NewsItemsController::class, 'index']);
 A route url should not start with `/` unless the url would be an empty string.
 
 ```php
-// good
+// Good
 Route::get('/', [HomeController::class, 'index']);
 Route::get('open-source', [OpenSourceController::class, 'index']);
 
-//bad
+// Bad
 Route::get('', [HomeController::class, 'index']);
 Route::get('/open-source', [OpenSourceController::class, 'index']);
 ```
