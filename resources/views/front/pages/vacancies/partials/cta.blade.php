@@ -14,7 +14,7 @@
                 <h2 class="title-xl md:text-right">
                     <a class="link-white link-underline" href="{{ mailto(
 'I would be a good match!',
-'This is exiting! Send us:
+'This is exciting! Send us:
 - your CV
 - a brief motivation
 ' . ( isset($github) ? '- GitHub details or code examples' : '' )
