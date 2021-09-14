@@ -567,7 +567,7 @@ At the end of the command, provide a summary on how much processing was done.
 ```php
 // in a Command
 public function handle()
-    {
+{
     $this->comment("Start processing items...")
 
     // do some work
