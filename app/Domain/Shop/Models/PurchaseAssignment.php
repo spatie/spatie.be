@@ -41,4 +41,14 @@ class PurchaseAssignment extends Model
     {
         $query->whereIn('purchasable_id', $product->purchasables->pluck('id'));
     }
+
+    public function scopeWhereUser(Builder $query, User $user): void
+    {
+        $query->where('user_id', $user->id);
+    }
+
+    public function scopeWherePurchase(Builder $query, Purchase $purchase): void
+    {
+        $query->where('purchase_id', $purchase->id);
+    }
 }

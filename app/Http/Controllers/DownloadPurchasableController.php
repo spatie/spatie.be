@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -11,7 +12,10 @@ class DownloadPurchasableController
 {
     public function __invoke(Request $request, Product $product, Purchase $purchase, Media $file)
     {
-        $userHasPurchase = Purchase::query()->whereUser($request->user())->whereKey($purchase->id)->exists();
+        $userHasPurchase = PurchaseAssignment::query()
+            ->whereUser($request->user())
+            ->wherePurchase($purchase)
+            ->exists();
 
         abort_unless($userHasPurchase, 403, 'Purchase missing');
 
