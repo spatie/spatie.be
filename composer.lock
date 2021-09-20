@@ -10905,17 +10905,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "4.10.0",
+            "version": "4.10.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "de5bda4b0ed62d1877ee49a7d526006dfb5192e7"
+                "reference": "8b1edb7d8474ebf6f98efbeba20e8649d853c3c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-de5bda4b0ed62d1877ee49a7d526006dfb5192e7-zip-e167e8.zip",
-                "reference": "de5bda4b0ed62d1877ee49a7d526006dfb5192e7",
-                "shasum": "e4b61c32dee9dc7cfd54402df5a4209af0ba499b"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-8b1edb7d8474ebf6f98efbeba20e8649d853c3c9-zip-6a3dba.zip",
+                "reference": "8b1edb7d8474ebf6f98efbeba20e8649d853c3c9",
+                "shasum": "98c71bbcb22a88753f002e9887e9790600b38c0f"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -10961,10 +10961,12 @@
                 "nunomaduro/collision": "^5.3",
                 "orchestra/testbench": "^6.0",
                 "orchestra/testbench-core": "^6.12",
-                "phpunit/phpunit": "^9.5",
+                "pestphp/pest": "^1.18",
+                "pestphp/pest-plugin-parallel": "^0.3.1",
                 "predis/predis": "^1.1",
                 "psalm/plugin-laravel": "^1.4",
                 "spatie/laravel-ray": "^1.9",
+                "spatie/pest-plugin-snapshots": "^1.1",
                 "spatie/phpunit-snapshot-assertions": "^4.2",
                 "spatie/test-time": "^1.2",
                 "symfony/var-dumper": "^5.2",
@@ -10994,7 +10996,7 @@
                     "vendor/bin/php-cs-fixer fix --allow-risky=yes"
                 ],
                 "test": [
-                    "./vendor/bin/testbench package:test --parallel"
+                    "./vendor/bin/pest"
                 ],
                 "test-coverage": [
                     "vendor/bin/phpunit --coverage-html coverage"
@@ -11023,10 +11025,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.10.0",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/4.10.1",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2021-09-15T08:46:33+00:00"
+            "time": "2021-09-20T09:32:58+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -11573,16 +11575,16 @@
         },
         {
             "name": "spatie/laravel-package-tools",
-            "version": "1.9.0",
+            "version": "1.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-package-tools.git",
-                "reference": "cf4c4cec220575e2864c6082842d76822421f1b1"
+                "reference": "a440e6778970e134f63f3c5e1b07c81db4dedc8f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/cf4c4cec220575e2864c6082842d76822421f1b1",
-                "reference": "cf4c4cec220575e2864c6082842d76822421f1b1",
+                "url": "https://api.github.com/repos/spatie/laravel-package-tools/zipball/a440e6778970e134f63f3c5e1b07c81db4dedc8f",
+                "reference": "a440e6778970e134f63f3c5e1b07c81db4dedc8f",
                 "shasum": ""
             },
             "require": {
@@ -11621,7 +11623,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-package-tools/issues",
-                "source": "https://github.com/spatie/laravel-package-tools/tree/1.9.0"
+                "source": "https://github.com/spatie/laravel-package-tools/tree/1.9.1"
             },
             "funding": [
                 {
@@ -11629,7 +11631,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-23T15:12:33+00:00"
+            "time": "2021-09-20T07:41:46+00:00"
         },
         {
             "name": "spatie/laravel-query-builder",
@@ -18716,5 +18718,5 @@
     "platform-overrides": {
         "php": "8.0"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.0.0"
 }
