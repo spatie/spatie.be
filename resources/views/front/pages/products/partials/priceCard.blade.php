@@ -171,19 +171,7 @@
                                         }
                                     });
 
-                                    const passthrough = {
-                                        emails: this.emails,
-                                        billable_id: {{ auth()->user()->id }},
-                                        billable_type: "App\\Models\\User",
-                                    };
-
-                                    @if (isset($license))
-                                        passthrough.license_id = {{ $license->id }};
-                                    @endif
-
-                                    @if ($referrer = \App\Domain\Shop\Models\Referrer::findActive())
-                                        passthrough.referrer_uuid = '{{ $referrer->uuid }}';
-                                    @endif
+                                    const passthrough = @json(auth()->user()->getPassthrough($license));
 
                                     let options = {
                                         override: '{{ $payLink }}',

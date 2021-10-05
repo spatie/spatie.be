@@ -66,6 +66,25 @@ class User extends Authenticatable
         return $this->uuid;
     }
 
+    public function getPassthrough(License $license = null)
+    {
+        $passthrough = [
+            'emails' => [$this->email],
+            'billable_id' => $this->id,
+            'billable_type' => $this::class,
+        ];
+
+        if ($referrer = Referrer::findActive()) {
+            $passthrough['referrer_uuid'] = $referrer->uuid;
+        }
+
+        if ($license) {
+            $passthrough['license_id'] = $license->id;
+        }
+
+        return $passthrough;
+    }
+
     public function getPayLinkForProductId(string $paddleProductId, License $license = null)
     {
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
@@ -77,15 +96,7 @@ class User extends Authenticatable
             $prices[] = $dollarDisplayablePrice->toPaddleFormat();
         }
 
-        $passthrough = [];
-
-        if ($referrer = Referrer::findActive()) {
-            $passthrough['referrer_uuid'] = $referrer->uuid;
-        }
-
-        if ($license) {
-            $passthrough['license_id'] = $license->id;
-        }
+        $passthrough = $this->getPassthrough($license);
 
         return $this->chargeProduct($paddleProductId, [
             'quantity_variable' => ! $purchasable->isRenewal(),
@@ -105,13 +116,9 @@ class User extends Authenticatable
             $prices[] = $dollarDisplayablePrice->toPaddleFormat();
         }
 
-        $passthrough = [];
+        $passthrough = $this->getPassthrough();
 
         $passthrough['bundle_id'] = $bundle->id;
-
-        if ($referrer = Referrer::findActive()) {
-            $passthrough['referrer_uuid'] = $referrer->uuid;
-        }
 
         return $this->chargeProduct($bundle->paddle_product_id, [
             'quantity_variable' => false,

@@ -3,14 +3,52 @@
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;
+use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Domain\Shop\Models\Referrer;
 use App\Models\Series;
 use App\Models\User;
 use App\Models\Video;
 use App\Support\Uuid\Uuid;
 
+it('can get passthrough for paddle', function () {
+    $user = User::factory()->create();
+
+    expect($user->getPassthrough())->toEqual([
+        'emails' => [$user->email],
+        'billable_id' => $user->id,
+        'billable_type' => User::class,
+    ]);
+});
+
+it('can get passthrough for paddle with a license', function () {
+    $user = User::factory()->create();
+    $license = License::factory()->create();
+
+    expect($user->getPassthrough($license))->toEqual([
+        'emails' => [$user->email],
+        'billable_id' => $user->id,
+        'billable_type' => User::class,
+        'license_id' => $license->id,
+    ]);
+});
+
+it('can get passthrough for paddle with a license and active referrer', function () {
+    $user = User::factory()->create();
+    $license = License::factory()->create();
+    $referrer = Referrer::factory()->create();
+    $referrer->makeActive();
+
+    expect($user->getPassthrough($license))->toEqual([
+        'emails' => [$user->email],
+        'billable_id' => $user->id,
+        'billable_type' => User::class,
+        'referrer_uuid' => $referrer->uuid,
+        'license_id' => $license->id,
+    ]);
+});
 
 test('has completed', function () {
     /** @var \App\Models\Series $series */
