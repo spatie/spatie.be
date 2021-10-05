@@ -171,7 +171,7 @@
                                         }
                                     });
 
-                                    const passthrough = @json(auth()->user()->getPassthrough($license));
+                                    const passthrough = @json(auth()->user()->getPassthrough($license ?? null));
 
                                     let options = {
                                         override: '{{ $payLink }}',
