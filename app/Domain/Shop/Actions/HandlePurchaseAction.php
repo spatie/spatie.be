@@ -160,7 +160,12 @@ class HandlePurchaseAction
                 );
             }
 
+            /** @var Purchasable $purchasable */
             foreach ($purchase->getPurchasables() as $purchasable) {
+                if ($purchasable->isRenewal()) {
+                    continue;
+                }
+
                 PurchaseAssignment::create([
                     'user_id' => $user->id,
                     'purchase_id' => $purchase->id,

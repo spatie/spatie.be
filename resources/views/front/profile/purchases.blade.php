@@ -110,10 +110,12 @@
                                                                 <div
                                                                     class="font-normal normal-case text-xs {{ $license->isExpired() ? 'text-pink-dark' : '' }}">
                                                                     {{ $license->isExpired() ? 'Expired on' : 'Expires on' }} {{ $license->expires_at->format('Y-m-d') }}
-                                                                    <a class="link-black link-underline"
-                                                                       href="{{ route('products.buy', [$license->assignment->purchasable->product, $license->assignment->purchasable, $license]) }}">
-                                                                        {{ $license->isExpired() ? 'Renew' : 'Extend' }}
-                                                                    </a>
+                                                                    @if ($license->assignment->purchasable->renewalPurchasable)
+                                                                        <a class="link-black link-underline"
+                                                                           href="{{ route('products.buy', [$license->assignment->purchasable->product, $license->assignment->purchasable->renewalPurchasable, $license]) }}">
+                                                                            {{ $license->isExpired() ? 'Renew' : 'Extend' }}
+                                                                        </a>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                             <div class="pb-4">
