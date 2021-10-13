@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use App\Nova\Actions\TransferPurchaseAssignmentsToUser;
+use App\Nova\Actions\TransferPurchasesToUser;
 use Illuminate\Http\Request;
 use KABBOUCHI\NovaImpersonate\Impersonate;
 use Laravel\Nova\Fields\Boolean;
@@ -103,6 +105,9 @@ class User extends Resource
      */
     public function actions(Request $request)
     {
-        return [];
+        return [
+            new TransferPurchasesToUser(),
+            new TransferPurchaseAssignmentsToUser(),
+        ];
     }
 }
