@@ -171,6 +171,8 @@
                                         }
                                     });
 
+                                    const passthrough = @json(auth()->user()->getPassthrough($license ?? null));
+
                                     let options = {
                                         override: '{{ $payLink }}',
                                         allowQuantity: true,
@@ -182,11 +184,7 @@
                                         frameTarget: 'checkout-container',
                                         frameInitialHeight: 0,
                                         frameStyle: 'width:100%; min-width:100%; background-color: transparent; border: none;',
-                                        passthrough: JSON.stringify({
-                                            emails: this.emails,
-                                            billable_id: {{ auth()->user()->id }},
-                                            billable_type: "App\\Models\\User"
-                                        }),
+                                        passthrough: JSON.stringify(passthrough),
                                     };
                                     Paddle.Checkout.open(options);
 
@@ -199,22 +197,16 @@
                                         }
                                         self.emails = emails;
 
-                                        options.passthrough = JSON.stringify({
-                                            emails: emails,
-                                            billable_id: {{ auth()->user()->id }},
-                                            billable_type: "App\\Models\\User",
-                                        });
+                                        passthrough.emails = emails;
+                                        options.passthrough = JSON.stringify(passthrough);
 
                                         Paddle.Checkout.open(options);
                                         self.loading = true;
                                     });
 
                                     this.$watch('emails', (newEmails) => {
-                                        options.passthrough = JSON.stringify({
-                                            emails: newEmails,
-                                            billable_id: {{ auth()->user()->id }},
-                                            billable_type: "App\\Models\\User"
-                                        });
+                                        passthrough.emails = newEmails;
+                                        options.passthrough = JSON.stringify(passthrough);
 
                                         self.emailsComplete = newEmails.length === newEmails.filter(email => email.length > 0).length;
 

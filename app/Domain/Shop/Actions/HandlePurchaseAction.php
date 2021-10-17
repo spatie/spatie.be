@@ -81,8 +81,11 @@ class HandlePurchaseAction
         }
 
         if ($user->email) {
+            /** @var Purchasable $purchasable */
             foreach ($purchasables as $purchasable) {
-                Mail::to($user->email)->queue(new PurchaseConfirmationMail($purchase, $purchasable));
+                if (! $purchasable->isRenewal()) {
+                    Mail::to($user->email)->queue(new PurchaseConfirmationMail($purchase, $purchasable));
+                }
             }
         }
 
@@ -160,6 +163,7 @@ class HandlePurchaseAction
                 );
             }
 
+            /** @var Purchasable $purchasable */
             foreach ($purchase->getPurchasables() as $purchasable) {
                 PurchaseAssignment::create([
                     'user_id' => $user->id,
