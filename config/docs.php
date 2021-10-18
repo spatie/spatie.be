@@ -234,7 +234,7 @@ return [
             "name" => "laravel-data",
             "repository" => "spatie/laravel-data",
             "branches" => [
-                "master" => "v1",
+                "main" => "v1",
             ],
             "category" => "Laravel",
         ],
