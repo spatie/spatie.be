@@ -22,5 +22,19 @@ class AppServiceProvider extends ServiceProvider
             'success' => 'success',
             'error' => 'error',
         ]);
+
+        foreach (config('docs.repositories') as $docsRepository) {
+            config()->set("filesystems.disks.{$docsRepository['name']}", [
+                'driver' => 'local',
+                'root' => storage_path("docs/{$docsRepository['name']}"),
+            ]);
+
+            config()->set("sheets.collections.{$docsRepository['name']}", [
+                'disk' => $docsRepository['name'],
+                'sheet_class' => \App\Docs\DocumentationPage::class,
+                'path_parser' => \App\Docs\DocumentationPathParser::class,
+                'content_parser' => \App\Docs\DocumentationContentParser::class,
+            ]);
+        }
     }
 }
