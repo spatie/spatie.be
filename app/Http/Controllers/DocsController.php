@@ -57,7 +57,11 @@ class DocsController
 
         $alias = $repository->getAlias($alias);
 
-        abort_if(is_null($alias), 404, 'Alias not found');
+        if (! $alias) {
+            $alias = $repository->aliases->keys()->first();
+
+            return redirect()->action([DocsController::class, 'show'], [$repository->slug, $alias, $slug]);
+        }
 
         /** @var Collection $pages */
         $pages = $alias->pages;
