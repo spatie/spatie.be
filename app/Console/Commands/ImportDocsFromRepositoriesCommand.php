@@ -2,11 +2,13 @@
 
 namespace App\Console\Commands;
 
+use App\Docs\Docs;
 use App\Exceptions\DocsImportException;
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Spatie\Sheets\Sheets;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
 use Spatie\Fork\Fork;
@@ -45,21 +47,16 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         Fork::new()
             ->after(parent: fn() => $this->getOutput()->progressAdvance())
+            ->concurrent(4)
             ->run(...$callables);
 
         $this->getOutput()->progressFinish();
-        
-        $this->info('Fetched docs from all repositories.');
 
-        $this->info('Caching Sheets.');
-
-        $pages = app(Sheets::class)->collection('docs')->all()->sortBy('weight');
-
-        cache()->store('docs')->forever('docs', $pages);
-
-        $this->info('Done caching Sheets.');
+        $this->info('Fetched & cached docs from all repositories.');
 
         $updatedRepositoriesValueStore->flush();
+
+        File::deleteDirectory(storage_path('docs-temp'));
 
         $this->info('All done!');
     }
@@ -89,7 +86,11 @@ class ImportDocsFromRepositoriesCommand extends Command
                     if (! $process->isSuccessful()) {
                         $this->error($process->getErrorOutput());
                         report(new DocsImportException("Import for repository {$repository['name']} unsuccessful: " . $process->getErrorOutput()));
+                        return;
                     }
+
+                    cache()->store('docs')->forget($repository['name']);
+                    app(Docs::class)->getRepository($repository['name']);
                 };
             })
             ->toArray();
