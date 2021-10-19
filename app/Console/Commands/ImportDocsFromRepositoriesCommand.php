@@ -48,6 +48,16 @@ class ImportDocsFromRepositoriesCommand extends Command
             ->run(...$callables);
 
         $this->getOutput()->progressFinish();
+        
+        $this->info('Fetched docs from all repositories.');
+
+        $this->info('Caching Sheets.');
+
+        $pages = app(Sheets::class)->collection('docs')->all()->sortBy('weight');
+
+        cache()->store('docs')->forever('docs', $pages);
+
+        $this->info('Done caching Sheets.');
 
         $updatedRepositoriesValueStore->flush();
 
