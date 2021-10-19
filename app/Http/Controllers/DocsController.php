@@ -43,6 +43,16 @@ class DocsController
     {
         $repository = $docs->getRepository($repository);
 
+        preg_match('/v\d+/', $alias, $matches);
+
+        if (! count($matches)) {
+            $latest = $repository->aliases->keys()->first();
+            $slug = "{$alias}/{$slug}";
+            $alias = $latest;
+
+            return redirect()->action([DocsController::class, 'show'], [$repository->slug, $alias, $slug]);
+        }
+
         abort_if(is_null($repository), 404, 'Repository not found');
 
         $alias = $repository->getAlias($alias);
