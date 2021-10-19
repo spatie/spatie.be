@@ -50,11 +50,10 @@
         "php-http/guzzle7-adapter": "^1.0",
         "predis/predis": "^1.1",
         "psr/http-factory-implementation": "^1.0",
-        "react/child-process": "^0.6.1",
-        "react/promise": "^2.8",
         "spatie/commonmark-shiki-highlighter": "^1.1",
         "spatie/crypto": "^2.0.0",
         "spatie/eloquent-sortable": "^3.8",
+        "spatie/fork": "^1.1",
         "spatie/laravel-artisan-dispatchable": "^1.0",
         "spatie/laravel-backup": "^7.0",
         "spatie/laravel-disable-floc": "^1.0",
@@ -80,7 +79,7 @@
         "spatie/ssh": "^1.4",
         "spatie/test-time": "^1.2",
         "spatie/valuestore": "^1.2",
-        "wyrihaximus/react-child-process-promise": "^3.0"
+        "symfony/process": "^5.3"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
