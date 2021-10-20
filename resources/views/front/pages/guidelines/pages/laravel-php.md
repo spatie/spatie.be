@@ -99,23 +99,24 @@ class Url
 }
 ```
 
-Always use fully qualified class names in docblocks.
+Always import the classnames in docblocks.
 
 ```php
 // Good
-
-/**
- * @param string $url
- *
- * @return \Spatie\Url\Url
- */
-
-// Bad
+use \Spatie\Url\Url
 
 /**
  * @param string $foo
  *
  * @return Url
+ */
+
+// Bad
+
+/**
+ * @param string $url
+ *
+ * @return \Spatie\Url\Url
  */
 ```
 
