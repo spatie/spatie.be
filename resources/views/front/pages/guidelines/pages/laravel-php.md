@@ -139,11 +139,61 @@ If a variable has multiple types, the most common occurring type should be first
 ```php
 // Good
 
-/** @var \Spatie\Goo\Bar|null */
+/** @var \Illuminate\Support\Collection|\SomeWeirdVendor\Collection */
 
 // Bad
 
-/** @var null|\Spatie\Goo\Bar */
+/** @var \SomeWeirdVendor\Collection|\Illuminate\Support\Collection| */
+```
+
+## Docblocks for iterables
+
+When your function gets passed an iterable, you should add a docblock to specify the type of key and value
+
+```php
+/**
+ * @param $myArray array<int, MyObject>
+ */
+function someFunction(array $myArray) {
+
+}
+```
+
+You should only add a docblock, for the parameters where they can add value.
+
+In this example, `typedArgument` doesn't need a dockblock, because we already know its type via the native typehint
+
+```php
+/**
+ * @param $myArray array<int, MyObject>
+ */
+function someFunction(array $myArray, int $typedArgument) {
+
+}
+```
+
+The keys and values of iterables that get returned should always be typed.
+
+```php
+use \Illuminate\Support\Collection
+
+/**
+ * @return \Illuminate\Support\Collection<int,SomeObject>
+ */
+function someFunction(): Collection {
+    //
+}
+```
+
+If there is only one docblock needed, you may use the short version.
+
+```php
+use \Illuminate\Support\Collection
+
+/** @return \Illuminate\Support\Collection<int,SomeObject> */
+function someFunction(): Collection {
+    //
+}
 ```
 
 ## Constructor property promotion
