@@ -230,5 +230,13 @@ return [
             ],
             "category" => "General PHP",
         ],
+        [
+            "name" => "laravel-data",
+            "repository" => "spatie/laravel-data",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
     ],
 ];

@@ -23,6 +23,16 @@ class DocsController
         abort_if(is_null($repository), 404, 'Repository not found');
 
         if ($alias) {
+            preg_match('/v\d+/', $alias, $matches);
+
+            if (! count($matches)) {
+                $latest = $repository->aliases->keys()->first();
+                $slug = $alias;
+                $alias = $latest;
+
+                return redirect()->action([DocsController::class, 'show'], [$repository->slug, $alias, $slug]);
+            }
+
             $alias = $repository->getAlias($alias);
 
             abort_if(is_null($alias), 404, 'Alias not found');
@@ -43,11 +53,25 @@ class DocsController
     {
         $repository = $docs->getRepository($repository);
 
+        preg_match('/v\d+/', $alias, $matches);
+
+        if (! count($matches)) {
+            $latest = $repository->aliases->keys()->first();
+            $slug = "{$alias}/{$slug}";
+            $alias = $latest;
+
+            return redirect()->action([DocsController::class, 'show'], [$repository->slug, $alias, $slug]);
+        }
+
         abort_if(is_null($repository), 404, 'Repository not found');
 
         $alias = $repository->getAlias($alias);
 
-        abort_if(is_null($alias), 404, 'Alias not found');
+        if (! $alias) {
+            $alias = $repository->aliases->keys()->first();
+
+            return redirect()->action([DocsController::class, 'show'], [$repository->slug, $alias, $slug]);
+        }
 
         /** @var Collection $pages */
         $pages = $alias->pages;
