@@ -153,6 +153,10 @@ class HandlePurchaseAction
         $emails = $paddlePayload->passthrough()['emails'] ?? [$purchase->user->email];
 
         foreach ($emails as $email) {
+            if (! $email) {
+                $email = $purchase->user->email;
+            }
+
             $user = User::firstWhere('email', $email);
 
             if (! $user) {
