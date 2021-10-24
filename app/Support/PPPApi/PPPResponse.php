@@ -15,7 +15,7 @@ class PPPResponse
     public static function create(array $properties): self
     {
         return new static(
-            $properties['ppp']['currencyMain']['code'],
+            array_key_first($properties['ppp']['currenciesCountry']),
             $properties['ppp']['currencyMain']['symbol'],
             $properties['ppp']['currencyMain']['exchangeRate'],
             $properties['ppp']['pppConversionFactor'],

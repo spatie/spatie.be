@@ -20,7 +20,7 @@ class PPPApi
             return null;
         }
 
-        if (! isset($rawResponse['ppp']['currencyMain']['code'])) {
+        if (! array_key_first($rawResponse['ppp']['currenciesCountry'])) {
             return null;
         }
 
