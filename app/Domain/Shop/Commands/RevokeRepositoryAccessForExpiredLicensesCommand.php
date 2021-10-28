@@ -27,6 +27,10 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                     return;
                 }
 
+                if (! $license->assignment->user->github_username) {
+                    return;
+                }
+
                 try {
                     $repositories = explode(', ', $license->assignment->purchasable->repository_access);
 
