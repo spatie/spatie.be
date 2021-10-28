@@ -6,6 +6,7 @@ use App\Docs\Alias;
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
 use Illuminate\Support\Collection;
+use RuntimeException;
 
 class DocsController
 {
@@ -18,7 +19,11 @@ class DocsController
 
     public function repository(string $repository, ?string $alias = null, Docs $docs)
     {
-        $repository = $docs->getRepository($repository);
+        try {
+            $repository = $docs->getRepository($repository);
+        } catch (RuntimeException $e) {
+            abort(404, 'Repository not found');
+        }
 
         abort_if(is_null($repository), 404, 'Repository not found');
 
@@ -51,7 +56,11 @@ class DocsController
 
     public function show(string $repository, string $alias, string $slug, Docs $docs)
     {
-        $repository = $docs->getRepository($repository);
+        try {
+            $repository = $docs->getRepository($repository);
+        } catch (RuntimeException $e) {
+            abort(404, 'Repository not found');
+        }
 
         preg_match('/v\d+/', $alias, $matches);
 
