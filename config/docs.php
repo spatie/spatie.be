@@ -215,7 +215,7 @@ return [
             "name" => "laravel-multitenancy",
             "repository" => "spatie/laravel-multitenancy",
             "branches" => [
-                "master" => "v2",
+                "main" => "v2",
                 "v1" => "v1",
 
             ],
