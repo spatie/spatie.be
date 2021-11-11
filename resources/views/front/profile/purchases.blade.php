@@ -171,6 +171,7 @@
                         <x-purchase-assignment :assignment="$course">
                             <div class="max-w-full mt-4 items-center grid gap-y-4 md:gap-4 px-4 md:px-6">
                                 @foreach ($course->purchasable->series as $series)
+                                    @if($course->purchasable->id !== 2) {{-- do not show old laravel package course --}}
                                     <a class="block truncate w-full text-xs md:text-base"
                                        href="{{ route('series.show', $series) }}">
                                         <button
@@ -182,6 +183,7 @@
                                             @endif
                                         </button>
                                     </a>
+                                    @endif
                                 @endforeach
                             </div>
                         </x-purchase-assignment>
