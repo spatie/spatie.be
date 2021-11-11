@@ -30,7 +30,7 @@
                          style="height: 0; padding-bottom: 56.25%;">
                         @if ($currentVideo->canBeSeenByCurrentUser())
                             <iframe id="player" class="absolute inset-0 w-full h-full"
-                                    src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
+                                    src="https://player.vimeo.com/video/{{ $currentVideo->vimeo_id }}?h={{ $currentVideo->hash }}&loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
                                     allowfullscreen allowtransparency></iframe>
                         @else
                             <div
