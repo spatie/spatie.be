@@ -19,7 +19,7 @@ class UpdateVideoDetailsAction
     {
         $video->withoutEvents(function () use ($video) {
             $vimeoVideo = $this->vimeo->getVideo($video->vimeo_id);
-
+dump($vimeoVideo);
             $slug = Str::slug($vimeoVideo['name']);
 
             $video->update([
