@@ -34,14 +34,14 @@
     </div>
 
     <div class="col-span-6 flex px-24 md:-mt-12 mt-20">
-        <div class="md:flex bg-white shadow-lg md:h-48">
+        <div class="md:flex bg-white items-center shadow-lg md:h-64">
             <div class="w-full px-12 py-8">
-                <h3 class="title-sm mb-4">Laravel Package Learning v2</h3>
-                <p class="mb-4">To celebrate this milestone we completly updated our Laravel Package Training course</p>
-                <a class="link-underline link-blue" href="https://laravelpackage.training/">take a look</a>
+                <h3 class="title-sm mb-4">Learn how we do it!</h3>
+                <p class="mb-4">Learn how to build your own packages in our recently updated video course. We explain a proven, modern workflow using our latest insights for Laravel 8 and PHP 8.</p>
+                <a class="link-underline link-blue" href="https://laravelpackage.training/">Visit laravelpackage.training</a>
             </div>
     
-            <div class="w-full overflow-hidden h-48 flex items-center justify-center">
+            <div class="w-full overflow-hidden h-64 flex items-center justify-center">
                 <a href="https://laravelpackage.training/">
                     <img class="" src="https://spatie.be/images/medialibrary/1123/responsive-images/packagetraining_product_TIMG___media_library_original_884_540.jpg" alt="">
                 </a>
