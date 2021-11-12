@@ -152,6 +152,21 @@ module.exports = {
                 '1/2': '50%',
             },
 
+            keyframes: {
+                wiggle: {
+                    '0%, 100%': { transform: 'rotate(-3deg)' },
+                    '50%': { transform: 'rotate(3deg)' },
+                },
+                popin: {
+                    '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
+                    '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
+                }
+            },
+            animation: {
+                wiggle: 'wiggle 0.15s ease-in-out infinite',
+                popin: 'popin 0.2s 1 ease-in-out forwards',
+            },
+
             maxWidth: {
                 sm: '25rem', // xl/2 - half gap
                 md: '40rem',

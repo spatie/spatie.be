@@ -1,12 +1,22 @@
 <x-page
         title="Laravel, PHP and JavaScript Packages"
-        background="/backgrounds/open-source.jpg"
+        background="/backgrounds/100-million.jpg"
 >
+    
     <x-slot name="description">
         Search in our massive list of open source packages for Laravel & JavaScript.
     </x-slot>
 
-    @include('front.pages.open-source.partials.menu')
+    
+
+    
+    <div class="bg-white">
+        @include('front.pages.open-source.partials.menu')
+
+        @include('front.pages.open-source.partials.hero-packages')
+
+        
+    </div>
 
     @include('front.pages.open-source.partials.banner-packages')
     
