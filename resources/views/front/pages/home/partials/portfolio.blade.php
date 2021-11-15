@@ -1,4 +1,28 @@
 <section id="portfolio" class="section">
+    <div class="wrap wrap-8 section">
+        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
+            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/laravel-package-training-v2.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-span-3 sm:col-start-5 | self-center">
+            <div class="markup links-blue links-underline | sm:grid-text-right">
+                <h3 class="title">
+                    Laravel Package Training v2
+                    <span class="title-subtext text-pink-dark block">
+                        <span class="font-normal">4 hours of </span>premium video content
+                    </span>
+                </h3>
+                <p class="text-lg">
+                    Learn how to build your own packages in an updated version of our popular video course. We explain a proven, modern workflow to create packages using our latest insights for Laravel&nbsp;8 and PHP&nbsp;8.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://laravelpackage.training" target="_blank" rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
             <a href="https://testing-laravel.com" class="illustration is-left h-full" title="Testing Laravel" target="_blank" rel="nofollow noreferrer noopener">
@@ -179,7 +203,7 @@
         </div>
     </div>
 
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://front-line-php.com" class="illustration is-left h-full" title="front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flphp.jpg') }}
@@ -210,35 +234,11 @@
 
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/laravel-package-training.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline | sm:grid-text-right">
-                <h3 class="title">
-                    Laravel Package Training
-                    <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">4 hours of </span>premium video content
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Having produced over 200 packages with more than 75 million downloads in total, we know what we're talking about when it comes to developing reusable components. Now is the time to look over our shoulders!
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://laravelpackage.training" target="_blank" rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 section">
-        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/stmpd.jpg') }}
             </a>
         </div>
-        <div class="sm:col-span-3 sm:col-start-5 | self-center">
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
             <div class="markup links-blue links-underline">
                 <h3 class="title">
                     Soundcloud Demo Platform

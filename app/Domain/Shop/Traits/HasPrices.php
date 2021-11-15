@@ -46,10 +46,28 @@ trait HasPrices
 
             $roundedPriceInCents = round($priceInCents / 100) * 100;
 
+            $roundedPriceInCents = $this->commerciallyRound($roundedPriceInCents);
+
             $displayablePrice->priceInCents = $roundedPriceInCents;
         }
 
         return $displayablePrice;
+    }
+
+    /*
+     *  If a price ends on 5 or higher, make the ending number 9
+     */
+    public function commerciallyRound(int $priceInCents): int
+    {
+        $remainder = $priceInCents % 1000;
+
+        if ($remainder < 500) {
+            return $priceInCents;
+        }
+
+        $priceInCents = $priceInCents - $remainder + 900;
+
+        return $priceInCents;
     }
 
     public function getPriceWithoutDiscountForCurrentRequest(): DisplayablePrice
