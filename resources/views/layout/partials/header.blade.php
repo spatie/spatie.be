@@ -1,4 +1,4 @@
-<header class="pt-8 flex-none z-10 | md:bg-gray-darkest md:shadow-light md:py-8 | print:bg-transparent print:shadow-none">
+<header class="pt-8 flex-none z-10 | bg-gray-darkest md:shadow-light md:py-8 | print:bg-transparent print:shadow-none">
     <div class="wrap leading-loose | md:leading-none md:flex md:items-stretch">
         <a class="flex-shrink-0 logo h-8 w-20 mr-16 mb-8 block | md:mb-0 md:w-48 md:h-auto" href="/" title="Home">
             <span class="absolute h-full w-auto">
