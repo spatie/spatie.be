@@ -120,11 +120,15 @@ module.exports = {
             loose: 2,
         },
 
+
+
         letterSpacing: {
             tight: '-0.05em',
             normal: '0',
             wide: '0.05em',
         },
+
+
 
         boxShadow: {
             default: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
@@ -143,6 +147,11 @@ module.exports = {
                 '7xl': '10rem', // xlarge! 
             },
 
+
+            opacity: {
+                '5': '0.05',
+            },
+
             width: {
                 '2px': '2px',
             },
@@ -151,7 +160,8 @@ module.exports = {
                 '15': '.15',
                 '25': '.25',
                 '135': '1.35',
-                '120': '1.2'
+                '120': '1.2',
+                '145': '1.45'
 
             },
 
@@ -169,11 +179,47 @@ module.exports = {
                 popin: {
                     '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
                     '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
+                },
+
+                slidein: {
+                    '0%': { transform: 'scale(0.15, 1.45)  translateX(0)', opacity: 0.05 },
+                    '100%': { transform: 'scale(0.8, 0.8) translateX(-33rem)', opacity: 1 },
+                },
+
+                fadein1: {
+                    '0%': { opacity: 0.00 },
+                    '65%': { opacity: 0.00 },
+                    '66%': { opacity: 0.75 },
+                    '100%': { opacity: 0.75 },
+                },
+                fadein2: {
+                    '0%': { opacity: 0.00 },
+                    '50%': { opacity: 0.00 },
+                    '51%': { opacity: 0.5 },
+                    '100%': { opacity: 0.5 },
+                },
+                fadein3: {
+                    '0%': { opacity: 0.00 },
+                    '40%': { opacity: 0.00 },
+                    '41%': { opacity: 0.25 },
+                    '100%': { opacity: 0.25 },
+                },
+                fadein4: {
+                    '0%': { opacity: 0.00 },
+                    '20%': { opacity: 0.00 },
+                    '21%': { opacity: 0.05 },
+                    '100%': { opacity: 0.05 },
                 }
+                
             },
             animation: {
                 wiggle: 'wiggle 0.15s ease-in-out infinite',
                 popin: 'popin 0.2s 1 ease-in-out forwards',
+                slidein: 'slidein 1s 1 ease-in-out forwards',
+                fadein1: 'fadein1 1s 1 ease-in-out forwards',
+                fadein2: 'fadein2 1s 1 ease-in-out forwards',
+                fadein3: 'fadein3 1s 1 ease-in-out forwards',
+                fadein4: 'fadein4 1s 1 ease-in-out forwards',
             },
 
             maxWidth: {
@@ -211,6 +257,11 @@ module.exports = {
                 full: '100%',
                 '1/2': '50%',
                 '8': '2rem',
+            },
+
+            translate: {
+                '28': '7rem',
+                '18': '4.5rem',
             },
 
             gridTemplateColumns: {

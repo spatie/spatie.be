@@ -1,4 +1,4 @@
-<svg id="Laag_1" data-name="Laag 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 890.69 396.28">
+<svg id="Laag_1" data-name="Laag 1" style='filter: none;' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 890.69 396.28">
     <defs>
         <style>
             .cls-white {
