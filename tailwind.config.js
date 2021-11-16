@@ -70,6 +70,8 @@ module.exports = {
             'green-dark': '#686666',
 
             purple: '#767575',
+
+            yellow: '#FFCE00'
         },
 
         screens: {
