@@ -140,10 +140,19 @@ module.exports = {
             fontSize: {
                 xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
+                '7xl': '10rem', // xlarge! 
             },
 
             width: {
                 '2px': '2px',
+            },
+
+            scale: {
+                '15': '.15',
+                '25': '.25',
+                '135': '1.35',
+                '120': '1.2'
+
             },
 
             height: {
@@ -200,7 +209,8 @@ module.exports = {
 
             inset: {
                 full: '100%',
-                '1/2': '50%'
+                '1/2': '50%',
+                '8': '2rem',
             },
 
             gridTemplateColumns: {
