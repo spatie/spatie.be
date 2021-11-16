@@ -19,7 +19,7 @@
 .gradient-pink {
     --gradient-angle: 120deg;
     --gradient-from: #242424;
-    --gradient-to: #172a3d;
+    --gradient-to: #171e1a;
 
     @apply bg-pink;
 }
