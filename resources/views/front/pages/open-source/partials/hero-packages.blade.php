@@ -17,7 +17,7 @@
                             alt="">
                     </div>
                     <div class=" relative z-10 bg-black rounded-full  p-8 shadow-lg ">
-                        <h1 class=" text-5xl text-white text-center font-serif">200 M</h1>
+                        <h1 class=" text-5xl text-white text-center font-serif">200 Million</h1>
                     </div>
                     <div
                         class=" absolute z-0 bg-white rounded-full  p-8 shadow-lg bottom-0 transform translate-x-1/2 translate-y-20">
