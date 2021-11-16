@@ -10,15 +10,15 @@
 
 .gradient-green {
     --gradient-angle: 120deg;
-    --gradient-from: #31302f;
-    --gradient-to: #172a3d;
+    --gradient-from: #242424;
+    --gradient-to: #171e1a;
 
     @apply bg-green;
 }
 
 .gradient-pink {
     --gradient-angle: 120deg;
-    --gradient-from: #31302f;
+    --gradient-from: #242424;
     --gradient-to: #172a3d;
 
     @apply bg-pink;
@@ -42,8 +42,8 @@
 
 .gradient-dark {
     --gradient-angle: 120deg;
-    --gradient-from: #31302f;
-    --gradient-to: #172a3d;
+    --gradient-from: #242424;
+    --gradient-to: #171e1a;
 
     @apply bg-gray-dark;
 }

@@ -27,17 +27,10 @@
     <div class="flex-0 mt-6 flex justify-center">
         <div class="w-full flex justify-center">
             <a href="{{ route('bundles.show', $bundle) }}">
-                <button class="cursor-pointer
-bg-green-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm
-border-2 border-transparent
-justify-center flex items-center
-px-4 min-h-12 text-xl shadow-lg
-font-sans-bold text-white
-transition-bg duration-300
-focus:outline-none focus:border-blue-light whitespace-no-wrap">
+                <x-button large>
                     <span class="font-normal">Buy Bundle for&nbsp;</span>
                     <span>{{ $bundle->getPriceForCurrentRequest()->formattedPrice() }}</span>
-                </button>
+                </x-button>
             </a>
         </div>
     </div>

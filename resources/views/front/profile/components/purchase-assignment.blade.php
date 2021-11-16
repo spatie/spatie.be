@@ -47,9 +47,9 @@
                 @endphp
 
                 <a class="block w-full mt-4" href="{{ $downloadUrl }}" download="download">
-                    <button class="truncate w-full cursor-pointer bg-green-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 font-sans-bold text-white transition-bg duration-300 focus:outline-none focus:border-blue-light whitespace-no-wrap">
+                    <x-button>
                         Download {{ $download->getCustomProperty('label') ?? $download->name }}
-                    </button>
+                    </x-button>
                 </a>
             @endforeach
         </div>
