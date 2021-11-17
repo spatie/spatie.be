@@ -3,6 +3,7 @@
 namespace App\Nova\Dashboards;
 
 use App\Nova\Metrics\Earnings;
+use App\Nova\Metrics\EarningsPerProduct;
 use App\Nova\Metrics\EarningsPerProductPerDay;
 use App\Nova\Metrics\EarningsPerProductPerMonth;
 use App\Nova\Metrics\EarningsPerPurchasablePerDay;
@@ -31,6 +32,7 @@ class Sales extends Dashboard
         return [
             new Earnings(),
             new PurchasesPerProduct(),
+            new EarningsPerProduct(),
             PurchasesPerProductPerDay::create(),
             PurchasesPerPurchasablePerDay::create(),
             PurchasesPerProductPerMonth::create(),
