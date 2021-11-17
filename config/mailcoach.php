@@ -28,7 +28,7 @@ return [
          * Here you can configure which campaign template editor Mailcoach uses.
          * By default this is a text editor that highlights HTML.
          */
-        'editor' => \Spatie\Mailcoach\Domain\Shared\Support\Editor\TextEditor::class,
+        'editor' => \Spatie\MailcoachMonaco\MonacoEditor::class,
 
         /*
          * Here you can specify which jobs should run on which queues.
@@ -85,7 +85,7 @@ return [
          * Here you can configure which automation mail template editor Mailcoach uses.
          * By default this is a text editor that highlights HTML.
          */
-        'editor' => \Spatie\Mailcoach\Domain\Shared\Support\Editor\TextEditor::class,
+        'editor' => \Spatie\MailcoachMonaco\MonacoEditor::class,
 
         'actions' => [
             'send_mail' => \Spatie\Mailcoach\Domain\Automation\Actions\SendMailAction::class,
@@ -198,7 +198,7 @@ return [
          * Here you can configure which transactional mail template editor Mailcoach uses.
          * By default this is a text editor that highlights HTML.
          */
-        'editor' => \Spatie\Mailcoach\Domain\Shared\Support\Editor\TextEditor::class,
+        'editor' => \Spatie\MailcoachMonaco\MonacoEditor::class,
     ],
 
     'shared' => [

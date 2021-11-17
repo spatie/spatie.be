@@ -1,7 +1,7 @@
 <div class="wrap md:wrap-6 my-12 py-12">
     <div class="col-span-6 md:flex rounded-xl md:bg-gray-50 md:p-24 ">
         <div class="w-full">
-            <h1 class="sm:text-6xl text-5xl col-span-6 font-serif mb-8">We are <span class="block leading-tight ">Celebrating</span>
+            <h1 class="sm:text-6xl text-5xl col-span-6 font-serif mt-2 mb-8 leading-tight">We are <br>celebrating
             </h1>
             <p class="text-lg col-span-6 ">We’ve made it! We crossed the barrier of 200 million downloads of our open
                 source packages. Glad that our packages help all of you create

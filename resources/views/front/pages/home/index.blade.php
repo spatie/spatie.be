@@ -18,7 +18,7 @@
 
     <div class="section section-group section-fade">
         @include('front.pages.home.partials.portfolio')
-        @include('front.pages.home.partials.cta')
+        @include('front.pages.home.partials.newsletter')
         @include('front.pages.home.partials.clients')
     </div>
 
