@@ -12,7 +12,7 @@
 @endphp
 
 @unless(Route::is(['home', 'products.*', 'purchases.*']))
-    <a href="{{ route('products.index') }}" class="flex justify-center bg-gray-darkest text-center text-white text-sm">
+    <a href="{{ route('products.index') }}" class="flex justify-center bg-trueblack text-center text-white text-sm">
         <div class="py-2 px-6 border-b border-gray">
             <strong>Black Friday ⚡️ Get 30% off on all our products</strong> in the next
             <x-countdown class="inline-block" :expires="$expirationDate">
