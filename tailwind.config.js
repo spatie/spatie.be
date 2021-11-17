@@ -25,6 +25,7 @@ module.exports = {
         colors: {
             transparent: 'transparent',
             black: '#172a3d',
+            trueblack: '#000000',
             white: '#ffffff',
 
             paper: 'rgba(249, 248, 248, 0.5)',
@@ -142,11 +143,11 @@ module.exports = {
             none: 'none',
         },
 
-        extend: {
+        extend: { 
             fontSize: {
                 xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
-                '7xl': '15rem', // xlarge! 
+                '7xl': '0rem', // xlarge! 
             },
 
 
