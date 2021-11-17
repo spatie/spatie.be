@@ -12,24 +12,25 @@
             @endphp
 
             <a href="{{ route('products.index') }}"
-                class="flex  bg-trueblack text-white text-sm">
+                class="flex  bg-trueblack text-white banner-intro">
                 <div class="py-2 ">
-                    <strong>⚡️ Get 30% off on all our products</strong> in the next
-                    <x-countdown class="block" :expires="$expirationDate">
+                    ⚡️ <strong>Get 30% off</strong>  on all our products
+                    <br>in the next
+                    <x-countdown class="inline-block" :expires="$expirationDate">
                         <span>
-                            <span class="font-semibold text-3xl font-mono" x-text="timer.days">{{ $component->days()
+                            <span class="font-semibold font-mono" x-text="timer.days">{{ $component->days()
                                 }}</span><span class="text-white">d</span>
                         </span>
-                        <span>
-                            <span class="font-semibold text-3xl font-mono" x-text="timer.hours">{{ $component->hours()
+                        <span class="ml-1">
+                            <span class="font-semibold font-mono" x-text="timer.hours">{{ $component->hours()
                                 }}</span><span class="text-white">h</span>
                         </span>
-                        <span>
-                            <span class="font-semibold text-3xl font-mono" x-text="timer.minutes">{{ $component->minutes()
+                        <span class="ml-1">
+                            <span class="font-semibold font-mono" x-text="timer.minutes">{{ $component->minutes()
                                 }}</span><span class="text-white">m</span>
                         </span>
-                        <span>
-                            <span class="font-semibold text-3xl font-mono" x-text="timer.seconds">{{ $component->seconds()
+                        <span class="ml-1">
+                            <span class="font-semibold font-mono" x-text="timer.seconds">{{ $component->seconds()
                                 }}</span><span class="text-white">s</span>
                         </span>
                     </x-countdown>
@@ -45,7 +46,7 @@
         </div>
 
         <a href="{{ route('products.index') }}"
-            class=" text-black font-bold hover:bg-gray-lighter transition transition-color  font-sans px-4 py-2 bg-white rounded-full">
+            class=" text-xl text-black font-bold hover:bg-gray-lighter transition transition-color  font-sans px-4 py-2 bg-white rounded-full">
             Grab your promotion
         </a>
 

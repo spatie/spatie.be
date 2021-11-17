@@ -11,7 +11,7 @@
             </h1>
 
             <p class="banner-intro pt-4">
-                ⚡️ 30% off on all our applications and courses
+                ⚡️ <strong>Get 30% off</strong> on all our applications and courses
             </p>
 
             <div class="mt-2">
@@ -20,9 +20,9 @@
     
                 @endphp
     
-                <a 
-                    class="flex bg-trueblack text-white text-sm">
-                        <strong>during the next &nbsp;</strong>
+                <div 
+                    class="flex bg-trueblack text-white text-base">
+                        Offer ends in&nbsp;
                         <x-countdown class="inline-block" :expires="$expirationDate">
                             <span>
                                 <span class="font-semibold  font-mono" x-text="timer.days">{{ $component->days()
@@ -42,7 +42,7 @@
                             </span>
                         </x-countdown>
                     </div>
-                </a>
+                </div>
     
                 @once
                 @push('scripts')
