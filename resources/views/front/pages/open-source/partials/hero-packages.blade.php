@@ -13,7 +13,7 @@
                 <div class="relative mt-20 group">
                     <div
                         class="absolute animate-popin transform origin-top-left z-20 bg-white rounded-full  p-8 shadow-lg  -translate-x-1/2 -translate-y-16">
-                        <img class="w-12 group-hover:animate-wiggle " src="{{ asset('./images/party-popper.png')}}"
+                        <img style="filter: none;"  class="w-12 group-hover:animate-wiggle " src="{{ asset('./images/party-popper.png')}}"
                             alt="">
                     </div>
                     <div class=" relative z-10 bg-black rounded-full  p-8 shadow-lg ">

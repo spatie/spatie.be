@@ -146,7 +146,7 @@ module.exports = {
             fontSize: {
                 xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
-                '7xl': '0rem', // xlarge! 
+                '7xl': '15rem', // xlarge! 
             },
 
 
