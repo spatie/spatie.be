@@ -75,10 +75,8 @@
                                 @if ($assignments->first()->purchasable->getting_started_url)
                                     <a class="block w-full text-xs md:text-base"
                                        href="{{ $assignments->first()->purchasable->getting_started_url }}">
-                                        <button
-                                            class="w-full cursor-pointer bg-green-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 font-sans-bold text-white transition-bg duration-300 focus:outline-none focus:border-blue-light whitespace-no-wrap">
-                                            Getting started
-                                        </button>
+                                        <x-button>                                            Getting started
+                                        </x-button>
                                     </a>
                                 @endif
                             </div>
@@ -174,14 +172,14 @@
                                     @if($series->id !== 5) {{-- do not show old laravel package course --}}
                                     <a class="block truncate w-full text-xs md:text-base"
                                        href="{{ route('series.show', $series) }}">
-                                        <button
-                                            class="w-full truncate cursor-pointer bg-green-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 font-sans-bold text-white transition-bg duration-300 focus:outline-none focus:border-blue-light whitespace-no-wrap">
+                                        <x-button
+                                            >
                                             @if ($series->title !== $course->purchasable->product->title)
                                                 {{ $series->title }}
                                             @else
                                                 Video course
                                             @endif
-                                        </button>
+                                        </x-button>
                                     </a>
                                     @endif
                                 @endforeach
