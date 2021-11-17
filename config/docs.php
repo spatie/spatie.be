@@ -82,7 +82,7 @@ return [
             "name" => "laravel-activitylog",
             "repository" => "spatie/laravel-activitylog",
             "branches" => [
-                "master" => "v4",
+                "main" => "v4",
                 "v3" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
@@ -93,7 +93,7 @@ return [
             "name" => "laravel-html",
             "repository" => "spatie/laravel-html",
             "branches" => [
-                "master" => "v2",
+                "main" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",
@@ -110,7 +110,7 @@ return [
             "name" => "laravel-uptime-monitor",
             "repository" => "spatie/laravel-uptime-monitor",
             "branches" => [
-                "master" => "v3",
+                "main" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
             ],
@@ -128,7 +128,7 @@ return [
             "name" => "menu",
             "repository" => "spatie/menu",
             "branches" => [
-                "master" => "v3",
+                "main" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
             ],
@@ -146,7 +146,7 @@ return [
             "name" => "enum",
             "repository" => "spatie/enum",
             "branches" => [
-                "master" => "v3",
+                "main" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
             ],
@@ -156,7 +156,7 @@ return [
             "name" => "laravel-model-states",
             "repository" => "spatie/laravel-model-states",
             "branches" => [
-                "master" => "v2",
+                "main" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",
@@ -197,7 +197,7 @@ return [
             "name" => "laravel-backup-server",
             "repository" => "spatie/laravel-backup-server",
             "branches" => [
-                "master" => "v2",
+                "main" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",
@@ -206,7 +206,7 @@ return [
             "name" => "laravel-dashboard",
             "repository" => "spatie/laravel-dashboard",
             "branches" => [
-                "master" => "v2",
+                "main" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",
@@ -225,7 +225,7 @@ return [
             "name" => "typescript-transformer",
             "repository" => "spatie/typescript-transformer",
             "branches" => [
-                "master" => "v2",
+                "main" => "v2",
                 "v1" => "v1",
             ],
             "category" => "General PHP",
