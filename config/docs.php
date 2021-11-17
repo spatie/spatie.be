@@ -93,7 +93,8 @@ return [
             "name" => "laravel-html",
             "repository" => "spatie/laravel-html",
             "branches" => [
-                "main" => "v2",
+                "main" => "v3",
+                "v2" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",
