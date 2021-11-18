@@ -152,6 +152,13 @@ class HandlePurchaseAction
     {
         $emails = $paddlePayload->passthrough()['emails'] ?? [$purchase->user->email];
 
+        // Sometimes emails come through empty from the passthrough
+        // This is probably because of a JS issue on the front,
+        // Make sure at least 1 assignment is created for the purchaser
+        if (empty($emails)) {
+            $emails = [$purchase->user->email];
+        }
+
         foreach ($emails as $email) {
             if (! $email) {
                 $email = $purchase->user->email;
