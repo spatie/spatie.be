@@ -7,7 +7,7 @@
     <section id="banner" class="banner bg-trueblack " role="banner">
         <div class="wrap text-white">
             <h1 class="banner-slogan">
-                Welcome in <br>our <span class="text-yellow">black friday</span> store
+                Welcome in <br>our <span class="text-yellow">Black Friday</span> Store
             </h1>
 
             <p class="banner-intro pt-4">
