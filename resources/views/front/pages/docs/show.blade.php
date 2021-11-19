@@ -105,7 +105,7 @@
 
     <script>
         docsearch({
-            apiKey: '7a1f56fb06bd42e657e82bdafe86cef3',
+            apiKey: 'f71925e98fae3522d3a89184848cb1b6',
             indexName: 'spatie_be',
             inputSelector: '#algolia-search',
             debug: true,
