@@ -18,6 +18,7 @@ class VideoFactory extends Factory
             'runtime' => 1,
             'thumbnail' => 'test',
             'sort_order' => 1,
+            'hash' => 'test',
         ];
     }
 }
