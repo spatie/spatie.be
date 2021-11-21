@@ -239,5 +239,13 @@ return [
             ],
             "category" => "Laravel",
         ],
+        [
+            "name" => "laravel-health",
+            "repository" => "spatie/laravel-health",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
     ],
 ];
