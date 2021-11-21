@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-health",
+            "repository" => "spatie/laravel-health",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-site-search",
             "repository" => "spatie/laravel-site-search",
             "branches" => [
@@ -234,14 +242,6 @@ return [
         [
             "name" => "laravel-data",
             "repository" => "spatie/laravel-data",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
-            "name" => "laravel-health",
-            "repository" => "spatie/laravel-health",
             "branches" => [
                 "main" => "v1",
             ],
