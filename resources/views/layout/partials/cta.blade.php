@@ -1,5 +1,5 @@
 @php
-    $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-12-01 00:00' );
+    $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-30 00:00' );
 
     function array_some(callable $callback,$arr){
         foreach($arr as $el){

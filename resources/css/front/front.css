@@ -61,6 +61,6 @@ a.anchor-link {
 }
 
 svg,
-img {
+.wallpaper img {
     filter: grayscale(1);
 }
