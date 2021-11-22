@@ -7,7 +7,7 @@
 
         <div class="my-8">
             @php
-            $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-12-01 00:00' );
+            $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-30 00:00' );
 
             @endphp
 
