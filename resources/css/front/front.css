@@ -61,6 +61,7 @@ a.anchor-link {
 }
 
 svg,
-.wallpaper img {
+.wallpaper img,
+.is-postcard-without-caption img {
     filter: grayscale(1);
 }
