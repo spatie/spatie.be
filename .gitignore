@@ -26,4 +26,4 @@ _ide_helper_models.php
 /storage/media-library/temp
 .php_cs.cache
 .php-cs-fixer.cache
-
+dump.rdb
