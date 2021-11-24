@@ -152,6 +152,14 @@ class HandlePurchaseAction
     {
         $emails = $paddlePayload->passthrough()['emails'] ?? [$purchase->user->email];
 
+        // In some cases (GitHub login), users don't have an email address
+        // If they make a purchase and fill in an email address, make
+        // sure to save it to their account so we don't create a new user
+        if (! $purchase->user->email && count($emails)) {
+            $purchase->user->email = $emails[0];
+            $purchase->user->save();
+        }
+
         // Sometimes emails come through empty from the passthrough
         // This is probably because of a JS issue on the front,
         // Make sure at least 1 assignment is created for the purchaser

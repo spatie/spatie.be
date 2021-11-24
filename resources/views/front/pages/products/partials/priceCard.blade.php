@@ -3,7 +3,7 @@
     $price = $purchasable->getPriceForCurrentRequest()
 @endphp
 <div
-    class="{{ isset($first) && $first ? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 md:mx-2 max-w-md flex flex-col bg-white shadow-lg px-8"
+    class="{{ isset($first) && $first ? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 md:mx-2 max-w-sm flex flex-col bg-white shadow-lg px-8"
     style="bottom: {{ isset($first) && $first ? '-2rem' : '-1rem' }}">
     <h2 class="flex-0 font-bold {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} leading-tight mb-4 min-h-10">
         {{ $purchasable->title }} @isset($license)- Renewal @endisset
@@ -11,6 +11,44 @@
     @isset($license)
         <p class="text-sm -mt-6 mb-6">Renewal for license <code class="text-xs text-blue">{{ \Illuminate\Support\Str::limit($license->key, 8) }}</code></p>
     @endisset
+
+    @if ($purchasable->id == 18)
+    <section class="-mx-8 mb-4 px-8 py-6 bg-trueblack" role="banner">
+        <div class=" text-white">
+            <h1 class="font-serif font-bold text-xl leading-tight">
+                Black Friday
+                <div class="text-yellow">Deal of the Day</div>
+            </h1>
+
+            <p class="my-2 text-lg">
+                Get a <strong>Lifetime License</strong> ⚡️ 
+            </p>                   
+        </div>
+
+        @php
+        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-26 08:59' );
+        @endphp
+
+        <div 
+            class="flex text-white text-xs">
+                Only today for&nbsp;
+                <x-countdown class="inline-block" :expires="$expirationDate">
+                    <span>
+                        <span class="font-semibold font-mono" x-text="timer.hours">{{ $component->hours()
+                            }}</span><span class="text-white">h</span>
+                    </span>
+                    <span>
+                        <span class="font-semibold font-mono" x-text="timer.minutes">{{ $component->minutes()
+                            }}</span><span class="text-white">m</span>
+                    </span>
+                    <span>
+                        <span class="font-semibold font-mono" x-text="timer.seconds">{{ $component->seconds()
+                            }}</span><span class="text-white">s</span>
+                    </span>
+                </x-countdown>
+        </div>        
+    </section>
+    @endif
 
     <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
         @if ($purchasable->originalPurchasable)

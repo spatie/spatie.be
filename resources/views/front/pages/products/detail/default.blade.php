@@ -22,7 +22,7 @@
 @if (auth()->check() && auth()->user()->ownsAny($product->purchasables))
     <div class="wrap flex w-full mb-20">
         <div
-            class="w-full bg-orange-dark text-white flex flex-col justify-between items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
+            class="w-full bg-orange-dark text-white flex flex-col items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
             <div class="flex items-center">
                 <div
                     class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">

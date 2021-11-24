@@ -10,24 +10,24 @@
 
 .gradient-green {
     --gradient-angle: 120deg;
-    --gradient-from: #21b989;
-    --gradient-to: #82d8af;
+    --gradient-from: #242424;
+    --gradient-to: #171e1a;
 
     @apply bg-green;
 }
 
 .gradient-pink {
     --gradient-angle: 120deg;
-    --gradient-from: #ddaeb4;
-    --gradient-to: #dd9099;
+    --gradient-from: #242424;
+    --gradient-to: #171e1a;
 
     @apply bg-pink;
 }
 
 .gradient-blue {
     --gradient-angle: 120deg;
-    --gradient-from: #cae1e8;
-    --gradient-to: #e2f1f3;
+    --gradient-from: #f3efea;
+    --gradient-to: #e1ded9;
 
     @apply bg-blue-lightest;
 }
@@ -42,8 +42,8 @@
 
 .gradient-dark {
     --gradient-angle: 120deg;
-    --gradient-from: #31302f;
-    --gradient-to: #172a3d;
+    --gradient-from: #242424;
+    --gradient-to: #171e1a;
 
     @apply bg-gray-dark;
 }

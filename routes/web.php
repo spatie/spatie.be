@@ -75,7 +75,7 @@ Route::prefix('products')->group(function () {
 
     Route::get('ray/download/{platform}/latest', DownloadRayController::class);
 
-    Route::get('{product:slug}/purchasables/{purchasable}/purchase-complete', AfterPaddleSaleController::class);
+    Route::get('{product:slug}/purchasables/{purchasable}/purchase-complete', AfterPaddleSaleController::class)->name('purchase.complete');
 
     Route::get('{product:slug}/purchases/{purchase}/download/{file}', DownloadPurchasableController::class)
         ->middleware(['auth', 'signed'])
