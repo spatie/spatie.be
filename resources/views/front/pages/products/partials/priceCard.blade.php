@@ -26,7 +26,7 @@
         </div>
 
         @php
-        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-26 09:00' );
+        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-26 08:59' );
         @endphp
 
         <div 
