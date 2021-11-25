@@ -3,6 +3,9 @@
 namespace App\Nova;
 
 use App\Domain\Shop\Models\Purchase as EloquentPurchase;
+use App\Nova\Actions\TransferPurchasesAction;
+use App\Nova\Actions\TransferPurchaseAssignmentsToUser;
+use App\Nova\Actions\TransferPurchasesToUser;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
@@ -79,6 +82,19 @@ class Purchase extends Resource
             BelongsTo::make('Receipt')->nullable(),
 
             DateTime::make('Created at')->format('DD/MM/YY HH:mm'),
+        ];
+    }
+
+    /**
+     * Get the actions available for the resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function actions(Request $request)
+    {
+        return [
+            new TransferPurchasesAction(),
         ];
     }
 }
