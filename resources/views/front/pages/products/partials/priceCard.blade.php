@@ -17,9 +17,9 @@
         <div class=" text-white">
             <h1 class="font-serif font-bold text-xl leading-tight">
                 Black Friday
+                 <div class="text-yellow">Special offer</div>
             </h1>
 
-            <div class="text-yellow">Special offer</div>
 
             <p class="my-2 text-lg">
                 Get a <strong>Lifetime License</strong> ⚡️
