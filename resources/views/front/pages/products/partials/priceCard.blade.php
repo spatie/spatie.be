@@ -17,19 +17,18 @@
         <div class=" text-white">
             <h1 class="font-serif font-bold text-xl leading-tight">
                 Black Friday
-                <div class="text-yellow">Deal of the Day</div>
             </h1>
 
             <p class="my-2 text-lg">
-                Get a <strong>Lifetime License</strong> ⚡️ 
-            </p>                   
+                Get a <strong>Lifetime License</strong> ⚡️
+            </p>
         </div>
 
         @php
-        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-26 08:59' );
+        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-29 23:59' );
         @endphp
 
-        <div 
+        <div
             class="flex text-white text-xs">
                 Only today for&nbsp;
                 <x-countdown class="inline-block" :expires="$expirationDate">
@@ -46,7 +45,7 @@
                             }}</span><span class="text-white">s</span>
                     </span>
                 </x-countdown>
-        </div>        
+        </div>
     </section>
     @endif
 
