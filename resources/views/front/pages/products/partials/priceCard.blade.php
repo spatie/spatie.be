@@ -12,7 +12,7 @@
         <p class="text-sm -mt-6 mb-6">Renewal for license <code class="text-xs text-blue">{{ \Illuminate\Support\Str::limit($license->key, 8) }}</code></p>
     @endisset
 
-    @if ($purchasable->id == 18)
+    @if ($purchasable->id === 18)
     <section class="-mx-8 mb-4 px-8 py-6 bg-trueblack" role="banner">
         <div class=" text-white">
             <h1 class="font-serif font-bold text-xl leading-tight">
@@ -32,8 +32,12 @@
 
         <div
             class="flex text-white text-xs">
-                Only today for&nbsp;
+                Available for&nbsp;
                 <x-countdown class="inline-block" :expires="$expirationDate">
+                    <span>
+                        <span class="font-semibold  font-mono" x-text="timer.days">{{ $component->days()
+                            }}</span><span class="text-white">d</span>
+                    </span>
                     <span>
                         <span class="font-semibold font-mono" x-text="timer.hours">{{ $component->hours()
                             }}</span><span class="text-white">h</span>
