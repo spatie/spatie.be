@@ -19,10 +19,10 @@
                 Black Friday
             </h1>
 
-            <p class="my-2 text-lg">
-                Get a <strong>Lifetime License</strong> ⚡️
             <div class="text-yellow">Special offer</div>
 
+            <p class="my-2 text-lg">
+                Get a <strong>Lifetime License</strong> ⚡️
             </p>
         </div>
 
