@@ -3,9 +3,7 @@
 use App\Domain\Shop\Models\Purchasable;
 use App\Http\Controllers\AfterPaddleSaleController;
 use App\Models\User;
-use Tests\TestCase;
-
-
+use Illuminate\Support\Env;
 
 test('the after paddle sale controller is valid', function () {
     $user = User::factory()->create();
@@ -15,6 +13,8 @@ test('the after paddle sale controller is valid', function () {
     $purchasable = Purchasable::factory()->create();
 
     $this
+        ->followingRedirects()
         ->get(action(AfterPaddleSaleController::class, [$purchasable->product->slug, $purchasable]))
-        ->assertRedirect(route('purchases'));
+        ->assertViewIs('front.profile.purchases')
+        ->assertSee("'event': 'purchase'", escape: false); // important for Google Analytics
 });
