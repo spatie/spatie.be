@@ -22,10 +22,10 @@
     @if(session()->has('sold_purchasable'))
         @php
             /** @var \App\Domain\Shop\Models\Purchasable $purchasable */
-            $purchasable = session()->pull('sold_purchasable');
+            $purchasable = session()->get('sold_purchasable');
 
             /** @var \App\Domain\Shop\Models\PurchaseAssignment $assignment */
-            $assignment = session()->pull('latest_assignment');
+            $assignment = session()->get('latest_assignment');
         @endphp
 
         <section id="cta" class="pb-16">
