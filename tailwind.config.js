@@ -25,15 +25,14 @@ module.exports = {
         colors: {
             transparent: 'transparent',
             black: '#172a3d',
-            trueblack: '#000000',
             white: '#ffffff',
 
             paper: 'rgba(249, 248, 248, 0.5)',
             opaque: 'rgba(255, 255, 255, 0.5)',
 
-            'gold-lightest': '#f8f8f8',
-            gold: '#767575',
-            'gold-darkest': '#171e1a',
+            'gold-lightest': '#eee8d6',
+            gold: '#a89f81',
+            'gold-darkest': '#51492c',
 
             'gray-50': '#f8f8f8',
             'gray-lightest': '#f3efea',
@@ -44,35 +43,33 @@ module.exports = {
             'gray-darker': '#4c534f',
             'gray-darkest': '#171e1a',
 
-            'blue-50': '#f8f8f8',
-            'blue-lightest': '#f3efea',
-            'blue-lighter': '#cbd2ce',
-            'blue-light': '#b8bfbb',
-            blue: '#767575',
-            'blue-dark': '#686666',
-            'blue-darker': '#4c534f',
-            'blue-darkest': '#171e1a',
+            'blue-50': '#f7fbfc',
+            'blue-lightest': '#cae1e8',
+            'blue-lighter': '#22a4c9',
+            'blue-light': '#22a4c9',
+            blue: '#197593',
+            'blue-dark': '#004966',
+            'blue-darker': '#172a3d',
+            'blue-darkest': '#0f1c29',
 
-            orange: '#767575',
-            'orange-dark': '#686666',
-            'orange-darker': '#171e1a',
+            orange: '#ffa200',
+            'orange-dark': '#e89158',
+            'orange-darker': '#944600',
 
-            red: '#767575',
-            'red-dark': '#686666',
+            red: '#ef0732',
+            'red-dark': '#c81839',
 
-            'pink-lightest': '#f3efea',
-            pink: '#767575',
-            'pink-dark': '#686666',
+            'pink-lightest': '#f2d8db',
+            pink: '#dd9099',
+            'pink-dark': '#8d3b44',
 
-            'green-lightest': '#f3efea',
-            'green-lighter': '#cbd2ce',
-            'green-light': '#b8bfbb',
-            green: '#767575',
-            'green-dark': '#686666',
+            'green-lightest': '#daefe8',
+            'green-lighter': '#94dac4',
+            'green-light': '#57c9a5',
+            green: '#21b989',
+            'green-dark': '#0a8867',
 
-            purple: '#767575',
-
-            yellow: '#FFCE00'
+            purple: '#885de3',
         },
 
         screens: {
@@ -123,15 +120,11 @@ module.exports = {
             loose: 2,
         },
 
-
-
         letterSpacing: {
             tight: '-0.05em',
             normal: '0',
             wide: '0.05em',
         },
-
-
 
         boxShadow: {
             default: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
@@ -143,29 +136,14 @@ module.exports = {
             none: 'none',
         },
 
-        extend: { 
+        extend: {
             fontSize: {
                 xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
-                '7xl': '0rem', // xlarge! 
-            },
-
-
-            opacity: {
-                '5': '0.05',
             },
 
             width: {
                 '2px': '2px',
-            },
-
-            scale: {
-                '15': '.15',
-                '25': '.25',
-                '135': '1.35',
-                '120': '1.2',
-                '145': '1.45'
-
             },
 
             height: {
@@ -182,47 +160,11 @@ module.exports = {
                 popin: {
                     '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
                     '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
-                },
-
-                slidein: {
-                    '0%': { transform: 'scale(0.15, 1.45)  translateX(0)', opacity: 0.05 },
-                    '100%': { transform: 'scale(0.8, 0.8) translateX(-33rem)', opacity: 1 },
-                },
-
-                fadein1: {
-                    '0%': { opacity: 0.00 },
-                    '65%': { opacity: 0.00 },
-                    '66%': { opacity: 0.75 },
-                    '100%': { opacity: 0.75 },
-                },
-                fadein2: {
-                    '0%': { opacity: 0.00 },
-                    '50%': { opacity: 0.00 },
-                    '51%': { opacity: 0.5 },
-                    '100%': { opacity: 0.5 },
-                },
-                fadein3: {
-                    '0%': { opacity: 0.00 },
-                    '40%': { opacity: 0.00 },
-                    '41%': { opacity: 0.25 },
-                    '100%': { opacity: 0.25 },
-                },
-                fadein4: {
-                    '0%': { opacity: 0.00 },
-                    '20%': { opacity: 0.00 },
-                    '21%': { opacity: 0.05 },
-                    '100%': { opacity: 0.05 },
                 }
-                
             },
             animation: {
                 wiggle: 'wiggle 0.15s ease-in-out infinite',
                 popin: 'popin 0.2s 1 ease-in-out forwards',
-                slidein: 'slidein 1s 1 ease-in-out forwards',
-                fadein1: 'fadein1 1s 1 ease-in-out forwards',
-                fadein2: 'fadein2 1s 1 ease-in-out forwards',
-                fadein3: 'fadein3 1s 1 ease-in-out forwards',
-                fadein4: 'fadein4 1s 1 ease-in-out forwards',
             },
 
             maxWidth: {
@@ -258,13 +200,7 @@ module.exports = {
 
             inset: {
                 full: '100%',
-                '1/2': '50%',
-                '8': '2rem',
-            },
-
-            translate: {
-                '28': '7rem',
-                '18': '4.5rem',
+                '1/2': '50%'
             },
 
             gridTemplateColumns: {
