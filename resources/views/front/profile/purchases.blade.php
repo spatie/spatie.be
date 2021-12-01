@@ -75,7 +75,7 @@
                                 @if ($assignments->first()->purchasable->getting_started_url)
                                     <a class="block w-full text-xs md:text-base"
                                        href="{{ $assignments->first()->purchasable->getting_started_url }}">
-                                        <x-button>                                            Getting started
+                                        <x-button> Getting started
                                         </x-button>
                                     </a>
                                 @endif
@@ -150,6 +150,23 @@
                                                                 <livewire:domain :license="$license"/>
                                                             @endif
                                                         </div>
+
+                                                        @if($license->isExpired() && count($license->assignment->purchasable->satis_packages ?? []) )
+                                                            <div class="mt-6">
+                                                            Your license has expired, but you can still download the
+                                                                latest version that was available on the expiration
+                                                            date of your license. You are allowed to put this code in a
+                                                            private repo of your own and require that in your
+                                                            composer.json.
+
+                                                            @foreach($license->assignment->purchasable->satis_packages as $repo)
+                                                                <div class="mt-2">
+                                                                    <a class="link-black link-underline" href="{{ route('downloadLatestRelease', [$license, Str::after($repo, 'spatie/')]) }}">Download {{ $repo }} zip</a>
+                                                                </div>
+                                                            @endforeach
+
+                                                            </div>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             @endforeach

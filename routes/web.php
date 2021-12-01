@@ -11,6 +11,7 @@ use App\Http\Controllers\AppleSocialiteController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsController;
+use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\TestingLaravelController;
@@ -126,6 +127,8 @@ Route::middleware('auth')->prefix('profile')->group(function () {
 
     Route::get('purchases', PurchasesController::class)->name('purchases');
     Route::get('invoices', InvoicesController::class)->name('invoices');
+
+    Route::get('download-latest-version-for-expired-license/{license}/{repo}', DownloadLatestReleaseForExpiredLicenseController::class)->name('downloadLatestRelease');
 });
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

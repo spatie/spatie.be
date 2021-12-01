@@ -2,9 +2,13 @@
 
 namespace App\Services\GitHub;
 
+use Exception;
 use Github\Client;
 use Github\ResultPager;
+use Http;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 
 class GitHubApi
 {
@@ -28,6 +32,56 @@ class GitHubApi
             return $repo['private'] === false;
         });
     }
+
+    public function latestVersionOnDate(string $repository, Carbon $onDate): string
+    {
+        [$organisation, $repository] = explode('/', $repository);
+
+        $api = $this->client->api('repo')->releases();
+
+        $paginator = new ResultPager($this->client);
+
+        $releases = $paginator->fetchAll($api, 'all', [$organisation, $repository]);
+
+        $latestAvailableReleaseOnDate = collect($releases)
+            ->first(function (array $releaseProperties) use ($onDate) {
+                $createdAt = Carbon::create($releaseProperties['created_at']);
+
+                return $createdAt->isBefore($onDate);
+            });
+
+        if (!$latestAvailableReleaseOnDate) {
+            throw new Exception("No release found for {$repository} on date {$onDate->format('Y-m-d')}");
+        }
+
+        $featureVersionNumber = Str::beforeLast($latestAvailableReleaseOnDate['tag_name'], '.');
+
+        $latestBugFixReleaseForFeatureVersionRelease = collect($releases)
+            ->first(function (array $releaseProperties) use ($featureVersionNumber) {
+                return str_starts_with($releaseProperties['tag_name'], $featureVersionNumber . '.');
+            });
+
+        return $latestBugFixReleaseForFeatureVersionRelease['tag_name'];
+    }
+
+    public function temporaryUrlOfLatestAvailableRelease(string $repository, Carbon $onDate = null)
+    {
+        $onDate = Carbon::createFromFormat('Y-m-d', '2020-10-03');
+
+        $releaseNumber = $this->latestVersionOnDate($repository, $onDate);
+
+        $token = config('services.github.token');
+
+        [$organisation, $repository] = explode('/', $repository);
+
+        return Http::withHeaders([
+            'Authorization' => "token {$token}"
+        ])
+            ->withoutRedirecting()
+            ->get("https://api.github.com/repos/{$organisation}/{$repository}/zipball/{$releaseNumber}")
+            ->header('Location');
+    }
+
 
     public function fetchRepositoryTopics(string $username, string $repository): Collection
     {
@@ -66,6 +120,7 @@ class GitHubApi
             ['permission' => 'pull']
         );
     }
+
 
     public function revokeAccessToRepo(string $gitHubUsername, string $repository): void
     {

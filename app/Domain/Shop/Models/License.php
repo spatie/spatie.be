@@ -2,6 +2,7 @@
 
 namespace App\Domain\Shop\Models;
 
+use App\Models\User;
 use DateTimeInterface;
 use Exception;
 use Illuminate\Auth\Authenticatable;
@@ -131,6 +132,16 @@ class License extends Model implements AuthenticatableContract
     public function supportsActivations(): bool
     {
         return $this->maximumActivationCount() > 0;
+    }
+
+    public function isAssignedTo(User $user)
+    {
+        return $this->assignment->user_id === $user->id;
+    }
+
+    public function coversRepo(string $repo): bool
+    {
+        return in_array($repo, $this->assignment->purchasable->satis_packages);
     }
 
     protected function updateSignedLicense()
