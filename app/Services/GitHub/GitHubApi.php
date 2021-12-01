@@ -64,10 +64,8 @@ class GitHubApi
         return $latestBugFixReleaseForFeatureVersionRelease['tag_name'];
     }
 
-    public function temporaryUrlOfLatestAvailableRelease(string $repository, Carbon $onDate = null)
+    public function temporaryUrlOfLatestAvailableRelease(string $repository, Carbon $onDate): string
     {
-        $onDate = Carbon::createFromFormat('Y-m-d', '2020-10-03');
-
         $releaseNumber = $this->latestVersionOnDate($repository, $onDate);
 
         $token = config('services.github.token');
