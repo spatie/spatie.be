@@ -8,7 +8,7 @@ use Exception;
 
 class DownloadLatestReleaseForExpiredLicenseController
 {
-    public function __invoke(License $license, string $repo)
+    public function __invoke(License $license, string $repo, GitHubApi $gitHub)
     {
         $repo = "spatie/{$repo}";
 
@@ -17,7 +17,7 @@ class DownloadLatestReleaseForExpiredLicenseController
         }
 
         if (! $license->isExpired()) {
-            throw new Exception("This license has not expired yet.");
+            abort(422, "This license has not expired yet.");
         }
 
         if (! $license->coversRepo($repo)) {
@@ -25,10 +25,10 @@ class DownloadLatestReleaseForExpiredLicenseController
         }
 
 
-        $temporaryDownloadUrl = app(GitHubApi::class)
+        $temporaryDownloadUrl = $gitHub
             ->temporaryUrlOfLatestAvailableRelease(
                 $repo,
-                $license->expired_at
+                $license->expires_at,
             );
 
        return response()->redirectTo($temporaryDownloadUrl);

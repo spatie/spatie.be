@@ -44,11 +44,9 @@ class GitHubApi
         $releases = $paginator->fetchAll($api, 'all', [$organisation, $repository]);
 
         $latestAvailableReleaseOnDate = collect($releases)
-            ->first(function (array $releaseProperties) use ($onDate) {
-                $createdAt = Carbon::create($releaseProperties['created_at']);
-
-                return $createdAt->isBefore($onDate);
-            });
+            ->first(
+                fn(array $releaseProperties) => Carbon::create($releaseProperties['created_at'])->isBefore($onDate)
+            );
 
         if (!$latestAvailableReleaseOnDate) {
             throw new Exception("No release found for {$repository} on date {$onDate->format('Y-m-d')}");
