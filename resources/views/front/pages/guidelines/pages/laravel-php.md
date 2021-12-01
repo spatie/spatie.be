@@ -66,6 +66,21 @@ class Foo
 }
 ```
 
+## Enums
+
+Values in enums should lower camel cased. 
+
+```php
+enum Suite {  
+    case clubs;
+    case diamonds;
+    case hearts;
+    case spades;
+}
+
+Suit::diamonds;
+```
+
 ## Docblocks
 
 Don't use docblocks for methods that can be fully type hinted (unless you need a description).
@@ -144,12 +159,12 @@ If a variable has multiple types, the most common occurring type should be first
 
 // Bad
 
-/** @var \SomeWeirdVendor\Collection|\Illuminate\Support\Collection| */
+/** @var \SomeWeirdVendor\Collection|\Illuminate\Support\Collection */
 ```
 
 ## Docblocks for iterables
 
-When your function gets passed an iterable, you should add a docblock to specify the type of key and value
+When your function gets passed an iterable, you should add a docblock to specify the type of key and value. This will greatly help static analysis tools understand the code, and IDEs to provide autocompletion.
 
 ```php
 /**
@@ -160,13 +175,13 @@ function someFunction(array $myArray) {
 }
 ```
 
-You should only add a docblock, for the parameters where they can add value.
 
-In this example, `typedArgument` doesn't need a dockblock, because we already know its type via the native typehint
+In this example, `typedArgument` needs a docblock too:
 
 ```php
 /**
  * @param $myArray array<int, MyObject>
+ * @param int $typedArgument 
  */
 function someFunction(array $myArray, int $typedArgument) {
 
@@ -182,6 +197,19 @@ use \Illuminate\Support\Collection
  * @return \Illuminate\Support\Collection<int,SomeObject>
  */
 function someFunction(): Collection {
+    //
+}
+```
+
+If your array or collection has a few fixed keys, you can typehint them too using `{}` notation.
+
+```php
+use \Illuminate\Support\Collection
+
+/**
+ * @return array{old: SomeClass, new: SomeClass}
+ */
+function someFunction(): array {
     //
 }
 ```
