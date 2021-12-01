@@ -27,6 +27,7 @@ it('updates video details', function () {
             'vimeo_id' => 1234,
             'thumbnail' => 'something',
             'title' => 'A title',
+            'hash' => 'hash',
             'slug' => 'a-title',
             'sort_order' => 1,
             'runtime' => 0,
@@ -35,6 +36,7 @@ it('updates video details', function () {
 
     $this->vimeoMock->shouldReceive('getVideo')->with(1234)->andReturn([
         'name' => 'A video',
+        'link' => 'https://video.com/video/updated-hash',
         'description' => 'A description',
         'duration' => 123,
         'pictures' => [
@@ -51,6 +53,8 @@ it('updates video details', function () {
     tap($video->fresh(), function (Video $video) {
         expect($video->title)->toBe('A video');
         expect($video->slug)->toBe('a-video');
+        expect($video->hash)->toBe('updated-hash');
+
         expect($video->description)->toBe('A description');
         expect($video->runtime)->toBe(123);
         expect($video->thumbnail)->toBe('https://placehold.it/200x200');
