@@ -66,6 +66,21 @@ class Foo
 }
 ```
 
+## Enums
+
+Values in enums should lower camel cased. 
+
+```php
+enum Suite {  
+    case clubs;
+    case diamonds;
+    case hearts;
+    case spades;
+}
+
+Suit::diamonds;
+```
+
 ## Docblocks
 
 Don't use docblocks for methods that can be fully type hinted (unless you need a description).
@@ -99,23 +114,24 @@ class Url
 }
 ```
 
-Always use fully qualified class names in docblocks.
+Always import the classnames in docblocks.
 
 ```php
 // Good
-
-/**
- * @param string $url
- *
- * @return \Spatie\Url\Url
- */
-
-// Bad
+use \Spatie\Url\Url
 
 /**
  * @param string $foo
  *
  * @return Url
+ */
+
+// Bad
+
+/**
+ * @param string $url
+ *
+ * @return \Spatie\Url\Url
  */
 ```
 
@@ -139,11 +155,74 @@ If a variable has multiple types, the most common occurring type should be first
 ```php
 // Good
 
-/** @var \Spatie\Goo\Bar|null */
+/** @var \Illuminate\Support\Collection|\SomeWeirdVendor\Collection */
 
 // Bad
 
-/** @var null|\Spatie\Goo\Bar */
+/** @var \SomeWeirdVendor\Collection|\Illuminate\Support\Collection */
+```
+
+## Docblocks for iterables
+
+When your function gets passed an iterable, you should add a docblock to specify the type of key and value. This will greatly help static analysis tools understand the code, and IDEs to provide autocompletion.
+
+```php
+/**
+ * @param $myArray array<int, MyObject>
+ */
+function someFunction(array $myArray) {
+
+}
+```
+
+
+In this example, `typedArgument` needs a docblock too:
+
+```php
+/**
+ * @param $myArray array<int, MyObject>
+ * @param int $typedArgument 
+ */
+function someFunction(array $myArray, int $typedArgument) {
+
+}
+```
+
+The keys and values of iterables that get returned should always be typed.
+
+```php
+use \Illuminate\Support\Collection
+
+/**
+ * @return \Illuminate\Support\Collection<int,SomeObject>
+ */
+function someFunction(): Collection {
+    //
+}
+```
+
+If your array or collection has a few fixed keys, you can typehint them too using `{}` notation.
+
+```php
+use \Illuminate\Support\Collection
+
+/**
+ * @return array{old: SomeClass, new: SomeClass}
+ */
+function someFunction(): array {
+    //
+}
+```
+
+If there is only one docblock needed, you may use the short version.
+
+```php
+use \Illuminate\Support\Collection
+
+/** @return \Illuminate\Support\Collection<int,SomeObject> */
+function someFunction(): Collection {
+    //
+}
 ```
 
 ## Constructor property promotion
