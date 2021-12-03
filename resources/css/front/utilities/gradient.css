@@ -31,7 +31,6 @@
 
     @apply bg-blue-lightest;
 }
-@@ -42,8 +42,8 @@
 
 .gradient-dark {
     --gradient-angle: 120deg;
