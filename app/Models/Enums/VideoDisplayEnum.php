@@ -7,8 +7,8 @@ use MyCLabs\Enum\Enum;
 /** @psalm-immutable */
 class VideoDisplayEnum extends Enum
 {
-    const FREE = 'free';
-    const AUTH = 'auth';
-    const SPONSORS = 'sponsors';
-    const LICENSE = 'license';
+    public const FREE = 'free';
+    public const AUTH = 'auth';
+    public const SPONSORS = 'sponsors';
+    public const LICENSE = 'license';
 }
