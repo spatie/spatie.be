@@ -27,3 +27,4 @@ _ide_helper_models.php
 .php_cs.cache
 .php-cs-fixer.cache
 dump.rdb
+auth.json
