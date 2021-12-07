@@ -71,7 +71,7 @@ class Foo
 Values in enums should lower camel cased. 
 
 ```php
-enum Suite {  
+enum Suit {  
     case clubs;
     case diamonds;
     case hearts;
