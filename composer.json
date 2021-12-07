@@ -61,6 +61,7 @@
         "spatie/laravel-event-sourcing": "^5.0.2",
         "spatie/laravel-feed": "^4.0",
         "spatie/laravel-flash": "^1.7",
+        "spatie/laravel-health": "^1.0",
         "spatie/laravel-mailcoach": "^4.0.7",
         "spatie/laravel-mailcoach-mailgun-feedback": "^3.0",
         "spatie/laravel-mailcoach-monaco": "^2.0",
