@@ -54,6 +54,13 @@ class Bundle extends Model implements HasMedia, Sortable
         return $this->getFirstMediaUrl('image');
     }
 
+    public function getAverageEarnings(): int
+    {
+        $avgEarnings = $this->purchases()->where('earnings', '>', 0)->average('earnings');
+
+        return (int)round($avgEarnings);
+    }
+
     public function purchasables(): BelongsToMany
     {
         return $this->belongsToMany(Purchasable::class)->orderBy('sort_order');
