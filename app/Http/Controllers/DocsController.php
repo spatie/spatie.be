@@ -17,7 +17,7 @@ class DocsController
         ]);
     }
 
-    public function repository(string $repository, ?string $alias = null, Docs $docs)
+    public function repository(Docs $docs, string $repository, ?string $alias = null)
     {
         try {
             $repository = $docs->getRepository($repository);
