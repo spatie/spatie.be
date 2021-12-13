@@ -56,7 +56,9 @@ class Bundle extends Model implements HasMedia, Sortable
 
     public function getAverageEarnings(): int
     {
-        $avgEarnings = $this->purchases()->where('earnings', '>', 0)->average('earnings');
+        $avgEarnings = $this->purchasables->each(function (Purchasable $purchasable) {
+            return $purchasable->purchases()->where('earnings', '>', 0)->average('earnings');
+        })->average();
 
         return (int)round($avgEarnings);
     }
