@@ -5815,16 +5815,16 @@
         },
         {
             "name": "optimistdigital/nova-multiselect-field",
-            "version": "2.3.12",
+            "version": "2.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/optimistdigital/nova-multiselect-field.git",
-                "reference": "0e96417dad1d09cf5bc7631a6bd8564bdca7bf3a"
+                "reference": "d57046f0f43f563bc69e2da03d67d55d5063d455"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/optimistdigital/nova-multiselect-field/zipball/0e96417dad1d09cf5bc7631a6bd8564bdca7bf3a",
-                "reference": "0e96417dad1d09cf5bc7631a6bd8564bdca7bf3a",
+                "url": "https://api.github.com/repos/optimistdigital/nova-multiselect-field/zipball/d57046f0f43f563bc69e2da03d67d55d5063d455",
+                "reference": "d57046f0f43f563bc69e2da03d67d55d5063d455",
                 "shasum": ""
             },
             "require": {
@@ -5870,7 +5870,7 @@
             ],
             "support": {
                 "issues": "https://github.com/optimistdigital/nova-multiselect-field/issues",
-                "source": "https://github.com/optimistdigital/nova-multiselect-field/tree/2.3.12"
+                "source": "https://github.com/optimistdigital/nova-multiselect-field/tree/2.3.13"
             },
             "funding": [
                 {
@@ -5878,7 +5878,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-11-12T14:29:11+00:00"
+            "time": "2021-12-13T11:05:31+00:00"
         },
         {
             "name": "optimistdigital/nova-sortable",
@@ -10731,16 +10731,16 @@
         },
         {
             "name": "spatie/laravel-health",
-            "version": "1.2.1",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-health.git",
-                "reference": "1bf9ea0ea2c4ed60e50987e58052f0db9415f137"
+                "reference": "9bf5f221690922c5d8c7ee0431467edd668399ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/1bf9ea0ea2c4ed60e50987e58052f0db9415f137",
-                "reference": "1bf9ea0ea2c4ed60e50987e58052f0db9415f137",
+                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/9bf5f221690922c5d8c7ee0431467edd668399ee",
+                "reference": "9bf5f221690922c5d8c7ee0431467edd668399ee",
                 "shasum": ""
             },
             "require": {
@@ -10812,7 +10812,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-health/issues",
-                "source": "https://github.com/spatie/laravel-health/tree/1.2.1"
+                "source": "https://github.com/spatie/laravel-health/tree/1.3.0"
             },
             "funding": [
                 {
@@ -10820,7 +10820,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-12-11T12:26:13+00:00"
+            "time": "2021-12-13T11:03:31+00:00"
         },
         {
             "name": "spatie/laravel-json-api-paginate",
