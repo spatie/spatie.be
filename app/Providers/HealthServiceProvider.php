@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Spatie\CpuLoadHealthCheck\CpuLoadCheck;
+use Spatie\CpuLoadHealthCheck\CpuLoadHealthCheck;
 use Spatie\Health\Checks\Checks\DatabaseCheck;
 use Spatie\Health\Checks\Checks\DebugModeCheck;
 use Spatie\Health\Checks\Checks\EnvironmentCheck;
@@ -15,6 +17,7 @@ class HealthServiceProvider extends ServiceProvider
     public function register()
     {
         Health::checks([
+            CpuLoadCheck::new()->failWhenLoadIsHigherInTheLast5Minutes(4.0),
             DebugModeCheck::new(),
             EnvironmentCheck::new(),
             DatabaseCheck::new(),
