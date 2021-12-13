@@ -86,7 +86,7 @@ return [
         ],
 
         'slack' => [
-            'webhook_url' => env('SLACK_BACKUP_CHANNEL_WEBHOOK'),
+            'webhook_url' => env('SLACK_BACKUP_CHANNEL_WEBHOOK', ''),
         ],
     ],
 
