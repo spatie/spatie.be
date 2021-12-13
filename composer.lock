@@ -13061,32 +13061,32 @@
         },
         {
             "name": "spatie/sheets",
-            "version": "1.7.2",
+            "version": "1.7.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/sheets.git",
-                "reference": "3464cbd624e09e0bf34e60b0daa673cb3d0cb5a9"
+                "reference": "41417ce8a6b50ae8ea2a86eef621b15e5b800d6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/sheets/zipball/3464cbd624e09e0bf34e60b0daa673cb3d0cb5a9",
-                "reference": "3464cbd624e09e0bf34e60b0daa673cb3d0cb5a9",
+                "url": "https://api.github.com/repos/spatie/sheets/zipball/41417ce8a6b50ae8ea2a86eef621b15e5b800d6f",
+                "reference": "41417ce8a6b50ae8ea2a86eef621b15e5b800d6f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "illuminate/contracts": "^6.0|^7.0|^8.0",
-                "illuminate/filesystem": "^6.0|^7.0|^8.0",
-                "illuminate/support": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^8.71",
+                "illuminate/filesystem": "^8.71",
+                "illuminate/support": "^8.71",
                 "league/commonmark": "^1.0",
-                "php": "^7.3|^8.0",
+                "php": "^8.0",
                 "spatie/yaml-front-matter": "^2.0",
                 "symfony/yaml": "^4.0|^5.0"
             },
             "require-dev": {
                 "league/flysystem": "^1.0.8",
-                "orchestra/testbench": "^4.0|^5.0|^6.0",
-                "phpunit/phpunit": "^8.0|^9.0"
+                "orchestra/testbench": "^6.23",
+                "phpunit/phpunit": "^9.4"
             },
             "type": "library",
             "extra": {
@@ -13128,7 +13128,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/sheets/issues",
-                "source": "https://github.com/spatie/sheets/tree/1.7.2"
+                "source": "https://github.com/spatie/sheets/tree/1.7.3"
             },
             "funding": [
                 {
@@ -13136,7 +13136,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2020-12-04T13:39:58+00:00"
+            "time": "2021-12-13T13:58:46+00:00"
         },
         {
             "name": "spatie/shiki-php",
