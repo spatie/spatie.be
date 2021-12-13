@@ -11,7 +11,7 @@
 @if(session()->has('sold_purchasable'))
     <script>
         @php
-            /** @var \App\Domain\Shop\Models\Purchasable $purchasable */
+            /** @var \App\Domain\Shop\Models\Purchasable|\App\Domain\Shop\Models\Bundle $purchasable */
             $purchasable = session()->get('sold_purchasable')
         @endphp
 
@@ -29,7 +29,7 @@
                         {
                             "id": "{{ $purchasable->id }}",
                             "sku": "{{ $purchasable->id }}",
-                            "name": "{{ $purchasable->product->title }} | {{ $purchasable->title }}",
+                            "name": "{{ $purchasable->getFullTitle() }}",
                             "quantity": 1,
                             "price": {{ $purchasable->getAverageEarnings() }}
                         }
