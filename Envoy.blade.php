@@ -3,7 +3,7 @@ require __DIR__.'/vendor/autoload.php';
 
 $branch = "main";
 $server = "spatie.be";
-$userAndServer = 'forge@new'. $server;
+$userAndServer = 'forge@new.'. $server;
 $repository = "spatie/spatie.be";
 $baseDir = "/home/forge/spatie.be";
 $releasesDir = "{$baseDir}/releases";
