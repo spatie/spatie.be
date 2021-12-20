@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-comments",
+            "repository" => "spatie/laravel-comments",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-health",
             "repository" => "spatie/laravel-health",
             "branches" => [
