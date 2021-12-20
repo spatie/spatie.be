@@ -2,13 +2,14 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\CheckForMaintenanceMode;
 use App\Http\Middleware\HandleReferrer;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
 {
     protected $middleware = [
-        \Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance::class,
+        CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
         // Disabled for Livewire
         // \App\Http\Middleware\TrimStrings::class,
