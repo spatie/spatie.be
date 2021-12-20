@@ -12,6 +12,7 @@ class PreventRequestsDuringMaintenance extends Middleware
      * @var array
      */
     protected $except = [
-        '/paddle/webhook'
+        '/paddle/webhook',
+        '/oh-dear-health-check-results',
     ];
 }
