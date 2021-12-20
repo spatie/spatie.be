@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1a0bc6fe9c998a71e992d8c7aab47504",
+    "content-hash": "650e37ee019bd7ae6301606c3265b156",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -9720,25 +9720,26 @@
         },
         {
             "name": "spatie/eloquent-sortable",
-            "version": "3.11.0",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/eloquent-sortable.git",
-                "reference": "b06fa886559f8d40e31c8a69fd32bd45401dc5da"
+                "reference": "6b4ca608144153a69b6a9f457e15bd7eafbe97a9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/eloquent-sortable/zipball/b06fa886559f8d40e31c8a69fd32bd45401dc5da",
-                "reference": "b06fa886559f8d40e31c8a69fd32bd45401dc5da",
+                "url": "https://api.github.com/repos/spatie/eloquent-sortable/zipball/6b4ca608144153a69b6a9f457e15bd7eafbe97a9",
+                "reference": "6b4ca608144153a69b6a9f457e15bd7eafbe97a9",
                 "shasum": ""
             },
             "require": {
-                "illuminate/database": "^6.0|^7.0|^8.0",
-                "illuminate/support": "^6.0|^7.0|^8.0",
-                "php": "^7.3|^8.0"
+                "illuminate/database": "^7.0|^8.0",
+                "illuminate/support": "^7.0|^8.0",
+                "php": "^8.0",
+                "spatie/laravel-package-tools": "^1.6"
             },
             "require-dev": {
-                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "orchestra/testbench": "^5.0|^6.0",
                 "phpunit/phpunit": "^8.0|^9.0"
             },
             "type": "library",
@@ -9776,15 +9777,19 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/eloquent-sortable/issues",
-                "source": "https://github.com/spatie/eloquent-sortable/tree/3.11.0"
+                "source": "https://github.com/spatie/eloquent-sortable/tree/4.0.0"
             },
             "funding": [
+                {
+                    "url": "https://spatie.be/open-source/support-us",
+                    "type": "custom"
+                },
                 {
                     "url": "https://github.com/spatie",
                     "type": "github"
                 }
             ],
-            "time": "2021-01-18T00:32:12+00:00"
+            "time": "2021-03-31T14:07:53+00:00"
         },
         {
             "name": "spatie/enum",
@@ -11304,24 +11309,24 @@
         },
         {
             "name": "spatie/laravel-menu",
-            "version": "3.7.1",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-menu.git",
-                "reference": "1fc1da8e2c8bc896557e6f4d0cec2c3125e96d1c"
+                "reference": "269a0304ebfc80befcee186411bcd5443ca85163"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-menu/zipball/1fc1da8e2c8bc896557e6f4d0cec2c3125e96d1c",
-                "reference": "1fc1da8e2c8bc896557e6f4d0cec2c3125e96d1c",
+                "url": "https://api.github.com/repos/spatie/laravel-menu/zipball/269a0304ebfc80befcee186411bcd5443ca85163",
+                "reference": "269a0304ebfc80befcee186411bcd5443ca85163",
                 "shasum": ""
             },
             "require": {
                 "illuminate/auth": "^7.24|^8.0",
                 "illuminate/contracts": "^7.24|^8.0",
                 "illuminate/support": "^7.24|^8.0",
-                "php": "^7.3|^8.0",
-                "spatie/menu": "^2.8"
+                "php": "^8.0",
+                "spatie/menu": "^3.0"
             },
             "require-dev": {
                 "fakerphp/faker": "^1.9",
@@ -11364,7 +11369,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-menu/issues",
-                "source": "https://github.com/spatie/laravel-menu/tree/3.7.1"
+                "source": "https://github.com/spatie/laravel-menu/tree/4.0.1"
             },
             "funding": [
                 {
@@ -11372,7 +11377,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-03-16T07:26:57+00:00"
+            "time": "2021-11-16T16:02:22+00:00"
         },
         {
             "name": "spatie/laravel-model-cleanup",
@@ -11642,29 +11647,29 @@
         },
         {
             "name": "spatie/laravel-remote",
-            "version": "0.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-remote.git",
-                "reference": "afb5f993e523bb4118c6c898678a0ebf780d24bc"
+                "reference": "003723f1cc7a6122f70d3807afb957a1351d9be0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-remote/zipball/afb5f993e523bb4118c6c898678a0ebf780d24bc",
-                "reference": "afb5f993e523bb4118c6c898678a0ebf780d24bc",
+                "url": "https://api.github.com/repos/spatie/laravel-remote/zipball/003723f1cc7a6122f70d3807afb957a1351d9be0",
+                "reference": "003723f1cc7a6122f70d3807afb957a1351d9be0",
                 "shasum": ""
             },
             "require": {
                 "illuminate/contracts": "^8.0",
                 "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.1",
-                "spatie/phpunit-snapshot-assertions": "^4.2",
+                "spatie/laravel-package-tools": "^1.4.3",
                 "spatie/ssh": "^1.5"
             },
             "require-dev": {
                 "orchestra/testbench": "^6.0",
                 "phpunit/phpunit": "^9.3",
                 "spatie/laravel-ray": "^1.9",
+                "spatie/phpunit-snapshot-assertions": "^4.2",
                 "spatie/ray": "^1.21",
                 "vimeo/psalm": "^4.4"
             },
@@ -11701,7 +11706,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-remote/issues",
-                "source": "https://github.com/spatie/laravel-remote/tree/0.0.1"
+                "source": "https://github.com/spatie/laravel-remote/tree/1.0.2"
             },
             "funding": [
                 {
@@ -11709,7 +11714,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-03-09T15:23:24+00:00"
+            "time": "2021-04-01T07:30:58+00:00"
         },
         {
             "name": "spatie/laravel-schedule-monitor",
@@ -12335,26 +12340,26 @@
         },
         {
             "name": "spatie/menu",
-            "version": "2.10.3",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/menu.git",
-                "reference": "e37c2f57750481bb6101eb38e0372699bf5cedda"
+                "reference": "3a9a361d2e3099f7e24569a53510eae1c775bcce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/menu/zipball/e37c2f57750481bb6101eb38e0372699bf5cedda",
-                "reference": "e37c2f57750481bb6101eb38e0372699bf5cedda",
+                "url": "https://api.github.com/repos/spatie/menu/zipball/3a9a361d2e3099f7e24569a53510eae1c775bcce",
+                "reference": "3a9a361d2e3099f7e24569a53510eae1c775bcce",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.1|^8.0",
+                "php": "^8.0",
                 "spatie/url": "^1.0.0"
             },
             "require-dev": {
                 "larapack/dd": "^1.0",
-                "phpunit/phpunit": "^7.0|^8.0|^9.0",
-                "vimeo/psalm": "^3.11|^4.0"
+                "phpunit/phpunit": "^9.0",
+                "vimeo/psalm": "^4.0"
             },
             "type": "library",
             "autoload": {
@@ -12383,7 +12388,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/menu/issues",
-                "source": "https://github.com/spatie/menu/tree/2.10.3"
+                "source": "https://github.com/spatie/menu/tree/3.0.0"
             },
             "funding": [
                 {
@@ -12395,7 +12400,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2021-03-16T07:21:37+00:00"
+            "time": "2021-03-24T07:49:18+00:00"
         },
         {
             "name": "spatie/once",
