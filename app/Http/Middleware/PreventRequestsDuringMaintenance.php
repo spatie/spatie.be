@@ -14,5 +14,6 @@ class PreventRequestsDuringMaintenance extends Middleware
     protected $except = [
         '/paddle/webhook',
         '/oh-dear-health-check-results',
+        '/api/satis/authenticate'
     ];
 }
