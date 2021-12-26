@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Domain\Shop\Models\License as EloquentLicense;
+use App\Nova\Actions\RegenerateLicenseKeyAction;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
@@ -44,6 +45,13 @@ class License extends Resource
             DateTime::make('Second expiration mail sent at'),
 
             HasMany::make('Activations'),
+        ];
+    }
+
+    public function actions(Request $request)
+    {
+        return [
+            new RegenerateLicenseKeyAction(),
         ];
     }
 }
