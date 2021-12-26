@@ -2,7 +2,7 @@
 
 namespace App\Nova\Actions;
 
-use App\Nova\License;
+use App\Domain\Shop\Models\License;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Laravel\Nova\Actions\DestructiveAction;
