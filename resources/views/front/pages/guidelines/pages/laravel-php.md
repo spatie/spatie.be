@@ -68,17 +68,17 @@ class Foo
 
 ## Enums
 
-Values in enums should lower camel cased. 
+Values in enums should use PascalCase. 
 
 ```php
 enum Suit {  
-    case clubs;
-    case diamonds;
-    case hearts;
-    case spades;
+    case Clubs;
+    case Diamonds;
+    case Hearts;
+    case Spades;
 }
 
-Suit::diamonds;
+Suit::Diamonds;
 ```
 
 ## Docblocks
