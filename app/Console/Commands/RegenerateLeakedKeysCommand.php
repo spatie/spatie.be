@@ -11,7 +11,7 @@ use phpseclib3\Math\BigInteger\Engines\PHP;
 
 class RegenerateLeakedKeysCommand extends Command
 {
-    protected $signature = 'regenerate-leaked-keys';
+    protected $signature = 'regenerate-leaked-keys {--dry-run}';
 
     public function handle(GitHubApi $gitHubApi)
     {
@@ -52,6 +52,11 @@ class RegenerateLeakedKeysCommand extends Command
             return;
         }
 
+        if ($this->option('dry-run')) {
+            $this->line('Found key on: ' . $result['html_url']);
+
+            return;
+        }
         (new RegenerateLeakedLicenseKeyAction())->execute($license, $result['html_url']);
 
     }
