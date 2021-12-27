@@ -7,6 +7,7 @@ use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportGuideLinesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
+use App\Console\Commands\RegenerateLeakedKeysCommand;
 use App\Domain\Shop\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Domain\Shop\Commands\SendLicenseExpirationNotificationsCommand;
 use App\Domain\Shop\Commands\UpdateBundlePricesCommand;
@@ -35,6 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
         $schedule->command(ImportGuideLinesCommand::class)->weekly();
+        $schedule->command(RegenerateLeakedKeysCommand::class)->hourly()->graceTimeInMinutes(20);
 
         $schedule->command(CleanLogCommand::class)->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');

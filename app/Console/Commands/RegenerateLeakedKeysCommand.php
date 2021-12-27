@@ -7,7 +7,6 @@ use App\Domain\Shop\Models\License;
 use App\Services\GitHub\GitHubApi;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Http;
-use phpseclib3\Math\BigInteger\Engines\PHP;
 
 class RegenerateLeakedKeysCommand extends Command
 {
