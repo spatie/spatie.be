@@ -22,6 +22,6 @@ class LeakedLicenseKeyRegeneratedMail extends Mailable implements ShouldQueue
     {
         $this
             ->subject('We have revoked your leaked license key')
-            ->view('mails.leakedLicenseKeyRegenerated');
+            ->markdown('mails.leakedLicenseKeyRegenerated');
     }
 }
