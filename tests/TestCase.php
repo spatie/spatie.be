@@ -24,4 +24,11 @@ abstract class TestCase extends BaseTestCase
     {
         return __DIR__ . "/stubs/{$nameOfStub}";
     }
+
+    public function getJsonStubContent(string $nameOfStub): array
+    {
+        $path = $this->getStub($nameOfStub);
+
+        return json_decode(file_get_contents($path), true);
+    }
 }

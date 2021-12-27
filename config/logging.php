@@ -72,9 +72,13 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Laravel Log',
-            'emoji' => ':boom:',
-            'level' => 'critical',
+            'username' => 'Flare',
+            //'emoji' => 'https://emoji.slack-edge.com/T0251ASU6/flare/b286be636d7cee9b.png',
+            'attachment' => false,
+            'formatter' => Monolog\Formatter\LineFormatter::class,
+            'formatter_with' => [
+                'format' => "%message%\n",
+            ],
         ],
 
         'papertrail' => [

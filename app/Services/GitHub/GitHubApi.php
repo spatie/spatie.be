@@ -128,4 +128,23 @@ class GitHubApi
             $gitHubUsername,
         );
     }
+
+    /**
+     * @param string $searchString
+     *
+     * @return array{ResultPager, array}
+     */
+    public function search(string $searchString): array
+    {
+        //dd($this->client->api('search')->code('spatie'));
+        $searchApi = $this->client->api('search');
+
+        $paginator = new ResultPager($this->client);
+        $parameters = [
+            'q' => $searchString,
+        ];
+        $result = $paginator->fetch($searchApi, 'code', $parameters);
+
+        return [$paginator, $result];
+    }
 }
