@@ -17,13 +17,15 @@ class RegenerateLeakedKeysCommand extends Command
         [$paginator, $response] = $gitHubApi->search('satis.spatie.be');
 
         do {
-            foreach($response['items'] as $result)
-            {
+            foreach ($response['items'] as $result) {
                 $this->processResult($result);
             }
 
+            $this->info('Sleeping to prevent hitting a rate limit...');
             sleep(60);
-        } while($response = $paginator->fetchNext());
+        } while ($response = $paginator->fetchNext());
+
+        $this->info('All done!');
     }
 
     public function processResult(array $result): void
@@ -38,21 +40,21 @@ class RegenerateLeakedKeysCommand extends Command
 
         $jsonContent = $this->getJsonContent($result['url']);
 
-        if (! $jsonContent) {
+        if (!$jsonContent) {
             return;
         }
 
         $licenseKey = $jsonContent['http-basic']['satis.spatie.be']['password'] ?? false;
 
-        if (! $licenseKey) {
+        if (!$licenseKey) {
             return;
         }
-        if (! $license = License::where('key', $licenseKey)->first()) {
+        if (!$license = License::where('key', $licenseKey)->first()) {
             return;
         }
 
+        $this->warn('Found key on: ' . $result['html_url']);
         if ($this->option('dry-run')) {
-            $this->line('Found key on: ' . $result['html_url']);
 
             return;
         }
