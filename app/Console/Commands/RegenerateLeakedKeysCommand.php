@@ -22,7 +22,7 @@ class RegenerateLeakedKeysCommand extends Command
             }
 
             $this->info('Sleeping to prevent hitting a rate limit...');
-            sleep(60);
+            sleep(90);
         } while ($response = $paginator->fetchNext());
 
         $this->info('All done!');

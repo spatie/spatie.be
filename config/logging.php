@@ -72,7 +72,7 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Flare',
+            'username' => 'Spatie',
             //'emoji' => 'https://emoji.slack-edge.com/T0251ASU6/flare/b286be636d7cee9b.png',
             'attachment' => false,
             'formatter' => Monolog\Formatter\LineFormatter::class,

@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
         $schedule->command(ImportGuideLinesCommand::class)->weekly();
-        $schedule->command(RegenerateLeakedKeysCommand::class)->hourly()->graceTimeInMinutes(20);
+        $schedule->command(RegenerateLeakedKeysCommand::class)->runInBackground()->hourly();
 
         $schedule->command(CleanLogCommand::class)->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
