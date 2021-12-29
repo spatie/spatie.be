@@ -12,7 +12,7 @@ use App\Http\Api\Controllers\SatisAuthenticationController;
 use App\Http\Api\Controllers\ShowLicenseController;
 use Illuminate\Support\Facades\Route;
 
-Route::post('satis/authenticate', SatisAuthenticationController::class)->middleware('auth:license-api');
+Route::post('satis/authenticate', SatisAuthenticationController::class)->middleware(['forceJson', 'auth:license-api'],);
 
 Route::prefix('webhooks')->group(function () {
     Route::post('github', HandleGitHubRepositoryWebhookController::class);
