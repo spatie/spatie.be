@@ -44,12 +44,6 @@ class Video extends Model
         return $this->hasMany(VideoCompletion::class);
     }
 
-
-    public function getUrlAttribute(): string
-    {
-        return action([CoursesController::class, 'show'], [$this->series, $this]);
-    }
-
     protected function getDownloadUrls(): Collection
     {
         return Cache::remember('video_'.$this->id, now()->addMinute(), function () {

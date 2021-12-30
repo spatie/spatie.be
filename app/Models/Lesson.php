@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\CoursesController;
 use App\Models\Enums\LessonDisplayEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -65,6 +66,11 @@ class Lesson extends Model implements Sortable
         }
 
         return $orderedLessons[$currentIndex + 1];
+    }
+
+    public function getUrlAttribute(): string
+    {
+        return action([CoursesController::class, 'show'], [$this->series, $this]);
     }
 
     public function getFormattedDescriptionAttribute(): string
