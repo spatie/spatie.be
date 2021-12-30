@@ -14,7 +14,7 @@ class NavigationServiceProvider extends ServiceProvider
             return Menu::new()
                 ->route('products.index', 'Products')
                 ->route('open-source.packages', 'Open Source')
-                ->route('videos.index', 'Videos')
+                ->route('courses.index', 'Courses')
                 ->route('web-development', 'Web Development')
 
                 ->setActiveFromRequest()

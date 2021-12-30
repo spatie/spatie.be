@@ -13,8 +13,8 @@
                             <a class="link-black link-underline-hover" href="{{ $series->url }}">{{ $series->title }}</a>
                             <div class="title-subtext text-gray flex items-center">
                                 <span>
-                                {{ $series->videos()->count() }}
-                                {{  \Illuminate\Support\Str::plural('video', $series->videos()->count()) }}
+                                {{ $series->lessons()->count() }}
+                                {{  \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
                                 </span>
 
                                 @if($series->isPurchasable())
@@ -58,7 +58,7 @@
                                     </a>
                             @endif
                          @else
-                            <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('videos', $series->videos()->count()) }}</a>
+                            <a class="link-underline link-blue" href="{{ $series->url }}">Watch {{  \Illuminate\Support\Str::plural('videos', $series->lessons()->count()) }}</a>
                         @endif
                         </p>
 

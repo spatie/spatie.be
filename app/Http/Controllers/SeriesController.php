@@ -13,7 +13,7 @@ class SeriesController
 
         $series->load(['purchasables.product']);
 
-        return view('front.pages.videos.series', compact(
+        return view('front.pages.courses.series', compact(
             'title',
             'description',
             'series',

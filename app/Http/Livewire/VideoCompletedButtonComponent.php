@@ -24,7 +24,7 @@ class VideoCompletedButtonComponent extends Component
 
     public function render()
     {
-        return view('front.pages.videos.livewire.videoCompletedButton', [
+        return view('front.pages.courses.livewire.videoCompletedButton', [
             'video' => $this->video,
         ]);
     }

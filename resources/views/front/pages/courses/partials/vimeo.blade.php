@@ -17,8 +17,8 @@
         }
 
         // Don't the next link if there is none
-        @if ($nextVideo)
-            location.href = '{{ route('videos.show', [$nextVideo->series, $nextVideo]) }}';
+        @if ($nextLesson)
+            location.href = '{{ route('courses.show', [$nextLesson->series, $nextLesson]) }}';
         @endif
     });
 

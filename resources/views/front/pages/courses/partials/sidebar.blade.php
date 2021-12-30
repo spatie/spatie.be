@@ -28,22 +28,22 @@
                 <span class="mr-1">Introduction</span>
             </a>
         </li>
-        @forelse ($series->videos->groupBy('chapter') as $chapter => $videosPerChapter)
+        @forelse ($series->lessons->groupBy('chapter') as $chapter => $videosPerChapter)
             @if ($chapter)
                 <h3 class="title-subtext mt-6 mb-2">
                     {{ $chapter }}
                 </h3>
             @endif
-            @foreach($videosPerChapter as $video)
-                <li class="{{ isset($currentVideo) && $currentVideo->id === $video->id ? "font-sans-bold" : "" }}">
-                    <a class="block" href="{{ route('videos.show', [$series, $video]) }}">
-                        <span class="mr-1">{{ $video->title }}</span>
+            @foreach($series->lessons as $lessonInChapter)
+                <li class="{{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold" : "" }}">
+                    <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
+                        <span class="mr-1">{{ $lessonInChapter->title }}</span>
 
-                        @if($video->display === \App\Models\Enums\VideoDisplayEnum::FREE)
+                        @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::FREE)
                             <span class="hidden tag tag-green">Free</span>
                         @endif
 
-                        @if($video->display === \App\Models\Enums\VideoDisplayEnum::SPONSORS &&  ! $video->canBeSeenByCurrentUser())
+                        @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::SPONSORS &&  ! $lessonInChapter->canBeSeenByCurrentUser())
                             <span title="Exclusive for sponsors" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute  w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
                                 <span style="font-size: .6rem" class="icon text-pink">
                                     {{ svg('icons/fas-heart') }}
@@ -51,7 +51,7 @@
                             </span>
                         @endif
 
-                        @if($video->display === \App\Models\Enums\VideoDisplayEnum::LICENSE &&  ! $video->canBeSeenByCurrentUser() )
+                        @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::LICENSE &&  ! $lessonInChapter->canBeSeenByCurrentUser() )
                             <span title="Part of course" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
                                 <span style="font-size: .6rem" class="icon text-green">
                                     {{ svg('icons/fas-lock-alt') }}
@@ -59,7 +59,7 @@
                             </span>
                         @endif
 
-                        @if($video->display === \App\Models\Enums\VideoDisplayEnum::AUTH &&  ! $video->canBeSeenByCurrentUser() )
+                        @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::AUTH &&  ! $lessonInChapter->canBeSeenByCurrentUser() )
                             <span title="Only members" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-blue-lightest rounded-full">
                                 <span style="font-size: .6rem" class="icon text-blue">
                                     {{ svg('icons/fas-user') }}
@@ -67,18 +67,20 @@
                             </span>
                         @endif
 
-                        @if($video->hasBeenCompletedByCurrentUser())
+                        {{--
+                        @if($lessonInChapter->hasBeenCompletedByCurrentUser())
                             <span title="Completed" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
                                 <span style="font-size: 0.75rem" class="text-white">
                                     ✓
                                 </span>
                             </span>
                         @endif
+                        --}}
                     </a>
                 </li>
             @endforeach
         @empty
-            <li>No videos yet! Stay tuned...</li>
+            <li>No lessons yet! Stay tuned...</li>
         @endforelse
     </ol>
 
@@ -94,5 +96,4 @@
             </div>
         </div>
     @endif
-
 </nav>

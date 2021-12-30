@@ -5,7 +5,8 @@ namespace Database\Seeders;
 
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchasable;
-use App\Models\Enums\VideoDisplayEnum;
+use App\Models\Enums\LessonDisplayEnum;
+use App\Models\Lesson;
 use App\Models\Series;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
@@ -15,7 +16,9 @@ class VideoSeeder extends Seeder
     public function run(): void
     {
         Series::create(['title' => 'Laravel Package Training', 'slug' => 'laravel-package-training', 'description' => 'Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!', 'sort_order' => '0']);
+
         $mailcoach = Series::create(['title' => 'Building Mailcoach', 'slug' => 'building-mailcoach', 'description' => 'Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.', 'sort_order' => '1']);
+
         Series::create(['title' => 'Readable Laravel', 'slug' => 'readable-laravel', 'description' => 'In this series, we\'ll explore best practices on how to write maintainable and readable code.', 'sort_order' => '2']);
         Series::create(['title' => 'Show me the code', 'slug' => 'show-me-the-code', 'description' => 'Here are some problems that we solved in an elegant way', 'sort_order' => '3']);
 
@@ -26,21 +29,19 @@ class VideoSeeder extends Seeder
             return;
         }
 
-        Video::insert([
-          [
-            "series_id" => 1,
+        $this->createVideoAndLesson([
             "vimeo_id" => "419946519",
-            "title" => "laravel-multitenancy",
-            "slug" => "laravel-multitenancy",
             "description" => "[Our laravel-multitenancy package](https://docs.spatie.be/laravel-multitenancy) can make any Laravel app tenant aware. The philosophy of this package is that it should only provide the bare essentials to enable multitenancy.\n\nIn this video Freek will show how to use the package and how it works under the hood.\n\n## Links\n\n- [laravel-multitenancy docs](https://docs.spatie.be/laravel-multitenancy)\n- [An unopinionated package to make Laravel apps tenant aware](https://freek.dev/1661-an-unopinionated-package-to-make-laravel-apps-tenant-aware)\n- [Mohamed Said's videos on multitenancy](https://www.youtube.com/watch?v=592EgykFOz4)\n- [Tom Schlick's talk on multitenancy at Laracon US 2017](https://www.youtube.com/watch?v=UgWpS4xBiuU)",
-            "sort_order" => 0,
             "runtime" => 1396,
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
+            "series_id" => 1,
+            "title" => "laravel-multitenancy",
+            "slug" => "laravel-multitenancy",
+            "sort_order" => 0,
             "display" => "license",
-            "created_at" => "2020-06-24 12:48:52",
-            "updated_at" => "2020-06-29 15:56:44",
-          ],
-          [
+        ]);
+
+        $this->createVideoAndLesson([
             "series_id" => 1,
             "vimeo_id" => "420606741",
             "title" => "laravel-responsecache",
@@ -52,8 +53,10 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:45",
-          ],
-          [
+        ]);
+
+
+        $this->createVideoAndLesson([
             "series_id" => 1,
             "vimeo_id" => "423825543",
             "title" => "laravel-dashboard",
@@ -65,8 +68,9 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:45",
-          ],
-          [
+        ]);
+
+        $this->createVideoAndLesson([
             "series_id" => 1,
             "vimeo_id" => "426741940",
             "title" => "laravel-short-schedule part 1 => Using the package",
@@ -78,8 +82,8 @@ class VideoSeeder extends Seeder
             "display" => "free",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 14:25:08",
-          ],
-          [
+        ]);
+        $this->createVideoAndLesson([
             "series_id" => 1,
             "vimeo_id" => "426743340",
             "title" => "laravel-short-schedule part 2 => Under the hood",
@@ -91,8 +95,8 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 14:25:08",
-          ],
-          [
+        ]);
+        $this->createVideoAndLesson([
             "series_id" => 1,
             "vimeo_id" => "426803489",
             "title" => "laravel-short-schedule part 3 => Testing the package",
@@ -104,8 +108,8 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:47",
-          ],
-          [
+        ]);
+        $this->createVideoAndLesson([
             "series_id" => 2,
             "vimeo_id" => "381650670",
             "title" => "Refactor complex conditionals",
@@ -117,8 +121,8 @@ class VideoSeeder extends Seeder
             "display" => "free",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:47",
-          ],
-          [
+        ]);
+        $this->createVideoAndLesson([
             "series_id" => 3,
             "vimeo_id" => "425443685",
             "title" => "Improving readability by decreasing indentation",
@@ -130,8 +134,8 @@ class VideoSeeder extends Seeder
             "display" => "free",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:47",
-          ],
-          [
+        ]);
+        $this->createVideoAndLesson([
             "series_id" => 3,
             "vimeo_id" => "425400766",
             "title" => "Using lookup tables",
@@ -143,8 +147,8 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:48",
-          ],
-          [
+        ]);
+        $this->createVideoAndLesson([
             "series_id" => 3,
             "vimeo_id" => "420490355",
             "title" => "Refactor complex conditionals",
@@ -156,8 +160,9 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:48",
-          ],
-          [
+        ]);
+
+        $this->createVideoAndLesson([
             "series_id" => 3,
             "vimeo_id" => "424357726",
             "title" => "Getting autocompletion on models and API resources",
@@ -169,8 +174,9 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:49",
-          ],
-          [
+        ]);
+
+        $this->createVideoAndLesson([
             "series_id" => 3,
             "vimeo_id" => "424351669",
             "title" => "Using Blade components for layouts",
@@ -182,8 +188,9 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:49",
-          ],
-          [
+        ]);
+
+        $this->createVideoAndLesson([
             "series_id" => 4,
             "vimeo_id" => "423805273",
             "title" => "Marking a video as completed using Livewire",
@@ -195,8 +202,9 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:49",
-          ],
-          [
+        ]);
+
+        $this->createVideoAndLesson([
             "series_id" => 4,
             "vimeo_id" => "423805273",
             "title" => "Video 2",
@@ -208,9 +216,7 @@ class VideoSeeder extends Seeder
             "display" => "sponsors",
             "created_at" => "2020-06-24 12:48:52",
             "updated_at" => "2020-06-29 13:19:49",
-          ],
         ]);
-
 
         $seriesWithFreeVideosAndSponsoredVideos = Series::create([
             'title' => 'Free + Sponsored',
@@ -219,34 +225,34 @@ class VideoSeeder extends Seeder
             'sort_order' => '0',
         ]);
 
-        Video::create([
+        $this->createVideoAndLesson([
             "series_id" => $seriesWithFreeVideosAndSponsoredVideos->id,
             "vimeo_id" => "419946519",
             "title" => "Free video 1",
             "slug" => "free-video-1",
             "runtime" => 1396,
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
-            "display" => VideoDisplayEnum::FREE,
+            "display" => LessonDisplayEnum::FREE,
         ]);
 
-        Video::create([
+        $this->createVideoAndLesson([
             "series_id" => $seriesWithFreeVideosAndSponsoredVideos->id,
             "vimeo_id" => "419946519",
             "title" => "Free video 2",
             "slug" => "free-video-2",
             "runtime" => 1396,
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
-            "display" => VideoDisplayEnum::FREE,
+            "display" => LessonDisplayEnum::FREE,
         ]);
 
-        Video::create([
+        $this->createVideoAndLesson([
             "series_id" => $seriesWithFreeVideosAndSponsoredVideos->id,
             "vimeo_id" => "419946519",
             "title" => "Sponsor only video",
             "slug" => "sponsor-only-video",
             "runtime" => 1396,
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
-            "display" => VideoDisplayEnum::SPONSORS,
+            "display" => LessonDisplayEnum::SPONSORS,
         ]);
 
         $courseWithFreeSamples = Series::create([
@@ -257,34 +263,56 @@ class VideoSeeder extends Seeder
         ]);
         $courseWithFreeSamples->purchasables()->attach(Purchasable::whereType('videos')->first());
 
-        Video::create([
+        $this->createVideoAndLesson([
             "series_id" => $courseWithFreeSamples->id,
             "vimeo_id" => "419946519",
             "title" => "Free sample 1",
             "slug" => "free-sample-1",
             "runtime" => 1396,
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
-            "display" => VideoDisplayEnum::FREE,
+            "display" => LessonDisplayEnum::FREE,
         ]);
 
-        Video::create([
+        $this->createVideoAndLesson([
             "series_id" => $courseWithFreeSamples->id,
             "vimeo_id" => "419946519",
             "title" => "Free sample for sponsors",
             "slug" => "free-sample-for-sponsors",
             "runtime" => 1396,
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
-            "display" => VideoDisplayEnum::SPONSORS,
+            "display" => LessonDisplayEnum::SPONSORS,
         ]);
 
-        Video::create([
+        $this->createVideoAndLesson([
             "series_id" => $courseWithFreeSamples->id,
             "vimeo_id" => "419946519",
             "title" => "Course only video",
             "slug" => "course-only-video",
             "runtime" => 1396,
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
-            "display" => VideoDisplayEnum::LICENSE,
+            "display" => LessonDisplayEnum::LICENSE,
+        ]);
+    }
+
+    public function createVideoAndLesson(array $properties): void
+    {
+        $video = Video::create([
+            'vimeo_id' => $properties['vimeo_id'],
+            'title' => $properties['title'],
+            'description' => $properties['description'] ?? '',
+            'runtime' => $properties['runtime'],
+            'thumbnail' => $properties['thumbnail'],
+            'hash' => '',
+        ]);
+
+        Lesson::create([
+            'content_type' => $video->getMorphClass(),
+            'content_id' => $video->id,
+            'series_id' => $properties['series_id'],
+            'title' => $properties['title'],
+            'slug' => $properties['slug'],
+            'sort_order' => $properties['sort_order'] ?? null,
+            'display' => $properties['display'],
         ]);
     }
 }

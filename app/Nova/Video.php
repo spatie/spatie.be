@@ -2,7 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\Enums\VideoDisplayEnum;
+use App\Models\Enums\LessonDisplayEnum;
 use App\Models\Video as EloquentVideo;
 use App\Nova\Filters\SeriesFilter;
 use Illuminate\Http\Request;
@@ -76,10 +76,10 @@ class Video extends Resource
 
             Select::make('Display')
                 ->options([
-                    VideoDisplayEnum::FREE => 'Free',
-                    VideoDisplayEnum::AUTH => 'Logged in users',
-                    VideoDisplayEnum::SPONSORS => 'Sponsors & License holders',
-                    VideoDisplayEnum::LICENSE => 'Only license holders',
+                    LessonDisplayEnum::FREE => 'Free',
+                    LessonDisplayEnum::AUTH => 'Logged in users',
+                    LessonDisplayEnum::SPONSORS => 'Sponsors & License holders',
+                    LessonDisplayEnum::LICENSE => 'Only license holders',
                 ])
                 ->default('license'),
         ];
