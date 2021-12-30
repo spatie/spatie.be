@@ -22,5 +22,9 @@ class CreateLessonsTable extends Migration
             $table->foreignIdFor(Series::class);
             $table->timestamps();
         });
+
+        Schema::table('series', function(Blueprint $table) {
+            $table->string('type');
+        });
     }
 }

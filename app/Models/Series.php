@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Domain\Experience\Observers\SeriesAchievementsObserver;
+use App\Domain\Shop\Enums\SeriesType;
 use App\Domain\Shop\Models\Purchasable;
 use App\Models\Enums\LessonDisplayEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,6 +28,10 @@ class Series extends Model implements HasMedia, Sortable
 
     protected $with = [
         'media',
+    ];
+
+    protected $casts = [
+        'type' => SeriesType::class,
     ];
 
     protected static function booted()

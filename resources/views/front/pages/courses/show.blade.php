@@ -17,5 +17,7 @@
         </div>
     </section>
 
-    @include('front.pages.courses.content.videos.detail', ['video' => $lesson->content])
+    @if($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
+        @include('front.pages.courses.content.video.detail', ['video' => $lesson->content])
+    @endif
 </x-page>

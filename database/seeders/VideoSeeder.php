@@ -3,6 +3,7 @@
 
 namespace Database\Seeders;
 
+use App\Domain\Shop\Enums\SeriesType;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchasable;
 use App\Models\Enums\LessonDisplayEnum;
@@ -15,12 +16,38 @@ class VideoSeeder extends Seeder
 {
     public function run(): void
     {
-        Series::create(['title' => 'Laravel Package Training', 'slug' => 'laravel-package-training', 'description' => 'Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!', 'sort_order' => '0']);
+        Series::create([
+            'title' => 'Laravel Package Training',
+            'slug' => 'laravel-package-training',
+            'description' => 'Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!',
+            'sort_order' => '0',
+            'type' => SeriesType::Video,
+        ]);
 
-        $mailcoach = Series::create(['title' => 'Building Mailcoach', 'slug' => 'building-mailcoach', 'description' => 'Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.', 'sort_order' => '1']);
+        $mailcoach = Series::create([
+            'title' => 'Building Mailcoach',
+            'slug' => 'building-mailcoach',
+            'description' => 'Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.',
+            'sort_order' => '1',
+            'type' => SeriesType::Video,
 
-        Series::create(['title' => 'Readable Laravel', 'slug' => 'readable-laravel', 'description' => 'In this series, we\'ll explore best practices on how to write maintainable and readable code.', 'sort_order' => '2']);
-        Series::create(['title' => 'Show me the code', 'slug' => 'show-me-the-code', 'description' => 'Here are some problems that we solved in an elegant way', 'sort_order' => '3']);
+        ]);
+
+        Series::create([
+            'title' => 'Readable Laravel',
+            'slug' => 'readable-laravel',
+            'description' => 'In this series, we\'ll explore best practices on how to write maintainable and readable code.',
+            'sort_order' => '2',
+            'type' => SeriesType::Video,
+
+        ]);
+        Series::create([
+            'title' => 'Show me the code',
+            'slug' => 'show-me-the-code',
+            'description' => 'Here are some problems that we solved in an elegant way',
+            'sort_order' => '3',
+            'type' => SeriesType::Video,
+        ]);
 
         $mailcoachProduct = Product::where('slug', 'mailcoach')->first();
         $mailcoach->purchasables()->attach(Purchasable::where('product_id', $mailcoachProduct->id)->get());
@@ -223,6 +250,7 @@ class VideoSeeder extends Seeder
             'slug' => 'free-sponsored',
             'description' => 'A series with 2 free videos and 1 sponsored only video',
             'sort_order' => '0',
+            'type' => SeriesType::Video,
         ]);
 
         $this->createVideoAndLesson([
@@ -260,7 +288,9 @@ class VideoSeeder extends Seeder
             'slug' => 'course-with-samples',
             'description' => 'A course with samples',
             'sort_order' => '0',
+            'type' => SeriesType::Video,
         ]);
+
         $courseWithFreeSamples->purchasables()->attach(Purchasable::whereType('videos')->first());
 
         $this->createVideoAndLesson([

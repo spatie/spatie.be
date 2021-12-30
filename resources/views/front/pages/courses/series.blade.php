@@ -14,6 +14,6 @@
         </div>
     </section>
 
-    @include('front.pages.courses.content.videos.index')
+    @include("front.pages.courses.content.{$series->type->value}.index")
 
 </x-page>
