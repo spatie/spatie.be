@@ -20,4 +20,8 @@
     @if($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
         @include('front.pages.courses.content.video.detail', ['video' => $lesson->content])
     @endif
+
+    @if($series->type === \App\Domain\Shop\Enums\SeriesType::Html)
+        @include('front.pages.courses.content.html.detail', ['htmlLesson' => $lesson->content])
+    @endif
 </x-page>

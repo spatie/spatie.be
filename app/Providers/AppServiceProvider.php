@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\HtmlLesson;
 use App\Models\Video;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
@@ -41,6 +42,8 @@ class AppServiceProvider extends ServiceProvider
 
         Relation::morphMap([
             'video' => Video::class,
+            'htmlLesson' => HtmlLesson::class,
+
         ]);
     }
 }

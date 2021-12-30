@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             ->call(AchievementSeeder::class)
             ->call(UserSeeder::class)
             ->call(PurchaseSeeder::class)
-            ->call(VideoSeeder::class)
+            ->call(CoursesSeeder::class)
             ->call(TechnologiesSeeder::class);
     }
 }

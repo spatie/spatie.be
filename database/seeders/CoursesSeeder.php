@@ -7,12 +7,14 @@ use App\Domain\Shop\Enums\SeriesType;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchasable;
 use App\Models\Enums\LessonDisplayEnum;
+use App\Models\HtmlLesson;
 use App\Models\Lesson;
 use App\Models\Series;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
-class VideoSeeder extends Seeder
+class CoursesSeeder extends Seeder
 {
     public function run(): void
     {
@@ -322,6 +324,30 @@ class VideoSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
             "display" => LessonDisplayEnum::LICENSE,
         ]);
+
+        $upcomingCourseSeries = Series::create([
+            'title' => 'Upcoming course',
+            'slug' => 'upcoming-course',
+            'description' => 'An upcoming course!',
+            'sort_order' => '0',
+            'type' => SeriesType::Html,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'title' => 'First lesson',
+            'markdown' => 'Here is the first lesson',
+            'sort_order' => 0,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'title' => 'Second lesson',
+            'markdown' => 'Here is the second lesson',
+            'sort_order' => 1,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
     }
 
     public function createVideoAndLesson(array $properties): void
@@ -341,6 +367,24 @@ class VideoSeeder extends Seeder
             'series_id' => $properties['series_id'],
             'title' => $properties['title'],
             'slug' => $properties['slug'],
+            'sort_order' => $properties['sort_order'] ?? null,
+            'display' => $properties['display'],
+        ]);
+    }
+
+    protected function createHtmlLessonAndLesson(array $properties)
+    {
+        $htmlLesson = HtmlLesson::create([
+            'title' => $properties['title'],
+            'markdown' => $properties['markdown'] ?? '',
+        ]);
+
+        Lesson::create([
+            'content_type' => $htmlLesson->getMorphClass(),
+            'content_id' => $htmlLesson->id,
+            'series_id' => $properties['series_id'],
+            'title' => $properties['title'],
+            'slug' => Str::slug($properties['title']),
             'sort_order' => $properties['sort_order'] ?? null,
             'display' => $properties['display'],
         ]);
