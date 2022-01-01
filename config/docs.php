@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-route-discovery",
+            "repository" => "spatie/laravel-route-discovery",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-comments",
             "repository" => "spatie/laravel-comments",
             "branches" => [
