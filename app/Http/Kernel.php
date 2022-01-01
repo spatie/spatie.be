@@ -3,6 +3,7 @@
 namespace App\Http;
 
 use App\Http\Middleware\CheckForMaintenanceMode;
+use App\Http\Middleware\ForceJsonResponse;
 use App\Http\Middleware\HandleReferrer;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
@@ -47,5 +48,6 @@ class Kernel extends HttpKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'forceJson' => ForceJsonResponse::class,
     ];
 }
