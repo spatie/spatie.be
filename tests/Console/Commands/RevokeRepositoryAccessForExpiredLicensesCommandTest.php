@@ -4,9 +4,6 @@ use App\Domain\Shop\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Domain\Shop\Models\License;
 use App\Services\GitHub\GitHubApi;
 use Spatie\TestTime\TestTime;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
 
@@ -133,4 +130,20 @@ it('will not revoke access if the user has a different active license', function
     $this->license->refresh();
 
     $this->apiSpy->shouldHaveReceived('revokeAccessToRepo');
+});
+
+it('will change the access rights on the assignment if no repo is linked', function () {
+    $this->license->assignment->purchasable->update([
+        'repository_access' => '',
+    ]);
+
+    expect($this->license->assignment->has_repository_access)->toBeTrue();
+
+    $this->artisan(RevokeRepositoryAccessForExpiredLicensesCommand::class);
+
+    $this->license->refresh();
+
+    $this->apiSpy->shouldNotHaveReceived('revokeAccessToRepo');
+
+    expect($this->license->assignment->has_repository_access)->toBeFalse();
 });
