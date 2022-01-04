@@ -132,7 +132,7 @@ it('will not revoke access if the user has a different active license', function
     $this->apiSpy->shouldHaveReceived('revokeAccessToRepo');
 });
 
-it('will change the access rights the assignment if no repo is linked', function () {
+it('will change the access rights on the assignment if no repo is linked', function () {
     $this->license->assignment->purchasable->update([
         'repository_access' => '',
     ]);
