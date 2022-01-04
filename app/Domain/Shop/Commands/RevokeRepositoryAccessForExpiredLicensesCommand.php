@@ -35,6 +35,13 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                     $repositories = explode(', ', $license->assignment->purchasable->repository_access);
 
                     foreach($repositories as $repository) {
+                        if (empty($repository)) {
+                            // no defined repositories for this purchasable
+                            $license->assignment()->update(['has_repository_access' => false]);
+
+                            continue;
+                        }
+
                         $gitHubApi->revokeAccessToRepo(
                             $license->assignment->user->github_username,
                             $repository
