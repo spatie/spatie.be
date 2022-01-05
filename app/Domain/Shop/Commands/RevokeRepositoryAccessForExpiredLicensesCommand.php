@@ -5,10 +5,10 @@ namespace App\Domain\Shop\Commands;
 use App\Domain\Shop\Models\License;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Log;
-use RuntimeException;
 
 class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
 {
@@ -35,12 +35,19 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                     $repositories = explode(', ', $license->assignment->purchasable->repository_access);
 
                     foreach($repositories as $repository) {
+                        if (empty($repository)) {
+                            // no defined repositories for this purchasable
+                            $license->assignment()->update(['has_repository_access' => false]);
+
+                            continue;
+                        }
+
                         $gitHubApi->revokeAccessToRepo(
                             $license->assignment->user->github_username,
                             $repository
                         );
                     }
-                } catch (RuntimeException $exception) {
+                } catch (Exception $exception) {
                     if ($exception->getMessage() !== 'Not Found') {
                         Log::alert(
                             "We could not revoke access for {$license->assignment->user->github_username}

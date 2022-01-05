@@ -11,6 +11,8 @@ class UserObserver
     {
         command(DeleteUser::forUser($user));
 
+        $user->licenses()->delete();
         $user->purchases()->delete();
+        $user->assignments()->delete();
     }
 }
