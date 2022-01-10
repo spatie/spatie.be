@@ -32,13 +32,24 @@ class LicenseExpiredNotification extends Notification
 
         $siteUrl = url('/');
 
+        $upgradeReason = "If you want to keep receiving updates, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license.";
+
+        if ($this->concernsRay($this->license)) {
+$upgradeReason = "If you want to keep using Ray, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license.";
+        }
+
         return (new MailMessage)
             ->subject("Your {$name} license has expired")
             ->greeting('Hi!')
             ->line("Just a reminder to inform you that your {$name} license has expired.")
-            ->line("If you want to keep receiving updates, go to the license overview on the [spatie.be]({$siteUrl}) site to renew the license.")
+            ->line($upgradeReason)
             ->line(Markdown::parse($this->license->assignment->purchasable->renewal_mail_incentive))
             ->action('Renew now', action([ProductsController::class, 'show'], $this->license->assignment->purchasable->product))
             ->line("Thank you for using {$this->license->assignment->purchasable->product->title}!");
+    }
+
+    protected function concernsRay(License $license): bool
+    {
+        return $license->assignment?->purchasable?->product?->id === 8; // Ray product
     }
 }
