@@ -163,4 +163,9 @@ class License extends Model implements AuthenticatableContract
 
         $this->update(['signed_license' => $signedLicense]);
     }
+
+    public function concernsRay(): bool
+    {
+        return strtolower($this->assignment?->purchasable?->product?->title) === 'ray';
+    }
 }
