@@ -46,7 +46,9 @@ trait HasPrices
 
             $roundedPriceInCents = round($priceInCents / 100) * 100;
 
-            $roundedPriceInCents = $this->commerciallyRound($roundedPriceInCents);
+            if ($roundedPriceInCents > 100_00) {
+                $roundedPriceInCents = $this->commerciallyRound($roundedPriceInCents);
+            }
 
             $displayablePrice->priceInCents = $roundedPriceInCents;
         }
