@@ -44,7 +44,7 @@ class LicenseIsAboutToExpireNotification extends Notification
             ->line("Your {$name} license expires on {$this->license->expires_at->format('Y-m-d')}.")
             ->line($upgradeReason)
             ->line(Markdown::parse($this->license->assignment->purchasable->renewal_mail_incentive))
-            ->action('Renew now', action([ProductsController::class, 'show'], $this->license->assignment->purchasable->product))
+            ->action('Renew now', route('purchases'))
             ->line("Thank you for using {$this->license->assignment->purchasable->product->title}!");
     }
 }

@@ -44,7 +44,7 @@ $upgradeReason = "If you want to keep using Ray, go to the license overview on t
             ->line("Just a reminder to inform you that your {$name} license has expired.")
             ->line($upgradeReason)
             ->line(Markdown::parse($this->license->assignment->purchasable->renewal_mail_incentive))
-            ->action('Renew now', action([ProductsController::class, 'show'], $this->license->assignment->purchasable->product))
+            ->action('Renew now', route('purchases'))
             ->line("Thank you for using {$this->license->assignment->purchasable->product->title}!");
     }
 }

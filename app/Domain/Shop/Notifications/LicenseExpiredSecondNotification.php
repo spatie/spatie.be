@@ -45,6 +45,6 @@ class LicenseExpiredSecondNotification extends Notification
             ->line($upgradeReason)
             ->line("You can visit the license overview on the [spatie.be]({$siteUrl}) site anytime to reactivate your license.")
             ->line(Markdown::parse($this->license->assignment->purchasable->renewal_mail_incentive))
-            ->action('Renew now', action([ProductsController::class, 'show'], $this->license->assignment->purchasable->product));
+            ->action('Renew now', route('purchases'));
     }
 }
