@@ -1,10 +1,6 @@
 name: PHPStan
 
-on:
-  push:
-    paths:
-      - '**.php'
-      - 'phpstan.neon.dist'
+on: [push]
 
 jobs:
   phpstan:

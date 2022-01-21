@@ -10,11 +10,6 @@ parameters:
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
-    stubFiles:
-        - _ide_helper_models.php
 
     ignoreErrors:
         - '#Unsafe usage of new static#'
-        - '#Class [a-zA-Z0-9\\_]+extends unknown class Eloquent#'
-        - '#Reflection error: Spatie\\MediaLibrary\\HasMedia not found#'
-        - '#Reflection error: Spatie\\EloquentSortable\\Sortable not found#'
