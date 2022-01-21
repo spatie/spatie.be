@@ -10,11 +10,6 @@ parameters:
     checkOctaneCompatibility: true
     checkModelProperties: true
     checkMissingIterableValueType: false
-    stubFiles:
-        - database/stubs/_ide_helper_models.stub
-
-    excludePaths:
-        - database/stubs/_ide_helper_models.stub
 
     ignoreErrors:
         - '#Unsafe usage of new static#'
