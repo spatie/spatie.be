@@ -32,7 +32,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
         $subscriber->addTags($tagNames);
     }
 
-    protected function findOrCreateSubscriber(string $email, EmailList $emailList): Subscriber
+    protected function findOrCreateSubscriber(string $email, EmailList $emailList): \Spatie\Mailcoach\Domain\Audience\Models\Subscriber
     {
         if ($subscriber = Subscriber::findForEmail($email, $emailList)) {
             return $subscriber;

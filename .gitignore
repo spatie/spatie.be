@@ -28,3 +28,5 @@ _ide_helper_models.php
 .php-cs-fixer.cache
 dump.rdb
 auth.json
+phpstan.neon
+build
