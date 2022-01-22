@@ -27,7 +27,7 @@ class GiftRayToSponsorsCommand extends Command
             ->each(function (User $user) use ($rayPurchasable) {
                 $this->comment("Handing Ray to user {$user->id} ($user->email)");
 
-                /** @var \App\Domain\Shop\Models\PurchaseAssignment $existingAssignment */
+                /** @var \App\Domain\Shop\Models\PurchaseAssignment|null $existingAssignment */
                 $existingAssignment = $user->assignments()->where('purchasable_id', $rayPurchasable->id)->first();
 
                 $existingAssignment

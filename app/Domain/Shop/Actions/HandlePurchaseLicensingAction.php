@@ -20,7 +20,7 @@ class HandlePurchaseLicensingAction
 
     public function execute(Purchase $purchase): Purchase
     {
-        $purchase->assignments()->each(function (PurchaseAssignment $assignment) use ($purchase) {
+        $purchase->assignments()->each(function (PurchaseAssignment $assignment) {
             if ($assignment->purchasable->isRenewal()) {
                 $this->handleRenewal($assignment);
 

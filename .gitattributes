@@ -3,3 +3,5 @@
 *.scss linguist-vendored
 *.js linguist-vendored
 CHANGELOG.md export-ignore
+phpstan.neon.dist  export-ignore
+phpstan-baseline.neon  export-ignore

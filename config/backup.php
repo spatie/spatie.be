@@ -97,7 +97,7 @@ return [
      */
     'monitorBackups' => [
         [
-            'name' => str_replace('https://', '', env('APP_URL')),
+            'name' => str_replace('https://', '', env('APP_URL', '')),
             'disks' => ['backups'],
             'newestBackupsShouldNotBeOlderThanDays' => 1,
             'storageUsedMayNotBeHigherThanMegabytes' => 1000,
