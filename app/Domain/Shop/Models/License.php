@@ -116,7 +116,7 @@ class License extends Model implements AuthenticatableContract
 
     public function getName(): string
     {
-        return "{$this->assignment->purchasable->product->title}: {$this->assignment->purchasable->title}";
+        return "{$this->assignment->purchasable->product->title}";
     }
 
     public function isMasterKey(): bool
