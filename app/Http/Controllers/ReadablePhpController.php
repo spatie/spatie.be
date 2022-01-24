@@ -21,7 +21,7 @@ class ReadablePhpController
             ->skipConfirmation()
             ->subscribeTo($emailList);
 
-        $subscriber->addTag('readable-php');
+        $subscriber->addTag('readable-php-waiting-list');
 
         session()->flash('subscribed');
 

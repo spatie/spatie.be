@@ -15,6 +15,7 @@ use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\ReadablePhpController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
@@ -42,6 +43,10 @@ Route::feeds();
 Route::redirect('/docs/products/ray', '/docs/ray');
 
 Route::post('paddle/webhook', WebhookController::class);
+
+Route::get('readable-php', [ReadablePhpController::class, 'index']);
+Route::post('readable-php', [ReadablePhpController::class, 'subscribe']);
+
 
 Route::get('is-valid-license/{license}', IsValidLicenseController::class);
 
