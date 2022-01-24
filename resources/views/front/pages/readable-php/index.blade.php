@@ -46,7 +46,7 @@
             @endif
 
             <p class="mt-12 text-lg">
-                Of of the things we often say at Spatie is that writing code that works is just the bare minimum. New, working code should be refactored so that it's optimized for readability. Code that is easy to understand, is in most cases also easier to change.
+                One of the things we often say at Spatie is that writing code that works is just the bare minimum. New, working code should be refactored so that it's optimized for readability. Code that is easy to understand, is in most cases also easier to change.
             </p>
 
             <p class="text-lg">
