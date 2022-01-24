@@ -54,7 +54,7 @@
             </p>
 
             <p class="text-lg">
-                The knowledge shared in this course is the result of a world-class team, that has created and is maintaining many small and big Laravel projects and open source projects. We guarantee that after this course, you'll write better code. Your colleagues and future self will thank you!
+                The knowledge shared in this course is the result of a world-class team, that has created many small and big Laravel projects and open source packages. We guarantee that after this course, you'll write better code. Your colleagues and future self will thank you!
             </p>
 
             <p class="mt-16 line-after">
