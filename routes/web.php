@@ -14,7 +14,6 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
-use App\Http\Controllers\TestingLaravelController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
@@ -34,7 +33,6 @@ use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\UsesController;
 use App\Http\Controllers\VideosController;
 use App\Http\Controllers\WebhookController;
-use App\Http\Middleware\AdminsOnly;
 use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
