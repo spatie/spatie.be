@@ -50,7 +50,7 @@
             </p>
 
             <p class="text-lg">
-                In this course, you'll learn how to write <strong>readable and testable PHP code</strong> that will be joy to maintain for many years to come. We'll make use of the latest and greatest features of PHP. We'll not focus on theory, but you'll see many <strong>practical examples</strong>. You'll also gain access to a private forum where you can discuss all the lessons in our course.
+                In this course, you'll learn how to write <strong>readable and testable PHP code</strong> that will be a joy to maintain for many years to come. We'll make use of the latest and greatest features of PHP. We'll not focus on theory, but you'll see many <strong>practical examples</strong>. You'll also gain access to a private forum where you can discuss all the lessons in our course.
             </p>
 
             <p class="text-lg">
