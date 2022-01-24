@@ -44,7 +44,7 @@ Route::redirect('/docs/products/ray', '/docs/ray');
 
 Route::post('paddle/webhook', WebhookController::class);
 
-Route::get('readable-php', [ReadablePhpController::class, 'index']);
+Route::get('readable-php', [ReadablePhpController::class, 'show']);
 Route::post('readable-php', [ReadablePhpController::class, 'subscribe']);
 
 
