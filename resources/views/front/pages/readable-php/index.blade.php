@@ -1,5 +1,6 @@
 <x-page
     title="Readable PHP - A premium course by Spatie"
+    background="/backgrounds/event-sourcing.jpg"
     description="In this premium course you'll learn how to write readable PHP"
 >
     <section id="banner" class="banner" role="banner">
