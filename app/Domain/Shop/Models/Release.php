@@ -2,10 +2,10 @@
 
 namespace App\Domain\Shop\Models;
 
-use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
 
 class Release extends Model
 {
@@ -21,7 +21,7 @@ class Release extends Model
     public static function booted()
     {
         static::saving(function (Release $release) {
-            $release->notes_html = Markdown::convertToHtml($release->notes);
+            $release->notes_html = app(MarkdownRenderer::class)->toHtml($release->notes);
         });
     }
 
