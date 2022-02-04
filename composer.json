@@ -16,7 +16,7 @@
         "abraham/twitteroauth": "^2.0",
         "aws/aws-sdk-php": "^3.152",
         "barryvdh/laravel-debugbar": "^3.0",
-        "blade-ui-kit/blade-ui-kit": "^0.2",
+        "blade-ui-kit/blade-ui-kit": "^0.3",
         "coroowicaksono/chart-js-integration": "^0.3.4",
         "dillingham/nova-items-field": "^0.6.0",
         "doctrine/dbal": "^2.10",
