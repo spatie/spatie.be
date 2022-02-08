@@ -761,6 +761,11 @@ parameters:
 			path: app/Http/Auth/Controllers/UpdatePasswordController.php
 
 		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: app/Http/Controllers/AppleSocialiteController.php
+
+		-
 			message: "#^Property 'apple_id' does not exist in App\\\\Models\\\\User model\\.$#"
 			count: 2
 			path: app/Http/Controllers/AppleSocialiteController.php
