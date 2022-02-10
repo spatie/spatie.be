@@ -18,7 +18,6 @@ class LinkRenderer implements NodeRendererInterface, ConfigurationAwareInterface
     /** @var ConfigurationInterface */
     protected $config;
 
-    /** public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer) */
     public function render(Node $node, ChildNodeRendererInterface $childRenderer)
     {
         if (! ($node instanceof Link)) {
