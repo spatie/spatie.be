@@ -8,7 +8,7 @@ return [
             "branches" => [
                 "main" => "v2",
             ],
-            "category" => "PHP",
+            "category" => "General PHP",
         ],
         [
             "name" => "laravel-route-discovery",
