@@ -9,6 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use Spatie\Url\Url;
 
 class LoginController extends Controller
 {
@@ -48,12 +49,18 @@ class LoginController extends Controller
         return redirect()->to(session()->get('next', route('products.index')));
     }
 
-    private function onlyAllowSpatieRedirects(Request $request): void
+    protected function onlyAllowSpatieRedirects(Request $request): void
     {
-        if ($request->get('next') !== null &&
-            $request->getHttpHost() === parse_url($request->get('next'))['host']
-        ) {
-            session()->flash('next', $request->get('next'));
+        $nextUrl = $request->get('next');
+
+        if (! $nextUrl) {
+            return;
         }
+;
+        if ($request->getHttpHost() !== Url::fromString($nextUrl)->getHost()) {
+            return;
+        }
+
+        session()->flash('next', $nextUrl);
     }
 }
