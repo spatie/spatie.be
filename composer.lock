@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dd4e4132f2c1fe6e8245a8d3d3153ba7",
+    "content-hash": "366c6d3ac32dd39466b9f0c7a5210f4d",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -3492,16 +3492,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.0.1",
+            "version": "v9.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "afeb58d019b203ecb1a1c4063a66a029ea6bea63"
+                "reference": "4c7cd8c4e95d161c0c6ada6efa0a5af4d0d487c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/afeb58d019b203ecb1a1c4063a66a029ea6bea63",
-                "reference": "afeb58d019b203ecb1a1c4063a66a029ea6bea63",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4c7cd8c4e95d161c0c6ada6efa0a5af4d0d487c9",
+                "reference": "4c7cd8c4e95d161c0c6ada6efa0a5af4d0d487c9",
                 "shasum": ""
             },
             "require": {
@@ -3667,7 +3667,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-02-09T15:00:05+00:00"
+            "time": "2022-02-10T15:07:46+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -10501,20 +10501,19 @@
         },
         {
             "name": "spatie/laravel-backup",
-            "version": "8.0.1",
+            "version": "8.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-backup.git",
-                "reference": "06ac2608af05924efd38f3031a16a8b06834ff8e"
+                "reference": "fd4eb36e88f4ed6de7dd1eed2d76394724de8815"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/06ac2608af05924efd38f3031a16a8b06834ff8e",
-                "reference": "06ac2608af05924efd38f3031a16a8b06834ff8e",
+                "url": "https://api.github.com/repos/spatie/laravel-backup/zipball/fd4eb36e88f4ed6de7dd1eed2d76394724de8815",
+                "reference": "fd4eb36e88f4ed6de7dd1eed2d76394724de8815",
                 "shasum": ""
             },
             "require": {
-                "ext-pcntl": "*",
                 "ext-zip": "^1.14.0",
                 "illuminate/console": "^9.0",
                 "illuminate/contracts": "^9.0",
@@ -10522,7 +10521,7 @@
                 "illuminate/filesystem": "^9.0",
                 "illuminate/notifications": "^9.0",
                 "illuminate/support": "^9.0",
-                "league/flysystem": "^2.0|^3.0",
+                "league/flysystem": "^3.0",
                 "php": "^8.0",
                 "spatie/db-dumper": "^3.0",
                 "spatie/laravel-package-tools": "^1.6.2",
@@ -10533,6 +10532,7 @@
             },
             "require-dev": {
                 "composer-runtime-api": "^2.0",
+                "ext-pcntl": "*",
                 "laravel/slack-notification-channel": "^2.4",
                 "league/flysystem-aws-s3-v3": "^2.0|^3.0",
                 "mockery/mockery": "^1.4",
@@ -10551,12 +10551,12 @@
                 }
             },
             "autoload": {
-                "psr-4": {
-                    "Spatie\\Backup\\": "src"
-                },
                 "files": [
                     "src/Helpers/functions.php"
-                ]
+                ],
+                "psr-4": {
+                    "Spatie\\Backup\\": "src"
+                }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
@@ -10580,7 +10580,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-backup/issues",
-                "source": "https://github.com/spatie/laravel-backup/tree/8.0.1"
+                "source": "https://github.com/spatie/laravel-backup/tree/8.0.2"
             },
             "funding": [
                 {
@@ -10592,7 +10592,7 @@
                     "type": "other"
                 }
             ],
-            "time": "2022-01-21T07:25:06+00:00"
+            "time": "2022-02-10T16:01:20+00:00"
         },
         {
             "name": "spatie/laravel-disable-floc",
@@ -11239,17 +11239,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "v5.x-dev",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "1a1a94b66da3e6e32d2c0dbcdd536bd218b2a0d3"
+                "reference": "9063d61111f970235316318260d0e0f7f573372e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-1a1a94b66da3e6e32d2c0dbcdd536bd218b2a0d3-zip-e1dcba.zip",
-                "reference": "1a1a94b66da3e6e32d2c0dbcdd536bd218b2a0d3",
-                "shasum": "19f64b1837827aa04920bf8a08490c0c0a394428"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-9063d61111f970235316318260d0e0f7f573372e-zip-9f5b21.zip",
+                "reference": "9063d61111f970235316318260d0e0f7f573372e",
+                "shasum": "ada6b3de0fa044986d70b26f82f0c9a5ea7c0950"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -11358,14 +11358,14 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/v5",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/5.0.0",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2022-02-10T09:33:55+00:00"
+            "time": "2022-02-10T15:18:46+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
-            "version": "dev-main",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-mailcoach-mailgun-feedback.git",
@@ -11432,23 +11432,23 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach-mailgun-feedback/tree/main"
+                "source": "https://github.com/spatie/laravel-mailcoach-mailgun-feedback/tree/4.0.0"
             },
             "time": "2022-02-08T16:37:01+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-monaco",
-            "version": "dev-main",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-mailcoach-monaco.git",
-                "reference": "7f05167ecc6c1550d42c5e32c3816a0c1fac295a"
+                "reference": "3fbde54dcdabdcf8759158e19d8ee09db26009fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach-monaco/spatie-laravel-mailcoach-monaco-7f05167ecc6c1550d42c5e32c3816a0c1fac295a-zip-362adf.zip",
-                "reference": "7f05167ecc6c1550d42c5e32c3816a0c1fac295a",
-                "shasum": "cbc0a29199b76511e42bc8ae7cbeadd297a7b714"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach-monaco/spatie-laravel-mailcoach-monaco-3fbde54dcdabdcf8759158e19d8ee09db26009fe-zip-95304a.zip",
+                "reference": "3fbde54dcdabdcf8759158e19d8ee09db26009fe",
+                "shasum": "b6c69873fa6ac5451bccb1db6e52af17ffb598ed"
             },
             "require": {
                 "ext-json": "*",
@@ -11501,13 +11501,13 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach-monaco/tree/main"
+                "source": "https://github.com/spatie/laravel-mailcoach-monaco/tree/2.1.0"
             },
-            "time": "2022-02-08T16:37:03+00:00"
+            "time": "2022-02-10T15:32:40+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-ses-feedback",
-            "version": "dev-main",
+            "version": "4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-mailcoach-ses-feedback.git",
@@ -11575,7 +11575,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach-ses-feedback/tree/main"
+                "source": "https://github.com/spatie/laravel-mailcoach-ses-feedback/tree/4.0.0"
             },
             "time": "2022-02-08T19:13:12+00:00"
         },
@@ -19421,11 +19421,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "ebess/advanced-nova-media-library": 20,
-        "knplabs/github-api": 20,
-        "spatie/laravel-mailcoach": 20,
-        "spatie/laravel-mailcoach-mailgun-feedback": 20,
-        "spatie/laravel-mailcoach-monaco": 20,
-        "spatie/laravel-mailcoach-ses-feedback": 20
+        "knplabs/github-api": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
