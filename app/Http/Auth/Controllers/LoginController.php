@@ -32,11 +32,7 @@ class LoginController extends Controller
 
         session()->flash('next', $previous);
 
-        if ($request->get('next') !== null &&
-            $request->getHttpHost() === parse_url($request->get('next'))['host']
-        ) {
-            session()->flash('next', $request->get('next'));
-        }
+        $this->onlyAllowSpatieRedirects($request);
 
         return view('auth.login');
     }
@@ -50,5 +46,14 @@ class LoginController extends Controller
         flash()->success('You are now logged in');
 
         return redirect()->to(session()->get('next', route('products.index')));
+    }
+
+    private function onlyAllowSpatieRedirects(Request $request): void
+    {
+        if ($request->get('next') !== null &&
+            $request->getHttpHost() === parse_url($request->get('next'))['host']
+        ) {
+            session()->flash('next', $request->get('next'));
+        }
     }
 }
