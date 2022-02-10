@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "browsershot",
+            "repository" => "spatie/browsershot",
+            "branches" => [
+                "main" => "v2",
+            ],
+            "category" => "PHP",
+        ],
+        [
             "name" => "laravel-route-discovery",
             "repository" => "spatie/laravel-route-discovery",
             "branches" => [
