@@ -506,11 +506,6 @@ parameters:
 			path: app/Domain/Shop/Models/License.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\:\\:\\$title\\.$#"
-			count: 1
-			path: app/Domain/Shop/Models/License.php
-
-		-
 			message: "#^Property 'expiration_mail_sent_at' does not exist in App\\\\Domain\\\\Shop\\\\Models\\\\License model\\.$#"
 			count: 1
 			path: app/Domain/Shop/Models/License.php
@@ -766,6 +761,11 @@ parameters:
 			path: app/Http/Auth/Controllers/UpdatePasswordController.php
 
 		-
+			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
+			count: 1
+			path: app/Http/Controllers/AppleSocialiteController.php
+
+		-
 			message: "#^Property 'apple_id' does not exist in App\\\\Models\\\\User model\\.$#"
 			count: 2
 			path: app/Http/Controllers/AppleSocialiteController.php
@@ -856,6 +856,11 @@ parameters:
 			path: app/Http/Controllers/ProfileController.php
 
 		-
+			message: "#^Property 'name' does not exist in Spatie\\\\Mailcoach\\\\Domain\\\\Audience\\\\Models\\\\EmailList model\\.$#"
+			count: 1
+			path: app/Http/Controllers/ReadablePhpController.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Models\\\\Ad\\:\\:\\$click_redirect_url\\.$#"
 			count: 1
 			path: app/Http/Controllers/RedirectGitHubAdClickController.php
@@ -874,11 +879,6 @@ parameters:
 			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$title\\.$#"
 			count: 1
 			path: app/Http/Controllers/SeriesController.php
-
-		-
-			message: "#^Property 'name' does not exist in Spatie\\\\Mailcoach\\\\Domain\\\\Audience\\\\Models\\\\EmailList model\\.$#"
-			count: 1
-			path: app/Http/Controllers/TestingLaravelController.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Models\\\\Video\\:\\:\\$description\\.$#"

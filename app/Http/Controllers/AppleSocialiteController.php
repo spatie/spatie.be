@@ -67,7 +67,7 @@ class AppleSocialiteController
         ], [
             'password' => bcrypt(Str::random()),
             'email' => $appleUser->getEmail(),
-            'name' => $appleUser->getName(),
+            'name' => $appleUser->getName() ?? $appleUser->getEmail(),
         ]);
     }
 }
