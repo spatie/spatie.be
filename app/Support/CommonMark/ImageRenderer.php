@@ -39,8 +39,8 @@ class ImageRenderer implements NodeRendererInterface, ConfigurationAwareInterfac
         $alt = \preg_replace('/\<[^>]*alt="([^"]*)"[^>]*\>/', '$1', $alt);
         $attrs['alt'] = \preg_replace('/\<[^>]*\>/', '', $alt);
 
-        if (isset($inline->data['title'])) {
-            $attrs['title'] = $inline->data['title'];
+        if (isset($node->data['title'])) {
+            $attrs['title'] = $node->data['title'];
         }
 
         return new HtmlElement('img', $attrs, '', true);

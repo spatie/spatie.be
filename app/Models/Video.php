@@ -134,7 +134,7 @@ class Video extends Model implements Sortable
             return '';
         }
 
-        return (new CommonMarkConverter())->convertToHtml($this->description);
+        return (new CommonMarkConverter())->convert($this->description);
     }
 
     public function canBeSeenByCurrentUser(): bool

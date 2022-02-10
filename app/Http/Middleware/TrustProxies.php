@@ -3,7 +3,7 @@
 namespace App\Http\Middleware;
 
 use Illuminate\Http\Middleware\TrustProxies as Middleware;
-use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Request;
 
 class TrustProxies extends Middleware
 {
@@ -16,8 +16,6 @@ class TrustProxies extends Middleware
 
     /**
      * The headers that should be used to detect proxies.
-     *
-     * @var string|int
      */
     protected $headers =
         Request::HEADER_X_FORWARDED_FOR |

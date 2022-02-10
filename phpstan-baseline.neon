@@ -906,14 +906,6 @@ parameters:
 			path: app/Http/Middleware/AdminsOnly.php
 
 		-
-			message: """
-				#^Fetching deprecated class constant HEADER_X_FORWARDED_ALL of class Illuminate\\\\Http\\\\Request\\:
-				since Symfony 5\\.2, use either "HEADER_X_FORWARDED_FOR \\| HEADER_X_FORWARDED_HOST \\| HEADER_X_FORWARDED_PORT \\| HEADER_X_FORWARDED_PROTO" or "HEADER_X_FORWARDED_AWS_ELB" or "HEADER_X_FORWARDED_TRAEFIK" constants instead\\.$#
-			"""
-			count: 1
-			path: app/Http/Middleware/TrustProxies.php
-
-		-
 			message: "#^Access to an undefined property Spatie\\\\Mailcoach\\\\Domain\\\\Audience\\\\Models\\\\Subscriber\\:\\:\\$uuid\\.$#"
 			count: 1
 			path: app/Listeners/SendCoupon.php

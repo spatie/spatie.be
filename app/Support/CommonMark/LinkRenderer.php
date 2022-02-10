@@ -35,15 +35,15 @@ class LinkRenderer implements NodeRendererInterface, ConfigurationAwareInterface
             $attrs['href'] = Str::start($attrs['href'], '/docs');
         }
 
-        if (isset($inline->data['title'])) {
-            $attrs['title'] = $inline->data['title'];
+        if (isset($node->data['title'])) {
+            $attrs['title'] = $node->data['title'];
         }
 
         if (isset($attrs['target']) && $attrs['target'] === '_blank' && ! isset($attrs['rel'])) {
             $attrs['rel'] = 'noopener noreferrer';
         }
 
-        return new HtmlElement('a', $attrs, $childRenderer->renderNodes($inline->children()));
+        return new HtmlElement('a', $attrs, $childRenderer->renderNodes($node->children()));
     }
 
     public function setConfiguration(ConfigurationInterface $configuration): void
