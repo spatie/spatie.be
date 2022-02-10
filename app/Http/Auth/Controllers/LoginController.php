@@ -22,7 +22,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
         $previous = url()->previous();
 
@@ -30,7 +30,13 @@ class LoginController extends Controller
             $previous = route('products.index');
         }
 
-        session()->flash('next', request('next') ?? $previous);
+        session()->flash('next', $previous);
+
+        if ($request->get('next') !== null &&
+            $request->getHttpHost() === parse_url($request->get('next'))['host']
+        ) {
+            session()->flash('next', $request->get('next'));
+        }
 
         return view('auth.login');
     }
