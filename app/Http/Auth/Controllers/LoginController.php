@@ -22,7 +22,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
         $previous = url()->previous();
 
@@ -30,7 +30,9 @@ class LoginController extends Controller
             $previous = route('products.index');
         }
 
-        session()->flash('next', request('next') ?? $previous);
+        session()->flash('next', $previous);
+
+        $this->onlyAllowSpatieRedirects($request);
 
         return view('auth.login');
     }
@@ -44,5 +46,14 @@ class LoginController extends Controller
         flash()->success('You are now logged in');
 
         return redirect()->to(session()->get('next', route('products.index')));
+    }
+
+    private function onlyAllowSpatieRedirects(Request $request): void
+    {
+        if ($request->get('next') !== null &&
+            $request->getHttpHost() === parse_url($request->get('next'))['host']
+        ) {
+            session()->flash('next', $request->get('next'));
+        }
     }
 }
