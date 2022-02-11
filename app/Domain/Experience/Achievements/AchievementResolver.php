@@ -5,18 +5,24 @@ namespace App\Domain\Experience\Achievements;
 use App\Domain\Experience\Models\Achievement;
 use App\Models\User;
 use Spatie\BetterTypes\Handlers;
+use Spatie\BetterTypes\Method;
 
 class AchievementResolver
 {
     public function handle(object $command): ?Achievement
     {
-        $handler = Handlers::new($command, $this)[0] ?? null;
+        $handler = Handlers::new($this)
+            ->public()
+            ->protected()
+            ->reject(fn (Method $method) => in_array($method->getName(), ['handle', 'recordThat', 'apply']))
+            ->accepts($command)
+            ->first();
 
-        if (! $handler) {
+        if ($handler === null) {
             return null;
         }
 
-        return $this->{$handler}($command);
+        return $this->{$handler->getName()}($command);
     }
 
     public function forExperience(ExperienceAchievement $command): ?Achievement
