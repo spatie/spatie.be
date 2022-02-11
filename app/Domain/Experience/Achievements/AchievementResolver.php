@@ -4,13 +4,13 @@ namespace App\Domain\Experience\Achievements;
 
 use App\Domain\Experience\Models\Achievement;
 use App\Models\User;
-use Spatie\EventSourcing\Handlers;
+use Spatie\BetterTypes\Handlers;
 
 class AchievementResolver
 {
     public function handle(object $command): ?Achievement
     {
-        $handler = Handlers::find($command, $this)[0] ?? null;
+        $handler = Handlers::new($command, $this)[0] ?? null;
 
         if (! $handler) {
             return null;
