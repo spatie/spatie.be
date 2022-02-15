@@ -11,7 +11,7 @@
 </ul>
 
 <p>
-    You'll have a say in what you'll be working on. No really, we áre listening. If you're curious to see how we work, these public <a href="https://guidelines.spatie.be">guidelines</a> could give you a first impression.
+    You'll have a say in what you'll be working on. No really, we áre listening. If you're curious to see how we work, these public <a href="https://spatie.be/guidelines">guidelines</a> could give you a first impression.
 </p>
 
 
