@@ -25,7 +25,7 @@
 
                         <div class="">
                             <h3 class="title">Spatie</h3>
-                            <p>We are architects and builders, tinkering at the front line; an open-source mastodon, operated by a highly talented bunch the size of a football team.
+                            <p>We are architects and builders, tinkering at the front line; an open-source mastodon, operated by a highly talented bunch the size of a soccer team.
                             </p>
                             <p>
                             What this brings to you? Learn and grow fast in an almost familiar, respectful environment. Yet you'll have an enormous impact on users worldwide.
@@ -44,7 +44,7 @@
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     There is a strong mentality to stay on top of things: through Slack, in-house presentations or conferences.
-                                    Spend <strong>half a day each week</strong> on experiment and open source work</li>
+                                    Spend <strong>half a day each week</strong> on experiment and open source work.</li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     Get €1500,- <strong>extra budget</strong> every year for personal growth. Spend it on courses, train rides and hotels for conferences like
@@ -52,7 +52,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    <strong>Juggle your work-life balls</strong> in our little circus after that umpteenth quarantine. We don't do overtime.
+                                    <strong>Juggle with work-life balance</strong> in our little circus after that umpteenth quarantine. We don't do overtime.
                                     We're open to changing our ways as organization to keep things fresh.
                                 </li>
                                 <li>
@@ -71,7 +71,7 @@
                             <ul class="bullets bullets-green">
                                 <li>
                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You love the React + Typescript combo, and you know where JavaScript comes from.
+                                   You love the React + TypeScript combo, and you know where JavaScript comes from.
                                 </li>
                                 <li>
                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
