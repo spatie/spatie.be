@@ -25,7 +25,7 @@
 
                         <div class="">
                             <h3 class="title">Spatie</h3>
-                            <p>We are architects and builders, tinkering at the front line; an open-source mastodon, operated by a highly talented bunch the size of a soccer team.
+                            <p>We are architects and builders, tinkering on the front line; an open-source mastodon, operated by a highly talented bunch the size of a soccer team.
                             </p>
                             <p>
                             What this brings to you? Learn and grow fast in an almost familiar, respectful environment. Yet you'll have an enormous impact on users worldwide.
