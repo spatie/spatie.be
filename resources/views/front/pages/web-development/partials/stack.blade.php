@@ -19,11 +19,11 @@
                 </ul>
                 <h3 class="title-sm">Frontend</h3>
                 <ul class="bullets-inline bullets-blue">
-                    <li>Vue.js</li>
                     <li>React</li>
-                    <li>React Native</li>
-                    <li>Vanilla JS</li>
                     <li>TypeScript</li>
+                    <li>React Native</li>
+                    <li>Vue.js</li>
+                    <li>Vanilla JS</li>
                     <li>Tailwind CSS</li>
                     <li>PostCSS</li>
                     <li>Laravel Mix</li>

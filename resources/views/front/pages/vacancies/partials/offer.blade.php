@@ -6,12 +6,12 @@
                 </h2>
                 
                 <ul class="bullets bullets-green">
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package that can be tailored to your personal needs</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package that can be tailored to your personal needs with an e-bike, home office furniture, extra holidays, …</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Eco vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Velo card for public bikes in Antwerp</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Laptop + 2<sup>nd</sup> screen, smartphone</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Apple laptop + second screen, smartphone</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Internet at home</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
                 </ul>
