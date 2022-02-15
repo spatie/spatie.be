@@ -6,12 +6,12 @@
                 </h2>
                 
                 <ul class="bullets bullets-green">
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package that can be tailored to your personal needs with an e-bike, home office furniture, extra holidays, …</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package that can be tailored to your personal needs (the "cafetaria plan") with an e-bike, home office furniture, extra holidays, …</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal vouchers</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Eco vouchers</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Velo card for public bikes in Antwerp</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Apple laptop + second screen, most recent iPhone or Android smartphone</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Internet at home</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
                 </ul>
@@ -30,7 +30,7 @@
                 </ul>
 
                 <p class="mt-16 text-sm text-gray">
-                    We are not looking into remote work or relocation at this point, but partial work from home is an option.
+                    We are not looking into full-time remote work or relocation.
                     <br>
                     Knowledge of Dutch is mandatory.
                     <br>
