@@ -60,8 +60,7 @@
                                     twice a year to discuss your personal track/ambitions, and yearly for secret santa's diner. 
                                 </li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    Grow together with a team that has <strong>made its name in open source</strong>, with more that 250
-                                    .000.000 downloads of packages worldwide. 
+                                    Grow together with a team that has <strong>made its name in open source</strong>, with more that 250.000.000 downloads of packages worldwide. 
                                     Spot your fellow team members as experts in user groups or as conference speakers.
                                 </li>
                             </ul>
