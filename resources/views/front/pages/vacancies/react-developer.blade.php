@@ -57,7 +57,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> We <strong>put our heads together</strong>: on a daily basis to get our code working, weekly in our planning update, monthly for knowledge sharing and a company lunch, 
-                                    twice a year to discuss your personal track/ambitions, and yearly for Secret Santa's dinner. 
+                                    twice a year to discuss your personal track/ambitions, and yearly for our Secret Santa dinner. 
                                 </li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     Grow together with a team that has <strong>made its name in open source</strong>, with more that 250.000.000 downloads of packages worldwide. 
