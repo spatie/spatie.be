@@ -58,7 +58,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    <strong>Working from home regularly</strong> has become an efficient routine. 
+                                    <strong>Regularly working from home</strong> has become an efficient routine. 
                                     Yet we value personal connections and visit the office at least two days a week. We get that those who have to commute have a different regime than someone who only has to jump on a bike.
                                 </li>
                                 <li>
