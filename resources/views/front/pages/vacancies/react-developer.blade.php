@@ -25,11 +25,11 @@
 
                         <div class="">
                             <h3 class="title">Spatie</h3>
-                            <p>We are architects and builders, tinkering on the front line; an open-source mastodon, operated by a highly talented bunch the size of a soccer team.
+                            <p>We are architects and builders, tinkering on the front line; an open-source mastodon operated by a highly talented bunch the size of a soccer team.
                                 We purposefully keep the company small but knowledgeable.
                             </p>
                             <p>
-                            What this brings to you? Learn and grow fast in a respectful, almost familiar environment. Yet you'll have an enormous impact on users worldwide.
+                            What does this bring to you? Learn and grow fast in a respectful, almost familiar environment. Yet you'll have an enormous impact on users worldwide.
                             Together we'll decide where we'll go next. 
                             </p>
                             <p>Rest assured: there will be laughs and great food along the way.</p>
@@ -45,7 +45,7 @@
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     There is a strong mentality to stay on top of things: through Slack, in-house presentations or conferences.
-                                    Spend <strong>half a day each week</strong> on experiment and open source work.</li>
+                                    Spend <strong>half a day each week</strong> on experiments and open source work.</li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     Get €1500,- <strong>extra budget</strong> every year for personal growth. Spend it on courses, train rides and hotels for conferences like
@@ -54,20 +54,20 @@
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     <strong>Juggle with work-life balance</strong> in our little circus after that umpteenth quarantine. We don't do overtime.
-                                    We're open to changing our ways as organization to keep things fresh.
+                                    We're open to changing our ways as an organization to keep things fresh.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    <strong>Working from home regurlarly</strong> has become an efficient routine. 
-                                    Yet we value personal connections and visit the office for at least 2 days a week. We get that those who have to commute, have a different regime than someone who just jumps on  a bike.
+                                    <strong>Working from home regularly</strong> has become an efficient routine. 
+                                    Yet we value personal connections and visit the office at least two days a week. We get that those who have to commute have a different regime than someone who only has to jump on a bike.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> We <strong>put our heads together</strong>: on a daily basis to get our code working, weekly in our planning update, monthly for knowledge sharing and a company lunch, 
                                     twice a year to discuss your personal track/ambitions, and yearly for our Secret Santa dinner. 
                                 </li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    Grow together with a team that has <strong>made its name in open source</strong>, with more that 250.000.000 downloads of packages worldwide. 
-                                    Spot your fellow team members as experts in user groups or as conference speakers.
+                                    Grow together with a team that has <strong>made its name in open source</strong>, with more than 250.000.000 downloads of packages worldwide. 
+                                    Spot your fellow team members as experts in user groups or conference speakers.
                                 </li>
                             </ul>
                         </div>
