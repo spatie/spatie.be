@@ -96,7 +96,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You can speak Dutch, you love Italian food.
+                                    You can speak Dutch and you love Italian food.
                                  </li>
                             </ul>
                             
