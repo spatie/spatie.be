@@ -7,13 +7,12 @@
                 
                 <ul class="bullets bullets-green">
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A full-time position in a fostering environment</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package tailored to your personal needs with an e-bike, home office furniture, extra holidays …</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package tailored to your personal needs –with an e-bike, bike allowance, hardware, internet at home, pension plan, extra holidays …</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Velo card for public bikes in Antwerp</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Apple laptop + second screen, most recent iPhone or Android smartphone</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Internet at home</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
                 </ul>
 
