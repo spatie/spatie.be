@@ -6,6 +6,7 @@
                 </h2>
                 
                 <ul class="bullets bullets-green">
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A full-time position in a fostering environment</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package tailored to your personal needs (the "cafeteria plan") with an e-bike, home office furniture, extra holidays …</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>

@@ -87,16 +87,16 @@
                                    You know Git. That's it.
                                 </li>
                                 <li>
+                                   <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                                   You don't run away from Tailwind CSS.
+                                </li>
+                                <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     You can work independently but aren't afraid to ask when you're stuck.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     You love Italian food.
-                                 </li>
-                                 <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You don't run away from Tailwind CSS.
                                  </li>
                             </ul>
                             
