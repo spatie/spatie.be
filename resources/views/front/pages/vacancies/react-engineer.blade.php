@@ -51,7 +51,7 @@
                                     Spend <strong>half a day each week</strong> on experiments and open source work.</li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    Get €1500,- <strong>extra budget</strong> every year for personal growth. Spend it on courses, train rides and hotels for conferences like
+                                    Get €1500,- <strong>extra budget</strong> every year for personal growth. Spend it on books, courses and conferences (including train rides, hotels) like
                                     dotJS/dotCSS, nordic.JS, Frontend United.
                                 </li>
                                 <li>
@@ -66,7 +66,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> We <strong>put our heads together</strong>: on a daily basis to get our code working, weekly in our planning update or monthly for knowledge sharing and a company lunch. 
-                                    Every six months we sit together to discuss your personal track and ambitions. Don't forget to buy a present for the yearly Secret Santa dinner! 
+                                    Every six months we sit together to discuss your personal track and ambitions. Don't forget to bring a (reimbursed) present to the yearly Secret Santa dinner! 
                                 </li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     Grow together with a team that has <strong>made its name in open source</strong>, with more than 250.000.000 downloads of packages worldwide. 
@@ -96,7 +96,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You love Italian food.
+                                    You can speak Dutch but you love Italian food.
                                  </li>
                             </ul>
                             

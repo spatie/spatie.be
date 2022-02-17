@@ -33,8 +33,6 @@
                 <p class="mt-16 text-sm text-gray">
                     We are not looking into full-time remote work or relocation.
                     <br>
-                    Knowledge of Dutch is mandatory.
-                    <br>
                     You may start immediately.
                 </p>
             </div>
