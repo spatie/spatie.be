@@ -7,7 +7,7 @@
                 
                 <ul class="bullets bullets-green">
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A full-time position in a fostering environment</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A competitive salary package tailored to your personal needs with an e-bike, bike allowance, hardware, internet at home, pension plan, extra holidays …</li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike allowance, hardware, internet at home, pension plan, additional holidays …</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Velo card for public bikes in Antwerp</li>

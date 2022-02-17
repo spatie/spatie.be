@@ -88,7 +88,7 @@
                                 </li>
                                 <li>
                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You don't run away from Tailwind CSS.
+                                   You don't run away from Tailwind CSS or other technologies in our <a href="#stack">tech stack</a>.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
