@@ -1,13 +1,13 @@
 <x-page
         background="/backgrounds/vacancies.jpg"
-        title="React developer vacancy"
-        description="Vacancy for a react developer. Location: Antwerp."
+        title="React engineer vacancy"
+        description="Vacancy for a react engineer. Location: Antwerp."
 >
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                React Developer
+                React Engineer
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
@@ -22,8 +22,11 @@
                 <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
 
-
-                        <div class="">
+                        <p class="text-2xl">
+                            Cool that you found out about this vacancy! 
+                            <br>Are you a recruiter? <a title="📵 Stop calling us and dance 🕺!" href="{{ route('vacancies.recruiters')}}">Read on</a>.
+                        </p>
+                        <div class="mt-16">
                             <h3 class="title">Spatie</h3>
                             <p>We are architects and builders, tinkering on the front line; an open-source mastodon operated by a highly talented bunch the size of a soccer team.
                                 We purposefully keep the company small but knowledgeable.
@@ -62,8 +65,8 @@
                                     Yet we value personal connections and visit the office at least two days a week. We get that those who have to commute have a different regime than someone who only has to jump on a bike.
                                 </li>
                                 <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> We <strong>put our heads together</strong>: on a daily basis to get our code working, weekly in our planning update, monthly for knowledge sharing and a company lunch, 
-                                    twice a year to discuss your personal track/ambitions, and yearly for our Secret Santa dinner. 
+                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> We <strong>put our heads together</strong>: on a daily basis to get our code working, weekly in our planning update or monthly for knowledge sharing and a company lunch. 
+                                    Every six months we sit together to discuss your personal track and ambitions. Don't forget to buy a present for the yearly Secret Santa dinner! 
                                 </li>
                                 <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                                     Grow together with a team that has <strong>made its name in open source</strong>, with more than 250.000.000 downloads of packages worldwide. 
@@ -96,6 +99,7 @@
                                     You don't run away from Tailwind CSS.
                                  </li>
                             </ul>
+                            
                         </div>
                     </div>
                 </div>

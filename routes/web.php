@@ -106,6 +106,7 @@ Route::prefix('vacancies')->group(function () {
 
     Route::view('/', 'front.pages.vacancies.index')->name('vacancies.index');
     Route::view('internships', 'front.pages.vacancies.internship')->name('vacancies.internship');
+    Route::redirect('recruiters', "https://youtu.be/cvh0nX08nRw")->name('vacancies.recruiters');
 
     Route::get('{slug}', function ($slug) {
         $view = "front.pages.vacancies.{$slug}";
