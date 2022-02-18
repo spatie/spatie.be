@@ -50,7 +50,7 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        if (! $user = (new $passthrough['billable_type'])->find($passthrough['billable_id'])) {
+        if (! $user = (new $passthrough['billable_type']())->find($passthrough['billable_id'])) {
             throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
         }
 

@@ -45,10 +45,10 @@ class GitHubApi
 
         $latestAvailableReleaseOnDate = collect($releases)
             ->first(
-                fn(array $releaseProperties) => Carbon::create($releaseProperties['created_at'])->isBefore($onDate)
+                fn (array $releaseProperties) => Carbon::create($releaseProperties['created_at'])->isBefore($onDate)
             );
 
-        if (!$latestAvailableReleaseOnDate) {
+        if (! $latestAvailableReleaseOnDate) {
             throw new Exception("No release found for {$repository} on date {$onDate->format('Y-m-d')}");
         }
 
@@ -71,13 +71,12 @@ class GitHubApi
         [$organisation, $repository] = explode('/', $repository);
 
         return Http::withHeaders([
-            'Authorization' => "token {$token}"
+            'Authorization' => "token {$token}",
         ])
             ->withoutRedirecting()
             ->get("https://api.github.com/repos/{$organisation}/{$repository}/zipball/{$releaseNumber}")
             ->header('Location');
     }
-
 
     public function fetchRepositoryTopics(string $username, string $repository): Collection
     {
@@ -116,7 +115,6 @@ class GitHubApi
             ['permission' => 'pull']
         );
     }
-
 
     public function revokeAccessToRepo(string $gitHubUsername, string $repository): void
     {

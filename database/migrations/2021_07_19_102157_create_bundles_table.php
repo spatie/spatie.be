@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     public function up()
     {
         Schema::create('bundles', function (Blueprint $table) {
@@ -43,7 +42,7 @@ return new class extends Migration
             $table->foreignIdFor(\App\Domain\Shop\Models\Purchasable::class)->nullable()->change();
         });
 
-        Schema::create('referrer_bundle', function(Blueprint $table) {
+        Schema::create('referrer_bundle', function (Blueprint $table) {
             $table->foreignIdFor(\App\Domain\Shop\Models\Referrer::class);
             $table->foreignIdFor(\App\Domain\Shop\Models\Bundle::class);
             $table->timestamps();

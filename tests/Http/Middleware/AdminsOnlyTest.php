@@ -4,7 +4,6 @@ use App\Http\Middleware\AdminsOnly;
 use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
-use Tests\TestCase;
 
 beforeEach(function () {
     $this->middleware = new AdminsOnly();

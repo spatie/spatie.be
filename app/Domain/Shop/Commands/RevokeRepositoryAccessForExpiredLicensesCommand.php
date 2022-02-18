@@ -34,7 +34,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                 try {
                     $repositories = explode(', ', $license->assignment->purchasable->repository_access);
 
-                    foreach($repositories as $repository) {
+                    foreach ($repositories as $repository) {
                         if (empty($repository)) {
                             // no defined repositories for this purchasable
                             $license->assignment()->update(['has_repository_access' => false]);

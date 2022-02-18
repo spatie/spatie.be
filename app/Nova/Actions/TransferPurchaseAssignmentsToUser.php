@@ -2,7 +2,6 @@
 
 namespace App\Nova\Actions;
 
-use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use Illuminate\Support\Collection;

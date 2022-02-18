@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Domain\Shop\Exceptions;
 
 use App\Domain\Shop\Models\Purchase;

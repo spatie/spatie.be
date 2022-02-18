@@ -4,12 +4,12 @@ use App\Domain\Shop\Actions\RegenerateLeakedLicenseKeyAction;
 use App\Domain\Shop\Models\License;
 use App\Mail\LeakedLicenseKeyRegeneratedMail;
 
-it('can regenerate the license key and notify the assignee', function() {
+it('can regenerate the license key and notify the assignee', function () {
     Mail::fake();
 
     $originalKey = 'original';
 
-   $license = License::factory()->create([
+    $license = License::factory()->create([
        'key' => $originalKey,
    ]);
 

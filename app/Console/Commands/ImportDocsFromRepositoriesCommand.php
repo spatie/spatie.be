@@ -8,10 +8,9 @@ use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
-use Spatie\Sheets\Sheets;
+use Spatie\Fork\Fork;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
-use Spatie\Fork\Fork;
 
 class ImportDocsFromRepositoriesCommand extends Command
 {
@@ -46,7 +45,7 @@ class ImportDocsFromRepositoriesCommand extends Command
         $this->getOutput()->progressStart(count($callables));
 
         Fork::new()
-            ->after(parent: fn() => $this->getOutput()->progressAdvance())
+            ->after(parent: fn () => $this->getOutput()->progressAdvance())
             ->concurrent(4)
             ->run(...$callables);
 
@@ -86,6 +85,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                     if (! $process->isSuccessful()) {
                         $this->error($process->getErrorOutput());
                         report(new DocsImportException("Import for repository {$repository['name']} unsuccessful: " . $process->getErrorOutput()));
+
                         return;
                     }
 
@@ -123,13 +123,15 @@ class ImportDocsFromRepositoriesCommand extends Command
                 && cd docs/ \
                 && find . -not -name '*.md' | cpio -pdm {$publicDocsAssetPath}/{$repository['name']}/{$alias}/
             BASH
-        , base_path());
+        ,
+            base_path()
+        );
     }
 
     private function cleanRepositoryFolders(): void
     {
         $publicDocsPath = public_path('docs');
-        $storageDocsPath  = storage_path('docs');
+        $storageDocsPath = storage_path('docs');
 
         File::ensureDirectoryExists($publicDocsPath);
         File::ensureDirectoryExists($storageDocsPath);

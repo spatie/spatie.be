@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Domain\Shop\Models\Bundle;
-use App\Domain\Shop\Models\Purchasable;
-use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -15,9 +12,11 @@ class PurchasesController
         $courses = $request->user()
             ->assignmentsWithoutRenewals()
             ->with(['purchasable.product', 'purchasable.media'])
-            ->whereHas('purchasable', fn(Builder $query) => $query
+            ->whereHas(
+                'purchasable',
+                fn (Builder $query) => $query
                 ->whereHas('series')
-                ->orWhereHas('media', fn(Builder $query) => $query->where('collection_name', 'downloads'))
+                ->orWhereHas('media', fn (Builder $query) => $query->where('collection_name', 'downloads'))
             )
             ->get()
             ->unique('purchasable_id')

@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Domain\Shop\Actions\CreateLicenseAction;
-use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;

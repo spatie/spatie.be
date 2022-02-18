@@ -79,7 +79,7 @@ class MembersSeeder extends Seeder
             'twitter' => 'rubenvanassche',
             'website' => 'https://rubenvanassche.com',
         ],
-        
+
         'sebastian@spatie.be' => [
             'first_name' => 'Sebastian',
             'last_name' => 'De Deyne',

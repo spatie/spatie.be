@@ -6,7 +6,6 @@ use App\Services\GitHub\GitHubApi;
 use Spatie\TestTime\TestTime;
 
 beforeEach(function () {
-
     TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');
 
     $this->license = License::factory()->create([

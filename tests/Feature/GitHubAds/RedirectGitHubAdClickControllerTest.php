@@ -2,9 +2,6 @@
 
 use App\Models\Ad;
 use App\Models\Repository;
-use Tests\TestCase;
-
-
 
 it('will redirect git hub ad clicks to the right url', function () {
     $redirectUrl = 'https://redirect.com';

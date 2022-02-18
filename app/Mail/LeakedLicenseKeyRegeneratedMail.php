@@ -16,7 +16,8 @@ class LeakedLicenseKeyRegeneratedMail extends Mailable implements ShouldQueue
     public function __construct(
         public License $license,
         public string $foundOnUrl
-    ) {}
+    ) {
+    }
 
     public function build()
     {

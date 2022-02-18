@@ -17,7 +17,7 @@ class LinkRenderer implements InlineRendererInterface, ConfigurationAwareInterfa
 {
     /** @var ConfigurationInterface */
     protected $config;
-    
+
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         if (! ($inline instanceof Link)) {

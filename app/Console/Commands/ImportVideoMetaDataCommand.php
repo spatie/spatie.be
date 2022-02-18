@@ -17,7 +17,7 @@ class ImportVideoMetaDataCommand extends Command
             $query->where('series_id', $seriesId);
         }
 
-        $query->each(function(Video $video) {
+        $query->each(function (Video $video) {
             $video->touch();
 
             $this->comment("Updated `{$video->title}`");

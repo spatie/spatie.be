@@ -15,7 +15,7 @@ class TechnologyType extends Enum
     public static function toLabels(): array
     {
         return [
-            'frontend'=> 'Frontend',
+            'frontend' => 'Frontend',
             'backend' => 'Backend',
             'services' => 'Services',
             'apps' => 'Desktop apps',

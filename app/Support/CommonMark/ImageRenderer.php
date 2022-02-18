@@ -15,7 +15,7 @@ use League\CommonMark\Util\RegexHelper;
 class ImageRenderer implements InlineRendererInterface, ConfigurationAwareInterface
 {
     protected ConfigurationInterface $config;
-    
+
     public function render(AbstractInline $inline, ElementRendererInterface $htmlRenderer)
     {
         if (! ($inline instanceof Image)) {

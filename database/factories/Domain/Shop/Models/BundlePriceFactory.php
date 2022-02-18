@@ -5,7 +5,6 @@ namespace Database\Factories\Domain\Shop\Models;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\BundlePrice;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 class BundlePriceFactory extends Factory
 {

@@ -1,12 +1,8 @@
 <?php
 
 use App\Domain\Shop\Models\Release;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->release = Release::factory()->create([
         'released' => true,
         'notes' => '## Version 0.0.1',

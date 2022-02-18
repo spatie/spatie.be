@@ -28,7 +28,7 @@ class UserExperienceProjector extends Projector
         }
 
         $userExperience->writeable()->update([
-            'amount' => $userExperience->amount + $event->amount
+            'amount' => $userExperience->amount + $event->amount,
         ]);
     }
 

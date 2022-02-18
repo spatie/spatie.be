@@ -49,6 +49,7 @@ class PurchasablePrice extends Resource
             Boolean::make('Overridden')->help('When checked, this price will not be automatically updated'),
         ];
     }
+
     public function filters(Request $request)
     {
         return [

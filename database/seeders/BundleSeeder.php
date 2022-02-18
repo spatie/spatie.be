@@ -15,8 +15,8 @@ class BundleSeeder extends Seeder
 
         Purchasable::query()
             ->take(2)
-            ->each(function(Purchasable $purchasable) use ($bundle) {
-            $bundle->purchasables()->attach($purchasable->id);
-        });
+            ->each(function (Purchasable $purchasable) use ($bundle) {
+                $bundle->purchasables()->attach($purchasable->id);
+            });
     }
 }

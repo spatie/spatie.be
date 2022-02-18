@@ -4,9 +4,6 @@ use App\Http\Controllers\UsesController;
 use App\Models\Enums\TechnologyType;
 use App\Models\Technology;
 use App\Models\User;
-use Tests\TestCase;
-
-
 
 it('can show the uses page', function () {
     $this->actingAs(User::factory()->make(['is_admin' => true]));

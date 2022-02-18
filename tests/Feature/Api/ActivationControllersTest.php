@@ -7,12 +7,8 @@ use App\Http\Api\Controllers\Activations\DeleteActivationController;
 use App\Http\Api\Controllers\Activations\ShowActivationController;
 use Spatie\Crypto\Rsa\PublicKey;
 use Symfony\Component\HttpFoundation\Response;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->license = License::factory()->create();
 
     $this->license->assignment->purchasable->product->update(['maximum_activation_count' => 2]);

@@ -40,26 +40,24 @@ class RegenerateLeakedKeysCommand extends Command
 
         $jsonContent = $this->getJsonContent($result['url']);
 
-        if (!$jsonContent) {
+        if (! $jsonContent) {
             return;
         }
 
         $licenseKey = $jsonContent['http-basic']['satis.spatie.be']['password'] ?? false;
 
-        if (!$licenseKey) {
+        if (! $licenseKey) {
             return;
         }
-        if (!$license = License::where('key', $licenseKey)->first()) {
+        if (! $license = License::where('key', $licenseKey)->first()) {
             return;
         }
 
         $this->warn('Found key on: ' . $result['html_url']);
         if ($this->option('dry-run')) {
-
             return;
         }
         (new RegenerateLeakedLicenseKeyAction())->execute($license, $result['html_url']);
-
     }
 
     protected function getJsonContent(string $url): ?array

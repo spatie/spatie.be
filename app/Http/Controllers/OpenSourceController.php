@@ -22,7 +22,7 @@ class OpenSourceController
         $products = Product::query()
             ->unless(
                 current_user()?->hasAccessToUnReleasedProducts(),
-                fn(Builder $query) => $query->where('visible', true)
+                fn (Builder $query) => $query->where('visible', true)
             )
             ->orderBy('sort_order')
             ->get();

@@ -12,9 +12,9 @@ class RegenerateLicenseKeyAction extends DestructiveAction
 {
     public function handle(ActionFields $fields, Collection $models)
     {
-        $models->each(function(License $license) {
+        $models->each(function (License $license) {
             $license->update([
-                'key' => Str::random(64)
+                'key' => Str::random(64),
             ]);
         });
     }

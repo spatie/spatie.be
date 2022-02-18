@@ -103,12 +103,12 @@ class TechnologiesSeeder extends Seeder
 
             unset($data['image_url']);
 
-             $technology = Technology::firstOrNew(['name' => $data['name']])
+            $technology = Technology::firstOrNew(['name' => $data['name']])
                 ->fill($data);
 
-             $technology->save();
+            $technology->save();
 
-             $technology
+            $technology
                  ->addMediaFromUrl($imageUrl)
                 ->toMediaCollection('avatar');
         }

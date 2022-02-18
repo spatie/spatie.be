@@ -4,11 +4,9 @@ use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Support\Uuid\Uuid;
 use Database\Seeders\AchievementSeeder;
-use Spatie\EventSourcing\Commands\CommandBus;
-use Tests\TestCase;
 use function Pest\Laravel\assertDatabaseHas;
 use function Pest\Laravel\assertDatabaseMissing;
-
+use Spatie\EventSourcing\Commands\CommandBus;
 
 test('100 xp achievement', function () {
     (new AchievementSeeder())->run();

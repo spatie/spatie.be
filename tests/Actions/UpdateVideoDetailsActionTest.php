@@ -4,12 +4,8 @@ use App\Actions\UpdateVideoDetailsAction;
 use App\Models\Series;
 use App\Models\Video;
 use App\Services\Vimeo\Vimeo;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->vimeoMock = $this->mock(Vimeo::class);
     $this->action = resolve(UpdateVideoDetailsAction::class);
 });

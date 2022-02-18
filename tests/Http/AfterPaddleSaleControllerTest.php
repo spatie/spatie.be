@@ -3,7 +3,6 @@
 use App\Domain\Shop\Models\Purchasable;
 use App\Http\Controllers\AfterPaddleSaleController;
 use App\Models\User;
-use Illuminate\Support\Env;
 
 test('the after paddle sale controller is valid', function () {
     $user = User::factory()->create();

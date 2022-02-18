@@ -3,7 +3,6 @@
 namespace App\Domain\Shop\Notifications;
 
 use App\Domain\Shop\Models\License;
-use App\Http\Controllers\ProductsController;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Markdown;
@@ -38,7 +37,7 @@ class LicenseExpiredSecondNotification extends Notification
             $upgradeReason = "At this point, you won't be able to use Ray anymore.";
         }
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject("Your {$name} license has expired")
             ->greeting('Hi again!')
             ->line("A quick -and last- reminder to tell you that your {$name} license has expired now.")

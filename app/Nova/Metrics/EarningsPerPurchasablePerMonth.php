@@ -2,9 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use Coroowicaksono\ChartJsIntegration\StackedChart;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 
 class EarningsPerPurchasablePerMonth extends StackedChartMetric

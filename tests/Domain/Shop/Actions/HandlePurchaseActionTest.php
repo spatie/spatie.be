@@ -18,12 +18,8 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\TestTime\TestTime;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->handlePurchaseAction = resolve(HandlePurchaseAction::class);
 
     $this->user = User::factory()->create();

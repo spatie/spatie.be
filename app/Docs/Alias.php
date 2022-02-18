@@ -12,5 +12,6 @@ class Alias
         public string $branch,
         public string $githubUrl,
         public Collection $pages
-    ) {}
+    ) {
+    }
 }

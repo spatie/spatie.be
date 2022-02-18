@@ -4,12 +4,8 @@ use App\Domain\Shop\Actions\StartOrExtendNextPurchaseDiscountPeriodAction;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use Spatie\TestTime\TestTime;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     TestTime::freeze();
 
     Mail::fake();

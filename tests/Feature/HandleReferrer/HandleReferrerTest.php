@@ -5,9 +5,6 @@ use App\Domain\Shop\Models\Referrer;
 use Illuminate\Support\Facades\Cookie;
 use Spatie\TestTime\TestTime;
 use Symfony\Component\HttpFoundation\Cookie as SymfonyCookie;
-use Tests\TestCase;
-
-
 
 it('can handle a referrer', function () {
     $purchasable = Purchasable::factory()->create();

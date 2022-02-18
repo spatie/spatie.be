@@ -22,4 +22,3 @@ it('can convert release notes to html when saving', function () {
 </ul>
 ", $release->notes_html);
 });
-

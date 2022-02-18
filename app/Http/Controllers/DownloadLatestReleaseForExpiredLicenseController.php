@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Domain\Shop\Models\License;
 use App\Services\GitHub\GitHubApi;
-use Exception;
 
 class DownloadLatestReleaseForExpiredLicenseController
 {
@@ -31,6 +30,6 @@ class DownloadLatestReleaseForExpiredLicenseController
                 $license->expires_at,
             );
 
-       return response()->redirectTo($temporaryDownloadUrl);
+        return response()->redirectTo($temporaryDownloadUrl);
     }
 }

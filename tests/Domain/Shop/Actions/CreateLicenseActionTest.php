@@ -3,7 +3,6 @@
 use App\Domain\Shop\Actions\CreateLicenseAction;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
-use Tests\TestCase;
 
 beforeEach(function () {
     $this->action = resolve(CreateLicenseAction::class);

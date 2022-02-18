@@ -2,9 +2,6 @@
 
 use App\Domain\Shop\Models\License;
 use App\Http\Api\Controllers\SatisAuthenticationController;
-use Tests\TestCase;
-
-
 
 it('will abort if no license is found', function () {
     $this->markTestSkipped('To fix');
@@ -51,7 +48,7 @@ it('returns valid for a valid license', function () {
     $license->assignment->purchasable->update([
         'satis_packages' => [
             'spatie/laravel-mailcoach',
-        ]
+        ],
     ]);
 
     $this->withHeaders([

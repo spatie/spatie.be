@@ -3,12 +3,8 @@
 use App\Models\Ad;
 use App\Models\Repository;
 use Illuminate\Support\Facades\Storage;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     Storage::fake('github_ads');
 
     $this->adImagesDisk = Storage::disk('github_ads');

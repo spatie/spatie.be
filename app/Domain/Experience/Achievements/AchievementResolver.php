@@ -34,7 +34,7 @@ class AchievementResolver
         return Achievement::forPullRequest()
             ->get()
             ->filter(fn (Achievement $achievement) => $achievement->data['count_requirement'] <= $command->pullRequestCount)
-            ->reject(fn(Achievement $achievement) => $achievement->receivedBy($command->userId))
+            ->reject(fn (Achievement $achievement) => $achievement->receivedBy($command->userId))
             ->first();
     }
 

@@ -3,7 +3,6 @@
 namespace App\Http\Api\Controllers;
 
 use App\Domain\Shop\Models\Bundle;
-use App\Domain\Shop\Models\Purchasable;
 
 class BundlePriceController
 {

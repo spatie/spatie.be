@@ -3,7 +3,6 @@
 namespace App\Domain\Shop\Notifications;
 
 use App\Domain\Shop\Models\License;
-use App\Http\Controllers\ProductsController;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Markdown;
@@ -38,7 +37,7 @@ class LicenseIsAboutToExpireNotification extends Notification
             $upgradeReason = "Go to your license overview on the [spatie.be]({$siteUrl}) site to renew the license and continue using Ray.";
         }
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject("Your {$name} license is about to expire")
             ->greeting('Hi!')
             ->line("Your {$name} license expires on {$this->license->expires_at->format('Y-m-d')}.")

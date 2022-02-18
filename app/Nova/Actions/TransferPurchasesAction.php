@@ -23,7 +23,7 @@ class TransferPurchasesAction extends DestructiveAction
             return Action::danger("No user found with email {$fields->get('email')}");
         }
 
-        $models->each(function(Purchase $purchase) use ($otherUser) {
+        $models->each(function (Purchase $purchase) use ($otherUser) {
             (new TransferPurchaseToUser())->execute($purchase, $otherUser);
         });
 
