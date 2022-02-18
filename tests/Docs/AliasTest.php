@@ -19,10 +19,10 @@ test('it can calculate the version number', function (string $title, int $versio
 
     expect($alias)->versionNumber
         ->toBeInt()
-        ->toEqual($version);
+        ->toBe($version);
 })->with([
     ['v10', 10],
     ['v9', 9],
     ['8', 8],
-    ['prefix5suffix', 5]
+    ['prefix7suffix', 7]
 ]);
