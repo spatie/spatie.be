@@ -13,7 +13,8 @@ class Alias
         public int $versionNumber,
         public string $githubUrl,
         public Collection $pages
-    ) {}
+    ) {
+    }
 
     public static function fromDocumentationPage(DocumentationPage $page, Collection $pages): self
     {

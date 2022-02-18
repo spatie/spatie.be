@@ -24,5 +24,5 @@ test('it can calculate the version number', function (string $title, int $versio
     ['v10', 10],
     ['v9', 9],
     ['8', 8],
-    ['prefix7suffix', 7]
+    ['prefix7suffix', 7],
 ]);
