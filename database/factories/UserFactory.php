@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 
 class UserFactory extends Factory
 {
-    protected $model = User::class;
-
     public function definition(): array
     {
-        $name = $this->faker->firstName;
+        $name = $this->faker->firstName();
 
         return [
             'name' => ucfirst($name),

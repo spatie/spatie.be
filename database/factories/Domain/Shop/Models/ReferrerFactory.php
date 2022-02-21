@@ -12,7 +12,7 @@ class ReferrerFactory extends Factory
     public function definition()
     {
         return [
-            'slug' => $this->faker->slug,
+            'slug' => $this->faker->slug(),
             'discount_percentage' => $this->faker->numberBetween(1, 10),
         ];
     }

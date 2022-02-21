@@ -10,14 +10,12 @@ use Illuminate\Support\Facades\Storage;
 
 class AdFactory extends Factory
 {
-    protected $model = Ad::class;
-
     public function definition()
     {
         return [
-            'name' => $this->faker->word,
-            'image' => $this->faker->word,
-            'click_redirect_url' => $this->faker->url,
+            'name' => $this->faker->word(),
+            'image' => $this->faker->word(),
+            'click_redirect_url' => $this->faker->url(),
             'active' => $this->faker->boolean(90),
         ];
     }
