@@ -2,7 +2,6 @@
 
 namespace App\Nova\Metrics;
 
-use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchase;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
@@ -25,7 +24,7 @@ class PaymentMethods extends Partition
             ->get();
 
         return $this->result($results->mapWithKeys(function ($result) {
-            $label = match($result->payment_method) {
+            $label = match ($result->payment_method) {
                 'card' => 'Credit card',
                 'apple-pay' => 'Apple Pay',
                 'paypal' => 'PayPal',
