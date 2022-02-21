@@ -16,7 +16,6 @@ use App\Domain\Shop\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Spatie\ScheduleMonitor\Commands\CleanLogCommand;
 
 class Kernel extends ConsoleKernel
 {

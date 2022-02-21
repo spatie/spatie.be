@@ -7,11 +7,11 @@ use InvalidArgumentException;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
-use League\CommonMark\Util\HtmlElement;
 use League\CommonMark\Renderer\NodeRendererInterface;
+use League\CommonMark\Util\HtmlElement;
+use League\CommonMark\Util\RegexHelper;
 use League\Config\ConfigurationAwareInterface;
 use League\Config\ConfigurationInterface;
-use League\CommonMark\Util\RegexHelper;
 
 class LinkRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {

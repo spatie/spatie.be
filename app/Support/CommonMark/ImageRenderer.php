@@ -3,14 +3,14 @@
 namespace App\Support\CommonMark;
 
 use Illuminate\Support\Str;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
-use League\CommonMark\Util\HtmlElement;
-use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Renderer\NodeRendererInterface;
+use League\CommonMark\Util\HtmlElement;
+use League\CommonMark\Util\RegexHelper;
 use League\Config\ConfigurationAwareInterface;
 use League\Config\ConfigurationInterface;
-use League\CommonMark\Util\RegexHelper;
 
 class ImageRenderer implements NodeRendererInterface, ConfigurationAwareInterface
 {
@@ -22,7 +22,7 @@ class ImageRenderer implements NodeRendererInterface, ConfigurationAwareInterfac
             throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($node));
         }
 
-        $attrs =  $node->data->get('attributes', []);
+        $attrs = $node->data->get('attributes', []);
 
         $forbidUnsafeLinks = ! $this->config->get('allow_unsafe_links');
         if ($forbidUnsafeLinks && RegexHelper::isLinkPotentiallyUnsafe($node->getUrl())) {
