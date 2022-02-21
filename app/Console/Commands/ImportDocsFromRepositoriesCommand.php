@@ -40,6 +40,8 @@ class ImportDocsFromRepositoriesCommand extends Command
                 ->toArray();
         }
 
+        $this->info(count($updatedRepositoryNames) . ' repositories.');
+
         $callables = $this->convertRepositoriesToCallables($updatedRepositoryNames);
 
         $this->getOutput()->progressStart(count($callables));

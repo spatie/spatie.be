@@ -6,6 +6,12 @@ use App\Http\Controllers\DocsController;
 use Illuminate\Support\Str;
 use Spatie\Sheets\Sheet;
 
+/**
+ * @property string $title
+ * @property string $slogan
+ * @property string $githubUrl
+ * @property string $branch
+ */
 class DocumentationPage extends Sheet
 {
     public function isIndex(): bool

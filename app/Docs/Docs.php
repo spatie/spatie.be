@@ -28,9 +28,9 @@ class Docs
                         return $page;
                     });
 
-                return new Alias($index->title, $index->slogan, $index->branch, $index->githubUrl, $pages);
+                return Alias::fromDocumentationPage($index, $pages);
             })
-            ->sortBy('slug');
+            ->sortBy('versionNumber', SORT_NATURAL, true);
 
         $index = $pages
             ->whereNull('alias')
