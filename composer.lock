@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "366c6d3ac32dd39466b9f0c7a5210f4d",
+    "content-hash": "33145ed3414ced7cfedebed8edb5f7cd",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -1855,25 +1855,24 @@
         },
         {
             "name": "ebess/advanced-nova-media-library",
-            "version": "dev-master",
+            "version": "3.7.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/spatie/advanced-nova-media-library.git",
-                "reference": "2d0633e0caa88dc96745115213ed09dd344b6b8d"
+                "url": "https://github.com/ebess/advanced-nova-media-library.git",
+                "reference": "7c32be7de5c62274c600e4aa0c6f4788424717f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/advanced-nova-media-library/zipball/2d0633e0caa88dc96745115213ed09dd344b6b8d",
-                "reference": "2d0633e0caa88dc96745115213ed09dd344b6b8d",
+                "url": "https://api.github.com/repos/ebess/advanced-nova-media-library/zipball/7c32be7de5c62274c600e4aa0c6f4788424717f1",
+                "reference": "7c32be7de5c62274c600e4aa0c6f4788424717f1",
                 "shasum": ""
             },
             "require": {
                 "laravel/framework": "^5.6|^6.0|^7.0|^8.0|^9.0",
                 "laravel/nova": "^2.0|^3.0",
-                "php": "^7.4|^8.0",
+                "php": ">=7.4",
                 "spatie/laravel-medialibrary": "^8.0|^9.0|^10.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -1887,6 +1886,7 @@
                     "Ebess\\AdvancedNovaMediaLibrary\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -1896,9 +1896,10 @@
                 "nova"
             ],
             "support": {
-                "source": "https://github.com/spatie/advanced-nova-media-library/tree/master"
+                "issues": "https://github.com/ebess/advanced-nova-media-library/issues",
+                "source": "https://github.com/ebess/advanced-nova-media-library/tree/3.7.1"
             },
-            "time": "2022-01-21T09:30:16+00:00"
+            "time": "2022-02-17T23:37:09+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -18815,17 +18816,9 @@
             "time": "2021-06-05T21:20:04+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "ebess/advanced-nova-media-library",
-            "version": "9999999-dev",
-            "alias": "3.6.3",
-            "alias_normalized": "3.6.3.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "ebess/advanced-nova-media-library": 20,
         "knplabs/github-api": 20
     },
     "prefer-stable": true,

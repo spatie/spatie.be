@@ -20,7 +20,7 @@
         "coroowicaksono/chart-js-integration": "^0.3.4",
         "dillingham/nova-items-field": "^0.6.0",
         "doctrine/dbal": "^2.10",
-        "ebess/advanced-nova-media-library": "dev-master as 3.6.3",
+        "ebess/advanced-nova-media-library": "^3.7",
         "fruitcake/laravel-cors": "^2.0",
         "gobrightspot/nova-detached-actions": "^1.1",
         "guzzlehttp/guzzle": "^7.0",
@@ -138,10 +138,6 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/spatie/advanced-nova-media-library"
         }
     ],
     "minimum-stability": "dev",
