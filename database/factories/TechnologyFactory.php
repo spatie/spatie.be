@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Enums\TechnologyType;
-use App\Models\Technology;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TechnologyFactory extends Factory

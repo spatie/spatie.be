@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Insight;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class InsightFactory extends Factory

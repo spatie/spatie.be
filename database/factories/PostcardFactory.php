@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\Postcard;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PostcardFactory extends Factory
