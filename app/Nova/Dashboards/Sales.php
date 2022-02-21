@@ -8,6 +8,8 @@ use App\Nova\Metrics\EarningsPerProductPerDay;
 use App\Nova\Metrics\EarningsPerProductPerMonth;
 use App\Nova\Metrics\EarningsPerPurchasablePerDay;
 use App\Nova\Metrics\EarningsPerPurchasablePerMonth;
+use App\Nova\Metrics\PaymentMethods;
+use App\Nova\Metrics\PaymentMethodsLastMonth;
 use App\Nova\Metrics\PurchasesPerProduct;
 use App\Nova\Metrics\PurchasesPerProductPerDay;
 use App\Nova\Metrics\PurchasesPerProductPerMonth;
@@ -33,6 +35,8 @@ class Sales extends Dashboard
             new Earnings(),
             new PurchasesPerProduct(),
             new EarningsPerProduct(),
+            new PaymentMethods(),
+            new PaymentMethodsLastMonth(),
             PurchasesPerProductPerDay::create(),
             PurchasesPerPurchasablePerDay::create(),
             PurchasesPerProductPerMonth::create(),
