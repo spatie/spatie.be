@@ -13,7 +13,7 @@
     "require": {
         "php": "^8.1",
         "ext-json": "*",
-        "abraham/twitteroauth": "^2.0",
+        "abraham/twitteroauth": "^3.0",
         "aws/aws-sdk-php": "^3.152",
         "barryvdh/laravel-debugbar": "^3.0",
         "blade-ui-kit/blade-ui-kit": "^0.3",
@@ -86,7 +86,7 @@
         "fakerphp/faker": "^1.13",
         "mockery/mockery": "^1.4",
         "nunomaduro/collision": "^6.0",
-        "nunomaduro/larastan": "^1.0",
+        "nunomaduro/larastan": "^2.0",
         "pestphp/pest": "^1.16",
         "pestphp/pest-plugin-laravel": "^1.1",
         "phpstan/extension-installer": "^1.1",
