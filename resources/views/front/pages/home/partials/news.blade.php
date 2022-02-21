@@ -1,4 +1,12 @@
 <section id="news">
+    <div class="wrap gapy-0 items-end">
+        <div class="mb-8 flex items-start">
+            <a href="{{ route('vacancies.show', 'react-engineer') }}" class="text-2xl px-4 -my-2 py-2 bg-blue-darker hover:bg-blue-dark text-white rounded-sm">
+                <strong class="font-semibold">Now hiring</strong>: React Engineer
+            </a>
+        </div>
+    </div>
+
     <div class="wrap wrap-6 gapy-0 items-end">
         <div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
@@ -8,25 +16,18 @@
                 </span>
             </h2>
 
-            {{--
-            <p class="mt-4">
-                <a class="llink link-black" href="{{ route('vacancies.show', 'frontend-designer') }}"><strong class="font-semibold">Now hiring</strong>: Frontend designer</a>
-                <br>
-                <span class="text-xs text-gray">Antwerp / Partially remote</span>
-            </p>
-            --}}
 
             @foreach ($insights->slice(0, 2) as $insight)
                 <p class="mt-4">
-                   <a class="link link-black" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->title }}</a>
-                   <br>
-                   <span class="text-xs text-gray">
-                       {{ $insight->created_at->format('M jS Y') }}
-                       <span class="char-separator" >•</span>
-                       <a class="link-underline link-blue" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->website }}</a>
-                   </span>
-               </p>
-           @endforeach
+                <a class="link link-black" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->title }}</a>
+                <br>
+                <span class="text-xs text-gray">
+                    {{ $insight->created_at->format('M jS Y') }}
+                    <span class="char-separator" >•</span>
+                    <a class="link-underline link-blue" href="{{ $insight->url }}" target="_blank" rel="noreferrer noopener">{{ $insight->website }}</a>
+                </span>
+            </p>
+        @endforeach
         </div>
         <div class="sm:col-span-3 | line-l">
             @foreach ($insights->slice(2, 2) as $insight)
