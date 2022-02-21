@@ -144,10 +144,14 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "post-install-cmd": [
+            "@php composer outdated --direct"
+        ],
         "post-update-cmd": [
             "@php artisan nova:publish",
             "@php artisan horizon:publish",
-            "@php artisan vendor:publish --tag mailcoach-assets --force"
+            "@php artisan vendor:publish --tag mailcoach-assets --force",
+            "@php composer outdated --direct"
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
