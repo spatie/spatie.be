@@ -1274,6 +1274,26 @@ parameters:
 			path: app/Nova/Metrics/EarningsPerProduct.php
 
 		-
+			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$count\\.$#"
+			count: 1
+			path: app/Nova/Metrics/PaymentMethods.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
+			count: 1
+			path: app/Nova/Metrics/PaymentMethods.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$count\\.$#"
+			count: 1
+			path: app/Nova/Metrics/PaymentMethodsLastMonth.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
+			count: 1
+			path: app/Nova/Metrics/PaymentMethodsLastMonth.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Product\\|Illuminate\\\\Database\\\\Eloquent\\\\Collection\\<App\\\\Domain\\\\Shop\\\\Models\\\\Product\\>\\:\\:\\$title\\.$#"
 			count: 1
 			path: app/Nova/Metrics/PurchasesPerProduct.php
