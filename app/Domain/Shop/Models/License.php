@@ -65,7 +65,7 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return optional($this->assignment)->has_repository_access;
+        return $this->assignment?->has_repository_access;
     }
 
     public function renew(): self
