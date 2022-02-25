@@ -14,8 +14,8 @@ class BundlePriceFactory extends Factory
     {
         return [
             'bundle_id' => Bundle::factory(),
-            'country_code' => $this->faker->countryCode,
-            'currency_code' => $this->faker->currencyCode,
+            'country_code' => $this->faker->countryCode(),
+            'currency_code' => $this->faker->currencyCode(),
             'amount' => $this->faker->numberBetween(1000, 100000),
             'overridden' => false,
             'currency_symbol' => '$',
