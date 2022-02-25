@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c65f0cd8fc1ceda8dc015af9d96f2448",
+    "content-hash": "0d97ec21a3a64eccd42fa9f735783d4c",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -2685,16 +2685,16 @@
         },
         {
             "name": "knplabs/github-api",
-            "version": "v3.5.1",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/KnpLabs/php-github-api.git",
-                "reference": "37b167998e8e1f318b3d99633675cfa007540565"
+                "reference": "9b01208e1e5500201b45699c911ad53d08f59105"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/37b167998e8e1f318b3d99633675cfa007540565",
-                "reference": "37b167998e8e1f318b3d99633675cfa007540565",
+                "url": "https://api.github.com/repos/KnpLabs/php-github-api/zipball/9b01208e1e5500201b45699c911ad53d08f59105",
+                "reference": "9b01208e1e5500201b45699c911ad53d08f59105",
                 "shasum": ""
             },
             "require": {
@@ -2724,6 +2724,7 @@
                 "symfony/cache": "^5.1.8",
                 "symfony/phpunit-bridge": "^5.2"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -18028,7 +18029,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "knplabs/github-api": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
