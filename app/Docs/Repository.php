@@ -12,11 +12,11 @@ class Repository
 
     public ?string $category;
 
-    public function __construct(string $slug, Collection $aliases, DocumentationPage $index)
+    public function __construct(string $slug, Collection $aliases, ?DocumentationPage $index)
     {
         $this->slug = $slug;
         $this->aliases = $aliases;
-        $this->category = $index->category ?? null;
+        $this->category = $index?->category ?? null;
     }
 
     public function getAlias(string $alias): ?Alias
