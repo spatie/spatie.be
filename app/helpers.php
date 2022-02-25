@@ -25,7 +25,7 @@ function image(string $path): ?Media
             $image = Image::createWithPath($path);
         }
 
-        return $image?->getFirstMedia();
+        return $image->getFirstMedia();
     } catch (Exception $exception) {
         report($exception);
 
