@@ -151,7 +151,6 @@
             "@php artisan nova:publish",
             "@php artisan horizon:publish",
             "@php artisan vendor:publish --tag mailcoach-assets --force",
-            "@php composer outdated --direct",
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
         "post-autoload-dump": [
