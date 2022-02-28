@@ -113,11 +113,8 @@ class TechnologiesSeeder extends Seeder
                 $technology
                     ->addMediaFromUrl($imageUrl)
                     ->toMediaCollection('avatar');
-            } catch (Exception $exception)
-            {
-
+            } catch (Exception $exception) {
             }
-
         }
 
         Technology::whereNotIn('name', array_column($this->technologies(), 'name'))
