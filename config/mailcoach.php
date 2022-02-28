@@ -1,10 +1,6 @@
 <?php
 
 return [
-    'ses_feedback' => [
-        'configuration_set' => 'mailcoach',
-    ],
-
     'campaigns' => [
         /*
          * The default mailer used by Mailcoach for sending campaigns.
@@ -45,17 +41,26 @@ return [
 
         /*
          * By default only 10 mails per second will be sent to avoid overwhelming your
-         * e-mail sending service. To use this feature you must have Redis installed.
+         * e-mail sending service.
          */
         'throttling' => [
-            'enabled' => true,
-            'redis_connection_name' => 'default',
-            'redis_key' => 'laravel-mailcoach',
-            'allowed_number_of_jobs_in_timespan' => 10,
+            'allowed_number_of_jobs_in_timespan' => 30,
             'timespan_in_seconds' => 1,
-            'release_in_seconds' => 5,
-            'retry_until_hours' => 24,
+
+            /*
+             * Throttling relies on the cache. Here you can specify the store to be used.
+             *
+             * When passing `null`, we'll use the default store.
+             */
+            'cache_store' => null,
         ],
+
+        /*
+         * The job that will send a campaign could take a long time when your list contains a lot of subscribers.
+         * Here you can define the maximum run time of the job. If the job hasn't fully sent your campaign, it
+         * will redispatch itself.
+         */
+        'send_campaign_maximum_job_runtime_in_seconds' => 60  * 10,
 
         /*
          * You can customize some of the behavior of this package by using our own custom action.
@@ -82,6 +87,29 @@ return [
         'mailer' => null,
 
         /*
+         * By default only 10 mails per second will be sent to avoid overwhelming your
+         * e-mail sending service.
+         */
+        'throttling' => [
+            'allowed_number_of_jobs_in_timespan' => 30,
+            'timespan_in_seconds' => 1,
+
+            /*
+             * Throttling relies on the cache. Here you can specify the store to be used.
+             *
+             * When passing `null`, we'll use the default store.
+             */
+            'cache_store' => null,
+        ],
+
+        /*
+         * The job that will send automation mails could take a long time when your list contains a lot of subscribers.
+         * Here you can define the maximum run time of the job. If the job hasn't fully sent your automation mails, it
+         * will redispatch itself.
+         */
+        'send_automation_mails_maximum_job_runtime_in_seconds' => 60  * 10,
+
+        /*
          * Here you can configure which automation mail template editor Mailcoach uses.
          * By default this is a text editor that highlights HTML.
          */
@@ -90,6 +118,7 @@ return [
         'actions' => [
             'send_mail' => \Spatie\Mailcoach\Domain\Automation\Actions\SendMailAction::class,
             'send_automation_mail_to_subscriber' => \Spatie\Mailcoach\Domain\Automation\Actions\SendAutomationMailToSubscriberAction::class,
+            'send_automation_mails_action' => \Spatie\Mailcoach\Domain\Automation\Actions\SendAutomationMailsAction::class,
             'prepare_subject' => \Spatie\Mailcoach\Domain\Automation\Actions\PrepareSubjectAction::class,
             'prepare_webview_html' => \Spatie\Mailcoach\Domain\Automation\Actions\PrepareWebviewHtmlAction::class,
 
@@ -99,6 +128,7 @@ return [
             'personalize_subject' => \Spatie\Mailcoach\Domain\Automation\Actions\PersonalizeSubjectAction::class,
             'send_test_mail' => \Spatie\Mailcoach\Domain\Automation\Actions\SendAutomationMailTestAction::class,
 
+            'should_run_for_subscriber' => \Spatie\Mailcoach\Domain\Automation\Actions\ShouldAutomationRunForSubscriberAction::class,
         ],
 
         'replacers' => [
@@ -148,6 +178,7 @@ return [
         ],
 
         'perform_on_queue' => [
+            'dispatch_pending_automation_mails_job' => 'send-campaign',
             'run_automation_action_job' => 'send-campaign',
             'run_action_for_subscriber_job' => 'mailcoach',
             'run_automation_for_subscriber_job' => 'mailcoach',
@@ -266,57 +297,142 @@ return [
     'models' => [
         /*
          * The model you want to use as a Campaign model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\Campaign` model.
+         * extend the `Spatie\Mailcoach\Domain\Campaign\Models\Campaign::class`
+         * model.
          */
         'campaign' => Spatie\Mailcoach\Domain\Campaign\Models\Campaign::class,
 
         /*
+         * The model you want to use as a CampaignLink model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Campaign\Models\CampaignLink::class`
+         * model.
+         */
+        'campaign_link' => \Spatie\Mailcoach\Domain\Campaign\Models\CampaignLink::class,
+
+        /*
+         * The model you want to use as a CampaignClick model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Campaign\Models\CampaignClick::class`
+         * model.
+         */
+        'campaign_click' => \Spatie\Mailcoach\Domain\Campaign\Models\CampaignClick::class,
+
+        /*
+         * The model you want to use as a CampaignOpen model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Campaign\Models\CampaignOpen::class`
+         * model.
+         */
+        'campaign_open' => \Spatie\Mailcoach\Domain\Campaign\Models\CampaignOpen::class,
+
+        /*
+         * The model you want to use as a CampaignUnsubscribe model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Campaign\Models\CampaignUnsubscribe::class`
+         * model.
+         */
+        'campaign_unsubscribe' => \Spatie\Mailcoach\Domain\Campaign\Models\CampaignUnsubscribe::class,
+
+        /*
          * The model you want to use as a EmailList model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\EmailList` model.
+         * extend the `Spatie\Mailcoach\Domain\Audience\Models\EmailList::class`
+         * model.
          */
         'email_list' => \Spatie\Mailcoach\Domain\Audience\Models\EmailList::class,
 
         /*
-         * The model you want to use as a EmailList model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\Send` model.
+         * The model you want to use as a Send model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Shared\Models\Send::class`
+         * model.
          */
         'send' => \Spatie\Mailcoach\Domain\Shared\Models\Send::class,
 
         /*
          * The model you want to use as a Subscriber model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\Subscriber` model.
+         * extend the `Spatie\Mailcoach\Domain\Audience\Models\Subscriber::class`
+         * model.
          */
         'subscriber' => \Spatie\Mailcoach\Domain\Audience\Models\Subscriber::class,
 
         /*
          * The model you want to use as a Template model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\Template` model.
+         * extend the `Spatie\Mailcoach\Domain\Campaign\Models\Template::class`
+         * model.
          */
         'template' => Spatie\Mailcoach\Domain\Campaign\Models\Template::class,
 
         /*
          * The model you want to use as a TransactionalMail model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\TransactionalMail` model.
+         * extend the `Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMail::class`
+         * model.
          */
         'transactional_mail' => \Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMail::class,
 
         /*
          * The model you want to use as a TransactionalMailTemplate model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\TransactionalMailTemplate` model.
+         * extend the `\Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailTemplate::class`
+         * model.
          */
         'transactional_mail_template' => \Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailTemplate::class,
 
         /*
          * The model you want to use as an Automation model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\Automation` model.
+         * extend the `\Spatie\Mailcoach\Domain\Automation\Models\Automation::class`
+         * model.
          */
         'automation' => \Spatie\Mailcoach\Domain\Automation\Models\Automation::class,
 
         /*
-         * The model you want to use as an Automation model. It needs to be or
-         * extend the `Spatie\Mailcoach\Models\Automation` model.
+         * The model you want to use as an Action model. It needs to be or
+         * extend the `\Spatie\Mailcoach\Domain\Automation\Models\Action::class`
+         * model.
+         */
+        'automation_action' => \Spatie\Mailcoach\Domain\Automation\Models\Action::class,
+
+        /*
+         * The model you want to use as a Trigger model. It needs to be or
+         * extend the `\Spatie\Mailcoach\Domain\Automation\Models\Trigger::class`
+         * model.
+         */
+        'automation_trigger' => \Spatie\Mailcoach\Domain\Automation\Models\Trigger::class,
+
+        /*
+         * The model you want to use as an Automation mail model. It needs to be or
+         * extend the `\Spatie\Mailcoach\Domain\Automation\Models\AutomationMail::class` model.
          */
         'automation_mail' => \Spatie\Mailcoach\Domain\Automation\Models\AutomationMail::class,
+
+        /*
+         * The model you want to use as a Campaign model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Automation\Models\AutomationMailLink::class`
+         * model.
+         */
+        'automation_mail_link' => \Spatie\Mailcoach\Domain\Automation\Models\AutomationMailLink::class,
+
+        /*
+         * The model you want to use as a Campaign model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Automation\Models\AutomationMailClick::class`
+         * model.
+         */
+        'automation_mail_click' => \Spatie\Mailcoach\Domain\Automation\Models\AutomationMailClick::class,
+
+        /*
+         * The model you want to use as a Campaign model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Automation\Models\AutomationMailOpen::class`
+         * model.
+         */
+        'automation_mail_open' => \Spatie\Mailcoach\Domain\Automation\Models\AutomationMailOpen::class,
+
+        /*
+         * The model you want to use as a Campaign model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Automation\Models\AutomationMailUnsubscribe::class`
+         * model.
+         */
+        'automation_mail_unsubscribe' => \Spatie\Mailcoach\Domain\Automation\Models\AutomationMailUnsubscribe::class,
+
+        /*
+         * The model you want to use as the pivot between an Automation Action model
+         * and the Subscriber model. It needs to be or extend the
+         * `\Spatie\Mailcoach\Domain\Automation\Models\ActionSubscriber::class` model.
+         */
+        'action_subscriber' => \Spatie\Mailcoach\Domain\Automation\Models\ActionSubscriber::class,
     ],
 
     'views' => [
