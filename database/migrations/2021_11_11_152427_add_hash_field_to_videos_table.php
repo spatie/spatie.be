@@ -8,7 +8,7 @@ return new class () extends Migration {
     public function up()
     {
         Schema::table('videos', function (Blueprint $table) {
-            $table->string('hash');
+            $table->string('hash')->nullable();
         });
     }
 };

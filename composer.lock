@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0d97ec21a3a64eccd42fa9f735783d4c",
+    "content-hash": "29bf51120ac4775aff9f986ed6778489",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -11192,16 +11192,16 @@
         },
         {
             "name": "spatie/laravel-markdown",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-markdown.git",
-                "reference": "de451b6dddfdcfdfa3db2ad77d9cd1ee7fe8e937"
+                "reference": "cca6e7676d0b5921f9c8f2ca497fbe6f007bc829"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-markdown/zipball/de451b6dddfdcfdfa3db2ad77d9cd1ee7fe8e937",
-                "reference": "de451b6dddfdcfdfa3db2ad77d9cd1ee7fe8e937",
+                "url": "https://api.github.com/repos/spatie/laravel-markdown/zipball/cca6e7676d0b5921f9c8f2ca497fbe6f007bc829",
+                "reference": "cca6e7676d0b5921f9c8f2ca497fbe6f007bc829",
                 "shasum": ""
             },
             "require": {
@@ -11209,6 +11209,7 @@
                 "illuminate/contracts": "^8.37|^9.0",
                 "illuminate/support": "^8.49|^9.0",
                 "illuminate/view": "^8.49|^9.0",
+                "league/commonmark": "^2.2",
                 "php": "^8.0",
                 "spatie/commonmark-shiki-highlighter": "^2.0",
                 "spatie/laravel-package-tools": "^1.4.3"
@@ -11254,7 +11255,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-markdown/tree/2.2.0"
+                "source": "https://github.com/spatie/laravel-markdown/tree/2.2.1"
             },
             "funding": [
                 {
@@ -11262,7 +11263,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-13T10:08:03+00:00"
+            "time": "2022-02-28T12:18:07+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",

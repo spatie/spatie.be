@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\Enums\TechnologyType;
 use App\Models\Technology;
+use Exception;
 use Illuminate\Database\Seeder;
 
 class TechnologiesSeeder extends Seeder
@@ -108,9 +109,15 @@ class TechnologiesSeeder extends Seeder
 
             $technology->save();
 
-            $technology
-                 ->addMediaFromUrl($imageUrl)
-                ->toMediaCollection('avatar');
+            try {
+                $technology
+                    ->addMediaFromUrl($imageUrl)
+                    ->toMediaCollection('avatar');
+            } catch (Exception $exception)
+            {
+
+            }
+
         }
 
         Technology::whereNotIn('name', array_column($this->technologies(), 'name'))
