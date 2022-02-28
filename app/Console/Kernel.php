@@ -16,6 +16,7 @@ use App\Domain\Shop\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Spatie\ScheduleMonitor\Models\MonitoredScheduledTaskLogItem;
 
 class Kernel extends ConsoleKernel
 {
@@ -37,7 +38,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportGuideLinesCommand::class)->weekly();
         $schedule->command(RegenerateLeakedKeysCommand::class)->runInBackground()->hourly();
 
-        $schedule->command('model:prune')->weekly();
+        $schedule->command('model:prune', ['--model' => MonitoredScheduledTaskLogItem::class])->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
         $schedule->command(RevokeRepositoryAccessForExpiredLicensesCommand::class)->dailyAt('04:00');
         $schedule->command(ImportDocsFromRepositoriesCommand::class)->graceTimeInMinutes(20)->runInBackground();
