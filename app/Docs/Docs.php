@@ -28,8 +28,13 @@ class Docs
                         return $page;
                     });
 
+                if (! $index) {
+                    return null;
+                }
+
                 return Alias::fromDocumentationPage($index, $pages);
             })
+            ->filter()
             ->sortBy('versionNumber', SORT_NATURAL, true);
 
         $index = $pages
