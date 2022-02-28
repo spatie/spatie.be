@@ -15,7 +15,7 @@ class ReleaseFactory extends Factory
     {
         return [
             'product_id' => Product::factory(),
-            'notes' => $this->faker->sentence,
+            'notes' => $this->faker->sentence(),
             'released' => true,
             'version' => '0.0.1',
             'released_at' => now(),

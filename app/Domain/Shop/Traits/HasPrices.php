@@ -103,7 +103,7 @@ trait HasPrices
 
     public function hasActiveDiscount(): bool
     {
-        if (optional(auth()->user())->enjoysExtraDiscountOnNextPurchase()) {
+        if (auth()->user()?->enjoysExtraDiscountOnNextPurchase()) {
             return true;
         }
 

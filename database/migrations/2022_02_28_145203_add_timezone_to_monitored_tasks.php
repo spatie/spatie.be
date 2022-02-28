@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Schema;
 return new class () extends Migration {
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->uuid('uuid')->after('id')->nullable();
+        Schema::table('monitored_scheduled_tasks', function (Blueprint $table) {
+            $table->string('timezone')->nullable();
         });
     }
 };

@@ -23,11 +23,11 @@ class PurchasesPerProduct extends Partition
                 ->orderByDesc('aggregate'),
             'product_id'
         )->label(function ($value) {
-            return Product::find($value)->title;
+            return Product::find($value)?->title;
         });
     }
 
-    public function uriKey()
+    public function uriKey(): string
     {
         return 'purchases-per-product';
     }

@@ -1,18 +1,20 @@
 <?php
 
+use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkRenderer;
+
 return [
     'code_highlighting' => [
         /*
          * To highlight code, we'll use Shiki under the hood. Make sure it's installed.
          *
-         * More info: https://github.com/spatie/laravel-markdown#installation
+         * More info: https://spatie.be/docs/laravel-markdown/v1/installation-setup
          */
         'enabled' => true,
 
         /*
          * The name of or path to a Shiki theme
          *
-         * More info: https://github.com/spatie/laravel-markdown#specifying-the-theme-used-for-code-highlighting
+         * More info: https://github.com/shikijs/shiki/blob/master/docs/themes.md
          */
         'theme' => 'github-light',
     ],
@@ -20,18 +22,25 @@ return [
     /*
      * When enabled, anchor links will be added to all titles
      */
-    'add_anchors_to_headings' => false,
+    'add_anchors_to_headings' => true,
 
     /*
      * These options will be passed to the league/commonmark package which is
      * used under the hood to render markdown.
      *
-     * More info: https://github.com/spatie/laravel-markdown#passing-options-to-commonmark
+     * More info: https://spatie.be/docs/laravel-markdown/v1/using-the-blade-component/passing-options-to-commonmark
      */
     'commonmark_options' => [
         'heading_permalink' => [
-            'inner_contents' => '#',
-            'insert' => 'after',
+            'html_class' => 'heading-permalink',
+            'id_prefix' => '',
+            'fragment_prefix' => '',
+            'insert' => 'before',
+            'min_heading_level' => 1,
+            'max_heading_level' => 6,
+            'title' => 'Permalink',
+            'symbol' => '#',
+            'aria_hidden' => false,
         ],
     ],
 
@@ -51,27 +60,37 @@ return [
      * You can change this to a class of your own to greatly
      * customize the rendering process
      *
-     * More info: https://github.com/spatie/laravel-markdown#customizing-the-rendering-process
+     * More info: https://spatie.be/docs/laravel-markdown/v1/advanced-usage/customizing-the-rendering-process
      */
     'renderer_class' => Spatie\LaravelMarkdown\MarkdownRenderer::class,
 
     /*
-     * These extensions should be added to the markdown environment. An valid
+     * These extensions should be added to the markdown environment. A valid
      * extension implements League\CommonMark\Extension\ExtensionInterface
      *
-     * More info: https://commonmark.thephpleague.com/1.6/extensions/overview/
+     * More info: https://commonmark.thephpleague.com/2.1/extensions/overview/
      */
     'extensions' => [
-        //
+        League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension::class
     ],
 
     /*
-     * These renderers should be added to the markdown environment. An valid
-     * renderer implements League\CommonMark\Block\Renderer\BlockRendererInterface;
+     * These block renderers should be added to the markdown environment. A valid
+     * renderer implements League\CommonMark\Renderer\NodeRendererInterface;
      *
-     * More info: https://commonmark.thephpleague.com/1.6/customization/block-rendering/
+     * More info: https://commonmark.thephpleague.com/2.1/customization/rendering/
      */
     'block_renderers' => [
-        // ['blockClass' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer()]
+        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
+    ],
+
+    /*
+     * These inline renderers should be added to the markdown environment. A valid
+     * renderer implements League\CommonMark\Renderer\NodeRendererInterface;
+     *
+     * More info: https://commonmark.thephpleague.com/2.1/customization/rendering/
+     */
+    'inline_renderers' => [
+        // ['class' => FencedCode::class, 'renderer' => new MyCustomCodeRenderer(), 'priority' => 0]
     ],
 ];

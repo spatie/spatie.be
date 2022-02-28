@@ -14,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
 
         Gate::define('viewMailcoach', function ($user = null) {
-            return optional($user)->is_admin;
+            return $user?->is_admin;
         });
 
         Flash::levels([

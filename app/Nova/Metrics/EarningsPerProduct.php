@@ -24,11 +24,11 @@ class EarningsPerProduct extends Partition
             'earnings',
             'product_id',
         )->label(function ($value) {
-            return Product::find($value)->title;
+            return Product::find($value)?->title;
         });
     }
 
-    public function uriKey()
+    public function uriKey(): string
     {
         return 'earnings-per-product';
     }

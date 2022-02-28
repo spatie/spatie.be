@@ -12,13 +12,13 @@ class ProductFactory extends Factory
 
     public function definition()
     {
-        $title = "{$this->faker->jobTitle} as a service";
+        $title = "{$this->faker->jobTitle()} as a service";
 
         return [
             'title' => $title,
-            'description' => $this->faker->text,
-            'url' => $this->faker->url,
-            'action_url' => $this->faker->url,
+            'description' => $this->faker->text(),
+            'url' => $this->faker->url(),
+            'action_url' => $this->faker->url(),
             'action_label' => $this->faker->sentence(4),
             'slug' => Str::slug($title),
             'private_key' => file_get_contents(__DIR__ . '/../../../stubs/privateKey'),

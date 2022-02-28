@@ -28,7 +28,7 @@ class PriceController
                 'active' => $purchasable->hasActiveDiscount(),
                 'percentage' => $purchasable->discount_percentage,
                 'name' => $purchasable->discount_name,
-                'expires_at' => optional($purchasable->discount_expires_at)->timestamp,
+                'expires_at' => $purchasable->discount_expires_at?->timestamp,
             ],
         ]);
     }
