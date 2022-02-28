@@ -31,7 +31,7 @@ class HandleGitHubPullRequestWebhookController
             return;
         }
 
-        $this->bus->dispatch(RegisterPullRequest::forUser($user, $payload['pull_request']['url'] ?? ''));
+        // $this->bus->dispatch(RegisterPullRequest::forUser($user, $payload['pull_request']['url'] ?? ''));
     }
 
     protected function ensureValidRequest(Request $request): void
