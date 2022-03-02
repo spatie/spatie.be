@@ -72,7 +72,7 @@
                                 </div>
 
                                 <h2 class="title-sm link-black link-underline-hover">{{ $product->title }}</h2>
-                                @if(! $product->visible && current_user()?->hasAccessToUnReleasedProducts())<p class="mt-2 text-orange">This product is currently set to non-visible, it is visible to users that have access to unreleased products.</p>@endif
+                                @if(! $product->visible && current_user()?->hasAccessToUnReleasedProducts())<p class="mt-2 text-orange text-sm">This product is currently set to non-visible, it is visible to users that have access to unreleased products.</p>@endif
                             </a>
 
                             <p class="my-4 flex items-center space-x-4">
