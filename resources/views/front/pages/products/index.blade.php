@@ -21,36 +21,7 @@
    {{-- @include('front.pages.products.partials.ctaLaraconEU') --}}
 
     <div class="section section-group">
-    @if (count($bundles))
-        <section class="section overflow-visible">
-            <div class="wrap">
-                <h2 class="title line-after mb-12">Check our bundle promotions!</h2>
-            </div>
-            <div class="wrap">
-                <div class="grid col-gap-24 row-gap-24 | sm:grid-cols-2 items-stretch">
-                    @foreach ($bundles as $bundle)
-                        <div class="my-6">
-                            <a href="{{ route('bundles.show', $bundle) }}" class="group">
-                                <div class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
-                                    <div class="shadow-md group-hover:shadow-lg">{{ $bundle->getFirstMedia('image') }}</div>
-                                </div>
-                                <h2 class="title-sm link-black link-underline-hover">{{ $bundle->title }}</h2>
-                            </a>
 
-                            <p class="my-4 flex items-center space-x-4">
-                                <a href="{{ route('bundles.show', $bundle) }}">
-                                    <x-button>Buy Bundle</x-button>
-                                </a>
-                            </p>
-
-                             <p class="mt-4">{{ $bundle->formattedDescription }}</p>
-
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
 
     <section class="section overflow-visible">
             @if (count($bundles))
@@ -105,6 +76,37 @@
                 </div>
             </div>
         </section>
+
+        @if (count($bundles))
+        <section class="section overflow-visible">
+            <div class="wrap">
+                <h2 class="title line-after mb-12">Check our bundle promotions!</h2>
+            </div>
+            <div class="wrap">
+                <div class="grid col-gap-24 row-gap-24 | sm:grid-cols-2 items-stretch">
+                    @foreach ($bundles as $bundle)
+                        <div class="my-6">
+                            <a href="{{ route('bundles.show', $bundle) }}" class="group">
+                                <div class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
+                                    <div class="shadow-md group-hover:shadow-lg">{{ $bundle->getFirstMedia('image') }}</div>
+                                </div>
+                                <h2 class="title-sm link-black link-underline-hover">{{ $bundle->title }}</h2>
+                            </a>
+
+                            <p class="my-4 flex items-center space-x-4">
+                                <a href="{{ route('bundles.show', $bundle) }}">
+                                    <x-button>Buy Bundle</x-button>
+                                </a>
+                            </p>
+
+                             <p class="mt-4">{{ $bundle->formattedDescription }}</p>
+
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
         </div>
 
 </x-page>
