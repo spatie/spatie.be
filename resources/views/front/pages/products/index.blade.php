@@ -71,7 +71,8 @@
                                     <div class="shadow-md group-hover:shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
                                 </div>
 
-                                <h2 class="title-sm link-black link-underline-hover">{{ $product->title }} @if(! $product->visible && current_user()?->hasAccessToUnReleasedProducts())(only visible for Spatie users)@endif</h2>
+                                <h2 class="title-sm link-black link-underline-hover">{{ $product->title }}</h2>
+                                @if(! $product->visible && current_user()?->hasAccessToUnReleasedProducts())<p>This product is currently set to non-visible, it is visible to users that have access to unreleased products.</p>@endif
                             </a>
 
                             <p class="my-4 flex items-center space-x-4">
