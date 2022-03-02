@@ -3,6 +3,43 @@
         title="React engineer vacancy"
         description="Vacancy for a react engineer. Location: Antwerp."
 >
+<script type="application/ld+json"> {
+	"@context": "http://schema.org",
+	"@type": "JobPosting",
+	"datePosted": "2022-02-27T00:00:00",
+	"description": "<p>
+                        You're in love with the React + TypeScript combo.
+                    </p> 
+                    <ul>
+                        <li>You know where JavaScript comes from.</li>
+                        <li>You know Git. That's it.</li>
+                        <li>You don't run away from Tailwind CSS</li>
+                        <li>You can work independently but aren't afraid to ask when you're stuck.</li>
+                        <li>You can speak Dutch and you love Italian food.</li>
+                    </ul>
+                    <p>
+                        Learn and grow together with a team that has made its name in open source. You'll have an enormous impact on users worldwide.
+                    </p>",
+	"title": "React Engineer",
+	"employmentType": "FULL_TIME",
+	"hiringOrganization": {
+		"@type": "Organization",
+		"name": "Spatie",
+        "sameAs": "https://spatie.be",
+        "logo": "http://spatie.be/images/spatie.png"
+	},
+	"jobLocation": {
+		"@type": "Place",
+		"address": {
+			"@type": "PostalAddress",
+			"streetAddress": "Kruikstraat 22",
+			"addressLocality": "Antwerp",
+			"postalCode": "2018",
+			"addressCountry": "BE"
+		}
+	}
+
+} </script>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
