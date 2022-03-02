@@ -35,7 +35,7 @@
 			"@type": "PostalAddress",
 			"streetAddress": "Kruikstraat 22",
 			"addressLocality": "Antwerp",
-            "addressLRegion": "Antwerp",
+            "addressRegion": "Antwerp",
 			"postalCode": "2018",
 			"addressCountry": "BE"
 		}
