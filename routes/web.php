@@ -44,7 +44,7 @@ Route::redirect('/docs/products/ray', '/docs/ray');
 
 Route::post('paddle/webhook', WebhookController::class);
 
-Route::redirect('readable-php', 'writing-readable-php.com');
+Route::redirect('readable-php', 'https://writing-readable-php.com');
 
 Route::get('is-valid-license/{license}', IsValidLicenseController::class);
 
