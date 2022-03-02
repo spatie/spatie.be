@@ -7,6 +7,7 @@
 	"@context": "http://schema.org",
 	"@type": "JobPosting",
 	"datePosted": "2022-02-27T00:00:00",
+    "validThrough": "2023-02-27T00:00:00",
 	"description": "<p>
                         You're in love with the React + TypeScript combo.
                     </p> 
@@ -34,11 +35,11 @@
 			"@type": "PostalAddress",
 			"streetAddress": "Kruikstraat 22",
 			"addressLocality": "Antwerp",
+            "addressLRegion": "Antwerp",
 			"postalCode": "2018",
 			"addressCountry": "BE"
 		}
 	}
-
 } </script>
 
     <section id="banner" class="banner" role="banner">
