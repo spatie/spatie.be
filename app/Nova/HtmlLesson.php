@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use App\Domain\Shop\Models\License as EloquentLicense;
 use App\Models\HtmlLesson as EloquentHtmlLesson;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
