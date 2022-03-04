@@ -2,18 +2,19 @@
 
 namespace App\Nova;
 
-use App\Models\Video as EloquentVideo;
+use App\Domain\Shop\Models\License as EloquentLicense;
+use App\Models\HtmlLesson as EloquentHtmlLesson;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
 
-class Video extends Resource
+class HtmlLesson extends Resource
 {
     public static $group = "Courses";
 
-    public static $model = EloquentVideo::class;
-
     public static $title = 'title';
+
+    public static $model = EloquentHtmlLesson::class;
 
     public static $search = [
         'id', 'title',
@@ -28,8 +29,6 @@ class Video extends Resource
                 ->sortable()
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
-
-
         ];
     }
 }

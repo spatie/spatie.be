@@ -17,7 +17,7 @@ class Series extends Resource
 {
     use HasSortableRows;
 
-    public static $group = "Videos";
+    public static $group = "Courses";
 
     public static $model = EloquentSeries::class;
 
@@ -67,7 +67,7 @@ class Series extends Resource
 
             Markdown::make('Introduction'),
 
-            HasMany::make('Videos', 'videos', Video::class),
+            HasMany::make('Videos', 'videos', Lesson::class),
 
             Boolean::make('Visible'),
         ];
