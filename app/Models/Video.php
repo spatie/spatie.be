@@ -87,7 +87,7 @@ class Video extends Model
             return '';
         }
 
-        return (new CommonMarkConverter())->convertToHtml($this->description);
+        return (new CommonMarkConverter())->convert($this->description);
     }
 
 

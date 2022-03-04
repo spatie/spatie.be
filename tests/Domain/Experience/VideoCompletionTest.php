@@ -1,18 +1,14 @@
 <?php
 
+use App\Domain\Experience\Enums\ExperienceType;
 use App\Domain\Experience\Events\VideoCompleted;
 use App\Domain\Experience\Models\Achievement;
-use App\Domain\Experience\Enums\ExperienceType;
 use App\Models\Series;
 use App\Models\User;
 use App\Models\Video;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->series = Series::factory()->create();
 
     $this->videoA = Video::factory()->make([

@@ -17,7 +17,7 @@ class ProductsController
         $products = Product::query()
             ->unless(
                 current_user()?->hasAccessToUnReleasedProducts(),
-                fn(Builder $query) => $query->where('visible', true)
+                fn (Builder $query) => $query->where('visible', true)
             )
             ->orderBy('sort_order')
             ->get();
@@ -25,7 +25,7 @@ class ProductsController
         $bundles = Bundle::orderBy('sort_order')
             ->unless(
                 current_user()?->hasAccessToUnReleasedProducts(),
-                fn(Builder $query) => $query->where('visible', true)
+                fn (Builder $query) => $query->where('visible', true)
             )
             ->where('visible', true)
             ->get();
@@ -47,6 +47,7 @@ class ProductsController
             $licenses = $assignments->flatMap(function (PurchaseAssignment $assignment) {
                 return $assignment->licenses->map(function (License $license) use ($assignment) {
                     $license->setRelation('assignment', $assignment);
+
                     return $license;
                 });
             });

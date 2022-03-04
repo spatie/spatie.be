@@ -3,7 +3,6 @@
 namespace App\Http\Api\Controllers;
 
 use App\Domain\Shop\Models\Bundle;
-use App\Domain\Shop\Models\Purchasable;
 
 class BundlePriceController
 {
@@ -29,7 +28,7 @@ class BundlePriceController
                 'active' => $bundle->hasActiveDiscount(),
                 'percentage' => $bundle->discount_percentage,
                 'name' => $bundle->discount_name,
-                'expires_at' => optional($bundle->discount_expires_at)->timestamp,
+                'expires_at' => $bundle->discount_expires_at?->timestamp,
             ],
         ]);
     }

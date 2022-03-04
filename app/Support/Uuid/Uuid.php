@@ -32,4 +32,3 @@ class Uuid implements Castable
         return new UuidCaster();
     }
 }
-

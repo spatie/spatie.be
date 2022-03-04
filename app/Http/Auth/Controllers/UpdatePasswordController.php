@@ -16,7 +16,7 @@ class UpdatePasswordController
     public function update(Request $request)
     {
         $request->validate([
-            'current_password' => ['required', new MatchCurrentPasswordRule],
+            'current_password' => ['required', new MatchCurrentPasswordRule()],
             'password' => ['required', 'confirmed', 'min:8'],
         ]);
 

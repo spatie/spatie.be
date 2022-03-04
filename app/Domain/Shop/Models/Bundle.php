@@ -71,7 +71,7 @@ class Bundle extends Model implements HasMedia, Sortable
     public function formattedProductNames(): string
     {
         return collect($this->purchasables)
-            ->map(fn(Purchasable $purchasable) => $purchasable->product->title)
+            ->map(fn (Purchasable $purchasable) => $purchasable->product->title)
             ->join(', ', ' and ');
     }
 

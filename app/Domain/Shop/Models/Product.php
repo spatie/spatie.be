@@ -75,7 +75,7 @@ class Product extends Model implements HasMedia, Sortable
         return Bundle::query()
             ->whereHas(
                 'purchasables',
-                fn(Builder $query) => $query->whereIn('purchasables.id', $this->purchasables()->get()->pluck('id'))
+                fn (Builder $query) => $query->whereIn('purchasables.id', $this->purchasables()->get()->pluck('id'))
             )
             ->get();
     }
@@ -93,7 +93,7 @@ class Product extends Model implements HasMedia, Sortable
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
             ])
-            ->unless(optional(auth()->user())->hasAccessToUnreleasedProducts(), function (Builder $query) {
+            ->unless(auth()->user()?->hasAccessToUnreleasedProducts(), function (Builder $query) {
                 $query->where('released', true);
             });
     }
@@ -106,14 +106,14 @@ class Product extends Model implements HasMedia, Sortable
                 PurchasableType::TYPE_STANDARD_RENEWAL,
                 PurchasableType::TYPE_UNLIMITED_DOMAINS_RENEWAL,
             ])
-            ->unless(optional(auth()->user())->hasAccessToUnreleasedProducts(), function (Builder $query) {
+            ->unless(auth()->user()?->hasAccessToUnreleasedProducts(), function (Builder $query) {
                 $query->where('released', true);
             });
     }
 
     public function requiresLicense(): bool
     {
-        return $this->purchasables->contains(fn(Purchasable $purchasable) => $purchasable->requires_license);
+        return $this->purchasables->contains(fn (Purchasable $purchasable) => $purchasable->requires_license);
     }
 
     public function getUrl(): string
@@ -133,6 +133,6 @@ class Product extends Model implements HasMedia, Sortable
 
     public function purchasableWithDiscount(): ?Purchasable
     {
-        return optional($this->purchasables()->get())->first(fn(Purchasable $purchasable) => $purchasable->hasActiveDiscount());
+        return $this->purchasables()->get()->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
     }
 }

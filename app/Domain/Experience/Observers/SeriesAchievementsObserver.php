@@ -2,8 +2,8 @@
 
 namespace App\Domain\Experience\Observers;
 
-use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Enums\AchievementType;
+use App\Domain\Experience\Models\Achievement;
 use App\Models\Series;
 
 class SeriesAchievementsObserver

@@ -4,7 +4,6 @@ use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use App\Models\Ad;
 use App\Models\Repository;
 use Illuminate\Support\Facades\Storage;
-use Tests\TestCase;
 
 beforeEach(function () {
     Storage::fake();

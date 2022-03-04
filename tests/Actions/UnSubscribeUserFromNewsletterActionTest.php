@@ -4,7 +4,6 @@ use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Models\Subscriber;
 use App\Models\User;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
-use Tests\TestCase;
 
 it('subscribes the user to the spatie email list', function () {
     $action = resolve(UnsubscribeUserFromNewsletterAction::class);

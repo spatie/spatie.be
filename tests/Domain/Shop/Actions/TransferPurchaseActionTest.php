@@ -4,7 +4,7 @@ use App\Domain\Shop\Actions\TransferPurchaseToUser;
 use App\Domain\Shop\Models\Purchase;
 use App\Models\User;
 
-it('can transfer purchases to another user', function() {
+it('can transfer purchases to another user', function () {
     $purchase = Purchase::factory()->create();
     $otherUser = User::factory()->create();
 

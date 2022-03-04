@@ -4,18 +4,12 @@ namespace App\Nova;
 
 use App\Domain\Shop\Models\Purchase as EloquentPurchase;
 use App\Nova\Actions\TransferPurchasesAction;
-use App\Nova\Actions\TransferPurchaseAssignmentsToUser;
-use App\Nova\Actions\TransferPurchasesToUser;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Purchase extends Resource
 {

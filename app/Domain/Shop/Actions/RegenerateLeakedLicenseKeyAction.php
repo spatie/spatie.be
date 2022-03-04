@@ -13,7 +13,7 @@ class RegenerateLeakedLicenseKeyAction
     public function execute(License $license, string $foundOnUrl)
     {
         $license->update([
-            'key' => Str::random(64)
+            'key' => Str::random(64),
         ]);
 
         Mail::to($license->assignment->user->email)->queue(

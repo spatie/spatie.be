@@ -18,7 +18,7 @@ class WelcomeTestingLaravelWaitingListNotification extends Notification
 
     public function toMail(Subscriber $notifiable): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject("You are now subscribed to the Testing Laravel waiting list")
             ->greeting('Hi!')
             ->line("Thank you for subscribing to the Testing Laravel waiting list. In the coming weeks we'll send you a couple of previews, and of course we'll notify you as soon as the course is available.")

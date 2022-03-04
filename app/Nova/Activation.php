@@ -2,12 +2,11 @@
 
 namespace App\Nova;
 
+use App\Domain\Shop\Models\Activation as EloquentActivation;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use App\Domain\Shop\Models\Activation as EloquentActivation;
 
 class Activation extends Resource
 {

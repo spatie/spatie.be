@@ -7,12 +7,8 @@ use App\Models\User;
 use App\Support\Paddle\ProcessPaymentSucceededJob;
 use Database\Factories\ReceiptFactory;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $receipt = ReceiptFactory::new()->create();
 
     $purchasable = Purchasable::factory()->create([

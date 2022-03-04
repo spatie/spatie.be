@@ -4,12 +4,8 @@ namespace App\Domain\Shop\Notifications;
 
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Purchasable;
-use App\Http\Auth\Controllers\ResetPasswordController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchasesController;
 use App\Models\User;
-use Illuminate\Auth\Passwords\DatabaseTokenRepository;
-use Illuminate\Auth\Passwords\TokenRepositoryInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -29,7 +25,7 @@ class PurchaseAssignedNotification extends Notification
 
     public function toMail(User $notifiable): MailMessage
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject("You've been assigned a purchase of {$this->purchasable->getFullTitle()}")
             ->greeting("Hi {$notifiable->name}!")
             ->line("{$this->purchaser->name} has assigned you a purchase of **{$this->purchasable->getFullTitle()}**.")

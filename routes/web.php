@@ -14,8 +14,8 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
-use App\Http\Controllers\TestingLaravelController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\ReadablePhpController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
@@ -34,7 +34,6 @@ use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
-use App\Http\Middleware\AdminsOnly;
 use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
@@ -44,6 +43,8 @@ Route::feeds();
 Route::redirect('/docs/products/ray', '/docs/ray');
 
 Route::post('paddle/webhook', WebhookController::class);
+
+Route::redirect('readable-php', 'https://writing-readable-php.com');
 
 Route::get('is-valid-license/{license}', IsValidLicenseController::class);
 
@@ -103,6 +104,7 @@ Route::prefix('vacancies')->group(function () {
 
     Route::view('/', 'front.pages.vacancies.index')->name('vacancies.index');
     Route::view('internships', 'front.pages.vacancies.internship')->name('vacancies.internship');
+    Route::redirect('recruiters', "https://youtu.be/cvh0nX08nRw")->name('vacancies.recruiters');
 
     Route::get('{slug}', function ($slug) {
         $view = "front.pages.vacancies.{$slug}";

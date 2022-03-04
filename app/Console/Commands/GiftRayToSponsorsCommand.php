@@ -3,7 +3,6 @@
 namespace App\Console\Commands;
 
 use App\Domain\Shop\Actions\CreateLicenseAction;
-use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
@@ -27,7 +26,7 @@ class GiftRayToSponsorsCommand extends Command
             ->each(function (User $user) use ($rayPurchasable) {
                 $this->comment("Handing Ray to user {$user->id} ($user->email)");
 
-                /** @var \App\Domain\Shop\Models\PurchaseAssignment $existingAssignment */
+                /** @var \App\Domain\Shop\Models\PurchaseAssignment|null $existingAssignment */
                 $existingAssignment = $user->assignments()->where('purchasable_id', $rayPurchasable->id)->first();
 
                 $existingAssignment

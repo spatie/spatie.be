@@ -1,16 +1,15 @@
 <x-page
-    ogImage="https://spatie.be/images/og-image-testing.jpg"
-    title="Testing Laravel - A premium video course by Spatie"
+    title="Readable PHP - A premium course by Spatie"
     background="/backgrounds/event-sourcing.jpg"
-    description="In this premium video course you'll learn how to test your Laravel applications using PHPUnit and Pest"
+    description="In this premium course you'll learn how to write readable PHP"
 >
     <section id="banner" class="banner" role="banner">
         <div class="wrap max-w-lg">
             <h1 class="banner-slogan">
-                Testing Laravel applications
+                Writing readable PHP
             </h1>
             <p class="banner-intro">
-                A premium video course coming September 2021
+                A premium course coming early 2022
             </p>
         </div>
     </section>
@@ -47,15 +46,15 @@
             @endif
 
             <p class="mt-12 text-lg">
-                Knowing how to write automated tests is a fundamental skill for any developer. By adding a quality test suite to your application you'll end up with <strong>less bugs</strong> in production. It allows you to <strong>refactor with confidence</strong> using a test suite that has your back.
+                One of the things we often say at Spatie is that writing code that works is just the bare minimum. New, working code should be refactored so that it's optimized for readability. Code that is easy to understand is -in most cases- also easier to change.
             </p>
 
             <p class="text-lg">
-                In this premium course, you'll learn how to test Laravel applications <strong>from scratch</strong>. After we've covered the basics, we'll show you <strong>advanced subjects</strong>. You'll see how we test our applications at Spatie. We'll cover snapshot testing, mocks, APIs,  testing domain code, setting up CI, and much more. We'll also walk you through the <strong>tests of real-world applications</strong>.
+                In this course, you'll learn how to write <strong>readable and testable PHP code</strong> that will be a joy to maintain for many years to come. We'll make use of the latest and greatest features of PHP. We'll not focus on theory, but you'll see many <strong>practical examples</strong>. You'll also gain access to a private forum where you can discuss all the lessons in our course.
             </p>
 
             <p class="text-lg">
-                PHPUnit is currently the de facto standard test runner in the PHP/Laravel world. Recently Pest was introduced: an alternative with a focus on improving developer experience. We believe that adoption of Pest will grow in the future. That's why you'll get <strong>two flavours</strong> of the entire course: in one we'll handle <strong>PHPUnit</strong>, in the other we'll focus on <strong>Pest</strong>. We'll also show you how to convert a PHPUnit test suite to Pest.
+                The knowledge shared in this course is the result of a world-class team, that has created many small and big Laravel projects and open source packages. We guarantee that after this course, you'll write better code. Your colleagues and future self will thank you!
             </p>
 
             <p class="mt-16 line-after">
@@ -63,6 +62,7 @@
             <p>
             <ul>
                 <li><a href="https://laravel-beyond-crud.com">Laravel Beyond CRUD</a></li>
+                <li><a href="https://testing-laravel.com">Testing Laravel</a></li>
                 <li><a href="https://event-sourcing-laravel.com">Event Sourcing in Laravel</a></li>
                 <li><a href="https://front-line-php.com">Front Line PHP</a></li>
                 <li><a href="https://laravelpackage.training">Laravel Package Training</a></li>

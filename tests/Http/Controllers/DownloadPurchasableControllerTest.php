@@ -2,10 +2,8 @@
 
 namespace Tests\Http\Controllers;
 
-
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
-use App\Http\Controllers\DownloadPurchasableController;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\URL;
@@ -17,7 +15,7 @@ it('can download a purchasable', function () {
     $purchasable = $assignment->purchase->getPurchasables()->first();
     $media = $purchasable->addMedia(UploadedFile::fake()->create('some-file.pdf'))->toMediaCollection('downloads');
 
-    $downloadUrl =  URL::temporarySignedRoute(
+    $downloadUrl = URL::temporarySignedRoute(
         'purchase.download',
         now()->addMinutes(30),
         [$assignment->purchasable->product, $assignment->purchase, $media]
@@ -39,7 +37,7 @@ it('aborts when the user isnt assigned', function () {
     $purchasable = $assignment->purchase->getPurchasables()->first();
     $media = $purchasable->addMedia(UploadedFile::fake()->create('some-file.pdf'))->toMediaCollection('downloads');
 
-    $downloadUrl =  URL::temporarySignedRoute(
+    $downloadUrl = URL::temporarySignedRoute(
         'purchase.download',
         now()->addMinutes(30),
         [$assignment->purchasable->product, $assignment->purchase, $media]
@@ -61,7 +59,7 @@ it('aborts when the file is from a different purchasable', function () {
     $otherPurchasable = Purchasable::factory()->create();
     $media = $otherPurchasable->addMedia(UploadedFile::fake()->create('some-file.pdf'))->toMediaCollection('downloads');
 
-    $downloadUrl =  URL::temporarySignedRoute(
+    $downloadUrl = URL::temporarySignedRoute(
         'purchase.download',
         now()->addMinutes(30),
         [$assignment->purchasable->product, $assignment->purchase, $media]

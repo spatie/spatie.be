@@ -5,12 +5,8 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
 use App\Models\User;
 use Spatie\TestTime\TestTime;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->purchasable = Purchasable::factory()->create([
         'price_in_usd_cents' => 10000,
     ]);

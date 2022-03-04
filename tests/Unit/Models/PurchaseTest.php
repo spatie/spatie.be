@@ -1,9 +1,6 @@
 <?php
 
 use App\Domain\Shop\Models\Purchase;
-use Tests\TestCase;
-
-
 
 test('a purchase can unlock a ray license', function () {
     $this->markTestSkipped('unlocksRayLicense is currently disabled.');

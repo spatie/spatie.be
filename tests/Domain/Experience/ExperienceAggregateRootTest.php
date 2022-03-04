@@ -1,23 +1,23 @@
 <?php
 
+use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\RegisterSeriesCompletion;
 use App\Domain\Experience\Commands\RegisterVideoCompletion;
+use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Events\PullRequestMerged;
 use App\Domain\Experience\Events\SeriesCompleted;
 use App\Domain\Experience\Events\VideoCompleted;
 use App\Domain\Experience\ExperienceAggregateRoot;
 use App\Domain\Experience\Models\Achievement;
-use App\Domain\Experience\Commands\AddExperience;
-use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Domain\Experience\Projections\UserExperienceProjection;
 use App\Models\Series;
 use App\Models\Video;
 use App\Support\Uuid\Uuid;
-use Spatie\EventSourcing\Commands\CommandBus;
 use function Pest\Laravel\assertDatabaseHas;
+use Spatie\EventSourcing\Commands\CommandBus;
 
 test('add', function () {
     $uuid = Uuid::new();
@@ -67,7 +67,7 @@ test('pull request can only be registered once', function () {
             new PullRequestMerged(
                 1,
                 'test'
-            )
+            ),
         ]);
 });
 
@@ -91,7 +91,7 @@ test('achievement can only be unlocked once', function () {
                 $achievement->slug,
                 $achievement->title,
                 $achievement->description
-            )
+            ),
         ]);
 });
 
@@ -112,7 +112,7 @@ test('series completion can only be registered once', function () {
             new SeriesCompleted(
                 1,
                 $series->id,
-            )
+            ),
         ]);
 });
 
@@ -141,6 +141,6 @@ test('video completion can only be registered once', function () {
                 1,
                 $video->id,
                 $video->series_id,
-            )
+            ),
         ]);
 });

@@ -2,11 +2,10 @@
 
 namespace Tests\Feature\Api;
 
-use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\BundlePrice;
 use App\Http\Api\Controllers\BundlePriceController;
-use Spatie\TestTime\TestTime;
 use function Pest\Laravel\get;
+use Spatie\TestTime\TestTime;
 
 beforeEach(function () {
     TestTime::freeze('Y-m-d H:i:s', '2020-01-01 00:00:00');

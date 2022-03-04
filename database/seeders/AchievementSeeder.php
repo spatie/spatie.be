@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Enums\AchievementType;
+use App\Domain\Experience\Models\Achievement;
 use Illuminate\Database\Seeder;
 
 class AchievementSeeder extends Seeder

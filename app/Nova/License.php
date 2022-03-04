@@ -40,9 +40,6 @@ class License extends Resource
             Number::make('Satis Authentication Count'),
 
             DateTime::make('expires_at'),
-            DateTime::make('Expiration warning mail sent at'),
-            DateTime::make('Expiration mail sent at'),
-            DateTime::make('Second expiration mail sent at'),
 
             HasMany::make('Activations'),
         ];

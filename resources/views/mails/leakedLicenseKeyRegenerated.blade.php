@@ -3,7 +3,7 @@ Hi,
 
 we detected that a license key of your Spatie product has been leaked.
 
-To prevent abuse, we've revoked the license key that we found [on this URL]($foundOnUrl).
+To prevent abuse, we've revoked the license key that we found [on this URL]({{ $foundOnUrl }}).
 
 Note that you shouldn't post license keys on public available URLs.
 

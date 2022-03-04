@@ -88,13 +88,6 @@
                                     });
                                 }))
                                 <div class="">
-                                    <div
-                                        class="px-6 flex justify-between items-center text-xs py-4 border-b border-gray-lighter">
-                                        <span class="uppercase"><strong>{{ $licenses->count() }}</strong> {{ \Illuminate\Support\Str::plural('license', $licenses->count()) }} purchased</span>
-                                        <a class="link-black link-underline"
-                                           href="{{ route('products.show', $assignments->first()->purchasable->product) }}">Add
-                                            license</a>
-                                    </div>
                                     <div class="">
                                         <div class="w-full text-xs">
                                             @foreach ($licenses as $license)
@@ -111,7 +104,7 @@
                                                                     @if ($license->assignment->purchasable->renewalPurchasable)
                                                                         <a class="link-black link-underline"
                                                                            href="{{ route('products.buy', [$license->assignment->purchasable->product, $license->assignment->purchasable->renewalPurchasable, $license]) }}">
-                                                                            {{ $license->isExpired() ? 'Renew' : 'Extend' }}
+                                                                            {{ $license->isExpired() ? 'Renew this license' : 'Extend license' }}
                                                                         </a>
                                                                     @endif
                                                                 </div>
@@ -171,6 +164,12 @@
                                                 </div>
                                             @endforeach
                                         </div>
+                                    </div>
+                                    <div
+                                        class="px-6 flex justify-between items-center text-xs py-4 border-b border-gray-lighter">
+                                        <span class="uppercase"><strong>{{ $licenses->count() }}</strong> {{ \Illuminate\Support\Str::plural('license', $licenses->count()) }} purchased</span>
+                                        <a class="link-black link-underline"
+                                           href="{{ route('products.show', $assignments->first()->purchasable->product) }}">Add new license</a>
                                     </div>
                                 </div>
                             </div>

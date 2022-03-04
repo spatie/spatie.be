@@ -80,18 +80,26 @@ test('has completed', function () {
     expect($user->hasCompleted($series))->toBeTrue();
 });
 
-test('deleting a user also deletes its purchases and achievements', function () {
+test('deleting a user also deletes its purchases assignments licenses and achievements', function () {
     /** @var \App\Models\User $user */
     $user = User::factory()->create();
 
     $purchasable = Purchasable::factory()->create();
 
-    Purchase::factory()->create([
+    $purchase = Purchase::factory()->create([
         'user_id' => $user->id,
         'purchasable_id' => $purchasable->id,
         'paddle_fee' => 0,
         'earnings' => 0,
         'quantity' => 1,
+    ]);
+    $assignment = PurchaseAssignment::factory()->create([
+        'user_id' => $user->id,
+        'purchasable_id' => $purchasable->id,
+        'purchase_id' => $purchase->id,
+    ]);
+    $license = License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
     ]);
 
     $achievement = Achievement::factory()->create();
@@ -110,6 +118,8 @@ test('deleting a user also deletes its purchases and achievements', function () 
     expect($user)
         ->purchases->toHaveCount(1)
         ->achievements->toHaveCount(1)
+        ->assignments->toHaveCount(1)
+        ->licenses->toHaveCount(1)
         ->experience->not()->toBeNull();
 
     $user->delete();
@@ -117,5 +127,7 @@ test('deleting a user also deletes its purchases and achievements', function () 
     expect($user)
         ->purchases->fresh()->toHaveCount(0)
         ->achievements->fresh()->toHaveCount(0)
+        ->licenses->fresh()->toHaveCount(0)
+        ->assignments->fresh()->toHaveCount(0)
         ->experience->fresh()->toBeNull();
 });

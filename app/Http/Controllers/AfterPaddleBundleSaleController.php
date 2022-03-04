@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Product;
-use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
 use Illuminate\Http\Request;
 

@@ -24,12 +24,18 @@ class Docs
                     ->sortBy(fn (DocumentationPage $page): int => $page->weight ?? PHP_INT_MAX)
                     ->map(function (DocumentationPage $page) use ($slug) {
                         $page->repository = $slug;
+
                         return $page;
                     });
 
-                return new Alias($index->title, $index->slogan, $index->branch, $index->githubUrl, $pages);
+                if (! $index) {
+                    return null;
+                }
+
+                return Alias::fromDocumentationPage($index, $pages);
             })
-            ->sortBy('slug');
+            ->filter()
+            ->sortBy('versionNumber', SORT_NATURAL, true);
 
         $index = $pages
             ->whereNull('alias')
@@ -47,6 +53,7 @@ class Docs
                     return $this->getRepository($repositoryName);
                 } catch (Exception $e) {
                     report("Error while loading {$repositoryName} docs: " . $e->getMessage());
+
                     return null;
                 }
             })->filter();

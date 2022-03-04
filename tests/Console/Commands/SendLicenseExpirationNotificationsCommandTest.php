@@ -7,9 +7,6 @@ use App\Domain\Shop\Notifications\LicenseExpiredSecondNotification;
 use App\Domain\Shop\Notifications\LicenseIsAboutToExpireNotification;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Notification;
-use Tests\TestCase;
-
-
 
 it('sends a warning notification to soon to expire licenses', function () {
     Notification::fake();

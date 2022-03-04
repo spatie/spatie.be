@@ -6,11 +6,11 @@ use App\Http\Requests\TestingLaravel;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
 
-class TestingLaravelController
+class ReadablePhpController
 {
     public function show()
     {
-        return view('front.pages.testing-laravel.index');
+        return view('front.pages.readable-php.index');
     }
 
     public function subscribe(TestingLaravel $request)
@@ -21,7 +21,7 @@ class TestingLaravelController
             ->skipConfirmation()
             ->subscribeTo($emailList);
 
-        $subscriber->addTag('testing-laravel-waiting-list');
+        $subscriber->addTag('readable-php-waiting-list');
 
         session()->flash('subscribed');
 

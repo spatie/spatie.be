@@ -4,7 +4,6 @@ namespace App\Nova\Actions;
 
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\BundlePrice;
-use App\Domain\Shop\Models\Purchasable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Collection;
@@ -12,7 +11,6 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Text;
 
 class UpdateBundlePriceForCurrencyAction extends Action
 {

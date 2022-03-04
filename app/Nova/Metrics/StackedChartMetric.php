@@ -3,15 +3,14 @@
 namespace App\Nova\Metrics;
 
 use Coroowicaksono\ChartJsIntegration\StackedChart;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\DB;
 
 abstract class StackedChartMetric
 {
-    protected abstract function getTitle(): string;
-    protected abstract function getLabels(): array;
-    protected abstract function getData(): array;
+    abstract protected function getTitle(): string;
+
+    abstract protected function getLabels(): array;
+
+    abstract protected function getData(): array;
 
     public static function create(): StackedChart
     {
@@ -41,6 +40,7 @@ abstract class StackedChartMetric
             $data['backgroundColor'] = $key >= count($colors)
                 ? $colors[count($colors) - $key + 1]
                 : $colors[$key];
+
             return $data;
         })->toArray();
 

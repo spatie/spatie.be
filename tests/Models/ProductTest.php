@@ -2,9 +2,6 @@
 
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Purchasable;
-use Tests\TestCase;
-
-
 
 it('can retrieve the bundles where a product is in', function () {
     $purchasableInBundle = Purchasable::factory()->create();
@@ -18,5 +15,4 @@ it('can retrieve the bundles where a product is in', function () {
 
     $purchasableNotInBundle = Purchasable::factory()->create();
     expect($purchasableNotInBundle->product->bundles())->toHaveCount(0);
-
 });

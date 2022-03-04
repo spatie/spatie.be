@@ -46,7 +46,9 @@ trait HasPrices
 
             $roundedPriceInCents = round($priceInCents / 100) * 100;
 
-            $roundedPriceInCents = $this->commerciallyRound($roundedPriceInCents);
+            if ($roundedPriceInCents > 100_00) {
+                $roundedPriceInCents = $this->commerciallyRound($roundedPriceInCents);
+            }
 
             $displayablePrice->priceInCents = $roundedPriceInCents;
         }
@@ -101,7 +103,7 @@ trait HasPrices
 
     public function hasActiveDiscount(): bool
     {
-        if (optional(auth()->user())->enjoysExtraDiscountOnNextPurchase()) {
+        if (auth()->user()?->enjoysExtraDiscountOnNextPurchase()) {
             return true;
         }
 

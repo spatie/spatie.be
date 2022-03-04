@@ -1,9 +1,6 @@
 <?php
 
 use App\Domain\Shop\Models\License;
-use Tests\TestCase;
-
-
 
 it('can show a license', function () {
     $license = License::factory()->create();

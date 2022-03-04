@@ -24,7 +24,7 @@ class RestoreRepositoryAccessAction
             ->get();
 
         $assignments->each(function (PurchaseAssignment $assignment) use ($user) {
-            if (!$assignment->purchasable->repository_access) {
+            if (! $assignment->purchasable->repository_access) {
                 return;
             }
 
@@ -32,7 +32,7 @@ class RestoreRepositoryAccessAction
                 ->whereNotExpired()
                 ->exists();
 
-            if ($assignment->purchasable->requires_license && !$hasActiveLicense) {
+            if ($assignment->purchasable->requires_license && ! $hasActiveLicense) {
                 return;
             }
 

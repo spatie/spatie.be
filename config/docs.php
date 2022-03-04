@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "browsershot",
+            "repository" => "spatie/browsershot",
+            "branches" => [
+                "main" => "v2",
+            ],
+            "category" => "General PHP",
+        ],
+        [
             "name" => "laravel-route-discovery",
             "repository" => "spatie/laravel-route-discovery",
             "branches" => [
@@ -54,7 +62,8 @@ return [
             "name" => "laravel-mailcoach",
             "repository" => "spatie/laravel-mailcoach",
             "branches" => [
-                "main" => "v4",
+                "main" => "v5",
+                "v4" => "v4",
             ],
             "category" => "Laravel",
         ],
@@ -62,7 +71,8 @@ return [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
             "branches" => [
-                "main" => "v7",
+                "main" => "v8",
+                "v7" => "v7",
                 "v6" => "v6",
                 "v5" => "v5",
                 "v4" => "v4",
@@ -74,7 +84,8 @@ return [
             "name" => "laravel-medialibrary",
             "repository" => "spatie/laravel-medialibrary",
             "branches" => [
-                "main" => "v9",
+                "main" => "v10",
+                "v9" => "v9",
                 "v8" => "v8",
                 "v7" => "v7",
                 "v6" => "v6",
@@ -201,7 +212,9 @@ return [
             "name" => "laravel-query-builder",
             "repository" => "spatie/laravel-query-builder",
             "branches" => [
-                "main" => "v3",
+                "main" => "v5",
+                "v4" => "v4",
+                "v3" => "v3",
                 "v2" => "v2",
             ],
             "category" => "Laravel",
@@ -210,7 +223,9 @@ return [
             "name" => "laravel-event-sourcing",
             "repository" => "spatie/laravel-event-sourcing",
             "branches" => [
-                "main" => "v5",
+                "main" => "v7",
+                "v6" => "v6",
+                "v5" => "v5",
                 "v4" => "v4",
                 "v3" => "v3",
                 "v2" => "v2",

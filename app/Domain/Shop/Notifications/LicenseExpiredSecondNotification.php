@@ -3,7 +3,6 @@
 namespace App\Domain\Shop\Notifications;
 
 use App\Domain\Shop\Models\License;
-use App\Http\Controllers\ProductsController;
 use App\Models\User;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Markdown;
@@ -32,14 +31,19 @@ class LicenseExpiredSecondNotification extends Notification
 
         $siteUrl = url('/');
 
-        return (new MailMessage)
+        $upgradeReason = "At this point, you won't be receiving future updates for {$name}.";
+
+        if ($this->license->concernsRay()) {
+            $upgradeReason = "At this point, you won't be able to use Ray anymore.";
+        }
+
+        return (new MailMessage())
             ->subject("Your {$name} license has expired")
             ->greeting('Hi again!')
             ->line("A quick -and last- reminder to tell you that your {$name} license has expired now.")
-            ->line("At this point, you won't be receiving future updates for {$name}.")
-            ->line("You can visit the license overview on the [spatie.be]({$siteUrl}) site anytime to reactivate updates.")
+            ->line($upgradeReason)
+            ->line("You can visit the license overview on the [spatie.be]({$siteUrl}) site anytime to reactivate your license.")
             ->line(Markdown::parse($this->license->assignment->purchasable->renewal_mail_incentive))
-            ->action('Renew now', action([ProductsController::class, 'show'], $this->license->assignment->purchasable->product))
-            ->line("Thank you for using {$this->license->assignment->purchasable->product->title}!");
+            ->action('Renew now', route('purchases'));
     }
 }

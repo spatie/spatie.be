@@ -2,20 +2,13 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\UnauthorizedException;
-use Spatie\EventSourcing\Commands\CommandBus;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class HandleGitHubPullRequestWebhookController
 {
-    public function __construct(private CommandBus $bus)
-    {
-    }
-
     public function __invoke(Request $request)
     {
         $this->ensureValidRequest($request);
@@ -32,7 +25,7 @@ class HandleGitHubPullRequestWebhookController
             return;
         }
 
-        $this->bus->dispatch(RegisterPullRequest::forUser($user, $payload['pull_request']['url'] ?? ''));
+        // $this->bus->dispatch(RegisterPullRequest::forUser($user, $payload['pull_request']['url'] ?? ''));
     }
 
     protected function ensureValidRequest(Request $request): void

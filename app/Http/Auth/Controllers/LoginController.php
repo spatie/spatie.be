@@ -9,6 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use Spatie\Url\Url;
 
 class LoginController extends Controller
 {
@@ -22,7 +23,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
         $previous = url()->previous();
 
@@ -30,7 +31,9 @@ class LoginController extends Controller
             $previous = route('products.index');
         }
 
-        session()->flash('next', request('next') ?? $previous);
+        session()->flash('next', $previous);
+
+        $this->onlyAllowSpatieRedirects($request);
 
         return view('auth.login');
     }
@@ -44,5 +47,20 @@ class LoginController extends Controller
         flash()->success('You are now logged in');
 
         return redirect()->to(session()->get('next', route('products.index')));
+    }
+
+    protected function onlyAllowSpatieRedirects(Request $request): void
+    {
+        $nextUrl = $request->get('next');
+
+        if (! $nextUrl) {
+            return;
+        }
+;
+        if ($request->getHttpHost() !== Url::fromString($nextUrl)->getHost()) {
+            return;
+        }
+
+        session()->flash('next', $nextUrl);
     }
 }

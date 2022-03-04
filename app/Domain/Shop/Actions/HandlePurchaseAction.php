@@ -16,7 +16,6 @@ use App\Support\Paddle\PaddlePayload;
 use Github\Exception\RuntimeException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Str;
 use Laravel\Paddle\Receipt;
 
 class HandlePurchaseAction
@@ -61,10 +60,9 @@ class HandlePurchaseAction
             if ($purchasable->repository_access && $user->github_username) {
                 try {
                     $this->restoreRepositoryAccessAction->execute($user);
-                }  catch (RuntimeException $exception) {
+                } catch (RuntimeException $exception) {
                     report("Could not restore repository access for user `{$user->id}` for purchasable id `{$purchasable->id}`: {$exception->getMessage()}");
                 }
-
             }
         }
 

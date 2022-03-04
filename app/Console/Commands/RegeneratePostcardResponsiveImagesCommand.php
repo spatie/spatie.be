@@ -16,7 +16,7 @@ class RegeneratePostcardResponsiveImagesCommand extends Command
     public function handle()
     {
         if ($id = $this->option('id')) {
-            dispatch_now(new GenerateResponsiveImagesJob(Media::find($id)));
+            dispatch(new GenerateResponsiveImagesJob(Media::find($id)));
 
             return;
         }

@@ -80,7 +80,7 @@ class SignInWithAppleProvider extends AbstractProvider implements ProviderInterf
             $fullName = implode(' ', $user['name'] = $userDetails['name']);
         }
 
-        return (new User)->setRaw($user)->map([
+        return (new User())->setRaw($user)->map([
             'id' => $user['sub'],
             'name' => $fullName ?? null,
             'email' => $user['email'] ?? null,

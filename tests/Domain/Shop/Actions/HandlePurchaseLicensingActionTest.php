@@ -6,12 +6,8 @@ use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use Database\Factories\ReceiptFactory;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->action = resolve(HandlePurchaseLicensingAction::class);
 });
 

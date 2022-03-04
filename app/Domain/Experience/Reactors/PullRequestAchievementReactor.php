@@ -3,10 +3,10 @@
 namespace App\Domain\Experience\Reactors;
 
 use App\Domain\Experience\Achievements\PullRequestAchievement;
-use App\Domain\Experience\Models\Achievement;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\EventQueries\PullRequestCountQuery;
 use App\Domain\Experience\Events\PullRequestMerged;
+use App\Domain\Experience\Models\Achievement;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\EventSourcing\EventHandlers\Reactors\Reactor;
 

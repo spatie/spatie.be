@@ -31,7 +31,7 @@ class License extends Model implements AuthenticatableContract
     public static function booted()
     {
         static::saved(function (License $license) {
-            $privateKeyString = $license->assignment->purchasable->product->private_key;
+            $privateKeyString = $license->assignment?->purchasable->product->private_key;
 
             if (! $privateKeyString) {
                 return;
@@ -65,7 +65,7 @@ class License extends Model implements AuthenticatableContract
 
     public function hasRepositoryAccess(): bool
     {
-        return optional($this->assignment)->has_repository_access;
+        return $this->assignment?->has_repository_access;
     }
 
     public function renew(): self
@@ -116,7 +116,7 @@ class License extends Model implements AuthenticatableContract
 
     public function getName(): string
     {
-        return "{$this->assignment->purchasable->product->title}: {$this->assignment->purchasable->title}";
+        return "{$this->assignment->purchasable->product->title}";
     }
 
     public function isMasterKey(): bool
@@ -162,5 +162,10 @@ class License extends Model implements AuthenticatableContract
         $signedLicense = array_merge($licenseProperties, compact('signature'));
 
         $this->update(['signed_license' => $signedLicense]);
+    }
+
+    public function concernsRay(): bool
+    {
+        return strtolower($this->assignment?->purchasable?->product?->title) === 'ray';
     }
 }

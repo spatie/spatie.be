@@ -9,14 +9,7 @@
 
     
 
-    
-    <div class="bg-white">
-        @include('front.pages.open-source.partials.menu')
-
-        @include('front.pages.open-source.partials.hero-packages')
-
-        
-    </div>
+    @include('front.pages.open-source.partials.menu')
 
     @include('front.pages.open-source.partials.banner-packages')
     
@@ -24,6 +17,8 @@
     <div class="section section-group pt-0 section-fade">
         <section class="section">
             @include('front.pages.open-source.partials.packages-intro')
+
+            @include('front.pages.open-source.partials.hero-packages')
         
             <livewire:repositories />
         </section>

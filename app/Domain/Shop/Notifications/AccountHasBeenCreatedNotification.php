@@ -6,8 +6,6 @@ use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Purchasable;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Models\User;
-use Illuminate\Auth\Passwords\DatabaseTokenRepository;
-use Illuminate\Auth\Passwords\TokenRepositoryInterface;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
@@ -29,7 +27,7 @@ class AccountHasBeenCreatedNotification extends Notification
     {
         $token = resolve('auth.password.broker')->createToken($notifiable);
 
-        return (new MailMessage)
+        return (new MailMessage())
             ->subject("Finish setting up your spatie.be account")
             ->greeting('Hi!')
             ->line("{$this->purchaser->name} has assigned you a purchase of **{$this->purchasable->getFullTitle()}**.")

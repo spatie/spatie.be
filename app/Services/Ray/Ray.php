@@ -38,11 +38,11 @@ class Ray
         /** Hardcoded for now, replace when building new version */
         return '1.19.0';
 
-        return Cache::remember('latest-mac-version', 60, function () {
+        /**return Cache::remember('latest-mac-version', 60, function () {
             $yaml = Http::get("{$this->baseUrl}/arm64/latest-mac.yml")->body();
 
             return Yaml::parse($yaml)['version'];
-        });
+        });*/
     }
 
     public function getDownloadLinkMacosAppleSilicon(): string

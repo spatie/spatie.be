@@ -17,7 +17,7 @@ class MatchingLicense implements Rule
 
     public function passes($attribute, $licenseKey)
     {
-        /** @var License $license */
+        /** @var License|null $license */
         if (! $license = License::firstWhere('key', $licenseKey)) {
             return false;
         }

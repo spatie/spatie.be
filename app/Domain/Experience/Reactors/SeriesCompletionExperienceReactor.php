@@ -12,8 +12,7 @@ class SeriesCompletionExperienceReactor extends Reactor
 {
     public function __construct(
         protected CommandBus $bus
-    )
-    {
+    ) {
     }
 
     public function __invoke(SeriesCompleted $event): void

@@ -3,12 +3,8 @@
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
 use Spatie\TestTime\TestTime;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     TestTime::freeze();
 
     $this->purchasable = Purchasable::factory()->create();

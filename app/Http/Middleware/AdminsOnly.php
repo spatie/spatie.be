@@ -11,7 +11,7 @@ class AdminsOnly
 {
     public function handle(Request $request, Closure $next)
     {
-       /** @var User|null $user */
+        /** @var User|null $user */
         $user = $request->user();
 
         if ($user?->is_admin) {

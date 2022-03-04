@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Http\Api\Controllers\Activations;
 
 use App\Domain\Shop\Models\Activation;

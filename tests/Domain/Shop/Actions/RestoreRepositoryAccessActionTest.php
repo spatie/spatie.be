@@ -7,12 +7,8 @@ use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use Database\Factories\ReceiptFactory;
-use Tests\TestCase;
-
-
 
 beforeEach(function () {
-
     $this->apiSpy = $this->spy(GitHubApi::class);
     $this->action = resolve(RestoreRepositoryAccessAction::class);
 

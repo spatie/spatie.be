@@ -7,11 +7,9 @@ use App\Domain\Experience\Projections\UserAchievementProjection;
 use App\Models\User;
 use App\Support\Uuid\Uuid;
 use Database\Seeders\AchievementSeeder;
+use function Pest\Laravel\assertDatabaseHas;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\EventSourcing\StoredEvents\Models\EloquentStoredEvent;
-use Tests\TestCase;
-use function Pest\Laravel\assertDatabaseHas;
-
 
 test('experience is earned with every pull request', function () {
     /** @var \App\Models\User $user */
