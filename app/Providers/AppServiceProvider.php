@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Models\HtmlLesson;
 use App\Models\Video;
-use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Gate;

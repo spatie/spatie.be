@@ -10,7 +10,7 @@ class ConvertVideosToLessons extends Migration
 {
     public function up()
     {
-        Video::each(function(Video $video) {
+        Video::each(function (Video $video) {
             Lesson::create([
                 'content_type' => 'video',
                 'content_id' => $video->id,
@@ -21,7 +21,7 @@ class ConvertVideosToLessons extends Migration
             ]);
         });
 
-        Schema::table('videos', function(Blueprint $table) {
+        Schema::table('videos', function (Blueprint $table) {
             $table->dropForeign('videos_series_id_foreign');
             $table->dropColumn(['slug', 'sort_order', 'series_id', 'chapter']);
         });

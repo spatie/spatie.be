@@ -8,7 +8,7 @@ class CreateHtmlLessonsTable extends Migration
 {
     public function up()
     {
-        Schema::create('html_lessons', function(Blueprint $table) {
+        Schema::create('html_lessons', function (Blueprint $table) {
             $table->id();
 
             $table->string('title');

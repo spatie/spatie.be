@@ -1,8 +1,6 @@
 <?php
 
-use App\Models\Lesson;
 use App\Models\Series;
-use App\Models\Video;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -23,7 +21,7 @@ class CreateLessonsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('series', function(Blueprint $table) {
+        Schema::table('series', function (Blueprint $table) {
             $table->string('type');
         });
     }

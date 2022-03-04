@@ -9,7 +9,7 @@ class HtmlLesson extends Model
 {
     public static function booted()
     {
-        self::saving(function(HtmlLesson $htmlLesson) {
+        self::saving(function (HtmlLesson $htmlLesson) {
             $htmlLesson->html = app(MarkdownRenderer::class)->toHtml($htmlLesson->markdown);
         });
     }

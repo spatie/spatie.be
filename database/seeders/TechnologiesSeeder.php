@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Enums\TechnologyType;
 use App\Models\Technology;
-use Exception;
 use Illuminate\Database\Seeder;
 use Throwable;
 

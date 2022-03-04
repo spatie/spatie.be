@@ -3,19 +3,14 @@
 namespace App\Models;
 
 use App\Actions\UpdateVideoDetailsAction;
-use App\Http\Controllers\CoursesController;
-use App\Models\Enums\LessonDisplayEnum;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use League\CommonMark\CommonMarkConverter;
-use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait;
 
 class Video extends Model
 {
@@ -37,7 +32,6 @@ class Video extends Model
 
         static::saved(fn (Video $video) => app(UpdateVideoDetailsAction::class)->execute($video));
     }
-
 
     public function completions(): HasMany
     {
@@ -89,7 +83,6 @@ class Video extends Model
 
         return (new CommonMarkConverter())->convert($this->description);
     }
-
 
     public function hasBeenCompletedByCurrentUser(): bool
     {
