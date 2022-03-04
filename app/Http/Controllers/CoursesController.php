@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Lesson;
 use App\Models\Series;
-use App\Models\Video;
 use Illuminate\Database\Eloquent\Builder;
 
 class CoursesController
@@ -14,7 +13,7 @@ class CoursesController
         $allSeries = Series::with(['purchasables', 'lessons'])
             ->unless(
                 current_user()?->hasAccessToUnReleasedProducts(),
-                fn(Builder $query) => $query->where('visible', true)
+                fn (Builder $query) => $query->where('visible', true)
             )
             ->orderBy('sort_order')
             ->get();

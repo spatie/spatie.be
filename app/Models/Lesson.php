@@ -36,7 +36,6 @@ class Lesson extends Model implements Sortable
         return 'slug';
     }
 
-
     public function series(): BelongsTo
     {
         return $this->belongsTo(Series::class);

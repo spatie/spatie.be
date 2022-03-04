@@ -81,9 +81,9 @@ class Series extends Model implements HasMedia, Sortable
     {
         $video = $this->lessons
             ->filter(
-                fn($video) => in_array($video->display, [
+                fn ($video) => in_array($video->display, [
                     LessonDisplayEnum::FREE,
-                    LessonDisplayEnum::AUTH
+                    LessonDisplayEnum::AUTH,
                 ])
             )
             ->first();
