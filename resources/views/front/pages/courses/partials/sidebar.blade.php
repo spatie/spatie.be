@@ -28,13 +28,13 @@
                 <span class="mr-1">Introduction</span>
             </a>
         </li>
-        @forelse ($series->lessons->groupBy('chapter') as $chapter => $videosPerChapter)
+        @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
             @if ($chapter)
                 <h3 class="title-subtext mt-6 mb-2">
                     {{ $chapter }}
                 </h3>
             @endif
-            @foreach($series->lessons as $lessonInChapter)
+            @foreach($lessonsPerChapter as $lessonInChapter)
                 <li class="{{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold" : "" }}">
                     <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                         <span class="mr-1">{{ $lessonInChapter->title }}</span>

@@ -347,6 +347,24 @@ class CoursesSeeder extends Seeder
             'series_id' => $upcomingCourseSeries->id,
             'display' => LessonDisplayEnum::FREE,
         ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Another chapter',
+            'title' => 'Third lesson',
+            'markdown' => 'Here is the first lesson',
+            'sort_order' => 2,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Another chapter',
+            'title' => 'Fourth lesson',
+            'markdown' => 'Here is the second lesson',
+            'sort_order' => 3,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
     }
 
     public function createVideoAndLesson(array $properties): void
@@ -365,6 +383,7 @@ class CoursesSeeder extends Seeder
             'content_id' => $video->id,
             'series_id' => $properties['series_id'],
             'title' => $properties['title'],
+            'chapter' => $properties['chapter'] ?? null,
             'slug' => $properties['slug'],
             'sort_order' => $properties['sort_order'] ?? null,
             'display' => $properties['display'],
@@ -383,6 +402,7 @@ class CoursesSeeder extends Seeder
             'content_id' => $htmlLesson->id,
             'series_id' => $properties['series_id'],
             'title' => $properties['title'],
+            'chapter' => $properties['chapter'] ?? null,
             'slug' => Str::slug($properties['title']),
             'sort_order' => $properties['sort_order'] ?? null,
             'display' => $properties['display'],
