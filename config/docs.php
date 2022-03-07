@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-translatable",
+            "repository" => "spatie/laravel-translatable",
+            "branches" => [
+                "main" => "v6",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "browsershot",
             "repository" => "spatie/browsershot",
             "branches" => [
