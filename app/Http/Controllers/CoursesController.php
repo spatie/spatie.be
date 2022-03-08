@@ -23,11 +23,17 @@ class CoursesController
 
     public function show(Series $series, Lesson $lesson)
     {
+        if (! $lesson->canBeSeenByCurrentUser()) {
+            if ($lesson->content_type === 'htmlLesson') {
+                return redirect()->route('series.show', $series);
+            }
+        }
+
         $previousLesson = $lesson->getPrevious();
         $nextLesson = $lesson->getNext();
 
         $title = $lesson->title;
-        $description = 'todo'; // $currentVideo->description;
+        $description = 'The description'; // $currentVideo->description;
 
         $series->load(['purchasables.product']);
 

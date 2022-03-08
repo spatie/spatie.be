@@ -32,59 +32,40 @@
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
             @if ($chapter)
                 <h3 class="title-subtext mt-6 mb-2">
-                    <a href="{{ $series->getUrlForChapter($chapter) }}">{{ $chapter }}</a>
+                    @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
+                        <a href="{{ $series->getUrlForChapter($chapter) }}">
+                            @endif
+                            {{ $chapter }}
+
+                            @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
+
+                        </a>
+                    @endif
                 </h3>
             @endif
 
             @if($lesson->chapter === $chapter)
-                @foreach($lessonsPerChapter as $lessonInChapter)
-                    <li class="{{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold" : "" }}">
-                        <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
-                            <span class="mr-1">{{ $lessonInChapter->title }}</span>
+                @ray($lessonsPerChapter[0])
+                @if($lessonsPerChapter[0]->display === \App\Models\Enums\LessonDisplayEnum::LICENSE &&  $lessonsPerChapter[0]->canBeSeenByCurrentUser() )
+                    @foreach($lessonsPerChapter as $lessonInChapter)
+                        <li class="{{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold" : "" }}">
+                            <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
+                                <span class="mr-1">{{ $lessonInChapter->title }}</span>
 
-                            @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::FREE)
-                                <span class="hidden tag tag-green">Free</span>
-                            @endif
 
-                            @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::SPONSORS &&  ! $lessonInChapter->canBeSeenByCurrentUser())
-                                <span title="Exclusive for sponsors" style="left: calc(-1.5em - 1.5rem); top: 0.075rem"
-                                      class="absolute  w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
-                                <span style="font-size: .6rem" class="icon text-pink">
-                                    {{ svg('icons/fas-heart') }}
-                                </span>
-                            </span>
-                            @endif
-
-                            @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::LICENSE &&  ! $lessonInChapter->canBeSeenByCurrentUser() )
-                                <span title="Part of course" style="left: calc(-1.5em - 1.5rem); top: 0.075rem"
-                                      class="absolute w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
-                                <span style="font-size: .6rem" class="icon text-green">
-                                    {{ svg('icons/fas-lock-alt') }}
-                                </span>
-                            </span>
-                            @endif
-
-                            @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::AUTH &&  ! $lessonInChapter->canBeSeenByCurrentUser() )
-                                <span title="Only members" style="left: calc(-1.5em - 1.5rem); top: 0.075rem"
-                                      class="absolute w-4 h-4 inline-flex items-center justify-center bg-blue-lightest rounded-full">
-                                <span style="font-size: .6rem" class="icon text-blue">
-                                    {{ svg('icons/fas-user') }}
-                                </span>
-                            </span>
-                            @endif
-
-                            {{--
-                            @if($lessonInChapter->hasBeenCompletedByCurrentUser())
-                                <span title="Completed" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
-                                    <span style="font-size: 0.75rem" class="text-white">
-                                        ✓
+                                {{--
+                                @if($lessonInChapter->hasBeenCompletedByCurrentUser())
+                                    <span title="Completed" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
+                                        <span style="font-size: 0.75rem" class="text-white">
+                                            ✓
+                                        </span>
                                     </span>
-                                </span>
-                            @endif
-                            --}}
-                        </a>
-                    </li>
-                @endforeach
+                                @endif
+                                --}}
+                            </a>
+                        </li>
+                    @endforeach
+                @endif
             @endif
         @empty
             <li>No lessons yet! Stay tuned...</li>
