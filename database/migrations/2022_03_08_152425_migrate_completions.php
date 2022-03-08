@@ -5,17 +5,15 @@ use App\Models\Video;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     public function up()
     {
-        DB::table('video_completions')->orderBy('id')->each(function(array $completion) {
+        DB::table('video_completions')->orderBy('id')->each(function (array $completion) {
             if (! $video = Video::find($completion['video_id'])) {
                 return;
             }
 
-            if (! $lesson = $video->lesson)
-            {
+            if (! $lesson = $video->lesson) {
                 return;
             }
 

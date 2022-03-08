@@ -6,7 +6,6 @@ use App\Http\Livewire\ActivationsComponent;
 use App\Http\Livewire\DomainComponent;
 use App\Http\Livewire\LessonCompletedButtonComponent;
 use App\Http\Livewire\RepositoriesComponent;
-use App\Http\Livewire\VideoCompletedButtonComponent;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 
