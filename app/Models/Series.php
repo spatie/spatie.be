@@ -129,4 +129,11 @@ class Series extends Model implements HasMedia, Sortable
     {
         return $this->purchasables()->get()->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
     }
+
+    public function getUrlForChapter(string $chapter): string
+    {
+        $firstLessonInChapter = $this->lessons()->firstWhere('chapter', $chapter);
+
+        return route('courses.show', [$this, $firstLessonInChapter]);
+    }
 }

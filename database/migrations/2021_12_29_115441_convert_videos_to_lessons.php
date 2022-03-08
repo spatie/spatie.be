@@ -18,6 +18,7 @@ class ConvertVideosToLessons extends Migration
                 'slug' => $video->slug,
                 'sort_order' => $video->sort_order,
                 'display' => $video->display,
+                'chapter' => $video->chapter,
             ]);
         });
 

@@ -2,7 +2,7 @@
     <section id="video">
         <div class="wrap wrap-6 items-stretch">
             <div class="z-10 | sm:col-span-2 | print:hidden">
-                @include('front.pages.courses.partials.sidebar')
+                @include('front.pages.courses.content.html.sidebar')
             </div>
             <div class="pt-8 | sm:col-start-3 sm:col-span-4 | md:pt-0">
                 <h2 class="title line-after mt-12">{{ $htmlLesson->title }}</h2>

@@ -13,6 +13,7 @@ class CreateLessonsTable extends Migration
             $table->id();
             $table->morphs('content');
             $table->string('chapter')->nullable();
+            $table->string('chapter_slug')->nullable();
             $table->string('title');
             $table->string('slug');
             $table->integer('sort_order');

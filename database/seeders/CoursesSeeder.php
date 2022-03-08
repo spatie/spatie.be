@@ -350,8 +350,9 @@ class CoursesSeeder extends Seeder
 
         $this->createHtmlLessonAndLesson([
             'chapter' => 'Another chapter',
+            'chapter_slug' => Str::slug('Another chapter'),
             'title' => 'Third lesson',
-            'markdown' => 'Here is the first lesson',
+            'markdown' => 'Here is the third lesson',
             'sort_order' => 2,
             'series_id' => $upcomingCourseSeries->id,
             'display' => LessonDisplayEnum::FREE,
@@ -360,7 +361,26 @@ class CoursesSeeder extends Seeder
         $this->createHtmlLessonAndLesson([
             'chapter' => 'Another chapter',
             'title' => 'Fourth lesson',
-            'markdown' => 'Here is the second lesson',
+            'markdown' => 'Here is the fourth lesson',
+            'sort_order' => 3,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Yet Another chapter',
+            'chapter_slug' => Str::slug('Another chapter'),
+            'title' => 'Fifth lesson',
+            'markdown' => 'Here is the fifth lesson',
+            'sort_order' => 2,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Yet Another chapter',
+            'title' => 'Sixth lesson',
+            'markdown' => 'Here is the sixth lesson',
             'sort_order' => 3,
             'series_id' => $upcomingCourseSeries->id,
             'display' => LessonDisplayEnum::FREE,
@@ -403,6 +423,7 @@ class CoursesSeeder extends Seeder
             'series_id' => $properties['series_id'],
             'title' => $properties['title'],
             'chapter' => $properties['chapter'] ?? null,
+            'chapter_slug' => Str::slug($properties['chapter'] ?? null),
             'slug' => Str::slug($properties['title']),
             'sort_order' => $properties['sort_order'] ?? null,
             'display' => $properties['display'],

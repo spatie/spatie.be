@@ -2,7 +2,7 @@
     <section id="video">
         <div class="wrap wrap-6 items-stretch">
             <div class="z-10 | sm:col-span-2 | print:hidden">
-                @include('front.pages.courses.partials.sidebar')
+                @include('front.pages.courses.content.video.sidebar')
             </div>
             <div class="pt-8 | md:pt-0 sm:col-start-3 sm:col-span-4">
                 <h2 class="title-xl">{{ $series->title }}</h2>

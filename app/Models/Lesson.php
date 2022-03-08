@@ -7,6 +7,7 @@ use App\Models\Enums\LessonDisplayEnum;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Support\Str;
 use League\CommonMark\CommonMarkConverter;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -34,6 +35,13 @@ class Lesson extends Model implements Sortable
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public static function booted()
+    {
+        static::updating(function(Lesson $lesson) {
+            $lesson->chapter_slug = Str::slug($lesson->chapter);
+        });
     }
 
     public function series(): BelongsTo
