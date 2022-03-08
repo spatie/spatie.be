@@ -8,11 +8,11 @@ use Spatie\LaravelMarkdown\MarkdownRenderer;
 class GenerateHtmlLessonHtmlAction
 {
     public function execute(HtmlLesson $htmlLesson)
-        {
-            $html = app(MarkdownRenderer::class)->toHtml($htmlLesson->markdown);
+    {
+        $html = app(MarkdownRenderer::class)->toHtml($htmlLesson->markdown);
 
-            $htmlLesson->updateQuietly([
+        $htmlLesson->updateQuietly([
                 'html' => $html,
             ]);
-        }
+    }
 }

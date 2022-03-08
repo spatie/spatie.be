@@ -25,13 +25,16 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Paddle\Billable;
+use Spatie\Comments\Models\Concerns\InteractsWithComments;
+use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
-class User extends Authenticatable
+class User extends Authenticatable implements CanComment
 {
     use HasFactory;
     use Billable;
     use Notifiable;
+    use InteractsWithComments;
 
     protected $hidden = [
         'password', 'remember_token',

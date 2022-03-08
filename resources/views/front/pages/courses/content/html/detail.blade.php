@@ -37,7 +37,12 @@
                         </a>
                     @endif
                 </div>
+
+                <livewire:comments :model="$htmlLesson->lesson" />
             </div>
         </div>
     </section>
 </div>
+
+
+
