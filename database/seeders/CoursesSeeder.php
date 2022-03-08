@@ -325,9 +325,9 @@ class CoursesSeeder extends Seeder
         ]);
 
         $upcomingCourseSeries = Series::create([
-            'title' => 'Upcoming course',
-            'slug' => 'upcoming-course',
-            'description' => 'An upcoming course!',
+            'title' => 'Writing Readable PHP',
+            'slug' => 'writing-readable-php',
+            'description' => 'Learn how to write readable PHP',
             'sort_order' => '0',
             'type' => SeriesType::Html,
         ]);
