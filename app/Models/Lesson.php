@@ -39,7 +39,7 @@ class Lesson extends Model implements Sortable
 
     public static function booted()
     {
-        static::updating(function(Lesson $lesson) {
+        static::updating(function (Lesson $lesson) {
             $lesson->chapter_slug = Str::slug($lesson->chapter);
         });
     }
