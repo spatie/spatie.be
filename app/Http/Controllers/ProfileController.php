@@ -62,7 +62,7 @@ class ProfileController
         $user->purchases()->delete();
         $user->licenses()->delete();
         $user->receipts()->delete();
-        $user->completedVideos()->sync([]);
+        $user->completedLessons()->sync([]);
         $user->delete();
 
         auth()->logout();

@@ -223,9 +223,9 @@ class User extends Authenticatable
         });
     }
 
-    public function completedVideos(): BelongsToMany
+    public function completedLessons(): BelongsToMany
     {
-        return $this->belongsToMany(Video::class, 'video_completions')->withTimestamps();
+        return $this->belongsToMany(Lesson::class, 'lesson_completions')->withTimestamps();
     }
 
     public function enjoysExtraDiscountOnNextPurchase(): bool
@@ -251,23 +251,19 @@ class User extends Authenticatable
     {
         return Video::query()
             ->where('series_id', $series->id)
-            ->whereDoesntHave('completions', function (Builder|VideoCompletion $builder) {
+            ->whereDoesntHave('completions', function (Builder|LessonCompletion $builder) {
                 return $builder->where('user_id', $this->id);
             })
             ->doesntExist();
     }
 
-    public function completeVideo(Video $video): self
-    {
-        VideoCompletion::create([
-            'user_id' => $this->id,
-            'video_id' => $video->id,
-        ]);
 
-        command(RegisterVideoCompletion::forUser(
-            user: $this,
-            videoId: $video->id
-        ));
+    public function completeLesson(Lesson $lesson): self
+    {
+        LessonCompletion::create([
+            'user_id' => $this->id,
+            'lesson_id' => $lesson->id,
+        ]);
 
         return $this;
     }

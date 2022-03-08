@@ -98,7 +98,7 @@
 
                         @if(auth()->user())
                             <div class="ml-auto">
-                                <livewire:video-completed-button :video="$video"/>
+                                <livewire:lesson-completed-button :lesson="$video->lesson"/>
                             </div>
                         @endif
                     </div>

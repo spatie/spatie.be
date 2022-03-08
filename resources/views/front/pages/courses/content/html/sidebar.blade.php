@@ -45,7 +45,6 @@
             @endif
 
             @if($lesson->chapter === $chapter)
-                @ray($lessonsPerChapter[0])
                 @if($lessonsPerChapter[0]->display === \App\Models\Enums\LessonDisplayEnum::LICENSE &&  $lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                     @foreach($lessonsPerChapter as $lessonInChapter)
                         <li class="{{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold" : "" }}">

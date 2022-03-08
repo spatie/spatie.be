@@ -6,10 +6,14 @@
             </div>
             <div class="pt-8 | sm:col-start-3 sm:col-span-4 | md:pt-0">
                 <h2 class="title line-after mt-12">{{ $htmlLesson->title }}</h2>
-
+        @ray($htmlLesson)
                 <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
                     {!! $htmlLesson->html !!}
                 </div>
+
+                @auth
+                    <livewire:lesson-completed-button :lesson="$htmlLesson->lesson"/>
+                @endauth
 
                 <hr class="mt-12 line-after"/>
 

@@ -124,4 +124,40 @@ class Lesson extends Model implements Sortable
     {
         return static::query()->where('series_id', $this->series_id)->where('chapter', $this->chapter);
     }
+
+    public function hasBeenCompletedByCurrentUser(): bool
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        if (! $currentUser) {
+            return false;
+        }
+
+        return $currentUser->completedLessons()->where('lesson_id', $this->id)->exists();
+    }
+
+    public function markAsCompletedForCurrentUser(): self
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        if (! $currentUser) {
+            return $this;
+        }
+
+        $currentUser->completeLesson($this);
+
+        return $this;
+    }
+
+    public function markAsUncompletedForCurrentUser(): self
+    {
+        /** @var \App\Models\User $currentUser */
+        $currentUser = auth()->user();
+
+        $currentUser->completedLessons()->detach($this);
+
+        return $this;
+    }
 }

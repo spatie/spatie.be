@@ -7,6 +7,7 @@ use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
@@ -35,7 +36,7 @@ class Video extends Model
 
     public function completions(): HasMany
     {
-        return $this->hasMany(VideoCompletion::class);
+        return $this->hasMany(LessonCompletion::class);
     }
 
     protected function getDownloadUrls(): Collection
@@ -84,39 +85,8 @@ class Video extends Model
         return (new CommonMarkConverter())->convert($this->description);
     }
 
-    public function hasBeenCompletedByCurrentUser(): bool
+    public function lesson(): MorphOne
     {
-        /** @var \App\Models\User $currentUser */
-        $currentUser = auth()->user();
-
-        if (! $currentUser) {
-            return false;
-        }
-
-        return $currentUser->completedVideos()->where('video_id', $this->id)->exists();
-    }
-
-    public function markAsCompletedForCurrentUser(): self
-    {
-        /** @var \App\Models\User $currentUser */
-        $currentUser = auth()->user();
-
-        if (! $currentUser) {
-            return $this;
-        }
-
-        $currentUser->completeVideo($this);
-
-        return $this;
-    }
-
-    public function markAsUncompletedForCurrentUser(): self
-    {
-        /** @var \App\Models\User $currentUser */
-        $currentUser = auth()->user();
-
-        $currentUser->completedVideos()->detach($this);
-
-        return $this;
+        return $this->morphOne(Lesson::class, 'content');
     }
 }

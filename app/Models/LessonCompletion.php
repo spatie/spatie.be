@@ -4,6 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class VideoCompletion extends Model
+class LessonCompletion extends Model
 {
 }
