@@ -4,7 +4,6 @@ namespace App\Models;
 
 use App\Actions\GenerateHtmlLessonHtmlAction;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\LaravelMarkdown\MarkdownRenderer;
 
 class HtmlLesson extends Model
 {
