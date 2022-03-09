@@ -167,7 +167,7 @@
                                     </div>
                                     <div
                                         class="px-6 flex justify-between items-center text-xs py-4 border-b border-gray-lighter">
-                                        <span class="uppercase"><strong>{{ $licenses->count() }}</strong> {{ \Illuminate\Support\Str::plural('license', $licenses->count()) }} purchased</span>
+                                        <span class="uppercase"><strong>{{ $licenses->count() }}</strong> {{ \Illuminate\Support\Str::plural('license', $licenses->count()) }} added</span>
                                         <a class="link-black link-underline"
                                            href="{{ route('products.show', $assignments->first()->purchasable->product) }}">Add new license</a>
                                     </div>
