@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Mail;
 
 class GrantRayTrialLicenseAction
 {
+    public function __construct(
+        protected CreateLicenseAction $createLicenseAction
+    )
+    {
+
+    }
+
     public function execute(User $user): ?License
     {
         if ($this->alreadyTriedRay($user)) {
@@ -37,7 +44,9 @@ class GrantRayTrialLicenseAction
 
         Mail::to($user->email)->send(new RayTrialLicenseGrantedMail());
 
-        return app(CreateLicenseAction::class)->execute($assignment, now()->addMonth());
+        $licenseExpiresAt = now()->addMonth();
+
+        return $this->createLicenseAction->execute($assignment, $licenseExpiresAt);
     }
 
     protected function alreadyTriedRay(User $user): bool
@@ -51,6 +60,6 @@ class GrantRayTrialLicenseAction
         return $user
                 ->assignments()
                 ->whereIn('purchasable_id', $rayPurchaseableIds)
-                ->count() > 0;
+                ->exists();
     }
 }
