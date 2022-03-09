@@ -4,11 +4,15 @@ use App\Actions\GrantRayTrialLicenseAction;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Mail\RayTrialLicenseGrantedMail;
 use App\Models\User;
 use Spatie\TestTime\TestTime;
+use Illuminate\Support\Facades\Mail;
 
 beforeEach(function() {
     TestTime::freeze();
+
+    Mail::fake();
 
     $this->user = User::factory()->create();
 
@@ -25,6 +29,8 @@ it('will grant a one month trial of Ray', function() {
 
     expect($this->user->licenses)->toHaveCount(1);
     expect($this->user->licenses->first()->expires_at->timestamp)->toEqual(now()->addMonth()->timestamp);
+
+    Mail::assertQueued(RayTrialLicenseGrantedMail::class);
 });
 
 it('will grant the trial license only once', function() {

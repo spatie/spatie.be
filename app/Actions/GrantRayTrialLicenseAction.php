@@ -7,8 +7,10 @@ use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Mail\RayTrialLicenseGrantedMail;
 use App\Models\User;
 use Illuminate\Contracts\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Mail;
 
 class GrantRayTrialLicenseAction
 {
@@ -32,6 +34,8 @@ class GrantRayTrialLicenseAction
             'purchasable_id' => $rayPurchasable->id,
             'user_id' => $user->id,
         ]);
+
+        Mail::to($user->email)->send(new RayTrialLicenseGrantedMail());
 
         return app(CreateLicenseAction::class)->execute($assignment, now()->addMonth());
     }
