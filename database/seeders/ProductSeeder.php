@@ -40,8 +40,8 @@ class ProductSeeder extends Seeder
 
         Purchasable::factory()->create([
             'type' => PurchasableType::TYPE_STANDARD,
-            'title' => 'Timber',
-            'description' => 'Timber',
+            'title' => 'Ray license',
+            'description' => 'Ray license',
             'paddle_product_id' => '636791',
             'requires_license' => true,
             'product_id' => $ray->id,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Auth\Controllers;
 
+use App\Actions\GrantRayTrialLicenseAction;
 use App\Actions\SubscribeUserToNewsletterAction;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -49,9 +50,12 @@ class RegisterController extends Controller
     {
         flash()->success('Your account was created and you are now logged in');
 
+
         if ($request->get('newsletter')) {
             app(SubscribeUserToNewsletterAction::class)->execute($user);
         }
+
+        app(GrantRayTrialLicenseAction::class)->execute(auth()->user());
 
         return redirect()->route('products.index');
     }
