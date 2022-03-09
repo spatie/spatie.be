@@ -6,8 +6,8 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Mail\RayTrialLicenseGrantedMail;
 use App\Models\User;
-use Spatie\TestTime\TestTime;
 use Illuminate\Support\Facades\Mail;
+use Spatie\TestTime\TestTime;
 
 beforeEach(function () {
     TestTime::freeze();
