@@ -44,7 +44,7 @@ return [
          * e-mail sending service.
          */
         'throttling' => [
-            'allowed_number_of_jobs_in_timespan' => 30,
+            'allowed_number_of_jobs_in_timespan' => 25,
             'timespan_in_seconds' => 2,
 
             /*
