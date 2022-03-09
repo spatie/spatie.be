@@ -16,9 +16,7 @@ class GrantRayTrialLicenseAction
 {
     public function __construct(
         protected CreateLicenseAction $createLicenseAction
-    )
-    {
-
+    ) {
     }
 
     public function execute(User $user): ?License
