@@ -38,9 +38,11 @@
                 </div>
             </div>
             @endif
+
             <div class="mx-8">
                 <img alt="Support Ukraine" src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg" />
             </div>
+            <div class="mb-8"></div>
 
             @if($showBigTitle)
                 <div class="mb-16">
