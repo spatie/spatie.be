@@ -9,7 +9,7 @@ use App\Models\User;
 use Spatie\TestTime\TestTime;
 use Illuminate\Support\Facades\Mail;
 
-beforeEach(function() {
+beforeEach(function () {
     TestTime::freeze();
 
     Mail::fake();
@@ -22,7 +22,7 @@ beforeEach(function() {
     ]);
 });
 
-it('will grant a one month trial of Ray', function() {
+it('will grant a one month trial of Ray', function () {
     app(GrantRayTrialLicenseAction::class)->execute($this->user);
 
     expect($this->user->owns($this->purchasable))->toBeTrue();
@@ -33,7 +33,7 @@ it('will grant a one month trial of Ray', function() {
     Mail::assertQueued(RayTrialLicenseGrantedMail::class);
 });
 
-it('will grant the trial license only once', function() {
+it('will grant the trial license only once', function () {
     app(GrantRayTrialLicenseAction::class)->execute($this->user->refresh());
     app(GrantRayTrialLicenseAction::class)->execute($this->user->refresh());
     app(GrantRayTrialLicenseAction::class)->execute($this->user->refresh());
@@ -41,12 +41,11 @@ it('will grant the trial license only once', function() {
     expect($this->user->licenses)->toHaveCount(1);
 });
 
-it('will grant a trial license when having bought another product', function() {
+it('will grant a trial license when having bought another product', function () {
     $assignment = PurchaseAssignment::factory()->create(['user_id' => $this->user->id]);
     expect($this->user->owns($assignment->purchasable))->toBeTrue();
 
     expect($this->user->licenses)->toHaveCount(0);
     app(GrantRayTrialLicenseAction::class)->execute($this->user->refresh());
     expect($this->user->refresh()->licenses)->toHaveCount(1);
-
 });
