@@ -41,7 +41,7 @@
 
             <div>
                 <a href="https://supportukrainenow.org">
-                    <img alt="Support Ukraine" src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg" />
+                    <img alt="Support Ukraine" src="https://github-ads.s3-eu-central-1.amazonaws.com/support-ukraine-spatie-be.svg" />
                 </a>
             </div>
             <div class="mb-8"></div>
