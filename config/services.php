@@ -53,6 +53,7 @@ return [
         'https://alexvanderbist.com/feed',
         'https://rias.be/feed',
         'https://rubenvanassche.com/rss/',
+        'https://flareapp.io/feed',
     ],
 
     'instagram' => [
