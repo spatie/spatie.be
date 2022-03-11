@@ -296,35 +296,7 @@ parameters:
 			path: app/Services/GitHub/GitHubApi.php
 
 		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: app/Services/Ray/Ray.php
-
-		-
 			message: "#^Class Bugsnag\\\\BugsnagLaravel\\\\Facades\\\\Bugsnag not found\\.$#"
 			count: 1
 			path: config/app.php
-
-		-
-			message: """
-				#^Fetching class constant class of deprecated class Barryvdh\\\\Debugbar\\\\Facade\\:
-				Renamed to \\\\Barryvdh\\\\Debugbar\\\\Facades\\\\Debugbar$#
-			"""
-			count: 1
-			path: config/app.php
-
-		-
-			message: "#^Class Spatie\\\\DemoMode\\\\DefaultDemoGuard not found\\.$#"
-			count: 1
-			path: config/demo-mode.php
-
-		-
-			message: "#^Class Spatie\\\\MediaLibrary\\\\Conversions\\\\DefaultConversionFileNamer not found\\.$#"
-			count: 1
-			path: config/media-library.php
-
-		-
-			message: "#^Class Spatie\\\\ResponseCache\\\\CacheProfiles\\\\CacheAllSuccessfulGetRequests not found\\.$#"
-			count: 1
-			path: config/responsecache.php
 
