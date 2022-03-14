@@ -57,6 +57,17 @@ class HandlePurchaseLicensingAction
         );
 
         $license = $assignment->purchase->wasMadeForLicense();
+
+        if (! $license) {
+            $product = $assignment->purchasable->originalPurchasable->product;
+
+            $license = $assignment->user
+                ->licenses()
+                ->forProduct($product)
+                ->orderBy('expires_at')
+                ->first();
+        }
+
         if (! $license) {
             throw CouldNotRenewLicenseForPurchase::make($assignment->purchase);
         }
