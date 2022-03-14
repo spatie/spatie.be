@@ -77,7 +77,7 @@ it('renews a license', function () {
         'user_id' => $user->id,
         'passthrough' => [
             'license_id' => $license->id,
-        ]
+        ],
     ]);
 
     PurchaseAssignment::create([
