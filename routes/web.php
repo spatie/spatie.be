@@ -38,6 +38,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
 
+Route::get('debug', function() {
+    ray('greetings from your server');
+
+    return 'ok!';
+});
+
 Route::feeds();
 
 Route::redirect('/docs/products/ray', '/docs/ray');
