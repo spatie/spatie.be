@@ -7,7 +7,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
-use Exception;
+use RuntimeException;
 
 class HandlePurchaseLicensingAction
 {
@@ -78,7 +78,7 @@ class HandlePurchaseLicensingAction
     protected function ensureUserOwnsPurchasableToRenew(User $user, Purchasable $purchasableToRenew): void
     {
         if (! $user->owns($purchasableToRenew)) {
-            throw new Exception("User {$user->id} doesn't own purchasable {$purchasableToRenew->id} to renew.");
+            throw new RuntimeException("User {$user->id} doesn't own purchasable {$purchasableToRenew->id} to renew.");
         }
     }
 }
