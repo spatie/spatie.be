@@ -47,8 +47,9 @@ class Ray
 
     public function getDownloadLinkMacosAppleSilicon(): string
     {
+        $latestVersion = $this->latestMacosAppleSiliconVersion();
         /** Hardcoded for now, replace when building new version */
-        return 'https://ray-app.s3.eu-west-1.amazonaws.com/arm64/Ray-1.19.0-arm64.dmg';
+        return "https://ray-app.s3.eu-west-1.amazonaws.com/arm64/Ray-{$latestVersion}-arm64.dmg";
 
         //$latestVersion = $this->latestMacosAppleSiliconVersion();
 
