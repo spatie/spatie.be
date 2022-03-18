@@ -57,7 +57,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\:\\:\\$originalPurchasable\\.$#"
-			count: 1
+			count: 2
 			path: app/Domain/Shop/Actions/HandlePurchaseLicensingAction.php
 
 		-
