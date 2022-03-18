@@ -19,10 +19,11 @@ class WishHappyBirthdayCommand extends Command
 
         if ($celebrators->isEmpty()) {
             $this->info('No cake today!');
+
             return;
         }
 
-        $celebrators->each(fn(TeamMember $member) => $this->sendWishesTo($member));
+        $celebrators->each(fn (TeamMember $member) => $this->sendWishesTo($member));
     }
 
     private function whoIsCelebratingToday(): Collection
