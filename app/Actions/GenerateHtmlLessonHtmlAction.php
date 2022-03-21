@@ -12,7 +12,7 @@ class GenerateHtmlLessonHtmlAction
         $html = app(MarkdownRenderer::class)->toHtml($htmlLesson->markdown);
 
         $htmlLesson->updateQuietly([
-                'html' => $html,
-            ]);
+            'html' => $html,
+        ]);
     }
 }
