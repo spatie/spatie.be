@@ -1,4 +1,4 @@
-<div class="wrap wrap-6 mb-16">
+<div class="wrap wrap-6 my-16">
     <div class="sm:col-span-6">
         <div class="markup links-underline links-blue">
             <p class="text-lg">
@@ -6,9 +6,6 @@
             </p>
             <p class="text-lg">
             Almost every new package arises from client work. When we discover functionality in client projects that is useful for others, we extract it to an open source package.
-            </p>
-            <p class="text-lg">
-            Have a look around; we're pretty sure there's something here that will suit your project!
             </p>
         </div>
     </div>

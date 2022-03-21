@@ -16,11 +16,14 @@
     
     <div class="section section-group pt-0 section-fade">
         <section class="section">
-            @include('front.pages.open-source.partials.packages-intro')
+            @include('front.pages.open-source.partials.sponsors')
 
+            <livewire:repositories />
+            
+            @include('front.pages.open-source.partials.packages-intro')
+            
             @include('front.pages.open-source.partials.hero-packages')
         
-            <livewire:repositories />
         </section>
     </div>
 
