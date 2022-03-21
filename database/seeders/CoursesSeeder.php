@@ -386,8 +386,6 @@ class CoursesSeeder extends Seeder
             "thumbnail" => "https://i.vimeocdn.com/video/895982614_200x150.jpg?r=pad",
             "display" => LessonDisplayEnum::LICENSE,
         ]);
-
-
     }
 
     public function createVideoAndLesson(array $properties): void
