@@ -13,5 +13,6 @@ return [
         'adriaan',
         'rias',
         'niels',
+        'vic',
     ],
 ];
