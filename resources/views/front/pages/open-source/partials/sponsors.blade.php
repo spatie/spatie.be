@@ -5,7 +5,7 @@
             <br>by the following <a class="font-bold" href="https://github.com/sponsors/spatie">premium GitHub sponsors</a>
         </h4>
 
-        <div class="mt-4 flex items-center justify-between gap-4">
+        <div class="mt-4 flex flex-col md:flex-row items-center justify-between gap-4">
             <a class="transition duration-300 transform hover:scale-105" href="https://laravel.com">
                 <div class="w-32 h-8">
                     @svg('sponsors/laravel')
