@@ -25,6 +25,8 @@ class CoursesSeeder extends Seeder
             'type' => SeriesType::Html,
         ]);
 
+        dd('here');
+
         $this->createHtmlLessonAndLesson([
             'title' => 'First lesson',
             'markdown' => 'Here is the first lesson',
