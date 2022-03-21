@@ -17,6 +17,68 @@ class CoursesSeeder extends Seeder
 {
     public function run(): void
     {
+        $upcomingCourseSeries = Series::create([
+            'title' => 'Writing Readable PHP',
+            'slug' => 'writing-readable-php',
+            'description' => 'Learn how to write readable PHP',
+            'sort_order' => '0',
+            'type' => SeriesType::Html,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'title' => 'First lesson',
+            'markdown' => 'Here is the first lesson',
+            'sort_order' => 0,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'title' => 'Second lesson',
+            'markdown' => 'Here is the second lesson',
+            'sort_order' => 1,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Another chapter',
+            'chapter_slug' => Str::slug('Another chapter'),
+            'title' => 'Third lesson',
+            'markdown' => 'Here is the third lesson',
+            'sort_order' => 2,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Another chapter',
+            'title' => 'Fourth lesson',
+            'markdown' => 'Here is the fourth lesson',
+            'sort_order' => 3,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Yet Another chapter',
+            'chapter_slug' => Str::slug('Another chapter'),
+            'title' => 'Fifth lesson',
+            'markdown' => 'Here is the fifth lesson',
+            'sort_order' => 2,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
+        $this->createHtmlLessonAndLesson([
+            'chapter' => 'Yet Another chapter',
+            'title' => 'Sixth lesson',
+            'markdown' => 'Here is the sixth lesson',
+            'sort_order' => 3,
+            'series_id' => $upcomingCourseSeries->id,
+            'display' => LessonDisplayEnum::FREE,
+        ]);
+
         Series::create([
             'title' => 'Laravel Package Training',
             'slug' => 'laravel-package-training',
@@ -324,67 +386,7 @@ class CoursesSeeder extends Seeder
             "display" => LessonDisplayEnum::LICENSE,
         ]);
 
-        $upcomingCourseSeries = Series::create([
-            'title' => 'Writing Readable PHP',
-            'slug' => 'writing-readable-php',
-            'description' => 'Learn how to write readable PHP',
-            'sort_order' => '0',
-            'type' => SeriesType::Html,
-        ]);
 
-        $this->createHtmlLessonAndLesson([
-            'title' => 'First lesson',
-            'markdown' => 'Here is the first lesson',
-            'sort_order' => 0,
-            'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
-        ]);
-
-        $this->createHtmlLessonAndLesson([
-            'title' => 'Second lesson',
-            'markdown' => 'Here is the second lesson',
-            'sort_order' => 1,
-            'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
-        ]);
-
-        $this->createHtmlLessonAndLesson([
-            'chapter' => 'Another chapter',
-            'chapter_slug' => Str::slug('Another chapter'),
-            'title' => 'Third lesson',
-            'markdown' => 'Here is the third lesson',
-            'sort_order' => 2,
-            'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
-        ]);
-
-        $this->createHtmlLessonAndLesson([
-            'chapter' => 'Another chapter',
-            'title' => 'Fourth lesson',
-            'markdown' => 'Here is the fourth lesson',
-            'sort_order' => 3,
-            'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
-        ]);
-
-        $this->createHtmlLessonAndLesson([
-            'chapter' => 'Yet Another chapter',
-            'chapter_slug' => Str::slug('Another chapter'),
-            'title' => 'Fifth lesson',
-            'markdown' => 'Here is the fifth lesson',
-            'sort_order' => 2,
-            'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
-        ]);
-
-        $this->createHtmlLessonAndLesson([
-            'chapter' => 'Yet Another chapter',
-            'title' => 'Sixth lesson',
-            'markdown' => 'Here is the sixth lesson',
-            'sort_order' => 3,
-            'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
-        ]);
     }
 
     public function createVideoAndLesson(array $properties): void
