@@ -18,6 +18,7 @@ class CoursesSeeder extends Seeder
     public function run(): void
     {
         $upcomingCourseSeries = Series::create([
+            'id' => 7,
             'title' => 'Writing Readable PHP',
             'slug' => 'writing-readable-php',
             'description' => 'Learn how to write readable PHP',
