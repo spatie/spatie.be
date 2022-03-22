@@ -49,7 +49,7 @@
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
-                        href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
+                        href="{{ route('vacancies.index')}}" class="link-underline link-blue text-xl">Vacancies overview</a>
             </p>
         </div>
     </section>
@@ -137,6 +137,10 @@
                                     You can speak Dutch and you love Italian food.
                                  </li>
                             </ul>
+
+                            <div class="mt-16 gradient gradient-blue p-8 rounded">
+                                More of a <strong>React/JS</strong> type? Check our <a href="{{ route('vacancies.show', 'react-engineer') }}">React vacancy</a> as well.
+                            </div>
                             
                         </div>
                     </div>

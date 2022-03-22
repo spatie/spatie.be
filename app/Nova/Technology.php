@@ -58,9 +58,11 @@ class Technology extends Resource
                 ->rules(['required'])
                 ->saveAsJSON()
                 ->options(
-                    collect(config('team.members'))->mapWithKeys(function (string $name) {
-                        return [$name => ucfirst($name)];
-                    })
+                    collect(config('team.members'))
+                        ->pluck('name')
+                        ->mapWithKeys(function (string $name) {
+                            return [$name => ucfirst($name)];
+                        })
                 ),
 
             Image::make('Avatar')
