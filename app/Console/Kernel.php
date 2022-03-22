@@ -8,6 +8,7 @@ use App\Console\Commands\ImportGuideLinesCommand;
 use App\Console\Commands\ImportInsightsCommand;
 use App\Console\Commands\ImportPackagistDownloadsCommand;
 use App\Console\Commands\RegenerateLeakedKeysCommand;
+use App\Console\Commands\WishHappyBirthdayCommand;
 use App\Domain\Shop\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Domain\Shop\Commands\SendLicenseExpirationNotificationsCommand;
 use App\Domain\Shop\Commands\UpdateBundlePricesCommand;
@@ -50,6 +51,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(UpdateConversionRatesCommand::class)->runInBackground()->sundays()->at('05:00');
         $schedule->command(UpdatePurchasablePricesCommand::class)->runInBackground()->sundays()->at('06:00');
         $schedule->command(UpdateBundlePricesCommand::class)->runInBackground()->sundays()->at('06:30');
+        $schedule->command(WishHappyBirthdayCommand::class)->runInBackground()->dailyAt('08:50');
     }
 
     protected function commands(): void
