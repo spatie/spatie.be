@@ -1,4 +1,4 @@
-<div>
+<div class="w-full">
     @if (! $lesson->hasBeenCompletedByCurrentUser())
         <span wire:click="toggleCompleted" class="complete">
             <x-button class="button">

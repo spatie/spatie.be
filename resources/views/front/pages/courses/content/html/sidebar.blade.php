@@ -1,7 +1,19 @@
-<nav class="sticky top-0 px-4 py-6 bg-white bg-opacity-50 shadow-light rounded-sm markup-lists">
-    <h2 class="title-sm text-sm mb-4">
-        {{ $series->title }}
-    </h2>
+<nav class="sticky top-0  bg-opacity-50 shadow-light rounded-sm ">
+    <div class="mb-4 rounded-sm overflow-hidden  ">
+        <h2 class="title-sm text-sm px-4 py-6  bg-paper ">
+            {{ $series->title }}
+            <span class="text-gray-light lowercase block font-light">course info</span>
+        </h2>
+        <div class="flex justify-between px-4 py-6 bg-white text-sm leading-tight">
+            <p class="text-blue-darkest">
+                14 videos
+            </p>
+            <p class="text-gray-light">
+                14:54
+            </p>
+        </div>
+    </div>
+    
 
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
         <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
@@ -24,21 +36,31 @@
     @endif
 
     <ul class="text-xs grid gap-2 links-blue markup-list-compact">
-        <li class="{{ request()->routeIs('series.show') ? "font-sans-bold" : "" }}">
-            <a class="block" href="{{ route('series.show', [$series]) }}">
+        <li class="bg-white py-4 rounded-sm {{ request()->routeIs('series.show') ? "font-sans-bold" : "" }}">
+            <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
+                <div class="text-white rounded-full flex justify-center items-center h-6 w-6 bg-blue-darkest">
+                    <span class="absolute "> ✓</span>
+                </div>
                 <span class="mr-1">Introduction</span>
             </a>
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
             @if ($chapter)
-                <h3 class="title-subtext mt-6 mb-2">
+                <h3 class="title-subtext block mt-0 p-4 border-b border-gray-light {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
-                        <a href="{{ $series->getUrlForChapter($chapter) }}">
+                        <a class=" flex justify-between" href="{{ $series->getUrlForChapter($chapter) }}">
+                            @endif
+
+                            @if(!$lessonsPerChapter[0]->canBeSeenByCurrentUser())
+                            <div class="w-2 inline-block mr-2">{{ svg('icons/fas-lock-alt') }}</div>
                             @endif
                             {{ $chapter }}
 
-                            @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
+                           
+                            
 
+                            @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
+                            <div class="w-3">{{ svg('icons/far-angle-down') }}</div>
                         </a>
                     @endif
                 </h3>
