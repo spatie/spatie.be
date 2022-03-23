@@ -96,6 +96,7 @@
         "phpstan/phpstan-phpunit": "^1.0",
         "phpunit/phpunit": "^9.5.10",
         "spatie/laravel-log-dumper": "^1.4",
+        "spatie/laravel-visit": "^0.0.3",
         "spatie/pest-plugin-snapshots": "^1.1"
     },
     "config": {

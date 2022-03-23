@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f8cdc5eb24ab1f215e7a8ef03fd63c02",
+    "content-hash": "272c53d9a37029c13ba6c459f1e9acaa",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -18176,6 +18176,61 @@
             "time": "2021-10-14T08:03:54+00:00"
         },
         {
+            "name": "soundasleep/html2text",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/soundasleep/html2text.git",
+                "reference": "aa214620d7beecd5cef8b1c32102a9204edb82f5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/soundasleep/html2text/zipball/aa214620d7beecd5cef8b1c32102a9204edb82f5",
+                "reference": "aa214620d7beecd5cef8b1c32102a9204edb82f5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "php": "^7.0|^8.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0|^8.0|^9.0",
+                "soundasleep/component-tests": "^0.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Soundasleep\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jevon Wright",
+                    "homepage": "https://jevon.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A PHP script to convert HTML into a plain text format",
+            "homepage": "https://github.com/soundasleep/html2text",
+            "keywords": [
+                "email",
+                "html",
+                "php",
+                "text"
+            ],
+            "support": {
+                "email": "support@jevon.org",
+                "issues": "https://github.com/soundasleep/html2text/issues",
+                "source": "https://github.com/soundasleep/html2text/tree/2.0.0"
+            },
+            "time": "2022-01-29T19:05:09+00:00"
+        },
+        {
             "name": "spatie/laravel-log-dumper",
             "version": "1.4.1",
             "source": {
@@ -18249,6 +18304,85 @@
                 }
             ],
             "time": "2022-01-19T10:14:52+00:00"
+        },
+        {
+            "name": "spatie/laravel-visit",
+            "version": "0.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-visit.git",
+                "reference": "7cadb50984d616e3fa793beab03141b62be65ee4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-visit/zipball/7cadb50984d616e3fa793beab03141b62be65ee4",
+                "reference": "7cadb50984d616e3fa793beab03141b62be65ee4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^9.0",
+                "nunomaduro/termwind": "^1.5",
+                "php": "^8.0",
+                "soundasleep/html2text": "^2.0",
+                "spatie/laravel-package-tools": "^1.11.1",
+                "symfony/css-selector": "^6.0",
+                "symfony/dom-crawler": "^6.0",
+                "symfony/stopwatch": "^6.0"
+            },
+            "require-dev": {
+                "nunomaduro/collision": "^6.1",
+                "nunomaduro/larastan": "^2.0.1",
+                "orchestra/testbench": "^7.0",
+                "pestphp/pest": "^1.21",
+                "pestphp/pest-plugin-laravel": "^1.2",
+                "phpstan/extension-installer": "^1.1",
+                "phpstan/phpstan-deprecation-rules": "^1.0",
+                "phpstan/phpstan-phpunit": "^1.0",
+                "phpunit/phpunit": "^9.5.13",
+                "spatie/laravel-ray": "^1.29"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Visit\\VisitServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Visit\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Quickly visit any route of your Laravel app",
+            "homepage": "https://github.com/spatie/laravel-visit",
+            "keywords": [
+                "laravel",
+                "laravel-visit",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-visit/issues",
+                "source": "https://github.com/spatie/laravel-visit/tree/0.0.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2022-03-09T16:25:29+00:00"
         },
         {
             "name": "spatie/pest-plugin-snapshots",
