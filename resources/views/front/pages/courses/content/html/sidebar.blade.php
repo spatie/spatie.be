@@ -1,4 +1,4 @@
-<nav class="sticky top-0  bg-opacity-50 shadow-light rounded-sm ">
+<nav class="sticky top-0  bg-opacity-50  rounded-sm ">
     <div class="mb-4 rounded-sm overflow-hidden  ">
         <h2 class="title-sm text-sm px-4 py-6  bg-paper ">
             {{ $series->title }}
@@ -36,12 +36,15 @@
     @endif
 
     <ul class="text-xs grid gap-2 links-blue markup-list-compact">
-        <li class="bg-white py-4 rounded-sm {{ request()->routeIs('series.show') ? "font-sans-bold" : "" }}">
+        <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? "bg-blue-darkest " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
-                <div class="text-white rounded-full flex justify-center items-center h-6 w-6 bg-blue-darkest">
-                    <span class="absolute "> ✓</span>
+                <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "bg-white " : "bg-blue-darkest " }}">
+                    @if (request()->routeIs('series.show'))
+                    <div class="w-3 h-3 absolute bg-blue-darkest rounded-full "> </div>
+                    @endif
+                    
                 </div>
-                <span class="mr-1">Introduction</span>
+                <span class="mr-1 {{ request()->routeIs('series.show') ? "text-white " : "text-blue-darkest " }}">Introduction</span>
             </a>
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
