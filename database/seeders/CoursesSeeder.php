@@ -27,7 +27,7 @@ class CoursesSeeder extends Seeder
         ]);
 
         $this->createHtmlLessonAndLesson([
-            'chapter' =>  'First chapter',
+            'chapter' => 'First chapter',
             'title' => 'First lesson',
             'markdown' => 'Here is the first lesson',
             'sort_order' => 0,
@@ -36,7 +36,7 @@ class CoursesSeeder extends Seeder
         ]);
 
         $this->createHtmlLessonAndLesson([
-            'chapter' =>  'First chapter',
+            'chapter' => 'First chapter',
             'title' => 'Second lesson',
             'markdown' => 'Here is the second lesson',
             'sort_order' => 1,
