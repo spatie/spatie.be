@@ -184,6 +184,11 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:models --nowrite"
+        ],
+        "import-writing-readable-php": [
+            "php artisan delete-seeded-html-lessons",
+            "php ../writing-readable-php-importer/artisan import",
+            "php artisan regenerate-html-lessons-html"
         ]
     }
 }
