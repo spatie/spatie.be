@@ -1,4 +1,4 @@
-<nav class="sticky top-0  bg-opacity-50  rounded-sm ">
+<nav class="relative top-0  bg-opacity-50  rounded-sm ">
     <div class="mb-4 rounded-sm overflow-hidden  ">
         <h2 class="title-sm text-sm px-4 py-6  bg-gray-lightest">
             {{ $series->title }}
@@ -68,6 +68,7 @@
                     @endif
                 </h3>
             @endif
+
 
             @if($lesson->chapter === $chapter)
                 @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
