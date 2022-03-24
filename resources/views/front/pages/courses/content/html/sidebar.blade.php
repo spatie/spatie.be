@@ -35,7 +35,7 @@
         </div>
     @endif
 
-    <ul class="text-xs grid gap-2 links-blue markup-list-compact">
+    <ul class="text-xs grid  links-blue markup-list-compact">
         <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-gray-lightest " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
                 <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "bg-white " : " bg-gray-lightest" }}">
@@ -49,7 +49,7 @@
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
             @if ($chapter)
-                <h3 class="title-subtext text-blue-darkest  block mt-0 p-4 bg-paper  rounded-sm {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
+                <h3 class="title-subtext text-blue-darkest mt-4  block mt-0 p-4 bg-paper  rounded-sm {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
                         <a class=" flex items-center text-blue-darkest justify-between" href="{{ $series->getUrlForChapter($chapter) }}">
                             @endif
@@ -73,7 +73,7 @@
             @if($lesson->chapter === $chapter)
                 @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                     @foreach($lessonsPerChapter as $lessonInChapter)
-                        <li class="bg-white ml-4 py-4 rounded-sm flex items-center gap-4 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold bg-gray-lightest text-white" : "" }}">
+                        <li class="bg-white  py-4 rounded-sm flex items-center gap-4 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold bg-gray-lightest text-white" : "" }}">
                             <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ isset($lesson) && $lesson->id === $lessonInChapter->id  ? "bg-white " : " bg-gray-lightest" }}">
                                 @if (isset($lesson) && $lesson->id === $lessonInChapter->id ))
                                 <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "> </div>

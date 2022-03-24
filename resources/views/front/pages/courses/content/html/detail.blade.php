@@ -40,6 +40,7 @@
                         </a>
                     </div>
                 @endif
+                <hr class="my-8 -ml-4 line-after "/>
 
                 <livewire:comments :model="$htmlLesson->lesson"/>
             </div>
