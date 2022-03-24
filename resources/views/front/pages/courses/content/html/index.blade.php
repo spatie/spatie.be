@@ -19,7 +19,7 @@
                         class="my-8 w-full overflow-hidden bg-blue-dark rounded-sm px-4 py-8 | md:flex justify-between links-white links-underline text-xs">
                         
                         <h1 class="text-white">
-                            Next lesson
+                            Up next
                             <span class="block title">{{ $series->lessons->first()->title }}</span>
                         </h1>
 

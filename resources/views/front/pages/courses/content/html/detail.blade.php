@@ -17,7 +17,7 @@
 
 
                         <h1 class="text-white">
-                            Next lesson
+                            Up next
                             <span class="block title">{{ $nextLesson->title }}</span>
                         </h1>
 
