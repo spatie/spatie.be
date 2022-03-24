@@ -27,19 +27,21 @@ class CoursesSeeder extends Seeder
         ]);
 
         $this->createHtmlLessonAndLesson([
+            'chapter' =>  'First chapter',
             'title' => 'First lesson',
             'markdown' => 'Here is the first lesson',
             'sort_order' => 0,
             'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
+            'display' => LessonDisplayEnum::LICENSE,
         ]);
 
         $this->createHtmlLessonAndLesson([
+            'chapter' =>  'First chapter',
             'title' => 'Second lesson',
             'markdown' => 'Here is the second lesson',
             'sort_order' => 1,
             'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
+            'display' => LessonDisplayEnum::LICENSE,
         ]);
 
         $this->createHtmlLessonAndLesson([
@@ -49,7 +51,7 @@ class CoursesSeeder extends Seeder
             'markdown' => 'Here is the third lesson',
             'sort_order' => 2,
             'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
+            'display' => LessonDisplayEnum::LICENSE,
         ]);
 
         $this->createHtmlLessonAndLesson([
@@ -58,7 +60,7 @@ class CoursesSeeder extends Seeder
             'markdown' => 'Here is the fourth lesson',
             'sort_order' => 3,
             'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
+            'display' => LessonDisplayEnum::LICENSE,
         ]);
 
         $this->createHtmlLessonAndLesson([
@@ -68,7 +70,7 @@ class CoursesSeeder extends Seeder
             'markdown' => 'Here is the fifth lesson',
             'sort_order' => 2,
             'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
+            'display' => LessonDisplayEnum::LICENSE,
         ]);
 
         $this->createHtmlLessonAndLesson([
@@ -77,7 +79,7 @@ class CoursesSeeder extends Seeder
             'markdown' => 'Here is the sixth lesson',
             'sort_order' => 3,
             'series_id' => $upcomingCourseSeries->id,
-            'display' => LessonDisplayEnum::FREE,
+            'display' => LessonDisplayEnum::LICENSE,
         ]);
 
         Series::create([
