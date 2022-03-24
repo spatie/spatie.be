@@ -16,35 +16,36 @@
                     class="my-8 w-full overflow-hidden bg-blue-dark rounded-sm px-4 py-8 | md:flex justify-between links-white links-underline text-xs">
 
                     @if ($nextLesson)
-                    <h1 class="text-white">
-                        Next lesson
-                        <span class="block title">{{ $nextLesson->title }}</span>
-                    </h1>
+                        <h1 class="text-white">
+                            Next lesson
+                            <span class="block title">{{ $nextLesson->title }}</span>
+                        </h1>
 
-                    <a class="cursor-pointer
+                        <a class="cursor-pointer
                     bg-paper bg-opacity-75 hover:bg-opacity-100 rounded-sm
                     border-2 border-transparent
                     justify-center flex items-center
                     px-6 min-h-10
                     font-sans-bold text-white
                     transition-bg duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap" href="{{ $nextLesson->url }}">
+                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
+                           href="{{ $nextLesson->url }}">
                         <span class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
                             Continue</span>
-                        <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
+                            <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
                             {{ svg('icons/far-angle-right') }}
                         </span>
-                    </a>
+                        </a>
 
                     @else
-                    @auth
-                    <livewire:lesson-completed-button :lesson="$htmlLesson->lesson" />
-                    @endauth
+                        @auth
+                            <livewire:lesson-completed-button :lesson="$htmlLesson->lesson"/>
+                        @endauth
                     @endif
 
                 </div>
 
-                <livewire:comments :model="$htmlLesson->lesson" />
+                <livewire:comments :model="$htmlLesson->lesson"/>
             </div>
         </div>
     </section>
