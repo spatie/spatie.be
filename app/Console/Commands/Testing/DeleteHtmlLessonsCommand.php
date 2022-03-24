@@ -5,7 +5,6 @@ namespace App\Console\Commands\Testing;
 use App\Models\HtmlLesson;
 use App\Models\Lesson;
 use Illuminate\Console\Command;
-use Nette\Utils\Html;
 
 class DeleteHtmlLessonsCommand extends Command
 {
