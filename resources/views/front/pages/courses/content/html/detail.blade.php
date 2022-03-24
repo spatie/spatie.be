@@ -12,20 +12,9 @@
                 </div>
 
 
-                {{-- <hr class="mt-12 line-after" /> --}}
-                
-
                 <div
                     class="my-8 w-full overflow-hidden bg-blue-dark rounded-sm px-4 py-8 | md:flex justify-between links-white links-underline text-xs">
-                    {{--@if ($previousLesson)
-                    <a class="mb-2 md:w-1/2 md:pr-4 flex items-center" href="{{ $previousLesson->url }}">
-                        <span class="w-1 fill-current text-white mr-1 hidden | md:inline-block">
-                            {{ svg('icons/far-angle-left') }}
-                        </span>
-                        <span class="truncate"><span class="font-semibold md:hidden">Previous: </span>{{
-                            $previousLesson->title }}</span>
-                    </a>
-                    @endif--}}
+
                     @if ($nextLesson)
                     <h1 class="text-white">
                         Next lesson
