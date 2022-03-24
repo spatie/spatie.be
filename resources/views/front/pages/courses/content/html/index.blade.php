@@ -1,4 +1,4 @@
-<div class="pb-16 md:pb-24 xl:pb-32">
+ <div class="pb-16 md:pb-24 xl:pb-32">
     <section id="video">
         <div class="wrap wrap-6 items-stretch">
             <div class="z-10 | sm:col-span-2 | print:hidden">
