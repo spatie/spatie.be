@@ -1,6 +1,6 @@
 <nav class="sticky top-0  bg-opacity-50  rounded-sm ">
     <div class="mb-4 rounded-sm overflow-hidden  ">
-        <h2 class="title-sm text-sm px-4 py-6  bg-paper ">
+        <h2 class="title-sm text-sm px-4 py-6  bg-gray-lightest">
             {{ $series->title }}
             <span class="text-gray-light lowercase block font-light">course info</span>
         </h2>
@@ -36,22 +36,22 @@
     @endif
 
     <ul class="text-xs grid gap-2 links-blue markup-list-compact">
-        <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-blue-dark " : "" }}">
+        <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-gray-lightest " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
                 <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "bg-white " : " bg-gray-lightest" }}">
                     @if (request()->routeIs('series.show'))
-                    <div class="w-3 h-3 absolute bg-blue-dark rounded-full "> </div>
+                    <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "> </div>
                     @endif
                     
                 </div>
-                <span class="mr-1 {{ request()->routeIs('series.show') ? "text-white " : "text-blue-darkest " }}">Introduction</span>
+                <span class="mr-1 {{ request()->routeIs('series.show') ? "font-sans-bold  " : "" }}">Introduction</span>
             </a>
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
             @if ($chapter)
-                <h3 class="title-subtext block mt-0 p-4 border-b border-gray-light {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
+                <h3 class="title-subtext text-blue-darkest  block mt-0 p-4 bg-paper rounded-sm {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
-                        <a class=" flex justify-between" href="{{ $series->getUrlForChapter($chapter) }}">
+                        <a class=" flex items-center text-blue-darkest justify-between" href="{{ $series->getUrlForChapter($chapter) }}">
                             @endif
 
                             @if(!$lessonsPerChapter[0]->canBeSeenByCurrentUser())
@@ -70,9 +70,15 @@
             @endif
 
             @if($lesson->chapter === $chapter)
-                @if($lessonsPerChapter[0]->display === \App\Models\Enums\LessonDisplayEnum::LICENSE &&  $lessonsPerChapter[0]->canBeSeenByCurrentUser() )
+                @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                     @foreach($lessonsPerChapter as $lessonInChapter)
-                        <li class="{{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold" : "" }}">
+                        <li class="bg-white ml-4 py-4 rounded-sm flex items-center gap-4 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold bg-gray-lightest text-white" : "" }}">
+                            <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ isset($lesson) && $lesson->id === $lessonInChapter->id  ? "bg-white " : " bg-gray-lightest" }}">
+                                @if (isset($lesson) && $lesson->id === $lessonInChapter->id ))
+                                <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "> </div>
+                                @endif
+                                
+                            </div>
                             <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                                 <span class="mr-1">{{ $lessonInChapter->title }}</span>
 
