@@ -2,8 +2,10 @@
 
 namespace App\Console\Commands\Testing;
 
+use App\Models\HtmlLesson;
 use App\Models\Lesson;
 use Illuminate\Console\Command;
+use Nette\Utils\Html;
 
 class DeleteHtmlLessonsCommand extends Command
 {
@@ -11,6 +13,8 @@ class DeleteHtmlLessonsCommand extends Command
 
     public function handle()
     {
+        HtmlLesson::truncate();
+
         Lesson::where('series_id', 7)->get()->each->delete();
     }
 }
