@@ -36,11 +36,11 @@
     @endif
 
     <ul class="text-xs grid gap-2 links-blue markup-list-compact">
-        <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? "bg-blue-darkest " : "" }}">
+        <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-blue-dark " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
-                <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "bg-white " : "bg-blue-darkest " }}">
+                <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "bg-white " : " bg-gray-lightest" }}">
                     @if (request()->routeIs('series.show'))
-                    <div class="w-3 h-3 absolute bg-blue-darkest rounded-full "> </div>
+                    <div class="w-3 h-3 absolute bg-blue-dark rounded-full "> </div>
                     @endif
                     
                 </div>
