@@ -11,11 +11,11 @@
                     {!! $htmlLesson->html !!}
                 </div>
 
+                @if ($nextLesson)
+                    <div
+                        class="my-8 w-full overflow-hidden bg-blue-dark rounded-sm px-4 py-8 | md:flex justify-between links-white links-underline text-xs">
 
-                <div
-                    class="my-8 w-full overflow-hidden bg-blue-dark rounded-sm px-4 py-8 | md:flex justify-between links-white links-underline text-xs">
 
-                    @if ($nextLesson)
                         <h1 class="text-white">
                             Next lesson
                             <span class="block title">{{ $nextLesson->title }}</span>
@@ -36,14 +36,8 @@
                             {{ svg('icons/far-angle-right') }}
                         </span>
                         </a>
-
-                    @else
-                        @auth
-                            <livewire:lesson-completed-button :lesson="$htmlLesson->lesson"/>
-                        @endauth
-                    @endif
-
-                </div>
+                    </div>
+                @endif
 
                 <livewire:comments :model="$htmlLesson->lesson"/>
             </div>
