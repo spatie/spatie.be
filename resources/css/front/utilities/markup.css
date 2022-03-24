@@ -243,3 +243,20 @@
 .markup-embeds iframe {
     width: 100%;
 }
+
+
+/*COURSE MARKUP*/
+
+.markup-course .shiki{
+    @apply p-6;
+    @apply ml-4;
+    @apply rounded-sm;
+    @apply overflow-hidden;
+    @apply overflow-x-scroll;
+    @apply bg-gray-light;
+}
+
+.markup-course{
+    @apply bg-white;
+    @apply p-8;
+}

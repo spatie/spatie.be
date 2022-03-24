@@ -7,7 +7,7 @@
             <div class="pt-8 | sm:col-start-3 sm:col-span-4 | md:pt-0">
                 <h2 class="title line-after">{{ $htmlLesson->title }}</h2>
                 @ray($htmlLesson)
-                <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
+                <div class="mt-8 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-course markup-titles markup-lists">
                     {!! $htmlLesson->html !!}
                 </div>
 
@@ -18,7 +18,7 @@
 
                         <h1 class="text-white">
                             Up next
-                            <span class="block title">{{ $nextLesson->title }}</span>
+                            <span class="block title max-w-xs">{{ $nextLesson->title }}</span>
                         </h1>
 
                         <a class="cursor-pointer
