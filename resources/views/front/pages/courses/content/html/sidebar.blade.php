@@ -13,7 +13,7 @@
             </p>
         </div>
     </div>
-    
+
 
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
         <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
@@ -42,7 +42,7 @@
                     @if (request()->routeIs('series.show'))
                     <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "> </div>
                     @endif
-                    
+
                 </div>
                 <span class="mr-1 {{ request()->routeIs('series.show') ? "font-sans-bold  " : "" }}">Introduction</span>
             </a>
@@ -59,8 +59,8 @@
                             @endif
                             {{ $chapter }}
 
-                           
-                            
+
+
 
                             @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
                             <div class="w-3">{{ svg('icons/far-angle-down') }}</div>
@@ -81,17 +81,6 @@
                             </div>
                             <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                                 <span class="mr-1">{{ $lessonInChapter->title }}</span>
-
-
-                                {{--
-                                @if($lessonInChapter->hasBeenCompletedByCurrentUser())
-                                    <span title="Completed" style="left: calc(-1.5em - 1.5rem); top: 0.075rem" class="absolute w-4 h-4 inline-flex items-center justify-center bg-green rounded-full">
-                                        <span style="font-size: 0.75rem" class="text-white">
-                                            ✓
-                                        </span>
-                                    </span>
-                                @endif
-                                --}}
                             </a>
                         </li>
                     @endforeach
@@ -101,17 +90,4 @@
             <li>No lessons yet! Stay tuned...</li>
         @endforelse
     </ul>
-
-    @if($series->title == 'Front Line PHP')
-        <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
-            Learn how to build modern applications using PHP
-            <div class="mt-2">
-                <a href="https://front-line-php.com" class="grid">
-                    <x-button>
-                        Visit Front Line PHP
-                    </x-button>
-                </a>
-            </div>
-        </div>
-    @endif
 </nav>
