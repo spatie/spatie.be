@@ -248,15 +248,15 @@
 /*COURSE MARKUP*/
 
 .markup-course .shiki{
-    @apply p-6;
-    @apply ml-4;
+    @apply p-12;
+    @apply mb-6;
     @apply rounded-sm;
     @apply overflow-hidden;
     @apply overflow-x-scroll;
-    @apply bg-gray-light;
+    @apply bg-paper !important;
 }
 
 .markup-course{
     @apply bg-white;
-    @apply p-8;
+    @apply p-12;
 }

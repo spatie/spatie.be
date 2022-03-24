@@ -11,22 +11,24 @@
                     {!! $htmlLesson->html !!}
                 </div>
 
+                <hr class="mt-12 -ml-4 line-after "/>
                 @if ($nextLesson)
+                
                     <div
-                        class="my-8 w-full overflow-hidden bg-blue-dark rounded-sm px-4 py-8 | md:flex justify-between links-white links-underline text-xs">
+                        class="my-6 w-full overflow-hidden  py-8 | md:flex justify-between links-blue links-underline text-xs">
 
 
-                        <h1 class="text-white">
+                        <h1 class="">
                             Up next
-                            <span class="block title max-w-xs">{{ $nextLesson->title }}</span>
+                            <span class="block title max-w-xs ">{{ $nextLesson->title }}</span>
                         </h1>
 
                         <a class="cursor-pointer
-                    bg-paper bg-opacity-75 hover:bg-opacity-100 rounded-sm
+                    bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm
                     border-2 border-transparent
                     justify-center flex items-center
-                    px-6 min-h-10
-                    font-sans-bold text-white
+                    px-6 min-h-10 text-white
+                    font-sans-bold 
                     transition-bg duration-300
                     focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
                            href="{{ $nextLesson->url }}">

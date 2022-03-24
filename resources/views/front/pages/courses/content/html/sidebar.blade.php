@@ -49,7 +49,7 @@
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
             @if ($chapter)
-                <h3 class="title-subtext text-blue-darkest  block mt-0 p-4 bg-paper rounded-sm {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
+                <h3 class="title-subtext text-blue-darkest  block mt-0 p-4 bg-paper  rounded-sm {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
                         <a class=" flex items-center text-blue-darkest justify-between" href="{{ $series->getUrlForChapter($chapter) }}">
                             @endif
