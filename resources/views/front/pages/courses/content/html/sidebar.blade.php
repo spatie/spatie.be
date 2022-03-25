@@ -1,12 +1,12 @@
 <nav class="relative top-0  bg-opacity-50  rounded-sm ">
     <div class="mb-4 rounded-sm overflow-hidden  ">
-        <h2 class="title-sm text-sm px-4 py-6  bg-gray-lightest">
+        <h2 class="title-sm text-sm px-4 py-6  gradient gradient-green text-white">
             {{ $series->title }}
-            <span class="text-gray-light lowercase block font-light">course info</span>
+            <span class="text-white lowercase block font-light">course info</span>
         </h2>
         <div class="flex justify-between px-4 py-6 bg-white text-sm leading-tight">
             <p class="text-blue-darkest">
-                14 videos
+                14 chapters
             </p>
             <p class="text-gray-light">
                 14:54
@@ -35,7 +35,7 @@
         </div>
     @endif
 
-    <ul class="text-xs grid  links-blue markup-list-compact">
+    <ul class="text-xs grid bg-white shadow links-blue markup-list-compact">
         <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-gray-lightest " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
                 <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "bg-white " : " bg-gray-lightest" }}">
@@ -49,7 +49,7 @@
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
             @if ($chapter)
-                <h3 class="title-subtext text-blue-darkest mt-4  block mt-0 p-4 bg-paper  rounded-sm {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
+                <h3 class="title-subtext text-blue-darkest block p-4 bg-gray-lightest  {{ $lessonsPerChapter[0]->canBeSeenByCurrentUser() ? '' : 'opacity-50' }}">
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
                         <a class=" flex items-center text-blue-darkest justify-between" href="{{ $series->getUrlForChapter($chapter) }}">
                             @endif
@@ -57,7 +57,7 @@
                             @if(!$lessonsPerChapter[0]->canBeSeenByCurrentUser())
                             <div class="w-2 inline-block mr-2">{{ svg('icons/fas-lock-alt') }}</div>
                             @endif
-                            {{ $chapter }}
+                            {{ $loop->index +1 . '. ' . $chapter }}
 
 
 
@@ -73,7 +73,7 @@
             @if($lesson->chapter === $chapter)
                 @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                     @foreach($lessonsPerChapter as $lessonInChapter)
-                        <li class="bg-white  py-4 rounded-sm flex items-center gap-4 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold bg-gray-lightest text-white" : "" }}">
+                        <li class="bg-white  py-4 rounded-sm flex items-center gap-4 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "font-sans-bold bg-paper text-white" : "" }}">
                             <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ isset($lesson) && $lesson->id === $lessonInChapter->id  ? "bg-white " : " bg-gray-lightest" }}">
                                 @if (isset($lesson) && $lesson->id === $lessonInChapter->id ))
                                 <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "> </div>

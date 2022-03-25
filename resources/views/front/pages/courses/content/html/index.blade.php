@@ -12,25 +12,25 @@
                 </div>
 
                 <hr class="-ml-4 mt-12 line-after" />
-                <div class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
+                <div class="w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
                     @if ($series->lessons->first())
                     
                     <div
-                        class="my-8 w-full overflow-hidden bg-blue-dark rounded-sm px-4 py-8 | md:flex justify-between links-white links-underline text-xs">
+                        class="my-6 w-full overflow-hidden  py-8 | md:flex justify-between links-blue links-underline text-xs">
                         
-                        <h1 class="text-white">
+                        <h1 class="">
                             Up next
-                            <span class="block title max-w-md">{{ $series->lessons->first()->title }}</span>
+                            <span class="block title max-w-sm">{{ $series->lessons->first()->title }}</span>
                         </h1>
 
                         <a class="cursor-pointer
-                    bg-paper bg-opacity-75 hover:bg-opacity-100 rounded-sm
-                    border-2 border-transparent
-                    justify-center flex items-center
-                    px-6 min-h-10
-                    font-sans-bold text-white
-                    transition-bg duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
+                        bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm
+                        border-2 border-transparent
+                        justify-center flex items-center
+                        px-6 min-h-10 text-white
+                        font-sans-bold 
+                        transition-bg duration-300
+                        focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
                             href="{{ $series->lessons->first()->url }}">
                             <span class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
                                 Continue</span>
