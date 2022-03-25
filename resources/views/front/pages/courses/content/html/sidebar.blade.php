@@ -8,9 +8,6 @@
             <p class="text-blue-darkest">
                 14 chapters
             </p>
-            <p class="text-gray-light">
-                14:54
-            </p>
         </div>
     </div>
 
