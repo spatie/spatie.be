@@ -35,8 +35,8 @@
         </div>
     @endif
 
-    <ul class="text-xs grid bg-white shadow links-blue markup-list-compact">
-        <li class="bg-white ml-4 py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-gray-lightest " : "" }}">
+    <ul class="text-xs grid bg-white p-2 rounded-sm shadow links-blue markup-list-compact">
+        <li class="bg-white py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-paper " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
                 <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "bg-white " : " bg-gray-lightest" }}">
                     @if (request()->routeIs('series.show'))
