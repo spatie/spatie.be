@@ -188,7 +188,8 @@
         "import-writing-readable-php": [
             "php artisan delete-seeded-html-lessons",
             "php ../writing-readable-php-importer/artisan import",
-            "php artisan regenerate-html-lessons-html"
+            "php artisan regenerate-html-lessons-html",
+            "cp -r ../writing-readable-php-importer/content/images/ public/images/readable-php"
         ]
     }
 }
