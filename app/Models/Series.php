@@ -115,6 +115,10 @@ class Series extends Model implements HasMedia, Sortable
             return false;
         }
 
+        if (app()->environment('local')) {
+            return true;
+        }
+
         return $this->purchasables
                 ->filter(fn (Purchasable $purchasable) => auth()->user()->owns($purchasable))
                 ->count() > 0;
