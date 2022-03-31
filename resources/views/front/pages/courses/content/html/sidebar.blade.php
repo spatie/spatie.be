@@ -27,13 +27,20 @@
     </div>
     @endif
 
-    <ul  class="text-xs grid bg-white p-2 rounded-sm shadow links-blue markup-list-compact">
+    <ul class="text-xs grid bg-white p-2 rounded-sm shadow links-blue markup-list-compact">
         <li class="bg-white py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-paper " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
                 <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "
                     bg-white " : " bg-gray-lightest" }}">
                     @if (request()->routeIs('series.show'))
                     <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "> </div>
+                    @endif
+                    {{-- TODO: ADD Check if completed--}}
+                    @if (!request()->routeIs('series.show'))
+                    <div
+                        class="w-6 h-full absolute bg-green rounded-full text-base flex items-center text-white justify-items-center font-bold">
+                        <p class="w-full inline-block text-center">✓</p>
+                    </div>
                     @endif
 
                 </div>
@@ -67,7 +74,7 @@
             </h3>
             @endif
 
-            <div x-show='open' >
+            <div x-show='open'>
                 @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                 @foreach($lessonsPerChapter as $lessonInChapter)
                 <li class="bg-white  py-4 rounded-sm flex items-center gap-4 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "
@@ -76,6 +83,13 @@
                         bg-white " : " bg-gray-lightest" }}">
                         @if (isset($lesson) && $lesson->id === $lessonInChapter->id ))
                         <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "> </div>
+                        @endif
+                        {{-- TODO: ADD Check if completed--}}
+                        @if (isset($lesson) && $lesson->id != $lessonInChapter->id ))
+                        <div
+                            class="w-6 h-full absolute bg-green rounded-full text-base flex items-center text-white justify-items-center font-bold">
+                            <p class="w-full inline-block text-center">✓</p>
+                        </div>
                         @endif
 
                     </div>
