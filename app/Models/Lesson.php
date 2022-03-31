@@ -148,6 +148,10 @@ class Lesson extends Model implements Sortable
             return $this;
         }
 
+        if ($this->hasBeenCompletedByCurrentUser()) {
+            return $this;
+        }
+
         $currentUser->completeLesson($this);
 
         return $this;
