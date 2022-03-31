@@ -4,6 +4,9 @@
             {{ $series->title }}
         </h2>
 
+    </div>
+
+    <div>
         @if (! $series->isOwnedByCurrentUser())
             <a href="{{ $series->purchaseLink() }}">
                 <x-button>
@@ -41,6 +44,13 @@
                     bg-white " : " bg-gray-lightest" }}">
                     @if (request()->routeIs('series.show'))
                         <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "></div>
+                    @endif
+                    {{-- TODO: ADD Check if completed--}}
+                    @if (!request()->routeIs('series.show'))
+                    <div
+                        class="w-6 h-full absolute bg-green rounded-full text-base flex items-center text-white justify-items-center font-bold">
+                        <p class="w-full inline-block text-center">✓</p>
+                    </div>
                     @endif
 
                 </div>

@@ -3,6 +3,7 @@
         background="/backgrounds/video-blur.jpg"
         :description="$description"
 >
+    {{--
     <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
             <p class="mt-4 links-underline links-blue">
@@ -13,6 +14,7 @@
             </p>
         </div>
     </section>
+    --}}
 
     @include("front.pages.courses.content.{$series->type->value}.index")
 

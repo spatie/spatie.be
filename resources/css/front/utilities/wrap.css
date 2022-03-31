@@ -1,7 +1,7 @@
 .wrap {
     @apply px-8;
     @apply mx-auto;
-    @apply max-w-columns;
+    max-width:  100rem;
 }
 
 @screen lg {

@@ -1,6 +1,6 @@
-<div class="pb-16 md:pb-24 xl:pb-32">
+<div class="pb-16 pt-8 md:pb-24 xl:pb-32">
     <section id="video">
-        <div class="wrap wrap-6 items-stretch">
+        <div class="wrap wrap-courses wrap-6 items-stretch ">
             <div class="z-10 | sm:col-span-2 | print:hidden">
                 @include('front.pages.courses.content.html.sidebar')
             </div>
@@ -43,6 +43,7 @@
                             </div>
                         @endif
                     @endif
+                    <hr class="my-8 -ml-4 line-after " />
                 </div>
             </div>
         </div>
