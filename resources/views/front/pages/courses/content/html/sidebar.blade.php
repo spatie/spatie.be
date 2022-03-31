@@ -4,11 +4,6 @@
             {{ $series->title }}
             <span class="text-white lowercase block font-light">course info</span>
         </h2>
-        <div class="flex justify-between px-4 py-6 bg-white text-sm leading-tight">
-            <p class="text-blue-darkest">
-                14 chapters
-            </p>
-        </div>
     </div>
 
 

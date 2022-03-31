@@ -3,6 +3,7 @@
     background="/backgrounds/video-blur.jpg"
     :description="$lesson->content->description"
 >
+{{--x
     <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
         <div class="wrap">
             <p class="mt-4 links-underline links-blue">
@@ -16,7 +17,7 @@
             </p>
         </div>
     </section>
-
+--}}
     @if($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
         @include('front.pages.courses.content.video.detail', ['video' => $lesson->content])
     @endif
