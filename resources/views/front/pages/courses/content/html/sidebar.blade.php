@@ -38,21 +38,11 @@
     @endif
 
     <ul class="text-xs grid bg-white p-2 rounded-sm shadow links-blue markup-list-compact">
-        <li class="bg-white py-4 rounded-sm {{ request()->routeIs('series.show') ? " bg-paper " : "" }}">
+        <li class="bg-white py-2 rounded-sm {{ request()->routeIs('series.show') ? " bg-paper " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
-                <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ request()->routeIs('series.show') ? "
-                    bg-white " : " bg-gray-lightest" }}">
                     @if (request()->routeIs('series.show'))
-                        <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "></div>
+                        <div class="w-1 h-1 absolute bg-gray-light rounded-full "></div>
                     @endif
-                    @if ($lesson->hasBeenCompletedByCurrentUser())
-                        <div
-                            class="w-6 h-full absolute bg-green rounded-full text-base flex items-center text-white justify-items-center font-bold">
-                            <p class="w-full inline-block text-center">✓</p>
-                        </div>
-                    @endif
-
-                </div>
                 <span class="mr-1 text-black {{ request()->routeIs('series.show') ? "
                     font-sans-bold " : "" }}">Introduction</span>
             </a>
@@ -86,23 +76,20 @@
                 <div x-show='open'>
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                         @foreach($lessonsPerChapter as $lessonInChapter)
-                            <li class="bg-white  py-4 rounded-sm flex items-center gap-4 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "
+                            <li class="bg-white  py-2 rounded-sm flex items-center gap-2 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "
                     font-sans-bold bg-paper text-white" : "" }}">
-                                <div class=" rounded-full flex justify-center items-center h-6 w-6 {{ isset($lesson) && $lesson->id === $lessonInChapter->id  ? "
-                        bg-white " : " bg-gray-lightest" }}">
                                     @if (isset($lesson) && $lesson->id === $lessonInChapter->id ))
-                                    <div class="w-3 h-3 absolute bg-gray-lightest rounded-full "></div>
+                                    <div class="w-1 h-1 absolute bg-gray-light rounded-full "></div>
                                     @endif
+                                    
+                                <a class="flex items-center gap-2" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
+                                    <span class="mr-1">{{ $lessonInChapter->title }}</span>
                                     @if ($lessonInChapter->hasBeenCompletedByCurrentUser())
                                         <div
-                                            class="w-6 h-full absolute bg-green rounded-full text-base flex items-center text-white justify-items-center font-bold">
+                                            class="w-3 h-3  bg-green rounded-full text-xs flex items-center text-white justify-items-center font-bold">
                                             <p class="w-full inline-block text-center">✓</p>
                                         </div>
                                     @endif
-
-                                </div>
-                                <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
-                                    <span class="mr-1">{{ $lessonInChapter->title }}</span>
                                 </a>
                             </li>
                         @endforeach
