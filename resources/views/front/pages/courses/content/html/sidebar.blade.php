@@ -3,18 +3,21 @@
         <h2 class="title-sm text-sm px-4 py-6  gradient gradient-green text-white">
             {{ $series->title }}
         </h2>
-
-    </div>
-
-    <div>
         @if (! $series->isOwnedByCurrentUser())
-            <a href="{{ $series->purchaseLink() }}">
-                <x-button>
-                    Buy entire course
-                </x-button>
-            </a>
+        <div class="w-full bg-white p-4">
+            <p class="mb-4">To see all the content you must buy this course</p>
+            
+                <a href="{{ $series->purchaseLink() }}">
+                    <x-button>
+                        Buy entire course
+                    </x-button>
+                </a>
+           
+        </div>
         @endif
     </div>
+
+    
 
 
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
