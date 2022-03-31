@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     @stack('head')
+
+    <x-comments::styles />
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -93,5 +95,7 @@
         <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     {!! schema()->localBusiness() !!}
+
+    <x-comments::scripts /> 
 </body>
 </html>
