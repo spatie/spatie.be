@@ -11,37 +11,37 @@
                     <x-markdown>{!! $series->introduction ?? $series->description !!}</x-markdown>
                 </div>
 
-                <hr class="-ml-4 mt-12 line-after" />
+                <hr class="-ml-4 mt-12 line-after"/>
                 <div class="w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
-                    
-                    <hr class="mt-12 -ml-4 line-after " />
                     @if ($series->lessons->first())
 
-                    <div
-                        class="my-6 w-full overflow-hidden  py-8 | md:flex justify-between links-blue links-underline text-xs">
+                        @if($series->isOwnedByCurrentUser())
+                            <div
+                                class="my-6 w-full overflow-hidden  py-8 | md:flex justify-between links-blue links-underline text-xs">
 
+                                <h1 class="">
+                                    Up next
+                                    <span class="block title max-w-sm">{{ $series->lessons->first()->title }}</span>
+                                </h1>
 
-                        <h1 class="">
-                            Up next
-                            <span class="block title max-w-xs ">{{ $series->lessons->first()->title  }}</span>
-                        </h1>
-
-                        <a class="cursor-pointer
-                    bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm
-                    border-2 border-transparent
-                    justify-center flex items-center
-                    px-6 min-h-10 text-white
-                    font-sans-bold 
-                    transition-bg duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
-                            href="{{ $series->lessons->first()->url }}">
+                                <a class="cursor-pointer
+                        bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm
+                        border-2 border-transparent
+                        justify-center flex items-center
+                        px-6 min-h-10 text-white
+                        font-sans-bold
+                        transition-bg duration-300
+                        focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
+                                   href="{{ $series->lessons->first()->url }}">
                             <span class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
                                 Continue</span>
-                            <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
+                                    <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
                                 {{ svg('icons/far-angle-right') }}
                             </span>
-                        </a>
-                    </div>
+                                </a>
+
+                            </div>
+                        @endif
                     @endif
                     <hr class="my-8 -ml-4 line-after " />
                 </div>

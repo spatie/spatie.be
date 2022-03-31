@@ -93,16 +93,16 @@ class Lesson extends Model implements Sortable
 
     public function canBeSeenByCurrentUser(): bool
     {
-        if (app()->environment('local')) {
-            return true;
-        }
-
         if ($this->display === LessonDisplayEnum::FREE) {
             return true;
         }
 
         if (! auth()->check()) {
             return false;
+        }
+
+        if (app()->environment('local')) {
+            return true;
         }
 
         if ($this->display === LessonDisplayEnum::AUTH) {
