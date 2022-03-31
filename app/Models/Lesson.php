@@ -93,8 +93,6 @@ class Lesson extends Model implements Sortable
 
     public function canBeSeenByCurrentUser(): bool
     {
-
-
         if ($this->display === LessonDisplayEnum::FREE) {
             return true;
         }
