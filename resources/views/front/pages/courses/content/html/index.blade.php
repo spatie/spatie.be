@@ -33,7 +33,7 @@
                         transition-bg duration-300
                         focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
                                    href="{{ $series->lessons->first()->url }}">
-                            <span class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
+                            <span class="truncate"><span class="font-semibold md:hidden">Next: </span>
                                 Continue</span>
                                     <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
                                 {{ svg('icons/far-angle-right') }}

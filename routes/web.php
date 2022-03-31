@@ -153,6 +153,7 @@ Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
 Route::get('/courses/{series:slug}', [SeriesController::class, 'show'])->name('series.show');
 Route::get('/courses/{series:slug}/{lesson:slug}', [CoursesController::class, 'show'])->name('courses.show');
+Route::post('/courses/{series:slug}/{lesson:slug}', [CoursesController::class, 'completeLesson'])->name('courses.completeLesson');
 
 Route::redirect('/videos', '/courses');
 

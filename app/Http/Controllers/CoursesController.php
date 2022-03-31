@@ -46,4 +46,17 @@ class CoursesController
             'nextLesson',
         ));
     }
+
+    public function completeLesson(Series $series, Lesson $lesson)
+    {
+        if (! $lesson->canBeSeenByCurrentUser()) {
+            if ($lesson->content_type === 'htmlLesson') {
+                return redirect()->route('series.show', $series);
+            }
+        }
+
+        $lesson->markAsCompletedForCurrentUser();
+
+        return redirect()->to($lesson->getNext()->url);
+    }
 }
