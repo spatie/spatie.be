@@ -8,8 +8,8 @@ use Illuminate\Support\Facades\Schema;
 return new class () extends Migration {
     public function up()
     {
-        DB::table('video_completions')->orderBy('id')->each(function (array $completion) {
-            if (! $video = Video::find($completion['video_id'])) {
+        DB::table('video_completions')->orderBy('id')->each(function (stdClass $completion) {
+            if (! $video = Video::find($completion->video_id)) {
                 return;
             }
 
@@ -18,7 +18,7 @@ return new class () extends Migration {
             }
 
             LessonCompletion::create([
-                'user_id' => $completion['user_id'],
+                'user_id' => $completion->user_id,
                 'lesson_id' => $lesson->id,
             ]);
         });

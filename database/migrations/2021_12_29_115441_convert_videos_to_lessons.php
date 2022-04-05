@@ -14,6 +14,7 @@ class ConvertVideosToLessons extends Migration
             Lesson::create([
                 'content_type' => 'video',
                 'content_id' => $video->id,
+                'series_id' => $video->series_id,
                 'title' => $video->title,
                 'slug' => $video->slug,
                 'sort_order' => $video->sort_order,

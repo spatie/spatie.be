@@ -13,6 +13,7 @@ return new class () extends Migration {
             $table->id();
             $table->foreignIdFor(User::class);
             $table->foreignIdFor(Lesson::class);
+            $table->timestamps();
         });
     }
 };
