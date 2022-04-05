@@ -49,7 +49,6 @@ return [
     'rss' => [
         'https://freek.dev/feed/originals',
         'https://sebastiandedeyne.com/feed/articles',
-        'https://www.stitcher.io/rss',
         'https://alexvanderbist.com/feed',
         'https://rias.be/feed',
         'https://rubenvanassche.com/rss/',
