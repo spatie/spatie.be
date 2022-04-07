@@ -21,14 +21,10 @@ use Laravel\Nova\Dashboard;
 
 class Main extends Dashboard
 {
-    public function label()
-    {
-        return 'Main';
-    }
-
     public function cards()
     {
         return [
+    /*
             new NewUsers(),
             new VideoCompletions(),
             new Earnings(),
@@ -44,11 +40,8 @@ class Main extends Dashboard
             EarningsPerPurchasablePerDay::create(),
             EarningsPerProductPerMonth::create(),
             EarningsPerPurchasablePerMonth::create(),
+    */
         ];
     }
 
-    public function uriKey()
-    {
-        return 'main';
-    }
 }
