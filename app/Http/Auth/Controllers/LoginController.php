@@ -59,7 +59,7 @@ class LoginController extends Controller
         if (! $nextUrl) {
             return;
         }
-;
+
         if ($request->getHttpHost() !== Url::fromString($nextUrl)->getHost()) {
             return;
         }

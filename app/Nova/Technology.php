@@ -11,8 +11,6 @@ use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-;
-
 class Technology extends Resource
 {
     public static $model = EloquentTechnology::class;
