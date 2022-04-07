@@ -3,7 +3,6 @@
 namespace App\Nova\Filters;
 
 use App\Domain\Shop\Models\Product;
-use Illuminate\Http\Request;
 use Laravel\Nova\Filters\Filter;
 use Laravel\Nova\Http\Requests\NovaRequest;
 

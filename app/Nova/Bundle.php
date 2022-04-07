@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use App\Domain\Shop\Models\Bundle as EloquentBundle;
 use App\Nova\Actions\UpdateBundlePriceForCurrencyAction;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;

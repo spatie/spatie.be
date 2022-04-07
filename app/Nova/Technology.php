@@ -4,20 +4,17 @@ namespace App\Nova;
 
 use App\Models\Enums\TechnologyType;
 use App\Models\Technology as EloquentTechnology;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use OptimistDigital\MultiselectField\Multiselect;
+
 ;
 
 class Technology extends Resource
 {
-
-
     public static $model = EloquentTechnology::class;
 
     public static $group = 'Technologies';

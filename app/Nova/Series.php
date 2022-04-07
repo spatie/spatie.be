@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\Series as EloquentSeries;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
@@ -17,8 +16,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Series extends Resource
 {
-
-
     public static $group = "Videos";
 
     public static $model = EloquentSeries::class;

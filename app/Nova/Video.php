@@ -5,7 +5,6 @@ namespace App\Nova;
 use App\Models\Enums\VideoDisplayEnum;
 use App\Models\Video as EloquentVideo;
 use App\Nova\Filters\SeriesFilter;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Image;
@@ -18,8 +17,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Video extends Resource
 {
-
-
     public static $group = "Videos";
 
     public static $model = EloquentVideo::class;

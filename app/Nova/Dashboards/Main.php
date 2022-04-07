@@ -43,5 +43,4 @@ class Main extends Dashboard
     */
         ];
     }
-
 }
