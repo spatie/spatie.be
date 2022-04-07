@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
     {
         $this->achievements = Achievement::all();
 
-        collect(config('team.members'))->map(fn (string $name) => User::firstOrCreate([
+        collect(config('team.members'))->pluck('name')->map(fn (string $name) => User::firstOrCreate([
             'email' => "${name}@spatie.be",
         ], [
             'name' => ucfirst($name),
