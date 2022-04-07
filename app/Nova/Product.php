@@ -12,8 +12,6 @@ use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-;
-
 class Product extends Resource
 {
     public static $group = "Products";

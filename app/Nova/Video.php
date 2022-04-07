@@ -13,8 +13,6 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-;
-
 class Video extends Resource
 {
     public static $group = "Videos";

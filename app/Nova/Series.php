@@ -12,8 +12,6 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-;
-
 class Series extends Resource
 {
     public static $group = "Videos";
