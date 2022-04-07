@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Nova\Actions\AttachAllPurchasablesToReferrerAction;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;

@@ -39,5 +39,4 @@ class Main extends Dashboard
             EarningsPerPurchasablePerMonth::create(),
         ];
     }
-
 }

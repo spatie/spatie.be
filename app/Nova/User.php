@@ -4,8 +4,6 @@ namespace App\Nova;
 
 use App\Nova\Actions\TransferPurchaseAssignmentsToUser;
 use App\Nova\Actions\TransferPurchasesToUser;
-use Illuminate\Http\Request;
-use KABBOUCHI\NovaImpersonate\Impersonate;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
@@ -60,7 +58,6 @@ class User extends Resource
             HasMany::make('Licenses'),
         ];
     }
-
 
     public function actions(NovaRequest $request)
     {

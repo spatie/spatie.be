@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use App\Nova\Actions\ImportDocsAction;
 use App\Nova\Actions\UpdateSatisAction;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Text;

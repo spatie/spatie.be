@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\Ad as EloquentAd;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Image;

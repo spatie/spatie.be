@@ -7,7 +7,6 @@ use App\Domain\Shop\Models\Purchasable as EloquentPurchasable;
 use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use App\Nova\Filters\ProductFilter;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;

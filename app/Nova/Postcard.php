@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\Postcard as EloquentPostcard;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;

@@ -5,7 +5,6 @@ namespace App\Nova;
 use App\Domain\Shop\Models\BundlePrice as EloquentBundlePrice;
 use App\Nova\Filters\BundleFilter;
 use App\Support\Paddle\PaddleCountries;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
@@ -17,8 +16,6 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class BundlePrice extends Resource
 {
-
-
     public static $group = "Products";
 
     public static $tableStyle = 'tight';

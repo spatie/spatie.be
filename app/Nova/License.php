@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use App\Domain\Shop\Models\License as EloquentLicense;
 use App\Nova\Actions\RegenerateLicenseKeyAction;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
