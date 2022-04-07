@@ -9,6 +9,7 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Actions\DestructiveAction;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class TransferPurchaseAssignmentsToUser extends DestructiveAction
 {
@@ -31,7 +32,7 @@ class TransferPurchaseAssignmentsToUser extends DestructiveAction
         return Action::message("All purchase assignments transfered to {$otherUser->name} ({$otherUser->email})!");
     }
 
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         return [
             Text::make('Email')->required(),

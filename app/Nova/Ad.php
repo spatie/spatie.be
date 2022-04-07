@@ -3,11 +3,11 @@
 namespace App\Nova;
 
 use App\Models\Ad as EloquentAd;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Ad extends Resource
 {
@@ -21,7 +21,7 @@ class Ad extends Resource
        'name',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             Text::make('Name')

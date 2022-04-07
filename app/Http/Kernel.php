@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AddImpersonateOverlay;
 use App\Http\Middleware\ForceJsonResponse;
 use App\Http\Middleware\HandleReferrer;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
@@ -27,6 +28,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             HandleReferrer::class,
+            AddImpersonateOverlay::class,
         ],
 
         'admin' => [

@@ -4,14 +4,13 @@ namespace App\Nova;
 
 use App\Nova\Actions\TransferPurchaseAssignmentsToUser;
 use App\Nova\Actions\TransferPurchasesToUser;
-use Illuminate\Http\Request;
-use KABBOUCHI\NovaImpersonate\Impersonate;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class User extends Resource
 {
@@ -25,7 +24,7 @@ class User extends Resource
         'id', 'name', 'email', 'github_username',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -57,53 +56,10 @@ class User extends Resource
             HasMany::make('Purchases'),
             HasMany::make('Purchase Assignments', 'assignments', PurchaseAssignment::class),
             HasMany::make('Licenses'),
-
-            Impersonate::make($this)->withMeta([
-                'redirect_to' => route('profile'),
-            ]),
         ];
     }
 
-    /**
-     * Get the cards available for the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [
             new TransferPurchasesToUser(),

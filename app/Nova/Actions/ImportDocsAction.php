@@ -8,6 +8,7 @@ use Brightspot\Nova\Tools\DetachedActions\DetachedAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 
+/*
 class ImportDocsAction extends DetachedAction
 {
     use InteractsWithQueue;
@@ -25,3 +26,4 @@ class ImportDocsAction extends DetachedAction
         });
     }
 }
+*/

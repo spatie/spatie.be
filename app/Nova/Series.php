@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Models\Series as EloquentSeries;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
@@ -11,12 +10,12 @@ use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+use Laravel\Nova\Http\Requests\NovaRequest;
+
+;
 
 class Series extends Resource
 {
-    use HasSortableRows;
-
     public static $group = "Videos";
 
     public static $model = EloquentSeries::class;
@@ -27,7 +26,7 @@ class Series extends Resource
         'id', 'title',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -46,7 +45,7 @@ class Series extends Resource
             Markdown::make('Description'),
 
             Image::make('Image')
-                ->store(function (Request $request, EloquentSeries $series) {
+                ->store(function (NovaRequest $request, EloquentSeries $series) {
                     return function () use ($request, $series): void {
                         $series
                             ->addMedia($request->file('image'))

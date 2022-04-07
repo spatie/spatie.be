@@ -4,12 +4,12 @@ namespace App\Nova;
 
 use App\Domain\Shop\Models\Purchase as EloquentPurchase;
 use App\Nova\Actions\TransferPurchasesAction;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Purchase extends Resource
 {
@@ -27,7 +27,7 @@ class Purchase extends Resource
 
     public static $with = ['assignments.user', 'bundle', 'purchasable'];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -75,17 +75,11 @@ class Purchase extends Resource
 
             BelongsTo::make('Receipt')->nullable(),
 
-            DateTime::make('Created at')->format('DD/MM/YY HH:mm'),
+            DateTime::make('Created at'),
         ];
     }
 
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [
             new TransferPurchasesAction(),

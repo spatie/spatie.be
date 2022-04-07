@@ -4,7 +4,6 @@ namespace App\Nova;
 
 use App\Domain\Shop\Models\Bundle as EloquentBundle;
 use App\Nova\Actions\UpdateBundlePriceForCurrencyAction;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
@@ -13,12 +12,12 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+use Laravel\Nova\Http\Requests\NovaRequest;
+
+;
 
 class Bundle extends Resource
 {
-    use HasSortableRows;
-
     public static $group = "Products";
 
     public static $model = EloquentBundle::class;
@@ -29,13 +28,13 @@ class Bundle extends Resource
         'id', 'title',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
 
             Image::make('Image')
-                ->store(function (Request $request, EloquentBundle $product) {
+                ->store(function (NovaRequest $request, EloquentBundle $product) {
                     return function () use ($request, $product): void {
                         $product
                             ->addMedia($request->file('image'))
@@ -80,22 +79,22 @@ class Bundle extends Resource
         ];
     }
 
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
 
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
 
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return [];
     }
 
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [
             (new UpdateBundlePriceForCurrencyAction())

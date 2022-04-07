@@ -4,10 +4,10 @@ namespace App\Nova;
 
 use App\Nova\Actions\ImportDocsAction;
 use App\Nova\Actions\UpdateSatisAction;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Repository extends Resource
 {
@@ -23,7 +23,7 @@ class Repository extends Resource
        'name', 'description',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             Text::make('Name')
@@ -36,11 +36,11 @@ class Repository extends Resource
         ];
     }
 
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [
-            (new ImportDocsAction())->onlyOnIndexToolbar(),
-            (new UpdateSatisAction())->onlyOnIndexToolbar(),
+          //  (new ImportDocsAction())->onlyOnIndexToolbar(),
+          //  (new UpdateSatisAction())->onlyOnIndexToolbar(),
         ];
     }
 }
