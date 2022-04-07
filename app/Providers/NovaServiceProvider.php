@@ -2,24 +2,22 @@
 
 namespace App\Providers;
 
-use App\Nova\License;
-use App\Nova\Purchase;
-use App\Nova\Receipt;
-use App\Nova\Series;
-use App\Nova\Technology;
 use App\Nova\Ad;
 use App\Nova\Bundle;
 use App\Nova\BundlePrice;
 use App\Nova\Dashboards\Main;
-use App\Nova\Metrics\NewUsers;
-use App\Nova\Metrics\VideoCompletions;
+use App\Nova\License;
 use App\Nova\Playlist;
 use App\Nova\Postcard;
 use App\Nova\Product;
 use App\Nova\Purchasable;
 use App\Nova\PurchasablePrice;
+use App\Nova\Purchase;
+use App\Nova\Receipt;
 use App\Nova\Release;
 use App\Nova\Repository;
+use App\Nova\Series;
+use App\Nova\Technology;
 use App\Nova\User;
 use App\Nova\Video;
 use Illuminate\Support\Facades\Gate;
@@ -79,7 +77,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     protected function gate(): void
     {
-        Gate::define('viewNova', fn($user) => $user->is_admin);
+        Gate::define('viewNova', fn ($user) => $user->is_admin);
     }
 
     public function register()
