@@ -24,6 +24,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
+use Laravel\Nova\Auth\Impersonatable;
 use Laravel\Paddle\Billable;
 use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
@@ -32,6 +33,7 @@ class User extends Authenticatable
     use HasFactory;
     use Billable;
     use Notifiable;
+    use Impersonatable;
 
     protected $hidden = [
         'password', 'remember_token',

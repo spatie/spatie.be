@@ -16,7 +16,6 @@ use App\Nova\Metrics\PurchasesPerProductPerDay;
 use App\Nova\Metrics\PurchasesPerProductPerMonth;
 use App\Nova\Metrics\PurchasesPerPurchasablePerDay;
 use App\Nova\Metrics\PurchasesPerPurchasablePerMonth;
-use App\Nova\Metrics\VideoCompletions;
 use Laravel\Nova\Dashboard;
 
 class Main extends Dashboard
@@ -24,9 +23,7 @@ class Main extends Dashboard
     public function cards()
     {
         return [
-    /*
             new NewUsers(),
-            new VideoCompletions(),
             new Earnings(),
             new PurchasesPerProduct(),
             new EarningsPerProduct(),
@@ -40,7 +37,6 @@ class Main extends Dashboard
             EarningsPerPurchasablePerDay::create(),
             EarningsPerProductPerMonth::create(),
             EarningsPerPurchasablePerMonth::create(),
-    */
         ];
     }
 
