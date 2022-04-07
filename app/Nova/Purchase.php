@@ -10,6 +10,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Purchase extends Resource
 {
@@ -27,7 +28,7 @@ class Purchase extends Resource
 
     public static $with = ['assignments.user', 'bundle', 'purchasable'];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -79,13 +80,7 @@ class Purchase extends Resource
         ];
     }
 
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [
             new TransferPurchasesAction(),

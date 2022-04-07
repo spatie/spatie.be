@@ -12,11 +12,13 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+use Laravel\Nova\Http\Requests\NovaRequest;
+
+;
 
 class Video extends Resource
 {
-    use HasSortableRows;
+
 
     public static $group = "Videos";
 
@@ -28,7 +30,7 @@ class Video extends Resource
         'id', 'title', 'chapter',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             BelongsTo::make('Series', 'series', Series::class)->sortable(),
@@ -85,7 +87,7 @@ class Video extends Resource
         ];
     }
 
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [
             new SeriesFilter(),

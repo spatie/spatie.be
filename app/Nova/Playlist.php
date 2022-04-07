@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Playlist extends Resource
 {
@@ -20,7 +21,7 @@ class Playlist extends Resource
         'id', 'name',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -36,7 +37,7 @@ class Playlist extends Resource
                 ->rules(['required', 'max:255', 'url']),
 
             Image::make('Image')
-                ->store(function (Request $request, EloquentPlaylist $playlist) {
+                ->store(function (NovaRequest $request, EloquentPlaylist $playlist) {
                     return function () use ($request, $playlist): void {
                         $playlist
                             ->addMedia($request->file('image'))

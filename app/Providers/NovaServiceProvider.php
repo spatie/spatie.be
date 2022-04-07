@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Nova\Dashboards\Sales;
+use App\Nova\Dashboards\Main;
 use App\Nova\Metrics\NewUsers;
 use App\Nova\Metrics\VideoCompletions;
 use Illuminate\Support\Facades\Gate;
@@ -21,29 +21,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     protected function gate(): void
     {
-        Gate::define('viewNova', function ($user) {
-            return $user->is_admin;
-        });
-    }
-
-    protected function cards()
-    {
-        return [
-            new NewUsers(),
-            new VideoCompletions(),
-        ];
-    }
-
-    protected function dashboards()
-    {
-        return [
-            new Sales(),
-        ];
-    }
-
-    public function tools()
-    {
-        return [];
+        Gate::define('viewNova', fn($user) => $user->is_admin);
     }
 
     public function register()

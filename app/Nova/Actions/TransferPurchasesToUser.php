@@ -9,6 +9,7 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Actions\DestructiveAction;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Paddle\Receipt;
 
 class TransferPurchasesToUser extends DestructiveAction
@@ -36,7 +37,7 @@ class TransferPurchasesToUser extends DestructiveAction
         return Action::message("All purchases transfered to {$otherUser->name} ({$otherUser->email})!");
     }
 
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         return [
             Text::make('Email')->required(),

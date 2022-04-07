@@ -10,6 +10,7 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Actions\DestructiveAction;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class TransferPurchasesAction extends DestructiveAction
 {
@@ -30,7 +31,7 @@ class TransferPurchasesAction extends DestructiveAction
         return Action::message("Transfer to {$otherUser->name} ({$otherUser->email}) is complete!");
     }
 
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         return [
             Text::make('Email')->required(),

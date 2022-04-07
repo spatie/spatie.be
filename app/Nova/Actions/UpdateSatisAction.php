@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Spatie\Ssh\Ssh;
 
+/*
 class UpdateSatisAction extends DetachedAction
 {
     use InteractsWithQueue;
@@ -27,3 +28,5 @@ class UpdateSatisAction extends DetachedAction
         });
     }
 }
+
+*/
