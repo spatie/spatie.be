@@ -32,10 +32,6 @@ return [
             'birthday' => '1994-05-16',
         ],
         [
-            'name' => 'adriaan',
-            'birthday' => '1995-10-22',
-        ],
-        [
             'name' => 'rias',
             'birthday' => '1992-05-25',
         ],
