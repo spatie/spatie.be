@@ -1,10 +1,4 @@
 <nav class="relative top-0  bg-opacity-50  rounded-sm ">
-    <div class="mb-4 rounded-sm overflow-hidden  ">
-        <h2 class="title-sm text-sm px-4 py-6  gradient gradient-green text-white">
-            {{ $series->title }}
-        </h2>
-    </div>
-
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
         <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
             This is content from a <a href="{{ $series->purchaseLink() }}" class="link-green link-underline">paid
