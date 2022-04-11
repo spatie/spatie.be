@@ -13,12 +13,9 @@ use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class Lesson extends Resource
 {
-    use HasSortableRows;
-
     public static $group = "Courses";
 
     public static $model = EloquentLesson::class;
