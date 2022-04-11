@@ -20,6 +20,11 @@ use Laravel\Nova\Dashboard;
 
 class Main extends Dashboard
 {
+    public function label()
+    {
+        return 'Sales';
+    }
+
     public function cards()
     {
         return [
