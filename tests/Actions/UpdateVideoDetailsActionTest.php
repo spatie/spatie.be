@@ -1,6 +1,7 @@
 <?php
 
 use App\Actions\UpdateVideoDetailsAction;
+use App\Domain\Shop\Enums\SeriesType;
 use App\Models\Series;
 use App\Models\Video;
 use App\Services\Vimeo\Vimeo;
@@ -15,17 +16,15 @@ it('updates video details', function () {
         'title' => 'Series',
         'slug' => 'series',
         'description' => 'Series',
+        'type' => SeriesType::Video->value,
     ]);
 
     $video = Video::withoutEvents(function () use ($series) {
         return Video::create([
-            'series_id' => $series->id,
             'vimeo_id' => 1234,
             'thumbnail' => 'something',
             'title' => 'A title',
             'hash' => 'hash',
-            'slug' => 'a-title',
-            'sort_order' => 1,
             'runtime' => 0,
         ]);
     });
@@ -47,8 +46,7 @@ it('updates video details', function () {
     $this->action->execute($video);
 
     tap($video->fresh(), function (Video $video) {
-        expect($video->title)->toBe('A video');
-        expect($video->slug)->toBe('a-video');
+        expect($video->title)->toBe('A title');
         expect($video->hash)->toBe('updated-hash');
 
         expect($video->description)->toBe('A description');
