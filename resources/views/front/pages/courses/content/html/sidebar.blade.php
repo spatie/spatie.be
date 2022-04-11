@@ -7,7 +7,7 @@
 
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
         <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
-            These are videos from a <a href="{{ $series->purchaseLink() }}" class="link-green link-underline">paid
+            This is content from a <a href="{{ $series->purchaseLink() }}" class="link-green link-underline">paid
                 course</a>.
             <div class="mt-2">
                 <a href="{{ $series->purchaseLink() }}" class="grid">
