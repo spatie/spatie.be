@@ -18,7 +18,7 @@ use App\Nova\Metrics\PurchasesPerPurchasablePerDay;
 use App\Nova\Metrics\PurchasesPerPurchasablePerMonth;
 use Laravel\Nova\Dashboard;
 
-class Sales extends Dashboard
+class Main extends Dashboard
 {
     public function cards()
     {
