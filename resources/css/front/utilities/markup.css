@@ -254,6 +254,7 @@
     @apply overflow-hidden;
     @apply overflow-x-scroll;
     @apply bg-paper !important;
+    @apply text-base
 }
 
 .markup-course{
