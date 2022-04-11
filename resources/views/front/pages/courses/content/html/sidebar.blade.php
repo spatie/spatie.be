@@ -3,22 +3,7 @@
         <h2 class="title-sm text-sm px-4 py-6  gradient gradient-green text-white">
             {{ $series->title }}
         </h2>
-        @if (! $series->isOwnedByCurrentUser())
-        <div class="w-full bg-white p-4">
-            <p class="mb-4">To see all the content you must buy this course</p>
-            
-                <a href="{{ $series->purchaseLink() }}">
-                    <x-button>
-                        Buy entire course
-                    </x-button>
-                </a>
-           
-        </div>
-        @endif
     </div>
-
-    
-
 
     @if(!$series->isOwnedByCurrentUser() && $series->isPurchasable())
         <div class="my-8 py-4 pr-4 line-l line-l-green bg-green-lightest bg-opacity-50">
@@ -43,7 +28,7 @@
     <ul class="text-xs grid bg-white p-2 rounded-sm shadow links-blue markup-list-compact">
         <li class="bg-white py-2 rounded-sm {{ request()->routeIs('series.show') ? " bg-paper " : "" }}">
             <a class="flex items-center gap-4" href="{{ route('series.show', [$series]) }}">
-                    
+
                 <span class="mr-1 text-black {{ request()->routeIs('series.show') ? "
                     font-sans-bold " : "" }}">Introduction</span>
             </a>
@@ -79,8 +64,8 @@
                         @foreach($lessonsPerChapter as $lessonInChapter)
                             <li class="bg-white  py-2 rounded-sm flex items-center gap-2 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "
                     font-sans-bold bg-paper text-white" : "" }}">
-                                    
-                                    
+
+
                                 <a class="flex items-center gap-2" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                                     <span class="mr-1">{{ $lessonInChapter->title }}</span>
                                     @if ($lessonInChapter->hasBeenCompletedByCurrentUser())
