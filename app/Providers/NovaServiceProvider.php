@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Nova\Ad;
 use App\Nova\Bundle;
 use App\Nova\BundlePrice;
-use App\Nova\Dashboards\Main;
+use App\Nova\Dashboards\Sales;
 use App\Nova\License;
 use App\Nova\Playlist;
 use App\Nova\Postcard;
@@ -34,6 +34,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         Nova::mainMenu(function () {
             return [
+                MenuSection::dashboard(new Sales())->icon('chart-bar'),
 
                 MenuSection::make('Customers', [
                     MenuItem::resource(User::class),
@@ -88,7 +89,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function dashboards()
     {
         return [
-            new Main(),
+            new Sales(),
         ];
     }
 }
