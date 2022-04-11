@@ -40,10 +40,12 @@
             {{ $chapter }}
 
             {{-- TODO CHECK IF COMPLETED--}}
+            {{--
             <div
                 class="w-3 h-3  bg-green rounded-full text-xs flex items-center text-white justify-items-center font-bold">
                 <p class="w-full inline-block text-center">✓</p>
             </div>
+            --}}
         </h3>
         @endif
         @foreach($lessonsPerChapter as $lessonInChapter)
