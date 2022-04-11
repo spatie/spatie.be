@@ -2,7 +2,7 @@
 
 namespace App\Nova\Metrics;
 
-use App\Models\VideoCompletion;
+use App\Models\LessonCompletion;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
 
@@ -11,7 +11,7 @@ class VideoCompletions extends Trend
     public function calculate(NovaRequest $request)
     {
         return $this
-            ->countByDays($request, VideoCompletion::class)
+            ->countByDays($request, LessonCompletion::class)
             ->showSumValue();
     }
 

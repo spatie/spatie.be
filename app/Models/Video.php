@@ -3,92 +3,40 @@
 namespace App\Models;
 
 use App\Actions\UpdateVideoDetailsAction;
-use App\Http\Controllers\VideosController;
-use App\Models\Enums\VideoDisplayEnum;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use League\CommonMark\CommonMarkConverter;
-use Spatie\EloquentSortable\Sortable;
-use Spatie\EloquentSortable\SortableTrait;
 
-class Video extends Model implements Sortable
+class Video extends Model
 {
     use HasFactory;
-    use SortableTrait;
 
     protected $casts = [
-        'sort' => 'integer',
         'downloadable' => 'boolean',
     ];
-
-    public $sortable = [
-        'order_column_name' => 'sort_order',
-        'sort_when_creating' => true,
-    ];
-
-    public function getRouteKeyName()
-    {
-        return 'slug';
-    }
 
     protected static function booted(): void
     {
         static::creating(function (Video $video): void {
             if (! $video->title) {
                 $video->title = 'New video';
-                $video->slug = 'new-video';
                 $video->runtime = 0;
+                $video->hash = '';
             }
         });
 
         static::saved(fn (Video $video) => app(UpdateVideoDetailsAction::class)->execute($video));
     }
 
-    public function series(): BelongsTo
-    {
-        return $this->belongsTo(Series::class);
-    }
-
     public function completions(): HasMany
     {
-        return $this->hasMany(VideoCompletion::class);
-    }
-
-    public function getPrevious(): ?Video
-    {
-        $orderedVideos = $this->series->videos->groupBy('chapter')->flatten();
-
-        $currentIndex = $orderedVideos->search(fn (Video $video) => $video->is($this));
-
-        if ($currentIndex === 0) {
-            return null;
-        }
-
-        return $orderedVideos[$currentIndex - 1];
-    }
-
-    public function getNext(): ?Video
-    {
-        $orderedVideos = $this->series->videos->groupBy('chapter')->flatten();
-
-        $currentIndex = $orderedVideos->search(fn (Video $video) => $video->is($this));
-
-        if ($currentIndex === $orderedVideos->keys()->last()) {
-            return null;
-        }
-
-        return $orderedVideos[$currentIndex + 1];
-    }
-
-    public function getUrlAttribute(): string
-    {
-        return action([VideosController::class, 'show'], [$this->series, $this]);
+        return $this->hasMany(LessonCompletion::class);
     }
 
     protected function getDownloadUrls(): Collection
@@ -137,71 +85,8 @@ class Video extends Model implements Sortable
         return (new CommonMarkConverter())->convert($this->description);
     }
 
-    public function canBeSeenByCurrentUser(): bool
+    public function lesson(): MorphOne
     {
-        if ($this->display === VideoDisplayEnum::FREE) {
-            return true;
-        }
-
-        if (! auth()->check()) {
-            return false;
-        }
-
-        if ($this->display === VideoDisplayEnum::AUTH) {
-            return true;
-        }
-
-        $userOwnsSeries = $this->series->isOwnedByCurrentUser();
-
-        if ($this->display === VideoDisplayEnum::SPONSORS) {
-            return auth()->user()->isSponsoring() || $userOwnsSeries;
-        }
-
-        if ($this->display === VideoDisplayEnum::LICENSE) {
-            return $userOwnsSeries;
-        }
-
-        return false;
-    }
-
-    public function buildSortQuery()
-    {
-        return static::query()->where('series_id', $this->series_id)->where('chapter', $this->chapter);
-    }
-
-    public function hasBeenCompletedByCurrentUser(): bool
-    {
-        /** @var \App\Models\User $currentUser */
-        $currentUser = auth()->user();
-
-        if (! $currentUser) {
-            return false;
-        }
-
-        return $currentUser->completedVideos()->where('video_id', $this->id)->exists();
-    }
-
-    public function markAsCompletedForCurrentUser(): self
-    {
-        /** @var \App\Models\User $currentUser */
-        $currentUser = auth()->user();
-
-        if (! $currentUser) {
-            return $this;
-        }
-
-        $currentUser->completeVideo($this);
-
-        return $this;
-    }
-
-    public function markAsUncompletedForCurrentUser(): self
-    {
-        /** @var \App\Models\User $currentUser */
-        $currentUser = auth()->user();
-
-        $currentUser->completedVideos()->detach($this);
-
-        return $this;
+        return $this->morphOne(Lesson::class, 'content');
     }
 }

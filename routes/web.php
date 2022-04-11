@@ -33,7 +33,7 @@ use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\StopImpersonationController;
 use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\UsesController;
-use App\Http\Controllers\VideosController;
+use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
@@ -153,9 +153,12 @@ Route::post('login/apple', [AppleSocialiteController::class, 'callback']);
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 
-Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
-Route::get('/videos/{series:slug}', [SeriesController::class, 'show'])->name('series.show');
-Route::get('/videos/{series:slug}/{video:slug}', [VideosController::class, 'show'])->name('videos.show');
+Route::get('/courses', [CoursesController::class, 'index'])->name('courses.index');
+Route::get('/courses/{series:slug}', [SeriesController::class, 'show'])->name('series.show');
+Route::get('/courses/{series:slug}/{lesson:slug}', [CoursesController::class, 'show'])->name('courses.show');
+Route::post('/courses/{series:slug}/{lesson:slug}', [CoursesController::class, 'completeLesson'])->name('courses.completeLesson');
+
+Route::redirect('/videos', '/courses');
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);

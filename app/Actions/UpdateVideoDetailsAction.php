@@ -20,17 +20,19 @@ class UpdateVideoDetailsAction
         $video->withoutEvents(function () use ($video) {
             $vimeoVideo = $this->vimeo->getVideo($video->vimeo_id);
 
-            $slug = Str::slug($vimeoVideo['name']);
-
             $hash = Str::afterLast($vimeoVideo['link'], '/');
 
             $video->update([
-                'slug' => $slug,
-                'title' => $vimeoVideo['name'],
                 'description' => $vimeoVideo['description'],
                 'runtime' => $vimeoVideo['duration'],
                 'thumbnail' => $vimeoVideo['pictures']['sizes'][1]['link'],
                 'hash' => $hash,
+            ]);
+
+
+            $video->lesson?->update([
+                'slug' => Str::slug($vimeoVideo['name']),
+                'title' => $vimeoVideo['name'],
             ]);
         });
 

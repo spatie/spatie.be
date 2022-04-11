@@ -3,8 +3,9 @@
 namespace App\Models;
 
 use App\Domain\Experience\Observers\SeriesAchievementsObserver;
+use App\Domain\Shop\Enums\SeriesType;
 use App\Domain\Shop\Models\Purchasable;
-use App\Models\Enums\VideoDisplayEnum;
+use App\Models\Enums\LessonDisplayEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,6 +28,10 @@ class Series extends Model implements HasMedia, Sortable
 
     protected $with = [
         'media',
+    ];
+
+    protected $casts = [
+        'type' => SeriesType::class,
     ];
 
     protected static function booted()
@@ -57,9 +62,9 @@ class Series extends Model implements HasMedia, Sortable
         return $this->belongsToMany(Purchasable::class);
     }
 
-    public function videos()
+    public function lessons()
     {
-        return $this->hasMany(Video::class)->orderBy('sort_order');
+        return $this->hasMany(Lesson::class)->orderBy('sort_order');
     }
 
     public function getUrlAttribute(): string
@@ -74,11 +79,11 @@ class Series extends Model implements HasMedia, Sortable
 
     public function sampleVideoUrl(): ?string
     {
-        $video = $this->videos
+        $video = $this->lessons
             ->filter(
                 fn ($video) => in_array($video->display, [
-                    VideoDisplayEnum::FREE,
-                    VideoDisplayEnum::AUTH,
+                    LessonDisplayEnum::FREE,
+                    LessonDisplayEnum::AUTH,
                 ])
             )
             ->first();
@@ -87,7 +92,7 @@ class Series extends Model implements HasMedia, Sortable
             return null;
         }
 
-        return route('videos.show', [$this->slug, $video->slug]);
+        return route('courses.show', [$this->slug, $video->slug]);
     }
 
     public function purchaseLink(): string
@@ -101,13 +106,17 @@ class Series extends Model implements HasMedia, Sortable
 
     public function hasSponsoredContent(): bool
     {
-        return $this->videos->where('display', VideoDisplayEnum::SPONSORS)->count() > 0;
+        return $this->lessons->where('display', LessonDisplayEnum::SPONSORS)->count() > 0;
     }
 
     public function isOwnedByCurrentUser(): bool
     {
         if (! auth()->check()) {
             return false;
+        }
+
+        if (app()->environment('local')) {
+            return true;
         }
 
         return $this->purchasables
@@ -123,5 +132,12 @@ class Series extends Model implements HasMedia, Sortable
     public function purchasableWithDiscount(): ?Purchasable
     {
         return $this->purchasables()->get()->first(fn (Purchasable $purchasable) => $purchasable->hasActiveDiscount());
+    }
+
+    public function getUrlForChapter(string $chapter): string
+    {
+        $firstLessonInChapter = $this->lessons()->firstWhere('chapter', $chapter);
+
+        return route('courses.show', [$this, $firstLessonInChapter]);
     }
 }

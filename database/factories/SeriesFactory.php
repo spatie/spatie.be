@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Domain\Shop\Enums\SeriesType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SeriesFactory extends Factory
@@ -12,6 +13,7 @@ class SeriesFactory extends Factory
             'title' => 'test',
             'description' => 'test',
             'slug' => 'test',
+            'type' => SeriesType::Video->value,
         ];
     }
 }

@@ -64,7 +64,7 @@ class Series extends Resource
 
             Markdown::make('Introduction'),
 
-            HasMany::make('Videos', 'videos', Video::class),
+            HasMany::make('Videos', 'videos', Lesson::class),
 
             Boolean::make('Visible'),
         ];

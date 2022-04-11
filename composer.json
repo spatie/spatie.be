@@ -50,6 +50,8 @@
         "spatie/fork": "^1.1",
         "spatie/laravel-artisan-dispatchable": "^1.3",
         "spatie/laravel-backup": "^8.0",
+        "spatie/laravel-comments": "dev-main",
+        "spatie/laravel-comments-livewire": "dev-main",
         "spatie/laravel-disable-floc": "^1.0",
         "spatie/laravel-enum": "^3.0",
         "spatie/laravel-event-sourcing": "^7.0",
@@ -64,6 +66,7 @@
         "spatie/laravel-markdown": "^2.2.1",
         "spatie/laravel-medialibrary": "^10.0",
         "spatie/laravel-menu": "^4.1",
+        "spatie/laravel-ray": "^1.29",
         "spatie/laravel-remote": "^1.1",
         "spatie/laravel-schedule-monitor": "^3.0",
         "spatie/laravel-slack-alerts": "^1.1",
@@ -171,6 +174,12 @@
             "@php artisan ide-helper:generate",
             "@php artisan ide-helper:meta",
             "@php artisan ide-helper:models --nowrite"
+        ],
+        "import-writing-readable-php": [
+            "php artisan delete-seeded-html-lessons",
+            "php ../writing-readable-php-importer/artisan import",
+            "php artisan regenerate-html-lessons-html",
+            "cp -r ../writing-readable-php-importer/content/images/ public/images/readable-php"
         ]
     }
 }

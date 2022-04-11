@@ -4,8 +4,8 @@ namespace Database\Seeders;
 
 use App\Models\Enums\TechnologyType;
 use App\Models\Technology;
-use Exception;
 use Illuminate\Database\Seeder;
+use Throwable;
 
 class TechnologiesSeeder extends Seeder
 {
@@ -17,7 +17,7 @@ class TechnologiesSeeder extends Seeder
                 'name' => 'Tailwind CSS',
                 'type' => TechnologyType::frontend(),
                 'website_url' => 'https://tailwindcss.com/',
-                'image_url' => 'https://pbs.twimg.com/profile_images/1278691829135876097/I4HKOLJw_400x400.png',
+                //'image_url' => 'https://pbs.twimg.com/profile_images/1278691829135876097/I4HKOLJw_400x400.png',
                 'recommended_by' => ['willem'],
                 'description' => 'A description why we use Tailwind',
             ],
@@ -100,7 +100,7 @@ class TechnologiesSeeder extends Seeder
     public function run(): void
     {
         foreach ($this->technologies() as $data) {
-            $imageUrl = $data['image_url'];
+            $imageUrl = $data['image_url'] ?? null;
 
             unset($data['image_url']);
 
@@ -113,7 +113,7 @@ class TechnologiesSeeder extends Seeder
                 $technology
                     ->addMediaFromUrl($imageUrl)
                     ->toMediaCollection('avatar');
-            } catch (Exception $exception) {
+            } catch (Throwable $exception) {
             }
         }
 

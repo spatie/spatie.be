@@ -15,8 +15,13 @@
     <script src="{{ mix('/js/app.js') }}" defer></script>
     <script src="/scope.js" defer></script>
 
-        @include('layout.partials.analytics')
+    @include('layout.partials.analytics')
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     @stack('head')
+
+    <x-comments::styles />
 </head>
 
 <body class="flex flex-col min-h-screen">
@@ -42,6 +47,55 @@
     <livewire:scripts>
     @stack('scripts')
 
+        <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('compose', ({ text, defer = false } = {}) => {
+                    // Store the editor as a non-reactive instance property
+                    let editor;
+
+                    return {
+                        text,
+
+                        init() {
+                            if (! defer) {
+                                this.load();
+                            }
+                        },
+
+                        load() {
+                            if (editor) {
+                                return;
+                            }
+
+                            const textarea = this.$el.querySelector('textarea');
+
+                            if (! textarea) {
+                                return;
+                            }
+
+                            editor = new SimpleMDE({
+                                element: textarea,
+                                hideIcons: ['heading', 'image', 'preview', 'side-by-side', 'fullscreen', 'guide'],
+                                spellChecker: false,
+                                status: false,
+                            });
+
+                            editor.codemirror.on("change", () => {
+                                this.text = editor.value();
+                            });
+                        },
+
+                        clear() {
+                            editor.value('');
+                        },
+                    };
+                });
+            });
+        </script>
+        <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     {!! schema()->localBusiness() !!}
+
+    <x-comments::scripts /> 
 </body>
 </html>

@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\HtmlLesson;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 use Spatie\Flash\Flash;
@@ -35,5 +38,11 @@ class AppServiceProvider extends ServiceProvider
                 'content_parser' => \App\Docs\DocumentationContentParser::class,
             ]);
         }
+
+        Relation::morphMap([
+            'video' => Video::class,
+            'htmlLesson' => HtmlLesson::class,
+
+        ]);
     }
 }

@@ -16,7 +16,7 @@
                 </h3>
                 <ul class="mt-4 text-lg bullets bullets-blue links-underline links-black">
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('open-source.packages') }}">Open source packages</a></li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('products.index') }}">Our products</a> and  <a href="{{ route('videos.index') }}">videos</a></li>
+                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('products.index') }}">Our products</a> and  <a href="{{ route('courses.index') }}">videos</a></li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a href="{{ route('web-development') }}">Laravel, React &amp; Vue development</a></li>
                 </ul>
             </div>
@@ -27,7 +27,7 @@
             </a>
         </div>
         <div class="hidden | sm:block sm:col-span-5 sm:col-start-4 | text-right text-sm links-underline links-blue">
-            <p class="mt-2 pr-16">Check out the <a href="{{ route('open-source.postcards') }}" >postcards</a><br> 
+            <p class="mt-2 pr-16">Check out the <a href="{{ route('open-source.postcards') }}" >postcards</a><br>
             we get from kind users all over the world.</p>
         </div>
     </div>

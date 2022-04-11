@@ -8,9 +8,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Domain\Shop\Models\Referrer;
-use App\Models\Series;
 use App\Models\User;
-use App\Models\Video;
 use App\Support\Uuid\Uuid;
 
 it('can get passthrough for paddle', function () {
@@ -48,36 +46,6 @@ it('can get passthrough for paddle with a license and active referrer', function
         'referrer_uuid' => $referrer->uuid,
         'license_id' => $license->id,
     ]);
-});
-
-test('has completed', function () {
-    /** @var \App\Models\Series $series */
-    $series = Series::factory()->create();
-
-    $videoA = Video::factory()->make([
-        'series_id' => $series->id,
-    ]);
-
-    $videoA->saveQuietly();
-
-    $videoB = Video::factory()->make([
-        'series_id' => $series->id,
-    ]);
-
-    $videoB->saveQuietly();
-
-    /** @var \App\Models\User $user */
-    $user = User::factory()->create();
-
-    expect($user->hasCompleted($series))->toBeFalse();
-
-    $user->completeVideo($videoA);
-
-    expect($user->hasCompleted($series))->toBeFalse();
-
-    $user->completeVideo($videoB);
-
-    expect($user->hasCompleted($series))->toBeTrue();
 });
 
 test('deleting a user also deletes its purchases assignments licenses and achievements', function () {
