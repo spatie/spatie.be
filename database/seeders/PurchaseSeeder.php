@@ -15,7 +15,7 @@ class PurchaseSeeder extends Seeder
     {
         User::each(function (User $user) {
             /** @var \App\Domain\Shop\Models\Purchasable $purchasable */
-            $purchasable = Purchasable::firstWhere('title', 'Timber');
+            $purchasable = Purchasable::firstWhere('title', 'Ray license');
 
             $purchase = $user->purchases()->create([
                 'purchasable_id' => $purchasable->id,

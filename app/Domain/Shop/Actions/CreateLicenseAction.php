@@ -10,12 +10,12 @@ use Illuminate\Support\Str;
 
 class CreateLicenseAction
 {
-    public function execute(PurchaseAssignment $assignment): License
+    public function execute(PurchaseAssignment $assignment, Carbon $expiresAt = null): License
     {
         return License::create([
             'key' => Str::random(64),
             'purchase_assignment_id' => $assignment->id,
-            'expires_at' => $this->expiresAt($assignment->purchasable),
+            'expires_at' => $expiresAt ?? $this->expiresAt($assignment->purchasable),
         ]);
     }
 

@@ -4,19 +4,16 @@ namespace App\Nova;
 
 use App\Models\Enums\TechnologyType;
 use App\Models\Technology as EloquentTechnology;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use OptimistDigital\MultiselectField\Multiselect;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Technology extends Resource
 {
-    use HasSortableRows;
-
     public static $model = EloquentTechnology::class;
 
     public static $group = 'Technologies';
@@ -29,7 +26,7 @@ class Technology extends Resource
 
     public static array $orderBy = ['type' => 'asc', 'sort_order' => 'asc'];
 
-    public function fields(Request $request): array
+    public function fields(NovaRequest $request): array
     {
         return [
             ID::make()->sortable(),
@@ -52,19 +49,20 @@ class Technology extends Resource
             Text::make('Website Url', 'website_url')
                 ->rules(['required', 'max:255', 'url']),
 
-            Multiselect::make('Recommended by')
+            MultiSelect::make('Recommended by')
                 ->sortable()
                 ->hideFromIndex()
                 ->rules(['required'])
-                ->saveAsJSON()
                 ->options(
-                    collect(config('team.members'))->mapWithKeys(function (string $name) {
-                        return [$name => ucfirst($name)];
-                    })
+                    collect(config('team.members'))
+                        ->pluck('name')
+                        ->mapWithKeys(function (string $name) {
+                            return [$name => ucfirst($name)];
+                        })
                 ),
 
             Image::make('Avatar')
-                ->store(function (Request $request, EloquentTechnology $technology) {
+                ->store(function (NovaRequest $request, EloquentTechnology $technology) {
                     return function () use ($request, $technology): void {
                         $technology
                             ->addMedia($request->file('avatar'))
@@ -78,7 +76,7 @@ class Technology extends Resource
                 ->preview(function ($value, $disk) {
                     return $value;
                 })
-                ->delete(function (Request $request, EloquentTechnology $technology) {
+                ->delete(function (NovaRequest $request, EloquentTechnology $technology) {
                     $technology->clearMediaCollection('avatar');
 
                     return [];

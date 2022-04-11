@@ -11,6 +11,7 @@ use Laravel\Nova\Actions\Action;
 use Laravel\Nova\Fields\ActionFields;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class UpdateBundlePriceForCurrencyAction extends Action
 {
@@ -50,7 +51,7 @@ class UpdateBundlePriceForCurrencyAction extends Action
         return Action::message('Price updated!');
     }
 
-    public function fields()
+    public function fields(NovaRequest $request)
     {
         return [
             Number::make('Amount in cents'),

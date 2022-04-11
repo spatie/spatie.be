@@ -11,7 +11,7 @@
             @endif
             <h2 class="title-sm link-black">{{ $assignment->purchasable->product->title }}</h2>
             @if($assignment->purchase->created_at)
-                <p class="text-xs text-gray mt-1">Purchased on {{ $assignment->purchase->created_at->format('Y-m-d') }}</p>
+                <p class="text-xs text-gray mt-1">Added on {{ $assignment->purchase->created_at->format('Y-m-d') }}</p>
             @endif
         </a>
 

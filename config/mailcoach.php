@@ -44,8 +44,8 @@ return [
          * e-mail sending service.
          */
         'throttling' => [
-            'allowed_number_of_jobs_in_timespan' => 30,
-            'timespan_in_seconds' => 1,
+            'allowed_number_of_jobs_in_timespan' => 25,
+            'timespan_in_seconds' => 2,
 
             /*
              * Throttling relies on the cache. Here you can specify the store to be used.

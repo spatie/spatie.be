@@ -3,10 +3,10 @@
 namespace App\Nova;
 
 use App\Models\Postcard as EloquentPostcard;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Postcard extends Resource
 {
@@ -20,7 +20,7 @@ class Postcard extends Resource
         'id', 'sender', 'city', 'country',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -38,7 +38,7 @@ class Postcard extends Resource
                 ->rules(['required', 'max:255']),
 
             Image::make('Image')
-                ->store(function (Request $request, EloquentPostcard $postcard) {
+                ->store(function (NovaRequest $request, EloquentPostcard $postcard) {
                     return function () use ($request, $postcard): void {
                         $postcard
                             ->addMedia($request->file('image'))
@@ -57,49 +57,5 @@ class Postcard extends Resource
                     return [];
                 }),
         ];
-    }
-
-    /**
-     * Get the cards available for the request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array
-     */
-    public function actions(Request $request)
-    {
-        return [];
     }
 }

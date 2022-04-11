@@ -3,7 +3,6 @@
 namespace App\Nova;
 
 use App\Domain\Shop\Models\Product as EloquentProduct;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -11,12 +10,10 @@ use Laravel\Nova\Fields\Image;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Product extends Resource
 {
-    use HasSortableRows;
-
     public static $group = "Products";
 
     public static $model = EloquentProduct::class;
@@ -29,13 +26,13 @@ class Product extends Resource
 
     public static $with = ['purchasablesWithoutRenewals', 'renewals'];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
 
             Image::make('Image')
-                ->store(function (Request $request, EloquentProduct $product) {
+                ->store(function (NovaRequest $request, EloquentProduct $product) {
                     return function () use ($request, $product): void {
                         $product
                             ->addMedia($request->file('image'))
@@ -114,25 +111,5 @@ class Product extends Resource
                 })->join("\n");
             })->onlyOnIndex()->asHtml(),
         ];
-    }
-
-    public function cards(Request $request)
-    {
-        return [];
-    }
-
-    public function filters(Request $request)
-    {
-        return [];
-    }
-
-    public function lenses(Request $request)
-    {
-        return [];
-    }
-
-    public function actions(Request $request)
-    {
-        return [];
     }
 }

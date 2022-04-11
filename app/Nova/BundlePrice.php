@@ -5,18 +5,15 @@ namespace App\Nova;
 use App\Domain\Shop\Models\BundlePrice as EloquentBundlePrice;
 use App\Nova\Filters\BundleFilter;
 use App\Support\Paddle\PaddleCountries;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class BundlePrice extends Resource
 {
-    use HasSortableRows;
-
     public static $group = "Products";
 
     public static $tableStyle = 'tight';
@@ -31,7 +28,7 @@ class BundlePrice extends Resource
         'currency_code', 'country_code',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -50,7 +47,7 @@ class BundlePrice extends Resource
         ];
     }
 
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [
             new BundleFilter(),

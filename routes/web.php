@@ -30,6 +30,7 @@ use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\StopImpersonationController;
 use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
@@ -37,6 +38,8 @@ use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
 Route::mailcoach('mailcoach');
+
+Route::get('stop-impersonation', StopImpersonationController::class)->name('stop-impersonation');
 
 Route::feeds();
 
@@ -65,7 +68,7 @@ Route::view('web-development', 'front.pages.web-development.index')->name('web-d
 Route::prefix('about-us')->group(function () {
     Route::view('/', 'front.pages.about.index')->name('about');
 
-    collect(config('team.members'))->each(function (string $personName) {
+    collect(config('team.members'))->pluck('name')->each(function (string $personName) {
         Route::permanentRedirect($personName, "/about-us/#{$personName}");
     });
 });

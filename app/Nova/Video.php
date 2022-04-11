@@ -3,13 +3,19 @@
 namespace App\Nova;
 
 use App\Models\Video as EloquentVideo;
-use Illuminate\Http\Request;
-use Laravel\Nova\Fields\ID;
+
+use App\Nova\Filters\SeriesFilter;
+use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Video extends Resource
 {
-    public static $group = "Courses";
+    public static $group = "Videos";
 
     public static $model = EloquentVideo::class;
 
@@ -19,7 +25,7 @@ class Video extends Resource
         'id', 'title',
     ];
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -29,7 +35,24 @@ class Video extends Resource
                 ->hideWhenCreating()
                 ->hideWhenUpdating(),
 
+            Text::make('Chapter')->hideFromIndex()->sortable(),
 
+            Text::make('vimeo_id')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules(['required', 'max:255']),
+
+            Number::make('sort_order')
+                ->readonly()
+                ->hideFromIndex()
+                ->sortable(),
+        ];
+    }
+
+    public function filters(NovaRequest $request)
+    {
+        return [
+            new SeriesFilter(),
         ];
     }
 }

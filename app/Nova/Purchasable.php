@@ -7,7 +7,6 @@ use App\Domain\Shop\Models\Purchasable as EloquentPurchasable;
 use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use App\Nova\Filters\ProductFilter;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Files;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -20,14 +19,11 @@ use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
-use NovaItemsField\Items;
-use OptimistDigital\NovaSortable\Traits\HasSortableRows;
 
 class Purchasable extends Resource
 {
-    use HasSortableRows;
-
     public static $group = "Products";
 
     public static $model = EloquentPurchasable::class;
@@ -41,7 +37,7 @@ class Purchasable extends Resource
         return "{$this->title} ({$this->product->title})";
     }
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -69,7 +65,7 @@ class Purchasable extends Resource
                 Boolean::make('Is Lifetime')->hideFromIndex(),
 
                 Text::make('Repository access')->hideFromIndex(),
-                Items::make('Satis packages')->hideFromIndex(),
+                Text::make('Satis packages'),
             ]),
 
             new Panel('Details', [
@@ -78,7 +74,7 @@ class Purchasable extends Resource
                     ->rules(['required', 'max:255']),
 
                 Image::make('Image')
-                    ->store(function (Request $request, EloquentPurchasable $product) {
+                    ->store(function (NovaRequest $request, EloquentPurchasable $product) {
                         return function () use ($request, $product): void {
                             $product
                                 ->addMedia($request->file('image'))
@@ -139,7 +135,7 @@ class Purchasable extends Resource
         ];
     }
 
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [
             (new UpdatePriceForCurrencyAction())
@@ -148,7 +144,7 @@ class Purchasable extends Resource
         ];
     }
 
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [
             new ProductFilter(),
