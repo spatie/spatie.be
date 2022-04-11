@@ -8,9 +8,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Domain\Shop\Models\Referrer;
-use App\Models\Series;
 use App\Models\User;
-use App\Models\Video;
 use App\Support\Uuid\Uuid;
 
 it('can get passthrough for paddle', function () {
