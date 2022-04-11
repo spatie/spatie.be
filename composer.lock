@@ -4121,16 +4121,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "3.0.15",
+            "version": "3.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "3b71cd136dc0331ee87b636b25f4ee339368c718"
+                "reference": "dea729954c596bdb6cdaecba6f73df9f3e2c4255"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/3b71cd136dc0331ee87b636b25f4ee339368c718",
-                "reference": "3b71cd136dc0331ee87b636b25f4ee339368c718",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/dea729954c596bdb6cdaecba6f73df9f3e2c4255",
+                "reference": "dea729954c596bdb6cdaecba6f73df9f3e2c4255",
                 "shasum": ""
             },
             "require": {
@@ -4191,7 +4191,7 @@
             ],
             "support": {
                 "issues": "https://github.com/thephpleague/flysystem/issues",
-                "source": "https://github.com/thephpleague/flysystem/tree/3.0.15"
+                "source": "https://github.com/thephpleague/flysystem/tree/3.0.16"
             },
             "funding": [
                 {
@@ -4207,7 +4207,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-08T18:36:06+00:00"
+            "time": "2022-04-11T13:32:22+00:00"
         },
         {
             "name": "league/flysystem-aws-s3-v3",
@@ -10031,13 +10031,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments.git",
-                "reference": "4b46b4f5c22424d0ca9a18bbbf6abb448a30b6bb"
+                "reference": "1829eb70b1c812ad5344f5071019f5f9e2d7a084"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-4b46b4f5c22424d0ca9a18bbbf6abb448a30b6bb-zip-d651bb.zip",
-                "reference": "4b46b4f5c22424d0ca9a18bbbf6abb448a30b6bb",
-                "shasum": "8c05beaff4c0fbdd36afed49819c5ff191e6c7fb"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-1829eb70b1c812ad5344f5071019f5f9e2d7a084-zip-ccdc80.zip",
+                "reference": "1829eb70b1c812ad5344f5071019f5f9e2d7a084",
+                "shasum": "43e55e502a81c3c09f2c2471a0fcb17655a8997f"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10122,7 +10122,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-08T14:10:21+00:00"
+            "time": "2022-04-11T13:45:58+00:00"
         },
         {
             "name": "spatie/laravel-comments-livewire",
@@ -10130,13 +10130,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments-livewire.git",
-                "reference": "cb51dc6fe4d305fe3482cfd4e055ae9e5155e9f6"
+                "reference": "219d4146c9024f55263362e390b5c5daf339f41f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-cb51dc6fe4d305fe3482cfd4e055ae9e5155e9f6-zip-97f878.zip",
-                "reference": "cb51dc6fe4d305fe3482cfd4e055ae9e5155e9f6",
-                "shasum": "1eb7e31cf0ef2a148d624af17893f4cf93efb430"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-219d4146c9024f55263362e390b5c5daf339f41f-zip-db2013.zip",
+                "reference": "219d4146c9024f55263362e390b5c5daf339f41f",
+                "shasum": "78704ea39bb5b6976b16aab680d34b51abe5c2a6"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10217,7 +10217,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-08T13:39:22+00:00"
+            "time": "2022-04-11T13:43:34+00:00"
         },
         {
             "name": "spatie/laravel-disable-floc",
@@ -12973,16 +12973,16 @@
         },
         {
             "name": "spatie/schema-org",
-            "version": "3.10.0",
+            "version": "3.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/schema-org.git",
-                "reference": "a1639a32fcb5c70d86100fda1d4e18874af22faf"
+                "reference": "75d67883903ce450e8039e6f03d07c0bdd6a39ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/schema-org/zipball/a1639a32fcb5c70d86100fda1d4e18874af22faf",
-                "reference": "a1639a32fcb5c70d86100fda1d4e18874af22faf",
+                "url": "https://api.github.com/repos/spatie/schema-org/zipball/75d67883903ce450e8039e6f03d07c0bdd6a39ba",
+                "reference": "75d67883903ce450e8039e6f03d07c0bdd6a39ba",
                 "shasum": ""
             },
             "require": {
@@ -12994,7 +12994,7 @@
                 "graham-campbell/analyzer": "^3.0.5",
                 "illuminate/collections": "^8.62.0",
                 "league/flysystem": "^2.3.0 || ^3.0",
-                "phpunit/phpunit": "^9.4.3",
+                "pestphp/pest": "^1.21",
                 "symfony/console": "^5.3.7 || 6.0",
                 "twig/twig": "^3.3.3"
             },
@@ -13030,7 +13030,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/schema-org/issues",
-                "source": "https://github.com/spatie/schema-org/tree/3.10.0"
+                "source": "https://github.com/spatie/schema-org/tree/3.11.0"
             },
             "funding": [
                 {
@@ -13042,7 +13042,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-04T10:55:28+00:00"
+            "time": "2022-04-11T13:29:01+00:00"
         },
         {
             "name": "spatie/sheets",
