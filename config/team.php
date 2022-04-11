@@ -20,10 +20,6 @@ return [
             'nickname' => 'seb',
         ],
         [
-            'name' => 'brent',
-            'birthday' => '1994-07-30',
-        ],
-        [
             'name' => 'alex',
             'birthday' => '1996-02-05',
         ],
@@ -34,10 +30,6 @@ return [
         [
             'name' => 'ruben',
             'birthday' => '1994-05-16',
-        ],
-        [
-            'name' => 'adriaan',
-            'birthday' => '1995-10-22',
         ],
         [
             'name' => 'rias',

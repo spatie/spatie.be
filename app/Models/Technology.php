@@ -26,6 +26,10 @@ class Technology extends Model implements HasMedia, Sortable
         'recommended_by' => 'array',
     ];
 
+    public $attributes = [
+        'recommended_by' => '[]',
+    ];
+
     public $with = [
         'media',
     ];

@@ -6,12 +6,11 @@ use App\Models\Enums\TechnologyType;
 use App\Models\Technology as EloquentTechnology;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\MultiSelect;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
-
-;
 
 class Technology extends Resource
 {
@@ -49,6 +48,18 @@ class Technology extends Resource
 
             Text::make('Website Url', 'website_url')
                 ->rules(['required', 'max:255', 'url']),
+
+            MultiSelect::make('Recommended by')
+                ->sortable()
+                ->hideFromIndex()
+                ->rules(['required'])
+                ->options(
+                    collect(config('team.members'))
+                        ->pluck('name')
+                        ->mapWithKeys(function (string $name) {
+                            return [$name => ucfirst($name)];
+                        })
+                ),
 
             Image::make('Avatar')
                 ->store(function (NovaRequest $request, EloquentTechnology $technology) {
