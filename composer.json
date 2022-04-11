@@ -17,7 +17,7 @@
         "aws/aws-sdk-php": "^3.209",
         "barryvdh/laravel-debugbar": "^3.6",
         "blade-ui-kit/blade-ui-kit": "^0.3",
-        "coroowicaksono/chart-js-integration": "^0.3.4",
+        "coroowicaksono/chart-js-integration": "^0.3.5",
         "doctrine/dbal": "^3.3",
         "ebess/advanced-nova-media-library": "^3.8",
         "fruitcake/laravel-cors": "^3.0",
