@@ -193,7 +193,7 @@
                                             @if ($series->title !== $course->purchasable->product->title)
                                                 {{ $series->title }}
                                             @else
-                                                Video course
+                                                View course
                                             @endif
                                         </x-button>
                                     </a>
