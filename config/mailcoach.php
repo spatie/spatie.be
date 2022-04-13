@@ -449,4 +449,8 @@ return [
          */
         'use_blade_components' => true,
     ],
+
+    'ses_feedback' => [
+        'configuration_set' => 'mailcoach',
+    ],
 ];
