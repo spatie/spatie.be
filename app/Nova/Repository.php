@@ -39,8 +39,8 @@ class Repository extends Resource
     public function actions(NovaRequest $request)
     {
         return [
-          //  (new ImportDocsAction())->onlyOnIndexToolbar(),
-          //  (new UpdateSatisAction())->onlyOnIndexToolbar(),
+          (new ImportDocsAction())->standalone(),
+          (new UpdateSatisAction())->standalone(),
         ];
     }
 }

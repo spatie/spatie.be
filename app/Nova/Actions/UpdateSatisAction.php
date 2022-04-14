@@ -2,13 +2,12 @@
 
 namespace App\Nova\Actions;
 
-use Brightspot\Nova\Tools\DetachedActions\DetachedAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
+use Laravel\Nova\Actions\Action;
 use Spatie\Ssh\Ssh;
 
-/*
-class UpdateSatisAction extends DetachedAction
+class UpdateSatisAction extends Action
 {
     use InteractsWithQueue;
     use Queueable;
@@ -28,5 +27,3 @@ class UpdateSatisAction extends DetachedAction
         });
     }
 }
-
-*/

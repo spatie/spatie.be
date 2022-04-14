@@ -65,7 +65,7 @@ class Purchasable extends Resource
                 Boolean::make('Is Lifetime')->hideFromIndex(),
 
                 Text::make('Repository access')->hideFromIndex(),
-                Text::make('Satis packages'),
+                Text::make('Satis packages')->hideFromIndex(),
             ]),
 
             new Panel('Details', [

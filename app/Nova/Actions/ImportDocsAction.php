@@ -4,12 +4,11 @@ namespace App\Nova\Actions;
 
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use Artisan;
-use Brightspot\Nova\Tools\DetachedActions\DetachedAction;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
+use Laravel\Nova\Actions\Action;
 
-/*
-class ImportDocsAction extends DetachedAction
+class ImportDocsAction extends Action
 {
     use InteractsWithQueue;
     use Queueable;
@@ -26,4 +25,3 @@ class ImportDocsAction extends DetachedAction
         });
     }
 }
-*/
