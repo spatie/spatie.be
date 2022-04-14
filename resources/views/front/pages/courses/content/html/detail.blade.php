@@ -35,7 +35,7 @@
                     transition-bg duration-300
                     focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap" href="{{ $nextLesson->url }}">Continue</a>
                         </div>
-                            
+
                         @else
                             <form action="{{ route('courses.completeLesson', [$series, $lesson]) }}" method="POST">
                                 @csrf
@@ -61,7 +61,8 @@
                 @endif
                 <hr class="my-8 -ml-4 line-after "/>
 
-                <livewire:comments :model="$htmlLesson->lesson"/>
+                <livewire:comments
+                    no-comments-text="What do you think about this?" :model="$htmlLesson->lesson"/>
             </div>
         </div>
     </section>
