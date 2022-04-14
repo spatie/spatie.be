@@ -347,16 +347,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.219.0",
+            "version": "3.219.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "e77a9bc31fdd98d3893f398468a36e00b12db3dc"
+                "reference": "2bbafacd922391077b9dcf40d57fc33ad9759e33"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/e77a9bc31fdd98d3893f398468a36e00b12db3dc",
-                "reference": "e77a9bc31fdd98d3893f398468a36e00b12db3dc",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2bbafacd922391077b9dcf40d57fc33ad9759e33",
+                "reference": "2bbafacd922391077b9dcf40d57fc33ad9759e33",
                 "shasum": ""
             },
             "require": {
@@ -432,9 +432,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.219.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.219.3"
             },
-            "time": "2022-04-08T18:16:00+00:00"
+            "time": "2022-04-13T18:15:40+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -2694,7 +2694,7 @@
             ],
             "support": {
                 "issues": "https://github.com/KnpLabs/php-github-api/issues",
-                "source": "https://github.com/KnpLabs/php-github-api/tree/v3.6.0"
+                "source": "https://github.com/KnpLabs/php-github-api/tree/master"
             },
             "funding": [
                 {
@@ -2702,7 +2702,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-24T09:08:32+00:00"
+            "time": "2022-04-13T08:34:13+00:00"
         },
         {
             "name": "laminas/laminas-escaper",
@@ -3254,16 +3254,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.7.0",
+            "version": "v9.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "54c9696ee3e558ab29317ed6e0cb16bb9db5aad4"
+                "reference": "9f468689964ac80b674a2fe71a56baa7e9e20493"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/54c9696ee3e558ab29317ed6e0cb16bb9db5aad4",
-                "reference": "54c9696ee3e558ab29317ed6e0cb16bb9db5aad4",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/9f468689964ac80b674a2fe71a56baa7e9e20493",
+                "reference": "9f468689964ac80b674a2fe71a56baa7e9e20493",
                 "shasum": ""
             },
             "require": {
@@ -3429,7 +3429,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-04-05T15:07:51+00:00"
+            "time": "2022-04-12T15:43:03+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -3510,17 +3510,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.1.0",
+            "version": "4.2.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "3e003e35adb6ad2924d5ad070271eb86b06c5f79"
+                "reference": "f33003b1991491165e8822680e9a827f33c279c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-3e003e35adb6ad2924d5ad070271eb86b06c5f79-zip-da7a11.zip",
-                "reference": "3e003e35adb6ad2924d5ad070271eb86b06c5f79",
-                "shasum": "29b99aefb1a48425efc07cd44a9c4a41dc9c271a"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-f33003b1991491165e8822680e9a827f33c279c5-zip-383f38.zip",
+                "reference": "f33003b1991491165e8822680e9a827f33c279c5",
+                "shasum": "b6ec018f2dc660ef2f1a4b50b92bbab1d4aeb0af"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -3539,6 +3539,7 @@
             },
             "require-dev": {
                 "laravel/nova-dusk-suite": "8.4.x-dev|9.4.x-dev",
+                "laravel/scout": "^9.4",
                 "mockery/mockery": "^1.4.4",
                 "nunomaduro/larastan": "^1.0.1|^2.0",
                 "orchestra/testbench-dusk": "^6.24|^7.0",
@@ -3609,9 +3610,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.1.0"
+                "source": "https://github.com/laravel/nova/tree/v4.2.1"
             },
-            "time": "2022-04-07T19:42:36+00:00"
+            "time": "2022-04-13T23:28:29+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -10031,13 +10032,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments.git",
-                "reference": "1829eb70b1c812ad5344f5071019f5f9e2d7a084"
+                "reference": "ba18f08cfefa56b0f3149d0bb3688a8f8c5d2f1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-1829eb70b1c812ad5344f5071019f5f9e2d7a084-zip-ccdc80.zip",
-                "reference": "1829eb70b1c812ad5344f5071019f5f9e2d7a084",
-                "shasum": "43e55e502a81c3c09f2c2471a0fcb17655a8997f"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-ba18f08cfefa56b0f3149d0bb3688a8f8c5d2f1e-zip-e68e3c.zip",
+                "reference": "ba18f08cfefa56b0f3149d0bb3688a8f8c5d2f1e",
+                "shasum": "209eb8dc42471e9f5f12448e2a4136f9f9a39e06"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10122,7 +10123,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-11T13:45:58+00:00"
+            "time": "2022-04-12T14:56:25+00:00"
         },
         {
             "name": "spatie/laravel-comments-livewire",
@@ -10130,13 +10131,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments-livewire.git",
-                "reference": "219d4146c9024f55263362e390b5c5daf339f41f"
+                "reference": "40aebda509e206a2def6930427fc6711245dd262"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-219d4146c9024f55263362e390b5c5daf339f41f-zip-db2013.zip",
-                "reference": "219d4146c9024f55263362e390b5c5daf339f41f",
-                "shasum": "78704ea39bb5b6976b16aab680d34b51abe5c2a6"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-40aebda509e206a2def6930427fc6711245dd262-zip-035798.zip",
+                "reference": "40aebda509e206a2def6930427fc6711245dd262",
+                "shasum": "8e85cef5a565d047216f25b00644c5e2a6ad7f84"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10217,7 +10218,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-11T13:43:34+00:00"
+            "time": "2022-04-12T14:54:41+00:00"
         },
         {
             "name": "spatie/laravel-disable-floc",
@@ -10713,16 +10714,16 @@
         },
         {
             "name": "spatie/laravel-ignition",
-            "version": "1.2.0",
+            "version": "1.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-ignition.git",
-                "reference": "2b54c8c66f2d280f25e15064ebe3d5e3eda19820"
+                "reference": "9ad1d32acf8c855d711964bc19092b0bc9792273"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/2b54c8c66f2d280f25e15064ebe3d5e3eda19820",
-                "reference": "2b54c8c66f2d280f25e15064ebe3d5e3eda19820",
+                "url": "https://api.github.com/repos/spatie/laravel-ignition/zipball/9ad1d32acf8c855d711964bc19092b0bc9792273",
+                "reference": "9ad1d32acf8c855d711964bc19092b0bc9792273",
                 "shasum": ""
             },
             "require": {
@@ -10799,7 +10800,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-04-01T21:01:58+00:00"
+            "time": "2022-04-13T08:06:05+00:00"
         },
         {
             "name": "spatie/laravel-json-api-paginate",
@@ -10867,17 +10868,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "5.5.0",
+            "version": "5.5.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "092017412137b38a4f67c284d906d537aef18446"
+                "reference": "4a71609d97e1332c8b6a3f08fe3d5428afeaa615"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-092017412137b38a4f67c284d906d537aef18446-zip-a73b19.zip",
-                "reference": "092017412137b38a4f67c284d906d537aef18446",
-                "shasum": "7ce44591ce14a7ba5a323efae5d50124c3d14917"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-4a71609d97e1332c8b6a3f08fe3d5428afeaa615-zip-5f6712.zip",
+                "reference": "4a71609d97e1332c8b6a3f08fe3d5428afeaa615",
+                "shasum": "ac2acb72b8e077f5e3c8b65a3fd571ea2a5bfc7a"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -10986,10 +10987,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/5.5.0",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/5.5.1",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2022-04-11T07:24:09+00:00"
+            "time": "2022-04-12T09:24:26+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -11135,24 +11136,24 @@
         },
         {
             "name": "spatie/laravel-mailcoach-ses-feedback",
-            "version": "4.0.0",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-mailcoach-ses-feedback.git",
-                "reference": "1c944f5aec21deb79d7130ce455250c504fafaaf"
+                "reference": "8d61db5534fc1465cb8f34bed205cb3bc2b79a44"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach-ses-feedback/spatie-laravel-mailcoach-ses-feedback-1c944f5aec21deb79d7130ce455250c504fafaaf-zip-5f0b71.zip",
-                "reference": "1c944f5aec21deb79d7130ce455250c504fafaaf",
-                "shasum": "eaa8fb66ccf521b014f6a1ca7ebba9274f0d4970"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach-ses-feedback/spatie-laravel-mailcoach-ses-feedback-8d61db5534fc1465cb8f34bed205cb3bc2b79a44-zip-4e1d2f.zip",
+                "reference": "8d61db5534fc1465cb8f34bed205cb3bc2b79a44",
+                "shasum": "db2f87098932124712f04e762f141ab912d8260c"
             },
             "require": {
                 "aws/aws-php-sns-message-validator": "^1.6",
                 "ext-json": "*",
                 "illuminate/support": "^9.0",
                 "php": "^8.0",
-                "spatie/laravel-mailcoach": "^5.0",
+                "spatie/laravel-mailcoach": "^5.2",
                 "symfony/amazon-mailer": "^6.0"
             },
             "require-dev": {
@@ -11203,9 +11204,9 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach-ses-feedback/tree/4.0.0"
+                "source": "https://github.com/spatie/laravel-mailcoach-ses-feedback/tree/4.0.1"
             },
-            "time": "2022-02-08T19:13:12+00:00"
+            "time": "2022-04-13T17:29:50+00:00"
         },
         {
             "name": "spatie/laravel-markdown",
@@ -18391,16 +18392,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.5.4",
+            "version": "1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "bbf68cae24f6dc023c607ea0f87da55dd9d55c2b"
+                "reference": "d77a607667f29ae099c0686f99664bd451fd23df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/bbf68cae24f6dc023c607ea0f87da55dd9d55c2b",
-                "reference": "bbf68cae24f6dc023c607ea0f87da55dd9d55c2b",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d77a607667f29ae099c0686f99664bd451fd23df",
+                "reference": "d77a607667f29ae099c0686f99664bd451fd23df",
                 "shasum": ""
             },
             "require": {
@@ -18426,7 +18427,7 @@
             "description": "PHPStan - PHP Static Analysis Tool",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan/issues",
-                "source": "https://github.com/phpstan/phpstan/tree/1.5.4"
+                "source": "https://github.com/phpstan/phpstan/tree/1.5.5"
             },
             "funding": [
                 {
@@ -18446,7 +18447,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-03T12:39:00+00:00"
+            "time": "2022-04-14T12:20:26+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
