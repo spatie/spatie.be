@@ -25,16 +25,17 @@
                         </h1>
 
                         @if($lesson->hasBeenCompletedByCurrentUser())
-                        <div class="flex items-center">
-                            <a class="cursor-pointer
+                            <div class="flex items-center">
+                                <a class="cursor-pointer
                     bg-blue  bg-opacity-75 hover:bg-opacity-100 rounded-sm
                     border-2 border-transparent
                     justify-center flex items-center
                     px-6 min-h-10 text-white
                     font-sans-bold
                     transition-bg duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap" href="{{ $nextLesson->url }}">Continue</a>
-                        </div>
+                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
+                                   href="{{ $nextLesson->url }}">Continue</a>
+                            </div>
 
                         @else
                             <form action="{{ route('courses.completeLesson', [$series, $lesson]) }}" method="POST">
@@ -62,6 +63,7 @@
                 <hr class="my-8 -ml-4 line-after "/>
 
                 <livewire:comments
+                    no-replies
                     no-comments-text="What do you think about this?" :model="$htmlLesson->lesson"/>
             </div>
         </div>
