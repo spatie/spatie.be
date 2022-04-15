@@ -3,6 +3,8 @@
 namespace App\Nova;
 
 use App\Models\HtmlLesson as EloquentHtmlLesson;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Text;
@@ -11,23 +13,34 @@ use Spatie\Comments\Models\Comment as CommentModel;
 
 class Comment extends Resource
 {
+    public static $group = "Courses";
+
     public static $model = CommentModel::class;
 
+    public static $search = [
+        'id', 'title',
+    ];
 
     public function fields(NovaRequest $request)
     {
-        Text::make('', function(CommentModel $comment) {
-            $comment->topLevel()->commentable->title;
-        })->readonly();
+        return [
+            Text::make('title', function (CommentModel $comment) {
+                return $comment->topLevel()->commentable->commentableName();
+            })->readonly(),
 
-        MorphTo::make('Commentable')->types([
-            \App\Models\User::class,
-        ]);
+            MorphTo::make('Commentator')->types([
+                \App\Nova\User::class,
+            ]),
 
-        Markdown::make('original_text');
+            Markdown::make('Original text'),
 
-        Text::make('', function (CommentModel $comment) {
-            return "<a target=\"comment_preview\" href=\"{$comment->commentUrl()}\">Show</a>";
-        })->asHtml();
+            Text::make('', function (CommentModel $comment) {
+                return "<a target=\"comment_preview\" href=\"{$comment->commentUrl()}\">Show</a>";
+            })->asHtml(),
+
+            DateTime::make('Created at')
+
+
+        ];
     }
 }

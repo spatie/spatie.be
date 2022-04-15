@@ -55,6 +55,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                 MenuSection::make('Courses', [
                     MenuItem::resource(Video::class),
                     MenuItem::resource(Series::class),
+                    MenuItem::resource(Comment::class),
                 ])->icon('eye'),
 
                 MenuSection::make('Content', [

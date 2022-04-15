@@ -169,11 +169,11 @@ class Lesson extends Model implements Sortable
 
     public function commentableName(): string
     {
-        // TODO: Implement commentableName() method.
+        return $this->title;
     }
 
     public function commentUrl(): string
     {
-        // TODO: Implement commentUrl() method.
+        return route('courses.show', [$this->series->slug, $this->slug]);
     }
 }
