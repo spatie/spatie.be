@@ -2,7 +2,6 @@
 
 namespace App\Nova;
 
-use App\Models\HtmlLesson as EloquentHtmlLesson;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Text;
@@ -13,10 +12,9 @@ class Comment extends Resource
 {
     public static $model = CommentModel::class;
 
-
     public function fields(NovaRequest $request)
     {
-        Text::make('', function(CommentModel $comment) {
+        Text::make('', function (CommentModel $comment) {
             $comment->topLevel()->commentable->title;
         })->readonly();
 
