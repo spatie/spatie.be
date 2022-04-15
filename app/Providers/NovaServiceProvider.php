@@ -10,6 +10,7 @@ use App\Nova\License;
 use App\Nova\Playlist;
 use App\Nova\Postcard;
 use App\Nova\Product;
+use App\Nova\Comment;
 use App\Nova\Purchasable;
 use App\Nova\PurchasablePrice;
 use App\Nova\Purchase;
@@ -51,7 +52,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(BundlePrice::class),
                 ])->icon('shopping-bag'),
 
-                MenuSection::make('Videos', [
+                MenuSection::make('Courses', [
                     MenuItem::resource(Video::class),
                     MenuItem::resource(Series::class),
                 ])->icon('eye'),

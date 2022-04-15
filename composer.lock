@@ -347,16 +347,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.219.4",
+            "version": "3.219.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2bbbf5f1ff0764441372fc9e312e6b463da0043e"
+                "reference": "7e8da5b45d545ca3129a14e972001698212b1a00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2bbbf5f1ff0764441372fc9e312e6b463da0043e",
-                "reference": "2bbbf5f1ff0764441372fc9e312e6b463da0043e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e8da5b45d545ca3129a14e972001698212b1a00",
+                "reference": "7e8da5b45d545ca3129a14e972001698212b1a00",
                 "shasum": ""
             },
             "require": {
@@ -432,9 +432,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.219.4"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.219.5"
             },
-            "time": "2022-04-14T18:14:31+00:00"
+            "time": "2022-04-15T18:16:29+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -3510,17 +3510,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.2.1",
+            "version": "4.2.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "f33003b1991491165e8822680e9a827f33c279c5"
+                "reference": "fe1c2924da19be1cccf19e73a6834a725263a15e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-f33003b1991491165e8822680e9a827f33c279c5-zip-383f38.zip",
-                "reference": "f33003b1991491165e8822680e9a827f33c279c5",
-                "shasum": "b6ec018f2dc660ef2f1a4b50b92bbab1d4aeb0af"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-fe1c2924da19be1cccf19e73a6834a725263a15e-zip-b3f7af.zip",
+                "reference": "fe1c2924da19be1cccf19e73a6834a725263a15e",
+                "shasum": "d1fb7a7b7d65f3c22bb37cae7e82b9cfbf9c45ed"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -3610,9 +3610,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.2.1"
+                "source": "https://github.com/laravel/nova/tree/v4.2.2"
             },
-            "time": "2022-04-13T23:28:29+00:00"
+            "time": "2022-04-15T17:26:31+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -10129,13 +10129,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments-livewire.git",
-                "reference": "29de2fe133119348300182276c4d95fd89a7a027"
+                "reference": "64c5f5ba496865fdd357a2e18644ee35b2c3c26c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-29de2fe133119348300182276c4d95fd89a7a027-zip-97bff7.zip",
-                "reference": "29de2fe133119348300182276c4d95fd89a7a027",
-                "shasum": "39f3eaad016f6bd1ce7a5e7b36bd58474059850c"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-64c5f5ba496865fdd357a2e18644ee35b2c3c26c-zip-f75c95.zip",
+                "reference": "64c5f5ba496865fdd357a2e18644ee35b2c3c26c",
+                "shasum": "ff8d374c739e373d753a7e15782d1b99177ac9fa"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10208,7 +10208,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-comments-livewire/tree/main"
+                "source": "https://github.com/spatie/laravel-comments-livewire/tree/0.0.6"
             },
             "funding": [
                 {
@@ -10216,7 +10216,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-15T14:28:02+00:00"
+            "time": "2022-04-15T18:53:44+00:00"
         },
         {
             "name": "spatie/laravel-disable-floc",
