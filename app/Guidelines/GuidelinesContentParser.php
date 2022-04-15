@@ -7,7 +7,6 @@ use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\HtmlString;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
-use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sheets\ContentParser;
