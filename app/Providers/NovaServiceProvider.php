@@ -10,7 +10,6 @@ use App\Nova\License;
 use App\Nova\Playlist;
 use App\Nova\Postcard;
 use App\Nova\Product;
-use App\Nova\Comment;
 use App\Nova\Purchasable;
 use App\Nova\PurchasablePrice;
 use App\Nova\Purchase;
