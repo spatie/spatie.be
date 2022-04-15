@@ -2,9 +2,7 @@
 
 namespace App\Nova;
 
-use App\Models\HtmlLesson as EloquentHtmlLesson;
 use Laravel\Nova\Fields\DateTime;
-use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\MorphTo;
 use Laravel\Nova\Fields\Text;
@@ -38,7 +36,7 @@ class Comment extends Resource
                 return "<a target=\"comment_preview\" href=\"{$comment->commentUrl()}\">Show</a>";
             })->asHtml(),
 
-            DateTime::make('Created at')
+            DateTime::make('Created at'),
 
 
         ];
