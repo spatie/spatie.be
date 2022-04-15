@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Nova\Ad;
 use App\Nova\Bundle;
 use App\Nova\BundlePrice;
+use App\Nova\Comment;
 use App\Nova\Dashboards\Main;
 use App\Nova\License;
 use App\Nova\Playlist;
