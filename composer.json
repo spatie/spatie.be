@@ -33,7 +33,7 @@
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
-        "league/commonmark": "^2.2",
+        "league/commonmark": "2.2",
         "league/flysystem-aws-s3-v3": "^3.0",
         "livewire/livewire": "^2.3.3",
         "myclabs/php-enum": "^1.8",

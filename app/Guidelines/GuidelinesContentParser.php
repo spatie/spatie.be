@@ -20,10 +20,8 @@ class GuidelinesContentParser implements ContentParser
     public function __construct()
     {
         $this->markdownRenderer = app(MarkdownRenderer::class)
+            ->disableAnchors()
             ->addExtension(new TableOfContentsExtension())
-            ->addExtension(new HeadingPermalinkExtension())
-            ->addInlineRenderer(Image::class, new ImageRenderer())
-            ->addInlineRenderer(Link::class, new LinkRenderer())
             ->commonmarkOptions([
                 'heading_permalink' => [
                     'html_class' => 'anchor-link',
@@ -39,7 +37,9 @@ class GuidelinesContentParser implements ContentParser
                     'placeholder' => null,
                     'normalize' => 'flat',
                 ],
-            ]);
+            ])
+            ->addInlineRenderer(Image::class, new ImageRenderer())
+            ->addInlineRenderer(Link::class, new LinkRenderer());
     }
 
     public function parse(string $contents): array
