@@ -133,10 +133,12 @@ php artisan db:seed --class MembersSeeder --force
 ln -nfs {{ $newReleaseDir }} {{ $currentDir }}
 cd {{ $newReleaseDir }}
 
+php artisan view:clear
 php artisan horizon:terminate
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
+php artisan view:cache
 #php artisan schedule-monitor:sync
 
 sudo service php8.1-fpm restart
@@ -159,9 +161,11 @@ ls -dt {{ $releasesDir }}/* | tail -n +4 | xargs -d "\n" rm -rf
 {{ logMessage("💻  Deploying code changes...") }}
 cd {{ $currentDir }}
 git pull origin {{ $branch }}
+php artisan view:clear
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
+php artisan view:cache
 sudo service php8.1-fpm restart
 #php artisan schedule-monitor:sync
 php artisan horizon:terminate
