@@ -23,7 +23,7 @@ class Comment extends Resource
     {
         return [
             Text::make('title', function (CommentModel $comment) {
-                return $comment->topLevel()->commentable->commentableName();
+                return $comment->topLevel()->commentable?->commentableName() ?? 'Deleted...';
             })->readonly(),
 
             MorphTo::make('Commentator')->types([
