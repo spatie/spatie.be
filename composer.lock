@@ -3510,17 +3510,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "4.2.2",
+            "version": "4.2.3",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "fe1c2924da19be1cccf19e73a6834a725263a15e"
+                "reference": "32efda77ecfbf3a9473ca0bbe39af5af71e14a92"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-fe1c2924da19be1cccf19e73a6834a725263a15e-zip-b3f7af.zip",
-                "reference": "fe1c2924da19be1cccf19e73a6834a725263a15e",
-                "shasum": "d1fb7a7b7d65f3c22bb37cae7e82b9cfbf9c45ed"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-32efda77ecfbf3a9473ca0bbe39af5af71e14a92-zip-1ba88a.zip",
+                "reference": "32efda77ecfbf3a9473ca0bbe39af5af71e14a92",
+                "shasum": "cbd35cf96963d337ddccb412f42d374be32c87d8"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -3610,9 +3610,9 @@
                 "laravel"
             ],
             "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.2.2"
+                "source": "https://github.com/laravel/nova/tree/v4.2.3"
             },
-            "time": "2022-04-15T17:26:31+00:00"
+            "time": "2022-04-19T18:44:02+00:00"
         },
         {
             "name": "laravel/serializable-closure",
@@ -10030,13 +10030,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments.git",
-                "reference": "dcfcd3c38ee381a4a511940f3d4c1a623d9e875c"
+                "reference": "b0fe1c67ae9fa882f0229fae1f00ce9334919ddf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-dcfcd3c38ee381a4a511940f3d4c1a623d9e875c-zip-5400a5.zip",
-                "reference": "dcfcd3c38ee381a4a511940f3d4c1a623d9e875c",
-                "shasum": "0fb1bc62392669bee69194c290d445dfcb87b879"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-b0fe1c67ae9fa882f0229fae1f00ce9334919ddf-zip-5e6d84.zip",
+                "reference": "b0fe1c67ae9fa882f0229fae1f00ce9334919ddf",
+                "shasum": "9325d2405d453feeb050492d03ee32407d07f231"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10112,7 +10112,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-comments/tree/0.0.8",
+                "source": "https://github.com/spatie/laravel-comments/tree/main",
                 "issues": "https://github.com/spatie/laravel-comments/issues"
             },
             "funding": [
@@ -10121,7 +10121,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-19T18:22:19+00:00"
+            "time": "2022-04-19T18:38:46+00:00"
         },
         {
             "name": "spatie/laravel-comments-livewire",
