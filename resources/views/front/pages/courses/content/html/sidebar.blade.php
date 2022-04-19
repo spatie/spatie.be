@@ -56,7 +56,7 @@
                 <div x-show='open'>
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                         @foreach($lessonsPerChapter as $lessonInChapter)
-                            <li class="bg-white pr-3 py-2 rounded-sm {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "
+                            <li class="bg-white pr-3 py-2 rounded-sm {{ (! request()->routeIs('series.show')) && isset($lesson) && $lesson->id === $lessonInChapter->id ? "
                     font-sans-bold bg-paper text-white" : "" }}">
 
 

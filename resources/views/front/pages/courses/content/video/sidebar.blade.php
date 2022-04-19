@@ -50,7 +50,7 @@
                     class="w-3 h-3  bg-green rounded-full text-xs flex items-center text-white justify-items-center font-bold">
                     <p class="w-full inline-block text-center">✓</p>
                 </div>
-                
+
                 @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::FREE)
                 <span class="hidden tag tag-green">Free</span>
                 @endif
