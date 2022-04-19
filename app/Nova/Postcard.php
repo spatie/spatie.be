@@ -17,7 +17,7 @@ class Postcard extends Resource
     public static $title = 'sender';
 
     public static $search = [
-        'id', 'sender', 'city', 'country',
+        'sender',
     ];
 
     public function fields(NovaRequest $request)
