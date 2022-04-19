@@ -260,3 +260,20 @@
     @apply bg-paper !important;
     @apply text-sm;
 }
+
+/* Video markup */
+
+.markup-video{
+    @apply relative;
+    @apply my-8;
+    @apply w-full;
+    @apply h-0;
+    padding-bottom: 56.25%;
+}
+
+.markup-video iframe{
+    @apply absolute;
+    @apply w-full !important;
+    @apply h-full !important;
+    @apply inset-0;
+}
