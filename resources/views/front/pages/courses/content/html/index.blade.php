@@ -17,12 +17,12 @@
 
                         @if($series->isOwnedByCurrentUser())
                             <div
-                                class="my-6 w-full overflow-hidden  py-8 | md:flex justify-between links-blue links-underline text-xs">
+                                class="my-6 w-full overflow-hidden  py-8 | md:flex gap-8 justify-between links-blue links-underline text-xs">
 
-                                <h1 class="">
-                                    Up next
-                                    <span class="block title max-w-sm">{{ $series->lessons->first()->title }}</span>
-                                </h1>
+                                <div>
+                                    <span class="opacity-50">Up next</span>
+                                    <span class="-mt-1 block font-semibold text-lg">{{ $series->lessons->first()->title }}</span>
+                                </div>
 
                                 <a class="cursor-pointer
                         bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm

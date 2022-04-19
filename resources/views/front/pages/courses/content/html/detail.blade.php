@@ -16,13 +16,13 @@
                 @if ($nextLesson)
 
                     <div
-                        class="my-6 w-full overflow-hidden  py-8 | md:flex justify-between links-blue links-underline text-xs">
+                        class="my-6 w-full overflow-hidden py-8 | md:flex gap-8 justify-between links-blue links-underline text-xs">
 
 
-                        <h1 class="">
-                            Up next
-                            <span class="block title max-w-xs ">{{ $nextLesson->title }}</span>
-                        </h1>
+                        <div>
+                            <span class="opacity-50">Up next</span>
+                            <span class="-mt-1 block font-semibold text-lg">{{ $nextLesson->title }}</span>
+                        </div>
 
                         @if($lesson->hasBeenCompletedByCurrentUser())
                             <div class="flex items-center">
