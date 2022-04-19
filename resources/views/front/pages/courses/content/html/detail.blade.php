@@ -62,7 +62,7 @@
                 <hr class="my-8 -ml-4 line-after "/>
 
                 @php
-                    $noCommentsText = 'What are your thoughts on "' . $htmlLesson->title . "'"
+                    $noCommentsText = 'What are your thoughts on "' . $htmlLesson->title . '"?'
                 @endphp
 
                 <livewire:comments
