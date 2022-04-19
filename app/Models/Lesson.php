@@ -20,6 +20,7 @@ class Lesson extends Model implements Sortable
 
     protected $casts = [
         'sort' => 'integer',
+        'display_video_icon' => 'boolean',
     ];
 
     public $sortable = [
