@@ -64,7 +64,7 @@
 
                 <livewire:comments
                     no-replies
-                    no-comments-text="What do you think about this?" :model="$htmlLesson->lesson"/>
+                    no-comments-text="What are your thoughts about this chapter?" :model="$htmlLesson->lesson"/>
             </div>
         </div>
     </section>
