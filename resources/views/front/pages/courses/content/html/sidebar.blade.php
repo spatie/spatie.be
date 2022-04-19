@@ -62,7 +62,7 @@
 
                                 <a class="group flex items-center gap-2" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                                     <span class="">{{ $lessonInChapter->title }}</span>
-                                    @if($hasVideo ?? true)
+                                    @if($lessonInChapter->display_video_icon)
                                     <span class="w-3 fill-current opacity-50 group-hover:opacity-100" title="Lesson includes video">{{ svg('icons/fas-video') }}</span>
                                     @endif
                                     @if ($lessonInChapter->hasBeenCompletedByCurrentUser())
