@@ -56,17 +56,19 @@
                 <div x-show='open'>
                     @if($lessonsPerChapter[0]->canBeSeenByCurrentUser() )
                         @foreach($lessonsPerChapter as $lessonInChapter)
-                            <li class="bg-white  py-2 rounded-sm flex items-center gap-2 {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "
+                            <li class="bg-white pr-3 py-2 rounded-sm {{ isset($lesson) && $lesson->id === $lessonInChapter->id ? "
                     font-sans-bold bg-paper text-white" : "" }}">
 
 
-                                <a class="flex items-center gap-2" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
-                                    <span class="mr-1">{{ $lessonInChapter->title }}</span>
+                                <a class="group flex items-center gap-2" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
+                                    <span class="">{{ $lessonInChapter->title }}</span>
+                                    @if($hasVideo ?? true)
+                                    <span class="w-3 fill-current opacity-50 group-hover:opacity-100" title="Lesson includes video">{{ svg('icons/fas-video') }}</span>
+                                    @endif
                                     @if ($lessonInChapter->hasBeenCompletedByCurrentUser())
-                                        <div
-                                            class="w-3 h-3  bg-green rounded-full text-xs flex items-center text-white justify-items-center font-bold">
-                                            <p class="w-full inline-block text-center">✓</p>
-                                        </div>
+                                    <span class="ml-auto w-4 h-4  bg-green rounded-full text-[10px] flex items-center text-white justify-items-center font-bold">
+                                            <p class="w-full inline-block text-center text-green-lightest">✓</p>
+                                    </span>
                                     @endif
                                 </a>
                             </li>
