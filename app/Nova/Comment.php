@@ -33,7 +33,12 @@ class Comment extends Resource
             Markdown::make('Original text'),
 
             Text::make('', function (CommentModel $comment) {
-                return "<a target=\"comment_preview\" href=\"{$comment->commentUrl()}\">Show</a>";
+                if (! $url = $comment?->commentUrl()) {
+                    return '';
+                }
+
+                return "<a target=\"comment_preview\" href=\"{$url}\">Show</a>";
+
             })->asHtml(),
 
             DateTime::make('Created at'),
