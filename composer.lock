@@ -10030,13 +10030,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments.git",
-                "reference": "0c5369b0429ce0347f38f29882344663304b17a4"
+                "reference": "dce258a5e338601305c3b8bfaa8651f6f45bbfdb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-0c5369b0429ce0347f38f29882344663304b17a4-zip-241890.zip",
-                "reference": "0c5369b0429ce0347f38f29882344663304b17a4",
-                "shasum": "8effe6f15e8105fc5a8495f2b1a9d709ceb73f01"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-dce258a5e338601305c3b8bfaa8651f6f45bbfdb-zip-22a344.zip",
+                "reference": "dce258a5e338601305c3b8bfaa8651f6f45bbfdb",
+                "shasum": "8345613d574e08e5838d523f812ab4648ada84f5"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10121,7 +10121,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-19T19:05:16+00:00"
+            "time": "2022-04-19T19:09:49+00:00"
         },
         {
             "name": "spatie/laravel-comments-livewire",
@@ -10129,13 +10129,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments-livewire.git",
-                "reference": "64c5f5ba496865fdd357a2e18644ee35b2c3c26c"
+                "reference": "b8d2698bd93123b34254de74e478acb6ad9ad203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-64c5f5ba496865fdd357a2e18644ee35b2c3c26c-zip-f75c95.zip",
-                "reference": "64c5f5ba496865fdd357a2e18644ee35b2c3c26c",
-                "shasum": "ff8d374c739e373d753a7e15782d1b99177ac9fa"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-b8d2698bd93123b34254de74e478acb6ad9ad203-zip-89dd15.zip",
+                "reference": "b8d2698bd93123b34254de74e478acb6ad9ad203",
+                "shasum": "4628105da34713d38078d2caad4e11a3604287bc"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10208,7 +10208,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-comments-livewire/tree/0.0.6"
+                "source": "https://github.com/spatie/laravel-comments-livewire/tree/main"
             },
             "funding": [
                 {
@@ -10216,7 +10216,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-15T18:53:44+00:00"
+            "time": "2022-04-19T19:11:53+00:00"
         },
         {
             "name": "spatie/laravel-disable-floc",
