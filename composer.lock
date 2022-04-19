@@ -10112,7 +10112,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-comments/tree/main",
+                "source": "https://github.com/spatie/laravel-comments/tree/0.0.8",
                 "issues": "https://github.com/spatie/laravel-comments/issues"
             },
             "funding": [
