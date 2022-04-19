@@ -263,15 +263,13 @@
 
 
 .markup-shiki .shiki-good .shiki{
-    background-color: #eef6f4 !important;
-    @apply border-l-4;
+    @apply border-l-8;
     @apply border-green-lightest;
 }
 
 
 .markup-shiki .shiki-bad .shiki{
-    background-color: #f4edee !important;
-    @apply border-l-4;
+    @apply border-l-8;
     @apply border-pink-lightest;
 }
 
