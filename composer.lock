@@ -347,16 +347,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.219.5",
+            "version": "3.220.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7e8da5b45d545ca3129a14e972001698212b1a00"
+                "reference": "8beb098a2224742b2756e3b40a07593b1e6ff967"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e8da5b45d545ca3129a14e972001698212b1a00",
-                "reference": "7e8da5b45d545ca3129a14e972001698212b1a00",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/8beb098a2224742b2756e3b40a07593b1e6ff967",
+                "reference": "8beb098a2224742b2756e3b40a07593b1e6ff967",
                 "shasum": ""
             },
             "require": {
@@ -432,9 +432,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.219.5"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.220.0"
             },
-            "time": "2022-04-15T18:16:29+00:00"
+            "time": "2022-04-19T18:17:15+00:00"
         },
         {
             "name": "barryvdh/laravel-debugbar",
@@ -523,16 +523,16 @@
         },
         {
             "name": "blade-ui-kit/blade-ui-kit",
-            "version": "0.3.3",
+            "version": "0.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/blade-ui-kit/blade-ui-kit.git",
-                "reference": "c31e388b033efdb07e84961b372189b02800e522"
+                "reference": "139f387d219bceb647c02d18c6b74cebb4c8dae6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/blade-ui-kit/blade-ui-kit/zipball/c31e388b033efdb07e84961b372189b02800e522",
-                "reference": "c31e388b033efdb07e84961b372189b02800e522",
+                "url": "https://api.github.com/repos/blade-ui-kit/blade-ui-kit/zipball/139f387d219bceb647c02d18c6b74cebb4c8dae6",
+                "reference": "139f387d219bceb647c02d18c6b74cebb4c8dae6",
                 "shasum": ""
             },
             "require": {
@@ -545,10 +545,10 @@
             },
             "require-dev": {
                 "gajus/dindent": "^2.0",
-                "guzzlehttp/guzzle": "^6.5",
+                "guzzlehttp/guzzle": "^7.4",
                 "league/commonmark": "^1.4|^2.0",
                 "lorisleiva/cron-translator": "^0.1.1",
-                "orchestra/testbench": "^5.0|^6.0|^7.0",
+                "orchestra/testbench": "^5.0|^6.0|^7.1",
                 "phpunit/phpunit": "^9.0"
             },
             "suggest": {
@@ -599,7 +599,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-17T15:15:40+00:00"
+            "time": "2022-04-17T13:03:05+00:00"
         },
         {
             "name": "box/spout",
@@ -3254,16 +3254,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v9.8.1",
+            "version": "v9.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9f468689964ac80b674a2fe71a56baa7e9e20493"
+                "reference": "4d5a07640891b772188d7737348886a0222737d8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9f468689964ac80b674a2fe71a56baa7e9e20493",
-                "reference": "9f468689964ac80b674a2fe71a56baa7e9e20493",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/4d5a07640891b772188d7737348886a0222737d8",
+                "reference": "4d5a07640891b772188d7737348886a0222737d8",
                 "shasum": ""
             },
             "require": {
@@ -3429,7 +3429,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2022-04-12T15:43:03+00:00"
+            "time": "2022-04-19T15:01:23+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -4420,16 +4420,16 @@
         },
         {
             "name": "league/mime-type-detection",
-            "version": "1.10.0",
+            "version": "1.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/mime-type-detection.git",
-                "reference": "3e4a35d756eedc67096f30240a68a3149120dae7"
+                "reference": "ff6248ea87a9f116e78edd6002e39e5128a0d4dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/3e4a35d756eedc67096f30240a68a3149120dae7",
-                "reference": "3e4a35d756eedc67096f30240a68a3149120dae7",
+                "url": "https://api.github.com/repos/thephpleague/mime-type-detection/zipball/ff6248ea87a9f116e78edd6002e39e5128a0d4dd",
+                "reference": "ff6248ea87a9f116e78edd6002e39e5128a0d4dd",
                 "shasum": ""
             },
             "require": {
@@ -4460,7 +4460,7 @@
             "description": "Mime-type detection for Flysystem",
             "support": {
                 "issues": "https://github.com/thephpleague/mime-type-detection/issues",
-                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.10.0"
+                "source": "https://github.com/thephpleague/mime-type-detection/tree/1.11.0"
             },
             "funding": [
                 {
@@ -4472,7 +4472,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2022-04-11T12:49:04+00:00"
+            "time": "2022-04-17T13:12:02+00:00"
         },
         {
             "name": "league/oauth1-client",
@@ -10030,13 +10030,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments.git",
-                "reference": "5da8bbce789d68e10263b1f3ad396bfc51257c5d"
+                "reference": "dcfcd3c38ee381a4a511940f3d4c1a623d9e875c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-5da8bbce789d68e10263b1f3ad396bfc51257c5d-zip-79b3f5.zip",
-                "reference": "5da8bbce789d68e10263b1f3ad396bfc51257c5d",
-                "shasum": "4031438e4e68342efe2622ac178832478375f693"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-dcfcd3c38ee381a4a511940f3d4c1a623d9e875c-zip-5400a5.zip",
+                "reference": "dcfcd3c38ee381a4a511940f3d4c1a623d9e875c",
+                "shasum": "0fb1bc62392669bee69194c290d445dfcb87b879"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10121,7 +10121,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-15T14:28:22+00:00"
+            "time": "2022-04-19T18:22:19+00:00"
         },
         {
             "name": "spatie/laravel-comments-livewire",
@@ -10619,16 +10619,16 @@
         },
         {
             "name": "spatie/laravel-health",
-            "version": "1.8.8",
+            "version": "1.9.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-health.git",
-                "reference": "d1e43d326a27d8ec4c06b11a5fe99b235551d563"
+                "reference": "680c572ba02f2c49258b1892fb942a4031de0d6b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/d1e43d326a27d8ec4c06b11a5fe99b235551d563",
-                "reference": "d1e43d326a27d8ec4c06b11a5fe99b235551d563",
+                "url": "https://api.github.com/repos/spatie/laravel-health/zipball/680c572ba02f2c49258b1892fb942a4031de0d6b",
+                "reference": "680c572ba02f2c49258b1892fb942a4031de0d6b",
                 "shasum": ""
             },
             "require": {
@@ -10700,7 +10700,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-health/issues",
-                "source": "https://github.com/spatie/laravel-health/tree/1.8.8"
+                "source": "https://github.com/spatie/laravel-health/tree/1.9.0"
             },
             "funding": [
                 {
@@ -10708,7 +10708,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-03-14T07:20:59+00:00"
+            "time": "2022-04-18T16:00:43+00:00"
         },
         {
             "name": "spatie/laravel-ignition",
@@ -10866,17 +10866,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "5.5.1",
+            "version": "5.5.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "4a71609d97e1332c8b6a3f08fe3d5428afeaa615"
+                "reference": "a5e84aad6ebc8aff53cc53ed3dea532e17aa18f2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-4a71609d97e1332c8b6a3f08fe3d5428afeaa615-zip-5f6712.zip",
-                "reference": "4a71609d97e1332c8b6a3f08fe3d5428afeaa615",
-                "shasum": "ac2acb72b8e077f5e3c8b65a3fd571ea2a5bfc7a"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-a5e84aad6ebc8aff53cc53ed3dea532e17aa18f2-zip-18d731.zip",
+                "reference": "a5e84aad6ebc8aff53cc53ed3dea532e17aa18f2",
+                "shasum": "6372c5d25ad38b7801156ccf9b671a7fdcc7bdd8"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -10985,10 +10985,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/5.5.1",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/5.5.2",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2022-04-12T09:24:26+00:00"
+            "time": "2022-04-16T15:26:53+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -11594,16 +11594,16 @@
         },
         {
             "name": "spatie/laravel-rate-limited-job-middleware",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-rate-limited-job-middleware.git",
-                "reference": "c80fc61a1ec7722419d273bc5b4f3c3a2d98ce3b"
+                "reference": "b6cd5052ce35da1b9608b3203513cc6a5f41c99e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-rate-limited-job-middleware/zipball/c80fc61a1ec7722419d273bc5b4f3c3a2d98ce3b",
-                "reference": "c80fc61a1ec7722419d273bc5b4f3c3a2d98ce3b",
+                "url": "https://api.github.com/repos/spatie/laravel-rate-limited-job-middleware/zipball/b6cd5052ce35da1b9608b3203513cc6a5f41c99e",
+                "reference": "b6cd5052ce35da1b9608b3203513cc6a5f41c99e",
                 "shasum": ""
             },
             "require": {
@@ -11646,7 +11646,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-rate-limited-job-middleware/issues",
-                "source": "https://github.com/spatie/laravel-rate-limited-job-middleware/tree/2.2.0"
+                "source": "https://github.com/spatie/laravel-rate-limited-job-middleware/tree/2.2.1"
             },
             "funding": [
                 {
@@ -11654,7 +11654,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-12T17:06:30+00:00"
+            "time": "2022-04-18T07:54:01+00:00"
         },
         {
             "name": "spatie/laravel-ray",
