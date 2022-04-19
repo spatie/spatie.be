@@ -10030,13 +10030,13 @@
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments.git",
-                "reference": "b0fe1c67ae9fa882f0229fae1f00ce9334919ddf"
+                "reference": "0c5369b0429ce0347f38f29882344663304b17a4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-b0fe1c67ae9fa882f0229fae1f00ce9334919ddf-zip-5e6d84.zip",
-                "reference": "b0fe1c67ae9fa882f0229fae1f00ce9334919ddf",
-                "shasum": "9325d2405d453feeb050492d03ee32407d07f231"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments/spatie-laravel-comments-0c5369b0429ce0347f38f29882344663304b17a4-zip-241890.zip",
+                "reference": "0c5369b0429ce0347f38f29882344663304b17a4",
+                "shasum": "8effe6f15e8105fc5a8495f2b1a9d709ceb73f01"
             },
             "require": {
                 "illuminate/contracts": "^9.0",
@@ -10121,7 +10121,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2022-04-19T18:38:46+00:00"
+            "time": "2022-04-19T19:05:16+00:00"
         },
         {
             "name": "spatie/laravel-comments-livewire",
