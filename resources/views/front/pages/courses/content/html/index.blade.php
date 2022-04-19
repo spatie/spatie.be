@@ -5,9 +5,8 @@
                 @include('front.pages.courses.content.html.sidebar')
             </div>
             <div class="pt-8 | md:pt-0 sm:col-start-3 sm:col-span-4">
-                <h2 class="title-xl">{{ $series->title }}</h2>
-
-                <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
+                <div class="bg-white p-12 xl:p-16 text-lg links-underline links-blue markup markup-titles markup-lists">
+                    <h2 class="mb-12 title-xl">{{ $series->title }}</h2>
                     <x-markdown>{!! $series->introduction ?? $series->description !!}</x-markdown>
                 </div>
 

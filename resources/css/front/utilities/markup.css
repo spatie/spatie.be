@@ -251,14 +251,34 @@
 
 /* Shiki markup */
 
-.markup-shiki .shiki{
-    @apply p-12;
-    @apply mb-6;
+.markup-shiki :not(pre) > code {
+    @apply bg-gray-lightest;
+    @apply bg-opacity-25;
+    @apply px-1;
+    @apply font-mono;
+    @apply rounded-sm;
+}
+
+.markup-shiki .shiki {
+    @apply p-10;
+    @apply my-8;
     @apply rounded-sm;
     @apply overflow-hidden;
     @apply overflow-x-scroll;
     @apply bg-paper !important;
     @apply text-sm;
+}
+
+.markup-shiki .shiki::-webkit-scrollbar { height: 1px;width: 1px; }
+
+.markup-shiki .shiki::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.markup-shiki .shiki::-webkit-scrollbar-thumb {
+    background-image: none;
+    @apply bg-gray-light;
+    @apply bg-opacity-25;
 }
 
 
