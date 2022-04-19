@@ -6,7 +6,6 @@
             </div>
             <div class="pt-8 | sm:col-start-3 sm:col-span-4 | md:pt-0">
                 <h2 class="title line-after">{{ $htmlLesson->title }}</h2>
-                @ray($htmlLesson)
                 <div
                     class="mt-8 bg-white p-12 xl:p-16 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-shiki markup-titles markup-lists markup-tables">
                     {!! $htmlLesson->html !!}
@@ -62,9 +61,13 @@
                 @endif
                 <hr class="my-8 -ml-4 line-after "/>
 
+                @php
+                    $noCommentsText = 'What are your thoughts on "' . $htmlLesson->title . "'"
+                @endphp
+
                 <livewire:comments
                     no-replies
-                    no-comments-text="What are your thoughts about this chapter?" :model="$htmlLesson->lesson"/>
+                    :no-comments-text="$noCommentsText" :model="$htmlLesson->lesson"/>
             </div>
         </div>
     </section>
