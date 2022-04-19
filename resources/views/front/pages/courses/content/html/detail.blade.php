@@ -8,7 +8,7 @@
                 <h2 class="title line-after">{{ $htmlLesson->title }}</h2>
                 @ray($htmlLesson)
                 <div
-                    class="mt-8 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-course markup-titles markup-lists">
+                    class="mt-8 bg-white p-12 xl:p-16 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-shiki markup-titles markup-lists markup-tables">
                     {!! $htmlLesson->html !!}
                 </div>
 

@@ -249,9 +249,9 @@
 }
 
 
-/*COURSE MARKUP*/
+/* Shiki markup */
 
-.markup-course .shiki{
+.markup-shiki .shiki{
     @apply p-12;
     @apply mb-6;
     @apply rounded-sm;
@@ -259,9 +259,4 @@
     @apply overflow-x-scroll;
     @apply bg-paper !important;
     @apply text-sm;
-}
-
-.markup-course{
-    @apply bg-white;
-    @apply p-12;
 }
