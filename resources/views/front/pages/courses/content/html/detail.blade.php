@@ -9,6 +9,15 @@
                 @ray($htmlLesson)
                 <div
                     class="mt-8 bg-white p-12 xl:p-16 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-shiki markup-titles markup-lists markup-tables">
+                    
+                    <div class="shiki-good">
+                        <div class="shiki"/>
+                    </div>
+
+                    <div class="shiki-bad">
+                        <div class="shiki"/>
+                    </div>
+
                     {!! $htmlLesson->html !!}
                 </div>
 

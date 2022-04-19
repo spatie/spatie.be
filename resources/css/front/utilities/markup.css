@@ -261,14 +261,56 @@
     @apply text-sm;
 }
 
+
+.markup-shiki .shiki-good .shiki{
+    background-color: #eef6f4 !important;
+    @apply border-l-4;
+    @apply border-green-lightest;
+}
+
+
+.markup-shiki .shiki-bad .shiki{
+    background-color: #f4edee !important;
+    @apply border-l-4;
+    @apply border-pink-lightest;
+}
+
+.markup-shiki .shiki-good:before,
+.markup-shiki .shiki-bad:before {
+    @apply absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    @apply shadow;
+    @apply z-10;
+    @apply w-6;
+    @apply h-6;
+    @apply rounded-full;
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+    @apply text-white;
+    @apply font-bold;
+    @apply text-xs;
+}
+
+.markup-shiki .shiki-good:before {
+    @apply bg-green;
+    content: '✓';
+}
+
+.markup-shiki .shiki-bad:before {
+    @apply bg-red;
+    content: '×';
+}
+
 /* Video markup */
 
 .markup-video{
     @apply relative;
-    @apply my-8;
     @apply w-full;
     @apply h-0;
     padding-bottom: 56.25%;
+    @apply bg-gray-darkest
 }
 
 .markup-video iframe{
