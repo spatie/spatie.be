@@ -1,12 +1,12 @@
 <div class="pb-16 pt-8 md:pb-24 xl:pb-32">
     <section id="video">
-        <div class="wrap wrap-courses wrap-6 items-stretch ">
+        <div class="wrap wrap-courses wrap-6 items-stretch print:block">
             <div class="z-10 | sm:col-span-2 | print:hidden">
                 @include('front.pages.courses.content.html.sidebar')
             </div>
             <div class="pt-8 | md:pt-0 sm:col-start-3 sm:col-span-4">
                 <div class="bg-white p-12 xl:p-16 text-lg links-underline links-blue markup markup-titles markup-lists">
-                    <h2 class="mb-12 title-xl">{{ $series->title }}</h2>
+                    <h1 class="mb-16">{{ $series->title }}</h1>
                     <x-markdown>{!! $series->introduction ?? $series->description !!}</x-markdown>
                 </div>
 
@@ -24,12 +24,12 @@
                                 </div>
 
                                 <a class="cursor-pointer
-                        bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm
+                        bg-blue hover:bg-blue-dark rounded-sm
                         border-2 border-transparent
                         justify-center flex items-center
                         px-6 min-h-10 text-white
                         font-sans-bold
-                        transition-bg duration-300
+                        transition-colors duration-300
                         focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
                                    href="{{ $series->lessons->first()->url }}">
                             <span class="truncate"><span class="font-semibold md:hidden">Next: </span>

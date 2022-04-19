@@ -74,7 +74,7 @@
     @apply uppercase;
     @apply leading-tight;
     @apply mb-4;
-    @apply mt-16;
+    @apply mt-24;
     page-break-inside: avoid;
     page-break-after: avoid;
 }
@@ -252,11 +252,11 @@
 /* Shiki markup */
 
 .markup-shiki :not(pre) > code {
-    @apply bg-gray-lightest;
-    @apply bg-opacity-25;
+    @apply bg-paper;
     @apply px-1;
     @apply font-mono;
     @apply rounded-sm;
+    font-size: 0.95em;
 }
 
 .markup-shiki .shiki {
