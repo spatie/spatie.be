@@ -16,7 +16,7 @@ class Comment extends Resource
     public static $model = CommentModel::class;
 
     public static $search = [
-        'id', 'title',
+        'id', 'text',
     ];
 
     public function fields(NovaRequest $request)
