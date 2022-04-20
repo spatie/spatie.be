@@ -38,7 +38,6 @@ class Comment extends Resource
                 }
 
                 return "<a target=\"comment_preview\" href=\"{$url}\">Show</a>";
-
             })->asHtml(),
 
             DateTime::make('Created at'),

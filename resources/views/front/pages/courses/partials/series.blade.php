@@ -12,12 +12,14 @@
                         </div>
                         <a class="link-black link-underline-hover" href="{{ $series->url }}">{{ $series->title }}</a>
                         <div class="title-subtext text-gray flex items-center">
+                            <span>
                             @if ($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
-                                <span>
                                 {{ $series->lessons()->count() }}
-                                    {{  \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
-                                </span>
+                                {{  \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
+                            @else 
+                                Course
                             @endif
+                            </span>
 
                             @if($series->isPurchasable())
                                 <span title="Part of course"
