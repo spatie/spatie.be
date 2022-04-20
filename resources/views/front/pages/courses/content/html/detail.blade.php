@@ -58,8 +58,9 @@
                             </form>
                         @endif
                     </div>
+                    
+                    <hr class="my-8 -ml-4 line-after "/>
                 @endif
-                <hr class="my-8 -ml-4 line-after "/>
 
                 @php
                     $noCommentsText = 'What are your thoughts on "' . $htmlLesson->title . '"?'
