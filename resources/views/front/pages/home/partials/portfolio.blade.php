@@ -14,7 +14,7 @@
                     </span>
                 </h3>
                 <p class="text-lg">
-                    Are yous staring at your old code as if someone else wrote it? Do you code in a team without clean code habits?
+                    Are you staring at your old code as if someone else wrote it? Do you code in a team without clean code habits?
 Or are you struggling with consistent naming?
                 </p>
                 <p class="text-lg">
