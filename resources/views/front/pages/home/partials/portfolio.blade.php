@@ -1,4 +1,32 @@
 <section id="portfolio" class="section">
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
+            <a href="https://writing-readable-php.com" class="illustration is-left h-full" title="Writing Readable PHP" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/writing-readable-php.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
+            <div class="markup links-blue links-underline">
+                <h3 class="title">
+                    Writing Readable PHP
+                    <span class="title-subtext text-pink-dark block">
+                        <span class="font-normal">Video and Online</span> Course
+                    </span>
+                </h3>
+                <p class="text-lg">
+                    Are yous staring at your old code as if someone else wrote it? Do you code in a team without clean code habits?
+Or are you struggling with consistent naming?
+                </p>
+                <p class="text-lg">
+                    Stop the madness! Let’s learn how to write readable PHP in this hands-on course by our own Freek together with Christoph Rumpel.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://writing-readable-php.com" target="_blank" rel="nofollow noreferrer noopener">writing-readable-php.com</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://laravelpackage.training" class="illustration is-left h-full" title="Laravel package training" target="_blank" rel="nofollow noreferrer noopener">
