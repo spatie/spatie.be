@@ -116,11 +116,6 @@ class Purchasable extends Resource
                 Markdown::make('Description'),
 
                 Markdown::make('Renewal mail incentive'),
-
-                Files::make('Downloads')
-                    ->customPropertiesFields([
-                        Text::make('Label'),
-                    ]),
             ]),
 
             HasMany::make('Purchasable prices', 'prices'),
