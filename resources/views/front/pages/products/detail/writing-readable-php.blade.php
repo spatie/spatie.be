@@ -95,9 +95,10 @@
             </p>
         </div>
         <div class="shadow-lg bg-white" title="Project">
-            <iframe src="https://player.vimeo.com/video/683695801" width="640" height="360" class="w-full h-auto"
+            <div class="relative h-0" style="padding-bottom: 56%">
+            <iframe src="https://player.vimeo.com/video/683695801" width="640" height="360" class="absolute inset-0 h-full w-full"
                     frameborder="0" allow="autoplay; fullscreen; picture-in-picture" frameborder="0" allowfullscreen></iframe>
-                
+            </div> 
         </div>
     </div>
 </div>
