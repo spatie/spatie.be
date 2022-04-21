@@ -27,8 +27,6 @@
         <li class="{{ request()->routeIs('series.show') ? " font-sans-bold" : "" }}">
             <a class="flex gap-2 items-center" href="{{ route('series.show', [$series]) }}">
                 <span class="mr-1">Introduction</span>
-                {{-- TODO CHECK IF COMPLETED--}}
-                <x-completion-badge class="ml-auto" />
             </a>
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
@@ -42,8 +40,9 @@
             <a class="flex gap-2 items-center" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                 <span class="mr-1">{{ $lessonInChapter->title }}</span>
 
-                {{-- TODO CHECK IF COMPLETED--}}
+                @if($lessonInChapter->hasBeenCompletedByCurrentUser())
                 <x-completion-badge class="ml-auto" />
+                @endif
 
                 @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::FREE)
                 <span class="hidden tag tag-green">Free</span>
