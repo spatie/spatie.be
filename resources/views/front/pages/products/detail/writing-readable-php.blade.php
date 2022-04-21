@@ -94,8 +94,8 @@
                 @endif
             </p>
         </div>
-        <div class="illustration is-left h-0" style="padding-bottom:56.25%" title="Project">
-            <iframe src="https://player.vimeo.com/video/683695801" width="640" height="360" class="absolute inset-0 w-full h-full"
+        <div class="shadow-lg bg-white" title="Project">
+            <iframe src="https://player.vimeo.com/video/683695801" width="640" height="360" class="w-full h-auto"
                     frameborder="0" allow="autoplay; fullscreen; picture-in-picture" frameborder="0" allowfullscreen></iframe>
                 
         </div>
