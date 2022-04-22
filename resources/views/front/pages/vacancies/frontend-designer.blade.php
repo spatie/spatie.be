@@ -91,11 +91,11 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You create personality for our own products —sketch logos, pick fonts, define color palettes, provide illustrations or create short video reels.
+                                    You help defining personality for our own products — sketch logos, pick fonts, define color palettes, provide illustrations or create short animations.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You can discuss and design UIs — from idea, to prototype, to implementation. We use paper, Figma and Illustrator, but are open for any tool that gets the job done.
+                                    You can discuss and design UIs — from idea, to prototype, to implementation. We use paper, Figma and Illustrator, but are open to any tool that gets the job done.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
@@ -103,7 +103,7 @@
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You love to play with new technologies, try out stuff that won't make production or work on your secret side project.
+                                    You love to play with new technologies, try out new things that won't make production or tinker on your secret side project.
                                 </li>
                                 <li>
                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
