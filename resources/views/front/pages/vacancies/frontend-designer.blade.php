@@ -1,7 +1,7 @@
 <x-page
         background="/backgrounds/vacancies.jpg"
         title="Frontend designer vacancy"
-        description="Vacancy for a Frontend designer. Location: Antwerp."
+        description="Vacancy for a frontend designer. Location: Antwerp."
 >
 <script type="application/ld+json"> {
 	"@context": "http://schema.org",
@@ -9,13 +9,13 @@
 	"datePosted": "2022-04-22T00:00:00",
     "validThrough": "2023-04-22T00:00:00",
 	"description": "<p>
-                        You're in love with the React + TypeScript combo.
+                        You will be working at the front-of-the-front-end.
                     </p> 
                     <ul>
-                        <li>You know where JavaScript comes from.</li>
-                        <li>You know Git. That's it.</li>
-                        <li>You don't run away from Tailwind CSS</li>
-                        <li>You can work independently but aren't afraid to ask when you're stuck.</li>
+                        <li>You help defining personality for our own products.</li>
+                        <li>You can discuss and design UIs.</li>
+                        <li>You design and implement concrete marketing actions.</li>
+                        <li>You write fluent HTML, (Tailwind) CSS and pieces of JavaScript.</li>
                         <li>You can speak Dutch and you love Italian food.</li>
                     </ul>
                     <p>
@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="mt-16">
-                            @include('front.pages.vacancies.partials.clients')
+                            @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
                         </div>
 
                         @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 

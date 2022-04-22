@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="mt-16">
-                            @include('front.pages.vacancies.partials.clients')
+                            @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
                         </div>
 
                         @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
