@@ -1,13 +1,13 @@
 <x-page
         background="/backgrounds/vacancies.jpg"
-        title="Backend engineer vacancy"
-        description="Vacancy for a Backend engineer. Location: Antwerp."
+        title="Frontend designer vacancy"
+        description="Vacancy for a Frontend designer. Location: Antwerp."
 >
 <script type="application/ld+json"> {
 	"@context": "http://schema.org",
 	"@type": "JobPosting",
-	"datePosted": "2022-02-27T00:00:00",
-    "validThrough": "2023-02-27T00:00:00",
+	"datePosted": "2022-04-22T00:00:00",
+    "validThrough": "2023-04-22T00:00:00",
 	"description": "<p>
                         You're in love with the React + TypeScript combo.
                     </p> 
@@ -21,7 +21,7 @@
                     <p>
                         Learn and grow together with a team that has made its name in open source. You'll have an enormous impact on users worldwide.
                     </p>",
-	"title": "Backend Engineer",
+	"title": "Frontend Designer",
 	"employmentType": "FULL_TIME",
 	"hiringOrganization": {
 		"@type": "Organization",
@@ -45,7 +45,7 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                Backend Engineer
+                Frontend Designer
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
@@ -80,26 +80,34 @@
                             @include('front.pages.vacancies.partials.clients')
                         </div>
 
-                        @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'back']) 
+                        @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
 
                         <div class="mt-16">
                             <h3 class="title">And you?</h3>
                             <ul class="bullets bullets-green">
                                 <li>
                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You love the PHP + Laravel combo.
-                                </li>
-                                <li>
-                                   <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You know Git. That's it.
-                                </li>
-                                <li>
-                                   <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You don't run away from technologies in our <a href="#stack">tech stack</a>.
+                                   You will be working at the front-of-the-front-end (see this <a href="https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/">definition</a> by Brad Frost).
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You can work independently but aren't afraid to ask when you're stuck.
+                                    You create personality for our own products —sketch logos, pick fonts, define color palettes, provide illustrations or create short video reels.
+                                </li>
+                                <li>
+                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                                    You can discuss and design UIs — from idea, to prototype, to implementation. We use paper, Figma and Illustrator, but are open for any tool that gets the job done.
+                                </li>
+                                <li>
+                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                                    You design and implement concrete marketing actions: banners, newsletters or one-page promo sites.
+                                </li>
+                                <li>
+                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                                    You love to play with new technologies, try out stuff that won't make production or work on your secret side project.
+                                </li>
+                                <li>
+                                   <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                                   You write fluent HTML, (Tailwind) CSS and pieces of JavaScript. You know a bit of Git.
                                 </li>
                                 <li>
                                     <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
