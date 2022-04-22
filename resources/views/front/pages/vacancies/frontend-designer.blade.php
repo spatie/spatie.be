@@ -131,7 +131,7 @@
 
     <div class="section section-group">
         @include('front.pages.web-development.partials.stack')
-        @include('front.pages.vacancies.partials.cta', ['github' => true ])
+        @include('front.pages.vacancies.partials.cta', ['github' => false ])
     </div>
 
 </x-page>
