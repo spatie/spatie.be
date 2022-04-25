@@ -1,5 +1,4 @@
 <x-page title="{{ $page->title }}" background="/backgrounds/guidelines-blur.jpg">
-    @include('front.pages.guidelines.partials.writing-readable-php-cta')
 
     <x-slot name="description">
         {{ $page->description }}
@@ -38,20 +37,23 @@
         </div>
         <div class="md:col-span-2">
             <div class="mb-16">
+                @include('front.pages.guidelines.partials.writing-readable-php-cta')
+
                 <h1 class="banner-slogan">
                     {{ $page->title }}
                 </h1>
+
                 <div class="banner-intro flex items-center justify-start">
                     {{ $page->description }}
                 </div>
             </div>
 
-            <div class="markup markup-titles markup-lists markup-code links-blue links-underline">
+            <div class="markup markup-titles markup-lists markup-shiki links-blue links-underline">
                 {{ $page->contents }}
             </div>
         </div>
     </section>
 
-    @include('front.pages.docs.banners.randomBanner')
+    @include('front.pages.docs.banners.writing-readable-php')
 </x-page>
 

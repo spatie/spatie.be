@@ -11,6 +11,7 @@
             'front.pages.docs.banners.mailcoach',
             'front.pages.docs.banners.ray',
             'front.pages.docs.banners.testingLaravel',
+            'front.pages.docs.banners.writing-readable-php',
         ]))
     @endif
 @endunless
