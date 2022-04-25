@@ -26,7 +26,9 @@ class FreeGeoIp
 
                 return $countryCode;
             });
-        } catch (ConnectionException) {
+        } catch (ConnectionException $exception) {
+            report($exception);
+
             return 'US';
         }
     }
