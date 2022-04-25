@@ -30,7 +30,7 @@
         @endphp
 
         <div
-            class="flex text-white text-xs">
+            class="flex text-xs">
                 Available for&nbsp;
                 <x-countdown class="inline-block" :expires="$expirationDate">
                     <span>
