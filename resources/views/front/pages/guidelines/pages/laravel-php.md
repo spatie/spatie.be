@@ -103,8 +103,8 @@ class Url
         // ...
     }
 }
-[/good]
 ```
+[/good]
 
 [bad]
 ```php
