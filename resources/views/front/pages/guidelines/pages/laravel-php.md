@@ -60,6 +60,7 @@ class Foo
     public string $bar;
 }
 ```
+[/good]
 
 
 [bad]
