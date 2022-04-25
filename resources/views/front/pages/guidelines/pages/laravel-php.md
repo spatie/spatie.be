@@ -37,9 +37,8 @@ public string | null $variable;
 If a method returns nothing, it should be indicated with `void`.
 This makes it more clear to the users of your code what your intention was when writing it.
 
+[good]
 ```php
-// Good
-
 // in a Laravel model
 public function scopeArchived(Builder $query): void
 {
@@ -47,26 +46,32 @@ public function scopeArchived(Builder $query): void
         ...
 }
 ```
+[/good]
 
 
 ## Typed properties
 
 You should type a property whenever possible. Don't use a docblock.
 
+[good]
 ```php
-// Good
 class Foo
 {
     public string $bar;
 }
+```
+[/good]
 
-// Bad
+
+[bad]
+```
 class Foo
 {
     /** @var string */
     public $bar;
 }
 ```
+[/bad]
 
 ## Enums
 
@@ -89,8 +94,8 @@ Don't use docblocks for methods that can be fully type hinted (unless you need a
 
 Only add a description when it provides more context than the method signature itself. Use full sentences for descriptions, including a period at the end.
 
+[good]
 ```php
-// Good
 class Url
 {
     public static function fromString(string $url): Url
@@ -98,8 +103,12 @@ class Url
         // ...
     }
 }
+[/good]
+```
 
-// Bad: The description is redundant, and the method is fully type-hinted.
+[bad]
+```php
+// The description is redundant, and the method is fully type-hinted.
 class Url
 {
     /**
@@ -115,11 +124,12 @@ class Url
     }
 }
 ```
+[/bad]
 
 Always import the classnames in docblocks.
 
+[good]
 ```php
-// Good
 use \Spatie\Url\Url
 
 /**
@@ -127,42 +137,50 @@ use \Spatie\Url\Url
  *
  * @return Url
  */
+ ```
+[good]
 
-// Bad
 
+[bad]
+```php
 /**
  * @param string $url
  *
  * @return \Spatie\Url\Url
  */
 ```
+[/bad]
 
 Using multiple lines for a docblock, might draw too much attention to it. When possible, docblocks should be written on one line.
 
+[good]
 ```php
-// Good
-
 /** @var string */
 /** @test */
+``` 
+[/good]
 
-// Bad
-
+[bad]
+```php
 /**
  * @test
  */
 ```
+[/bad]
 
 If a variable has multiple types, the most common occurring type should be first.
 
+[good]
 ```php
-// Good
-
 /** @var \Illuminate\Support\Collection|\SomeWeirdVendor\Collection */
+```
+[/good]
 
-// Bad
-
+[bad]
+```php
 /** @var \SomeWeirdVendor\Collection|\Illuminate\Support\Collection */
 ```
+[/bad]
 
 ## Docblocks for iterables
 
@@ -231,16 +249,19 @@ function someFunction(): Collection {
 
 Use constructor property promotion if all properties can be promoted. To make it readable, put each one on a line of its own. Use a comma after the last one.
 
+[good]
 ```php
-// Good
 class MyClass {
     public function __construct(
         protected string $firstArgument,
         protected string $secondArgument,
     ) {}
 }
+```
+[/good]
 
-// Bad
+[bad]
+```php
 class MyClass {
     protected string $secondArgument
 
@@ -250,58 +271,65 @@ class MyClass {
     }
 }
 ```
+[/bad]
 
 ## Traits
 
 Each applied trait should go on its own line, and the `use` keyword should be used for each of them. This will result in clean diffs when traits are added or removed.
 
+[good]
 ```php
-// Good
-
 class MyClass
 {
     use TraitA;
     use TraitB;
 }
 ```
+[/good]
 
+[bad]
 ```php
-// Bad
-
 class MyClass
 {
     use TraitA, TraitB;
 }
 ```
+[/bad]
 
 ## Strings
 
 When possible prefer string interpolation above `sprintf` and the `.` operator.
 
+[good]
 ```php
-// Good
 $greeting = "Hi, I am {$name}.";
 ```
+[/good]
 
+[bad]
 ```php
-// Bad
 $greeting = 'Hi, I am ' . $name . '.';
 ```
+[/bad]
 
 
 ## Ternary operators
 
 Every portion of a ternary expression should be on its own line unless it's a really short expression.
 
+[good]
 ```php
-// Good
 $name = $isFoo ? 'foo' : 'bar';
+```
+[/good]
 
-// Bad
+[bad]
+```php
 $result = $object instanceof Model ?
     $object->name :
    'A default value';
 ```
+[/bad]
 
 ## If statements
 
@@ -309,48 +337,49 @@ $result = $object instanceof Model ?
 
 Always use curly brackets.
 
+[good]
 ```php
-// Good
 if ($condition) {
    ...
 }
+```
+[/good]
 
-// Bad
+[bad]
+```php
 if ($condition) ...
 ```
+[/bad]
 
 ### Happy path
 
 Generally a function should have its unhappy path first and its happy path last. In most cases this will cause the happy path being in an unindented part of the function which makes it more readable.
 
+[good]
 ```php
-// Good
-
 if (! $goodCondition) {
   throw new Exception;
 }
-
-// do work
 ```
+[/good]
 
 
+[bad]
 ```php
-// Bad
-
 if ($goodCondition) {
  // do work
 }
 
 throw new Exception;
 ```
+[/bad]
 
 ### Avoid else
 
 In general, `else` should be avoided because it makes code less readable. In most cases it can be refactored using early returns. This will also cause the happy path to go last, which is desirable.
 
+[good]
 ```php
-// Good
-
 if (! $conditionA) {
    // condition A failed
 
@@ -365,10 +394,10 @@ if (! $conditionB) {
 
 // condition A and B passed
 ```
+[/good]
 
+[bad]
 ```php
-// Bad
-
 if ($conditionA) {
    if ($conditionB) {
       // condition A and B passed
@@ -381,38 +410,36 @@ else {
    // condition A failed
 }
 ```
+[/bad]
 
 Another option to refactor an `else` away is using a ternary
 
+[bad]
 ```php
-// Bad
-
 if ($condition) {
     $this->doSomething();
 } 
 else {
     $this->doSomethingElse();
 }
-
-
 ```
+[/bad]
 
+[good]
 ```php
-// Good
-
 $condition
     ? $this->doSomething();
     : $this->doSomethingElse();
 ```
-
+[/good]
 
 ### Compound ifs
 
 In general, separate `if` statements should be preferred over a compound condition. This makes debugging code easier.
 
 
+[good]
 ```php
-// Good
 if (! $conditionA) {
    return;
 }
@@ -427,13 +454,15 @@ if (! $conditionC) {
 
 // do stuff
 ```
+[/good]
 
+[bad]
 ```php
-// Bad
 if ($conditionA && $conditionB && $conditionC) {
   // do stuff
 }
 ```
+[/bad]
 
 ## Comments
 
@@ -451,16 +480,17 @@ Comments should be avoided as much as possible by writing expressive code. If yo
 
 A possible strategy to refactor away a comment is to create a function with name that describes the comment
 
+[good]
 ```php
-// Good
 $this->calculateLoans();
 ```
+[/good]
 
+[bad]
 ```php
-// Bad
-
 // Start calculating loans
 ```
+[/bad]
 
 ## Test classes
 
@@ -499,8 +529,8 @@ class CartCleared extends ShouldBeStored
 
 Statements should be allowed to breathe. In general always add blank lines between statements, unless they're a sequence of single-line equivalent operations. This isn't something enforceable, it's a matter of what looks best in its context.
 
+[good]
 ```php
-// Good
 public function getPage($url)
 {
     $page = $this->pages()->where('slug', $url)->first();
@@ -515,8 +545,12 @@ public function getPage($url)
 
     return $page;
 }
+```
+[good]
 
-// Bad: Everything's cramped together.
+[bad]
+```php
+// Everything's cramped together.
 public function getPage($url)
 {
     $page = $this->pages()->where('slug', $url)->first();
@@ -529,9 +563,11 @@ public function getPage($url)
     return $page;
 }
 ```
+[/bad]
 
+[good]
 ```php
-// Good: A sequence of single-line equivalent operations.
+// A sequence of single-line equivalent operations.
 public function up()
 {
     Schema::create('users', function (Blueprint $table) {
@@ -544,22 +580,26 @@ public function up()
     });
 }
 ```
+[/good]
 
 Don't add any extra empty lines between `{}` brackets.
 
+[good]
 ```php
-// Good
 if ($foo) {
     $this->foo = $foo;
-}
-
-// Bad
-if ($foo) {
-
-    $this->foo = $foo;
-
 }
 ```
+[/good]
+
+[bad]
+```php
+if ($foo) {
+
+    $this->foo = $foo;
+}
+```
+[/bad]
 
 ## Configuration
 
@@ -583,8 +623,9 @@ Avoid using the `env` helper outside of configuration files. Create a configurat
 
 When adding config values for a specific service, add them to the `services` config file. Do not create a new config file.
 
+[good]
 ```php
-// Good: adding credentials to `config/services.php`
+// Adding credentials to `config/services.php`
 return [
     'ses' => [
         'key' => env('SES_AWS_ACCESS_KEY_ID'),
@@ -606,9 +647,11 @@ return [
     ],   
 ];
 ```
+[/good]
 
+[bad]
 ```php
-// Bad: creating a new config file: `weyland-yutani.php`
+// Creating a new config file: `weyland-yutani.php`
 
 return [
     'weyland_yutani' => [
@@ -616,18 +659,23 @@ return [
     ],  
 ]
 ```
+[/bad]
 
 ## Artisan commands
 
 The names given to artisan commands should all be kebab-cased.
 
+[good]
 ```bash
-# Good
 php artisan delete-old-records
+```
+[/good]
 
-# Bad
+[bad]
+```bash
 php artisan deleteOldRecords
 ```
+[/bad]
 
 A command should always give some feedback on what the result is. Minimally you should let the `handle` method spit out a comment at the end indicating that all went well.
 
@@ -673,41 +721,56 @@ https://spatie.be/jobs/front-end-developer
 
 Prefer to use the route tuple notation when possible.
 
+[good]
 ```php
-// Good
 Route::get('open-source', [OpenSourceController::class, 'index']);
-
-// Bad
-Route::get('open-source', 'OpenSourceController@index');
 ```
 
+[bad]
+```php
+Route::get('open-source', 'OpenSourceController@index');
+```
+[/bad]
+
+[good]
 ```html
 <a href="{{ action([\App\Http\Controllers\OpenSourceController::class, 'index']) }}">
     Open Source
 </a>
 ```
+[/good]
 
 Route names must use camelCase.
 
+[good]
 ```php
-// Good
 Route::get('open-source', [OpenSourceController::class, 'index'])->name('openSource');
+```
+[/good]
 
-// Bad
+[bad]
+```php
 Route::get('open-source', [OpenSourceController::class, 'index'])->name('open-source');
 ```
+[/dad]
 
-All routes have an http verb, that's why we like to put the verb first when defining a route. It makes a group of routes very readable. Any other route options should come after it.
+All routes have an HTTP verb, that's why we like to put the verb first when defining a route. It makes a group of routes very readable. Any other route options should come after it.
 
+[good]
 ```php
-// Good: all http verbs come first
+// all HTTP verbs come first
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('open-source', [OpenSourceController::class, 'index'])->name('openSource');
+```
+[/good]
 
-// Bad: http verbs not easily scannable
+[bad]
+```php
+// HTTP verbs not easily scannable
 Route::name('home')->get('/', [HomeController::class, 'index']);
 Route::name('openSource')->get([OpenSourceController::class, 'index']);
 ```
+[/bad]
 
 Route parameters should use camelCase.
 
@@ -717,15 +780,19 @@ Route::get('news/{newsItem}', [NewsItemsController::class, 'index']);
 
 A route url should not start with `/` unless the url would be an empty string.
 
+[good]
 ```php
-// Good
 Route::get('/', [HomeController::class, 'index']);
 Route::get('open-source', [OpenSourceController::class, 'index']);
+```
+[/good]
 
-// Bad
+[bad]
+```php
 Route::get('', [HomeController::class, 'index']);
 Route::get('/open-source', [OpenSourceController::class, 'index']);
 ```
+[/bad]
 
 ## Controllers
 
@@ -814,16 +881,19 @@ class OpenSourceController
 
 When using multiple rules for one field in a form request, avoid using `|`, always use array notation. Using an array notation will make it easier to apply custom rule classes to a field.
 
+[good]
 ```php
-// Good
 public function rules()
 {
     return [
         'email' => ['required', 'email'],
     ];
 }
+```
+[/good]
 
-// Bad
+[bad]
+```php
 public function rules()
 {
     return [
@@ -831,6 +901,7 @@ public function rules()
     ];
 }
 ```
+[/bad]
 
 
 All custom validation rules must use snake_case:
