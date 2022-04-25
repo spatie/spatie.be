@@ -35,19 +35,19 @@
                 <x-countdown class="inline-block" :expires="$expirationDate">
                     <span>
                         <span class="font-semibold  font-mono" x-text="timer.days">{{ $component->days()
-                            }}</span><span>d</span>
+                            }}</span><span class="text-gray-200">d</span>
                     </span>
                     <span>
                         <span class="font-semibold font-mono" x-text="timer.hours">{{ $component->hours()
-                            }}</span><span>h</span>
+                            }}</span><span class="text-gray-200">h</span>
                     </span>
                     <span>
                         <span class="font-semibold font-mono" x-text="timer.minutes">{{ $component->minutes()
-                            }}</span><span>m</span>
+                            }}</span><span class="text-gray-200">m</span>
                     </span>
                     <span>
                         <span class="font-semibold font-mono" x-text="timer.seconds">{{ $component->seconds()
-                            }}</span><span>s</span>
+                            }}</span><span class="text-gray-200">s</span>
                     </span>
                 </x-countdown>
         </div>
