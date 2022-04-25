@@ -138,8 +138,7 @@ use \Spatie\Url\Url
  * @return Url
  */
  ```
-[good]
-
+[/good]
 
 [bad]
 ```php
