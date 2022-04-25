@@ -17,7 +17,7 @@
 
     <section>
         <div class="wrap wrap-6 mb-16">
-            <div class="sm:col-span-6 max-w-md">
+            <div class="sm:col-span-6 max-w-lg">
                 <div class="markup links-underline links-blue">
                     <p class="text-lg">
                         Most projects are not built or maintained by a single person. Instead, there is a collection of
@@ -35,7 +35,9 @@
                         We don't dogmatically keep following rules we agreed on in the past, but keep challenging them.
                         New experiences lead to new and improved guidelines.
                     </p>
+                    <div class="mt-12">
                     @include('front.pages.guidelines.partials.writing-readable-php-cta')
+                    </div>
                 </div>
             </div>
         </div>
