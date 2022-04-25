@@ -753,7 +753,7 @@ Route::get('open-source', [OpenSourceController::class, 'index'])->name('openSou
 ```php
 Route::get('open-source', [OpenSourceController::class, 'index'])->name('open-source');
 ```
-[/dad]
+[/bad]
 
 All routes have an HTTP verb, that's why we like to put the verb first when defining a route. It makes a group of routes very readable. Any other route options should come after it.
 
