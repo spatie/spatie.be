@@ -4,6 +4,8 @@
         Consistency is the key to writing maintainable software.
     </x-slot>
 
+    @include('front.pages.guidelines.partials.writing-readable-php-cta')
+
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">

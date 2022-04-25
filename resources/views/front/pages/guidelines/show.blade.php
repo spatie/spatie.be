@@ -1,4 +1,6 @@
 <x-page title="{{ $page->title }}" background="/backgrounds/guidelines-blur.jpg">
+    @include('front.pages.guidelines.partials.writing-readable-php-cta')
+
     <x-slot name="description">
         {{ $page->description }}
     </x-slot>
