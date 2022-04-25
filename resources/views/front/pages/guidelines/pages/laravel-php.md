@@ -322,13 +322,13 @@ $name = $isFoo ? 'foo' : 'bar';
 ```
 [/good]
 
-[bad]
+[good]
 ```php
 $result = $object instanceof Model ?
     $object->name :
    'A default value';
 ```
-[/bad]
+[/good]
 
 ## If statements
 
