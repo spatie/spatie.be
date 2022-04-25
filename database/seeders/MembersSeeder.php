@@ -8,13 +8,6 @@ use Illuminate\Database\Seeder;
 class MembersSeeder extends Seeder
 {
     protected $members = [
-        'adriaan@spatie.be' => [
-            'first_name' => 'Adriaan',
-            'last_name' => 'Marain',
-            'role' => 'Frontend developer',
-            'description' => 'Adriaan\'s first language is JavaScript. React, Vue, Node.js, anything goes! Rumor has it he was raised by wolves.',
-            'twitter' => 'adriaanmrn',
-        ],
 
         'alex@spatie.be' => [
             'first_name' => 'Alex',
@@ -23,15 +16,6 @@ class MembersSeeder extends Seeder
             'description' => 'Alex can throw backend code, servers and hardware in the mix. He\'s famous for winning the first Laravel blog contest and struggling with Paypal ever since.',
             'twitter' => 'alexvanderbist',
             'website' => 'https://alexvanderbist.com',
-        ],
-
-        'brent@spatie.be' => [
-            'first_name' => 'Brent',
-            'last_name' => 'Roose',
-            'role' => 'Backend developer',
-            'description' => 'Brent has a love for syntax and clean code and showed us how to work in a light theme. Our office has never been so bright.',
-            'twitter' => 'brendt_gd',
-            'website' => 'https://stitcher.io',
         ],
 
         'freek@spatie.be' => [
@@ -87,14 +71,6 @@ class MembersSeeder extends Seeder
             'description' => 'Seb really earns the label ‘full stack’. Throw anything at this guy and he\'ll kick it back to you as a component.',
             'twitter' => 'sebdedeyne',
             'website' => 'https://sebastiandedeyne.com',
-        ],
-
-        'vic@spatie.be' => [
-            'first_name' => 'Vic',
-            'last_name' => 'Denys',
-            'role' => 'Frontend developer',
-            'description' => 'Besides being a skilled pianist, Vic knows how to combine his technological skills with a good eye for style. Great repertoire!',
-            'twitter' => 'vicdenys',
         ],
 
         'willem@spatie.be' => [

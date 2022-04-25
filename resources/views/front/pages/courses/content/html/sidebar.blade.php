@@ -66,9 +66,7 @@
                                     <span class="w-3 fill-current opacity-50 group-hover:opacity-100" title="Lesson includes video">{{ svg('icons/fas-video') }}</span>
                                     @endif
                                     @if ($lessonInChapter->hasBeenCompletedByCurrentUser())
-                                    <span class="ml-auto w-4 h-4  bg-green rounded-full text-[10px] flex items-center text-white justify-items-center font-bold">
-                                            <p class="w-full inline-block text-center text-green-lightest">✓</p>
-                                    </span>
+                                    <x-completion-badge class="ml-auto" />
                                     @endif
                                 </a>
                             </li>

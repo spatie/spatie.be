@@ -27,11 +27,6 @@
         <li class="{{ request()->routeIs('series.show') ? " font-sans-bold" : "" }}">
             <a class="flex gap-2 items-center" href="{{ route('series.show', [$series]) }}">
                 <span class="mr-1">Introduction</span>
-                {{-- TODO CHECK IF COMPLETED--}}
-                <div
-                    class="w-3 h-3  bg-green rounded-full text-xs flex items-center text-white justify-items-center font-bold">
-                    <p class="w-full inline-block text-center">✓</p>
-                </div>
             </a>
         </li>
         @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
@@ -42,14 +37,12 @@
         @endif
         @foreach($lessonsPerChapter as $lessonInChapter)
         <li class="{{ isset($lesson) && $lesson->id === $lessonInChapter->id ? " font-sans-bold" : "" }}">
-            <a class="block" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
+            <a class="flex gap-2 items-center" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                 <span class="mr-1">{{ $lessonInChapter->title }}</span>
 
-                {{-- TODO CHECK IF COMPLETED--}}
-                <div
-                    class="w-3 h-3  bg-green rounded-full text-xs flex items-center text-white justify-items-center font-bold">
-                    <p class="w-full inline-block text-center">✓</p>
-                </div>
+                @if($lessonInChapter->hasBeenCompletedByCurrentUser())
+                <x-completion-badge class="ml-auto" />
+                @endif
 
                 @if($lessonInChapter->display === \App\Models\Enums\LessonDisplayEnum::FREE)
                 <span class="hidden tag tag-green">Free</span>
