@@ -724,6 +724,8 @@ Prefer to use the route tuple notation when possible.
 ```php
 Route::get('open-source', [OpenSourceController::class, 'index']);
 ```
+[/good]
+
 
 [bad]
 ```php
