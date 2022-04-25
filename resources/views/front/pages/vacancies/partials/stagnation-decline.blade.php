@@ -1,3 +1,8 @@
+@php
+    
+    $profile = $profile ?? '';
+
+@endphp
 <div class="mt-16">
     <h3 class="title">First rule: stagnation means decline</h3>
     <ul class="bullets bullets-green">
