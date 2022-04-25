@@ -14,9 +14,8 @@
 
     @if ($purchasable->id === 18)
     <section class="-mx-8 mb-4 px-8 py-6 bg-trueblack" role="banner">
-        <div class=" text-white">
+        <div>
             <h1 class="font-serif font-bold text-xl leading-tight">
-                Black Friday
                  <div class="text-yellow">Special offer</div>
             </h1>
 
@@ -27,7 +26,7 @@
         </div>
 
         @php
-        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-29 23:59' );
+        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-04-26 23:59' );
         @endphp
 
         <div
