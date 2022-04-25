@@ -5,6 +5,7 @@ namespace App\Guidelines;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Str;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
@@ -46,6 +47,12 @@ class GuidelinesContentParser implements ContentParser
         $document = YamlFrontMatter::parse($contents);
 
         $htmlContents = $this->markdownRenderer->toHtml($document->body());
+
+        $htmlContents = Str::of($htmlContents)
+            ->replace('[good]', '<div class="shiki-good">')
+            ->replace('[bad]', '<div class="shiki-bad">')
+            ->replace(['[/good]', '[/bad]'], '</div>')
+            ->toString();
 
         return array_merge(
             $document->matter(),

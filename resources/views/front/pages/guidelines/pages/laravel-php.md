@@ -20,15 +20,17 @@ By default, we don't use `final`. In our team, there aren't many benefits that `
 
 Whenever possible use the short nullable notation of a type, instead of using a union of the type with `null`.
 
+[good]
 ```php
-// in a class
-
-// Good
 public ?string $variable;
+```
+[/good]
 
-// Bad
+[bad]
+```php
 public string | null $variable;
 ```
+[/bad]
 
 ### Void return types
 
