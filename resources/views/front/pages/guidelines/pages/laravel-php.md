@@ -545,7 +545,7 @@ public function getPage($url)
     return $page;
 }
 ```
-[good]
+[/good]
 
 [bad]
 ```php
