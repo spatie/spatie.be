@@ -6,8 +6,12 @@ use App\Domain\Shop\Models\Purchasable;
 
 class PriceController
 {
-    public function __invoke(Purchasable $purchasable, string $countryCode)
+    public function __invoke(Purchasable $purchasable, string $ipOrCountryCode)
     {
+        $countryCode = strlen($ipOrCountryCode) === 2
+            ? $ipOrCountryCode
+            : geoip($ipOrCountryCode)->iso_code;
+
         $price = $purchasable->getPriceForCountryCode($countryCode);
         $priceWithoutDiscount = $purchasable->getPriceWithoutDiscountForCountryCode($countryCode);
 
