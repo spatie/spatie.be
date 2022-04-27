@@ -6,8 +6,12 @@ use App\Domain\Shop\Models\Bundle;
 
 class BundlePriceController
 {
-    public function __invoke(Bundle $bundle, string $countryCode)
+    public function __invoke(Bundle $bundle, string $ipOrCountryCode)
     {
+        $countryCode = strlen($ipOrCountryCode) === 2
+            ? $ipOrCountryCode
+            : geoip($ipOrCountryCode)->iso_code;
+
         $price = $bundle->getPriceForCountryCode($countryCode);
         $priceWithoutDiscount = $bundle->getPriceWithoutDiscountForCountryCode($countryCode);
 

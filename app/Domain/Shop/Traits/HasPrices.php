@@ -4,7 +4,6 @@ namespace App\Domain\Shop\Traits;
 
 use App\Domain\Shop\Models\Referrer;
 use App\Support\DisplayablePrice;
-use App\Support\FreeGeoIp\FreeGeoIp;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\Relation;
 
@@ -19,7 +18,7 @@ trait HasPrices
 
     public function getPriceForIp(string $ip): DisplayablePrice
     {
-        $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
+        $countryCode = geoip($ip)->iso_code;
 
         return $this->getPriceForCountryCode($countryCode);
     }
@@ -79,7 +78,7 @@ trait HasPrices
 
     public function getPriceWithoutDiscountForIp(string $ip): DisplayablePrice
     {
-        $countryCode = FreeGeoIp::getCountryCodeForIp($ip);
+        $countryCode = geoip($ip)->iso_code;
 
         return $this->getPriceWithoutDiscountForCountryCode($countryCode);
     }
