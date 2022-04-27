@@ -69,3 +69,11 @@ ruby client_secret.rb
 ```
 
 Which gives you a new token that is valid for 6 months.
+
+## GeoIP lookup
+
+We use Maxmind's geo IP dataset to provide PPP based on IP location. This is built using the excellent [laravel-geoip](https://lyften.com/projects/laravel-geoip) package.
+
+To set it this up the first time you'll need a Maxmind license key (free for personal use) in the `MAXMIND_LICENSE_KEY` environment variable. Next, run the `php artisan geoip:update` command to pull in the geo IP dataset.
+
+In production, the `geoip:update` command is scheduled to run weekly.
