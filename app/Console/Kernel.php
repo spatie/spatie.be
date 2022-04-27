@@ -51,6 +51,8 @@ class Kernel extends ConsoleKernel
         $schedule->command(UpdateConversionRatesCommand::class)->runInBackground()->sundays()->at('05:00');
         $schedule->command(UpdatePurchasablePricesCommand::class)->runInBackground()->sundays()->at('06:00');
         $schedule->command(UpdateBundlePricesCommand::class)->runInBackground()->sundays()->at('06:30');
+        $schedule->command('geoip:update')->weekly();
+
         $schedule->command(WishHappyBirthdayCommand::class)->runInBackground()->dailyAt('08:50');
     }
 
