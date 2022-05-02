@@ -331,6 +331,7 @@
     @apply absolute;
     @apply right-full;
     @apply px-2;
+    @apply text-green;
 }
 
 .markup-shiki .line.del{
@@ -343,6 +344,7 @@
     @apply absolute;
     @apply right-full;
     @apply px-2;
+    @apply text-pink;
 }
 
 /* Video markup */
