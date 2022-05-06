@@ -10,7 +10,7 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                Internships <br>in Antwerp
+                Webdevelopment Internship <br>in Antwerp
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
