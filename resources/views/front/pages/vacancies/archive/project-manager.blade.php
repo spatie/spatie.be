@@ -1,6 +1,6 @@
 <x-page
         title="Project manager vacancy"
-        background="/backgrounds/vacancies.jpg"
+        background="/backgrounds/jobs.jpg"
         description="Vacancy for a digital project manager. Location: Antwerp."
 >
 

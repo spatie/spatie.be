@@ -1,6 +1,6 @@
 <x-page
         title="Internship"
-        background="/backgrounds/vacancies.jpg"
+        background="/backgrounds/jobs.jpg"
 
 >
     <x-slot name="description">

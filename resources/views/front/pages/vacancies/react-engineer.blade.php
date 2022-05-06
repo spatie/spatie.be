@@ -1,5 +1,5 @@
 <x-page
-        background="/backgrounds/vacancies.jpg"
+        background="/backgrounds/jobs.jpg"
         title="React engineer vacancy"
         description="Vacancy for a react engineer. Location: Antwerp."
 >

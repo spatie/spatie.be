@@ -1,5 +1,5 @@
 <x-page
-        background="/backgrounds/vacancies.jpg"
+        background="/backgrounds/jobs.jpg"
         title="Backend engineer vacancy"
         description="Vacancy for a Backend engineer. Location: Antwerp."
 >

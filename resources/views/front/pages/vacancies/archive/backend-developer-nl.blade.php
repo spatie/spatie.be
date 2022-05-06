@@ -1,6 +1,6 @@
 <x-page
         title="Backend developer vacature"
-        background="/backgrounds/vacancies.jpg"
+        background="/backgrounds/jobs.jpg"
 >
     <x-slot name="description">
         Vacature voor een backend developer. Locatie: Antwerpen.

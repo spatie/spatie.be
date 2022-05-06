@@ -1,6 +1,6 @@
 <x-page
         title="Backend developer vacancy"
-        background="/backgrounds/vacancies.jpg"
+        background="/backgrounds/jobs.jpg"
         description="Vacancy for a Laravel backend developer. Location: Antwerp."
 >
     <section id="banner" class="banner" role="banner">

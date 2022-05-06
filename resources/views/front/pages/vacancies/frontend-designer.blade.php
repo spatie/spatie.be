@@ -1,5 +1,5 @@
 <x-page
-        background="/backgrounds/vacancies.jpg"
+        background="/backgrounds/jobs.jpg"
         title="Frontend designer vacancy"
         description="Vacancy for a frontend designer. Location: Antwerp."
 >
