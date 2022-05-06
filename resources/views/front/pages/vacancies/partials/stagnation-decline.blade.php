@@ -4,9 +4,9 @@
 
 @endphp
 
-<div class="sm:mt-16 wrap wrap-6">
+<div class="sm:mt-16 wrap wrap-6 items-center">
     <div class="sm:col-span-3">
-        <div class="sm:-ml-24 sm:mr-16 mb-16 illustration is-postcard-without-caption" title="Team">
+        <div class="sm:-ml-24 sm:mr-24 illustration" title="Team">
             {{ image('vacancies/about.jpg') }}
         </div>
     </div>

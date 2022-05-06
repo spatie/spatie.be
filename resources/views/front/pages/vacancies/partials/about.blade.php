@@ -23,7 +23,7 @@
     </div>
     <div class="hidden | sm:block sm:col-span-3 sm:col-start-4">
         <div class="ml-24 w-full h-0" style="padding-bottom: 75%">
-            <div class="absolute inset-0 illustration is-rotated is-postcard-without-caption h-full" title="Team">
+            <div class="absolute inset-0 illustration h-full" title="Team">
                 {{ image('vacancies/about-2.jpg') }}
             </div>
         </div>
