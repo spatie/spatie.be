@@ -56,61 +56,44 @@
 
     <div class="section section-group pt-0 section-fade">
         <section id="intro" class="section">
+            @include('front.pages.vacancies.partials.about')
+            
             <div class="wrap wrap-6">
-                <div class="sm:col-span-4">
-                    <div class="markup links-underline links-blue">
-
-                        <p class="text-2xl">
-                            Cool that you found out about this vacancy! 
-                            <br>Are you a recruiter? <a title="📵 Stop calling us and dance 🕺!" href="{{ route('vacancies.recruiters')}}">Read on</a>.
-                        </p>
-                        <div class="mt-16">
-                            <h3 class="title">Spatie</h3>
-                            <p>We are architects and builders, tinkering on the front line; an open-source mastodon operated by a highly talented bunch the size of a soccer team.
-                                We purposefully keep the company small but knowledgeable.
-                            </p>
-                            <p>
-                            What does this bring to you? Learn and grow fast in a respectful, almost familiar environment. Yet you'll have an enormous impact on users worldwide.
-                            Together we'll decide where we'll go next. 
-                            </p>
-                            <p>Rest assured: there will be laughs and great food along the way.</p>
-                        </div>
-
-                        <div class="mt-16">
-                            @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
-                        </div>
-
-                        @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
-
-                        <div class="mt-16">
-                            <h3 class="title">And you?</h3>
-                            <ul class="bullets bullets-green">
-                                <li>
-                                   <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You love the React + TypeScript combo, and you know where JavaScript comes from.
-                                </li>
-                                <li>
-                                   <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You know Git. That's it.
-                                </li>
-                                <li>
-                                   <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                   You don't run away from Tailwind CSS or other technologies in our <a href="#stack">tech stack</a>.
-                                </li>
-                                <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You can work independently but aren't afraid to ask when you're stuck.
-                                </li>
-                                <li>
-                                    <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                                    You can speak Dutch and you love Italian food.
-                                 </li>
-                            </ul>
-                            
-                            <div class="mt-16 gradient gradient-blue p-8 rounded">
-                                More of a <strong>Frontend Designer</strong> type? Check our <a href="{{ route('vacancies.show', 'frontend-designer') }}">designer vacancy</a> as well.
-                            </div>
-                        </div>
+                <div class="mt-16 sm:col-span-4 markup links-underline links-blue">
+                    @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
+                </div>
+            </div>
+            
+            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
+                
+            <div class="wrap wrap-6">
+                <div class="sm:col-span-4 mt-16 markup links-underline links-blue">
+                    <h3 class="title">And you?</h3>
+                    <ul class="bullets bullets-green">
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            You love the React + TypeScript combo, and you know where JavaScript comes from.
+                        </li>
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            You know Git. That's it.
+                        </li>
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            You don't run away from Tailwind CSS or other technologies in our <a href="#stack">tech stack</a>.
+                        </li>
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            You can work independently but aren't afraid to ask when you're stuck.
+                        </li>
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            You can speak Dutch and you love Italian food.
+                            </li>
+                    </ul>
+                    
+                    <div class="mt-16 gradient gradient-blue p-8 rounded">
+                        More of a <strong>Frontend Designer</strong> type? Check our <a href="{{ route('vacancies.show', 'frontend-designer') }}">designer vacancy</a> as well.
                     </div>
                 </div>
             </div>

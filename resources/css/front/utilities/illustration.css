@@ -55,6 +55,11 @@
         transform: rotate(-2deg) translateY(-2rem);
     }
 
+    .illustration.\-is-rotated {
+        @apply mt-16;
+        transform: rotate(2deg) translateY(2rem);
+    }
+
     .illustration.is-left {
         transform-origin: 0 100%;
     }

@@ -1,6 +1,6 @@
 <section class=section>
-    <div class="wrap wrap-6 sm:grid-flow-col-dense">
-        <div class="sm:col-span-4">
+    <div class="wrap wrap-6 items-center">
+        <div class="sm:col-span-3">
             <div class="markup links-underline links-blue">
                <h2 class="title-2xl">Our offer
                 </h2>
@@ -35,6 +35,13 @@
                     <br>
                     You may start immediately.
                 </p>
+            </div>
+        </div>
+        <div class="hidden | sm:block sm:col-span-3 sm:col-start-4">
+            <div class="ml-24 w-full h-0" style="padding-bottom: 75%">
+                <div class="absolute inset-0 illustration -is-rotated is-postcard-without-caption h-full" title="Team">
+                    {{ image('vacancies/about-3.jpg') }}
+                </div>
             </div>
         </div>
     </div>
