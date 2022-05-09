@@ -6,16 +6,22 @@
                 </h2>
                 
                 <ul class="bullets bullets-green">
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A full-time position in a fostering environment</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike allowance, hardware, internet at home, pension plan, additional holidays …</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Velo card for public bikes in Antwerp</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Apple laptop + second screen, most recent iPhone or Android smartphone</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
-                    <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
+                    @unless($marketing ?? false)
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A full-time position in a fostering environment</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike allowance, hardware, internet at home, pension plan, additional holidays …</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Velo card for public bikes in Antwerp</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Apple laptop + second screen, most recent iPhone or Android smartphone</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
+                    @else
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A part-time position, on location or remote</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
+                    @endif
                 </ul>
 
+                @unless($marketing ?? false)
                 <h3 class="mt-16 title">Extras that will feel familiar quickly</h3>
 
                 <ul class="bullets bullets-green">
@@ -29,10 +35,13 @@
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Board game evenings for those who like to play</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Monthly Italian lunch with the team; wine from a chicken jug</li>
                 </ul>
+                @endif
 
-                <p class="mt-16 text-sm text-gray">
-                    We are not looking into full-time remote work or relocation.
-                    <br>
+                <p class="mt-6 text-sm text-gray">
+                    @unless($marketing ?? false)
+                        We are not looking into full-time remote work or relocation.
+                        <br>
+                    @endif
                     You may start immediately.
                 </p>
             </div>

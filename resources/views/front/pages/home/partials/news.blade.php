@@ -1,8 +1,8 @@
 <section id="news">
     <div class="wrap gapy-0 items-end">
         <div class="mb-8 flex items-start">
-            <a href="{{ route('vacancies.show', 'react-engineer') }}" class="text-2xl px-4 -my-2 py-2 bg-blue-darker hover:bg-blue-dark text-white rounded-sm">
-                <strong class="font-semibold">Now hiring</strong>: React Engineer
+            <a href="{{ route('vacancies.index') }}" class="text-2xl px-4 -my-2 py-2 bg-blue-darker hover:bg-blue-dark text-white rounded-sm">
+                <strong class="font-semibold">Now hiring</strong>: Frontend Designer and more…
             </a>
         </div>
     </div>

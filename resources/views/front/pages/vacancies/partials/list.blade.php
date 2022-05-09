@@ -14,6 +14,11 @@
     <div class="text-xs text-gray">Antwerp / Partially remote</div>
 </div>
 <div class="mt-4">
+    <a class="link-underline link-blue" href="{{ route('vacancies.show', 'digital-marketeer') }}">Digital Marketeer</a>
+    <div class="text-xs text-gray">Promoting our portfolio</div>
+    <div class="text-xs text-gray">Antwerp / Fully or partially remote</div>
+</div>
+<div class="mt-4">
     <a class="link-underline link-blue" href="{{ route('vacancies.show', 'backend-engineer') }}">Backend Engineer</a>
     <div class="text-xs text-gray">PHP and Laravel</div>
     <div class="text-xs text-gray">Antwerp / Partially remote</div>
