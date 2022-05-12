@@ -11,7 +11,7 @@
 
 <div class="wrap wrap-6 items-center">
     <div class="my-16 sm:col-span-3 markup links-underline links-blue">
-        <h3 class="title">Spatie</h3>
+        <h3 class="title">About us</h3>
         <p>We are architects and builders, tinkering on the front line; an open-source mastodon operated by a highly talented bunch the size of a soccer team.
             We purposefully keep the company small but knowledgeable.
         </p>

@@ -16,7 +16,8 @@
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose noise-cancelling headphones</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
                     @else
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A part-time position, on location or remote</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A <strong>part-time position</strong>, on location or remote</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and optional extras tailored to your personal needs</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
                     @endif
                 </ul>

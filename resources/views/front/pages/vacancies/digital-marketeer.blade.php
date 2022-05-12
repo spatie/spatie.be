@@ -72,23 +72,19 @@
                     <ul class="bullets bullets-green">
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You're looking for a part-time job, optionally remote.
+                            You have a good understanding of our primary target group: developers in the Laravel and PHP ecosystem, and you know what drives them. 
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You know how to grow a digital product.
+                            You have a strong opinion –loosely held– what makes a great digital product, how to grow it, and how to reach untapped potential.
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You can connect with our primary target group: developers in the Laravel ecosystem.
+                            You’re eager to dissect our products: spot the strengths and the shortcomings, and define strategies to communicate about these.
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            Yet you have a nose for untapped potential.
-                        </li>
-                        <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You can work independently and can formulate actionable campaigns.
+                            Writing positive, enthusiastic messages in a non-salesy way is natural for you. You like experimenting with marketing strategies and know how to measure results.
                         </li>
                     </ul>
                 </div>
