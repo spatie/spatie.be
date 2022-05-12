@@ -86,6 +86,15 @@
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
                             Writing positive, enthusiastic messages in a non-salesy way is natural for you. You like experimenting with marketing strategies and know how to measure results.
                         </li>
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            You know your way around Google Tag Manager, Google Analytics (or comparable), Facebook &amp; Twitter ads and tools like Hubspot or Sharpspring. 
+                            We're open for any suggestion that fits your toolbox better.
+                        </li>
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            Your English is spotless, given our international market.
+                        </li>
                     </ul>
                 </div>
             </div>

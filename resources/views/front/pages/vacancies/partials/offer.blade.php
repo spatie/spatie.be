@@ -21,7 +21,9 @@
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Work on location in Antwerp, partially from home or even <strong>fully remote</strong>.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and optional extras tailored to your personal needs.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need.</li>
-                    @endif
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> You may start immediately.</li>
+
+                        @endif
                 </ul>
 
                 @unless($marketing ?? false)
@@ -38,15 +40,13 @@
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Board game evenings for those who like to play</li>
                     <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Monthly Italian lunch with the team; wine from a chicken jug</li>
                 </ul>
-                @endif
-
+              
                 <p class="mt-6 text-sm text-gray">
-                    @unless($marketing ?? false)
                         We are not looking into full-time remote work or relocation.
                         <br>
-                    @endif
-                    You may start immediately.
-                </p>
+                        You may start immediately.
+                    </p>
+                @endif
             </div>
         </div>
         <div class="hidden | sm:block sm:col-span-3 sm:col-start-4">
