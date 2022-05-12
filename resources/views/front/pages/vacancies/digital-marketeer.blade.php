@@ -88,7 +88,7 @@
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You know your way around Google Tag Manager, Google Analytics (or comparable), Facebook &amp; Twitter ads and tools like Hubspot or Sharpspring. 
+                            You know your way around Google Tag Manager, Google Analytics (or comparable), Facebook &amp; Twitter ads and tools like Hubspot or SharpSpring. 
                             We're open for any suggestion that fits your toolbox better.
                         </li>
                         <li>
