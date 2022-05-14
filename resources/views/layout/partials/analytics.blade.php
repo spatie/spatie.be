@@ -1,3 +1,8 @@
+@if (app()->environment('production'))
+    <script src="https://cdn.usefathom.com/script.js" data-site="OMNDKUTR" defer></script>
+@endif
+
+
 @php
     $gtmId = app()->environment('production') ? 'GTM-WGCBMG' : 'GTM-TEST';
 @endphp
