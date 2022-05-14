@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-livewire-wizard",
+            "repository" => "spatie/laravel-livewire-wizard",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-translatable",
             "repository" => "spatie/laravel-translatable",
             "branches" => [
