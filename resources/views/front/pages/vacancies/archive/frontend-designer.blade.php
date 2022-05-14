@@ -1,4 +1,4 @@
-<x-page background="/backgrounds/vacancies.jpg" title="Frontend designer vacancy" description="Vacancy for a frontend designer. Location: Antwerp.">
+<x-page background="/backgrounds/jobs.jpg" title="Frontend designer vacancy" description="Vacancy for a frontend designer. Location: Antwerp.">
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">

@@ -321,6 +321,32 @@
     content: '×';
 }
 
+.markup-shiki .line.add{
+    @apply bg-green-light;
+    @apply bg-opacity-25;
+}
+
+.markup-shiki .line.add:before{
+    content: '+';
+    @apply absolute;
+    @apply right-full;
+    @apply px-2;
+    @apply text-green;
+}
+
+.markup-shiki .line.del{
+    @apply bg-pink;
+    @apply bg-opacity-25;
+}
+
+.markup-shiki .line.del:before{
+    content: '-';
+    @apply absolute;
+    @apply right-full;
+    @apply px-2;
+    @apply text-pink;
+}
+
 /* Video markup */
 
 .markup-video{

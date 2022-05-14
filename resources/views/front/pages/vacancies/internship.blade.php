@@ -1,6 +1,6 @@
 <x-page
         title="Internship"
-        background="/backgrounds/internship.jpg"
+        background="/backgrounds/jobs.jpg"
 
 >
     <x-slot name="description">
@@ -10,7 +10,7 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                Internships <br>in Antwerp
+                Webdevelopment <br>Internship <br>in Antwerp
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
@@ -20,23 +20,31 @@
     </section>
 
     <div class="section section-group pt-0">
-        <section id="intro" class="section">
+        <section id="interns" class="section -mb-16">
             <div class="wrap wrap-6">
                 <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <h3 class="title">Backend, frontend or full-stack student?</h3>
-                        <p class="text-lg">
+                        <p class="text-xl">
                             We'd like to meet you. During an internship, you'll be working on actual client projects,
                             open source components or side projects. You learn from our daily routine, and we get
-                            triggered by your fresh insights. Who knows you'll stick with us!
-                        </p>
-                        <p class="text-lg">
-                            We are looking for internships with a minimum duration of <strong
-                                    class="whitespace-no-wrap">8 weeks</strong>.
+                            triggered by your fresh insights. 
                         </p>
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section id="intro" class="section">
+            @include('front.pages.vacancies.partials.about', ['hideRick' => true])
+                            
+            <div class="wrap wrap-6">
+                <div class="mt-16 sm:col-span-4 markup links-underline links-blue">
+                    @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
+                </div>
+            </div>
+            
+            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
         </section>
 
         @include('front.pages.web-development.partials.stack')

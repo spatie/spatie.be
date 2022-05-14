@@ -1,7 +1,7 @@
 <x-page
         background="/backgrounds/jobs.jpg"
-        title="React engineer vacancy"
-        description="Vacancy for a react engineer. Location: Antwerp."
+        title="Digital marketeer vacancy"
+        description="Vacancy for a digital marketeer. Location: Antwerp."
 >
 <script type="application/ld+json"> {
 	"@context": "http://schema.org",
@@ -21,8 +21,8 @@
                     <p>
                         Learn and grow together with a team that has made its name in open source. You'll have an enormous impact on users worldwide.
                     </p>",
-	"title": "React Engineer",
-	"employmentType": "FULL_TIME",
+	"title": "Digital Marketeer",
+	"employmentType": "PART_TIME",
 	"hiringOrganization": {
 		"@type": "Organization",
 		"name": "Spatie",
@@ -45,7 +45,7 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                React Engineer
+                Digital Marketeer
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
@@ -60,11 +60,11 @@
             
             <div class="wrap wrap-6">
                 <div class="mt-16 sm:col-span-4 markup links-underline links-blue">
-                    @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
+                    @include('front.pages.vacancies.partials.clients', ['profile' => 'marketing'])
                 </div>
             </div>
             
-            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
+            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'marketing']) 
                 
             <div class="wrap wrap-6">
                 <div class="sm:col-span-4 mt-16 markup links-underline links-blue">
@@ -72,40 +72,41 @@
                     <ul class="bullets bullets-green">
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You love the React + TypeScript combo, and you know where JavaScript comes from.
+                            You have a good understanding of our primary target group: developers in the Laravel and PHP ecosystem, and you know what drives them. 
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You know Git. That's it.
+                            You have a strong opinion –loosely held– what makes a great digital product, how to grow it, and how to reach untapped potential.
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You don't run away from Tailwind CSS or other technologies in our <a href="#stack">tech stack</a>.
+                            You’re eager to dissect our products: spot the strengths and the shortcomings, and define strategies to communicate about these.
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You can work independently but aren't afraid to ask when you're stuck.
+                            Writing positive, enthusiastic messages in a non-salesy way is natural for you. You like experimenting with marketing strategies and know how to measure results.
                         </li>
                         <li>
                             <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You can speak Dutch and you love Italian food.
-                            </li>
+                            You know your way around Google Tag Manager, Google Analytics (or comparable), Facebook &amp; Twitter ads and tools like Hubspot or SharpSpring. 
+                            We're open for any suggestion that fits your toolbox better.
+                        </li>
+                        <li>
+                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            Your English is spotless, given our international market.
+                        </li>
                     </ul>
-                    
-                    <div class="mt-16 gradient gradient-blue p-8 rounded">
-                        More of a <strong>Frontend Designer</strong> type? Check our <a href="{{ route('vacancies.show', 'frontend-designer') }}">designer vacancy</a> as well.
-                    </div>
                 </div>
             </div>
         </section>
         <section id="offer" class="section">
-            @include('front.pages.vacancies.partials.offer')
+            @include('front.pages.vacancies.partials.offer', ['marketing' => true])
         </section>
     </div>
 
     <div class="section section-group">
         @include('front.pages.web-development.partials.stack')
-        @include('front.pages.vacancies.partials.cta', ['github' => true ])
+        @include('front.pages.vacancies.partials.cta')
     </div>
 
 </x-page>
