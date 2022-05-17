@@ -8,7 +8,7 @@ class MusicController
 {
     public function __invoke()
     {
-        $playlists = Playlist::query()->latest()->get();
+        $playlists = Playlist::query()->orderByDesc('name')->get();
 
         return view('front.pages.blog.music', ['playlists' => $playlists]);
     }
