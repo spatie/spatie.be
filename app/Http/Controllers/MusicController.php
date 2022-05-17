@@ -10,6 +10,7 @@ class MusicController
     public function __invoke()
     {
         $playlists = Playlist::query()->get()->sortBy(
+            // Take number from "#123: The Playlist Title"
             fn (Playlist $playlist) => (int) Str::of($playlist->name)
                 ->after('#')
                 ->before(':')
