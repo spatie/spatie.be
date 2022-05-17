@@ -1,0 +1,493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+<body style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; background-color: #e8eff6; color: #3d3c3b; height: 100%; hyphens: auto; line-height: 1.4; margin: 0; -moz-hyphens: none; width: 100% !important; -webkit-hyphens: none; -webkit-text-size-adjust: none;">
+<link rel="stylesheet" href="https://rsms.me/inter/inter.css" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700&amp;display=swap" rel="stylesheet" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+<style>
+    @media only screen and (max-width: 600px) {
+        .inner-body {
+            width: 100% !important;
+        }
+
+        .footer {
+            width: 100% !important;
+        }
+
+        .responsive-img {
+            height: auto !important;
+            width: 100% !important;
+        }
+    }
+
+    @media only screen and (max-width: 500px) {
+        .button {
+            width: 100% !important;
+        }
+    }
+</style>
+
+<style>
+    /* Base */
+
+    body,
+    body *:not(html):not(style):not(br):not(tr):not(code) {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        box-sizing: border-box;
+    }
+
+    body {
+        background-color: #e8eff6;
+        color: #3d3c3b;
+        height: 100%;
+        hyphens: auto;
+        line-height: 1.4;
+        margin: 0;
+        -moz-hyphens: none;
+        width: 100% !important;
+        -webkit-hyphens: none;
+        -webkit-text-size-adjust: none;
+    }
+
+    p,
+    ol,
+    ul,
+    blockquote {
+        line-height: 1.5;
+        text-align: left;
+    }
+
+    a {
+        color: #007593;
+    }
+
+    a img {
+        border: none;
+    }
+
+    /* Typography */
+
+    h1 {
+        color: #3d3c3b;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 32px;
+        text-align: left;
+        font-family: "Playfair Display" !important;
+    }
+
+    h2 {
+        color: #3d3c3b;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 2rem;
+        text-align: left;
+    }
+
+    h3 {
+        color: #3d3c3b;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0.2rem;
+        text-align: left;
+    }
+
+    li,
+    p {
+        color: #3d3c3b;
+        font-size: 16px;
+        line-height: 1.5em;
+        margin-top: 0;
+        text-align: left;
+    }
+
+    p.sub {
+        font-size: 12px;
+    }
+
+    img {
+        max-width: 100%;
+        -ms-interpolation-mode: bicubic;
+        height: auto;
+    }
+
+    strong {
+        font-weight: 600;
+    }
+
+    /* Layout */
+
+    .wrapper {
+        background-color: #e8eff6;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+    }
+
+    .content {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+    }
+
+    /* Header */
+
+    .header {
+        padding: 25px 0;
+        text-align: center;
+        opacity: 0.35;
+    }
+
+    .header a {
+        color: #3d3c3b;
+        font-weight: 600;
+        text-decoration: none;
+    }
+
+    .mailcoach-logo {
+        height: 1.25rem;
+        width: auto;
+        vertical-align: middle;
+        margin-left: 0.15rem;
+        opacity: 0.75;
+    }
+
+    /* Body */
+
+    .body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+    }
+
+    .inner-body {
+        background-color: #ffffff;
+        border-left: 8px solid #007593;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        margin: 0 auto;
+        padding: 0;
+        width: 570px;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 570px;
+    }
+
+    /* Subcopy */
+
+    .subcopy {
+        border-top: 2px solid #f8f7f6;
+        margin-top: 25px;
+        padding-top: 25px;
+    }
+
+    .subcopy p {
+        font-size: 12px;
+    }
+
+    /* Footer */
+
+    .footer {
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+        width: 570px;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 570px;
+    }
+
+    .footer p {
+        color: #6b6a67;
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .footer a {
+        color: #6b6a67;
+    }
+
+    /* Tables */
+
+    .table table {
+        margin: 30px auto;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+    }
+
+    .table th {
+        border-bottom: 1px solid #edeff2;
+        padding-bottom: 8px;
+        margin: 0;
+    }
+
+    .table td {
+        color: #74787e;
+        font-size: 15px;
+        line-height: 18px;
+        padding: 10px 0;
+        margin: 0;
+    }
+
+    .content-cell {
+        padding: 35px;
+    }
+
+    /* Buttons */
+
+    .action {
+        margin: 30px auto;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+    }
+
+    .button {
+        color: #fff;
+        display: inline-block;
+        text-decoration: none;
+        -webkit-text-size-adjust: none;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        background-color: #007593;
+        border-width: 1px;
+        border-color: transparent;
+        white-space: nowrap;
+        border-radius: 0.125rem;
+        box-shadow: 0 2px 2px #f8f7f6;
+        font-weight: 600;
+    }
+
+    /* Panels */
+
+    .panel {
+        margin: 0 0 21px;
+    }
+
+    .panel-content {
+        background-color: #e8eff6;
+        padding: 16px;
+    }
+
+    .panel-item {
+        padding: 0;
+    }
+
+    .panel-item p:last-of-type {
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    /* Tailwind helpers */
+
+    .text-4xl {
+        font-size: 2.25rem;
+    }
+
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+
+    .text-sm {
+        font-size: 0.875rem;
+    }
+
+    .font-semibold {
+        font-weight: 600;
+    }
+
+    .font-normal {
+        font-weight: 400;
+    }
+
+    .text-gray-400 {
+        color: #918f8b;
+    }
+
+    /* Stats */
+
+    table.stats tr {
+        vertical-align: bottom;
+    }
+
+    table.stats td {
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    table.stats a {
+        color: #3d3c3b;
+    }
+
+    .code {
+        display: inline-block;
+        padding: 2px 10px;
+        font-family: monospace;
+        background-color:rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.5);
+        border-radius: 0.125rem;
+    }
+</style>
+
+<table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; background-color: #e8eff6; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+    <tr>
+        <td align="center" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+            <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+                <tr>
+                    <td class="header" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; padding: 25px 0; text-align: center; opacity: 0.35;">
+                         
+                    </td>
+                </tr>
+
+                <!-- Email Body -->
+                <tr>
+                    <td class="body" width="100%" cellpadding="0" cellspacing="0" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; margin: 0; padding: 0; width: 100%; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 100%;">
+                        <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; background-color: #ffffff; border-left: 8px solid #007593; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); margin: 0 auto; padding: 0; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
+                            <tr>
+                                <td style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                    <img class="responsive-img" width="562" src="https://spatie.be/images/email/header-tldr.jpg" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; -ms-interpolation-mode: bicubic; height: auto; max-width: 562;">
+                                </td>
+                            </tr>
+
+                            <!-- Body content -->
+                            <tr>
+                                <td class="content-cell" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; padding: 35px;">
+
+
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Hello there!</p>
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Every few weeks we send out a quick update about the projects we are working on and some of the cool things that caught the attention of our office Slack.</p>
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Without further ado, here's <strong>Spatie TLDR #1</strong>.</p>
+                                    
+                                    
+                                    
+                                    <!-- <h2>Writing Readable PHP</h2> -->
+
+                                    <img class="responsive-img" width="562" src="https://writing-readable-php.com/images/mailcoach/mail-header-tldr.jpg" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; -ms-interpolation-mode: bicubic; height: auto; max-width: 562; margin-top: 1rem; margin-bottom: 1rem">
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">PHP has come a long way in the past couple of years. Last month we released our latest course that helps you write beautiful PHP code that's appropriate for this decade. <a href="https://writing-readable-php.com/">Get Writing Readable PHP</a> with discount code <strong>TLDR20</strong> now.</p>
+
+
+                                    <h2>Interesting links</h2>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Straight from everyone's favourite Slack channel: <em>#interesting-links</em>.</p>
+
+                                    <h3><a href="https://github.com/ibraheemdev/modern-unix">ibraheemdev/modern-unix</a></h3>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Unix is over 40 years old, including some of its most popular commands. This repo lists some modern day alternatives for common unix commands like cat, grep and ls.</p>
+
+                                    <h3><a href="https://planetscale.com/blog/how-we-made-planetscale-background-jobs-self-healing-with-sidekiq">How we made PlanetScale's background jobs self-healing</a></h3>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">An interesting insight into how a huge DBaaS provider deals with background jobs and how you can do so too.</p>
+
+                                    <h3><a href="https://github.com/spatie/laravel-livewire-wizard">spatie/laravel-livewire-wizard</a></h3>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">From our very own open source repositories. You can now take a sneak peak at our latest Livewire package to build dynamic wizards!</p>
+
+
+                                    <h2>Spatie goed Laracon EU</h2>
+                                    
+                                    <img class="responsive-img" width="562" src="https://spatie.be/images/email/newsletter/laracon_eu_sm.jpeg" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; -ms-interpolation-mode: bicubic; height: auto; max-width: 562; margin-bottom: 1rem;">
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">After three years of sitting at home and tuning into livestreams, Laracon EU opened its doors again in Amsterdam. Of course, part of the Spatie team had to be there to keep learning and meet some of you. Our own Freek gave a talk on <strong>"Fantastic Functions and Where to Find Them"</strong> but other highlights included Luke downing's talk on <strong>"Living your Pest life"</strong>, Diana Scharf's take on <strong>"Bugfixing your career"</strong> and the open bar.</p>
+
+                                    <h2>Team insights</h2>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Not one but two blogposts from our team member Rias. Both look at significantly speeding up (PhpUnit) tests and are well worth a quick read.</p>
+
+                                    <ul>
+                                        <li>
+                                            <a href="https://rias.be/blog/running-phpunit-tests-in-parallel-using-github-actions">Running PHPUnit tests in parallel using GitHub actions
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://rias.be/blog/mocking-browsershot-for-faster-tests">Mocking Browsershot for faster tests
+                                            </a>
+                                        </li>
+                                    </ul>
+
+
+                                    <!-- <h2>Corporate melodies</h2> -->
+
+                                    <img class="responsive-img" width="562" src="https://spatie.be/images/email/newsletter/header-corporate-melodies.jpg" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; -ms-interpolation-mode: bicubic; height: auto; max-width: 562; margin-top: 1rem; margin-bottom: 1rem">
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Every couple of weeks we curate a themed playlist. The latest edition "<strong>Original Soundtrack</strong>" is available on <a href="https://spatie.be/blog/music">spatie.be</a>, <a href="https://open.spotify.com/playlist/4rzAyPelVXKlwaN7hbzTlB?si=aed2f01048924344">Spotify</a> and <a href="https://music.apple.com/be/playlist/corporate-melodies-11-original-soundtrack/pl.u-BdXRuvqVg7">Apple Music</a>.</p>
+
+                                    <h2>A virtual desk in our office</h2>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Do you think you can sell us anything? For the first time we've got an open part-time position for a <a href="https://spatie.be/vacancies/digital-marketeer">remote marketeer</a>.</p>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Do you live near Antwerp and speak Dutch? <em>Fantastisch, <a href="https://spatie.be/vacancies">stoelen genoeg</a>!</em></p>
+
+                                    <h2>In closing</h2>
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">We hope that you&#39;ve enjoyed this newsletter. If you have any questions or remarks for our team, simply reply to this mail or reach out to us on Twitter.</p>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Thanks for reading,</p>
+
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; font-size: 16px; line-height: 1.5em; margin-top: 0; text-align: left;">Alex &amp; all of us at Spatie</p>
+
+
+                                    <table class="subcopy" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; border-top: 2px solid #f8f7f6; margin-top: 25px; padding-top: 25px;">
+                                        <tr>
+                                            <td style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                                                <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #3d3c3b; line-height: 1.5em; margin-top: 0; text-align: left; font-size: 12px;">
+                                                    You received this
+                                                    email because you
+                                                    follow spatie.be updates.
+                                                    <br>
+                                                    <a href="::unsubscribeUrl::" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #007593;">Unsubscribe</a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box;">
+                        <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; margin: 0 auto; padding: 0; text-align: center; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
+                            <tr>
+                                <td class="content-cell" align="center" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; padding: 35px;">
+                                    <p style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; line-height: 1.5em; margin-top: 0; color: #6b6a67; font-size: 12px; text-align: center;">
+                                        Powered by
+                                        <a href="https://mailcoach.app" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; color: #6b6a67;">
+                                            Mailcoach<img class="mailcoach-logo" src="https://mailcoach.app/emails/email-logo.png" style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; box-sizing: border-box; max-width: 100%; -ms-interpolation-mode: bicubic; border: none; height: 1.25rem; width: auto; vertical-align: middle; margin-left: 0.15rem; opacity: 0.75;">
+                                        </a>
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+
