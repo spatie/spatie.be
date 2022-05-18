@@ -17,7 +17,7 @@
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need</li>
                     @else
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A <strong>part-time contract</strong>, as an employee or freelancer.
-                            <br>Starting with a regime of 8-10 hours per week, with potential to grow in the future.</li>
+                            <br>Starting with a regime of 8–10 hours per week, with potential to grow in the future.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Work on location in Antwerp, partially from home or even <strong>fully remote</strong>.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and optional extras tailored to your personal needs.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need.</li>
