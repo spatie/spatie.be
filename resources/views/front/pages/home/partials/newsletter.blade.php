@@ -9,9 +9,9 @@
                     
                 </div>
                 <div>
-                    <form class="flex" method="POST" action="https://spatie.be/mailcoach/subscribe/4af46b59-3784-41a5-9272-6da31afa3a02">
+                    <form class="flex gap-2 sm:gap-0 flex-col sm:flex-row" method="POST" action="https://spatie.be/mailcoach/subscribe/4af46b59-3784-41a5-9272-6da31afa3a02">
                         <input type="email" name="email" class="flex-grow form-input h-12" placeholder="Your Email">
-                        <button class="-ml-1 cursor-pointer
+                        <button class="sm:-ml-1 cursor-pointer
 bg-pink-dark bg-opacity-75 hover:bg-opacity-100 rounded-sm
 border-2 border-transparent
 justify-center flex items-center
