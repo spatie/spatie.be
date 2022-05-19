@@ -8,7 +8,7 @@
                 <ul class="bullets bullets-green">
                     @unless($marketing ?? false)
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A full-time position in a fostering environment</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike allowance, hardware, internet at home, pension plan, additional holidays …</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A remuneration package with a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike allowance, hardware, internet at home, pension plan, additional holidays …</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Health insurance</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Velo card for public bikes in Antwerp</li>
@@ -19,7 +19,7 @@
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A <strong>part-time contract</strong>, as an employee or freelancer.
                             <br>Starting with a regime of 8–10 hours per week, with potential to grow in the future.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Work on location in Antwerp, partially from home or even <strong>fully remote</strong>.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A renumeration package with a competitive salary and optional extras tailored to your personal needs.</li>
+                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> A remuneration package with a competitive salary and optional extras tailored to your personal needs.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Any software you prefer or need.</li>
                         <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> You may start immediately.</li>
 
