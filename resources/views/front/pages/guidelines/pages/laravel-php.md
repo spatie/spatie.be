@@ -226,7 +226,7 @@ If your array or collection has a few fixed keys, you can typehint them too usin
 use \Illuminate\Support\Collection
 
 /**
- * @return array{old: SomeClass, new: SomeClass}
+ * @return array{first: SomeClass, second: SomeClass}
  */
 function someFunction(): array {
     //
@@ -427,7 +427,7 @@ else {
 [good]
 ```php
 $condition
-    ? $this->doSomething();
+    ? $this->doSomething()
     : $this->doSomethingElse();
 ```
 [/good]
@@ -696,13 +696,13 @@ At the end of the command, provide a summary on how much processing was done.
 // in a Command
 public function handle()
 {
-    $this->comment("Start processing items...")
+    $this->comment("Start processing items...");
 
     // do some work
     $items->each(function(Item $item) {
-        $this->info("Processing item id `{$item-id}`...")
+        $this->info("Processing item id `{$item-id}`...");
 
-        $this->processItem($item)
+        $this->processItem($item);
     });
 
     $this->comment("Processed {$item->count()} items.");
@@ -1008,3 +1008,9 @@ e.g. `PublishScheduledPostsCommand`
 Again to avoid naming collisions we'll suffix mailables with `Mail`, as they're often used to convey an event, action or question.
 
 e.g. `AccountActivatedMail` or `NewEventMail`
+
+### Enums
+
+Again to avoid naming collisions we'll prefix model name with the column it refers to.
+
+e.g. `OrderStatus` or `BookingType`
