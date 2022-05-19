@@ -1011,6 +1011,6 @@ e.g. `AccountActivatedMail` or `NewEventMail`
 
 ### Enums
 
-Again to avoid naming collisions we'll prefix model name with the column it refers to. Sometime enum can be named without any prefix or suffix if the name suits better and doesn't collide with any other name.
+Enums don't need to be prefixed as in most cases, it is clear by reading the name that it is an enum.
 
 e.g. `OrderStatus` or `BookingType` or `Suit`
