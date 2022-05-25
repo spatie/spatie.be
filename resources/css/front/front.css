@@ -53,7 +53,7 @@ a.anchor-link {
 }
 
 .anchor-links-hidden .anchor-link {
-    display: none;
+    display: none !important;
 }
 
 .docs-submenu-item.is-active {
