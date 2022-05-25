@@ -136,7 +136,7 @@ class DocsController
         $allMatches = array_combine($matches[1], $matches[2]);
 
         return collect($allMatches)
-            ->reject(fn(string $result) => str_contains($result, 'Beatles'))
+            ->reject(fn (string $result) => str_contains($result, 'Beatles'))
             ->toArray();
     }
 }
