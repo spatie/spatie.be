@@ -53,7 +53,7 @@ a.anchor-link {
 }
 
 /* demo titles that doesn't need anchors */
-.anchor-link[id*="Beatles"] {
+.anchor-link[id*="beatles"] {
     display: none !important;
 }
 
