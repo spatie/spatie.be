@@ -133,6 +133,10 @@ class DocsController
 
         preg_match_all('/<h2.*><a.*id="([^"]+)".*>#<\/a>([^<]+)/', $contents, $matches);
 
-        return array_combine($matches[1], $matches[2]);
+        $allMatches = array_combine($matches[1], $matches[2]);
+
+        return collect($allMatches)
+            ->reject(fn(string $result) => str_contains($result, 'Beatles'))
+            ->toArray();
     }
 }
