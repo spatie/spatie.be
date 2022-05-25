@@ -52,6 +52,10 @@ a.anchor-link {
     width: 1em;
 }
 
+.anchor-links-hidden .anchor-link {
+    display: none;
+}
+
 .docs-submenu-item.is-active {
     @apply text-blue;
 }
