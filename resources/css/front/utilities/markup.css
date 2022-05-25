@@ -21,7 +21,7 @@
 
 .markup em {
     @apply font-sans;
-    @apply font-normal;
+    @apply italic;
 }
 
 .markup sub,
