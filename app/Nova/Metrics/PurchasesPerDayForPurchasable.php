@@ -16,7 +16,9 @@ class PurchasesPerDayForPurchasable extends Trend
      */
     public function calculate(NovaRequest $request)
     {
-        return $this->countByDays($request, Purchase::query()->where('purchasable_id', $request->resourceId));
+        return $this
+            ->countByDays($request, Purchase::query()->where('purchasable_id', $request->resourceId))
+            ->showSumValue();
     }
 
     /**
