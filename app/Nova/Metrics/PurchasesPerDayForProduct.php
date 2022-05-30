@@ -23,7 +23,7 @@ class PurchasesPerDayForProduct extends Trend
             Purchase::query()
                 ->whereHas(
                     'purchasable',
-                    fn(Builder $query) => $query->where('product_id', $request->resourceId)
+                    fn (Builder $query) => $query->where('product_id', $request->resourceId)
                 )
         );
     }

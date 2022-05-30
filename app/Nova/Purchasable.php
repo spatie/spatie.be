@@ -149,7 +149,7 @@ class Purchasable extends Resource
     public function cards(NovaRequest $request)
     {
         return [
-            (new PurchasesPerDayForPurchasable)->onlyOnDetail(),
+            (new PurchasesPerDayForPurchasable())->onlyOnDetail(),
         ];
     }
 }
