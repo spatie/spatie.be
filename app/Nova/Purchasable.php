@@ -6,7 +6,7 @@ use App\Domain\Shop\Enums\PurchasableType;
 use App\Domain\Shop\Models\Purchasable as EloquentPurchasable;
 use App\Nova\Actions\UpdatePriceForCurrencyAction;
 use App\Nova\Filters\ProductFilter;
-use App\Nova\Metrics\PurchasesPerDay;
+use App\Nova\Metrics\PurchasesPerDayForPurchasable;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\Boolean;
@@ -149,7 +149,7 @@ class Purchasable extends Resource
     public function cards(NovaRequest $request)
     {
         return [
-            (new PurchasesPerDay())->onlyOnDetail(),
+            (new PurchasesPerDayForPurchasable)->onlyOnDetail(),
         ];
     }
 }

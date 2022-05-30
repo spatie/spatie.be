@@ -6,7 +6,7 @@ use App\Domain\Shop\Models\Purchase;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Metrics\Trend;
 
-class PurchasesPerDay extends Trend
+class PurchasesPerDayForPurchasable extends Trend
 {
     /**
      * Calculate the value of the metric.
