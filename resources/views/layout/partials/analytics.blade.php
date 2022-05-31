@@ -1,5 +1,7 @@
 @if (app()->environment('production'))
-    <script src="https://cdn.usefathom.com/script.js" data-site="OMNDKUTR" defer></script>
+    @if(request()->segment(1) !== 'docs')
+        <script src="https://cdn.usefathom.com/script.js" data-site="OMNDKUTR" defer></script>
+    @endif
 @endif
 
 
