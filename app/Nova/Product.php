@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Domain\Shop\Models\Product as EloquentProduct;
+use App\Nova\Metrics\PurchasesPerDayForProduct;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
@@ -110,6 +111,13 @@ class Product extends Resource
                     HTML;
                 })->join("\n");
             })->onlyOnIndex()->asHtml(),
+        ];
+    }
+
+    public function cards(NovaRequest $request)
+    {
+        return [
+            (new PurchasesPerDayForProduct())->onlyOnDetail(),
         ];
     }
 }
