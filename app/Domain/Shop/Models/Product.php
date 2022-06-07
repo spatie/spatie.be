@@ -56,6 +56,7 @@ class Product extends Model implements HasMedia, Sortable
             'media-library-pro',
             'laravel-backup-server',
             'mailcoach',
+            'laravel-comments',
         ]);
     }
 
