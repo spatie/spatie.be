@@ -54,6 +54,8 @@
         </div>
     </section>
 
+    @include('front.pages.vacancies.partials.filled')
+
     <div class="section section-group pt-0 section-fade">
         <section id="intro" class="section">
             @include('front.pages.vacancies.partials.about')

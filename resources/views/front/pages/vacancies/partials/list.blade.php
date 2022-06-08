@@ -8,11 +8,11 @@
     <div class="text-xs text-gray">Mixing style &amp; technology</div>
     <div class="text-xs text-gray">Full-time / Partially remote</div>
 </div>
-<div class="mt-4">
+{{-- <div class="mt-4">
     <a class="link-underline link-blue" href="{{ route('vacancies.show', 'react-engineer') }}">React Engineer</a>
     <div class="text-xs text-gray">React with a hint of Vanilla JS</div>
     <div class="text-xs text-gray">Full-time / Partially remote</div>
-</div>
+</div> --}}
 <div class="mt-4">
     <a class="link-underline link-blue" href="{{ route('vacancies.show', 'digital-marketeer') }}">Digital Marketeer</a>
     <div class="text-xs text-gray">Promoting our portfolio</div>
