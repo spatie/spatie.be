@@ -4,7 +4,7 @@
              Solid expertise <br>in Laravel
          </h1>
          <p class="banner-intro">
-             We craft web applications, courses  <br>&amp; open source packages in the Laravel ecosystem
+             We craft web applications, software, courses  <br>&amp; open source packages in the Laravel ecosystem
          </p>
     </div>
 </section>
