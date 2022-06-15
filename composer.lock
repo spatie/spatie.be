@@ -11116,17 +11116,17 @@
         },
         {
             "name": "spatie/laravel-mailcoach",
-            "version": "5.5.11",
+            "version": "5.5.12",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-mailcoach.git",
-                "reference": "e1c090c8e9cb6df68724a415293a50389e3daaeb"
+                "reference": "2f8049a34ae2b40d4d135e82710fcb169d61abd0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-e1c090c8e9cb6df68724a415293a50389e3daaeb-zip-3d2e10.zip",
-                "reference": "e1c090c8e9cb6df68724a415293a50389e3daaeb",
-                "shasum": "933666b870a623fd2e7cd8628020be646d1e29ea"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-2f8049a34ae2b40d4d135e82710fcb169d61abd0-zip-967821.zip",
+                "reference": "2f8049a34ae2b40d4d135e82710fcb169d61abd0",
+                "shasum": "c7e8d6af0d6ff3955ee5f26594fe01cc6b57152b"
             },
             "require": {
                 "cakephp/chronos": "^2.0",
@@ -11235,10 +11235,10 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-mailcoach/tree/5.5.11",
+                "source": "https://github.com/spatie/laravel-mailcoach/tree/5.5.12",
                 "issues": "https://github.com/spatie/laravel-mailcoach/issues"
             },
-            "time": "2022-06-02T08:17:29+00:00"
+            "time": "2022-06-15T08:26:18+00:00"
         },
         {
             "name": "spatie/laravel-mailcoach-mailgun-feedback",
@@ -19189,5 +19189,5 @@
     "platform-overrides": {
         "php": "8.1"
     },
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }
