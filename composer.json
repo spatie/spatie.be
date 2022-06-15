@@ -60,7 +60,7 @@
         "spatie/laravel-flash": "^1.9",
         "spatie/laravel-health": "^1.8",
         "spatie/laravel-ignition": "^1.0",
-        "spatie/laravel-mailcoach": "dev-main as 5.5.12",
+        "spatie/laravel-mailcoach": "^5.5.13",
         "spatie/laravel-mailcoach-mailgun-feedback": "^4.0",
         "spatie/laravel-mailcoach-monaco": "^2.1",
         "spatie/laravel-mailcoach-ses-feedback": "^4.0",
