@@ -1,0 +1,598 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Playfair+Display:700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @media only screen and (max-width: 600px) {
+        .inner-body {
+          width: 100% !important;
+        }
+
+        .footer {
+          width: 100% !important;
+        }
+
+        .responsive-img {
+          height: auto !important;
+          width: 100% !important;
+        }
+      }
+
+      @media only screen and (max-width: 500px) {
+        .button {
+          width: 100% !important;
+        }
+      }
+    </style>
+
+    <style>
+      /* Base */
+
+      body,
+      body *:not(html):not(style):not(br):not(tr):not(code) {
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
+          "Segoe UI Emoji", "Segoe UI Symbol";
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: #e8eff6;
+        color: #3d3c3b;
+        height: 100%;
+        hyphens: auto;
+        line-height: 1.4;
+        margin: 0;
+        -moz-hyphens: none;
+        width: 100% !important;
+        -webkit-hyphens: none;
+        -webkit-text-size-adjust: none;
+        word-break: break-word;
+      }
+
+      p,
+      ol,
+      ul,
+      blockquote {
+        line-height: 1.5;
+        text-align: left;
+      }
+
+      a {
+        color: #007593;
+      }
+
+      a img {
+        border: none;
+      }
+
+      /* Typography */
+
+      h1 {
+        color: #3d3c3b;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 32px;
+        text-align: left;
+        font-family: "Playfair Display" !important;
+      }
+
+      h2 {
+        color: #3d3c3b;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 48px;
+        text-align: left;
+      }
+
+      h3 {
+        color: #3d3c3b;
+        font-size: 16px;
+        font-weight: bold;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        text-align: left;
+        
+      }
+
+      li,
+      p {
+        color: #3d3c3b;
+        font-size: 16px;
+        line-height: 1.5em;
+        margin-top: 0;
+        text-align: left;
+      }
+
+      p.sub {
+        font-size: 12px;
+      }
+
+      img {
+        max-width: 100%;
+        -ms-interpolation-mode: bicubic;
+        height: auto;
+      }
+
+      strong {
+        font-weight: 600;
+      }
+
+      /* Layout */
+
+      .wrapper {
+        background-color: #e8eff6;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+      }
+
+      .content {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+      }
+
+      /* Header */
+
+      .header {
+        padding: 25px 0;
+        text-align: center;
+        opacity: 0.35;
+      }
+
+      .header a {
+        color: #3d3c3b;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .mailcoach-logo {
+        height: 1.25rem;
+        width: auto;
+        vertical-align: middle;
+        margin-left: 0.15rem;
+        opacity: 0.75;
+      }
+
+      /* Body */
+
+      .body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+      }
+
+      .inner-body {
+        background-color: #ffffff;
+        border-left: 8px solid #007593;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        margin: 0 auto;
+        padding: 0;
+        width: 570px;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 570px;
+      }
+
+      /* Subcopy */
+
+      .subcopy {
+        border-top: 2px solid #f8f7f6;
+        margin-top: 25px;
+        padding-top: 25px;
+      }
+
+      .subcopy p {
+        font-size: 12px;
+      }
+
+      /* Footer */
+
+      .footer {
+        margin: 0 auto;
+        padding: 0;
+        text-align: center;
+        width: 570px;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 570px;
+      }
+
+      .footer p {
+        color: #6b6a67;
+        font-size: 12px;
+        text-align: center;
+      }
+
+      .footer a {
+        color: #6b6a67;
+      }
+
+      /* Tables */
+
+      .table table {
+        margin: 30px auto;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+      }
+
+      .table th {
+        border-bottom: 1px solid #edeff2;
+        padding-bottom: 8px;
+        margin: 0;
+      }
+
+      .table td {
+        color: #74787e;
+        font-size: 15px;
+        line-height: 18px;
+        padding: 10px 0;
+        margin: 0;
+      }
+
+      .content-cell {
+        padding: 35px;
+      }
+
+      /* Buttons */
+
+      .action {
+        margin: 30px auto;
+        padding: 0;
+        text-align: center;
+        width: 100%;
+        -premailer-cellpadding: 0;
+        -premailer-cellspacing: 0;
+        -premailer-width: 100%;
+      }
+
+      .button {
+        color: #fff;
+        display: inline-block;
+        text-decoration: none;
+        -webkit-text-size-adjust: none;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        background-color: #007593;
+        border-width: 1px;
+        border-color: transparent;
+        white-space: nowrap;
+        border-radius: 0.125rem;
+        box-shadow: 0 2px 2px #f8f7f6;
+        font-weight: 600;
+      }
+
+      /* Panels */
+
+      .panel {
+        margin: 0 0 21px;
+      }
+
+      .panel-content {
+        background-color: #e8eff6;
+        padding: 16px;
+      }
+
+      .panel-item {
+        padding: 0;
+      }
+
+      .panel-item p:last-of-type {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      /* Tailwind helpers */
+
+      .text-4xl {
+        font-size: 2.25rem;
+      }
+
+      .text-2xl {
+        font-size: 1.5rem;
+      }
+
+      .text-sm {
+        font-size: 0.875rem;
+      }
+
+      .font-semibold {
+        font-weight: 600;
+      }
+
+      .font-normal {
+        font-weight: 400;
+      }
+
+      .text-gray-400 {
+        color: #918f8b;
+      }
+
+      /* Stats */
+
+      table.stats tr {
+        vertical-align: bottom;
+      }
+
+      table.stats td {
+        padding-right: 2rem;
+        padding-bottom: 2rem;
+      }
+
+      table.stats a {
+        color: #3d3c3b;
+      }
+
+      .code {
+        display: inline-block;
+        padding: 2px 10px;
+        font-family: monospace;
+        background-color: rgba(0, 0, 0, 0.1);
+        color: rgba(0, 0, 0, 0.5);
+        border-radius: 0.125rem;
+      }
+    </style>
+
+    <table
+      class="wrapper"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      role="presentation"
+    >
+      <tr>
+        <td align="center">
+          <table
+            class="content"
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            role="presentation"
+          >
+            <tr>
+              <td class="header">&nbsp;</td>
+            </tr>
+
+            <!-- Email Body -->
+            <tr>
+              <td class="body" width="100%" cellpadding="0" cellspacing="0">
+                <table
+                  class="inner-body"
+                  align="center"
+                  width="570"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation"
+                >
+                  <tr>
+                    <td>
+                      <img
+                        class="responsive-img"
+                        width="562"
+                        src="https://spatie.be/images/email/header-tldr.jpg"
+                        style="max-width: 562"
+                      />
+                    </td>
+                  </tr>
+
+                  <!-- Body content -->
+                  <tr>
+                    <td class="content-cell">
+                      <p>Hello again,</p>
+                      <p style="margin-bottom: 3rem">
+                        <br>This is <strong>Spatie TLDR #2</strong>! Time for another update on ongoing
+                        projects and little gems circulating on our office Slack. 
+                      </p>
+
+                      <a href="https://laravel-comments.com/"
+                      ><img
+                        class="responsive-img"
+                        width="562"
+                        src="https://spatie.be/newsletter/tldr-02/comments.jpg"
+                        style="max-width: 562"
+                    /></a>
+
+                      <p>
+                        Last month we released a handy package to self-host a <strong>comments section</strong> in your Laravel projects and blogs.
+                        <br>Try out a demo at 
+                        <a href="https://laravel-comments.com/"
+                          >laravel-comments.com</a
+                        >.
+                      </p>
+
+                      <p>
+                        In other news: our latest course, <a href="https://writing-readable-php.com">Writing Readable PHP</a>, is now available in 2 bundles:
+                      </p>
+
+                      <ul>
+                        <li><a href="https://writing-readable-php.com#bundles"><strong>Maintainable PHP Bundle</strong></a>, bundled with <i>Testing Laravel</i></li>
+                        <li><a href="https://writing-readable-php.com#bundles"><strong>Modern PHP Bundle</strong></a>, together with <i>Front Line PHP</i></li>
+                      </ul>
+
+                      <h2>What's coming next?</h2>
+
+                      <a
+                          href="https://flareapp.io"
+                          >
+                      <img
+                        class="responsive-img"
+                        alt="flareapp.io"
+                        width="250"
+                        src="https://spatie.be/newsletter/tldr-02/flare.png"
+                        style="max-width: 250; margin-top: 1.5rem; margin-bottom: 1rem;"
+                    /></a>
+                      
+                      <p>
+                        We are working on a significant overhaul of Flare, our beloved error tracker. Besides matching the newest look of Ignition (the error page in Laravel), 
+                        many improvements are being made under the hood to give you better insights into your errors.
+                        <br>Expect an improved <a
+                          href="https://flareapp.io"
+                          >flareapp.io</a
+                        > this fall.
+                      </p>
+
+                      <a
+                          href="https://mailcoach.cloud"
+                          >
+                      <img
+                        class="responsive-img"
+                        alt="mailcoach.cloud logo"
+                        width="250"
+                        src="https://spatie.be/newsletter/tldr-02/mailcoach.png"
+                        style="max-width: 250; margin-top: 1.5rem; margin-bottom: 1rem;"
+                    /></a>
+                      
+                      <p>
+                        You heard it here first: our successful self-hosted email platform is coming to the cloud before the end of the year! 
+                        <br>Head over to
+                        <a
+                          href="https://mailcoach.cloud"
+                          >mailcoach.cloud</a
+                        > and subscribe for updates.
+                      </p>
+                      
+                      <h2>Interesting links</h2>
+                      <p>
+                        Straight from everyone's favourite Slack channel:
+                        <em>#interesting-links</em>.
+                      </p>
+
+                      <h3>
+                        <a
+                          href="https://auto-animate.formkit.com/"
+                          >AutoAnimate</a
+                        >
+                      </h3>
+                      <p>
+                        This seems like an effortless way to add a few transitions to your JavaScript UI.
+                      </p>
+
+                      <h3>
+                        <a
+                          href="https://www.youtube.com/watch?v=nOQyWbPO2Ds"
+                          >What's new in Tailwind CSS v3.1?</a
+                        >
+                      </h3>
+                      <p>
+                        If you don't get too scared by the intro, this video gives a neat look at all the new features. The <i>arbitrary variants</i> feature (starting at 23:11) is pretty cool!
+                      </p>
+
+                      <h3>
+                        <a
+                          href="https://github.blog/2022-06-14-accelerating-github-theme-creation-with-color-tooling/"
+                          >Accelerating GitHub theme creation with color tooling</a
+                        >
+                      </h3>
+                      <p>
+                        Impressive how much effort and detail goes into creating consistent color palettes.
+                      </p>
+
+                      <h2>Team insights</h2>
+                      
+                      <p>And lastly, two more blogposts from team members to finish this newsletter.</p>
+
+                      <h3>
+                        <a
+                          href="https://sebastiandedeyne.com/non-reactive-data-in-alpine-js/"
+                          >Non-reactive data in Alpine.js</a>
+                      </h3>
+                      <p>By Sebastian De Deyne</p>
+
+                      <h3>
+                        <a
+                          href="https://freek.dev/2258-using-login-links-in-a-laravel-app"
+                          >Using login links in a Laravel app
+                          </a>
+                      </h3>
+                      <p>By Freek Van Der Herten</p>
+                      
+                      <p style="margin-top: 3rem">
+                        If you have any questions or remarks for our team, reply to this mail or reach out to us on <a href="https://twitter.com/spatie_be">Twitter</a>.
+                      </p>
+
+                      <p>
+                        Thanks for reading,
+                        <br />
+                        <br />
+                        Willem &amp; all of us at Spatie
+                      </p>
+
+                      <table
+                        class="subcopy"
+                        width="100%"
+                        cellpadding="0"
+                        cellspacing="0"
+                        role="presentation"
+                      >
+                        <tr>
+                          <td>
+                            <p>
+                              You received this email because you are a client
+                              or friend of spatie.be.
+                              <br />
+                              <a href="::unsubscribeUrl::">Unsubscribe</a>
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <table
+                  class="footer"
+                  align="center"
+                  width="570"
+                  cellpadding="0"
+                  cellspacing="0"
+                  role="presentation"
+                >
+                  <tr>
+                    <td class="content-cell" align="center">
+                      <p>
+                        Powered by
+                        <a href="https://mailcoach.app">
+                          Mailcoach<img
+                            class="mailcoach-logo"
+                            src="https://mailcoach.app/emails/email-logo.png"
+                          />
+                        </a>
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
