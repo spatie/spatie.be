@@ -119,7 +119,7 @@ return [
                 'connection' => 'mailcoach-redis',
                 'queue' => ['send-campaign'],
                 'balance' => 'auto',
-                'processes' => 5,
+                'processes' => 10,
                 'tries' => 1,
                 'timeout' => 60 * 60,
             ],
