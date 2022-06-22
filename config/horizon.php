@@ -92,7 +92,7 @@ return [
                 'connection' => 'mailcoach-redis',
                 'queue' => ['send-campaign'],
                 'balance' => 'auto',
-                'processes' => 10,
+                'processes' => 5,
                 'tries' => 1,
                 'timeout' => 60 * 60,
             ],
