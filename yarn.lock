@@ -3414,11 +3414,6 @@ json5@^2.1.2:
   dependencies:
     minimist "^1.2.5"
 
-jsonc-parser@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.npmjs.org/jsonc-parser/-/jsonc-parser-3.0.0.tgz"
-  integrity sha512-fQzRfAbIBnR0IQvftw9FJveWiHp72Fg20giDrHz6TdfB12UH/uue0D3hm57UB5KgAVuniLMCaS8P1IMj9NR7cA==
-
 jsonfile@^4.0.0:
   version "4.0.0"
   resolved "https://registry.npmjs.org/jsonfile/-/jsonfile-4.0.0.tgz"
@@ -4948,15 +4943,6 @@ shellwords@^0.1.1:
   resolved "https://registry.npmjs.org/shellwords/-/shellwords-0.1.1.tgz"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
-shiki@^0.9.15:
-  version "0.9.15"
-  resolved "https://registry.npmjs.org/shiki/-/shiki-0.9.15.tgz"
-  integrity sha512-/Y0z9IzhJ8nD9nbceORCqu6NgT9X6I8Fk8c3SICHI5NbZRLdZYFaB233gwct9sU0vvSypyaL/qaKvzyQGJBZSw==
-  dependencies:
-    jsonc-parser "^3.0.0"
-    vscode-oniguruma "^1.6.1"
-    vscode-textmate "5.2.0"
-
 signal-exit@^3.0.3:
   version "3.0.7"
   resolved "https://registry.npmjs.org/signal-exit/-/signal-exit-3.0.7.tgz"
@@ -5388,16 +5374,6 @@ vm-browserify@^1.0.1:
   version "1.1.2"
   resolved "https://registry.npmjs.org/vm-browserify/-/vm-browserify-1.1.2.tgz"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
-
-vscode-oniguruma@^1.6.1:
-  version "1.6.1"
-  resolved "https://registry.npmjs.org/vscode-oniguruma/-/vscode-oniguruma-1.6.1.tgz"
-  integrity sha512-vc4WhSIaVpgJ0jJIejjYxPvURJavX6QG41vu0mGhqywMkQqulezEqEQ3cO3gc8GvcOpX6ycmKGqRoROEMBNXTQ==
-
-vscode-textmate@5.2.0:
-  version "5.2.0"
-  resolved "https://registry.npmjs.org/vscode-textmate/-/vscode-textmate-5.2.0.tgz"
-  integrity sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==
 
 vue-style-loader@^4.1.3:
   version "4.1.3"

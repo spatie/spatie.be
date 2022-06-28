@@ -11,6 +11,7 @@ use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sheets\ContentParser;
+use Spatie\SidecarShiki\Commonmark\HighlightCodeExtension;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class GuidelinesContentParser implements ContentParser
@@ -20,6 +21,8 @@ class GuidelinesContentParser implements ContentParser
     public function __construct()
     {
         $this->markdownRenderer = app(MarkdownRenderer::class)
+            ->highlightCode(false)
+            ->addExtension(new HighlightCodeExtension('github-light'))
             ->disableAnchors()
             ->addExtension(new TableOfContentsExtension())
             ->commonmarkOptions([

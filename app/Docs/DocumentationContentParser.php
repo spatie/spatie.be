@@ -11,6 +11,7 @@ use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sheets\ContentParser;
+use Spatie\SidecarShiki\Commonmark\HighlightCodeExtension;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 class DocumentationContentParser implements ContentParser
@@ -20,6 +21,8 @@ class DocumentationContentParser implements ContentParser
     public function __construct()
     {
         $this->markdownRenderer = app(MarkdownRenderer::class)
+            ->highlightCode(false)
+            ->addExtension(new HighlightCodeExtension('github-light'))
             ->addExtension(new TableExtension())
             ->addExtension(new HeadingPermalinkExtension())
             ->addInlineRenderer(Image::class, new ImageRenderer())
