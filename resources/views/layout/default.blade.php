@@ -4,15 +4,17 @@
 <head>
     @include('layout.partials.meta')
 
-    <link rel="stylesheet" href="{{ mix('/css/front.css') }}">
+
     <link rel="stylesheet" href="https://cloud.typography.com/6194432/6145752/css/fonts.css">
     <livewire:styles>
 
     @include('layout.partials.favicons')
     @include('feed::links')
 
-    <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
-    <script src="{{ mix('/js/app.js') }}" defer></script>
+    @vite(['resources/js/front/app.js'])
+
+
+        <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
 
     @include('layout.partials.analytics')
 
@@ -95,6 +97,6 @@
 
     {!! schema()->localBusiness() !!}
 
-    <x-comments::scripts /> 
+    <x-comments::scripts />
 </body>
 </html>

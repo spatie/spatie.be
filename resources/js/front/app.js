@@ -1,3 +1,5 @@
+import '../../css/front/front.css'
+
 import images from './images';
 import docs from './docs';
 
