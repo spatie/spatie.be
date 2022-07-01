@@ -190,3 +190,12 @@ Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 
 Route::get('uses', [UsesController::class, 'index'])->name('uses');
 
+Route::fallback(function (\Illuminate\Http\Request $request) {
+    if ($request->segment(1) === 'videos') {
+        $newUrl = Str::replaceFirst('/videos', '/courses', $request->url());
+
+        return redirect()->to($newUrl);
+    }
+
+    return view('errors.404');
+});
