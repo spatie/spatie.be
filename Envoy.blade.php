@@ -138,6 +138,7 @@ php artisan horizon:terminate
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
+php artisan event:cache
 #php artisan schedule-monitor:sync
 php artisan sidecar:deploy --activate
 
@@ -165,6 +166,7 @@ php artisan view:clear
 php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
+php artisan event:cache
 sudo service php8.1-fpm restart
 #php artisan schedule-monitor:sync
 php artisan horizon:terminate
