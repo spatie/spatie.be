@@ -19,7 +19,9 @@ class HealthServiceProvider extends ServiceProvider
         Health::checks([
             //CpuLoadCheck::new()->failWhenLoadIsHigherInTheLast5Minutes(4.0),
             DebugModeCheck::new(),
-            OptimizedAppCheck::new(),
+            OptimizedAppCheck::new()
+                ->checkEvents()
+                ->checkConfig(),
             EnvironmentCheck::new(),
             DatabaseCheck::new(),
             HorizonCheck::new(),
