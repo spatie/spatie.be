@@ -24,7 +24,7 @@
                         <div class="text-xs text-gray">Portfolio of engineering company</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://memocards.krauthammer.com" target="_blank" rel="noreferrer noopener">Krauthammer</a>
+                        <a href="https://www.krauthammer.com" target="_blank" rel="noreferrer noopener">Krauthammer</a>
                         <div class="text-xs text-gray">Tools for management trainings</div>
                     </li>
                     <li class=mt-2>
