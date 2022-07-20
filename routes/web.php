@@ -160,6 +160,11 @@ Route::post('/courses/{series:slug}/{lesson:slug}', [CoursesController::class, '
 
 Route::redirect('/videos', '/courses');
 
+Route::redirect(
+    'docs/laravel-mailcoach/{version}/{slug?}',
+    'https://mailcoach.app/docs/{version}/mailcoach/{slug?}',
+)->where('slug', '.*');
+
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
 Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*');
