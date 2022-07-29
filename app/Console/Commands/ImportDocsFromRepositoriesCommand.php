@@ -125,7 +125,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                 && cd docs/ \
                 && find . -not -name '*.md' | cpio -pdm {$publicDocsAssetPath}/{$repository['name']}/{$alias}/
             BASH
-        ,
+            ,
             base_path()
         );
     }

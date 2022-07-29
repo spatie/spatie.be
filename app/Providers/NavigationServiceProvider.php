@@ -46,7 +46,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('open-source.support', 'Support Us')
                 ->setActiveFromRequest('/open-source')
                 ->setActiveClass('submenu-active')
-                ;
+            ;
         });
 
         Menu::macro('blog', function () {
@@ -55,7 +55,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('music', 'Corporate Melodies')
                 ->setActiveFromRequest('/blog')
                 ->setActiveClass('submenu-active')
-                ;
+            ;
         });
 
         Menu::macro('profile', function () {
@@ -66,7 +66,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('invoices', 'Invoices')
                 ->setActiveFromRequest('/profile')
                 ->setActiveClass('submenu-active')
-                ;
+            ;
         });
     }
 }

@@ -5,6 +5,7 @@ namespace Database\Factories\Domain\Shop\Models;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Release;
 use Illuminate\Database\Eloquent\Factories\Factory;
+
 use function now;
 
 class ReleaseFactory extends Factory
