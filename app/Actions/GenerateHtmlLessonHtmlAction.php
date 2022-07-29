@@ -6,12 +6,14 @@ use App\Models\HtmlLesson;
 use Illuminate\Support\Str;
 use League\CommonMark\Extension\Table\TableExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
+use Spatie\SidecarShiki\Commonmark\HighlightCodeExtension;
 
 class GenerateHtmlLessonHtmlAction
 {
     public function execute(HtmlLesson $htmlLesson)
     {
         $html = app(MarkdownRenderer::class)
+            ->addExtension(new HighlightCodeExtension('github-light'))
             ->addExtension(new TableExtension())
             ->toHtml($htmlLesson->markdown);
 
