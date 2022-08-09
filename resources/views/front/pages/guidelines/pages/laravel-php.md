@@ -181,6 +181,31 @@ If a variable has multiple types, the most common occurring type should be first
 ```
 [/bad]
 
+If a function requires a docblock for a single parameter or return type, add all other docblocks as well.
+
+[good]
+```php
+/** 
+ * @param string $name
+ * @return \Illuminate\Support\Collection<SomeObject> 
+ */
+function someFunction(string $name): Collection {
+    //
+}
+```
+[/good]
+
+[bad]
+```php
+/** 
+ * @return \Illuminate\Support\Collection<SomeObject>
+ */
+function someFunction(string $name): Collection {
+    //
+}
+```
+[/bad]
+
 ## Docblocks for iterables
 
 When your function gets passed an iterable, you should add a docblock to specify the type of key and value. This will greatly help static analysis tools understand the code, and IDEs to provide autocompletion.
