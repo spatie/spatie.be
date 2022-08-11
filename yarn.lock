@@ -866,13 +866,6 @@
     postcss "7.0.32"
     purgecss "^2.3.0"
 
-"@fullhuman/postcss-purgecss@^3.0.0":
-  version "3.1.3"
-  resolved "https://registry.npmjs.org/@fullhuman/postcss-purgecss/-/postcss-purgecss-3.1.3.tgz"
-  integrity sha512-kwOXw8fZ0Lt1QmeOOrd+o4Ibvp4UTEBFQbzvWldjlKv5n+G9sXfIPn1hh63IQIL8K8vbvv1oYMJiIUbuy9bGaA==
-  dependencies:
-    purgecss "^3.1.3"
-
 "@tailwindcss/custom-forms@^0.2.1":
   version "0.2.1"
   resolved "https://registry.npmjs.org/@tailwindcss/custom-forms/-/custom-forms-0.2.1.tgz"
@@ -1072,11 +1065,6 @@ commander@^5.0.0:
   version "5.1.0"
   resolved "https://registry.npmjs.org/commander/-/commander-5.1.0.tgz"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
-
-commander@^6.0.0:
-  version "6.2.1"
-  resolved "https://registry.npmjs.org/commander/-/commander-6.2.1.tgz"
-  integrity sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==
 
 concat-map@0.0.1:
   version "0.0.1"
@@ -1421,13 +1409,6 @@ jsonfile@^4.0.0:
   optionalDependencies:
     graceful-fs "^4.1.6"
 
-laravel-mix-purgecss@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.npmjs.org/laravel-mix-purgecss/-/laravel-mix-purgecss-6.0.0.tgz"
-  integrity sha512-1OVy3xVVqvWrBTI+vQrr9qlrNKKqq3lFlWQpdJxKO2IeK8bMERkNab3fLtldyyOd5ApBuoMd81EqF4ew2N/NdA==
-  dependencies:
-    postcss-purgecss-laravel "^2.0.0"
-
 laravel-vite-plugin@^0.2.3:
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/laravel-vite-plugin/-/laravel-vite-plugin-0.2.3.tgz#bab2959bedb7c5e0bfb43d7bbd0661fe85645ef0"
@@ -1590,13 +1571,6 @@ postcss-nested@^4.1.1:
     postcss "^7.0.32"
     postcss-selector-parser "^6.0.2"
 
-postcss-purgecss-laravel@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.npmjs.org/postcss-purgecss-laravel/-/postcss-purgecss-laravel-2.0.0.tgz"
-  integrity sha512-vWObgEC5f0isOdumiLwzJPuZFyp7i1Go9i2Obce5qrVJWciBtCG1rrNiPEb7xp5bU3u/uk30M2P891tLL8tcQQ==
-  dependencies:
-    "@fullhuman/postcss-purgecss" "^3.0.0"
-
 postcss-selector-parser@^6.0.0, postcss-selector-parser@^6.0.2:
   version "6.0.9"
   resolved "https://registry.npmjs.org/postcss-selector-parser/-/postcss-selector-parser-6.0.9.tgz"
@@ -1641,7 +1615,7 @@ postcss@^7.0.11, postcss@^7.0.18, postcss@^7.0.32:
     picocolors "^0.2.1"
     source-map "^0.6.1"
 
-postcss@^8.2.1, postcss@^8.2.8:
+postcss@^8.2.8:
   version "8.4.7"
   resolved "https://registry.npmjs.org/postcss/-/postcss-8.4.7.tgz"
   integrity sha512-L9Ye3r6hkkCeOETQX6iOaWZgjp3LL6Lpqm6EtgbKrgqGGteRMNb9vzBfRL96YOSu8o7x3MfIH9Mo5cPJFGrW6A==
@@ -1677,16 +1651,6 @@ purgecss@^2.3.0:
     commander "^5.0.0"
     glob "^7.0.0"
     postcss "7.0.32"
-    postcss-selector-parser "^6.0.2"
-
-purgecss@^3.1.3:
-  version "3.1.3"
-  resolved "https://registry.npmjs.org/purgecss/-/purgecss-3.1.3.tgz"
-  integrity sha512-hRSLN9mguJ2lzlIQtW4qmPS2kh6oMnA9RxdIYK8sz18QYqd6ePp4GNDl18oWHA1f2v2NEQIh51CO8s/E3YGckQ==
-  dependencies:
-    commander "^6.0.0"
-    glob "^7.0.0"
-    postcss "^8.2.1"
     postcss-selector-parser "^6.0.2"
 
 reduce-css-calc@^2.1.6:
