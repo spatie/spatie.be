@@ -1,7 +1,7 @@
 <div class="wrap mb-16">
     <div class="filter-backdrop bg-opaque px-16 xl:px-32 py-8 max-w-md mx-auto shadow-lg rounded-sm">
         <h4 class="text-center text-black text-sm leading-snug">
-            Our open-source efforts are supported 
+            Our open-source efforts are supported
             <br>by the following <a class="font-bold" href="https://github.com/sponsors/spatie">premium GitHub sponsors</a>
         </h4>
 
@@ -17,7 +17,7 @@
                 </div>
             </a>
             <a class="transition duration-300 transform hover:scale-105" href="https://scoutapm.com/">
-                <img class="w-32 h-8 object-contain" src="images/sponsors/scout.png" />
+                <img class="w-32 h-8 object-contain" src="/images/sponsors/scout.png" />
             </a>
         </div>
 
