@@ -35,6 +35,12 @@
             <div class="flex-0 text-xs text-gray md:mt-6">
                 Includes a 10% coupon for a follow-up purchase within the next 24 hours.
                 <br/>
+                @if($product->hasGuarantee())
+                    On this product, we offer a 10 day money-back guarantee.
+                @else
+                    Sales are final and are not eligible for a refund.
+                @endif
+                <br/>
                 VAT will be calculated during checkout by
                 <a class="underline" target="_blank" href="https://www.paddle.com/help/sell/tax/how-paddle-handles-vat-on-your-behalf">Paddle</a>.
             </div>

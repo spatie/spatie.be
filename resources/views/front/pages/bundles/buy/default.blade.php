@@ -34,6 +34,8 @@
             <div class="flex-0 text-xs text-gray md:mt-6">
                 Includes a 10% coupon for a follow-up purchase within the next 24 hours.
                 <br/>
+                Sales are final and are not eligible for a refund.
+                <br/>
                 VAT will be calculated during checkout by
                 <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>.
             </div>
