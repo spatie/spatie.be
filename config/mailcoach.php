@@ -78,6 +78,22 @@ return [
             'send_mail' => \Spatie\Mailcoach\Domain\Campaign\Actions\SendMailAction::class,
             'send_test_mail' => \Spatie\Mailcoach\Domain\Campaign\Actions\SendCampaignTestAction::class,
         ],
+
+        /*
+         * Adapt these settings if you prefer other default settings for newly created campaigns
+         */
+        'default_settings' => [
+            'track_opens' => false,
+            'track_clicks' => false,
+            'utm_tags' => true,
+        ],
+
+        /**
+         * Here you can configure which fields of the campaigns you want to search in
+         * from the Campaigns section in the view. The value is an array of fields.
+         * For relations fields, you can use the dot notation (e.g. 'emailList.name').
+         */
+        'search_fields' => ['name'],
     ],
 
     'automation' => [
@@ -186,6 +202,15 @@ return [
             'send_automation_mail_job' => 'send-mail',
             'send_test_mail_job' => 'mailcoach',
         ],
+
+        /*
+         * Adapt these settings if you prefer other default settings for newly created campaigns
+         */
+        'default_settings' => [
+            'track_opens' => false,
+            'track_clicks' => false,
+            'utm_tags' => true,
+        ],
     ],
 
     'audience' => [
@@ -202,7 +227,7 @@ return [
         /*
          * This disk will be used to store files regarding importing subscribers.
          */
-        'import_subscribers_disk' => 'public',
+        'import_subscribers_disk' => 'local',
     ],
 
     'transactional' => [
@@ -230,6 +255,13 @@ return [
          * By default this is a text editor that highlights HTML.
          */
         'editor' => \Spatie\MailcoachMonaco\MonacoEditor::class,
+
+        /**
+         * Here you can configure which fields of the transactional mails you want to search in
+         * from the Transactional Log section in the view. The value is an array of fields.
+         * For relations fields, you can use the dot notation.
+         */
+        'search_fields' => ['subject'],
     ],
 
     'shared' => [
@@ -245,6 +277,23 @@ return [
             'calculate_statistics' => \Spatie\Mailcoach\Domain\Shared\Actions\CalculateStatisticsAction::class,
         ],
     ],
+
+    /*
+     * This disk will be used to store files regarding importing.
+     */
+    'import_disk' => 'local',
+
+    /*
+     * This disk will be used to store files regarding exporting.
+     */
+    'export_disk' => 'local',
+
+    /*
+     * This disk will be used to store files temporarily for
+     * unzipping & reading. Make sure this is on a local
+     * filesystem.
+     */
+    'tmp_disk' => 'local',
 
     /*
      * The mailer used by Mailcoach for password resets and summary emails.
@@ -345,11 +394,39 @@ return [
         'send' => \Spatie\Mailcoach\Domain\Shared\Models\Send::class,
 
         /*
+         * The model you want to use as a SendFeedbackItem model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Shared\Models\SendFeedbackItem::class`
+         * model.
+         */
+        'send_feedback_item' => \Spatie\Mailcoach\Domain\Shared\Models\SendFeedbackItem::class,
+
+        /*
          * The model you want to use as a Subscriber model. It needs to be or
          * extend the `Spatie\Mailcoach\Domain\Audience\Models\Subscriber::class`
          * model.
          */
         'subscriber' => \Spatie\Mailcoach\Domain\Audience\Models\Subscriber::class,
+
+        /*
+         * The model you want to use as a SubscriberImport model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Audience\Models\SubscriberImport::class`
+         * model.
+         */
+        'subscriber_import' => \Spatie\Mailcoach\Domain\Audience\Models\SubscriberImport::class,
+
+        /*
+         * The model you want to use as a Tag model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Audience\Models\Tag::class`
+         * model.
+         */
+        'tag' => Spatie\Mailcoach\Domain\Audience\Models\Tag::class,
+
+        /*
+         * The model you want to use as a TagSegment model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\Audience\Models\TagSegment::class`
+         * model.
+         */
+        'tag_segment' => Spatie\Mailcoach\Domain\Audience\Models\TagSegment::class,
 
         /*
          * The model you want to use as a Template model. It needs to be or
@@ -364,6 +441,20 @@ return [
          * model.
          */
         'transactional_mail' => \Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMail::class,
+
+        /*
+         * The model you want to use as a TransactionalMailOpen model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailOpen::class`
+         * model.
+         */
+        'transactional_mail_open' => \Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailOpen::class,
+
+        /*
+         * The model you want to use as a TransactionalMailClick model. It needs to be or
+         * extend the `Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailClick::class`
+         * model.
+         */
+        'transactional_mail_click' => \Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailClick::class,
 
         /*
          * The model you want to use as a TransactionalMailTemplate model. It needs to be or

@@ -68,8 +68,10 @@
         <br/>
         @if($product->hasGuarantee())
             On this product, we offer a 10 day money-back guarantee.
-            <br/>
+        @else
+            Sales are final and are not eligible for a refund.
         @endif
+        <br/>
         VAT will be calculated during checkout by <a class="underline" target="_blank"
                                                      href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>.
     </div>
