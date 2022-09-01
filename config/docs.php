@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-dynamic-servers",
+            "repository" => "spatie/laravel-dynamic-servers",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-livewire-wizard",
             "repository" => "spatie/laravel-livewire-wizard",
             "branches" => [
