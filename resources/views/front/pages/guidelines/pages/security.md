@@ -12,6 +12,10 @@ This section of the guidelines documents some of our best practices to work secu
 - All passwords should be unique, no password may be reused
 - Two-factor authentication (via 1Password) should be used if a service provides that
 
+## GitHub
+
+All commits should be [signed](https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits). Here are the steps to [set it up using 1Password](https://blog.1password.com/git-commit-signing/).
+
 ## Applications
 
 - All HTTP traffic should be sent over SSL
