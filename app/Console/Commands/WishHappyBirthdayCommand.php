@@ -45,6 +45,5 @@ class WishHappyBirthdayCommand extends Command
         SlackAlert::message($message);
 
         $this->info($message);
-
     }
 }
