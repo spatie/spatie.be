@@ -31,6 +31,13 @@ jobs:
                   cp .env.ci .env
                   php artisan key:generate
 
+            - uses: actions/setup-node@v3
+
+            - name: Setup Vite Manifest
+              run: |
+                yarn install
+                yarn build
+
             - name: Run tests
               run: ./vendor/bin/pest
               env:

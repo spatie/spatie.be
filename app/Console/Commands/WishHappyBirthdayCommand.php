@@ -11,7 +11,11 @@ class WishHappyBirthdayCommand extends Command
 {
     protected $signature = 'spatie:happy-birthday';
 
+    protected int $ageFilter = 40;
+
     protected string $message = 'Congratulations %s on your %dth birthday! 🥳';
+
+    protected string $filteredMessage = 'Congratulations %s! 🥳';
 
     public function handle(): void
     {
@@ -35,8 +39,11 @@ class WishHappyBirthdayCommand extends Command
 
     private function sendWishesTo(TeamMember $member): void
     {
-        SlackAlert::message(sprintf($this->message, $member->name(), $member->age()));
+        $message = $this->ageFilter < $member->age() ? $this->filteredMessage : $this->message;
+        $message = sprintf($message, $member->name(), $member->age());
 
-        $this->info(sprintf($this->message, $member->name(), $member->age()));
+        SlackAlert::message($message);
+
+        $this->info($message);
     }
 }
