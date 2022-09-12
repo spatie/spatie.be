@@ -21,11 +21,6 @@ parameters:
 			path: app/Docs/Docs.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$weight\\.$#"
-			count: 1
-			path: app/Docs/Docs.php
-
-		-
 			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$alias\\.$#"
 			count: 1
 			path: app/Docs/DocumentationPage.php
@@ -46,24 +41,29 @@ parameters:
 			path: app/Docs/DocumentationPage.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$category\\.$#"
-			count: 1
-			path: app/Docs/Repository.php
-
-		-
 			message: "#^Match expression does not handle remaining values\\: int\\|string$#"
 			count: 1
 			path: app/Domain/Experience/Enums/ExperienceType.php
 
 		-
+			message: "#^Access to property \\$userId on an unknown class App\\\\Domain\\\\Experience\\\\Commands\\\\RegisterVideoCompletion\\.$#"
+			count: 1
+			path: app/Domain/Experience/ExperienceAggregateRoot.php
+
+		-
+			message: "#^Access to property \\$videoId on an unknown class App\\\\Domain\\\\Experience\\\\Commands\\\\RegisterVideoCompletion\\.$#"
+			count: 3
+			path: app/Domain/Experience/ExperienceAggregateRoot.php
+
+		-
+			message: "#^Parameter \\$command of method App\\\\Domain\\\\Experience\\\\ExperienceAggregateRoot\\:\\:registerVideoCompletion\\(\\) has invalid type App\\\\Domain\\\\Experience\\\\Commands\\\\RegisterVideoCompletion\\.$#"
+			count: 1
+			path: app/Domain/Experience/ExperienceAggregateRoot.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\:\\:\\$originalPurchasable\\.$#"
 			count: 2
 			path: app/Domain/Shop/Actions/HandlePurchaseLicensingAction.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_expires_at\\.$#"
-			count: 3
-			path: app/Domain/Shop/Models/Bundle.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_name\\.$#"
@@ -72,12 +72,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_percentage\\.$#"
-			count: 3
-			path: app/Domain/Shop/Models/Bundle.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_starts_at\\.$#"
-			count: 1
+			count: 2
 			path: app/Domain/Shop/Models/Bundle.php
 
 		-
@@ -141,6 +136,11 @@ parameters:
 			path: app/Http/Controllers/AppleSocialiteController.php
 
 		-
+			message: "#^Relation 'lessons' is not found in App\\\\Models\\\\Series model\\.$#"
+			count: 1
+			path: app/Http/Controllers/CoursesController.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$section\\.$#"
 			count: 2
 			path: app/Http/Controllers/DocsController.php
@@ -156,12 +156,40 @@ parameters:
 			path: app/Listeners/SendCoupon.php
 
 		-
+			message: "#^Access to an undefined property App\\\\Models\\\\Lesson\\:\\:\\$description\\.$#"
+			count: 1
+			path: app/Models/Lesson.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$lessons\\.$#"
+			count: 2
+			path: app/Models/Lesson.php
+
+		-
+			message: """
+				#^Call to deprecated method convertToHtml\\(\\) of class League\\\\CommonMark\\\\MarkdownConverter\\:
+				since 2\\.2; use \\{@link convert\\(\\)\\} instead$#
+			"""
+			count: 1
+			path: app/Models/Lesson.php
+
+		-
+			message: "#^Negated boolean expression is always false\\.$#"
+			count: 2
+			path: app/Models/Lesson.php
+
+		-
+			message: "#^Property 'lesson_id' does not exist in App\\\\Models\\\\Lesson model\\. If 'lesson_id' exists as a column on the pivot table, consider using 'wherePivot' or prefix the column with table name instead\\.$#"
+			count: 1
+			path: app/Models/Lesson.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Models\\\\Postcard\\:\\:\\$postcard_count\\.$#"
 			count: 1
 			path: app/Models/Postcard.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$videos\\.$#"
+			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$lessons\\.$#"
 			count: 2
 			path: app/Models/Series.php
 
@@ -176,21 +204,6 @@ parameters:
 			path: app/Models/User.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$videos\\.$#"
-			count: 2
-			path: app/Models/Video.php
-
-		-
-			message: "#^Negated boolean expression is always false\\.$#"
-			count: 2
-			path: app/Models/Video.php
-
-		-
-			message: "#^Property 'video_id' does not exist in App\\\\Models\\\\Video model\\. If 'video_id' exists as a column on the pivot table, consider using 'wherePivot' or prefix the column with table name instead\\.$#"
-			count: 1
-			path: app/Models/Video.php
-
-		-
 			message: "#^Access to an undefined property Laravel\\\\Nova\\\\Fields\\\\ActionFields\\:\\:\\$amount_in_cents\\.$#"
 			count: 1
 			path: app/Nova/Actions/UpdateBundlePriceForCurrencyAction.php
@@ -209,6 +222,16 @@ parameters:
 			message: "#^Access to an undefined property Laravel\\\\Nova\\\\Fields\\\\ActionFields\\:\\:\\$currency_code\\.$#"
 			count: 1
 			path: app/Nova/Actions/UpdatePriceForCurrencyAction.php
+
+		-
+			message: "#^Call to deprecated method showOnTableRow\\(\\) of class Laravel\\\\Nova\\\\Actions\\\\Action\\.$#"
+			count: 1
+			path: app/Nova/Bundle.php
+
+		-
+			message: "#^Using nullsafe method call on non\\-nullable type Spatie\\\\Comments\\\\Models\\\\Comment\\. Use \\-\\> instead\\.$#"
+			count: 1
+			path: app/Nova/Comment.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$count\\.$#"
@@ -241,11 +264,6 @@ parameters:
 			path: app/Nova/Product.php
 
 		-
-			message: "#^Call to an undefined method App\\\\Nova\\\\Purchasable\\:\\:getKey\\(\\)\\.$#"
-			count: 2
-			path: app/Nova/Product.php
-
-		-
 			message: "#^Access to an undefined property App\\\\Nova\\\\Purchasable\\:\\:\\$product\\.$#"
 			count: 1
 			path: app/Nova/Purchasable.php
@@ -267,21 +285,6 @@ parameters:
 
 		-
 			message: "#^Anonymous function has an unused use \\$request\\.$#"
-			count: 1
-			path: app/Nova/Purchase.php
-
-		-
-			message: "#^Call to an undefined method App\\\\Nova\\\\Bundle\\:\\:getKey\\(\\)\\.$#"
-			count: 1
-			path: app/Nova/Purchase.php
-
-		-
-			message: "#^Call to an undefined method App\\\\Nova\\\\Purchasable\\:\\:getKey\\(\\)\\.$#"
-			count: 1
-			path: app/Nova/Purchase.php
-
-		-
-			message: "#^Call to an undefined method App\\\\Nova\\\\User\\:\\:getKey\\(\\)\\.$#"
 			count: 1
 			path: app/Nova/Purchase.php
 
