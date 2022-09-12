@@ -33,8 +33,10 @@ jobs:
 
             - uses: actions/setup-node@v3
 
-            - name: Setup Node (Vite)
-              run: npm run build
+            - name: Setup Vite Manifest
+              run: |
+                yarn install
+                yarn build
 
             - name: Run tests
               run: ./vendor/bin/pest
