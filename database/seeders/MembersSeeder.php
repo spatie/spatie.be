@@ -64,6 +64,15 @@ class MembersSeeder extends Seeder
             'website' => 'https://rubenvanassche.com',
         ],
 
+        'sam@spatie.be' => [
+            'first_name' => 'Sam',
+            'last_name' => 'Apostel',
+            'role' => 'Frontend developer',
+            'description' => 'Sam is a real technology aficionado helping us out with all things React. He seems to be a sportsman too —don\'t try to follow him on his bike.',
+            'twitter' => 'just_simplysam',
+            'website' => 'https://www.sams.land/',
+        ],
+
         'sebastian@spatie.be' => [
             'first_name' => 'Sebastian',
             'last_name' => 'De Deyne',
