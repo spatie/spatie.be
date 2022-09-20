@@ -12,7 +12,7 @@ class MailcoachApi
             ->get("https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers", [
                 'filter' => [
                     'email' => $email,
-                ]
+                ],
             ])
             ->json('data');
 

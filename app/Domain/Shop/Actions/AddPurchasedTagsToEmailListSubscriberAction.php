@@ -24,6 +24,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
 
         if (! $subscriber) {
             report(new \Exception("Could not subscribe subscriber"));
+
             return;
         }
 
