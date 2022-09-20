@@ -37,12 +37,6 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('test', function () {
-    $user = \App\Models\User::where('email', 'rias@spatie.be')->first();
-
-    dd($user->isSubscribedToNewsletter());
-});
-
 Route::get('stop-impersonation', StopImpersonationController::class)->name('stop-impersonation');
 
 Route::feeds();
