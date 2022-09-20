@@ -151,11 +151,6 @@ parameters:
 			path: app/Http/Controllers/InvoicesController.php
 
 		-
-			message: "#^Method App\\\\Listeners\\\\SendCoupon\\:\\:upcastSubscriber\\(\\) should return App\\\\Models\\\\Subscriber but returns Illuminate\\\\Database\\\\Eloquent\\\\Model\\.$#"
-			count: 1
-			path: app/Listeners/SendCoupon.php
-
-		-
 			message: "#^Access to an undefined property App\\\\Models\\\\Lesson\\:\\:\\$description\\.$#"
 			count: 1
 			path: app/Models/Lesson.php
@@ -192,11 +187,6 @@ parameters:
 			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$lessons\\.$#"
 			count: 2
 			path: app/Models/Series.php
-
-		-
-			message: "#^Negated boolean expression is always false\\.$#"
-			count: 1
-			path: app/Models/User.php
 
 		-
 			message: "#^Property App\\\\Models\\\\User\\:\\:\\$uuid \\(App\\\\Support\\\\Uuid\\\\Uuid\\|null\\) does not accept string\\.$#"

@@ -18,7 +18,7 @@ class SyncPurchasesToEmailListCommand extends Command
 
         Purchase::each(function (Purchase $purchase) {
             $this->comment("Processing purchase `{$purchase->id}`...");
-            (new AddPurchasedTagsToEmailListSubscriberAction())->execute($purchase);
+            app(AddPurchasedTagsToEmailListSubscriberAction::class)->execute($purchase);
         });
 
         $this->info('All done!');
