@@ -35,8 +35,6 @@
  * Copyright (c) 2016 Jorik Tangelder;
  * Licensed under the MIT license */
 
-/*! https://mths.be/punycode v1.4.1 by @mathias */
-
 /**
  * @license
  * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.

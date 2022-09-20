@@ -6,7 +6,7 @@ use App\Domain\Shop\Models\Referrer;
 use App\Models\User;
 use App\Support\Paddle\ProcessPaymentSucceededJob;
 use Database\Factories\ReceiptFactory;
-use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
+use Illuminate\Support\Facades\Http;
 
 beforeEach(function () {
     $receipt = ReceiptFactory::new()->create();
@@ -17,7 +17,7 @@ beforeEach(function () {
 
     $this->user = User::factory()->create();
 
-    EmailList::create(['name' => 'Spatie']);
+    Http::fake();
 
     $this->payload = [
         'product_id' => $purchasable->paddle_product_id,

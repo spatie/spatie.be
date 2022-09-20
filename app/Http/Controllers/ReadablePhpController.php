@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\TestingLaravel;
-use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
-use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
+use App\Services\Mailcoach\MailcoachApi;
 
 class ReadablePhpController
 {
@@ -13,15 +12,15 @@ class ReadablePhpController
         return view('front.pages.readable-php.index');
     }
 
-    public function subscribe(TestingLaravel $request)
+    public function subscribe(TestingLaravel $request, MailcoachApi $mailcoachApi)
     {
-        $emailList = EmailList::firstWhere('name', 'Spatie');
+        $subscriber = $mailcoachApi->getSubscriber($request->email);
 
-        $subscriber = Subscriber::createWithEmail($request->email)
-            ->skipConfirmation()
-            ->subscribeTo($emailList);
+        if (! $subscriber) {
+            $subscriber = $mailcoachApi->subscribe($request->email, skipConfirmation: true);
+        }
 
-        $subscriber->addTag('readable-php-waiting-list');
+        $mailcoachApi->addTags($subscriber, ['readable-php-waiting-list']);
 
         session()->flash('subscribed');
 

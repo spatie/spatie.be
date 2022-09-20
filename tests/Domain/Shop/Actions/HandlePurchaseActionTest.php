@@ -14,9 +14,9 @@ use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
 use Database\Factories\ReceiptFactory;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
-use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 use Spatie\TestTime\TestTime;
 
 beforeEach(function () {
@@ -39,7 +39,7 @@ beforeEach(function () {
 
     $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
 
-    EmailList::create(['name' => 'Spatie']);
+    Http::fake();
 });
 
 it('can create a purchase without a license', function () {

@@ -28,7 +28,6 @@ use Laravel\Nova\Auth\Impersonatable;
 use Laravel\Paddle\Billable;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
-use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
 class User extends Authenticatable implements CanComment
 {

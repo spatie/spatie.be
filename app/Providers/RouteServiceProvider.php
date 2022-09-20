@@ -39,8 +39,6 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapWebRoutes(): self
     {
-        Route::sesFeedback('ses-feedback');
-
         Route::middleware(['web'])
             ->group(base_path('routes/web.php'));
 

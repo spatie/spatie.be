@@ -4,46 +4,41 @@ namespace App\Domain\Shop\Actions;
 
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
-use App\Models\Subscriber;
+use App\Services\Mailcoach\MailcoachApi;
+use App\Services\Mailcoach\Subscriber;
 use Illuminate\Support\Str;
-use Spatie\Mailcoach\Domain\Audience\Exceptions\CouldNotSubscribe;
-use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
 class AddPurchasedTagsToEmailListSubscriberAction
 {
+    public function __construct(private MailcoachApi $mailcoachApi)
+    {
+    }
+
     public function execute(Purchase $purchase)
     {
         if (empty($purchase->user->email)) {
             return;
         }
 
-        $emailList = EmailList::firstWhere('name', 'Spatie');
+        $subscriber = $this->findOrCreateSubscriber($purchase->user->email);
 
-        try {
-            $subscriber = $this->findOrCreateSubscriber($purchase->user->email, $emailList);
-        } catch (CouldNotSubscribe $exception) {
-            report($exception);
-
+        if (! $subscriber) {
+            report(new \Exception("Could not subscribe subscriber"));
             return;
         }
 
         $tagNames = $this->getTagNames($purchase);
 
-        $subscriber->addTags($tagNames);
+        $this->mailcoachApi->addTags($subscriber, $tagNames);
     }
 
-    protected function findOrCreateSubscriber(string $email, EmailList $emailList): \Spatie\Mailcoach\Domain\Audience\Models\Subscriber
+    protected function findOrCreateSubscriber(string $email): ?Subscriber
     {
-        if ($subscriber = Subscriber::findForEmail($email, $emailList)) {
+        if ($subscriber = $this->mailcoachApi->getSubscriber($email)) {
             return $subscriber;
         }
 
-        $subscriber = Subscriber::createWithEmail($email)
-            ->skipConfirmation()
-            ->doNotSendWelcomeMail()
-            ->subscribeTo($emailList);
-
-        return Subscriber::find($subscriber->id);
+        return $this->mailcoachApi->subscribe($email, skipConfirmation: true);
     }
 
     protected function getTagNames(Purchase $purchase): array
