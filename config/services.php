@@ -82,4 +82,8 @@ return [
         'client_id' => env('APPLE_ID'),
         'client_secret' => env('APPLE_SECRET'),
     ],
+
+    'mailcoach' => [
+        'token' => env('MAILCOACH_TOKEN'),
+    ]
 ];

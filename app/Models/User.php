@@ -23,11 +23,11 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 use Laravel\Nova\Auth\Impersonatable;
 use Laravel\Paddle\Billable;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
-use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
 
 class User extends Authenticatable implements CanComment
 {
@@ -148,14 +148,19 @@ class User extends Authenticatable implements CanComment
             return false;
         }
 
-        /** @var EmailList $emailList */
-        $emailList = EmailList::firstWhere('name', 'Spatie');
+        $subscribers = Http::withToken(config('services.mailcoach.token'))
+            ->get("https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers", [
+                'filter' => [
+                    'email' => $this->email,
+                ],
+            ])
+            ->json('data');
 
-        if (! $emailList) {
+        if (! isset($subscribers[0])) {
             return false;
         }
 
-        return $emailList->isSubscribed($this->email);
+        return ! is_null($subscribers[0]['subscribed_at']) && is_null($subscribers[0]['unsubscribed_at']);
     }
 
     public function hasAccessToUnReleasedProducts(): bool

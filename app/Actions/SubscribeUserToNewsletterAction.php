@@ -3,18 +3,17 @@
 namespace App\Actions;
 
 use App\Models\User;
-use Spatie\Mailcoach\Domain\Audience\Models\EmailList;
-use Spatie\Mailcoach\Domain\Audience\Models\Subscriber;
+use App\Services\Mailcoach\MailcoachApi;
 
 class SubscribeUserToNewsletterAction
 {
+    public function __construct(private MailcoachApi $mailcoachApi)
+    {
+    }
+
     public function execute(User $user): User
     {
-        $emailList = EmailList::firstWhere('name', 'Spatie');
-
-        Subscriber::createWithEmail($user->email)
-            ->skipConfirmation()
-            ->subscribeTo($emailList);
+        $this->mailcoachApi->subscribe($user->email, skipConfirmation: true);
 
         return $user;
     }

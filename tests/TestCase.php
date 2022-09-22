@@ -2,9 +2,9 @@
 
 namespace Tests;
 
-use Illuminate\Foundation\Mix;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Http;
 
 abstract class TestCase extends BaseTestCase
 {
@@ -15,9 +15,10 @@ abstract class TestCase extends BaseTestCase
     {
         parent::setUp();
 
-        $this->swap(Mix::class, function () {
-            return '';
-        });
+        Http::preventStrayRequests();
+
+        $this->withoutVite();
+        $this->withoutMix();
     }
 
     public function getStub(string $nameOfStub): string
