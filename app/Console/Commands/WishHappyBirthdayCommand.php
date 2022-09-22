@@ -11,7 +11,7 @@ class WishHappyBirthdayCommand extends Command
 {
     protected $signature = 'spatie:happy-birthday';
 
-    protected int $ageFilter = 40;
+    protected int $ageFilter = 39;
 
     protected string $message = 'Congratulations %s on your %dth birthday! 🥳';
 
