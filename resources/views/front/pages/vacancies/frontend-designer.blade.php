@@ -116,10 +116,6 @@
                         </li>
                     </ul>
 
-                    <div class="mt-16 gradient gradient-blue p-8 rounded">
-                        More of a <strong>React/JS</strong> type? Check our <a href="{{ route('vacancies.show', 'react-engineer') }}">React vacancy</a> as well.
-                    </div>
-
                 </div>
             </div>
         </section>
