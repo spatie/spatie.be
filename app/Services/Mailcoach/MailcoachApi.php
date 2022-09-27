@@ -31,7 +31,7 @@ class MailcoachApi
                 'skip_confirmation' => $skipConfirmation,
             ]);
 
-        if (! $response->successful() || ! $response->json('data')) {
+        if (! $response->successful() || ! $response->json('data') || ! $response->json('data.uuid')) {
             return null;
         }
 
