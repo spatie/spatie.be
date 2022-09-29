@@ -6,10 +6,12 @@ use Illuminate\Support\Facades\Http;
 
 class MailcoachApi
 {
-    public function getSubscriber(string $email): ?Subscriber
+    public function getSubscriber(string $email, string $listUuid = null): ?Subscriber
     {
+        $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
+
         $subscribers = Http::withToken(config('services.mailcoach.token'))
-            ->get("https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers", [
+            ->get("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
                 'filter' => [
                     'email' => $email,
                 ],
@@ -23,10 +25,12 @@ class MailcoachApi
         return Subscriber::fromResponse($subscribers[0]);
     }
 
-    public function subscribe(string $email, bool $skipConfirmation = false, bool $skipWelcomeMail = false): ?Subscriber
+    public function subscribe(string $email, string $listUuid = null, bool $skipConfirmation = false, bool $skipWelcomeMail = false): ?Subscriber
     {
+        $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
+
         $response = Http::withToken(config('services.mailcoach.token'))
-            ->post('https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers', [
+            ->post("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
                 'email' => $email,
                 'skip_confirmation' => $skipConfirmation,
             ]);

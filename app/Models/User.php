@@ -13,6 +13,7 @@ use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Domain\Shop\Models\Referrer;
 use App\Observers\UserObserver;
+use App\Services\Mailcoach\MailcoachApi;
 use App\Support\Uuid\Uuid;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -148,19 +149,13 @@ class User extends Authenticatable implements CanComment
             return false;
         }
 
-        $subscribers = Http::withToken(config('services.mailcoach.token'))
-            ->get("https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers", [
-                'filter' => [
-                    'email' => $this->email,
-                ],
-            ])
-            ->json('data');
+        $subscriber = app(MailcoachApi::class)->getSubscriber($this->email);
 
-        if (! isset($subscribers[0])) {
+        if (! $subscriber) {
             return false;
         }
 
-        return ! is_null($subscribers[0]['subscribed_at']) && is_null($subscribers[0]['unsubscribed_at']);
+        return ! is_null($subscriber->subscribedAt) && is_null($subscriber->unSubscribedAt);
     }
 
     public function hasAccessToUnReleasedProducts(): bool

@@ -15,7 +15,7 @@ it('will add tags for the purchasable on the mailing list', function () {
     $email = urlencode($purchase->user->email);
 
     Http::fake([
-        "https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers?filter%5Bemail%5D={$email}" => Http::response(['data' => [['uuid' => '1234', 'email' => urldecode($email)]]]),
+        "https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers?filter%5Bemail%5D={$email}" => Http::response(['data' => [['uuid' => '1234', 'email' => urldecode($email), 'subscribed_at' => now(), 'unsubscribed_at' => null]]]),
         "https://spatie.mailcoach.app/api/subscribers/1234" => Http::response(),
     ]);
 
@@ -41,7 +41,7 @@ it('will add tags for a bundle purchase', function () {
     $purchasable2 = $purchase->bundle->purchasables->skip(1)->first();
 
     Http::fake([
-        "https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers?filter%5Bemail%5D={$email}" => Http::response(['data' => [['uuid' => '1234', 'email' => urldecode($email)]]]),
+        "https://spatie.mailcoach.app/api/email-lists/4af46b59-3784-41a5-9272-6da31afa3a02/subscribers?filter%5Bemail%5D={$email}" => Http::response(['data' => [['uuid' => '1234', 'email' => urldecode($email), 'subscribed_at' => now(), 'unsubscribed_at' => null]]]),
         "https://spatie.mailcoach.app/api/subscribers/1234" => Http::response(),
     ]);
 

@@ -20,7 +20,12 @@ class AddPurchasedTagsToEmailListSubscriberAction
             return;
         }
 
-        $subscriber = $this->findOrCreateSubscriber($purchase->user->email);
+        $listUuid = match($purchase->purchasable_id) {
+            3, 4, 5, 6, 7 => 'b590dc69-939a-47e3-ba48-ba588c167aa6', // Mailcoach
+            default => null
+        };
+
+        $subscriber = $this->findOrCreateSubscriber($purchase->user->email, $listUuid);
 
         if (! $subscriber) {
             report(new \Exception("Could not subscribe subscriber"));
@@ -33,13 +38,13 @@ class AddPurchasedTagsToEmailListSubscriberAction
         $this->mailcoachApi->addTags($subscriber, $tagNames);
     }
 
-    protected function findOrCreateSubscriber(string $email): ?Subscriber
+    protected function findOrCreateSubscriber(string $email, string $listUuid = null): ?Subscriber
     {
-        if ($subscriber = $this->mailcoachApi->getSubscriber($email)) {
+        if ($subscriber = $this->mailcoachApi->getSubscriber($email, $listUuid)) {
             return $subscriber;
         }
 
-        return $this->mailcoachApi->subscribe($email, skipConfirmation: true);
+        return $this->mailcoachApi->subscribe($email, $listUuid, skipConfirmation: true);
     }
 
     protected function getTagNames(Purchase $purchase): array
