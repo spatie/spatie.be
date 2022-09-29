@@ -24,7 +24,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Http;
 use Laravel\Nova\Auth\Impersonatable;
 use Laravel\Paddle\Billable;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;

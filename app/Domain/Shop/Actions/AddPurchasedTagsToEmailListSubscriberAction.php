@@ -20,7 +20,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
             return;
         }
 
-        $listUuid = match($purchase->purchasable_id) {
+        $listUuid = match ($purchase->purchasable_id) {
             3, 4, 5, 6, 7 => 'b590dc69-939a-47e3-ba48-ba588c167aa6', // Mailcoach
             default => null
         };

@@ -20,10 +20,10 @@ class Subscriber
         return new self(
             uuid: $response['uuid'],
             email: $response['email'],
-            subscribedAt: !is_null($response['subscribed_at'])
+            subscribedAt: ! is_null($response['subscribed_at'])
                 ? Date::parse($response['subscribed_at'])
                 : null,
-            unSubscribedAt: !is_null($response['unsubscribed_at'])
+            unSubscribedAt: ! is_null($response['unsubscribed_at'])
                 ? Date::parse($response['unsubscribed_at'])
                 : null,
         );
