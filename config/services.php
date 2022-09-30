@@ -53,6 +53,7 @@ return [
         'https://rias.be/feed',
         'https://rubenvanassche.com/rss/',
         'https://flareapp.io/feed',
+        'https://mailcoach.app/blog/feed',
     ],
 
     'instagram' => [
