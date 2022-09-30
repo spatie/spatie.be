@@ -47,13 +47,13 @@ return [
     ],
 
     'rss' => [
-        'https://freek.dev/feed/originals',
-        'https://sebastiandedeyne.com/feed/articles',
         'https://alexvanderbist.com/feed',
+        'https://flareapp.io/feed',
+        'https://freek.dev/feed/originals',
+        'https://mailcoach.app/blog/feed',
         'https://rias.be/feed',
         'https://rubenvanassche.com/rss/',
-        'https://flareapp.io/feed',
-        'https://mailcoach.app/blog/feed',
+        'https://sebastiandedeyne.com/feed/articles',
     ],
 
     'instagram' => [
