@@ -14,7 +14,7 @@ class RegenerateLeakedKeysCommand extends Command
 
     public function handle(GitHubApi $gitHubApi)
     {
-        [$paginator, $response] = $gitHubApi->search('satis.spatie.be');
+        [$paginator, $response] = $gitHubApi->search('satis.spatie.be extension:json', ['sort' => 'indexed']);
 
         do {
             foreach ($response['items'] as $result) {

@@ -132,15 +132,16 @@ class GitHubApi
      *
      * @return array{ResultPager, array}
      */
-    public function search(string $searchString): array
+    public function search(string $searchString, array $parameters = []): array
     {
         //dd($this->client->api('search')->code('spatie'));
         $searchApi = $this->client->api('search');
+        $searchApi->setPerPage(100);
 
         $paginator = new ResultPager($this->client);
-        $parameters = [
+        $parameters = array_merge([
             'q' => $searchString,
-        ];
+        ], $parameters);
         $result = $paginator->fetch($searchApi, 'code', $parameters);
 
         return [$paginator, $result];
