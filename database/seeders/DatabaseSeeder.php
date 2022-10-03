@@ -10,7 +10,6 @@ class DatabaseSeeder extends Seeder
     {
         $this
             ->call(AdSeeder::class)
-            ->call(EmailListSeeder::class)
             ->call(MembersSeeder::class)
             ->call(InsightsSeeder::class)
             ->call(PlaylistSeeder::class)
