@@ -57,11 +57,12 @@ it('returns all Spatie team members', function () {
 
     $this->get(action([MembersController::class, 'index']))
         ->assertStatus(200)
-        ->assertExactJson([
+        ->assertExactJson(
+            [
                 ['name' => 'Willem', 'twitter' => 'willemvbockstal', 'website' => null],
                 ['name' => 'Jef', 'twitter' => 'vdv_jef', 'website' => null],
                 ['name' => 'Freek', 'twitter' => 'freekmurze', 'website' => 'https://freek.dev'],
-                ['name' => 'Seb', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com']
+                ['name' => 'Seb', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com'],
             ]
         );
 });
