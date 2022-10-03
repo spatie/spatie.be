@@ -22,11 +22,8 @@ class ImportInsightsCommand extends Command
     {
         $this->info('Syncing insights from RSS feeds...');
 
-        $userRssFeeds = Member::query()->whereNotNull('website_rss')->pluck('website_rss');
-        $servicesRssFeeds = config('services.rss');
-
-        $userRssFeeds
-            ->merge($servicesRssFeeds)
+        Member::query()->whereNotNull('website_rss')->pluck('website_rss')
+            ->merge(config('services.rss'))
             ->unique()
             ->values()
             ->each(function (string $feedUrl): void {
