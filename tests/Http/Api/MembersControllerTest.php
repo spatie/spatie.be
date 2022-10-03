@@ -15,6 +15,8 @@ it('returns all Spatie team members', function () {
             'role' => 'Frontend designer',
             'description' => '',
             'email' => '',
+            'twitter' => 'willemvbockstal',
+            'website' => null,
         ],
         [
             'first_name' => 'jef',
@@ -24,6 +26,8 @@ it('returns all Spatie team members', function () {
             'role' => 'Account manager',
             'description' => '',
             'email' => '',
+            'twitter' => 'vdv_jef',
+            'website' => null,
         ],
         [
             'first_name' => 'freek',
@@ -33,6 +37,8 @@ it('returns all Spatie team members', function () {
             'role' => 'Backend developer',
             'description' => '',
             'email' => '',
+            'twitter' => 'freekmurze',
+            'website' => 'https://freek.dev',
         ],
         [
             'first_name' => 'sebastian',
@@ -42,6 +48,8 @@ it('returns all Spatie team members', function () {
             'role' => 'Full stack developer',
             'description' => '',
             'email' => '',
+            'twitter' => 'sebdedeyne',
+            'website' => 'https://sebastiandedeyne.com',
         ],
     ];
 
@@ -50,9 +58,10 @@ it('returns all Spatie team members', function () {
     $this->get(action([MembersController::class, 'index']))
         ->assertStatus(200)
         ->assertExactJson([
-                ['name' => 'Willem'],
-                ['name' => 'Jef'],
-                ['name' => 'Freek'],
-                ['name' => 'Seb']]
+                ['name' => 'Willem', 'twitter' => 'willemvbockstal', 'website' => null],
+                ['name' => 'Jef', 'twitter' => 'vdv_jef', 'website' => null],
+                ['name' => 'Freek', 'twitter' => 'freekmurze', 'website' => 'https://freek.dev'],
+                ['name' => 'Seb', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com']
+            ]
         );
 });

@@ -8,9 +8,12 @@ class MembersController
 {
     public function index()
     {
-
         $members = Member::all()
-            ->map(fn (Member $member) => ['name' => $member->name()]);
+            ->map(fn (Member $member) => [
+                'name' => $member->name(),
+                'twitter' => $member->twitter,
+                'website' => $member->website,
+            ]);
 
         return response($members);
     }
