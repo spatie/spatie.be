@@ -2,15 +2,15 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\ValueObjects\TeamMember;
+use App\Models\Member;
 
 class MembersController
 {
     public function index()
     {
 
-        $members = collect(config('team.members'))
-            ->map(fn (array $member) => TeamMember::make($member)->toArray());
+        $members = Member::all()
+            ->map(fn (Member $member) => ['name' => $member->name()]);
 
         return response($members);
     }

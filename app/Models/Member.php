@@ -8,6 +8,17 @@ use Spatie\SchemaOrg\Schema;
 
 class Member extends Model
 {
+    protected $casts = [
+        'birthday' => 'immutable_datetime',
+        'created_at' => 'immutable_datetime',
+        'updated_at' => 'immutable_datetime',
+    ];
+
+    public function name(): string
+    {
+        return ucfirst($this->preferred_name ?? $this->first_name);
+    }
+
     public function scopeFounder($query)
     {
         return $query->where('founder', true);

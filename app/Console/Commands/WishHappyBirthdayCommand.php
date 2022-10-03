@@ -2,7 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\ValueObjects\TeamMember;
+use App\Models\Member;
+use Carbon\CarbonImmutable;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Spatie\SlackAlerts\Facades\SlackAlert;
@@ -27,20 +28,20 @@ class WishHappyBirthdayCommand extends Command
             return;
         }
 
-        $celebrators->each(fn (TeamMember $member) => $this->sendWishesTo($member));
+        $celebrators->each(fn (Member $member) => $this->sendWishesTo($member));
     }
 
     private function whoIsCelebratingToday(): Collection
     {
-        return collect(config('team.members'))
-            ->map(fn (array $member) => TeamMember::make($member))
-            ->filter(fn (TeamMember $member) => $member->isBirthday());
+        return Member::query()
+            ->whereDate('birthday', CarbonImmutable::today())
+            ->get();
     }
 
-    private function sendWishesTo(TeamMember $member): void
+    private function sendWishesTo(Member $member): void
     {
-        $message = $this->ageFilter < $member->age() ? $this->filteredMessage : $this->message;
-        $message = sprintf($message, $member->name(), $member->age());
+        $message = $this->ageFilter < $member->birthday?->age ? $this->filteredMessage : $this->message;
+        $message = sprintf($message, $member->name(), $member->birthday?->age);
 
         SlackAlert::message($message);
 
