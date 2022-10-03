@@ -8,7 +8,6 @@ use Illuminate\Database\Seeder;
 class MembersSeeder extends Seeder
 {
     protected $members = [
-
         'alex@spatie.be' => [
             'first_name' => 'Alex',
             'last_name' => 'Vanderbist',
@@ -17,6 +16,7 @@ class MembersSeeder extends Seeder
             'description' => 'Alex can throw backend code, servers and hardware in the mix. He\'s famous for winning the first Laravel blog contest and struggling with Paypal ever since.',
             'twitter' => 'alexvanderbist',
             'website' => 'https://alexvanderbist.com',
+            'website_rss' => 'https://alexvanderbist.com/feed',
             'birthday' => '1996-02-05',
         ],
 
@@ -28,6 +28,7 @@ class MembersSeeder extends Seeder
             'description' => 'Freek is our godfather of backend code. You are not into Laravel if this face doesn\'t ring a bell to you.',
             'twitter' => 'freekmurze',
             'website' => 'https://freek.dev',
+            'website_rss' => 'https://freek.dev/feed/originals',
             'founder' => true,
             'birthday' => '1979-09-22',
         ],
@@ -61,6 +62,7 @@ class MembersSeeder extends Seeder
             'description' => 'Another member of the Full Stack Antwerp family in our midst: Rias brings Laravel & CMS expertise to the backend table —with a smile.',
             'twitter' => 'riasvdv',
             'website' => 'https://rias.be',
+            'website_rss' => 'https://rias.be/feed',
             'birthday' => '1992-05-25',
         ],
 
@@ -72,6 +74,7 @@ class MembersSeeder extends Seeder
             'description' => 'Ruben knows how to write PHP. And C++. And Java. And Python. And he can talk to humans too!',
             'twitter' => 'rubenvanassche',
             'website' => 'https://rubenvanassche.com',
+            'website_rss' => 'https://rubenvanassche.com/rss/',
             'birthday' => '1994-05-16',
         ],
 
@@ -94,6 +97,7 @@ class MembersSeeder extends Seeder
             'description' => 'Seb really earns the label ‘full stack’. Throw anything at this guy and he\'ll kick it back to you as a component.',
             'twitter' => 'sebdedeyne',
             'website' => 'https://sebastiandedeyne.com',
+            'website_rss' => 'https://sebastiandedeyne.com/feed/articles',
             'birthday' => '1992-02-01',
         ],
 

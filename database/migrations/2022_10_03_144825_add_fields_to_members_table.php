@@ -13,6 +13,10 @@ return new class extends Migration
                 ->nullable()
                 ->after('last_name');
 
+            $table->string('website_rss')
+                ->nullable()
+                ->after('website');
+
             $table->string('birthday')
                 ->nullable()
                 ->after('public_email');

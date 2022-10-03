@@ -77,6 +77,11 @@ class Member extends Resource
                 ->nullable()
                 ->hideFromIndex()
                 ->rules(['required', 'max:255']),
+
+            Text::make('Website Rss')
+                ->nullable()
+                ->hideFromIndex()
+                ->rules(['required', 'max:255']),
         ];
     }
 }

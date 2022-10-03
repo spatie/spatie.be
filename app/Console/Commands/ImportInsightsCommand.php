@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Insight;
+use App\Models\Member;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
@@ -21,7 +22,13 @@ class ImportInsightsCommand extends Command
     {
         $this->info('Syncing insights from RSS feeds...');
 
-        collect(config('services.rss'))
+        $userRssFeeds = Member::query()->whereNotNull('website_rss')->pluck('website_rss');
+        $servicesRssFeeds = config('services.rss');
+
+        $userRssFeeds
+            ->merge($servicesRssFeeds)
+            ->unique()
+            ->values()
             ->each(function (string $feedUrl): void {
                 try {
                     $feed = Reader::import($feedUrl);
