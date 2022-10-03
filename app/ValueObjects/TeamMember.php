@@ -36,4 +36,11 @@ class TeamMember
     {
         return $this->birthday->age;
     }
+
+    public function toArray(): array
+    {
+        return [
+            'name' => $this->name(),
+        ];
+    }
 }
