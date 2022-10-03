@@ -56,7 +56,7 @@ class Technology extends Resource
                 ->rules(['required'])
                 ->options(
                     Member::query()
-                        ->pluck('name')
+                        ->pluck('first_name')
                         ->mapWithKeys(function (string $name) {
                             return [$name => ucfirst($name)];
                         })

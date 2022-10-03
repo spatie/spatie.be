@@ -8,6 +8,7 @@ use App\Nova\BundlePrice;
 use App\Nova\Comment;
 use App\Nova\Dashboards\Main;
 use App\Nova\License;
+use App\Nova\Member;
 use App\Nova\Playlist;
 use App\Nova\Postcard;
 use App\Nova\Product;
@@ -65,6 +66,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
                     MenuItem::resource(Postcard::class),
                     MenuItem::resource(Playlist::class),
                     MenuItem::resource(Technology::class),
+                ])->icon('document-text'),
+
+                MenuSection::make('Team', [
+                    MenuItem::resource(Member::class),
                 ])->icon('document-text'),
             ];
         });
