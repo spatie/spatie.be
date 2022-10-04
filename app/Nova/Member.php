@@ -65,22 +65,22 @@ class Member extends Resource
             Text::make('Twitter')
                 ->nullable()
                 ->hideFromIndex()
-                ->rules(['required', 'max:255']),
+                ->rules(['max:255']),
 
             Text::make('Github')
                 ->nullable()
                 ->hideFromIndex()
-                ->rules(['required', 'max:255']),
+                ->rules(['max:255']),
 
             Text::make('Website')
                 ->nullable()
                 ->hideFromIndex()
-                ->rules(['required', 'max:255']),
+                ->rules(['max:255']),
 
             Text::make('Website Rss')
                 ->nullable()
                 ->hideFromIndex()
-                ->rules(['required', 'max:255']),
+                ->rules(['max:255']),
         ];
     }
 }
