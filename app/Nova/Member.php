@@ -42,7 +42,7 @@ class Member extends Resource
             Text::make('Preferred Name')
                 ->sortable()
                 ->nullable()
-                ->rules(['required', 'max:255']),
+                ->rules(['max:255']),
 
             Textarea::make('Description')
                 ->hideFromIndex()
