@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use App\Models\Enums\TechnologyType;
+use App\Models\Member;
 use App\Models\Technology as EloquentTechnology;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Image;
@@ -54,8 +55,8 @@ class Technology extends Resource
                 ->hideFromIndex()
                 ->rules(['required'])
                 ->options(
-                    collect(config('team.members'))
-                        ->pluck('name')
+                    Member::query()
+                        ->pluck('first_name')
                         ->mapWithKeys(function (string $name) {
                             return [$name => ucfirst($name)];
                         })

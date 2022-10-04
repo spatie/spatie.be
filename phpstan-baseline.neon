@@ -11,6 +11,11 @@ parameters:
 			path: app/Console/Commands/ImportInsightsCommand.php
 
 		-
+			message: "#^Using nullsafe property access on non\\-nullable type mixed\\. Use \\-\\> instead\\.$#"
+			count: 1
+			path: app/Console/Commands/WishHappyBirthdayCommand.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$alias\\.$#"
 			count: 1
 			path: app/Docs/Docs.php

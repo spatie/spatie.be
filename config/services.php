@@ -46,14 +46,10 @@ return [
         'access' => env('VIMEO_ACCESS'),
     ],
 
+    // Values are merged with the rss feeds of the Member model
     'rss' => [
-        'https://alexvanderbist.com/feed',
         'https://flareapp.io/feed',
-        'https://freek.dev/feed/originals',
         'https://mailcoach.app/blog/feed',
-        'https://rias.be/feed',
-        'https://rubenvanassche.com/rss/',
-        'https://sebastiandedeyne.com/feed/articles',
     ],
 
     'instagram' => [

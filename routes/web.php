@@ -35,6 +35,7 @@ use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
+use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where('any', '.*');
@@ -67,10 +68,6 @@ Route::view('web-development', 'front.pages.web-development.index')->name('web-d
 
 Route::prefix('about-us')->group(function () {
     Route::view('/', 'front.pages.about.index')->name('about');
-
-    collect(config('team.members'))->pluck('name')->each(function (string $personName) {
-        Route::permanentRedirect($personName, "/about-us/#{$personName}");
-    });
 });
 
 Route::prefix('products')->group(function () {

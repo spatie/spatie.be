@@ -9,6 +9,7 @@ use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Models\Member;
 use App\Models\User;
 use App\Support\Uuid\Uuid;
 use Illuminate\Database\Seeder;
@@ -22,7 +23,7 @@ class UserSeeder extends Seeder
     {
         $this->achievements = Achievement::all();
 
-        collect(config('team.members'))->pluck('name')->map(fn (string $name) => User::firstOrCreate([
+        collect(Member::get())->pluck('first_name')->map(fn (string $name) => User::firstOrCreate([
             'email' => "${name}@spatie.be",
         ], [
             'name' => ucfirst($name),
