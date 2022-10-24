@@ -2,7 +2,6 @@
 
 namespace App\Support\Search;
 
-use Illuminate\Support\Str;
 use Psr\Http\Message\UriInterface;
 use Spatie\Url\Url;
 

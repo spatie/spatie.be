@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Spatie\SiteSearch\Indexers\DefaultIndexer;
 use Spatie\SiteSearch\Models\SiteSearchConfig;
 
 class SiteSearchSeeder extends Seeder
@@ -20,7 +19,7 @@ class SiteSearchSeeder extends Seeder
                     // apiKey => '', // for production
                     'indexSettings' => [
                         'filterableAttributes' => ['version', 'repo'],
-                        'searchableAttributes' => ['pageTitle', 'description', 'entry']
+                        'searchableAttributes' => ['pageTitle', 'description', 'entry'],
                     ],
                 ],
             ],

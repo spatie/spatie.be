@@ -47,7 +47,8 @@ class SearchDocsComponent extends Component
                     "repo = '{$repo}'",
 
                 ],
-                ])
+                ]
+            )
             ->get()
             ->hits;
     }
