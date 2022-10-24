@@ -31,3 +31,5 @@ dump.rdb
 auth.json
 phpstan.neon
 build
+meilisearch
+data.ms

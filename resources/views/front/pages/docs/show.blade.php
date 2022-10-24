@@ -17,36 +17,32 @@
 
     <section class="wrap md:grid pb-24 gap-12 md:grid-cols-10 items-stretch">
         <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
-             @include('front.pages.docs.partials.navigation')
+            @include('front.pages.docs.partials.navigation')
         </div>
         <article class="md:col-span-7 lg:col-span-6">
             @if(count($repository->aliases) > 1)
-            <div class="mb-12 p-4 flex text-sm bg-white bg-opacity-50 rounded-sm md:shadow-light markup-shiki">
-                <div class="flex-none h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
-                <div class="ml-4">
-                    <p>
-                    This is the documentation for <strong>{{ $page->alias }}</strong>@if($page->alias !== $latestVersion->slug) but the latest version is
-                        <strong>{{ $latestVersion->slug }}</strong>@endif.
-                    You can switch versions in the menu <span class="hidden md:inline">on the left</span><span class="hidden">/</span><span class="inline md:hidden">at the top</span>.
-                    Check your current version with the following command:
-                    </p>
-                    <div class="mt-2">
-                        <code class="bg-blue-lightest bg-opacity-50 px-2 py-1">
-                            composer show spatie/{{ $repository->slug }}
-                        </code>
+                <div class="mb-12 p-4 flex text-sm bg-white bg-opacity-50 rounded-sm md:shadow-light markup-shiki">
+                    <div
+                        class="flex-none h-6 w-6 text-orange fill-current">{{ svg('icons/fal-exclamation-circle') }}</div>
+                    <div class="ml-4">
+                        <p>
+                            This is the documentation for
+                            <strong>{{ $page->alias }}</strong>@if($page->alias !== $latestVersion->slug)
+                                but the latest version is
+                                <strong>{{ $latestVersion->slug }}</strong>
+                            @endif.
+                            You can switch versions in the menu <span class="hidden md:inline">on the left</span><span
+                                class="hidden">/</span><span class="inline md:hidden">at the top</span>.
+                            Check your current version with the following command:
+                        </p>
+                        <div class="mt-2">
+                            <code class="bg-blue-lightest bg-opacity-50 px-2 py-1">
+                                composer show spatie/{{ $repository->slug }}
+                            </code>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endif
-
-            {{--
-            <div>
-                <a href="https://supportukrainenow.org">
-                    <img alt="Support Ukraine" src="https://github-ads.s3-eu-central-1.amazonaws.com/support-ukraine-spatie-be.svg" />
-                </a>
-            </div>
-            <div class="mb-8"></div>
-            --}}
 
             @if($showBigTitle)
                 <div class="mb-16">
@@ -80,9 +76,11 @@
                 </div>
             @endif
 
-            <div class="markup markup-titles markup-lists markup-tables markup-shiki markup-embeds
+            <div id="site-search-docs-content">
+                <div class="markup markup-titles markup-lists markup-tables markup-shiki markup-embeds
              links-blue links-underline">
-                {!! $page->contents !!}
+                    {!! $page->contents !!}
+                </div>
             </div>
 
         </article>
@@ -108,22 +106,7 @@
         @endif
     </section>
 
-     @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
+    @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
 
-    <script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
-
-    <script>
-        docsearch({
-            apiKey: '7a1f56fb06bd42e657e82bdafe86cef3',
-            indexName: 'spatie_be',
-            inputSelector: '#algolia-search',
-            debug: true,
-
-            algoliaOptions: {
-                'hitsPerPage': 5,
-                'facetFilters': ['project:{{ $repository->slug }}', 'version:{{ $alias->slug }}']
-            }
-        });
-    </script>
 </x-page>
 
