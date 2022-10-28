@@ -31,7 +31,7 @@ class SearchDocsComponent extends Component
 
     public function getResults(): Collection
     {
-        if ($this->query === '') {
+        if (strlen($this->query) < 3) {
             return collect();
         }
 
