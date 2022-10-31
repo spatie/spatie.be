@@ -219,7 +219,6 @@ return [
                 "main" => "v5",
                 "v4" => "v4",
                 "v3" => "v3",
-                "v2" => "v2",
             ],
             "category" => "Laravel",
         ],
