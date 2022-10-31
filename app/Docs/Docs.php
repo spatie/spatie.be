@@ -34,7 +34,7 @@ class Docs
 
                 try {
                     return Alias::fromDocumentationPage($index, $pages);
-                } catch (Exception $e) {
+                } catch (\Throwable $e) {
                     info($index);
 
                     throw $e;
