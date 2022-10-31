@@ -83,15 +83,6 @@ return [
             "category" => "General PHP",
         ],
         [
-            "name" => "laravel-mailcoach",
-            "repository" => "spatie/laravel-mailcoach",
-            "branches" => [
-                "main" => "v5",
-                "v4" => "v4",
-            ],
-            "category" => "Laravel",
-        ],
-        [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
             "branches" => [
