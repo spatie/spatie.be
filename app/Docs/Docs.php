@@ -32,7 +32,12 @@ class Docs
                     return null;
                 }
 
-                return Alias::fromDocumentationPage($index, $pages);
+                try {
+                    return Alias::fromDocumentationPage($index, $pages);
+                } catch (Exception $e) {
+                    info($index);
+                    throw $e;
+                }
             })
             ->filter()
             ->sortBy('versionNumber', SORT_NATURAL, true);
