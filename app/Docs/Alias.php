@@ -8,7 +8,7 @@ class Alias
 {
     private function __construct(
         public string $slug,
-        public string $slogan,
+        public ?string $slogan,
         public string $branch,
         public int $versionNumber,
         public string $githubUrl,
