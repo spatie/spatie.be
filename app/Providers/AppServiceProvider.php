@@ -45,7 +45,7 @@ class AppServiceProvider extends ServiceProvider
 
         Livewire::component('spotlight', Spotlight::class);
 
-        foreach (config('docs.repositories') as $repository) {
+        foreach (collect(config('docs.repositories'))->sortBy('name') as $repository) {
             Spotlight::registerInstantiatedCommand(new DocsCommand($repository));
         }
     }
