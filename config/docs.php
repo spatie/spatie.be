@@ -180,7 +180,7 @@ return [
             "name" => "laravel-slack-slash-command",
             "repository" => "spatie/laravel-slack-slash-command",
             "branches" => [
-                "master" => "v1",
+                "main" => "v1",
             ],
             "category" => "Laravel",
         ],
