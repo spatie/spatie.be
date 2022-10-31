@@ -7,6 +7,9 @@
             <p class="banner-intro">
                 Documentation for our comprehensive packages
             </p>
+            <p class="mt-4 bg-white inline-block px-1 opacity-75 rounded">
+                💡 Pro tip: Use <kbd class="text-monospace text-sm font-bold">CMD/CTRL+K</kbd> to navigate quickly.
+            </p>
         </div>
     </section>
 
@@ -22,4 +25,6 @@
             </div>
         @endforeach
     </section>
+
+    @livewire('spotlight')
 </x-page>

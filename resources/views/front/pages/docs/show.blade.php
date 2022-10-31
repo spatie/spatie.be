@@ -125,5 +125,7 @@
             }
         });
     </script>
+
+    @livewire('spotlight')
 </x-page>
 
