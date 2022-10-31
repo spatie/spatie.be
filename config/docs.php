@@ -261,7 +261,8 @@ return [
             "name" => "laravel-backup-server",
             "repository" => "spatie/laravel-backup-server",
             "branches" => [
-                "main" => "v2",
+                "main" => "v3",
+                "v2" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",
@@ -270,8 +271,7 @@ return [
             "name" => "laravel-dashboard",
             "repository" => "spatie/laravel-dashboard",
             "branches" => [
-                "main" => "v3",
-                "v2" => "v2",
+                "main" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",
