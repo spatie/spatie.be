@@ -5,11 +5,10 @@ namespace App\Providers;
 use App\Models\HtmlLesson;
 use App\Models\Video;
 use App\Spotlight\DocsCommand;
+use App\Spotlight\Spotlight;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
-use App\Spotlight\Spotlight;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;
 
