@@ -7,6 +7,7 @@ use Artisan;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\InteractsWithQueue;
 use Laravel\Nova\Actions\Action;
+use Spatie\SiteSearch\Commands\CrawlCommand;
 
 class ImportDocsAction extends Action
 {

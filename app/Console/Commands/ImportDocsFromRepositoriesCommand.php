@@ -7,8 +7,10 @@ use App\Exceptions\DocsImportException;
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\File;
 use Spatie\Fork\Fork;
+use Spatie\SiteSearch\Commands\CrawlCommand;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Process\Process;
 
@@ -58,6 +60,10 @@ class ImportDocsFromRepositoriesCommand extends Command
         $updatedRepositoriesValueStore->flush();
 
         File::deleteDirectory(storage_path('docs-temp'));
+
+        $this->info('Dispatching job to index docs...');
+
+        Artisan::call(CrawlCommand::class);
 
         $this->info('All done!');
     }
