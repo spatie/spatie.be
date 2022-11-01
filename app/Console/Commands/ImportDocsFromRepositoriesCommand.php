@@ -61,8 +61,6 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         File::deleteDirectory(storage_path('docs-temp'));
 
-        $this->info('Dispatching job to index docs...');
-
         $this->info('All done!');
     }
 
