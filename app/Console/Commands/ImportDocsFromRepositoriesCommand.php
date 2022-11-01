@@ -63,8 +63,6 @@ class ImportDocsFromRepositoriesCommand extends Command
 
         $this->info('Dispatching job to index docs...');
 
-        Artisan::call(CrawlCommand::class);
-
         $this->info('All done!');
     }
 
