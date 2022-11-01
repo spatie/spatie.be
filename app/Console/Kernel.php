@@ -18,6 +18,7 @@ use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Spatie\ScheduleMonitor\Models\MonitoredScheduledTaskLogItem;
+use Spatie\SiteSearch\Commands\CrawlCommand;
 
 class Kernel extends ConsoleKernel
 {
@@ -28,6 +29,8 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
         $schedule->command(ImportGuideLinesCommand::class)->weekly();
         $schedule->command(RegenerateLeakedKeysCommand::class)->graceTimeInMinutes(30)->runInBackground()->hourly();
+
+        $schedule->command(CrawlCommand::class)->hourlyAt(30);
 
         $schedule->command('model:prune', ['--model' => MonitoredScheduledTaskLogItem::class])->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
