@@ -4,10 +4,12 @@ namespace App\Providers;
 
 use App\Models\HtmlLesson;
 use App\Models\Video;
+use App\Spotlight\DocsCommand;
+use App\Spotlight\Spotlight;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
 use Spatie\Flash\Flash;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,10 +17,6 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         Model::unguard();
-
-        Gate::define('viewMailcoach', function ($user = null) {
-            return $user?->is_admin;
-        });
 
         Flash::levels([
             'success' => 'success',
@@ -42,7 +40,13 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'video' => Video::class,
             'htmlLesson' => HtmlLesson::class,
-
         ]);
+
+
+        Livewire::component('spotlight', Spotlight::class);
+
+        foreach (collect(config('docs.repositories'))->sortBy('name') as $repository) {
+            Spotlight::registerInstantiatedCommand(new DocsCommand($repository));
+        }
     }
 }

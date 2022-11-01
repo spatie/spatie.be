@@ -83,15 +83,6 @@ return [
             "category" => "General PHP",
         ],
         [
-            "name" => "laravel-mailcoach",
-            "repository" => "spatie/laravel-mailcoach",
-            "branches" => [
-                "main" => "v5",
-                "v4" => "v4",
-            ],
-            "category" => "Laravel",
-        ],
-        [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
             "branches" => [
@@ -180,7 +171,7 @@ return [
             "name" => "laravel-slack-slash-command",
             "repository" => "spatie/laravel-slack-slash-command",
             "branches" => [
-                "master" => "v1",
+                "main" => "v1",
             ],
             "category" => "Laravel",
         ],
@@ -228,7 +219,6 @@ return [
                 "main" => "v5",
                 "v4" => "v4",
                 "v3" => "v3",
-                "v2" => "v2",
             ],
             "category" => "Laravel",
         ],
@@ -261,7 +251,8 @@ return [
             "name" => "laravel-backup-server",
             "repository" => "spatie/laravel-backup-server",
             "branches" => [
-                "main" => "v2",
+                "main" => "v3",
+                "v2" => "v2",
                 "v1" => "v1",
             ],
             "category" => "Laravel",

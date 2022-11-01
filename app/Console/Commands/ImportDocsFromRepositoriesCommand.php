@@ -85,7 +85,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                     $process->run();
 
                     if (! $process->isSuccessful()) {
-                        $this->error($process->getErrorOutput());
+                        $this->error($repository['name'] . ': ' . $process->getErrorOutput());
                         report(new DocsImportException("Import for repository {$repository['name']} unsuccessful: " . $process->getErrorOutput()));
 
                         return;

@@ -107,5 +107,7 @@
     </section>
 
     @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
+
+    @livewire('spotlight')
 </x-page>
 
