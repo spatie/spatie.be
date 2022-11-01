@@ -23,10 +23,25 @@
                 </span>
             </a>
         </div>
+
+    </div>
+
+    <div class="w-full my-4 pb-4 border-b-2 border-gray-lighter">
+        <input
+            type="text"
+            name="search"
+            placeholder="Search..."
+            class="cursor-pointer w-full border border-blue rounded px-2 py-1 text-sm"
+            x-data="{}"
+            x-on:click.prevent="$store.modals.open('search-modal')"
+            readonly
+        />
+        <x-modal name="search-modal" dismissable medium>
+            <livewire:search-docs />
+        </x-modal>
     </div>
 
     <div class="pt-4 ">
-        <input type="search" class="text-xs form-input w-full h-8 py-0 px-2 mb-8" id="algolia-search" placeholder="Search…">
         <ol class="text-xs grid gap-2 links-blue">
             @foreach($navigation as $key => $section)
                 @if ($key !== '_root')
