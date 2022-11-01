@@ -8,6 +8,7 @@
     "dependencies": {
         "@babel/preset-env": "^7.11.0",
         "@tailwindcss/custom-forms": "^0.2.1",
+        "alpinejs": "^3.10.5",
         "laravel-vite-plugin": "^0.2.3",
         "lodash": "^4.17.21",
         "object-fit-images": "^2.5.9",

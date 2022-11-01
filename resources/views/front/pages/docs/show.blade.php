@@ -107,6 +107,5 @@
     </section>
 
     @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
-
 </x-page>
 

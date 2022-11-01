@@ -47,56 +47,88 @@
 
     <livewire:scripts>
     @stack('scripts')
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('modals', {
+                openModals: [],
+                onConfirm: null,
+                init() {
+                    if (window.location.hash) {
+                        this.openModals.push(window.location.hash.replace('#', ''));
+                    }
+                },
+                isOpen(id) {
+                    return this.openModals.includes(id);
+                },
+                open(id) {
+                    this.openModals.push(id);
+                    window.location.hash = id;
+                    Alpine.nextTick(() => {
+                        const input = document.querySelector(`#modal-${id} input:not([type=hidden])`);
+                        if (input) {
+                            input.focus();
+                            return;
+                        }
 
-        <script>
-            document.addEventListener('alpine:init', () => {
-                Alpine.data('compose', ({ text, defer = false } = {}) => {
-                    // Store the editor as a non-reactive instance property
-                    let editor;
-
-                    return {
-                        text,
-
-                        init() {
-                            if (! defer) {
-                                this.load();
-                            }
-                        },
-
-                        load() {
-                            if (editor) {
-                                return;
-                            }
-
-                            const textarea = this.$el.querySelector('textarea');
-
-                            if (! textarea) {
-                                return;
-                            }
-
-                            editor = new SimpleMDE({
-                                element: textarea,
-                                hideIcons: ['heading', 'image', 'preview', 'side-by-side', 'fullscreen', 'guide'],
-                                spellChecker: false,
-                                status: false,
-                            });
-
-                            editor.codemirror.on("change", () => {
-                                this.text = editor.value();
-                            });
-                        },
-
-                        clear() {
-                            editor.value('');
-                        },
-                    };
-                });
+                        const button = document.querySelector(`#modal-${id} [data-confirm]`);
+                        if (button) button.focus();
+                    });
+                },
+                close(id) {
+                    this.openModals = this.openModals.filter(modal => modal !== id);
+                    history.pushState('', document.title, window.location.pathname + window.location.search);
+                },
             });
-        </script>
-        <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+            Alpine.data('compose', ({ text, defer = false } = {}) => {
+                // Store the editor as a non-reactive instance property
+                let editor;
+
+                return {
+                    text,
+
+                    init() {
+                        if (! defer) {
+                            this.load();
+                        }
+                    },
+
+                    load() {
+                        if (editor) {
+                            return;
+                        }
+
+                        const textarea = this.$el.querySelector('textarea');
+
+                        if (! textarea) {
+                            return;
+                        }
+
+                        editor = new SimpleMDE({
+                            element: textarea,
+                            hideIcons: ['heading', 'image', 'preview', 'side-by-side', 'fullscreen', 'guide'],
+                            spellChecker: false,
+                            status: false,
+                        });
+
+                        editor.codemirror.on("change", () => {
+                            this.text = editor.value();
+                        });
+                    },
+
+                    clear() {
+                        editor.value('');
+                    },
+                };
+            });
+        });
+    </script>
+    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
 
     {!! schema()->localBusiness() !!}
 
     <x-comments::scripts />
+    @stack('modals')
 </body>
 </html>
