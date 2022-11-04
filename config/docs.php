@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "lighthouse-php",
+            "repository" => "spatie/lighthouse-php",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-open-telemetry",
             "repository" => "spatie/laravel-open-telemetry",
             "branches" => [
