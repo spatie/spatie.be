@@ -80,22 +80,6 @@ return [
                 'tries' => 1,
                 'timeout' => 60 * 10,
             ],
-            'mailcoach-general' => [
-                'connection' => 'mailcoach-redis',
-                'queue' => ['mailcoach', 'mailcoach-feedback', 'send-mail', 'send-automation-mail'],
-                'balance' => 'auto',
-                'processes' => 10,
-                'tries' => 2,
-                'timeout' => 60 * 60,
-            ],
-            'mailcoach-heavy' => [
-                'connection' => 'mailcoach-redis',
-                'queue' => ['send-campaign'],
-                'balance' => 'auto',
-                'processes' => 5,
-                'tries' => 1,
-                'timeout' => 60 * 60,
-            ],
         ],
 
         'staging' => [
@@ -106,22 +90,6 @@ return [
                 'processes' => 5,
                 'tries' => 1,
                 'timeout' => 60 * 10,
-            ],
-            'mailcoach-general' => [
-                'connection' => 'mailcoach-redis',
-                'queue' => ['mailcoach', 'mailcoach-feedback', 'send-mail', 'send-automation-mail'],
-                'balance' => 'auto',
-                'processes' => 10,
-                'tries' => 2,
-                'timeout' => 60 * 60,
-            ],
-            'mailcoach-heavy' => [
-                'connection' => 'mailcoach-redis',
-                'queue' => ['send-campaign'],
-                'balance' => 'auto',
-                'processes' => 10,
-                'tries' => 1,
-                'timeout' => 60 * 60,
             ],
         ],
 
