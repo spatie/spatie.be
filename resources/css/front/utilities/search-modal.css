@@ -103,12 +103,6 @@
     max-width: 100vw;
 }
 
-@screen md {
-    .search-modal-content {
-        @apply px-12;
-    }
-}
-
 .search-modal-wrapper-lg .search-modal-content {
     @apply p-0 !important;
 }

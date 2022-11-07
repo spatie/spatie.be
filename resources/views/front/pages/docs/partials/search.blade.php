@@ -7,10 +7,10 @@
     @keyup.down.prevent="selectedHit == {{ $hits->count() }} - 1 ? selectedHit = 0 : selectedHit++; document.getElementById('hit-' + selectedHit).scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'nearest'}); document.getElementById('hit-' + selectedHit).focus()"
     @keyup.up.prevent="selectedHit == 0 ? selectedHit = {{ $hits->count() }} - 1 : selectedHit--; document.getElementById('hit-' + selectedHit).scrollIntoView({behavior: 'smooth', block: 'nearest', inline: 'nearest'}); document.getElementById('hit-' + selectedHit).focus()"
     @keyup.slash.window="$refs.search.focus()"
-    class="relative"
+    class="relative max-w-full max-h-[50vh]"
     style="width: 48rem; min-height: 16rem"
 >
-    <div style="width: calc(100% + 6rem)" class="relative border-b border-blue-lighter px-4 py-3 -mt-6 -mb-6 -mx-12 flex justify-between items-center">
+    <div class="relative border-b border-blue-lighter px-4 py-3 -mt-6 -mb-6 -mx-6 flex justify-between items-center">
         <input wire:model="query"
                x-ref="search"
                type="search"
@@ -22,7 +22,7 @@
         <button x-on:click.prevent="$store.modals.close('search-modal')" class="text-xs w-12 flex text-gray border-gray items-center justify-center h-6 font-bold uppercase tracking-wide border rounded-lg">ESC</button>
     </div>
 
-    <ul class="py-6 mt-6 -ml-8 flex flex-col gap-y-4 overflow-auto" style="width: calc(100% + 4rem); max-height: 40vh">
+    <ul class="py-6 mt-6 flex flex-col gap-y-4 overflow-auto" style="max-height: 40vh">
         @if ($query !== '')
             @forelse ($hits as $index => $hit)
                 <li wire:key="{{ $hit->id }}" class="block">
