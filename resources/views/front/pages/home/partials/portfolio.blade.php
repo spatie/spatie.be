@@ -164,7 +164,7 @@ Or are you struggling with consistent naming?
                 <h3 class="title">
                     Self-host your email marketing platform
                     <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">New features in</span> v4
+                        <span class="font-normal">New features in</span> v6
                     </span>
                 </h3>
                 <p class="text-lg">
