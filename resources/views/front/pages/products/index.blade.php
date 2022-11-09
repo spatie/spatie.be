@@ -4,11 +4,53 @@
         background="/backgrounds/product.jpg"
         description="Welcome in our store, by artisans for artisans. Get access to our paid products, courses and ebooks"
 >
-    <section id="banner" class="banner" role="banner">
-         <div class="wrap">
-             <h1 class="banner-slogan">
-                 Welcome in <br>our store
-             </h1>
+    <section id="banner" class="banner bg-trueblack " role="banner">
+        <div class="wrap text-white">
+            <h1 class="banner-slogan">
+                Welcome in <br>our <span class="text-yellow">Black Friday</span> Store
+            </h1>
+
+            <p class="banner-intro pt-4">
+                ⚡️ <strong>Get 30% off</strong> on all our applications and courses
+            </p>
+
+            <div class="mt-2">
+                @php
+                $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-30 00:00' );
+
+                @endphp
+
+                <div
+                    class="flex bg-trueblack text-white text-base">
+                        Offer ends in&nbsp;
+                        <x-countdown class="inline-block" :expires="$expirationDate">
+                            <span>
+                                <span class="font-semibold  font-mono" x-text="timer.days">{{ $component->days()
+                                    }}</span><span class="text-white">d</span>
+                            </span>
+                            <span>
+                                <span class="font-semibold font-mono" x-text="timer.hours">{{ $component->hours()
+                                    }}</span><span class="text-white">h</span>
+                            </span>
+                            <span>
+                                <span class="font-semibold font-mono" x-text="timer.minutes">{{ $component->minutes()
+                                    }}</span><span class="text-white">m</span>
+                            </span>
+                            <span>
+                                <span class="font-semibold font-mono" x-text="timer.seconds">{{ $component->seconds()
+                                    }}</span><span class="text-white">s</span>
+                            </span>
+                        </x-countdown>
+                    </div>
+                </div>
+
+                @once
+                @push('scripts')
+                <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+                @endpush
+                @endonce
+
+            </div>
 
             <!--
             <p class="banner-intro">
