@@ -156,7 +156,7 @@ Or are you struggling with consistent naming?
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/mailcoachv4.jpg') }}
+                {{ image('portfolio/mailcoachv6.jpg') }}
             </a>
         </div>
         <div class="sm:col-span-3 sm:col-start-5 | self-center">
@@ -164,7 +164,7 @@ Or are you struggling with consistent naming?
                 <h3 class="title">
                     Self-host your email marketing platform
                     <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">New features in</span> v4
+                        <span class="font-normal">New features in</span> v6
                     </span>
                 </h3>
                 <p class="text-lg">

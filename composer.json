@@ -17,6 +17,7 @@
         "aws/aws-sdk-php": "^3.240.6",
         "barryvdh/laravel-debugbar": "^3.7",
         "blade-ui-kit/blade-ui-kit": "^0.3.4",
+        "blendbyte/nova-items-field": "^1.0",
         "coroowicaksono/chart-js-integration": "^0.3.5",
         "doctrine/dbal": "^3.5.1",
         "ebess/advanced-nova-media-library": "^3.8",

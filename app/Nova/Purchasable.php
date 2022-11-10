@@ -21,6 +21,7 @@ use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Panel;
+use NovaItemsField\Items;
 
 class Purchasable extends Resource
 {
@@ -65,7 +66,7 @@ class Purchasable extends Resource
                 Boolean::make('Is Lifetime')->hideFromIndex(),
 
                 Text::make('Repository access')->hideFromIndex(),
-                Text::make('Satis packages')->hideFromIndex(),
+                Items::make('Satis packages')->hideFromIndex(),
             ]),
 
             new Panel('Details', [
