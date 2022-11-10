@@ -56,7 +56,7 @@ class SatisAuthenticationController extends Controller
         $originalUrl = $request->header('X-Original-URI', '');
 
         // For example: /dist/spatie/laravel-mailcoach/spatie-laravel-mailcoach-xxx-zip-xx.zip
-        preg_match('#^/dist/(?<package>spatie/[^/]*)/#', $originalUrl, $matches);
+        preg_match('#/dist/(?<package>spatie/[^/]*)/#', $originalUrl, $matches);
 
         if (! key_exists('package', $matches)) {
             abort(401, 'Missing X-Original-URI header');
