@@ -267,13 +267,13 @@ Or are you struggling with consistent naming?
                 <h3 class="title">
                     Front Line PHP
                     <span class="title-subtext text-pink-dark block">
-                        Book<span class="font-normal"> + </span>free videos <span class="font-normal">on PHP 8</span>
+                        Book<span class="font-normal"> + </span>free videos <span class="font-normal">on PHP 8.2</span>
                     </span>
                 </h3>
                 <p class="text-lg font-semibold">
-                    Just launched! </p>
+                    Updated for PHP 8.2! </p>
                 <p class="text-lg">
-                    An ebook by Brent Roose on cutting edge tactics in PHP&nbsp;8, accompanied by free videos with practical examples by Freek Van der Herten.
+                    An ebook on cutting edge tactics in PHP&nbsp;8, accompanied by free videos with practical examples by Freek Van der Herten.
                 </p>
                 <ul class="text-lg mt-8">
                     <li class="flex items-baseline">
