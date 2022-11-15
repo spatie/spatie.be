@@ -267,7 +267,7 @@ Or are you struggling with consistent naming?
                 <h3 class="title">
                     Front Line PHP
                     <span class="title-subtext text-pink-dark block">
-                        Book<span class="font-normal"> + </span>free videos <span class="font-normal">on PHP 8.2</span>
+                        Book<span class="font-normal"> + </span>free videos <span class="font-normal"></span>
                     </span>
                 </h3>
                 <p class="text-lg font-semibold">
