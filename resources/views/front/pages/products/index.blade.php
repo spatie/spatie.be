@@ -7,7 +7,7 @@
     <section id="banner" class="banner bg-trueblack " role="banner">
         <div class="wrap text-white">
             <h1 class="banner-slogan">
-                Welcome in <br>our <abbr title="World Wide Developer Sales" class="no-underline text-yellow">WWDS</abbr> Store
+                Enjoy our <br><span class="no-underline text-yellow">Worldwide Spatie Discounts</span>
             </h1>
 
             <p class="banner-intro pt-4">
