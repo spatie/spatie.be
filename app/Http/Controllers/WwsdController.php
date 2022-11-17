@@ -35,7 +35,7 @@ class WwsdController
     {
         return collect([
             [
-                'youtube_id' => 'https://www.youtube.com/embed/R8z1b3f4j5I',
+                'youtube_id' => 'R8z1b3f4j5I',
                 'slug' => 'intro',
                 'title' => 'Introducing World Wide Spatie Discounts',
                 'main' => true,
