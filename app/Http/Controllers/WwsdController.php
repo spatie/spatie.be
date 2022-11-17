@@ -17,8 +17,8 @@ class WwsdController
         return view('front.pages.wwsd.index', [
             'mainVideo' => $mainVideo,
             'otherVideos' => $this->videos()
-                ->reject(fn(array $video) => $video['slug'] === $mainVideo['slug'])
-                ->reject(fn(array $video) => empty($video['youtube_id'])),
+                ->reject(fn (array $video) => $video['slug'] === $mainVideo['slug'])
+                ->reject(fn (array $video) => empty($video['youtube_id'])),
         ]);
     }
 
