@@ -35,6 +35,7 @@ use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
+use App\Http\Controllers\WwsdController;
 use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 
@@ -179,6 +180,8 @@ Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('
 Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 
 Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
+
+Route::get('wwsd/{slug?}', WwsdController::class)->name('wwsd');
 
 Route::view('offline', 'errors.offline')->name('offline');
 
