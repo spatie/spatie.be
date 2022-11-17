@@ -29,23 +29,26 @@
                     </a>
                 </div>
 
-                <h2 class="title line-after mt-8 mb-12">Our other WWSD videos</h2>
-                <div class="grid col-gap-24 row-gap-24 | sm:grid-cols-2 items-stretch">
-                    @foreach($otherVideos as $otherVideo)
-                        <div class="my-6">
-                            <a href="{{ route('wwsd', $otherVideo['slug']) }}" class="group">
-                                <div
-                                    class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
-                                    <div class="shadow-md group-hover:shadow-lg">
-                                        <img class="w-full" src="{{ $otherVideo['thumbnail'] }}" alt="{{ $otherVideo['title'] }}">
+                @if(count($otherVideos))
+                    <h2 class="title line-after mt-8 mb-12">Our other WWSD videos</h2>
+                    <div class="grid col-gap-24 row-gap-24 | sm:grid-cols-2 items-stretch">
+                        @foreach($otherVideos as $otherVideo)
+                            <div class="my-6">
+                                <a href="{{ route('wwsd', $otherVideo['slug']) }}" class="group">
+                                    <div
+                                        class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
+                                        <div class="shadow-md group-hover:shadow-lg">
+                                            <img class="w-full" src="{{ $otherVideo['thumbnail'] }}"
+                                                 alt="{{ $otherVideo['title'] }}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <h2 class="title-sm link-black link-underline-hover">{{ $otherVideo['title'] }}</h2>
-                            </a>
-                        </div>
-                    @endforeach
-                </div>
+                                    <h2 class="title-sm link-black link-underline-hover">{{ $otherVideo['title'] }}</h2>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </section>
     </div>
