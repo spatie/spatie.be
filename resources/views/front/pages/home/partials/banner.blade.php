@@ -12,6 +12,8 @@
             <a href="{{ route('products.index') }}"
                 class="flex  bg-trueblack text-white banner-intro">
                 <div class="py-2 ">
+                    Starting <strong>Monday, 9:00 AM CET</strong>
+                    {{--
                     ⚡️ <strong>Get 30% off</strong>  on all our products
                     <br>in the next
                     <x-countdown class="inline-block" :expires="$expirationDate">
@@ -32,13 +34,16 @@
                                 }}</span><span class="text-white">s</span>
                         </span>
                     </x-countdown>
+                    --}}
                 </div>
             </a>
         </div>
 
+        {{--
         <a href="{{ route('products.index') }}"
             class=" text-xl text-black font-bold hover:bg-gray-lighter transition transition-color  font-sans px-4 py-2 bg-white rounded-full">
             Grab your promotion
         </a>
+        --}}
     </div>
 </section>

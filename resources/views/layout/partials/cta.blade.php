@@ -11,6 +11,7 @@
     }
 @endphp
 
+{{--
 @unless(Route::is(['home', 'products.*', 'purchases.*']))
     <a href="{{ route('products.index') }}" class="flex justify-center bg-trueblack text-center text-white text-sm">
         <div class="py-2 px-6 border-b border-gray">
@@ -32,6 +33,7 @@
         </div>
     </a>
 
+
     @once
         @push('scripts')
             <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
@@ -39,3 +41,4 @@
     @endonce
 
 @endif
+    --}}

@@ -6,13 +6,22 @@
 >
     <section id="banner" class="banner bg-trueblack " role="banner">
         <div class="wrap text-white">
+
+            {{--
             <h1 class="banner-slogan">
                 Enjoy our <br><span class="no-underline text-yellow">Worldwide Spatie Discounts</span>
             </h1>
+            --}}
 
+            <h1 class="banner-slogan">
+                Our products
+            </h1>
+
+            {{-- }}
             <p class="banner-intro pt-4">
                 ⚡️ <strong>Get 30% off</strong> on all our applications and courses
             </p>
+
 
             <div class="mt-2">
                 @php
@@ -21,7 +30,10 @@
                 @endphp
 
                 <div
-                    class="flex bg-trueblack text-white text-base">
+                    class="flex bg-trueblack text-white text-base banner-intro">
+
+                    Starting Monday, 9AM CET
+
                         Offer ends in&nbsp;
                         <x-countdown class="inline-block" :expires="$expirationDate">
                             <span>
@@ -43,6 +55,7 @@
                         </x-countdown>
                     </div>
                 </div>
+                        --}}
 
                 @once
                 @push('scripts')
