@@ -35,11 +35,11 @@ class WwsdController
     {
         return collect([
             [
-                'youtube_id' => 'https://www.youtube.com/watch?v=jfKfPfyJRdk',
+                'youtube_id' => 'https://www.youtube.com/watch?v=R8z1b3f4j5I',
                 'slug' => 'intro',
                 'title' => 'Introducing World Wide Spatie Discounts',
                 'main' => true,
-                'thumbnail' => 'https://i.ytimg.com/vi/jfKfPfyJRdk/hqdefault.jpg',
+                'thumbnail' => 'https://i.ytimg.com/vi/R8z1b3f4j5I/hqdefault.jpg',
             ],
         ]);
     }
