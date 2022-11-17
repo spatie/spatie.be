@@ -10,9 +10,13 @@
             @endphp
 
             <a href="{{ route('products.index') }}"
-                class="flex  bg-trueblack text-white banner-intro">
+                class="flex bg-trueblack text-white banner-intro">
                 <div class="py-2 ">
-                    Starting <strong>Monday, 9:00 AM CET</strong>
+                    Starting&nbsp;<strong>Monday, 9:00 AM CET</strong>
+
+                    <div>
+                    <a class="underline text-2xl font-bold text-white" href="/wwsd">Watch our teaser video now!</a>
+                    </div>
                     {{--
                     ⚡️ <strong>Get 30% off</strong>  on all our products
                     <br>in the next
