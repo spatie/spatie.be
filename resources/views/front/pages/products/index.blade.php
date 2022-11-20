@@ -7,17 +7,17 @@
     <section id="banner" class="banner bg-trueblack " role="banner">
         <div class="wrap text-white">
 
-            {{--
             <h1 class="banner-slogan">
                 Enjoy our <br><span class="no-underline text-yellow">Worldwide Spatie Discounts</span>
             </h1>
-            --}}
 
+
+            {{--
             <h1 class="banner-slogan">
                 Our products
             </h1>
+            --}}
 
-            {{-- }}
             <p class="banner-intro pt-4">
                 ⚡️ <strong>Get 30% off</strong> on all our applications and courses
             </p>
@@ -25,14 +25,12 @@
 
             <div class="mt-2">
                 @php
-                $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-30 00:00' );
+                $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2022-11-28 23:59' );
 
                 @endphp
 
                 <div
                     class="flex bg-trueblack text-white text-base banner-intro">
-
-                    Starting Monday, 9AM CET
 
                         Offer ends in&nbsp;
                         <x-countdown class="inline-block" :expires="$expirationDate">
@@ -55,7 +53,6 @@
                         </x-countdown>
                     </div>
                 </div>
-                        --}}
 
                 @once
                 @push('scripts')

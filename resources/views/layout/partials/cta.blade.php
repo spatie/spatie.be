@@ -1,5 +1,5 @@
 @php
-    $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2021-11-30 00:00' );
+    $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2022-11-28 23:59' );
 
     function array_some(callable $callback,$arr){
         foreach($arr as $el){
@@ -11,7 +11,6 @@
     }
 @endphp
 
-{{--
 @unless(Route::is(['home', 'products.*', 'purchases.*']))
     <a href="{{ route('products.index') }}" class="flex justify-center bg-trueblack text-center text-white text-sm">
         <div class="py-2 px-6 border-b border-gray">
@@ -41,4 +40,3 @@
     @endonce
 
 @endif
-    --}}

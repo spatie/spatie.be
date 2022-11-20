@@ -6,48 +6,41 @@
 
         <div class="my-8">
             @php
-            $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2022-11-27 00:00' );
+                $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2022-11-28 23:59' );
             @endphp
 
             <a href="{{ route('products.index') }}"
-                class="flex bg-trueblack text-white banner-intro">
+               class="flex bg-trueblack text-white banner-intro">
                 <div class="py-2 ">
-                    Starting&nbsp;<strong>Monday, 9:00 AM CET</strong>
-
                     <div>
-                    <a class="underline text-2xl font-bold text-white" href="/wwsd">Watch our teaser video now!</a>
-                    </div>
-                    {{--
-                    ⚡️ <strong>Get 30% off</strong>  on all our products
-                    <br>in the next
-                    <x-countdown class="inline-block" :expires="$expirationDate">
+                        ⚡️ <strong>Get 30% off</strong> on all our products
+                        <br>in the next
+                        <x-countdown class="inline-block" :expires="$expirationDate">
                         <span>
                             <span class="font-semibold font-mono" x-text="timer.days">{{ $component->days()
                                 }}</span><span class="text-white">d</span>
                         </span>
-                        <span class="ml-1">
+                            <span class="ml-1">
                             <span class="font-semibold font-mono" x-text="timer.hours">{{ $component->hours()
                                 }}</span><span class="text-white">h</span>
                         </span>
-                        <span class="ml-1">
+                            <span class="ml-1">
                             <span class="font-semibold font-mono" x-text="timer.minutes">{{ $component->minutes()
                                 }}</span><span class="text-white">m</span>
                         </span>
-                        <span class="ml-1">
+                            <span class="ml-1">
                             <span class="font-semibold font-mono" x-text="timer.seconds">{{ $component->seconds()
                                 }}</span><span class="text-white">s</span>
                         </span>
-                    </x-countdown>
-                    --}}
+                        </x-countdown>
+                    </div>
                 </div>
             </a>
         </div>
 
-        {{--
         <a href="{{ route('products.index') }}"
-            class=" text-xl text-black font-bold hover:bg-gray-lighter transition transition-color  font-sans px-4 py-2 bg-white rounded-full">
+           class=" text-xl text-black font-bold hover:bg-gray-lighter transition transition-color  font-sans px-4 py-2 bg-white rounded-full">
             Grab your promotion
         </a>
-        --}}
     </div>
 </section>
