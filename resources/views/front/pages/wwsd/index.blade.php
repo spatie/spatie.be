@@ -29,7 +29,7 @@
                     </a>
                 </div>
 
-                You can enjoy a <strong>30% discount</strong> on all our products from <strong>Monday November 21</strong>  until the end of <strong>Cyber Monday</strong>.
+                You can now enjoy <strong>30% discount</strong> on all our products until the end of <strong>Cyber Monday</strong>.
 
                 @if(count($otherVideos))
                     <h2 class="title line-after mt-8 mb-12">Our other WWSD videos</h2>
