@@ -24,7 +24,7 @@
                             font-sans-bold text-black
                             transition-bg duration-300
                             focus:outline-none focus:border-blue-light whitespace-no-wrap">
-                            Take a look at all our products
+                            Take a look at all our discounted products
                         </button>
                     </a>
                 </div>
