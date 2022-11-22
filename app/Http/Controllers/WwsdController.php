@@ -35,10 +35,17 @@ class WwsdController
     {
         return collect([
             [
+                'youtube_id' => 'gSnnEn5sUI8',
+                'slug' => 'day-2',
+                'title' => 'Day 2: Laravel Comments Discount',
+                'main' => true,
+                'thumbnail' => 'https://i.ytimg.com/vi/gSnnEn5sUI8/hqdefault.jpg',
+            ],
+            [
                 'youtube_id' => 'JdrSqdBJZQI',
                 'slug' => 'day-1',
                 'title' => 'Welcome to World Wide Spatie Discounts',
-                'main' => true,
+                'main' => false,
                 'thumbnail' => 'https://i.ytimg.com/vi/JdrSqdBJZQI/hqdefault.jpg',
             ],
             [
