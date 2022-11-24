@@ -35,15 +35,22 @@ class WwsdController
     {
         return collect([
             [
-                'youtube_id' => 'gSnnEn5sUI8',
-                'slug' => 'day-2',
-                'title' => 'Day 2: Laravel Comments Discount',
+                'youtube_id' => 'Vg1vomCJgS4',
+                'slug' => 'writing-readable-php',
+                'title' => 'Writing Readable PHP',
                 'main' => true,
+                'thumbnail' => 'https://i.ytimg.com/vi/Vg1vomCJgS4/hqdefault.jpg',
+            ],
+            [
+                'youtube_id' => 'gSnnEn5sUI8',
+                'slug' => 'comments',
+                'title' => 'Laravel Comments Discount',
+                'main' => false,
                 'thumbnail' => 'https://i.ytimg.com/vi/gSnnEn5sUI8/hqdefault.jpg',
             ],
             [
                 'youtube_id' => 'JdrSqdBJZQI',
-                'slug' => 'day-1',
+                'slug' => 'welcome',
                 'title' => 'Welcome to World Wide Spatie Discounts',
                 'main' => false,
                 'thumbnail' => 'https://i.ytimg.com/vi/JdrSqdBJZQI/hqdefault.jpg',
