@@ -28,11 +28,14 @@
                     class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
                     {{ svg('icons/fal-exclamation-circle') }}
                 </div>
+
+                {{--
                 <div>
                     <div>
                         Looking to manage your existing purchases? They've moved to <strong>your profile</strong>.
                     </div>
                 </div>
+                --}}
             </div>
             <a href="{{ route('purchases') }}">
                 <button
