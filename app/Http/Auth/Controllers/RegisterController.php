@@ -55,7 +55,7 @@ class RegisterController extends Controller
             app(SubscribeUserToNewsletterAction::class)->execute($user);
         }
 
-        app(GrantRayTrialLicenseAction::class)->execute(auth()->user());
+        // app(GrantRayTrialLicenseAction::class)->execute(auth()->user());
 
         return redirect()->route('products.index');
     }
