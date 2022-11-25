@@ -3,7 +3,7 @@
         background="/backgrounds/jobs.jpg"
 >
     <x-slot name="description">
-        Vacancies for frontend and backend developers, project managers and the like. We are always looking for interns
+        Vacancies for developers, project managers and the like. We are always looking for interns
         as well.
     </x-slot>
 
