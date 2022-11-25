@@ -3,6 +3,7 @@
 namespace App\Domain\Shop\Models;
 
 use App\Models\User;
+use Carbon\Carbon;
 use DateTimeInterface;
 use Exception;
 use Illuminate\Auth\Authenticatable;
@@ -98,6 +99,11 @@ class License extends Model implements AuthenticatableContract
         }
 
         return $this->expires_at->isPast();
+    }
+
+    public function isLifetime(): bool
+    {
+        return $this->expires_at > Carbon::create(2038);
     }
 
     public function scopeWhereExpired(Builder $query): void
