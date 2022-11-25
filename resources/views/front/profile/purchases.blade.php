@@ -100,12 +100,16 @@
                                                                 {{ $license->assignment->purchasable->title }}
                                                                 <div
                                                                     class="font-normal normal-case text-xs {{ $license->isExpired() ? 'text-pink-dark' : '' }}">
-                                                                    {{ $license->isExpired() ? 'Expired on' : 'Expires on' }} {{ $license->expires_at->format('Y-m-d') }}
-                                                                    @if ($license->assignment->purchasable->renewalPurchasable)
-                                                                        <a class="link-black link-underline"
-                                                                           href="{{ route('products.buy', [$license->assignment->purchasable->product, $license->assignment->purchasable->renewalPurchasable, $license]) }}">
-                                                                            {{ $license->isExpired() ? 'Renew this license' : 'Extend license' }}
-                                                                        </a>
+                                                                    @if ($license->isLifetime())
+                                                                        Lifetime
+                                                                    @else
+                                                                        {{ $license->isExpired() ? 'Expired on' : 'Expires on' }} {{ $license->expires_at->format('Y-m-d') }}
+                                                                        @if ($license->assignment->purchasable->renewalPurchasable)
+                                                                            <a class="link-black link-underline"
+                                                                               href="{{ route('products.buy', [$license->assignment->purchasable->product, $license->assignment->purchasable->renewalPurchasable, $license]) }}">
+                                                                                {{ $license->isExpired() ? 'Renew this license' : 'Extend license' }}
+                                                                            </a>
+                                                                        @endif
                                                                     @endif
                                                                 </div>
                                                             </div>
