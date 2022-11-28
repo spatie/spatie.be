@@ -22,6 +22,7 @@ return [
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
+        'message_stream_id' => 'outbound',
     ],
 
     'ses' => [
