@@ -11,7 +11,7 @@ class PlainController
     {
         $user = User::firstWhere('email', $request)?->email;
 
-        if (!$user) {
+        if (! $user) {
             return response()->json([
                 'cards' => [
                     [
