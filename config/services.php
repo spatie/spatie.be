@@ -83,5 +83,9 @@ return [
 
     'mailcoach' => [
         'token' => env('MAILCOACH_TOKEN'),
+    ],
+
+    'plain' => [
+        'secret' => env('PLAIN_SECRET')
     ]
 ];
