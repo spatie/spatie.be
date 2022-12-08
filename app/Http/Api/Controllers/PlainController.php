@@ -9,26 +9,27 @@ class PlainController
     public function __invoke(PlainRequest $request)
     {
         return response()->json(
-            ['cards' => [
-                'key' => 'spatie-extra-info',
-                'timeToLiveSeconds' => null,
-                'components' => [
-                    'componentContainer' => [
-                        'containerContent' => [
-                            'componentSpacer' => [
-                                'spacerSize' => 'S',
-                            ],
-                            'componentRow' => [
-                                'rowMainContent' => [
-                                    'textSize' => 'M',
-                                    'textColor' => 'NORMAL',
-                                    'text' => 'My order text for' . $request->email(),
+            [
+                'cards' => [
+                    'key' => 'spatie-extra-info',
+                    'timeToLiveSeconds' => null,
+                    'components' => [
+                        'componentContainer' => [
+                            'containerContent' => [
+                                'componentSpacer' => [
+                                    'spacerSize' => 'S',
+                                ],
+                                'componentRow' => [
+                                    'rowMainContent' => [
+                                        'textSize' => 'M',
+                                        'textColor' => 'NORMAL',
+                                        'text' => 'My order text for' . $request->email(),
+                                    ],
                                 ],
                             ],
                         ],
                     ],
                 ],
-            ],
             ]);
     }
 }
