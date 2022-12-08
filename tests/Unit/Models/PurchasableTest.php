@@ -69,6 +69,34 @@ test('the next purchase discount on a user will be used', function () {
     expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(10000);
 });
 
+test('the next purchase discount on a user will be used but no expired discount', function () {
+    $this->user->update([
+        'next_purchase_discount_period_ends_at' => now()->addHour(),
+    ]);
+
+    $this->purchasable->update([
+        'discount_percentage' => 30,
+        'discount_name' => 'Flash sale',
+        'discount_starts_at' => now()->subMinutes(20),
+        'discount_expires_at' => now()->subMinutes(10),
+    ]);
+
+    expect($this->purchasable->hasActiveDiscount())->toBeFalse();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(10000);
+
+    $this->actingAs($this->user);
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(9000);
+
+    TestTime::addHour()->subSecond();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(9000);
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue();
+
+    TestTime::addSecond();
+    expect($this->purchasable->hasActiveDiscount())->toBeFalse();
+    expect($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(10000);
+});
+
 test('the next purchase discount will be added to a general discount', function () {
     $this->purchasable->update([
         'discount_percentage' => 30,

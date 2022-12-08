@@ -29,7 +29,14 @@ trait HasPrices
         if ($this->hasActiveDiscount()) {
             $priceWithoutDiscount = $displayablePrice->priceInCents;
 
-            $discountPercentage = $this->discount_percentage;
+            $discountPercentage = 0;
+
+            if (now()->between(
+                $this->discount_starts_at ?? now()->subMinute(),
+                $this->discount_expires_at ?? now()->addMinute(),
+            )) {
+                $discountPercentage = $this->discount_percentage;
+            }
 
             if ($user = auth()->user()) {
                 if ($user->enjoysExtraDiscountOnNextPurchase()) {
