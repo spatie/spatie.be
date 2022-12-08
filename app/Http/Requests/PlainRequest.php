@@ -13,6 +13,6 @@ class PlainRequest extends FormRequest
 
     public function email(): string
     {
-        return $this->json('customer.email');
+        return $this->json('customer.email') ?? '';
     }
 }
