@@ -36,7 +36,7 @@ class PlainController
                         [
                             'componentText' => [
                                 'text' => 'Name',
-                                'textColor' => 'Muted',
+                                'textColor' => 'MUTED',
                                 'textSize' => 'S',
                             ],
                         ],
