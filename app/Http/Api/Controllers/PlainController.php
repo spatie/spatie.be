@@ -11,7 +11,7 @@ class PlainController
         return response()->json([
             'cards' => [
                 [
-                    "key" => "plan-details",
+                    "key" => "spatie-extra-info",
                     "timeToLiveSeconds" => 86400,
                     "components" => [
                         [
