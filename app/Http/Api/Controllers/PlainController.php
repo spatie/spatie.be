@@ -22,11 +22,11 @@ class PlainController
                                 'textSize' => 'M',
                                 'textColor' => 'NORMAL',
                                 'text' => 'My order text for' . $request->email(),
-                            ]
-                        ]
-                    ]
-                ]
-            ]
+                            ],
+                        ],
+                    ],
+                ],
+            ],
         ]);
     }
 }
