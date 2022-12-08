@@ -10,7 +10,7 @@ class ValidPlainRequest
 {
     public function handle(Request $request, Closure $next)
     {
-        if ( ! $request->header('plain-secret') === config('services.plain.secret')) {
+        if (! $request->header('plain-secret') === config('services.plain.secret')) {
             abort(Response::HTTP_FORBIDDEN, 'Invalid Plain request');
         }
 
