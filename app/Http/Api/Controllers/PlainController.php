@@ -12,27 +12,11 @@ class PlainController
             'cards' => [
                 [
                     'key' => 'spatie-extra-info',
-                    'timeToLiveSeconds' => 86400,
                     'components' => [
                         [
-                            'componentRow' => [
-                                'rowMainContent' => [
-                                    [
-                                        'componentText' => [
-                                            'text' => 'Plan' . $request->email(),
-                                            'textColor' => 'MUTED',
-                                            'textSize' => 'M',
-                                        ],
-                                    ],
-                                ],
-                                'rowAsideContent' => [
-                                    [
-                                        'componentBadge' => [
-                                            'badgeLabel' => 'Starter',
-                                            'badgeColor' => 'YELLOW',
-                                        ],
-                                    ],
-                                ],
+                            'componentLinkButton' => [
+                                'linkButtonLabel' => 'View in Nova',
+                                'linkButtonUrl' => 'https://spatie.be/nova/resources/users/4',
                             ],
                         ],
                     ],
