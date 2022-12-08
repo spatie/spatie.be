@@ -48,7 +48,7 @@ class PlainController
                         [
                             'componentDivider' => [
                                 'dividerSpacingSize' => 'M',
-                            ]
+                            ],
                         ],
                         [
                             'componentLinkButton' => [
