@@ -8,9 +8,9 @@ class PlainController
 {
     public function __invoke(PlainRequest $request)
     {
-        return response()->json(
-            [
-                'cards' => [
+        return response()->json([
+            'cards' => [
+                [
                     'key' => 'spatie-extra-info',
                     'timeToLiveSeconds' => null,
                     'components' => [
@@ -30,6 +30,7 @@ class PlainController
                         ],
                     ],
                 ],
-            ]);
+            ]
+        ]);
     }
 }
