@@ -12,7 +12,7 @@ use App\Http\Api\Controllers\PlainController;
 use App\Http\Api\Controllers\PriceController;
 use App\Http\Api\Controllers\SatisAuthenticationController;
 use App\Http\Api\Controllers\ShowLicenseController;
-use App\Http\Middleware\ValidPlainRequest;
+use App\Http\Middleware\IsValidPlainRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::post('satis/authenticate', SatisAuthenticationController::class)->middleware(['forceJson', 'auth:license-api'],);
@@ -35,4 +35,4 @@ Route::get('license/{license:key}', ShowLicenseController::class);
 
 Route::get('members', [MembersController::class, 'index']);
 
-Route::post('plain', PlainController::class)->middleware(ValidPlainRequest::class)->name('plain');
+Route::post('plain', PlainController::class)->middleware(IsValidPlainRequest::class)->name('plain');
