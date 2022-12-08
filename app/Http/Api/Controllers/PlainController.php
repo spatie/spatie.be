@@ -11,27 +11,32 @@ class PlainController
         return response()->json([
             'cards' => [
                 [
-                    'key' => 'spatie-extra-info',
-                    'timeToLiveSeconds' => null,
-                    'components' => [
+                    "key" => "plan-details",
+                    "timeToLiveSeconds" => 86400,
+                    "components" => [
                         [
-                            'componentContainer' => [
-                                'containerContent' => [
-                                    'componentSpacer' => [
-                                        'spacerSize' => 'S',
-                                    ],
-                                    'componentRow' => [
-                                        'rowMainContent' => [
-                                            'textSize' => 'M',
-                                            'textColor' => 'NORMAL',
-                                            'text' => 'My order text for' . $request->email(),
-                                        ],
-                                    ],
+                            "componentRow" => [
+                                "rowMainContent" => [
+                                    [
+                                        "componentText" => [
+                                            "text" => "Plan",
+                                            "textColor" => "MUTED",
+                                            "textSize" => "M"
+                                        ]
+                                    ]
                                 ],
-                            ],
-                        ],
-                    ],
-                ],
+                                "rowAsideContent" => [
+                                    [
+                                        "componentBadge" => [
+                                            "badgeLabel" => "Starter",
+                                            "badgeColor" => "YELLOW"
+                                        ]
+                                    ]
+                                ]
+                            ]
+                        ]
+                    ]
+                ]
             ],
         ]);
     }
