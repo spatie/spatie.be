@@ -21,22 +21,22 @@ class PlainController
                                         "componentText" => [
                                             "text" => "Plan",
                                             "textColor" => "MUTED",
-                                            "textSize" => "M"
-                                        ]
-                                    ]
+                                            "textSize" => "M",
+                                        ],
+                                    ],
                                 ],
                                 "rowAsideContent" => [
                                     [
                                         "componentBadge" => [
                                             "badgeLabel" => "Starter",
-                                            "badgeColor" => "YELLOW"
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                            "badgeColor" => "YELLOW",
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ],
         ]);
     }
