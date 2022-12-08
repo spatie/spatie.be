@@ -9,7 +9,7 @@ class PlainController
 {
     public function __invoke(PlainRequest $request)
     {
-        $user = User::firstWhere('email', $request->email())?->email;
+        $user = User::firstWhere('email', $request->email());
 
         if (! $user) {
             return response()->json([
@@ -53,7 +53,7 @@ class PlainController
                         [
                             'componentLinkButton' => [
                                 'linkButtonLabel' => 'View in Nova',
-                                'linkButtonUrl' => 'https://spatie.be/nova/resources/users/4',
+                                'linkButtonUrl' => "https://spatie.be/nova/resources/users/{$user->id}",
                             ],
                         ],
                     ],
