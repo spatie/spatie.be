@@ -11,25 +11,25 @@ class PlainController
         return response()->json([
             'cards' => [
                 [
-                    "key" => "spatie-extra-info",
-                    "timeToLiveSeconds" => 86400,
-                    "components" => [
+                    'key' => 'spatie-extra-info',
+                    'timeToLiveSeconds' => 86400,
+                    'components' => [
                         [
-                            "componentRow" => [
-                                "rowMainContent" => [
+                            'componentRow' => [
+                                'rowMainContent' => [
                                     [
-                                        "componentText" => [
-                                            "text" => "Plan",
-                                            "textColor" => "MUTED",
-                                            "textSize" => "M",
+                                        'componentText' => [
+                                            'text' => 'Plan' . $request->email(),
+                                            'textColor' => 'MUTED',
+                                            'textSize' => 'M',
                                         ],
                                     ],
                                 ],
-                                "rowAsideContent" => [
+                                'rowAsideContent' => [
                                     [
-                                        "componentBadge" => [
-                                            "badgeLabel" => "Starter",
-                                            "badgeColor" => "YELLOW",
+                                        'componentBadge' => [
+                                            'badgeLabel' => 'Starter',
+                                            'badgeColor' => 'YELLOW',
                                         ],
                                     ],
                                 ],
