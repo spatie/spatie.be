@@ -34,4 +34,4 @@ Route::get('license/{license:key}', ShowLicenseController::class);
 
 Route::get('members', [MembersController::class, 'index']);
 
-Route::get('plain', PlainController::class);
+Route::post('plain', PlainController::class);
