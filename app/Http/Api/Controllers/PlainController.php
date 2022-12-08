@@ -9,7 +9,7 @@ class PlainController
 {
     public function __invoke(PlainRequest $request)
     {
-        $user = User::firstWhere('email', $request)?->email;
+        $user = User::firstWhere('email', $request->email())?->email;
 
         if (!$user) {
             return response()->json([
