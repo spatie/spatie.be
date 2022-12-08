@@ -34,6 +34,23 @@ class PlainController
                     'key' => 'spatie-extra-info',
                     'components' => [
                         [
+                            'componentText' => [
+                                'text' => 'Name',
+                                'textColor' => 'Muted',
+                                'textSize' => 'S',
+                            ],
+                        ],
+                        [
+                            'componentText' => [
+                                'text' => $user->name,
+                            ],
+                        ],
+                        [
+                            'componentDivider' => [
+                                'dividerSpacingSize' => 'M',
+                            ]
+                        ],
+                        [
                             'componentLinkButton' => [
                                 'linkButtonLabel' => 'View in Nova',
                                 'linkButtonUrl' => 'https://spatie.be/nova/resources/users/4',
