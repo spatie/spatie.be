@@ -12,7 +12,7 @@ class HelpSpaceController
 {
     public function __invoke(HelpSpaceRequest $request)
     {
-        $html = $this->getSpatieContent($request) . $this->getMailCoachContent($request);
+        $html = $this->getMailCoachContent($request) . $this->getSpatieContent($request);
 
         return response()->json(['html' => $html]);
     }
