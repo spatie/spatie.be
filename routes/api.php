@@ -7,12 +7,13 @@ use App\Http\Api\Controllers\Activations\UpdateCurrentVersionController;
 use App\Http\Api\Controllers\BundlePriceController;
 use App\Http\Api\Controllers\HandleGitHubPullRequestWebhookController;
 use App\Http\Api\Controllers\HandleGitHubRepositoryWebhookController;
+use App\Http\Api\Controllers\HelpspaceController;
 use App\Http\Api\Controllers\MembersController;
 use App\Http\Api\Controllers\PlainController;
 use App\Http\Api\Controllers\PriceController;
 use App\Http\Api\Controllers\SatisAuthenticationController;
 use App\Http\Api\Controllers\ShowLicenseController;
-use App\Http\Middleware\IsValidPlainRequest;
+use App\Http\Middleware\IsValidHelpSpaceRequest;
 use Illuminate\Support\Facades\Route;
 
 Route::post('satis/authenticate', SatisAuthenticationController::class)->middleware(['forceJson', 'auth:license-api'],);
@@ -35,4 +36,4 @@ Route::get('license/{license:key}', ShowLicenseController::class);
 
 Route::get('members', [MembersController::class, 'index']);
 
-Route::post('plain', PlainController::class)->middleware(IsValidPlainRequest::class)->name('plain');
+Route::post('help-space', HelpspaceController::class)->middleware(IsValidHelpSpaceRequest::class)->name('helpSpace');

@@ -85,7 +85,7 @@ return [
         'token' => env('MAILCOACH_TOKEN'),
     ],
 
-    'plain' => [
-        'secret' => env('PLAIN_SECRET')
+    'helpSpace' => [
+        'secret' => env('HELP_SPACE_SECRET')
     ]
 ];
