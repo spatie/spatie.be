@@ -24,7 +24,7 @@ class HelpSpaceController
         }
 
         $purchases = $user->purchases
-            ->map(fn (Purchase $purchase) => $purchase->getPurchasables())
+            ->flatMap(fn (Purchase $purchase) => $purchase->getPurchasables())
             ->map(fn (Purchasable $purchasable) => $purchasable->title)
             ->unique()
             ->implode(', ');
