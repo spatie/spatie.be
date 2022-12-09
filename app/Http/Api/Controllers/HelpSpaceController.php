@@ -22,7 +22,7 @@ class HelpSpaceController
         $user = User::firstWhere('email', $request->email());
 
         if (! $user) {
-            return 'No user found at spatie.be';
+            return '<div>No user found at spatie.be</div>';
         }
 
         $purchases = $user->purchases
