@@ -2,7 +2,6 @@
 
 namespace App\Http\Api\Controllers;
 
-use App\Domain\Shop\Models\Purchase;
 use App\Http\Requests\HelpSpaceRequest;
 use App\Models\User;
 use Exception;
