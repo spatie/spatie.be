@@ -5,13 +5,11 @@
         <div class="text-sm mb-4">
             <ul>
                 @foreach($purchases as $purchase)
-                <li>
-                    {{ $purchases->title }}
-                </li>
+                    <li>
+                        {{ $purchase->title }}
+                    </li>
                 @endforeach
             </ul>
-
-
         </div>
     </div>
 </div>
