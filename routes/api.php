@@ -7,7 +7,7 @@ use App\Http\Api\Controllers\Activations\UpdateCurrentVersionController;
 use App\Http\Api\Controllers\BundlePriceController;
 use App\Http\Api\Controllers\HandleGitHubPullRequestWebhookController;
 use App\Http\Api\Controllers\HandleGitHubRepositoryWebhookController;
-use App\Http\Api\Controllers\HelpspaceController;
+use App\Http\Api\Controllers\HelpSpaceController;
 use App\Http\Api\Controllers\MembersController;
 use App\Http\Api\Controllers\PlainController;
 use App\Http\Api\Controllers\PriceController;
@@ -36,4 +36,4 @@ Route::get('license/{license:key}', ShowLicenseController::class);
 
 Route::get('members', [MembersController::class, 'index']);
 
-Route::post('help-space', HelpspaceController::class)->middleware(IsValidHelpSpaceRequest::class)->name('helpSpace');
+Route::post('help-space', HelpSpaceController::class)->middleware(IsValidHelpSpaceRequest::class)->name('helpSpace');
