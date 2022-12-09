@@ -11,8 +11,7 @@
                 @endforeach
             </ul>
 
-            <a href="https://spatie.be/nova/resources/users/{{ $user->id }}">View in Nova</a>
         </div>
-
+        <a class="text-sm" href="https://spatie.be/nova/resources/users/{{ $user->id }}">View in Nova</a>
     </div>
 </div>
