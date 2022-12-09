@@ -28,9 +28,7 @@ class HelpSpaceController
 
         $purchases = $user->purchases
             ->flatMap(fn (Purchase $purchase) => $purchase->getPurchasables())
-            ->map(fn (Purchasable $purchasable) => $purchasable->title)
-            ->unique()
-            ->implode(', ');
+            ->map(fn (Purchasable $purchasable) => $purchasable->title);
 
         return view('api.helpSpace', compact('user', 'purchases'))->render();
     }
