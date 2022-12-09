@@ -6,14 +6,12 @@
             <ul>
                 @foreach($purchases as $purchase)
                     <li>
-                        {{ $purchase->purchasable?->product?->title }}
-
-                        @if($purchase->purchasable?->product?->title !== $purchase->title)
-                            ({{ $purchase->title }})
-                        @endif
+                        {{ $purchase->purchasable?->getFullTitle() }}
                     </li>
                 @endforeach
             </ul>
         </div>
+
+        <a href="https://spatie.be/nova/resources/users/{{ $user->id }}">View in Nova</a>
     </div>
 </div>
