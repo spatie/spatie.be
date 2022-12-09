@@ -4,11 +4,17 @@ namespace App\Http\Api\Controllers;
 
 use App\Http\Requests\HelpSpaceRequest;
 use App\Models\User;
+use Illuminate\Support\Facades\Http;
 
 class HelpSpaceController
 {
     public function __invoke(HelpSpaceRequest $request)
     {
+        $mailcoachHtml = Http::withHeaders(['signature' => $request->header('signature')])
+            ->withBody($request->getContent(), $request->getContentType())
+            ->post('https://mailcoach.app/api/help-space')
+            ->json('html', '');
+
         $user = User::firstWhere('email', $request->email());
 
         if (! $user) {
@@ -17,8 +23,6 @@ class HelpSpaceController
 
         // $userInfo = view('add-view');
 
-        $userInfo = 'hello there';
-
-        return response()->json(['html' => $userInfo]);
+        return response()->json(['html' => $mailcoachHtml]);
     }
 }
