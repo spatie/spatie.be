@@ -6,7 +6,11 @@
             <ul>
                 @foreach($purchases as $purchase)
                     <li>
-                        {{ $purchase->title }}
+                        {{ $purchase->purchaseable->product->title }}
+
+                        @if($purchase->purchaseable->product->title !== $purchase->title)
+                            ({{ $purchase->title }})
+                        @endif
                     </li>
                 @endforeach
             </ul>
