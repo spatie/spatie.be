@@ -9,7 +9,7 @@ class HelpspaceController
     public function __invoke(HelpSpaceRequest $request)
     {
         // Payload is the post request body.
-// Secret is set in your webhook settings.
+        // Secret is set in your webhook settings.
 
         // $payloadJson = json_encode($payload);
 

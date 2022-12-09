@@ -22,9 +22,8 @@ class IsValidHelpSpaceRequest
 
         if (! $validRequest) {
             abort(Response::HTTP_FORBIDDEN, 'Invalid HelpSpace request');
-
         }
+
         return $next($request);
     }
-
 }

@@ -7,7 +7,7 @@ it('can display user info', function () {
         ->assertSuccessful();
 });
 
-it('will return forbidden for a non-signed HelpSpace request', function() {
+it('will return forbidden for a non-signed HelpSpace request', function () {
     $this
         ->postJson(route('helpSpace'), ['from_contact' => ['value' => 'freek@spatie.be']])
         ->assertForbidden();
