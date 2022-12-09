@@ -6,7 +6,6 @@
             <ul>
                 @foreach($user->purchases as $purchase)
                     <li>
-                        {{ $purchase->id }}
                         {{ $purchase->purchasable?->getFullTitle() }}
                     </li>
                 @endforeach
