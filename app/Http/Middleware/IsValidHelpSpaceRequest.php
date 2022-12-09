@@ -17,7 +17,8 @@ class IsValidHelpSpaceRequest
             $payloadJson,
             config('services.helpSpace.secret')
         );
-ray($payloadJson, $expectedSignature, $request->header('signature'));
+info($expectedSignature, $request->header('signature'));
+info(print_r($payloadJson, true));
         $validRequest = $request->header('signature') === $expectedSignature;
 
         if (! $validRequest) {
