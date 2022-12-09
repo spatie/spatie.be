@@ -25,10 +25,7 @@ class HelpSpaceController
             return '<div>No user found at spatie.be</div>';
         }
 
-        $purchases = $user->purchases
-            ->flatMap(fn (Purchase $purchase) => $purchase->getPurchasables());
-
-        return view('api.helpSpace', compact('user', 'purchases'))->render();
+        return view('api.helpSpace', compact('user'))->render();
     }
 
     protected function getMailCoachContent(HelpSpaceRequest $request): string
