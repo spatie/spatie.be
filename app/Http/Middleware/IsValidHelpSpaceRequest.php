@@ -10,7 +10,7 @@ class IsValidHelpSpaceRequest
 {
     public function handle(Request $request, Closure $next)
     {
-info(print_r($request->json(), true));
+        info(print_r($request->json(), true));
         $payloadJson = json_encode($request->json());
 
         $expectedSignature = hash_hmac(
