@@ -42,10 +42,8 @@ class HelpSpaceController
                 ->withBody($request->getContent(), $request->getContentType())
                 ->post('https://mailcoach.app/api/help-space')
                 ->json('html', '');
-        }
-        catch (Exception) {
+        } catch (Exception) {
             return '';
         }
-
     }
 }
