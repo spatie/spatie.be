@@ -22,9 +22,8 @@ ray($payloadJson, $expectedSignature, $request->header('signature'));
 
         if (! $validRequest) {
             abort(Response::HTTP_FORBIDDEN, 'Invalid HelpSpace request');
-
         }
+
         return $next($request);
     }
-
 }
