@@ -43,8 +43,8 @@ class HelpSpaceController
             ]);
 
         return [
-            'mailcoachContent' => $responses[0]->ok() ? $responses[0]->json('html', '') : '',
-            'flareContent' => $responses[1]->ok() ? $responses[1]->json('html', '') : '',
+             $responses[0]->ok() ? $responses[0]->json('html', '') : '',
+             $responses[1]->ok() ? $responses[1]->json('html', '') : '',
         ];
     }
 }
