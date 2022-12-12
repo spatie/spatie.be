@@ -39,7 +39,7 @@ class HelpSpaceController
                 ->post('https://mailcoach.app/api/help-space'),
             $pool->withHeaders(['signature' => $request->header('signature')])
                 ->withBody($request->getContent(), $request->getContentType())
-                ->post('https://flareapp.io/api/help-space')
+                ->post('https://flareapp.io/api/help-space'),
             ]);
 
         return [
