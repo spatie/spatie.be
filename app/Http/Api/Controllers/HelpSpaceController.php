@@ -4,7 +4,6 @@ namespace App\Http\Api\Controllers;
 
 use App\Http\Requests\HelpSpaceRequest;
 use App\Models\User;
-use Exception;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Facades\Http;
 
