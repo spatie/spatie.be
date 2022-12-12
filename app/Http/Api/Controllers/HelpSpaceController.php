@@ -37,17 +37,15 @@ class HelpSpaceController
         $responses = Http::pool(fn (Pool $pool) => [
             $pool->withHeaders(['signature' => $request->header('signature')])
                 ->withBody($request->getContent(), $request->getContentType())
-                ->post('https://mailcoach.app/api/help-space')
-                ->json('html', ''),
+                ->post('https://mailcoach.app/api/help-space'),
             $pool->withHeaders(['signature' => $request->header('signature')])
                 ->withBody($request->getContent(), $request->getContentType())
                 ->post('https://flareapp.io/api/help-space')
-                ->json('html', ''),
             ]);
 
         return [
-            'mailcoachContent' => $responses[0]->ok() ? $responses[0] : '',
-            'flareContent' => $responses[1]->ok() ? $responses[1] : '',
+            'mailcoachContent' => $responses[0]->ok() ? $responses[0]->json('html', '') : '',
+            'flareContent' => $responses[1]->ok() ? $responses[1]->json('html', '') : '',
         ];
     }
 }
