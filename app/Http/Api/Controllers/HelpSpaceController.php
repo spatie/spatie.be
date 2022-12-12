@@ -25,7 +25,7 @@ class HelpSpaceController
         $user = User::firstWhere('email', $request->email());
 
         if (! $user) {
-            return '<div>No user found at spatie.be</div>';
+            return '';
         }
 
         return view('api.helpSpace', compact('user'))->render();
