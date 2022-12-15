@@ -28,7 +28,12 @@ class SendLicenseExpirationNotificationsCommand extends Command
             ->where('expires_at', '<=', now()->addDays(14))
             ->whereNull('expiration_warning_mail_sent_at')
             ->each(function (License $license): void {
-                $license->assignment?->user->notify(new LicenseIsAboutToExpireNotification($license));
+                try {
+                    $license->assignment?->user->notify(new LicenseIsAboutToExpireNotification($license));
+                } catch (\Throwable $e) {
+                    report($e);
+                }
+
                 $license->update(['expiration_warning_mail_sent_at' => now()]);
             });
 
@@ -41,7 +46,11 @@ class SendLicenseExpirationNotificationsCommand extends Command
             ->where('expires_at', '<=', now())
             ->whereNull('expiration_mail_sent_at')
             ->each(function (License $license): void {
-                $license->assignment?->user->notify(new LicenseExpiredNotification($license));
+                try {
+                    $license->assignment?->user->notify(new LicenseExpiredNotification($license));
+                } catch (\Throwable $e) {
+                    report($e);
+                }
                 $license->update(['expiration_mail_sent_at' => now()]);
             });
 
@@ -54,7 +63,11 @@ class SendLicenseExpirationNotificationsCommand extends Command
             ->where('expires_at', '<=', now()->subDays(14))
             ->whereNull('second_expiration_mail_sent_at')
             ->each(function (License $license): void {
-                $license->assignment?->user->notify(new LicenseExpiredSecondNotification($license));
+                try {
+                    $license->assignment?->user->notify(new LicenseExpiredSecondNotification($license));
+                } catch (\Throwable $e) {
+                    report($e);
+                }
                 $license->update(['second_expiration_mail_sent_at' => now()]);
             });
 
