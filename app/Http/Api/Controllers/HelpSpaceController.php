@@ -17,7 +17,7 @@ class HelpSpaceController
             . $flareContent
             . $this->getSpatieContent($request);
 
-        return response()->json(['html' => $html]);
+        return response()->json(['html' => $html ?: '<p>No information found</p>']);
     }
 
     public function getSpatieContent(HelpSpaceRequest $request): string
