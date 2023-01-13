@@ -11,4 +11,5 @@ class LessonDisplayEnum extends Enum
     public const AUTH = 'auth';
     public const SPONSORS = 'sponsors';
     public const LICENSE = 'license';
+    public const HIDDEN = 'hidden';
 }
