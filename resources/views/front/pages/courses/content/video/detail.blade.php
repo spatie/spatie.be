@@ -9,7 +9,7 @@
 
                 <div class="w-full shadow-lg bg-white overflow-hidden" id="vimeo"
                      style="height: 0; padding-bottom: 56.25%;">
-                    @if ($lesson->canBeSeenByCurrentUser())
+                    @if ($lesson->canBeSeenByCurrentUser() || $lesson->display === 'hidden')
                         <iframe id="player" class="absolute inset-0 w-full h-full"
                                 src="https://player.vimeo.com/video/{{ $video->vimeo_id }}?h={{ $video->hash }}&loop=false&amp;byline=false&amp;portrait=false&amp;title=false&amp;speed=true&amp;transparent=0&amp;gesture=media"
                                 allowfullscreen allowtransparency></iframe>
