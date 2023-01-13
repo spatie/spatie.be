@@ -29,7 +29,7 @@
                 <span class="mr-1">Introduction</span>
             </a>
         </li>
-        @forelse ($series->lessons->groupBy('chapter') as $chapter => $lessonsPerChapter)
+        @forelse ($series->lessons->where('display', '<>', 'hidden')->groupBy('chapter') as $chapter => $lessonsPerChapter)
         @if ($chapter)
         <h3 class="title-subtext mt-6 mb-2 flex items-center">
             {{ $chapter }}
