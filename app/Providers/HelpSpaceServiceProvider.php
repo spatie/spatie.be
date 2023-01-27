@@ -1,23 +1,27 @@
 <?php
 
-namespace App\Http\Api\Controllers;
+namespace App\Providers;
 
-use App\Http\Requests\HelpSpaceRequest;
 use App\Models\User;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\ServiceProvider;
+use Spatie\HelpSpace\Facades\HelpSpace;
+use Spatie\HelpSpace\Http\Requests\HelpSpaceRequest;
 
-class HelpSpaceController
+class HelpSpaceServiceProvider extends ServiceProvider
 {
-    public function __invoke(HelpSpaceRequest $request)
+    public function register()
     {
-        [$mailcoachContent, $flareContent] = $this->getExternalContent($request);
+        HelpSpace::sidebar(function (HelpSpaceRequest $request) {
+            [$mailcoachContent, $flareContent] = $this->getExternalContent($request);
 
-        $html = $mailcoachContent
-            . $flareContent
-            . $this->getSpatieContent($request);
+            $html = $mailcoachContent
+                . $flareContent
+                . $this->getSpatieContent($request);
 
-        return response()->json(['html' => $html ?: '<p>No information found</p>']);
+            return $html ?? '<p>No information found</p>';
+        });
     }
 
     public function getSpatieContent(HelpSpaceRequest $request): string
@@ -40,11 +44,11 @@ class HelpSpaceController
             $pool->withHeaders(['signature' => $request->header('signature')])
                 ->withBody($request->getContent(), $request->getContentType())
                 ->post('https://flareapp.io/api/help-space'),
-            ]);
+        ]);
 
         return [
-             $responses[0]->ok() ? $responses[0]->json('html', '') : '',
-             $responses[1]->ok() ? $responses[1]->json('html', '') : '',
+            $responses[0]->ok() ? $responses[0]->json('html', '') : '',
+            $responses[1]->ok() ? $responses[1]->json('html', '') : '',
         ];
     }
 }

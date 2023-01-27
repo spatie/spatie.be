@@ -35,5 +35,3 @@ Route::get('bundle-price/{bundle}/{ipOrCountryCode}', BundlePriceController::cla
 Route::get('license/{license:key}', ShowLicenseController::class);
 
 Route::get('members', [MembersController::class, 'index']);
-
-Route::post('help-space', HelpSpaceController::class)->middleware(IsValidHelpSpaceRequest::class)->name('helpSpace');
