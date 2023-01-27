@@ -40,7 +40,7 @@ class HelpSpaceServiceProvider extends ServiceProvider
         $responses = Http::pool(fn (Pool $pool) => [
             $pool->withHeaders(['signature' => $request->header('signature')])
                 ->withBody($request->getContent(), $request->getContentType())
-                ->post('https://mailcoach.app/api/help-space'),
+                ->post('https://mailcoach.app/help-space'),
             $pool->withHeaders(['signature' => $request->header('signature')])
                 ->withBody($request->getContent(), $request->getContentType())
                 ->post('https://flareapp.io/api/help-space'),
