@@ -13,7 +13,15 @@ class SubscribeUserToNewsletterAction
 
     public function execute(User $user): User
     {
-        $this->mailcoachApi->subscribe($user->email, skipConfirmation: true);
+        $subscriber = $this->mailcoachApi->getSubscriber($user->email);
+
+        if (! $subscriber) {
+            $subscriber = $this->mailcoachApi->subscribe(strtolower($user->email), skipConfirmation: true);
+        }
+
+        if ($subscriber) {
+            $this->mailcoachApi->addTags($subscriber, ['newsletter']);
+        }
 
         return $user;
     }

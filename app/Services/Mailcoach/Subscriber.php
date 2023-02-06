@@ -12,6 +12,7 @@ class Subscriber
         public string $email,
         public ?CarbonInterface $subscribedAt,
         public ?CarbonInterface $unSubscribedAt,
+        public array $tags = [],
     ) {
     }
 
@@ -26,6 +27,7 @@ class Subscriber
             unSubscribedAt: ! is_null($response['unsubscribed_at'])
                 ? Date::parse($response['unsubscribed_at'])
                 : null,
+            tags: $response['tags'] ?? [],
         );
     }
 }

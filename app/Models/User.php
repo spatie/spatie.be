@@ -154,7 +154,9 @@ class User extends Authenticatable implements CanComment
             return false;
         }
 
-        return ! is_null($subscriber->subscribedAt) && is_null($subscriber->unSubscribedAt);
+        return ! is_null($subscriber->subscribedAt)
+            && is_null($subscriber->unSubscribedAt)
+            && in_array('newsletter', $subscriber->tags);
     }
 
     public function hasAccessToUnReleasedProducts(): bool

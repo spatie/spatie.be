@@ -57,4 +57,16 @@ class MailcoachApi
             ])
             ->throw();
     }
+
+    public function removeTag(Subscriber $subscriber, string $tag): void
+    {
+        $tags = array_filter($subscriber->tags, fn (string $existingTag) => $existingTag !== $tag);
+
+        Http::withToken(config('services.mailcoach.token'))
+            ->patch("https://spatie.mailcoach.app/api/subscribers/{$subscriber->uuid}", [
+                'tags' => $tags,
+                'append_tags' => false,
+            ])
+            ->throw();
+    }
 }

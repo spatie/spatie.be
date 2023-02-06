@@ -19,7 +19,11 @@ class UnsubscribeUserFromNewsletterAction
             return $user;
         }
 
-        $this->mailcoachApi->unsubscribe($subscriber);
+        if (count($subscriber->tags) === 1 && $subscriber->tags[0] === 'newsletter') {
+            $this->mailcoachApi->unsubscribe($subscriber);
+        } else {
+            $this->mailcoachApi->removeTag($subscriber, 'newsletter');
+        }
 
         return $user;
     }
