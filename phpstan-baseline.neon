@@ -11,7 +11,7 @@ parameters:
 			path: app/Console/Commands/ImportInsightsCommand.php
 
 		-
-			message: "#^Using nullsafe property access on non\\-nullable type mixed\\. Use \\-\\> instead\\.$#"
+			message: "#^Using nullsafe property access on non\\-nullable type Carbon\\\\CarbonImmutable\\. Use \\-\\> instead\\.$#"
 			count: 1
 			path: app/Console/Commands/WishHappyBirthdayCommand.php
 
@@ -131,16 +131,6 @@ parameters:
 			path: app/Http/Api/Controllers/BundlePriceController.php
 
 		-
-			message: "#^Called 'contains' on Laravel collection, but could have been retrieved as a query\\.$#"
-			count: 1
-			path: app/Http/Api/Controllers/SatisAuthenticationController.php
-
-		-
-			message: "#^Expression on left side of \\?\\? is not nullable\\.$#"
-			count: 1
-			path: app/Http/Controllers/AppleSocialiteController.php
-
-		-
 			message: "#^Relation 'lessons' is not found in App\\\\Models\\\\Series model\\.$#"
 			count: 1
 			path: app/Http/Controllers/CoursesController.php
@@ -154,6 +144,16 @@ parameters:
 			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
 			count: 1
 			path: app/Http/Controllers/InvoicesController.php
+
+		-
+			message: "#^Cannot access property \\$value on string\\.$#"
+			count: 1
+			path: app/Http/Controllers/UsesController.php
+
+		-
+			message: "#^Using nullsafe property access on non\\-nullable type string\\. Use \\-\\> instead\\.$#"
+			count: 1
+			path: app/Http/Controllers/UsesController.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Models\\\\Lesson\\:\\:\\$description\\.$#"
@@ -194,11 +194,6 @@ parameters:
 			path: app/Models/Series.php
 
 		-
-			message: "#^Property App\\\\Models\\\\User\\:\\:\\$uuid \\(App\\\\Support\\\\Uuid\\\\Uuid\\|null\\) does not accept string\\.$#"
-			count: 2
-			path: app/Models/User.php
-
-		-
 			message: "#^Access to an undefined property Laravel\\\\Nova\\\\Fields\\\\ActionFields\\:\\:\\$amount_in_cents\\.$#"
 			count: 1
 			path: app/Nova/Actions/UpdateBundlePriceForCurrencyAction.php
@@ -217,11 +212,6 @@ parameters:
 			message: "#^Access to an undefined property Laravel\\\\Nova\\\\Fields\\\\ActionFields\\:\\:\\$currency_code\\.$#"
 			count: 1
 			path: app/Nova/Actions/UpdatePriceForCurrencyAction.php
-
-		-
-			message: "#^Call to deprecated method showOnTableRow\\(\\) of class Laravel\\\\Nova\\\\Actions\\\\Action\\.$#"
-			count: 1
-			path: app/Nova/Bundle.php
 
 		-
 			message: "#^Using nullsafe method call on non\\-nullable type Spatie\\\\Comments\\\\Models\\\\Comment\\. Use \\-\\> instead\\.$#"

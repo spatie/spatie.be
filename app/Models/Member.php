@@ -9,7 +9,7 @@ use Spatie\SchemaOrg\Schema;
 class Member extends Model
 {
     protected $casts = [
-        'birthday' => 'immutable_datetime',
+        'birthday' => 'immutable_datetime'.':nullable',
         'created_at' => 'immutable_datetime',
         'updated_at' => 'immutable_datetime',
     ];

@@ -16,11 +16,9 @@ class HelpSpaceServiceProvider extends ServiceProvider
         HelpSpace::sidebar(function (HelpSpaceRequest $request) {
             [$mailcoachContent, $flareContent] = $this->getExternalContent($request);
 
-            $html = $mailcoachContent
+            return $mailcoachContent
                 . $flareContent
                 . $this->getSpatieContent($request);
-
-            return $html ?? '<p>No information found</p>';
         });
     }
 
@@ -39,10 +37,10 @@ class HelpSpaceServiceProvider extends ServiceProvider
     {
         $responses = Http::pool(fn (Pool $pool) => [
             $pool->withHeaders(['signature' => $request->header('signature')])
-                ->withBody($request->getContent(), $request->getContentType())
+                ->withBody($request->getContent(), $request->getContentTypeFormat())
                 ->post('https://mailcoach.app/help-space'),
             $pool->withHeaders(['signature' => $request->header('signature')])
-                ->withBody($request->getContent(), $request->getContentType())
+                ->withBody($request->getContent(), $request->getContentTypeFormat())
                 ->post('https://flareapp.io/api/help-space'),
         ]);
 

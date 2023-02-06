@@ -96,7 +96,7 @@ class Bundle extends Resource
     {
         return [
             (new UpdateBundlePriceForCurrencyAction())
-                ->showOnTableRow()
+                ->showInline()
                 ->confirmButtonText('Update price'),
         ];
     }

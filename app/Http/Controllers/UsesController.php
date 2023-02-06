@@ -12,7 +12,7 @@ class UsesController
             ->orderBy('type')
             ->orderBy('sort_order')
             ->get()
-            ->groupBy(fn (Technology $tech) => $tech->type->value);
+            ->groupBy(fn (Technology $tech) => $tech->type?->value);
 
         return view('front.pages.uses.index', compact('technologies'));
     }
