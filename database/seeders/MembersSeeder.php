@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Member;
-use Carbon\CarbonImmutable;
 use Illuminate\Database\Seeder;
 
 class MembersSeeder extends Seeder

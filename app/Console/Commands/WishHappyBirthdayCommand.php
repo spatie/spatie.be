@@ -3,12 +3,10 @@
 namespace App\Console\Commands;
 
 use App\Models\Member;
-use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Spatie\SlackAlerts\Facades\SlackAlert;
-use Spatie\TestTime\TestTime;
 
 class WishHappyBirthdayCommand extends Command
 {
