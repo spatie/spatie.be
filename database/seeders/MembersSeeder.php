@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Member;
+use Carbon\CarbonImmutable;
 use Illuminate\Database\Seeder;
 
 class MembersSeeder extends Seeder
@@ -52,6 +53,7 @@ class MembersSeeder extends Seeder
             'role' => 'Backend developer',
             'description' => 'The eleventh member of our team has solid experience in building modern web applications and API\'s. We have yet to find out what his scouting totem is… stay tuned!',
             'twitter' => 'NielsVanpach',
+            'birthday' => '1993-07-14',
         ],
 
         'rias@spatie.be' => [

@@ -3,10 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Models\Member;
+use Carbon\Carbon;
 use Carbon\CarbonImmutable;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Spatie\SlackAlerts\Facades\SlackAlert;
+use Spatie\TestTime\TestTime;
 
 class WishHappyBirthdayCommand extends Command
 {
@@ -34,7 +36,8 @@ class WishHappyBirthdayCommand extends Command
     private function whoIsCelebratingToday(): Collection
     {
         return Member::query()
-            ->whereDate('birthday', CarbonImmutable::today())
+            ->whereDay('birthday', CarbonImmutable::today()->day)
+            ->whereMonth('birthday', CarbonImmutable::today()->month)
             ->get();
     }
 
