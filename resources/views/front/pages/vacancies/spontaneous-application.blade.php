@@ -21,7 +21,7 @@
                 <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <p class="text-xl">
-                            Even if there's no job description that currently fits you, we're always open for spontaneous apllications.
+                            Even if there's no job description that currently fits you, we're always open for spontaneous applications.
                             People before degrees!
                         </p>
                     </div>
@@ -31,14 +31,14 @@
 
         <section id="intro" class="section">
             @include('front.pages.vacancies.partials.about', ['hideRick'=> true])
-            
+
             <div class="wrap wrap-6">
                 <div class="mt-16 sm:col-span-4 markup links-underline links-blue">
                     @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
                 </div>
             </div>
-            
-            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
+
+            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front'])
         </section>
         <section id="offer" class="section">
             @include('front.pages.vacancies.partials.offer')
