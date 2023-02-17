@@ -128,7 +128,6 @@ class GitHubApi
     }
 
     /**
-     * @param string $searchString
      *
      * @return array{ResultPager, array}
      */
