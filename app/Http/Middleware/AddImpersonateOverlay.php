@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
 use Closure;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
@@ -18,7 +19,7 @@ class AddImpersonateOverlay
     {
     }
 
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
 

@@ -14,7 +14,7 @@ class ImportPackagistDownloadsCommand extends Command
 
     protected $description = 'Import download counts of packages.';
 
-    public function handle()
+    public function handle(): int
     {
         $this->info('Importing downloads from Packagist...');
 

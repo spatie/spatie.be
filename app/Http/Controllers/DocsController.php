@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Docs\Alias;
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
@@ -10,7 +11,7 @@ use RuntimeException;
 
 class DocsController
 {
-    public function index(Docs $docs)
+    public function index(Docs $docs): View
     {
         return view('front.pages.docs.index', [
             'repositories' => $docs->getRepositories(),

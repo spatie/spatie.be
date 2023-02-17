@@ -14,7 +14,7 @@ class UpdateConversionRatesCommand extends Command
 
     protected $description = 'Update conversion rates';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Start updating conversion rates...');
 

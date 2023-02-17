@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Product;
@@ -12,7 +13,7 @@ use Illuminate\Http\Request;
 
 class ProductsController
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $products = Product::query()
             ->unless(

@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Http\Requests\TestingLaravel;
 use App\Services\Mailcoach\MailcoachApi;
 
 class ReadablePhpController
 {
-    public function show()
+    public function show(): View
     {
         return view('front.pages.readable-php.index');
     }

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Domain\Shop\Models\Product;
 
 class ShowReleaseNotesController
 {
-    public function __invoke(Product $product)
+    public function __invoke(Product $product): View
     {
         $releases = $product
             ->releases()

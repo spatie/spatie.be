@@ -12,7 +12,7 @@ use Livewire\Livewire;
 
 class LivewireServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         Livewire::component('repositories', RepositoriesComponent::class);
         Livewire::component('lesson-completed-button', LessonCompletedButtonComponent::class);

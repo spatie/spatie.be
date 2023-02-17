@@ -13,7 +13,7 @@ class RegeneratePostcardResponsiveImagesCommand extends Command
 
     protected $description = 'Regenerates the responsive images for all the postcards';
 
-    public function handle()
+    public function handle(): void
     {
         if ($id = $this->option('id')) {
             dispatch(new GenerateResponsiveImagesJob(Media::find($id)));

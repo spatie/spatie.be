@@ -9,7 +9,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
-    public function up()
+    public function up(): void
     {
         Schema::create('purchase_assignments', function (Blueprint $table) {
             $table->id();

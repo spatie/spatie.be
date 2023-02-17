@@ -10,7 +10,7 @@ class GrantRayTrialLicenseToUserCommand extends Command
 {
     protected $signature = 'grant-ray-trial {--user=}';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Finding user...');
 

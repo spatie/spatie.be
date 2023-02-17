@@ -10,7 +10,7 @@ class RegenerateHtmlLessonHtmlCommand extends Command
 {
     protected $signature = 'regenerate-html-lessons-html';
 
-    public function handle()
+    public function handle(): int
     {
         $this->info('Regenerating html...');
 

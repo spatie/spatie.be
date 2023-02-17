@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use App\Domain\Shop\Models\License;
 use App\Services\GitHub\GitHubApi;
 
 class DownloadLatestReleaseForExpiredLicenseController
 {
-    public function __invoke(License $license, string $repo, GitHubApi $gitHub)
+    public function __invoke(License $license, string $repo, GitHubApi $gitHub): Response
     {
         $repo = "spatie/{$repo}";
 

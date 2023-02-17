@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 return new class () extends Migration {
-    public function up()
+    public function up(): void
     {
         Media::each(function (Media $media) {
             switch ($media->model_type) {

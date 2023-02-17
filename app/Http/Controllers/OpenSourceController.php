@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Domain\Shop\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
 
 class OpenSourceController
 {
-    public function packages()
+    public function packages(): View
     {
         return view('front.pages.open-source.packages');
     }
 
-    public function projects()
+    public function projects(): View
     {
         return view('front.pages.open-source.projects');
     }
 
-    public function support()
+    public function support(): View
     {
         $products = Product::query()
             ->unless(
@@ -32,7 +33,7 @@ class OpenSourceController
         ]);
     }
 
-    public function testimonials()
+    public function testimonials(): View
     {
         return view('front.pages.open-source.testimonials');
     }

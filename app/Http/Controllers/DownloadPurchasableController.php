@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
@@ -10,7 +11,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class DownloadPurchasableController
 {
-    public function __invoke(Request $request, Product $product, Purchase $purchase, Media $file)
+    public function __invoke(Request $request, Product $product, Purchase $purchase, Media $file): Response
     {
         $userHasPurchase = PurchaseAssignment::query()
             ->whereUser($request->user())

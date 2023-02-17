@@ -13,7 +13,7 @@ class GiftRayToSponsorsCommand extends Command
 {
     protected $signature = 'gift-ray-to-sponsors';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Start handing out Ray to sponsors...');
 

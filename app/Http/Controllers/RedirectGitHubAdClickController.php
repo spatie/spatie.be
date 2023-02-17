@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use App\Models\Repository;
 
 class RedirectGitHubAdClickController
 {
-    public function __invoke(Repository $repository)
+    public function __invoke(Repository $repository): RedirectResponse
     {
         if (! $ad = $repository->ad) {
             return redirect()->route('products.index');

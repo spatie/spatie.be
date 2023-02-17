@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Insight;
 
 class BlogsController
 {
-    public function index()
+    public function index(): View
     {
         $insights = Insight::orderBy('created_at', 'DESC')->paginate(10);
 

@@ -18,7 +18,7 @@ class ImportDocsFromRepositoriesCommand extends Command
 
     protected $description = 'Fetches docs from all repositories in docs-repositories.json';
 
-    public function handle()
+    public function handle(): int
     {
         $this->info('Importing docs...');
 

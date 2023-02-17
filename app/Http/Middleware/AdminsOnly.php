@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
 use App\Models\User;
 use Closure;
 use Illuminate\Auth\AuthenticationException;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 
 class AdminsOnly
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         /** @var User|null $user */
         $user = $request->user();

@@ -15,7 +15,7 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    public function register()
+    public function register(): void
     {
     }
 }

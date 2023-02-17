@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    public function up()
+    public function up(): void
     {
         Video::each(function (Video $video) {
             Lesson::create([

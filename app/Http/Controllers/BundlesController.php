@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Domain\Shop\Models\Bundle;
 
 class BundlesController
 {
-    public function show(Bundle $bundle)
+    public function show(Bundle $bundle): View
     {
         $payLink = null;
         if (current_user()) {

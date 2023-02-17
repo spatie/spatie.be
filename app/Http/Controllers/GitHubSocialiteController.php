@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
 use App\Services\GitHub\GitHubGraphApi;
@@ -25,7 +26,7 @@ class GitHubSocialiteController
         return Socialite::driver('github')->redirect();
     }
 
-    public function callback()
+    public function callback(): View
     {
         $gitHubUser = Socialite::driver('github')->stateless()->user();
 

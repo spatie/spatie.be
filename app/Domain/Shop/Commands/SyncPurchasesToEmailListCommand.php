@@ -12,7 +12,7 @@ class SyncPurchasesToEmailListCommand extends Command
 
     protected $description = 'Sync purchasables to email list';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Syncing purchasables to email list');
 

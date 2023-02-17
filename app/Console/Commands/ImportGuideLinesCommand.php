@@ -9,7 +9,7 @@ class ImportGuideLinesCommand extends Command
 {
     public $signature = 'guidelines:import';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Importing guidelines...');
 

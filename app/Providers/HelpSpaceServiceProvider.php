@@ -11,7 +11,7 @@ use Spatie\HelpSpace\Http\Requests\HelpSpaceRequest;
 
 class HelpSpaceServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         HelpSpace::sidebar(function (HelpSpaceRequest $request) {
             [$mailcoachContent, $flareContent] = $this->getExternalContent($request);

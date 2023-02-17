@@ -2,6 +2,7 @@
 
 namespace App\Http\Auth\Controllers;
 
+use Illuminate\View\View;
 use App\Actions\GrantRayTrialLicenseAction;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -24,7 +25,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm(Request $request)
+    public function showLoginForm(Request $request): View
     {
         $previous = url()->previous();
 

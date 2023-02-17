@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
@@ -9,7 +10,7 @@ use Illuminate\Http\Request;
 
 class AfterPaddleSaleController
 {
-    public function __invoke(Request $request, Product $product, Purchasable $purchasable)
+    public function __invoke(Request $request, Product $product, Purchasable $purchasable): RedirectResponse
     {
         sleep(4);
 

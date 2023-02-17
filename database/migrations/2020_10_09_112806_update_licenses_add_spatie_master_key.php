@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 
 return new class () extends Migration {
-    public function up()
+    public function up(): void
     {
         Schema::table('licenses', function (Blueprint $table) {
             $spatie = User::firstOrCreate(['email' => 'info@spatie.be'], [

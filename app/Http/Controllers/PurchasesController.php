@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
 class PurchasesController
 {
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): View
     {
         $courses = $request->user()
             ->assignmentsWithoutRenewals()

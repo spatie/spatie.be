@@ -12,7 +12,7 @@ class RegenerateLeakedKeysCommand extends Command
 {
     protected $signature = 'regenerate-leaked-keys {--dry-run}';
 
-    public function handle(GitHubApi $gitHubApi)
+    public function handle(GitHubApi $gitHubApi): void
     {
         [$paginator, $response] = $gitHubApi->search('satis.spatie.be extension:json', ['sort' => 'indexed']);
 
