@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use App\Services\Ray\Ray;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class DownloadRayController

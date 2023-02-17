@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Actions\SubscribeUserToNewsletterAction;
 use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Http\Auth\Requests\ProfileRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ProfileController
 {

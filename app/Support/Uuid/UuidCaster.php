@@ -2,8 +2,8 @@
 
 namespace App\Support\Uuid;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
+use Illuminate\Database\Eloquent\Model;
 
 class UuidCaster implements CastsAttributes
 {

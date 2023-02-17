@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Docs\Alias;
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
 use Illuminate\Support\Collection;
+use Illuminate\View\View;
 use RuntimeException;
 
 class DocsController

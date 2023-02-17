@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Domain\Shop\Models\Product;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\View\View;
 
 class OpenSourceController
 {

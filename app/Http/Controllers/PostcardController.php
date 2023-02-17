@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Postcard;
+use Illuminate\View\View;
 
 class PostcardController
 {

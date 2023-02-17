@@ -2,7 +2,6 @@
 
 namespace App\Http\Auth\Controllers;
 
-use Illuminate\View\View;
 use App\Actions\GrantRayTrialLicenseAction;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -11,6 +10,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Spatie\Url\Url;
 
 class LoginController extends Controller

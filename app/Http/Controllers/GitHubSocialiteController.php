@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
 use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
 
 class GitHubSocialiteController

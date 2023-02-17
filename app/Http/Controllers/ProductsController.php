@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Product;
@@ -10,6 +9,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProductsController
 {

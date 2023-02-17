@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Symfony\Component\HttpFoundation\Response;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 
 class IsValidHelpSpaceRequest
 {

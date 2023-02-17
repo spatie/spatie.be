@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Models\Lesson;
 use App\Models\Series;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CoursesController
 {

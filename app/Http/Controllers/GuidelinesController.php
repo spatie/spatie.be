@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Guidelines\Guidelines;
+use Illuminate\View\View;
 
 class GuidelinesController
 {

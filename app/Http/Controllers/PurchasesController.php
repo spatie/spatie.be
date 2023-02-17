@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class PurchasesController
 {

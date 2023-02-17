@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Referrer;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AfterPaddleBundleSaleController

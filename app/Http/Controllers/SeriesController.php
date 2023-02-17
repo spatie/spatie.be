@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Series;
+use Illuminate\View\View;
 
 class SeriesController
 {

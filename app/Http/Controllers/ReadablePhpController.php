@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Http\Requests\TestingLaravel;
 use App\Services\Mailcoach\MailcoachApi;
+use Illuminate\View\View;
 
 class ReadablePhpController
 {
