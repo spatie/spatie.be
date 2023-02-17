@@ -21,6 +21,9 @@ class GrantRayTrialLicenseAction
 
     public function execute(User $user): ?License
     {
+        // don't grant this anymore
+        return null;
+
         if ($this->alreadyTriedRay($user)) {
             return null;
         }

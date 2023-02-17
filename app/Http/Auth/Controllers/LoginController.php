@@ -47,7 +47,9 @@ class LoginController extends Controller
 
         flash()->success('You are now logged in');
 
+        /*
         app(GrantRayTrialLicenseAction::class)->execute(auth()->user());
+        */
 
         return redirect()->to(session()->get('next', route('products.index')));
     }
