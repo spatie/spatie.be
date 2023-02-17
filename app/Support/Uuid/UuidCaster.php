@@ -2,11 +2,12 @@
 
 namespace App\Support\Uuid;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 
 class UuidCaster implements CastsAttributes
 {
-    public function get($model, string $key, $value, array $attributes)
+    public function get(Model $model, string $key, mixed $value, array $attributes)
     {
         if ($value === null) {
             return null;
@@ -15,7 +16,7 @@ class UuidCaster implements CastsAttributes
         return Uuid::make($value);
     }
 
-    public function set($model, string $key, $value, array $attributes)
+    public function set(Model $model, string $key, mixed $value, array $attributes)
     {
         if (! $value instanceof Uuid) {
             return $value;
