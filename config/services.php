@@ -18,17 +18,19 @@ return [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
         'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+        'scheme' => 'https',
     ],
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
+
         'message_stream_id' => 'outbound',
     ],
 
     'ses' => [
-        'key' => env('SES_AWS_ACCESS_KEY_ID'),
-        'secret' => env('SES_AWS_SECRET_ACCESS_KEY'),
-        'region' => env('SES_AWS_DEFAULT_REGION', 'us-east-1'),
+        'key' => env('AWS_ACCESS_KEY_ID'),
+        'secret' => env('AWS_SECRET_ACCESS_KEY'),
+        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
     'github' => [
@@ -47,7 +49,6 @@ return [
         'access' => env('VIMEO_ACCESS'),
     ],
 
-    // Values are merged with the rss feeds of the Member model
     'rss' => [
         'https://flareapp.io/feed',
         'https://mailcoach.app/blog/feed',
@@ -56,6 +57,7 @@ return [
     'instagram' => [
         'token' => env('INSTAGRAM_TOKEN'),
     ],
+
     'patreon' => [
         'id' => env('PATREON_CLIENT_ID'),
         'secret' => env('PATREON_SECRET'),
@@ -67,6 +69,7 @@ return [
         'access_token' => env('TWITTER_ACCESS_TOKEN'),
         'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
     ],
+
     'google_api' => [
         'key' => env('GOOGLE_API_KEY'),
     ],
@@ -87,5 +90,6 @@ return [
 
     'helpSpace' => [
         'secret' => env('HELP_SPACE_SECRET')
-    ]
+    ],
+
 ];
