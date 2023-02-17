@@ -4,7 +4,7 @@ use App\Domain\Shop\Enums\SeriesType;
 use App\Models\Series;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateDefaultSeriesType extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -12,4 +12,4 @@ class UpdateDefaultSeriesType extends Migration
             'type' => SeriesType::Video->value,
         ]);
     }
-}
+};

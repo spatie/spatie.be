@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ConvertVideosToLessons extends Migration
+return new class extends Migration
 {
     public function up()
     {
@@ -28,4 +28,4 @@ class ConvertVideosToLessons extends Migration
             $table->dropColumn(['slug', 'sort_order', 'series_id', 'chapter']);
         });
     }
-}
+};
