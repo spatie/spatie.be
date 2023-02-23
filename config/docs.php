@@ -312,5 +312,13 @@ return [
             ],
             "category" => "Laravel",
         ],
+        [
+            "name" => "laravel-notification-log",
+            "repository" => "spatie/laravel-notification-log",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
     ],
 ];
