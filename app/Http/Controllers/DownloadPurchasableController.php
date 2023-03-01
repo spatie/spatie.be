@@ -6,7 +6,6 @@ use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class DownloadPurchasableController

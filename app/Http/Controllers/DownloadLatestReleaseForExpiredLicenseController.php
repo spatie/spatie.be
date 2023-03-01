@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Domain\Shop\Models\License;
 use App\Services\GitHub\GitHubApi;
-use Illuminate\Http\Response;
 
 class DownloadLatestReleaseForExpiredLicenseController
 {
