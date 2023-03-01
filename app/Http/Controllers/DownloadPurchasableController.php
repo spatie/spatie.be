@@ -11,7 +11,7 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class DownloadPurchasableController
 {
-    public function __invoke(Request $request, Product $product, Purchase $purchase, Media $file): Response
+    public function __invoke(Request $request, Product $product, Purchase $purchase, Media $file)
     {
         $userHasPurchase = PurchaseAssignment::query()
             ->whereUser($request->user())

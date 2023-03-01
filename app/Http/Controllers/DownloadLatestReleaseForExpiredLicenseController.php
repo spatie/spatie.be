@@ -8,7 +8,7 @@ use Illuminate\Http\Response;
 
 class DownloadLatestReleaseForExpiredLicenseController
 {
-    public function __invoke(License $license, string $repo, GitHubApi $gitHub): Response
+    public function __invoke(License $license, string $repo, GitHubApi $gitHub)
     {
         $repo = "spatie/{$repo}";
 

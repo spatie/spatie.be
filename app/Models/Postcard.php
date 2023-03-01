@@ -18,7 +18,7 @@ class Postcard extends Model implements HasMedia
         'media',
     ];
 
-    public function getImageAttribute()
+    public function getImageAttribute(): string
     {
         return $this->getFirstMediaUrl();
     }

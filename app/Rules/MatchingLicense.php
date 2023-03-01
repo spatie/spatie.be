@@ -15,17 +15,17 @@ class MatchingLicense implements Rule
         $this->activation = $activation;
     }
 
-    public function passes($attribute, $licenseKey)
+    public function passes($attribute, $value): bool
     {
         /** @var License|null $license */
-        if (! $license = License::firstWhere('key', $licenseKey)) {
+        if (! $license = License::firstWhere('key', $value)) {
             return false;
         }
 
         return $license->activations()->where('id', $this->activation->id)->exists();
     }
 
-    public function message()
+    public function message(): string
     {
         return 'The validation error message.';
     }

@@ -7,7 +7,7 @@ use App\Services\Mailcoach\MailcoachApi;
 
 class SubscribeUserToNewsletterAction
 {
-    public function __construct(private MailcoachApi $mailcoachApi)
+    public function __construct(private readonly MailcoachApi $mailcoachApi)
     {
     }
 

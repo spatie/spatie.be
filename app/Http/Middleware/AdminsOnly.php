@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class AdminsOnly
 {
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
         /** @var User|null $user */
         $user = $request->user();

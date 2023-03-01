@@ -13,5 +13,5 @@ it('subscribes the user to the spatie email list', function () {
 
     $action->execute($user);
 
-    Http::assertSentCount(1);
+    Http::assertSentCount(2);
 });

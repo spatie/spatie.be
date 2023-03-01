@@ -7,12 +7,12 @@ use Illuminate\Support\Facades\Hash;
 
 class MatchCurrentPasswordRule implements Rule
 {
-    public function passes($attribute, $value)
+    public function passes($attribute, $value): bool
     {
         return Hash::check($value, auth()->user()->password);
     }
 
-    public function message()
+    public function message(): string
     {
         return 'Your password is incorrect.';
     }
