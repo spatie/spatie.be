@@ -2,7 +2,6 @@
 
 namespace App\Http\Auth\Controllers;
 
-use App\Actions\GrantRayTrialLicenseAction;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -47,8 +46,6 @@ class LoginController extends Controller
         $this->clearLoginAttempts($request);
 
         flash()->success('You are now logged in');
-
-        app(GrantRayTrialLicenseAction::class)->execute(auth()->user());
 
         return redirect()->to(session()->get('next', route('products.index')));
     }
