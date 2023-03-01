@@ -220,7 +220,6 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Bugsnag' => Bugsnag\BugsnagLaravel\Facades\Bugsnag::class,
         'Debugbar' => Barryvdh\Debugbar\LaravelDebugbar::class,
     ])->toArray(),
 

@@ -85,7 +85,7 @@
         "symfony/postmark-mailer": "^6.2",
         "symfony/process": "^6.2",
         "torann/geoip": "^3.0.4",
-        "wire-elements/spotlight": "dev-master#48d7833c4e2a79ea81e79978899c25c635f3fbac"
+        "wire-elements/spotlight": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",

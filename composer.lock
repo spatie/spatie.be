@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "64328f2fc249c3944ef9d29fe0d71117",
+    "content-hash": "eb12e06145336bde1af79998b3433c39",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -15608,16 +15608,16 @@
         },
         {
             "name": "wire-elements/spotlight",
-            "version": "dev-master",
+            "version": "1.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/wire-elements/spotlight.git",
-                "reference": "48d7833c4e2a79ea81e79978899c25c635f3fbac"
+                "reference": "0bfae0f27c4d4616be0ed011e339540925951b54"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/wire-elements/spotlight/zipball/48d7833c4e2a79ea81e79978899c25c635f3fbac",
-                "reference": "48d7833c4e2a79ea81e79978899c25c635f3fbac",
+                "url": "https://api.github.com/repos/wire-elements/spotlight/zipball/0bfae0f27c4d4616be0ed011e339540925951b54",
+                "reference": "0bfae0f27c4d4616be0ed011e339540925951b54",
                 "shasum": ""
             },
             "require": {
@@ -15633,7 +15633,6 @@
                 "phpunit/phpunit": "^9.3",
                 "vimeo/psalm": "^4.4"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -19196,8 +19195,7 @@
     "stability-flags": {
         "ebess/advanced-nova-media-library": 20,
         "knplabs/github-api": 20,
-        "spatie/sidecar-shiki": 20,
-        "wire-elements/spotlight": 20
+        "spatie/sidecar-shiki": 20
     },
     "prefer-stable": true,
     "prefer-lowest": false,
