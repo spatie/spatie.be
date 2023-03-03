@@ -14,7 +14,7 @@ use Spatie\Health\Facades\Health;
 
 class HealthServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         Health::checks([
             CpuLoadCheck::new()->failWhenLoadIsHigherInTheLast5Minutes(5.0),

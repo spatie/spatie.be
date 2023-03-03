@@ -14,7 +14,7 @@ use Spatie\Flash\Flash;
 
 class AppServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         Model::unguard();
 

@@ -11,7 +11,7 @@ use Laravel\Socialite\Facades\Socialite;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         Auth::viaRequest('license-key', function (Request $request) {
             $license = License::query()

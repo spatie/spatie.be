@@ -15,7 +15,7 @@ class UpdateBundlePricesCommand extends Command
 
     protected $description = 'Update bundle prices';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Start updating bundle prices...');
 

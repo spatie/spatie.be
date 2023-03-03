@@ -6,6 +6,7 @@ use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
 use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
 
 class GitHubSocialiteController
@@ -25,7 +26,7 @@ class GitHubSocialiteController
         return Socialite::driver('github')->redirect();
     }
 
-    public function callback()
+    public function callback(): View
     {
         $gitHubUser = Socialite::driver('github')->stateless()->user();
 

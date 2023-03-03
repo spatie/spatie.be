@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Technology;
+use Illuminate\View\View;
 
 class UsesController
 {
-    public function index()
+    public function index(): View
     {
         $technologies = Technology::query()
             ->orderBy('type')

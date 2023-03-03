@@ -10,7 +10,7 @@ class AchievementFactory extends Factory
 {
     protected $model = Achievement::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'title' => 'test',

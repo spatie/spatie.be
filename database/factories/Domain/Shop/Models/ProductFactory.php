@@ -10,7 +10,7 @@ class ProductFactory extends Factory
 {
     protected $model = Product::class;
 
-    public function definition()
+    public function definition(): array
     {
         $title = "{$this->faker->jobTitle()} as a service";
 

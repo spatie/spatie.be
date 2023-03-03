@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Referrer;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AfterPaddleBundleSaleController
 {
-    public function __invoke(Request $request, Product $product, Bundle $bundle)
+    public function __invoke(Request $request, Product $product, Bundle $bundle): RedirectResponse
     {
         sleep(4);
 

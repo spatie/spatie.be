@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TestingLaravel;
 use App\Services\Mailcoach\MailcoachApi;
+use Illuminate\View\View;
 
 class ReadablePhpController
 {
-    public function show()
+    public function show(): View
     {
         return view('front.pages.readable-php.index');
     }

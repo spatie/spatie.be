@@ -42,7 +42,7 @@
 
                             @if ($assignment)
                                 <br/><br/>
-                                @if(optional($assignment->purchase)->unlocksRayLicense())
+                                @if($assignment->purchase?->unlocksRayLicense())
                                     Your purchase also unlocked <a class="font-bold underline" href="#ray">a license for
                                         Ray</a>!
                                     <br/><br/>

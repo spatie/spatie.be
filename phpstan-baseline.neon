@@ -141,19 +141,14 @@ parameters:
 			path: app/Http/Controllers/DocsController.php
 
 		-
+			message: "#^Call to an undefined method Laravel\\\\Socialite\\\\Contracts\\\\Provider\\:\\:stateless\\(\\)\\.$#"
+			count: 1
+			path: app/Http/Controllers/GitHubSocialiteController.php
+
+		-
 			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
 			count: 1
 			path: app/Http/Controllers/InvoicesController.php
-
-		-
-			message: "#^Cannot access property \\$value on string\\.$#"
-			count: 1
-			path: app/Http/Controllers/UsesController.php
-
-		-
-			message: "#^Using nullsafe property access on non\\-nullable type string\\. Use \\-\\> instead\\.$#"
-			count: 1
-			path: app/Http/Controllers/UsesController.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Models\\\\Lesson\\:\\:\\$description\\.$#"
@@ -274,6 +269,22 @@ parameters:
 			path: app/Nova/Purchase.php
 
 		-
+			message: """
+				#^Class App\\\\Rules\\\\MatchCurrentPasswordRule implements deprecated interface Illuminate\\\\Contracts\\\\Validation\\\\Rule\\:
+				see ValidationRule$#
+			"""
+			count: 1
+			path: app/Rules/MatchCurrentPasswordRule.php
+
+		-
+			message: """
+				#^Class App\\\\Rules\\\\MatchingLicense implements deprecated interface Illuminate\\\\Contracts\\\\Validation\\\\Rule\\:
+				see ValidationRule$#
+			"""
+			count: 1
+			path: app/Rules/MatchingLicense.php
+
+		-
 			message: "#^Variable \\$license in PHPDoc tag @var does not exist\\.$#"
 			count: 1
 			path: app/Rules/MatchingLicense.php
@@ -282,9 +293,4 @@ parameters:
 			message: "#^Call to an undefined method Github\\\\Api\\\\ApiInterface\\:\\:releases\\(\\)\\.$#"
 			count: 1
 			path: app/Services/GitHub/GitHubApi.php
-
-		-
-			message: "#^Class Bugsnag\\\\BugsnagLaravel\\\\Facades\\\\Bugsnag not found\\.$#"
-			count: 1
-			path: config/app.php
 

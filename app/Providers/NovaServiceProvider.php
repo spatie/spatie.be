@@ -30,7 +30,7 @@ use Laravel\Nova\NovaApplicationServiceProvider;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
@@ -88,7 +88,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
         Gate::define('viewNova', fn ($user) => $user->is_admin);
     }
 
-    public function register()
+    public function register(): void
     {
         Nova::style('admin', public_path('nova.css'));
     }

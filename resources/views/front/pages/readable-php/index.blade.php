@@ -32,7 +32,7 @@
                 <form class="flex items-end" method="POST">
                     @csrf
                     <div class="flex-grow mr-px">
-                        <input class="w-full form-input" placeholder="Email" type="email" name="email" id="email" value="{{ optional(auth()->user())->email }}">
+                        <input class="w-full form-input" placeholder="Email" type="email" name="email" id="email" value="{{ auth()->user()?->email }}">
                         @error('email')
                         <div class="text-pink-dark">{{ $message }}</div>
                         @enderror

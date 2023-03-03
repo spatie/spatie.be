@@ -36,6 +36,7 @@
 
     {{-- @include('layout.partials.cta') --}}
 
+    @include('layout.partials.header-alert')
     @include('layout.partials.header')
     @include('layout.partials.flash')
 

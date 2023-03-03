@@ -11,7 +11,7 @@ use Illuminate\Database\Seeder;
 
 class PurchaseSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         User::each(function (User $user) {
             /** @var \App\Domain\Shop\Models\Purchasable $purchasable */

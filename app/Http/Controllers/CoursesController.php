@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Lesson;
 use App\Models\Series;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class CoursesController
 {
-    public function index()
+    public function index(): View
     {
         $allSeries = Series::with(['purchasables', 'lessons'])
             ->unless(
@@ -47,7 +49,7 @@ class CoursesController
         ));
     }
 
-    public function completeLesson(Series $series, Lesson $lesson)
+    public function completeLesson(Series $series, Lesson $lesson): RedirectResponse
     {
         if (! $lesson->canBeSeenByCurrentUser()) {
             if ($lesson->content_type === 'htmlLesson') {

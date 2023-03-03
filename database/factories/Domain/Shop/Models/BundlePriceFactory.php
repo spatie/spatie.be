@@ -10,7 +10,7 @@ class BundlePriceFactory extends Factory
 {
     protected $model = BundlePrice::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'bundle_id' => Bundle::factory(),

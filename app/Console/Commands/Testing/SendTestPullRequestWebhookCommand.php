@@ -12,7 +12,7 @@ class SendTestPullRequestWebhookCommand extends Command
 {
     protected $signature = 'send-test-pull-request {--failed}';
 
-    public function handle()
+    public function handle(): void
     {
         if (! app()->environment('local')) {
             $this->error('Not in local env');

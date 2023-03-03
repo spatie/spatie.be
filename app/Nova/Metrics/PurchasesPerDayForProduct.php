@@ -12,7 +12,6 @@ class PurchasesPerDayForProduct extends Trend
     /**
      * Calculate the value of the metric.
      *
-     * @param \Laravel\Nova\Http\Requests\NovaRequest $request
      *
      * @return mixed
      */
@@ -32,10 +31,8 @@ class PurchasesPerDayForProduct extends Trend
 
     /**
      * Get the ranges available for the metric.
-     *
-     * @return array
      */
-    public function ranges()
+    public function ranges(): array
     {
         return [
             30 => __('30 Days'),
@@ -56,10 +53,8 @@ class PurchasesPerDayForProduct extends Trend
 
     /**
      * Get the URI key for the metric.
-     *
-     * @return string
      */
-    public function uriKey()
+    public function uriKey(): string
     {
         return 'purchases-per-day';
     }
