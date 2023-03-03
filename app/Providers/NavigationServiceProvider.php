@@ -8,7 +8,7 @@ use Spatie\Menu\Laravel\View;
 
 class NavigationServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         Menu::macro('main', function (array $properties = []) {
             return Menu::new()

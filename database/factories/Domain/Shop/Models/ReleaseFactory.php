@@ -12,7 +12,7 @@ class ReleaseFactory extends Factory
 {
     protected $model = Release::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'product_id' => Product::factory(),

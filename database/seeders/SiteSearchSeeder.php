@@ -7,7 +7,7 @@ use Spatie\SiteSearch\Models\SiteSearchConfig;
 
 class SiteSearchSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         SiteSearchConfig::create([
             'name' => 'docs',

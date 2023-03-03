@@ -10,7 +10,7 @@ class DeleteHtmlLessonsCommand extends Command
 {
     protected $signature = 'delete-seeded-html-lessons';
 
-    public function handle()
+    public function handle(): void
     {
         HtmlLesson::truncate();
 

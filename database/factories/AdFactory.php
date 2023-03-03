@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class AdFactory extends Factory
 {
-    public function definition()
+    public function definition(): array
     {
         return [
             'name' => $this->faker->word(),

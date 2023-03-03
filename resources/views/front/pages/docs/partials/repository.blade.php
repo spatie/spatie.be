@@ -2,7 +2,7 @@
         <a href="{{ action([\App\Http\Controllers\DocsController::class, 'repository'], $repository->slug) }}">
             <h2 class="title-sm link-black link-underline">{{ $repository->slug }}</h2>
 
-            <p class="mt-4">{{ optional($repository->aliases->last())->slogan }}</p>
+            <p class="mt-4">{{ $repository->aliases->last()?->slogan }}</p>
         </a>
         <div class="mt-2 text-xs grid grid-flow-col gap-2 justify-start items-center">
             @foreach($repository->aliases as $alias)

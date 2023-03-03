@@ -8,7 +8,7 @@ use Illuminate\Database\Seeder;
 
 class BundleSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         /** @var Bundle $bundle */
         $bundle = Bundle::factory()->create();

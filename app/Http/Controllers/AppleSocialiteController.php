@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Laravel\Socialite\Contracts\User as SocialiteUser;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -24,7 +25,7 @@ class AppleSocialiteController
         return Socialite::driver('apple')->redirect();
     }
 
-    public function callback()
+    public function callback(): View
     {
         session()->replace(json_decode(request('state'), true));
 

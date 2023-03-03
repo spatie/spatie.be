@@ -20,7 +20,7 @@ class RandomizeAdsOnGitHubRepositoriesJob implements ShouldQueue, ArtisanDispatc
 
     protected $artisanName = 'randomize-github-ads';
 
-    public function handle()
+    public function handle(): void
     {
         $ads = Ad::active()->get();
 

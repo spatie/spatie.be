@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
 
 return new class () extends Migration {
-    public function up()
+    public function up(): void
     {
         DB::table('video_completions')->orderBy('id')->each(function (stdClass $completion) {
             if (! $video = Video::find($completion->video_id)) {

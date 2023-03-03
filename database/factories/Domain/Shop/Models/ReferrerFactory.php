@@ -9,7 +9,7 @@ class ReferrerFactory extends Factory
 {
     protected $model = Referrer::class;
 
-    public function definition()
+    public function definition(): array
     {
         return [
             'slug' => $this->faker->slug(),

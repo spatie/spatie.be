@@ -9,10 +9,11 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ProductsController
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $products = Product::query()
             ->unless(

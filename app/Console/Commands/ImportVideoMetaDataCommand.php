@@ -10,7 +10,7 @@ class ImportVideoMetaDataCommand extends Command
 {
     public $signature = 'import-video-meta-data {--series=}';
 
-    public function handle()
+    public function handle(): void
     {
         $query = Video::query();
 

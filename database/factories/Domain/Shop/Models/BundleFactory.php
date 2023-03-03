@@ -10,7 +10,7 @@ class BundleFactory extends Factory
 {
     protected $model = Bundle::class;
 
-    public function definition()
+    public function definition(): array
     {
         $title = "{$this->faker->jobTitle()} bundle";
         $priceInCents = $this->faker->numberBetween(100, 10000);

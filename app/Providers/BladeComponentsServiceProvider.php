@@ -7,7 +7,7 @@ use Illuminate\Support\ServiceProvider;
 
 class BladeComponentsServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         Blade::component('layout.default', 'page');
     }

@@ -15,7 +15,7 @@ class UpdatePurchasablePricesCommand extends Command
 
     protected $description = 'Update purchasable prices';
 
-    public function handle()
+    public function handle(): void
     {
         $this->info('Start updating purchasable prices...');
 

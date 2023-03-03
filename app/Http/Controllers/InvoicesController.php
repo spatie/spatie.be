@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+
 class InvoicesController
 {
-    public function __invoke()
+    public function __invoke(): View
     {
         $transactions = auth()->user()->receipts;
         $purchases = auth()->user()->purchases;

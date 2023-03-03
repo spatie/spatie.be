@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Postcard;
+use Illuminate\View\View;
 
 class PostcardController
 {
-    public function index()
+    public function index(): View
     {
         $postcards = Postcard::orderByDesc('created_at')->get();
 

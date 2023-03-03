@@ -129,8 +129,6 @@ class Purchasable extends Model implements HasMedia, Sortable
 
     /**
      * @param string $package Package name in following format: `spatie/laravel-mailcoach`
-     *
-     * @return bool
      */
     public function includesPackageAccess(string $package): bool
     {

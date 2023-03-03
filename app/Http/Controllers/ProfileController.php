@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use App\Actions\SubscribeUserToNewsletterAction;
 use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Http\Auth\Requests\ProfileRequest;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ProfileController
 {
-    public function show()
+    public function show(): View
     {
         return view('front.profile.profile');
     }
 
-    public function update(ProfileRequest $profileRequest)
+    public function update(ProfileRequest $profileRequest): RedirectResponse
     {
         /** @var \App\Models\User $user */
         $user = $profileRequest->user();
@@ -31,7 +33,7 @@ class ProfileController
         return redirect()->route('profile');
     }
 
-    public function disconnect()
+    public function disconnect(): RedirectResponse
     {
         auth()->user()->update([
             'github_id' => null,
@@ -43,7 +45,7 @@ class ProfileController
         return redirect()->route('profile');
     }
 
-    public function disconnectApple()
+    public function disconnectApple(): RedirectResponse
     {
         auth()->user()->update([
             'apple_id' => null,
@@ -54,7 +56,7 @@ class ProfileController
         return redirect()->route('profile');
     }
 
-    public function delete()
+    public function delete(): RedirectResponse
     {
         /** @var \App\Models\User $user */
         $user = auth()->user();

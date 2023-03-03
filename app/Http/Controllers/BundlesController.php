@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Shop\Models\Bundle;
+use Illuminate\View\View;
 
 class BundlesController
 {
-    public function show(Bundle $bundle)
+    public function show(Bundle $bundle): View
     {
         $payLink = null;
         if (current_user()) {

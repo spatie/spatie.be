@@ -9,6 +9,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Spatie\Url\Url;
 
 class LoginController extends Controller
@@ -23,7 +24,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function showLoginForm(Request $request)
+    public function showLoginForm(Request $request): View
     {
         $previous = url()->previous();
 

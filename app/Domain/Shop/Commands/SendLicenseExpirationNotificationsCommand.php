@@ -14,7 +14,7 @@ class SendLicenseExpirationNotificationsCommand extends Command
 
     protected $description = 'Send license expiration notifications';
 
-    public function handle()
+    public function handle(): void
     {
         $this
             ->sendNotificationsForLicensesThatAreAboutToExpire()

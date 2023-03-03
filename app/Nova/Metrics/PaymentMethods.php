@@ -38,7 +38,7 @@ class PaymentMethods extends Partition
         })->toArray());
     }
 
-    public function uriKey()
+    public function uriKey(): string
     {
         return 'payment-methods';
     }
