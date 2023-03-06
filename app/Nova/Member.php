@@ -44,6 +44,10 @@ class Member extends Resource
                 ->nullable()
                 ->rules(['max:255']),
 
+            Text::make('Role')
+                ->sortable()
+                ->rules(['required', 'max:255']),
+
             Textarea::make('Description')
                 ->hideFromIndex()
                 ->sortable()
