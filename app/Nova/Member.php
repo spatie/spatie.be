@@ -22,7 +22,7 @@ class Member extends Resource
         'id', 'first_name', 'email', 'preferred_name',
     ];
 
-    public function fields(NovaRequest $request)
+    public function fields(NovaRequest $request): array
     {
         return [
             ID::make()->sortable(),
@@ -47,8 +47,7 @@ class Member extends Resource
             Textarea::make('Description')
                 ->hideFromIndex()
                 ->sortable()
-                ->nullable()
-                ->rules(['required']),
+                ->nullable(),
 
             Text::make('Email')
                 ->sortable()
