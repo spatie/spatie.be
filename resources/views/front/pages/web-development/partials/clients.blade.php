@@ -38,10 +38,6 @@
             <div class="markup text-sm">
                 <h3 class="title-sm">Public</h3>
                 <ul class="leading-loose links-underline links-black">
-                    <li>
-                        <a href="https://rolesbxl.be" target="_blank" rel="noreferrer noopener">Court of Brussels</a>
-                        <div class="text-xs text-gray">Daily status board and notifications for lawyers</div>
-                    </li>
                     <li class=mt-2>
                         <a href="https://hemiksem.be" target="_blank" rel="noreferrer noopener">City of Hemiksem</a>
                         <div class="text-xs text-gray">Communal website</div>
