@@ -25,7 +25,7 @@ class DocsSearchIndexer extends DefaultIndexer
 
     public function extra(): array
     {
-        info('Indexing '.$this->url() .'( ' . DocsVersion::getRepo($this->url()) . ' ' . DocsVersion::getVersion($this->url()) . ')');
+        info('Indexing '.$this->url() .' (' . DocsVersion::getRepo($this->url()) . ' ' . DocsVersion::getVersion($this->url()) . ')');
 
         return [
             'repo' => DocsVersion::getRepo($this->url()),
