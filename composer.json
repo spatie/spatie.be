@@ -38,7 +38,7 @@
         "league/commonmark": "^2.2.1",
         "league/flysystem-aws-s3-v3": "^3.10",
         "livewire/livewire": "^2.11",
-        "meilisearch/meilisearch-php": "^0.25.0",
+        "meilisearch/meilisearch-php": "^1.0",
         "myclabs/php-enum": "^1.8.4",
         "nyholm/psr7": "^1.5.1",
         "ohdearapp/ohdear-php-sdk": "^3.4.4",
