@@ -11,7 +11,6 @@
     style="width: 48rem; min-height: 16rem"
 >
     <div class="relative border-b border-blue-lighter px-4 py-3 -mt-6 -mb-6 -mx-6 flex justify-between items-center">
-        {{$repo}}{{ $version }}
         <input wire:model="query"
                x-ref="search"
                type="search"
