@@ -30,7 +30,7 @@
         Other versions for crawler
 
         @foreach($repository->aliases as $aliasOption)
-            <a href="https://spatie.be/{{ $aliasOption->slug }}">{{ $aliasOption->slug }}</a>
+            <a href="https://spatie.be/docs/{{ $repository->slug }}/{{ $aliasOption->slug }}">{{ $aliasOption->slug }}</a>
         @endforeach
     </div>
 
