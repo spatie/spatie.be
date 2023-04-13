@@ -26,6 +26,14 @@
 
     </div>
 
+    <div class="hidden">
+        Other versions for crawler
+
+        @foreach($repository->aliases as $aliasOption)
+            <a href="https://spatie.be/{{ $aliasOption->slug }}">{{ $aliasOption->slug }}</a>
+        @endforeach
+    </div>
+
     <div class="w-full my-4 pb-4 border-b-2 border-gray-lighter">
         <input
             type="text"
