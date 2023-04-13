@@ -26,6 +26,8 @@ class SearchDocsComponent extends Component
     {
         return view('front.pages.docs.partials.search', [
             'hits' => $this->getResults(),
+            'version' => DocsVersion::getVersion($this->currentUrl),
+            'repo' => DocsVersion::getRepo($this->currentUrl),
         ]);
     }
 
