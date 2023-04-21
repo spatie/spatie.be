@@ -29,8 +29,8 @@ class PurchaseAssignment extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Purchase'),
-            BelongsTo::make('Purchasable'),
+            BelongsTo::make('Purchase')->searchable(),
+            BelongsTo::make('Purchasable')->searchable(),
             BelongsTo::make('User')->displayUsing(function (User $user) {
                 return $user->name . ' - ' . $user->email;
             })->searchable(),
