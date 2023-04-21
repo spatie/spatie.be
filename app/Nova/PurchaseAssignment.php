@@ -31,7 +31,9 @@ class PurchaseAssignment extends Resource
 
             BelongsTo::make('Purchase'),
             BelongsTo::make('Purchasable'),
-            BelongsTo::make('User'),
+            BelongsTo::make('User')->displayUsing(function (User $user) {
+                return $user->name . ' - ' . $user->email;
+            })->searchable(),
             HasMany::make('Licenses'),
 
             Boolean::make('Has repository access')->readonly(),
