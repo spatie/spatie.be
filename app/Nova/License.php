@@ -33,7 +33,7 @@ class License extends Resource
         return [
             ID::make()->sortable(),
 
-            BelongsTo::make('Purchase Assignment', 'assignment', PurchaseAssignment::class),
+            BelongsTo::make('Purchase Assignment', 'assignment', PurchaseAssignment::class)->searchable(),
 
             Text::make('Key'),
             Text::make('Domain'),

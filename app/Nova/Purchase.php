@@ -31,7 +31,7 @@ class Purchase extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('User'),
+            BelongsTo::make('User')->searchable(),
             BelongsTo::make('Purchasable')->hideFromIndex(),
             BelongsTo::make('Bundle')->hideFromIndex(),
 
