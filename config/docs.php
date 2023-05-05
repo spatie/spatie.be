@@ -233,7 +233,6 @@ return [
             "repository" => "spatie/laravel-permission",
             "branches" => [
                 "v5" => "v5",
-                "main" => "v6",
                 "v4" => "v4",
                 "v3" => "v3",
             ],
