@@ -257,6 +257,7 @@
                                 },
 
                                 updatePrices(data) {
+                                    console.log({ data });
                                     this.loading = false;
                                     this.emailsLoading = false;
 
