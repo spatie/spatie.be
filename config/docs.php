@@ -11,6 +11,14 @@ return [
             "category" => "Laravel",
         ],
         [
+            "name" => "laravel-prometheus",
+            "repository" => "spatie/laravel-prometheus",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-open-telemetry",
             "repository" => "spatie/laravel-open-telemetry",
             "branches" => [
