@@ -227,7 +227,7 @@
         - je CV
         - een korte motivatie
         - GitHub details of code voorbeelden'
-        ) }}">Solliciteer vandaag</a>.
+        , jobs: true) }}">Solliciteer vandaag</a>.
                         </h2>
                     </div>
                 </div>

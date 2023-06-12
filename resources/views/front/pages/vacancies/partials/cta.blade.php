@@ -17,8 +17,8 @@
 'This is exciting! Send us:
 - your CV
 - a brief motivation
-' . ( isset($github) ? '- GitHub details or code examples' : '' )
-) }}">Apply today</a>.
+' . ( isset($github) ? '- GitHub details or code examples' : '' ),
+jobs: true) }}">Apply today</a>.
                 </h2>
             </div>
         </div>

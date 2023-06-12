@@ -135,11 +135,11 @@
                         </div>
                         <h2 class="title-xl md:text-right">
                             <a class="link-white link-underline" href="{{ mailto(
-                                'Vacature Digital Designer',
-                                'Bedankt voor je interesse! Stuur ons:
-                                - jouw CV
-                                - korte motivatie'
-                                ) }}">Solliciteer</a>.
+'Vacature Digital Designer',
+'Bedankt voor je interesse! Stuur ons:
+- jouw CV
+- korte motivatie',
+                            jobs: true) }}">Solliciteer</a>.
                         </h2>
                     </div>
                 </div>

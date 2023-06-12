@@ -57,11 +57,15 @@ function faker(): Generator
     return Factory::create();
 }
 
-function mailto(string $subject, string $body): string
+function mailto(string $subject, string $body, bool $jobs = false): string
 {
     $subject = rawurlencode(htmlspecialchars_decode($subject));
 
     $body = rawurlencode(htmlspecialchars_decode($body));
+
+    if ($jobs) {
+        return "mailto:jobs@spatie.be?subject={$subject}&body={$body}";
+    }
 
     return "mailto:info@spatie.be?subject={$subject}&body={$body}";
 }

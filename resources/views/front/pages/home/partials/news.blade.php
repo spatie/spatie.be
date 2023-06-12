@@ -2,7 +2,7 @@
     <div class="wrap gap-y-0 items-end">
         <div class="mb-8 flex items-start">
             <a href="{{ route('vacancies.index') }}" class="text-2xl px-4 -my-2 py-2 bg-blue-darker hover:bg-blue-dark text-white rounded-sm">
-                <strong class="font-semibold">Now hiring</strong>: Frontend Designer and more…
+                <strong class="font-semibold">Now hiring</strong>: Digital Designer
             </a>
         </div>
     </div>
