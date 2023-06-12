@@ -1,7 +1,7 @@
 <x-page
-        title="Free application"
-        background="/backgrounds/jobs.jpg"
-        description="Free job application at spatie.be. Location: Antwerp."
+    title="Free application"
+    background="/backgrounds/jobs.jpg"
+    description="Free job application at spatie.be. Location: Antwerp."
 >
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
