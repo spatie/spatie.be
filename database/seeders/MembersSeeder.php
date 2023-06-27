@@ -102,17 +102,6 @@ class MembersSeeder extends Seeder
             'birthday' => '1992-02-01',
         ],
 
-        'willem@spatie.be' => [
-            'first_name' => 'Willem',
-            'last_name' => 'Van Bockstal',
-            'preferred_name' => null,
-            'role' => 'Frontend designer',
-            'description' => 'You ended up in this particular place on the internet because Willem created this site. And this company. Is there something this guy can\'t do?',
-            'twitter' => 'willemvbockstal',
-            'founder' => true,
-            'birthday' => '1975-09-03',
-        ],
-
         'wouter@spatie.be' => [
             'first_name' => 'Wouter',
             'last_name' => 'Brouwers',
