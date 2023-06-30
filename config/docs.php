@@ -328,5 +328,13 @@ return [
             ],
             "category" => "Laravel",
         ],
+        [
+            "name" => "wordpress-mailcoach",
+            "repository" => "spatie/wordpress-mailcoach",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Other",
+        ],
     ],
 ];
