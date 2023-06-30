@@ -12,6 +12,10 @@ use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
+/**
+ * @property string $email
+ * @property string $name
+ */
 class User extends Resource
 {
     public static $model = \App\Models\User::class;
