@@ -38,7 +38,9 @@ return [
             "name" => "laravel-livewire-wizard",
             "repository" => "spatie/laravel-livewire-wizard",
             "branches" => [
-                "main" => "v1",
+                "main" => "v2",
+                "v1" => "v1",
+
             ],
             "category" => "Laravel",
         ],
