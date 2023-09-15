@@ -11,7 +11,8 @@ use Spatie\EventSourcing\Commands\HandledBy;
 class UnlockAchievement
 {
     public function __construct(
-        #[AggregateUuid] public string $uuid,
+        #[AggregateUuid]
+        public string $uuid,
         public int $userId,
         public Achievement $achievement,
     ) {

@@ -19,7 +19,8 @@ class DeleteUser
     }
 
     public function __construct(
-        #[AggregateUuid] public string $uuid,
+        #[AggregateUuid]
+        public string $uuid,
         public User $user
     ) {
     }

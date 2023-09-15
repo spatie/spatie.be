@@ -20,7 +20,8 @@ class RegisterSeriesCompletion
     }
 
     public function __construct(
-        #[AggregateUuid] public string $uuid,
+        #[AggregateUuid]
+        public string $uuid,
         public int $userId,
         public int $seriesId,
     ) {
