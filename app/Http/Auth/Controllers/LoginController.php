@@ -64,4 +64,12 @@ class LoginController extends Controller
 
         session()->flash('next', $nextUrl);
     }
+
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            $this->credentials($request),
+            remember: true,
+        );
+    }
 }
