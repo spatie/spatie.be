@@ -20,7 +20,7 @@
     </section>
 
     <div class="section section-group pt-0">
-        <section id="interns" class="section -mb-16">
+        <section id="interns" class="section">
             <div class="wrap wrap-6">
                 <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
@@ -33,18 +33,6 @@
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="intro" class="section">
-            @include('front.pages.vacancies.partials.about', ['hideRick' => true])
-                            
-            <div class="wrap wrap-6">
-                <div class="mt-16 sm:col-span-4 markup links-underline links-blue">
-                    @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
-                </div>
-            </div>
-            
-            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
         </section>
 
         @include('front.pages.web-development.partials.stack')
