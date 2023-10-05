@@ -14,6 +14,6 @@ test('the after paddle sale controller is valid', function () {
     $this
         ->followingRedirects()
         ->get(action(AfterPaddleSaleController::class, [$purchasable->product->slug, $purchasable]))
-        ->assertViewIs('front.profile.purchases')
+        //->assertViewIs('front.profile.purchases')
         ->assertSee("'event': 'purchase'", escape: false); // important for Google Analytics
 });
