@@ -16,7 +16,6 @@ it('returns all Spatie team members', function () {
         ->assertStatus(200)
         ->assertExactJson(
             [
-                ['name' => 'Willem', 'email' => 'wi@spatie.be', 'birthday' => '1975-01-01', 'twitter' => 'willemvbockstal', 'website' => null],
                 ['name' => 'Jef', 'email' => 'je@spatie.be', 'birthday' => '1975-02-02','twitter' => 'vdv_jef', 'website' => null],
                 ['name' => 'Freek', 'email' => 'fre@spatie.be', 'birthday' => '1979-03-03', 'twitter' => 'freekmurze', 'website' => 'https://freek.dev'],
                 ['name' => 'Seb', 'email' => 'se@spatie.be', 'birthday' => '1979-04-04', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com'],
@@ -41,17 +40,6 @@ it('cannot fetch spatie data when not authorized', function () {
 function membersDummyData(): array
 {
     return [
-        [
-            'first_name' => 'willem',
-            'last_name' => '',
-            'preferred_name' => null,
-            'birthday' => '1975-01-01',
-            'role' => 'Frontend designer',
-            'description' => '',
-            'email' => 'wi@spatie.be',
-            'twitter' => 'willemvbockstal',
-            'website' => null,
-        ],
         [
             'first_name' => 'jef',
             'last_name' => '',
