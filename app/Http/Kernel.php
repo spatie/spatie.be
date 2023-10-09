@@ -51,6 +51,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'forceJson' => ForceJsonResponse::class,
-        'admins_only' => AdminsOnly::class,
+        'adminsOnly' => AdminsOnly::class,
     ];
 }

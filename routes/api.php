@@ -35,6 +35,6 @@ Route::get('bundle-price/{bundle}/{ipOrCountryCode}', BundlePriceController::cla
 
 Route::get('license/{license:key}', ShowLicenseController::class);
 
-Route::get('members', [MembersController::class, 'index'])->middleware(['auth:sanctum', 'admins_only']);
+Route::get('members', [MembersController::class, 'index'])->middleware(['auth:sanctum', 'adminsOnly']);
 
-Route::post('tokens', [ApiTokensController::class, 'create'])->middleware('admins_only');
+Route::post('tokens', [ApiTokensController::class, 'create'])->middleware('adminsOnly');
