@@ -15,11 +15,13 @@ class GenerateApiTokenCommand extends Command
 
         if (! is_string($email)) {
             $this->error('Email must be a string');
+
             return;
         }
 
         if (! filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $this->error('Email is not valid');
+
             return;
         }
 
@@ -28,11 +30,13 @@ class GenerateApiTokenCommand extends Command
 
         if ($user === null) {
             $this->error('User not found');
+
             return;
         }
 
         if (! $user->isSpatieMember()) {
             $this->error('User is not a Spatie member');
+
             return;
         }
 
