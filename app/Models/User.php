@@ -26,12 +26,14 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Nova\Auth\Impersonatable;
 use Laravel\Paddle\Billable;
+use Laravel\Sanctum\HasApiTokens;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
 
 class User extends Authenticatable implements CanComment
 {
     use HasFactory;
+    use HasApiTokens;
     use Billable;
     use Notifiable;
     use InteractsWithComments;

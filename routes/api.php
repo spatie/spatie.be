@@ -13,6 +13,7 @@ use App\Http\Api\Controllers\PlainController;
 use App\Http\Api\Controllers\PriceController;
 use App\Http\Api\Controllers\SatisAuthenticationController;
 use App\Http\Api\Controllers\ShowLicenseController;
+use App\Http\Auth\Controllers\ApiTokensController;
 use App\Http\Middleware\IsValidHelpSpaceRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -34,4 +35,6 @@ Route::get('bundle-price/{bundle}/{ipOrCountryCode}', BundlePriceController::cla
 
 Route::get('license/{license:key}', ShowLicenseController::class);
 
-Route::get('members', [MembersController::class, 'index']);
+Route::get('members', [MembersController::class, 'index'])->middleware(['auth:sanctum', 'adminsOnly']);
+
+Route::post('tokens', [ApiTokensController::class, 'create'])->middleware('adminsOnly');

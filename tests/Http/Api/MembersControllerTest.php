@@ -4,28 +4,50 @@ namespace Tests\Http\Api;
 
 use App\Http\Api\Controllers\MembersController;
 use App\Models\Member;
+use App\Models\User;
+use Laravel\Sanctum\Sanctum;
 
 it('returns all Spatie team members', function () {
-    $data = [
-        [
-            'first_name' => 'willem',
-            'last_name' => '',
-            'preferred_name' => null,
-            'birthday' => '1975-09-03',
-            'role' => 'Frontend designer',
-            'description' => '',
-            'email' => '',
-            'twitter' => 'willemvbockstal',
-            'website' => null,
-        ],
+    Sanctum::actingAs(User::factory()->create(['is_admin' => true]));
+
+    Member::insert(membersDummyData());
+
+    $this->get(action([MembersController::class, 'index']))
+        ->assertStatus(200)
+        ->assertExactJson(
+            [
+                ['name' => 'Jef', 'email' => 'je@spatie.be', 'birthday' => '1975-02-02','twitter' => 'vdv_jef', 'website' => null],
+                ['name' => 'Freek', 'email' => 'fre@spatie.be', 'birthday' => '1979-03-03', 'twitter' => 'freekmurze', 'website' => 'https://freek.dev'],
+                ['name' => 'Seb', 'email' => 'se@spatie.be', 'birthday' => '1979-04-04', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com'],
+            ]
+        );
+});
+
+it('cannot fetch spatie data when unauthenticated', function () {
+    $this->get(action([MembersController::class, 'index']))
+        ->assertStatus(302);
+});
+
+it('cannot fetch spatie data when not authorized', function () {
+    $this->actingAs(User::factory()->create());
+
+    Member::insert(membersDummyData());
+
+    $this->get(action([MembersController::class, 'index']))
+        ->assertRedirect('login');
+});
+
+function membersDummyData(): array
+{
+    return [
         [
             'first_name' => 'jef',
             'last_name' => '',
             'preferred_name' => null,
-            'birthday' => '1975-03-28',
+            'birthday' => '1975-02-02',
             'role' => 'Account manager',
             'description' => '',
-            'email' => '',
+            'email' => 'je@spatie.be',
             'twitter' => 'vdv_jef',
             'website' => null,
         ],
@@ -33,10 +55,10 @@ it('returns all Spatie team members', function () {
             'first_name' => 'freek',
             'last_name' => '',
             'preferred_name' => null,
-            'birthday' => '1979-09-22',
+            'birthday' => '1979-03-03',
             'role' => 'Backend developer',
             'description' => '',
-            'email' => '',
+            'email' => 'fre@spatie.be',
             'twitter' => 'freekmurze',
             'website' => 'https://freek.dev',
         ],
@@ -44,25 +66,12 @@ it('returns all Spatie team members', function () {
             'first_name' => 'sebastian',
             'last_name' => '',
             'preferred_name' => 'seb',
-            'birthday' => '1979-09-22',
+            'birthday' => '1979-04-04',
             'role' => 'Full stack developer',
             'description' => '',
-            'email' => '',
+            'email' => 'se@spatie.be',
             'twitter' => 'sebdedeyne',
             'website' => 'https://sebastiandedeyne.com',
         ],
     ];
-
-    Member::insert($data);
-
-    $this->get(action([MembersController::class, 'index']))
-        ->assertStatus(200)
-        ->assertExactJson(
-            [
-                ['name' => 'Willem', 'twitter' => 'willemvbockstal', 'website' => null],
-                ['name' => 'Jef', 'twitter' => 'vdv_jef', 'website' => null],
-                ['name' => 'Freek', 'twitter' => 'freekmurze', 'website' => 'https://freek.dev'],
-                ['name' => 'Seb', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com'],
-            ]
-        );
-});
+}
