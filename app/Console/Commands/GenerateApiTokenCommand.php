@@ -43,6 +43,6 @@ class GenerateApiTokenCommand extends Command
         $token = $user->createToken('api-token');
 
         $this->info('API token generated');
-        $this->info("{$token->plainTextToken}");
+        $this->info($token->plainTextToken);
     }
 }

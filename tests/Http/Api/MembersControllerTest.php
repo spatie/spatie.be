@@ -37,6 +37,18 @@ it('cannot fetch spatie data when not authorized', function () {
         ->assertRedirect('login');
 });
 
+it('can perform an api call with the generated token', function () {
+    $user = User::factory()->create(['is_admin' => true]);
+    $token = $user->createToken('api-token');
+
+    Member::insert(membersDummyData());
+
+    $this
+        ->withToken($token->plainTextToken)
+        ->get(action([MembersController::class, 'index']))
+        ->assertStatus(200);
+});
+
 function membersDummyData(): array
 {
     return [
