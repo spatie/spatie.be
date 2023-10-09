@@ -37,4 +37,4 @@ Route::get('license/{license:key}', ShowLicenseController::class);
 
 Route::get('members', [MembersController::class, 'index'])->middleware(['auth:sanctum', 'admins_only']);
 
-Route::post('tokens', [ApiTokensController::class, 'refresh'])->middleware('admins_only');
+Route::post('tokens', [ApiTokensController::class, 'create'])->middleware('admins_only');

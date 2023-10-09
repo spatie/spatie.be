@@ -7,7 +7,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class ApiTokensController
 {
-    public function refresh(Request $request): array
+    public function create(Request $request): array
     {
         $user = $request->user();
 
