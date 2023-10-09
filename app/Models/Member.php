@@ -2,12 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\SchemaOrg\Person;
 use Spatie\SchemaOrg\Schema;
 
 class Member extends Model
 {
+    use HasFactory;
+
     protected $casts = [
         'birthday' => 'immutable_datetime'.':nullable',
         'created_at' => 'immutable_datetime',

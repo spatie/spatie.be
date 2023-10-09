@@ -4,9 +4,43 @@ namespace Tests\Http\Api;
 
 use App\Http\Api\Controllers\MembersController;
 use App\Models\Member;
+use App\Models\User;
+use Laravel\Sanctum\Sanctum;
 
 it('returns all Spatie team members', function () {
-    $data = [
+    Sanctum::actingAs(User::factory()->create(['is_admin' => true]));
+
+    Member::insert(membersDummyData());
+
+    $this->get(action([MembersController::class, 'index']))
+        ->assertStatus(200)
+        ->assertExactJson(
+            [
+                ['name' => 'Willem', 'twitter' => 'willemvbockstal', 'website' => null],
+                ['name' => 'Jef', 'twitter' => 'vdv_jef', 'website' => null],
+                ['name' => 'Freek', 'twitter' => 'freekmurze', 'website' => 'https://freek.dev'],
+                ['name' => 'Seb', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com'],
+            ]
+        );
+});
+
+it('cannot fetch spatie data when unauthenticated', function () {
+    $this->get(action([MembersController::class, 'index']))
+        ->assertStatus(302);
+});
+
+it('cannot fetch spatie data when not authorized', function () {
+    $this->actingAs(User::factory()->create());
+
+    Member::insert(membersDummyData());
+
+    $this->get(action([MembersController::class, 'index']))
+        ->assertRedirect('login');
+});
+
+function membersDummyData(): array
+{
+    return [
         [
             'first_name' => 'willem',
             'last_name' => '',
@@ -52,17 +86,4 @@ it('returns all Spatie team members', function () {
             'website' => 'https://sebastiandedeyne.com',
         ],
     ];
-
-    Member::insert($data);
-
-    $this->get(action([MembersController::class, 'index']))
-        ->assertStatus(200)
-        ->assertExactJson(
-            [
-                ['name' => 'Willem', 'twitter' => 'willemvbockstal', 'website' => null],
-                ['name' => 'Jef', 'twitter' => 'vdv_jef', 'website' => null],
-                ['name' => 'Freek', 'twitter' => 'freekmurze', 'website' => 'https://freek.dev'],
-                ['name' => 'Seb', 'twitter' => 'sebdedeyne', 'website' => 'https://sebastiandedeyne.com'],
-            ]
-        );
-});
+}
