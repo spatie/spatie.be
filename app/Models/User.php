@@ -290,5 +290,4 @@ class User extends Authenticatable implements CanComment
     {
         return $this->hasMany(UserAchievementProjection::class);
     }
-
 }

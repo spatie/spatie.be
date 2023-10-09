@@ -38,7 +38,7 @@ abstract class TestCase extends BaseTestCase
     {
         $user = User::factory()->create([
             'github_username' => 'Nielsvanpach',
-            'is_admin' => true
+            'is_admin' => true,
         ]);
 
         $this->actingAs($user);
