@@ -11,6 +11,7 @@ class MembersController
         $members = Member::all()
             ->map(fn (Member $member) => [
                 'name' => $member->name(),
+                'birthday' => $member->birthday,
                 'twitter' => $member->twitter,
                 'website' => $member->website,
             ]);
