@@ -11,14 +11,6 @@
                     @svg('sponsors/laravel')
                 </div>
             </a>
-            <a class="transition duration-300 transform hover:scale-105" href="https://loadforge.com">
-                <div class="w-32 h-8">
-                    @svg('sponsors/loadforge')
-                </div>
-            </a>
-            <a class="transition duration-300 transform hover:scale-105" href="https://scoutapm.com/">
-                <img class="w-32 h-8 object-contain" src="/images/sponsors/scout.png" />
-            </a>
         </div>
 
     </div>
