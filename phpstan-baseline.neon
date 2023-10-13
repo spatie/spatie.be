@@ -11,11 +11,6 @@ parameters:
 			path: app/Console/Commands/ImportInsightsCommand.php
 
 		-
-			message: "#^Using nullsafe property access on non\\-nullable type Carbon\\\\CarbonImmutable\\. Use \\-\\> instead\\.$#"
-			count: 1
-			path: app/Console/Commands/WishHappyBirthdayCommand.php
-
-		-
 			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$alias\\.$#"
 			count: 1
 			path: app/Docs/Docs.php
@@ -49,21 +44,6 @@ parameters:
 			message: "#^Match expression does not handle remaining values\\: int\\|string$#"
 			count: 1
 			path: app/Domain/Experience/Enums/ExperienceType.php
-
-		-
-			message: "#^Access to property \\$userId on an unknown class App\\\\Domain\\\\Experience\\\\Commands\\\\RegisterVideoCompletion\\.$#"
-			count: 1
-			path: app/Domain/Experience/ExperienceAggregateRoot.php
-
-		-
-			message: "#^Access to property \\$videoId on an unknown class App\\\\Domain\\\\Experience\\\\Commands\\\\RegisterVideoCompletion\\.$#"
-			count: 3
-			path: app/Domain/Experience/ExperienceAggregateRoot.php
-
-		-
-			message: "#^Parameter \\$command of method App\\\\Domain\\\\Experience\\\\ExperienceAggregateRoot\\:\\:registerVideoCompletion\\(\\) has invalid type App\\\\Domain\\\\Experience\\\\Commands\\\\RegisterVideoCompletion\\.$#"
-			count: 1
-			path: app/Domain/Experience/ExperienceAggregateRoot.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\:\\:\\$originalPurchasable\\.$#"

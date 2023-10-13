@@ -6,7 +6,6 @@ use App\Domain\Experience\Commands\AddExperience;
 use App\Domain\Experience\Commands\DeleteUser;
 use App\Domain\Experience\Commands\RegisterPullRequest;
 use App\Domain\Experience\Commands\RegisterSeriesCompletion;
-use App\Domain\Experience\Commands\RegisterVideoCompletion;
 use App\Domain\Experience\Commands\UnlockAchievement;
 use App\Domain\Experience\Events\AchievementUnlocked;
 use App\Domain\Experience\Events\ExperienceEarned;
@@ -79,23 +78,6 @@ class ExperienceAggregateRoot extends AggregateRoot
     protected function applyPullRequestMerged(PullRequestMerged $event): void
     {
         $this->mergedPullRequests[$event->reference] = true;
-    }
-
-    public function registerVideoCompletion(RegisterVideoCompletion $command): self
-    {
-        if ($this->completedVideos[$command->videoId] ?? false) {
-            return $this;
-        }
-
-        $video = Video::query()->findOrFail($command->videoId);
-
-        $this->recordThat(new VideoCompleted(
-            userId: $command->userId,
-            videoId: $command->videoId,
-            seriesId: $video->series_id,
-        ));
-
-        return $this;
     }
 
     protected function applyVideoCompletion(VideoCompleted $event): void
