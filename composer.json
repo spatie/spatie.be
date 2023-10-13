@@ -18,7 +18,7 @@
         "barryvdh/laravel-debugbar": "^3.8",
         "blade-ui-kit/blade-ui-kit": "^0.4",
         "blendbyte/nova-items-field": "^1.0",
-        "coroowicaksono/chart-js-integration": "^0.3.5",
+        "coroowicaksono/chart-js-integration": "^0.4",
         "doctrine/dbal": "^3.5.1",
         "ebess/advanced-nova-media-library": "dev-master as 4.0.5",
         "geoip2/geoip2": "^2.13",
