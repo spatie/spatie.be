@@ -15,7 +15,6 @@ use App\Domain\Experience\Events\UserDeleted;
 use App\Domain\Experience\Events\VideoCompleted;
 use App\Models\Series;
 use App\Models\User;
-use App\Models\Video;
 use Exception;
 use Spatie\EventSourcing\AggregateRoots\AggregateRoot;
 
