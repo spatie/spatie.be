@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Support\Search\DocsVersion;
 use Illuminate\Support\Collection;

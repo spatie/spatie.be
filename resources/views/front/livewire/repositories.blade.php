@@ -9,14 +9,14 @@
                 type="search"
                 class="form-input px-4"
                 placeholder="Search packages..."
-                wire:model="search"
+                wire:model.live="search"
                 >
                 <div class="mt-6 md:mt-0 md:ml-6">
                     <label for="sort" class="text-gray mr-2">
                             Sort
                     </label>
                     <div class="select">
-                        <select name="sort" wire:model="sort">
+                        <select name="sort" wire:model.live="sort">
                             <option value="-downloads">by downloads</option>
                             <option value="name">by name</option>
                             <option value="-stars">by popularity</option>

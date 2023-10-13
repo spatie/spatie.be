@@ -6,7 +6,7 @@
                     type="text"
                     class="text-xs form-input w-full h-8 py-0 px-2 rounded-r-none border-r-0"
                     placeholder="Domain"
-                    wire:model="domain"
+                    wire:model.live="domain"
                     wire:keydown.enter="save"
                 >
                 @error('domain')

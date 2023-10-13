@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use App\Domain\Shop\Models\License;
 use Livewire\Component;
