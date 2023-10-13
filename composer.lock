@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56b3c0af4514fc2838d4acda37098d5e",
+    "content-hash": "887975e1af14a5fde9d32126945c38f2",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -764,19 +764,20 @@
         },
         {
             "name": "coroowicaksono/chart-js-integration",
-            "version": "v0.3.5",
+            "version": "0.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/coroo/nova-chartjs.git",
-                "reference": "b7c29c4cd8fefa1cf8b3841ddf6249315466880e"
+                "reference": "2ead39412938723908847dbe12c1e2c7218382d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/coroo/nova-chartjs/zipball/b7c29c4cd8fefa1cf8b3841ddf6249315466880e",
-                "reference": "b7c29c4cd8fefa1cf8b3841ddf6249315466880e",
+                "url": "https://api.github.com/repos/coroo/nova-chartjs/zipball/2ead39412938723908847dbe12c1e2c7218382d6",
+                "reference": "2ead39412938723908847dbe12c1e2c7218382d6",
                 "shasum": ""
             },
             "require": {
+                "laravel/nova": "^4.0",
                 "php": ">=7.1.0"
             },
             "type": "library",
@@ -814,7 +815,7 @@
             ],
             "support": {
                 "issues": "https://github.com/coroo/nova-chartjs/issues",
-                "source": "https://github.com/coroo/nova-chartjs/tree/v0.3.5"
+                "source": "https://github.com/coroo/nova-chartjs/tree/0.4.1"
             },
             "funding": [
                 {
@@ -822,7 +823,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2021-08-18T08:11:40+00:00"
+            "time": "2023-08-16T00:35:26+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
