@@ -79,17 +79,6 @@ class MembersSeeder extends Seeder
             'birthday' => '1994-05-16',
         ],
 
-        'sam@spatie.be' => [
-            'first_name' => 'Sam',
-            'last_name' => 'Apostel',
-            'preferred_name' => null,
-            'role' => 'Frontend developer',
-            'description' => 'Sam is a real technology aficionado helping us out with all things React. He seems to be a sportsman too —don\'t try to follow him on his bike.',
-            'twitter' => 'just_simplysam',
-            'website' => 'https://www.sams.land/',
-            'birthday' => '1998-05-01',
-        ],
-
         'sebastian@spatie.be' => [
             'first_name' => 'Sebastian',
             'last_name' => 'De Deyne',
