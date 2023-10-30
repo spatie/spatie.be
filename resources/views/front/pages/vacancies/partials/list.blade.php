@@ -4,6 +4,11 @@
 </p>
 
 <div class="mt-4">
+    <a class="link-underline link-blue" href="{{ route('vacancies.show', 'javascript-developer') }}">JavaScript Developer</a>
+    <div class="text-xs text-gray">Full-time / Partially remote / Dutch</div>
+</div>
+
+<div class="mt-4">
     <a class="link-underline link-blue" href="{{ route('vacancies.show', 'spontaneous-application') }}">Spontaneous Application</a>
     <div class="text-xs text-gray">Full-time / Partially remote</div>
 </div>
