@@ -53,7 +53,7 @@
                         We zoeken een ervaren JavaScript developer die onze producten en projecten van een voortreffelijke gebruikerservaring kan voorzien.
                     </p>
                     <div class="mt-12 mb-16 markup links-underline links-blue">
-                        <p>Spatie is een klein maar dapper webbedrijf uit Antwerpen. We hebben intussen een waaier aan eigen producten met Flare en Mailcoach op kop. Als agency ontwikkelen we vooral grote webapplicaties, en laten onze voetafdruk achter met honderden open source packages.</p>
+                        <p>Spatie is een klein maar dapper webbedrijf uit Antwerpen. We hebben intussen een waaier aan eigen producten met <a href="https://flareapp.io/" target="_blank" rel="noopener noreferrer">Flare</a> en <a href="https://mailcoach.app/" target="_blank" rel="noopener noreferrer">Mailcoach</a> op kop. Als agency ontwikkelen we vooral grote webapplicaties, en laten onze voetafdruk achter met honderden open source packages.</p>
                     </div>
                 </div>
                 <div class="hidden | sm:block sm:col-span-3 sm:col-start-4">
