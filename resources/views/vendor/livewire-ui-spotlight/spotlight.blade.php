@@ -7,7 +7,7 @@
     @endisset
 
     <div x-data="LivewireUISpotlight({
-        componentId: '{{ $this->id }}',
+        componentId: '{{ $this->__id }}',
         placeholder: 'Which package documentation do you want to see?',
         commands: {{ $commands }},
         showResultsWithoutInput: '{{ config('livewire-ui-spotlight.show_results_without_input') }}',
