@@ -257,7 +257,7 @@ class User extends Authenticatable implements CanComment
     public function hasCompleted(Series $series): bool
     {
         return Video::query()
-            ->where('series_id', $series->id)
+            //->where('series_id', $series->id)
             ->whereDoesntHave('completions', function (Builder|LessonCompletion $builder) {
                 return $builder->where('user_id', $this->id);
             })

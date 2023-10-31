@@ -2,11 +2,11 @@
 
 namespace App\Providers;
 
-use App\Http\Livewire\ActivationsComponent;
-use App\Http\Livewire\DomainComponent;
-use App\Http\Livewire\LessonCompletedButtonComponent;
-use App\Http\Livewire\RepositoriesComponent;
-use App\Http\Livewire\SearchDocsComponent;
+use App\Livewire\ActivationsComponent;
+use App\Livewire\DomainComponent;
+use App\Livewire\LessonCompletedButtonComponent;
+use App\Livewire\RepositoriesComponent;
+use App\Livewire\SearchDocsComponent;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 
