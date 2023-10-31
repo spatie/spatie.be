@@ -115,7 +115,7 @@
                 <div class="hidden | sm:block sm:col-span-3 sm:col-start-4">
                     <div class="ml-24 w-full h-0" style="padding-bottom: 75%">
                         <div class="absolute inset-0 illustration h-full" title="Team">
-                            {{ image('vacancies/about-3.jpg') }}
+                            {{ image('vacancies/about-office.jpg') }}
                         </div>
                     </div>
                 </div>
