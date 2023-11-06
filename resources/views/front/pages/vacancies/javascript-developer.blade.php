@@ -6,12 +6,10 @@
             , "datePosted": "2023-10-30T00:00:00"
             , "validThrough": "2024-10-30T00:00:00"
             , "description": "<p>
-            We zoeken een ervaren JavaScript developer die onze producten en projecten van een voortreffelijke gebruikerservaring kan voorzien. <
-            /p>  <
-            p >
+            We zoeken een ervaren JavaScript developer die onze producten en projecten van een voortreffelijke gebruikerservaring kan voorzien. </p>  <p>
             Je werkt aan een mix van eigen producten en klantprojecten. Je steekt je tanden in ambitieuze interfaces en bouwt componenten met de juiste abstractie: bouwstenen voor honderden pagina's die de tand des tijds kunnen doorstaan. Soms wat luchtigere interacties en animaties toevoegen aan commerciële websites. Je neemt comfortabel zelfstandig beslissingen, en hou je niet in de pijnpunten van een codebase aan te kaarten. <
             /p>",
-            "title": "JavaScript Developer"
+            "title": "JavaScript Developer: straffe webapplicaties & eigen producten"
             , "employmentType": "FULL_TIME"
             , "hiringOrganization": {
                 "@type": "Organization"
