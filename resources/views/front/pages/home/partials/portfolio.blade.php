@@ -230,7 +230,7 @@ Or are you struggling with consistent naming?
 
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://flareapp.io" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">
+            <a href="https://flareapp.io" class="illustration is-left h-full" title="Flare - Laravel error reporting" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flare.jpg') }}
             </a>
         </div>
@@ -280,34 +280,6 @@ Or are you struggling with consistent naming?
                         <span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span>
                         <span class="ml-1"><a href="https://front-line-php.com" target="_blank" rel="nofollow noreferrer noopener">front-line-php.com</a></span>
                     </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
-        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://demo.stmpdrcrds.com" class="illustration is-left h-full" title="demo.stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/stmpd.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Soundcloud Demo Platform
-                    <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">Using</span> Soundcloud, Laravel, Vue
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    For Martin Garrix' record label <a href="https://stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">stmpdrcrds.com</a> we made a workflow application to
-                    streamline their demo track influx.
-                    <br>
-                    Crew members can listen and evaluate SoundCloud tracks by upcoming talents, submitted to the
-                    application.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ svg('icons/far-angle-right') }}</span> <a href="https://demo.stmpdrcrds.com" target="_blank" rel="nofollow noreferrer noopener">demo.stmpdrcrds.com</a></li>
                 </ul>
             </div>
         </div>

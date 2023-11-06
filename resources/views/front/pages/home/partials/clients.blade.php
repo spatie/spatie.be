@@ -12,5 +12,6 @@
         <div class="text-center"><a class="w-full max-w-logoclient inline-block" href="https://bodartservicehouse.be" target="_blank" rel="noreferrer noopener">{{ svg('clients/bodart') }}</a></div>
         <div class="text-center"><a class="w-full max-w-logoclient inline-block" href="https://vluchtelingenwerk.be" target="_blank" rel="noreferrer noopener">{{ svg('clients/vluchtelingenwerk') }}</a></div>
         <div class="text-center"><a class="w-full max-w-logoclient inline-block" href="https://vrijwilligerswerk.be" target="_blank" rel="noreferrer noopener">{{ svg('clients/vrijwilligerswerk') }}</a></div>
+        <div class="text-center"><a class="w-full max-w-logoclient inline-block" href="https://stmpdrcrds.com/images" target="_blank" rel="noreferrer noopener">{{ svg('clients/stmpd') }}</a></div>
     </div>
 </section>
