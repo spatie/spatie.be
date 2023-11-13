@@ -55,7 +55,7 @@
             </div>
 
             <div class="underline text-base mt-4">
-                <a href="/bf23">Watch our promo movie</a>
+                <a href="/black-friday-deals">Watch our promo movie</a>
             </div>
 
             @once
