@@ -8,7 +8,7 @@
         <div class="wrap text-white">
 
             <h1 class="banner-slogan">
-                Enjoy our <br><span class="no-underline text-yellow">Worldwide Spatie Discounts</span>
+                Our annual <br><span class="no-underline text-yellow">Black Friday</span> sale
             </h1>
 
 
@@ -55,7 +55,7 @@
             </div>
 
             <div class="underline text-base mt-4">
-                <a href="/wwsd">Watch our promo movie</a>
+                <a href="/bf23">Watch our promo movie</a>
             </div>
 
             @once
