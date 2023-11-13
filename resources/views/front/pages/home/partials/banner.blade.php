@@ -6,7 +6,7 @@
 
         <div class="my-8">
             @php
-                $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2022-11-28 23:59' );
+                $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2023-11-27 23:59');
             @endphp
 
             <a href="{{ route('products.index') }}"
