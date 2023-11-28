@@ -13,23 +13,6 @@
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen></iframe>
-
-                <div class="my-6">
-                    <a href="/products">
-                        <button class="cursor-pointer
-                            bg-yellow hover:bg-opacity-75 rounded-sm
-                            border-2 border-transparent
-                            justify-center flex items-center
-                            px-6 min-h-10
-                            font-sans-bold text-black
-                            transition-bg duration-300
-                            focus:outline-none focus:border-blue-light whitespace-no-wrap">
-                            Take a look at all our discounted products and courses
-                        </button>
-                    </a>
-                </div>
-
-                You can now enjoy <strong>30% discount</strong> on all our products until the end of <strong>Cyber Monday</strong>.
             </div>
         </section>
     </div>
