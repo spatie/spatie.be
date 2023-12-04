@@ -17,13 +17,13 @@ class MailcoachApi
                 ],
             ]);
 
-        if (!$response->successful()) {
+        if (! $response->successful()) {
             return null;
         }
 
         $subscribers = $response->json('data');
 
-        if (!isset($subscribers[0])) {
+        if (! isset($subscribers[0])) {
             return null;
         }
 
@@ -40,7 +40,7 @@ class MailcoachApi
                 'skip_confirmation' => $skipConfirmation,
             ]);
 
-        if (!$response->successful() || !$response->json('data') || !$response->json('data.uuid')) {
+        if (! $response->successful() || ! $response->json('data') || ! $response->json('data.uuid')) {
             return null;
         }
 
@@ -65,7 +65,7 @@ class MailcoachApi
 
     public function removeTag(Subscriber $subscriber, string $tag): void
     {
-        $tags = array_filter($subscriber->tags, fn(string $existingTag) => $existingTag !== $tag);
+        $tags = array_filter($subscriber->tags, fn (string $existingTag) => $existingTag !== $tag);
 
         Http::timeout(10)->withToken(config('services.mailcoach.token'))
             ->patch("https://spatie.mailcoach.app/api/subscribers/{$subscriber->uuid}", [
