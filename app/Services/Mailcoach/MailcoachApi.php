@@ -2,6 +2,7 @@
 
 namespace App\Services\Mailcoach;
 
+use Exception;
 use Illuminate\Support\Facades\Http;
 
 class MailcoachApi
@@ -10,12 +11,18 @@ class MailcoachApi
     {
         $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
 
-        $response = Http::timeout(10)->withToken(config('services.mailcoach.token'))
-            ->get("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
-                'filter' => [
-                    'email' => $email,
-                ],
-            ]);
+
+        try {
+            $response = Http::timeout(10)->withToken(config('services.mailcoach.token'))
+                ->get("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
+                    'filter' => [
+                        'email' => $email,
+                    ],
+                ]);
+        } catch (Exception $e) {
+            return null;
+        }
+
 
         if (! $response->successful()) {
             return null;
