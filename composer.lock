@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5070c482a87b409e17e039c3e7887575",
+    "content-hash": "a56ae13d9974412021e58efcb9a742e3",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -8495,31 +8495,31 @@
         },
         {
             "name": "spatie/crawler",
-            "version": "7.1.3",
+            "version": "8.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/crawler.git",
-                "reference": "f0f73947fdfaf68efdc68b73c4dbb28dfc785113"
+                "reference": "6983c78d32d4b4dfab2ead4da3bfc7396a0fa6c5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/crawler/zipball/f0f73947fdfaf68efdc68b73c4dbb28dfc785113",
-                "reference": "f0f73947fdfaf68efdc68b73c4dbb28dfc785113",
+                "url": "https://api.github.com/repos/spatie/crawler/zipball/6983c78d32d4b4dfab2ead4da3bfc7396a0fa6c5",
+                "reference": "6983c78d32d4b4dfab2ead4da3bfc7396a0fa6c5",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "^7.3",
                 "guzzlehttp/psr7": "^2.0",
-                "illuminate/collections": "^8.38|^9.0|^10.0",
+                "illuminate/collections": "^10.0",
                 "nicmart/tree": "^0.3.0",
-                "php": "^8.0",
+                "php": "^8.1",
                 "spatie/browsershot": "^3.45",
                 "spatie/robots-txt": "^2.0",
-                "symfony/dom-crawler": "^5.2|^6.0"
+                "symfony/dom-crawler": "^6.0"
             },
             "require-dev": {
-                "pestphp/pest": "^1.21",
-                "phpunit/phpunit": "^9.5"
+                "pestphp/pest": "^2.0",
+                "spatie/ray": "^1.37"
             },
             "type": "library",
             "autoload": {
@@ -8547,7 +8547,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/crawler/issues",
-                "source": "https://github.com/spatie/crawler/tree/7.1.3"
+                "source": "https://github.com/spatie/crawler/tree/8.0.3"
             },
             "funding": [
                 {
@@ -8559,7 +8559,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-01-24T07:47:06+00:00"
+            "time": "2023-11-22T12:56:26+00:00"
         },
         {
             "name": "spatie/crypto",
@@ -10840,35 +10840,35 @@
         },
         {
             "name": "spatie/laravel-site-search",
-            "version": "1.5.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-site-search.git",
-                "reference": "17c895c03b11b4d9e0c695773b2329713283d20c"
+                "reference": "bee28c59a8bfa5fd5dfe306e46fabb939fa35118"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-site-search/zipball/17c895c03b11b4d9e0c695773b2329713283d20c",
-                "reference": "17c895c03b11b4d9e0c695773b2329713283d20c",
+                "url": "https://api.github.com/repos/spatie/laravel-site-search/zipball/bee28c59a8bfa5fd5dfe306e46fabb939fa35118",
+                "reference": "bee28c59a8bfa5fd5dfe306e46fabb939fa35118",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/psr7": "^2.1",
-                "illuminate/contracts": "^8.37|^9.0|^10.0",
-                "illuminate/http": "^8.60|^9.0|^10.0",
-                "php": "^8.0",
-                "spatie/crawler": "^7.0",
-                "spatie/laravel-package-tools": "^1.9"
+                "guzzlehttp/psr7": "^2.5",
+                "illuminate/contracts": "^10.0",
+                "illuminate/http": "^10.0",
+                "laravel/prompts": "^0.1.1",
+                "php": "^8.1",
+                "spatie/crawler": "^8.0",
+                "spatie/laravel-package-tools": "^1.15"
             },
             "require-dev": {
-                "brianium/paratest": "^6.2",
-                "guzzlehttp/guzzle": "^7.3",
-                "meilisearch/meilisearch-php": "^1.0",
-                "nunomaduro/collision": "^5.3|^6.0",
-                "orchestra/testbench": "^6.23|^7.0|^8.0",
-                "pestphp/pest": "^1.18",
-                "pestphp/pest-plugin-laravel": "^1.1",
-                "spatie/laravel-ray": "^1.26"
+                "guzzlehttp/guzzle": "^7.7",
+                "meilisearch/meilisearch-php": "^1.1.1",
+                "nunomaduro/collision": "^7.5.2",
+                "orchestra/testbench": "^8.5.5",
+                "pestphp/pest": "^2.6.2",
+                "pestphp/pest-plugin-laravel": "^2.0",
+                "spatie/laravel-ray": "^1.32.4"
             },
             "suggest": {
                 "meilisearch/meilisearch-php": "Required to use the MeiliSearch engine."
@@ -10913,7 +10913,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-site-search/issues",
-                "source": "https://github.com/spatie/laravel-site-search/tree/1.5.1"
+                "source": "https://github.com/spatie/laravel-site-search/tree/2.1.2"
             },
             "funding": [
                 {
@@ -10921,7 +10921,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-04T12:26:21+00:00"
+            "time": "2023-08-17T07:32:22+00:00"
         },
         {
             "name": "spatie/laravel-slack-alerts",
