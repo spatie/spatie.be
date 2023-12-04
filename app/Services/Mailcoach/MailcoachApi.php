@@ -10,15 +10,20 @@ class MailcoachApi
     {
         $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
 
-        $subscribers = Http::withToken(config('services.mailcoach.token'))
+        $response = Http::timeout(10)->withToken(config('services.mailcoach.token'))
             ->get("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
                 'filter' => [
                     'email' => $email,
                 ],
-            ])
-            ->json('data');
+            ]);
 
-        if (! isset($subscribers[0])) {
+        if (!$response->successful()) {
+            return null;
+        }
+
+        $subscribers = $response->json('data');
+
+        if (!isset($subscribers[0])) {
             return null;
         }
 
@@ -29,13 +34,13 @@ class MailcoachApi
     {
         $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
 
-        $response = Http::withToken(config('services.mailcoach.token'))
+        $response = Http::timeout(10)->withToken(config('services.mailcoach.token'))
             ->post("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
                 'email' => $email,
                 'skip_confirmation' => $skipConfirmation,
             ]);
 
-        if (! $response->successful() || ! $response->json('data') || ! $response->json('data.uuid')) {
+        if (!$response->successful() || !$response->json('data') || !$response->json('data.uuid')) {
             return null;
         }
 
@@ -44,13 +49,13 @@ class MailcoachApi
 
     public function unsubscribe(Subscriber $subscriber): void
     {
-        Http::withToken(config('services.mailcoach.token'))
+        Http::timeout(10)->withToken(config('services.mailcoach.token'))
             ->post("https://spatie.mailcoach.app/api/subscribers/{$subscriber->uuid}/unsubscribe");
     }
 
     public function addTags(Subscriber $subscriber, array $tags): void
     {
-        Http::withToken(config('services.mailcoach.token'))
+        Http::timeout(10)->withToken(config('services.mailcoach.token'))
             ->patch("https://spatie.mailcoach.app/api/subscribers/{$subscriber->uuid}", [
                 'tags' => $tags,
                 'append_tags' => true,
@@ -60,9 +65,9 @@ class MailcoachApi
 
     public function removeTag(Subscriber $subscriber, string $tag): void
     {
-        $tags = array_filter($subscriber->tags, fn (string $existingTag) => $existingTag !== $tag);
+        $tags = array_filter($subscriber->tags, fn(string $existingTag) => $existingTag !== $tag);
 
-        Http::withToken(config('services.mailcoach.token'))
+        Http::timeout(10)->withToken(config('services.mailcoach.token'))
             ->patch("https://spatie.mailcoach.app/api/subscribers/{$subscriber->uuid}", [
                 'tags' => $tags,
                 'append_tags' => false,
