@@ -125,7 +125,8 @@ return [
             "name" => "laravel-medialibrary",
             "repository" => "spatie/laravel-medialibrary",
             "branches" => [
-                "main" => "v10",
+                "main" => "v11",
+                "v10" => "v10",
                 "v9" => "v9",
                 "v8" => "v8",
                 "v7" => "v7",
@@ -133,7 +134,6 @@ return [
                 "v5" => "v5",
                 "v4" => "v4",
                 "v3" => "v3",
-
             ],
             "category" => "Laravel",
         ],
