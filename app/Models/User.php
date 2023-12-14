@@ -180,7 +180,7 @@ class User extends Authenticatable implements CanComment
             return false;
         }
 
-        return Member::where('github', $this->github_username)->exists();
+        return Member::where('github', $this->github_username)->exists() || Member::where('email', $this->email)->exists();
     }
 
     public function owns(Purchasable $purchasable): bool
