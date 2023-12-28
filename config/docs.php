@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-pdf",
+            "repository" => "spatie/laravel-pdf",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "lighthouse-php",
             "repository" => "spatie/lighthouse-php",
             "branches" => [
