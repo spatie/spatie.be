@@ -6,7 +6,6 @@ use App\Domain\Shop\Models\License;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Socialite\Facades\Socialite;
 
 class AuthServiceProvider extends ServiceProvider
 {
