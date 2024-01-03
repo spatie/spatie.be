@@ -29,24 +29,6 @@
                     <p class="mt-1 text-sm text-gray">Log in without password and check your sponsor status.</p>
                 @endif
             </div>
-            <div class="mt-4">
-                @if (auth()->user()->apple_id)
-                    <span class="flex items-center">
-                        <span class="icon fill-current w-4 mr-2">
-                            {{ svg('apple') }}
-                        </span>
-                        <a class="ml-4 link-blue link-underline" href="{{ route('apple-disconnect') }}">Disconnect from Sign-in with Apple</a>
-                    </span>
-                @else
-                    <a class="link-blue link-underline flex items-center" href="{{ route('apple-login') }}">
-                        <span class="icon fill-current w-4 mr-2">
-                            {{ svg('apple') }}
-                        </span>
-                        Connect to Sign-in with Apple
-                    </a>
-                    <p class="mt-1 text-sm text-gray">Log in without password.</p>
-                @endif
-            </div>
         </div>
     </section>
 

@@ -7,7 +7,6 @@ use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\AfterPaddleBundleSaleController;
-use App\Http\Controllers\AppleSocialiteController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsController;
@@ -15,7 +14,6 @@ use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\MusicController;
-use App\Http\Controllers\ReadablePhpController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
@@ -122,7 +120,6 @@ Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('/', [ProfileController::class, 'show'])->name('profile');
     Route::put('/', [ProfileController::class, 'update'])->name('profile');
     Route::get('disconnect', [ProfileController::class, 'disconnect'])->name('github-disconnect');
-    Route::get('disconnect-apple', [ProfileController::class, 'disconnectApple'])->name('apple-disconnect');
     Route::delete('/', [ProfileController::class, 'delete'])->name('profile');
 
     Route::get('password', [UpdatePasswordController::class, 'show'])->name('profile.password');
@@ -145,9 +142,6 @@ Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('
 
 Route::get('login/github', [GitHubSocialiteController::class, 'redirect'])->name('github-login');
 Route::get('login/github/callback', [GitHubSocialiteController::class, 'callback']);
-
-Route::get('login/apple', [AppleSocialiteController::class, 'redirect'])->name('apple-login');
-Route::post('login/apple', [AppleSocialiteController::class, 'callback']);
 
 Route::post('logout', [LogoutController::class, 'logout'])->name('logout');
 

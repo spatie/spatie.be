@@ -78,12 +78,6 @@ return [
         'package_training' => env('PROMO_CODE_PACKAGE_TRAINING'),
     ],
 
-    'apple' => [
-        'redirect' => env('APPLE_CALLBACK_URL'),
-        'client_id' => env('APPLE_ID'),
-        'client_secret' => env('APPLE_SECRET'),
-    ],
-
     'mailcoach' => [
         'token' => env('MAILCOACH_TOKEN'),
     ],

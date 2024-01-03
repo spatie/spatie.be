@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Domain\Shop\Models\License;
-use App\Support\Socialite\SignInWithAppleProvider;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -29,13 +28,6 @@ class AuthServiceProvider extends ServiceProvider
             $license->increment('satis_authentication_count');
 
             return $license;
-        });
-
-        Socialite::extend('apple', function () {
-            return Socialite::buildProvider(
-                SignInWithAppleProvider::class,
-                config('services.apple'),
-            );
         });
     }
 }
