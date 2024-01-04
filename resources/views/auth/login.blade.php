@@ -44,16 +44,6 @@
                             </x-button>
                         </a>
                     </div>
-                    <div>
-                        <a href="{{ route('apple-login') }}">
-                            <x-button>
-                                <span class="-ml-3 mr-3 icon w-4 mb-1 opacity">
-                                    {{ svg('apple') }}
-                                </span>
-                                Sign-in with Apple
-                            </x-button>
-                        </a>
-                    </div>
                 </div>
 
                 <h3 class="mt-12 title-sm -mb-2">

@@ -45,17 +45,6 @@ class ProfileController
         return redirect()->route('profile');
     }
 
-    public function disconnectApple(): RedirectResponse
-    {
-        auth()->user()->update([
-            'apple_id' => null,
-        ]);
-
-        flash()->success('Apple account disconnected.');
-
-        return redirect()->route('profile');
-    }
-
     public function delete(): RedirectResponse
     {
         /** @var \App\Models\User $user */
