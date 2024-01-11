@@ -56,7 +56,7 @@ class AfterworkCommand extends Command
         return new CarbonPeriod(
             CarbonImmutable::parse("first {$dayName} of this month"),
             CarbonInterval::week(),
-            CarbonImmutable::parse("first {$dayName} of next month")
+            CarbonImmutable::parse("first {$dayName} of next month")->subDay(),
         );
     }
 
