@@ -6,6 +6,7 @@ use Carbon\CarbonImmutable;
 use Carbon\CarbonInterval;
 use Carbon\CarbonPeriod;
 use Illuminate\Console\Command;
+use Spatie\Holidays\Holidays;
 use Spatie\SlackAlerts\Facades\SlackAlert;
 
 class AfterworkCommand extends Command
@@ -20,7 +21,9 @@ class AfterworkCommand extends Command
             ->map(fn (string $option, int $index) => $this->addEmoji($option, $index))
             ->implode("\n");
 
-        SlackAlert::message("Who is in for an afterwork drink? :beer: :cup_with_straw:\n{$options}");
+        $this->info("Poll options:\n{$options}");
+
+        SlackAlert::message("Who is in for an afterwork drink? :beer:\n{$options}");
 
         $this->info('Poll posted to Slack');
     }
@@ -33,6 +36,10 @@ class AfterworkCommand extends Command
             $datesInMonth = $this->getDatesForWeekdayInMonth($weekday);
 
             foreach ($datesInMonth as $date) {
+                if (Holidays::new()->isHoliday($date, 'be')) {
+                    continue;
+                }
+
                 $options[$date->day] = "{$date->shortDayName} {$date->day}/{$date->month}";
             }
         }
