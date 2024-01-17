@@ -36,7 +36,7 @@ class AfterworkCommand extends Command
             $datesInMonth = $this->getDatesForWeekdayInMonth($weekday);
 
             foreach ($datesInMonth as $date) {
-                if (Holidays::new()->isHoliday($date, 'be')) {
+                if (Holidays::for('be')->isHoliday($date)) {
                     continue;
                 }
 

@@ -52,7 +52,7 @@
         "spatie/crypto": "^2.0.1",
         "spatie/eloquent-sortable": "^4.0.1",
         "spatie/fork": "^1.1.2",
-        "spatie/holidays": "^0.0.1",
+        "spatie/holidays": "^1.0",
         "spatie/laravel-artisan-dispatchable": "^1.3",
         "spatie/laravel-backup": "^8.1.5",
         "spatie/laravel-comments": "^1.3",
