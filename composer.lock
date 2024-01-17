@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a56ae13d9974412021e58efcb9a742e3",
+    "content-hash": "1ecad145dd9aca940aa7f4b8c322a9c7",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -8969,6 +8969,66 @@
                 }
             ],
             "time": "2023-11-23T15:12:48+00:00"
+        },
+        {
+            "name": "spatie/holidays",
+            "version": "0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/holidays.git",
+                "reference": "5fc21902560f2ab50d995db82b8f836906de2e30"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/holidays/zipball/5fc21902560f2ab50d995db82b8f836906de2e30",
+                "reference": "5fc21902560f2ab50d995db82b8f836906de2e30",
+                "shasum": ""
+            },
+            "require": {
+                "ext-calendar": "*",
+                "nesbot/carbon": "^2.72",
+                "php": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.21.1",
+                "pestphp/pest": "^2.15",
+                "phpstan/phpstan": "^1.10",
+                "spatie/ray": "^1.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Holidays\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Niels Vanpachtenbeke",
+                    "email": "freek@spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Calculate public holidays",
+            "homepage": "https://github.com/spatie/holidays",
+            "keywords": [
+                "holidays",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/holidays/issues",
+                "source": "https://github.com/spatie/holidays/tree/0.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-01-15T10:55:39+00:00"
         },
         {
             "name": "spatie/ignition",
