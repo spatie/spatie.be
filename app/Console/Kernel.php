@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('model:prune', ['--model' => MonitoredScheduledTaskLogItem::class])->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
         $schedule->command(RevokeRepositoryAccessForExpiredLicensesCommand::class)->dailyAt('04:00');
-        $schedule->command(ImportDocsFromRepositoriesCommand::class)->graceTimeInMinutes(20)->runInBackground();
+        //$schedule->command(ImportDocsFromRepositoriesCommand::class)->graceTimeInMinutes(20)->runInBackground();
         $schedule->job(RandomizeAdsOnGitHubRepositoriesJob::class)->weekly();
         $schedule->command(UpdateConversionRatesCommand::class)->runInBackground()->sundays()->at('05:00');
         $schedule->command(UpdatePurchasablePricesCommand::class)->runInBackground()->sundays()->at('06:00');
