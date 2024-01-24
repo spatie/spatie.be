@@ -123,6 +123,25 @@ it('creates users that dont have an account yet', function () {
     Notification::assertSentTo($user, AccountHasBeenCreatedNotification::class);
 });
 
+it('handles a null payload for the emails', function () {
+    $purchasable = Purchasable::factory()->create([
+        'requires_license' => true,
+    ]);
+
+    $this->paddlePayloadAttributes['quantity'] = 1;
+    $this->paddlePayloadAttributes['passthrough'] = "{\"emails\":[null]}";
+    $this->payload = new PaddlePayload($this->paddlePayloadAttributes);
+
+    $purchase = $this->handlePurchaseAction->execute(
+        $this->user,
+        $purchasable,
+        $this->payload
+    );
+
+    expect($purchase->assignments)->toHaveCount(1);
+    expect($purchase->assignments->first()->user->is($this->user))->toBeTrue();
+});
+
 it('can create a purchase for multiple purchasables at once without assignments', function () {
     $purchasable = Purchasable::factory()->create([
         'requires_license' => true,
