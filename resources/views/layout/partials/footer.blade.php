@@ -41,8 +41,18 @@
                             </a>
                         </li>
                         <li>
+                            <a href="https://be.linkedin.com/company/spatie" rel="me" target="_blank" rel="nofollow noreferrer noopener">
+                                LinkedIn
+                            </a>
+                        </li>
+                        <li>
                             <a href="https://twitter.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
                                 Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://phpc.social/@spatie" rel="me" target="_blank" rel="nofollow noreferrer noopener">
+                                Mastodon
                             </a>
                         </li>
                         <li>
