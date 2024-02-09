@@ -40,6 +40,6 @@ jobs:
                 yarn build
 
             - name: Run tests
-              run: ./vendor/bin/pest --compact
+              run: ./vendor/bin/pest --parallel
               env:
                   DB_PASSWORD: root
