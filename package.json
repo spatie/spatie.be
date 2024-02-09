@@ -15,7 +15,7 @@
         "object-fit-images": "^2.5.9",
         "prettier": "^1.10.2",
         "tailwindcss": "^1.7",
-        "vite": "^2.9.13",
+        "vite": "^2.9.17",
         "vue-template-compiler": "^2.6.11"
     },
     "devDependencies": {
