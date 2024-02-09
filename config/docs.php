@@ -330,7 +330,8 @@ return [
             "name" => "laravel-data",
             "repository" => "spatie/laravel-data",
             "branches" => [
-                "main" => "v3",
+                "main" => "v4",
+                "v3" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
             ],
