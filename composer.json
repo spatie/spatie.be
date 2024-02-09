@@ -154,7 +154,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "scripts": {
-        "test": "./vendor/bin/pest",
+        "test": "./vendor/bin/pest --compact",
         "post-install-cmd": [
             "@php composer outdated --direct"
         ],
