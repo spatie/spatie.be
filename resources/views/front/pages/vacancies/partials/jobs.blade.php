@@ -1,6 +1,6 @@
 <section id="jobs">
     <div class="wrap wrap-6 | items-start">
-        <div class="sm:col-span-3 | line-l">
+        {{--<div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
                 Vacancies at Spatie
                 <span class="title-subtext text-pink-dark block">
@@ -8,7 +8,7 @@
                 </span>
             </h2>
             @include('front.pages.vacancies.partials.list')
-        </div>
+        </div>--}}
         <div class="sm:col-span-3 | line-l">
             <h2 class="title-sm">
                 Internships
