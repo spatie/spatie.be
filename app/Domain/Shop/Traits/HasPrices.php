@@ -2,6 +2,7 @@
 
 namespace App\Domain\Shop\Traits;
 
+use App\Domain\Shop\Exceptions\CouldNotFindCountry;
 use App\Domain\Shop\Models\Referrer;
 use App\Support\DisplayablePrice;
 use Carbon\Carbon;
@@ -19,6 +20,11 @@ trait HasPrices
     public function getPriceForIp(string $ip): DisplayablePrice
     {
         $countryCode = geoip($ip)->iso_code;
+
+        if ($countryCode === null) {
+            $countryCode = 'BE'; // @todo temp fix
+            //CouldNotFindCountry::fromIp();
+        }
 
         return $this->getPriceForCountryCode($countryCode);
     }
