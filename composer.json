@@ -11,7 +11,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "ext-json": "*",
         "abraham/twitteroauth": "^3.3",
         "aws/aws-sdk-php": "^3.240.6",
