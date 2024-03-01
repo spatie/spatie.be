@@ -12,7 +12,7 @@ class ViewServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        Blade::directive('svg', function ($expression) {
+        Blade::directive('app_svg', function ($expression) {
             return "<?php echo app_svg({$expression}); ?>";
         });
 
