@@ -21,6 +21,7 @@
         "coroowicaksono/chart-js-integration": "^0.4",
         "doctrine/dbal": "^3.5.1",
         "ebess/advanced-nova-media-library": "dev-master as 4.0.5",
+        "filament/filament": "^3.2",
         "geoip2/geoip2": "^2.13",
         "guzzlehttp/guzzle": "^7.5",
         "hammerstone/sidecar": "^0.4",
@@ -165,7 +166,8 @@
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
+            "@php artisan package:discover",
+            "@php artisan filament:upgrade"
         ],
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
