@@ -2,7 +2,7 @@
     <div class="wrap">
         <p class="mt-4 links-underline links-blue">
             <a href="{{ route('products.index')}}">Products</a>
-            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
             <span>{{ $bundle->title }}</span>
         </p>
     </div>
@@ -37,12 +37,15 @@
                 Sales are final and are not eligible for a refund.
                 <br/>
                 VAT will be calculated during checkout by
-                <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>.
+                <a class="underline" target="_blank"
+                   href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>.
             </div>
         </div>
     </div>
     <div class="col-span-9 sm:col-start-1 sm:col-span-4" style="bottom: -1rem">
-        <style>.illustration img { width: 100%; }</style>
+        <style>.illustration img {
+                width: 100%;
+            }</style>
         <div class="illustration is-left mb-12" title="Project">
             {{ $bundle->getFirstMedia('image') }}
         </div>

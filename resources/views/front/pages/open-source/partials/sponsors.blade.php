@@ -8,7 +8,7 @@
         <div class="mt-6 flex flex-col md:flex-row items-center justify-center gap-4">
             <a class="transition duration-300 transform hover:scale-105" href="https://laravel.com">
                 <div class="w-32 h-8">
-                    @svg('sponsors/laravel')
+                    @app_svg('sponsors/laravel')
                 </div>
             </a>
         </div>

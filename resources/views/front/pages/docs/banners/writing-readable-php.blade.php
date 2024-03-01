@@ -1,9 +1,10 @@
 <aside class="z-20 fixed flex bottom-0 w-full">
     <div class="mx-auto">
-        <div style="background-color: rgba(246,202,96)" class="flex flex-col items-end sm:flex-row sm:items-center justify-center rounded-t p-2 pr-6 shadow-light text-xs sm:text-sm">
+        <div style="background-color: rgba(246,202,96)"
+             class="flex flex-col items-end sm:flex-row sm:items-center justify-center rounded-t p-2 pr-6 shadow-light text-xs sm:text-sm">
             <div class="flex items-center">
                 <div class="mr-2 text-lg icon bg-white bg-opacity-25 text-black rounded-full w-8 flex items-center justify-center h-8">
-                    {{ svg('icons/far-graduation-cap') }}
+                    {{ app_svg('icons/far-graduation-cap') }}
                 </div>
                 <div>
                     <div>

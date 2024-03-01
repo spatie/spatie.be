@@ -10,8 +10,9 @@
                 {{ ucfirst($technology->name) }}
             </h3>
             <div class="text-sm">
-                <a class="link-underline link-blue" target="_blank" rel="nofollow noreferrer noopener" href="{{ $technology->website_url }}">{{ $technology->website_url }}</a></li>
-                <span class="icon fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+                <a class="link-underline link-blue" target="_blank" rel="nofollow noreferrer noopener"
+                   href="{{ $technology->website_url }}">{{ $technology->website_url }}</a></li>
+                <span class="icon fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
             </div>
         </div>
     </div>
@@ -25,10 +26,11 @@
         <!--<div class="mt-2 flex">
             <div class="flex -space-x-2">
                 @foreach($technology->recommended_by as $name)
-                    <x-avatar name="{{ $name }}" href=""/>
-                @endforeach
-            </div>
-            <span class="ml-2 text-xs text-gray">{{ count($technology->recommended_by) > 1 ? 'recommend' : 'recommends' }} this</span>
+            <x-avatar name="{{ $name }}" href=""/>
+
+        @endforeach
+        </div>
+        <span class="ml-2 text-xs text-gray">{{ count($technology->recommended_by) > 1 ? 'recommend' : 'recommends' }} this</span>
         </div>-->
     </div>
 </div>

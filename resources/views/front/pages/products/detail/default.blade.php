@@ -2,7 +2,7 @@
     <div class="wrap">
         <p class="mt-4 links-underline links-blue">
             <a href="{{ route('products.index')}}">Products</a>
-            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
             <span>{{ $product->title }}</span>
         </p>
     </div>
@@ -93,7 +93,7 @@
                 @elseif ($product->url)
                     <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->url }}">
                         <span
-                            class="icon fill-current text-pink-dark mr-2">{{ svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
+                                class="icon fill-current text-pink-dark mr-2">{{ app_svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
                     </a>
                 @endif
             </p>

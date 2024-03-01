@@ -9,7 +9,8 @@
                 Backend developer
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
+                <a
                         href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
                 {{-- <span class="ml-2 line-l"><a class="link-underline link-blue" href="/vacancies/backend-developer-nl">Nederlandse versie</a></span> --}}
             </p>
@@ -34,16 +35,19 @@
                         <div class="mt-16">
                             <h3 class="title">Personal growth is not an empty promise here</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Get €1500,- personal
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Get €1500,- personal
                                     budget every year for trainings &amp; conferences like Laracon EU and US, DDD
                                     Europe, PHP Benelux, PHPUKConference, DPC, PHPDay ...
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Become a real expert in
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Become a real
+                                    expert in
                                     Laravel and PHP — have a look at our <a href="#stack">technology stack</a></li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spend half a day each
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Spend half a day
+                                    each
                                     week on experimentation and open source work
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team with
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Be part of a team
+                                    with
                                     an excellent reputation in the Laravel community
                                 </li>
                             </ul>

@@ -2,7 +2,7 @@
     <div class="wrap">
         <p class="mt-4 links-underline links-blue">
             <a href="{{ route('products.index')}}">Products</a>
-            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
             <span>{{ $product->title }}</span>
         </p>
     </div>
@@ -22,11 +22,11 @@
 @if (auth()->check() && auth()->user()->ownsAny($product->purchasables))
     <div class="wrap flex w-full mb-20">
         <div
-            class="w-full bg-orange-dark text-white flex flex-col items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
+                class="w-full bg-orange-dark text-white flex flex-col items-end sm:flex-row sm:items-center justify-center rounded p-2 pr-6 shadow-light text-xs sm:text-sm">
             <div class="flex items-center">
                 <div
-                    class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
-                    {{ svg('icons/fal-exclamation-circle') }}
+                        class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
+                    {{ app_svg('icons/fal-exclamation-circle') }}
                 </div>
                 <div>
                     <div>
@@ -36,7 +36,7 @@
             </div>
             <a href="{{ route('purchases') }}">
                 <button
-                    class="mt-2 md:mt-0 ml-4 px-2 py-1 rounded text-orange-dark bg-white uppercase tracking-wide font-semibold">
+                        class="mt-2 md:mt-0 ml-4 px-2 py-1 rounded text-orange-dark bg-white uppercase tracking-wide font-semibold">
                     Purchases
                 </button>
             </a>
@@ -91,16 +91,18 @@
                 @elseif ($product->url)
                     <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->url }}">
                         <span
-                            class="icon fill-current text-pink-dark mr-2">{{ svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
+                                class="icon fill-current text-pink-dark mr-2">{{ app_svg('icons/far-angle-right') }}</span>{{ Str::after($product->url, 'https://') }}
                     </a>
                 @endif
             </p>
         </div>
         <div class="shadow-lg bg-white" title="Project">
             <div class="relative h-0" style="padding-bottom: 56%">
-            <iframe src="https://player.vimeo.com/video/683695801" width="640" height="360" class="absolute inset-0 h-full w-full"
-                    frameborder="0" allow="autoplay; fullscreen; picture-in-picture" frameborder="0" allowfullscreen></iframe>
-            </div> 
+                <iframe src="https://player.vimeo.com/video/683695801" width="640" height="360"
+                        class="absolute inset-0 h-full w-full"
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture" frameborder="0"
+                        allowfullscreen></iframe>
+            </div>
         </div>
     </div>
 </div>

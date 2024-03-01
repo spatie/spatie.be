@@ -2,9 +2,9 @@
     <div class="wrap">
         <p class="mt-4 links-underline links-blue">
             <a href="{{ route('products.index')}}">Products</a>
-            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
             <a href="{{ route('products.show', $product)}}">{{ $product->title }}</a>
-            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
             <span>Buy</span>
         </p>
     </div>
@@ -42,7 +42,8 @@
                 @endif
                 <br/>
                 VAT will be calculated during checkout by
-                <a class="underline" target="_blank" href="https://www.paddle.com/help/sell/tax/how-paddle-handles-vat-on-your-behalf">Paddle</a>.
+                <a class="underline" target="_blank"
+                   href="https://www.paddle.com/help/sell/tax/how-paddle-handles-vat-on-your-behalf">Paddle</a>.
             </div>
         </div>
     </div>
@@ -63,7 +64,7 @@
                 @elseif ($product->url)
                     <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->url }}">
                         <span class="icon fill-current text-pink-dark">
-                            {{ svg('icons/far-angle-right') }}
+                            {{ app_svg('icons/far-angle-right') }}
                         </span>
                         {{ Str::after($product->url, 'https://') }}
                     </a>

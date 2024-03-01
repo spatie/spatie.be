@@ -14,11 +14,11 @@
                         <div class="title-subtext text-gray flex items-center">
                             <span>
                             @if ($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
-                                {{ $series->lessons()->count() }}
-                                {{  \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
-                            @else 
-                                Course
-                            @endif
+                                    {{ $series->lessons()->count() }}
+                                    {{  \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
+                                @else
+                                    Course
+                                @endif
                             </span>
 
                             @if($series->isPurchasable())
@@ -26,9 +26,9 @@
                                       class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-green-lightest rounded-full">
                                     <span style="font-size: .6rem; top: -.1rem" class="icon text-green">
                                         @if ($series->isOwnedByCurrentUser())
-                                            {{ svg('icons/fas-lock-open-alt') }}
+                                            {{ app_svg('icons/fas-lock-open-alt') }}
                                         @else
-                                            {{ svg('icons/fas-lock-alt') }}
+                                            {{ app_svg('icons/fas-lock-alt') }}
                                         @endif
                                     </span>
                                 </span>
@@ -37,7 +37,7 @@
                                     <span title="Series has extra content for sponsors"
                                           class="ml-1 w-4 h-4 inline-flex items-center justify-center bg-pink-lightest rounded-full">
                                             <span style="font-size: .6rem" class="icon text-pink">
-                                                {{ svg('icons/fas-heart') }}
+                                                {{ app_svg('icons/fas-heart') }}
                                             </span>
                                         </span>
                                 @endif

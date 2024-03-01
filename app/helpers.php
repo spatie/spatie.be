@@ -9,7 +9,7 @@ use Illuminate\Support\HtmlString;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-function svg($filename): HtmlString
+function app_svg($filename): HtmlString
 {
     return new HtmlString(
         file_get_contents(resource_path("svg/{$filename}.svg"))
