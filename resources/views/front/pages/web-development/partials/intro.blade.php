@@ -19,7 +19,7 @@
                     <div class="illustration-svg">
                         <div class="rounded-full w-16 h-16 overflow-hidden mt-4 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:w-32 sm:h-32 ">
                             <div class="w-2/3" style="transform: translateX(3%) translateY(4%)">
-                                @app_svg('laravel')
+                                @svg('laravel')
                             </div>
                         </div>
                     </div>
@@ -39,14 +39,14 @@
                         <div class="illustration-svg">
                             <div class="rounded-full w-16 h-16 overflow-hidden mt-4 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:w-18 sm:h-18 ">
                                 <div class="w-2/3">
-                                    @app_svg('vue')
+                                    @svg('vue')
                                 </div>
                             </div>
                         </div>
                         <div class="illustration-svg">
                             <div class="rounded-full w-16 h-16 overflow-hidden mt-4 -ml-2 border-4 border-white shadow-lg bg-white flex items-center justify-center | sm:-mt-4 sm:ml-0 sm:w-18 sm:h-18 ">
                                 <div class="w-2/3">
-                                    @app_svg('react')
+                                    @svg('react')
                                 </div>
                             </div>
                         </div>

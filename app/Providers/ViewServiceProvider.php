@@ -13,7 +13,7 @@ class ViewServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::directive('svg', function ($expression) {
-            return "<?php echo svg({$expression}); ?>";
+            return "<?php echo app_svg({$expression}); ?>";
         });
 
         View::composer('front.pages.open-source.partials.insights', function ($view): void {
