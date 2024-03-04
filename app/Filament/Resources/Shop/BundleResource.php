@@ -2,6 +2,8 @@
 
 namespace App\Filament\Resources\Shop;
 
+use App\Domain\Shop\Models\Bundle;
+use App\Filament\Tables\Columns\BooleanColumn;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -11,7 +13,12 @@ class BundleResource extends Resource
 {
     protected static ?string $model = Bundle::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationGroup = 'Products';
+
+    protected static ?int $navigationSort = 4;
+
+    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+
 
     public static function form(Form $form): Form
     {
@@ -25,7 +32,11 @@ class BundleResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('paddle_id')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('price_in_usd_cents')->sortable(),
+                BooleanColumn::make('visible')->label('Visible on Front')->sortable(),
             ])
             ->filters([
                 //
