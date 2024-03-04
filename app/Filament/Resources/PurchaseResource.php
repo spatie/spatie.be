@@ -63,6 +63,11 @@ class PurchaseResource extends Resource
 
                     return '';
                 }),
+                TextColumn::make('assignments.user.email')
+                    ->listWithLineBreaks()
+                    ->bulleted(),
+                TextColumn::make('created_at')
+                    ->dateTime()
             ])
             ->filters([
                 //
