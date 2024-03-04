@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\PurchaseAssignmentResource\Pages;
+namespace App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages;
 
-use App\Filament\Resources\PurchaseAssignmentResource;
+use App\Filament\Resources\Customers\PurchaseAssignmentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

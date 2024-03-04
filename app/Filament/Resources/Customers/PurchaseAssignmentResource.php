@@ -1,17 +1,15 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Customers;
 
+use App\Filament\Resources\Customers;
 use App\Filament\Resources\PurchaseAssignmentResource\Pages;
 use App\Filament\Resources\PurchaseAssignmentResource\RelationManagers;
 use App\Models\PurchaseAssignment;
-use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PurchaseAssignmentResource extends Resource
 {
@@ -56,9 +54,9 @@ class PurchaseAssignmentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPurchaseAssignments::route('/'),
-            'create' => Pages\CreatePurchaseAssignment::route('/create'),
-            'edit' => Pages\EditPurchaseAssignment::route('/{record}/edit'),
+            'index' => Customers\PurchaseAssignmentResource\Pages\ListPurchaseAssignments::route('/'),
+            'create' => Customers\PurchaseAssignmentResource\Pages\CreatePurchaseAssignment::route('/create'),
+            'edit' => Customers\PurchaseAssignmentResource\Pages\EditPurchaseAssignment::route('/{record}/edit'),
         ];
     }
 }

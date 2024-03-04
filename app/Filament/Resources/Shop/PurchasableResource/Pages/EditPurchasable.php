@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\PurchasableResource\Pages;
+namespace App\Filament\Resources\Shop\PurchasableResource\Pages;
 
-use App\Filament\Resources\PurchasableResource;
+use App\Filament\Resources\Shop\PurchasableResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

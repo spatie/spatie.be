@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\BundleResource\Pages;
+namespace App\Filament\Resources\Shop\BundleResource\Pages;
 
-use App\Filament\Resources\BundleResource;
+use App\Filament\Resources\Shop\BundleResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

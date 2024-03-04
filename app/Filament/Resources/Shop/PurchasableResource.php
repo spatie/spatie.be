@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Purchasable;
 use App\Filament\Resources\PurchasableResource\Pages;
+use App\Filament\Resources\Shop;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -52,9 +53,9 @@ class PurchasableResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPurchasables::route('/'),
-            'create' => Pages\CreatePurchasable::route('/create'),
-            'edit' => Pages\EditPurchasable::route('/{record}/edit'),
+            'index' => Shop\PurchasableResource\Pages\ListPurchasables::route('/'),
+            'create' => Shop\PurchasableResource\Pages\CreatePurchasable::route('/create'),
+            'edit' => Shop\PurchasableResource\Pages\EditPurchasable::route('/{record}/edit'),
         ];
     }
 }

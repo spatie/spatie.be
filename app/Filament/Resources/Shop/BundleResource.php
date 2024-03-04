@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Shop;
 
 use App\Filament\Resources\BundleResource\Pages;
 use Filament\Forms\Form;
@@ -51,9 +51,9 @@ class BundleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBundles::route('/'),
-            'create' => Pages\CreateBundle::route('/create'),
-            'edit' => Pages\EditBundle::route('/{record}/edit'),
+            'index' => BundleResource\Pages\ListBundles::route('/'),
+            'create' => BundleResource\Pages\CreateBundle::route('/create'),
+            'edit' => BundleResource\Pages\EditBundle::route('/{record}/edit'),
         ];
     }
 }
