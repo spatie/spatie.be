@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Domain\Shop\Models\License;
-use App\Domain\Shop\Models\Purchase;
 use App\Filament\Resources\LicenseResource\Pages;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Form;
@@ -12,7 +11,6 @@ use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use function Clue\StreamFilter\fun;
 
 class LicenseResource extends Resource
 {
@@ -21,6 +19,8 @@ class LicenseResource extends Resource
     protected static ?string $model = License::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-key';
+
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
