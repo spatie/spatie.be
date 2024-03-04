@@ -10,6 +10,7 @@ use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -58,8 +59,13 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('avatar')
-                    ->searchable(),
+                ImageColumn::make('avatar')
+                    ->default(function (User $record) {
+                        $url = 'https://www.gravatar.com/avatar';
+                        $url .= '/' . md5(strtolower(trim($record->email)));
+                        return $url;
+                    }),
+
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
