@@ -19,7 +19,6 @@ class BundleResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
 
-
     public static function form(Form $form): Form
     {
         return $form

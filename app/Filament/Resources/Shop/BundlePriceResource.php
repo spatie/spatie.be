@@ -37,7 +37,7 @@ class BundlePriceResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 ResourceLinkColumn::make('bundle.title', fn (PurchasablePrice $record) => route('filament.admin.resources.shop.purchasables.edit', $record->purchasable)),
-                Tables\Columns\TextColumn::make('country')->state(fn(PurchasablePrice $record) => PaddleCountries::getNameForCode($record->country_code) . "($record->country_code)")->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('country')->state(fn (PurchasablePrice $record) => PaddleCountries::getNameForCode($record->country_code) . "($record->country_code)")->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('currency_code')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('price_in_usd_cents')->sortable(),
                 BooleanColumn::make('overridden')->sortable(),

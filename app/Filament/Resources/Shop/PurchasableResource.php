@@ -6,7 +6,6 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Filament\Resources\Shop;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
-use Faker\Provider\Text;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -36,7 +35,7 @@ class PurchasableResource extends Resource
             ->columns([
                 ResourceLinkColumn::make(
                     'product.title',
-                    fn(Purchasable $record) => route('filament.admin.resources.shop.products.edit', ['record' => $record->product]),
+                    fn (Purchasable $record) => route('filament.admin.resources.shop.products.edit', ['record' => $record->product]),
                 )->sortable(),
                 Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
                 BooleanColumn::make('released')->sortable(),
