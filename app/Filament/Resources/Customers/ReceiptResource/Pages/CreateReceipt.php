@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\ReceiptResource\Pages;
+namespace App\Filament\Resources\Customers\ReceiptResource\Pages;
 
-use App\Filament\Resources\ReceiptResource;
-use Filament\Actions;
+use App\Filament\Resources\Customers\ReceiptResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateReceipt extends CreateRecord

@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\PurchaseResource\Pages;
+namespace App\Filament\Resources\Customers\PurchaseResource\Pages;
 
-use App\Filament\Resources\PurchaseResource;
-use Filament\Actions;
+use App\Filament\Resources\Customers\PurchaseResource;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreatePurchase extends CreateRecord

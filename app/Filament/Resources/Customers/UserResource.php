@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Customers;
 
-use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\User;
 use Filament\Forms;
@@ -109,9 +108,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListUsers::route('/'),
-            'create' => Pages\CreateUser::route('/create'),
-            'edit' => Pages\EditUser::route('/{record}/edit'),
+            'index' => \App\Filament\Resources\Customers\UserResource\Pages\ListUsers::route('/'),
+            'create' => \App\Filament\Resources\Customers\UserResource\Pages\CreateUser::route('/create'),
+            'edit' => \App\Filament\Resources\Customers\UserResource\Pages\EditUser::route('/{record}/edit'),
         ];
     }
 }

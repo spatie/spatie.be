@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\License;
-use App\Filament\Resources\LicenseResource\Pages;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -69,9 +68,9 @@ class LicenseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListLicenses::route('/'),
-            'create' => Pages\CreateLicense::route('/create'),
-            'edit' => Pages\EditLicense::route('/{record}/edit'),
+            'index' => \App\Filament\Resources\Customers\LicenseResource\Pages\ListLicenses::route('/'),
+            'create' => \App\Filament\Resources\Customers\LicenseResource\Pages\CreateLicense::route('/create'),
+            'edit' => \App\Filament\Resources\Customers\LicenseResource\Pages\EditLicense::route('/{record}/edit'),
         ];
     }
 }

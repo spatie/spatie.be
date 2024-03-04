@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\ReceiptResource\Pages;
+namespace App\Filament\Resources\Customers\ReceiptResource\Pages;
 
-use App\Filament\Resources\ReceiptResource;
+use App\Filament\Resources\Customers\ReceiptResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 

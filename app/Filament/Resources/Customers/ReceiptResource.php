@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Customers;
 
-use App\Filament\Resources\ReceiptResource\Pages;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -60,9 +59,9 @@ class ReceiptResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListReceipts::route('/'),
-            'create' => Pages\CreateReceipt::route('/create'),
-            'edit' => Pages\EditReceipt::route('/{record}/edit'),
+            'index' => \App\Filament\Resources\Customers\ReceiptResource\Pages\ListReceipts::route('/'),
+            'create' => \App\Filament\Resources\Customers\ReceiptResource\Pages\CreateReceipt::route('/create'),
+            'edit' => \App\Filament\Resources\Customers\ReceiptResource\Pages\EditReceipt::route('/{record}/edit'),
         ];
     }
 }

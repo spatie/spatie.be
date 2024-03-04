@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Resources;
+namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\Purchase;
-use App\Filament\Resources\PurchaseResource\Pages;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -35,7 +34,7 @@ class PurchaseResource extends Resource
             ->columns([
                 TextColumn::make('id'),
                 ResourceLinkColumn::make('user.email',
-                    fn (Purchase $record) => route('filament.admin.resources.users.edit', $record->user)
+                    fn (Purchase $record) => route('filament.admin.resources.customers.users.edit', $record->user)
                 ),
                 ResourceLinkColumn::make('Bought')->state(function (Purchase $record) {
                     if ($record->purchasable) {
@@ -87,9 +86,9 @@ class PurchaseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPurchases::route('/'),
-            'create' => Pages\CreatePurchase::route('/create'),
-            'edit' => Pages\EditPurchase::route('/{record}/edit'),
+            'index' => \App\Filament\Resources\Customers\PurchaseResource\Pages\ListPurchases::route('/'),
+            'create' => \App\Filament\Resources\Customers\PurchaseResource\Pages\CreatePurchase::route('/create'),
+            'edit' => \App\Filament\Resources\Customers\PurchaseResource\Pages\EditPurchase::route('/{record}/edit'),
         ];
     }
 }
