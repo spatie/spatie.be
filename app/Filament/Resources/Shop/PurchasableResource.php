@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Purchasable;
-use App\Filament\Resources\PurchasableResource\Pages;
 use App\Filament\Resources\Shop;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

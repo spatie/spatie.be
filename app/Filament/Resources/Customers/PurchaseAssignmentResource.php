@@ -3,8 +3,6 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Filament\Resources\Customers;
-use App\Filament\Resources\PurchaseAssignmentResource\Pages;
-use App\Filament\Resources\PurchaseAssignmentResource\RelationManagers;
 use App\Models\PurchaseAssignment;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;

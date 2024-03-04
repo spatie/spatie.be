@@ -35,7 +35,8 @@ class LicenseResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable(),
                 ResourceLinkColumn::make(
-                    'assignment.user.email', fn (License $record) => route('filament.admin.resources.purchase-assignments.edit', $record->assignment)
+                    'assignment.user.email',
+                    fn (License $record) => route('filament.admin.resources.purchase-assignments.edit', $record->assignment)
                 )->searchable(),
                 TextColumn::make('key')
                     ->copyable()

@@ -33,7 +33,8 @@ class PurchaseResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id'),
-                ResourceLinkColumn::make('user.email',
+                ResourceLinkColumn::make(
+                    'user.email',
                     fn (Purchase $record) => route('filament.admin.resources.customers.users.edit', $record->user)
                 ),
                 ResourceLinkColumn::make('Bought')->state(function (Purchase $record) {
@@ -61,7 +62,7 @@ class PurchaseResource extends Resource
                     ->listWithLineBreaks()
                     ->bulleted(),
                 TextColumn::make('created_at')
-                    ->dateTime()
+                    ->dateTime(),
             ])
             ->filters([
                 //

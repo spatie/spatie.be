@@ -2,7 +2,6 @@
 
 namespace App\Filament\Tables\Columns;
 
-use App\Domain\Shop\Models\Purchase;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables\Columns\TextColumn;
 

@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Shop;
 
-use App\Filament\Resources\BundleResource\Pages;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
