@@ -2,8 +2,9 @@
 
 namespace App\Filament\Resources\Shop;
 
+use App\Domain\Shop\Models\BundlePrice;
 use App\Domain\Shop\Models\PurchasablePrice;
-use App\Filament\Resources\Shop\PurchasablePriceResource\Pages;
+use App\Filament\Resources\Shop\BundlePriceResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use App\Support\Paddle\PaddleCountries;
@@ -12,15 +13,15 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class PurchasablePriceResource extends Resource
+class BundlePriceResource extends Resource
 {
-    protected static ?string $model = PurchasablePrice::class;
+    protected static ?string $model = BundlePrice::class;
 
     protected static ?string $navigationGroup = 'Products';
 
-    protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 5;
 
-    protected static ?string $navigationIcon = 'heroicon-o-currency-yen';
+    protected static ?string $navigationIcon = 'heroicon-o-currency-rupee';
 
     public static function form(Form $form): Form
     {
@@ -35,7 +36,7 @@ class PurchasablePriceResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                ResourceLinkColumn::make('purchasable.title', fn (PurchasablePrice $record) => route('filament.admin.resources.shop.purchasables.edit', $record->purchasable)),
+                ResourceLinkColumn::make('bundle.title', fn (PurchasablePrice $record) => route('filament.admin.resources.shop.purchasables.edit', $record->purchasable)),
                 Tables\Columns\TextColumn::make('country')->state(fn(PurchasablePrice $record) => PaddleCountries::getNameForCode($record->country_code) . "($record->country_code)")->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('currency_code')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('price_in_usd_cents')->sortable(),
@@ -64,9 +65,9 @@ class PurchasablePriceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPurchasablePrices::route('/'),
-            'create' => Pages\CreatePurchasablePrice::route('/create'),
-            'edit' => Pages\EditPurchasablePrice::route('/{record}/edit'),
+            'index' => Pages\ListBundlePrices::route('/'),
+            'create' => Pages\CreateBundlePrice::route('/create'),
+            'edit' => Pages\EditBundlePrice::route('/{record}/edit'),
         ];
     }
 }
