@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
+use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -63,9 +64,10 @@ class UserResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
-                Tables\Columns\CheckboxColumn::make('is_sponsor'),
-                Tables\Columns\CheckboxColumn::make('is_admin'),
-                Tables\Columns\CheckboxColumn::make('has_access_to_unreleased_products'),
+
+                BooleanColumn::make('is_sponsor')->default(false),
+                BooleanColumn::make('is_admin'),
+                BooleanColumn::make('has_access_to_unreleased_products'),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
