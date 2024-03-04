@@ -68,7 +68,11 @@ class UserResource extends Resource
 
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('github_username')
                     ->searchable(),
 
                 BooleanColumn::make('is_sponsor')->default(false),
