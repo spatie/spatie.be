@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Cources\SeriesResource\Pages;
+namespace App\Filament\Resources\Courses\SeriesResource\Pages;
 
-use App\Filament\Resources\Cources\SeriesResource;
+use App\Filament\Resources\Courses\SeriesResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 

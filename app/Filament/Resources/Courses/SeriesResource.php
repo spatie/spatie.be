@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Cources;
+namespace App\Filament\Resources\Courses;
 
-use App\Filament\Resources\Cources\SeriesResource\Pages;
+use App\Filament\Resources\Courses\SeriesResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Series;
 use Filament\Forms\Form;
@@ -14,7 +14,7 @@ class SeriesResource extends Resource
 {
     protected static ?string $model = Series::class;
 
-    protected static ?string $navigationGroup = 'Cources';
+    protected static ?string $navigationGroup = 'Courses';
 
     protected static ?int $navigationSort = 2;
 

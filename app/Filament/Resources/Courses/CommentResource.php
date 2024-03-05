@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Cources;
+namespace App\Filament\Resources\Courses;
 
-use App\Filament\Resources\Cources\CommentResource\Pages;
+use App\Filament\Resources\Courses\CommentResource\Pages;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -13,7 +13,7 @@ class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
 
-    protected static ?string $navigationGroup = 'Cources';
+    protected static ?string $navigationGroup = 'Courses';
 
     protected static ?int $navigationSort = 3;
 

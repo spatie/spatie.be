@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Cources\CommentResource\Pages;
+namespace App\Filament\Resources\Courses\CommentResource\Pages;
 
-use App\Filament\Resources\Cources\CommentResource;
+use App\Filament\Resources\Courses\CommentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\CreateRecord;
 

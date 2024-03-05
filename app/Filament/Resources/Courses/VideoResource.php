@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Cources;
+namespace App\Filament\Resources\Courses;
 
-use App\Filament\Resources\Cources\VideoResource\Pages;
+use App\Filament\Resources\Courses\VideoResource\Pages;
 use App\Models\Video;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,7 +13,7 @@ class VideoResource extends Resource
 {
     protected static ?string $model = Video::class;
 
-    protected static ?string $navigationGroup = 'Cources';
+    protected static ?string $navigationGroup = 'Courses';
 
     protected static ?int $navigationSort = 1;
 

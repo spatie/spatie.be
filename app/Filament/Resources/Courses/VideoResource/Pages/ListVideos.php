@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Filament\Resources\Cources\VideoResource\Pages;
+namespace App\Filament\Resources\Courses\VideoResource\Pages;
 
-use App\Filament\Resources\Cources\VideoResource;
+use App\Filament\Resources\Courses\VideoResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
