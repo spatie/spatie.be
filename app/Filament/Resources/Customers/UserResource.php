@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Customers;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\User;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,33 +26,36 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('uuid')
-                    ->label('UUID')
-                    ->maxLength(36),
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('password')
-                    ->password()
-                    ->required()
-                    ->maxLength(60),
-                Forms\Components\TextInput::make('github_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('github_username')
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('is_sponsor'),
-                Forms\Components\TextInput::make('avatar')
-                    ->maxLength(255),
-                Forms\Components\Toggle::make('is_admin')
-                    ->required(),
-                Forms\Components\DateTimePicker::make('next_purchase_discount_period_ends_at'),
-                Forms\Components\DateTimePicker::make('sponsor_gift_given_at'),
-                Forms\Components\Toggle::make('has_access_to_unreleased_products')
-                    ->required(),
+                Grid::make(2)
+                    ->schema([
+                        Forms\Components\TextInput::make('uuid')
+                            ->label('UUID')
+                            ->maxLength(36)
+                            ->disabled(),
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255)
+                            ->columnStart(1),
+                        Forms\Components\TextInput::make('email')
+                            ->email()
+                            ->required()
+                            ->maxLength(255)
+                            ->columnStart(1),
+                        Forms\Components\TextInput::make('github_id')
+                            ->columnStart(1)
+                            ->numeric(),
+                        Forms\Components\TextInput::make('github_username')
+                            ->maxLength(255),
+                        Forms\Components\Toggle::make('is_sponsor')
+                            ->disabled()
+                            ->columnStart(1),
+                        Forms\Components\Toggle::make('is_admin')
+                            ->columnStart(1)
+                            ->required(),
+                        Forms\Components\Toggle::make('has_access_to_unreleased_products')
+                            ->columnStart(1)
+                            ->required(),
+                    ])
             ]);
     }
 
