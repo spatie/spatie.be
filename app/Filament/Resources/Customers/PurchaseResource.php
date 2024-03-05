@@ -53,7 +53,6 @@ class PurchaseResource extends Resource
                             ->disabled()
                             ->columnStart(1),
                     ])
-
             ]);
     }
 

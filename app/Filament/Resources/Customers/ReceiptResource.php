@@ -2,6 +2,9 @@
 
 namespace App\Filament\Resources\Customers;
 
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +26,26 @@ class ReceiptResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Grid::make(2)
+                    ->schema([
+                        TextInput::make('id')
+                            ->disabled(),
+                        Select::make('billable_id')
+                            ->relationship(name: 'billable')
+                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->email ?? '')
+                            ->searchable(['email'])
+                            ->columnStart(1),
+                        TextInput::make('receipt_url')
+                            ->columnStart(1),
+                        TextInput::make('amount')
+                            ->numeric()
+                            ->columnStart(1),
+                        TextInput::make('tax')
+                            ->numeric()
+                            ->columnStart(1),
+                        TextInput::make('currency')
+                            ->columnStart(1),
+                    ])
             ]);
     }
 
