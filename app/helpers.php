@@ -47,9 +47,15 @@ function is_office_open(): bool
 
 function gravatar_img(string $name): HtmlString
 {
-    $gravatarId = md5(strtolower(trim($name)));
+    $url = gravatar_url($name);
 
-    return new HtmlString('<img src="https://gravatar.com/avatar/' . $gravatarId . '?s=240">');
+    return new HtmlString('<img src="' . $url . '">');
+}
+
+function gravatar_url(string $name, int $size = 240): string
+{
+    $key = md5(strtolower(trim($name)));
+    return "https://gravatar.com/avatar/$key/?s=$size";
 }
 
 function faker(): Generator

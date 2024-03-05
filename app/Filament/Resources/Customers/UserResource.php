@@ -60,12 +60,7 @@ class UserResource extends Resource
         return $table
             ->columns([
                 ImageColumn::make('avatar')
-                    ->default(function (User $record) {
-                        $url = 'https://www.gravatar.com/avatar';
-                        $url .= '/' . md5(strtolower(trim($record->email)));
-
-                        return $url;
-                    }),
+                    ->default(fn (User $record) => gravatar_url($record->email)),
 
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
