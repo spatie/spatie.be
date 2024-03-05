@@ -4,6 +4,10 @@ namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\Purchase;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,6 +28,31 @@ class PurchaseResource extends Resource
     {
         return $form
             ->schema([
+                Grid::make(2)
+                    ->schema([
+                        TextInput::make('id')
+                            ->disabled(),
+                        Select::make('user_id')
+                            ->relationship(name: 'user')
+                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->email ?? '')
+                            ->searchable(['email'])
+                            ->columnStart(1),
+                        Select::make('purchasable_id')
+                            ->relationship(name: 'purchasable', titleAttribute: 'title')
+                            ->searchable(['title'])
+                            ->columnStart(1),
+                        Select::make('bundle_id')
+                            ->relationship(name: 'bundle', titleAttribute: 'title')
+                            ->searchable(['title']),
+                        Select::make('receipt_id')
+                            ->relationship(name: 'receipt', titleAttribute: 'id')
+                            ->searchable(['id']),
+                        TextInput::make('earnings')->columnStart(1),
+                        TextInput::make('paddle_fee'),
+                        DatePicker::make('created_at')
+                            ->disabled()
+                            ->columnStart(1),
+                    ])
 
             ]);
     }
@@ -49,11 +78,11 @@ class PurchaseResource extends Resource
                     return '-';
                 })->url(function (Purchase $record) {
                     if ($record->purchasable) {
-                        return route('filament.admin.resources.purchasables.edit', $record->purchasable);
+                        return route('filament.admin.resources.shop.purchasables.edit', $record->purchasable);
                     }
 
                     if ($record->bundle) {
-                        return route('filament.admin.resources.bundles.edit', $record->bundle);
+                        return route('filament.admin.resources.shop.bundles.edit', $record->bundle);
                     }
 
                     return '';
