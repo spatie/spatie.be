@@ -4,6 +4,9 @@ namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\License;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\IconPosition;
@@ -25,7 +28,20 @@ class LicenseResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Grid::make(2)
+                    ->schema([
+                        TextInput::make('id')
+                            ->disabled(),
+                        TextInput::make('key')
+                            ->columnStart(1),
+                        TextInput::make('domain')
+                            ->columnStart(1),
+                        TextInput::make('satis_authentication_count')
+                            ->columnStart(1)
+                            ->disabled(),
+                        DateTimePicker::make('expires_at')
+                            ->columnStart(1),
+                    ])
             ]);
     }
 
@@ -36,7 +52,7 @@ class LicenseResource extends Resource
                 TextColumn::make('id')->sortable(),
                 ResourceLinkColumn::make(
                     'assignment.user.email',
-                    fn (License $record) => route('filament.admin.resources.purchase-assignments.edit', $record->assignment)
+                    fn (License $record) => route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment)
                 )->searchable(),
                 TextColumn::make('key')
                     ->copyable()
