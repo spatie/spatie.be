@@ -30,10 +30,13 @@ class PlaylistResource extends Resource
                     ->columnStart(1)
                     ->disabled(),
                 TextInput::make('spotify_url')
+                    ->columnStart(1)
                     ->required(),
                 TextInput::make('apple_music_url')
+                    ->columnStart(1)
                     ->required(),
                 SpatieMediaLibraryFileUpload::make('image')
+                    ->columnStart(1)
                     ->maxFiles(1)
                     ->rules(['image'])
                     ->columnStart(1),
