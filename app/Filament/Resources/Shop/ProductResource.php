@@ -38,7 +38,7 @@ class ProductResource extends Resource
                         SpatieMediaLibraryFileUpload::make('product_image')
                             ->collection('product-image')
                             ->maxFiles(1)
-                            ->rules(['image', 'max:1024'])
+                            ->rules(['image'])
                             ->columnStart(1),
                         TextInput::make('title')
                             ->columnStart(1),
