@@ -6,6 +6,11 @@ use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Filament\Resources\Customers;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Forms\Components\Checkbox;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Grid;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -26,7 +31,38 @@ class PurchaseAssignmentResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Grid::make(2)
+                    ->schema([
+                        TextInput::make('id')
+                            ->disabled(),
+
+                        Select::make('user_id')
+                            ->relationship(name: 'user')
+                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->email ?? '')
+                            ->searchable(['email'])
+                            ->columnStart(1),
+
+                        Select::make('purchase_id')
+                            ->relationship(name: 'purchase')
+                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->id ?? '')
+                            ->searchable(['title'])
+                            ->columnStart(1),
+
+                        Select::make('purchasable_id')
+                            ->relationship(name: 'purchasable')
+                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->title ?? '')
+                            ->searchable(['title'])
+                            ->columnStart(1),
+
+                        Checkbox::make('has_repository_access')
+                            ->disabled()
+                            ->inline()
+                            ->columnStart(1),
+
+                        DateTimePicker::make('created_at')
+                            ->disabled()
+                            ->columnStart(1),
+                    ])
             ]);
     }
 
