@@ -7,6 +7,9 @@ use App\Filament\Resources\Shop\PurchasablePriceResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use App\Support\Paddle\PaddleCountries;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -26,7 +29,26 @@ class PurchasablePriceResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Select::make('purchasable_id')
+                    ->relationship(name: 'purchasable')
+                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->title . ' (' . $record->product->title . ')')
+                    ->columnStart(1),
+
+                TextInput::make('country_code')
+                    ->columnStart(1)
+                    ->disabled(),
+
+                TextInput::make('currency_code')
+                    ->columnStart(1)
+                    ->disabled(),
+
+                TextInput::make('amount')
+                    ->integer()
+                    ->required()
+                    ->columnStart(1),
+
+                Toggle::make('overridden')
+                    ->columnStart(1),
             ]);
     }
 
