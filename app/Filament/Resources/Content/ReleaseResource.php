@@ -2,10 +2,16 @@
 
 namespace App\Filament\Resources\Content;
 
+use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Release;
 use App\Filament\Resources\Content\ReleaseResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +31,23 @@ class ReleaseResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                Select::make('product_id')
+                    ->relationship(name: 'product')
+                    ->getOptionLabelFromRecordUsing(fn (Product $record) => $record->title)
+                    ->columnStart(1),
+                TextInput::make('version')
+                    ->columnStart(1)
+                    ->required(),
+                Toggle::make('released')
+                    ->columnStart(1),
+                DateTimePicker::make('released_at')
+                    ->columnStart(1)
+                    ->required(),
+                MarkdownEditor::make('notes')
+                    ->columnSpan(2),
             ]);
     }
 
