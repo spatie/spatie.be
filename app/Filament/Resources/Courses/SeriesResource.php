@@ -5,6 +5,10 @@ namespace App\Filament\Resources\Courses;
 use App\Filament\Resources\Courses\SeriesResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Series;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,7 +28,26 @@ class SeriesResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->collection('image')
+                    ->maxFiles(1)
+                    ->rules(['image'])
+                    ->columnStart(1),
+                TextInput::make('title')
+                    ->columnStart(1)
+                    ->disabled(),
+                TextInput::make('slug')
+                    ->columnStart(1)
+                    ->disabled(),
+                MarkdownEditor::make('description')
+                    ->columnSpan(2),
+                MarkdownEditor::make('introduction')
+                    ->columnSpan(2),
+                Toggle::make('visible')
+                    ->columnStart(1),
             ]);
     }
 
