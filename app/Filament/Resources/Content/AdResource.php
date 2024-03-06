@@ -5,6 +5,10 @@ namespace App\Filament\Resources\Content;
 use App\Filament\Resources\Content\AdResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Ad;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,7 +28,19 @@ class AdResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                FileUpload::make('image')
+                    ->columnStart(1),
+                TextInput::make('name')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('click_redirect_url')
+                    ->columnStart(1)
+                    ->required(),
+                Toggle::make('active')
+                    ->columnStart(1),
             ]);
     }
 

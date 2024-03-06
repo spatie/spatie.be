@@ -9,7 +9,6 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Spatie\Comments\Models\Comment;
-use function Clue\StreamFilter\fun;
 
 class CommentResource extends Resource
 {
