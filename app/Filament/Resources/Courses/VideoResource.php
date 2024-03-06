@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Courses;
 
 use App\Filament\Resources\Courses\VideoResource\Pages;
 use App\Models\Video;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +24,15 @@ class VideoResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->disabled()
+                    ->columnStart(1),
+                TextInput::make('title')
+                    ->required()
+                    ->columnStart(1),
+                TextInput::make('vimeo_id')
+                    ->required()
+                    ->columnStart(1),
             ]);
     }
 
