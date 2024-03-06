@@ -6,6 +6,9 @@ use App\Filament\Resources\Content\RepositoryResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use App\Models\Repository;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -25,7 +28,18 @@ class RepositoryResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                TextInput::make('name')
+                    ->columnStart(1)
+                    ->required(),
+                Select::make('ad_id')
+                    ->relationship(name: 'ad')
+                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->name)
+                    ->columnStart(1),
+                Toggle::make('ad_should_be_randomized')
+                    ->columnStart(1),
             ]);
     }
 
