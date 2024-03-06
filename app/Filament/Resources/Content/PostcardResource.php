@@ -4,6 +4,8 @@ namespace App\Filament\Resources\Content;
 
 use App\Filament\Resources\Content\PostcardResource\Pages;
 use App\Models\Postcard;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,7 +26,19 @@ class PostcardResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                TextInput::make('sender')
+                    ->required(),
+                TextInput::make('city')
+                    ->required(),
+                TextInput::make('country')
+                    ->required(),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->maxFiles(1)
+                    ->rules(['image'])
+                    ->columnStart(1),
             ]);
     }
 
