@@ -6,8 +6,10 @@ use App\Filament\Resources\Courses\CommentResource\Pages;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Table;
 use Spatie\Comments\Models\Comment;
+use function Clue\StreamFilter\fun;
 
 class CommentResource extends Resource
 {
@@ -32,14 +34,18 @@ class CommentResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('title')
+                    ->state(fn(Comment $record) => $record->topLevel()->commentable?->commentableName() ?? 'Deleted...'),
                 Tables\Columns\TextColumn::make('commentator.email')->searchable()->sortable(),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Action::make('show')
+                    ->icon('heroicon-o-eye')
+                    ->url(fn (Comment $record): string => $record->commentUrl())
+                    ->openUrlInNewTab()
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
