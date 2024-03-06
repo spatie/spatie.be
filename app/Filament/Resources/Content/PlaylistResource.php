@@ -3,7 +3,10 @@
 namespace App\Filament\Resources\Content;
 
 use App\Filament\Resources\Content\PlaylistResource\Pages;
-use App\Models\Playlist;use Filament\Forms\Form;
+use App\Models\Playlist;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
@@ -23,7 +26,17 @@ class PlaylistResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                TextInput::make('spotify_url')
+                    ->required(),
+                TextInput::make('apple_music_url')
+                    ->required(),
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->maxFiles(1)
+                    ->rules(['image'])
+                    ->columnStart(1),
             ]);
     }
 
