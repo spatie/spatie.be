@@ -3,7 +3,14 @@
 namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Bundle;
+use App\Domain\Shop\Models\Purchasable;
 use App\Filament\Tables\Columns\BooleanColumn;
+use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -23,7 +30,38 @@ class BundleResource extends Resource
     {
         return $form
             ->schema([
-                //
+                SpatieMediaLibraryFileUpload::make('image')
+                    ->collection('image')
+                    ->maxFiles(1)
+                    ->rules(['image'])
+                    ->columnStart(1),
+                TextInput::make('title')
+                    ->required()
+                    ->columnStart(1),
+                TextInput::make('slug')
+                    ->required()
+                    ->columnStart(1),
+                TextInput::make('paddle_product_id')
+                    ->required()
+                    ->columnStart(1),
+
+                MarkdownEditor::make('description')
+                    ->columnSpan(2),
+                MarkdownEditor::make('long_description')
+                    ->columnSpan(2),
+
+                TextInput::make('price_in_usd_cents')
+                    ->integer()
+                    ->required()
+                    ->columnStart(1),
+
+                Toggle::make('visible')
+                    ->columnStart(1),
+
+                Select::make('purchasables')
+                    ->columnStart(1)
+                    ->multiple()
+                    ->relationship('purchasables', 'title'),
             ]);
     }
 
