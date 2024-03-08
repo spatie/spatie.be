@@ -15,6 +15,7 @@ use App\Domain\Shop\Models\Referrer;
 use App\Observers\UserObserver;
 use App\Services\Mailcoach\MailcoachApi;
 use App\Support\Uuid\Uuid;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -30,7 +31,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
 
-class User extends Authenticatable implements CanComment
+class User extends Authenticatable implements CanComment, FilamentUser
 {
     use HasFactory;
     use HasApiTokens;
@@ -289,5 +290,10 @@ class User extends Authenticatable implements CanComment
     public function achievements(): HasMany
     {
         return $this->hasMany(UserAchievementProjection::class);
+    }
+
+    public function canAccessPanel($panel): bool
+    {
+        return $this->is_admin;
     }
 }
