@@ -200,7 +200,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
-			count: 1
+			count: 2
 			path: app/Nova/Metrics/PaymentMethods.php
 
 		-
@@ -210,7 +210,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
-			count: 1
+			count: 2
 			path: app/Nova/Metrics/PaymentMethodsLastMonth.php
 
 		-
