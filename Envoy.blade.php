@@ -141,7 +141,6 @@ php artisan config:cache
 php artisan event:cache
 #php artisan schedule-monitor:sync
 php artisan sidecar:deploy --activate
-php artisan filament:publish
 
 sudo service php8.3-fpm restart
 sudo supervisorctl restart all
