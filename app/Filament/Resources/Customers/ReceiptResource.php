@@ -45,7 +45,7 @@ class ReceiptResource extends Resource
                             ->columnStart(1),
                         TextInput::make('currency')
                             ->columnStart(1),
-                    ])
+                    ]),
             ]);
     }
 

@@ -56,7 +56,8 @@ class ReleaseResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                ResourceLinkColumn::make('product.title',
+                ResourceLinkColumn::make(
+                    'product.title',
                     fn (Release $record) => route('filament.admin.resources.shop.products.edit', ['record' => $record->product])
                 ),
                 Tables\Columns\TextColumn::make('version')->searchable()->sortable(),

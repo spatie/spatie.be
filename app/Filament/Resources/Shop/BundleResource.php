@@ -3,10 +3,8 @@
 namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Bundle;
-use App\Domain\Shop\Models\Purchasable;
 use App\Filament\Tables\Columns\BooleanColumn;
 use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;

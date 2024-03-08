@@ -62,7 +62,7 @@ class PurchaseAssignmentResource extends Resource
                         DateTimePicker::make('created_at')
                             ->disabled()
                             ->columnStart(1),
-                    ])
+                    ]),
             ]);
     }
 
@@ -71,10 +71,11 @@ class PurchaseAssignmentResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')->sortable(),
-                ResourceLinkColumn::make('purchase.id',
-                    fn(PurchaseAssignment $record) => route('filament.admin.resources.customers.purchases.edit', $record->purchase)
+                ResourceLinkColumn::make(
+                    'purchase.id',
+                    fn (PurchaseAssignment $record) => route('filament.admin.resources.customers.purchases.edit', $record->purchase)
                 )
-                    ->state(fn(PurchaseAssignment $record) => '#' . $record->purchase->id . ' on ' . $record->purchase->created_at)
+                    ->state(fn (PurchaseAssignment $record) => '#' . $record->purchase->id . ' on ' . $record->purchase->created_at)
                     ->sortable(),
                 TextColumn::make('purchasable.title')->sortable()->searchable(),
                 TextColumn::make('user.email')->sortable()->searchable(),

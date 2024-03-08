@@ -15,7 +15,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\Tabs\Tab;
-use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -126,7 +125,7 @@ class PurchasableResource extends Resource
                                     ->helperText('Not specifying this field will make the coupon active indefinitely'),
                             ]),
                     ]),
-                ])
+                ]),
             ]);
     }
 

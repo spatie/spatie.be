@@ -55,6 +55,7 @@ function gravatar_img(string $name): HtmlString
 function gravatar_url(string $name, int $size = 240): string
 {
     $key = md5(strtolower(trim($name)));
+
     return "https://gravatar.com/avatar/$key/?s=$size";
 }
 

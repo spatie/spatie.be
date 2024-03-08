@@ -34,7 +34,7 @@ class CommentResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('title')
-                    ->state(fn(Comment $record) => $record->topLevel()->commentable?->commentableName() ?? 'Deleted...'),
+                    ->state(fn (Comment $record) => $record->topLevel()->commentable?->commentableName() ?? 'Deleted...'),
                 Tables\Columns\TextColumn::make('commentator.email')->searchable()->sortable(),
             ])
             ->filters([
@@ -44,7 +44,7 @@ class CommentResource extends Resource
                 Action::make('show')
                     ->icon('heroicon-o-eye')
                     ->url(fn (Comment $record): string => $record->commentUrl())
-                    ->openUrlInNewTab()
+                    ->openUrlInNewTab(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

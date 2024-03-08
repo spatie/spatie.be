@@ -6,8 +6,6 @@ use App\Filament\Resources\Content\TechnologyResource\Pages;
 use App\Models\Enums\TechnologyType;
 use App\Models\Member;
 use App\Models\Technology;
-use Filament\Forms\Components\CheckboxList;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;

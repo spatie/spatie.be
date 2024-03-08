@@ -10,11 +10,9 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Components\ToggleButtons;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ProductResource extends Resource
@@ -59,7 +57,7 @@ class ProductResource extends Resource
                             ->columnStart(1),
                         Toggle::make('external')
                             ->columnStart(1),
-                    ])
+                    ]),
             ]);
     }
 

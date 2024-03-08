@@ -52,7 +52,9 @@ class RepositoryResource extends Resource
                 ResourceLinkColumn::make(
                     'ad.name',
                     function (Repository $record) {
-                        if (! $record->ad) return null;
+                        if (! $record->ad) {
+                            return null;
+                        }
 
                         return route('filament.admin.resources.content.ads.edit', ['record' => $record->ad]);
                     },

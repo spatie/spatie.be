@@ -4,7 +4,6 @@ namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\BundlePrice;
-use App\Domain\Shop\Models\PurchasablePrice;
 use App\Filament\Resources\Shop\BundlePriceResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;

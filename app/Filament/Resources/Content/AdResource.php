@@ -6,7 +6,6 @@ use App\Filament\Resources\Content\AdResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Ad;
 use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;

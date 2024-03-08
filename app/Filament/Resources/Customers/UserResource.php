@@ -55,7 +55,7 @@ class UserResource extends Resource
                         Forms\Components\Toggle::make('has_access_to_unreleased_products')
                             ->columnStart(1)
                             ->required(),
-                    ])
+                    ]),
             ]);
     }
 

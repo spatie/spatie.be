@@ -52,7 +52,7 @@ class PurchaseResource extends Resource
                         DatePicker::make('created_at')
                             ->disabled()
                             ->columnStart(1),
-                    ])
+                    ]),
             ]);
     }
 

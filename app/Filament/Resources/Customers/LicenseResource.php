@@ -41,7 +41,7 @@ class LicenseResource extends Resource
                             ->disabled(),
                         DateTimePicker::make('expires_at')
                             ->columnStart(1),
-                    ])
+                    ]),
             ]);
     }
 
