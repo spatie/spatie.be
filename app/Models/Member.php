@@ -12,7 +12,7 @@ class Member extends Model
     use HasFactory;
 
     protected $casts = [
-        'birthday' => 'immutable_datetime'.':nullable',
+        'birthday' => 'datetime:Y-m-d',
         'created_at' => 'immutable_datetime',
         'updated_at' => 'immutable_datetime',
     ];

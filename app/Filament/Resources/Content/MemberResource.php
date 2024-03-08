@@ -6,6 +6,11 @@ use App\Filament\Resources\Content\MemberResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Member;
 use App\Models\User;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\DateTimePicker;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -26,7 +31,44 @@ class MemberResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                TextInput::make('first_name')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('last_name')
+                    ->required(),
+                TextInput::make('preferred_name')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('role')
+                    ->columnStart(1)
+                    ->required(),
+                Textarea::make('description')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('email')
+                    ->email()
+                    ->columnStart(1)
+                    ->required(),
+                Toggle::make('public_email')
+                    ->required(),
+                DatePicker::make('birthday')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('twitter')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('github')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('website')
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('website_rss')
+                    ->columnStart(1)
+                    ->required(),
             ]);
     }
 
