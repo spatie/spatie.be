@@ -3,7 +3,15 @@
 namespace App\Filament\Resources\Content;
 
 use App\Filament\Resources\Content\TechnologyResource\Pages;
+use App\Models\Enums\TechnologyType;
+use App\Models\Member;
 use App\Models\Technology;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
+use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -24,7 +32,33 @@ class TechnologyResource extends Resource
     {
         return $form
             ->schema([
-                //
+                TextInput::make('id')
+                    ->columnStart(1)
+                    ->disabled(),
+                TextInput::make('name')
+                    ->columnStart(1)
+                    ->required(),
+                Textarea::make('description')
+                    ->columnStart(1)
+                    ->required(),
+                Select::make('type')
+                    ->options(TechnologyType::toLabels())
+                    ->columnStart(1)
+                    ->required(),
+                TextInput::make('website_url')
+                    ->columnStart(1)
+                    ->required(),
+                Select::make('recommended_by')
+                    ->options(Member::query()
+                        ->pluck('first_name')
+                        ->mapWithKeys(fn (string $name) => [strtolower($name) => strtolower($name)]))
+                    ->columnStart(1)
+                    ->multiple(),
+                SpatieMediaLibraryFileUpload::make('avatar')
+                    ->columnStart(1)
+                    ->maxFiles(1)
+                    ->rules(['image'])
+                    ->columnStart(1),
             ]);
     }
 

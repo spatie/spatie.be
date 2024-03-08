@@ -2,6 +2,7 @@
 
 namespace App\Models\Enums;
 
+use Livewire\Wireable;
 use Spatie\Enum\Laravel\Enum;
 
 /**
@@ -10,7 +11,7 @@ use Spatie\Enum\Laravel\Enum;
  * @method static self services()
  * @method static self apps()
  */
-class TechnologyType extends Enum
+class TechnologyType extends Enum implements Wireable
 {
     public static function toLabels(): array
     {
@@ -20,5 +21,15 @@ class TechnologyType extends Enum
             'services' => 'Services',
             'apps' => 'Desktop apps',
         ];
+    }
+
+    public function toLivewire()
+    {
+        return [$this->value];
+    }
+
+    public static function fromLivewire($value)
+    {
+        return new self($value[0]);
     }
 }
