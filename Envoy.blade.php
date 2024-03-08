@@ -85,6 +85,7 @@ yarn
 {{ logMessage("🌅  Generating assets...") }}
 cd {{ $newReleaseDir }}
 yarn build
+php artisan filament:assets
 @endtask
 
 @task('updateSymlinks', ['on' => 'remote'])
