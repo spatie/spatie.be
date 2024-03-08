@@ -141,8 +141,9 @@ php artisan config:cache
 php artisan event:cache
 #php artisan schedule-monitor:sync
 php artisan sidecar:deploy --activate
+php artisan filament:publish
 
-sudo service php8.1-fpm restart
+sudo service php8.3-fpm restart
 sudo supervisorctl restart all
 @endtask
 
@@ -168,7 +169,7 @@ php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
 php artisan event:cache
-sudo service php8.1-fpm restart
+sudo service php8.3-fpm restart
 #php artisan schedule-monitor:sync
 php artisan horizon:terminate
 sudo supervisorctl restart all
