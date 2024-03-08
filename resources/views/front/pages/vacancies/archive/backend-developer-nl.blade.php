@@ -12,7 +12,8 @@
                 Backend developer
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
+                <a
                         href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacature overzicht</a>
                 <span class="ml-2 line-l"><a class="link-underline link-blue" href="/vacancies/backend-developer">English version</a></span>
             </p>
@@ -33,13 +34,13 @@
                         <div class="mt-16">
                             <h3 class="title">Je werkt aan</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Web apps voor
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Web apps voor
                                     internationale namen als Krauthammer, Mutsy of Martin Garrix
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Publieke sites voor
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Publieke sites voor
                                     de Waaslandhaven, Gemeente Hemiksem of Vrijwilligerswerk Vlaanderen
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Propere websites
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Propere websites
                                     voor Wim Delvoye, META architecten of ArtAssistant
                                 </li>
                             </ul>
@@ -48,16 +49,16 @@
                         <div class="mt-16">
                             <h3 class="title">Het beste eerst</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Word pijlsnel een
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Word pijlsnel een
                                     krak in Laravel en PHP — bekijk onze <a href="#stack">technology stack</a></li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Krijg elk jaar
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Krijg elk jaar
                                     €1500,- persoonlijk budget voor opleiding &amp; conferenties als Laracon EU/US,
                                     DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Spendeer een halve
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Spendeer een halve
                                     dag per week aan experimenteren en open source werk
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Word deel van een
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Word deel van een
                                     team dat naam maakt binnen open source
                                 </li>
                             </ul>
@@ -75,23 +76,23 @@
                                 voldaan
                             </h2>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Een competitief
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Een competitief
                                     salarispakket
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                                     Hospitalisatieverzekering
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Maaltijdcheques
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Maaltijdcheques
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Ecocheques</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Vélo kaart voor
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Ecocheques</li>
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Vélo kaart voor
                                     deelfietsen in Antwerpen
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Laptop +
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Laptop +
                                     2<sup>de</sup> scherm, smartphone
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Internet thuis</li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Bose
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Internet thuis</li>
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Bose
                                     noise-cancelling hoofdtelefoons
                                 </li>
                             </ul>
@@ -106,20 +107,20 @@
                             <h3 class="title">Extra saus</h3>
 
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> De oprechte zin om
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> De oprechte zin om
                                     van elkaar te leren: code reviews, presentaties in huis en discussies op Slack
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Een vlakke
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Een vlakke
                                     bedrijfsstructuur waar je zelf het verschil maakt
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> <a
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> <a
                                             href="https://www.kiva.org" target="_blank"
                                             rel="nofollow noreferrer noopener">Kiva</a> budget voor micro-leningen
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Lekkere espresso
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Lekkere espresso
                                     &amp; vers fruit op kantoor
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Elke maand een
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Elke maand een
                                     italiaanse lunch met het team; wijn wordt geschonken uit een kippenkruik
                                 </li>
                             </ul>

@@ -3,12 +3,12 @@
         <div class="bg-purple text-white flex flex-col items-end sm:flex-row sm:items-center justify-center rounded-t p-2 pr-6 shadow-light text-xs sm:text-sm">
             <div class="flex items-center">
                 <div class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
-                    {{ svg('icons/fas-caret-square-right') }}
+                    {{ app_svg('icons/fas-caret-square-right') }}
                 </div>
                 <div>
                     <div>
-                        <span class="font-semibold">Flare</span> is an error tracker especially made for Laravel 
-                        
+                        <span class="font-semibold">Flare</span> is an error tracker especially made for Laravel
+
                     </div>
                 </div>
             </div>

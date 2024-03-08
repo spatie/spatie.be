@@ -1,19 +1,19 @@
 <div>
     @if($this->filterable)
         <div class="wrap flex justify-start mb-8">
-            
+
         </div>
         <div class="wrap">
             <div class="md:flex items-baseline justify-between mb-8">
                 <input
-                type="search"
-                class="form-input px-4"
-                placeholder="Search packages..."
-                wire:model.live="search"
+                        type="search"
+                        class="form-input px-4"
+                        placeholder="Search packages..."
+                        wire:model.live="search"
                 >
                 <div class="mt-6 md:mt-0 md:ml-6">
                     <label for="sort" class="text-gray mr-2">
-                            Sort
+                        Sort
                     </label>
                     <div class="select">
                         <select name="sort" wire:model.live="sort">
@@ -23,7 +23,7 @@
                             <option value="-repository_created_at">by date</option>
                         </select>
                         <span class="select-arrow">
-                        {{ svg('icons/far-angle-down') }}</span>
+                        {{ app_svg('icons/far-angle-down') }}</span>
                     </div>
                 </div>
             </div>
@@ -35,7 +35,8 @@
                 <div class="cells" style="grid-template-columns: 3fr 3fr 1fr">
                     <div class="cell-l">
                         <div>
-                            <a class="font-sans-bold link-underline link-blue" href="{{ $repository->url }}" target="_blank" rel="nofollow noreferrer noopener">
+                            <a class="font-sans-bold link-underline link-blue" href="{{ $repository->url }}"
+                               target="_blank" rel="nofollow noreferrer noopener">
                                 {{ $repository->name }}
                             </a>
                         </div>
@@ -49,14 +50,18 @@
                             @if($repository->downloads)
                                 <span>
                                     {{ number_format($repository->downloads, 0, '.', ' ') }}
-                                    <span class="icon fill-current text-gray" style="transform: translateY(-1px)">{{ svg('icons/fal-arrow-to-bottom') }}</span>
+                                    <span class="icon fill-current text-gray"
+                                          style="transform: translateY(-1px)">{{ app_svg('icons/fal-arrow-to-bottom') }}</span>
                                     <span class="char-separator">•</span>
                                 </span>
                             @endif
-                            {{ number_format($repository->stars, 0, '.', ' ') }} <span class="icon fill-current text-gray" style="transform: translateY(-2px)">{{ svg('icons/fal-star') }}</span>
+                            {{ number_format($repository->stars, 0, '.', ' ') }} <span
+                                    class="icon fill-current text-gray"
+                                    style="transform: translateY(-2px)">{{ app_svg('icons/fal-star') }}</span>
                             @if($repository->has_issues)
-                                <a href="{{ $repository->issues_url }}" target="_blank" rel="nofollow noreferrer noopener"
-                                    class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
+                                <a href="{{ $repository->issues_url }}" target="_blank"
+                                   rel="nofollow noreferrer noopener"
+                                   class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
                                     easy issues
                                 </a>
                             @endif
@@ -83,13 +88,14 @@
                     <div class="cell-r mt-4 flex flex-col justify-center | md:mt-0 md:grid-text-right">
                         @if($repository->blogpost_url)
                             <a href="{{ $repository->blogpost_url }}" target="_blank" rel="nofollow noreferrer noopener"
-                                class="link-underline link-gray text-xs">
+                               class="link-underline link-gray text-xs">
                                 Introduction
                             </a>
                         @endif
                         @if($repository->documentation_url)
-                            <a href="{{ $repository->documentation_url }}" target="_blank" rel="nofollow noreferrer noopener"
-                                class="link-underline link-gray text-xs">
+                            <a href="{{ $repository->documentation_url }}" target="_blank"
+                               rel="nofollow noreferrer noopener"
+                               class="link-underline link-gray text-xs">
                                 Documentation
                             </a>
                         @endif

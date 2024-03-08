@@ -8,7 +8,7 @@ class UserFactory extends Factory
 {
     public function definition(): array
     {
-        $name = $this->faker->firstName();
+        $name = $this->faker->unique()->firstName();
 
         return [
             'name' => ucfirst($name),

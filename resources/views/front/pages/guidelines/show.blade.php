@@ -8,7 +8,7 @@
         <div class="wrap">
             <p class="mt-4">
                 <a href="{{ route('guidelines')}}" class="link-underline link-blue">Guidelines</a>
-                <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
+                <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
                 <span>{{ $page->title }}</span>
             </p>
         </div>
@@ -18,13 +18,15 @@
         <div class="z-10 | print:hidden">
             <nav class="h-full md:px-4 py-6 md:bg-white md:bg-opacity-50 shadow-light rounded-sm">
                 <div class="flex items-center pb-4 border-b-2 border-gray-lighter">
-                    <a class="ml-auto flex items-center" href="https://github.com/spatie/spatie.be/edit/main/resources/views/front/pages/guidelines/pages/{{ $page->slug }}.md" rel="nofollow noreferer">
+                    <a class="ml-auto flex items-center"
+                       href="https://github.com/spatie/spatie.be/edit/main/resources/views/front/pages/guidelines/pages/{{ $page->slug }}.md"
+                       rel="nofollow noreferer">
                         <span class="text-xs link-gray link-underline">
                             Edit
                         </span>
                         <span class="ml-2 flex text-xs link-gray">
                             <span class="w-4 h-4">
-                                {{ svg('github') }}
+                                {{ app_svg('github') }}
                             </span>
                         </span>
                     </a>

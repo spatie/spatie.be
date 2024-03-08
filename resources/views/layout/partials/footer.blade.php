@@ -1,4 +1,5 @@
-<footer class="bg-gray-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none" style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;">
+<footer class="bg-gray-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none"
+        style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;">
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
         <div class="wrap links links-gray text-gray leading-loose | md:leading-normal">
             <div class="grid grid-cols-2 items-start text-sm | md:flex md:justify-between">
@@ -12,14 +13,16 @@
             <div class="grid gap-4 text-sm | sm:grid-cols-2 sm:gap-8 | md:flex flex-row-reverse justify-between">
                 <address class="grid gap-4 | sm:gap-0 | md:grid-flow-col md:gap-8 md:text-right">
                     <div>
-                        <a class="group flex items-end | md:flex-row-reverse" href="https://goo.gl/maps/A2zoLK3nVF9V8jydA" target="_blank" rel="nofollow noreferrer noopener">
+                        <a class="group flex items-end | md:flex-row-reverse"
+                           href="https://goo.gl/maps/A2zoLK3nVF9V8jydA" target="_blank"
+                           rel="nofollow noreferrer noopener">
                             <span>
                                 Kruikstraat 22, Box 12
                                 <br>
                                 2018 Antwerp, Belgium
                             </span>
                             <span class="icon mb-px px-1 fill-current text-gray-lighter group-hover:text-pink transition-all transition-100 | print:hidden">
-                                {{ svg('icons/fas-map-marker-alt') }}
+                                {{ app_svg('icons/fas-map-marker-alt') }}
                             </span>
                         </a>
                     </div>
@@ -30,36 +33,40 @@
                     </div>
                 </address>
                 <ul class="hidden | md:grid md:grid-flow-col md:gap-6 | print:hidden">
-                        <li>
-                            <a href="https://github.com/spatie" target="_blank" rel="nofollow noreferrer noopener">
-                                GitHub
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.instagram.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
-                                Instagram
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://be.linkedin.com/company/spatie" rel="me" target="_blank" rel="nofollow noreferrer noopener">
-                                LinkedIn
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://twitter.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
-                                Twitter
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://phpc.social/@spatie" rel="me" target="_blank" rel="nofollow noreferrer noopener">
-                                Mastodon
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.youtube.com/channel/UCoBbei3S9JLTcS2VeEOWDeQ" target="_blank" rel="nofollow noreferrer noopener">
-                                YouTube
-                            </a>
-                        </li>
+                    <li>
+                        <a href="https://github.com/spatie" target="_blank" rel="nofollow noreferrer noopener">
+                            GitHub
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/spatie_be" target="_blank"
+                           rel="nofollow noreferrer noopener">
+                            Instagram
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://be.linkedin.com/company/spatie" rel="me" target="_blank"
+                           rel="nofollow noreferrer noopener">
+                            LinkedIn
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://twitter.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
+                            Twitter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://phpc.social/@spatie" rel="me" target="_blank"
+                           rel="nofollow noreferrer noopener">
+                            Mastodon
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCoBbei3S9JLTcS2VeEOWDeQ" target="_blank"
+                           rel="nofollow noreferrer noopener">
+                            YouTube
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>

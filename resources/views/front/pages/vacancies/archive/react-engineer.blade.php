@@ -3,14 +3,14 @@
         title="React engineer vacancy"
         description="Vacancy for a react engineer. Location: Antwerp."
 >
-<script type="application/ld+json"> {
+    <script type="application/ld+json"> {
 	"@context": "http://schema.org",
 	"@type": "JobPosting",
 	"datePosted": "2022-02-27T00:00:00",
     "validThrough": "2023-02-27T00:00:00",
 	"description": "<p>
                         You're in love with the React + TypeScript combo.
-                    </p> 
+                    </p>
                     <ul>
                         <li>You know where JavaScript comes from.</li>
                         <li>You know Git. That's it.</li>
@@ -40,7 +40,8 @@
 			"addressCountry": "BE"
 		}
 	}
-} </script>
+}
+    </script>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
@@ -48,8 +49,10 @@
                 React Engineer
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
-                        href="{{ route('vacancies.index')}}" class="link-underline link-blue text-xl">Vacancies overview</a>
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
+                <a
+                        href="{{ route('vacancies.index')}}" class="link-underline link-blue text-xl">Vacancies
+                    overview</a>
             </p>
         </div>
     </section>
@@ -59,43 +62,45 @@
     <div class="section section-group pt-0 section-fade">
         <section id="intro" class="section">
             @include('front.pages.vacancies.partials.about')
-            
+
             <div class="wrap wrap-6">
                 <div class="mt-16 sm:col-span-4 markup links-underline links-blue">
                     @include('front.pages.vacancies.partials.clients', ['profile' => 'front'])
                 </div>
             </div>
-            
-            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front']) 
-                
+
+            @include('front.pages.vacancies.partials.stagnation-decline', ['profile' => 'front'])
+
             <div class="wrap wrap-6">
                 <div class="sm:col-span-4 mt-16 markup links-underline links-blue">
                     <h3 class="title">And you?</h3>
                     <ul class="bullets bullets-green">
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You love the React + TypeScript combo, and you know where JavaScript comes from.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You know Git. That's it.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
-                            You don't run away from Tailwind CSS or other technologies in our <a href="#stack">tech stack</a>.
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            You don't run away from Tailwind CSS or other technologies in our <a href="#stack">tech
+                                stack</a>.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You can work independently but aren't afraid to ask when you're stuck.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span> 
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You can speak Dutch and you love Italian food.
-                            </li>
+                        </li>
                     </ul>
-                    
+
                     <div class="mt-16 gradient gradient-blue p-8 rounded">
-                        More of a <strong>Frontend Designer</strong> type? Check our <a href="{{ route('vacancies.show', 'frontend-designer') }}">designer vacancy</a> as well.
+                        More of a <strong>Frontend Designer</strong> type? Check our <a
+                                href="{{ route('vacancies.show', 'frontend-designer') }}">designer vacancy</a> as well.
                     </div>
                 </div>
             </div>

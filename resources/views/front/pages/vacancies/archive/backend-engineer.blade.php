@@ -1,4 +1,5 @@
-<x-page background="/backgrounds/jobs.jpg" title="Backend engineer vacancy" description="Vacancy for a Backend engineer. Location: Antwerp.">
+<x-page background="/backgrounds/jobs.jpg" title="Backend engineer vacancy"
+        description="Vacancy for a Backend engineer. Location: Antwerp.">
     <script type="application/ld+json">
         {
             "@context": "http://schema.org"
@@ -48,7 +49,8 @@
                 Backend Engineer
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue text-xl">Vacancies overview</a>
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
+                <a href="{{ route('vacancies.index')}}" class="link-underline link-blue text-xl">Vacancies overview</a>
             </p>
         </div>
     </section>
@@ -63,19 +65,38 @@
                     <p>
                         We don't take on just any new project but only those where we all can learn something new.
                         We love to work with the latest and greatest.
-                        To get an idea of what we've got in store for you, here are a few examples of projects and tasks you might be involved with:</p>
+                        To get an idea of what we've got in store for you, here are a few examples of projects and tasks
+                        you might be involved with:</p>
                     <ul class="bullets bullets-green">
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Build an onboarding interface for a multi-tenant SaaS application that provisions fresh databases on the fly.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Model & implement an event-sourced subscription engine capable of handling multiple frequencies, proration, and processing thousands of renewals a month.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Aggregate APIs from a handful of services to a centralized database for real-time financial reporting.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Develop an algorithm to create bundles of time-sensitive products (hotel stays, flights, event tickets,…) ensuring times don't overlap and taking real-time capacity into account.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Maintain an API that receives hundreds of raw exception reports per minutes, process them into a human-readable format and dispatch notifications to multiple channels depending on user- and team-specific settings.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Continually engage in the open source community and provide support for our <a href="{{ route('open-source.packages') }}">100+ Laravel & PHP packages</a>.</li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Build an onboarding
+                            interface for a multi-tenant SaaS application that provisions fresh databases on the fly.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Model & implement an
+                            event-sourced subscription engine capable of handling multiple frequencies, proration, and
+                            processing thousands of renewals a month.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Aggregate APIs from a
+                            handful of services to a centralized database for real-time financial reporting.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Develop an algorithm to
+                            create bundles of time-sensitive products (hotel stays, flights, event tickets,…) ensuring
+                            times don't overlap and taking real-time capacity into account.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Maintain an API that
+                            receives hundreds of raw exception reports per minutes, process them into a human-readable
+                            format and dispatch notifications to multiple channels depending on user- and team-specific
+                            settings.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Continually engage in the
+                            open source community and provide support for our <a
+                                    href="{{ route('open-source.packages') }}">100+ Laravel & PHP packages</a>.
+                        </li>
                     </ul>
 
                     <p>
                         You'll have a say in what you'll be working on. No really, we áre listening.
-                        If you're curious to see how we work, these public <a href="https://spatie.be/guidelines">guidelines</a> could give you a first impression.
+                        If you're curious to see how we work, these public <a href="https://spatie.be/guidelines">guidelines</a>
+                        could give you a first impression.
                     </p>
                 </div>
             </div>
@@ -87,23 +108,23 @@
                     <h3 class="title">And you?</h3>
                     <ul class="bullets bullets-green">
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You love the PHP + Laravel combo.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You know Git. That's it.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You don't run away from technologies in our <a href="#stack">tech stack</a>.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You can work independently but aren't afraid to ask when you're stuck.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You can speak Dutch and you love Italian food.
                         </li>
                     </ul>
@@ -111,12 +132,12 @@
                     {{-- <div class="mt-16 gradient gradient-blue p-8 rounded">
                         More of a <strong>React/JS</strong> type? Check our <a href="{{ route('vacancies.show', 'react-engineer') }}">React vacancy</a> as well.
                 </div> --}}
+                </div>
             </div>
-    </div>
-    </section>
-    <section id="offer" class="section">
-        @include('front.pages.vacancies.partials.offer')
-    </section>
+        </section>
+        <section id="offer" class="section">
+            @include('front.pages.vacancies.partials.offer')
+        </section>
     </div>
 
     <div class="section section-group">

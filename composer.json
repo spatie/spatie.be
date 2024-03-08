@@ -11,7 +11,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "ext-json": "*",
         "abraham/twitteroauth": "^3.3",
         "aws/aws-sdk-php": "^3.240.6",
@@ -21,6 +21,8 @@
         "coroowicaksono/chart-js-integration": "^0.4",
         "doctrine/dbal": "^3.5.1",
         "ebess/advanced-nova-media-library": "dev-master as 4.0.5",
+        "filament/filament": "^3.2",
+        "filament/spatie-laravel-media-library-plugin": "^3.2",
         "geoip2/geoip2": "^2.13",
         "guzzlehttp/guzzle": "^7.5",
         "hammerstone/sidecar": "^0.4",
@@ -87,6 +89,7 @@
         "symfony/postmark-mailer": "^6.2",
         "symfony/process": "^6.2",
         "torann/geoip": "^3.0.4",
+        "wiebenieuwenhuis/filament-code-editor": "^1.0",
         "wire-elements/spotlight": "^2.0"
     },
     "require-dev": {
@@ -108,7 +111,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "8.1"
+            "php": "8.3"
         },
         "preferred-install": "dist",
         "sort-packages": true,
@@ -165,7 +168,8 @@
         ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover"
+            "@php artisan package:discover",
+            "@php artisan filament:upgrade"
         ],
         "post-root-package-install": [
             "php -r \"file_exists('.env') || copy('.env.example', '.env');\""

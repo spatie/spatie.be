@@ -9,7 +9,7 @@
         @if ($postcard->location)
             <div class="flex items-baseline text-gray my-2">
                 <span>{{ $postcard->location }}</span>
-                <span class="icon ml-1 flex-none fill-current text-gray-lighter">{{ svg('icons/fas-map-marker-alt') }}</span>
+                <span class="icon ml-1 flex-none fill-current text-gray-lighter">{{ app_svg('icons/fas-map-marker-alt') }}</span>
             </div>
         @endif
     </div>

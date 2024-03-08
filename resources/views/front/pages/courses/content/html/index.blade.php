@@ -16,7 +16,7 @@
 
                         @if($series->isOwnedByCurrentUser())
                             <div
-                                class="my-6 w-full overflow-hidden  py-8 | md:flex gap-8 justify-between links-blue links-underline text-xs">
+                                    class="my-6 w-full overflow-hidden  py-8 | md:flex gap-8 justify-between links-blue links-underline text-xs">
 
                                 <div>
                                     <span class="opacity-50">Up next</span>
@@ -35,14 +35,14 @@
                             <span class="truncate"><span class="font-semibold md:hidden">Next: </span>
                                 Continue</span>
                                     <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
-                                {{ svg('icons/far-angle-right') }}
+                                {{ app_svg('icons/far-angle-right') }}
                             </span>
                                 </a>
 
                             </div>
                         @endif
                     @endif
-                    <hr class="my-8 -ml-4 line-after " />
+                    <hr class="my-8 -ml-4 line-after "/>
                 </div>
             </div>
         </div>
