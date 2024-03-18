@@ -1,27 +1,29 @@
 <section id="portfolio" class="section">
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://mailcoach.app" class="illustration is-left h-full" title="Mailcoach Cloud" target="_blank"
-               rel="nofollow noreferrer noopener">
-                {{ image('portfolio/mailcoach-cloud.jpg') }}
+            <a href="https://mailcoach.app" class="illustration is-left h-full" title="Mailcoach Cloud" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/mailcoach.png') }}
             </a>
         </div>
         <div class="sm:col-span-3 sm:col-start-5 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
-                    Mailcoach Cloud
+                    Mailcoach
                     <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">The easy and affordable</span> Email Marketing Platform</span>
+                        <span class="font-normal">Powerful email marketing tools<br/>to effortlessly grow, connect and convert</span>
                     </span>
                 </h3>
+                <h4 class="text-lg font-semibold">Mailcoach</h4>
                 <p class="text-lg">
-                    Mailcoach is an email marketing platform that covers all your email needs
-                    for a fraction of the cost. Don't pay for your subscribers, pay for what you send.
+                    Mailcoach is a fully featured email marketing platform built for growing creators, developers, and businesses. Start a free 14-day trial, no credit card required.
+                </p>
+                <h4 class="text-lg font-semibold">Mailcoach Self-Hosted</h4>
+                <p class="text-lg">
+                    Email marketing you host yourself. Mailcoach Self-Hosted is a powerful email platform for email marketing, automations and transactional emails, seamlessly integrated into your Laravel application.
                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">mailcoach.app</a>
-                    </li>
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://mailcoach.app?ref=spatie" target="_blank" rel="nofollow noreferrer noopener">Mailcoach</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="/products/mailcoach">Mailcoach Self-Hosted</a></li>
                 </ul>
             </div>
         </div>
@@ -183,67 +185,6 @@
 
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://mailcoach.app" class="illustration is-left h-full" title="mailcoach.app" target="_blank"
-               rel="nofollow noreferrer noopener">
-                {{ image('portfolio/mailcoachv6.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-span-3 sm:col-start-5 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Self-host your email marketing platform
-                    <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">New features in</span> v6
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Mailcoach is privacy-focused, self-hosted dashboard to setup mailing lists, send out newsletters,
-                    drip campaigns, transactional mails and track the success.
-                <p>
-                <p class="text-lg">
-                    It can be used as a separate app or integrated in your own Laravel application, has an API and
-                    couples with Amazon SES, Mailgun, Postmark, Sendgrid or your own SMTP server.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://mailcoach.app" target="_blank" rel="nofollow noreferrer noopener">mailcoach.app</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
-        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://medialibrary.pro" class="illustration is-left h-full" title="Media Library Pro"
-               target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/media-library-pro.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Media Library Pro
-                    <span class="title-subtext text-pink-dark block">
-                        UI components
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    We made components for React, Vue 2 / 3, as well as Livewire powered Blade components for one of our
-                    most well-known packages: <a href="https://github.com/spatie/laravel-medialibrary">laravel-medialibrary</a>.
-                    <br>All integrated seamlessly and playing nicely with your Laravel Media Models.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://medialibrary.pro" target="_blank" rel="nofollow noreferrer noopener">medialibrary.pro</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 section">
-        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://laravel-beyond-crud.com" class="illustration is-left h-full" title="Laravel Beyond CRUD"
                target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/crud.jpg') }}
@@ -330,6 +271,31 @@
                         <span class="ml-1"><a href="https://front-line-php.com" target="_blank"
                                               rel="nofollow noreferrer noopener">front-line-php.com</a></span>
                     </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
+        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
+            <a href="https://medialibrary.pro" class="illustration is-left h-full" title="Media Library Pro" target="_blank" rel="nofollow noreferrer noopener">
+                {{ image('portfolio/media-library-pro.jpg') }}
+            </a>
+        </div>
+        <div class="sm:col-start-2 sm:col-span-3 | self-center">
+            <div class="markup links-blue links-underline">
+                <h3 class="title">
+                    Media Library Pro
+                    <span class="title-subtext text-pink-dark block">
+                        UI components
+                    </span>
+                </h3>
+                <p class="text-lg">
+                    We made components for React, Vue 2 / 3, as well as Livewire powered Blade components for one of our most well-known packages: <a href="https://github.com/spatie/laravel-medialibrary">laravel-medialibrary</a>.
+                    <br>All integrated seamlessly and playing nicely with your Laravel Media Models.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://medialibrary.pro" target="_blank" rel="nofollow noreferrer noopener">medialibrary.pro</a></li>
                 </ul>
             </div>
         </div>
