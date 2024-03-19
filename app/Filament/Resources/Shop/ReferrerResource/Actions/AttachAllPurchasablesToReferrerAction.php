@@ -19,5 +19,4 @@ class AttachAllPurchasablesToReferrerAction
                 $record->purchasables()->sync($purchasables);
             });
     }
-
 }

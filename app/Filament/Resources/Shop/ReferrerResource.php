@@ -5,8 +5,6 @@ namespace App\Filament\Resources\Shop;
 use App\Domain\Shop\Models\Referrer;
 use App\Filament\Resources\Shop\ReferrerResource\Actions\AttachAllPurchasablesToReferrerAction;
 use App\Filament\Resources\Shop\ReferrerResource\Pages;
-use App\Filament\Resources\Shop\ReferrerResource\RelationManagers;
-use Filament\Actions\Action;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
