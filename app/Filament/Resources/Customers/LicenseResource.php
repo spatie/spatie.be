@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\Customers;
 
-use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Domain\Shop\Models\License;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DateTimePicker;
@@ -15,7 +14,6 @@ use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 
 class LicenseResource extends Resource
@@ -74,7 +72,8 @@ class LicenseResource extends Resource
                     ->button()
                     ->requiresConfirmation()
                     ->icon('heroicon-o-arrow-down-tray')
-                    ->action(fn(License $record) =>
+                    ->action(
+                        fn (License $record) =>
                         $record->update(['key' => Str::random(64)])
                     ),
                 Tables\Actions\EditAction::make(),

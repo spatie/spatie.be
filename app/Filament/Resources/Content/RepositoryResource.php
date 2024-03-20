@@ -79,9 +79,10 @@ class RepositoryResource extends Resource
                     ->button()
                     ->requiresConfirmation()
                     ->icon('heroicon-o-arrow-down-tray')
-                    ->action(fn() => dispatch(fn () =>
+                    ->action(fn () => dispatch(
+                        fn () =>
                         Artisan::call(ImportGitHubRepositoriesCommand::class)
-                    ))
+                    )),
             ]);
     }
 

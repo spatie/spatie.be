@@ -2,20 +2,17 @@
 
 namespace App\Filament\Resources\Customers;
 
-use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseAssignmentAction;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
-use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
-use Laravel\Nova\Actions\Action;
 
 class UserResource extends Resource
 {
@@ -96,7 +93,7 @@ class UserResource extends Resource
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
                     TransferPurchaseAssignmentAction::make(),
-                ])
+                ]),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
