@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\Purchase;
+use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
@@ -65,27 +66,7 @@ class PurchaseResource extends Resource
                     'user.email',
                     fn (Purchase $record) => route('filament.admin.resources.customers.users.edit', $record->user)
                 ),
-                ResourceLinkColumn::make('Bought')->state(function (Purchase $record) {
-                    if ($record->purchasable) {
-                        return $record->purchasable->title;
-                    }
-
-                    if ($record->bundle) {
-                        return $record->bundle->title;
-                    }
-
-                    return '-';
-                })->url(function (Purchase $record) {
-                    if ($record->purchasable) {
-                        return route('filament.admin.resources.shop.purchasables.edit', $record->purchasable);
-                    }
-
-                    if ($record->bundle) {
-                        return route('filament.admin.resources.shop.bundles.edit', $record->bundle);
-                    }
-
-                    return '';
-                }),
+                BoughtColumn::make(),
                 TextColumn::make('assignments.user.email')
                     ->listWithLineBreaks()
                     ->bulleted(),
