@@ -13,6 +13,7 @@ class TransferPurchaseAssignmentAction
     public static function make()
     {
         return Action::make('transfer_purchase_assignments')
+            ->icon('heroicon-o-arrows-right-left')
             ->form([
                 TextInput::make('email')
                     ->label('Email')
