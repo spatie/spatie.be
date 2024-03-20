@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseAssignmentAction;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\User;
 use Filament\Forms;
@@ -92,32 +93,7 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
-                Tables\Actions\Action::make('transfer_purchase_assignments')
-                    ->form([
-                        Forms\Components\TextInput::make('email')
-                            ->label('Email')
-                            ->required()
-                            ->email(),
-                    ])
-                    ->action(function (array $data, User $record): void {
-                        $otherUser = User::where('email', $data['email'])->first();
-
-                        if (! $otherUser) {
-                            Notification::make()
-                                ->title("No user found with email {$data['email']}")
-                                ->danger()
-                                ->send();
-                        }
-
-                        $record->assignments->each(function (PurchaseAssignment $assignment) use ($otherUser) {
-                            $assignment->update(['user_id' => $otherUser->id]);
-                        });
-
-                        Notification::make()
-                            ->title("All purchase assignments transferred to {$otherUser->name} ({$otherUser->email})!")
-                            ->success()
-                            ->send();
-                    }),
+                TransferPurchaseAssignmentAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
