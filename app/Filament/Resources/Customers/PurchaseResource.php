@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\Purchase;
+use App\Filament\Resources\Customers\PurchaseResource\Actions\TransferPurchaseAction;
 use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DatePicker;
@@ -78,6 +79,7 @@ class PurchaseResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                TransferPurchaseAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
