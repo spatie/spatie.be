@@ -69,6 +69,7 @@ class PurchaseResource extends Resource
                 ),
                 BoughtColumn::make(),
                 TextColumn::make('assignments.user.email')
+                    ->label('Assignments')
                     ->listWithLineBreaks()
                     ->bulleted(),
                 TextColumn::make('created_at')
