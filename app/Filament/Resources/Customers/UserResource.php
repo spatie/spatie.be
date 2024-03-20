@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseAssignmentAction;
+use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseToUserAction;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\User;
 use Filament\Forms;
@@ -93,6 +94,7 @@ class UserResource extends Resource
                 ActionGroup::make([
                     Tables\Actions\EditAction::make(),
                     TransferPurchaseAssignmentAction::make(),
+                    TransferPurchaseToUserAction::make(),
                 ]),
             ])
             ->bulkActions([
