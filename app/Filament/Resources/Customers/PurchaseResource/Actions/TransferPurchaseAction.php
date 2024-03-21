@@ -26,7 +26,7 @@ class TransferPurchaseAction
 
                 if (! $otherUser) {
                     Notification::make()
-                        ->title("No user found with email {$fields->get('email')}")
+                        ->title("No user found with email {$data['email']}")
                         ->danger()
                         ->send();
                 }
