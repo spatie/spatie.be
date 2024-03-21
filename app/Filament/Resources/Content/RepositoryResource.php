@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Content;
 
+use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Filament\Resources\Content\RepositoryResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
@@ -13,6 +14,8 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Artisan;
+use Spatie\Ssh\Ssh;
 
 class RepositoryResource extends Resource
 {
@@ -71,6 +74,26 @@ class RepositoryResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
+            ])
+            ->headerActions([
+                Tables\Actions\Action::make('Import docs')
+                    ->button()
+                    ->requiresConfirmation()
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->action(fn () => dispatch(
+                        fn () =>
+                        Artisan::call(ImportGitHubRepositoriesCommand::class)
+                    )),
+                Tables\Actions\Action::make('Update Satis')
+                    ->button()
+                    ->requiresConfirmation()
+                    ->icon('heroicon-o-arrow-path')
+                    ->action(fn () => dispatch(function () {
+                        Ssh::create('forge', 'satis.spatie.be')->execute([
+                            'cd satis.spatie.be',
+                            './bin/satis build',
+                        ]);
+                    })),
             ]);
     }
 

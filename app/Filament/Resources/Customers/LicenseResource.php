@@ -11,8 +11,10 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
 class LicenseResource extends Resource
 {
@@ -66,6 +68,14 @@ class LicenseResource extends Resource
                 //
             ])
             ->actions([
+                Action::make('regenerate')
+                    ->button()
+                    ->requiresConfirmation()
+                    ->icon('heroicon-o-arrow-down-tray')
+                    ->action(
+                        fn (License $record) =>
+                        $record->update(['key' => Str::random(64)])
+                    ),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([

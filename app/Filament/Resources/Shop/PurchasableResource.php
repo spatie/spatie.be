@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Shop;
 use App\Domain\Shop\Enums\PurchasableType;
 use App\Domain\Shop\Models\Purchasable;
 use App\Filament\Resources\Shop;
+use App\Filament\Resources\Shop\PurchasableResource\Actions\UpdatePriceForCurrencyAction;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DateTimePicker;
@@ -147,6 +148,7 @@ class PurchasableResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                UpdatePriceForCurrencyAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
