@@ -23,6 +23,7 @@
         "ebess/advanced-nova-media-library": "dev-master as 4.0.5",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
+        "flowframe/laravel-trend": "^0.2.0",
         "geoip2/geoip2": "^2.13",
         "guzzlehttp/guzzle": "^7.5",
         "hammerstone/sidecar": "^0.4",
