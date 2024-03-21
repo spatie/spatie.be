@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Bundle;
+use App\Filament\Resources\Shop\BundleResource\Actions\UpdateBundlePriceForCurrencyAction;
 use App\Filament\Tables\Columns\BooleanColumn;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
@@ -78,6 +79,7 @@ class BundleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                UpdateBundlePriceForCurrencyAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
