@@ -21,7 +21,7 @@ class UpdatePriceForCurrencyAction
                     ->required()
                     ->integer(),
                 Select::make('currency_code')
-                    ->options(PurchasablePrice::pluck('currency_code', 'currency_code')->unique()->sort())
+                    ->options(PurchasablePrice::pluck('currency_code', 'currency_code')->unique()->sort()),
             ])
             ->action(function (array $data, Purchasable $record): void {
                 if (! isset($data['currency_code'])) {
@@ -29,6 +29,7 @@ class UpdatePriceForCurrencyAction
                         ->title('Currency code is required')
                         ->danger()
                         ->send();
+
                     return;
                 }
 
@@ -37,6 +38,7 @@ class UpdatePriceForCurrencyAction
                         ->title('You should define the USD price on the purchasable itself')
                         ->danger()
                         ->send();
+
                     return;
                 }
 
@@ -45,6 +47,7 @@ class UpdatePriceForCurrencyAction
                         ->title('You should define the USD price on the purchasable itself')
                         ->danger()
                         ->send();
+
                     return;
                 }
 
@@ -53,6 +56,7 @@ class UpdatePriceForCurrencyAction
                         ->title("No bundle price found for currency code {$data['currency_code']}")
                         ->danger()
                         ->send();
+
                     return;
                 }
 

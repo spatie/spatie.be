@@ -21,7 +21,7 @@ class UpdateBundlePriceForCurrencyAction
                     ->required()
                     ->integer(),
                 Select::make('currency_code')
-                    ->options(BundlePrice::pluck('currency_code', 'currency_code')->unique()->sort())
+                    ->options(BundlePrice::pluck('currency_code', 'currency_code')->unique()->sort()),
             ])
             ->action(function (array $data, Bundle $record): void {
                 if ($data['currency_code'] === 'USD') {
@@ -29,6 +29,7 @@ class UpdateBundlePriceForCurrencyAction
                         ->title('You should define the USD price on the purchasable itself')
                         ->danger()
                         ->send();
+
                     return;
                 }
 
@@ -37,6 +38,7 @@ class UpdateBundlePriceForCurrencyAction
                         ->title("No bundle price found for currency code {$data['currency_code']}")
                         ->danger()
                         ->send();
+
                     return;
                 }
 
@@ -52,6 +54,6 @@ class UpdateBundlePriceForCurrencyAction
                     ->title('Price updated!')
                     ->success()
                     ->send();
-        });
+            });
     }
 }
