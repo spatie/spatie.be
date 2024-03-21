@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Filament\Resources\Shop\BundleResource\Actions;
+namespace App\Filament\Resources\Shop\PurchasableResource\Actions;
 
-use App\Domain\Shop\Models\Bundle;
-use App\Domain\Shop\Models\BundlePrice;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\PurchasablePrice;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 use Filament\Tables\Actions\Action;
 
-class UpdateBundlePriceForCurrencyAction
+class UpdatePriceForCurrencyAction
 {
     public static function make()
     {
@@ -21,9 +21,17 @@ class UpdateBundlePriceForCurrencyAction
                     ->required()
                     ->integer(),
                 Select::make('currency_code')
-                    ->options(BundlePrice::pluck('currency_code', 'currency_code')->unique()->sort())
+                    ->options(PurchasablePrice::pluck('currency_code', 'currency_code')->unique()->sort())
             ])
-            ->action(function (array $data, Bundle $record): void {
+            ->action(function (array $data, Purchasable $record): void {
+                if (! isset($data['currency_code'])) {
+                    Notification::make()
+                        ->title('Currency code is required')
+                        ->danger()
+                        ->send();
+                    return;
+                }
+
                 if ($data['currency_code'] === 'USD') {
                     Notification::make()
                         ->title('You should define the USD price on the purchasable itself')
@@ -32,7 +40,15 @@ class UpdateBundlePriceForCurrencyAction
                     return;
                 }
 
-                if (! BundlePrice::where('currency_code', $data['currency_code'])->exists()) {
+                if (! $data['amount_in_cents']) {
+                    Notification::make()
+                        ->title('You should define the USD price on the purchasable itself')
+                        ->danger()
+                        ->send();
+                    return;
+                }
+
+                if (! PurchasablePrice::where('currency_code', $data['currency_code'])->exists()) {
                     Notification::make()
                         ->title("No bundle price found for currency code {$data['currency_code']}")
                         ->danger()
@@ -52,6 +68,6 @@ class UpdateBundlePriceForCurrencyAction
                     ->title('Price updated!')
                     ->success()
                     ->send();
-        });
+            });
     }
 }
