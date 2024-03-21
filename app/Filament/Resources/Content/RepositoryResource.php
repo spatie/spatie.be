@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Artisan;
+use Spatie\Ssh\Ssh;
 
 class RepositoryResource extends Resource
 {
@@ -83,6 +84,16 @@ class RepositoryResource extends Resource
                         fn () =>
                         Artisan::call(ImportGitHubRepositoriesCommand::class)
                     )),
+                Tables\Actions\Action::make('Update Satis')
+                    ->button()
+                    ->requiresConfirmation()
+                    ->icon('heroicon-o-arrow-path')
+                    ->action(fn () => dispatch(function () {
+                        Ssh::create('forge', 'satis.spatie.be')->execute([
+                            'cd satis.spatie.be',
+                            './bin/satis build',
+                        ]);
+                    })),
             ]);
     }
 
