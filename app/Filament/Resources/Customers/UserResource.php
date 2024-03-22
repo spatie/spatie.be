@@ -4,6 +4,9 @@ namespace App\Filament\Resources\Customers;
 
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseAssignmentAction;
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseToUserAction;
+use App\Filament\Resources\Customers\UserResource\RelationManagers\AssignmentsRelationManager;
+use App\Filament\Resources\Customers\UserResource\RelationManagers\LicensesRelationManager;
+use App\Filament\Resources\Customers\UserResource\RelationManagers\PurchasesRelationManager;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\User;
 use Filament\Forms;
@@ -73,6 +76,7 @@ class UserResource extends Resource
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('email')
+                    ->copyable()
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('github_username')
@@ -107,7 +111,9 @@ class UserResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+            PurchasesRelationManager::class,
+            AssignmentsRelationManager::class,
+            LicensesRelationManager::class,
         ];
     }
 
