@@ -58,6 +58,7 @@ class LicenseResource extends Resource
                 )->searchable(),
                 TextColumn::make('key')
                     ->copyable()
+                    ->limit(10)
                     ->icon('heroicon-o-document-duplicate')
                     ->iconPosition(IconPosition::After)
                     ->searchable(),

@@ -50,7 +50,11 @@ class AdResource extends Resource
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\ImageColumn::make('image'),
-                Tables\Columns\TextColumn::make('click_redirect_url')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('click_redirect_url')
+                    ->url(fn($record) => $record->click_redirect_url)
+                    ->openUrlInNewTab()
+                    ->searchable()
+                    ->sortable(),
                 BooleanColumn::make('active'),
             ])
             ->filters([
