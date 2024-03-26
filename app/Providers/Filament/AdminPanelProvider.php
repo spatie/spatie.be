@@ -2,7 +2,7 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Widgets\NewUsersChartWidget;
+use App\Filament\Widgets\PurchasesPerProductWidget;
 use App\Filament\Widgets\StatsOverviewWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -40,6 +40,7 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->widgets([
                 StatsOverviewWidget::class,
+                PurchasesPerProductWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

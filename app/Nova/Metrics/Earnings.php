@@ -19,8 +19,6 @@ class Earnings extends Trend
             ->dollars()
             ->showSumValue();
 
-        ray($result);
-
         return $result;
     }
 
