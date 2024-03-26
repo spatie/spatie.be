@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5bb61304dc3280e3bd643924deabe7f5",
+    "content-hash": "02c63ad04d907859e53b791f17b430c5",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -10069,11 +10069,17 @@
         },
         {
             "name": "spatie/filament-simple-stats",
-            "version": "dev-main",
+            "version": "0.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/filament-simple-stats.git",
+                "reference": "833ec9477dcf91b4cf012ac0db6cb5825c38e7a2"
+            },
             "dist": {
-                "type": "path",
-                "url": "../_packages/filament-simple-stats",
-                "reference": "54d0bbcf344c759e45ab647a8be722d8d8f352b2"
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/filament-simple-stats/zipball/833ec9477dcf91b4cf012ac0db6cb5825c38e7a2",
+                "reference": "833ec9477dcf91b4cf012ac0db6cb5825c38e7a2",
+                "shasum": ""
             },
             "require": {
                 "filament/widgets": "^3.2",
@@ -10101,32 +10107,7 @@
                     "Spatie\\FilamentSimpleStats\\": "FilamentSimpleStats/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Spatie\\FilamentSimpleStat\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "build": [
-                    "@composer run prepare"
-                ],
-                "start": [
-                    "Composer\\Config::disableProcessTimeout",
-                    "@composer run build"
-                ],
-                "analyse": [
-                    "vendor/bin/phpstan analyse"
-                ],
-                "test": [
-                    "vendor/bin/pest"
-                ],
-                "test-coverage": [
-                    "vendor/bin/pest --coverage"
-                ],
-                "format": [
-                    "vendor/bin/pint"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -10140,14 +10121,22 @@
             "description": "Opinionated prebuilt stat widgets to quickly add to your Filament dashboards.",
             "homepage": "https://github.com/spatie/filament-simple-stats",
             "keywords": [
-                "Spatie",
                 "filament",
                 "filament-simple-stats",
-                "laravel"
+                "laravel",
+                "spatie"
             ],
-            "transport-options": {
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/spatie/filament-simple-stats/issues",
+                "source": "https://github.com/spatie/filament-simple-stats/tree/0.1.1"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/Spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-26T15:44:21+00:00"
         },
         {
             "name": "spatie/flare-client-php",
@@ -21455,7 +21444,6 @@
     "stability-flags": {
         "ebess/advanced-nova-media-library": 20,
         "knplabs/github-api": 20,
-        "spatie/filament-simple-stats": 20,
         "spatie/sidecar-shiki": 20
     },
     "prefer-stable": true,
