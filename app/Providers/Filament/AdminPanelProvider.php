@@ -3,7 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Widgets\NewUsersChartWidget;
-use App\Filament\Widgets\SalesStatsOverviewWidget;
+use App\Filament\Widgets\StatsOverviewWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -39,9 +39,7 @@ class AdminPanelProvider extends PanelProvider
                 Pages\Dashboard::class,
             ])
             ->widgets([
-                SalesStatsOverviewWidget::class,
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                StatsOverviewWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -7,7 +7,7 @@ use App\Models\User;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Spatie\FilamentSimpleStats\SimpleStat;
 
-class SalesStatsOverviewWidget extends BaseWidget
+class StatsOverviewWidget extends BaseWidget
 {
     protected function getStats(): array
     {
