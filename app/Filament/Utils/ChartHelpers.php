@@ -17,7 +17,7 @@ class ChartHelpers
             '#58595b',
             '#8549ba',
             '#6366f1',
-            '#bef264'
+            '#bef264',
         ];
     }
 }
