@@ -2,7 +2,6 @@
 
 namespace App\Filament\Widgets\Purchases;
 
-use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\DB;
 
 class PurchasesPerPurchasablePerDayWidget extends BasePurchaseChartWidget
