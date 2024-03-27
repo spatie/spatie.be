@@ -10,9 +10,9 @@ use Filament\Widgets\ChartWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
 
-class PurchasesPerProductPerDayWidget extends BasePurchaseChartWidget
+class PurchasesPerPurchasablePerDayWidget extends BasePurchaseChartWidget
 {
-    protected static ?string $heading = 'Purchases per Product';
+    protected static ?string $heading = 'Purchases per Purchasable';
 
     protected string|int|array $columnSpan = 3;
 
@@ -28,14 +28,19 @@ class PurchasesPerProductPerDayWidget extends BasePurchaseChartWidget
 
         $data = DB::table('purchases')
             ->select([
-                DB::raw("products.title as title"),
+                DB::raw("
+                    CASE
+                        WHEN products.title = purchasables.title THEN purchasables.title
+                        ELSE CONCAT(products.title, ': ', purchasables.title)
+                    END as title
+                "),
                 DB::raw("date_format(purchases.created_at, '%Y-%m-%d') as day"),
                 DB::raw('sum(quantity) as count'),
             ])
             ->where('earnings', '>', '0')
             ->join('purchasables', 'purchasables.id', '=', 'purchases.purchasable_id')
             ->join('products', 'products.id', '=', 'purchasables.product_id')
-            ->where('purchases.created_at', '>=', $startDate)
+            ->where('purchases.created_at', '>=', now()->subMonth())
             ->groupByRaw("title, day")
             ->get();
 

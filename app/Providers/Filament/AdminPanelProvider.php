@@ -7,6 +7,7 @@ use App\Filament\Widgets\EarningsPerProductWidget;
 use App\Filament\Widgets\PaymentMethodsWidget;
 use App\Filament\Widgets\PurchasesPerProductPerDayWidget;
 use App\Filament\Widgets\PurchasesPerProductWidget;
+use App\Filament\Widgets\PurchasesPerPurchasablePerDayWidget;
 use App\Filament\Widgets\StatsOverviewWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
@@ -46,6 +47,7 @@ class AdminPanelProvider extends PanelProvider
                 EarningsPerProductWidget::class,
                 PaymentMethodsWidget::class,
                 PurchasesPerProductPerDayWidget::class,
+                PurchasesPerPurchasablePerDayWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
