@@ -25,12 +25,6 @@ class PurchasesPerProductWidget extends ChartWidget
             ->get();
 
         return [
-//            'datasets' => $data->map(function ($item) {
-//                return [
-//                    'label' => $item->title,
-//                    'data' => [$item->aggregate],
-//                ];
-//            })->toArray(),
             'datasets' => [
                 [
                     'label' => 'Purchases Per Product',
