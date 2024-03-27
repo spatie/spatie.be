@@ -3,6 +3,7 @@
 namespace App\Providers\Filament;
 
 use App\Filament\Widgets\EarningsPerProductWidget;
+use App\Filament\Widgets\PaymentMethodsWidget;
 use App\Filament\Widgets\PurchasesPerProductWidget;
 use App\Filament\Widgets\StatsOverviewWidget;
 use Filament\Http\Middleware\Authenticate;
@@ -43,6 +44,7 @@ class AdminPanelProvider extends PanelProvider
                 StatsOverviewWidget::class,
                 PurchasesPerProductWidget::class,
                 EarningsPerProductWidget::class,
+                PaymentMethodsWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
