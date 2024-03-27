@@ -33,8 +33,6 @@ class PaymentMethodsWidget extends ChartWidget
             ->orderByDesc('count')
             ->get();
 
-        ray($results);
-
         $data = $results->map(function ($result) {
             $label = match ($result->payment_method) {
                 'card' => 'Credit card',
@@ -51,8 +49,6 @@ class PaymentMethodsWidget extends ChartWidget
                 'count' => $result->count,
             ];
         });
-
-        ray($data);
 
         return [
             'datasets' => [

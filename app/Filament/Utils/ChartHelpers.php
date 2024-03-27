@@ -20,4 +20,9 @@ class ChartHelpers
             '#bef264',
         ];
     }
+
+    public static function chartColor(int $i): string
+    {
+        return static::chartColors()[$i];
+    }
 }
