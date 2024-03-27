@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Dashboard;
 use App\Filament\Widgets\EarningsPerProductWidget;
 use App\Filament\Widgets\PaymentMethodsWidget;
 use App\Filament\Widgets\PurchasesPerProductWidget;
@@ -38,7 +39,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                Dashboard::class,
             ])
             ->widgets([
                 StatsOverviewWidget::class,

@@ -12,6 +12,8 @@ class PaymentMethodsWidget extends ChartWidget
 {
     protected static ?string $heading = 'Payment Methods';
 
+    protected int | string | array $columnSpan = 1;
+
     protected function getData(): array
     {
         $startDate = match ($this->filter) {

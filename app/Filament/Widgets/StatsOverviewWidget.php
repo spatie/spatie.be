@@ -9,6 +9,11 @@ use Spatie\FilamentSimpleStats\SimpleStat;
 
 class StatsOverviewWidget extends BaseWidget
 {
+    protected function getColumns(): int
+    {
+        return 2;
+    }
+
     protected function getStats(): array
     {
         return [
