@@ -3,6 +3,7 @@
 namespace App\Filament\Widgets;
 
 use App\Domain\Shop\Models\Purchase;
+use App\Filament\Utils\ChartHelpers;
 use Filament\Widgets\ChartWidget;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\DB;
@@ -34,19 +35,7 @@ class PurchasesPerProductWidget extends ChartWidget
                 [
                     'label' => 'Purchases Per Product',
                     'data' => $data->pluck('aggregate')->toArray(),
-                    'backgroundColor' => [
-                        '#4dc9f6',
-                        '#f67019',
-                        '#f87171',
-                        '#537bc4',
-                        '#acc236',
-                        '#166a8f',
-                        '#00a950',
-                        '#58595b',
-                        '#8549ba',
-                        '#6366f1',
-                        '#bef264'
-                    ],
+                    'backgroundColor' => ChartHelpers::chartColors(),
                 ],
             ],
             'labels' => $data->pluck('title')->toArray(),
@@ -60,7 +49,6 @@ class PurchasesPerProductWidget extends ChartWidget
 
     protected function getFilters(): ?array
     {
-        return [
-        ];
+        return [];
     }
 }
