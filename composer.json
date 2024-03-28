@@ -27,7 +27,7 @@
         "geoip2/geoip2": "^2.13",
         "guzzlehttp/guzzle": "^7.5",
         "hammerstone/sidecar": "^0.4",
-        "knplabs/github-api": "dev-master#9b01208e1e5500201b45699c911ad53d08f59105",
+        "knplabs/github-api": "3.14.1",
         "laminas/laminas-feed": "^2.19",
         "laminas/laminas-http": "^2.17",
         "laravel/cashier-paddle": "^1.8",
