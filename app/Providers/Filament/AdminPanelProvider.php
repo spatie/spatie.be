@@ -2,14 +2,19 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Pages\Dashboard;
+use App\Filament\Widgets\EarningsPerProductWidget;
+use App\Filament\Widgets\PaymentMethodsWidget;
+use App\Filament\Widgets\Purchases\PurchasesPerProductPerDayWidget;
+use App\Filament\Widgets\Purchases\PurchasesPerPurchasablePerDayWidget;
+use App\Filament\Widgets\PurchasesPerProductWidget;
+use App\Filament\Widgets\StatsOverviewWidget;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
-use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Enums\MaxWidth;
-use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -34,12 +39,15 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+                StatsOverviewWidget::class,
+                PurchasesPerProductWidget::class,
+                EarningsPerProductWidget::class,
+                PaymentMethodsWidget::class,
+                PurchasesPerProductPerDayWidget::class,
+                PurchasesPerPurchasablePerDayWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,

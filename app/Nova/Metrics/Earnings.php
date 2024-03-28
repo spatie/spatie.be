@@ -10,7 +10,7 @@ class Earnings extends Trend
 {
     public function calculate(NovaRequest $request)
     {
-        return $this
+        $result = $this
             ->sumByDays(
                 $request,
                 Purchase::where('earnings', '!=', '0'),
@@ -18,6 +18,8 @@ class Earnings extends Trend
             )
             ->dollars()
             ->showSumValue();
+
+        return $result;
     }
 
     public function ranges()
