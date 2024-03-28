@@ -285,7 +285,7 @@ parameters:
 			path: app/Rules/MatchingLicense.php
 
 		-
-			message: "#^Call to an undefined method Github\\\\Api\\\\ApiInterface\\:\\:releases\\(\\)\\.$#"
+			message: "#^Call to an undefined method Github\\\\Api\\\\AbstractApi\\:\\:releases\\(\\)\\.$#"
 			count: 1
 			path: app/Services/GitHub/GitHubApi.php
 
