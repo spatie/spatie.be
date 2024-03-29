@@ -2,64 +2,7 @@
 
 return [
     'repositories' => [
-        [
-            "name" => "laravel-pdf",
-            "repository" => "spatie/laravel-pdf",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
-            "name" => "lighthouse-php",
-            "repository" => "spatie/lighthouse-php",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
-            "name" => "laravel-prometheus",
-            "repository" => "spatie/laravel-prometheus",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
-            "name" => "laravel-open-telemetry",
-            "repository" => "spatie/laravel-open-telemetry",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
-            "name" => "laravel-dynamic-servers",
-            "repository" => "spatie/laravel-dynamic-servers",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
-            "name" => "laravel-livewire-wizard",
-            "repository" => "spatie/laravel-livewire-wizard",
-            "branches" => [
-                "main" => "v2",
-                "v1" => "v1",
 
-            ],
-            "category" => "Laravel",
-        ],
-        [
-            "name" => "laravel-translatable",
-            "repository" => "spatie/laravel-translatable",
-            "branches" => [
-                "main" => "v6",
-            ],
-            "category" => "Laravel",
-        ],
         [
             "name" => "browsershot",
             "repository" => "spatie/browsershot",
