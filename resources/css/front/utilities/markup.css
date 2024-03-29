@@ -249,9 +249,9 @@
 }
 
 
-/* Shiki markup */
+/* Code markup */
 
-.markup-shiki :not(pre) > code {
+.markup-code code {
     @apply bg-paper;
     @apply px-1;
     @apply font-mono;
@@ -282,19 +282,18 @@
 }
 
 
-.markup-shiki .shiki-good .shiki{
+.markup-code .hl-good pre {
     @apply border-l-8;
     @apply border-green-lightest;
 }
 
-
-.markup-shiki .shiki-bad .shiki{
+.markup-code .hl-bad pre {
     @apply border-l-8;
     @apply border-pink-lightest;
 }
 
-.markup-shiki .shiki-good:before,
-.markup-shiki .shiki-bad:before {
+.markup-code .hl-good:before,
+.markup-code .hl-bad:before {
     @apply absolute;
     top: -0.5rem;
     left: -0.5rem;
@@ -311,41 +310,41 @@
     @apply text-xs;
 }
 
-.markup-shiki .shiki-good:before {
+.markup-code .hl-good:before {
     @apply bg-green;
     content: '✓';
 }
 
-.markup-shiki .shiki-bad:before {
+.markup-code .hl-bad:before {
     @apply bg-red;
     content: '×';
 }
 
-.markup-shiki .line.add{
-    @apply bg-green-light;
-    @apply bg-opacity-25;
-}
+/*.markup-shiki .line.add{*/
+/*    @apply bg-green-light;*/
+/*    @apply bg-opacity-25;*/
+/*}*/
 
-.markup-shiki .line.add:before{
-    content: '+';
-    @apply absolute;
-    @apply right-full;
-    @apply px-2;
-    @apply text-green;
-}
+/*.markup-shiki .line.add:before{*/
+/*    content: '+';*/
+/*    @apply absolute;*/
+/*    @apply right-full;*/
+/*    @apply px-2;*/
+/*    @apply text-green;*/
+/*}*/
 
-.markup-shiki .line.del{
-    @apply bg-pink;
-    @apply bg-opacity-25;
-}
+/*.markup-shiki .line.del{*/
+/*    @apply bg-pink;*/
+/*    @apply bg-opacity-25;*/
+/*}*/
 
-.markup-shiki .line.del:before{
-    content: '-';
-    @apply absolute;
-    @apply right-full;
-    @apply px-2;
-    @apply text-pink;
-}
+/*.markup-shiki .line.del:before{*/
+/*    content: '-';*/
+/*    @apply absolute;*/
+/*    @apply right-full;*/
+/*    @apply px-2;*/
+/*    @apply text-pink;*/
+/*}*/
 
 /* Video markup */
 
@@ -362,9 +361,4 @@
     @apply w-full !important;
     @apply h-full !important;
     @apply inset-0;
-}
-
-.markup pre {
-    padding: 1rem;
-    margin: 1rem 0;
 }

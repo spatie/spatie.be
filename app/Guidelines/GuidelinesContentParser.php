@@ -56,8 +56,8 @@ class GuidelinesContentParser implements ContentParser
         $htmlContents = $this->markdownRenderer->toHtml($document->body());
 
         $htmlContents = Str::of($htmlContents)
-            ->replace('[good]', '<div class="hl-addition">')
-            ->replace('[bad]', '<div class="hl-deletion">')
+            ->replace('[good]', '<div class="hl-good">')
+            ->replace('[bad]', '<div class="hl-bad">')
             ->replace(['[/good]', '[/bad]'], '</div>')
             ->toString();
 
