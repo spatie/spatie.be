@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f6386e266632343eda4f14f09c2d0130",
+    "content-hash": "f52d9c22280069455e47ab1db4c07288",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -3126,31 +3126,31 @@
         },
         {
             "name": "hammerstone/sidecar",
-            "version": "v0.4.2",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hammerstonedev/sidecar.git",
-                "reference": "005009a593cd8bef1adc78cc8be951ad2333a1b8"
+                "reference": "17d5d36a534895bde410dec19059438af5a095d9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hammerstonedev/sidecar/zipball/005009a593cd8bef1adc78cc8be951ad2333a1b8",
-                "reference": "005009a593cd8bef1adc78cc8be951ad2333a1b8",
+                "url": "https://api.github.com/repos/hammerstonedev/sidecar/zipball/17d5d36a534895bde410dec19059438af5a095d9",
+                "reference": "17d5d36a534895bde410dec19059438af5a095d9",
                 "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.216.1",
                 "guzzlehttp/guzzle": "^6.3|^7.2",
-                "illuminate/console": "^8.0|^9.0|^10",
-                "illuminate/filesystem": "^8.0|^9.0|^10",
-                "illuminate/support": "^8.0|^9.0|^10",
+                "illuminate/console": "^8.0|^9.0|^10|^11",
+                "illuminate/filesystem": "^8.0|^9.0|^10|^11",
+                "illuminate/support": "^8.0|^9.0|^10|^11",
                 "maennchen/zipstream-php": "^2.1",
                 "php": "^7.4|^8.0"
             },
             "require-dev": {
                 "mockery/mockery": "^1.3.3",
-                "orchestra/testbench": "^5|^6|^7|^8",
-                "phpunit/phpunit": ">=8.5.23|^9"
+                "orchestra/testbench": "^5|^6|^7|^8|^9",
+                "phpunit/phpunit": ">=8.5.23|^9|^10"
             },
             "type": "library",
             "extra": {
@@ -3178,9 +3178,9 @@
             "description": "A Laravel package to deploy Lambda functions alongside your main application.",
             "support": {
                 "issues": "https://github.com/hammerstonedev/sidecar/issues",
-                "source": "https://github.com/hammerstonedev/sidecar/tree/v0.4.2"
+                "source": "https://github.com/hammerstonedev/sidecar/tree/v0.5.0"
             },
-            "time": "2024-01-10T20:13:57+00:00"
+            "time": "2024-03-20T22:50:46+00:00"
         },
         {
             "name": "inertiajs/inertia-laravel",
@@ -10343,16 +10343,16 @@
         },
         {
             "name": "spatie/ignition",
-            "version": "1.12.0",
+            "version": "1.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/ignition.git",
-                "reference": "5b6f801c605a593106b623e45ca41496a6e7d56d"
+                "reference": "e385d778f770580c00ef200be5ab749c3c907147"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/ignition/zipball/5b6f801c605a593106b623e45ca41496a6e7d56d",
-                "reference": "5b6f801c605a593106b623e45ca41496a6e7d56d",
+                "url": "https://api.github.com/repos/spatie/ignition/zipball/e385d778f770580c00ef200be5ab749c3c907147",
+                "reference": "e385d778f770580c00ef200be5ab749c3c907147",
                 "shasum": ""
             },
             "require": {
@@ -10422,7 +10422,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-03T15:49:39+00:00"
+            "time": "2024-03-28T14:23:58+00:00"
         },
         {
             "name": "spatie/image",
@@ -10880,17 +10880,17 @@
         },
         {
             "name": "spatie/laravel-comments-livewire",
-            "version": "2.1.0",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "git@github.com:spatie/laravel-comments-livewire.git",
-                "reference": "58b7ec8b3cee1f637dda5f73bd7595fd6a49cb29"
+                "reference": "01927f038cc32093f18633747355c9e79ecb6ee1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-58b7ec8b3cee1f637dda5f73bd7595fd6a49cb29-zip-6be83c.zip",
-                "reference": "58b7ec8b3cee1f637dda5f73bd7595fd6a49cb29",
-                "shasum": "7784a0c3bae9d4fbe7adecb1ff5f59196a65629b"
+                "url": "https://satis.spatie.be/dist/spatie/laravel-comments-livewire/spatie-laravel-comments-livewire-01927f038cc32093f18633747355c9e79ecb6ee1-zip-1d4e27.zip",
+                "reference": "01927f038cc32093f18633747355c9e79ecb6ee1",
+                "shasum": "b20c1553ba8d9369b74d1bd197d6750eef6b80a5"
             },
             "require": {
                 "illuminate/contracts": "^10.0|^11.0",
@@ -10960,7 +10960,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-comments-livewire/tree/2.1.0"
+                "source": "https://github.com/spatie/laravel-comments-livewire/tree/2.1.1"
             },
             "funding": [
                 {
@@ -10968,7 +10968,7 @@
                     "url": "https://github.com/spatie"
                 }
             ],
-            "time": "2024-03-12T19:15:56+00:00"
+            "time": "2024-03-28T09:32:32+00:00"
         },
         {
             "name": "spatie/laravel-enum",
@@ -13324,17 +13324,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/sidecar-shiki.git",
-                "reference": "a475f7aff82b8dcc3013e85aeeb1aa12df7643bd"
+                "reference": "897dcaf4fc76c5f50bea627d8a5469353960fc04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/sidecar-shiki/zipball/a475f7aff82b8dcc3013e85aeeb1aa12df7643bd",
-                "reference": "a475f7aff82b8dcc3013e85aeeb1aa12df7643bd",
+                "url": "https://api.github.com/repos/spatie/sidecar-shiki/zipball/897dcaf4fc76c5f50bea627d8a5469353960fc04",
+                "reference": "897dcaf4fc76c5f50bea627d8a5469353960fc04",
                 "shasum": ""
             },
             "require": {
-                "hammerstone/sidecar": "^0.3.12|^0.4",
-                "illuminate/contracts": "^9.0|^10.0",
+                "hammerstone/sidecar": "^0.5",
+                "illuminate/contracts": "^9.0|^10.0|^11.0",
                 "php": "^8.1",
                 "spatie/laravel-package-tools": "^1.9.2"
             },
@@ -13395,7 +13395,7 @@
                 "issues": "https://github.com/spatie/sidecar-shiki/issues",
                 "source": "https://github.com/spatie/sidecar-shiki/tree/main"
             },
-            "time": "2024-02-19T09:58:32+00:00"
+            "time": "2024-03-28T15:11:45+00:00"
         },
         {
             "name": "spatie/ssh",
@@ -17153,6 +17153,59 @@
             "time": "2024-01-23T15:02:46+00:00"
         },
         {
+            "name": "tempest/highlight",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tempestphp/highlight.git",
+                "reference": "371413ae6056626b276dee508afdaa5f28711827"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tempestphp/highlight/zipball/371413ae6056626b276dee508afdaa5f28711827",
+                "reference": "371413ae6056626b276dee508afdaa5f28711827",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.3"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.21",
+                "larapack/dd": "^1.1",
+                "league/commonmark": "^2.4",
+                "phpstan/phpstan": "^1.10.0",
+                "phpunit/phpunit": "^10.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Tempest\\Highlight\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Brent Roose",
+                    "email": "brendt@stitcher.io"
+                }
+            ],
+            "description": "Fast, extensible, server-side code highlighting",
+            "support": {
+                "issues": "https://github.com/tempestphp/highlight/issues",
+                "source": "https://github.com/tempestphp/highlight/tree/1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/brendt",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-28T12:32:21+00:00"
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "v2.2.7",
             "source": {
@@ -18889,16 +18942,16 @@
         },
         {
             "name": "pestphp/pest",
-            "version": "v2.34.5",
+            "version": "v2.34.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pestphp/pest.git",
-                "reference": "863a0cc83744c677ffdb28a6a2b841dd049e57ce"
+                "reference": "680111fb1e7175a5010b73c115edef58ceef303e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pestphp/pest/zipball/863a0cc83744c677ffdb28a6a2b841dd049e57ce",
-                "reference": "863a0cc83744c677ffdb28a6a2b841dd049e57ce",
+                "url": "https://api.github.com/repos/pestphp/pest/zipball/680111fb1e7175a5010b73c115edef58ceef303e",
+                "reference": "680111fb1e7175a5010b73c115edef58ceef303e",
                 "shasum": ""
             },
             "require": {
@@ -18908,10 +18961,10 @@
                 "pestphp/pest-plugin": "^2.1.1",
                 "pestphp/pest-plugin-arch": "^2.7.0",
                 "php": "^8.1.0",
-                "phpunit/phpunit": "^10.5.15"
+                "phpunit/phpunit": "^10.5.16"
             },
             "conflict": {
-                "phpunit/phpunit": ">10.5.15",
+                "phpunit/phpunit": ">10.5.16",
                 "sebastian/exporter": "<5.1.0",
                 "webmozart/assert": "<1.11.0"
             },
@@ -18981,7 +19034,7 @@
             ],
             "support": {
                 "issues": "https://github.com/pestphp/pest/issues",
-                "source": "https://github.com/pestphp/pest/tree/v2.34.5"
+                "source": "https://github.com/pestphp/pest/tree/v2.34.6"
             },
             "funding": [
                 {
@@ -18993,7 +19046,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-22T08:44:19+00:00"
+            "time": "2024-03-28T11:36:46+00:00"
         },
         {
             "name": "pestphp/pest-plugin",
@@ -19883,16 +19936,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.15",
+            "version": "10.5.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "86376e05e8745ed81d88232ff92fee868247b07b"
+                "reference": "18f8d4a5f52b61fdd9370aaae3167daa0eeb69cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/86376e05e8745ed81d88232ff92fee868247b07b",
-                "reference": "86376e05e8745ed81d88232ff92fee868247b07b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/18f8d4a5f52b61fdd9370aaae3167daa0eeb69cd",
+                "reference": "18f8d4a5f52b61fdd9370aaae3167daa0eeb69cd",
                 "shasum": ""
             },
             "require": {
@@ -19964,7 +20017,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.15"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.16"
             },
             "funding": [
                 {
@@ -19980,7 +20033,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-03-22T04:17:47+00:00"
+            "time": "2024-03-28T10:08:10+00:00"
         },
         {
             "name": "sebastian/cli-parser",
