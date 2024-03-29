@@ -5,7 +5,6 @@ namespace App\Docs;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\HtmlString;
-use Illuminate\Support\Str;
 use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
