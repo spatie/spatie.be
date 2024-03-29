@@ -46,12 +46,6 @@ class DocumentationContentParser extends MarkdownWithFrontMatterParser
 
         $htmlContents = $this->markdownRenderer->toHtml($document->body());
 
-        $htmlContents = Str::of($htmlContents)
-            ->replace('[good]', '<div class="hl-addition">')
-            ->replace('[bad]', '<div class="hl-deletion">')
-            ->replace(['[/good]', '[/bad]'], '</div>')
-            ->toString();
-
         return array_merge(
             $document->matter(),
             ['contents' => new HtmlString($htmlContents)]
