@@ -77,7 +77,7 @@
             @endif
 
             <div id="site-search-docs-content">
-                <div class="markup markup-titles markup-lists markup-tables markup-shiki markup-embeds
+                <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code
              links-blue links-underline">
                     {!! $page->contents !!}
                 </div>

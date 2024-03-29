@@ -259,7 +259,7 @@
     font-size: 0.95em;
 }
 
-.markup-shiki .shiki {
+.markup pre {
     @apply p-10;
     @apply my-8;
     @apply rounded-sm;
@@ -269,13 +269,13 @@
     @apply text-sm;
 }
 
-.markup-shiki .shiki::-webkit-scrollbar { height: 1px;width: 1px; }
+.markup-code pre::-webkit-scrollbar { height: 1px;width: 1px; }
 
-.markup-shiki .shiki::-webkit-scrollbar-track {
+.markup-code pre::-webkit-scrollbar-track {
     background: transparent;
 }
 
-.markup-shiki .shiki::-webkit-scrollbar-thumb {
+.markup-code pre::-webkit-scrollbar-thumb {
     background-image: none;
     @apply bg-gray-light;
     @apply bg-opacity-25;
@@ -362,4 +362,9 @@
     @apply w-full !important;
     @apply h-full !important;
     @apply inset-0;
+}
+
+.markup pre {
+    padding: 1rem;
+    margin: 1rem 0;
 }

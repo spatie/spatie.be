@@ -6,13 +6,16 @@ use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\TableOfContents\TableOfContentsExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Spatie\Sheets\ContentParser;
-use Spatie\SidecarShiki\Commonmark\HighlightCodeExtension;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
+use Tempest\Highlight\CommonMark\CodeBlockRenderer;
+use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
 
 class GuidelinesContentParser implements ContentParser
 {
@@ -22,7 +25,6 @@ class GuidelinesContentParser implements ContentParser
     {
         $this->markdownRenderer = app(MarkdownRenderer::class)
             ->highlightCode(false)
-            ->addExtension(new HighlightCodeExtension('github-light'))
             ->disableAnchors()
             ->addExtension(new TableOfContentsExtension())
             ->commonmarkOptions([
@@ -42,7 +44,9 @@ class GuidelinesContentParser implements ContentParser
                 ],
             ])
             ->addInlineRenderer(Image::class, new ImageRenderer())
-            ->addInlineRenderer(Link::class, new LinkRenderer());
+            ->addInlineRenderer(Link::class, new LinkRenderer())
+            ->addInlineRenderer(FencedCode::class, new CodeBlockRenderer(), 10)
+            ->addInlineRenderer(Code::class, new InlineCodeBlockRenderer(), 10);
     }
 
     public function parse(string $contents): array
@@ -52,8 +56,8 @@ class GuidelinesContentParser implements ContentParser
         $htmlContents = $this->markdownRenderer->toHtml($document->body());
 
         $htmlContents = Str::of($htmlContents)
-            ->replace('[good]', '<div class="shiki-good">')
-            ->replace('[bad]', '<div class="shiki-bad">')
+            ->replace('[good]', '<div class="hl-addition">')
+            ->replace('[bad]', '<div class="hl-deletion">')
             ->replace(['[/good]', '[/bad]'], '</div>')
             ->toString();
 
