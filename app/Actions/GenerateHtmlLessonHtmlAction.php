@@ -8,7 +8,6 @@ use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 use League\CommonMark\Extension\Table\TableExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
-use Spatie\SidecarShiki\Commonmark\HighlightCodeExtension;
 use Tempest\Highlight\CommonMark\CodeBlockRenderer;
 use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
 

@@ -21,7 +21,7 @@
         </div>
         <article class="md:col-span-7 lg:col-span-6">
             @if(count($repository->aliases) > 1)
-                <div class="mb-12 p-4 flex text-sm bg-white bg-opacity-50 rounded-sm md:shadow-light markup-shiki">
+                <div class="mb-12 p-4 flex text-sm bg-white bg-opacity-50 rounded-sm md:shadow-light markup-code">
                     <div
                         class="flex-none h-6 w-6 text-orange fill-current">{{ app_svg('icons/fal-exclamation-circle') }}</div>
                     <div class="ml-4">

@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="markup markup-titles markup-lists markup-shiki links-blue links-underline">
+            <div class="markup markup-titles markup-lists markup-code links-blue links-underline">
                 {{ $page->contents }}
             </div>
         </div>
