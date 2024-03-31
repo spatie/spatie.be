@@ -1,7 +1,7 @@
 <x-page
-    title="Free application"
-    background="/backgrounds/jobs.jpg"
-    description="Free job application at spatie.be. Location: Antwerp."
+        title="Free application"
+        background="/backgrounds/jobs.jpg"
+        description="Free job application at spatie.be. Location: Antwerp."
 >
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
@@ -9,7 +9,8 @@
                 Your job title here
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
+                <a
                         href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
             </p>
         </div>
@@ -21,7 +22,8 @@
                 <div class="sm:col-span-4">
                     <div class="markup links-underline links-blue">
                         <p class="text-xl">
-                            Even if there's no job description that currently fits you, we're always open for spontaneous applications.
+                            Even if there's no job description that currently fits you, we're always open for
+                            spontaneous applications.
                             People before degrees!
                         </p>
                     </div>

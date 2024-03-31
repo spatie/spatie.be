@@ -11,7 +11,7 @@
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">
-                    {{ svg('icons/far-angle-left') }}
+                    {{ app_svg('icons/far-angle-left') }}
                 </span>
                 <a href="{{ route('vacancies.index')}}" class="link-underline link-blue">Vacancies overview</a>
             </p>
@@ -36,13 +36,15 @@
                         <div class="mt-16">
                             <h3 class="title">The best part first</h3>
                             <ul class="bullets bullets-green">
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Get €1500,- personal
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Get €1500,-
+                                    personal
                                     budget every year for trainings &amp; conferences
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Take the lead,
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Take the lead,
                                     literally. We are open for your way of working
                                 </li>
-                                <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Be part of a team that
+                                <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Be part of a team
+                                    that
                                     has made its name in open source
                                 </li>
                             </ul>

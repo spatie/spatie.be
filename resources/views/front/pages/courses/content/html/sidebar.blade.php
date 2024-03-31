@@ -39,7 +39,7 @@
                                 @endif
 
                                 @if(!$lessonsPerChapter[0]->canBeSeenByCurrentUser())
-                                    <div class="w-2 inline-block mr-2">{{ svg('icons/fas-lock-alt') }}</div>
+                                    <div class="w-2 inline-block mr-2">{{ app_svg('icons/fas-lock-alt') }}</div>
                                 @endif
                                 {{ $loop->index +1 . '. ' . $chapter }}
 
@@ -47,7 +47,7 @@
 
 
                                 @if($lessonsPerChapter[0]->canBeSeenByCurrentUser())
-                                    <div class="w-3">{{ svg('icons/far-angle-down') }}</div>
+                                    <div class="w-3">{{ app_svg('icons/far-angle-down') }}</div>
                             </a>
                         @endif
                     </h3>
@@ -60,13 +60,15 @@
                     font-sans-bold bg-paper text-white" : "" }}">
 
 
-                                <a class="group flex items-center gap-2" href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
+                                <a class="group flex items-center gap-2"
+                                   href="{{ route('courses.show', [$series, $lessonInChapter]) }}">
                                     <span class="">{{ $lessonInChapter->title }}</span>
                                     @if($lessonInChapter->display_video_icon)
-                                    <span class="w-3 fill-current opacity-50 group-hover:opacity-100" title="Lesson includes video">{{ svg('icons/fas-video') }}</span>
+                                        <span class="w-3 fill-current opacity-50 group-hover:opacity-100"
+                                              title="Lesson includes video">{{ app_svg('icons/fas-video') }}</span>
                                     @endif
                                     @if ($lessonInChapter->hasBeenCompletedByCurrentUser())
-                                    <x-completion-badge class="ml-auto" />
+                                        <x-completion-badge class="ml-auto"/>
                                     @endif
                                 </a>
                             </li>
@@ -74,8 +76,6 @@
                     @endif
                 </div>
             </div>
-
-
 
         @empty
             <li>No lessons yet! Stay tuned...</li>

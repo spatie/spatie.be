@@ -71,7 +71,7 @@ echo "{{ $newReleaseName }}" > public/release-name.txt
 @task('runComposer', ['on' => 'remote'])
 {{ logMessage("🚚  Running Composer...") }}
 cd {{ $newReleaseDir }}
-composer install --prefer-dist --no-scripts --no-dev -q -o
+composer install --prefer-dist --no-scripts --no-dev -o
 @endtask
 
 @task('runYarn', ['on' => 'remote'])
@@ -85,6 +85,7 @@ yarn
 {{ logMessage("🌅  Generating assets...") }}
 cd {{ $newReleaseDir }}
 yarn build
+php artisan filament:assets
 @endtask
 
 @task('updateSymlinks', ['on' => 'remote'])
@@ -125,7 +126,6 @@ php artisan backup:run
 {{ logMessage("🙈  Migrating database...") }}
 cd {{ $newReleaseDir }}
 php artisan migrate --force
-php artisan db:seed --class MembersSeeder --force
 @endtask
 
 @task('blessNewRelease', ['on' => 'remote'])
@@ -142,7 +142,7 @@ php artisan event:cache
 #php artisan schedule-monitor:sync
 php artisan sidecar:deploy --activate
 
-sudo service php8.1-fpm restart
+sudo service php8.3-fpm restart
 sudo supervisorctl restart all
 @endtask
 
@@ -168,7 +168,7 @@ php artisan config:clear
 php artisan cache:clear
 php artisan config:cache
 php artisan event:cache
-sudo service php8.1-fpm restart
+sudo service php8.3-fpm restart
 #php artisan schedule-monitor:sync
 php artisan horizon:terminate
 sudo supervisorctl restart all

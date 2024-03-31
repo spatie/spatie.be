@@ -161,7 +161,7 @@ class HandlePurchaseAction
         // Sometimes emails come through empty from the passthrough
         // This is probably because of a JS issue on the front,
         // Make sure at least 1 assignment is created for the purchaser
-        if (empty($emails)) {
+        if (empty(array_filter($emails))) {
             $emails = [$purchase->user->email];
         }
 

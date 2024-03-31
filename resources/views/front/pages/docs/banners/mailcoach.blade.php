@@ -3,11 +3,11 @@
         <div class="bg-blue text-white flex flex-col items-end sm:flex-row sm:items-center justify-center rounded-t p-2 pr-6 shadow-light text-xs sm:text-sm">
             <div class="flex items-center">
                 <div class="mr-2 text-lg icon bg-black bg-opacity-25 text-white rounded-full w-8 flex items-center justify-center h-8">
-                    {{ svg('icons/fas-horse-head') }}
+                    {{ app_svg('icons/fas-horse-head') }}
                 </div>
                 <div>
                     <div>
-                        Check out our self-hosted email marketing solution with API: 
+                        Check out our self-hosted email marketing solution with API:
                         <span class="font-semibold">Mailcoach</span>
                     </div>
                 </div>
@@ -17,7 +17,7 @@
                     Learn&nbsp;more
                 </button>
             </a>
-            @include('front.pages.docs.banners.hideButton')  
+            @include('front.pages.docs.banners.hideButton')
         </div>
     </div>
 </aside>

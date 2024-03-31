@@ -12,13 +12,16 @@
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
                     We don't just execute, but need to be proud of our work —just like you.
-                    That's why we love to work in partnership: as advisors, as architects of technically challenging projects.
+                    That's why we love to work in partnership: as advisors, as architects of technically challenging
+                    projects.
                 </p>
                 <p class="text-lg">
-                    <a href="{{ route('about') }}#team">Our team</a> is a fine blend of back &amp; frontend profiles that are used to working together, tightly coupled.
+                    <a href="{{ route('about') }}#team">Our team</a> is a fine blend of back &amp; frontend profiles
+                    that are used to working together, tightly coupled.
                 </p>
-                 <p class="text-lg">
-                    We'd really like to know what kind of project or problem you're dealing with. Feed us with as much input as you have, so we can get accurate early on.
+                <p class="text-lg">
+                    We'd really like to know what kind of project or problem you're dealing with. Feed us with as much
+                    input as you have, so we can get accurate early on.
                 </p>
             </div>
         </div>
@@ -34,10 +37,16 @@
                         Topics to discuss
                     </h3>
                     <ul class="mt-4 bullets bullets-white">
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Your main objective</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> The initial budget &amp; planning</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> Who's doing content creation?</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span> All external services / APIs</li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Your main objective</li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> The initial budget &amp;
+                            planning
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Who's doing content
+                            creation?
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> All external services /
+                            APIs
+                        </li>
                     </ul>
                 </div>
             </div>

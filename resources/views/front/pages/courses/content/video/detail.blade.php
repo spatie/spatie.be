@@ -15,7 +15,7 @@
                                 allowfullscreen allowtransparency></iframe>
                     @else
                         <div
-                            class="absolute inset-0 flex justify-center items-center gradient gradient-dark text-white z-10 p-8">
+                                class="absolute inset-0 flex justify-center items-center gradient gradient-dark text-white z-10 p-8">
                             <div class="flex flex-col items-center text-center">
                                 @if ($lesson->display === \App\Models\Enums\LessonDisplayEnum::LICENSE)
                                     <h4 class="mb-2 font-serif-bold text-lg md:text-2xl leading-tight">This video is
@@ -43,13 +43,13 @@
                                     <p class="hidden md:block text-center">
                                         Become one to get access to this video right away!
                                         <span class="fill-current text-pink icon">
-                                                    {{ svg('icons/fas-heart') }}
+                                                    {{ app_svg('icons/fas-heart') }}
                                                 </span>
                                     </p>
                                     <a class="mt-4 md:mt-8 font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full text-white"
                                        href="https://github.com/sponsors/spatie" target="_blank">
                                                 <span class="mr-3 h-6 w-6 text-white">
-                                                    {{ svg('github') }}
+                                                    {{ app_svg('github') }}
                                                 </span>
                                         <span>Become a GitHub Sponsor</span>
                                     </a>
@@ -59,7 +59,7 @@
                                     <p class="hidden md:block text-center">
                                         Sponsorships make videos like these possible!
                                         <span class="fill-current text-pink icon">
-                                                    {{ svg('icons/fas-heart') }}
+                                                    {{ app_svg('icons/fas-heart') }}
                                                 </span>
                                     </p>
                                     <div class="mt-4 md:mt-8 md:flex">
@@ -67,7 +67,7 @@
                                             <a class="font-sans-bold cursor-pointer bg-green hover:bg-green-dark justify-center flex items-center px-6 py-2 rounded-full md:rounded-r-none text-white"
                                                href="/login/github">
                                                         <span class="mr-3 h-6 w-6 text-white">
-                                                            {{ svg('github') }}
+                                                            {{ app_svg('github') }}
                                                         </span>
                                                 <span>Log in</span>
                                             </a>
@@ -114,11 +114,11 @@
                 <hr class="mt-12 line-after"/>
 
                 <div
-                    class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
+                        class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
                     @if ($previousLesson)
                         <a class="mb-2 md:w-1/2 md:pr-4 flex items-center" href="{{ $previousLesson->url }}">
                                 <span class="w-1 fill-current text-blue mr-1 hidden | md:inline-block">
-                                    {{ svg('icons/far-angle-left') }}
+                                    {{ app_svg('icons/far-angle-left') }}
                                 </span>
                             <span class="truncate"><span class="font-semibold md:hidden">Previous: </span>{{ $previousLesson->title }}</span>
                         </a>
@@ -128,7 +128,7 @@
                            href="{{ $nextLesson->url }}">
                             <span class="truncate"><span class="font-semibold md:hidden">Next: </span>{{ $nextLesson->title  }}</span>
                             <span class="w-1 fill-current text-blue ml-1 hidden | md:inline-block">
-                                    {{ svg('icons/far-angle-right') }}
+                                    {{ app_svg('icons/far-angle-right') }}
                                 </span>
                         </a>
                     @endif

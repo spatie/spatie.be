@@ -1,16 +1,17 @@
 <x-page
-        title="Confirm password"
-        background="/backgrounds/auth.jpg"
+    title="Confirm password"
+    background="/backgrounds/auth.jpg"
 >
 
-     <section id="banner" class="banner" role="banner">
+    <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
                 {{ __('Confirm Password') }}
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a
-                        href="{{ route('login')}}" class="link-underline link-blue">{{ __('Back to login') }}</a>
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
+                <a
+                    href="{{ route('login')}}" class="link-underline link-blue">{{ __('Back to login') }}</a>
             </p>
         </div>
     </section>
@@ -30,12 +31,13 @@
                         @endif
                     </x-label>
 
-                    <input id="password" type="password" class="@error('password') @enderror" name="password" required autocomplete="new-password">
+                    <input id="password" type="password" class="@error('password') @enderror" name="password" required
+                           autocomplete="new-password">
 
                     @error('password')
-                        <p class="my-8 text-pink-dark text-sm">
-                            {{ $message }}
-                        </p>
+                    <p class="my-8 text-pink-dark text-sm">
+                        {{ $message }}
+                    </p>
                     @enderror
                 </x-field>
 

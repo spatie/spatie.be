@@ -33,3 +33,4 @@ phpstan.neon
 build
 meilisearch
 data.ms
+.phpunit.cache/test-results

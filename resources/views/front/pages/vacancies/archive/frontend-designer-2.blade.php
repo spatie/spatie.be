@@ -1,4 +1,5 @@
-<x-page background="/backgrounds/jobs.jpg" title="Frontend designer vacancy" description="Vacancy for a frontend designer. Location: Antwerp.">
+<x-page background="/backgrounds/jobs.jpg" title="Frontend designer vacancy"
+        description="Vacancy for a frontend designer. Location: Antwerp.">
     <script type="application/ld+json">
         {
             "@context": "http://schema.org"
@@ -48,7 +49,8 @@
                 Frontend Designer
             </h1>
             <p class="mt-4">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-left') }}</span> <a href="{{ route('vacancies.index')}}" class="link-underline link-blue text-xl">Vacancies overview</a>
+                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
+                <a href="{{ route('vacancies.index')}}" class="link-underline link-blue text-xl">Vacancies overview</a>
             </p>
         </div>
     </section>
@@ -63,19 +65,43 @@
                     <p>
                         We don't take on just any new project but only those where we all can learn something new.
                         We love to work with the latest and greatest.
-                        To get an idea of what we've got in store for you, here are a few examples of projects and tasks you might be involved with:</p>
+                        To get an idea of what we've got in store for you, here are a few examples of projects and tasks
+                        you might be involved with:</p>
                     <ul class="bullets bullets-green">
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Spice up a promotional site with a clever animation in CSS or Three.JS, like the floating 3D letters on <a href="https://writing-readable-php.com">writing-readable-php.com</a>.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Translate a Figma mockup to a SaaS UI in React. Write smaller UI components yourself, finetune them with the help of a JS developer, and leave instructions in a GitHub issue for a backend developer to load the correct data.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Use Tailwind CSS to implement a maintainable light and dark theme for <a href="https://github.com/spatie/ignition">Ignition</a> –Laravel's default error page we created.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Write plain and isolated CSS that doesn't interfere with the rest of a page for the UI of one of our commercial components like <a href="laravel-comments.com">laravel-comments.com</a> or <a href="medialibrary.pro">medialibrary.pro</a>.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Come up with a suiting visual and branding to promote one of our video courses. Propose a few sketches to the team, design a one-pager, create social banners and even compose a short video intro in After Effects.</li>
-                        <li><span class="icon">{{ svg('icons/far-angle-right') }}</span>Collaborate on our enormous collection of <a href="{{ route('open-source.packages') }}">open-source packages</a> and <a href="{{ route('open-source.projects') }}">projects</a>.</li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Spice up a promotional site
+                            with a clever animation in CSS or Three.JS, like the floating 3D letters on <a
+                                    href="https://writing-readable-php.com">writing-readable-php.com</a>.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Translate a Figma mockup to
+                            a SaaS UI in React. Write smaller UI components yourself, finetune them with the help of a
+                            JS developer, and leave instructions in a GitHub issue for a backend developer to load the
+                            correct data.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Use Tailwind CSS to
+                            implement a maintainable light and dark theme for <a
+                                    href="https://github.com/spatie/ignition">Ignition</a> –Laravel's default error page
+                            we created.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Write plain and isolated CSS
+                            that doesn't interfere with the rest of a page for the UI of one of our commercial
+                            components like <a href="laravel-comments.com">laravel-comments.com</a> or <a
+                                    href="medialibrary.pro">medialibrary.pro</a>.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Come up with a suiting
+                            visual and branding to promote one of our video courses. Propose a few sketches to the team,
+                            design a one-pager, create social banners and even compose a short video intro in After
+                            Effects.
+                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Collaborate on our enormous
+                            collection of <a href="{{ route('open-source.packages') }}">open-source packages</a> and <a
+                                    href="{{ route('open-source.projects') }}">projects</a>.
+                        </li>
                     </ul>
 
                     <p>
                         You'll have a say in what you'll be working on. No really, we áre listening.
-                        If you're curious to see what we create, check out a selection of work on <a href="https://spatie.be">our homepage</a>.
+                        If you're curious to see what we create, check out a selection of work on <a
+                                href="https://spatie.be">our homepage</a>.
                     </p>
                 </div>
             </div>
@@ -87,31 +113,37 @@
                     <h3 class="title">And you?</h3>
                     <ul class="bullets bullets-green">
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
-                            You will be working at the front-of-the-front-end (see this <a href="https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/">definition</a> by Brad Frost).
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            You will be working at the front-of-the-front-end (see this <a
+                                    href="https://bradfrost.com/blog/post/front-of-the-front-end-and-back-of-the-front-end-web-development/">definition</a>
+                            by Brad Frost).
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
-                            You help defining personality for our own products — sketch logos, pick fonts, define color palettes, provide illustrations or create short animations.
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            You help defining personality for our own products — sketch logos, pick fonts, define color
+                            palettes, provide illustrations or create short animations.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
-                            You can discuss and design UIs — from idea, to prototype, to implementation. We use paper, Figma and Illustrator, but are open to any tool that gets the job done.
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            You can discuss and design UIs — from idea, to prototype, to implementation. We use paper,
+                            Figma and Illustrator, but are open to any tool that gets the job done.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
-                            You design and implement concrete marketing actions: banners, newsletters or one-page promo sites.
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            You design and implement concrete marketing actions: banners, newsletters or one-page promo
+                            sites.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
-                            You love to play with new technologies, try out new things that won't make production or tinker on your secret side project.
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            You love to play with new technologies, try out new things that won't make production or
+                            tinker on your secret side project.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You write fluent HTML, (Tailwind) CSS and pieces of JavaScript. You know a bit of Git.
                         </li>
                         <li>
-                            <span class="icon">{{ svg('icons/far-angle-right') }}</span>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                             You can speak Dutch and you love Italian food.
                         </li>
                     </ul>

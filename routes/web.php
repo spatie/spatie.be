@@ -37,6 +37,9 @@ use App\Http\Controllers\WwsdController;
 use App\Models\Member;
 use Illuminate\Support\Facades\Route;
 
+
+Route::permanentRedirect('docs/ray/{any}', 'https://myray.app/docs/')->where('any', '.*');
+
 Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where('any', '.*');
 
 Route::get('stop-impersonation', StopImpersonationController::class)->name('stop-impersonation');

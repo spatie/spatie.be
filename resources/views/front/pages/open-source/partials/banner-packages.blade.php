@@ -4,7 +4,8 @@
             Open source packages
         </h1>
         <p class="banner-intro">
-            {{ ucfirst(App\Models\Repository::humanReadableDownloadCount()) }} downloads and <span class="icon">{{ svg('icons/far-chart-line') }}</span>
+            {{ ucfirst(App\Models\Repository::humanReadableDownloadCount()) }} downloads and <span
+                    class="icon">{{ app_svg('icons/far-chart-line') }}</span>
         </p>
     </div>
 </section>

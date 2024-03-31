@@ -38,7 +38,7 @@
                         <a href="{{ route('github-login') }}" onclick="event.preventDefault(); showGitHubAuthWindow()">
                             <x-button>
                                 <span class="-ml-4 mr-3 icon w-5 mb-1 opacity">
-                                    {{ svg('github') }}
+                                    {{ app_svg('github') }}
                                 </span>
                                 Log in with GitHub
                             </x-button>
@@ -68,7 +68,8 @@
                             <x-label for="password">
                                 Password
                             </x-label>
-                            <a class="ml-4 link-white link-underline text-sm" tabindex="3" href="{{ route('forgot-password') }}">
+                            <a class="ml-4 link-white link-underline text-sm" tabindex="3"
+                               href="{{ route('forgot-password') }}">
                                 Can't recall, send me a link
                             </a>
                         </div>

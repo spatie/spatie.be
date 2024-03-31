@@ -3,9 +3,10 @@
 namespace App\Support\Uuid;
 
 use Illuminate\Contracts\Database\Eloquent\Castable;
+use Livewire\Wireable;
 use Ramsey\Uuid\Uuid as RamseyUuid;
 
-class Uuid implements Castable
+class Uuid implements Castable, Wireable
 {
     private function __construct(
         private string $uuid,
@@ -30,5 +31,15 @@ class Uuid implements Castable
     public static function castUsing(array $arguments): UuidCaster
     {
         return new UuidCaster();
+    }
+
+    public function toLivewire()
+    {
+        return [$this->uuid];
+    }
+
+    public static function fromLivewire($value)
+    {
+        return new static($value[0]);
     }
 }

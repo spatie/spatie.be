@@ -9,7 +9,7 @@ use Illuminate\Support\HtmlString;
 use Spatie\EventSourcing\Commands\CommandBus;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-function svg($filename): HtmlString
+function app_svg($filename): HtmlString
 {
     return new HtmlString(
         file_get_contents(resource_path("svg/{$filename}.svg"))
@@ -47,9 +47,16 @@ function is_office_open(): bool
 
 function gravatar_img(string $name): HtmlString
 {
-    $gravatarId = md5(strtolower(trim($name)));
+    $url = gravatar_url($name);
 
-    return new HtmlString('<img src="https://gravatar.com/avatar/' . $gravatarId . '?s=240">');
+    return new HtmlString('<img src="' . $url . '">');
+}
+
+function gravatar_url(string $name, int $size = 240): string
+{
+    $key = md5(strtolower(trim($name)));
+
+    return "https://gravatar.com/avatar/$key/?s=$size";
 }
 
 function faker(): Generator

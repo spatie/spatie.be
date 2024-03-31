@@ -7,7 +7,7 @@
             <div class="pt-8 | sm:col-start-3 sm:col-span-4 | md:pt-0">
                 <h2 class="title line-after">{{ $htmlLesson->title }}</h2>
                 <div
-                    class="mt-8 bg-white p-12 xl:p-16 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-shiki markup-titles markup-lists markup-tables">
+                        class="mt-8 bg-white p-12 xl:p-16 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-shiki markup-titles markup-lists markup-tables">
                     {!! $htmlLesson->html !!}
                 </div>
 
@@ -15,7 +15,7 @@
                 @if ($nextLesson)
 
                     <div
-                        class="my-6 w-full overflow-hidden py-8 | md:flex gap-8 justify-between links-blue links-underline text-xs">
+                            class="my-6 w-full overflow-hidden py-8 | md:flex gap-8 justify-between links-blue links-underline text-xs">
 
 
                         <div>
@@ -52,13 +52,13 @@
                         <button type="submit" class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
                             Continue</button>
                                 <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
-                            {{ svg('icons/far-angle-right') }}
+                            {{ app_svg('icons/far-angle-right') }}
                         </span>
                             </span>
                             </form>
                         @endif
                     </div>
-                    
+
                     <hr class="my-8 -ml-4 line-after "/>
                 @endif
 
@@ -67,8 +67,8 @@
                 @endphp
 
                 <livewire:comments
-                    no-replies
-                    :no-comments-text="$noCommentsText" :model="$htmlLesson->lesson"/>
+                        no-replies
+                        :no-comments-text="$noCommentsText" :model="$htmlLesson->lesson"/>
             </div>
         </div>
     </section>

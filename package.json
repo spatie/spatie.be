@@ -1,5 +1,6 @@
 {
     "private": true,
+    "license": "MIT",
     "scripts": {
         "format": "prettier --write \"**/*.{css,js}\"",
         "dev": "vite",

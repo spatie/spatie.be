@@ -14,13 +14,13 @@
                 <hr class="-ml-4 mt-12 line-after"/>
 
                 <div
-                    class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
+                        class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
                     @if ($series->lessons->first())
                         <a class="mb-2 md:w-1/2 md:pl-4 flex items-center md:justify-end ml-auto"
                            href="{{ $series->lessons->first()->url }}">
                             <span class="truncate"><span class="font-semibold md:hidden"></span>{{ $series->lessons->first()->title  }}</span>
                             <span class="w-1 fill-current text-blue ml-1 hidden | md:inline-block">
-                                    {{ svg('icons/far-angle-right') }}
+                                    {{ app_svg('icons/far-angle-right') }}
                                 </span>
                         </a>
                     @endif

@@ -40,6 +40,10 @@ class AfterworkCommand extends Command
                     continue;
                 }
 
+                if ($date->endOfDay()->isBefore(now())) {
+                    continue;
+                }
+
                 $options[$date->day] = "{$date->shortDayName} {$date->day}/{$date->month}";
             }
         }

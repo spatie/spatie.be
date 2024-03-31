@@ -91,6 +91,21 @@ parameters:
 			path: app/Domain/Shop/Models/Product.php
 
 		-
+			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$count\\.$#"
+			count: 1
+			path: app/Filament/Widgets/PaymentMethodsWidget.php
+
+		-
+			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
+			count: 2
+			path: app/Filament/Widgets/PaymentMethodsWidget.php
+
+		-
+			message: "#^Method Carbon\\\\Carbon\\:\\:subYear\\(\\) invoked with 1 parameter, 0 required\\.$#"
+			count: 1
+			path: app/Filament/Widgets/PaymentMethodsWidget.php
+
+		-
 			message: "#^Constructor of class App\\\\Guidelines\\\\Guidelines has an unused parameter \\$sheets\\.$#"
 			count: 1
 			path: app/Guidelines/Guidelines.php
@@ -200,7 +215,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
-			count: 1
+			count: 2
 			path: app/Nova/Metrics/PaymentMethods.php
 
 		-
@@ -210,7 +225,7 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
-			count: 1
+			count: 2
 			path: app/Nova/Metrics/PaymentMethodsLastMonth.php
 
 		-
@@ -270,7 +285,7 @@ parameters:
 			path: app/Rules/MatchingLicense.php
 
 		-
-			message: "#^Call to an undefined method Github\\\\Api\\\\ApiInterface\\:\\:releases\\(\\)\\.$#"
+			message: "#^Call to an undefined method Github\\\\Api\\\\AbstractApi\\:\\:releases\\(\\)\\.$#"
 			count: 1
 			path: app/Services/GitHub/GitHubApi.php
 

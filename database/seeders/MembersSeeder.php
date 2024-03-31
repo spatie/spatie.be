@@ -102,6 +102,17 @@ class MembersSeeder extends Seeder
             'birthday' => '1991-03-15',
         ],
 
+        'tim@spatie.be' => [
+            'first_name' => 'Tim',
+            'last_name' => 'Van Dijck',
+            'preferred_name' => null,
+            'role' => 'Full stack developer',
+            'description' => 'Tim is the George Harrison of the team: quietly making essential contributions to all our major projects.',
+            'twitter' => 'timvandijck',
+            'website' => 'https://timvandijck.be',
+            'birthday' => '1989-10-14',
+        ],
+
     ];
 
     public function run(): void
