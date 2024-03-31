@@ -74,7 +74,8 @@ return [
             "name" => "laravel-route-discovery",
             "repository" => "spatie/laravel-route-discovery",
             "branches" => [
-                "main" => "v1",
+                "main" => "v2",
+                "v1" => "v1",
             ],
             "category" => "Laravel",
         ],
