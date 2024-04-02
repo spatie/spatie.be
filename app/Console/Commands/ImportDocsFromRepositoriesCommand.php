@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Docs\Docs;
 use App\Exceptions\DocsImportException;
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Console\Command;
