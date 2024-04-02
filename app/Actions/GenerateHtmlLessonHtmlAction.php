@@ -22,8 +22,8 @@ class GenerateHtmlLessonHtmlAction
             ->toHtml($htmlLesson->markdown);
 
         $html = Str::of($html)
-            ->replace('[good]', '<div class="hl-addition">')
-            ->replace('[bad]', '<div class="hl-deletion">')
+            ->replace('[good]', '<div class="hl-good">')
+            ->replace('[bad]', '<div class="hl-bad">')
             ->replace(['[/good]', '[/bad]'], '</div>')
             ->toString();
 
