@@ -11,6 +11,8 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 
 class AdResource extends Resource
@@ -31,6 +33,7 @@ class AdResource extends Resource
                     ->columnStart(1)
                     ->disabled(),
                 FileUpload::make('image')
+                    ->disk('github_ads')
                     ->columnStart(1),
                 TextInput::make('name')
                     ->columnStart(1)
@@ -49,7 +52,7 @@ class AdResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\ImageColumn::make('image'),
+                ImageColumn::make('image')->disk('github_ads'),
                 Tables\Columns\TextColumn::make('click_redirect_url')
                     ->url(fn ($record) => $record->click_redirect_url)
                     ->openUrlInNewTab()
