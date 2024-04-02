@@ -70,7 +70,7 @@
         "spatie/laravel-schedule-monitor": "^3.1",
         "spatie/laravel-site-search": "^2.0",
         "spatie/laravel-slack-alerts": "^1.1.1",
-        "spatie/laravel-stubs": "^2.5.2",
+        "spatie/laravel-stubs": "^3.0",
         "spatie/laravel-tail": "^4.4",
         "spatie/laravel-validation-rules": "^3.2.1",
         "spatie/packagist-api": "^2.1",
