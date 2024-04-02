@@ -49,8 +49,16 @@ class PlaylistResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('spotify_url')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('apple_music_url')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('spotify_url')
+                    ->url(fn ($record) => $record->spotify_url)
+                    ->openUrlInNewTab()
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('apple_music_url')
+                    ->url(fn ($record) => $record->apple_music_url)
+                    ->openUrlInNewTab()
+                    ->searchable()
+                    ->sortable(),
                 SpatieMediaLibraryImageColumn::make('image'),
             ])
             ->filters([

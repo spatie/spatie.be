@@ -45,7 +45,8 @@ class TechnologyResource extends Resource
                     ->required(),
                 TextInput::make('website_url')
                     ->columnStart(1)
-                    ->required(),
+                    ->required()
+                    ->url(),
                 Select::make('recommended_by')
                     ->options(Member::query()
                         ->pluck('first_name')
@@ -67,7 +68,11 @@ class TechnologyResource extends Resource
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('type')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('website_url')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('website_url')
+                    ->url(fn ($record) => $record->website_url)
+                    ->openUrlInNewTab()
+                    ->searchable()
+                    ->sortable(),
                 SpatieMediaLibraryImageColumn::make('avatar'),
             ])
             ->filters([

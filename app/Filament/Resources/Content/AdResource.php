@@ -39,7 +39,8 @@ class AdResource extends Resource
                     ->required(),
                 TextInput::make('click_redirect_url')
                     ->columnStart(1)
-                    ->required(),
+                    ->required()
+                    ->url(),
                 Toggle::make('active')
                     ->columnStart(1),
             ]);
