@@ -180,7 +180,6 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\HelpSpaceServiceProvider::class,
-        App\Providers\NovaServiceProvider::class,
 
         /*
          * Package Service Providers...

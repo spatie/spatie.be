@@ -17,10 +17,7 @@
         "aws/aws-sdk-php": "^3.240.6",
         "barryvdh/laravel-debugbar": "^3.8",
         "blade-ui-kit/blade-ui-kit": "^0.5",
-        "blendbyte/nova-items-field": "^1.0",
-        "coroowicaksono/chart-js-integration": "^0.4",
         "doctrine/dbal": "^3.5.1",
-        "ebess/advanced-nova-media-library": "dev-master as 4.0.5",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
         "flowframe/laravel-trend": "^0.2.0",
@@ -32,7 +29,6 @@
         "laravel/cashier-paddle": "^1.8",
         "laravel/framework": "^11.0",
         "laravel/horizon": "^5.12",
-        "laravel/nova": "^4.17.1",
         "laravel/sanctum": "^4.0",
         "laravel/slack-notification-channel": "^3.2",
         "laravel/socialite": "^5.6",
@@ -147,10 +143,6 @@
         {
             "type": "composer",
             "url": "https://satis.spatie.be"
-        },
-        {
-            "type": "composer",
-            "url": "https://nova.laravel.com"
         }
     ],
     "minimum-stability": "stable",
@@ -161,7 +153,6 @@
             "@php composer outdated --direct"
         ],
         "post-update-cmd": [
-            "@php artisan nova:publish",
             "@php artisan horizon:publish",
             "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
         ],
