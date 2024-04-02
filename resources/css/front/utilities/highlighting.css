@@ -1,4 +1,4 @@
-pre, code {
+.markup-code pre, .markup-code code {
     color: #000;
     background-color: #f3f3f3;
 }

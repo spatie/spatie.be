@@ -1,0 +1,366 @@
+/* Legacy support for Shiki styling to use with our courses */
+/*.markup .title {*/
+/*    @apply mb-8;*/
+/*}*/
+
+/*.markup .title-sm {*/
+/*    @apply mb-4;*/
+/*}*/
+
+/*.markup address:not(:last-child),*/
+/*.markup p:not(:last-child),*/
+/*.markup ol:not(:last-child),*/
+/*.markup ul:not(:last-child),*/
+/*.markup iframe {*/
+/*    margin-bottom: 1.5em;*/
+/*}*/
+
+/*.markup strong {*/
+/*    @apply font-sans;*/
+/*    @apply font-bold;*/
+/*}*/
+
+/*.markup em {*/
+/*    @apply font-sans;*/
+/*    @apply italic;*/
+/*}*/
+
+/*.markup sub,*/
+/*.markup sup {*/
+/*    @apply text-xs;*/
+/*}*/
+
+/*.markup-titles h1 {*/
+/*    @apply text-4xl;*/
+/*    @apply font-serif;*/
+/*    @apply font-bold;*/
+/*    @apply leading-tight;*/
+/*    @apply mb-16;*/
+/*    page-break-inside: avoid;*/
+/*    page-break-after: avoid;*/
+/*}*/
+
+/*@screen sm {*/
+/*    .markup-titles h1 {*/
+/*        @apply text-5xl;*/
+/*    }*/
+/*}*/
+
+/*.markup-titles h1:not(:first-child) {*/
+/*    @apply mt-32;*/
+/*    page-break-before: always;*/
+/*}*/
+
+/*.markup-titles h2 {*/
+/*    @apply text-2xl;*/
+/*    @apply font-sans;*/
+/*    @apply font-bold;*/
+/*    @apply leading-tight;*/
+/*    @apply mb-8;*/
+/*    page-break-inside: avoid;*/
+/*    page-break-after: avoid;*/
+/*}*/
+
+/*.markup-titles h2:not(:first-child) {*/
+/*    @apply mt-16;*/
+/*}*/
+
+/*.markup-titles h2 + h3 {*/
+/*    @apply mt-8;*/
+/*}*/
+
+/*.markup-titles h3 {*/
+/*    @apply font-sans;*/
+/*    @apply font-bold;*/
+/*    @apply uppercase;*/
+/*    @apply leading-tight;*/
+/*    @apply mb-4;*/
+/*    @apply mt-24;*/
+/*    page-break-inside: avoid;*/
+/*    page-break-after: avoid;*/
+/*}*/
+
+/*.markup-titles h4 {*/
+/*    @apply text-xs;*/
+/*    @apply font-sans;*/
+/*    @apply font-bold;*/
+/*    @apply uppercase;*/
+/*    @apply leading-tight;*/
+/*    @apply mt-2;*/
+/*    @apply mb-2;*/
+/*    @apply mt-8;*/
+/*    page-break-inside: avoid;*/
+/*    page-break-after: avoid;*/
+/*}*/
+
+/*.markup-titles h2 .heading-permalink,*/
+/*.markup-titles h3 .heading-permalink,*/
+/*.markup-titles h4 .heading-permalink {*/
+/*    @apply absolute;*/
+/*    @apply right-full;*/
+/*    @apply top-0;*/
+/*    @apply opacity-0;*/
+/*    @apply text-gray-lighter !important;*/
+/*    @apply no-underline !important;*/
+/*    @apply pr-1;*/
+/*    @apply transition;*/
+/*}*/
+
+/*.markup-titles h2:hover .heading-permalink,*/
+/*.markup-titles h3:hover .heading-permalink,*/
+/*.markup-titles h4:hover .heading-permalink {*/
+/*    @apply opacity-100;*/
+/*}*/
+
+/*.markup-titles code {*/
+/*    @apply normal-case;*/
+/*}*/
+
+/*.markup-lists li:not(:last-child) {*/
+/*    margin-bottom: 0.35em;*/
+/*}*/
+
+/*.markup-lists ul li {*/
+/*    padding-left: 1em;*/
+/*}*/
+
+/*.markup-lists ul li:before {*/
+/*    @apply text-blue;*/
+/*    content: '•';*/
+/*    left: 0;*/
+/*    position: absolute;*/
+/*    opacity: 0.75;*/
+/*}*/
+
+/*.markup-lists ol {*/
+/*    --counter-reset: ol;*/
+/*    --counter-increment: ol;*/
+/*    --counter-style: decimal;*/
+
+/*    counter-reset: var(--counter-reset);*/
+/*}*/
+
+/*.markup-lists ol > li {*/
+/*    --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';*/
+
+/*    counter-increment: var(--counter-increment);*/
+/*    padding-left: 2.5rem;*/
+/*}*/
+
+/*.markup-lists ol > li:before {*/
+/*    left: 0;*/
+/*    position: absolute;*/
+/*    content: var(--counter-content);*/
+/*}*/
+
+/*.markup-lists-compact li,*/
+/*.markup-list-compact li {*/
+/*    padding-left: 1.8em !important;*/
+/*}*/
+
+/*!* inline code *!*/
+
+/*.markup-code :not(pre) code {*/
+/*    @apply bg-blue-lightest;*/
+/*    @apply bg-opacity-25;*/
+/*    @apply px-1;*/
+/*    @apply font-mono;*/
+/*    @apply rounded-sm;*/
+/*    @apply break-words;*/
+/*}*/
+
+/*!* block code *!*/
+
+/*.markup-code > pre > code {*/
+/*    display: block;*/
+/*    overflow-x: auto;*/
+/*    @apply my-8;*/
+/*    @apply p-6;*/
+/*    @apply bg-blue-lightest;*/
+/*    @apply bg-opacity-25;*/
+/*    @apply text-sm;*/
+/*    @apply font-mono;*/
+/*}*/
+
+/*.markup-code .article_badges {*/
+/*    @apply flex;*/
+/*    @apply flex-wrap;*/
+/*}*/
+
+/*.markup-code .article_badges img {*/
+/*    @apply mb-2;*/
+/*    @apply mr-4;*/
+/*}*/
+
+/*!* Table styles *!*/
+
+/*.markup-tables table {*/
+/*    @apply border-collapse;*/
+/*    @apply border-t;*/
+/*    @apply border-b;*/
+/*    @apply border-gray-lighter;*/
+/*    @apply w-full;*/
+/*    @apply text-xs;*/
+/*    @apply my-6;*/
+/*}*/
+
+/*.markup-tables table thead tr {*/
+/*    @apply border-b;*/
+/*    @apply border-gray-lighter;*/
+/*    @apply bg-gray-lightest;*/
+/*    @apply bg-opacity-25;*/
+/*    font-size: 0.875em;*/
+/*}*/
+
+/*.markup-tables table th,*/
+/*.markup-tables table td {*/
+/*    @apply py-2;*/
+/*    @apply px-1;*/
+/*}*/
+
+/*@screen sm {*/
+/*    .markup-tables table th,*/
+/*    .markup-tables table td {*/
+/*        @apply px-2;*/
+/*    }*/
+/*}*/
+
+/*.markup-tables table th {*/
+/*    @apply text-left;*/
+/*    @apply font-normal;*/
+/*    @apply whitespace-no-wrap;*/
+/*    @apply uppercase;*/
+/*    @apply text-xs;*/
+/*    @apply text-gray;*/
+/*}*/
+
+/*.markup-tables table tbody tr {*/
+/*    @apply border-t;*/
+/*    @apply border-gray-lighter;*/
+/*}*/
+
+/*.markup-tables table thead .th-numeric,*/
+/*.markup-tables table tbody .td-numeric {*/
+/*    @apply text-right;*/
+/*    font-variant-numeric: tabular-nums;*/
+/*}*/
+
+/*.markup-embeds iframe {*/
+/*    width: 100%;*/
+/*}*/
+
+
+/* Shiki markup */
+
+.markup-shiki :not(pre) > code {
+    @apply bg-paper;
+    @apply px-1;
+    @apply font-mono;
+    @apply rounded-sm;
+    font-size: 0.95em;
+}
+
+.markup-shiki .shiki {
+    @apply p-10;
+    @apply my-8;
+    @apply rounded-sm;
+    @apply overflow-hidden;
+    @apply overflow-x-scroll;
+    @apply bg-paper !important;
+    @apply text-sm;
+}
+
+.markup-shiki .shiki::-webkit-scrollbar { height: 1px;width: 1px; }
+
+.markup-shiki .shiki::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.markup-shiki .shiki::-webkit-scrollbar-thumb {
+    background-image: none;
+    @apply bg-gray-light;
+    @apply bg-opacity-25;
+}
+
+
+.markup-shiki .shiki-good .shiki{
+    @apply border-l-8;
+    @apply border-green-lightest;
+}
+
+
+.markup-shiki .shiki-bad .shiki{
+    @apply border-l-8;
+    @apply border-pink-lightest;
+}
+
+.markup-shiki .shiki-good:before,
+.markup-shiki .shiki-bad:before {
+    @apply absolute;
+    top: -0.5rem;
+    left: -0.5rem;
+    @apply shadow;
+    @apply z-10;
+    @apply w-6;
+    @apply h-6;
+    @apply rounded-full;
+    @apply flex;
+    @apply items-center;
+    @apply justify-center;
+    @apply text-white;
+    @apply font-bold;
+    @apply text-xs;
+}
+
+.markup-shiki .shiki-good:before {
+    @apply bg-green;
+    content: '✓';
+}
+
+.markup-shiki .shiki-bad:before {
+    @apply bg-red;
+    content: '×';
+}
+
+.markup-shiki .line.add{
+    @apply bg-green-light;
+    @apply bg-opacity-25;
+}
+
+.markup-shiki .line.add:before{
+    content: '+';
+    @apply absolute;
+    @apply right-full;
+    @apply px-2;
+    @apply text-green;
+}
+
+.markup-shiki .line.del{
+    @apply bg-pink;
+    @apply bg-opacity-25;
+}
+
+.markup-shiki .line.del:before{
+    content: '-';
+    @apply absolute;
+    @apply right-full;
+    @apply px-2;
+    @apply text-pink;
+}
+
+/* Video markup */
+
+.markup-video{
+    @apply relative;
+    @apply w-full;
+    @apply h-0;
+    padding-bottom: 56.25%;
+    @apply bg-gray-darkest
+}
+
+.markup-video iframe{
+    @apply absolute;
+    @apply w-full !important;
+    @apply h-full !important;
+    @apply inset-0;
+}
