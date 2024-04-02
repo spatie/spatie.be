@@ -140,7 +140,10 @@ class PurchasableResource extends Resource
                 )->sortable(),
                 Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
                 BooleanColumn::make('released')->sortable(),
-                Tables\Columns\TextColumn::make('price_in_usd_cents')->sortable(),
+                Tables\Columns\TextColumn::make('price_in_usd_cents')
+                    ->label('Price')
+                    ->money('USD', divideBy: 100)
+                    ->sortable(),
                 Tables\Columns\TextColumn::make('discount_percentage')->sortable(),
             ])
             ->filters([
