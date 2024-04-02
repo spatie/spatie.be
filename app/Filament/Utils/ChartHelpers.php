@@ -23,6 +23,10 @@ class ChartHelpers
 
     public static function chartColor(int $i): string
     {
+        if ($i >= count(static::chartColors())) {
+            $i = 0;
+        }
+
         return static::chartColors()[$i];
     }
 }
