@@ -14,9 +14,11 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
+use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 
 class UserResource extends Resource
 {
@@ -95,8 +97,9 @@ class UserResource extends Resource
                 //
             ])
             ->actions([
+                Impersonate::make(),
+                Tables\Actions\EditAction::make(),
                 ActionGroup::make([
-                    Tables\Actions\EditAction::make(),
                     TransferPurchaseAssignmentAction::make(),
                     TransferPurchaseToUserAction::make(),
                 ]),

@@ -46,6 +46,8 @@
 
     @include('layout.partials.footer')
 
+    <x-impersonate::banner/>
+
     <livewire:scripts>
     @stack('scripts')
     <script>
