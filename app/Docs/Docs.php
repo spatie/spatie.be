@@ -10,9 +10,7 @@ class Docs
 {
     public function getRepository(string $slug): ?Repository
     {
-        $pages = cache()->store('docs')->rememberForever($slug, function () use ($slug) {
-            return app(Sheets::class)->collection($slug)->all()->sortBy('weight');
-        });
+        $pages = app(Sheets::class)->collection($slug)->all()->sortBy('weight');
 
         $aliases = $pages
             ->whereNotNull('alias')
