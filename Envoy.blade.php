@@ -140,7 +140,6 @@ php artisan cache:clear
 php artisan config:cache
 php artisan event:cache
 #php artisan schedule-monitor:sync
-php artisan sidecar:deploy --activate
 
 sudo service php8.3-fpm restart
 sudo supervisorctl restart all
