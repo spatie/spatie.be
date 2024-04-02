@@ -5,9 +5,20 @@ namespace App\Http\Controllers;
 use App\Docs\Alias;
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
+use App\Support\CommonMark\ImageRenderer;
+use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
+use League\CommonMark\Extension\CommonMark\Node\Block\FencedCode;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
+use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
+use League\CommonMark\Extension\Table\TableExtension;
 use RuntimeException;
+use Spatie\LaravelMarkdown\MarkdownRenderer;
+use Tempest\Highlight\CommonMark\CodeBlockRenderer;
+use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
 
 class DocsController
 {
@@ -92,6 +103,8 @@ class DocsController
             return redirect()->action([DocsController::class, 'repository'], [$repository->slug, $alias->slug]);
         }
 
+        $page->contents = $this->renderMarkdown($page->contents);
+
         $repositories = $docs->getRepositories();
 
         $navigation = $this->getNavigation($pages);
@@ -139,5 +152,23 @@ class DocsController
         return collect($allMatches)
             ->reject(fn (string $result) => str_contains($result, 'Beatles'))
             ->toArray();
+    }
+
+    private function renderMarkdown(string $contents): string
+    {
+        return app(MarkdownRenderer::class)
+            ->highlightCode(false)
+            ->addExtension(new TableExtension())
+            ->addExtension(new HeadingPermalinkExtension())
+            ->addInlineRenderer(Image::class, new ImageRenderer())
+            ->addInlineRenderer(Link::class, new LinkRenderer())
+            ->addInlineRenderer(FencedCode::class, new CodeBlockRenderer(), 10)
+            ->addInlineRenderer(Code::class, new InlineCodeBlockRenderer(), 10)
+            ->commonmarkOptions([
+                'heading_permalink' => [
+                    'html_class' => 'anchor-link',
+                    'symbol' => '#',
+                ],
+            ])->toHtml($contents);
     }
 }
