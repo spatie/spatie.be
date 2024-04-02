@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\Docs\Docs;
 use App\Exceptions\DocsImportException;
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Console\Command;
@@ -87,12 +86,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                     if (! $process->isSuccessful()) {
                         $this->error($repository['name'] . ': ' . $process->getErrorOutput());
                         report(new DocsImportException("Import for repository {$repository['name']} unsuccessful: " . $process->getErrorOutput()));
-
-                        return;
                     }
-
-                    cache()->store('docs')->forget($repository['name']);
-                    app(Docs::class)->getRepository($repository['name']);
                 };
             })
             ->toArray();

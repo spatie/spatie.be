@@ -112,14 +112,6 @@ return [
             "category" => "Laravel",
         ],
         [
-            "name" => "ray",
-            "repository" => "spatie/ray",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "General PHP",
-        ],
-        [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
             "branches" => [
