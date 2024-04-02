@@ -260,13 +260,13 @@
 }
 
 .markup pre {
-    @apply p-10;
-    @apply my-8;
-    @apply rounded-sm;
-    @apply overflow-hidden;
-    @apply overflow-x-scroll;
-    @apply bg-paper !important;
-    @apply text-sm;
+    /*@apply p-10;*/
+    /*@apply my-8;*/
+    /*@apply rounded-sm;*/
+    /*@apply overflow-hidden;*/
+    /*@apply overflow-x-scroll;*/
+    /*@apply bg-paper !important;*/
+    /*@apply text-sm;*/
 }
 
 .markup-code pre::-webkit-scrollbar { height: 1px;width: 1px; }
