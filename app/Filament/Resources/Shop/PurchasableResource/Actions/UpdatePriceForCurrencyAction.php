@@ -13,7 +13,7 @@ class UpdatePriceForCurrencyAction
 {
     public static function make()
     {
-        return Action::make('update_bundle_price')
+        return Action::make('update_price_for_currency')
             ->icon('heroicon-o-currency-dollar')
             ->form([
                 TextInput::make('amount_in_cents')
