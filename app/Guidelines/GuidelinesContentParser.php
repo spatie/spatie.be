@@ -56,13 +56,8 @@ class GuidelinesContentParser implements ContentParser
         $htmlContents = $this->markdownRenderer->toHtml($document->body());
 
         $htmlContents = Str::of($htmlContents)
-<<<<<<< HEAD
             ->replace('[good]', '<div class="hl-good">')
             ->replace('[bad]', '<div class="hl-bad">')
-=======
-            ->replace('[good]', '<div class="hl-addition">')
-            ->replace('[bad]', '<div class="hl-deletion">')
->>>>>>> 2200d8d5 (Configure Tempest Highlight instead of Shiki.)
             ->replace(['[/good]', '[/bad]'], '</div>')
             ->toString();
 

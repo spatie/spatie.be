@@ -25,7 +25,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
-use Laravel\Nova\Auth\Impersonatable;
 use Laravel\Paddle\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
@@ -38,7 +37,6 @@ class User extends Authenticatable implements CanComment, FilamentUser
     use Billable;
     use Notifiable;
     use InteractsWithComments;
-    use Impersonatable;
 
     protected $hidden = [
         'password', 'remember_token',

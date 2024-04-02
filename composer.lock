@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16d2ac15e5659c4cfb076b5aa52f5df7",
+    "content-hash": "3c3cda9afe5ee7be4d089eb150fb65d9",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -593,53 +593,6 @@
             "time": "2024-03-27T10:56:26+00:00"
         },
         {
-            "name": "blendbyte/nova-items-field",
-            "version": "1.3.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/blendbyte/nova-items-field.git",
-                "reference": "c4027a96e252c2a5d648ccba0f57455a60b018c9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/blendbyte/nova-items-field/zipball/c4027a96e252c2a5d648ccba0f57455a60b018c9",
-                "reference": "c4027a96e252c2a5d648ccba0f57455a60b018c9",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "laravel/nova": "^4.0",
-                "php": "^7.3|^8.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "NovaItemsField\\FieldServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "NovaItemsField\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Nova field to handle array columns",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "support": {
-                "issues": "https://github.com/blendbyte/nova-items-field/issues",
-                "source": "https://github.com/blendbyte/nova-items-field/tree/1.3.4"
-            },
-            "time": "2024-03-11T03:38:56+00:00"
-        },
-        {
             "name": "brick/math",
             "version": "0.11.0",
             "source": {
@@ -693,64 +646,6 @@
                 }
             ],
             "time": "2023-01-15T23:15:59+00:00"
-        },
-        {
-            "name": "brick/money",
-            "version": "0.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/brick/money.git",
-                "reference": "25f484a347756b7f3fbe7ad63ed9ad2d87b20004"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/brick/money/zipball/25f484a347756b7f3fbe7ad63ed9ad2d87b20004",
-                "reference": "25f484a347756b7f3fbe7ad63ed9ad2d87b20004",
-                "shasum": ""
-            },
-            "require": {
-                "brick/math": "~0.10.1 || ~0.11.0",
-                "ext-json": "*",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "brick/varexporter": "~0.3.0",
-                "ext-dom": "*",
-                "ext-pdo": "*",
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^9.4.3",
-                "vimeo/psalm": "5.14.1"
-            },
-            "suggest": {
-                "ext-intl": "Required to format Money objects"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Brick\\Money\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Money and currency library",
-            "keywords": [
-                "brick",
-                "currency",
-                "money"
-            ],
-            "support": {
-                "issues": "https://github.com/brick/money/issues",
-                "source": "https://github.com/brick/money/tree/0.8.1"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/BenMorel",
-                    "type": "github"
-                }
-            ],
-            "time": "2023-09-23T21:17:11+00:00"
         },
         {
             "name": "carbonphp/carbon-doctrine-types",
@@ -1043,69 +938,6 @@
                 }
             ],
             "time": "2023-08-31T09:50:34+00:00"
-        },
-        {
-            "name": "coroowicaksono/chart-js-integration",
-            "version": "v0.4.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/coroo/nova-chartjs.git",
-                "reference": "36e3c1911332c46b54c0a38020bb07964050ad6b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coroo/nova-chartjs/zipball/36e3c1911332c46b54c0a38020bb07964050ad6b",
-                "reference": "36e3c1911332c46b54c0a38020bb07964050ad6b",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/nova": "^4.0",
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Coroowicaksono\\ChartJsIntegration\\CardServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Coroowicaksono\\ChartJsIntegration\\": "src/",
-                    "Coroowicaksono\\ChartJsIntegration\\Api\\": "src/api"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Kuncoro Wicaksono",
-                    "email": "coroo.wicaksono@gmail.com",
-                    "role": "Software Engineer"
-                }
-            ],
-            "description": "A Simple Dashboard Chart in Laravel Nova using Chart JS. Starting create your own dashboard with Chart JS Integration can save your time and help you maintain consistency across standard elements such as Bar, Stacked, Line, Area, Doughnut and Pie Chart.",
-            "homepage": "https://github.com/coroo",
-            "keywords": [
-                "chart js",
-                "laravel",
-                "nova",
-                "stacked chart"
-            ],
-            "support": {
-                "issues": "https://github.com/coroo/nova-chartjs/issues",
-                "source": "https://github.com/coroo/nova-chartjs/tree/v0.4.3"
-            },
-            "funding": [
-                {
-                    "url": "https://www.buymeacoffee.com/coroowicaksono",
-                    "type": "custom"
-                }
-            ],
-            "time": "2023-11-21T18:05:01+00:00"
         },
         {
             "name": "danharrin/date-format-converter",
@@ -1859,55 +1691,6 @@
                 }
             ],
             "time": "2023-08-10T19:36:49+00:00"
-        },
-        {
-            "name": "ebess/advanced-nova-media-library",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ebess/advanced-nova-media-library.git",
-                "reference": "08b5b8827bc42dcaf53944232774914006d82adc"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ebess/advanced-nova-media-library/zipball/08b5b8827bc42dcaf53944232774914006d82adc",
-                "reference": "08b5b8827bc42dcaf53944232774914006d82adc",
-                "shasum": ""
-            },
-            "require": {
-                "laravel/framework": "^8.0|^9.0|^10.0|^11.0",
-                "laravel/nova": "^4.0",
-                "php": ">=7.4",
-                "spatie/laravel-medialibrary": "^8.0|^9.0|^10.0|^11.0"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Ebess\\AdvancedNovaMediaLibrary\\AdvancedNovaMediaLibraryServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Ebess\\AdvancedNovaMediaLibrary\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Laravel Nova tools for managing the Spatie media library.",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "support": {
-                "issues": "https://github.com/ebess/advanced-nova-media-library/issues",
-                "source": "https://github.com/ebess/advanced-nova-media-library/tree/4.2"
-            },
-            "time": "2024-03-18T06:36:40+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -3122,81 +2905,6 @@
             "time": "2023-12-03T19:50:20+00:00"
         },
         {
-            "name": "inertiajs/inertia-laravel",
-            "version": "v1.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/inertiajs/inertia-laravel.git",
-                "reference": "fcf3d6db1a259a55d8d18cf43fc971202c1f6b0d"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/inertiajs/inertia-laravel/zipball/fcf3d6db1a259a55d8d18cf43fc971202c1f6b0d",
-                "reference": "fcf3d6db1a259a55d8d18cf43fc971202c1f6b0d",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "laravel/framework": "^8.74|^9.0|^10.0|^11.0",
-                "php": "^7.3|~8.0.0|~8.1.0|~8.2.0|~8.3.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "^1.3.3",
-                "orchestra/testbench": "^6.4|^7.0|^8.0|^9.0",
-                "phpunit/phpunit": "^8.0|^9.5.8|^10.4",
-                "roave/security-advisories": "dev-master"
-            },
-            "suggest": {
-                "ext-pcntl": "Recommended when running the Inertia SSR server via the `inertia:start-ssr` artisan command."
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Inertia\\ServiceProvider"
-                    ]
-                },
-                "branch-alias": {
-                    "dev-master": "1.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "./helpers.php"
-                ],
-                "psr-4": {
-                    "Inertia\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Reinink",
-                    "email": "jonathan@reinink.ca",
-                    "homepage": "https://reinink.ca"
-                }
-            ],
-            "description": "The Laravel adapter for Inertia.js.",
-            "keywords": [
-                "inertia",
-                "laravel"
-            ],
-            "support": {
-                "issues": "https://github.com/inertiajs/inertia-laravel/issues",
-                "source": "https://github.com/inertiajs/inertia-laravel/tree/v1.0.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/reinink",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-03-09T00:30:58+00:00"
-        },
-        {
             "name": "kirschbaum-development/eloquent-power-joins",
             "version": "3.5.5",
             "source": {
@@ -4332,132 +4040,6 @@
                 "source": "https://github.com/laravel/horizon/tree/v5.23.2"
             },
             "time": "2024-03-23T12:11:34+00:00"
-        },
-        {
-            "name": "laravel/nova",
-            "version": "4.33.1",
-            "source": {
-                "type": "git",
-                "url": "git@github.com:laravel/nova.git",
-                "reference": "ddbb59e450faa6910a686ca600c01aec7c650742"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-ddbb59e450faa6910a686ca600c01aec7c650742-zip-f0cc22.zip",
-                "reference": "ddbb59e450faa6910a686ca600c01aec7c650742",
-                "shasum": "8dd0869f540386291e738dcdc71b8bfb3660c7fd"
-            },
-            "require": {
-                "brick/money": "^0.5.0|^0.6.0|^0.7.0|^0.8.0",
-                "doctrine/dbal": "^2.13.3|^3.1.2|^4.0",
-                "ext-json": "*",
-                "illuminate/support": "^8.83.4|^9.3.1|^10.0|^11.0",
-                "inertiajs/inertia-laravel": "^0.4.5|^0.5.2|^0.6.0|^1.0",
-                "laravel/ui": "^3.3|^4.0",
-                "nesbot/carbon": "^2.53.1|^3.0",
-                "php": "^7.3|^8.0",
-                "rap2hpoutre/fast-excel": "^3.2|^4.1|^5.0",
-                "spatie/once": "^1.1|^2.0|^3.0",
-                "symfony/console": "^5.4|^6.0|^7.0",
-                "symfony/finder": "^5.4|^6.0|^7.0",
-                "symfony/polyfill-intl-icu": "^1.22.1",
-                "symfony/process": "^5.4|^6.0|^7.0"
-            },
-            "require-dev": {
-                "larastan/larastan": "^1.0.1|^2.5.1",
-                "laravel/nova-dusk-suite": "8.4.x-dev|9.4.x-dev|10.4.x-dev|11.4.x-dev",
-                "laravel/pint": "^1.6",
-                "laravel/scout": "^9.8|^10.0",
-                "mockery/mockery": "^1.4.4",
-                "orchestra/testbench-dusk": "^6.44|^7.40|^8.22|^9.0",
-                "phpunit/phpunit": "^9.6|^10.5",
-                "predis/predis": "^1.1.9|^2.0.2"
-            },
-            "suggest": {
-                "ext-intl": "Required to format Currency field"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.x-dev"
-                },
-                "laravel": {
-                    "providers": [
-                        "Laravel\\Nova\\NovaCoreServiceProvider"
-                    ],
-                    "aliases": {
-                        "Nova": "Laravel\\Nova\\Nova"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Laravel\\Nova\\": "src/"
-                }
-            },
-            "autoload-dev": {
-                "psr-4": {
-                    "Laravel\\Nova\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "post-autoload-dump": [
-                    "@clear",
-                    "@php vendor/bin/dusk-updater detect --auto-update --ansi",
-                    "@php vendor/bin/testbench-dusk package:discover --ansi"
-                ],
-                "clear": [
-                    "@php vendor/bin/testbench-dusk package:purge-skeleton --ansi",
-                    "@php vendor/bin/testbench-dusk package:dusk-purge --ansi"
-                ],
-                "dusk:prepare": [
-                    "@php -r \"file_exists('phpunit.dusk.xml') || copy('phpunit.dusk.xml.dist', 'phpunit.dusk.xml'); \"",
-                    "@php -r \"if (file_exists('workbench/.env.dusk')) { copy('workbench/.env.dusk', 'vendor/laravel/nova-dusk-suite/.env'); } else { copy('workbench/.env.dusk.example', 'vendor/laravel/nova-dusk-suite/.env'); }\""
-                ],
-                "dusk:dev-assets": [
-                    "TAILWIND_MODE=build npm run dev",
-                    "@php vendor/bin/testbench-dusk nova:publish --force --ansi"
-                ],
-                "dusk:assets": [
-                    "TAILWIND_MODE=build npm run prod",
-                    "@php vendor/bin/testbench-dusk nova:publish --force --ansi"
-                ],
-                "dusk:test": [
-                    "@php vendor/bin/testbench-dusk package:dusk-purge --ansi",
-                    "@php vendor/bin/phpunit -c phpunit.dusk.xml --stop-on-failure --stop-on-error"
-                ],
-                "dusk:filter": [
-                    "./vendor/bin/testbench-dusk package:dusk-purge --ansi && ./vendor/bin/phpunit -c phpunit.dusk.xml --filter"
-                ],
-                "test:local": [
-                    "@php vendor/bin/phpunit -c phpunit.xml --group date-field,datetime-field,external-network --testdox",
-                    "@php vendor/bin/phpunit -c phpunit.dusk.xml --group date-field,datetime-field,external-network --testdox"
-                ],
-                "serve": [
-                    "@clear",
-                    "@php vendor/bin/testbench package:discover --ansi",
-                    "@php vendor/bin/testbench workbench:build --ansi",
-                    "@php vendor/bin/testbench serve"
-                ]
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Taylor Otwell",
-                    "email": "taylor@laravel.com"
-                }
-            ],
-            "description": "A wonderful administration interface for Laravel.",
-            "keywords": [
-                "admin",
-                "laravel"
-            ],
-            "support": {
-                "source": "https://github.com/laravel/nova/tree/v4.33.1"
-            },
-            "time": "2024-03-26T14:27:39+00:00"
         },
         {
             "name": "laravel/prompts",
@@ -9013,76 +8595,6 @@
             "time": "2023-11-08T05:53:05+00:00"
         },
         {
-            "name": "rap2hpoutre/fast-excel",
-            "version": "v5.4.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/rap2hpoutre/fast-excel.git",
-                "reference": "27c346ca2a4de448f856d0926b05d7e2511e43b8"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/27c346ca2a4de448f856d0926b05d7e2511e43b8",
-                "reference": "27c346ca2a4de448f856d0926b05d7e2511e43b8",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
-                "openspout/openspout": "^4.1.1",
-                "php": "^8.0"
-            },
-            "require-dev": {
-                "illuminate/database": "^6.20.12 || ^7.30.4 || ^8.24.0 || ^9.0 || ^10.0 || ^11.0",
-                "phpunit/phpunit": "^9.5 || ^10.1",
-                "squizlabs/php_codesniffer": "3.*"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Rap2hpoutre\\FastExcel\\Providers\\FastExcelServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/functions/fastexcel.php"
-                ],
-                "psr-4": {
-                    "Rap2hpoutre\\FastExcel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "rap2h",
-                    "email": "raphaelht@gmail.com"
-                }
-            ],
-            "description": "Fast Excel import/export for Laravel",
-            "keywords": [
-                "csv",
-                "excel",
-                "laravel",
-                "xls",
-                "xlsx"
-            ],
-            "support": {
-                "issues": "https://github.com/rap2hpoutre/fast-excel/issues",
-                "source": "https://github.com/rap2hpoutre/fast-excel/tree/v5.4.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/rap2hpoutre",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-03-06T16:03:49+00:00"
-        },
-        {
             "name": "rector/rector",
             "version": "1.0.3",
             "source": {
@@ -12306,26 +11818,26 @@
         },
         {
             "name": "spatie/laravel-stubs",
-            "version": "2.5.4",
+            "version": "3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-stubs.git",
-                "reference": "3969770fa48076ad9527c640c39fedd5658f5451"
+                "reference": "67530cacdc2a2829f82cc8d0de6e16968c2d0899"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-stubs/zipball/3969770fa48076ad9527c640c39fedd5658f5451",
-                "reference": "3969770fa48076ad9527c640c39fedd5658f5451",
+                "url": "https://api.github.com/repos/spatie/laravel-stubs/zipball/67530cacdc2a2829f82cc8d0de6e16968c2d0899",
+                "reference": "67530cacdc2a2829f82cc8d0de6e16968c2d0899",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "^8.71|^9.0|^10.0|^11.0",
-                "php": "^8.0"
+                "laravel/framework": "^11.0",
+                "php": "^8.2"
             },
             "require-dev": {
                 "mockery/mockery": "^1.4",
-                "orchestra/testbench": "^6.24|^7.0|^8.0|^9.0",
-                "pestphp/pest": "^1.22|^2.0"
+                "orchestra/testbench": "^9.0",
+                "pestphp/pest": "^2.0"
             },
             "type": "library",
             "extra": {
@@ -12359,7 +11871,7 @@
                 "spatie"
             ],
             "support": {
-                "source": "https://github.com/spatie/laravel-stubs/tree/2.5.4"
+                "source": "https://github.com/spatie/laravel-stubs/tree/3.0.0"
             },
             "funding": [
                 {
@@ -12367,7 +11879,7 @@
                     "type": "custom"
                 }
             ],
-            "time": "2024-02-14T12:42:52+00:00"
+            "time": "2024-03-08T19:53:15+00:00"
         },
         {
             "name": "spatie/laravel-tail",
@@ -20847,81 +20359,6 @@
             "time": "2024-03-07T08:14:17+00:00"
         },
         {
-            "name": "spatie/laravel-log-dumper",
-            "version": "1.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-log-dumper.git",
-                "reference": "9a485e8e66428d59831268a85d58074c188d50db"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-log-dumper/zipball/9a485e8e66428d59831268a85d58074c188d50db",
-                "reference": "9a485e8e66428d59831268a85d58074c188d50db",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/database": "^8.72|^9.0|^10.0|^11.0",
-                "illuminate/support": "^8.72|^9.0|^10.0|^11.0",
-                "php": "^7.4|^8.0"
-            },
-            "require-dev": {
-                "ext-json": "*",
-                "orchestra/testbench": "^6.23|^7.0|^8.0|^9.0",
-                "phpunit/phpunit": "^9.4|^10.5",
-                "spatie/phpunit-snapshot-assertions": "^4.0|^5.1"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\LogDumper\\LogDumperServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "files": [
-                    "src/helpers.php"
-                ],
-                "psr-4": {
-                    "Spatie\\LogDumper\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "homepage": "https://spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A function to dump anything to the log",
-            "homepage": "https://github.com/spatie/laravel-log-dumper",
-            "keywords": [
-                "laravel-log-dumper",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-log-dumper/issues",
-                "source": "https://github.com/spatie/laravel-log-dumper/tree/1.5.0"
-            },
-            "funding": [
-                {
-                    "url": "https://spatie.be/open-source/support-us",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/spatie",
-                    "type": "github"
-                }
-            ],
-            "time": "2024-02-28T10:17:11+00:00"
-        },
-        {
             "name": "spatie/laravel-visit",
             "version": "1.1.1",
             "source": {
@@ -21249,18 +20686,9 @@
             "time": "2024-03-03T12:36:25+00:00"
         }
     ],
-    "aliases": [
-        {
-            "package": "ebess/advanced-nova-media-library",
-            "version": "9999999-dev",
-            "alias": "4.0.5",
-            "alias_normalized": "4.0.5.0"
-        }
-    ],
+    "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "ebess/advanced-nova-media-library": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
