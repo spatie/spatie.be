@@ -38,8 +38,7 @@ class MemberResource extends Resource
                 TextInput::make('last_name')
                     ->required(),
                 TextInput::make('preferred_name')
-                    ->columnStart(1)
-                    ->required(),
+                    ->columnStart(1),
                 TextInput::make('role')
                     ->columnStart(1)
                     ->required(),
