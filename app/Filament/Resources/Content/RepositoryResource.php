@@ -37,6 +37,10 @@ class RepositoryResource extends Resource
                 TextInput::make('name')
                     ->columnStart(1)
                     ->required(),
+                TextInput::make('documentation_url')
+                    ->columnStart(1),
+                TextInput::make('blogpost_url')
+                    ->columnStart(1),
                 Select::make('ad_id')
                     ->relationship(name: 'ad')
                     ->getOptionLabelFromRecordUsing(fn ($record) => $record->name)
