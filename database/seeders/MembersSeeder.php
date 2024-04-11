@@ -14,7 +14,7 @@ class MembersSeeder extends Seeder
             'preferred_name' => null,
             'role' => 'Backend developer',
             'description' => 'Alex can throw backend code, servers and hardware in the mix. He\'s famous for winning the first Laravel blog contest and struggling with Paypal ever since.',
-            'twitter' => 'alexvanderbist',
+            'twitter' => 'alex_',
             'website' => 'https://alexvanderbist.com',
             'website_rss' => 'https://alexvanderbist.com/feed',
             'birthday' => '1996-02-05',
