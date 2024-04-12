@@ -91,6 +91,11 @@ parameters:
 			path: app/Domain/Shop/Models/Product.php
 
 		-
+			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\PurchaseAssignment\\:\\:\\$bundle\\.$#"
+			count: 1
+			path: app/Filament/Resources/Customers/LicenseResource.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$count\\.$#"
 			count: 1
 			path: app/Filament/Widgets/PaymentMethodsWidget.php
