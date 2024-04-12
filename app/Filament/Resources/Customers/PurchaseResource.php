@@ -12,6 +12,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -68,6 +69,15 @@ class PurchaseResource extends Resource
                     'user.email',
                     fn (Purchase $record) => route('filament.admin.resources.customers.users.edit', $record->user)
                 ),
+                ResourceLinkColumn::make('receipt.id', fn(Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
+                TextColumn::make('receipt')->state(function (Purchase $record) {
+                    $exploded = explode('/', $record->receipt->receipt_url);
+                    return $exploded[4] ?? '-';
+                })
+                    ->label('Paddle ID')
+                    ->iconPosition(IconPosition::After)
+                    ->copyable()
+                    ->icon('heroicon-o-document-duplicate'),
                 BoughtColumn::make(),
                 TextColumn::make('assignments.user.email')
                     ->label('Assignments')
