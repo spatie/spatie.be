@@ -56,7 +56,14 @@ class PurchasesRelationManager extends RelationManager
                     ->dateTime(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('purchasable')
+                    ->relationship('purchasable', 'title')
+                    ->searchable()
+                    ->preload(),
+                Tables\Filters\SelectFilter::make('bundle')
+                    ->relationship('bundle', 'title')
+                    ->searchable()
+                    ->preload(),
             ])
             ->headerActions([
                 Tables\Actions\CreateAction::make(),
