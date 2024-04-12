@@ -77,7 +77,7 @@ class PurchaseAssignmentResource extends Resource
                 )
                     ->state(fn (PurchaseAssignment $record) => '#' . $record->purchase->id . ' on ' . $record->purchase->created_at)
                     ->sortable(),
-                TextColumn::make('purchasable.title')->sortable()->searchable(),
+                Customers\PurchaseResource\Columns\BoughtColumn::make(),
                 TextColumn::make('user.email')->sortable()->searchable(),
                 BooleanColumn::make('has_repository_access')->sortable(),
             ])

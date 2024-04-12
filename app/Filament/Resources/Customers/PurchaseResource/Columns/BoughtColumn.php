@@ -3,13 +3,14 @@
 namespace App\Filament\Resources\Customers\PurchaseResource\Columns;
 
 use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 
 class BoughtColumn
 {
     public static function make()
     {
-        return ResourceLinkColumn::make('Bought')->state(function (Purchase $record) {
+        return ResourceLinkColumn::make('Bought')->state(function (Purchase|PurchaseAssignment $record) {
             if ($record->purchasable) {
                 return $record->purchasable->title ." ({$record->purchasable->product->title})";
             }
@@ -19,7 +20,7 @@ class BoughtColumn
             }
 
             return '-';
-        })->url(function (Purchase $record) {
+        })->url(function (Purchase|PurchaseAssignment $record) {
             if ($record->purchasable) {
                 return route('filament.admin.resources.shop.purchasables.edit', $record->purchasable);
             }
