@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Customers\UserResource\RelationManagers;
 
 use App\Filament\Tables\Columns\CopyableColumn;
+use App\Filament\Tables\Columns\LicensePurchasableNameColumn;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
@@ -29,6 +30,7 @@ class LicensesRelationManager extends RelationManager
             ->recordTitleAttribute('id')
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
+                LicensePurchasableNameColumn::make(),
                 CopyableColumn::make('key')
                     ->searchable(),
                 TextColumn::make('satis_authentication_count')->sortable(),

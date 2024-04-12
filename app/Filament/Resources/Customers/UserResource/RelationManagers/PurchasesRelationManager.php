@@ -40,9 +40,13 @@ class PurchasesRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('id')->disabled(),
                 BoughtColumn::make(),
-                ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
+                ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => $record->receipt ? route('filament.admin.resources.customers.receipts.edit', $record->receipt) : ''),
                 CopyableColumn::make('receipt')
                     ->state(function (Purchase $record) {
+                        if (!$record->receipt) {
+                            return '';
+                        }
+
                         $exploded = explode('/', $record->receipt->receipt_url);
 
                         return $exploded[4] ?? '-';
