@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Customers\UserResource\RelationManagers;
 
 use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\Select;
@@ -40,7 +41,7 @@ class AssignmentsRelationManager extends RelationManager
                 )
                     ->state(fn (PurchaseAssignment $record) => '#' . $record->purchase->id . ' on ' . $record->purchase->created_at)
                     ->sortable(),
-                TextColumn::make('purchasable.title')->sortable()->searchable(),
+                BoughtColumn::make(),
                 TextColumn::make('user.email')->sortable()->searchable(),
                 BooleanColumn::make('has_repository_access')->sortable(),
             ])

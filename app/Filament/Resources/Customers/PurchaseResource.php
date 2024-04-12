@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Customers;
 use App\Domain\Shop\Models\Purchase;
 use App\Filament\Resources\Customers\PurchaseResource\Actions\TransferPurchaseAction;
 use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
+use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
@@ -12,6 +13,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -63,21 +65,41 @@ class PurchaseResource extends Resource
         return $table
             ->defaultSort('created_at', 'desc')
             ->columns([
-                TextColumn::make('id'),
                 ResourceLinkColumn::make(
                     'user.email',
                     fn (Purchase $record) => route('filament.admin.resources.customers.users.edit', $record->user)
-                ),
+                )
+                    ->iconPosition(IconPosition::After)
+                    ->copyable()
+                    ->icon('heroicon-o-document-duplicate')
+                    ->searchable()
+                    ->sortable(),
+                ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
+                CopyableColumn::make('receipt')
+                    ->state(function (Purchase $record) {
+                        $exploded = explode('/', $record->receipt->receipt_url);
+
+                        return $exploded[4] ?? '-';
+                    })
+                    ->label('Paddle ID'),
                 BoughtColumn::make(),
                 TextColumn::make('assignments.user.email')
                     ->label('Assignments')
                     ->listWithLineBreaks()
-                    ->bulleted(),
+                    ->bulleted()
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('purchasable')
+                    ->relationship('purchasable', 'title')
+                    ->searchable()
+                    ->preload(),
+                Tables\Filters\SelectFilter::make('bundle')
+                    ->relationship('bundle', 'title')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),

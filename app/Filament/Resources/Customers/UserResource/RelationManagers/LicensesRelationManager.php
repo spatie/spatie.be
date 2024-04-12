@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\Customers\UserResource\RelationManagers;
 
+use App\Filament\Tables\Columns\CopyableColumn;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -17,6 +18,8 @@ class LicensesRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                DateTimePicker::make('expires_at')
+                    ->columnStart(1),
             ]);
     }
 
@@ -26,10 +29,7 @@ class LicensesRelationManager extends RelationManager
             ->recordTitleAttribute('id')
             ->columns([
                 Tables\Columns\TextColumn::make('id'),
-                TextColumn::make('key')
-                    ->copyable()
-                    ->icon('heroicon-o-document-duplicate')
-                    ->iconPosition(IconPosition::After)
+                CopyableColumn::make('key')
                     ->searchable(),
                 TextColumn::make('satis_authentication_count')->sortable(),
                 TextColumn::make('expires_at')->date()->sortable(),
@@ -41,6 +41,7 @@ class LicensesRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
