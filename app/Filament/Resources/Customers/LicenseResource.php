@@ -3,9 +3,6 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\License;
-use App\Domain\Shop\Models\Purchasable;
-use App\Domain\Shop\Models\Purchase;
-use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DateTimePicker;
@@ -13,11 +10,9 @@ use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 
@@ -59,12 +54,13 @@ class LicenseResource extends Resource
                 ResourceLinkColumn::make(
                     'assignment.purchasable.title',
                     function (License $record) {
-                        if(!$record->assignment) {
+                        if(! $record->assignment) {
                             return null;
                         }
 
                         return route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment);
-                })
+                    }
+                )
                 ->state(function (License $record) {
                     if ($record->assignment?->purchasable) {
                         return $record->assignment->purchasable->title ." ({$record->assignment->purchasable->product->title})";
@@ -79,7 +75,7 @@ class LicenseResource extends Resource
                 ResourceLinkColumn::make(
                     'assignment.user.email',
                     function (License $record) {
-                        if(!$record->assignment) {
+                        if(! $record->assignment) {
                             return null;
                         }
 

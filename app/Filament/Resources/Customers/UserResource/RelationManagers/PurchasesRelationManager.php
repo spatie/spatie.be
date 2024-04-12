@@ -10,7 +10,6 @@ use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
-use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
@@ -41,10 +40,11 @@ class PurchasesRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('id')->disabled(),
                 BoughtColumn::make(),
-                ResourceLinkColumn::make('receipt.id', fn(Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
+                ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
                 CopyableColumn::make('receipt')
                     ->state(function (Purchase $record) {
                         $exploded = explode('/', $record->receipt->receipt_url);
+
                         return $exploded[4] ?? '-';
                     })
                     ->label('Paddle ID'),
