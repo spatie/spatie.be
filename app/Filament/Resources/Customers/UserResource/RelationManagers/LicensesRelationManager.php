@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Customers\UserResource\RelationManagers;
 
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Support\Enums\IconPosition;
@@ -17,6 +18,8 @@ class LicensesRelationManager extends RelationManager
     {
         return $form
             ->schema([
+                DateTimePicker::make('expires_at')
+                    ->columnStart(1),
             ]);
     }
 
@@ -41,6 +44,7 @@ class LicensesRelationManager extends RelationManager
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
+                Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
