@@ -3,6 +3,9 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\License;
+use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\Purchase;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
@@ -13,6 +16,7 @@ use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 
@@ -53,8 +57,34 @@ class LicenseResource extends Resource
             ->columns([
                 TextColumn::make('id')->sortable(),
                 ResourceLinkColumn::make(
+                    'assignment.purchasable.title',
+                    function (License $record) {
+                        if(!$record->assignment) {
+                            return null;
+                        }
+
+                        return route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment);
+                })
+                ->state(function (License $record) {
+                    if ($record->assignment?->purchasable) {
+                        return $record->assignment->purchasable->title ." ({$record->assignment->purchasable->product->title})";
+                    }
+
+                    if ($record->assignment?->bundle) {
+                        return $record->assignment->bundle->title . " ({$record->assignment->bundle->formattedProductNames()})";
+                    }
+
+                    return '-';
+                })->sortable()->searchable(),
+                ResourceLinkColumn::make(
                     'assignment.user.email',
-                    fn (License $record) => route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment)
+                    function (License $record) {
+                        if(!$record->assignment) {
+                            return null;
+                        }
+
+                        return route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment);
+                    }
                 )->searchable(),
                 TextColumn::make('key')
                     ->copyable()
@@ -64,9 +94,6 @@ class LicenseResource extends Resource
                     ->searchable(),
                 TextColumn::make('satis_authentication_count')->sortable(),
                 TextColumn::make('expires_at')->date()->sortable(),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
                 Action::make('regenerate')
