@@ -6,6 +6,7 @@ use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
+use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
@@ -86,11 +87,8 @@ class LicenseResource extends Resource
                         return route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment);
                     }
                 )->searchable(),
-                TextColumn::make('key')
-                    ->copyable()
+                CopyableColumn::make('key')
                     ->limit(10)
-                    ->icon('heroicon-o-document-duplicate')
-                    ->iconPosition(IconPosition::After)
                     ->searchable(),
                 TextColumn::make('satis_authentication_count')->sortable(),
                 TextColumn::make('expires_at')->date()->sortable(),

@@ -4,6 +4,7 @@ namespace App\Filament\Resources\Customers\UserResource\RelationManagers;
 
 use App\Domain\Shop\Models\Purchase;
 use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
+use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
@@ -41,14 +42,12 @@ class PurchasesRelationManager extends RelationManager
                 Tables\Columns\TextColumn::make('id')->disabled(),
                 BoughtColumn::make(),
                 ResourceLinkColumn::make('receipt.id', fn(Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
-                TextColumn::make('receipt')->state(function (Purchase $record) {
-                    $exploded = explode('/', $record->receipt->receipt_url);
-                    return $exploded[4] ?? '-';
-                })
-                    ->label('Paddle ID')
-                    ->iconPosition(IconPosition::After)
-                    ->copyable()
-                    ->icon('heroicon-o-document-duplicate'),
+                CopyableColumn::make('receipt')
+                    ->state(function (Purchase $record) {
+                        $exploded = explode('/', $record->receipt->receipt_url);
+                        return $exploded[4] ?? '-';
+                    })
+                    ->label('Paddle ID'),
                 TextColumn::make('assignments.user.email')
                     ->label('Assignments')
                     ->listWithLineBreaks()

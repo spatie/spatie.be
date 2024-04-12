@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Shop;
 use App\Domain\Shop\Models\Referrer;
 use App\Filament\Resources\Shop\ReferrerResource\Actions\AttachAllPurchasablesToReferrerAction;
 use App\Filament\Resources\Shop\ReferrerResource\Pages;
+use App\Filament\Tables\Columns\CopyableColumn;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
@@ -57,10 +58,8 @@ class ReferrerResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('slug')
+                CopyableColumn::make('slug')
                     ->formatStateUsing(fn (string $state) => url("/products?referrer={$state}"))
-                    ->icon('heroicon-m-clipboard-document-list')
-                    ->copyable()
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('discount_percentage')

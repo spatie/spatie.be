@@ -5,6 +5,7 @@ namespace App\Filament\Resources\Customers;
 use App\Domain\Shop\Models\Purchase;
 use App\Filament\Resources\Customers\PurchaseResource\Actions\TransferPurchaseAction;
 use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
+use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Grid;
@@ -68,16 +69,16 @@ class PurchaseResource extends Resource
                 ResourceLinkColumn::make(
                     'user.email',
                     fn (Purchase $record) => route('filament.admin.resources.customers.users.edit', $record->user)
-                ),
+                )
+                    ->searchable()
+                    ->sortable(),
                 ResourceLinkColumn::make('receipt.id', fn(Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
-                TextColumn::make('receipt')->state(function (Purchase $record) {
-                    $exploded = explode('/', $record->receipt->receipt_url);
-                    return $exploded[4] ?? '-';
-                })
-                    ->label('Paddle ID')
-                    ->iconPosition(IconPosition::After)
-                    ->copyable()
-                    ->icon('heroicon-o-document-duplicate'),
+                CopyableColumn::make('receipt')
+                    ->state(function (Purchase $record) {
+                        $exploded = explode('/', $record->receipt->receipt_url);
+                        return $exploded[4] ?? '-';
+                    })
+                    ->label('Paddle ID'),
                 BoughtColumn::make(),
                 TextColumn::make('assignments.user.email')
                     ->label('Assignments')
