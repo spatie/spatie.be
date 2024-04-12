@@ -83,12 +83,20 @@ class PurchaseResource extends Resource
                 TextColumn::make('assignments.user.email')
                     ->label('Assignments')
                     ->listWithLineBreaks()
-                    ->bulleted(),
+                    ->bulleted()
+                    ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('purchasable')
+                    ->relationship('purchasable', 'title')
+                    ->searchable()
+                    ->preload(),
+                Tables\Filters\SelectFilter::make('bundle')
+                    ->relationship('bundle', 'title')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
