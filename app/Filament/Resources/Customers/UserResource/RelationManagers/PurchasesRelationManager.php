@@ -44,7 +44,7 @@ class PurchasesRelationManager extends RelationManager
                 ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => $record->receipt ? route('filament.admin.resources.customers.receipts.edit', $record->receipt) : ''),
                 CopyableColumn::make('receipt')
                     ->state(function (Purchase $record) {
-                        if (!$record->receipt) {
+                        if (! $record->receipt) {
                             return '';
                         }
 
