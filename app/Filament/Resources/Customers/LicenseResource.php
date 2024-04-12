@@ -56,7 +56,6 @@ class LicenseResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable(),
                 ResourceLinkColumn::make(
                     'assignment.purchasable.title',
                     function (License $record) {

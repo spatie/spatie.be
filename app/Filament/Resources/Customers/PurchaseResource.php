@@ -65,11 +65,13 @@ class PurchaseResource extends Resource
         return $table
             ->defaultSort('created_at', 'desc')
             ->columns([
-                TextColumn::make('id'),
                 ResourceLinkColumn::make(
                     'user.email',
                     fn (Purchase $record) => route('filament.admin.resources.customers.users.edit', $record->user)
                 )
+                    ->iconPosition(IconPosition::After)
+                    ->copyable()
+                    ->icon('heroicon-o-document-duplicate')
                     ->searchable()
                     ->sortable(),
                 ResourceLinkColumn::make('receipt.id', fn(Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
