@@ -11,11 +11,11 @@ class BoughtColumn
     {
         return ResourceLinkColumn::make('Bought')->state(function (Purchase $record) {
             if ($record->purchasable) {
-                return $record->purchasable->title;
+                return $record->purchasable->title ." ({$record->purchasable->product->title})";
             }
 
             if ($record->bundle) {
-                return $record->bundle->title;
+                return $record->bundle->title . " ({$record->bundle->formattedProductNames()})";
             }
 
             return '-';
