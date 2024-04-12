@@ -93,7 +93,7 @@ parameters:
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\PurchaseAssignment\\:\\:\\$bundle\\.$#"
 			count: 1
-			path: app/Filament/Resources/Customers/LicenseResource.php
+			path: app/Filament/Tables/Columns/LicensePurchasableNameColumn.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$count\\.$#"
