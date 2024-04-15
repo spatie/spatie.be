@@ -136,7 +136,6 @@ cd {{ $newReleaseDir }}
 php artisan view:clear
 php artisan horizon:terminate
 php artisan config:clear
-php artisan cache:clear
 php artisan config:cache
 php artisan event:cache
 #php artisan schedule-monitor:sync
@@ -164,7 +163,6 @@ cd {{ $currentDir }}
 git pull origin {{ $branch }}
 php artisan view:clear
 php artisan config:clear
-php artisan cache:clear
 php artisan config:cache
 php artisan event:cache
 sudo service php8.3-fpm restart

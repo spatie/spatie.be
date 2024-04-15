@@ -336,3 +336,8 @@
     @apply h-full !important;
     @apply inset-0;
 }
+
+.markup pre {
+    padding: 1rem;
+    margin: 1rem 0;
+}
