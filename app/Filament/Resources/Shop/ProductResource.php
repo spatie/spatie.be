@@ -13,6 +13,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
 
 class ProductResource extends Resource
@@ -66,6 +67,7 @@ class ProductResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
+                SpatieMediaLibraryImageColumn::make('product_image')->collection('product-image'),
                 Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
                 BooleanColumn::make('visible')->label('Visible on Front')->sortable(),
                 Tables\Columns\TextColumn::make('purchasablesWithoutRenewals.title')

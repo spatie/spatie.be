@@ -8,6 +8,7 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
 use Filament\Tables\Table;
@@ -49,8 +50,22 @@ class PlaylistResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
                 Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('spotify_url')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('apple_music_url')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('spotify_url')
+                    ->url(fn ($record) => $record->spotify_url)
+                    ->openUrlInNewTab()
+                    ->searchable()
+                    ->limit(20)
+                    ->icon('heroicon-o-arrow-up-right')
+                    ->iconPosition(IconPosition::After)
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('apple_music_url')
+                    ->url(fn ($record) => $record->apple_music_url)
+                    ->openUrlInNewTab()
+                    ->limit(20)
+                    ->icon('heroicon-o-arrow-up-right')
+                    ->iconPosition(IconPosition::After)
+                    ->searchable()
+                    ->sortable(),
                 SpatieMediaLibraryImageColumn::make('image'),
             ])
             ->filters([

@@ -8,6 +8,7 @@ use App\Filament\Resources\Customers\UserResource\RelationManagers\AssignmentsRe
 use App\Filament\Resources\Customers\UserResource\RelationManagers\LicensesRelationManager;
 use App\Filament\Resources\Customers\UserResource\RelationManagers\PurchasesRelationManager;
 use App\Filament\Tables\Columns\BooleanColumn;
+use App\Filament\Tables\Columns\CopyableColumn;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Components\Grid;
@@ -76,8 +77,7 @@ class UserResource extends Resource
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('email')
-                    ->copyable()
+                CopyableColumn::make('email')
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('github_username')
@@ -93,7 +93,7 @@ class UserResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+
             ])
             ->actions([
                 Impersonate::make(),

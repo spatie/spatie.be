@@ -3,13 +3,14 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\License;
+use App\Filament\Tables\Columns\CopyableColumn;
+use App\Filament\Tables\Columns\LicensePurchasableNameColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
@@ -51,22 +52,22 @@ class LicenseResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id')->sortable(),
+                LicensePurchasableNameColumn::make(),
                 ResourceLinkColumn::make(
                     'assignment.user.email',
-                    fn (License $record) => route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment)
+                    function (License $record) {
+                        if(! $record->assignment) {
+                            return null;
+                        }
+
+                        return route('filament.admin.resources.customers.purchase-assignments.edit', $record->assignment);
+                    }
                 )->searchable(),
-                TextColumn::make('key')
-                    ->copyable()
+                CopyableColumn::make('key')
                     ->limit(10)
-                    ->icon('heroicon-o-document-duplicate')
-                    ->iconPosition(IconPosition::After)
                     ->searchable(),
                 TextColumn::make('satis_authentication_count')->sortable(),
                 TextColumn::make('expires_at')->date()->sortable(),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
                 Action::make('regenerate')
