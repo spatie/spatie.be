@@ -23,7 +23,7 @@
                             px-6 min-h-10
                             font-sans-bold text-black
                             transition-bg duration-300
-                            focus:outline-none focus:border-blue-light whitespace-no-wrap">
+                            focus:outline-none focus:border-blue-light whitespace-nowrap">
                             Take a look at all our discounted products and courses
                         </button>
                     </a>

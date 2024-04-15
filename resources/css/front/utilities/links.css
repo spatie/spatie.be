@@ -146,7 +146,7 @@ a.link-white:hover,
 }
 
 .links-button a {
-    @apply w-full truncate no-underline font-bold cursor-pointer bg-green-dark bg-opacity-75 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 text-white duration-300 whitespace-no-wrap text-xs;
+    @apply w-full truncate no-underline font-bold cursor-pointer bg-green-dark bg-opacity-75 rounded-sm border-2 border-transparent justify-center flex items-center px-6 py-2 text-white duration-300 whitespace-nowrap text-xs;
     transition: background-color;
 }
 

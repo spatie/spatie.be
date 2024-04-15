@@ -42,7 +42,7 @@ html {
     }
 }
 
-@screen print {
+@media print {
     html {
         font-size: 12px;
     }
@@ -88,7 +88,7 @@ svg {
 
 /* Print */
 
-@screen print {
+@media print {
     a {
         color: inherit !important;
         text-decoration: none !important;

@@ -1,4 +1,4 @@
-<p class="text-2xl mt-12 grid col-gap-16 row-gap-4 | md:mt-16 md:grid-flow-col justify-start items-start">
+<p class="text-2xl mt-12 grid gap-x-16 gap-y-4 | md:mt-16 md:grid-flow-col justify-start items-start">
     <span>
         <a class="link link-black" href="mailto:info@spatie.be">info@spatie.be</a>
         <br>

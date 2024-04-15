@@ -30,7 +30,7 @@
             </div>
             @endif
             <div class="wrap">
-                <div class="grid col-gap-24 row-gap-24 | sm:grid-cols-2 items-stretch">
+                <div class="grid gap-x-24 gap-y-24 | sm:grid-cols-2 items-stretch">
                     @foreach ($products as $product)
                         <div class="my-6">
                             @if($product->external && $product->action_url)
@@ -80,7 +80,7 @@
                 <h2 class="title line-after mb-12">Check our bundle promotions!</h2>
             </div>
             <div class="wrap">
-                <div class="grid col-gap-24 row-gap-24 | sm:grid-cols-2 items-stretch">
+                <div class="grid gap-x-24 gap-y-24 | sm:grid-cols-2 items-stretch">
                     @foreach ($bundles as $bundle)
                         <div class="my-6">
                             <a href="{{ route('bundles.show', $bundle) }}" class="group">

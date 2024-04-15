@@ -1,5 +1,5 @@
 <section id="series" class="section overflow-visible">
-    <div class="wrap grid sm:grid-cols-2 col-gap-24 row-gap-24 | markup-lists">
+    <div class="wrap grid sm:grid-cols-2 gap-x-24 gap-y-24 | markup-lists">
         @foreach($allSeries as $series)
             <div>
 

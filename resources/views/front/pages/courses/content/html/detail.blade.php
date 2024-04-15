@@ -32,7 +32,7 @@
                     px-6 min-h-10 text-white
                     font-sans-bold
                     transition-opacity duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
+                    focus:outline-none focus:border-blue-light no-underline whitespace-nowrap"
                                    href="{{ $nextLesson->url }}">Continue</a>
                             </div>
 
@@ -48,7 +48,7 @@
                     px-6 min-h-10 text-white
                     font-sans-bold
                     transition-bg duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap">
+                    focus:outline-none focus:border-blue-light no-underline whitespace-nowrap">
                         <button type="submit" class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
                             Continue</button>
                                 <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">

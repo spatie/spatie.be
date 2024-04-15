@@ -23,7 +23,7 @@
                             px-6 min-h-10
                             font-sans-bold text-black
                             transition-bg duration-300
-                            focus:outline-none focus:border-blue-light whitespace-no-wrap">
+                            focus:outline-none focus:border-blue-light whitespace-nowrap">
                             Take a look at all our discounted products and courses
                         </button>
                     </a>
@@ -33,7 +33,7 @@
 
                 @if(count($otherVideos))
                     <h2 class="title line-after mt-8 mb-12">Our other WWSD videos</h2>
-                    <div class="grid col-gap-24 row-gap-24 | sm:grid-cols-2 items-stretch">
+                    <div class="grid gap-x-24 gap-y-24 | sm:grid-cols-2 items-stretch">
                         @foreach($otherVideos as $otherVideo)
                             <div class="my-6">
                                 <a href="{{ route('wwsd', $otherVideo['slug']) }}" class="group">

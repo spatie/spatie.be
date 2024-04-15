@@ -1,0 +1,51 @@
+.form-input {
+    @apply text-black;
+    border-width: 2px;
+    @apply rounded-sm;
+    @apply border-gray-light;
+    @apply h-10;
+    @apply px-2;
+
+    @apply focus:border-blue-light;
+    @apply focus:outline-0;
+    @apply focus:shadow-none;
+}
+
+.form-textarea {
+    @apply text-black;
+    border-width: 2px;
+    @apply rounded-sm;
+    @apply border-gray-light;
+    @apply h-32;
+    @apply px-2;
+
+    @apply focus:border-blue-light;
+    @apply focus:outline-0;
+    @apply focus:shadow-none;
+}
+
+.form-checkbox {
+    border-width: 2px;
+    @apply rounded-sm;
+    @apply border-gray-light;
+    @apply text-blue;
+    @apply h-8;
+    @apply w-8;
+
+    @apply focus:border-blue;
+    @apply focus:outline-0;
+    @apply focus:shadow-none;
+}
+
+.form-radio {
+    border-width: 2px;
+    @apply rounded-full;
+    @apply border-gray-light;
+    @apply text-blue;
+    @apply h-8;
+    @apply w-8;
+
+    @apply focus:border-blue;
+    @apply focus:outline-0;
+    @apply focus:shadow-none;
+}

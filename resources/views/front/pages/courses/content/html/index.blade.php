@@ -30,7 +30,7 @@
                         px-6 min-h-10 text-white
                         font-sans-bold
                         transition-colors duration-300
-                        focus:outline-none focus:border-blue-light no-underline whitespace-no-wrap"
+                        focus:outline-none focus:border-blue-light no-underline whitespace-nowrap"
                                    href="{{ $series->lessons->first()->url }}">
                             <span class="truncate"><span class="font-semibold md:hidden">Next: </span>
                                 Continue</span>

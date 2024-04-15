@@ -1,11 +1,11 @@
 <header class="pt-8 flex-none z-10 | md:bg-white md:shadow-light md:py-8 | print:bg-transparent print:shadow-none">
      <div class="wrap leading-loose | md:leading-none md:flex md:items-stretch">
-         <a class="flex-shrink-0 logo h-8 w-20 mr-16 mb-8 block | md:mb-0 md:w-48 md:h-auto" href="/" title="Home">
+         <a class="shrink-0 logo h-8 w-20 mr-16 mb-8 block | md:mb-0 md:w-48 md:h-auto" href="/" title="Home">
              <span class="absolute h-full w-auto">
              @app_svg('logo')
              </span>
          </a>
-         <div class="grid grid-cols-2 items-start col-gap-8 | md:grid-cols-1 md:row-gap-6 md:justify-end md:justify-items-end md:ml-auto">
+         <div class="grid grid-cols-2 items-start gap-x-8 | md:grid-cols-1 md:gap-y-6 md:justify-end md:justify-items-end md:ml-auto">
              <nav class="flex links links-black | md:row-start-2">
                  @include('layout.partials.menu')
              </nav>

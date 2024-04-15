@@ -4,7 +4,7 @@
     @apply rounded-lg;
 }
 
-@screen print {
+@media print {
     .card {
         page-break-after: avoid;
     }

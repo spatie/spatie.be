@@ -19,7 +19,7 @@ justify-center flex items-center
 px-4 min-h-12 text-xl shadow-lg
 font-sans-bold text-white
 transition-bg duration-300
-focus:outline-none focus:border-blue-light whitespace-no-wrap">Subscribe</button>
+focus:outline-none focus:border-blue-light whitespace-nowrap">Subscribe</button>
                     </form>
                     <p class="mt-2">
                         Get the latest news on Spatie products and promotions. <br>

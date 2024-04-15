@@ -5,6 +5,6 @@
  {{ $attributes['large'] ? 'px-4 min-h-12 text-xl shadow-lg' : 'px-6 min-h-10' }}
  font-sans-bold text-white
  transition-bg duration-300
- focus:outline-none focus:border-blue-light whitespace-no-wrap">
+ focus:outline-none focus:border-blue-light whitespace-nowrap">
      {{ $slot }}
 </button>

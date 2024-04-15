@@ -1,29 +1,14 @@
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
     important: true,
-
-    purge: ['./resources/**/*.blade.php', './resources/**/*.js'],
-
-    variants: [
-        'responsive',
-        'group-hover',
-        'group-focus',
-        'focus-within',
-        'first',
-        'last',
-        'odd',
-        'even',
-        'hover',
-        'focus',
-        'active',
-        'visited',
-        'disabled',
+    content: [
+        './resources/**/*.blade.php',
+        './resources/**/*.js'
     ],
-
-    plugins: [require('@tailwindcss/custom-forms')],
-
     theme: {
         colors: {
             transparent: 'transparent',
+            current: 'currentColor',
             black: '#172a3d',
             white: '#ffffff',
 
@@ -77,7 +62,7 @@ module.exports = {
             md: '960px',
             lg: '1230px',
             xl: '1615px',
-            print: { raw: 'print' },
+            print: {raw: 'print'},
         },
 
         fontFamily: {
@@ -126,17 +111,17 @@ module.exports = {
             wide: '0.05em',
         },
 
-        boxShadow: {
-            default: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
-            light: '0 2px 4px 0 rgba(76, 55, 55, 0.04)',
-            md: '0 4px 8px 0 rgba(162, 184, 193, 0.12), 0 2px 4px 0 rgba(76, 55, 55, 0.12)',
-            lg: '0 15px 30px 0 rgba(162, 184, 193, 0.14), 0 5px 15px 0 rgba(76, 55, 55, 0.12)',
-            inner: 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.12)',
-            'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
-            none: 'none',
-        },
-
         extend: {
+            boxShadow: {
+                DEFAULT: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
+                light: '0 2px 4px 0 rgba(76, 55, 55, 0.04)',
+                md: '0 4px 8px 0 rgba(162, 184, 193, 0.12), 0 2px 4px 0 rgba(76, 55, 55, 0.12)',
+                lg: '0 15px 30px 0 rgba(162, 184, 193, 0.14), 0 5px 15px 0 rgba(76, 55, 55, 0.12)',
+                inner: 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.12)',
+                'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
+                none: 'none',
+            },
+
             fontSize: {
                 xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
@@ -154,12 +139,12 @@ module.exports = {
 
             keyframes: {
                 wiggle: {
-                    '0%, 100%': { transform: 'rotate(-3deg)' },
-                    '50%': { transform: 'rotate(3deg)' },
+                    '0%, 100%': {transform: 'rotate(-3deg)'},
+                    '50%': {transform: 'rotate(3deg)'},
                 },
                 popin: {
-                    '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
-                    '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
+                    '0%': {transform: 'scale(0) translate(-50%, -4rem)'},
+                    '100%': {transform: 'scale(1) translate(-50%, -4rem)'},
                 }
             },
             animation: {
@@ -207,78 +192,11 @@ module.exports = {
                 'auto-1fr': 'auto 1fr',
             },
         },
-
-        customForms: theme => ({
-            default: {
-                input: {
-                    color: theme('colors.black'),
-                    borderWidth: '2px',
-                    borderRadius: theme('borderRadius.sm'),
-                    borderColor: theme('colors.gray-light'),
-                    height: theme('spacing.10'),
-                    paddingLeft: theme('spacing.2'),
-                    paddingRight: theme('spacing.2'),
-                    '&:focus': {
-                        borderColor: theme('colors.blue-light'),
-                        outline: 'none',
-                        boxShadow: 'none',
-                    },
-                },
-                textarea: {
-                    color: theme('colors.black'),
-                    borderWidth: '2px',
-                    borderRadius: theme('borderRadius.sm'),
-                    borderColor: theme('colors.gray-light'),
-                    height: theme('spacing.32'),
-                    paddingLeft: theme('spacing.2'),
-                    paddingRight: theme('spacing.2'),
-                    '&:focus': {
-                        borderColor: theme('colors.blue'),
-                        outline: 'none',
-                        boxShadow: 'none',
-                    },
-                },
-                select: {
-                    color: theme('colors.black'),
-                    borderWidth: '2px',
-                    borderRadius: theme('borderRadius.sm'),
-                    borderColor: theme('colors.gray-light'),
-                    height: theme('spacing.10'),
-                    paddingLeft: theme('spacing.2'),
-                    paddingRight: theme('spacing.2'),
-                    '&:focus': {
-                        borderColor: theme('colors.blue'),
-                        outline: 'none',
-                        boxShadow: 'none',
-                    },
-                },
-                checkbox: {
-                    borderWidth: '2px',
-                    borderRadius: theme('borderRadius.sm'),
-                    borderColor: theme('colors.gray-light'),
-                    color: theme('colors.blue'),
-                    height: theme('spacing.8'),
-                    width: theme('spacing.8'),
-                    '&:focus': {
-                        borderColor: theme('colors.blue'),
-                        outline: 'none',
-                        boxShadow: 'none',
-                    },
-                },
-                radio: {
-                    borderWidth: '2px',
-                    borderRadius: theme('borderRadius.full'),
-                    borderColor: theme('colors.gray-light'),
-                    color: theme('colors.blue'),
-                    height: theme('spacing.8'),
-                    width: theme('spacing.8'),
-                    '&:focus': {
-                        borderColor: theme('colors.blue'),
-                        outline: 'none',
-                        boxShadow: 'none',
-                    },
-                },
-            },
-        }),
     },
-};
+    plugins: [
+        require('@tailwindcss/forms')({
+            strategy: "class",
+        }),
+    ],
+}
+

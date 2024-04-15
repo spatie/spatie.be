@@ -45,7 +45,7 @@
 
     <section class="section section-group">
         <div class="wrap mb-24">
-            <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-3 items-stretch">
+            <div class="grid gap-x-6 gap-y-16 | sm:grid-cols-3 items-stretch">
                 @each('front.pages.guidelines.partials.page', $pages, 'page')
             </div>
         </div>
