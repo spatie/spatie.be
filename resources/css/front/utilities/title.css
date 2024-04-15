@@ -21,7 +21,7 @@
     border-radius: 4px;
 }
 
-@screen print {
+@media print {
     .title-2xl {
         margin-top: 1cm;
     }

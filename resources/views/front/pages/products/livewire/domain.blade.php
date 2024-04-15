@@ -23,7 +23,7 @@
                     px-6 h-8
                     font-sans-bold text-white
                     transition-bg duration-300
-                    focus:outline-none focus:border-blue-light whitespace-no-wrap"
+                    focus:outline-none focus:border-blue-light whitespace-nowrap"
             >
                 Save
             </a>

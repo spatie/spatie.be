@@ -27,14 +27,14 @@
     .illustration.h-full img {
         @apply absolute;
         @apply w-full;
-        @apply h-full;
         @apply inset-0;
         @apply object-cover;
         max-height: none;
+        height: 100%;
     }
 }
 
-@screen print {
+@media print {
     .illustration {
         @apply shadow; /* Large shadow doesn't print so well */
         max-height: 7cm !important;

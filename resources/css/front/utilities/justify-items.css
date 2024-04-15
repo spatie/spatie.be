@@ -1,4 +1,4 @@
-@responsive {
+@layer utilities {
     .justify-items-end {
         justify-items: end;
     }

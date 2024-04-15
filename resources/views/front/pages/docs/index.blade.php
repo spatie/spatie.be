@@ -19,7 +19,7 @@
                 <h2 class="title line-after mb-12">{{ $category }}</h2>
             </div>
             <div class="wrap mb-24">
-                <div class="grid col-gap-6 row-gap-16 | sm:grid-cols-2 items-stretch">
+                <div class="grid gap-x-6 gap-y-16 | sm:grid-cols-2 items-stretch">
                     @each('front.pages.docs.partials.repository', $repositories, 'repository')
                 </div>
             </div>

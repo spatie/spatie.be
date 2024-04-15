@@ -227,7 +227,7 @@
 .markup-tables table th {
     @apply text-left;
     @apply font-normal;
-    @apply whitespace-no-wrap;
+    @apply whitespace-nowrap;
     @apply uppercase;
     @apply text-xs;
     @apply text-gray;

@@ -42,7 +42,7 @@
     }
 }
 
-@screen print {
+@media print {
     .banner-intro {
         @apply block;
         @apply text-xl;
