@@ -85,6 +85,7 @@
         "symfony/postmark-mailer": "^6.2",
         "tempest/highlight": "^1.0",
         "torann/geoip": "^3.0.4",
+        "wiebenieuwenhuis/filament-code-editor": "^1.1",
         "wire-elements/spotlight": "^2.0"
     },
     "require-dev": {
