@@ -92,10 +92,7 @@ Route::prefix('bundles')->group(function () {
 Route::prefix('open-source')->group(function () {
     Route::view('/', 'front.pages.open-source.index')->name('open-source.index');
     Route::view('packages', 'front.pages.open-source.packages')->name('open-source.packages');
-    Route::view('projects', 'front.pages.open-source.projects')->name('open-source.projects');
     Route::get('postcards', [PostcardController::class, 'index'])->name('open-source.postcards');
-    Route::get('support-us', [OpenSourceController::class, 'support'])->name('open-source.support');
-    Route::view('testimonials', 'front.pages.open-source.testimonials')->name('open-source.testimonials');
 });
 
 Route::prefix('vacancies')->group(function () {

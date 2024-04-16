@@ -1,5 +1,5 @@
 <div class="px-3 sm:px-12">
-    <header x-data="{ open: window.innerWidth >= 720 }" x-on:resize.window="open = window.innerWidth >= 720" class="w-full max-w-screen-xl mx-auto p-5 sm:px-10 sm:py-8 flex-none z-10 my-5 rounded | bg-white shadow-light | print:bg-transparent print:shadow-none">
+    <header x-data="{ open: window.innerWidth >= 720 }" x-on:resize.window="open = window.innerWidth >= 720" class="w-full max-w-screen-xl mx-auto p-5 sm:px-[40px] sm:py-[30px] flex-none z-10 my-5 rounded | bg-white shadow-light | print:bg-transparent print:shadow-none">
          <div class="flex justify-between leading-loose | sm:leading-none sm:flex sm:items-stretch">
              <a class="shrink-0 logo h-8 w-20 block | sm:mb-0 sm:w-48 sm:h-auto" href="/" title="Home">
                  <span class="absolute h-8 sm:h-14 ">

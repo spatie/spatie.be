@@ -1,4 +1,4 @@
-<div class="w-full">
+<section id="packages" class="border-t border-oss-gray-extra-dark pt-20 mb-20 max-w-[1320px] mx-auto">
     <div class="flex justify-between items-end mb-20 w-full">
         <h2 class="font-druk uppercase font-bold text-[96px] leading-[0.9]">All<br/>packages</h2>
         @if($this->filterable)
@@ -67,4 +67,4 @@
             </p>
         @endunless
     </div>
-</div>
+</section>

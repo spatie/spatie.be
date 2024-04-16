@@ -9,11 +9,16 @@ export default {
         colors: {
             'oss-black': '#050508',
             'oss-gray': '#EAE8E5',
+            'oss-gray-medium': '#CAC8C4',
             'oss-gray-dark': '#A5A4A3',
             'oss-gray-extra-dark': '#3A3C3E',
             'oss-red': '#FF354F',
+            'oss-blue': '#33CCFF',
+            'oss-royal-blue': '#172A3D',
+            'oss-royal-blue-light': '#515F6E',
             'oss-purple': '#735AFF',
             'oss-green': '#50E69B',
+            'oss-green-pale': '#82D8AF',
             'oss-purple-extra-dark': '#15151E',
             'oss-yellow': '#E7C23D',
 
@@ -154,6 +159,7 @@ export default {
         extend: {
             backgroundImage: {
                 'link-card': 'linear-gradient(180deg, rgba(141, 161, 166, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);',
+                'link-card-light': 'linear-gradient(180deg, rgba(209, 201, 188, 0.1) 0%, rgba(255, 255, 255, 0.015) 100%);\n',
             },
 
             boxShadow: {

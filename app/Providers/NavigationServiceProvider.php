@@ -13,7 +13,7 @@ class NavigationServiceProvider extends ServiceProvider
         Menu::macro('main', function (array $properties = []) {
             return Menu::new()
                 ->route('products.index', 'Products')
-                ->route('open-source.packages', 'Open Source')
+                ->route('open-source.index', 'Open Source')
                 ->route('courses.index', 'Courses')
                 ->route('web-development', 'Web Development')
 
