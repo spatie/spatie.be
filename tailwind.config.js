@@ -10,8 +10,10 @@ export default {
             'oss-black': '#050508',
             'oss-gray': '#EAE8E5',
             'oss-gray-dark': '#A5A4A3',
+            'oss-gray-extra-dark': '#3A3C3E',
             'oss-red': '#FF354F',
             'oss-purple': '#735AFF',
+            'oss-green': '#50E69B',
             'oss-purple-extra-dark': '#15151E',
             'oss-yellow': '#E7C23D',
 

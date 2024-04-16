@@ -1,108 +1,65 @@
-<div>
-    @if($this->filterable)
-        <div class="wrap flex justify-start mb-8">
-
-        </div>
-        <div class="wrap">
-            <div class="md:flex items-baseline justify-between mb-8">
-                <input
-                        type="search"
-                        class="form-input px-4"
-                        placeholder="Search packages..."
-                        wire:model.live="search"
-                >
-                <div class="mt-6 md:mt-0 md:ml-6">
-                    <label for="sort" class="text-gray mr-2">
-                        Sort
+<div class="w-full">
+    <div class="flex justify-between items-end mb-20 w-full">
+        <h2 class="font-druk uppercase font-bold text-[96px] leading-[0.9]">All<br/>packages</h2>
+        @if($this->filterable)
+            <div class="md:flex gap-12 items-baseline justify-between mb-8">
+                <div class="">
+                    <label for="sort" class="text-[16px] text-oss-gray-dark mr-6">
+                        Sort by
                     </label>
-                    <div class="select">
-                        <select name="sort" wire:model.live="sort">
-                            <option value="-downloads">by downloads</option>
-                            <option value="name">by name</option>
-                            <option value="-stars">by popularity</option>
-                            <option value="-repository_created_at">by date</option>
+                    <div class="select p-0 text-[16px] bg-oss-black border-none text-oss-gray">
+                        <select class="text-oss-gray" name="sort" wire:model.live="sort">
+                            <option value="-downloads">downloads</option>
+                            <option value="name">name</option>
+                            <option value="-stars">popularity</option>
+                            <option value="-repository_created_at">date</option>
                         </select>
-                        <span class="select-arrow">
-                        {{ app_svg('icons/far-angle-down') }}</span>
+                        <span class="select-arrow pl-2.5 -mt-2">
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><rect width="16" height="16" fill="#EAE8E5" rx="8"/><path fill="#172A3D" d="m8 11.61.471-.47 4-4 .473-.473L12 5.723l-.47.471L8 9.724 4.471 6.195l-.47-.473-.944.944.47.47 4 4 .473.474Z"/></svg>
+                        </span>
                     </div>
+                </div>
+                <div class="relative">
+                    <input
+                        type="search"
+                        class="form-input text-white bg-oss-black rounded-[12px] border-oss-gray-extra-dark placeholder-oss-gray py-4 px-6 h-[56px]"
+                        placeholder="Find a package ..."
+                        wire:model.live="search"
+                    >
+                    <svg class="w-4 h-4 absolute right-0 top-0 mt-4 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="#EAE8E5" stroke-width="2" d="m15 15-4-4m-4 2A6 6 0 1 1 7 1a6 6 0 0 1 0 12Z"/></svg>
                 </div>
             </div>
-        </div>
-    @endif
-    <div class="wrap">
-        <div>
-            @foreach($repositories as $repository)
-                <div class="cells" style="grid-template-columns: 3fr 3fr 1fr">
-                    <div class="cell-l">
-                        <div>
-                            <a class="font-sans-bold link-underline link-blue" href="{{ $repository->url }}"
-                               target="_blank" rel="nofollow noreferrer noopener">
-                                {{ $repository->name }}
-                            </a>
-                        </div>
-                        <div class="text-xs mt-2 text-gray">
-                            @if($repository->language)
-                                <span class="font-bold">
-                                    {{ $repository->language }}
-                                    <span class="char-separator">•</span>
-                                </span>
-                            @endif
-                            @if($repository->downloads)
-                                <span>
-                                    {{ number_format($repository->downloads, 0, '.', ' ') }}
-                                    <span class="icon fill-current text-gray"
-                                          style="transform: translateY(-1px)">{{ app_svg('icons/fal-arrow-to-bottom') }}</span>
-                                    <span class="char-separator">•</span>
-                                </span>
-                            @endif
-                            {{ number_format($repository->stars, 0, '.', ' ') }} <span
-                                    class="icon fill-current text-gray"
-                                    style="transform: translateY(-2px)">{{ app_svg('icons/fal-star') }}</span>
-                            @if($repository->has_issues)
-                                <a href="{{ $repository->issues_url }}" target="_blank"
-                                   rel="nofollow noreferrer noopener"
-                                   class="bg-green-lightest text-green-dark rounded-full px-2 ml-2">
-                                    easy issues
-                                </a>
-                            @endif
-                            @if($repository->is_new)
-                                <span class="bg-gold-lightest text-gold-darkest rounded-full px-2 ml-2">
-                                    new
-                                </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="cell">
-                        {{ $repository->description }}
-                        <div class="text-xs mt-2 text-gray">
-                            @foreach($repository->topics as $topic)
-                                <span>
-                                    {{ $topic }}
-                                    @unless($loop->last)
-                                        <span class="char-separator">•</span>
-                                    @endunless
-                                </span>
-                            @endforeach
-                        </div>
-                    </div>
-                    <div class="cell-r mt-4 flex flex-col justify-center | md:mt-0 md:grid-text-right">
-                        @if($repository->blogpost_url)
-                            <a href="{{ $repository->blogpost_url }}" target="_blank" rel="nofollow noreferrer noopener"
-                               class="link-underline link-gray text-xs">
-                                Introduction
-                            </a>
-                        @endif
-                        @if($repository->documentation_url)
-                            <a href="{{ $repository->documentation_url }}" target="_blank"
-                               rel="nofollow noreferrer noopener"
-                               class="link-underline link-gray text-xs">
-                                Documentation
-                            </a>
-                        @endif
-                    </div>
+        @endif
+    </div>
+
+    <div class="grid grid-cols-3 gap-10">
+        @foreach($repositories as $repository)
+            <x-oss-link-card :title="$repository->name">
+                <p class="mb-28">{{ $repository->description }}</p>
+                <div class="flex items-center gap-x-5 mb-5">
+                    <a class="text-sm flex items-center gap-x-2" href="{{ $repository->url }}">
+                        <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                        <span class="underline">GitHub</span>
+                    </a>
+                    @if ($repository->documentation_url)
+                        <a class="text-sm flex items-center gap-x-2" href="{{ $repository->documentation_url }}">
+                            <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                            <span class="underline">Documentation</span>
+                        </a>
+                    @endif
                 </div>
-            @endforeach
-        </div>
+                <div class="flex items-center gap-x-5">
+                    <span class="text-sm flex items-center gap-x-2">
+                        <svg class="w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 14"><path fill="#EAE8E5" d="m11 6-5 5-5-5V5h3V0h4v5h3v1ZM1 12h11v2H0v-2h1Z"/></svg>
+                        <span class="underline">{{ number_format($repository->downloads, 0, '.', ' ') }}</span>
+                    </span>
+                    <span class="text-sm flex items-center gap-x-2">
+                        <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
+                        <span class="underline">{{ number_format($repository->stars, 0, '.', ' ') }}</span>
+                    </span>
+                </div>
+            </x-oss-link-card>
+        @endforeach
         @unless(count($repositories))
             <p class="mt-12 text-lg text-gray">
                 Apparently there's not a Spatie package for everything! <br>

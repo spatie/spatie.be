@@ -3,7 +3,7 @@
         background="/backgrounds/open-source.jpg"
         description="Learn how to support us via our paid products or via GitHub sponsors."
 >
-    @include('front.pages.open-source.partials.menu')
+    @include('front.pages.open-source.components.menu')
 
     @include('front.pages.open-source.partials.banner-support')
 

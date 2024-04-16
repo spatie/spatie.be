@@ -4,5 +4,5 @@
         <span>{{ $line1 }}</span>
     </span><br/>
     <span class="{{ $offset ?? 'md:-ml-[6rem]' }}">{{ $line2 }}</span><br/>
-    <span>{{ $line3 }}</span>
+    @isset($line3)<span>{{ $line3 }}</span>@endisset
 </h2>

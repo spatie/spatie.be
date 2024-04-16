@@ -6,7 +6,7 @@
         @endpush
     @endonce
 
-    @include('front.pages.open-source.partials.menu')
+    @include('front.pages.open-source.components.menu')
 
     <section id="banner" role="banner" class="banner">
         <div class="wrap">

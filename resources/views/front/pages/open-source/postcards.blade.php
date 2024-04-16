@@ -1,9 +1,9 @@
 <x-page
-        title="Postcards"
-        background="/backgrounds/open-source.jpg"
-        description="This is our postcardware license in action."
+    title="Postcards"
+    background="/backgrounds/open-source.jpg"
+    description="This is our postcardware license in action."
 >
-    @include('front.pages.open-source.partials.menu')
+    @include('front.pages.open-source.components.menu')
 
     @include('front.pages.open-source.partials.banner-postcards')
 
