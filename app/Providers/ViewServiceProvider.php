@@ -31,5 +31,10 @@ class ViewServiceProvider extends ServiceProvider
         Blade::component('components.avatar', 'avatar');
         Blade::component('components.completionBadge', 'completion-badge');
         Blade::component('front.profile.components.purchase-assignment', 'purchase-assignment');
+
+        Blade::component('front.pages.open-source.components.staggered-title', 'oss-staggered-title');
+        Blade::component('front.pages.open-source.components.card', 'oss-card');
+        Blade::component('front.pages.open-source.components.link-card', 'oss-link-card');
+        Blade::component('front.pages.open-source.components.content', 'oss-content');
     }
 }

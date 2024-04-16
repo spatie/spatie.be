@@ -68,3 +68,28 @@ a.anchor-link {
 .show-input-number-buttons::-webkit-outer-spin-button {
     opacity: 1;
 }
+
+.link-card:before {
+    content: "";
+    pointer-events: none;
+    user-select: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    mask-image: linear-gradient(black, black), linear-gradient(black, black);
+    mask-position: 0, 0;
+    -webkit-mask-position-x: 0;
+    -webkit-mask-position-y: 0;
+    mask-size: auto, auto;
+    mask-repeat: repeat, repeat;
+    mask-origin: content-box, border-box;
+    mask-clip: content-box, border-box;
+    mask-mode: match-source, match-source;
+    mask-composite: exclude;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(141, 161, 166, 0.5) 0%, rgba(255, 255, 255, 0.15) 100%);
+}
+

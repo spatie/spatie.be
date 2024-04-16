@@ -8,15 +8,24 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@babel/preset-env": "^7.11.0",
+        "@react-spring/three": "^9.7.3",
+        "@react-three/fiber": "^8.16.2",
         "@tailwindcss/forms": "^0.5.7",
+        "@types/three": "^0.163.0",
+        "@vitejs/plugin-react": "^4.2.1",
         "alpinejs": "^3.10.5",
         "autoprefixer": "^10.4.19",
+        "framer-motion": "^11.0.28",
         "laravel-vite-plugin": "^1.0.2",
         "lodash": "^4.17.21",
         "object-fit-images": "^2.5.9",
         "prettier": "^1.10.2",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0",
+        "shadergradient": "^1.2.10",
         "tailwindcss": "^3.4.3",
+        "three": "0.150.0",
+        "three-stdlib": "^2.29.6",
         "vite": "^5.0"
     },
     "devDependencies": {

@@ -7,6 +7,14 @@ export default {
     ],
     theme: {
         colors: {
+            'oss-black': '#050508',
+            'oss-gray': '#EAE8E5',
+            'oss-gray-dark': '#A5A4A3',
+            'oss-red': '#FF354F',
+            'oss-purple': '#735AFF',
+            'oss-purple-extra-dark': '#15151E',
+            'oss-yellow': '#E7C23D',
+
             transparent: 'transparent',
             current: 'currentColor',
             black: '#172a3d',
@@ -61,7 +69,7 @@ export default {
             sm: '720px',
             md: '960px',
             lg: '1230px',
-            xl: '1615px',
+            xl: '1680px',
             print: {raw: 'print'},
         },
 
@@ -96,6 +104,36 @@ export default {
                 'serif',
             ],
             mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+            pt: [
+                'PTRootUIWebVF',
+                '-apple-system',
+                'BlinkMacSystemFont',
+                'Segoe UI',
+                'Roboto',
+                'Oxygen',
+                'Ubuntu',
+                'Cantarell',
+                'Fira Sans',
+                'Droid Sans',
+                'Helvetica Neue',
+                'sans-serif',
+            ],
+            druk: [
+                'Druk',
+                'Gotham Narrow SSm A',
+                'Gotham Narrow SSm B',
+                '-apple-system',
+                'BlinkMacSystemFont',
+                'Segoe UI',
+                'Roboto',
+                'Oxygen',
+                'Ubuntu',
+                'Cantarell',
+                'Fira Sans',
+                'Droid Sans',
+                'Helvetica Neue',
+                'sans-serif',
+            ]
         },
 
         lineHeight: {
@@ -112,6 +150,10 @@ export default {
         },
 
         extend: {
+            backgroundImage: {
+                'link-card': 'linear-gradient(180deg, rgba(141, 161, 166, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);',
+            },
+
             boxShadow: {
                 DEFAULT: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
                 light: '0 2px 4px 0 rgba(76, 55, 55, 0.04)',
@@ -120,6 +162,7 @@ export default {
                 inner: 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.12)',
                 'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
                 none: 'none',
+                'oss-card': '0px 0px 110px 50px #00000033'
             },
 
             fontSize: {

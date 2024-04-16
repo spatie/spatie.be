@@ -8,16 +8,6 @@ use Illuminate\View\View;
 
 class OpenSourceController
 {
-    public function packages(): View
-    {
-        return view('front.pages.open-source.packages');
-    }
-
-    public function projects(): View
-    {
-        return view('front.pages.open-source.projects');
-    }
-
     public function support(): View
     {
         $products = Product::query()
@@ -31,10 +21,5 @@ class OpenSourceController
         return view('front.pages.open-source.support', [
             'products' => $products,
         ]);
-    }
-
-    public function testimonials(): View
-    {
-        return view('front.pages.open-source.testimonials');
     }
 }
