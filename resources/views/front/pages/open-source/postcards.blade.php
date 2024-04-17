@@ -6,7 +6,7 @@
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])
         <!-- It's easier to work pixel perfect when html font size doesn't change. -->
-        <style>html { font-size: 16px !important; }</style>
+        <style>html { font-size: 16px !important; scroll-behavior: smooth }</style>
         <script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     @endpush
     @push('startBody')
