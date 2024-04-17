@@ -8,7 +8,6 @@ use App\Spotlight\DocsCommand;
 use App\Spotlight\Spotlight;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;

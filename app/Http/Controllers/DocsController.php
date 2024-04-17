@@ -198,7 +198,7 @@ class DocsController
                 }
             }
 
-            if (!$prevPage && $currentFound && $previousSection) {
+            if (! $prevPage && $currentFound && $previousSection) {
                 return Arr::last($previousSection['pages']);
             }
 
@@ -214,7 +214,7 @@ class DocsController
         $currentFound = false;
 
         foreach ($navigation as $key => $section) {
-            if (!$nextPage && $currentFound) {
+            if (! $nextPage && $currentFound) {
                 return $section['pages'][0];
             }
 
