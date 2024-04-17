@@ -1,4 +1,4 @@
-<section id="breadcrumb" class="hidden md:block max-w-[1680px] mx-auto w-full text-[14px]">
+<section id="breadcrumb" class="hidden md:block max-w-screen-xl mx-auto w-full text-[14px]">
     <p class="text-oss-royal-blue ">
         <a href="{{ route('docs')}}">Docs</a>
         <span class="icon mx-2 fill-current text-oss-royal-blue-light">{{ app_svg('icons/far-angle-right') }}</span>

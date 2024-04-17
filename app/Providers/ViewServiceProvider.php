@@ -37,5 +37,7 @@ class ViewServiceProvider extends ServiceProvider
         Blade::component('front.pages.open-source.components.link-card', 'oss-link-card');
         Blade::component('front.pages.open-source.components.content', 'oss-content');
         Blade::component('front.pages.open-source.components.menu', 'oss-menu');
+
+        Blade::component('front.pages.docs.components.banner', 'docs-banner');
     }
 }

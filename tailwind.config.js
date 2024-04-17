@@ -8,6 +8,7 @@ export default {
     theme: {
         colors: {
             'oss-black': '#050508',
+            'oss-gray-light': '#F9F8F7',
             'oss-gray': '#EAE8E5',
             'oss-gray-medium': '#CAC8C4',
             'oss-gray-dark': '#A5A4A3',
@@ -147,6 +148,7 @@ export default {
             none: 1,
             tight: 1.1,
             normal: 1.6,
+            relaxed: 1.8,
             loose: 2,
         },
 
@@ -186,6 +188,10 @@ export default {
                 '2px': '2px',
                 '18': '4.5rem',
                 '1/2': '50%',
+            },
+
+            spacing: {
+                '7.5': '1.875rem',
             },
 
             keyframes: {

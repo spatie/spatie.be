@@ -260,13 +260,15 @@
 }
 
 .markup pre {
-    @apply p-10;
+    @apply px-9;
+    @apply py-7.5;
     @apply my-8;
-    @apply rounded-sm;
+    @apply rounded-lg;
     @apply overflow-hidden;
     @apply overflow-x-scroll;
-    @apply bg-paper !important;
+    @apply bg-oss-gray-light;
     @apply text-sm;
+    @apply leading-relaxed;
 }
 
 .markup-code pre::-webkit-scrollbar { height: 1px;width: 1px; }
@@ -335,9 +337,4 @@
     @apply w-full !important;
     @apply h-full !important;
     @apply inset-0;
-}
-
-.markup pre {
-    padding: 1rem;
-    margin: 1rem 0;
 }
