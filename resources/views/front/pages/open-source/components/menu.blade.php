@@ -1,4 +1,4 @@
-<section class="md:flex w-full max-w-[1080px] mx-auto mt-8 sm:mt-32 mb-24 sm:mb-52 px-7 lg:px-0">
+<section id="header" class="md:flex w-full max-w-[1080px] mx-auto mt-8 sm:mt-32 mb-24 sm:mb-52 px-7 lg:px-0">
     <main class="w-full mb-10 md:mb-0">
         <h1 class="font-druk uppercase text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-10">{!! $title !!}</h1>
         <h2 class="text-[18px] sm:text-2xl font-medium max-w-[600px]">{!! $subtitle !!}</h2>
@@ -26,3 +26,30 @@
         </ul>
     </aside>
 </section>
+<nav
+    x-cloak
+    x-data="{
+        headerHeight: 0,
+        scrollTop: 0,
+    }"
+    x-init="headerHeight = document.getElementById('header').getBoundingClientRect().height"
+    x-on:scroll.window.lazy="scrollTop = window.scrollY;"
+    x-bind:class="scrollTop > headerHeight ? 'translate-y-0' : 'translate-y-[200%]'"
+    class="transition-transform fixed z-50 bottom-0 left-1/2 -translate-x-1/2 mb-10 max-w-[480px] w-full mx-auto link-card bg-link-card shadow-oss-card rounded-[38px] p-1.5 flex items-center backdrop-blur-lg"
+>
+    <span class="py-3 px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.index') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
+        <a wire:navigate.hover href="{{ route('open-source.index') }}" class="">
+            Open Source
+        </a>
+    </span>
+    <span class="py-3 px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.packages') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
+        <a wire:navigate.hover href="{{ route('open-source.packages') }}" class="">
+            Packages
+        </a>
+    </span>
+    <span class="py-3 px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.postcards') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
+        <a wire:navigate.hover href="{{ route('open-source.postcards') }}" class="">
+            Postcards
+        </a>
+    </span>
+</nav>

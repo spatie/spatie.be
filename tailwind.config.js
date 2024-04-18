@@ -172,7 +172,7 @@ export default {
                 inner: 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.12)',
                 'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
                 none: 'none',
-                'oss-card': '0px 0px 110px 50px #00000033'
+                'oss-card': '0px 0px 110px 50px #00000033',
             },
 
             fontSize: {
