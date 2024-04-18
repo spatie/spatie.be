@@ -10,6 +10,7 @@ root.render(
         <ShaderGradient
             control='query'
             urlString={url}
+            enableTransition={false}
         />
     </ShaderGradientCanvas>
 );

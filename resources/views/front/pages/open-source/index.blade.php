@@ -5,7 +5,7 @@
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])
         <!-- It's easier to work pixel perfect when html font size doesn't change. -->
-        <style>html { font-size: 16px !important; }</style>
+        <style>html { font-size: 16px !important; background: #050508 }</style>
     @endpush
     @push('startBody')
         <div class="absolute top-0 left-0 right-0 z-0 pointer-events-none">
