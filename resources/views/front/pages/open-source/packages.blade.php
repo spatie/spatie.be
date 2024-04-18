@@ -8,7 +8,14 @@
         <style>html { font-size: 16px !important; scroll-behavior: smooth; background: #050508; }</style>
     @endpush
     @push('startBody')
-        <div class="absolute top-0 left-0 right-0 z-0 pointer-events-none">
+        <div
+            x-show="show"
+            x-data="{ show: false }"
+            x-init="setTimeout(() => show = true, 50)"
+            x-transition.opacity.duration.500ms
+            x-cloak
+            class="absolute top-0 left-0 right-0 z-0 pointer-events-none"
+        >
             <div id="gradient" class="aspect-[9/16] sm:aspect-video w-full"
                  data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=1.5&cAzimuthAngle=250&cDistance=1.5&cPolarAngle=140&cameraZoom=12.5&color1=%239f003a&color2=%2323002f&color3=%236c339b&embedMode=off&envPreset=city&fov=45&gizmoHelper=hide&grain=off&lightType=env&pixelDensity=1.1&positionX=0&positionY=0&positionZ=0&reflection=0.5&rotationX=0&rotationY=0&rotationZ=140&shader=defaults&type=sphere&uAmplitude=2.3&uDensity=1.4&uFrequency=5.5&uSpeed=0.1&uStrength=1.2&uTime=0&wireframe=false"></div>
             <div
