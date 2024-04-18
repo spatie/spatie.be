@@ -12,7 +12,7 @@
             x-show="show"
             x-data="{ show: false }"
             x-init="setTimeout(() => show = true, 50)"
-            x-transition.opacity.duration.500ms
+            x-transition.opacity.duration.1000ms
             x-cloak
             class="absolute top-0 left-0 right-0 z-0 pointer-events-none"
         >
