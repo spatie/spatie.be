@@ -19,7 +19,7 @@
             class="absolute top-0 left-0 right-0 z-0 pointer-events-none"
         >
             <div id="gradient" class="aspect-[9/16] sm:aspect-video w-full"
-                 data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=on&bgColor1=%23000000&bgColor2=%23000000&brightness=1.1&cAzimuthAngle=180&cDistance=3.9&cPolarAngle=115&cameraZoom=1&color1=%235606FF&color2=%23adfebd&color3=%23000000&destination=onCanvas&embedMode=off&envPreset=city&format=gif&fov=45&frameRate=10&grain=off&lightType=env&pixelDensity=1.5&positionX=-0.5&positionY=0.1&positionZ=0&range=disabled&rangeEnd=40&rangeStart=0&reflection=0.5&rotationX=0&rotationY=0&rotationZ=235&shader=defaults&toggleAxis=false&type=waterPlane&uAmplitude=0&uDensity=1&uFrequency=5.5&uSpeed=0.1&uStrength=2.3&uTime=0.2&wireframe=false"></div>
+                 data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=on&bgColor1=%23000000&bgColor2=%23000000&brightness=1.1&cAzimuthAngle=180&cDistance=3.9&cPolarAngle=115&cameraZoom=1&color1=%234c00ed&color2=%234f7f76&color3=%23000000&destination=onCanvas&embedMode=off&envPreset=city&format=gif&fov=45&frameRate=10&grain=off&lightType=3d&pixelDensity=1.5&positionX=-0.5&positionY=0.1&positionZ=0&range=disabled&rangeEnd=40&rangeStart=0&reflection=0.5&rotationX=0&rotationY=0&rotationZ=235&shader=defaults&toggleAxis=false&type=waterPlane&uAmplitude=0&uDensity=1&uFrequency=5.5&uSpeed=0.05&uStrength=2.3&uTime=0.2&wireframe=false"></div>
             <div
                 class="absolute inset-0 z-10 w-full h-full aspect-video bg-gradient-to-b from-transparent to-oss-black"></div>
         </div>
