@@ -8,6 +8,7 @@ export default {
     theme: {
         colors: {
             'oss-black': '#050508',
+            'oss-footer-dark': '#1F1F1F',
             'oss-gray-light': '#F9F8F7',
             'oss-gray': '#EAE8E5',
             'oss-gray-medium': '#CAC8C4',

@@ -1,6 +1,7 @@
 <x-page
     title="Committed to open source"
-    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])

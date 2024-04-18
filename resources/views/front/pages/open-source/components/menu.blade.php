@@ -32,7 +32,7 @@
         headerHeight: 0,
         scrollTop: 0,
     }"
-    x-init="headerHeight = document.getElementById('header').getBoundingClientRect().height"
+    x-init="headerHeight = document.getElementById('header').getBoundingClientRect().height; scrollTop = window.scrollY;"
     x-on:scroll.window.lazy="scrollTop = window.scrollY;"
     x-bind:class="scrollTop > headerHeight ? 'translate-y-0' : 'translate-y-[200%]'"
     class="transition-transform fixed z-50 bottom-0 left-1/2 -translate-x-1/2 mb-10 max-w-[480px] w-full mx-auto link-card bg-link-card shadow-oss-card rounded-[38px] p-1.5 flex items-center backdrop-blur-lg"

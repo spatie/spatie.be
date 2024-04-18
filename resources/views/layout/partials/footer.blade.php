@@ -1,7 +1,14 @@
-<footer class="bg-gray-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none"
-        style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;">
+@php($dark ??= false)
+<footer
+    @if ($dark)
+        class="bg-oss-footer-dark text-oss-gray-dark"
+    @else
+        class="bg-gray-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none"
+        style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;"
+    @endif
+>
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
-        <div class="wrap links links-gray text-gray leading-loose | md:leading-normal">
+        <div class="wrap links @unless($dark) links-gray text-gray @endunless leading-loose | md:leading-normal">
             <div class="grid grid-cols-2 items-start text-sm | md:flex md:justify-between">
                 @include('layout.partials.menu')
 
@@ -73,7 +80,7 @@
     </div>
 
     <div class="wrap">
-        <ul class="grid md:grid-flow-col justify-start links links-gray text-xs py-4 opacity-50 | md:justify-end md:gap-6 | print:hidden">
+        <ul class="grid md:grid-flow-col justify-start @if($dark) text-oss-gray-dark @else links links-gray opacity-50 @endif text-xs py-4 | md:justify-end md:gap-6 | print:hidden">
             <li><a href="{{ route('legal.privacy') }}">Privacy</a></li>
             <li><a href="{{ route('legal.disclaimer') }}">Disclaimer</a></li>
         </ul>
