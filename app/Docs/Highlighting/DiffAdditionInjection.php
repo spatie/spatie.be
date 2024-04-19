@@ -15,6 +15,7 @@ class DiffAdditionInjection
             function ($matches) {
                 $open = Escape::tokens('<span class="hl-addition">+ ');
                 $close = Escape::tokens('</span>');
+
                 return $open . $matches[1] . $close; // Wraps the matched line with the span
             },
             $content
