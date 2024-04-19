@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Docs\Alias;
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
+use App\Docs\Highlighting\DiffLanguage;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\Collection;
@@ -19,6 +20,7 @@ use RuntimeException;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Tempest\Highlight\CommonMark\CodeBlockRenderer;
 use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
+use Tempest\Highlight\Highlighter;
 
 class DocsController
 {
@@ -156,14 +158,17 @@ class DocsController
 
     private function renderMarkdown(string $contents): string
     {
+        $highlighter = new Highlighter();
+        $highlighter->addLanguage(new DiffLanguage());
+
         return app(MarkdownRenderer::class)
             ->highlightCode(false)
             ->addExtension(new TableExtension())
             ->addExtension(new HeadingPermalinkExtension())
             ->addInlineRenderer(Image::class, new ImageRenderer())
             ->addInlineRenderer(Link::class, new LinkRenderer())
-            ->addInlineRenderer(FencedCode::class, new CodeBlockRenderer(), 10)
-            ->addInlineRenderer(Code::class, new InlineCodeBlockRenderer(), 10)
+            ->addInlineRenderer(FencedCode::class, new CodeBlockRenderer($highlighter), 10)
+            ->addInlineRenderer(Code::class, new InlineCodeBlockRenderer($highlighter), 10)
             ->commonmarkOptions([
                 'heading_permalink' => [
                     'html_class' => 'anchor-link',
