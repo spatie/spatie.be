@@ -15,7 +15,7 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ## Credits
 
-This website was principally designed by [Willem Van Bockstal](https://github.com/orgs/spatie/people/willemvb). [Everyone at Spatie](https://github.com/orgs/spatie/people) has made cool contributions during development.
+This website was principally designed by [Willem Van Bockstal](https://github.com/willemvb). [Everyone at Spatie](https://github.com/orgs/spatie/people) has made cool contributions during development.
 
 ## License
 
