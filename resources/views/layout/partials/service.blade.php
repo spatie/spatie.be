@@ -1,3 +1,3 @@
 {{ Menu::service()
-    ->addItemClass('text-oss-royal-blue')
+    ->addItemClass('text-oss-royal-blue-light sm:text-oss-royal-blue')
     ->setActiveClass('font-bold') }}

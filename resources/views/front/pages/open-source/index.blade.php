@@ -56,7 +56,8 @@
                 </x-slot:aside>
 
                 <p>Back in 2015, when we first began developing open-source packages and tools for Laravel and PHP, we couldn't have imagined the overwhelming support and feedback we'd receive from the community.</p>
-                <p>Over the years, we've launched numerous packages and courses, and have actively engaged in delivering presentations across the globe.</p>
+                <p>Over the years, we've launched <a href="{{ route('open-source.packages') }}">numerous packages</a> and
+                    <a href="{{ route('courses.index') }}">courses</a>, and have actively engaged in delivering presentations across the globe.</p>
                 <p>We have been fortunate that working with the Laravel community brought us many opportunities to collaborate with developers from around the world, and expand our own skills and services.</p>
             </x-oss-content>
         </section>
@@ -67,15 +68,15 @@
             </x-oss-content>
             <div class="grid sm:grid-cols-3 sm:divide-x divide-y sm:divide-y-0 divide-white/10 max-w-[1320px] mt-4 mx-auto">
                 <div class="p-[60px] sm:p-[40px] md:p-[60px] text-center">
-                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">300+</div>
+                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">{{ \App\Models\Repository::visible()->count() }}+</div>
                     <p class="text-oss-gray-dark uppercase font-bold tracking-wide text-[14px] leading-tight">Packages Released<br/>& maintained</p>
                 </div>
                 <div class="p-[60px] sm:p-[40px] md:p-[60px] text-center">
-                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">1B+</div>
+                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">{{ ucfirst(App\Models\Repository::shortDownloadCount()) }}+</div>
                     <p class="text-oss-gray-dark uppercase font-bold tracking-wide text-[14px] leading-tight">Total downloads<br/>on packagist</p>
                 </div>
                 <div class="p-[60px] sm:p-[40px] md:p-[60px] text-center">
-                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">100+</div>
+                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">500+</div>
                     <p class="text-oss-gray-dark uppercase font-bold tracking-wide text-[14px] leading-tight">Contributors<br/>on Github</p>
                 </div>
             </div>

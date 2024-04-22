@@ -38,54 +38,30 @@
             </x-slot:subtitle>
         </x-oss-menu>
 
-        <x-oss-content class="flex-col-reverse" aside-width="w-full" content-width="w-full" align-items="items-start">
+        <x-oss-content class="flex-col-reverse" aside-width="w-full" content-width="w-full md:max-w-[400px] xl:max-w-none" align-items="items-start">
             <x-slot:aside>
-                <h2 class="font-druk uppercase text-[96px] mb-9 leading-none">Featured</h2>
+                <h2 class="font-druk uppercase text-[50px] md:text-[96px] mb-9 leading-none">Featured</h2>
                 <p class="text-[20px] mb-9">Some of our open source highlights and packages that we have long supported (and will continue to support!).</p>
                 <svg class="w-32 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 125 36"><path fill="#FF2D20" fill-rule="evenodd" d="M47.334 8.275v16.198h5.903v2.794h-9.045V8.275h3.142Zm16.997 8.058v-1.708h2.978v12.642h-2.98v-1.71c-.4.634-.969 1.131-1.707 1.492-.737.362-1.48.543-2.227.543-.965 0-1.85-.177-2.65-.53a6.199 6.199 0 0 1-2.064-1.45 6.786 6.786 0 0 1-1.817-4.667c0-.886.16-1.732.48-2.537a6.711 6.711 0 0 1 1.337-2.129 6.206 6.206 0 0 1 2.064-1.452c.8-.353 1.685-.53 2.65-.53.747 0 1.49.182 2.227.544.738.362 1.308.86 1.709 1.492Zm-.274 6.159a4.397 4.397 0 0 0 .274-1.546c0-.544-.092-1.06-.274-1.548a3.915 3.915 0 0 0-.765-1.274 3.7 3.7 0 0 0-1.189-.869 3.612 3.612 0 0 0-1.544-.325c-.565 0-1.075.109-1.53.325a3.743 3.743 0 0 0-1.175.869c-.333.37-.588.804-.75 1.274a4.578 4.578 0 0 0-.26 1.547c0 .543.085 1.059.26 1.546.161.471.417.905.75 1.276.33.363.73.658 1.175.868.455.217.965.325 1.53.325a3.61 3.61 0 0 0 1.544-.325c.451-.206.855-.502 1.19-.868.333-.372.593-.805.764-1.275Zm5.602 4.774V14.624h8.088v2.91h-5.11v9.732h-2.978ZM88.54 16.333v-1.708h2.978v12.642H88.54v-1.71c-.4.634-.97 1.131-1.708 1.492-.737.362-1.48.543-2.226.543-.967 0-1.85-.177-2.65-.53a6.199 6.199 0 0 1-2.064-1.45 6.786 6.786 0 0 1-1.817-4.667c0-.886.159-1.732.478-2.537a6.711 6.711 0 0 1 1.339-2.129 6.204 6.204 0 0 1 2.063-1.452c.801-.353 1.684-.53 2.65-.53.748 0 1.49.182 2.228.544.737.362 1.306.86 1.708 1.492Zm-.274 6.159a4.396 4.396 0 0 0 .273-1.546c0-.544-.092-1.06-.273-1.548a3.917 3.917 0 0 0-.765-1.274 3.703 3.703 0 0 0-1.189-.869 3.607 3.607 0 0 0-1.544-.325c-.564 0-1.075.109-1.53.325a3.743 3.743 0 0 0-1.175.869c-.333.37-.588.803-.751 1.274a4.58 4.58 0 0 0-.26 1.547c0 .543.086 1.059.26 1.546.162.471.418.905.751 1.276.331.363.73.658 1.175.868.455.217.966.325 1.53.325.565 0 1.08-.108 1.544-.325.45-.206.855-.502 1.189-.868.334-.372.594-.805.765-1.275Zm15.193-7.868h3.017l-4.889 12.642h-3.743l-4.889-12.642h3.017l3.743 9.681 3.744-9.681Zm9.512-.325c4.056 0 6.822 3.568 6.302 7.745h-9.881c0 1.09 1.109 3.2 3.743 3.2 2.266 0 3.784-1.98 3.785-1.98l2.012 1.545c-1.799 1.907-3.272 2.783-5.579 2.783-4.122 0-6.915-2.589-6.915-6.646 0-3.67 2.887-6.647 6.533-6.647Zm-3.571 5.548h7.138c-.022-.244-.409-3.2-3.59-3.2s-3.525 2.956-3.548 3.2Zm11.813 7.42V8.274h2.979v18.991h-2.979ZM35.127 8.126c.014.048.02.097.02.147v7.71a.563.563 0 0 1-.284.489l-6.518 3.726v7.386a.562.562 0 0 1-.285.487L14.455 35.85c-.031.018-.066.029-.099.04-.013.005-.025.013-.038.016a.573.573 0 0 1-.29 0c-.016-.004-.03-.012-.045-.018-.032-.01-.064-.021-.093-.038L.284 28.073A.562.562 0 0 1 0 27.585V4.45c0-.05.007-.099.02-.146.004-.017.014-.032.02-.048.01-.03.02-.06.036-.087.01-.019.026-.033.038-.05.017-.022.031-.046.051-.066.016-.016.038-.028.056-.042.02-.016.039-.034.062-.048L7.088.074a.572.572 0 0 1 .565 0l6.803 3.89h.002c.022.014.04.032.062.048.018.014.038.026.055.042.02.02.034.044.05.066.013.017.029.031.04.05.015.027.025.058.036.087.006.016.015.03.02.048.012.047.019.097.019.146v14.45l5.67-3.242V8.274c0-.05.006-.1.018-.147.006-.017.015-.031.021-.047.01-.03.02-.06.036-.088.01-.018.026-.033.039-.05.017-.022.03-.046.05-.065.017-.016.037-.028.056-.042.02-.017.04-.036.063-.048v-.001l6.803-3.889a.57.57 0 0 1 .565 0l6.803 3.889c.024.014.043.032.064.048.018.014.039.027.055.042.02.02.034.044.05.066.013.017.029.032.04.05.015.028.024.058.036.088.006.016.015.03.02.047Zm-1.113 7.532V9.247l-2.381 1.361-3.288 1.88V18.9l5.669-3.24Zm-6.803 11.6v-6.416l-3.236 1.834-9.236 5.234v6.476l12.472-7.13v.002ZM1.134 5.425v21.834l12.471 7.13v-6.476l-6.515-3.66-.002-.003h-.002c-.023-.013-.04-.032-.061-.047-.018-.014-.038-.026-.054-.041l-.002-.002c-.018-.018-.03-.04-.046-.06-.015-.018-.031-.034-.043-.054v-.002c-.013-.021-.02-.047-.03-.07-.01-.021-.021-.04-.027-.064-.008-.026-.008-.055-.012-.083-.002-.021-.008-.042-.008-.063v-15.1L3.515 6.787 1.134 5.425Zm6.235-4.213-5.666 3.24L7.37 7.691l5.667-3.24L7.37 1.212Zm2.948 20.215 3.288-1.879V5.425l-2.38 1.36-3.289 1.88v14.123l2.381-1.36Zm17.46-16.392-5.666 3.239 5.667 3.24 5.666-3.24-5.666-3.239Zm-.566 7.453-3.289-1.88-2.38-1.36v6.411l3.288 1.88 2.381 1.361v-6.412Zm-13.04 14.45 8.312-4.712 4.155-2.355-5.663-3.237-6.52 3.727-5.942 3.397 5.658 3.18Z" clip-rule="evenodd"/></svg>
                 <p class="text-oss-gray-dark text-[14px]">Support from <a href="" class="underline">premium GitHub sponsors</a> helps sustain our open-source efforts.</p>
             </x-slot:aside>
 
             <div class="grid gap-9">
-                <x-oss-link-card>
-                    <x-slot:title>
-                        <a href="" class="flex items-center justify-between">
-                            <span>ignition</span>
-                            <svg class="w-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path fill="#EAE8E5" d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
-                        </a>
-                    </x-slot:title>
-                    <p>Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex blandit sollicitudin. Duis dui augue, venenatis at augue et, condimentum lobortis enim. Duis aliquam ex id facilisis convallis ligula purus malesuada.</p>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
-                        <span>5,602</span>
-                    </div>
-                </x-oss-link-card>
-                <x-oss-link-card>
-                    <x-slot:title>
-                        <a href="" class="flex items-center justify-between">
-                            <span>ignition</span>
-                            <svg class="w-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path fill="#EAE8E5" d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
-                        </a>
-                    </x-slot:title>
-                    <p>Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex blandit sollicitudin. Duis dui augue, venenatis at augue et, condimentum lobortis enim. Duis aliquam ex id facilisis convallis ligula purus malesuada.</p>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
-                        <span>5,602</span>
-                    </div>
-                </x-oss-link-card>
-                <x-oss-link-card>
-                    <x-slot:title>
-                        <a href="" class="flex items-center justify-between">
-                            <span>ignition</span>
-                            <svg class="w-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path fill="#EAE8E5" d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
-                        </a>
-                    </x-slot:title>
-                    <p>Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex blandit sollicitudin. Duis dui augue, venenatis at augue et, condimentum lobortis enim. Duis aliquam ex id facilisis convallis ligula purus malesuada.</p>
-                    <div class="flex items-center gap-2">
-                        <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
-                        <span>5,602</span>
-                    </div>
-                </x-oss-link-card>
+                @foreach (\App\Models\Repository::whereIn('name', ['laravel-ignition', 'laravel-medialibrary', 'laravel-backup'])->get() as $repository)
+                    <x-oss-link-card>
+                        <x-slot:title>
+                            <a href="{{ $repository->url }}" target="_blank" class="flex items-center justify-between">
+                                <span>{{ $repository->name }}</span>
+                                <svg class="w-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path fill="#EAE8E5" d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
+                            </a>
+                        </x-slot:title>
+                        <p>{{ $repository->description }}</p>
+                        <div class="flex items-center gap-2">
+                            <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
+                            <span>{{ number_format($repository->stars) }}</span>
+                        </div>
+                    </x-oss-link-card>
+                @endforeach
             </div>
         </x-oss-content>
 
@@ -105,56 +81,69 @@
             </x-oss-content>
 
             <div class="max-w-[1080px] mx-auto mt-28 flex flex-col gap-10">
-                <x-oss-link-card class="max-w-[640px]">
-                    <x-slot:title>
-                        <a href="" class="flex items-center justify-between text-oss-green">
-                            <span>spatie/typescript-transformer</span>
-                            <svg class="w-2.5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
-                        </a>
-                    </x-slot:title>
-                    <p class="text-[16px] mb-9">Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex blandit sollicitudin. Duis dui augue, venenatis at augue et, condimentum lobortis enim. Duis aliquam ex id facilisis convallis ligula purus malesuada.</p>
-                    <div class="flex items-center gap-6">
-                        <img class="w-16 h-16 rounded-full" src="https://gravatar.com/avatar/{{ md5('rias@spatie.be') }}?size=512" alt="">
-                        <div class="flex flex-col text-[16px] leading-tight">
-                            <span class="font-bold">Rias Van der Veken</span>
-                            <span>Developer</span>
+                @php($favourites = [
+                    [
+                        'package' => 'typescript-transformer',
+                        'name' => 'Niels',
+                        'avatar' => asset('images/avatars/avatar-niels.png'),
+                        'reason' => 'At Spatie, we are a fan of Inertia. This package truly shines when we need to define types for both PHP and TypeScript, and keep them in sync. By parsing PHP files and transforming them into TypeScript type declarations, we save time and mental effort but also streamline the refactoring process.',
+                    ],
+                    [
+                        'package' => 'laravel-sluggable',
+                        'name' => 'Ruben',
+                        'avatar' => asset('images/avatars/avatar-ruben.png'),
+                        'reason' => 'It was the first Spatie package I\'ve ever added to one of my composer.json files. At that time, I wasn\'t working for Spatie yet, but I loved the idea of such a simple package. It has only one use case: take the field of an Eloquent model and make a slug from it so that the model can be queried with that slug. The docs are excellent, and the API is easy to use. It is the perfect example of a terrific Spatie package. And it, in the end, made me start working at Spatie.',
+                    ],
+                    [
+                        'package' => 'laravel-horizon-watcher',
+                        'name' => 'Tim',
+                        'avatar' => asset('images/avatars/avatar-tim.png'),
+                        'reason' => 'For saving me from the dozen times I wondered \'Why is my change not reflecting?\' when I first started to work with queues.',
+                    ],
+                    [
+                        'package' => 'laravel-blade-x',
+                        'name' => 'Alex',
+                        'avatar' => asset('images/avatars/avatar-alex.png'),
+                        'reason' => 'Despite being abandoned, the Blade X package now lives on in Laravel. It added custom HTML components to Laravel before Blade components were natively supported. Hacked together on a Friday afternoon when both project managers were MIA, this package started with an friendly discussion over lunch and ended with the entire Spatie team ditching \'real work\' (who needs that, right?) to tinker with this gem. I love how an impulsive "there\'s nothing stopping us from doing this weird thing"-idea ended up with 180.000 downloads thanks to a fun afternoon with the team.',
+                    ],
+                    [
+                        'package' => 'phpunit-snapshot-assertions',
+                        'name' => 'Seb',
+                        'avatar' => asset('images/avatars/avatar-seb.png'),
+                        'reason' => 'I love playing with off-beat ways to make tests more readable and joyful to write. Snapshot testing was popularized by Jest to test UI components. I thought it would be a great fit for testing large data, so I wrote a PHPUnit package to bring it to PHP.',
+                    ],
+                    [
+                        'package' => 'simple-excel',
+                        'name' => 'Rias',
+                        'avatar' => asset('images/avatars/avatar-rias.png'),
+                        'reason' => 'The name says it all, it makes exporting and importing Excel & CSV files simple. Every project needs some kind of importing or exporting, this package just makes it a breeze.',
+                    ],
+                    [
+                        'package' => 'laravel-medialibrary',
+                        'name' => 'Freek',
+                        'avatar' => asset('images/avatars/avatar-freek.png'),
+                        'reason' => 'At Spatie, we use Media Library in every single project. I still remember I was still learning some basics of Laravel when coding up the first version of the media library. For the media conversions, queues are used, and this was the very first time I used queuing which felt very empowering. Currently, the package is already at v11, which is a nice indication of how much we interacted on this package, it\'s well polished now.',
+                    ],
+                ])
+                @php($favouriteRepositories = \App\Models\Repository::whereIn('name', array_keys($favourites))->get())
+                @foreach (collect($favourites)->shuffle()->take(3) as $favourite)
+                    @php($repository = $favouriteRepositories->where('name', $favourite['package'])->first())
+                    <x-oss-link-card :class="'max-w-[640px] ' . ($loop->even ? 'ml-auto' : '')">
+                        <x-slot:title>
+                            <a href="{{ $repository->url }}" target="_blank" class="flex items-center justify-between text-oss-green">
+                                <span>{{ $repository->name }}</span>
+                                <svg class="w-2.5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
+                            </a>
+                        </x-slot:title>
+                        <p class="text-[16px] mb-9">{{ $favourite['reason'] }}</p>
+                        <div class="flex items-center gap-6">
+                            <img class="w-16 h-16 rounded-full" src="{{ $favourite['avatar'] }}" alt="">
+                            <div class="flex flex-col text-[16px] leading-tight">
+                                <span class="font-bold">{{ $favourite['name'] }}</span>
+                            </div>
                         </div>
-                    </div>
-                </x-oss-link-card>
-
-                <x-oss-link-card class="max-w-[640px] ml-auto">
-                    <x-slot:title>
-                        <a href="" class="flex items-center justify-between text-oss-green">
-                            <span>spatie/typescript-transformer</span>
-                            <svg class="w-2.5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
-                        </a>
-                    </x-slot:title>
-                    <p class="text-[16px] mb-9">Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex blandit sollicitudin. Duis dui augue, venenatis at augue et, condimentum lobortis enim. Duis aliquam ex id facilisis convallis ligula purus malesuada.</p>
-                    <div class="flex items-center gap-6">
-                        <img class="w-16 h-16 rounded-full" src="https://gravatar.com/avatar/{{ md5('rias@spatie.be') }}?size=512" alt="">
-                        <div class="flex flex-col text-[16px] leading-tight">
-                            <span class="font-bold">Rias Van der Veken</span>
-                            <span>Developer</span>
-                        </div>
-                    </div>
-                </x-oss-link-card>
-
-                <x-oss-link-card class="max-w-[640px]">
-                    <x-slot:title>
-                        <a href="" class="flex items-center justify-between text-oss-green">
-                            <span>spatie/typescript-transformer</span>
-                            <svg class="w-2.5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
-                        </a>
-                    </x-slot:title>
-                    <p class="text-[16px] mb-9">Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex blandit sollicitudin. Duis dui augue, venenatis at augue et, condimentum lobortis enim. Duis aliquam ex id facilisis convallis ligula purus malesuada.</p>
-                    <div class="flex items-center gap-6">
-                        <img class="w-16 h-16 rounded-full" src="https://gravatar.com/avatar/{{ md5('rias@spatie.be') }}?size=512" alt="">
-                        <div class="flex flex-col text-[16px] leading-tight">
-                            <span class="font-bold">Rias Van der Veken</span>
-                            <span>Developer</span>
-                        </div>
-                    </div>
-                </x-oss-link-card>
+                    </x-oss-link-card>
+                @endforeach
             </div>
         </section>
 

@@ -1,8 +1,8 @@
 <section id="packages" class="border-t border-oss-gray-extra-dark pt-20 mb-20 max-w-[1320px] mx-auto">
-    <div class="flex justify-between items-end mb-20 w-full">
-        <h2 class="font-druk uppercase font-bold text-[96px] leading-[0.9]">All<br/>packages</h2>
+    <div class="sm:flex justify-between items-end mb-20 w-full">
+        <h2 class="font-druk uppercase font-bold text-[50px] md:text-[96px] leading-[0.9] mb-6 md:mb-0">All<br/>packages</h2>
         @if($this->filterable)
-            <div class="md:flex gap-12 items-baseline justify-between mb-8">
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-12 items-baseline sm:items-center justify-between mb-8">
                 <div class="">
                     <label for="sort" class="text-[16px] text-oss-gray-dark mr-6">
                         Sort by
@@ -19,10 +19,10 @@
                         </span>
                     </div>
                 </div>
-                <div class="relative">
+                <div class="relative w-full">
                     <input
                         type="search"
-                        class="form-input text-white bg-oss-black rounded-[12px] border-oss-gray-extra-dark placeholder-oss-gray py-4 px-6 h-[56px]"
+                        class="w-full form-input text-white bg-oss-black rounded-[12px] border-oss-gray-extra-dark placeholder-oss-gray py-4 px-6 h-[56px]"
                         placeholder="Find a package ..."
                         wire:model.live="search"
                     >
@@ -32,7 +32,7 @@
         @endif
     </div>
 
-    <div class="grid grid-cols-3 gap-10">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
         @foreach($repositories as $repository)
             <x-oss-link-card :title="$repository->name">
                 <p class="mb-28">{{ $repository->description }}</p>

@@ -35,19 +35,19 @@
     x-init="headerHeight = document.getElementById('header').getBoundingClientRect().height; scrollTop = window.scrollY;"
     x-on:scroll.window.lazy="scrollTop = window.scrollY;"
     x-bind:class="scrollTop > headerHeight ? 'translate-y-0' : 'translate-y-[200%]'"
-    class="transition-transform fixed z-50 bottom-0 left-1/2 -translate-x-1/2 mb-10 max-w-[480px] w-full mx-auto link-card bg-link-card shadow-oss-card rounded-[38px] p-1.5 flex items-center backdrop-blur-lg"
+    class="text-sm sm:text-base transition-transform fixed z-50 bottom-0 left-1/2 -translate-x-1/2 mb-10 max-w-[480px] w-[calc(100%-1rem)] link-card bg-link-card shadow-oss-card rounded-[38px] p-1.5 flex items-center backdrop-blur-lg"
 >
-    <span class="py-3 px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.index') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
+    <span class="px-3 py-3 sm:px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.index') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
         <a wire:navigate.hover href="{{ route('open-source.index') }}" class="">
             Open Source
         </a>
     </span>
-    <span class="py-3 px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.packages') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
+    <span class="px-3 py-3 sm:px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.packages') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
         <a wire:navigate.hover href="{{ route('open-source.packages') }}" class="">
             Packages
         </a>
     </span>
-    <span class="py-3 px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.postcards') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
+    <span class="px-3 py-3 sm:px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.postcards') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
         <a wire:navigate.hover href="{{ route('open-source.postcards') }}" class="">
             Postcards
         </a>
