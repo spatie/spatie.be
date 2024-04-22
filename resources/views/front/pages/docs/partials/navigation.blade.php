@@ -51,7 +51,7 @@
             <ul class="space-y-2 mb-8">
                 @foreach($section['pages'] as $navItem)
                     <li class="leading-snug">
-                        <a href="{{ $navItem->url }}" class="@if($page->slug === $navItem->slug) font-bold text-blue @else text-oss-royal-blue @endif">
+                        <a wire:navigate href="{{ $navItem->url }}" class="@if($page->slug === $navItem->slug) font-bold text-blue @else text-oss-royal-blue @endif">
                             {{ $navItem->title }}
                         </a>
                     </li>

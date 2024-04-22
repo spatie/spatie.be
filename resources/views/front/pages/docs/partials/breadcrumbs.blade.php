@@ -1,8 +1,8 @@
 <section id="breadcrumb" class="hidden md:block max-w-screen-xl mx-auto w-full text-[14px]">
     <p class="text-oss-royal-blue ">
-        <a href="{{ route('docs')}}">Docs</a>
+        <a wire:navigate href="{{ route('docs')}}">Docs</a>
         <span class="icon mx-2 fill-current text-oss-royal-blue-light">{{ app_svg('icons/far-angle-right') }}</span>
-        <a href="{{ action([\App\Http\Controllers\DocsController::class, 'repository'], [$repository->slug, $alias->slug]) }}"
+        <a wire:navigate href="{{ action([\App\Http\Controllers\DocsController::class, 'repository'], [$repository->slug, $alias->slug]) }}"
         >{{ ucfirst($repository->slug) }}</a>
         @if(! $page->isRootPage())
             <span class="icon mx-2 fill-current text-oss-royal-blue-light">{{ app_svg('icons/far-angle-right') }}</span>
