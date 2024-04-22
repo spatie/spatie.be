@@ -1,3 +1,8 @@
+@php
+$goodFirstIssuesSearchString = 'is:open is:issue user:spatie is:public label:"good first issue"';
+[$pager, $goodFirstIssuesResult] = app(\App\Services\GitHub\GitHubApi::class)->searchIssues($goodFirstIssuesSearchString);
+$goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repository_url');
+@endphp
 <x-page
     title="Committed to open source"
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
@@ -157,34 +162,32 @@
             </x-oss-content>
         </section>
 
-        <section class="w-full px-7 lg:px-0">
-            <x-oss-content class="flex-col-reverse" aside-width="w-full" content-width="w-full" align-items="items-start">
-                <x-slot:aside>
-                    <div class="-mt-10 md:mt-0 flex flex-col bg-oss-yellow text-black rounded-[20px] lg:rounded-[40px] p-[30px] lg:p-[50px] lg:w-[400px] shrink-0 mb-4 md:mb-0">
-                        <h3 class="text-[18px] sm:text-[24px] mb-4 sm:mb-5">Good first issues</h3>
-                        <p class="text-[14px]">These are simple issues suited for people new to open-source development, and often a good place to start working on a package.</p>
-                        <a class="text-sm flex items-center gap-x-2 mt-20" href="">
-                            <svg class="w-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path fill="#050508" d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                            <span class="underline">View all issues (3)</span>
-                        </a>
+        @if (count($goodFirstIssues))
+            <section class="w-full px-7 lg:px-0">
+                <x-oss-content class="flex-col-reverse" aside-width="w-full" content-width="w-full" align-items="items-start">
+                    <x-slot:aside>
+                        <div class="-mt-10 md:mt-0 flex flex-col bg-oss-yellow text-black rounded-[20px] lg:rounded-[40px] p-[30px] lg:p-[50px] lg:w-[350px] xl:w-[400px] shrink-0 mb-4 md:mb-0">
+                            <h3 class="text-[18px] sm:text-[24px] mb-4 sm:mb-5">Good first issues</h3>
+                            <p class="text-[14px]">These are simple issues suited for people new to open-source development, and often a good place to start working on a package.</p>
+                            <a class="text-sm flex items-center gap-x-2 mt-20" target="_blank" href="https://github.com/issues?q={{ $goodFirstIssuesSearchString }}">
+                                <svg class="w-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path fill="#050508" d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                                <span class="underline">View all issues ({{ count($goodFirstIssues) }})</span>
+                            </a>
+                        </div>
+                    </x-slot:aside>
+
+                    <div class="flex flex-col gap-y-3">
+                        @foreach ($goodFirstIssues as $repositoryUrl => $issues)
+                            @php($repositoryName = \Illuminate\Support\Str::after($repositoryUrl, 'https://api.github.com/repos/spatie/'))
+                            @php($repositoryData = \App\Models\Repository::whereName(str_replace('spatie/', '', $repositoryName))->first())
+                            <x-oss-link-card :title="$repositoryData->name" href="{{ $repositoryData->url }}/issues?q={{ urlencode($goodFirstIssuesSearchString) }}" target="_blank" link="View issues ({{ count($issues) }})">
+                                {{ $repositoryData?->description }}
+                            </x-oss-link-card>
+                        @endforeach
                     </div>
-                </x-slot:aside>
-
-                <div class="flex flex-col gap-y-3">
-                    <x-oss-link-card title="pdf-to-image" href="" link="View issues (1)">
-                        This package makes self-hosting Google Fonts as frictionless as possible for Laravel users. To load fonts in your application, register a Google Fonts embed URL and load it with the @googlefonts Blade directive.
-                    </x-oss-link-card>
-
-                    <x-oss-link-card title="laravel-activitylog" href="" link="View issues (1)">
-                        This package makes self-hosting Google Fonts as frictionless as possible for Laravel users. To load fonts in your application, register a Google Fonts embed URL and load it with the @googlefonts Blade directive.
-                    </x-oss-link-card>
-
-                    <x-oss-link-card title="laravel-google-fonts" href="" link="View issues (1)">
-                        This package makes self-hosting Google Fonts as frictionless as possible for Laravel users. To load fonts in your application, register a Google Fonts embed URL and load it with the @googlefonts Blade directive.
-                    </x-oss-link-card>
-                </div>
-            </x-oss-content>
-        </section>
+                </x-oss-content>
+            </section>
+        @endif
 
         <section class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
@@ -197,15 +200,15 @@
         </section>
 
         <section class="w-full grid md:grid-cols-3 gap-4 sm:gap-8 lg:gap-16 max-w-[1320px] mx-auto mb-20 px-7 lg:px-0">
-            <x-oss-link-card title="Media Library Pro" href="#" link="Discover">
+            <x-oss-link-card title="Media Library Pro" target="_blank" href="https://medialibrary.pro/" link="Discover">
                 Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex  blandit sollicitudin. Duis dui augue, venenatis at augue et.
             </x-oss-link-card>
 
-            <x-oss-link-card title="Mailcoach" href="#" link="Discover">
+            <x-oss-link-card title="Mailcoach" target="_blank" href="https://mailcoach.app" link="Discover">
                 Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex  blandit sollicitudin. Duis dui augue, venenatis at augue et.
             </x-oss-link-card>
 
-            <x-oss-link-card title="Flare" href="#" link="Discover">
+            <x-oss-link-card title="Flare" target="_blank" href="https://flareapp.io" link="Discover">
                 Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex  blandit sollicitudin. Duis dui augue, venenatis at augue et.
             </x-oss-link-card>
         </section>
