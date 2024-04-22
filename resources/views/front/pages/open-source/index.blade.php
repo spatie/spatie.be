@@ -1,7 +1,7 @@
 @php
-$goodFirstIssuesSearchString = 'is:open is:issue user:spatie is:public label:"good first issue"';
+$goodFirstIssuesSearchString = 'is:open is:issue user:spatie is:public label:"good first issue","help wanted"';
 [$pager, $goodFirstIssuesResult] = app(\App\Services\GitHub\GitHubApi::class)->searchIssues($goodFirstIssuesSearchString);
-$goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repository_url');
+$goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repository_url')->sortByDesc(fn ($items) => count($items));
 @endphp
 <x-page
     title="Committed to open source"
@@ -171,13 +171,13 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
                             <p class="text-[14px]">These are simple issues suited for people new to open-source development, and often a good place to start working on a package.</p>
                             <a class="text-sm flex items-center gap-x-2 mt-20" target="_blank" href="https://github.com/issues?q={{ $goodFirstIssuesSearchString }}">
                                 <svg class="w-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path fill="#050508" d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                                <span class="underline">View all issues ({{ count($goodFirstIssues) }})</span>
+                                <span class="underline">View all issues ({{ $goodFirstIssues->sum(fn ($items) => $items->count()) }})</span>
                             </a>
                         </div>
                     </x-slot:aside>
 
                     <div class="flex flex-col gap-y-3">
-                        @foreach ($goodFirstIssues as $repositoryUrl => $issues)
+                        @foreach ($goodFirstIssues->take(3) as $repositoryUrl => $issues)
                             @php($repositoryName = \Illuminate\Support\Str::after($repositoryUrl, 'https://api.github.com/repos/spatie/'))
                             @php($repositoryData = \App\Models\Repository::whereName(str_replace('spatie/', '', $repositoryName))->first())
                             <x-oss-link-card :title="$repositoryData->name" href="{{ $repositoryData->url }}/issues?q={{ urlencode($goodFirstIssuesSearchString) }}" target="_blank" link="View issues ({{ count($issues) }})">
