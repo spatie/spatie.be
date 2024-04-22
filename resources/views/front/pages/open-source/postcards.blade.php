@@ -2,6 +2,7 @@
     title="Postcards"
     description="This is our postcardware license in action."
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased"
+    dark
 >
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])
