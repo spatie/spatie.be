@@ -6,10 +6,10 @@
             open = false
         }"
         x-on:resize.window="open = window.innerWidth >= 720"
-        class="w-full max-w-screen-xl mx-auto p-5 sm:px-[40px] sm:py-[30px] flex-none z-10 my-5 rounded | bg-white shadow-light | print:bg-transparent print:shadow-none"
+        class="w-full max-w-screen-xl mx-auto p-5 sm:px-[40px] sm:py-[30px] sm:flex z-10 my-5 rounded | bg-white shadow-light | print:bg-transparent print:shadow-none"
     >
-         <div class="flex justify-between leading-loose | sm:leading-none sm:flex sm:items-stretch">
-             <a class="shrink-0 logo h-8 w-20 block | sm:mb-0 sm:w-48 sm:h-auto" href="/" title="Home">
+         <div class="flex justify-between leading-loose | sm:leading-none sm:block">
+             <a class="shrink-0 logo h-8 w-20 block | sm:mb-0 sm:w-48" href="/" title="Home">
                  <span class="absolute h-8 sm:h-14 ">
                  @app_svg('logo')
                  </span>
@@ -23,7 +23,7 @@
         </div>
          <div x-show.important="open" x-cloak x-transition class="mt-4 sm:mt-0 sm:h-14 grid items-start gap-x-8 | sm:gap-y-4 sm:justify-end sm:justify-items-end sm:ml-auto">
              <hr class="h-px bg-oss-gray sm:hidden -mx-5 mb-5" />
-             <nav class="flex | sm:row-start-2 mb-5 sm:mb-0">
+             <nav class="flex | sm:row-start-2 mb-5 sm:mb-0 text-oss-royal-blue">
                  @include('layout.partials.menu')
              </nav>
              <nav class="grid text-base | sm:opacity-75 sm:row-start-1 sm:grid-flow-col sm:items-center gap-4 sm:text-sm | print:hidden">
