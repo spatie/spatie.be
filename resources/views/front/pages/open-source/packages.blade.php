@@ -5,7 +5,7 @@
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])
         <!-- It's easier to work pixel perfect when html font size doesn't change. -->
-        <style>html { font-size: 16px !important; scroll-behavior: smooth; background: #050508; }</style>
+        <style>html { scroll-behavior: smooth; background: #050508; }</style>
     @endpush
     @push('startBody')
         <div
