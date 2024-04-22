@@ -38,7 +38,7 @@
             </x-slot:subtitle>
         </x-oss-menu>
 
-        <x-oss-content class="flex-col-reverse" aside-width="w-full" content-width="w-full md:max-w-[400px] xl:max-w-none" align-items="items-start">
+        <x-oss-content class="flex-col-reverse" aside-width="w-full" content-width="w-full" align-items="items-start">
             <x-slot:aside>
                 <h2 class="font-druk uppercase text-[50px] md:text-[96px] mb-9 leading-none">Featured</h2>
                 <p class="text-[20px] mb-9">Some of our open source highlights and packages that we have long supported (and will continue to support!).</p>
@@ -80,7 +80,7 @@
                 <p>We've asked some of our colleagues about their favorite packages and why they enjoy them.</p>
             </x-oss-content>
 
-            <div class="max-w-[1080px] mx-auto mt-28 flex flex-col gap-10">
+            <div class="max-w-[1080px] mx-auto mt-12 md:mt-28 flex flex-col gap-10">
                 @php($favourites = [
                     [
                         'package' => 'typescript-transformer',

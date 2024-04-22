@@ -1,4 +1,4 @@
-<div class="grid-item mb-4 w-[318px] border border-oss-gray-extra-dark rounded-[20px] p-9">
+<div class="grid-item mb-4 w-[300px] lg:w-[318px] border border-oss-gray-extra-dark rounded-[20px] p-9">
     <div class="rounded-[10px] overflow-hidden">
         {{ $postcard->getFirstMedia() }}
     </div>

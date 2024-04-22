@@ -13,7 +13,7 @@
     }"
 >
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-20 w-full">
-        <h2 class="font-druk uppercase font-bold text-[50px] md:text-[96px] leading-[0.9]">All<br/>postcards</h2>
+        <h2 class="font-druk uppercase font-bold text-[50px] md:text-[96px] leading-[0.9] mr-20">All<br/>postcards</h2>
         <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-12">
             @foreach($countries as $country)
                 <li class="flex items-center gap-3 sm:gap-6">
