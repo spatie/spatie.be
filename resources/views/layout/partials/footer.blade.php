@@ -3,8 +3,7 @@
     @if ($dark)
         class="bg-oss-footer-dark text-oss-gray-dark"
     @else
-        class="bg-gray-lightest gradient shadow-inner-light | print:shadow-none print:bg-transparent print:gradient-none"
-        style="--gradient-angle: 120deg; --gradient-from:#f3efea; --gradient-to:#e1ded9;"
+        class="bg-white text-oss-royal-blue | print:bg-transparent"
     @endif
 >
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
