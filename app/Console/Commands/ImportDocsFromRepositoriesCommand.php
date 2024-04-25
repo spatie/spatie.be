@@ -6,6 +6,7 @@ use App\Exceptions\DocsImportException;
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
 use Spatie\Fork\Fork;
 use Symfony\Component\Finder\Finder;
@@ -57,6 +58,8 @@ class ImportDocsFromRepositoriesCommand extends Command
         $updatedRepositoriesValueStore->flush();
 
         File::deleteDirectory(storage_path('docs-temp'));
+
+        Cache::store('docs')->clear();
 
         $this->info('All done!');
     }
