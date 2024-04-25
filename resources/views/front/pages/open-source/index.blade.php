@@ -179,7 +179,7 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
                         @foreach ($goodFirstIssues->take(3) as $repositoryUrl => $issues)
                             @php($repositoryName = \Illuminate\Support\Str::after($repositoryUrl, 'https://api.github.com/repos/spatie/'))
                             @php($repositoryData = \App\Models\Repository::whereName(str_replace('spatie/', '', $repositoryName))->first())
-                            <x-oss-link-card :title="$repositoryData->name" href="{{ $repositoryData->url }}/issues?q={{ urlencode($goodFirstIssuesSearchString) }}" target="_blank" link="View issues ({{ count($issues) }})">
+                            <x-oss-link-card :title="$repositoryData?->name ?? $repositoryName" href="{{ $repositoryData?->url ?? $repositoryUrl }}/issues?q={{ urlencode($goodFirstIssuesSearchString) }}" target="_blank" link="View issues ({{ count($issues) }})">
                                 {{ $repositoryData?->description }}
                             </x-oss-link-card>
                         @endforeach
