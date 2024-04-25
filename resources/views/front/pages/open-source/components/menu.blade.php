@@ -26,30 +26,40 @@
         </ul>
     </aside>
 </section>
+
 <nav
     x-cloak
     x-data="{
         headerHeight: 0,
         scrollTop: 0,
+        initialActive: @js(match(true) {
+            Route::is('open-source.index') => 0,
+            Route::is('open-source.packages') => 1,
+            Route::is('open-source.postcards') => 2,
+            default => 0,
+        }),
+        active: 0,
     }"
-    x-init="headerHeight = document.getElementById('header').getBoundingClientRect().height; scrollTop = window.scrollY;"
+    x-init="headerHeight = document.getElementById('header').getBoundingClientRect().height; scrollTop = window.scrollY; active = initialActive;"
     x-on:scroll.window.lazy="scrollTop = window.scrollY;"
     x-bind:class="scrollTop > headerHeight ? 'translate-y-0' : 'translate-y-[200%]'"
     class="text-sm sm:text-base transition-transform fixed z-50 bottom-0 left-1/2 -translate-x-1/2 mb-10 max-w-[480px] w-[calc(100%-1rem)] link-card bg-link-card shadow-oss-card rounded-[38px] p-1.5 flex items-center backdrop-blur-lg"
 >
-    <span class="px-3 py-3 sm:px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.index') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
-        <a wire:navigate.hover href="{{ route('open-source.index') }}" class="">
-            Open Source
+    <div class="absolute bg-oss-gray rounded-[100px] px-3 py-3 sm:px-5 w-1/3 h-12 transition-all" x-bind:style="`transform: translateX(calc(${active * 100}% - ${active * 0.4}rem))`"></div>
+    @foreach ([
+        ['url' => route('open-source.index'), 'title' => 'Open source'],
+        ['url' => route('open-source.packages'), 'title' => 'Packages'],
+        ['url' => route('open-source.postcards'), 'title' => 'Postcards'],
+    ] as $index => $link)
+        <a
+            href="{{ $link['url'] }}"
+            wire:navigate.hover
+            x-on:mouseover="active = {{ $index }}"
+            x-on:mouseout="active = initialActive"
+            x-bind:class="active === {{ $index }} ? 'text-oss-black' : ''"
+            class="block px-3 py-3 sm:px-5 w-1/3 text-center rounded-[100px] transition-colors"
+        >
+            {{ $link['title'] }}
         </a>
-    </span>
-    <span class="px-3 py-3 sm:px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.packages') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
-        <a wire:navigate.hover href="{{ route('open-source.packages') }}" class="">
-            Packages
-        </a>
-    </span>
-    <span class="px-3 py-3 sm:px-5 w-full text-center rounded-[100px] {{ Route::is('open-source.postcards') ? 'font-bold bg-oss-gray text-oss-black' : '' }}">
-        <a wire:navigate.hover href="{{ route('open-source.postcards') }}" class="">
-            Postcards
-        </a>
-    </span>
+    @endforeach
 </nav>

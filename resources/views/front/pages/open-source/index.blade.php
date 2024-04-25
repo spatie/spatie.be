@@ -115,7 +115,7 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
 
         <section class="w-full max-w-[880px] px-7 lg:px-0 mx-auto">
             <x-oss-card
-                class="rotate-[-5deg] mb-4 sm:mb-12 md:mb-4"
+                class="rotate-[-5deg] hover:rotate-0 transition-transform mb-4 sm:mb-12 md:mb-4"
                 title="Use your own stuff"
                 index="01"
             >
@@ -123,14 +123,14 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
             </x-oss-card>
 
             <x-oss-card
-                class="rotate-[2.5deg] mb-4 sm:mb-12 md:mb-4 ml-auto"
+                class="rotate-[2.5deg] hover:rotate-0 transition-transform mb-4 sm:mb-12 md:mb-4 ml-auto"
                 title="Make time for open source"
                 index="02"
             >
                 Creating packages is time-consuming, with ongoing maintenance tasks such as reviewing issues and PRs. To make sure packages keep getting maintained, employees have a day each week to work on open source or personal projects, promoting diversity in their tasks and keeping things interesting.
             </x-oss-card>
 
-            <x-oss-card title="Keep to your own ways" index="03">
+            <x-oss-card class="" title="Keep to your own ways" index="03">
                 We are grateful for contributions to our packages in making them better or more feature-rich. We do however have some rules ... Aliquam lobortis est vitae lectus eleifend rhoncus. Cras vulputate, est ac volutpat gravida, neque metus egestas erat
             </x-oss-card>
         </section>

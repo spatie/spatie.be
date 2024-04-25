@@ -12,7 +12,7 @@
                 @include('layout.partials.menu')
 
                 <div class="grid | md:grid-flow-col ml:items-center md:ml-12 md:gap-12">
-                    @include('layout.partials.service')
+                    @include('layout.partials.service', ['dark' => $dark, 'footer' => true])
                 </div>
             </div>
             <hr class="my-8 h-2px text-gray opacity-25 rounded | print:text-black" style="page-break-after: avoid;">
