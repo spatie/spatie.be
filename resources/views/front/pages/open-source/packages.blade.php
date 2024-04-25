@@ -130,8 +130,8 @@
                     @php($repository = $favouriteRepositories->where('name', $favourite['package'])->first())
                     <x-oss-link-card :class="'max-w-[640px] ' . ($loop->even ? 'ml-auto' : '')">
                         <x-slot:title>
-                            <a href="{{ $repository->url }}" target="_blank" class="flex items-center justify-between text-oss-green">
-                                <span>{{ $repository->name }}</span>
+                            <a href="{{ $repository?->url }}" target="_blank" class="flex items-center justify-between text-oss-green">
+                                <span>{{ $repository?->name ?? $favourite['package'] }}</span>
                                 <svg class="w-2.5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15"><path d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/></svg>
                             </a>
                         </x-slot:title>
