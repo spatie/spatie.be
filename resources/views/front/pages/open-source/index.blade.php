@@ -202,15 +202,15 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
 
         <section class="w-full grid md:grid-cols-3 gap-4 sm:gap-8 lg:gap-16 max-w-[1320px] mx-auto mb-20 px-7 lg:px-0">
             <x-oss-link-card title="Media Library Pro" target="_blank" href="https://medialibrary.pro/" link="Discover">
-                Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex  blandit sollicitudin. Duis dui augue, venenatis at augue et.
+                Media Library Pro is an add-on package to our popular Media Library package that offers Blade, Livewire, Vue, and React components to upload files to your application.
             </x-oss-link-card>
 
             <x-oss-link-card title="Mailcoach" target="_blank" href="https://mailcoach.app" link="Discover">
-                Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex  blandit sollicitudin. Duis dui augue, venenatis at augue et.
+                Mailcoach is a fully featured email marketing platform built for growing creators, developers, and businesses.
             </x-oss-link-card>
 
             <x-oss-link-card title="Flare" target="_blank" href="https://flareapp.io" link="Discover">
-                Quisque elementum id ipsum sed porttitor. Nulla eget sapien eu ex  blandit sollicitudin. Duis dui augue, venenatis at augue et.
+                Flare is the best error tracking service for Laravel, PHP and JavaScript. Whenever an error happens in your production code, we'll notify you.
             </x-oss-link-card>
         </section>
     </div>
