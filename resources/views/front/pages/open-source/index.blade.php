@@ -56,7 +56,8 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
             <x-oss-content>
                 <x-slot:aside>
                     <h3 class="font-bold mb-2.5">Spatie in the wild</h3>
-                    <p class="leading-normal text-oss-gray-dark">Our most recent presentation was Freek talking about common and not so common PHP functions at PHP UK 2024, which you can find here.</p>
+                    <p class="leading-normal text-oss-gray-dark">Our most recent presentation was Freek talking about common and not so common PHP functions at PHP UK 2024, which you can find
+                        <a href="https://www.youtube.com/watch?v=ZWcgx0c2nGs" target="_blank">here</a>.</p>
                 </x-slot:aside>
 
                 <p>Back in 2015, when we first began developing open-source packages and tools for Laravel and PHP, we couldn't have imagined the overwhelming support and feedback we'd receive from the community.</p>
@@ -114,25 +115,26 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
         </section>
 
         <section class="w-full max-w-[880px] px-7 lg:px-0 mx-auto">
-            <x-oss-card
-                class="rotate-[-5deg] hover:rotate-0 transition-transform mb-4 sm:mb-12 md:mb-4"
-                title="Use your own stuff"
-                index="01"
-            >
-                Most of our packages come from client work and are often used in our work. Because we use often use our packages in work, new features, updates or bug fixes are. Each of our developers has experience in building and maintaining packages volutpat gravida, neque metus egestas erat.
-            </x-oss-card>
-
-            <x-oss-card
-                class="rotate-[2.5deg] hover:rotate-0 transition-transform mb-4 sm:mb-12 md:mb-4 ml-auto"
-                title="Make time for open source"
-                index="02"
-            >
-                Creating packages is time-consuming, with ongoing maintenance tasks such as reviewing issues and PRs. To make sure packages keep getting maintained, employees have a day each week to work on open source or personal projects, promoting diversity in their tasks and keeping things interesting.
-            </x-oss-card>
-
-            <x-oss-card class="" title="Keep to your own ways" index="03">
-                We are grateful for contributions to our packages in making them better or more feature-rich. We do however have some rules ... Aliquam lobortis est vitae lectus eleifend rhoncus. Cras vulputate, est ac volutpat gravida, neque metus egestas erat
-            </x-oss-card>
+            @foreach ([
+                ['title' => 'Easy to use', 'content' => 'We have put a lot of effort into making our package as user-friendly as possible. Ultimately, a package should be fun to use.'],
+                ['title' => 'Write excellent documentation', 'content' => 'We invest time in creating excellent documentation for each of our packages. This makes it easy to discover what a package does and what all the features are.'],
+                ['title' => 'Provide an extensive test suite', 'content' => 'All of our packages have an extensive test suite. This provides you (and us) with proof that the package code behaves correctly and works under all conditions.'],
+                ['title' => 'Write readable code', 'content' => 'We structure and write our code in such a way that others can easily understand what is going on. Names of variables, functions and classes are chosen with care. You should be able to understand how the package works just by reading the code.'],
+                ['title' => 'Be flexible', 'content' => 'We know we can’t imagine every scenario our code will be used in. That’s why we make our packages as customizable and extensible as possible. We don’t use the final keyword, and make everything protected by default instead of private. Our code is structured in small functions and classes that can be overwritten or extended.'],
+                ['title' => 'Keep the scope small', 'content' => 'When creating a package we intentionally keep the scope small. In most cases, packages are created to be consumed in our projects. We would rather have a small package with one very polished feature, than a large package that tries to cover all possible edge cases and variations of a problem.'],
+                ['title' => 'Long time maintenance', 'content' => 'When a new PHP or Laravel version comes out, our team spends time to make sure the test suite is running correctly and that a new package version is tagged. Usually, all of our Laravel packages are compatible with the major releases of the Laravel framework within a few days.'],
+            ] as $index => $rule)
+                <x-oss-card
+                    class="{{ match(true) {
+                        $loop->odd => 'rotate-[-5deg]',
+                        $loop->even => 'rotate-[2.5deg]',
+                    } }} {{ $loop->odd ? 'ml-auto' : '' }} hover:rotate-0 transition-transform mb-4 sm:mb-12 md:mb-4"
+                    :title="$rule['title']"
+                    :index="'0'.($index+1)"
+                >
+                    {{ $rule['content'] }}
+                </x-oss-card>
+            @endforeach
         </section>
 
         <section class="w-full relative pt-10 md:pt-40 px-7 lg:px-0 max-w-screen-xl mx-auto">
