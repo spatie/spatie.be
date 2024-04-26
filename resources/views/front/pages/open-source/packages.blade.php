@@ -125,7 +125,7 @@
                         'reason' => 'At Spatie, we use Media Library in every single project. I still remember I was still learning some basics of Laravel when coding up the first version of the media library. For the media conversions, queues are used, and this was the very first time I used queuing which felt very empowering. Currently, the package is already at v11, which is a nice indication of how much we interacted on this package, it\'s well polished now.',
                     ],
                 ])
-                @php($favouriteRepositories = \App\Models\Repository::whereIn('name', array_keys($favourites))->get())
+                @php($favouriteRepositories = \App\Models\Repository::whereIn('name', \Illuminate\Support\Arr::pluck($favourites, 'package'))->get())
                 @foreach (collect($favourites)->shuffle()->take(3) as $favourite)
                     @php($repository = $favouriteRepositories->where('name', $favourite['package'])->first())
                     <x-oss-link-card :class="'max-w-[640px] ' . ($loop->even ? 'ml-auto' : '')">
