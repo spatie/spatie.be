@@ -200,7 +200,7 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
             </x-oss-content>
         </section>
 
-        <section class="w-full grid md:grid-cols-3 gap-4 sm:gap-8 lg:gap-16 max-w-[1320px] mx-auto mb-20 px-7 lg:px-0">
+        <section class="w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-[1320px] mx-auto mb-20 px-7 lg:px-0">
             <x-oss-link-card title="Media Library Pro" target="_blank" href="https://medialibrary.pro/" link="Discover">
                 Media Library Pro is an add-on package to our popular Media Library package that offers Blade, Livewire, Vue, and React components to upload files to your application.
             </x-oss-link-card>
@@ -211,6 +211,10 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
 
             <x-oss-link-card title="Flare" target="_blank" href="https://flareapp.io" link="Discover">
                 Flare is the best error tracking service for Laravel, PHP and JavaScript. Whenever an error happens in your production code, we'll notify you.
+            </x-oss-link-card>
+
+            <x-oss-link-card title="Ray" target="_blank" href="https://myray.app" link="Discover">
+                Ray is a desktop application that serves as the dedicated home for debugging output. Send, format and filter debug information from both local projects and remote servers.
             </x-oss-link-card>
         </section>
     </div>
