@@ -338,3 +338,25 @@
     @apply h-full !important;
     @apply inset-0;
 }
+
+.markup.docs-markup h1,
+.markup.docs-markup h2,
+.markup.docs-markup h3,
+.markup.docs-markup h4,
+.markup.docs-markup h5 {
+    @apply font-pt;
+    @apply mt-0;
+    line-height: 1.2;
+}
+
+.markup.docs-markup h2 {
+    @apply font-bold;
+    @apply mb-5;
+    font-size: 24px;
+}
+
+.markup.docs-markup h3 {
+    @apply font-bold;
+    @apply mb-5;
+    font-size: 20px;
+}

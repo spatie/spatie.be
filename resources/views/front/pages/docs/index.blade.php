@@ -1,8 +1,6 @@
-<x-page title="Documentation" body-class="bg-oss-gray font-pt antialiased font-medium">
+<x-page title="Documentation" body-class="bg-oss-gray font-pt antialiased font-medium leading-[1.4]">
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])
-        <!-- It's easier to work pixel perfect when html font size doesn't change. -->
-        <style>html { font-size: 16px !important; }</style>
     @endpush
     @push('startBody')
         <div

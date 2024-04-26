@@ -162,7 +162,8 @@ export default {
         extend: {
             backgroundImage: {
                 'link-card': 'linear-gradient(180deg, rgba(141, 161, 166, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);',
-                'link-card-light': 'linear-gradient(180deg, rgba(209, 201, 188, 0.1) 0%, rgba(255, 255, 255, 0.015) 100%);\n',
+                'link-card-light': 'linear-gradient(180deg, rgba(209, 201, 188, 0.1) 0%, rgba(255, 255, 255, 0.015) 100%);',
+                'link-card-light-hover': 'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.09) 100%);',
             },
 
             boxShadow: {

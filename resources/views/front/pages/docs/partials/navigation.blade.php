@@ -19,8 +19,8 @@
 
     <div class="flex w-full items-center gap-5 text-[14px] mb-10">
         <label for="alias" class="text-oss-royal-blue-light">Version</label>
-        <div class="w-full leading-normal select bg-transparent p-0">
-            <select id="alias" class="text-oss-royal-blue w-full font-normal rounded-[4px] px-5 py-2.5 border-oss-gray-medium" name="alias"
+        <div class="w-full leading-normal select bg-transparent p-0 border rounded border-oss-gray-medium">
+            <select id="alias" class="text-oss-royal-blue w-full font-medium rounded-[4px] px-5 py-2.5 border-oss-gray-medium outline-none font-pt" name="alias"
                     onChange="location='/docs/{{ $repository->slug }}/' + this.options[this.selectedIndex].value">
                 @foreach($repository->aliases as $aliasOption)
                     <option value="{{ $aliasOption->slug }}" {{ $page->alias === $aliasOption->slug ? 'selected="selected"' : '' }}>
@@ -28,7 +28,7 @@
                     </option>
                 @endforeach
             </select>
-            <span class="select-arrow">
+            <span class="select-arrow mr-4">
                 <svg class="w-2.5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 7"><path fill="#050508" d="m5 6.61.471-.47 4-4 .473-.473L9 .723l-.47.47L5 4.724 1.471 1.196l-.47-.473-.944.944.47.47 4 4L5 6.61Z"/></svg>
             </span>
         </div>

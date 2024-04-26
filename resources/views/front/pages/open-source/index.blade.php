@@ -167,8 +167,8 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
                     <x-slot:aside>
                         <div class="-mt-10 md:mt-0 flex flex-col bg-oss-yellow text-black rounded-[20px] lg:rounded-[40px] p-[30px] lg:p-[50px] lg:w-[350px] xl:w-[400px] shrink-0 mb-4 md:mb-0">
                             <h3 class="text-[18px] sm:text-[24px] mb-4 sm:mb-5">Good first issues</h3>
-                            <p class="text-[14px]">These are simple issues suited for people new to open-source development, and often a good place to start working on a package.</p>
-                            <a class="text-sm flex items-center gap-x-2 mt-20" target="_blank" href="https://github.com/issues?q={{ $goodFirstIssuesSearchString }}">
+                            <p class="text-[18px]">These are simple issues suited for people new to open-source development, and often a good place to start working on a package.</p>
+                            <a class="text-base flex items-center gap-x-2 mt-20" target="_blank" href="https://github.com/issues?q={{ $goodFirstIssuesSearchString }}">
                                 <svg class="w-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path fill="#050508" d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
                                 <span class="underline">View all issues ({{ $goodFirstIssues->sum(fn ($items) => $items->count()) }})</span>
                             </a>

@@ -47,12 +47,24 @@ button:active {
 
 /* Permalinks in front of markdown title */
 a.anchor-link {
-    @apply border-0 text-sm opacity-50 no-underline pr-2 font-light absolute text-right;
+    @apply border-0 opacity-0 no-underline pr-2 absolute text-right text-oss-royal-blue transition-all;
     right: 100%;
-    top: 0.3em;
-    font-size: 0.75em;
     height: 1em;
     width: 1em;
+}
+
+h2:has(.anchor-link):hover .anchor-link,
+h3:has(.anchor-link):hover .anchor-link,
+h4:has(.anchor-link):hover .anchor-link,
+h5:has(.anchor-link):hover .anchor-link {
+    @apply opacity-20;
+}
+
+h2:has(.anchor-link):hover .anchor-link:hover,
+h3:has(.anchor-link):hover .anchor-link:hover,
+h4:has(.anchor-link):hover .anchor-link:hover,
+h5:has(.anchor-link):hover .anchor-link:hover {
+    @apply opacity-50;
 }
 
 /* demo titles that doesn't need anchors */
@@ -70,14 +82,12 @@ a.anchor-link {
 }
 
 .link-card:before {
+    @apply absolute;
+    @apply inset-0;
+    @apply pointer-events-none;
+    @apply select-none;
+    @apply transition-all;
     content: "";
-    pointer-events: none;
-    user-select: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
     mask-image: linear-gradient(black, black), linear-gradient(black, black);
     mask-position: 0, 0;
     -webkit-mask-position-x: 0;
@@ -92,6 +102,38 @@ a.anchor-link {
     padding: 1px;
     background: linear-gradient(180deg, rgba(141, 161, 166, 0.5) 0%, rgba(255, 255, 255, 0.15) 100%);
 }
+
+.link-card:hover:before {
+    @apply opacity-0;
+}
+
+.link-card:after {
+    @apply absolute;
+    @apply inset-0;
+    @apply pointer-events-none;
+    @apply select-none;
+    @apply transition-all;
+    @apply opacity-0;
+    content: "";
+    mask-image: linear-gradient(black, black), linear-gradient(black, black);
+    mask-position: 0, 0;
+    -webkit-mask-position-x: 0;
+    -webkit-mask-position-y: 0;
+    mask-size: auto, auto;
+    mask-repeat: repeat, repeat;
+    mask-origin: content-box, border-box;
+    mask-clip: content-box, border-box;
+    mask-mode: match-source, match-source;
+    mask-composite: exclude;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, #8DA1A6 0%, rgba(255, 255, 255, 0.5) 100%);
+}
+
+.link-card:hover:after {
+    @apply opacity-100;
+}
+
 
 [x-cloak] {
     display: none !important;

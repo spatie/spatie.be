@@ -6,13 +6,9 @@
 @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js" defer></script>
 @endpush
-@push('head')
-    <!-- It's easier to work pixel perfect when html font size doesn't change. -->
-    <style>html { font-size: 16px !important; }</style>
-@endpush
 <x-page
     title="{{ $page->title }} | {{ $repository->slug }}"
-    body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue"
+    body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue leading-[1.4]"
     :no-index="$page->alias !== $latestVersion->slug"
     canonical="{{ url('/docs/' . $repository->slug . '/' . $latestVersion->slug . '/' . $page->slug) }}"
 >
@@ -100,13 +96,13 @@
 
                 <div id="site-search-docs-content">
                     <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code
-                 links-blue links-underline">
+                 links-blue links-underline docs-markup">
                         {!! $page->contents !!}
                     </div>
                 </div>
 
-                <div class="border border-gray/25 p-6 rounded-md mt-10 flex justify-between items-center">
-                    <div>
+                <div class="border border-gray/25 p-6 rounded-md mt-10 flex justify-between items-center bg-link-card-light">
+                    <div class="w-full">
                         @if($prevPage)
                             <a class="flex items-center gap-x-2 text-blue hover:underline" href="{{ $prevPage->url }}">
                                 <svg class="w-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path fill="#197593" d="m.313 5.623.53.53 4.5 4.5.531.532 1.062-1.062-.53-.53-3.97-3.97 3.968-3.97.532-.53L5.874.062l-.53.532-4.5 4.5-.531.53Z"/></svg>
@@ -114,7 +110,8 @@
                             </a>
                         @endif
                     </div>
-                    <div>
+                    <div class="h-5 w-px bg-oss-gray-dark"></div>
+                    <div class="w-full flex justify-end">
                         @if($nextPage)
                             <a class="flex items-center gap-x-2 text-blue hover:underline" href="{{ $nextPage->url }}">
                                 <span class="leading-none mb-px">{{ $nextPage->title }}</span>
@@ -133,23 +130,23 @@
                 </a>
             </article>
             <aside class="hidden lg:block w-full pb-16 col-span-2 print-hidden">
-                @if(count($tableOfContents))
-                    <div class="sticky top-0 mb-14">
-                        <h3 class="text-base font-bold mb-2">
-                            On this page
-                        </h3>
-                        <ul class="grid gap-2">
-                            @foreach($tableOfContents as $fragment => $title)
-                                <li class="text-sm">
-                                    <a href="#{{ $fragment }}" class="docs-submenu-item">
-                                        {{ $title }}
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
+                    <div class="sticky top-[1rem]">
+                        @if(count($tableOfContents))
+                            <h3 class="text-base font-bold mb-2">
+                                On this page
+                            </h3>
+                            <ul class="grid gap-2 mb-14">
+                                @foreach($tableOfContents as $fragment => $title)
+                                    <li class="text-sm">
+                                        <a href="#{{ $fragment }}" class="docs-submenu-item">
+                                            {{ $title }}
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        @endif
+                        @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
                     </div>
-               @endif
-                @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
             </aside>
         </section>
     </div>
