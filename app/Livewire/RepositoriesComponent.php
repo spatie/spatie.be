@@ -14,47 +14,28 @@ class RepositoriesComponent extends Component
     /** @var string */
     public $sort = '-downloads';
 
-    /** @var string */
-    public $type = 'packages';
-
     /** @var bool */
     public $filterable = true;
-
-    /** @var bool */
-    public $highlighted = false;
 
     protected $queryString = ['search', 'sort'];
 
     public function mount(
         $type = 'packages',
         $filterable = true,
-        $highlighted = false,
         $sort = '-downloads'
     ): void {
         $this->type = $type;
         $this->filterable = $filterable;
-        $this->highlighted = $highlighted;
         $this->sort = request()->query('sort', $sort);
         $this->search = request()->query('search', '');
     }
 
     private function getRepositories(): Collection
     {
-        $query = Repository::visible();
-
-        $this->type === 'projects'
-            ? $query->projects()
-            : $query->packages();
-
-        if ($this->highlighted) {
-            $query->highlighted();
-        }
-
-        $query
+        return Repository::visible()
             ->search($this->search)
-            ->applySort($this->sort);
-
-        return $query->get();
+            ->applySort($this->sort)
+            ->get();
     }
 
     public function render()
