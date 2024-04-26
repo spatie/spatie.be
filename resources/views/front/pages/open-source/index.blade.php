@@ -57,12 +57,12 @@ $goodFirstIssues = collect($goodFirstIssuesResult['items'] ?? [])->groupBy('repo
                 <x-slot:aside>
                     <h3 class="font-bold mb-2.5">Spatie in the wild</h3>
                     <p class="leading-normal text-oss-gray-dark">Our most recent presentation was Freek talking about common and not so common PHP functions at PHP UK 2024, which you can find
-                        <a href="https://www.youtube.com/watch?v=ZWcgx0c2nGs" target="_blank">here</a>.</p>
+                        <a class="underline" href="https://www.youtube.com/watch?v=ZWcgx0c2nGs" target="_blank">here</a>.</p>
                 </x-slot:aside>
 
                 <p>Back in 2015, when we first began developing open-source packages and tools for Laravel and PHP, we couldn't have imagined the overwhelming support and feedback we'd receive from the community.</p>
-                <p>Over the years, we've launched <a href="{{ route('open-source.packages') }}">numerous packages</a> and
-                    <a href="{{ route('courses.index') }}">courses</a>, and have actively engaged in delivering presentations across the globe.</p>
+                <p>Over the years, we've launched <a wire:navigate class="underline" href="{{ route('open-source.packages') }}">numerous packages</a> and
+                    <a wire:navigate class="underline" href="{{ route('courses.index') }}">courses</a>, and have actively engaged in delivering presentations across the globe.</p>
                 <p>We have been fortunate that working with the Laravel community brought us many opportunities to collaborate with developers from around the world, and expand our own skills and services.</p>
             </x-oss-content>
         </section>

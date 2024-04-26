@@ -47,7 +47,7 @@
             </x-slot:aside>
 
             <div class="grid gap-9">
-                @foreach (\App\Models\Repository::whereIn('name', ['laravel-ignition', 'laravel-medialibrary', 'laravel-backup'])->get() as $repository)
+                @foreach (\App\Models\Repository::whereIn('name', ['laravel-backup', 'laravel-medialibrary', 'laravel-health', 'laravel-query-builder', 'simple-excel'])->get() as $repository)
                     <x-oss-link-card>
                         <x-slot:title>
                             <a href="{{ $repository->url }}" target="_blank" class="flex items-center justify-between">
