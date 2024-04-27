@@ -17,6 +17,7 @@
         "aws/aws-sdk-php": "^3.240.6",
         "barryvdh/laravel-debugbar": "^3.8",
         "blade-ui-kit/blade-ui-kit": "^0.5",
+        "dasundev/filament-access-secret": "^3.0",
         "doctrine/dbal": "^3.5.1",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
