@@ -8,29 +8,6 @@
         @vite(['resources/js/front/gradient.jsx'])
         <style>html { scroll-behavior: smooth; background: #050508; }</style>
         <script defer src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-        <script data-navigate-track>
-            window.responsiveResizeObserver = new ResizeObserver((entries) => {
-                entries.forEach(entry => {
-                    const imgWidth = entry.target.getBoundingClientRect().width;
-                    entry.target.parentNode.querySelectorAll('source').forEach((source) => {
-                        source.sizes = Math.ceil(imgWidth / window.innerWidth * 100) + 'vw';
-                    });
-                });
-            });
-
-            window.addEventListener('livewire:navigated', function () {
-                document.querySelectorAll('img').forEach(responsiveImage => {
-                    window.responsiveResizeObserver.observe(responsiveImage);
-                });
-            });
-
-            document.querySelectorAll('img').forEach(responsiveImage => {
-                const imgWidth = responsiveImage.getBoundingClientRect().width;
-                responsiveImage.parentNode.querySelectorAll('source').forEach((source) => {
-                    source.sizes = Math.ceil(imgWidth / window.innerWidth * 100) + 'vw';
-                });
-            });
-        </script>
     @endpush
     @push('startBody')
         <div
