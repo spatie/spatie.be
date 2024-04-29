@@ -74,7 +74,7 @@
 
                     <h2 class="text-[36px] font-bold mb-5">{{ $page->title }}</h2>
                 @else
-                    <h1 class="text-[36px] font-bold mb-5">{{ $page->title }}</h1>
+                    <h1 class="text-[36px] font-bold mb-6 leading-none">{{ $page->title }}</h1>
                 @endif
 
                 @if(count($tableOfContents))
