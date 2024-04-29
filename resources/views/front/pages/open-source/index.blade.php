@@ -37,12 +37,12 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
     </x-slot>
 
     <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
-        @include('front.pages.open-source.components.menu', [
-            'title' => 'Committed to<br/>Open Source',
-            'subtitle' => 'At Spatie, we’re big on open source.<br/>
+        <x-oss-menu
+            title="Committed to<br/>Open Source"
+            subtitle="At Spatie, we’re big on open source.<br/>
                 It’s not just a way of working for us,<br/>
-                but part of our culture.'
-        ])
+                but part of our culture."
+        />
 
         <section class="w-full px-7 lg:px-0">
             <x-oss-staggered-title offset="md:-ml-[12.5rem]">
@@ -78,18 +78,18 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                 <h2 class="font-druk uppercase text-oss-red text-[40px] sm:text-[72px] leading-[0.9]">Our Efforts in<wbr/> numbers</h2>
             </x-oss-content>
             <div class="grid sm:grid-cols-3 sm:divide-x divide-y sm:divide-y-0 divide-white/10 max-w-[1320px] mt-4 mx-auto">
-                <div class="p-[60px] sm:p-[40px] md:p-[60px] text-center">
-                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">{{ \App\Models\Repository::visible()->count() }}+</div>
-                    <p class="text-oss-gray-dark uppercase font-bold tracking-wide text-[14px] leading-tight">Packages Released<br/>& maintained</p>
-                </div>
-                <div class="p-[60px] sm:p-[40px] md:p-[60px] text-center">
-                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">{{ ucfirst(App\Models\Repository::shortDownloadCount()) }}+</div>
-                    <p class="text-oss-gray-dark uppercase font-bold tracking-wide text-[14px] leading-tight">Total downloads<br/>on packagist</p>
-                </div>
-                <div class="p-[60px] sm:p-[40px] md:p-[60px] text-center">
-                    <div class="text-[60px] md:text-[120px] font-druk uppercase text-oss-gray leading-none mb-2">1,000+</div>
-                    <p class="text-oss-gray-dark uppercase font-bold tracking-wide text-[14px] leading-tight">Contributors<br/>on Github</p>
-                </div>
+                <x-oss-statistic
+                    label="Packages Released<br/>& maintained"
+                    :value="\App\Models\Repository::visible()->count() . '+'"
+                />
+                <x-oss-statistic
+                    label="Total downloads<br/>on packagist"
+                    :value="ucfirst(App\Models\Repository::shortDownloadCount()) . '+'"
+                />
+                <x-oss-statistic
+                    label="Contributors<br/>on Github"
+                    value="1,000+"
+                />
             </div>
         </section>
 
@@ -131,10 +131,10 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                 ['title' => 'Long time maintenance', 'content' => 'When a new PHP or Laravel version comes out, our team spends time to make sure the test suite is running correctly and that a new package version is tagged. Usually, all of our Laravel packages are compatible with the major releases of the Laravel framework within a few days.'],
             ] as $index => $rule)
                 <x-oss-card
-                    class="{{ match(true) {
-                        $loop->odd => 'rotate-[-5deg]',
-                        $loop->even => 'rotate-[2.5deg]',
-                    } }} {{ $loop->odd ? 'ml-auto' : '' }} hover:rotate-0 transition-transform mb-4 sm:mb-12 md:mb-4"
+                    class="
+                        {{ $loop->odd ? 'rotate-[-5deg] ml-auto' : 'rotate-[2.5deg]' }}
+                        hover:rotate-0 transition-transform mb-4 sm:mb-12 md:mb-4
+                    "
                     :title="$rule['title']"
                     :index="'0'.($index+1)"
                 >
