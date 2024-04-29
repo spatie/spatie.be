@@ -7,20 +7,27 @@
     @endisset
 
     <div x-data="LivewireUISpotlight({
-        componentId: '{{ $this->__id }}',
+        componentId: '{{ $this->id() }}',
         placeholder: 'Which package documentation do you want to see?',
-        commands: {{ $commands }},
+        commands: @js($commands),
         showResultsWithoutInput: '{{ config('livewire-ui-spotlight.show_results_without_input') }}',
     })"
          x-init="init()"
          x-show.important="isOpen"
          x-cloak
          @foreach(config('livewire-ui-spotlight.shortcuts') as $key)
-            @keydown.window.prevent.cmd.{{ $key }}="toggleOpen()"
-            @keydown.window.prevent.ctrl.{{ $key }}="toggleOpen()"
+         @keydown.window.prevent.cmd.{{ $key }}="toggleOpen()"
+         @keydown.window.prevent.ctrl.{{ $key }}="toggleOpen()"
          @endforeach
          @keydown.window.escape="isOpen = false"
          @toggle-spotlight.window="toggleOpen()"
+         @open-spotlight.window="() => {
+            isOpen = true;
+            input = '';
+            setTimeout(() => {
+                $refs.input.focus()
+            }, 100)
+        }"
          class="fixed z-50 px-4 pt-16 flex items-start justify-center inset-0 sm:pt-24">
         <div x-show="isOpen" @click="isOpen = false" x-transition:enter="ease-out duration-200" x-transition:enter-start="opacity-0"
              x-transition:enter-end="opacity-100" x-transition:leave="ease-in duration-150"

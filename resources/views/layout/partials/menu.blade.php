@@ -1,5 +1,7 @@
 {{ Menu::main()
-    ->addClass('md:grid md:grid-flow-col md:gap-12 md:justify-between | print:hidden')
-    ->setActiveClass('font-sans-bold')
+    ->addClass(
+        'grid sm:grid-flow-col gap-3 sm:gap-4 md:gap-6 sm:justify-between md:text-lg | print:hidden'
+    )
+    ->setActiveClass('text-blue font-bold')
  }}
 

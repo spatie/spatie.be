@@ -12,8 +12,7 @@
 
     @vite(['resources/js/front/app.js'])
 
-
-        <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
+    <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
 
     @include('layout.partials.analytics')
 
@@ -24,13 +23,15 @@
     <x-comments::styles />
 </head>
 
-<body class="flex flex-col min-h-screen leading-normal">
+<body class="flex flex-col min-h-screen leading-normal {{ $bodyClass ?? '' }}">
+    <script>/* Empty script tag because Firefox has a FOUC */</script>
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGCBMG"
                   height="0" width="0" style="display:none;visibility:hidden"></iframe>
     </noscript>
 
-    <script>/* Empty script tag because Firefox has a FOUC */</script>
+    @stack('startBody')
+
     @include('layout.partials.wallpaper')
 
     {{-- @include('layout.partials.cta') --}}
@@ -43,7 +44,7 @@
         {{ $slot }}
     </div>
 
-    @include('layout.partials.footer')
+    @include('layout.partials.footer', ['dark' => $dark ?? false])
 
     <x-impersonate::banner/>
 

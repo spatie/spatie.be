@@ -13,7 +13,7 @@ class NavigationServiceProvider extends ServiceProvider
         Menu::macro('main', function (array $properties = []) {
             return Menu::new()
                 ->route('products.index', 'Products')
-                ->route('open-source.packages', 'Open Source')
+                ->route('open-source.index', 'Open Source')
                 ->route('courses.index', 'Courses')
                 ->route('web-development', 'Web Development')
 
@@ -23,7 +23,7 @@ class NavigationServiceProvider extends ServiceProvider
 
         Menu::macro('service', function (array $properties = []) {
             return Menu::new()
-                ->addItemClass('first:bg-pink-lightest first:text-pink-dark first:-m-1 first:p-1 rounded-sm')
+                ->addItemClass('first:-m-1 first:p-1 rounded-sm')
                 ->route('vacancies.index', 'Vacancies')
                 ->route('about', 'About')
                 ->route('blog', 'Blog')

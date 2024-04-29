@@ -143,4 +143,21 @@ class GitHubApi
 
         return [$paginator, $result];
     }
+
+    /**
+     *
+     * @return array{ResultPager, array}
+     */
+    public function searchIssues(string $searchString, array $parameters = []): array
+    {
+        $searchApi = $this->client->api('search');
+
+        $paginator = new ResultPager($this->client, 100);
+        $parameters = array_merge([
+            'q' => $searchString,
+        ], $parameters);
+        $result = $paginator->fetch($searchApi, 'issues', $parameters);
+
+        return [$paginator, $result];
+    }
 }

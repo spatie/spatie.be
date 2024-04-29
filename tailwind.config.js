@@ -7,6 +7,23 @@ export default {
     ],
     theme: {
         colors: {
+            'oss-black': '#050508',
+            'oss-footer-dark': '#1F1F1F',
+            'oss-gray-light': '#F9F8F7',
+            'oss-gray': '#EAE8E5',
+            'oss-gray-medium': '#CAC8C4',
+            'oss-gray-dark': '#A5A4A3',
+            'oss-gray-extra-dark': '#3A3C3E',
+            'oss-red': '#FF354F',
+            'oss-blue': '#33CCFF',
+            'oss-royal-blue': '#172A3D',
+            'oss-royal-blue-light': '#515F6E',
+            'oss-purple': '#735AFF',
+            'oss-green': '#50E69B',
+            'oss-green-pale': '#82D8AF',
+            'oss-purple-extra-dark': '#15151E',
+            'oss-yellow': '#E7C23D',
+
             transparent: 'transparent',
             current: 'currentColor',
             black: '#172a3d',
@@ -61,7 +78,7 @@ export default {
             sm: '720px',
             md: '960px',
             lg: '1230px',
-            xl: '1615px',
+            xl: '1680px',
             print: {raw: 'print'},
         },
 
@@ -96,12 +113,44 @@ export default {
                 'serif',
             ],
             mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
+            pt: [
+                'PTRootUIWebVF',
+                '-apple-system',
+                'BlinkMacSystemFont',
+                'Segoe UI',
+                'Roboto',
+                'Oxygen',
+                'Ubuntu',
+                'Cantarell',
+                'Fira Sans',
+                'Droid Sans',
+                'Helvetica Neue',
+                'sans-serif',
+            ],
+            druk: [
+                'Druk',
+                'Gotham Narrow SSm A',
+                'Gotham Narrow SSm B',
+                '-apple-system',
+                'BlinkMacSystemFont',
+                'Segoe UI',
+                'Roboto',
+                'Oxygen',
+                'Ubuntu',
+                'Cantarell',
+                'Fira Sans',
+                'Droid Sans',
+                'Helvetica Neue',
+                'sans-serif',
+            ]
         },
 
         lineHeight: {
             none: 1,
             tight: 1.1,
+            snug: 1.4,
             normal: 1.6,
+            relaxed: 1.8,
             loose: 2,
         },
 
@@ -112,6 +161,12 @@ export default {
         },
 
         extend: {
+            backgroundImage: {
+                'link-card': 'linear-gradient(180deg, rgba(141, 161, 166, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);',
+                'link-card-light': 'linear-gradient(180deg, rgba(209, 201, 188, 0.1) 0%, rgba(255, 255, 255, 0.015) 100%);',
+                'link-card-light-hover': 'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.09) 100%);',
+            },
+
             boxShadow: {
                 DEFAULT: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
                 light: '0 2px 4px 0 rgba(76, 55, 55, 0.04)',
@@ -120,6 +175,7 @@ export default {
                 inner: 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.12)',
                 'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
                 none: 'none',
+                'oss-card': '0px 0px 110px 50px #00000033',
             },
 
             fontSize: {
@@ -135,6 +191,10 @@ export default {
                 '2px': '2px',
                 '18': '4.5rem',
                 '1/2': '50%',
+            },
+
+            spacing: {
+                '7.5': '1.875rem',
             },
 
             keyframes: {

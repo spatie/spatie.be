@@ -1,4 +1,20 @@
 /* Prevent using unavailable font-weight combos, faux-bold etc. */
+@font-face {
+    font-family: 'PTRootUIWebVF';
+    src:
+        url('/fonts/PT-Root-UI_VF.woff2') format('woff2'),
+        url('/fonts/PT-Root-UI_VF.woff') format('woff');
+    font-weight: 100 1000;
+}
+
+@font-face {
+    font-family: 'Druk';
+    src:
+        url('/fonts/Druk-Bold-Web.woff2') format('woff2'),
+        url('/fonts/Druk-Bold-Web.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
 
 .font-sans-normal {
     @apply font-sans;

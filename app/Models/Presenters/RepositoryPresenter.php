@@ -8,16 +8,21 @@ trait RepositoryPresenter
     {
         $totalDownloads = static::getTotalDownloads();
 
-        $step = 1000000;
+        $step = 1_000_000_000;
 
-        $approximateMillions = number_format((int) round($totalDownloads / $step));
+        $approximateBillions = number_format($totalDownloads / $step, 2);
 
-        $modulo = $totalDownloads % $step;
+        return $approximateBillions . ' billion';
+    }
 
-        if ($modulo <= $step / 2) {
-            return 'more than ' .  $approximateMillions . ' million';
-        }
+    public static function shortDownloadCount(): string
+    {
+        $totalDownloads = static::getTotalDownloads();
 
-        return 'almost ' .  $approximateMillions . ' million';
+        $step = 1_000_000_000;
+
+        $approximateBillions = number_format($totalDownloads / $step, 2);
+
+        return $approximateBillions . 'B';
     }
 }
