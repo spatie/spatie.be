@@ -5,12 +5,13 @@
     x-init="() => {
         var elem = $refs.masonry;
 
-        var msnry = new Masonry( elem, {
+        window.msnry = new Masonry( elem, {
           // options
           itemSelector: '.grid-item',
           gutter: 16,
         });
     }"
+    x-on:scroll.window.lazy="window.msnry.layout();"
 >
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-20 w-full">
         <h2 class="font-druk uppercase font-bold text-[50px] md:text-[96px] leading-[0.9] mr-20">All<br/>postcards</h2>
