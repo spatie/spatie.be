@@ -1,10 +1,26 @@
 /* Prevent using unavailable font-weight combos, faux-bold etc. */
 @font-face {
-    font-family: 'PTRootUIWebVF';
+    font-family: 'PTRootUI';
     src:
-        url('/fonts/PT-Root-UI_VF.woff2') format('woff2'),
-        url('/fonts/PT-Root-UI_VF.woff') format('woff');
-    font-weight: 100 1000;
+        url('/fonts/PT-Root-UI_Bold.woff2') format('woff2'),
+        url('/fonts/PT-Root-UI_Bold.woff') format('woff');
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: 'PTRootUI';
+    src:
+        url('/fonts/PT-Root-UI_Medium.woff2') format('woff2'),
+        url('/fonts/PT-Root-UI_Medium.woff') format('woff');
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: 'PTRootUI';
+    src:
+        url('/fonts/PT-Root-UI_Regular.woff2') format('woff2'),
+        url('/fonts/PT-Root-UI_Regular.woff') format('woff');
+    font-weight: 400;
 }
 
 @font-face {

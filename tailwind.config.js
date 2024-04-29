@@ -114,7 +114,7 @@ export default {
             ],
             mono: ['Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
             pt: [
-                'PTRootUIWebVF',
+                'PTRootUI',
                 '-apple-system',
                 'BlinkMacSystemFont',
                 'Segoe UI',
