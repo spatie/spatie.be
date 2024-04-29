@@ -184,7 +184,7 @@ class DocsController
                 ],
                 'wire_navigate' => [
                     'paths' => ['docs'],
-                ]
+                ],
             ])->toHtml($contents);
     }
 
