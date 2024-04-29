@@ -18,6 +18,7 @@ use League\CommonMark\Extension\CommonMark\Node\Inline\Link;
 use League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension;
 use League\CommonMark\Extension\Table\TableExtension;
 use RuntimeException;
+use Spatie\CommonMarkWireNavigate\WireNavigateExtension;
 use Spatie\LaravelMarkdown\MarkdownRenderer;
 use Tempest\Highlight\CommonMark\CodeBlockRenderer;
 use Tempest\Highlight\CommonMark\InlineCodeBlockRenderer;
@@ -171,6 +172,7 @@ class DocsController
             ->highlightCode(false)
             ->addExtension(new TableExtension())
             ->addExtension(new HeadingPermalinkExtension())
+            ->addExtension(new WireNavigateExtension())
             ->addInlineRenderer(Image::class, new ImageRenderer())
             ->addInlineRenderer(Link::class, new LinkRenderer())
             ->addInlineRenderer(FencedCode::class, new CodeBlockRenderer($highlighter), 10)
@@ -180,6 +182,9 @@ class DocsController
                     'html_class' => 'anchor-link',
                     'symbol' => '#',
                 ],
+                'wire_navigate' => [
+                    'paths' => ['docs'],
+                ]
             ])->toHtml($contents);
     }
 
