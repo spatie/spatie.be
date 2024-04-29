@@ -33,7 +33,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
     @endpush
 
     <x-slot name="description">
-        At Spatie, we’re big on open source. It’s not just a way of working for us, but part of our culture.
+        At Spatie, we’re big on open source. It’s not just a way of working for us, it's part of our culture.
     </x-slot>
 
     <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
@@ -62,11 +62,11 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
             <x-oss-content>
                 <x-slot:aside>
                     <h3 class="font-bold mb-2.5">Spatie in the wild</h3>
-                    <p class="leading-normal text-oss-gray-dark">Our most recent presentation was Freek talking about common and not so common PHP functions at PHP UK 2024, which you can find
+                    <p class="leading-snug text-oss-gray-dark mb-0.5">Our most recent presentation was Freek talking about common and not so common PHP functions at PHP UK 2024, which you can find
                         <a class="underline" href="https://www.youtube.com/watch?v=ZWcgx0c2nGs" target="_blank">here</a>.</p>
                 </x-slot:aside>
 
-                <p>Back in 2015, when we first began developing open-source packages and tools for Laravel and PHP, we couldn't have imagined the overwhelming support and feedback we'd receive from the community.</p>
+                <p>Back in 2015 when we first began developing open source packages and tools for Laravel and PHP, we couldn't have imagined the overwhelming support and feedback we'd receive from the community.</p>
                 <p>Over the years, we've launched <a wire:navigate class="underline" href="{{ route('open-source.packages') }}">numerous packages</a> and
                     <a wire:navigate class="underline" href="{{ route('courses.index') }}">courses</a>, and have actively engaged in delivering presentations across the globe.</p>
                 <p>We have been fortunate that working with the Laravel community brought us many opportunities to collaborate with developers from around the world, and expand our own skills and services.</p>
@@ -80,7 +80,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
             <div class="grid sm:grid-cols-3 sm:divide-x divide-y sm:divide-y-0 divide-white/10 max-w-[1320px] mt-4 mx-auto">
                 <x-oss-statistic
                     label="Packages Released<br/>& maintained"
-                    :value="\App\Models\Repository::visible()->count() . '+'"
+                    :value="\App\Models\Repository::visible()->count()"
                 />
                 <x-oss-statistic
                     label="Total downloads<br/>on packagist"
@@ -107,7 +107,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
             <x-oss-content>
                 <x-slot:aside>
                     <h3 class="font-bold mb-2.5">We can’t stop making them</h3>
-                    <p class="leading-normal text-oss-gray-dark">Nearly every package originates from a customer project. When we discover a feature that might be useful for use in the future, we turn it into a package.</p>
+                    <p class="leading-snug text-oss-gray-dark mb-0.5">Nearly every package originates from a client project. When we discover a feature that might be useful for use in the future, we turn it into a package.</p>
                 </x-slot:aside>
 
                 <p>Being able to spend enough time on our open source efforts while also building applications for our clients can be challenging. Laravel is what ties everything together.</p>
@@ -122,13 +122,13 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
 
         <section class="w-full max-w-[880px] px-7 lg:px-0 mx-auto">
             @foreach ([
-                ['title' => 'Easy to use', 'content' => 'We have put a lot of effort into making our package as user-friendly as possible. Ultimately, a package should be fun to use.'],
+                ['title' => 'Make it easy to use', 'content' => 'We have put a lot of effort into making our packages as user-friendly as possible. Ultimately, a package should be fun to use.'],
                 ['title' => 'Write excellent documentation', 'content' => 'We invest time in creating excellent documentation for each of our packages. This makes it easy to discover what a package does and what all the features are.'],
                 ['title' => 'Provide an extensive test suite', 'content' => 'All of our packages have an extensive test suite. This provides you (and us) with proof that the package code behaves correctly and works under all conditions.'],
                 ['title' => 'Write readable code', 'content' => 'We structure and write our code in such a way that others can easily understand what is going on. Names of variables, functions and classes are chosen with care. You should be able to understand how the package works just by reading the code.'],
                 ['title' => 'Be flexible', 'content' => 'We know we can’t imagine every scenario our code will be used in. That’s why we make our packages as customizable and extensible as possible. We don’t use the final keyword, and make everything protected by default instead of private. Our code is structured in small functions and classes that can be overwritten or extended.'],
                 ['title' => 'Keep the scope small', 'content' => 'When creating a package we intentionally keep the scope small. In most cases, packages are created to be consumed in our projects. We would rather have a small package with one very polished feature, than a large package that tries to cover all possible edge cases and variations of a problem.'],
-                ['title' => 'Long time maintenance', 'content' => 'When a new PHP or Laravel version comes out, our team spends time to make sure the test suite is running correctly and that a new package version is tagged. Usually, all of our Laravel packages are compatible with the major releases of the Laravel framework within a few days.'],
+                ['title' => 'Stay up to date', 'content' => 'When a new PHP or Laravel version comes out, our team spends time to make sure the test suite is running correctly and that a new package version is tagged. Usually, all of our Laravel packages are compatible with the major releases of the Laravel framework within a few days.'],
             ] as $index => $rule)
                 <x-oss-card
                     class="
@@ -164,8 +164,11 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                 <p>If you want to get involved in our open source work, here’s some tips on how you can help us out best.</p>
             </x-oss-content>
             <x-oss-content>
-                <h3 class="text-oss-yellow font-druk font-bold uppercase text-[40px] sm:text-[72px] leading-[0.9] mt-20 mb-12">Resolve open issues</h3>
-                <p>Ready to help us out? Be sure to check out our Contribution Guidelines first. They’ll walk you through the process on how to properly submit an issue or pull request to our repositories.</p>
+                <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_555_5938" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_555_5938)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_555_5938)"/><defs><linearGradient id="paint0_linear_555_5938" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
+                <div class="max-w-[480px] pt-10 sm:pt-20 mt-20">
+                    <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Resolve open issues</h3>
+                    <p>Ready to help us out? Be sure to check out the package's contribution guidelines first. They’ll walk you through the process on how to properly submit an issue or pull request to our repositories.</p>
+                </div>
             </x-oss-content>
         </section>
 
@@ -175,7 +178,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                     <x-slot:aside>
                         <div class="-mt-10 md:mt-0 flex flex-col bg-oss-yellow text-black rounded-[20px] lg:rounded-[40px] p-[30px] lg:p-[50px] lg:w-[350px] xl:w-[400px] shrink-0 mb-4 md:mb-0">
                             <h3 class="text-[18px] sm:text-[24px] mb-4 sm:mb-5">Good first issues</h3>
-                            <p class="text-[18px]">These are simple issues suited for people new to open-source development, and often a good place to start working on a package.</p>
+                            <p class="text-[18px]">These are simple issues suited for people new to open source development, and often a good place to start working on a package.</p>
                             <a class="text-base flex items-center gap-x-2 mt-20" target="_blank" href="https://github.com/issues?q={{ $goodFirstIssuesSearchString }}">
                                 <svg class="w-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path fill="#050508" d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
                                 <span class="underline">View all issues ({{ $goodFirstIssues->sum(fn ($items) => $items->count()) }})</span>
@@ -198,17 +201,14 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
 
         <section class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
+                <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_555_5938" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_555_5938)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_555_5938)"/><defs><linearGradient id="paint0_linear_555_5938" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
                 <div class="max-w-[480px] pt-10 sm:pt-20">
                     <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Hire us<br/>for your next project</h2>
-                    <p class="text-base">Tailor-made web development in Laravel is what we do best. We love every new challenge as the next, and try to extract common patterns. This has left us with a collection of
+                    <p class="text-base">The best way to support us is to hire us. Tailor-made web development in Laravel is what we do best. We love every new challenge as the next, and try to extract common patterns. This has left us with a collection of
                         <a class="underline" href="{{ route('open-source.packages') }}" wire:navigate>solid building blocks</a> to play with, plus a sense of what makes a web project great.</p>
                     <p class="text-base">Moreover, we can lean on the shoulders of frameworks like Laravel, React & Vue to take giant leaps.</p>
+                    <p class="text-base">Do you think this approach would fit you? It's <a class="underline" href="{{ route('web-development') }}#match">time to talk</a>.</p>
                 </div>
-
-                <x-slot:aside>
-                    <h3 class="text-base mb-2">Do you think this approach would fit you?</h3>
-                    <p class="mb-1">It's <a class="underline" href="{{ route('web-development') }}#match">time to talk</a></p>
-                </x-slot:aside>
             </x-oss-content>
         </section>
 

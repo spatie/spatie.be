@@ -148,6 +148,7 @@ export default {
         lineHeight: {
             none: 1,
             tight: 1.1,
+            snug: 1.4,
             normal: 1.6,
             relaxed: 1.8,
             loose: 2,
