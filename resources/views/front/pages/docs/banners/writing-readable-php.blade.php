@@ -3,5 +3,5 @@
     color="pink"
     title="Writing Readable PHP"
     description="Learn everything about maintainable code in our online course"
-    href="https://writing-readable-php.com"
+    href="https://writing-readable-php.com?ref=spatie-docs"
 />

@@ -3,5 +3,5 @@
     color="orange"
     title="Medialibrary.pro"
     description="UI components for the Media Library"
-    href="https://medialibrary.pro"
+    href="https://medialibrary.pro?ref=spatie-docs"
 />

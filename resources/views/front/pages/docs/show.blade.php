@@ -120,7 +120,7 @@
                         @endif
                     </div>
                 </div>
-                <a href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md" target="_blank" class="ml-auto flex items-center gap-3 mt-10 hover:underline">
+                <a href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md" target="_blank" class="ml-auto inline-flex items-center gap-3 mt-10 hover:underline lg:hidden">
                     <span class="w-5 h-5">
                         {{ app_svg('github') }}
                     </span>
@@ -130,23 +130,32 @@
                 </a>
             </article>
             <aside class="hidden lg:block w-full pb-16 col-span-2 print-hidden">
-                    <div class="sticky top-[1rem]">
-                        @if(count($tableOfContents))
-                            <h3 class="text-base font-bold mb-2">
-                                On this page
-                            </h3>
-                            <ul class="grid gap-2 mb-14">
-                                @foreach($tableOfContents as $fragment => $title)
-                                    <li class="text-sm">
-                                        <a href="#{{ $fragment }}" class="docs-submenu-item">
-                                            {{ $title }}
-                                        </a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        @endif
-                        @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
-                    </div>
+                <div class="sticky top-[1rem]">
+                    @if(count($tableOfContents))
+                        <h3 class="text-base font-bold mb-2">
+                            On this page
+                        </h3>
+                        <ul class="grid gap-2 mb-10">
+                            @foreach($tableOfContents as $fragment => $title)
+                                <li class="text-sm">
+                                    <a href="#{{ $fragment }}" class="docs-submenu-item">
+                                        {{ $title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    @include('front.pages.docs.banners.randomBanner', ['repository' => $repository])
+
+                    <a href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md" target="_blank" class="text-sm inline-flex items-center gap-3 mt-10 hover:underline">
+                        <span class="w-5 h-5">
+                            {{ app_svg('github') }}
+                        </span>
+                        <span>
+                            Help us improve this page
+                        </span>
+                    </a>
+                </div>
             </aside>
         </section>
     </div>

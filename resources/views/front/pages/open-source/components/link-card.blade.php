@@ -17,7 +17,7 @@
         <div class="transition-all absolute inset-0 bg-link-card rounded-[20px]"></div>
     @endif
     <h3 class="{{ $light ? 'text-oss-royal-blue' : 'text-oss-gray'  }} text-[18px] md:text-[24px] mb-5 leading-tight">{{ $title }}</h3>
-    <div class="mb-9">
+    <div class="@if ($href) mb-9 @endif">
         {{ $slot }}
     </div>
     @if ($href)

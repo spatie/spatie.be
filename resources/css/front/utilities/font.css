@@ -4,6 +4,7 @@
     src:
         url('/fonts/PT-Root-UI_VF.woff2') format('woff2'),
         url('/fonts/PT-Root-UI_VF.woff') format('woff');
+    font-weight: 100 1000;
 }
 
 @font-face {

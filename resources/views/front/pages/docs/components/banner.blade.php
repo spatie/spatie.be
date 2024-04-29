@@ -26,6 +26,5 @@
                 Learn&nbsp;more
             </button>
         </a>
-        @include('front.pages.docs.banners.hideButton')
     </div>
 </aside>

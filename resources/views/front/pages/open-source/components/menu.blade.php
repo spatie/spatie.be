@@ -3,7 +3,7 @@
         <h1 class="font-druk uppercase text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-10">{!! $title !!}</h1>
         <h2 class="text-[18px] sm:text-2xl font-medium max-w-[600px]">{!! $subtitle !!}</h2>
     </main>
-    <aside class="w-full max-w-[360px] flex-shrink-0 md:pl-32 flex flex-col md:justify-end md:items-end -mb-8 pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/20">
+    <aside class="w-full max-w-[360px] flex-shrink-0 md:pl-32 flex flex-col md:justify-end md:items-end pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/20">
         <ul class="text-xl w-full sm:max-w-[240px]">
             <li class="mb-3 {{ Route::is('open-source.index') ? 'font-bold' : 'text-white/50' }} hover:text-white transition-colors">
                 <a wire:navigate.hover href="{{ route('open-source.index') }}" class="flex items-center justify-between">

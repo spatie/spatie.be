@@ -3,5 +3,5 @@
     color="orange-dark"
     title="Ray"
     description="Debug your applications faster"
-    href="https://myray.app"
+    href="https://myray.app?ref=spatie-docs"
 />

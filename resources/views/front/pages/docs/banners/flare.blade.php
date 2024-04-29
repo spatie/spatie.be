@@ -3,5 +3,5 @@
     color="purple"
     title="Flare"
     description="An error tracker especially made for Laravel"
-    href="https://flareapp.io"
+    href="https://flareapp.io?ref=spatie-docs"
 />

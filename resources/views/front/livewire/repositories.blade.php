@@ -51,11 +51,11 @@
                 <div class="flex items-center gap-x-5">
                     <span class="text-sm flex items-center gap-x-2">
                         <svg class="w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 14"><path fill="#EAE8E5" d="m11 6-5 5-5-5V5h3V0h4v5h3v1ZM1 12h11v2H0v-2h1Z"/></svg>
-                        <span class="underline">{{ number_format($repository->downloads, 0, '.', ' ') }}</span>
+                        <span>{{ number_format($repository->downloads) }}</span>
                     </span>
                     <span class="text-sm flex items-center gap-x-2">
                         <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
-                        <span class="underline">{{ number_format($repository->stars, 0, '.', ' ') }}</span>
+                        <span>{{ number_format($repository->stars) }}</span>
                     </span>
                 </div>
             </x-oss-link-card>
