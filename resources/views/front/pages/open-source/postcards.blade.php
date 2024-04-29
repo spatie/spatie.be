@@ -2,6 +2,7 @@
     title="Postcards"
     description="This is our postcardware license in action."
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased"
+    :og-image="asset('images/og-image-oss.png')"
     dark
 >
     @push('head')
