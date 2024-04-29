@@ -29,7 +29,7 @@
                         <svg class="w-9 h-9" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 36 36"><rect width="36" height="36" fill="#fff" fill-opacity=".4" rx="18"/><path fill="#0A8867" d="M22.931 17.667A5.937 5.937 0 0 0 24 14.25a6 6 0 1 0-12 0c0 1.275.394 2.452 1.069 3.417.173.249.38.53.6.83.604.83 1.326 1.823 1.865 2.803.488.89.736 1.819.858 2.695H14.11a5.377 5.377 0 0 0-.553-1.617c-.464-.844-1.04-1.636-1.617-2.428a49.073 49.073 0 0 1-.722-1.003A8.199 8.199 0 0 1 9.75 14.25a8.25 8.25 0 1 1 15.028 4.702c-.234.337-.478.67-.722 1.003-.576.787-1.153 1.58-1.617 2.428A5.377 5.377 0 0 0 21.886 24h-2.273c.121-.877.37-1.81.857-2.695.54-.98 1.261-1.974 1.866-2.803.22-.3.422-.582.595-.83v-.005ZM18 12a2.25 2.25 0 0 0-2.25 2.25c0 .412-.338.75-.75.75a.752.752 0 0 1-.75-.75A3.749 3.749 0 0 1 18 10.5c.413 0 .75.338.75.75s-.337.75-.75.75Zm0 18a3.749 3.749 0 0 1-3.75-3.75v-.75h7.5v.75A3.749 3.749 0 0 1 18 30Z"/></svg>
                         <div class="ml-4">
                             <p>
-                                You are viewing thhe docoumentation for <strong>an older version</strong> of this package. You can check the version you are using with the following command:
+                                You are viewing the docoumentation for <strong>an older version</strong> of this package. You can check the version you are using with the following command:
                             </p>
                             <div class="mt-4">
                                 <code class="rounded bg-white/80 px-3 py-1.5">
