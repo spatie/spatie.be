@@ -31,7 +31,7 @@
                 <span>All of our packages are postcardware: free to use if you send us a postcard. We enjoy receiving mail from all around the world!</span>
                 <a class="mt-10 flex items-center gap-x-6" href="#postcards">
                     <svg class="w-12 h-12" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 48 48"><rect width="46" height="46" x="1" y="1" stroke="#A5A4A3" stroke-width="2" rx="23"/><path fill="#EAE8E5" d="m24 29.416.706-.707 6-6 .71-.709L30 20.584l-.707.707L24 26.584l-5.294-5.29-.706-.71L16.584 22l.706.706 6 6 .71.71Z"/></svg>
-                    All postcards ({{ \App\Models\Postcard::count() }})
+                    All postcards
                 </a>
             </x-slot:subtitle>
         </x-oss-menu>
