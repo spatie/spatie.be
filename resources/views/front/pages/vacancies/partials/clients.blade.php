@@ -34,8 +34,7 @@
     @endif
 
     <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Our enormous collection of <a
-                href="{{ route('open-source.packages') }}">open-source packages</a> and <a
-                href="{{ route('open-source.projects') }}">projects</a></li>
+                href="{{ route('open-source.packages') }}">open-source packages</a> and projects</li>
 </ul>
 
 <p>
