@@ -60,7 +60,7 @@ class ProductsController
     public function buy(Request $request, Product $product, Purchasable $purchasable, License $license = null)
     {
         if (! $purchasable->released) {
-            if (! current_user()->hasAccessToUnReleasedProducts()) {
+            if (! current_user()?->hasAccessToUnReleasedProducts()) {
                 abort(404);
             }
         }
