@@ -36,11 +36,6 @@ parameters:
 			path: app/Docs/DocumentationPage.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$slug\\.$#"
-			count: 3
-			path: app/Docs/DocumentationPage.php
-
-		-
 			message: "#^Match expression does not handle remaining values\\: int\\|string$#"
 			count: 1
 			path: app/Domain/Experience/Enums/ExperienceType.php
@@ -89,11 +84,6 @@ parameters:
 			message: "#^Variable \\$purchasables in PHPDoc tag @var does not exist\\.$#"
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
-
-		-
-			message: "#^Call to static method make\\(\\) on an unknown class Wiebenieuwenhuis\\\\FilamentCodeEditor\\\\Components\\\\CodeEditor\\.$#"
-			count: 2
-			path: app/Filament/Resources/Shop/PurchasableResource.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\PurchaseAssignment\\:\\:\\$bundle\\.$#"

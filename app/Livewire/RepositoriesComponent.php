@@ -17,6 +17,8 @@ class RepositoriesComponent extends Component
     /** @var bool */
     public $filterable = true;
 
+    public $type = 'packages';
+
     protected $queryString = ['search', 'sort'];
 
     public function mount(

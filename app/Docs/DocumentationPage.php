@@ -11,6 +11,7 @@ use Spatie\Sheets\Sheet;
  * @property string $slogan
  * @property string $githubUrl
  * @property string $branch
+ * @property string $slug
  */
 class DocumentationPage extends Sheet
 {
