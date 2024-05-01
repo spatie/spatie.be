@@ -16,10 +16,10 @@
         </div>
     @endpush
 
-    <section class="w-full max-w-[1080px] mx-auto mt-20">
-        <div class="flex w-full justify-between items-end text-white">
+    <section class="px-3 w-full max-w-[1080px] mx-auto mt-20">
+        <div class="flex flex-col sm:flex-row w-full justify-between items-end text-white">
             <h1 class="font-druk uppercase text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-4">Docs</h1>
-            <p class="text-[28px] leading-tight text-right">Find extensive documentation for<br>many of our packages here.</p>
+            <p class="text-xl sm:text-[28px] leading-tight text-right">Find extensive documentation for<br>many of our packages here.</p>
         </div>
         <div x-data x-on:click="$dispatch('open-spotlight')" class="w-full relative mt-16">
             <input class="w-full bg-white rounded-[12px] h-16 px-7" type="search" placeholder="Find a package ...">
@@ -30,7 +30,7 @@
         </p>
     </section>
 
-    <section class="my-32 w-full max-w-[1320px] mx-auto">
+    <section class="px-3 my-32 w-full max-w-[1320px] mx-auto">
         @foreach($repositories->groupBy('category') as $category => $repositories)
             <div class="border-t border-oss-gray-dark pt-20 mt-20">
                 <h2 class="font-druk uppercase text-oss-royal-blue text-[96px] mb-16">{{ $category }}</h2>
