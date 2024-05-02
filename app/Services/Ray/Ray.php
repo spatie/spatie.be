@@ -36,7 +36,7 @@ class Ray
     public function latestMacosAppleSiliconVersion(): string
     {
         /** Hardcoded for now, replace when building new version */
-        return '2.6.2';
+        return '2.7.5';
 
         /**return Cache::remember('latest-mac-version', 60, function () {
             $yaml = Http::get("{$this->baseUrl}/arm64/latest-mac.yml")->body();
