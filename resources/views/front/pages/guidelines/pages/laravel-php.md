@@ -820,7 +820,7 @@ Route::get('/open-source', [OpenSourceController::class, 'index']);
 ```
 [/bad]
 
-## Api routing
+## API routing
 
 Naming conventions:
 1. Use the **plural** form of the resource name. (e.g. `errors`)
