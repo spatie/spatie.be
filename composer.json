@@ -92,6 +92,7 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.20",
+        "laravel/envoy": "^2.9",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^8.1",
         "nunomaduro/larastan": "^2.4",
@@ -150,6 +151,8 @@
     "prefer-stable": true,
     "scripts": {
         "test": "./vendor/bin/pest --parallel",
+        "deploy": "./vendor/bin/envoy run deploy",
+        "deploy-code": "./vendor/bin/envoy run deploy-code",
         "post-install-cmd": [
             "@php composer outdated --direct"
         ],
