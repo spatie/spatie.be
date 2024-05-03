@@ -35,7 +35,7 @@ public string | null $variable;
 ### Void return types
 
 If a method returns nothing, it should be indicated with `void`.
-This makes it more clear to the users of your code what your intention was when writing it.
+This makes it clearer to the users of your code what your intention was when writing it.
 
 [good]
 ```php
@@ -819,6 +819,35 @@ Route::get('', [HomeController::class, 'index']);
 Route::get('/open-source', [OpenSourceController::class, 'index']);
 ```
 [/bad]
+
+## Api routing
+
+Naming conventions:
+1. Use the **plural** form of the resource name. (e.g. `errors`)
+2. Use **kebab-case** for the resource name. (e.g. `error-occurrences`)
+3. **Limit deep nesting**. Deeply nested routes can make the API complex and harder to manage. By limiting nesting, you maintain simplicity and improve readability.
+
+[bad]
+```
+/projects/1/errors/1/error-occurrences/1
+```
+[/bad]
+
+[good]
+```
+/error-occurrences/1
+```
+[/good]
+
+There are situations where providing context through nesting is necessary and beneficial. If the relationship between resources requires additional context, it's acceptable to use deeper nesting.
+
+If you need to access all occurrences of a specific error, nesting occurrences under errors provides clear context.
+
+[good]
+```
+/errors/1/occurrences
+```
+[/good]
 
 ## Controllers
 
