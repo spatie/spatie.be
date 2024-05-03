@@ -3,7 +3,6 @@
 namespace App\Guidelines;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Artisan;
 use Spatie\Sheets\Sheet;
 use Spatie\Sheets\Sheets;
 
