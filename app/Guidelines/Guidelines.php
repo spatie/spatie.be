@@ -12,7 +12,7 @@ class Guidelines
 
     public function __construct(Sheets $sheets)
     {
-        $this->pages = cache()->store('guidelines')->get('guidelines');
+        $this->pages = resolve(ResolveGuidelinesAction::class)->execute();
     }
 
     public function pages(): Collection
