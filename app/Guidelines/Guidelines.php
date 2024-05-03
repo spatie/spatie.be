@@ -3,6 +3,7 @@
 namespace App\Guidelines;
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Artisan;
 use Spatie\Sheets\Sheet;
 use Spatie\Sheets\Sheets;
 
@@ -12,7 +13,7 @@ class Guidelines
 
     public function __construct(Sheets $sheets)
     {
-        $this->pages = cache()->store('guidelines')->get('guidelines');
+        $this->pages = resolve(ResolveGuidelinesAction::class)->execute();
     }
 
     public function pages(): Collection

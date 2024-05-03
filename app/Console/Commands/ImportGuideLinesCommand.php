@@ -2,8 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Guidelines\ResolveGuidelinesAction;
 use Illuminate\Console\Command;
-use Spatie\Sheets\Sheets;
 
 class ImportGuideLinesCommand extends Command
 {
@@ -13,9 +13,7 @@ class ImportGuideLinesCommand extends Command
     {
         $this->info('Importing guidelines...');
 
-        $pages = app(Sheets::class)->collection('guidelines')->all()->sortBy('weight');
-
-        cache()->store('guidelines')->forever('guidelines', $pages);
+        resolve(ResolveGuidelinesAction::class)->execute(refresh: true);
 
         $this->info('All done!');
     }
