@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "24df470d32c8dd387ca781d57b42416d",
+    "content-hash": "28f1a6da51c0537190ad171574738b07",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -18327,6 +18327,69 @@
             "time": "2024-03-08T09:58:59+00:00"
         },
         {
+            "name": "laravel/envoy",
+            "version": "v2.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/envoy.git",
+                "reference": "a9b9da0fb5eb6625d90a164b828e94ab81472eb2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/envoy/zipball/a9b9da0fb5eb6625d90a164b828e94ab81472eb2",
+                "reference": "a9b9da0fb5eb6625d90a164b828e94ab81472eb2",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0|^11.0",
+                "php": "^7.2|^8.0",
+                "symfony/console": "^4.3|^5.0|^6.0|^7.0",
+                "symfony/process": "^4.3|^5.0|^6.0|^7.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^8.0|^9.0|^10.4"
+            },
+            "suggest": {
+                "ext-posix": "Required to determine the System user on Unix systems."
+            },
+            "bin": [
+                "bin/envoy"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Envoy\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Elegant SSH tasks for PHP.",
+            "keywords": [
+                "laravel",
+                "ssh"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/envoy/issues",
+                "source": "https://github.com/laravel/envoy/tree/v2.9.0"
+            },
+            "time": "2024-01-16T17:18:44+00:00"
+        },
+        {
             "name": "mockery/mockery",
             "version": "1.6.11",
             "source": {
@@ -21152,5 +21215,5 @@
     "platform-overrides": {
         "php": "8.3"
     },
-    "plugin-api-version": "2.6.0"
+    "plugin-api-version": "2.3.0"
 }
