@@ -2,7 +2,6 @@
     <div class="wrap grid sm:grid-cols-2 gap-x-24 gap-y-24 | markup-lists">
         @foreach($allSeries as $series)
             <div>
-
                 <div class="h-full my-6">
                     <h2 class="title-sm">
                         <div class="-mt-8 pb-6">
@@ -13,9 +12,13 @@
                         <a class="link-black link-underline-hover" href="{{ $series->url }}">{{ $series->title }}</a>
                         <div class="title-subtext text-gray flex items-center">
                             <span>
-                            @if ($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
+                                @if ($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
                                     {{ $series->lessons()->count() }}
-                                    {{  \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
+                                    {{ \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
+                                @elseif ($series->type === \App\Domain\Shop\Enums\SeriesType::VideoAndEbook)
+                                    {{ $series->lessons()->count() }}
+                                    {{ \Illuminate\Support\Str::plural('video', $series->lessons()->count()) }}
+                                    + Ebook
                                 @else
                                     Course
                                 @endif
