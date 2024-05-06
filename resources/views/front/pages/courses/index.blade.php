@@ -1,5 +1,5 @@
 <x-page
-        title="Videos"
+        title="Courses"
         background="/backgrounds/video.jpg"
         description="Learn Laravel best practices from open source veterans SPATIE"
 >
