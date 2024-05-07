@@ -18,7 +18,7 @@
         </div>
     </section>
 --}}
-    @if($series->type === \App\Domain\Shop\Enums\SeriesType::Video)
+    @if($series->type === \App\Domain\Shop\Enums\SeriesType::Video || $series->type === \App\Domain\Shop\Enums\SeriesType::VideoAndEbook)
         @include('front.pages.courses.content.video.detail', ['video' => $lesson->content])
     @endif
 
