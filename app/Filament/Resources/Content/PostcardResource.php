@@ -35,7 +35,7 @@ class PostcardResource extends Resource
                     ->required(),
                 TextInput::make('country')
                     ->required(),
-                SpatieMediaLibraryFileUpload::make('image')
+                SpatieMediaLibraryFileUpload::make('front_image')
                     ->maxFiles(1)
                     ->rules(['image'])
                     ->columnStart(1),
