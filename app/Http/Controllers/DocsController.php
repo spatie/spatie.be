@@ -108,6 +108,7 @@ class DocsController
         }
 
         $page->contents = $this->renderMarkdown($page->contents);
+        $page->contents = str_replace('<pre ', '<pre translate="no"', $page->contents);
 
         $repositories = $docs->getRepositories();
 
