@@ -194,5 +194,5 @@ Route::fallback(function (\Illuminate\Http\Request $request) {
         return redirect()->to($newUrl);
     }
 
-    return view('errors.404');
+    abort(404);
 });
