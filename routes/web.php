@@ -13,6 +13,7 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
+use App\Http\Controllers\InsightsController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
@@ -42,6 +43,9 @@ Route::permanentRedirect('docs/laravel-medialibrary/v11/handling-uploads-with-me
 Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where('any', '.*');
 
 Route::feeds();
+
+Route::get('insights', [InsightsController::class, 'index'])->name('insights');
+Route::get('insights/{slug}', [InsightsController::class, 'detail'])->name('insights.show');
 
 Route::redirect('/docs/products/ray', '/docs/ray');
 
