@@ -2,7 +2,6 @@
 
 namespace App\Livewire;
 
-use App\Actions\SubscribeUserToNewsletterAction;
 use App\Services\Mailcoach\MailcoachApi;
 use Livewire\Component;
 
