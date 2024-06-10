@@ -19,12 +19,13 @@ class NewsletterComponent extends Component
 
     public function subscribe()
     {
-        //TODO: make this work
         $this->validate([
             'email' => 'required|email',
         ]);
 
         $mailcoach = app(MailcoachApi::class);
+
+        app(SubscribeUserToNewsletterAction::class)->execute(email: $this->email);
 
         $subscriber = $mailcoach->subscribe(strtolower($this->email), skipConfirmation: true);
         $subscriber->addTags('spatie-newsletter');
