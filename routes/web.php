@@ -13,6 +13,7 @@ use App\Http\Controllers\DocsController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
+use App\Http\Controllers\ExternalFeedItemsController;
 use App\Http\Controllers\InsightsController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\ShowReleaseNotesController;
@@ -46,6 +47,7 @@ Route::feeds();
 
 Route::get('insights', [InsightsController::class, 'index'])->name('insights');
 Route::get('insights/{slug}', [InsightsController::class, 'detail'])->name('insights.show');
+Route::get('team-products', ExternalFeedItemsController::class)->name('external-feed-items');
 
 Route::redirect('/docs/products/ray', '/docs/ray');
 
