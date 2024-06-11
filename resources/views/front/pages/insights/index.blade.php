@@ -32,8 +32,8 @@
         From our team & products
     </h2>
 
-    @foreach($insights as $insight)
-        @include('front.pages.insights.partials.insightListItem')
+    @foreach($externalFeedItems as $externalFeedItem)
+        @include('front.pages.insights.partials.externalFeedItems')
     @endforeach
 
 
