@@ -34,7 +34,7 @@ class InsightsController
     {
         $post = ContentApi::getPost('ray', $slug, theme: 'nord');
 
-        if (!$post && is_numeric(explode('-', $slug)[0])) {
+        if (! $post && is_numeric(explode('-', $slug)[0])) {
             $parts = explode('-', $slug);
 
             $parts = array_slice($parts, 1);
