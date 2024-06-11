@@ -15,7 +15,7 @@ return [
             'contentType' => '',
         ],
         'insights' => [
-            'items' => [\App\Models\Insight::class, 'getFeedItems'],
+            'items' => [\App\Models\ExternalFeedItem::class, 'getFeedItems'],
             'url' => '/feed-insights',
             'title' => 'All personal blogposts of the Spatie team',
             'description' => 'All personal blogposts of the Spatie team.',

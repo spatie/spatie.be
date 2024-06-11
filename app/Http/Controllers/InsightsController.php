@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Insight;
+use App\Models\ExternalFeedItem;
 use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
@@ -18,7 +18,7 @@ class InsightsController
             unset($posts[0]);
         }
 
-        $insights = Insight::query()
+        $insights = ExternalFeedItem::query()
             ->orderBy('created_at', 'desc')
             ->limit(6)
             ->get();

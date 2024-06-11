@@ -22,7 +22,7 @@
             </div>
         @endforeach
     </div>
-
+{{  }}
     <div>
         {!! $post->content !!}
     </div>
