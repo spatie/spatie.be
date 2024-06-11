@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Insight;
 use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
@@ -17,17 +18,23 @@ class InsightsController
             unset($posts[0]);
         }
 
+        $insights = Insight::query()
+            ->orderBy('created_at', 'desc')
+            ->limit(6)
+            ->get();
+
         return view('front.pages.insights.index', [
             'posts' => $posts,
             'firstPost' => $firstPost ?? null,
+            'insights' => $insights,
         ]);
     }
 
     public function detail(string $slug)
     {
-        $post = ContentApi::getPost('spatie', $slug, theme: 'nord');
+        $post = ContentApi::getPost('ray', $slug, theme: 'nord');
 
-        if (! $post && is_numeric(explode('-', $slug)[0])) {
+        if (!$post && is_numeric(explode('-', $slug)[0])) {
             $parts = explode('-', $slug);
 
             $parts = array_slice($parts, 1);
@@ -37,8 +44,15 @@ class InsightsController
 
         abort_if(is_null($post), 404);
 
+        $otherPosts = ContentApi::getPosts('ray', 1, 3, theme: 'nord')
+            ->filter(function (Post $otherPost) use ($post) {
+                return $otherPost->slug !== $post->slug;
+            })
+            ->take(2);
+
         return view('front.pages.insights.show', [
             'post' => $post,
+            'otherPosts' => $otherPosts,
         ]);
     }
 
