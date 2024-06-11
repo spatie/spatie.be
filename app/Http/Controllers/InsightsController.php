@@ -18,7 +18,7 @@ class InsightsController
             unset($posts[0]);
         }
 
-        $insights = ExternalFeedItem::query()
+        $externalFeedItems = ExternalFeedItem::query()
             ->orderBy('created_at', 'desc')
             ->limit(6)
             ->get();
@@ -26,7 +26,7 @@ class InsightsController
         return view('front.pages.insights.index', [
             'posts' => $posts,
             'firstPost' => $firstPost ?? null,
-            'insights' => $insights,
+            'externalFeedItems' => $externalFeedItems,
         ]);
     }
 
