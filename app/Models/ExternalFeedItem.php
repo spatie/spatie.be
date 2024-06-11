@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 use Spatie\Feed\Feedable;
 use Spatie\Feed\FeedItem;
 
-class Insight extends Model implements Feedable
+class ExternalFeedItem extends Model implements Feedable
 {
     use HasFactory;
 

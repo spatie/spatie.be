@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class InsightFactory extends Factory
+class ExternalFeedItemFactory extends Factory
 {
     public function definition(): array
     {
