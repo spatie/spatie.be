@@ -27,4 +27,14 @@
     </section>
 
     <livewire:newsletter />
+
+    <h2>
+        From our team & products
+    </h2>
+
+    @foreach($insights as $insight)
+        @include('front.pages.insights.partials.insightListItem')
+    @endforeach
+
+
 </x-page>

@@ -31,7 +31,7 @@
             </div>
             <div>
                 Sign up for occasional emails on Spatie products and promotions.
-                By submitting this from, you acknowledge our [Privacy Policy]({{ route('legal.privacy') }}).
+                By submitting this from, you acknowledge our <a href="{{ route('legal.privacy') }}">Privacy Policy</a>.
             </div>
         </div>
     @endif
