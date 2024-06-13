@@ -1,7 +1,7 @@
 ---
-title: Laravel & PHP
+title: PHP
 description: Artisanal baked code
-weight: 1
+weight: 2
 ---
 
 ## About Laravel
@@ -75,7 +75,7 @@ class Foo
 
 ## Enums
 
-Values in enums should use PascalCase. 
+Values in enums should use PascalCase.
 
 ```php
 enum Suit {  
