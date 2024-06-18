@@ -10,7 +10,7 @@ Code style must follow [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http:
 
 ### Class defaults
 
-By default, we don't use `final`. In our team, there aren't many benefits that `final` offers as we don't rely too much on inheritance. For our open source stuff, we assume that all our users know they are responsible for writing tests for any overwritten behaviour.
+By default, we don't use `final`. In our team, there aren't many benefits that `final` offers as we don't rely too much on inheritance. For our open source stuff, we assume that all our users know they are responsible for writing tests for any overwridden behaviour.
 
 ### Nullable and union types
 
@@ -19,6 +19,12 @@ Whenever possible use the short nullable notation of a type, instead of using a 
 [good]
 ```php
 public ?string $variable;
+```
+[/good]
+
+[good]
+```php
+public string | int | null $variable;
 ```
 [/good]
 
@@ -35,15 +41,12 @@ This makes it clearer to the users of your code what your intention was when wri
 
 [good]
 ```php
-// in a Laravel model
 public function scopeArchived(Builder $query): void
 {
-    $query->
-        ...
+    $query->where('status', Status::Archived);
 }
 ```
 [/good]
-
 
 ## Typed properties
 
@@ -58,9 +61,8 @@ class Foo
 ```
 [/good]
 
-
 [bad]
-```
+```php
 class Foo
 {
     /** @var string */
@@ -74,14 +76,11 @@ class Foo
 Values in enums should use PascalCase.
 
 ```php
-enum Suit {  
-    case Clubs;
-    case Diamonds;
-    case Hearts;
-    case Spades;
+enum OrderStatus {  
+    case Pending;
+    case ReadyToDispatch;
+    case Dispatched;
 }
-
-Suit::Diamonds;
 ```
 
 ## Docblocks
@@ -122,11 +121,11 @@ class Url
 ```
 [/bad]
 
-Always import the classnames in docblocks.
+Always import the class names in docblocks.
 
 [good]
 ```php
-use \Spatie\Url\Url
+use Spatie\Url\Url
 
 /**
  * @param string $foo
@@ -151,12 +150,17 @@ Using multiple lines for a docblock, might draw too much attention to it. When p
 [good]
 ```php
 /** @var string */
+
 /** @test */
 ``` 
 [/good]
 
 [bad]
 ```php
+/**
+ * @var string
+ */
+
 /**
  * @test
  */
@@ -177,31 +181,6 @@ If a variable has multiple types, the most common occurring type should be first
 ```
 [/bad]
 
-If a function requires a docblock for a single parameter or return type, add all other docblocks as well.
-
-[good]
-```php
-/** 
- * @param string $name
- * @return \Illuminate\Support\Collection<SomeObject> 
- */
-function someFunction(string $name): Collection {
-    //
-}
-```
-[/good]
-
-[bad]
-```php
-/** 
- * @return \Illuminate\Support\Collection<SomeObject>
- */
-function someFunction(string $name): Collection {
-    //
-}
-```
-[/bad]
-
 ## Docblocks for iterables
 
 When your function gets passed an iterable, you should add a docblock to specify the type of key and value. This will greatly help static analysis tools understand the code, and IDEs to provide autocompletion.
@@ -214,7 +193,6 @@ function someFunction(array $myArray) {
 
 }
 ```
-
 
 In this example, `typedArgument` needs a docblock too:
 
@@ -234,7 +212,7 @@ The keys and values of iterables that get returned should always be typed.
 use \Illuminate\Support\Collection
 
 /**
- * @return \Illuminate\Support\Collection<int,SomeObject>
+ * @return \Illuminate\Support\Collection<int, SomeObject>
  */
 function someFunction(): Collection {
     //
@@ -332,7 +310,6 @@ $greeting = 'Hi, I am ' . $name . '.';
 ```
 [/bad]
 
-
 ## Ternary operators
 
 Every portion of a ternary expression should be on its own line unless it's a really short expression.
@@ -421,8 +398,7 @@ if (! $conditionB) {
 if ($conditionA) {
    if ($conditionB) {
       // condition A and B passed
-   }
-   else {
+   } else {
      // condition A passed, B failed
    }
 }
@@ -432,14 +408,13 @@ else {
 ```
 [/bad]
 
-Another option to refactor an `else` away is using a ternary
+Another option to refactor an `else` away is using a ternary.
 
 [bad]
 ```php
 if ($condition) {
     $this->doSomething();
-} 
-else {
+} else {
     $this->doSomethingElse();
 }
 ```
@@ -456,7 +431,6 @@ $condition
 ### Compound ifs
 
 In general, separate `if` statements should be preferred over a compound condition. This makes debugging code easier.
-
 
 [good]
 ```php
@@ -570,7 +544,7 @@ public function getPage($url)
 
 [bad]
 ```php
-// Everything's cramped together.
+// Everything's crammed together
 public function getPage($url)
 {
     $page = $this->pages()->where('slug', $url)->first();
@@ -587,7 +561,7 @@ public function getPage($url)
 
 [good]
 ```php
-// A sequence of single-line equivalent operations.
+// A sequence of single-line equivalent operations
 public function up()
 {
     Schema::create('users', function (Blueprint $table) {
