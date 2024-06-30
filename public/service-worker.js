@@ -15,7 +15,7 @@ self.addEventListener('install', event => {
                 // External request, avoid CORS troubles
                 [
                     'https://cloud.typography.com/6194432/6145752/css/fonts.css',
-                    'https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver',
+                    'https://cdnjs.cloudflare.com/polyfill/v2/polyfill.min.js?features=IntersectionObserver',
                 ].map(url => {
                     const request = new Request(url, { mode: 'no-cors' });
                     fetch(request).then(response => cache.put(request, response));

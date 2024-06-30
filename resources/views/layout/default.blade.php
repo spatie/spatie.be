@@ -12,7 +12,7 @@
 
     @vite(['resources/js/front/app.js'])
 
-    <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
+    <script src="https://cdnjs.cloudflare.com/polyfill/v2/polyfill.min.js?features=IntersectionObserver,Promise,Array.from,Element.prototype.dataset" defer></script>
 
     @include('layout.partials.analytics')
 
