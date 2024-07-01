@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Models\Insight;
+use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
@@ -17,11 +17,11 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer('front.pages.open-source.partials.insights', function ($view): void {
-            $view->with('insights', Insight::getLatest());
+            $view->with('externalFeedItems', ExternalFeedItem::getLatest());
         });
 
         View::composer('front.pages.home.partials.news', function ($view): void {
-            $view->with('insights', Insight::getLatest());
+            $view->with('externalFeedItems', ExternalFeedItem::getLatest());
         });
 
         View::composer('front.pages.about.partials.team', function ($view): void {
