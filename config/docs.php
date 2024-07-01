@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-error-solutions",
+            "repository" => "spatie/laravel-error-solutions",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-pdf",
             "repository" => "spatie/laravel-pdf",
             "branches" => [
