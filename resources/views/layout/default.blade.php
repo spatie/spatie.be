@@ -38,9 +38,9 @@
     @include('layout.partials.header')
     @include('layout.partials.flash')
 
-    <div class="flex-grow" role="main">
+    <main class="flex-grow {{ $mainClass ?? '' }}">
         {{ $slot }}
-    </div>
+    </main>
 
     @include('layout.partials.footer', ['dark' => $dark ?? false])
 

@@ -21,6 +21,7 @@
         "filament/filament": "^3.2",
         "filament/spatie-laravel-media-library-plugin": "^3.2",
         "flowframe/laravel-trend": "^0.2.0",
+        "gehrisandro/tailwind-merge-laravel": "^1.2",
         "geoip2/geoip2": "^2.13",
         "guzzlehttp/guzzle": "^7.5",
         "knplabs/github-api": "3.14.1",

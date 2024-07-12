@@ -11,11 +11,12 @@ class InsightsController
 {
     public function index()
     {
-        $posts = ContentApi::getPosts('ray', request('page', 1), theme: 'nord');
+        $insights = cache()->rememberForEver('insights', fn () => ContentApi::getPosts('ray', request('page', 1), theme: 'nord'));
 
         if (request('page', 1)) {
-            $firstPost = $posts->first();
-            unset($posts[0]);
+            $highlight = $insights->first();
+
+            unset($insights[0]);
         }
 
         $externalFeedItems = ExternalFeedItem::query()
@@ -24,8 +25,8 @@ class InsightsController
             ->get();
 
         return view('front.pages.insights.index', [
-            'posts' => $posts,
-            'firstPost' => $firstPost ?? null,
+            'insights' => $insights,
+            'highlight' => $highlight ?? null,
             'externalFeedItems' => $externalFeedItems,
         ]);
     }

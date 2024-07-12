@@ -15,7 +15,8 @@ export default {
             'oss-gray-dark': '#A5A4A3',
             'oss-gray-extra-dark': '#3A3C3E',
             'oss-red': '#FF354F',
-            'oss-blue': '#33CCFF',
+            'oss-postcard-blue': '#33CCFF',
+            'oss-spatie-blue': '#197593',
             'oss-royal-blue': '#172A3D',
             'oss-royal-blue-light': '#515F6E',
             'oss-purple': '#735AFF',
@@ -146,6 +147,9 @@ export default {
         },
 
         lineHeight: {
+            80: 0.8,
+            90: 0.9,
+            140: 1.4,
             none: 1,
             tight: 1.1,
             snug: 1.4,
@@ -167,6 +171,10 @@ export default {
                 'link-card-light-hover': 'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.09) 100%);',
             },
 
+            borderRadius: {
+                8: '8px',
+            },
+
             boxShadow: {
                 DEFAULT: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
                 light: '0 2px 4px 0 rgba(76, 55, 55, 0.04)',
@@ -179,12 +187,19 @@ export default {
             },
 
             fontSize: {
+                14: '14px',
+                16: '16px',
+                18: '18px',
+                24: '24px',
+                72: '72px',
+                144: '144px',
                 xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
             },
 
             width: {
                 '2px': '2px',
+                wrapper: '1080px',
             },
 
             height: {
@@ -224,6 +239,7 @@ export default {
                 '1/2': '50vw',
                 columns: '80rem', // xl + (2 * large gap)
                 logoclient: '8rem',
+                wrapper: '1080px',
             },
 
             maxHeight: {

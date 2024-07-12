@@ -18,7 +18,7 @@
         <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-12">
             @foreach($countries as $country)
                 <li class="flex items-center gap-3 sm:gap-6">
-                    <span class="font-druk uppercase text-oss-blue text-[48px]">{{ $country['postcard_count'] }}</span>
+                    <span class="font-druk uppercase text-oss-postcard-blue text-[48px]">{{ $country['postcard_count'] }}</span>
                     <span class="uppercase text-[14px] tracking-wide">{{ $country['name'] }}</span>
                 </li>
             @endforeach
