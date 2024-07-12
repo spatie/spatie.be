@@ -26,7 +26,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->addItemClass('first:-m-1 first:p-1 rounded-sm')
                 ->route('vacancies.index', 'Vacancies')
                 ->route('about', 'About')
-                ->route('insights', 'insights')
+                ->route('insights', 'Insights')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
                 ->addIf(auth()->check(), View::create('layout.partials.navigation.profileIcon', ['url' => route('profile')]))

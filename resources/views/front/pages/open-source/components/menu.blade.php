@@ -1,8 +1,8 @@
 <section id="header" class="md:flex w-full max-w-[1080px] mx-auto mt-8 sm:mt-20 md:mt-32 mb-24 md:mb-52 px-7 lg:px-0">
-    <main class="w-full mb-10 md:mb-0">
+    <div class="w-full mb-10 md:mb-0">
         <h1 class="font-druk uppercase text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-10">{!! $title !!}</h1>
         <h2 class="text-[18px] sm:text-2xl font-medium max-w-[600px]">{!! $subtitle !!}</h2>
-    </main>
+    </div>
     <aside class="w-full max-w-[360px] flex-shrink-0 md:pl-32 flex flex-col md:justify-end md:items-end pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/20">
         <ul class="text-xl w-full sm:max-w-[240px]">
             <li class="mb-3 {{ Route::is('open-source.index') ? 'font-bold' : 'text-white/50' }} hover:text-white transition-colors">

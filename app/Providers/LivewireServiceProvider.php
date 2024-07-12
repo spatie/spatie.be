@@ -5,7 +5,7 @@ namespace App\Providers;
 use App\Livewire\ActivationsComponent;
 use App\Livewire\DomainComponent;
 use App\Livewire\LessonCompletedButtonComponent;
-use App\Livewire\NewsletterComponent;
+use App\Livewire\Newsletter;
 use App\Livewire\RepositoriesComponent;
 use App\Livewire\SearchDocsComponent;
 use Illuminate\Support\ServiceProvider;
@@ -20,6 +20,6 @@ class LivewireServiceProvider extends ServiceProvider
         Livewire::component('domain', DomainComponent::class);
         Livewire::component('activations', ActivationsComponent::class);
         Livewire::component('search-docs', SearchDocsComponent::class);
-        Livewire::component('newsletter', NewsletterComponent::class);
+        Livewire::component('newsletter', Newsletter::class);
     }
 }

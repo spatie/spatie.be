@@ -1,10 +1,10 @@
-<div>
-    <div>
+<aside>
+    <header class="bg-oss-green-pale">
         Get the latest from Spatie
-    </div>
-
-    <div>
-        <div>Logo</div>
+    </header>
+    <div class="flex gap-2">
+        {{-- @todo Mailcoach logo --}}
+        <div class="w-6 h-6 bg-blue-darker"></div>
         <div>Powered by <a href="https://mailcoach.app">Mailcoach</a>, powerful email marketing tools to effortlessly
             grow, connect and convert.
         </div>
@@ -35,4 +35,4 @@
             </div>
         </div>
     @endif
-</div>
+</aside>

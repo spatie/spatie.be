@@ -22,7 +22,6 @@
             </div>
         @endforeach
     </div>
-{{  }}
     <div>
         {!! $post->content !!}
     </div>
@@ -39,5 +38,5 @@
         @endforeach
     @endif
 
-    <livewire:newsletter-component/>
+    <livewire:newsletter />
 </x-page>
