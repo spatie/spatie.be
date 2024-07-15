@@ -37,6 +37,10 @@ class LicenseIsAboutToExpireNotification extends Notification
             $upgradeReason = "Go to your license overview on the [spatie.be]({$siteUrl}) site to renew the license and continue using Ray.";
         }
 
+        if ($this->license->hasRepositoryAccess()) {
+            $upgradeReason .= "\n\nKeep in mind that you will lose GitHub repository access once your license expires.";
+        }
+
         return (new MailMessage())
             ->subject("Your {$name} license is about to expire")
             ->greeting('Hi!')
