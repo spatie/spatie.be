@@ -6,6 +6,7 @@ use App\Docs\Alias;
 use App\Docs\Docs;
 use App\Docs\DocumentationPage;
 use App\Docs\Highlighting\DiffLanguage;
+use App\Docs\Highlighting\JsxLanguage;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\Arr;
@@ -168,6 +169,7 @@ class DocsController
     {
         $highlighter = new Highlighter();
         $highlighter->addLanguage(new DiffLanguage());
+        $highlighter->addLanguage(new JsxLanguage());
 
         return app(MarkdownRenderer::class)
             ->highlightCode(false)
