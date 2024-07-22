@@ -15,9 +15,6 @@ class JsxLanguage extends JavaScriptLanguage
     {
         return [
             ...parent::getInjections(),
-            new JsxHtmlInjection(),
-//            new DiffAdditionInjection(),
-//            new DiffDeletionInjection(),
         ];
     }
 }
