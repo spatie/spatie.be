@@ -149,6 +149,15 @@ return [
             "category" => "Laravel",
         ],
         [
+            "name" => "laravel-medialibrary-pro",
+            "repository" => "spatie/laravel-medialibrary-pro",
+            "branches" => [
+                "main" => "v6",
+                "v6" => "v6",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-blade-x",
             "repository" => "spatie/laravel-blade-x",
             "branches" => [

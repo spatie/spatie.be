@@ -37,6 +37,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::permanentRedirect('docs/ray', 'https://myray.app/docs/');
 Route::permanentRedirect('docs/ray/{any}', 'https://myray.app/docs/')->where('any', '.*');
+Route::permanentRedirect('docs/laravel-medialibrary/v11/handling-uploads-with-media-library-pro{any}', 'https://spatie.be/docs/laravel-medialibrary-pro/v6/introduction')->where('any', '.*');
 
 Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where('any', '.*');
 

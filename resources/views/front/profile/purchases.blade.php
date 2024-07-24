@@ -69,12 +69,13 @@
                 <h2 class="title line-after mb-12">Applications</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                     @foreach ($applications as $product_id => $assignments)
-                        <x-purchase-assignment :assignment="$assignments->first()" :showImage="false" theme="white">
+                        @php($assignment = $assignments->sortByDesc('created_at')->first())
+                        <x-purchase-assignment :assignment="$assignment" :showImage="false" theme="white">
                             <div class="items-center grid gap-4 bg-gray-50 px-6 py-6">
-                                {!! $assignments->first()->purchasable->getting_started_description !!}
-                                @if ($assignments->first()->purchasable->getting_started_url)
+                                {!! $assignment->purchasable->getting_started_description !!}
+                                @if ($assignment->purchasable->getting_started_url)
                                     <a class="block w-full text-xs md:text-base"
-                                       href="{{ $assignments->first()->purchasable->getting_started_url }}">
+                                       href="{{ $assignment->purchasable->getting_started_url }}">
                                         <x-button> Getting started
                                         </x-button>
                                     </a>

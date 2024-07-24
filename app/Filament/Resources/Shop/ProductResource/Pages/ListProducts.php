@@ -16,4 +16,9 @@ class ListProducts extends ListRecords
             Actions\CreateAction::make(),
         ];
     }
+
+    public function reorderTable(array $order): void
+    {
+        static::getResource()::getModel()::setNewOrder($order);
+    }
 }
