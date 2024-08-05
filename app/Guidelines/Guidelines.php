@@ -22,6 +22,24 @@ class Guidelines
 
     public function page(string $slug): ?Sheet
     {
-        return $this->pages->firstWhere('slug', $slug);
+        $page = $this->pages->firstWhere('slug', $slug);
+
+        if ($page) {
+            return $page;
+        }
+
+        $renamedSlug = $this->findRenamedSlugs($slug);
+
+        return $renamedSlug
+            ? $this->pages->firstWhere('slug', $renamedSlug)
+            : null;
+    }
+
+    protected function findRenamedSlugs(string $slug): ?string
+    {
+        return match ($slug) {
+            'laravel-php' => 'laravel',
+            default => null,
+        };
     }
 }
