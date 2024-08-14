@@ -3,11 +3,14 @@
 namespace App\Http\Api\Controllers;
 
 use App\Domain\Shop\Models\Purchasable;
+use Illuminate\Http\Request;
 
 class PriceController
 {
-    public function __invoke(Purchasable $purchasable, string $ipOrCountryCode)
+    public function __invoke(Request $request, Purchasable $purchasable, ?string $ipOrCountryCode = null)
     {
+        $ipOrCountryCode ??= $request->ip() ?? '';
+
         $countryCode = strlen($ipOrCountryCode) === 2
             ? $ipOrCountryCode
             : geoip($ipOrCountryCode)->iso_code;
