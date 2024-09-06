@@ -15,7 +15,7 @@ class ExternalFeedItemFactory extends Factory
                 'rias.be',
                 'mailcoach.app',
                 'flareapp.io',
-                'sebastiandedeyne.com'
+                'sebastiandedeyne.com',
             ]),
             'short_summary' => $this->faker->sentence(),
         ];
