@@ -40,7 +40,7 @@
     @isset($externalFeedItems)
         <x-layout.wrapper class="mt-24 mb-20">
             <div class="flex">
-                <h2 class="w-1/4 text-24 font-bold">From our team & products</h2>
+                <h2 class="w-1/4 text-24 font-bold">From our team &&nbsp;products</h2>
                 <div class="flex-1 flex flex-col gap-10 pl-9">
                     @foreach($externalFeedItems as $externalFeedItem)
                         @include('front.pages.insights.partials.externalFeedItem')
