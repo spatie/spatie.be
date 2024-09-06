@@ -1,3 +1,3 @@
-<div {{ $attributes->twMerge('w-full max-w-wrapper mx-auto') }}>
+<{{ $as ?? 'div' }} {{ $attributes->except('as')->twMerge('w-full max-w-wrapper mx-auto') }}>
     {{ $slot }}
-</div>
+</{{ $as ?? 'div' }}>

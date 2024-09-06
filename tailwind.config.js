@@ -184,6 +184,7 @@ export default {
                 'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
                 none: 'none',
                 'oss-card': '0px 0px 110px 50px #00000033',
+                'big': '0px 0px 110px 50px rgba(0, 0, 0, 0.1)',
             },
 
             fontSize: {
