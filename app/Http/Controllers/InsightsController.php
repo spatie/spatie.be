@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\ExternalFeedItem;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
