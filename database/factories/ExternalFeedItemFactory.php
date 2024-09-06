@@ -11,6 +11,12 @@ class ExternalFeedItemFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'url' => $this->faker->url(),
+            'website' => $this->faker->randomElement([
+                'rias.be',
+                'mailcoach.app',
+                'flareapp.io',
+                'sebastiandedeyne.com'
+            ]),
             'short_summary' => $this->faker->sentence(),
         ];
     }

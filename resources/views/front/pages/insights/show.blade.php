@@ -1,4 +1,4 @@
-<x-page title="{{ $post->title }}" background="/backgrounds/blogs.jpg">
+<x-page title="{{ $post->title }}" background="/backgrounds/blog-post.png">
     {{ $post->date?->format('d F Y') ?? 'Preview' }}
 
     <h1>{{ $post->title }}</h1>

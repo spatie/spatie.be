@@ -46,6 +46,7 @@ Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where
 Route::feeds();
 
 Route::get('insights', [InsightsController::class, 'index'])->name('insights');
+Route::get('insights/all', [InsightsController::class, 'all'])->name('insights.all');
 Route::get('insights/{slug}', [InsightsController::class, 'detail'])->name('insights.show');
 Route::get('team-products', ExternalFeedItemsController::class)->name('external-feed-items');
 

@@ -3,17 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\ExternalFeedItem;
+use Illuminate\Http\Request;
 use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
 
 class InsightsController
 {
-    public function index()
+    public function index(Request $request)
     {
-        $insights = cache()->rememberForEver('insights', fn () => ContentApi::getPosts('ray', request('page', 1), theme: 'nord'));
+        $insights = ContentApi::getPosts(
+            product: 'ray',
+            page: request('page', 1),
+            perPage: 5,
+            theme: 'nord',
+        );
 
-        if (request('page', 1)) {
+        if ($request->get('page', 1) === 1) {
             $highlight = $insights->first();
 
             unset($insights[0]);
@@ -21,8 +27,7 @@ class InsightsController
 
         $externalFeedItems = ExternalFeedItem::query()
             ->orderBy('created_at', 'desc')
-            ->limit(6)
-            ->get();
+            ->paginate(7);
 
         return view('front.pages.insights.index', [
             'insights' => $insights,
