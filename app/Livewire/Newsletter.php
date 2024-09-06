@@ -14,7 +14,7 @@ class Newsletter extends Component
     public function subscribe(): void
     {
         $this->validate([
-            'email' => 'required|email',
+            'email' => 'required|email:strict,dns',
         ]);
 
         app(SubscribeUserToNewsletterAction::class)
