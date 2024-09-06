@@ -56,7 +56,7 @@ class LicenseResource extends Resource
                 ResourceLinkColumn::make(
                     'assignment.user.email',
                     function (License $record) {
-                        if(! $record->assignment) {
+                        if (! $record->assignment) {
                             return null;
                         }
 

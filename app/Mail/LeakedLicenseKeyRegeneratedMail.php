@@ -7,11 +7,13 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Spatie\MailcoachMailer\Concerns\UsesMailcoachMail;
 
 class LeakedLicenseKeyRegeneratedMail extends Mailable implements ShouldQueue
 {
     use Queueable;
     use SerializesModels;
+    use UsesMailcoachMail;
 
     public function __construct(
         public License $license,
@@ -19,10 +21,11 @@ class LeakedLicenseKeyRegeneratedMail extends Mailable implements ShouldQueue
     ) {
     }
 
-    public function build()
+    public function build(): void
     {
         $this
-            ->subject('We have revoked your leaked license key')
-            ->markdown('mails.leakedLicenseKeyRegenerated');
+            ->mailcoachMail('spatie.leaked-license-key', [
+                'url' => $this->foundOnUrl,
+            ]);
     }
 }
