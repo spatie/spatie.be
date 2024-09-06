@@ -3,27 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Models\ExternalFeedItem;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
 
 class InsightsController
 {
-    public function index(Request $request)
+    public function index(): View
     {
-        $insights = ContentApi::getPosts(
-            product: 'ray',
-            page: request('page', 1),
-            perPage: 5,
-            theme: 'nord',
-        );
-
-        if ($request->get('page', 1) === 1) {
-            $highlight = $insights->first();
-
-            unset($insights[0]);
-        }
+        $insights = self::getPosts(5);
+        $highlight = $insights->first();
+        unset($insights[0]);
 
         $externalFeedItems = ExternalFeedItem::query()
             ->orderBy('created_at', 'desc')
@@ -36,7 +29,21 @@ class InsightsController
         ]);
     }
 
-    public function detail(string $slug)
+    public function all(): View
+    {
+        $insights = self::getPosts();
+
+        $highlight = $insights->first();
+
+        unset($insights[0]);
+
+        return view('front.pages.insights.index', [
+            'insights' => $insights,
+            'highlight' => $highlight ?? null,
+        ]);
+    }
+
+    public function detail(string $slug): View
     {
         $post = ContentApi::getPost('ray', $slug, theme: 'nord');
 
@@ -64,7 +71,7 @@ class InsightsController
 
     public static function getFeedItems()
     {
-        return ContentApi::getPosts('spatie', 1, 10_000, theme: 'nord')->map(function (Post $post) {
+        return self::getPosts()->map(function (Post $post) {
             return FeedItem::create()
                 ->id($post->slug)
                 ->title($post->title)
@@ -73,5 +80,15 @@ class InsightsController
                 ->link(action([self::class, 'detail'], $post->slug))
                 ->authorName($post->authors->first()?->name);
         });
+    }
+
+    private static function getPosts(int $perPage = 500): Paginator
+    {
+        return ContentApi::getPosts(
+            product: 'ray',
+            page: request('page', 1),
+            perPage: $perPage,
+            theme: 'nord',
+        );
     }
 }

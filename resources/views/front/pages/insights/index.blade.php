@@ -33,25 +33,27 @@
         @endif
     </x-layout.wrapper>
 
-    <x-layout.wrapper class="mt-24">
+    <x-layout.wrapper class="my-24">
         <livewire:newsletter />
     </x-layout.wrapper>
 
-    <x-layout.wrapper class="mt-24 mb-20">
-        <div class="flex">
-            <h2 class="w-1/4 text-24 font-bold">From our team & products</h2>
-            <div class="flex-1 flex flex-col gap-10 pl-9">
-                @foreach($externalFeedItems as $externalFeedItem)
-                    @include('front.pages.insights.partials.externalFeedItem')
-                @endforeach
+    @isset($externalFeedItems)
+        <x-layout.wrapper class="mt-24 mb-20">
+            <div class="flex">
+                <h2 class="w-1/4 text-24 font-bold">From our team & products</h2>
+                <div class="flex-1 flex flex-col gap-10 pl-9">
+                    @foreach($externalFeedItems as $externalFeedItem)
+                        @include('front.pages.insights.partials.externalFeedItem')
+                    @endforeach
+                </div>
             </div>
-        </div>
-        @if ($externalFeedItems->hasMorePages())
-            <div class="mt-6 w-3/4 ml-auto pl-9">
-                <a href="{{ route('external-feed-items') }}" wire:navigate.hover class="flex w-full items-center justify-center py-6 text-blue bg-link-card-light border border-gray/25 rounded">
-                    View more
-                </a>
-            </div>
-        @endif
-    </x-layout.wrapper>
+            @if ($externalFeedItems->hasMorePages())
+                <div class="mt-6 w-3/4 ml-auto pl-9">
+                    <a href="{{ route('external-feed-items') }}" wire:navigate.hover class="flex w-full items-center justify-center py-6 text-blue bg-link-card-light border border-gray/25 rounded">
+                        View more
+                    </a>
+                </div>
+            @endif
+        </x-layout.wrapper>
+    @endisset
 </x-page>
