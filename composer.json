@@ -63,6 +63,7 @@
         "spatie/laravel-health": "^1.18",
         "spatie/laravel-help-space": "^1.0",
         "spatie/laravel-ignition": "^2.0",
+        "spatie/laravel-mailcoach-mailer": "*",
         "spatie/laravel-markdown": "^2.2.4",
         "spatie/laravel-medialibrary": "^11.4.6",
         "spatie/laravel-menu": "^4.1",
