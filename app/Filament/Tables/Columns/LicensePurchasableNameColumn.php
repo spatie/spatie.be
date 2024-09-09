@@ -11,7 +11,7 @@ class LicensePurchasableNameColumn
         return ResourceLinkColumn::make(
             'assignment.purchasable.title',
             function (License $record) {
-                if(! $record->assignment) {
+                if (! $record->assignment) {
                     return null;
                 }
 
