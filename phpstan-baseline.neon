@@ -66,11 +66,6 @@ parameters:
 			path: app/Domain/Shop/Models/ConversionRate.php
 
 		-
-			message: "#^Property 'signed_license' does not exist in App\\\\Domain\\\\Shop\\\\Models\\\\License model\\.$#"
-			count: 1
-			path: app/Domain/Shop/Models/License.php
-
-		-
 			message: "#^Called 'pluck' on Laravel collection, but could have been retrieved as a query\\.$#"
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
@@ -166,11 +161,6 @@ parameters:
 		-
 			message: "#^Negated boolean expression is always false\\.$#"
 			count: 2
-			path: app/Models/Lesson.php
-
-		-
-			message: "#^Property 'lesson_id' does not exist in App\\\\Models\\\\Lesson model\\. If 'lesson_id' exists as a column on the pivot table, consider using 'wherePivot' or prefix the column with table name instead\\.$#"
-			count: 1
 			path: app/Models/Lesson.php
 
 		-
