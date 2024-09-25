@@ -3,7 +3,6 @@
 namespace App\Support\Paddle;
 
 use App\Domain\Shop\Actions\HandlePurchaseAction;
-use App\Domain\Shop\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
@@ -50,9 +49,7 @@ class ProcessPaymentSucceededJob implements ShouldQueue
             return;
         }
 
-        if (! $user = (new $passthrough['billable_type']())->find($passthrough['billable_id'])) {
-            throw CouldNotHandlePaymentSucceeded::userNotFound($this->payload);
-        }
+        $user = $receipt->billable;
 
         if ($purchasable) {
             $purchaseForPurchasable = Purchase::where('user_id', $user->id)
