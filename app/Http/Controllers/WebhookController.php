@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Support\Paddle\ProcessPaymentSucceededJob;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Laravel\Paddle\Exceptions\InvalidPassthroughPayload;
 use Laravel\Paddle\Http\Controllers\WebhookController as CashierWebhookController;
 
@@ -25,9 +27,11 @@ class WebhookController extends CashierWebhookController
     {
         $passthrough = json_decode($passthrough, true);
 
+        $morphAlias = Relation::getMorphAlias(User::class);
+
         // The passthrough data comes from the shop front-end. We cannot trust it.
-        if (! is_array($passthrough) || $passthrough['billable_type'] !== User::class) {
-            throw new InvalidPassthroughPayload();
+        if (! is_array($passthrough) || $passthrough['billable_type'] !== $morphAlias) {
+            throw new InvalidPassthroughPayload;
         }
 
         return parent::findOrCreateCustomer($passthrough);
