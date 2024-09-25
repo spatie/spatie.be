@@ -24,13 +24,13 @@ class WebhookController extends CashierWebhookController
 
     protected function findOrCreateCustomer(string $passthrough)
     {
-        $passthrough = json_decode($passthrough, true);
+        $passthroughData = json_decode($passthrough, true);
 
         $morphAlias = Relation::getMorphAlias(User::class);
 
         // The passthrough data comes from the shop front-end. We cannot trust it.
-        if (! is_array($passthrough) || $passthrough['billable_type'] !== $morphAlias) {
-            throw new InvalidPassthroughPayload();
+        if (! is_array($passthroughData) || $passthroughData['billable_type'] !== $morphAlias) {
+            throw new InvalidPassthroughPayload;
         }
 
         return parent::findOrCreateCustomer($passthrough);
