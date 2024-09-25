@@ -3,7 +3,6 @@
 namespace App\Support\Paddle;
 
 use App\Domain\Shop\Actions\HandlePurchaseAction;
-use App\Domain\Shop\Exceptions\CouldNotHandlePaymentSucceeded;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
