@@ -30,7 +30,7 @@ class WebhookController extends CashierWebhookController
 
         // The passthrough data comes from the shop front-end. We cannot trust it.
         if (! is_array($passthroughData) || $passthroughData['billable_type'] !== $morphAlias) {
-            throw new InvalidPassthroughPayload;
+            throw new InvalidPassthroughPayload();
         }
 
         return parent::findOrCreateCustomer($passthrough);
