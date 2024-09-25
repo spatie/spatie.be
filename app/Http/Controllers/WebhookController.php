@@ -26,8 +26,8 @@ class WebhookController extends CashierWebhookController
         $passthrough = json_decode($passthrough, true);
 
         // The passthrough data comes from the shop front-end. We cannot trust it.
-        if (! is_array($passthrough) || ! isset($passthrough['billable_id'], $passthrough['billable_type']) || $passthrough['billable_type'] !== User::class) {
-            throw new InvalidPassthroughPayload();
+        if (! is_array($passthrough) || $passthrough['billable_type'] !== User::class) {
+            throw new InvalidPassthroughPayload;
         }
 
         return parent::findOrCreateCustomer($passthrough);
