@@ -62,6 +62,12 @@ class RepositoriesComponent extends Component
         $this->loadRepositories();
     }
 
+    public function updatedSort(): void
+    {
+        $this->repositories = collect();
+        $this->loadRepositories();
+    }
+
     public function loadMore(): void
     {
         $this->loadRepositories(loadingMore: true);
