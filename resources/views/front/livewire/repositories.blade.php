@@ -34,29 +34,19 @@
 
     <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-10">
         @foreach($repositories as $repository)
-            <x-oss-link-card :title="$repository->name">
-                <p class="mb-28">{{ $repository->description }}</p>
-                <div class="flex items-center gap-x-5 mb-5">
-                    <a class="text-sm flex items-center gap-x-2" href="{{ $repository->url }}" target="_blank">
-                        <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                        <span class="underline">GitHub</span>
-                    </a>
-                    @if ($repository->documentation_url)
-                        <a class="text-sm flex items-center gap-x-2" href="{{ $repository->documentation_url }}" target="_blank">
-                            <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                            <span class="underline">Documentation</span>
-                        </a>
-                    @endif
-                </div>
-                <div class="flex items-center gap-x-5">
-                    <span class="text-sm flex items-center gap-x-2">
-                        <svg class="w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 14"><path fill="#EAE8E5" d="m11 6-5 5-5-5V5h3V0h4v5h3v1ZM1 12h11v2H0v-2h1Z"/></svg>
-                        <span>{{ number_format($repository->downloads) }}</span>
-                    </span>
-                    <span class="text-sm flex items-center gap-x-2">
-                        <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
-                        <span>{{ number_format($repository->stars) }}</span>
-                    </span>
+            <x-oss-link-card as="a" :href="$repository->url" :title="$repository->name">
+                <div class="h-full flex flex-col">
+                    <p class="mb-24">{{ $repository->description }}</p>
+                    <div class="flex items-center gap-x-5 mt-auto">
+                        <span class="text-sm flex items-center gap-x-2">
+                            <svg class="w-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 14"><path fill="#EAE8E5" d="m11 6-5 5-5-5V5h3V0h4v5h3v1ZM1 12h11v2H0v-2h1Z"/></svg>
+                            <span>{{ number_format($repository->downloads) }}</span>
+                        </span>
+                        <span class="text-sm flex items-center gap-x-2">
+                            <svg class="w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 16"><path fill="#EAE8E5" d="m9.003 0 2.703 5.125 5.71.987-4.04 4.154L14.2 16l-5.197-2.556L3.803 16l.825-5.734L.591 6.112l5.706-.987L9.003 0Z"/></svg>
+                            <span>{{ number_format($repository->stars) }}</span>
+                        </span>
+                    </div>
                 </div>
             </x-oss-link-card>
         @endforeach
