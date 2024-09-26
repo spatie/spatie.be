@@ -56,6 +56,12 @@ class RepositoriesComponent extends Component
             });
     }
 
+    public function updatedSearch(): void
+    {
+        $this->repositories = collect();
+        $this->loadRepositories();
+    }
+
     public function loadMore(): void
     {
         $this->loadRepositories(loadingMore: true);

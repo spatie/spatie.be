@@ -24,7 +24,7 @@
                         type="search"
                         class="w-full form-input text-white bg-oss-black rounded-[12px] border-oss-gray-extra-dark placeholder-oss-gray py-4 px-6 h-[56px]"
                         placeholder="Find a package ..."
-                        wire:model.live="search"
+                        wire:model.debounce.live="search"
                     >
                     <svg class="w-4 h-4 absolute right-0 top-0 mt-4 mr-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path stroke="#EAE8E5" stroke-width="2" d="m15 15-4-4m-4 2A6 6 0 1 1 7 1a6 6 0 0 1 0 12Z"/></svg>
                 </div>
