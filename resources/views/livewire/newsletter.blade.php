@@ -21,8 +21,8 @@
         <div>
             <div>
                 <div class="bg-white/80 py-4 px-6 rounded-md w-full flex justify-between items-center">
-                    <div>
-                        <input class="bg-transparent h-full placeholder-oss-royal-blue-light" name="email" wire:model="email" type="email" placeholder="Your email address">
+                    <div class="flex-1">
+                        <input class="bg-transparent w-full h-full placeholder-oss-royal-blue-light" name="email" wire:model="email" type="email" placeholder="Your email address">
                         @error('email')
                             <p class="text-oss-red text-xs">{{ $message }}</p>
                         @enderror

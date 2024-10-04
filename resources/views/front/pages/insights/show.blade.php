@@ -49,17 +49,20 @@
         </x-layout.wrapper>
     </article>
 
-    <a href="{{ route('insights') }}">Back to insights</a>
-
     @if(count($otherPosts))
-        <h2>Continue reading</h2>
-        @foreach($otherPosts as $otherPost)
-            <a href="{{ route('insights.show', $otherPost->slug) }}">
-                {{ $otherPost->title }}
-                {{ htmlspecialchars_decode(strip_tags($post->summary)) }}
-            </a>
-        @endforeach
+        <x-layout.wrapper class="mt-24 mb-20 pr-20">
+            <div class="flex">
+                <h2 class="w-1/4 text-24 font-bold">Continue reading</h2>
+                <div class="flex-1 flex flex-col gap-10 -mt-9 pl-9">
+                    @foreach($otherPosts as $otherPost)
+                        <x-insights.list-item :insight="$otherPost" />
+                    @endforeach
+                </div>
+            </div>
+        </x-layout.wrapper>
     @endif
 
-    <livewire:newsletter />
+    <x-layout.wrapper class="my-24">
+        <livewire:newsletter />
+    </x-layout.wrapper>
 </x-page>

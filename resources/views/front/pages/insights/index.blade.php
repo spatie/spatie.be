@@ -11,17 +11,16 @@
     </x-layout.wrapper>
 
     @if($highlight)
-        <x-insights.highlight :insight="$highlight" class="-mt-8" />
+        <x-insights.highlight :insight="$highlight" />
     @endif
 
-    <x-layout.wrapper class="mt-20">
+    <x-layout.wrapper class="mt-20 pr-20">
         <div class="flex">
             <h2 class="w-1/4 text-24 font-bold mt-9">More insights</h2>
             <div class="flex-1 flex flex-col gap-6">
                 @foreach($insights as $insight)
                     <x-insights.list-item :insight="$insight" />
                 @endforeach
-
             </div>
         </div>
         @if ($insights->hasMorePages())
@@ -38,7 +37,7 @@
     </x-layout.wrapper>
 
     @isset($externalFeedItems)
-        <x-layout.wrapper class="mt-24 mb-20">
+        <x-layout.wrapper class="mt-24 mb-20 pr-20">
             <div class="flex">
                 <h2 class="w-1/4 text-24 font-bold">From our team &&nbsp;products</h2>
                 <div class="flex-1 flex flex-col gap-10 pl-9">
