@@ -9,7 +9,6 @@ parameters:
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
-    checkMissingIterableValueType: false
 
     ignoreErrors:
         - '#Unsafe usage of new static#'
