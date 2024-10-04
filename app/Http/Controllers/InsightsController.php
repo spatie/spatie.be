@@ -125,7 +125,7 @@ class InsightsController
         $props = [
             'ref' => 'insights',
             'class' => 'my-6',
-            'thin' => true
+            'thin' => true,
         ];
 
         if (! $type || ! file_exists(base_path("resources/views/components/banners/{$type}.blade.php"))) {
