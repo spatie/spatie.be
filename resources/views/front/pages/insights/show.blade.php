@@ -11,8 +11,8 @@
                     {{ $post->date?->format('F d, Y') ?? 'Preview' }}
                 </time>
 
-                <h1 class="my-9 font-druk font-bold text-[96px] leading-[77px] uppercase">
-                    {!! str($post->title)->replaceLast(' ', '&nbsp;') !!}
+                <h1 class="my-9 font-druk font-bold text-[96px] leading-[77px] text-balance uppercase">
+                    {!! $post->title !!}
                 </h1>
 
                 <div class="mt-9 text-base font-bold">
@@ -31,7 +31,7 @@
 
         <x-layout.wrapper as="section" class="py-20 max-w-layout mx-auto bg-white rounded-2xl">
             <div class="max-w-md mx-auto">
-                <aside class="mb-8">
+                <aside class="mb-8 flex items-center gap-6">
                     @foreach ($post->authors as $author)
                         <div class="flex items-center gap-3">
                             <img src="{{ $author->gravatar_url }}" alt="" class="flex-shrink-0 size-9 rounded-full bg-indigo-50">
@@ -42,8 +42,12 @@
                     @endforeach
                 </aside>
 
-                <main class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline docs-markup">
-                    {!! $post->content !!}
+                <main class="
+                    markup markup-titles markup-lists markup-tables markup-embeds links-blue links-underline docs-markup
+                    [&_>.insights-list-item]:-mx-12
+                    [&_>pre]:-mx-12 [&_>pre]:bg-oss-gray-light
+                ">
+                    {!! $content !!}
                 </main>
             </div>
         </x-layout.wrapper>
@@ -53,7 +57,7 @@
         <x-layout.wrapper class="mt-24 mb-20 pr-20">
             <div class="flex">
                 <h2 class="w-1/4 text-24 font-bold">Continue reading</h2>
-                <div class="flex-1 flex flex-col gap-10 -mt-9 pl-9">
+                <div class="flex-1 flex flex-col -mt-9 pl-9">
                     @foreach($otherPosts as $otherPost)
                         <x-insights.list-item :insight="$otherPost" />
                     @endforeach

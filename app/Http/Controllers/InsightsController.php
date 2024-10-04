@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ExternalFeedItem;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Blade;
 use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
@@ -42,9 +44,9 @@ class InsightsController
         ]);
     }
 
-    public function detail(string $slug): View
+    public function detail(string $slug): View|RedirectResponse
     {
-        $post = ContentApi::getPost('ray', $slug, theme: 'nord');
+        $post = self::getPost($slug);
 
         if (! $post && is_numeric(explode('-', $slug)[0])) {
             $parts = explode('-', $slug);
@@ -56,7 +58,9 @@ class InsightsController
 
         abort_if(is_null($post), 404);
 
-        $otherPosts = ContentApi::getPosts('ray', 1, 3, theme: 'nord')
+        $content = $this->replaceComponents($post->content);
+
+        $otherPosts = self::getPosts()
             ->filter(function (Post $otherPost) use ($post) {
                 return $otherPost->slug !== $post->slug;
             })
@@ -64,11 +68,12 @@ class InsightsController
 
         return view('front.pages.insights.show', [
             'post' => $post,
+            'content' => $content,
             'otherPosts' => $otherPosts,
         ]);
     }
 
-    public static function getFeedItems()
+    public static function getFeedItems(): Paginator
     {
         return self::getPosts()->map(function (Post $post) {
             return FeedItem::create()
@@ -81,13 +86,71 @@ class InsightsController
         });
     }
 
-    private static function getPosts(int $perPage = 500): Paginator
+    private static function getPost(string $slug): ?Post
+    {
+        return ContentApi::getPost('spatie', $slug, theme: 'github-light');
+    }
+
+    private static function getPosts(int $perPage = 100): Paginator
     {
         return ContentApi::getPosts(
-            product: 'ray',
+            product: 'spatie',
             page: request('page', 1),
             perPage: $perPage,
-            theme: 'nord',
+            theme: 'github-light',
         );
+    }
+
+    private function replaceComponents(string $content): string
+    {
+        preg_match_all('/\[\[\[([^\n\[]*)]]]/', $content, $matches);
+
+        foreach ($matches[1] as $index => $match) {
+            $definition = explode(':', $match);
+
+            $method = "render" . ucfirst($definition[0]);
+            if (! method_exists($this, $method)) {
+                continue;
+            }
+
+            $component = $this->$method($definition[1] ?? null);
+            $content = str_replace($matches[0][$index], $component, $content);
+        }
+
+        return $content;
+    }
+
+    private function renderBanner(?string $type): string
+    {
+        $props = [
+            'ref' => 'insights',
+            'class' => 'my-6',
+            'thin' => true
+        ];
+
+        if (! $type || ! file_exists(base_path("resources/views/components/banners/{$type}.blade.php"))) {
+            return Blade::render('components.banners.randomBanner', $props);
+        }
+
+        return Blade::render("components.banners.{$type}", $props);
+    }
+
+    private function renderLink(?string $slug): string
+    {
+        if (! $slug) {
+            return '';
+        }
+
+        $post = self::getPost($slug);
+
+        if (! $post) {
+            return '';
+        }
+
+        return Blade::render("components.insights.list-item", [
+            'insight' => $post,
+            'border' => true,
+            //'class' => '-mx-12',
+        ]);
     }
 }
