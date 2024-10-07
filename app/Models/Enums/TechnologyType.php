@@ -23,12 +23,12 @@ class TechnologyType extends Enum implements Wireable
         ];
     }
 
-    public function toLivewire()
+    public function toLivewire(): mixed
     {
         return [$this->value];
     }
 
-    public static function fromLivewire($value)
+    public static function fromLivewire($value): Enum
     {
         return new self($value[0]);
     }

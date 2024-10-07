@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Insight;
+use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -31,7 +31,7 @@ class ImportInsightsCommand extends Command
                     $feed = Reader::import($feedUrl);
 
                     foreach ($feed as $entry) {
-                        $insight = Insight::updateOrCreate([
+                        $insight = ExternalFeedItem::updateOrCreate([
                             'url' => $entry->getLink(),
                         ], [
                             'title' => $this->sanitizeTitle($entry->getTitle()),

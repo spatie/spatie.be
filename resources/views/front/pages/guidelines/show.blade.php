@@ -56,6 +56,6 @@
         </div>
     </section>
 
-    @include('front.pages.docs.banners.writing-readable-php')
+    @include('components.banners.writing-readable-php')
 </x-page>
 
