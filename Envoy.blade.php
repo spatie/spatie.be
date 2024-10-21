@@ -156,7 +156,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +4 | xargs -d "\n" rm -rf
 
 @task('finishDeploy', ['on' => 'local'])
 {{ logMessage("🚀  Application deployed!") }}
-{{ logMessage("Don't forget testing the docs and executing a purchase") }}
+{{ logMessage('Make sure to test the docs and executing a purchase') }}
 @endtask
 
 @task('deployOnlyCode',['on' => 'remote'])
