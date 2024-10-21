@@ -3,7 +3,6 @@
 return [
 
     'backup' => [
-
         /*
          * The name of this application. You can use this name to monitor
          * the backups.
@@ -11,9 +10,7 @@ return [
         'name' => env('APP_NAME'),
 
         'source' => [
-
             'files' => [
-
                 /*
                  * The list of directories and files that will be included in the backup.
                  */
@@ -34,7 +31,19 @@ return [
                 /*
                  * Determines if symlinks should be followed.
                  */
-                'followLinks' => false,
+                'follow_links' => false,
+
+                /*
+                 * Determines if it should avoid unreadable folders.
+                 */
+                'ignore_unreadable_directories' => false,
+
+                /*
+                 * This path is used to make directories in resulting zip-file relative
+                 * Set to `null` to include complete absolute path
+                 * Example: base_path()
+                 */
+                'relative_path' => null,
             ],
 
             /*
@@ -46,7 +55,72 @@ return [
             ],
         ],
 
+        /*
+         * The database dump can be compressed to decrease disk space usage.
+         *
+         * Out of the box Laravel-backup supplies
+         * Spatie\DbDumper\Compressors\GzipCompressor::class.
+         *
+         * You can also create custom compressor. More info on that here:
+         * https://github.com/spatie/db-dumper#using-compression
+         *
+         * If you do not want any compressor at all, set it to null.
+         */
+        'database_dump_compressor' => null,
+
+        /*
+         * If specified, the database dumped file name will contain a timestamp (e.g.: 'Y-m-d-H-i-s').
+         */
+        'database_dump_file_timestamp_format' => null,
+
+        /*
+         * The base of the dump filename, either 'database' or 'connection'
+         *
+         * If 'database' (default), the dumped filename will contain the database name.
+         * If 'connection', the dumped filename will contain the connection name.
+         */
+        'database_dump_filename_base' => 'database',
+
+        /*
+         * The file extension used for the database dump files.
+         *
+         * If not specified, the file extension will be .archive for MongoDB and .sql for all other databases
+         * The file extension should be specified without a leading .
+         */
+        'database_dump_file_extension' => '',
+
         'destination' => [
+
+            /*
+             * The compression algorithm to be used for creating the zip archive.
+             *
+             * If backing up only database, you may choose gzip compression for db dump and no compression at zip.
+             *
+             * Some common algorithms are listed below:
+             * ZipArchive::CM_STORE (no compression at all; set 0 as compression level)
+             * ZipArchive::CM_DEFAULT
+             * ZipArchive::CM_DEFLATE
+             * ZipArchive::CM_BZIP2
+             * ZipArchive::CM_XZ
+             *
+             * For more check https://www.php.net/manual/zip.constants.php and confirm it's supported by your system.
+             */
+            'compression_method' => ZipArchive::CM_DEFAULT,
+
+            /*
+             * The compression level corresponding to the used algorithm; an integer between 0 and 9.
+             *
+             * Check supported levels for the chosen algorithm, usually 1 means the fastest and weakest compression,
+             * while 9 the slowest and strongest one.
+             *
+             * Setting of 0 for some algorithms may switch to the strongest compression.
+             */
+            'compression_level' => 9,
+
+            /*
+             * The filename prefix used for the backup zip file.
+             */
+            'filename_prefix' => '',
 
             /*
              * The disk names on which the backups will be stored.
@@ -55,6 +129,37 @@ return [
                 'backups',
             ],
         ],
+
+        /*
+         * The directory where the temporary files will be stored.
+         */
+        'temporary_directory' => storage_path('app/backup-temp'),
+
+        /*
+         * The password to be used for archive encryption.
+         * Set to `null` to disable encryption.
+         */
+        'password' => env('BACKUP_ARCHIVE_PASSWORD'),
+
+        /*
+         * The encryption algorithm to be used for archive encryption.
+         * You can set it to `null` or `false` to disable encryption.
+         *
+         * When set to 'default', we'll use ZipArchive::EM_AES_256 if it is
+         * available on your system.
+         */
+        'encryption' => 'default',
+
+        /*
+         * The number of attempts, in case the backup command encounters an exception
+         */
+        'tries' => 1,
+
+        /*
+         * The number of seconds to wait before attempting a new backup if the previous try failed
+         * Set to `0` for none
+         */
+        'retry_delay' => 0,
     ],
 
     /*
@@ -65,7 +170,6 @@ return [
      * the `Spatie\Backup\Events` classes.
      */
     'notifications' => [
-
         'notifications' => [
             \Spatie\Backup\Notifications\Notifications\BackupHasFailedNotification::class => ['slack'],
             \Spatie\Backup\Notifications\Notifications\UnhealthyBackupWasFoundNotification::class => ['slack'],
@@ -87,6 +191,15 @@ return [
 
         'slack' => [
             'webhook_url' => env('SLACK_BACKUP_CHANNEL_WEBHOOK', ''),
+
+            /*
+             * If this is set to null the default channel of the webhook will be used.
+             */
+            'channel' => null,
+
+            'username' => null,
+
+            'icon' => null,
         ],
     ],
 
@@ -95,12 +208,14 @@ return [
      * If a backup does not meet the specified requirements the
      * UnHealthyBackupWasFound event will be fired.
      */
-    'monitorBackups' => [
+    'monitor_backups' => [
         [
             'name' => str_replace('https://', '', env('APP_URL', '')),
             'disks' => ['backups'],
-            'newestBackupsShouldNotBeOlderThanDays' => 1,
-            'storageUsedMayNotBeHigherThanMegabytes' => 1000,
+            'health_checks' => [
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumAgeInDays::class => 1,
+                \Spatie\Backup\Tasks\Monitor\HealthChecks\MaximumStorageInMegabytes::class => 1000,
+            ],
         ],
 
         /*
@@ -158,5 +273,16 @@ return [
              */
             'delete_oldest_backups_when_using_more_megabytes_than' => 5000,
         ],
+
+        /*
+         * The number of attempts, in case the cleanup command encounters an exception
+         */
+        'tries' => 1,
+
+        /*
+         * The number of seconds to wait before attempting a new cleanup if the previous try failed
+         * Set to `0` for none
+         */
+        'retry_delay' => 0,
     ],
 ];
