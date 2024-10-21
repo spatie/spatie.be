@@ -71,6 +71,7 @@ echo "{{ $newReleaseName }}" > public/release-name.txt
 @task('runComposer', ['on' => 'remote'])
 {{ logMessage("🚚  Running Composer...") }}
 cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/.env .env
 composer install --prefer-dist --no-scripts --no-dev -o
 @endtask
 
@@ -119,7 +120,6 @@ php artisan clear-compiled
 @task('backupDatabase', ['on' => 'remote'])
 {{ logMessage("📀  Backing up database...") }}
 cd {{ $newReleaseDir }}
-php artisan config:cache
 php artisan backup:run
 @endtask
 
