@@ -3,7 +3,7 @@
         <h2 class="text-center title-xl">{{ $caption ?? 'A good match' }}</h2>
 
         <p class="mt-8 bg-green-lightest py-2 px-4 rounded text-sm">
-            We have room for new projects starting from <strong>{{ now()->addMonth()->format('F Y') }}</strong>.
+            We have room for new projects starting from <strong>{{ now()->addMonths(4)->format('F Y') }}</strong>.
         </p>
 
         <div class="mt-8 markup grid gap-8 | md:grid-cols " style="--cols: 1fr 1fr">
