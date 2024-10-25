@@ -9,13 +9,13 @@ use Database\Factories\ReceiptFactory;
 use Illuminate\Support\Facades\Http;
 
 beforeEach(function () {
-    $receipt = ReceiptFactory::new()->create();
-
     $purchasable = Purchasable::factory()->create([
         'paddle_product_id' => 123,
     ]);
 
     $this->user = User::factory()->create();
+
+    $receipt = ReceiptFactory::new()->for($this->user, 'billable')->create();
 
     Http::fake();
 
