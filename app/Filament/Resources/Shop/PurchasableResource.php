@@ -105,6 +105,7 @@ class PurchasableResource extends Resource
                                     ->columnSpan(2),
 
                                 MarkdownEditor::make('description')
+                                    ->default('')
                                     ->columnSpan(2),
 
                                 MarkdownEditor::make('renewal_mail_incentive')
