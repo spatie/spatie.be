@@ -26,9 +26,11 @@
 
     @auth
         <div class="bg-white font-special-elite max-w-lg mx-auto py-8">
-            @if (Auth::user()->hasFlag("bf-day-{$currentDay}"))
+            @if ($reward)
                 <div>
                     Good work agent! You've completed the cipher for this day.
+
+                    Your reward: {{ $reward }}
                 </div>
             @else
                 <div

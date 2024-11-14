@@ -2,11 +2,13 @@
 
 namespace App\Livewire;
 
+use Arr;
 use Carbon\CarbonInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Lottery;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
@@ -18,9 +20,11 @@ class TopSecretComponent extends Component
     #[Locked]
     public array $days;
 
-    public string $question = '';
+    public ?string $question = '';
 
     public string $answer = '';
+
+    public ?string $reward = '';
 
     public function mount(): void
     {
@@ -65,7 +69,32 @@ class TopSecretComponent extends Component
 
         Auth::user()->flag("bf-day-{$this->currentDay}");
 
-        // TODO: Reward
+        /**
+         * 20% discount on your next purchase on spatie.be
+         * 30% discount on merchandise on our Merch Store
+         * 50% off on Mailcoach and Flare plans
+         * Free Spatie merchandise
+         * Free yearly licenses for Ray
+         */
+
+        $reward = Arr::random([
+            'next_purchase_discount',
+            'merch_discount',
+            '50_off_mailcoach',
+            '50_off_flare',
+            'free_merch', // 10 / day
+            'free_ray', // x / day
+        ]);
+
+        DB::table('bf24_rewards')->insert([
+            'user_id' => Auth::user()->id,
+            'day' => $this->currentDay,
+            'reward' => $reward,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // TODO: Actual rewards
     }
 
     public function render(): View
@@ -74,6 +103,12 @@ class TopSecretComponent extends Component
             ->where('day', $this->currentDay)
             ->first()
             ?->question;
+
+        $this->reward = DB::table('bf24_rewards')
+            ->where('day', $this->currentDay)
+            ->where('user_id', Auth::user()->id)
+            ->first()
+            ?->reward;
 
         return view('front.pages.top-secret.index')
             ->layout('layout.blank', [
