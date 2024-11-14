@@ -105,7 +105,7 @@ class TopSecretComponent extends Component
 
         $this->reward = DB::table('bf24_rewards')
             ->where('day', $this->currentDay)
-            ->where('user_id', Auth::user()->id)
+            ->where('user_id', Auth::user()->id ?? null)
             ->first()
             ?->reward;
 

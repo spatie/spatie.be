@@ -54,10 +54,10 @@
                                     >
                                         <div
                                             x-on:click="showInput = true"
-                                            class="px-8 border-b border-bf-beige paper-markup text-lg"
-                                            x-bind:class="showInput ? '' : 'cursor-pointer underline decoration-bf-beige'"
+                                            class="px-8 paper-markup text-lg group"
+                                            x-bind:class="showInput ? '' : 'cursor-pointer'"
                                         >
-                                            {{ $question }}
+                                            <span class="group-hover:underline">{{ $question }}</span>
                                         </div>
 
                                         <textarea
@@ -70,7 +70,7 @@
                                         ></textarea>
 
                                         <div x-show="showInput" class="px-8 border-b border-bf-beige">
-                                            <button class="underline decoration-bf-beige" wire:click="submitAnswer">> Submit your solution</button>
+                                            <button class="paper-action-btn" wire:click="submitAnswer">Submit your solution</button>
                                         </div>
                                     </div>
                                 @endif
@@ -78,19 +78,19 @@
 
                         </div>
 
-                        <div class="mt-[-1px] pointer-events-none">
-                            <img src="../images/black-friday/scrap-1.svg" alt="">
+                        <div class="mt-[-2px] pointer-events-none">
+                            <img src="../images/black-friday/scrap-{{ $currentDay }}.svg" alt="">
                         </div>
 
                         <div class="textured-paper absolute inset-0"></div>
 
                     </div>
 
-                    <div class="flex text-white gap-4">
+                    <div class="p-24 mt-auto flex text-white gap-4">
                         @foreach ($days as $day => $date)
                             <div
-                                class="
-                                    {{ $currentDay === $day ? 'border border-white' : '' }}
+                                class="p-8
+                                    {{ $currentDay === $day ? 'bf-date-border' : '' }}
                                     {{ $date->isFuture() ? 'opacity-50' : 'cursor-pointer' }}
                                 "
                                 @if ($date->isPast())
@@ -101,7 +101,7 @@
                                     ✔︎
                                 @endif
 
-                                Day {{ $day }}
+                                <span class="font-obviously-narrow uppercase font-semibold tracking-[0.2em]">Day {{ $day }}</span>
                             </div>
                         @endforeach
                     </div>
@@ -120,11 +120,8 @@
                             <p>Agent,</p>
                             <p>Your last transmission was positive. Good job.</p>
                             <p>You've earned a token of encouragement.</p>
-                            <div
-                                class="sheet-highlight-markup text-bf-red-dark p-4 paper-dotted-border text-center mb-[1em]">
-                                <p>Use the next coupon to get <em>20% off</em> on every next purchase on <a
-                                        href="https://spatie.be/products">spatie.be</a>:</p>
-                                <p>24-TOPSECRET-CODE</p>
+                            <div class="sheet-highlight-markup text-bf-red-dark p-4 paper-dotted-border text-center mb-[1em]">
+                                {{ $reward }}
                             </div>
                             <p>Information regarding the reward will also be transmitted to your secure channel.</p>
                             <p>Awaiting your transmission tomorrow.</p>
