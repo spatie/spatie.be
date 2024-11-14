@@ -17,7 +17,7 @@
                 </div>
             </div>
 
-            <form class="space-y-6" action="{{ route('login') }}" method="POST">
+            <form class="space-y-6" action="{{ route('login') }}?redirect={{ request()->url() }}" method="POST">
                 @csrf
 
                 <x-field>
