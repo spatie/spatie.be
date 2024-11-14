@@ -2,7 +2,9 @@
 
 namespace App\Livewire;
 
+use Carbon\CarbonInterface;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Locked;
@@ -11,7 +13,10 @@ use Livewire\Component;
 class TopSecretComponent extends Component
 {
     #[Locked]
-    public int $day = 1;
+    public int $currentDay = 1;
+
+    #[Locked]
+    public array $days;
 
     public string $question = '';
 
@@ -21,19 +26,30 @@ class TopSecretComponent extends Component
 
     public function mount(): void
     {
-        $this->day = match(true) {
-            now() > Date::create(2024, 11, 29) => 5,
-            now() > Date::create(2024, 11, 28) => 4,
-            now() > Date::create(2024, 11, 27) => 3,
-            now() > Date::create(2024, 11, 26) => 2,
-            now() > Date::create(2024, 11, 25) => 1,
-            default => 1,
-        };
+        $this->days = [
+            1 => Date::create(2024, 11, 25),
+            2 => Date::create(2024, 11, 26),
+            3 => Date::create(2024, 11, 27),
+            4 => Date::create(2024, 11, 28),
+            5 => Date::create(2024, 11, 29),
+        ];
 
-        $this->question = DB::table('bf24_questions')
-            ->where('day', $this->day)
-            ->first()
-            ?->question;
+        $this->currentDay = collect($this->days)->search(function (CarbonInterface $date) {
+            return now()->between($date->startOfDay(), $date->endOfDay());
+        }) ?: 1;
+    }
+
+    public function setDay(int $currentDay): void
+    {
+        if (! isset($this->days[$currentDay])) {
+            return;
+        }
+
+        /*if ($this->days[$day]->isFuture()) {
+            return;
+        }*/
+
+        $this->currentDay = $currentDay;
     }
 
     public function submitAnswer(): void
@@ -41,7 +57,7 @@ class TopSecretComponent extends Component
         $this->incorrect = false;
 
         $answer = DB::table('bf24_questions')
-            ->where('day', $this->day)
+            ->where('day', $this->currentDay)
             ->first()
             ?->answer;
 
@@ -51,11 +67,18 @@ class TopSecretComponent extends Component
             return;
         }
 
+        Auth::user()->flag("bf-day-{$this->currentDay}");
+
         // TODO: Reward
     }
 
     public function render(): View
     {
+        $this->question = DB::table('bf24_questions')
+            ->where('day', $this->currentDay)
+            ->first()
+            ?->question;
+
         return view('front.pages.top-secret.index')
             ->layout('layout.blank', [
                 'title' => 'Top Secret',

@@ -15,9 +15,9 @@
 
     <div class="text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em]">
         <div class="text-center">
-            <p>Day {{ $day }}</p>
-            <x-countdown :expires="now()->endOfDay()">
-                <time datetime="{{ now()->endOfDay()->format('Y-m-d H:i:s') }}" class="tabular-nums">
+            <p>Day {{ $currentDay }}</p>
+            <x-countdown :expires="$days[$currentDay]->endOfDay()">
+                <time datetime="{{ $days[$currentDay]->endOfDay()->format('Y-m-d H:i:s') }}" class="tabular-nums">
                     <span x-text="timer.hours"></span>:<span x-text="timer.minutes"></span>:<span x-text="timer.seconds"></span>
                 </time>
             </x-countdown>
@@ -35,6 +35,18 @@
             @endif
 
             <button wire:click="submitAnswer">Submit your solution</button>
+        </div>
+
+        <div class="flex text-white gap-4">
+            @foreach ($days as $day => $date)
+                <div class="{{ $currentDay === $day ? 'border border-white' : '' }}" wire:click="setDay({{ $day }})">
+                    @if (Auth::user()->hasFlag("bf-day-{$day}"))
+                        ✔︎
+                    @endif
+
+                    Day {{ $day }}
+                </div>
+            @endforeach
         </div>
     @else
         <div class="max-w-xl mx-auto">
