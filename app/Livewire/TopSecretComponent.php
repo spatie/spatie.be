@@ -45,6 +45,7 @@ class TopSecretComponent extends Component
 
         if ($this->answer !== $answer) {
             $this->incorrect = true;
+
             return;
         }
 
@@ -57,7 +58,7 @@ class TopSecretComponent extends Component
             ->layout('layout.blank', [
                 'title' => 'Top Secret',
                 'bodyClass' => 'bg-bf-dark-gray min-h-screen antialiased',
-                'background' => '/backgrounds/bf-24-desk.jpg'
+                'background' => '/backgrounds/bf-24-desk.jpg',
             ]);
     }
 }
