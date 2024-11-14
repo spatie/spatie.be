@@ -25,9 +25,7 @@
 
     @include('layout.partials.wallpaper')
 
-    <div class="flex-grow" role="main">
-        {{ $slot }}
-    </div>
+    {{ $slot }}
 
     <x-impersonate::banner/>
 

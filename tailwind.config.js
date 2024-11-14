@@ -158,8 +158,8 @@ export default {
                 'obviously-narrow',
                 'sans-serif'
             ],
-            'obviously': [
-                'obviously',
+            'obviously-condensed': [
+                'obviously-condensed',
                 'sans-serif'
             ],
             'marker': [
