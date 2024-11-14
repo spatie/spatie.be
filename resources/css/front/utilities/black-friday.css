@@ -15,6 +15,23 @@
     background-position: bottom;
 }
 
+.paper-markup ul {
+    list-style-type: disc;
+    padding-inline-start: 1.5em;
+}
+
+.paper-dotted-border {
+   border: 2px dashed rgba(80, 80, 80, 0.2);
+}
+
+.rewards-card {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(25%, -25%) rotate(-5deg);
+    z-index: 1;
+}
+
 .red-sticky {
     @apply shadow-bf-smooth;
     background: linear-gradient(135.22deg, rgba(255, 255, 255, 0) 0.31%, rgba(255, 255, 255, 0.1) 100.64%), #F37D71;

@@ -137,17 +137,23 @@
 
             </div>
 
-            <div class="bg-bf-red-light p-8 shadow-bf-smooth">
-                <div class="border p-8 font-special-elite paper-markup">
+            <div class="max-w-[632px] bg-bf-red-light p-8 shadow-bf-smooth overflow-hidden rewards-card">
+                <div class="p-8 font-special-elite paper-markup paper-dotted-border">
                     <p>Some of the incentives we provide new agents:</p>
                     <ul>
-                        <li>20% discount on your next purchase on <a href="https://spatie.be" class="underline">spatie.be</a></li>
-                        <li>30% discount on merchandise on our <a href="https://spatie.spreadshop.be" class="underline">Merch Store</a></li>
+                        <li>20% discount on your next purchase on <a href="https://spatie.be" class="underline hover:no-underline">spatie.be</a></li>
+                        <li>30% discount on merchandise on our <a href="https://spatie.spreadshop.be" class="underline hover:no-underline">Merch Store</a></li>
                         <li>50% off on Mailcoach and Flare plans</li>
                         <li>Free Spatie merchandise</li>
                         <li>Free yearly licenses for Ray</li>
                     </ul>
                 </div>
+
+                <div class="absolute inset-0 pointer-events-none flex place-content-center">
+                    <img src="../images/black-friday/spatie-logo.svg" alt="Spatie" class="w-96 opacity-[0.05] rotate-[-12.5deg]">
+                </div>
+
+                <div class="textured-paper absolute inset-0 pointer-events-none"></div>
             </div>
 
         </div>
