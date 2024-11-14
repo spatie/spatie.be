@@ -22,8 +22,6 @@ class TopSecretComponent extends Component
 
     public string $answer = '';
 
-    public bool $incorrect = false;
-
     public function mount(): void
     {
         $this->days = [
@@ -54,15 +52,13 @@ class TopSecretComponent extends Component
 
     public function submitAnswer(): void
     {
-        $this->incorrect = false;
-
         $answer = DB::table('bf24_questions')
             ->where('day', $this->currentDay)
             ->first()
             ?->answer;
 
         if ($this->answer !== $answer) {
-            $this->incorrect = true;
+            $this->answer = 'This is the wrong solution.';
 
             return;
         }

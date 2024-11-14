@@ -25,16 +25,30 @@
     </div>
 
     @auth
-        <div>
-            {{ $question }}
+        <div class="bg-white font-special-elite max-w-lg mx-auto py-8">
+            @if (Auth::user()->hasFlag("bf-day-{$currentDay}"))
+                <div>
+                    Good work agent! You've completed the cipher for this day.
+                </div>
+            @else
+                <div class="grid gap-6 items-start">
+                    <div class="px-8 border-b border-bf-beige paper-markup text-lg">
+                        {{ $question }}
+                    </div>
 
-            <textarea name="answet" id="answer" cols="30" rows="10" wire:model="answer"></textarea>
+                    <textarea
+                        x-data x-on:click="$el.focus();$el.select();"
+                        class="form-input mx-8 border border-bf-dark-gray h-24"
+                        name="answer"
+                        id="answer"
+                        wire:model="answer"
+                    ></textarea>
 
-            @if ($incorrect)
-                <div>This is the wrong solution</div>
+                    <div class="px-8 border-b border-bf-beige">
+                        <button class="underline underline-offset-1 decoration-bf-beige" wire:click="submitAnswer">> Submit your solution</button>
+                    </div>
+                </div>
             @endif
-
-            <button wire:click="submitAnswer">Submit your solution</button>
         </div>
 
         <div class="flex text-white gap-4">
