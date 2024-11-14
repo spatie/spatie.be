@@ -1,11 +1,10 @@
-@push('head')
-    <link rel="stylesheet" href="https://use.typekit.net/oso3hdx.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
-@endpush
-
-<x-blank title="Top Secret" bodyClass="bg-bf-dark-gray min-h-screen antialiased" background="/backgrounds/bf-24-desk.jpg">
+<div>
+    @push('head')
+        <link rel="stylesheet" href="https://use.typekit.net/oso3hdx.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    @endpush
 
     <nav class="text-bf-beige px-6 py-4 text-xs font-obviously-narrow uppercase font-semibold tracking-[0.15em]">
         <ul class="flex gap-4">
@@ -16,8 +15,12 @@
 
     <div class="text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em]">
         <div class="text-center">
-            <p>Day 1</p>
-            <time datetime="" class="tabular-nums">23:54:13</time>
+            <p>Day {{ $day }}</p>
+            <x-countdown :expires="now()->endOfDay()">
+                <time datetime="{{ now()->endOfDay()->format('Y-m-d H:i:s') }}" class="tabular-nums">
+                    <span x-text="timer.hours"></span>:<span x-text="timer.minutes"></span>:<span x-text="timer.seconds"></span>
+                </time>
+            </x-countdown>
         </div>
     </div>
 
@@ -90,5 +93,4 @@
         </div>
 
     </div>
-
-</x-blank>
+</div>

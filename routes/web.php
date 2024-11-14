@@ -35,6 +35,10 @@ use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
 use Illuminate\Support\Facades\Route;
 
+Route::domain('top-secret.'.config('app.url'))->group(function () {
+    Route::get('/', \App\Livewire\TopSecretComponent::class);
+});
+
 Route::permanentRedirect('docs/ray', 'https://myray.app/docs/');
 Route::permanentRedirect('docs/ray/{any}', 'https://myray.app/docs/')->where('any', '.*');
 Route::permanentRedirect('docs/laravel-medialibrary/v11/handling-uploads-with-media-library-pro{any}', 'https://spatie.be/docs/laravel-medialibrary-pro/v6/introduction')->where('any', '.*');
