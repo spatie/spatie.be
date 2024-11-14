@@ -31,21 +31,31 @@
                     Good work agent! You've completed the cipher for this day.
                 </div>
             @else
-                <div class="grid gap-6 items-start">
-                    <div class="px-8 border-b border-bf-beige paper-markup text-lg">
+                <div
+                    x-data="{
+                        showInput: false,
+                    }"
+                    class="grid gap-6 items-start"
+                >
+                    <div
+                        x-on:click="showInput = true"
+                        class="px-8 border-b border-bf-beige paper-markup text-lg"
+                        x-bind:class="showInput ? '' : 'cursor-pointer underline decoration-bf-beige'"
+                    >
                         {{ $question }}
                     </div>
 
                     <textarea
-                        x-data x-on:click="$el.focus();$el.select();"
+                        x-show="showInput"
+                        x-on:click="$el.focus();$el.select();"
                         class="form-input mx-8 border border-bf-dark-gray h-24"
                         name="answer"
                         id="answer"
                         wire:model="answer"
                     ></textarea>
 
-                    <div class="px-8 border-b border-bf-beige">
-                        <button class="underline underline-offset-1 decoration-bf-beige" wire:click="submitAnswer">> Submit your solution</button>
+                    <div x-show="showInput" class="px-8 border-b border-bf-beige">
+                        <button class="underline decoration-bf-beige" wire:click="submitAnswer">> Submit your solution</button>
                     </div>
                 </div>
             @endif
