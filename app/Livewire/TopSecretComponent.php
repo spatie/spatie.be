@@ -8,7 +8,6 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Lottery;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
