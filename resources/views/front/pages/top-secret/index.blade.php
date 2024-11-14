@@ -24,6 +24,24 @@
         </div>
     </div>
 
+    @auth
+        <div>
+            {{ $question }}
+
+            <textarea name="answet" id="answer" cols="30" rows="10" wire:model="answer"></textarea>
+
+            @if ($incorrect)
+                <div>This is the wrong solution</div>
+            @endif
+
+            <button wire:click="submitAnswer">Submit your solution</button>
+        </div>
+    @else
+        <div class="max-w-xl mx-auto">
+            @include('front.pages.top-secret.components.login')
+        </div>
+    @endauth
+
     <div class="stack grid">
 
         <div class="relative max-w-[760px] bg-paper-cover-beige rounded-lg">

@@ -30,14 +30,16 @@ class TopSecretComponent extends Component
             default => 1,
         };
 
-        /*$this->question = DB::table('bf24_questions')
+        $this->question = DB::table('bf24_questions')
             ->where('day', $this->day)
             ->first()
-            ?->question;*/
+            ?->question;
     }
 
     public function submitAnswer(): void
     {
+        $this->incorrect = false;
+
         $answer = DB::table('bf24_questions')
             ->where('day', $this->day)
             ->first()
