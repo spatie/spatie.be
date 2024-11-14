@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <filter id='paper'>
+        <feTurbulence type="fractalNoise" baseFrequency='0.025' result='noise' numOctaves="5" />
+
+        <feDiffuseLighting in='noise' lighting-color='#fff' surfaceScale='2'>
+            <feDistantLight azimuth='45' elevation='80' />
+        </feDiffuseLighting>
+    </filter>
+</svg>

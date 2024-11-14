@@ -174,7 +174,8 @@ Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::get('wwsd/{slug?}', WwsdController::class)->name('wwsd');
-Route::view('black-friday-deals', 'front.pages.black-friday-deals.index');
+// Route::view('black-friday-deals', 'front.pages.black-friday-deals.index');
+Route::view('top-secret', 'front.pages.top-secret.index');
 
 Route::view('offline', 'errors.offline')->name('offline');
 
