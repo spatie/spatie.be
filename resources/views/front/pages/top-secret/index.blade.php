@@ -98,7 +98,7 @@
 
                 <div class="p-28 font-special-elite text-lg paper-markup">
                     <p>Agent,</p>
-                    <p>Welcome to S.P.A.T.I.E.—the elite force of package builders. Prepare to forget everything you
+                    <p>Welcome to <abbr title="Secure Packages And Technical Intelligence Extraction">S.P.A.T.I.E.</abbr>—the elite force of package builders. Prepare to forget everything you
                         think
                         you know about how the package gets made.</p>
                     <p>To deploy you quickly, we’ve prepared a simple challenge to be completed over the next few days.
