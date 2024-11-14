@@ -66,8 +66,13 @@
         <div class="flex text-white gap-4">
             @foreach ($days as $day => $date)
                 <div
-                    class="{{ $currentDay === $day ? 'border border-white' : '' }} {{ $date->isFuture() ? 'opacity-50' : '' }}"
+                    class="
+                        {{ $currentDay === $day ? 'border border-white' : '' }}
+                        {{ $date->isFuture() ? 'opacity-50' : 'cursor-pointer' }}
+                    "
+                    @if ($date->isPast())
                     wire:click="setDay({{ $day }})"
+                    @endif
                 >
                     @if (Auth::user()->hasFlag("bf-day-{$day}"))
                         ✔︎
