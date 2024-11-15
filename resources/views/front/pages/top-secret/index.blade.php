@@ -66,7 +66,7 @@
                                     </div>
 
                                     <textarea x-show="showInput" x-on:click="$el.focus();$el.select();"
-                                        class="form-input border border-bf-dark-gray resize-none h-24 font-sans" name="answer" id="answer" wire:model="answer"></textarea>
+                                        class="form-input border border-bf-gray resize-none h-24 font-sans" name="answer" id="answer" wire:model="answer"></textarea>
 
                                     <div x-show="showInput">
                                         <button class="paper-action-btn" wire:click="submitAnswer">

@@ -25,7 +25,8 @@ export default {
             'oss-yellow': '#E7C23D',
 
             'bf-beige': '#EAE9D8',
-            'bf-dark-gray': '#3C3636',
+            'bf-gray': '#3C3636',
+            'bf-dark-gray': '#242120',
             'bf-brown': '#3E2F18',
             'bf-red': '#F37D71',
             'bf-red-dark': '#E03D3D',
