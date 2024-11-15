@@ -1,4 +1,10 @@
-<div>
+<div x-data="{
+    currentPage: 'about',
+    showCover: true,
+    showAwards: false,
+    showToken: false
+}">
+
     @push('head')
         <link rel="stylesheet" href="https://use.typekit.net/oso3hdx.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -8,19 +14,21 @@
 
     <header class="absolute grid grid-cols-3 h-16 items-center z-10 w-full">
 
-        <nav class="text-bf-beige px-6 py-4 text-xs font-obviously-narrow uppercase font-semibold tracking-[0.15em]">
+        <nav class="text-bf-beige px-6 py-4 text-xs font-obviously-narrow font-semibold tracking-[0.15em]">
             <ul class="flex gap-4">
-                <li><a href="#" class="hover:underline">About</a></li>
-                <li><a href="#" class="hover:underline">Daily challenge</a></li>
+                <li><button @click="currentPage = 'about'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'about' }">About</button></li>
+                <li><button @click="currentPage = 'challenge'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'challenge' }">Daily Challenge</button></li>
             </ul>
         </nav>
 
-        <div class="text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em] col-start-2 pt-4">
+        <div
+            class="text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em] col-start-2 pt-4">
             <div class="text-center">
                 <p>Day {{ $currentDay }}</p>
                 <x-countdown :expires="$days[$currentDay]->endOfDay()">
                     <time datetime="{{ $days[$currentDay]->endOfDay()->format('Y-m-d H:i:s') }}" class="tabular-nums">
-                        <span x-text="timer.hours"></span>:<span x-text="timer.minutes"></span>:<span x-text="timer.seconds"></span>
+                        <span x-text="timer.hours"></span>:<span x-text="timer.minutes"></span>:<span
+                            x-text="timer.seconds"></span>
                     </time>
                 </x-countdown>
             </div>
@@ -29,49 +37,36 @@
     </header>
 
     @auth
-        <div class="bf-page page-challenge">
+        <div class="bf-page page-challenge" x-show="currentPage === 'challenge'">
             <div class="grid justify-center h-full pt-16">
 
                 <div class="relative challenge-sheet">
 
-                    <div class="max-w-[800px] overflow-hidden">
+                    <div class="max-w-[800px] overflow-hidden m-auto">
 
                         <div class="flex flex-col gap-6 p-12 pb-0 bg-white shadow-bf-hard">
 
-                            <div class="font-special-elite">
+                            <div class="font-special-elite text-lg">
                                 @if ($reward)
-                                    <div>
-                                        Good work agent! You've completed the cipher for this day.
-
-                                        Your reward: {{ $reward }}
-                                    </div>
+                                    <p>{{ $question }}</p>
+                                    <p>TODO PLACE ANSWER HERE</p>
                                 @else
-                                    <div
-                                        x-data="{
-                                            showInput: false,
-                                        }"
-                                        class="grid gap-6 items-start"
-                                    >
-                                        <div
-                                            x-on:click="showInput = true"
-                                            class="px-8 paper-markup text-lg group"
-                                            x-bind:class="showInput ? '' : 'cursor-pointer'"
-                                        >
-                                            <span class="group-hover:underline">{{ $question }}</span>
-                                        </div>
+                                    <div x-data="{
+                                    showInput: false,
+                                }" class="grid gap-6 items-start">
+                                    <div x-on:click="showInput = true" class="px-8 paper-markup text-lg group"
+                                        x-bind:class="showInput ? '' : 'cursor-pointer'">
+                                        <p class="group-hover:underline">{{ $question }}</p>
+                                    </div>
 
-                                        <textarea
-                                            x-show="showInput"
-                                            x-on:click="$el.focus();$el.select();"
-                                            class="form-input mx-8 border border-bf-dark-gray h-24"
-                                            name="answer"
-                                            id="answer"
-                                            wire:model="answer"
-                                        ></textarea>
+                                    <textarea x-show="showInput" x-on:click="$el.focus();$el.select();"
+                                        class="form-input mx-8 border border-bf-dark-gray resize-none h-24 font-sans" name="answer" id="answer" wire:model="answer"></textarea>
 
-                                        <div x-show="showInput" class="px-8 border-b border-bf-beige">
-                                            <button class="paper-action-btn" wire:click="submitAnswer">Submit your solution</button>
-                                        </div>
+                                    <div x-show="showInput" class="px-8 border-b border-bf-beige">
+                                        <button class="paper-action-btn" wire:click="submitAnswer">
+                                            Submit your solution
+                                        </button>
+                                    </div>
                                     </div>
                                 @endif
                             </div>
@@ -88,31 +83,27 @@
 
                     <div class="p-24 mt-auto flex text-white gap-4">
                         @foreach ($days as $day => $date)
-                            <div
-                                class="p-8
+                            <div class="p-8
                                     {{ $currentDay === $day ? 'bf-date-border' : '' }}
                                     {{ $date->isFuture() ? 'opacity-50' : 'cursor-pointer' }}
                                 "
-                                @if ($date->isPast())
-                                wire:click="setDay({{ $day }})"
-                                @endif
-                            >
+                                @if ($date->isPast()) wire:click="setDay({{ $day }})" @endif>
                                 @if (Auth::user()->hasFlag("bf-day-{$day}"))
                                     ✔︎
                                 @endif
 
-                                <span class="font-obviously-narrow uppercase font-semibold tracking-[0.2em]">Day {{ $day }}</span>
+                                <span class="font-obviously-narrow uppercase font-semibold tracking-[0.2em]">Day
+                                    {{ $day }}</span>
                             </div>
                         @endforeach
                     </div>
 
                 </div>
 
-                <div class="bf-overlay place-items-end hidden">
-
+                <div id="reward-message" class="bf-overlay place-items-end hidden">
                     <div class="relative max-w-[632px] w-full bg-white p-8 shadow-bf-smooth paper-holes">
 
-                        <button class="raffle-token">
+                        <button class="raffle-token" x-on:click="showToken = true">
                             <img src="../images/black-friday/raffle-token.svg" alt="Get a secret prize" class="w-56">
                         </button>
 
@@ -120,7 +111,8 @@
                             <p>Agent,</p>
                             <p>Your last transmission was positive. Good job.</p>
                             <p>You've earned a token of encouragement.</p>
-                            <div class="sheet-highlight-markup text-bf-red-dark p-4 paper-dotted-border text-center mb-[1em]">
+                            <div
+                                class="sheet-highlight-markup text-bf-red-dark p-4 paper-dotted-border text-center mb-[1em]">
                                 {{ $reward }}
                             </div>
                             <p>Information regarding the reward will also be transmitted to your secure channel.</p>
@@ -135,10 +127,9 @@
 
                         <div class="textured-paper absolute inset-0"></div>
                     </div>
-
                 </div>
 
-                <div class="bf-overlay place-items-end hidden">
+                <div id="hint-message" class="bf-overlay place-items-end hidden">
                     <div class="relative max-w-[632px] w-full bg-white p-8 shadow-bf-smooth paper-holes">
 
                         <div class="p-8 text-lg font-special-elite paper-markup paper-dotted-border">
@@ -147,7 +138,7 @@
                             <p>Decipher the code using this hint:</p>
                             <div
                                 class="sheet-highlight-markup text-bf-red-dark p-4 paper-dotted-border text-center mb-[1em]">
-                                <p>Hint</p>
+                                <p>TODO PLACE HINT HERE</p>
                             </div>
                             <p>No additional assistance will follow.</p>
                             <p>Proceed with caution.</p>
@@ -161,21 +152,22 @@
 
                         <div class="textured-paper absolute inset-0"></div>
                     </div>
-
                 </div>
-                <div class="bf-overlay hidden">
 
+                <div id="token-message" class="bf-overlay" x-show="showToken" x-transition>
                     <div class="relative max-w-[460px] bg-bf-red p-4 shadow-bf-smooth">
 
                         <div class="p-4 paper-markup border-2 leading-snug border-[#DA5A55]">
-                            <h2 class="text-3xl font-obviously-condensed uppercase font-bold mb-4 tracking-wide leading-none">Smart
+                            <h2
+                                class="text-3xl font-obviously-condensed uppercase font-bold mb-4 tracking-wide leading-none">
+                                Smart
                                 agents are capable agents!</h2>
                             <p class="mb-4">Enter the daily raffle for a chance to <strong>win a one-hour face-to-face
                                     meeting</strong> with Special Agent Know-It-All, the sharpest mind in packaging at
                                 S.P.A.T.I.E.</p>
                             <label for="raffle" class="flex items-center mb-4">
                                 <input class="form-checkbox mr-4" type="checkbox" name="raffle" id="raffle">
-                                <span class="text-sm leading-tight">Yes, include me in the daily raffle to win a chance for a one hour consultation with Spatie</span>
+                                <span class="text-sm leading-tight">Yes, include me in the daily prize draw for a chance to win a one-hour consultation with Spatie.</span>
                             </label>
                             <button
                                 class="text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide">Enter
@@ -185,11 +177,12 @@
                         <div class="textured-paper absolute inset-0"></div>
                     </div>
                 </div>
+
             </div>
         </div>
     @endauth
 
-    <div class="bf-page page-about">
+    <div class="bf-page page-about" x-show="currentPage === 'about'">
 
         @guest
             <div class="bf-overlay">
@@ -199,21 +192,32 @@
             </div>
         @endguest
 
-        <div class="grid justify-center paper-stack h-full pt-16">
+        <div 
+            class="grid justify-center paper-stack h-full pt-16"
+        >
 
-            <div class="relative max-w-[760px] bg-paper-cover-beige overflow-hidden paper-stack-item">
-                <div class="flex relative">
+            <div
+                class="relative max-w-[760px] bg-paper-cover-beige overflow-hidden paper-stack-item"
+                x-show="showCover"
+                x-transition
+            >
+                <div class="flex relative h-full">
 
                     <div class="p-12 lg:p-24 text-lg w-full paper-markup">
-                        <div class="flex flex-col items-center text-center">
+                        <div class="flex flex-col items-center text-center h-full">
                             <img src="../images/black-friday/spatie-logo.svg" alt="Spatie" class="w-56 mb-8">
                             <h1
-                                class="font-obviously-condensed font-bold text-[4rem] uppercase leading-[80%] text-bf-brown text-balance lg:text-8xl">
+                                class="font-obviously-condensed font-bold text-[3.5rem] uppercase leading-[80%] text-bf-brown text-balance lg:text-[7rem]">
                                 Instructions for new Agents</h1>
-                            <img src="../images/black-friday/confidential-stamp.png" alt="" class="w-[365px]">
-                            <a href="#"
-                                class="text-bf-red-dark text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide">Do
-                                not click to open</a>
+                            <img src="../images/black-friday/confidential-stamp.png" alt=""
+                                class="w-[360px]">
+                            <div class="mt-auto">
+                                <button
+                                    class="text-bf-red-dark text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide"
+                                    x-on:click="showCover = false">
+                                    Do not click to open
+                                </button>
+                            </div>
                         </div>
                     </div>
 
@@ -224,11 +228,14 @@
 
             <div class="relative max-w-[760px] bg-white shadow-bf-hard paper-stack-item lg:rotate-[-2.5deg]">
 
-                <div class="absolute right-0 aspect-square w-32 flex items-center red-sticky">
+                <div class="absolute right-0 aspect-square w-32 flex items-center red-sticky z-[1]">
                     <span class="block font-marker p-4 text-center font-sm leading-tight">
-                        <a href="#" class="underline hover:no-underline">Note to self: be sure to check out all
-                            the
-                            rewards</a>
+                        <button 
+                            class="underline hover:no-underline"
+                            x-on:click="showAwards = !showAwards"
+                        >
+                            Note to self: be sure to check out all the rewards
+                        </button>
                     </span>
                 </div>
 
@@ -236,7 +243,9 @@
 
                     <div class="p-14 lg:p-28 font-special-elite text-lg paper-markup">
                         <p>Agent,</p>
-                        <p>Welcome to <abbr title="Secure Packages And Technical Intelligence Extraction">S.P.A.T.I.E.</abbr>.—the elite force of package builders. Prepare to forget everything you
+                        <p>Welcome to <abbr
+                                title="Secure Packages And Technical Intelligence Extraction">S.P.A.T.I.E.</abbr>—the
+                            elite force of package builders. Prepare to forget everything you
                             think
                             you know about how the package gets made.</p>
                         <p>To deploy you quickly, we’ve prepared a simple challenge to be completed over the next few
@@ -249,7 +258,7 @@
                         <p>Once you deciphered all the fragments, read the full message and carry out the command.</p>
                         <p>No questions. No hesitation. Don’t fail.</p>
                         <p>Sgt. Murze</p>
-                        <p><a href="#">Start deciphering</a></p>
+                        <button @click="currentPage = 'challenge'" class="paper-action-btn underline hover:no-underline">Start deciphering</button>
                     </div>
 
                     <div class="textured-paper absolute inset-0"></div>
@@ -257,7 +266,10 @@
                 </div>
 
                 <div
-                    class="max-w-[632px] w-full bg-bf-red-light p-8 shadow-bf-smooth overflow-hidden rewards-card rewards-card-markup">
+                    class="max-w-[632px] w-full bg-bf-red-light p-8 shadow-bf-smooth overflow-hidden rewards-card rewards-card-markup"
+                    x-show="showAwards"
+                    x-transition
+                >
                     <div class="p-8 font-special-elite paper-markup paper-dotted-border">
                         <p>Some of the incentives we provide new agents:</p>
                         <ul>

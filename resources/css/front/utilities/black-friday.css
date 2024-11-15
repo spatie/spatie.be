@@ -43,12 +43,14 @@
 .paper-stack .paper-stack-item {
     grid-row: 1;
     grid-column: 1;
-    order: 0;
 }
 
 .paper-stack .paper-stack-item:first-child {
-    order: 1;
-    z-index: 1;
+    @apply order-1;
+}
+
+.paper-stack .paper-stack-item:last-child {
+    @apply -order-last;
 }
 
 .textured-paper {
@@ -154,5 +156,5 @@
 .red-sticky {
     @apply shadow-bf-smooth;
     background: linear-gradient(135.22deg, rgba(255, 255, 255, 0) 0.31%, rgba(255, 255, 255, 0.1) 100.64%), #F37D71;
-    transform: translate(-1.5em, -2.5em) rotate(-5deg);
+    transform: translate(-1.5em, -1.05em);
 }

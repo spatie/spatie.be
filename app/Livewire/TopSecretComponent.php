@@ -112,7 +112,7 @@ class TopSecretComponent extends Component
         return view('front.pages.top-secret.index')
             ->layout('layout.blank', [
                 'title' => 'Top Secret',
-                'bodyClass' => 'bg-bf-dark-gray min-h-screen antialiased',
+                'bodyClass' => 'bg-bf-dark-gray min-h-screen overflow-hidden antialiased',
                 'background' => '/backgrounds/bf-24-desk.jpg',
             ]);
     }
