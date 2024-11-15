@@ -23,8 +23,6 @@
 
 <body class="{{ $bodyClass ?? '' }}">
 
-    @include('layout.partials.wallpaper')
-
     {{ $slot }}
 
     <x-impersonate::banner/>

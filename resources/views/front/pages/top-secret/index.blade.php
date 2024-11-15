@@ -1,9 +1,15 @@
+<?php $image = image("/backgrounds/bf-24-desk.jpg") ?>
+
 <div x-data="{
     currentPage: 'about',
     showCover: true,
     showAwards: false,
     showToken: false
 }">
+
+    <div class="wallpaper">
+        <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="" class="h-full object-cover">
+    </div>
 
     @push('head')
         <link rel="stylesheet" href="https://use.typekit.net/oso3hdx.css">
@@ -14,7 +20,7 @@
 
     <header class="absolute grid grid-cols-3 h-16 items-center z-10 w-full">
 
-        <nav class="text-bf-beige px-6 py-4 text-xs font-obviously-narrow font-semibold tracking-[0.15em]">
+        <nav class="text-bf-beige px-6 py-4 text-xs font-obviously-narrow font-semibold tracking-[0.15em] col-span-2 md:col-auto">
             <ul class="flex gap-4">
                 <li><button @click="currentPage = 'about'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'about' }">About</button></li>
                 <li><button @click="currentPage = 'challenge'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'challenge' }">Daily Challenge</button></li>
@@ -22,7 +28,7 @@
         </nav>
 
         <div
-            class="text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em] col-start-2 pt-4">
+            class="pt-4 text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em] md:col-start-2">
             <div class="text-center">
                 <p>Day {{ $currentDay }}</p>
                 <x-countdown :expires="$days[$currentDay]->endOfDay()">
@@ -38,13 +44,13 @@
 
     @auth
         <div class="bf-page page-challenge" x-show="currentPage === 'challenge'">
-            <div class="grid justify-center h-full pt-16">
+            <div class="grid justify-center h-full mt-16">
 
                 <div class="relative challenge-sheet">
 
                     <div class="max-w-[800px] overflow-hidden m-auto">
 
-                        <div class="flex flex-col gap-6 p-12 pb-0 bg-white shadow-bf-hard">
+                        <div class="flex flex-col gap-6 p-8 pb-0 lg:p-16 lg:pb-4 bg-white shadow-bf-hard">
 
                             <div class="font-special-elite text-lg">
                                 @if ($reward)
@@ -54,15 +60,15 @@
                                     <div x-data="{
                                     showInput: false,
                                 }" class="grid gap-6 items-start">
-                                    <div x-on:click="showInput = true" class="px-8 paper-markup text-lg group"
+                                    <div x-on:click="showInput = true" class="paper-markup text-lg group"
                                         x-bind:class="showInput ? '' : 'cursor-pointer'">
                                         <p class="group-hover:underline">{{ $question }}</p>
                                     </div>
 
                                     <textarea x-show="showInput" x-on:click="$el.focus();$el.select();"
-                                        class="form-input mx-8 border border-bf-dark-gray resize-none h-24 font-sans" name="answer" id="answer" wire:model="answer"></textarea>
+                                        class="form-input border border-bf-dark-gray resize-none h-24 font-sans" name="answer" id="answer" wire:model="answer"></textarea>
 
-                                    <div x-show="showInput" class="px-8 border-b border-bf-beige">
+                                    <div x-show="showInput">
                                         <button class="paper-action-btn" wire:click="submitAnswer">
                                             Submit your solution
                                         </button>
@@ -81,9 +87,9 @@
 
                     </div>
 
-                    <div class="p-24 mt-auto flex text-white gap-4">
+                    <div class="p-12 lg:p-24 flex flex-wrap text-white gap-4 justify-center">
                         @foreach ($days as $day => $date)
-                            <div class="p-8
+                            <div class="p-2 lg:p-8
                                     {{ $currentDay === $day ? 'bf-date-border' : '' }}
                                     {{ $date->isFuture() ? 'opacity-50' : 'cursor-pointer' }}
                                 "
@@ -193,7 +199,7 @@
         @endguest
 
         <div 
-            class="grid justify-center paper-stack h-full pt-16"
+            class="grid justify-center paper-stack h-full pt-16 overflow-scroll md:overflow-visible"
         >
 
             <div
@@ -211,7 +217,7 @@
                                 Instructions for new Agents</h1>
                             <img src="../images/black-friday/confidential-stamp.png" alt=""
                                 class="w-[360px]">
-                            <div class="mt-auto">
+                            <div class="md:mt-auto">
                                 <button
                                     class="text-bf-red-dark text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide"
                                     x-on:click="showCover = false">
@@ -226,10 +232,10 @@
                 <div class="textured-paper absolute inset-0"></div>
             </div>
 
-            <div class="relative max-w-[760px] bg-white shadow-bf-hard paper-stack-item lg:rotate-[-2.5deg]">
+            <div class="relative max-w-[760px] bg-white shadow-bf-hard paper-stack-item rotate-0 md:rotate-[-2.5deg]">
 
-                <div class="absolute right-0 aspect-square w-32 flex items-center red-sticky z-[1]">
-                    <span class="block font-marker p-4 text-center font-sm leading-tight">
+                <div class="absolute right-0 md:aspect-square w-32 flex items-center red-sticky z-[1]">
+                    <span class="block font-marker p-4 text-center text-sm md:text-base md:leading-tight">
                         <button 
                             class="underline hover:no-underline"
                             x-on:click="showAwards = !showAwards"
@@ -241,7 +247,7 @@
 
                 <div class="flex overflow-hidden">
 
-                    <div class="p-14 lg:p-28 font-special-elite text-lg paper-markup">
+                    <div class="p-12 lg:p-28 font-special-elite md:text-lg paper-markup">
                         <p>Agent,</p>
                         <p>Welcome to <abbr
                                 title="Secure Packages And Technical Intelligence Extraction">S.P.A.T.I.E.</abbr>—the
@@ -268,7 +274,6 @@
                 <div
                     class="max-w-[632px] w-full bg-bf-red-light p-8 shadow-bf-smooth overflow-hidden rewards-card rewards-card-markup"
                     x-show="showAwards"
-                    x-transition
                 >
                     <div class="p-8 font-special-elite paper-markup paper-dotted-border">
                         <p>Some of the incentives we provide new agents:</p>
