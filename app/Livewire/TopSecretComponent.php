@@ -68,6 +68,11 @@ class TopSecretComponent extends Component
 
         Auth::user()->flag("bf-day-{$this->currentDay}");
 
+        // We don't want to give rewards for past days
+        if ($this->days[$this->currentDay]->endOfDay()->isPast()) {
+            return;
+        }
+
         /**
          * 20% discount on your next purchase on spatie.be
          * 30% discount on merchandise on our Merch Store
