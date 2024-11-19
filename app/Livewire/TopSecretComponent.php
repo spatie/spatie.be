@@ -4,8 +4,6 @@ namespace App\Livewire;
 
 use App\Actions\DetermineBlackFridayRewardAction;
 use App\Data\BlackFridayRewardData;
-use App\Exceptions\BlackFridayRewardException;
-use Arr;
 use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 use Illuminate\Contracts\View\View;

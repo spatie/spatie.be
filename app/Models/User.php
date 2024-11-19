@@ -29,7 +29,6 @@ use Laravel\Paddle\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Comments\Models\Concerns\InteractsWithComments;
 use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
-use Spatie\ModelFlags\Models\Concerns\HasFlags;
 
 class User extends Authenticatable implements CanComment, FilamentUser
 {

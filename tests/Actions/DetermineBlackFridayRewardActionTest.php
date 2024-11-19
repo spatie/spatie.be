@@ -2,9 +2,9 @@
 
 use App\Actions\DetermineBlackFridayRewardAction;
 use App\Enums\BlackFridayRewardType;
-use App\Exceptions\BlackFridayRewardException;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+
 use function Pest\Laravel\assertDatabaseCount;
 use function Pest\Laravel\assertDatabaseHas;
 

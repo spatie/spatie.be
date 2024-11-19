@@ -18,7 +18,7 @@ class DetermineBlackFridayRewardAction
     ): BlackFridayRewardData {
         $redeemedReward = BlackFridayRewardData::forUserAndDay($user, $day);
 
-        if($redeemedReward) {
+        if ($redeemedReward) {
             return $redeemedReward;
         }
 
