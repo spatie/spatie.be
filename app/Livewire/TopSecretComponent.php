@@ -2,11 +2,14 @@
 
 namespace App\Livewire;
 
+use App\Actions\DetermineBlackFridayRewardAction;
+use App\Data\BlackFridayRewardData;
+use App\Exceptions\BlackFridayRewardException;
 use Arr;
+use Carbon\CarbonImmutable;
 use Carbon\CarbonInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
@@ -19,21 +22,31 @@ class TopSecretComponent extends Component
     #[Locked]
     public array $days;
 
+    public array $completedDays = [];
+
+    #[Locked]
     public ?string $question = '';
+
+    #[Locked]
+    public ?string $hint = '';
 
     public string $answer = '';
 
-    public ?string $reward = '';
+    #[Locked]
+    public ?BlackFridayRewardData $reward = null;
+
+    public bool $showReward = false;
+
+    public bool $showHint = false;
 
     public function mount(): void
     {
-        $this->days = [
-            1 => Date::create(2024, 11, 25),
-            2 => Date::create(2024, 11, 26),
-            3 => Date::create(2024, 11, 27),
-            4 => Date::create(2024, 11, 28),
-            5 => Date::create(2024, 11, 29),
-        ];
+        $current = CarbonImmutable::parse(config('black-friday.start_date'));
+
+        foreach (range(1, 5) as $day) {
+            $this->days[$day] = $current;
+            $current = $current->addDay();
+        }
 
         $this->currentDay = collect($this->days)->search(function (CarbonInterface $date) {
             return now()->between($date->startOfDay(), $date->endOfDay());
@@ -46,73 +59,85 @@ class TopSecretComponent extends Component
             return;
         }
 
-        /*if ($this->days[$day]->isFuture()) {
+        if ($this->days[$currentDay]->isFuture()) {
             return;
-        }*/
+        }
 
         $this->currentDay = $currentDay;
+        $this->answer = '';
+        $this->question = '';
     }
 
     public function submitAnswer(): void
     {
-        $answer = DB::table('bf24_questions')
+        $questionRow = DB::table('bf24_questions')
             ->where('day', $this->currentDay)
-            ->first()
-            ?->answer;
+            ->firstOrFail();
 
-        if ($this->answer !== $answer) {
-            $this->answer = 'This is the wrong solution.';
+        if ($this->answer !== $questionRow?->answer) {
+            $this->answer = '';
+            $this->hint = $questionRow->hint;
+            $this->showHint = true;
 
             return;
         }
 
-        Auth::user()->flag("bf-day-{$this->currentDay}");
-
-        // We don't want to give rewards for past days
         if ($this->days[$this->currentDay]->endOfDay()->isPast()) {
+            $this->answer = 'This is the correct solution, but the time has run out.';
+
             return;
         }
 
-        /**
-         * 20% discount on your next purchase on spatie.be
-         * 30% discount on merchandise on our Merch Store
-         * 50% off on Mailcoach and Flare plans
-         * Free Spatie merchandise
-         * Free yearly licenses for Ray
-         */
+        if ($this->days[$this->currentDay]->startOfDay()->isFuture()) {
+            $this->answer = 'This is the correct solution, but this challenge is not yet open.';
 
-        $reward = Arr::random([
-            'next_purchase_discount',
-            'merch_discount',
-            '50_off_mailcoach',
-            '50_off_flare',
-            'free_merch', // 10 / day
-            'free_ray', // x / day
-        ]);
+            return;
+        }
 
-        DB::table('bf24_rewards')->insert([
-            'user_id' => Auth::user()->id,
-            'day' => $this->currentDay,
-            'reward' => $reward,
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
+        $this->reward = app(DetermineBlackFridayRewardAction::class)->execute(
+            Auth::user(),
+            $this->currentDay
+        );
 
-        // TODO: Actual rewards
+        $this->showReward = true;
+    }
+
+    public function enterRaffle(): void
+    {
+        if ($this->days[$this->currentDay]->endOfDay()->isPast() || $this->days[$this->currentDay]->startOfDay()->isFuture()) {
+            return;
+        }
+
+        if ($this->reward === null) {
+            return;
+        }
+
+        DB::table('bf24_redeemed_rewards')
+            ->where('user_id', Auth::id())
+            ->where('day', $this->currentDay)
+            ->update(['entered_raffle' => true]);
     }
 
     public function render(): View
     {
-        $this->question = DB::table('bf24_questions')
+        $questionRow = DB::table('bf24_questions')
             ->where('day', $this->currentDay)
-            ->first()
-            ?->question;
+            ->first();
 
-        $this->reward = DB::table('bf24_rewards')
-            ->where('day', $this->currentDay)
-            ->where('user_id', Auth::user()->id ?? null)
-            ->first()
-            ?->reward;
+        $this->question = $questionRow?->question;
+
+        $this->reward = Auth::user()
+            ? BlackFridayRewardData::forUserAndDay(Auth::user(), $this->currentDay)
+            : null;
+
+        $this->completedDays = DB::table('bf24_redeemed_rewards')
+            ->where('user_id', Auth::id())
+            ->pluck('day')
+            ->toArray();
+
+        if ($this->reward || $this->days[$this->currentDay]->endOfDay()->isPast()) {
+            $this->answer = $questionRow->answer;
+        }
 
         return view('front.pages.top-secret.index')
             ->layout('layout.blank', [
