@@ -47,10 +47,12 @@
 
 .paper-stack .paper-stack-item:first-child {
     @apply order-1;
+    z-index: 1;
 }
 
 .paper-stack .paper-stack-item:last-child {
     @apply -order-last;
+    z-index: -1;
 }
 
 .textured-paper {
