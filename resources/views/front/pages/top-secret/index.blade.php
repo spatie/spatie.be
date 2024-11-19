@@ -63,28 +63,34 @@
 
                 <div class="relative challenge-sheet">
 
-                    <div class="max-w-[800px] overflow-hidden m-auto">
+                    <div class="w-full max-w-[800px] m-auto">
 
-                        <div class="flex flex-col gap-6 p-8 pb-0 lg:p-16 lg:pb-4 bg-white shadow-bf-hard">
+                        @if ($reward)
+                            <div class="red-sticky absolute right-0 -bottom-[4.5em] md:aspect-square w-32 flex items-center z-[1]">
+                                <span class="block font-marker p-4 text-center text-sm md:text-base md:leading-tight">
+                                    <button
+                                        class="underline hover:no-underline"
+                                        x-on:click="showReward = true"
+                                    >
+                                        Note to self: Got this one! Received a cool reward.
+                                    </button>
+                                </span>
+                            </div>
+                        @endif
 
-                            <div class="font-special-elite text-lg">
+                        <div class="flex flex-col gap-6 p-8 pb-0 lg:p-20 lg:pb-4 bg-white shadow-bf-hard">
+
+                            <div class="font-special-elite">
                                 @if ($reward)
-{{--                                    TODO: style this--}}
-                                    <p>{{ $question }}</p>
-
-                                    <p>Answer: {{ $answer }}</p>
-
-                                    <button x-on:click="showReward = true">Show my reward</button>
+                                    <p class="mb-2">{{ $question }}</p>
+                                    <p class="text-blue mb-2">{{ $answer }}</p>
                                 @elseif($days[$currentDay]->endOfDay()->isPast())
-                                    {{--                                    TODO: style this--}}
                                     <p>{{ $question }}</p>
-
-                                    <p>Answer: {{ $answer }}</p>
                                 @else
                                     <div x-data="{
                                     showInput: false,
                                 }" class="grid gap-6 items-start">
-                                        <div x-on:click="showInput = true" class="paper-markup text-lg group"
+                                        <div x-on:click="showInput = true" class="paper-markup group"
                                              x-bind:class="showInput ? '' : 'cursor-pointer'">
                                             <p class="group-hover:underline">{{ $question }}</p>
                                         </div>
@@ -130,9 +136,9 @@
 
                 </div>
 
-                <div id="reward-message" class="bf-overlay place-items-end" x-show="showReward">
+                <div class="bf-overlay place-items-end" x-show="showReward" x-transition.opacity>
                     @if($reward)
-                        <div class="relative max-w-[632px] w-full bg-white p-8 shadow-bf-smooth paper-holes">
+                        <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes">
 
                             @if($reward->enteredRaffle === false && $days[$currentDay]->isToday())
                                 <button class="raffle-token" x-on:click="showToken = true">
@@ -140,7 +146,7 @@
                                 </button>
                             @endif
 
-                            <div class="p-8 text-lg font-special-elite paper-markup paper-dotted-border">
+                            <div class="h-full p-8 text-lg font-special-elite paper-markup paper-dotted-border">
                                 <p>Agent,</p>
                                 <p>Your last transmission was positive. Good job.</p>
                                 <p>You've earned a token of encouragement.</p>
@@ -153,10 +159,11 @@
                                 </div>
                                 <p>Information regarding the reward will also be transmitted to your secure channel.</p>
                                 <p>Awaiting your transmission tomorrow.</p>
-                                <p>Broadcast your success on: <a href="#">Bluesky</a>, <a href="#">X</a></p>
-
-                                {{--                                    TODO: style this--}}
-                                <p><a x-on:click="showReward = false">Discard</a></p>
+                                <p>Broadcast your success on: 
+                                    <a href="https://bsky.app/intent/compose?text={{ Str::of("I decoded my daily message on topsecret.spatie.be and got a nice prize!") }}">Bluesky</a>, 
+                                    <a href="https://twitter.com/intent/tweet?text={{ Str::of("I decoded my daily message on topsecret.spatie.be and got a nice prize!") }}">X</a>
+                                </p>
+                                <p><button class="underline hover:no-underline" x-on:click="showReward = false">Discard</button></p>
                             </div>
 
                             <div class="absolute inset-0 pointer-events-none flex place-content-center">
@@ -169,10 +176,10 @@
                     @endif
                 </div>
 
-                <div id="hint-message" class="bf-overlay place-items-end" x-show="showHint">
-                    <div class="relative max-w-[632px] w-full bg-white p-8 shadow-bf-smooth paper-holes">
+                <div class="bf-overlay place-items-end" x-show="showHint" x-transition.opacity>
+                    <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes">
 
-                        <div class="p-8 text-lg font-special-elite paper-markup paper-dotted-border">
+                        <div class="h-full p-8 text-lg font-special-elite paper-markup paper-dotted-border">
                             <p>Agent,</p>
                             <p>Your last transmission was inaccurate.</p>
                             <p>Decipher the code using this hint:</p>
@@ -182,7 +189,7 @@
                             </div>
                             <p>No additional assistance will follow.</p>
                             <p>Proceed with caution.</p>
-                            <p><a x-on:click="showHint = false">Discard</a></p>
+                            <p><button class="underline hover:no-underline" x-on:click="showHint = false">Discard</button></p>
                         </div>
 
                         <div class="absolute inset-0 pointer-events-none flex place-content-center">
@@ -192,6 +199,7 @@
 
                         <div class="textured-paper absolute inset-0"></div>
                     </div>
+
                 </div>
 
                 <div id="token-message" class="bf-overlay" x-show="showToken" x-transition>
