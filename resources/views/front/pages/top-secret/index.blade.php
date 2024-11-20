@@ -76,6 +76,12 @@
                                     </button>
                                 </span>
                             </div>
+                        @else
+                            <div class="red-sticky absolute right-0 -bottom-[4.5em] md:aspect-square w-32 flex items-center z-[1]">
+                                <span class="block font-marker p-4 text-center text-sm md:text-base md:leading-tight">
+                                        Note to self: Too late to solve this one
+                                </span>
+                            </div>
                         @endif
 
                         <div class="flex flex-col gap-6 p-8 pb-0 lg:p-20 lg:pb-4 bg-white shadow-bf-hard">
@@ -83,7 +89,7 @@
                             <div class="font-special-elite">
                                 @if ($reward)
                                     <p class="mb-2">{{ $question }}</p>
-                                    <p class="text-blue mb-2">{{ $answer }}</p>
+                                    <p class="text-blue mb-2">> {{ $answer }}</p>
                                 @elseif($days[$currentDay]->endOfDay()->isPast())
                                     <p>{{ $question }}</p>
                                 @else
@@ -210,20 +216,19 @@
                                 class="text-3xl font-obviously-condensed uppercase font-bold mb-4 tracking-wide leading-none">
                                 Smart
                                 agents are capable agents!</h2>
-                            <p class="mb-4">Enter the daily raffle for a chance to
+                            <p class="mb-4">Enter the raffle for a chance to
                                 <strong>win a one-hour face-to-face
                                     meeting</strong> with Special Agent Know-It-All, the sharpest mind in packaging at
                                 S.P.A.T.I.E.</p>
                             <label for="raffle" class="flex items-center mb-4">
                                 <input x-model="enteringRaffle" class="form-checkbox mr-4" type="checkbox" name="raffle" id="raffle">
-                                <span class="text-sm leading-tight">Yes, include me in the daily prize draw for a chance to win a one-hour consultation with Spatie.</span>
+                                <span class="text-sm leading-tight">Yes, include me in a prize draw for a chance to win a one-hour consultation with Spatie.</span>
                             </label>
                             <button
                                 wire:click="enterRaffle"
                                 x-on:click="showToken = false"
                                 x-bind:disabled="!enteringRaffle"
-                                class="text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide">Enter
-                                the raffle
+                                class="text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide">Enter the raffle
                             </button>
                         </div>
 
