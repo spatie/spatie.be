@@ -144,7 +144,7 @@
 
                 <div class="bf-overlay place-items-end" x-show="showReward" x-transition.opacity>
                     @if($reward)
-                        <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes">
+                        <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes" x-on:click.outside="showReward = false">
 
                             @if($reward->enteredRaffle === false && $days[$currentDay]->isToday())
                                 <button class="raffle-token" x-on:click="showToken = true">
@@ -183,7 +183,7 @@
                 </div>
 
                 <div class="bf-overlay place-items-end" x-show="showHint" x-transition.opacity>
-                    <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes">
+                    <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes" x-on:click.outside="showHint = false">
 
                         <div class="h-full p-8 text-lg font-special-elite paper-markup paper-dotted-border">
                             <p>Agent,</p>
