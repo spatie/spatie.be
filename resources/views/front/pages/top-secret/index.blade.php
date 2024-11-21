@@ -144,7 +144,7 @@
 
                 <div class="bf-overlay place-items-end" x-show="showReward" x-transition.opacity>
                     @if($reward)
-                        <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes" x-on:click.outside="showReward = false">
+                        <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-hidden md:h-auto" x-on:click.outside="showReward = false">
 
                             @if($reward->enteredRaffle === false && $days[$currentDay]->isToday())
                                 <button class="raffle-token" x-on:click="showToken = true">
@@ -152,7 +152,7 @@
                                 </button>
                             @endif
 
-                            <div class="h-full p-8 text-lg font-special-elite paper-markup paper-dotted-border">
+                            <div class="p-8 md:text-lg font-special-elite paper-markup paper-dotted-border">
                                 <p>Agent,</p>
                                 <p>Your last transmission was positive. Good job.</p>
                                 <p>You've earned a token of encouragement.</p>
@@ -172,9 +172,9 @@
                                 <p><button class="underline hover:no-underline" x-on:click="showReward = false">Discard</button></p>
                             </div>
 
-                            <div class="absolute inset-0 pointer-events-none flex place-content-center">
+                            <div class="absolute inset-0 pointer-events-none flex place-content-center overflow-hidden">
                                 <img src="../images/black-friday/spatie-logo.svg" alt="Spatie"
-                                     class="w-96 opacity-[0.05] rotate-[-12.5deg]">
+                                     class="w-full max-w-96 opacity-[0.05] rotate-[-12.5deg]">
                             </div>
 
                             <div class="textured-paper absolute inset-0"></div>
@@ -183,9 +183,9 @@
                 </div>
 
                 <div class="bf-overlay place-items-end" x-show="showHint" x-transition.opacity>
-                    <div class="relative max-w-[632px] w-full max-h-[65vh] h-full bg-white p-8 shadow-bf-smooth paper-holes" x-on:click.outside="showHint = false">
+                    <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-hidden md:h-auto" x-on:click.outside="showHint = false">
 
-                        <div class="h-full p-8 text-lg font-special-elite paper-markup paper-dotted-border">
+                        <div class="p-8 font-special-elite md:text-lg paper-markup paper-dotted-border">
                             <p>Agent,</p>
                             <p>Your last transmission was inaccurate.</p>
                             <p>Decipher the code using this hint:</p>
@@ -198,10 +198,10 @@
                             <p><button class="underline hover:no-underline" x-on:click="showHint = false">Discard</button></p>
                         </div>
 
-                        <div class="absolute inset-0 pointer-events-none flex place-content-center">
-                            <img src="../images/black-friday/spatie-logo.svg" alt="Spatie"
-                                 class="w-96 opacity-[0.05] rotate-[-12.5deg]">
-                        </div>
+                            <div class="absolute inset-0 pointer-events-none flex place-content-center overflow-hidden">
+                                <img src="../images/black-friday/spatie-logo.svg" alt="Spatie"
+                                     class="w-full max-w-96 opacity-[0.05] rotate-[-12.5deg]">
+                            </div>
 
                         <div class="textured-paper absolute inset-0"></div>
                     </div>
@@ -261,11 +261,11 @@
             >
                 <div class="flex relative h-full">
 
-                    <div class="p-12 lg:p-24 text-lg w-full paper-markup">
+                    <div class="p-12 md:p-24 text-lg w-full paper-markup">
                         <div class="flex flex-col items-center text-center h-full">
                             <img src="../images/black-friday/spatie-logo.svg" alt="Spatie" class="w-56 mb-8">
                             <h1
-                                class="font-obviously-condensed font-bold text-[3.5rem] uppercase leading-[80%] text-bf-brown text-balance lg:text-[7rem]">
+                                class="font-obviously-condensed font-bold text-[3.5rem] uppercase leading-[80%] text-bf-brown text-balance md:text-[7rem]">
                                 Instructions for new Agents</h1>
                             <img src="../images/black-friday/confidential-stamp.png" alt=""
                                  class="w-[360px]">
@@ -299,7 +299,7 @@
 
                 <div class="flex overflow-hidden">
 
-                    <div class="p-12 lg:p-28 font-special-elite md:text-lg paper-markup">
+                    <div class="p-12 md:p-28 font-special-elite md:text-lg paper-markup">
                         <p>Agent,</p>
                         <p>Welcome to <abbr
                                 title="Secure Packages And Technical Intelligence Extraction">S.P.A.T.I.E.</abbr>—the
@@ -331,9 +331,6 @@
                         <p>Some of the incentives we provide new agents:</p>
                         <ul>
                             <li>20% discount on your next purchase on <a href="https://spatie.be">spatie.be</a></li>
-                            <li>30% discount on merchandise in our <a href="https://spatie.spreadshop.be">Merch
-                                    Store</a>
-                            </li>
                             <li>50% off on <a href="https://www.mailcoach.app">Mailcoach</a> and <a
                                     href="https://flareapp.io">Flare</a> plans</li>
                             <li>Free Spatie merchandise</li>
