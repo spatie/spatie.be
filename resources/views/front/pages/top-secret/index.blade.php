@@ -165,9 +165,9 @@
                                 </div>
                                 <p>Information regarding the reward will also be transmitted to your secure channel.</p>
                                 <p>Awaiting your transmission tomorrow.</p>
-                                <p>Broadcast your success on: 
-                                    <a href="https://bsky.app/intent/compose?text={{ Str::of("I decoded my daily message on topsecret.spatie.be and got a nice prize!") }}">Bluesky</a>, 
-                                    <a href="https://twitter.com/intent/tweet?text={{ Str::of("I decoded my daily message on topsecret.spatie.be and got a nice prize!") }}">X</a>
+                                <p>Broadcast your success on:
+                                    <a target="_blank" href="https://bsky.app/intent/compose?text={{ Str::of("I decoded my daily message on topsecret.spatie.be and got a nice prize!") }}">Bluesky</a>,
+                                    <a target="_blank" href="https://twitter.com/intent/tweet?text={{ Str::of("I decoded my daily message on topsecret.spatie.be and got a nice prize!") }}">X</a>
                                 </p>
                                 <p><button class="underline hover:no-underline" x-on:click="showReward = false">Discard</button></p>
                             </div>
