@@ -37,6 +37,8 @@ class TopSecretComponent extends Component
 
     public bool $showHint = false;
 
+    public bool $showInput = false;
+
     public function mount(): void
     {
         $current = CarbonImmutable::parse(config('black-friday.start_date'));
@@ -64,6 +66,7 @@ class TopSecretComponent extends Component
         $this->currentDay = $currentDay;
         $this->answer = '';
         $this->question = '';
+        $this->showInput = false;
     }
 
     public function submitAnswer(): void

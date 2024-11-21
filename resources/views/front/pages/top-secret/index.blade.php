@@ -94,7 +94,7 @@
                                     <p>{{ $question }}</p>
                                 @else
                                     <div x-data="{
-                                    showInput: false,
+                                    showInput: @entangle('showInput').live,
                                 }" class="grid gap-6 items-start">
                                         <div x-on:click="showInput = true" class="paper-markup group"
                                              x-bind:class="showInput ? '' : 'cursor-pointer'">
