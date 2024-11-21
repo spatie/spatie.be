@@ -18,37 +18,39 @@
         <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     @endpush
 
-    <header class="absolute grid grid-cols-3 h-16 items-center z-10 w-full">
+    <div class="w-full max-w-[800px] mx-auto">
+        <header class="absolute grid grid-cols-3 h-16 items-center z-10 w-full">
 
-        <nav class="text-bf-beige px-6 py-4 text-xs font-obviously-narrow font-semibold tracking-[0.15em] col-span-2 md:col-auto">
-            <ul class="flex gap-4">
-                <li>
-                    <button @click="currentPage = 'about'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'about' }">About</button>
-                </li>
-                <li>
-                    <button @click="currentPage = 'challenge'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'challenge' }">Daily Challenge</button>
-                </li>
-            </ul>
-        </nav>
+            <nav class="text-bf-beige px-6 py-4 text-xs font-obviously-narrow font-semibold tracking-[0.15em] col-span-2 md:col-auto">
+                <ul class="flex gap-4">
+                    <li>
+                        <button @click="currentPage = 'about'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'about' }">About</button>
+                    </li>
+                    <li>
+                        <button @click="currentPage = 'challenge'" class="uppercase hover:underline" :class="{ 'underline': currentPage === 'challenge' }">Daily Challenge</button>
+                    </li>
+                </ul>
+            </nav>
 
-        <div
-            class="pt-4 text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em] md:col-start-2">
-            <div class="text-center">
-                <p>Challenge {{ $currentDay }}</p>
-                @if($days[$currentDay]->isToday())
-                    <x-countdown :expires="$days[$currentDay]->endOfDay()">
-                        <time datetime="{{ $days[$currentDay]->endOfDay()->format('Y-m-d H:i:s') }}" class="tabular-nums">
-                            <span x-text="timer.hours"></span>:<span x-text="timer.minutes"></span>:<span
-                                x-text="timer.seconds"></span>
-                        </time>
-                    </x-countdown>
-                @else
-                    <p>Day passed</p>
-                @endif
+            <div
+                class="pt-4 text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em] md:col-start-2">
+                <div class="text-center">
+                    <p>Challenge {{ $currentDay }}</p>
+                    @if($days[$currentDay]->isToday())
+                        <x-countdown :expires="$days[$currentDay]->endOfDay()">
+                            <time datetime="{{ $days[$currentDay]->endOfDay()->format('Y-m-d H:i:s') }}" class="tabular-nums">
+                                <span x-text="timer.hours"></span>:<span x-text="timer.minutes"></span>:<span
+                                    x-text="timer.seconds"></span>
+                            </time>
+                        </x-countdown>
+                    @else
+                        <p>Day passed</p>
+                    @endif
+                </div>
             </div>
-        </div>
 
-    </header>
+        </header>
+    </div>
 
     @auth
         <div
