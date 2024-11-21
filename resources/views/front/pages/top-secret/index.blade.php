@@ -34,7 +34,7 @@
         <div
             class="pt-4 text-bf-beige text-base font-obviously-narrow uppercase font-semibold tracking-[0.2em] md:col-start-2">
             <div class="text-center">
-                <p>Day {{ $currentDay }}</p>
+                <p>Challenge {{ $currentDay }}</p>
                 @if($days[$currentDay]->isToday())
                     <x-countdown :expires="$days[$currentDay]->endOfDay()">
                         <time datetime="{{ $days[$currentDay]->endOfDay()->format('Y-m-d H:i:s') }}" class="tabular-nums">
@@ -43,7 +43,7 @@
                         </time>
                     </x-countdown>
                 @else
-                    <p>Challenge closed</p>
+                    <p>Day passed</p>
                 @endif
             </div>
         </div>
