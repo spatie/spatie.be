@@ -20,6 +20,6 @@ class TopSecretMiddleware
             return $next($request);
         }
 
-        return redirect('http://spatie.be');
+        return redirect()->to('soon');
     }
 }
