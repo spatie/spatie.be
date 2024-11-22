@@ -36,7 +36,7 @@ use App\Http\Controllers\WwsdController;
 use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Support\Facades\Route;
 
-Route::domain('top-secret.'.config('app.url'))->group(function () {
+Route::domain('topsecret.'.config('app.url'))->group(function () {
     Route::get('/', \App\Livewire\TopSecretComponent::class)->middleware(TopSecretMiddleware::class);
 });
 
