@@ -45,7 +45,6 @@ class DetermineBlackFridayRewardAction
         $rewardTypes = [
             BlackFridayRewardType::Flare50Off,
             BlackFridayRewardType::Mailcoach50Off,
-            BlackFridayRewardType::MerchDiscount,
             BlackFridayRewardType::NextPurchaseDiscount,
         ];
 
@@ -65,7 +64,7 @@ class DetermineBlackFridayRewardAction
         return $this->redeemNonSaasCodeReward(
             $user,
             $day,
-            Arr::random([BlackFridayRewardType::NextPurchaseDiscount, BlackFridayRewardType::MerchDiscount])
+            Arr::random([BlackFridayRewardType::NextPurchaseDiscount])
         );
     }
 
@@ -95,7 +94,6 @@ class DetermineBlackFridayRewardAction
         BlackFridayRewardType $rewardType,
     ): BlackFridayRewardData {
         $code = match ($rewardType) {
-            BlackFridayRewardType::MerchDiscount => config('black-friday.merch_discount_code'),
             BlackFridayRewardType::NextPurchaseDiscount => config('black-friday.next_purchase_discount_code'),
             default => throw new \Exception('Invalid reward type'),
         };

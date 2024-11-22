@@ -23,11 +23,10 @@ it('will provide a random reward from the predefined pool if no codes or special
 
         expect($reward->type)->toBeIn([
             BlackFridayRewardType::NextPurchaseDiscount,
-            BlackFridayRewardType::MerchDiscount,
         ]);
 
         expect($reward->code)->toBeIn(
-            ['MERCH-DISCOUNT', 'NEXT-PURCHASE-DISCOUNT']
+            [ 'NEXT-PURCHASE-DISCOUNT']
         );
 
         assertDatabaseHas('bf24_redeemed_rewards', [
@@ -40,14 +39,6 @@ it('will provide a random reward from the predefined pool if no codes or special
 });
 
 it('will provide the correct codes for non saas rewards', function () {
-    $reward = app(DetermineBlackFridayRewardAction::class)->execute(
-        User::factory()->create(),
-        1,
-        BlackFridayRewardType::MerchDiscount
-    );
-
-    expect($reward->code)->toBe('MERCH-DISCOUNT');
-
     $reward = app(DetermineBlackFridayRewardAction::class)->execute(
         User::factory()->create(),
         1,
@@ -102,7 +93,6 @@ it('will use a non saas code reward when all saas codes are redeemed', function 
 
     expect($reward->type)->toBeIn([
         BlackFridayRewardType::NextPurchaseDiscount,
-        BlackFridayRewardType::MerchDiscount,
     ]);
 
     assertDatabaseHas('bf24_redeemed_rewards', [

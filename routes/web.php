@@ -33,10 +33,11 @@ use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
+use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::domain('top-secret.'.config('app.url'))->group(function () {
-    Route::get('/', \App\Livewire\TopSecretComponent::class);
+    Route::get('/', \App\Livewire\TopSecretComponent::class)->middleware(TopSecretMiddleware::class);
 });
 
 Route::permanentRedirect('docs/ray', 'https://myray.app/docs/');

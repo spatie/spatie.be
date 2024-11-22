@@ -5,7 +5,6 @@ namespace App\Enums;
 enum BlackFridayRewardType: string
 {
     case NextPurchaseDiscount = 'next_purchase_discount';
-    case MerchDiscount = 'merch_discount';
     case Mailcoach50Off = '50_off_mailcoach';
     case Flare50Off = '50_off_flare';
     case FreeMerch = 'free_merch';
@@ -23,7 +22,6 @@ enum BlackFridayRewardType: string
     {
         return match ($this) {
             self::NextPurchaseDiscount => 'Use the next coupon to get 20% discount on your next purchase on spatie.be:',
-            self::MerchDiscount => 'Use the next coupon to get 30% discount on merchandise in our merch store:',
             self::Mailcoach50Off => 'Use the next coupon to get 50% off Mailcoach plan:',
             self::Flare50Off => 'Use the next coupon to get 50% off Flare plan:',
             self::FreeMerch => 'A free piece of Spatie merch, we will contact you to get your details',
