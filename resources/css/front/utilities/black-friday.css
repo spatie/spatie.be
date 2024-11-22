@@ -1,7 +1,5 @@
 .bf-page {
-    @apply pt-16 pb-16;
-    height: 100svh;
-    overflow: hidden;
+    min-height: 100svh;
 }
 
 .bf-overlay {

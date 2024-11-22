@@ -63,11 +63,11 @@
                 showHint: @entangle('showHint')
             }"
         >
-            <div class="grid justify-center h-full mt-16">
+            <div class="grid justify-center h-full min-h-[inherit] pt-16">
 
                 <div class="relative challenge-sheet overflow-scroll md:overflow-visible">
 
-                    <div class="w-full max-w-[100vw] md:max-w-[800px] m-auto">
+                    <div class="w-full max-w-[100vw] md:max-w-[800px] m-auto py-4">
 
                         @if ($reward)
                             <div class="red-sticky absolute right-0 -bottom-[4.5em] md:aspect-square w-32 flex items-center z-[1]">
@@ -129,7 +129,7 @@
 
                     </div>
 
-                    <div class="p-12 lg:p-18 flex flex-wrap text-white gap-4 justify-center">
+                    <div class="p-12 pb-0 lg:p-18 lg:pb-0 flex flex-wrap text-white gap-4 justify-center">
                         @foreach ($days as $day => $date)
                             <div class="p-2 lg:p-8
                                     {{ $currentDay === $day ? 'bf-date-border' : '' }}
@@ -150,7 +150,7 @@
 
                 <div class="bf-overlay place-items-end" x-show="showReward" x-transition.opacity>
                     @if($reward)
-                        <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-visible md:h-auto">
+                        <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:overflow-visible md:h-auto">
 
                             @if($reward->enteredRaffle === false && $days[$currentDay]->isToday())
                                 <button class="raffle-token" x-on:click="showToken = true">
@@ -189,7 +189,7 @@
                 </div>
 
                 <div class="bf-overlay place-items-end" x-show="showHint" x-transition.opacity>
-                    <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-visible md:h-auto" x-on:click.outside="showHint = false">
+                    <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:overflow-visible md:h-auto" x-on:click.outside="showHint = false">
 
                         <div class="p-8 font-special-elite md:text-lg paper-markup paper-dotted-border">
                             <p>Agent,</p>
@@ -257,7 +257,7 @@
         @endguest
 
         <div
-            class="grid justify-center paper-stack h-full pt-16 overflow-scroll md:overflow-visible"
+            class="grid justify-center paper-stack h-full min-h-[inherit] py-24 overflow-scroll md:overflow-visible md:items-center"
         >
 
             <div
@@ -338,7 +338,7 @@
                         <ul>
                             <li>20% discount on your next purchase on <a href="https://spatie.be">spatie.be</a></li>
                             <li>50% off on <a href="https://www.mailcoach.app">Mailcoach</a> and <a
-                                    href="https://flareapp.io">Flare</a> plans</li>
+                                    href="https://flareapp.io">Flare</a> plans for new customers</li>
                             <li>Free Spatie merchandise</li>
                             <li>Free yearly licenses for <a href="https://myray.app">Ray</a></li>
                         </ul>
