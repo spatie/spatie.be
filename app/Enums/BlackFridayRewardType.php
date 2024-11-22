@@ -21,9 +21,9 @@ enum BlackFridayRewardType: string
     public function wonLabel(): string
     {
         return match ($this) {
-            self::NextPurchaseDiscount => 'Use the next coupon to get 20% discount on your next purchase on spatie.be:',
-            self::Mailcoach50Off => 'Use the next coupon to get 50% off Mailcoach plan:',
-            self::Flare50Off => 'Use the next coupon to get 50% off Flare plan:',
+            self::NextPurchaseDiscount => 'A coupon for 20% off your next purchase on spatie.be:',
+            self::Mailcoach50Off => 'A coupon for 50% off your Mailcoach plan for 3 months (new customers only):',
+            self::Flare50Off => 'A coupon for 50% off any Flare plan for 3 months (new customers only):',
             self::FreeMerch => 'A free piece of Spatie merch, we will contact you to get your details',
             self::FreeRay => 'A free yearly Ray license, we will contact you to get your details',
         };
