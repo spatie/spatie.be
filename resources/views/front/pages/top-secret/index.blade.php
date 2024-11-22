@@ -65,9 +65,9 @@
         >
             <div class="grid justify-center h-full mt-16">
 
-                <div class="relative challenge-sheet">
+                <div class="relative challenge-sheet overflow-scroll md:overflow-visible">
 
-                    <div class="w-full max-w-[800px] m-auto">
+                    <div class="w-full max-w-[100vw] md:max-w-[800px] m-auto">
 
                         @if ($reward)
                             <div class="red-sticky absolute right-0 -bottom-[4.5em] md:aspect-square w-32 flex items-center z-[1]">
@@ -92,19 +92,19 @@
 
                         <div class="flex flex-col gap-6 p-8 pb-0 lg:p-20 lg:pb-4 bg-white shadow-bf-hard">
 
-                            <div class="font-special-elite">
+                            <div class="text-sm md:text-base font-special-elite">
                                 @if ($reward)
-                                    <p class="mb-2">{{ $question }}</p>
+                                    <pre class="bf-pre mb-2">{{ $question }}</pre>
                                     <p class="text-blue mb-2">> {{ $answer }}</p>
                                 @elseif($days[$currentDay]->endOfDay()->isPast())
-                                    <p>{{ $question }}</p>
+                                    <pre class="bf-pre">{{ $question }}</pre>
                                 @else
                                     <div x-data="{
                                     showInput: @entangle('showInput').live,
-                                }" class="grid gap-6 items-start">
+                                }" class="flex flex-col gap-6">
                                         <div x-on:click="showInput = true" class="paper-markup group"
                                              x-bind:class="showInput ? '' : 'cursor-pointer'">
-                                            <p class="group-hover:underline">{{ $question }}</p>
+                                            <pre class="bf-pre group-hover:underline">{{ $question }}</pre>
                                         </div>
 
                                         <textarea x-show="showInput" x-on:click="$el.focus();$el.select();"
@@ -129,7 +129,7 @@
 
                     </div>
 
-                    <div class="p-12 lg:p-24 flex flex-wrap text-white gap-4 justify-center">
+                    <div class="p-12 lg:p-18 flex flex-wrap text-white gap-4 justify-center">
                         @foreach ($days as $day => $date)
                             <div class="p-2 lg:p-8
                                     {{ $currentDay === $day ? 'bf-date-border' : '' }}
@@ -271,7 +271,7 @@
                         <div class="flex flex-col items-center text-center h-full">
                             <img src="../images/black-friday/spatie-logo.svg" alt="Spatie" class="w-56 mb-8">
                             <h1
-                                class="font-obviously-condensed font-bold text-[3.5rem] uppercase leading-[80%] text-bf-brown text-balance md:text-[7rem]">
+                                class="font-obviously-condensed font-bold text-[3.5rem] uppercase leading-[80%] text-bf-brown text-balance md:text-[6rem]">
                                 Instructions for new Agents</h1>
                             <img src="../images/black-friday/confidential-stamp.png" alt=""
                                  class="w-[360px]">

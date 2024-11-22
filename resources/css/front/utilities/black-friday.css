@@ -35,6 +35,12 @@
     
 }
 
+.bf-pre {
+    @apply bg-transparent font-special-elite;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}
+
 .challenge-sheet {
     display: flex;
     flex-direction: column;
