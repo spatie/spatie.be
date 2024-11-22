@@ -1,4 +1,4 @@
-<section id="open-source" class="section bg-white">
+<section id="open-source" class="section">
     <div class="wrap wrap-8">
         <div class="sm:col-span-3 sm:col-start-2">
             <div class="markup links-underline links-blue">
