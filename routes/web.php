@@ -38,6 +38,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::domain('topsecret.'.config('app.url'))->group(function () {
     Route::view('soon', 'front.pages.top-secret.placeholder');
+    // Route::redirect('soon', '/');
     Route::get('/', \App\Livewire\TopSecretComponent::class)->middleware(TopSecretMiddleware::class);
 });
 
