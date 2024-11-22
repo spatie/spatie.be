@@ -12,11 +12,11 @@ class TopSecretMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
-        if(CarbonImmutable::now()->isAfter(CarbonImmutable::create(2024,11,25,9,0,0))) {
+        if (CarbonImmutable::now()->isAfter(CarbonImmutable::create(2024, 11, 25, 9, 0, 0))) {
             return $next($request);
         }
 
-        if(str_ends_with(Auth::user()?->email, '@spatie.be')) {
+        if (str_ends_with(Auth::user()?->email, '@spatie.be')) {
             return $next($request);
         }
 
