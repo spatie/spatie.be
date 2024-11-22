@@ -43,8 +43,10 @@
                                     x-text="timer.seconds"></span>
                             </time>
                         </x-countdown>
-                    @else
+                    @elseif($days[$currentDay]->isPast())
                         <p>Day passed</p>
+                    @else
+                        <p>Day upcoming</p>
                     @endif
                 </div>
             </div>
