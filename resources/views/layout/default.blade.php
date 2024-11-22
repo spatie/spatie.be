@@ -21,7 +21,7 @@
     <x-comments::styles />
 </head>
 
-<body class="flex flex-col min-h-screen leading-normal {{ $bodyClass ?? '' }}">
+<body class="flex flex-col min-h-screen leading-normal antialiased {{ $bodyClass ?? '' }}">
     <script>/* Empty script tag because Firefox has a FOUC */</script>
     <noscript>
         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WGCBMG"

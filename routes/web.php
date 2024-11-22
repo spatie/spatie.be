@@ -33,7 +33,12 @@ use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
+use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Support\Facades\Route;
+
+Route::domain('top-secret.'.config('app.url'))->group(function () {
+    Route::get('/', \App\Livewire\TopSecretComponent::class)->middleware(TopSecretMiddleware::class);
+});
 
 Route::permanentRedirect('docs/ray', 'https://myray.app/docs/');
 Route::permanentRedirect('docs/ray/{any}', 'https://myray.app/docs/')->where('any', '.*');
@@ -174,7 +179,8 @@ Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::get('wwsd/{slug?}', WwsdController::class)->name('wwsd');
-Route::view('black-friday-deals', 'front.pages.black-friday-deals.index');
+// Route::view('black-friday-deals', 'front.pages.black-friday-deals.index');
+Route::view('top-secret', 'front.pages.top-secret.index');
 
 Route::view('offline', 'errors.offline')->name('offline');
 
