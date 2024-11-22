@@ -55,11 +55,7 @@
                 </form>
             </div>
 
-            <div class="my-8 flex items-center | md:flex-col md:my-0 md:mx-16">
-                <span class="flex-grow w-1/2 h-2px bg-white/25 | md:w-2px md:h-1/2"></span>
-                <span class="text-xl text-opacity-50 mx-6 my-2">OR</span>
-                <span class="flex-grow w-1/2 h-2px bg-white bg-opacity-25 | md:w-2px md:h-1/2"></span>
-            </div>
+            <div class="my-4 flex items-center | md:flex-col md:my-0 md:mx-8"></div>
 
             <div class="h-full my-auto">
                 <p>No GitHub profile or Spatie account yet?</p>

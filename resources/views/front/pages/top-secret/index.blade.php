@@ -78,7 +78,9 @@
                                     </button>
                                 </span>
                             </div>
-                        @else
+                        @endif
+
+                        @if (!$reward && !$days[$currentDay]->isToday())
                             <div class="red-sticky absolute right-0 -bottom-[4.5em] md:aspect-square w-32 flex items-center z-[1]">
                                 <span class="block font-marker p-4 text-center text-sm md:text-base md:leading-tight">
                                         Note to self: Too late to solve this one
@@ -146,7 +148,7 @@
 
                 <div class="bf-overlay place-items-end" x-show="showReward" x-transition.opacity>
                     @if($reward)
-                        <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-hidden md:h-auto" x-on:click.outside="showReward = false">
+                        <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-visible md:h-auto">
 
                             @if($reward->enteredRaffle === false && $days[$currentDay]->isToday())
                                 <button class="raffle-token" x-on:click="showToken = true">
@@ -185,7 +187,7 @@
                 </div>
 
                 <div class="bf-overlay place-items-end" x-show="showHint" x-transition.opacity>
-                    <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-hidden md:h-auto" x-on:click.outside="showHint = false">
+                    <div class="relative max-w-[632px] w-full h-full bg-white p-8 shadow-bf-smooth paper-holes overflow-scroll md:max-h-[65vh] md:overflow-visible md:h-auto" x-on:click.outside="showHint = false">
 
                         <div class="p-8 font-special-elite md:text-lg paper-markup paper-dotted-border">
                             <p>Agent,</p>
@@ -210,8 +212,8 @@
 
                 </div>
 
-                <div id="token-message" class="bf-overlay" x-show="showToken" x-transition>
-                    <div class="relative max-w-[460px] bg-bf-red p-4 shadow-bf-smooth" x-data="{enteringRaffle: false}">
+                <div id="token-message" class="bf-overlay md:place-items-center" x-show="showToken" x-transition>
+                    <div class="relative max-w-[460px] bg-bf-red p-4 shadow-bf-smooth" x-data="{enteringRaffle: false}" x-on:click.outside="showToken = false">
 
                         <div class="p-4 paper-markup border-2 leading-snug border-[#DA5A55]">
                             <h2
@@ -230,7 +232,7 @@
                                 wire:click="enterRaffle"
                                 x-on:click="showToken = false"
                                 x-bind:disabled="!enteringRaffle"
-                                class="text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide">Enter the raffle
+                                class="text-2xl font-obviously-condensed uppercase font-bold underline hover:no-underline tracking-wide disabled:opacity-50">Enter the raffle
                             </button>
                         </div>
 
@@ -245,7 +247,7 @@
     <div class="bf-page page-about" x-show="currentPage === 'about'">
 
         @guest
-            <div class="bf-overlay">
+            <div class="bf-overlay overflow-scroll md:place-items-center">
                 <div class="max-w-xl mx-auto">
                     @include('front.pages.top-secret.components.login')
                 </div>
