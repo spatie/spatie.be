@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Enums\BlackFridayRewardType;
 use Carbon\CarbonImmutable;
+use DateTimeZone;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -55,11 +56,11 @@ class BlackFriday2024Seeder extends Seeder
         foreach (range(1, 5) as $day) {
             foreach ([BlackFridayRewardType::FreeMerch, BlackFridayRewardType::FreeRay] as $rewardType) {
                 $timestamps = Collection::times(10, fn () => faker()->numberBetween(
-                    CarbonImmutable::parse(config('black-friday.start_date'))
+                    CarbonImmutable::parse(config('black-friday.start_date'), new DateTimeZone('UTC'))
                         ->startOfDay()
                         ->addDays($day - 1)
                         ->unix(),
-                    CarbonImmutable::parse(config('black-friday.start_date'))
+                    CarbonImmutable::parse(config('black-friday.start_date'), new DateTimeZone('UTC'))
                         ->endOfDay()
                         ->addDays($day - 1)
                         ->unix(),
