@@ -27,6 +27,8 @@
 
     <x-impersonate::banner/>
 
+    @stack('scripts')
+
     <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
 
     {!! schema()->localBusiness() !!}

@@ -18,6 +18,25 @@
         <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
     @endpush
 
+    @push('scripts')
+        <script>
+            function showGitHubAuthWindow() {
+                const authWindow = window.open(
+                    '{{ route('github-login') }}',
+                    null,
+                    'location=0,status=0,width=800,height=400'
+                );
+
+                const authCheckInterval = window.setInterval(() => {
+                    if (authWindow.closed) {
+                        window.clearInterval(authCheckInterval);
+                        window.location.replace('{{ session('next', "/") }}');
+                    }
+                }, 500);
+            }
+        </script>
+    @endpush
+
     <div class="w-full max-w-[800px] mx-auto">
         <header class="absolute grid grid-cols-3 h-16 items-center z-10 w-full">
 
