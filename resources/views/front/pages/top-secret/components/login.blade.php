@@ -9,7 +9,7 @@
             <div class="flex-grow w-full">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-12">
                     <div>
-                        <a href="{{ route('github-login') }}" onclick="event.preventDefault(); showGitHubAuthWindow()">
+                        <a href="https://spatie.be/login/github" onclick="event.preventDefault(); showGitHubAuthWindow()">
                             <x-button class="bg-bf-brown">
                                 <span class="-ml-4 mr-3 icon w-5 mb-1 opacity">
                                     {{ app_svg('github') }}
@@ -20,7 +20,7 @@
                     </div>
                 </div>
 
-                <form class="space-y-6" action="{{ route('login') }}?redirect={{ request()->url() }}" method="POST">
+                <form class="space-y-6" action="https://spatie.be/login?redirect={{ request()->url() }}" method="POST">
                     @csrf
 
                     <x-field>
