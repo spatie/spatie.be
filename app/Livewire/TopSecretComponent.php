@@ -75,7 +75,7 @@ class TopSecretComponent extends Component
             ->where('day', $this->currentDay)
             ->firstOrFail();
 
-        if ($this->answer !== $questionRow?->answer) {
+        if (strcasecmp($this->answer, $questionRow?->answer) !== 0) {
             $this->answer = '';
             $this->hint = $questionRow->hint;
             $this->showHint = true;
