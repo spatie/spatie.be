@@ -14,6 +14,7 @@ use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\RegenerateLicenseKeyController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
@@ -134,6 +135,7 @@ Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('invoices', InvoicesController::class)->name('invoices');
 
     Route::get('download-latest-version-for-expired-license/{license}/{repo}', DownloadLatestReleaseForExpiredLicenseController::class)->name('downloadLatestRelease');
+    Route::post('regenerate-key/{license}', RegenerateLicenseKeyController::class)->name('regenerate-key');
 });
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');

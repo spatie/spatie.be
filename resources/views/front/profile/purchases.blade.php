@@ -135,6 +135,16 @@
                                                                                     class="fa-primary"
                                                                                     fill="currentColor"
                                                                                     d="M96 392V96H24a24 24 0 0 0-24 24v368a24 24 0 0 0 24 24h272a24 24 0 0 0 24-24v-40H152a56.06 56.06 0 0 1-56-56zM441 73L375 7a24 24 0 0 0-17-7h-6v96h96v-6.06A24 24 0 0 0 441 73z"></path></g></svg></span></code>
+                                                                <form
+                                                                    x-data
+                                                                    @submit.prevent="if (confirm('Are you sure you want to regenerate this license key?')) $el.submit()"
+                                                                    class="mt-2"
+                                                                    action="{{ route('regenerate-key', $license) }}"
+                                                                    method="POST"
+                                                                >
+                                                                    @csrf
+                                                                    <button type="submit" class="underline">Regenerate key</button>
+                                                                </form>
                                                             </div>
                                                         </div>
 
@@ -212,11 +222,6 @@
         </div>
     </section>
 
-    @once
-        @push('scripts')
-            <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        @endpush
-    @endonce
     @push('scripts')
         <script type="text/javascript">
             function copyLicense(element, licenseKey) {
