@@ -41,7 +41,7 @@
                                 @csrf
 
 
-                                <span class="cursor-pointer
+                                <button type="submit" class="cursor-pointer
                     bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm
                     border-2 border-transparent
                     justify-center flex items-center
@@ -49,12 +49,12 @@
                     font-sans-bold
                     transition-bg duration-300
                     focus:outline-none focus:border-blue-light no-underline whitespace-nowrap">
-                        <button type="submit" class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
-                            Continue</button>
+                        <span class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
+                            Continue</span>
                                 <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
                             {{ app_svg('icons/far-angle-right') }}
                         </span>
-                            </span>
+                            </button>
                             </form>
                         @endif
                     </div>
