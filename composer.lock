@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f8cb6f383d99fe78dee126b23317bff",
+    "content-hash": "c400a58bdfedd491b2e6ddd0c2d5e360",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -4569,16 +4569,16 @@
         },
         {
             "name": "league/commonmark",
-            "version": "2.5.3",
+            "version": "2.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/commonmark.git",
-                "reference": "b650144166dfa7703e62a22e493b853b58d874b0"
+                "reference": "d150f911e0079e90ae3c106734c93137c184f932"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/b650144166dfa7703e62a22e493b853b58d874b0",
-                "reference": "b650144166dfa7703e62a22e493b853b58d874b0",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/d150f911e0079e90ae3c106734c93137c184f932",
+                "reference": "d150f911e0079e90ae3c106734c93137c184f932",
                 "shasum": ""
             },
             "require": {
@@ -4603,8 +4603,9 @@
                 "phpstan/phpstan": "^1.8.2",
                 "phpunit/phpunit": "^9.5.21 || ^10.5.9 || ^11.0.0",
                 "scrutinizer/ocular": "^1.8.1",
-                "symfony/finder": "^5.3 | ^6.0 || ^7.0",
-                "symfony/yaml": "^2.3 | ^3.0 | ^4.0 | ^5.0 | ^6.0 || ^7.0",
+                "symfony/finder": "^5.3 | ^6.0 | ^7.0",
+                "symfony/process": "^5.4 | ^6.0 | ^7.0",
+                "symfony/yaml": "^2.3 | ^3.0 | ^4.0 | ^5.0 | ^6.0 | ^7.0",
                 "unleashedtech/php-coding-standard": "^3.1.1",
                 "vimeo/psalm": "^4.24.0 || ^5.0.0"
             },
@@ -4614,7 +4615,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.6-dev"
+                    "dev-main": "2.7-dev"
                 }
             },
             "autoload": {
@@ -4671,7 +4672,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-16T11:46:16+00:00"
+            "time": "2024-12-07T15:34:16+00:00"
         },
         {
             "name": "league/config",
@@ -11569,76 +11570,6 @@
             "time": "2024-02-27T12:08:53+00:00"
         },
         {
-            "name": "spatie/laravel-model-flags",
-            "version": "1.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/spatie/laravel-model-flags.git",
-                "reference": "953e0a936fb47ee13d48096a4061ee6b2b636116"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-model-flags/zipball/953e0a936fb47ee13d48096a4061ee6b2b636116",
-                "reference": "953e0a936fb47ee13d48096a4061ee6b2b636116",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/contracts": "^9.0|^10.0|^11.0",
-                "php": "^8.0",
-                "spatie/laravel-package-tools": "^1.13.6"
-            },
-            "require-dev": {
-                "laravel/pint": "^1.2",
-                "nunomaduro/collision": "^6.3.1|^8.0",
-                "orchestra/testbench": "^7.11|^8.0|^9.0",
-                "pestphp/pest": "^1.22.1|^2.34",
-                "pestphp/pest-plugin-laravel": "^1.3|^2.3",
-                "phpunit/phpunit": "^9.5.25|^10.5",
-                "spatie/laravel-ray": "^1.31",
-                "spatie/test-time": "^1.3"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Spatie\\ModelFlags\\ModelFlagsServiceProvider"
-                    ],
-                    "aliases": {
-                        "ModelFlags": "Spatie\\ModelFlags\\Facades\\ModelFlags"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Spatie\\ModelFlags\\": "src",
-                    "Spatie\\ModelFlags\\Database\\Factories\\": "database/factories"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Freek Van der Herten",
-                    "email": "freek@spatie.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Add flags to Eloquent models",
-            "homepage": "https://github.com/spatie/laravel-model-flags",
-            "keywords": [
-                "laravel",
-                "laravel-model-flags",
-                "spatie"
-            ],
-            "support": {
-                "issues": "https://github.com/spatie/laravel-model-flags/issues",
-                "source": "https://github.com/spatie/laravel-model-flags/tree/1.3.0"
-            },
-            "time": "2024-03-04T08:30:12+00:00"
-        },
-        {
             "name": "spatie/laravel-package-tools",
             "version": "1.16.6",
             "source": {
@@ -13732,16 +13663,16 @@
         },
         {
             "name": "symfony/deprecation-contracts",
-            "version": "v3.5.0",
+            "version": "v3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
-                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1"
+                "reference": "74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
-                "reference": "0e0d29ce1f20deffb4ab1b016a7257c4f1e789a1",
+                "url": "https://api.github.com/repos/symfony/deprecation-contracts/zipball/74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6",
+                "reference": "74c71c939a79f7d5bf3c1ce9f5ea37ba0114c6f6",
                 "shasum": ""
             },
             "require": {
@@ -13779,7 +13710,7 @@
             "description": "A generic function and convention to trigger deprecation notices",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.0"
+                "source": "https://github.com/symfony/deprecation-contracts/tree/v3.5.1"
             },
             "funding": [
                 {
@@ -13795,7 +13726,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-04-18T09:32:20+00:00"
+            "time": "2024-09-25T14:20:29+00:00"
         },
         {
             "name": "symfony/dom-crawler",
@@ -15406,8 +15337,8 @@
             "type": "library",
             "extra": {
                 "thanks": {
-                    "name": "symfony/polyfill",
-                    "url": "https://github.com/symfony/polyfill"
+                    "url": "https://github.com/symfony/polyfill",
+                    "name": "symfony/polyfill"
                 }
             },
             "autoload": {
