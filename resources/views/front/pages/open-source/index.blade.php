@@ -28,7 +28,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
             x-cloak
             class="absolute top-0 left-0 right-0 z-0 pointer-events-none"
         >
-            <div id="gradient" class="aspect-[9/16] sm:aspect-video w-full" data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=on&bgColor1=%2300da00&bgColor2=%23c90000&brightness=0.9&cAzimuthAngle=180&cDistance=2.5&cPolarAngle=115&cameraZoom=1&color1=%23B21E4E&color2=%23015389&color3=%23E0614E&destination=onCanvas&embedMode=off&envPreset=city&format=gif&fov=50&frameRate=10&grain=off&lightType=3d&pixelDensity=1.5&positionX=-1.5&positionY=0.1&positionZ=0&range=disabled&rangeEnd=40&rangeStart=0&reflection=0.2&rotationX=0&rotationY=0&rotationZ=235&shader=defaults&type=waterPlane&uAmplitude=0&uDensity=1.2&uFrequency=5.5&uSpeed=0.05&uStrength=3&uTime=0.2&wireframe=false"></div>
+            <div id="gradient" class="aspect-[9/16] sm:aspect-video w-full" data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=on&bgColor1=%2300da00&bgColor2=%23c90000&brightness=0.4&cAzimuthAngle=180&cDistance=2.5&cPolarAngle=115&cameraZoom=1&color1=%23B21E4E&color2=%23015389&color3=%23E0614E&destination=onCanvas&embedMode=off&envPreset=city&format=gif&fov=50&frameRate=10&grain=off&lightType=3d&pixelDensity=1.5&positionX=-1.5&positionY=0.1&positionZ=0&range=disabled&rangeEnd=40&rangeStart=0&reflection=0.2&rotationX=0&rotationY=0&rotationZ=235&shader=defaults&type=waterPlane&uAmplitude=0&uDensity=1.2&uFrequency=5.5&uSpeed=0.05&uStrength=3&uTime=0.2&wireframe=false"></div>
             <div class="absolute inset-0 z-10 w-full h-full aspect-video bg-gradient-to-b from-transparent to-oss-black"></div>
         </div>
     @endpush
