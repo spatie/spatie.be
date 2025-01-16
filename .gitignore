@@ -34,3 +34,4 @@ build
 meilisearch
 data.ms
 .phpunit.cache/test-results
+.DS_Store

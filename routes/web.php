@@ -16,6 +16,7 @@ use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\ExternalFeedItemsController;
 use App\Http\Controllers\InsightsController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\RegenerateLicenseKeyController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
@@ -35,7 +36,14 @@ use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
+use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Support\Facades\Route;
+
+Route::domain('topsecret.'.config('app.url'))->group(function () {
+    Route::view('soon', 'front.pages.top-secret.placeholder');
+    // Route::redirect('soon', '/');
+    Route::get('/', \App\Livewire\TopSecretComponent::class)->middleware(TopSecretMiddleware::class);
+});
 
 Route::permanentRedirect('docs/ray', 'https://myray.app/docs/');
 Route::permanentRedirect('docs/ray/{any}', 'https://myray.app/docs/')->where('any', '.*');
@@ -134,6 +142,7 @@ Route::middleware('auth')->prefix('profile')->group(function () {
     Route::get('invoices', InvoicesController::class)->name('invoices');
 
     Route::get('download-latest-version-for-expired-license/{license}/{repo}', DownloadLatestReleaseForExpiredLicenseController::class)->name('downloadLatestRelease');
+    Route::post('regenerate-key/{license}', RegenerateLicenseKeyController::class)->name('regenerate-key');
 });
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -181,7 +190,8 @@ Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
 
 Route::get('wwsd/{slug?}', WwsdController::class)->name('wwsd');
-Route::view('black-friday-deals', 'front.pages.black-friday-deals.index');
+// Route::view('black-friday-deals', 'front.pages.black-friday-deals.index');
+Route::view('top-secret', 'front.pages.top-secret.index');
 
 Route::view('offline', 'errors.offline')->name('offline');
 

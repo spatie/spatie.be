@@ -13,7 +13,7 @@
     @endisset
 
     @if ($purchasable->id === 18)
-    <section class="-mx-8 mb-4 px-8 py-6 bg-trueblack text-white" role="banner">
+    <section class="mb-6 bg-trueblack" role="banner">
         <div>
             <h1 class="font-serif font-bold text-xl leading-tight">
                  <div class="text-yellow">Special offer</div>
@@ -25,7 +25,7 @@
         </div>
 
         @php
-        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2022-11-29 09:00' );
+        $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2024-12-01 23:59' );
         @endphp
 
         <div

@@ -41,7 +41,7 @@
 }
 
 .section-fade:before {
-    @apply z-back;
+    /* @apply z-back; */
     @apply absolute;
     @apply w-full;
     @apply left-0;
@@ -53,7 +53,7 @@
 
 /* fake inset shadow at the bottom */
 .section-fade:after {
-    @apply z-back;
+    /* @apply z-back; */
     @apply absolute;
     @apply w-full;
     @apply left-0;

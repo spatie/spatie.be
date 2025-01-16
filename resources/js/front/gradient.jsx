@@ -1,6 +1,6 @@
 import React from 'react';
 import { createRoot } from "react-dom/client";
-import { ShaderGradientCanvas, ShaderGradient } from 'shadergradient';
+import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
 
 document.addEventListener('livewire:navigated', () => {
     const element = document.getElementById("gradient");

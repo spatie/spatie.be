@@ -8,10 +8,10 @@
         "build": "vite build"
     },
     "dependencies": {
-        "@react-spring/three": "^9.7.3",
-        "@react-three/fiber": "^8.16.2",
+        "@react-spring/three": "^9.7.5",
+        "@react-three/fiber": "^8.17.10",
+        "@shadergradient/react": "^2.0.15",
         "@tailwindcss/forms": "^0.5.7",
-        "@types/three": "^0.163.0",
         "@vitejs/plugin-react": "^4.2.1",
         "alpinejs": "^3.10.5",
         "autoprefixer": "^10.4.19",
@@ -22,13 +22,14 @@
         "prettier": "^1.10.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "shadergradient": "^1.2.10",
         "tailwindcss": "^3.4.3",
-        "three": "0.150.0",
+        "three": "^0.150.0",
         "three-stdlib": "^2.29.6",
         "vite": "^5.0"
     },
     "devDependencies": {
+        "@types/three": "^0.171.0",
         "postcss": "^8.2.8"
-    }
+    },
+    "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

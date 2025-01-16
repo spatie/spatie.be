@@ -47,7 +47,7 @@ class LoginController extends Controller
 
         flash()->success('You are now logged in');
 
-        return redirect()->to(session()->get('next', route('products.index')));
+        return redirect()->to($request->get('redirect') ?? session()->get('next', route('products.index')));
     }
 
     protected function onlyAllowSpatieRedirects(Request $request): void

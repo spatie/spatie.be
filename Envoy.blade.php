@@ -71,6 +71,7 @@ echo "{{ $newReleaseName }}" > public/release-name.txt
 @task('runComposer', ['on' => 'remote'])
 {{ logMessage("🚚  Running Composer...") }}
 cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/.env .env
 composer install --prefer-dist --no-scripts --no-dev -o
 @endtask
 
@@ -155,7 +156,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +4 | xargs -d "\n" rm -rf
 
 @task('finishDeploy', ['on' => 'local'])
 {{ logMessage("🚀  Application deployed!") }}
-{{ logMessage("Don't forget testing the docs and executing a purchase") }}
+{{ logMessage('Make sure to test the docs and executing a purchase') }}
 @endtask
 
 @task('deployOnlyCode',['on' => 'remote'])

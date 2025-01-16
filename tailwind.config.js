@@ -25,6 +25,14 @@ export default {
             'oss-purple-extra-dark': '#15151E',
             'oss-yellow': '#E7C23D',
 
+            'bf-beige': '#EAE9D8',
+            'bf-gray': '#3C3636',
+            'bf-dark-gray': '#242120',
+            'bf-brown': '#3E2F18',
+            'bf-red': '#F37D71',
+            'bf-red-dark': '#E03D3D',
+            'bf-red-light': '#FFEADB',
+
             transparent: 'transparent',
             current: 'currentColor',
             black: '#172a3d',
@@ -143,6 +151,23 @@ export default {
                 'Droid Sans',
                 'Helvetica Neue',
                 'sans-serif',
+            ],
+            'special-elite': [
+                'Special Elite',
+                'monospace',
+            ],
+            'obviously-narrow': [
+                'obviously-narrow',
+                'sans-serif'
+            ],
+            'obviously-condensed': [
+                'obviously-condensed',
+                'sans-serif'
+            ],
+            'marker': [
+                'Marker Felt',
+                'Comic Sans MS',
+                'cursive'
             ]
         },
 
@@ -169,6 +194,7 @@ export default {
                 'link-card': 'linear-gradient(180deg, rgba(141, 161, 166, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);',
                 'link-card-light': 'linear-gradient(180deg, rgba(209, 201, 188, 0.1) 0%, rgba(255, 255, 255, 0.015) 100%);',
                 'link-card-light-hover': 'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.09) 100%);',
+                'paper-cover-beige': 'radial-gradient(66.3% 50% at 50% 50%, #F1D393 0%, #E6C989 100%);',
             },
 
             borderRadius: {
@@ -185,6 +211,8 @@ export default {
                 none: 'none',
                 'oss-card': '0px 0px 110px 50px #00000033',
                 'big': '0px 0px 110px 50px rgba(0, 0, 0, 0.1)',
+                'bf-smooth': '0px 95.5638px 130.417px rgba(0, 0, 0, 0.04), 0px 11.9661px 23.4186px rgba(0, 0, 0, 0.08);',
+                'bf-hard': '0px 18.4854px 36.9708px #1E1A1A;'
             },
 
             fontSize: {
@@ -271,9 +299,9 @@ export default {
         },
     },
     plugins: [
-        require('@tailwindcss/forms')({
-            strategy: "class",
-        }),
+        // require('@tailwindcss/forms')({
+        //     strategy: "class",
+        // }),
     ],
 }
 
