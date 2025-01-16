@@ -4,18 +4,18 @@
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium antialiased"
 >
-    <article>
-        <x-layout.wrapper as="header" class="relative z-10 px-28 mt-24 -mb-16 flex gap-20">
-            <div class="pb-32">
+    <article class="px-3 sm:px-12">
+        <x-layout.wrapper as="header" class="relative z-10 px-10 md:px-28 mt-6 sm:mt-12 md:mt-24 -mb-8 md:-mb-16 flex gap-20">
+            <div class="flex-1 pb-24">
                 <time datetime="{{ $post->date?->format('Y-m-d') }}">
                     {{ $post->date?->format('F d, Y') ?? 'Preview' }}
                 </time>
 
-                <h1 class="my-9 font-druk font-bold text-[96px] leading-[77px] text-balance uppercase">
+                <h1 class="my-6 md:my-9 font-druk font-bold text-[64px] md:text-[96px] leading-[90%] text-balance uppercase">
                     {!! $post->title !!}
                 </h1>
 
-                <div class="mt-9 text-base font-bold">
+                <div class="mt-6 md:mt-9 text-base font-bold">
                     @foreach ($post->tags as $tag)
                         <span>#{{ $tag }}</span>
                     @endforeach
@@ -29,7 +29,7 @@
             </div>
         </x-layout.wrapper>
 
-        <x-layout.wrapper as="section" class="py-20 max-w-layout mx-auto bg-white rounded-2xl">
+        <x-layout.wrapper as="section" class="px-6 lg:px-0 pt-6 pb-6 md:py-20 max-w-layout mx-auto bg-white rounded-2xl">
             <div class="max-w-md mx-auto">
                 <aside class="mb-8 flex items-center gap-6">
                     @foreach ($post->authors as $author)
@@ -42,13 +42,13 @@
                     @endforeach
                 </aside>
 
-                <main class="
+                <div class="
                     markup markup-titles markup-lists markup-tables markup-embeds links-blue links-underline docs-markup
                     [&_>.insights-list-item]:-mx-12
                     [&_>pre]:-mx-12 [&_>pre]:bg-oss-gray-light
                 ">
                     {!! $content !!}
-                </main>
+                </div>
             </div>
         </x-layout.wrapper>
     </article>
@@ -66,7 +66,7 @@
         </x-layout.wrapper>
     @endif
 
-    <x-layout.wrapper class="my-24">
+    <x-layout.wrapper class="px-3 sm:px-12 my-6 sm:my-12 md:my-24">
         <livewire:newsletter />
     </x-layout.wrapper>
 </x-page>
