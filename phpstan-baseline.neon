@@ -141,6 +141,11 @@ parameters:
 			path: app/Http/Controllers/InvoicesController.php
 
 		-
+			message: "#^Method App\\\\Http\\\\Controllers\\\\WebhookController\\:\\:findOrCreateCustomer\\(\\) has invalid return type Laravel\\\\Paddle\\\\Billable\\.$#"
+			count: 1
+			path: app/Http/Controllers/WebhookController.php
+
+		-
 			message: "#^Access to an undefined property App\\\\Models\\\\Lesson\\:\\:\\$description\\.$#"
 			count: 1
 			path: app/Models/Lesson.php
