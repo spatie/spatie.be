@@ -7,6 +7,7 @@ use App\Enums\BlackFridayRewardType;
 use App\Models\User;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class DetermineBlackFridayRewardAction
@@ -22,6 +23,7 @@ class DetermineBlackFridayRewardAction
             return $redeemedReward;
         }
 
+        /** @var Collection{id: int, type: string} $specialRewards */
         $specialRewards = DB::table('bf24_rewards')
             ->where('available_at', '<=', now())
             ->where('day', $day)
