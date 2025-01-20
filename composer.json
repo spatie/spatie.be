@@ -92,10 +92,11 @@
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^3.0",
         "fakerphp/faker": "^1.20",
+        "larastan/larastan": "^2.4",
         "laravel/envoy": "^2.9",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^8.1",
-        "larastan/larastan": "^2.4",
+        "peckphp/peck": "^0.1.1",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.2",
