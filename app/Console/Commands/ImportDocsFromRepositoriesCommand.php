@@ -116,7 +116,7 @@ class ImportDocsFromRepositoriesCommand extends Command
                 && git config core.sparseCheckout true \
                 && echo "/docs" >> .git/info/sparse-checkout \
                 && git remote add -f origin https://{$accessToken}@github.com/spatie/{$repository['name']}.git \
-                && git pull origin ${branch} \
+                && git pull origin {$branch} \
                 && cp -r docs/* ../../../docs/{$repository['name']}/{$alias} \
                 && echo "---\ntitle: {$repository['name']}\ncategory: {$repository['category']}\n---" > ../../../docs/{$repository['name']}/_index.md \
                 && cd docs/ \
