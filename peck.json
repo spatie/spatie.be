@@ -2,7 +2,34 @@
     "preset": "laravel",
     "ignore": {
         "words": [
-            "php"
+            "php",
+            "packagist",
+            "satis",
+            "uuid",
+            "jsx",
+            "mailcoach",
+            "spatie",
+            "saas",
+            "vimeo",
+            "macos",
+            "ppp",
+            "usd",
+            "hd",
+            "utils",
+            "purchasables",
+            "afterwork",
+            "passthrough",
+            "sortable",
+            "activations",
+            "copyable",
+            "tid",
+            "wwsd",
+            "renderer",
+            "ebook",
+            "merch",
+            "toc",
+            "prev",
+            "dont"
         ],
         "paths": []
     }
