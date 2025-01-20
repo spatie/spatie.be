@@ -9,9 +9,14 @@
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
         <div class="wrap links @unless($dark) links-gray text-gray @endunless leading-loose | md:leading-normal">
             <div class="grid grid-cols-2 items-start text-sm | md:flex md:justify-between">
-                @include('layout.partials.menu')
+                {{ Menu::main()
+                    ->addClass(
+                        'md:grid grid-flow-col gap-6 justify-between md:text-lg | print:hidden'
+                    )
+                    ->setActiveClass('text-blue font-bold')
+                 }}
 
-                <div class="grid | md:grid-flow-col ml:items-center md:ml-12 md:gap-12">
+                <div class="grid | md:grid-flow-col md:items-center md:ml-12 md:gap-12">
                     @include('layout.partials.service', ['dark' => $dark, 'footer' => true])
                 </div>
             </div>
