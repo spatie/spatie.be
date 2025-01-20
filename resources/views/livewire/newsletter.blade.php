@@ -1,6 +1,6 @@
-<aside class="bg-oss-green-pale py-16 px-20 rounded-lg flex items-center gap-24">
-    <div class="w-1/3 flex-shrink-0">
-        <header class="text-oss-royal-blue font-bold text-[72px] leading-[65px] uppercase font-druk">
+<aside class="bg-oss-green-pale px-6 md:px-8 lg:px-20 py-8 lg:py-16 rounded-lg md:flex items-center gap-24">
+    <div class="md:w-1/3 flex-shrink-0">
+        <header class="sm:max-w-1/2 text-oss-royal-blue font-bold text-[72px] leading-[65px] uppercase font-druk">
             Get the latest from Spatie
         </header>
         <div class="mt-6 flex items-center gap-2">
@@ -12,32 +12,34 @@
         </div>
     </div>
 
-    @if($submitted)
-        <div class="text-lg">
-            <h2>Thank you for subscribing!</h2>
-            <p>You'll receive a confirmation email shortly.</p>
-        </div>
-    @else
-        <div>
+    <div class="mt-6">
+        @if($submitted)
+            <div class="text-lg">
+                <h2>Thank you for subscribing!</h2>
+                <p>You'll receive a confirmation email shortly.</p>
+            </div>
+        @else
             <div>
-                <div class="bg-white/80 py-4 px-6 rounded-md w-full flex justify-between items-center">
-                    <div class="flex-1">
-                        <input class="bg-transparent w-full h-full placeholder-oss-royal-blue-light" name="email" wire:model="email" type="email" placeholder="Your email address">
-                        @error('email')
-                            <p class="text-oss-red text-xs">{{ $message }}</p>
-                        @enderror
-                    </div>
+                <div>
+                    <div class="bg-white/80 py-4 px-6 rounded-md w-full flex justify-between items-center">
+                        <div class="flex-1">
+                            <input class="bg-transparent w-full h-full placeholder-oss-royal-blue-light" name="email" wire:model="email" type="email" placeholder="Your email address">
+                            @error('email')
+                                <p class="text-oss-red text-xs">{{ $message }}</p>
+                            @enderror
+                        </div>
 
-                    <button class="flex items-center gap-2 text-oss-spatie-blue hover:text-oss-royal-blue underline text-base underline-offset-2 " wire:click="subscribe">
-                        <svg class="size-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 19"><path fill="#197593" d="m12.686 9.5-.53.53-4.5 4.5-.532.532L6.063 14l.53-.53 3.97-3.97-3.968-3.97L6.063 5l1.061-1.062.53.53 4.5 4.5.532.532Z"/></svg>
-                        <span>Subscribe</span>
-                    </button>
+                        <button class="flex items-center gap-2 text-oss-spatie-blue hover:text-oss-royal-blue underline text-base underline-offset-2 " wire:click="subscribe">
+                            <svg class="size-5 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 19"><path fill="#197593" d="m12.686 9.5-.53.53-4.5 4.5-.532.532L6.063 14l.53-.53 3.97-3.97-3.968-3.97L6.063 5l1.061-1.062.53.53 4.5 4.5.532.532Z"/></svg>
+                            <span>Subscribe</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="text-oss-royal-blue text-base leading-snug mt-5">
+                    Sign up for occasional emails on Spatie products and promotions.
+                    By submitting this from, you acknowledge our <a class="underline" href="{{ route('legal.privacy') }}">Privacy Policy</a>.
                 </div>
             </div>
-            <div class="text-oss-royal-blue text-base leading-snug mt-5">
-                Sign up for occasional emails on Spatie products and promotions.
-                By submitting this from, you acknowledge our <a class="underline" href="{{ route('legal.privacy') }}">Privacy Policy</a>.
-            </div>
-        </div>
-    @endif
+        @endif
+    </div>
 </aside>

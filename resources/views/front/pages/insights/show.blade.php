@@ -44,8 +44,8 @@
 
                 <div class="
                     markup markup-titles markup-lists markup-tables markup-embeds links-blue links-underline docs-markup
-                    [&_>.insights-list-item]:-mx-12
-                    [&_>pre]:-mx-12 [&_>pre]:bg-oss-gray-light
+                    md:[&_>.insights-list-item]:-mx-12
+                    md:[&_>pre]:-mx-12 [&_>pre]:bg-oss-gray-light
                 ">
                     {!! $content !!}
                 </div>
