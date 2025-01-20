@@ -1,0 +1,38 @@
+name: Peck
+
+on: [push]
+
+jobs:
+  peck:
+    name: peck
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+
+      - name: Install composer dependencies
+        run: composer install -n --prefer-dist
+        env:
+          COMPOSER_AUTH: ${{ secrets.COMPOSER_AUTH }}
+
+      - name: Install Aspell
+        shell: bash
+        run: |
+          if [[ "$RUNNER_OS" == "Linux" ]]; then
+            sudo apt-get update && sudo apt-get install -y aspell aspell-en
+          elif [[ "$RUNNER_OS" == "macOS" ]]; then
+            brew install aspell
+          fi
+
+      - name: Check Typos
+        shell: bash
+        run: |
+          if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
+            ./vendor/bin/peck
+          fi
