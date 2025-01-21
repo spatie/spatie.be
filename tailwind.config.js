@@ -15,7 +15,8 @@ export default {
             'oss-gray-dark': '#A5A4A3',
             'oss-gray-extra-dark': '#3A3C3E',
             'oss-red': '#FF354F',
-            'oss-blue': '#33CCFF',
+            'oss-postcard-blue': '#33CCFF',
+            'oss-spatie-blue': '#197593',
             'oss-royal-blue': '#172A3D',
             'oss-royal-blue-light': '#515F6E',
             'oss-purple': '#735AFF',
@@ -87,7 +88,7 @@ export default {
             md: '960px',
             lg: '1230px',
             xl: '1680px',
-            print: {raw: 'print'},
+            print: { raw: 'print' },
         },
 
         fontFamily: {
@@ -171,6 +172,9 @@ export default {
         },
 
         lineHeight: {
+            80: 0.8,
+            90: 0.9,
+            140: 1.4,
             none: 1,
             tight: 1.1,
             snug: 1.4,
@@ -192,6 +196,11 @@ export default {
                 'link-card-light-hover': 'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.09) 100%);',
                 'paper-cover-beige': 'radial-gradient(66.3% 50% at 50% 50%, #F1D393 0%, #E6C989 100%);',
             },
+
+            borderRadius: {
+                8: '8px',
+            },
+
             boxShadow: {
                 DEFAULT: '0 2px 4px 0 rgba(76, 55, 55, 0.12)',
                 light: '0 2px 4px 0 rgba(76, 55, 55, 0.04)',
@@ -201,17 +210,25 @@ export default {
                 'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
                 none: 'none',
                 'oss-card': '0px 0px 110px 50px #00000033',
+                'big': '0px 0px 110px 50px rgba(0, 0, 0, 0.1)',
                 'bf-smooth': '0px 95.5638px 130.417px rgba(0, 0, 0, 0.04), 0px 11.9661px 23.4186px rgba(0, 0, 0, 0.08);',
                 'bf-hard': '0px 18.4854px 36.9708px #1E1A1A;'
             },
 
             fontSize: {
+                14: '14px',
+                16: '16px',
+                18: '18px',
+                24: '24px',
+                72: '72px',
+                144: '144px',
                 xxs: '.55rem', // small!
                 '6xl': '5rem', // large!
             },
 
             width: {
                 '2px': '2px',
+                wrapper: '1080px',
             },
 
             height: {
@@ -222,6 +239,7 @@ export default {
 
             spacing: {
                 '7.5': '1.875rem',
+                '18': '4.5rem',
             },
 
             keyframes: {
@@ -251,6 +269,7 @@ export default {
                 '1/2': '50vw',
                 columns: '80rem', // xl + (2 * large gap)
                 logoclient: '8rem',
+                wrapper: '1080px',
             },
 
             maxHeight: {

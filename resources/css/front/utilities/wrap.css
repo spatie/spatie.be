@@ -1,3 +1,5 @@
+/** Deprecated, use .wrapper instead */
+
 .wrap {
     @apply px-8;
     @apply mx-auto;

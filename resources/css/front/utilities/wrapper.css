@@ -1,0 +1,35 @@
+@responsive {
+    .wrapper-sm,
+    .wrapper-md,
+    .wrapper-lg,
+    .wrapper-xl {
+        @apply w-full mx-auto px-3 sm:px-6 md:px-12 lg:px-24;
+    }
+
+    .wrapper-inset-sm,
+    .wrapper-inset-md,
+    .wrapper-inset-lg,
+    .wrapper-inset-xl {
+        @apply w-full mx-auto px-12 sm:px-16 md:px-24 lg:px-48;
+    }
+
+    .wrapper-sm,
+    .wrapper-inset-sm {
+        @apply max-w-screen-sm;
+    }
+
+    .wrapper-md,
+    .wrapper-inset-md {
+        @apply max-w-screen-md;
+    }
+
+    .wrapper-lg,
+    .wrapper-inset-lg {
+        @apply max-w-screen-lg;
+    }
+
+    .wrapper-xl,
+    .wrapper-inset-xl {
+        @apply max-w-screen-xl;
+    }
+}

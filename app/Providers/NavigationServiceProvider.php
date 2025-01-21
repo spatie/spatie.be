@@ -27,6 +27,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('vacancies.index', 'Vacancies')
                 ->route('about', 'About')
                 ->route('blog', 'Blog')
+                // ->route('insights', 'Insights')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
                 ->addIf(auth()->check(), View::create('layout.partials.navigation.profileIcon', ['url' => route('profile')]))

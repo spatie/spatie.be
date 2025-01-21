@@ -3,6 +3,10 @@ pre, code {
     background-color: #f3f3f3;
 }
 
+.shiki pre, .shiki code {
+    background-color: transparent;
+}
+
 .hl-keyword {
     color: #CF222E;
 }

@@ -1,4 +1,4 @@
-<div class="px-3 sm:px-12 font-pt antialiased font-medium">
+<div class="wrapper-xl">
     <header
         x-data="{ open: window.innerWidth >= 720 }"
         x-on:click.outside="() => {
@@ -6,12 +6,12 @@
             open = false
         }"
         x-on:resize.window="open = window.innerWidth >= 720"
-        class="w-full max-w-screen-xl mx-auto p-5 sm:px-[40px] sm:py-[30px] sm:flex z-10 my-5 rounded | bg-white shadow-light | print:bg-transparent print:shadow-none"
+        class="p-5 sm:px-[40px] sm:py-[30px] sm:flex z-10 my-5 rounded | bg-white shadow-light | font-pt antialiased font-medium | print:bg-transparent print:shadow-none"
     >
          <div class="flex justify-between leading-loose | sm:leading-none sm:block">
-             <a class="shrink-0 logo h-8 w-20 block | sm:mb-0 sm:w-48" href="/" title="Home">
+             <a class="shrink-0 logo h-8 w-20 block | sm:mb-0 sm:w-36" href="/" title="Home">
                  <span class="absolute h-8 sm:h-14 ">
-                 @app_svg('logo')
+                    @app_svg('logo')
                  </span>
              </a>
 
@@ -24,7 +24,12 @@
          <div x-show.important="open" x-cloak x-transition class="mt-4 sm:mt-0 sm:h-14 grid items-start gap-x-8 | sm:gap-y-4 sm:justify-end sm:justify-items-end sm:ml-auto">
              <hr class="h-px bg-oss-gray sm:hidden -mx-5 mb-5" />
              <nav class="flex | sm:row-start-2 mb-5 sm:mb-0 text-oss-royal-blue">
-                 @include('layout.partials.menu')
+                 {{ Menu::main()
+                    ->addClass(
+                        'grid sm:grid-flow-col gap-3 sm:gap-4 md:gap-6 sm:justify-between md:text-lg | print:hidden'
+                    )
+                    ->setActiveClass('text-blue font-bold')
+                 }}
              </nav>
              <nav class="grid text-base | sm:opacity-75 sm:row-start-1 sm:grid-flow-col sm:items-center gap-4 sm:text-sm | print:hidden">
                  @include('layout.partials.service')

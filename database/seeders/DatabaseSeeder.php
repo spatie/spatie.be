@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
             ->call(SiteSearchSeeder::class)
             ->call(AdSeeder::class)
             ->call(MembersSeeder::class)
-            ->call(InsightsSeeder::class)
+            ->call(ExternalFeedItemSeeder::class)
             ->call(PlaylistSeeder::class)
             ->call(RepositoriesSeeder::class)
             ->call(ProductSeeder::class)
