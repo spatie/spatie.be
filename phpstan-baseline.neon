@@ -71,6 +71,16 @@ parameters:
 			path: app/Domain/Shop/Models/Product.php
 
 		-
+			message: "#^Method App\\\\Domain\\\\Shop\\\\Models\\\\Product\\:\\:purchasablesWithoutRenewals\\(\\) should return Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany but returns Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\>\\.$#"
+			count: 1
+			path: app/Domain/Shop/Models/Product.php
+
+		-
+			message: "#^Method App\\\\Domain\\\\Shop\\\\Models\\\\Product\\:\\:renewals\\(\\) should return Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany but returns Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\>\\.$#"
+			count: 1
+			path: app/Domain/Shop/Models/Product.php
+
+		-
 			message: "#^Property App\\\\Domain\\\\Shop\\\\Models\\\\Product\\:\\:\\$purchasables is never written, only read\\.$#"
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
@@ -79,6 +89,11 @@ parameters:
 			message: "#^Variable \\$purchasables in PHPDoc tag @var does not exist\\.$#"
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
+
+		-
+			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:commentableName\\(\\)\\.$#"
+			count: 1
+			path: app/Filament/Resources/Courses/CommentResource.php
 
 		-
 			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\PurchaseAssignment\\:\\:\\$bundle\\.$#"
@@ -203,4 +218,9 @@ parameters:
 			message: "#^Call to an undefined method Github\\\\Api\\\\AbstractApi\\:\\:releases\\(\\)\\.$#"
 			count: 1
 			path: app/Services/GitHub/GitHubApi.php
+
+		-
+			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
+			count: 2
+			path: app/Support/Paddle/ProcessPaymentSucceededJob.php
 
