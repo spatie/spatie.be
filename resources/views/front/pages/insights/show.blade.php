@@ -2,11 +2,11 @@
     title="{{ $post->title }}"
     background="/backgrounds/blog-post.png"
     body-class="bg-oss-gray"
-    main-class="font-pt text-oss-royal-blue font-medium antialiased"
+    main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
     <article>
         <header class="wrapper-lg sm:wrapper-inset-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 relative z-10">
-            <div class="pr-6 flex flex-col sm:flex-row gap-8 gap-20">
+            <div class="pr-6 flex flex-col sm:flex-row gap-8">
                 <div class="flex-1 sm:pb-28">
                     <time datetime="{{ $post->date?->format('Y-m-d') }}" class="text-oss-royal-blue">
                         {{ $post->date?->format('F d, Y') ?? 'Preview' }}
@@ -46,6 +46,7 @@
                         'markup markup-titles markup-lists markup-tables markup-embeds links-blue links-underline docs-markup',
                         'md:[&_>.insights-list-item]:-mx-12 md:[&_>.insights-list-item]:px-12 md:[&_>.insights-list-item]:my-8',
                         'md:[&_>pre]:-mx-12 md:[&_>pre]:px-12',
+                        '[&_>:not(pre)>code]:text-16 [&_>:not(pre)>code]:p-[2px]',
                         '[&_>pre]:bg-oss-gray-light',
                     ])>
                         {!! $content !!}
@@ -68,7 +69,7 @@
         </div>
     @endif
 
-    <div class="my-12">
+    <div class="wrapper-lg sm:wrapper-inset-lg my-12 md:mb-16">
         <livewire:newsletter />
     </div>
 </x-page>
