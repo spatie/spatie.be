@@ -4,7 +4,7 @@
     <figure>
         <a wire:navigate href="{{ route('insights.show', $insight->slug) }}" class="text-oss-royal-blue no-underline block w-[120px] h-[120px] bg-oss-green-pale rounded-8">
             @if ($insight->header_image)
-                <img class="w-full h-full object-cover" src="{{ $insight->header_image }}" alt="">
+                <img class="w-full h-full object-cover rounded-8" src="{{ $insight->header_image }}" alt="">
             @endif
         </a>
     </figure>

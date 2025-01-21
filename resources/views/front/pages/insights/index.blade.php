@@ -4,25 +4,25 @@
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
-    <header class="wrapper-lg mt-8 sm:mt-20 md:mt-28">
+    <header class="wrapper-lg sm:mt-20 md:mt-28">
         <x-headers.h1 class="text-right text-white">
-            Insights
+            Blog
         </x-headers.h1>
     </header>
 
     @if($highlight)
-        <article class="wrapper-lg flex flex-col-reverse sm:flex-row sm:gap-16 mt-8">
+        <article class="wrapper-lg flex flex-col sm:flex-row gap-8 sm:gap-16 mt-8">
             <figure>
-                <div class="sm:w-[440px] sm:h-[440px] bg-oss-green-pale rounded-8 shadow-big">
+                <div class="w-[220px] h-[220px] sm:w-[440px] sm:h-[440px] bg-oss-green-pale rounded-8 shadow-big">
                     @if ($highlight->header_image)
-                        <img class="w-full h-full object-cover rounded-8" src="{{ $highlight->header_image }}" alt="">
+                        <img class="w-full h-full object-cover rounded-8" src="{{ $highlight->header_image }}" alt="{{ $highlight->title }}">
                     @endif
                 </div>
             </figure>
             <div class="sm:pt-24 flex flex-col gap-6 sm:gap-9">
                 <p class="flex items-center gap-3 text-sm">
                     <a href="{{ route('insights.show', $highlight->slug) }}" class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5">
-                        Latest article
+                        Latest post
                     </a>
                     <a href="{{ route('insights.show', $highlight->slug) }}">
                         <time datetime="{{ $highlight->date->format('Y-m-d') }}">
@@ -43,18 +43,18 @@
         <hr class="sm:hidden mx-3 my-16 h-px bg-oss-gray-medium">
     @endif
 
-    @if($insights->isNotEmpty())
+    @if($posts->isNotEmpty())
         <div class="wrapper-lg mt-12 sm:mt-20">
             <div class="grid sm:grid-cols-[1fr,2fr] gap-8">
-                <h2 class="hidden sm:block text-24 font-bold">More insights</h2>
+                <h2 class="hidden sm:block text-24 font-bold">More posts</h2>
                 <div class="grid gap-16">
-                    @foreach($insights as $insight)
-                        <x-insights.list-item :insight="$insight" />
+                    @foreach($posts as $post)
+                        <x-insights.list-item :insight="$post" />
                         @if(!$loop->last)
                             <hr class="sm:hidden h-px bg-oss-gray-medium">
                         @endif
                     @endforeach
-                    @if ($insights->hasMorePages())
+                    @if ($posts->hasMorePages())
                         <a href="{{ route('insights.all') }}" wire:navigate.hover class="flex w-full items-center justify-center py-6 text-blue bg-link-card-light border border-gray/25 rounded">
                             View more
                         </a>
