@@ -6,6 +6,7 @@ use App\Models\ExternalFeedItem;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
@@ -73,17 +74,18 @@ class InsightsController
         ]);
     }
 
-    public static function getFeedItems(): Paginator
+    public static function getFeedItems(): Collection
     {
-        return self::getPosts()->map(function (Post $post) {
-            return FeedItem::create()
-                ->id($post->slug)
-                ->title($post->title)
-                ->summary($post->summary)
-                ->updated($post->updated_at)
-                ->link(action([self::class, 'detail'], $post->slug))
-                ->authorName($post->authors->first()?->name);
-        });
+        return self::getPosts()
+            ->map(function (Post $post) {
+                return FeedItem::create()
+                    ->id($post->slug)
+                    ->title($post->title)
+                    ->summary($post->summary)
+                    ->updated($post->updated_at)
+                    ->link(action([self::class, 'detail'], $post->slug))
+                    ->authorName($post->authors->first()?->name);
+            });
     }
 
     private static function getPost(string $slug): ?Post
@@ -91,13 +93,12 @@ class InsightsController
         return ContentApi::getPost('spatie', $slug, theme: 'github-light');
     }
 
-    private static function getPosts(int $perPage = 100): Paginator
+    private static function getPosts(int $perPage = 20): Paginator
     {
         return ContentApi::getPosts(
             product: 'spatie',
             page: request('page', 1),
             perPage: $perPage,
-            theme: 'github-light',
         );
     }
 
@@ -150,7 +151,6 @@ class InsightsController
         return Blade::render("components.insights.list-item", [
             'insight' => $post,
             'border' => true,
-            //'class' => '-mx-12',
         ]);
     }
 }
