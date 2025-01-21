@@ -88,7 +88,7 @@ export default {
             md: '960px',
             lg: '1230px',
             xl: '1680px',
-            print: {raw: 'print'},
+            print: { raw: 'print' },
         },
 
         fontFamily: {
@@ -239,6 +239,7 @@ export default {
 
             spacing: {
                 '7.5': '1.875rem',
+                '18': '4.5rem',
             },
 
             keyframes: {

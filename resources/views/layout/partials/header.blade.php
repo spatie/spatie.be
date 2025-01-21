@@ -1,4 +1,4 @@
-<div class="px-3 sm:px-12 font-pt antialiased font-medium">
+<div class="wrapper-xl">
     <header
         x-data="{ open: window.innerWidth >= 720 }"
         x-on:click.outside="() => {
@@ -6,12 +6,12 @@
             open = false
         }"
         x-on:resize.window="open = window.innerWidth >= 720"
-        class="w-full max-w-screen-xl mx-auto p-5 sm:px-[40px] sm:py-[30px] sm:flex z-10 my-5 rounded | bg-white shadow-light | print:bg-transparent print:shadow-none"
+        class="p-5 sm:px-[40px] sm:py-[30px] sm:flex z-10 my-5 rounded | bg-white shadow-light | font-pt antialiased font-medium | print:bg-transparent print:shadow-none"
     >
          <div class="flex justify-between leading-loose | sm:leading-none sm:block">
              <a class="shrink-0 logo h-8 w-20 block | sm:mb-0 sm:w-36" href="/" title="Home">
                  <span class="absolute h-8 sm:h-14 ">
-                 @app_svg('logo')
+                    @app_svg('logo')
                  </span>
              </a>
 
