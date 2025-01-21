@@ -3,10 +3,10 @@
 return [
     'feeds' => [
         'main' => [
-            'items' => [\App\Http\Controllers\InsightsController::class, 'getFeedItems'],
+            'items' => [\App\Models\ExternalFeedItem::class, 'getFeedItems'],
             'url' => '/feed',
-            'title' => 'Spatie: Insights',
-            'description' => 'Insights from the Spatie team.',
+            'title' => 'Spatie: From our team & products',
+            'description' => 'Blog posts from Spatie team members & products.',
             'language' => 'en-US',
             'image' => '',
             'format' => 'atom',
@@ -15,10 +15,10 @@ return [
             'contentType' => '',
         ],
         'insights' => [
-            'items' => [\App\Models\ExternalFeedItem::class, 'getFeedItems'],
+            'items' => [\App\Http\Controllers\InsightsController::class, 'getFeedItems'],
             'url' => '/feed-insights',
-            'title' => 'Spatie: From our team & products',
-            'description' => 'Blog posts from Spatie team members & products.',
+            'title' => 'Spatie: Insights',
+            'description' => 'Insights from the Spatie team.',
             'language' => 'en-US',
             'image' => '',
             'format' => 'atom',
