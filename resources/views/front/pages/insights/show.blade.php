@@ -5,8 +5,8 @@
     main-class="font-pt text-oss-royal-blue font-medium antialiased"
 >
     <article>
-        <header class="wrapper-lg sm:wrapper-inset-lg mt-6 sm:mt-12 -mb-12 relative z-10">
-            <div class="pr-12 flex flex-col sm:flex-row sm:gap-8 gap-20">
+        <header class="wrapper-lg sm:wrapper-inset-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 relative z-10">
+            <div class="pr-6 flex flex-col sm:flex-row gap-8 gap-20">
                 <div class="flex-1 sm:pb-28">
                     <time datetime="{{ $post->date?->format('Y-m-d') }}" class="text-oss-royal-blue">
                         {{ $post->date?->format('F d, Y') ?? 'Preview' }}
