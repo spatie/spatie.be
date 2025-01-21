@@ -12,13 +12,17 @@
 
     @if($highlight)
         <article class="wrapper-lg flex flex-col sm:flex-row gap-8 sm:gap-16 mt-8">
-            <figure>
-                <div class="w-[220px] h-[220px] sm:w-[440px] sm:h-[440px] bg-oss-green-pale rounded-8 shadow-big">
-                    @if ($highlight->header_image)
-                        <img class="w-full h-full object-cover rounded-8" src="{{ $highlight->header_image }}" alt="{{ $highlight->title }}">
-                    @endif
-                </div>
-            </figure>
+            <a href="{{ route('insights.show', $highlight->slug) }}" class="flex-shrink-0">
+                @if ($highlight->header_image)
+                    <img
+                        src="{{ $highlight->header_image }}"
+                        alt="{{ $highlight->title }}"
+                        class="w-[220px] h-[220px] sm:w-[440px] sm:h-[440px] object-cover rounded-8"
+                    >
+                @else
+                    <div class="w-[220px] h-[220px] sm:w-[440px] sm:h-[440px] bg-oss-green-pale rounded-8"></div>
+                @endif
+            </a>
             <div class="sm:pt-24 flex flex-col gap-6 sm:gap-9">
                 <p class="flex items-center gap-3 text-sm">
                     <a href="{{ route('insights.show', $highlight->slug) }}" class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5">
@@ -31,12 +35,12 @@
                     </a>
                 </p>
                 <x-headers.h2>
-                    <a href="{{ route('insights.show', $highlight->slug) }}">
+                    <a href="{{ route('insights.show', $highlight->slug) }}" class="hover:text-oss-spatie-blue">
                         {{ $highlight->title }}
                     </a>
                 </x-headers.h2>
-                <div class="leading-snug">
-                    {!! $highlight->summary  !!}
+                <div>
+                    {!! $highlight->summary !!}
                 </div>
             </div>
         </article>
@@ -44,9 +48,9 @@
     @endif
 
     @if($posts->isNotEmpty())
-        <div class="wrapper-lg mt-12 sm:mt-20">
+        <div class="wrapper-lg mt-12 sm:mt-16">
             <div class="grid sm:grid-cols-[1fr,2fr] gap-8">
-                <h2 class="hidden sm:block text-24 font-bold">More posts</h2>
+                <h2 class="hidden sm:block text-24 font-bold pt-9">More posts</h2>
                 <div class="grid gap-16">
                     @foreach($posts as $post)
                         <x-insights.list-item :insight="$post" />
@@ -64,7 +68,7 @@
         </div>
     @endif
 
-    <div class="my-16">
+    <div class="wrapper-lg my-16">
         <livewire:newsletter />
     </div>
 
@@ -72,7 +76,7 @@
         <div class="wrapper-lg mt-24 mb-20">
             <div class="grid sm:grid-cols-[1fr,2fr] gap-8">
                 <h2 class="text-24 font-bold leading-snug text-center sm:text-left">From our team <br class="hidden sm:inline"> &&nbsp;products</h2>
-                <div class="grid gap-8">
+                <div class="pt-1.5 grid gap-8">
                     @foreach($externalFeedItems as $externalFeedItem)
                         @include('front.pages.insights.partials.externalFeedItem')
                     @endforeach

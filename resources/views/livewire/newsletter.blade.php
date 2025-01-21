@@ -1,4 +1,4 @@
-<aside class="wrapper-lg sm:wrapper-inset-lg md:mb-16">
+<aside>
     <div class="px-12 py-8 lg:px-16 lg:py-12 bg-oss-green-pale rounded-lg grid md:grid-cols-[2fr,3fr] gap-8 items-center">
         <div>
             <header class="text-oss-royal-blue font-bold text-[64px] leading-[90%] uppercase font-druk">
