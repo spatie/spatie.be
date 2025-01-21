@@ -85,7 +85,7 @@ class RepositoriesComponent extends Component
     #[Computed]
     public function hasMore(): bool
     {
-        return $this->repositories->count() < $this->total;
+        return $this->repositories->count() < $this->total();
     }
 
     public function render(): View
