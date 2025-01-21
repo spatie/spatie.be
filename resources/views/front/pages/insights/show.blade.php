@@ -5,8 +5,8 @@
     main-class="font-pt text-oss-royal-blue font-medium antialiased"
 >
     <article>
-        <header class="wrapper-inset-lg mt-6 sm:mt-12 -mb-12 relative z-10">
-            <div class="flex flex-col sm:flex-row sm:gap-8 sm:gap-20">
+        <header class="wrapper-lg sm:wrapper-inset-lg mt-6 sm:mt-12 -mb-12 relative z-10">
+            <div class="pr-12 flex flex-col sm:flex-row sm:gap-8 gap-20">
                 <div class="flex-1 sm:pb-28">
                     <time datetime="{{ $post->date?->format('Y-m-d') }}" class="text-oss-royal-blue">
                         {{ $post->date?->format('F d, Y') ?? 'Preview' }}
@@ -20,7 +20,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="w-3/5 sm:w-2/5 ml-auto mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
+                <div class="w-3/5 sm:w-2/5 ml-auto sm:mr-0 mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
                     @if($post->header_image)
                         <img class="w-full rounded-8" alt="" src="{{ $post->header_image }}"/>
                     @endif
@@ -29,7 +29,7 @@
         </header>
 
         <section class="wrapper-lg">
-            <div class="pt-6 md:pt-12 pb-16 md:pb-20 bg-white rounded-2xl">
+            <div class="pt-12 md:pt-12 pb-16 md:pb-20 bg-white rounded-2xl">
                 <div class="wrapper-sm px-9">
                     <aside class="mb-10 flex items-center gap-6">
                         @foreach ($post->authors as $author)

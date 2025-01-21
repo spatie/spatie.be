@@ -12,20 +12,20 @@ use Spatie\ContentApi\ContentApi;
 use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
 
-class InsightsController
+class BlogController
 {
     public function index(): View
     {
-        $insights = self::getPosts(5);
-        $highlight = $insights->first();
-        unset($insights[0]);
+        $posts = self::getPosts(5);
+        $highlight = $posts->first();
+        unset($posts[0]);
 
         $externalFeedItems = ExternalFeedItem::query()
             ->orderBy('created_at', 'desc')
             ->paginate(7);
 
         return view('front.pages.insights.index', [
-            'insights' => $insights,
+            'posts' => $posts,
             'highlight' => $highlight ?? null,
             'externalFeedItems' => $externalFeedItems,
         ]);
@@ -33,14 +33,14 @@ class InsightsController
 
     public function all(): View
     {
-        $insights = self::getPosts();
+        $posts = self::getPosts();
 
-        $highlight = $insights->first();
+        $highlight = $posts->first();
 
-        unset($insights[0]);
+        unset($posts[0]);
 
         return view('front.pages.insights.index', [
-            'insights' => $insights,
+            'posts' => $posts,
             'highlight' => $highlight ?? null,
         ]);
     }
@@ -124,7 +124,7 @@ class InsightsController
     private function renderBanner(?string $type): string
     {
         $props = [
-            'ref' => 'insights',
+            'ref' => 'posts',
             'class' => 'my-6',
             'thin' => true,
         ];
@@ -148,7 +148,7 @@ class InsightsController
             return '';
         }
 
-        return Blade::render("components.insights.list-item", [
+        return Blade::render("components.posts.list-item", [
             'insight' => $post,
             'border' => true,
         ]);

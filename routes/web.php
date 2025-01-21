@@ -14,7 +14,7 @@ use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\ExternalFeedItemsController;
-use App\Http\Controllers\InsightsController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MusicController;
 use App\Http\Controllers\RegenerateLicenseKeyController;
 use App\Http\Controllers\ShowReleaseNotesController;
@@ -53,9 +53,9 @@ Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where
 
 Route::feeds();
 
-Route::get('insights', [InsightsController::class, 'index'])->name('insights');
-Route::get('insights/all', [InsightsController::class, 'all'])->name('insights.all');
-Route::get('insights/{slug}', [InsightsController::class, 'detail'])->name('insights.show');
+Route::get('insights', [BlogController::class, 'index'])->name('insights');
+Route::get('insights/all', [BlogController::class, 'all'])->name('insights.all');
+Route::get('insights/{slug}', [BlogController::class, 'detail'])->name('insights.show');
 Route::get('team-products', ExternalFeedItemsController::class)->name('external-feed-items');
 
 Route::redirect('/docs/products/ray', '/docs/ray');
