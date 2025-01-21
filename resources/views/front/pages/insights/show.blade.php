@@ -20,9 +20,9 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="w-3/5 sm:w-2/5 ml-auto border border-black/10 shadow-big mt-auto aspect-square bg-oss-green-pale rounded-8 flex-shrink-0">
+                <div class="w-3/5 sm:w-2/5 ml-auto mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
                     @if($post->header_image)
-                        <img class="w-full rounded-md my-4" alt="" src="{{ $post->header_image }}"/>
+                        <img class="w-full rounded-8" alt="" src="{{ $post->header_image }}"/>
                     @endif
                 </div>
             </div>

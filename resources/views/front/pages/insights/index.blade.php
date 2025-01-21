@@ -13,9 +13,9 @@
     @if($highlight)
         <article class="wrapper-lg flex flex-col-reverse sm:flex-row sm:gap-16 mt-8">
             <figure>
-                <div class="sm:w-[440px] sm:h-[440px] bg-oss-green-pale rounded-8">
+                <div class="sm:w-[440px] sm:h-[440px] bg-oss-green-pale rounded-8 shadow-big">
                     @if ($highlight->header_image)
-                        <img class="w-full h-full object-cover" src="{{ $highlight->header_image }}" alt="">
+                        <img class="w-full h-full object-cover rounded-8" src="{{ $highlight->header_image }}" alt="">
                     @endif
                 </div>
             </figure>
