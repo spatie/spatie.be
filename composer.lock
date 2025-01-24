@@ -13202,16 +13202,16 @@
         },
         {
             "name": "spatie/spatie-content-api",
-            "version": "3.1.0",
+            "version": "3.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/spatie-content-api.git",
-                "reference": "c0395302dc501fab17a6bc4914c7d5a208449aac"
+                "reference": "498103e83adeb77bd05973128867a2446043e4fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/spatie-content-api/zipball/c0395302dc501fab17a6bc4914c7d5a208449aac",
-                "reference": "c0395302dc501fab17a6bc4914c7d5a208449aac",
+                "url": "https://api.github.com/repos/spatie/spatie-content-api/zipball/498103e83adeb77bd05973128867a2446043e4fa",
+                "reference": "498103e83adeb77bd05973128867a2446043e4fa",
                 "shasum": ""
             },
             "require": {
@@ -13260,9 +13260,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/spatie-content-api/issues",
-                "source": "https://github.com/spatie/spatie-content-api/tree/3.1.0"
+                "source": "https://github.com/spatie/spatie-content-api/tree/3.2.0"
             },
-            "time": "2024-03-11T15:57:15+00:00"
+            "time": "2025-01-22T20:10:48+00:00"
         },
         {
             "name": "spatie/ssh",
