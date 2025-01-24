@@ -4,7 +4,7 @@
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
-    <header class="wrapper-lg sm:mt-20 md:mt-28">
+    <header class="wrapper-lg mt-12">
         <x-headers.h1 class="text-right text-white">
             Blog
         </x-headers.h1>
@@ -51,7 +51,7 @@
         <div class="wrapper-lg mt-12 sm:mt-16 lg:mt-32">
             <div class="grid sm:grid-cols-[1fr,2fr] gap-8">
                 <h2 class="hidden sm:block text-24 font-bold pt-9">More posts</h2>
-                <div class="grid gap-16">
+                <div>
                     @foreach($posts as $post)
                         <x-insights.list-item :insight="$post" />
                         @if(!$loop->last)

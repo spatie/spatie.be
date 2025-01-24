@@ -31,12 +31,25 @@
         <section class="wrapper-lg">
             <div class="pt-12 md:pt-12 pb-16 md:pb-20 bg-white rounded-2xl">
                 <div class="wrapper-sm px-9">
-                    <aside class="mb-10 flex items-center gap-6">
-                        @foreach ($post->authors as $author)
-                            <div class="flex items-center gap-3">
-                                <img src="{{ $author->gravatar_url }}" alt="" class="flex-shrink-0 size-9 rounded-full bg-indigo-50">
+                    <aside class="mb-10 flex flex-col gap-3">
+                        @foreach ($post->authors->sortBy('name') as $author)
+                            <div class="flex items-center gap-2">
+                                <img src="{{ $author->gravatar_url }}" alt="" class="flex-shrink-0 size-6 rounded-full bg-indigo-50">
                                 <div class="text-base leading-none text-oss-royal-blue font-bold">
-                                    {{ $author->name }}
+                                    @php
+                                        echo match ($author->name) {
+                                            'Alex' => 'Alex Vanderbist',
+                                            'Freek' => 'Freek Van der Herten',
+                                            'Jef' => 'Jef Van der Voort',
+                                            'Niels' => 'Niels Vanpachtenbeke',
+                                            'Ruben' => 'Ruben Van Assche',
+                                            'Sebastian' => 'Sebastian De Deyne',
+                                            'Sébastien' => 'Sébastien Henau',
+                                            'Tim' => 'Tim Van Dijck',
+                                            'Wouter' => 'Wouter Brouwers',
+                                            default => $author->name,
+                                        };
+                                    @endphp
                                 </div>
                             </div>
                         @endforeach
