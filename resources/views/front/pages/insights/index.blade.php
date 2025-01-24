@@ -48,7 +48,7 @@
     @endif
 
     @if($posts->isNotEmpty())
-        <div class="wrapper-lg mt-12 sm:mt-16">
+        <div class="wrapper-lg mt-12 sm:mt-16 lg:mt-32">
             <div class="grid sm:grid-cols-[1fr,2fr] gap-8">
                 <h2 class="hidden sm:block text-24 font-bold pt-9">More posts</h2>
                 <div class="grid gap-16">
