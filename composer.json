@@ -173,8 +173,6 @@
         "post-create-project-cmd": [
             "php artisan key:generate"
         ],
-        "deploy": "envoy run deploy",
-        "deploy-code": "envoy run deploy-code",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
         "analyse": "vendor/bin/phpstan analyse --memory-limit=2G",
         "baseline": "vendor/bin/phpstan analyse --generate-baseline",
