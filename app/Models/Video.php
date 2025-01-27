@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Actions\UpdateVideoDetailsAction;
-use App\Domain\Shop\Models\Purchasable;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
