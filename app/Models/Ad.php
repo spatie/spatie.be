@@ -42,6 +42,7 @@ class Ad extends Model
         $query->where('active', true);
     }
 
+    /** @return HasMany<Repository, $this> */
     public function repositories(): HasMany
     {
         return $this->hasMany(Repository::class);

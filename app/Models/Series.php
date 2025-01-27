@@ -9,6 +9,7 @@ use App\Models\Enums\LessonDisplayEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -57,12 +58,14 @@ class Series extends Model implements HasMedia, Sortable
         return $this->getFirstMediaUrl('series-image');
     }
 
+    /** @return BelongsToMany<Purchasable, $this> */
     public function purchasables(): BelongsToMany
     {
         return $this->belongsToMany(Purchasable::class);
     }
 
-    public function lessons()
+    /** @return HasMany<Lesson, $this> */
+    public function lessons(): HasMany
     {
         return $this->hasMany(Lesson::class)->orderBy('sort_order');
     }

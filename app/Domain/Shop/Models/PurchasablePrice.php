@@ -15,6 +15,7 @@ class PurchasablePrice extends Model
         'amount' => 'integer',
     ];
 
+    /** @return BelongsTo<Purchasable, $this> */
     public function purchasable(): BelongsTo
     {
         return $this->belongsTo(Purchasable::class);

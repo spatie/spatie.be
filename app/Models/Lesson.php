@@ -47,6 +47,7 @@ class Lesson extends Model implements Sortable
         });
     }
 
+    /** @return BelongsTo<Series, $this> */
     public function series(): BelongsTo
     {
         return $this->belongsTo(Series::class);

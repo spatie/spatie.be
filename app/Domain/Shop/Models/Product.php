@@ -65,6 +65,7 @@ class Product extends Model implements HasMedia, Sortable
         return $this->getFirstMediaUrl('product-image');
     }
 
+    /** @return HasMany<Purchasable, $this> */
     public function purchasables(): HasMany
     {
         return $this->hasMany(Purchasable::class)->orderBy('sort_order');
@@ -81,6 +82,7 @@ class Product extends Model implements HasMedia, Sortable
             ->get();
     }
 
+    /** @return HasMany<Release, $this> */
     public function releases(): HasMany
     {
         return $this->hasMany(Release::class);

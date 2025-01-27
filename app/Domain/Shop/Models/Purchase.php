@@ -30,16 +30,19 @@ class Purchase extends Model
         return $this->hasManyThrough(License::class, PurchaseAssignment::class);
     }
 
+    /** @return BelongsTo<Purchasable, $this> */
     public function purchasable(): BelongsTo
     {
         return $this->belongsTo(Purchasable::class);
     }
 
+    /** @return BelongsTo<Bundle, $this> */
     public function bundle(): BelongsTo
     {
         return $this->belongsTo(Bundle::class);
     }
 
+    /** @return HasMany<PurchaseAssignment, $this> */
     public function assignments(): HasMany
     {
         return $this->hasMany(PurchaseAssignment::class);
@@ -59,11 +62,13 @@ class Purchase extends Model
             : collect([$this->purchasable]);
     }
 
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /** @return BelongsTo<Receipt, $this> */
     public function receipt(): BelongsTo
     {
         return $this->belongsTo(Receipt::class);

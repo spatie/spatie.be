@@ -47,6 +47,7 @@ class License extends Model implements AuthenticatableContract
         });
     }
 
+    /** @return BelongsTo<PurchaseAssignment, $this> */
     public function assignment(): BelongsTo
     {
         return $this->belongsTo(PurchaseAssignment::class, 'purchase_assignment_id');
@@ -59,6 +60,7 @@ class License extends Model implements AuthenticatableContract
         ) => $query->where('product_id', $product->id));
     }
 
+    /** @return HasMany<Activation, $this> */
     public function activations(): HasMany
     {
         return $this->hasMany(Activation::class);

@@ -16,7 +16,7 @@ class Repository
     {
         $this->slug = $slug;
         $this->aliases = $aliases;
-        $this->category = $index?->category ?? null;
+        $this->category = $index->category ?? null;
     }
 
     public function getAlias(string $alias): ?Alias

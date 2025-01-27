@@ -6,6 +6,7 @@ use App\Domain\Shop\Traits\HasPrices;
 use App\Http\Controllers\BundlesController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Mail\Markdown;
@@ -36,6 +37,7 @@ class Bundle extends Model implements HasMedia, Sortable
         'purchasables',
     ];
 
+    /** @return HasMany<BundlePrice, $this> */
     public function prices(): HasMany
     {
         return $this->hasMany(BundlePrice::class);
@@ -63,6 +65,7 @@ class Bundle extends Model implements HasMedia, Sortable
         return (int)round($avgEarnings);
     }
 
+    /** @return BelongsToMany<Purchasable, $this> */
     public function purchasables(): BelongsToMany
     {
         return $this->belongsToMany(Purchasable::class)->orderBy('sort_order');

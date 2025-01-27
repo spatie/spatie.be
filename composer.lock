@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ce007742c290fc41e6fae369ba1c28b",
+    "content-hash": "ec4c098025f67381d3d04ed2a3cd34ad",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -4486,32 +4486,32 @@
         },
         {
             "name": "laravel/serializable-closure",
-            "version": "v2.0.1",
+            "version": "v1.3.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/serializable-closure.git",
-                "reference": "613b2d4998f85564d40497e05e89cb6d9bd1cbe8"
+                "reference": "4f48ade902b94323ca3be7646db16209ec76be3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/613b2d4998f85564d40497e05e89cb6d9bd1cbe8",
-                "reference": "613b2d4998f85564d40497e05e89cb6d9bd1cbe8",
+                "url": "https://api.github.com/repos/laravel/serializable-closure/zipball/4f48ade902b94323ca3be7646db16209ec76be3d",
+                "reference": "4f48ade902b94323ca3be7646db16209ec76be3d",
                 "shasum": ""
             },
             "require": {
-                "php": "^8.1"
+                "php": "^7.3|^8.0"
             },
             "require-dev": {
-                "illuminate/support": "^10.0|^11.0",
-                "nesbot/carbon": "^2.67|^3.0",
-                "pestphp/pest": "^2.36",
-                "phpstan/phpstan": "^2.0",
-                "symfony/var-dumper": "^6.2.0|^7.0.0"
+                "illuminate/support": "^8.0|^9.0|^10.0|^11.0",
+                "nesbot/carbon": "^2.61|^3.0",
+                "pestphp/pest": "^1.21.3",
+                "phpstan/phpstan": "^1.8.2",
+                "symfony/var-dumper": "^5.4.11|^6.2.0|^7.0.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.x-dev"
+                    "dev-master": "1.x-dev"
                 }
             },
             "autoload": {
@@ -4543,7 +4543,7 @@
                 "issues": "https://github.com/laravel/serializable-closure/issues",
                 "source": "https://github.com/laravel/serializable-closure"
             },
-            "time": "2024-12-16T15:26:28+00:00"
+            "time": "2024-11-14T18:34:49+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -7279,6 +7279,134 @@
             "time": "2024-01-11T15:06:06+00:00"
         },
         {
+            "name": "php-di/invoker",
+            "version": "2.3.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/Invoker.git",
+                "reference": "59f15608528d8a8838d69b422a919fd6b16aa576"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/Invoker/zipball/59f15608528d8a8838d69b422a919fd6b16aa576",
+                "reference": "59f15608528d8a8838d69b422a919fd6b16aa576",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.3",
+                "psr/container": "^1.0|^2.0"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.8",
+                "mnapoli/hard-mode": "~0.3.0",
+                "phpunit/phpunit": "^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Invoker\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Generic and extensible callable invoker",
+            "homepage": "https://github.com/PHP-DI/Invoker",
+            "keywords": [
+                "callable",
+                "dependency",
+                "dependency-injection",
+                "injection",
+                "invoke",
+                "invoker"
+            ],
+            "support": {
+                "issues": "https://github.com/PHP-DI/Invoker/issues",
+                "source": "https://github.com/PHP-DI/Invoker/tree/2.3.6"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                }
+            ],
+            "time": "2025-01-17T12:49:27+00:00"
+        },
+        {
+            "name": "php-di/php-di",
+            "version": "7.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PHP-DI/PHP-DI.git",
+                "reference": "e87435e3c0e8f22977adc5af0d5cdcc467e15cf1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PHP-DI/PHP-DI/zipball/e87435e3c0e8f22977adc5af0d5cdcc467e15cf1",
+                "reference": "e87435e3c0e8f22977adc5af0d5cdcc467e15cf1",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/serializable-closure": "^1.0",
+                "php": ">=8.0",
+                "php-di/invoker": "^2.0",
+                "psr/container": "^1.1 || ^2.0"
+            },
+            "provide": {
+                "psr/container-implementation": "^1.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3",
+                "friendsofphp/proxy-manager-lts": "^1",
+                "mnapoli/phpunit-easymock": "^1.3",
+                "phpunit/phpunit": "^9.5",
+                "vimeo/psalm": "^4.6"
+            },
+            "suggest": {
+                "friendsofphp/proxy-manager-lts": "Install it if you want to use lazy injection (version ^1)"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/functions.php"
+                ],
+                "psr-4": {
+                    "DI\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "The dependency injection container for humans",
+            "homepage": "https://php-di.org/",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "container-interop",
+                "dependency injection",
+                "di",
+                "ioc",
+                "psr11"
+            ],
+            "support": {
+                "issues": "https://github.com/PHP-DI/PHP-DI/issues",
+                "source": "https://github.com/PHP-DI/PHP-DI/tree/7.0.7"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/mnapoli",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/php-di/php-di",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-07-21T15:55:45+00:00"
+        },
+        {
             "name": "php-http/cache-plugin",
             "version": "2.0.1",
             "source": {
@@ -8180,59 +8308,6 @@
                 "source": "https://github.com/phpstan/phpdoc-parser/tree/2.0.0"
             },
             "time": "2024-10-13T11:29:49+00:00"
-        },
-        {
-            "name": "pimple/pimple",
-            "version": "v3.5.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/silexphp/Pimple.git",
-                "reference": "a94b3a4db7fb774b3d78dad2315ddc07629e1bed"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/silexphp/Pimple/zipball/a94b3a4db7fb774b3d78dad2315ddc07629e1bed",
-                "reference": "a94b3a4db7fb774b3d78dad2315ddc07629e1bed",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2.5",
-                "psr/container": "^1.1 || ^2.0"
-            },
-            "require-dev": {
-                "symfony/phpunit-bridge": "^5.4@dev"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Pimple": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                }
-            ],
-            "description": "Pimple, a simple Dependency Injection Container",
-            "homepage": "https://pimple.symfony.com",
-            "keywords": [
-                "container",
-                "dependency injection"
-            ],
-            "support": {
-                "source": "https://github.com/silexphp/Pimple/tree/v3.5.0"
-            },
-            "time": "2021-10-28T11:13:42+00:00"
         },
         {
             "name": "predis/predis",
@@ -17698,30 +17773,31 @@
         },
         {
             "name": "zbateson/mail-mime-parser",
-            "version": "2.4.1",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/mail-mime-parser.git",
-                "reference": "ff49e02f6489b38f7cc3d1bd3971adc0f872569c"
+                "reference": "e0d4423fe27850c9dd301190767dbc421acc2f19"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/ff49e02f6489b38f7cc3d1bd3971adc0f872569c",
-                "reference": "ff49e02f6489b38f7cc3d1bd3971adc0f872569c",
+                "url": "https://api.github.com/repos/zbateson/mail-mime-parser/zipball/e0d4423fe27850c9dd301190767dbc421acc2f19",
+                "reference": "e0d4423fe27850c9dd301190767dbc421acc2f19",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/psr7": "^1.7.0|^2.0",
-                "php": ">=7.1",
-                "pimple/pimple": "^3.0",
-                "zbateson/mb-wrapper": "^1.0.1",
-                "zbateson/stream-decorators": "^1.0.6"
+                "guzzlehttp/psr7": "^2.5",
+                "php": ">=8.0",
+                "php-di/php-di": "^6.0|^7.0",
+                "psr/log": "^1|^2|^3",
+                "zbateson/mb-wrapper": "^2.0",
+                "zbateson/stream-decorators": "^2.1"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "*",
-                "mikey179/vfsstream": "^1.6.0",
+                "monolog/monolog": "^2|^3",
                 "phpstan/phpstan": "*",
-                "phpunit/phpunit": "<10"
+                "phpunit/phpunit": "^9.6"
             },
             "suggest": {
                 "ext-iconv": "For best support/performance",
@@ -17769,31 +17845,31 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-04-28T00:58:54+00:00"
+            "time": "2024-08-10T18:44:09+00:00"
         },
         {
             "name": "zbateson/mb-wrapper",
-            "version": "1.2.1",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/mb-wrapper.git",
-                "reference": "09a8b77eb94af3823a9a6623dcc94f8d988da67f"
+                "reference": "50a14c0c9537f978a61cde9fdc192a0267cc9cff"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/mb-wrapper/zipball/09a8b77eb94af3823a9a6623dcc94f8d988da67f",
-                "reference": "09a8b77eb94af3823a9a6623dcc94f8d988da67f",
+                "url": "https://api.github.com/repos/zbateson/mb-wrapper/zipball/50a14c0c9537f978a61cde9fdc192a0267cc9cff",
+                "reference": "50a14c0c9537f978a61cde9fdc192a0267cc9cff",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.1",
+                "php": ">=8.0",
                 "symfony/polyfill-iconv": "^1.9",
                 "symfony/polyfill-mbstring": "^1.9"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "*",
                 "phpstan/phpstan": "*",
-                "phpunit/phpunit": "<10.0"
+                "phpunit/phpunit": "^9.6|^10.0"
             },
             "suggest": {
                 "ext-iconv": "For best support/performance",
@@ -17830,7 +17906,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zbateson/mb-wrapper/issues",
-                "source": "https://github.com/zbateson/mb-wrapper/tree/1.2.1"
+                "source": "https://github.com/zbateson/mb-wrapper/tree/2.0.1"
             },
             "funding": [
                 {
@@ -17838,31 +17914,31 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-03-18T04:31:04+00:00"
+            "time": "2024-12-20T22:05:33+00:00"
         },
         {
             "name": "zbateson/stream-decorators",
-            "version": "1.2.1",
+            "version": "2.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/zbateson/stream-decorators.git",
-                "reference": "783b034024fda8eafa19675fb2552f8654d3a3e9"
+                "reference": "32a2a62fb0f26313395c996ebd658d33c3f9c4e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/zbateson/stream-decorators/zipball/783b034024fda8eafa19675fb2552f8654d3a3e9",
-                "reference": "783b034024fda8eafa19675fb2552f8654d3a3e9",
+                "url": "https://api.github.com/repos/zbateson/stream-decorators/zipball/32a2a62fb0f26313395c996ebd658d33c3f9c4e5",
+                "reference": "32a2a62fb0f26313395c996ebd658d33c3f9c4e5",
                 "shasum": ""
             },
             "require": {
-                "guzzlehttp/psr7": "^1.9 | ^2.0",
-                "php": ">=7.2",
-                "zbateson/mb-wrapper": "^1.0.0"
+                "guzzlehttp/psr7": "^2.5",
+                "php": ">=8.0",
+                "zbateson/mb-wrapper": "^2.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "*",
                 "phpstan/phpstan": "*",
-                "phpunit/phpunit": "<10.0"
+                "phpunit/phpunit": "^9.6|^10.0"
             },
             "type": "library",
             "autoload": {
@@ -17893,7 +17969,7 @@
             ],
             "support": {
                 "issues": "https://github.com/zbateson/stream-decorators/issues",
-                "source": "https://github.com/zbateson/stream-decorators/tree/1.2.1"
+                "source": "https://github.com/zbateson/stream-decorators/tree/2.1.1"
             },
             "funding": [
                 {
@@ -17901,7 +17977,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-05-30T22:51:52+00:00"
+            "time": "2024-04-29T21:42:39+00:00"
         }
     ],
     "packages-dev": [
@@ -18603,40 +18679,40 @@
         },
         {
             "name": "larastan/larastan",
-            "version": "v2.9.12",
+            "version": "v3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/larastan/larastan.git",
-                "reference": "19012b39fbe4dede43dbe0c126d9681827a5e908"
+                "reference": "b2e24e1605cff1d1097ccb6fb8af3bbd1dfe1c6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/larastan/larastan/zipball/19012b39fbe4dede43dbe0c126d9681827a5e908",
-                "reference": "19012b39fbe4dede43dbe0c126d9681827a5e908",
+                "url": "https://api.github.com/repos/larastan/larastan/zipball/b2e24e1605cff1d1097ccb6fb8af3bbd1dfe1c6f",
+                "reference": "b2e24e1605cff1d1097ccb6fb8af3bbd1dfe1c6f",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
-                "illuminate/console": "^9.52.16 || ^10.28.0 || ^11.16",
-                "illuminate/container": "^9.52.16 || ^10.28.0 || ^11.16",
-                "illuminate/contracts": "^9.52.16 || ^10.28.0 || ^11.16",
-                "illuminate/database": "^9.52.16 || ^10.28.0 || ^11.16",
-                "illuminate/http": "^9.52.16 || ^10.28.0 || ^11.16",
-                "illuminate/pipeline": "^9.52.16 || ^10.28.0 || ^11.16",
-                "illuminate/support": "^9.52.16 || ^10.28.0 || ^11.16",
-                "php": "^8.0.2",
+                "illuminate/console": "^11.15.0",
+                "illuminate/container": "^11.15.0",
+                "illuminate/contracts": "^11.15.0",
+                "illuminate/database": "^11.15.0",
+                "illuminate/http": "^11.15.0",
+                "illuminate/pipeline": "^11.15.0",
+                "illuminate/support": "^11.15.0",
+                "php": "^8.2",
                 "phpmyadmin/sql-parser": "^5.9.0",
-                "phpstan/phpstan": "^1.12.11"
+                "phpstan/phpstan": "^2.0.2"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^12.0",
-                "laravel/framework": "^9.52.16 || ^10.28.0 || ^11.16",
-                "mockery/mockery": "^1.5.1",
-                "nikic/php-parser": "^4.19.1",
-                "orchestra/canvas": "^7.11.1 || ^8.11.0 || ^9.0.2",
-                "orchestra/testbench-core": "^7.33.0 || ^8.13.0 || ^9.0.9",
-                "phpstan/phpstan-deprecation-rules": "^1.2",
-                "phpunit/phpunit": "^9.6.13 || ^10.5.16"
+                "laravel/framework": "^11.15.0",
+                "mockery/mockery": "^1.6",
+                "nikic/php-parser": "^5.3",
+                "orchestra/canvas": "^v9.1.3",
+                "orchestra/testbench-core": "^9.5.2",
+                "phpstan/phpstan-deprecation-rules": "^2.0.0",
+                "phpunit/phpunit": "^10.5.16"
             },
             "suggest": {
                 "orchestra/testbench": "Using Larastan for analysing a package needs Testbench"
@@ -18671,7 +18747,7 @@
                     "email": "enunomaduro@gmail.com"
                 }
             ],
-            "description": "Larastan - Discover bugs in your code without running it. A phpstan/phpstan extension for Laravel",
+            "description": "Larastan - Discover bugs in your code without running it. A phpstan/phpstan wrapper for Laravel",
             "keywords": [
                 "PHPStan",
                 "code analyse",
@@ -18684,7 +18760,7 @@
             ],
             "support": {
                 "issues": "https://github.com/larastan/larastan/issues",
-                "source": "https://github.com/larastan/larastan/tree/v2.9.12"
+                "source": "https://github.com/larastan/larastan/tree/v3.0.2"
             },
             "funding": [
                 {
@@ -18692,7 +18768,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-26T23:09:02+00:00"
+            "time": "2024-11-26T23:15:21+00:00"
         },
         {
             "name": "laravel/envoy",
@@ -19576,20 +19652,20 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.12.16",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "e0bb5cb78545aae631220735aa706eac633a6be9"
+                "reference": "7d08f569e582ade182a375c366cbd896eccadd3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/e0bb5cb78545aae631220735aa706eac633a6be9",
-                "reference": "e0bb5cb78545aae631220735aa706eac633a6be9",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/7d08f569e582ade182a375c366cbd896eccadd3a",
+                "reference": "7d08f569e582ade182a375c366cbd896eccadd3a",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2|^8.0"
+                "php": "^7.4|^8.0"
             },
             "conflict": {
                 "phpstan/phpstan-shim": "*"
@@ -19630,30 +19706,30 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-01-21T14:50:05+00:00"
+            "time": "2025-01-21T14:54:06+00:00"
         },
         {
             "name": "phpstan/phpstan-deprecation-rules",
-            "version": "1.2.1",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-deprecation-rules.git",
-                "reference": "f94d246cc143ec5a23da868f8f7e1393b50eaa82"
+                "reference": "1cc1259cb91ee4cfbb5c39bca9f635f067c910b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/f94d246cc143ec5a23da868f8f7e1393b50eaa82",
-                "reference": "f94d246cc143ec5a23da868f8f7e1393b50eaa82",
+                "url": "https://api.github.com/repos/phpstan/phpstan-deprecation-rules/zipball/1cc1259cb91ee4cfbb5c39bca9f635f067c910b4",
+                "reference": "1cc1259cb91ee4cfbb5c39bca9f635f067c910b4",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0",
-                "phpstan/phpstan": "^1.12"
+                "php": "^7.4 || ^8.0",
+                "phpstan/phpstan": "^2.0"
             },
             "require-dev": {
                 "php-parallel-lint/php-parallel-lint": "^1.2",
-                "phpstan/phpstan-phpunit": "^1.0",
-                "phpunit/phpunit": "^9.5"
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpunit/phpunit": "^9.6"
             },
             "type": "phpstan-extension",
             "extra": {
@@ -19675,36 +19751,35 @@
             "description": "PHPStan rules for detecting usage of deprecated classes, methods, properties, constants and traits.",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-deprecation-rules/issues",
-                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/1.2.1"
+                "source": "https://github.com/phpstan/phpstan-deprecation-rules/tree/2.0.1"
             },
-            "time": "2024-09-11T15:52:35+00:00"
+            "time": "2024-11-28T21:56:36+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
-            "version": "1.4.2",
+            "version": "2.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan-phpunit.git",
-                "reference": "72a6721c9b64b3e4c9db55abbc38f790b318267e"
+                "reference": "d09e152f403c843998d7a52b5d87040c937525dd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/72a6721c9b64b3e4c9db55abbc38f790b318267e",
-                "reference": "72a6721c9b64b3e4c9db55abbc38f790b318267e",
+                "url": "https://api.github.com/repos/phpstan/phpstan-phpunit/zipball/d09e152f403c843998d7a52b5d87040c937525dd",
+                "reference": "d09e152f403c843998d7a52b5d87040c937525dd",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.2 || ^8.0",
-                "phpstan/phpstan": "^1.12"
+                "php": "^7.4 || ^8.0",
+                "phpstan/phpstan": "^2.0.4"
             },
             "conflict": {
                 "phpunit/phpunit": "<7.0"
             },
             "require-dev": {
-                "nikic/php-parser": "^4.13.0",
                 "php-parallel-lint/php-parallel-lint": "^1.2",
-                "phpstan/phpstan-strict-rules": "^1.5.1",
-                "phpunit/phpunit": "^9.5"
+                "phpstan/phpstan-strict-rules": "^2.0",
+                "phpunit/phpunit": "^9.6"
             },
             "type": "phpstan-extension",
             "extra": {
@@ -19727,9 +19802,9 @@
             "description": "PHPUnit extensions and rules for PHPStan",
             "support": {
                 "issues": "https://github.com/phpstan/phpstan-phpunit/issues",
-                "source": "https://github.com/phpstan/phpstan-phpunit/tree/1.4.2"
+                "source": "https://github.com/phpstan/phpstan-phpunit/tree/2.0.4"
             },
-            "time": "2024-12-17T17:20:49+00:00"
+            "time": "2025-01-22T13:07:38+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Actions\UpdateVideoDetailsAction;
+use App\Domain\Shop\Models\Purchasable;
 use App\Services\Vimeo\Vimeo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -34,6 +35,7 @@ class Video extends Model
         static::saved(fn (Video $video) => app(UpdateVideoDetailsAction::class)->execute($video));
     }
 
+    /** @return HasMany<LessonCompletion, $this> */
     public function completions(): HasMany
     {
         return $this->hasMany(LessonCompletion::class);

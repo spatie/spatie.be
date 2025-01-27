@@ -192,21 +192,25 @@ class User extends Authenticatable implements CanComment, FilamentUser
         return $this->assignments()->whereIn('purchasable_id', $purchasables->pluck('id'))->exists();
     }
 
+    /** @return HasManyThrough<License, PurchaseAssignment, $this> */
     public function licenses(): HasManyThrough
     {
         return $this->hasManyThrough(License::class, PurchaseAssignment::class);
     }
 
+    /** @return HasMany<Purchase, $this> */
     public function purchases(): HasMany
     {
         return $this->hasMany(Purchase::class)->with(['purchasable.product', 'bundle']);
     }
 
+    /** @return HasMany<PurchaseAssignment, $this> */
     public function assignments(): HasMany
     {
         return $this->hasMany(PurchaseAssignment::class);
     }
 
+    /** @return HasMany<Purchase, $this> */
     public function purchasesWithoutRenewals(): HasMany
     {
         return $this->hasMany(Purchase::class)->where(function (Builder $query) {
@@ -219,6 +223,7 @@ class User extends Authenticatable implements CanComment, FilamentUser
         });
     }
 
+    /** @return HasMany<PurchaseAssignment, $this> */
     public function assignmentsWithoutRenewals(): HasMany
     {
         return $this->assignments()->whereHas('purchasable', function (Builder $query): void {
@@ -229,6 +234,7 @@ class User extends Authenticatable implements CanComment, FilamentUser
         });
     }
 
+    /** @return BelongsToMany<Lesson, $this> */
     public function completedLessons(): BelongsToMany
     {
         return $this->belongsToMany(Lesson::class, 'lesson_completions')->withTimestamps();
@@ -280,11 +286,13 @@ class User extends Authenticatable implements CanComment, FilamentUser
             ->exists();
     }
 
+    /** @return HasOne<UserExperienceProjection, $this> */
     public function experience(): HasOne
     {
         return $this->hasOne(UserExperienceProjection::class);
     }
 
+    /** @return HasMany<UserAchievementProjection, $this> */
     public function achievements(): HasMany
     {
         return $this->hasMany(UserAchievementProjection::class);
