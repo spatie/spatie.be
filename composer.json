@@ -11,7 +11,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "ext-json": "*",
         "abraham/twitteroauth": "^3.3",
         "aws/aws-sdk-php": "^3.240.6",
@@ -110,7 +110,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "8.3"
+            "php": "8.4"
         },
         "preferred-install": "dist",
         "sort-packages": true,
