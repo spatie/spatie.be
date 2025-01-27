@@ -302,7 +302,8 @@ return [
             "name" => "laravel-backup-server",
             "repository" => "spatie/laravel-backup-server",
             "branches" => [
-                "main" => "v3",
+                "main" => "v4",
+                "v3" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
             ],
