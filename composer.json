@@ -176,7 +176,7 @@
         "deploy": "envoy run deploy",
         "deploy-code": "envoy run deploy-code",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
-        "analyse": "vendor/bin/phpstan analyse",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=2G",
         "baseline": "vendor/bin/phpstan analyse --generate-baseline",
         "ide-helper": [
             "@php artisan ide-helper:eloquent",

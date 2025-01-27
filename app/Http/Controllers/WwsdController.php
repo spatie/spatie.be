@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 class WwsdController
 {
-    public function __invoke(string $slug = null)
+    public function __invoke(?string $slug = null)
     {
         $mainVideo = $this->getMainVideo($slug);
 
@@ -22,7 +22,7 @@ class WwsdController
         ]);
     }
 
-    protected function getMainVideo(string $slug = null): ?array
+    protected function getMainVideo(?string $slug = null): ?array
     {
         if (! $slug) {
             return $this->videos()->where('main', true)->first();

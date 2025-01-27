@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Http;
 
 class MailcoachApi
 {
-    public function getSubscriber(string $email, string $listUuid = null): ?Subscriber
+    public function getSubscriber(string $email, ?string $listUuid = null): ?Subscriber
     {
         $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
 
@@ -37,7 +37,7 @@ class MailcoachApi
         return Subscriber::fromResponse($subscribers[0]);
     }
 
-    public function subscribe(string $email, string $listUuid = null, bool $skipConfirmation = false, bool $skipWelcomeMail = false): ?Subscriber
+    public function subscribe(string $email, ?string $listUuid = null, bool $skipConfirmation = false, bool $skipWelcomeMail = false): ?Subscriber
     {
         $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
 

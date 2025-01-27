@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class CreateLicenseAction
 {
-    public function execute(PurchaseAssignment $assignment, Carbon $expiresAt = null): License
+    public function execute(PurchaseAssignment $assignment, ?Carbon $expiresAt = null): License
     {
         return License::create([
             'key' => Str::random(64),

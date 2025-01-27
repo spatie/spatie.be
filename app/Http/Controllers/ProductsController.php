@@ -57,7 +57,7 @@ class ProductsController
         return view('front.pages.products.show', compact('product', 'assignments', 'licenses'));
     }
 
-    public function buy(Request $request, Product $product, Purchasable $purchasable, License $license = null)
+    public function buy(Request $request, Product $product, Purchasable $purchasable, ?License $license = null)
     {
         if (! $purchasable->released) {
             if (! current_user()?->hasAccessToUnReleasedProducts()) {

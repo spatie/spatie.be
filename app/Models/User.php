@@ -71,7 +71,7 @@ class User extends Authenticatable implements CanComment, FilamentUser
         return $this->uuid;
     }
 
-    public function getPassthrough(License $license = null)
+    public function getPassthrough(?License $license = null)
     {
         $passthrough = [
             'emails' => [$this->email],
@@ -90,7 +90,7 @@ class User extends Authenticatable implements CanComment, FilamentUser
         return $passthrough;
     }
 
-    public function getPayLinkForProductId(string $paddleProductId, License $license = null)
+    public function getPayLinkForProductId(string $paddleProductId, ?License $license = null)
     {
         $purchasable = Purchasable::findForPaddleProductId($paddleProductId);
 

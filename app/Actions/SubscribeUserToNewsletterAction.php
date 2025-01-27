@@ -11,7 +11,7 @@ class SubscribeUserToNewsletterAction
     {
     }
 
-    public function execute(User $user = null, string $email = null): User
+    public function execute(?User $user = null, ?string $email = null): User
     {
         $email ??= $user->email;
 
