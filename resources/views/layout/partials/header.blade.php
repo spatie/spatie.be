@@ -1,4 +1,4 @@
-<div class="wrapper-xl">
+<div class="px-3 sm:px-12 font-pt antialiased font-medium">
     <header
         x-data="{ open: window.innerWidth >= 720 }"
         x-on:click.outside="() => {
