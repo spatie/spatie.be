@@ -11,9 +11,13 @@ class SubscribeUserToNewsletterAction
     {
     }
 
-    public function execute(User $user = null, string $email = null): User
+    public function execute(User $user = null, string $email = null): ?User
     {
-        $email ??= $user->email;
+        $email ??= $user?->email;
+
+        if (! $email) {
+            return $user;
+        }
 
         $subscriber = $this->mailcoachApi->getSubscriber($email);
 
