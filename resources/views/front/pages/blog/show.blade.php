@@ -1,10 +1,10 @@
 <x-page
-    title="{{ $post->title }}"
+    :title="$post->title"
     background="/backgrounds/blog-post.png"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
-    og-image="{{ $post->og_image }}"
-    description="{{ strip_tags($post->summary) }}"
+    :og-image="$post->og_image"
+    :description="strip_tags($post->summary)"
 >
     <article>
         <header class="wrapper-lg sm:wrapper-inset-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 relative z-10">

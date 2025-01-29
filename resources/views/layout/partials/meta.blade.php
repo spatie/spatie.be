@@ -6,10 +6,10 @@
 
 <title>{!! $title ?? '' !!} | Spatie</title>
 
-<meta name="description" content="{{ $description ?? '' }}">
-<meta property="og:title" content="{{ $ogTitle ?? $title ?? '' }}"/>
-<meta property="og:description" content="{{ $ogDescription ?? $description ?? '' }}"/>
-<meta property="og:image" content="{{ $ogImage ?? url('/images/og-image.jpg') }}"/>
+<meta name="description" content="{!! $description ?? '' !!}">
+<meta property="og:title" content="{!! $ogTitle ?? $title ?? '' !!}"/>
+<meta property="og:description" content="{!! $ogDescription ?? $description ?? '' !!}"/>
+<meta property="og:image" content="{!! $ogImage ?? url('/images/og-image.jpg') !!}"/>
 <meta property="og:url" content="{{ request()->getUri() }}"/>
 <meta property="og:type" content="website" />
 
