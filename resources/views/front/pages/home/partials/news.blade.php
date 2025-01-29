@@ -18,21 +18,25 @@
                 </span>
             </h2>
 
-            @include('front.pages.home.partials.newsItem', [
-                'url' => route('blog.show', $latestBlogPost->slug),
-                'title' => $latestBlogPost->title,
-                'date' => $latestBlogPost->date,
-                'website' => 'spatie.be',
-            ])
-            @include('front.pages.home.partials.newsItem', [
-                'url' => $externalFeedItems->first()->url,
-                'title' => $externalFeedItems->first()->title,
-                'date' => $externalFeedItems->first()->created_at,
-                'website' => $externalFeedItems->first()->website,
-            ])
+            @if($latestBlogPost)
+                @include('front.pages.home.partials.newsItem', [
+                    'url' => route('blog.show', $latestBlogPost->slug),
+                    'title' => $latestBlogPost->title,
+                    'date' => $latestBlogPost->date,
+                    'website' => 'spatie.be',
+                ])
+            @endif
+            @foreach($externalFeedItems->slice(...($latestBlogPost ? [0, 1] : [0, 2])) as $insight)
+                @include('front.pages.home.partials.newsItem', [
+                    'url' => $externalFeedItems->first()->url,
+                    'title' => $externalFeedItems->first()->title,
+                    'date' => $externalFeedItems->first()->created_at,
+                    'website' => $externalFeedItems->first()->website,
+                ])
+          @endforeach
         </div>
         <div class="sm:col-span-3 | line-l">
-            @foreach ($externalFeedItems->slice(1, 2) as $insight)
+            @foreach($externalFeedItems->slice(...($latestBlogPost ? [1, 2] : [2, 2])) as $insight)
                 @include('front.pages.home.partials.newsItem', [
                     'url' => $insight->url,
                     'title' => $insight->title,

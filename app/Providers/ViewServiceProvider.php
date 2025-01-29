@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\ExternalFeedItem;
 use App\Models\Member;
+use Exception;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
@@ -19,21 +20,19 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer('front.pages.home.partials.news', function ($view): void {
-            $view->with(
-                'latestBlogPost',
-                Cache::flexible('home.latestBlogPost', [60, 60 * 60], function () {
+            try {
+                $latestBlogPost = Cache::flexible('home.latestBlogPost', [60, 60 * 60], function () {
                     return ContentApi::getPosts(
                         product: 'spatie',
                         page: request('page', 1),
                         perPage: 1,
                     )->first();
-                }),
-            );
+                });
+            } catch (Exception) {
+            }
 
-            $view->with(
-                'externalFeedItems',
-                ExternalFeedItem::getLatest(),
-            );
+            $view->with('latestBlogPost', $latestBlogPost ?? null);
+            $view->with('externalFeedItems', ExternalFeedItem::getLatest());
         });
 
         View::composer('front.pages.about.partials.team', function ($view): void {
