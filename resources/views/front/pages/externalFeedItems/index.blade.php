@@ -10,7 +10,7 @@
         </h1>
         <div class="grid gap-8 pb-16">
             @foreach($externalFeedItems as $externalFeedItem)
-                @include('front.pages.insights.partials.externalFeedItem')
+                @include('front.pages.blog.partials.externalFeedItem')
             @endforeach
             {{ $externalFeedItems->links() }}
         </div>

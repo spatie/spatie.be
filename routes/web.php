@@ -53,9 +53,9 @@ Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where
 
 Route::feeds();
 
-Route::get('insights', [BlogController::class, 'index'])->name('insights');
-Route::get('insights/all', [BlogController::class, 'all'])->name('insights.all');
-Route::get('insights/{slug}', [BlogController::class, 'detail'])->name('insights.show');
+Route::get('blog', [BlogController::class, 'index'])->name('blog');
+Route::get('blog/all', [BlogController::class, 'all'])->name('blog.all');
+Route::get('blog/{slug}', [BlogController::class, 'detail'])->name('blog.show');
 Route::get('team-products', ExternalFeedItemsController::class)->name('external-feed-items');
 
 Route::redirect('/docs/products/ray', '/docs/ray');
@@ -177,9 +177,6 @@ Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])
 
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
-
-Route::get('/blog', [BlogsController::class, 'index'])->name('blog');
-Route::get('/blog/music', MusicController::class)->name('music');
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');

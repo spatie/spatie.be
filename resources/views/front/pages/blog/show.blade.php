@@ -77,7 +77,7 @@
                 <h2 class="text-24 font-bold text-center sm:text-left">Continue reading</h2>
                 <div class="sm:-mt-9">
                     @foreach($otherPosts as $otherPost)
-                        <x-insights.list-item :insight="$otherPost" />
+                        <x-blog.list-item :insight="$otherPost" />
                     @endforeach
                 </div>
             </div>

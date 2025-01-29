@@ -24,7 +24,7 @@ class BlogController
             ->orderBy('created_at', 'desc')
             ->paginate(7);
 
-        return view('front.pages.insights.index', [
+        return view('front.pages.blog.index', [
             'posts' => $posts,
             'highlight' => $highlight ?? null,
             'externalFeedItems' => $externalFeedItems,
@@ -39,7 +39,7 @@ class BlogController
 
         unset($posts[0]);
 
-        return view('front.pages.insights.index', [
+        return view('front.pages.blog.index', [
             'posts' => $posts,
             'highlight' => $highlight ?? null,
         ]);
@@ -67,7 +67,7 @@ class BlogController
             })
             ->take(2);
 
-        return view('front.pages.insights.show', [
+        return view('front.pages.blog.show', [
             'post' => $post,
             'content' => $content,
             'otherPosts' => $otherPosts,
