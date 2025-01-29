@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::permanentRedirect('/products/laravel-backup-server', '/docs/laravel-backup-server');
-
 Route::prefix('opensource')->group(function () {
     Route::permanentRedirect('/', '/open-source');
     Route::permanentRedirect('php', '/open-source');
