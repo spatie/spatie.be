@@ -5,8 +5,10 @@ namespace App\Providers;
 use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Spatie\ContentApi\ContentApi;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -16,12 +18,22 @@ class ViewServiceProvider extends ServiceProvider
             return "<?php echo app_svg({$expression}); ?>";
         });
 
-        View::composer('front.pages.open-source.partials.insights', function ($view): void {
-            $view->with('externalFeedItems', ExternalFeedItem::getLatest());
-        });
-
         View::composer('front.pages.home.partials.news', function ($view): void {
-            $view->with('externalFeedItems', ExternalFeedItem::getLatest());
+            $view->with(
+                'latestBlogPost',
+                Cache::flexible('home.latestBlogPost', [60, 60 * 60], function () {
+                    return ContentApi::getPosts(
+                        product: 'spatie',
+                        page: request('page', 1),
+                        perPage: 1,
+                    )->first();
+                }),
+            );
+
+            $view->with(
+                'externalFeedItems',
+                ExternalFeedItem::getLatest(),
+            );
         });
 
         View::composer('front.pages.about.partials.team', function ($view): void {

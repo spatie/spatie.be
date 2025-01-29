@@ -14,38 +14,31 @@
             <h2 class="title-sm">
                 <a href={{route('blog')}}>News &amp; insights</a>
                 <span class="title-subtext text-pink-dark block">
-                    of the team
+                    from our blog, team, and products
                 </span>
             </h2>
 
-
-            @foreach ($externalFeedItems->slice(0, 2) as $insight)
-                <p class="mt-4">
-                    <a class="link link-black" href="{{ $insight->url }}" target="_blank"
-                       rel="noreferrer noopener">{{ $insight->title }}</a>
-                    <br>
-                    <span class="text-xs text-gray">
-                    {{ $insight->created_at->format('M jS Y') }}
-                    <span class="char-separator">•</span>
-                    <a class="link-underline link-blue" href="{{ $insight->url }}" target="_blank"
-                       rel="noreferrer noopener">{{ $insight->website }}</a>
-                </span>
-                </p>
-            @endforeach
+            @include('front.pages.home.partials.newsItem', [
+                'url' => route('blog.show', $latestBlogPost->slug),
+                'title' => $latestBlogPost->title,
+                'date' => $latestBlogPost->date,
+                'website' => 'spatie.be',
+            ])
+            @include('front.pages.home.partials.newsItem', [
+                'url' => $externalFeedItems->first()->url,
+                'title' => $externalFeedItems->first()->title,
+                'date' => $externalFeedItems->first()->created_at,
+                'website' => $externalFeedItems->first()->website,
+            ])
         </div>
         <div class="sm:col-span-3 | line-l">
-            @foreach ($externalFeedItems->slice(2, 2) as $insight)
-                <p class="mt-4">
-                    <a class="link link-black" href="{{ $insight->url }}" target="_blank"
-                       rel="noreferrer noopener">{{ $insight->title }}</a>
-                    <br>
-                    <span class="text-xs text-gray">
-                       {{ $insight->created_at->format('M jS Y') }}
-                       <span class="char-separator">•</span>
-                       <a class="link-underline link-blue" href="{{ $insight->url }}" target="_blank"
-                          rel="noreferrer noopener">{{ $insight->website }}</a>
-                   </span>
-                </p>
+            @foreach ($externalFeedItems->slice(1, 2) as $insight)
+                @include('front.pages.home.partials.newsItem', [
+                    'url' => $insight->url,
+                    'title' => $insight->title,
+                    'date' => $insight->created_at,
+                    'website' => $insight->website,
+                ])
             @endforeach
         </div>
         <div>
