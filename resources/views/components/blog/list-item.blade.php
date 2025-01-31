@@ -1,6 +1,6 @@
 <?php /** @var \Spatie\ContentApi\Data\Post $insight */ ?>
 <div wire:navigate href="{{ route('blog.show', $insight->slug) }}" class="insights-list-item relative cursor-pointer flex flex-col sm:flex-row gap-6 sm:gap-8 group mx-0 sm:p-9 {{ $class ?? '' }}">
-    <div class="transition-opacity duration-150 absolute inset-0 rounded-[20px] pointer-events-none w-full h-full opacity-0 border bg-link-card-light-hover border-oss-gray-dark group-hover:opacity-50"></div>
+    <div class="transition-opacity duration-150 absolute inset-0 rounded-[20px] pointer-events-none w-full h-full opacity-0 border bg-link-card-light-hover border-oss-gray-dark md:group-hover:opacity-50"></div>
     <figure>
         <a wire:navigate href="{{ route('blog.show', $insight->slug) }}" class="size-36 sm:size-[120px] text-oss-royal-blue no-underline block bg-oss-green-pale rounded-8">
             @if ($insight->header_image)
