@@ -29,7 +29,7 @@ class Repository extends Model
         'ad_should_be_randomized' => true,
     ];
 
-    public static function booted()
+    public static function booted(): void
     {
         self::saved(function (Repository $repository) {
             $repository->load('ad');
@@ -43,6 +43,7 @@ class Repository extends Model
         $query->where('ad_should_be_randomized', true);
     }
 
+    /** @return BelongsTo<Ad, $this> */
     public function ad(): BelongsTo
     {
         return $this->belongsTo(Ad::class, 'ad_id');

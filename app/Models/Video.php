@@ -34,6 +34,7 @@ class Video extends Model
         static::saved(fn (Video $video) => app(UpdateVideoDetailsAction::class)->execute($video));
     }
 
+    /** @return HasMany<LessonCompletion, $this> */
     public function completions(): HasMany
     {
         return $this->hasMany(LessonCompletion::class);

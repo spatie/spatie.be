@@ -17,21 +17,25 @@ class PurchaseAssignment extends Model
         'has_repository_access' => 'boolean',
     ];
 
+    /** @return BelongsTo<Purchase, $this> */
     public function purchase(): BelongsTo
     {
         return $this->belongsTo(Purchase::class);
     }
 
+    /** @return BelongsTo<Purchasable, $this> */
     public function purchasable(): BelongsTo
     {
         return $this->belongsTo(Purchasable::class);
     }
 
+    /** @return BelongsTo<User, $this> */
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
+    /** @return HasMany<License, $this> */
     public function licenses(): HasMany
     {
         return $this->hasMany(License::class);

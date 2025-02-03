@@ -1,226 +1,251 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method Laminas\\\\Feed\\\\Reader\\\\Entry\\\\AbstractEntry\\:\\:getContent\\(\\)\\.$#"
+			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: app/Console/Commands/GenerateApiTokenCommand.php
+
+		-
+			message: '#^Call to an undefined method Laminas\\Feed\\Reader\\Entry\\AbstractEntry\:\:getContent\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Console/Commands/ImportInsightsCommand.php
 
 		-
-			message: "#^Call to an undefined method Laminas\\\\Feed\\\\Reader\\\\Entry\\\\AbstractEntry\\:\\:getLink\\(\\)\\.$#"
+			message: '#^Call to an undefined method Laminas\\Feed\\Reader\\Entry\\AbstractEntry\:\:getLink\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Console/Commands/ImportInsightsCommand.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$alias\\.$#"
+			message: '#^Access to an undefined property App\\Docs\\DocumentationPage\:\:\$alias\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Docs/Docs.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$repository\\.$#"
+			message: '#^Access to an undefined property App\\Docs\\DocumentationPage\:\:\$repository\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Docs/Docs.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$alias\\.$#"
+			message: '#^Access to an undefined property App\\Docs\\DocumentationPage\:\:\$alias\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Docs/DocumentationPage.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$repository\\.$#"
+			message: '#^Access to an undefined property App\\Docs\\DocumentationPage\:\:\$repository\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Docs/DocumentationPage.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$section\\.$#"
+			message: '#^Access to an undefined property App\\Docs\\DocumentationPage\:\:\$section\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Docs/DocumentationPage.php
 
 		-
-			message: "#^Match expression does not handle remaining values\\: int\\|string$#"
+			message: '#^Match expression does not handle remaining values\: int\|string$#'
+			identifier: match.unhandled
 			count: 1
 			path: app/Domain/Experience/Enums/ExperienceType.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\:\\:\\$originalPurchasable\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Purchasable\:\:\$originalPurchasable\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Domain/Shop/Actions/HandlePurchaseLicensingAction.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_name\\.$#"
+			message: '#^@readonly property cannot have a default value\.$#'
+			identifier: property.readOnlyByPhpDocDefaultValue
+			count: 1
+			path: app/Domain/Shop/Enums/PurchasableType.php
+
+		-
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Bundle\:\:\$discount_name\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Domain/Shop/Models/Bundle.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_percentage\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Bundle\:\:\$discount_percentage\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Domain/Shop/Models/Bundle.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Shop\\\\Models\\\\ConversionRate\\:\\:getAmountForUsd\\(\\) should return int but returns float\\.$#"
+			message: '#^Method App\\Domain\\Shop\\Models\\ConversionRate\:\:getAmountForUsd\(\) should return int but returns float\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Domain/Shop/Models/ConversionRate.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Shop\\\\Models\\\\ConversionRate\\:\\:getPPPInUsd\\(\\) should return int but returns float\\.$#"
+			message: '#^Method App\\Domain\\Shop\\Models\\ConversionRate\:\:getPPPInUsd\(\) should return int but returns float\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Domain/Shop/Models/ConversionRate.php
 
 		-
-			message: "#^Called 'pluck' on Laravel collection, but could have been retrieved as a query\\.$#"
+			message: '#^Called ''pluck'' on Laravel collection, but could have been retrieved as a query\.$#'
+			identifier: larastan.noUnnecessaryCollectionCall
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Shop\\\\Models\\\\Product\\:\\:purchasablesWithoutRenewals\\(\\) should return Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany but returns Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\>\\.$#"
+			message: '#^Method App\\Domain\\Shop\\Models\\Product\:\:purchasablesWithoutRenewals\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany but returns Illuminate\\Database\\Eloquent\\Builder\<App\\Domain\\Shop\\Models\\Purchasable\>\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
 
 		-
-			message: "#^Method App\\\\Domain\\\\Shop\\\\Models\\\\Product\\:\\:renewals\\(\\) should return Illuminate\\\\Database\\\\Eloquent\\\\Relations\\\\HasMany but returns Illuminate\\\\Database\\\\Eloquent\\\\Builder\\<App\\\\Domain\\\\Shop\\\\Models\\\\Purchasable\\>\\.$#"
+			message: '#^Method App\\Domain\\Shop\\Models\\Product\:\:renewals\(\) should return Illuminate\\Database\\Eloquent\\Relations\\HasMany but returns Illuminate\\Database\\Eloquent\\Builder\<App\\Domain\\Shop\\Models\\Purchasable\>\.$#'
+			identifier: return.type
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
 
 		-
-			message: "#^Property App\\\\Domain\\\\Shop\\\\Models\\\\Product\\:\\:\\$purchasables is never written, only read\\.$#"
+			message: '#^Property App\\Domain\\Shop\\Models\\Product\:\:\$purchasables is never written, only read\.$#'
+			identifier: property.onlyRead
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
 
 		-
-			message: "#^Variable \\$purchasables in PHPDoc tag @var does not exist\\.$#"
+			message: '#^Variable \$purchasables in PHPDoc tag @var does not exist\.$#'
+			identifier: varTag.variableNotFound
 			count: 1
 			path: app/Domain/Shop/Models/Product.php
 
 		-
-			message: "#^Call to an undefined method Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:commentableName\\(\\)\\.$#"
-			count: 1
-			path: app/Filament/Resources/Courses/CommentResource.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\PurchaseAssignment\\:\\:\\$bundle\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\PurchaseAssignment\:\:\$bundle\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Filament/Tables/Columns/LicensePurchasableNameColumn.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$count\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Purchase\:\:\$count\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Filament/Widgets/PaymentMethodsWidget.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Purchase\\:\\:\\$payment_method\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Purchase\:\:\$payment_method\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Filament/Widgets/PaymentMethodsWidget.php
 
 		-
-			message: "#^Method Carbon\\\\Carbon\\:\\:subYear\\(\\) invoked with 1 parameter, 0 required\\.$#"
+			message: '#^Method Carbon\\Carbon\:\:subYear\(\) invoked with 1 parameter, 0 required\.$#'
+			identifier: arguments.count
 			count: 1
 			path: app/Filament/Widgets/PaymentMethodsWidget.php
 
 		-
-			message: "#^Constructor of class App\\\\Guidelines\\\\Guidelines has an unused parameter \\$sheets\\.$#"
+			message: '#^Constructor of class App\\Guidelines\\Guidelines has an unused parameter \$sheets\.$#'
+			identifier: constructor.unusedParameter
 			count: 1
 			path: app/Guidelines/Guidelines.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_expires_at\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Bundle\:\:\$discount_expires_at\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Api/Controllers/BundlePriceController.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_name\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Bundle\:\:\$discount_name\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Api/Controllers/BundlePriceController.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Domain\\\\Shop\\\\Models\\\\Bundle\\:\\:\\$discount_percentage\\.$#"
+			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Bundle\:\:\$discount_percentage\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Api/Controllers/BundlePriceController.php
 
 		-
-			message: "#^Relation 'lessons' is not found in App\\\\Models\\\\Series model\\.$#"
-			count: 1
-			path: app/Http/Controllers/CoursesController.php
-
-		-
-			message: "#^Access to an undefined property App\\\\Docs\\\\DocumentationPage\\:\\:\\$section\\.$#"
+			message: '#^Access to an undefined property App\\Docs\\DocumentationPage\:\:\$section\.$#'
+			identifier: property.notFound
 			count: 2
 			path: app/Http/Controllers/DocsController.php
 
 		-
-			message: "#^Call to an undefined method Laravel\\\\Socialite\\\\Contracts\\\\Provider\\:\\:stateless\\(\\)\\.$#"
+			message: '#^Call to an undefined method Laravel\\Socialite\\Contracts\\Provider\:\:stateless\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Http/Controllers/GitHubSocialiteController.php
 
 		-
-			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/InvoicesController.php
 
 		-
-			message: "#^Method App\\\\Http\\\\Controllers\\\\WebhookController\\:\\:findOrCreateCustomer\\(\\) has invalid return type Laravel\\\\Paddle\\\\Billable\\.$#"
+			message: '#^Method App\\Http\\Controllers\\WebhookController\:\:findOrCreateCustomer\(\) has invalid return type Laravel\\Paddle\\Billable\.$#'
+			identifier: return.trait
 			count: 1
 			path: app/Http/Controllers/WebhookController.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Lesson\\:\\:\\$description\\.$#"
+			message: '#^Access to an undefined property App\\Models\\Lesson\:\:\$description\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Models/Lesson.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$lessons\\.$#"
-			count: 2
-			path: app/Models/Lesson.php
-
-		-
-			message: """
-				#^Call to deprecated method convertToHtml\\(\\) of class League\\\\CommonMark\\\\MarkdownConverter\\:
-				since 2\\.2; use \\{@link convert\\(\\)\\} instead$#
-			"""
+			message: '''
+				#^Call to deprecated method convertToHtml\(\) of class League\\CommonMark\\MarkdownConverter\:
+				since 2\.2; use \{@link convert\(\)\} instead$#
+			'''
+			identifier: method.deprecated
 			count: 1
 			path: app/Models/Lesson.php
 
 		-
-			message: "#^Negated boolean expression is always false\\.$#"
+			message: '#^Negated boolean expression is always false\.$#'
+			identifier: booleanNot.alwaysFalse
 			count: 2
 			path: app/Models/Lesson.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Postcard\\:\\:\\$postcard_count\\.$#"
+			message: '#^Access to an undefined property App\\Models\\Postcard\:\:\$postcard_count\.$#'
+			identifier: property.notFound
 			count: 1
 			path: app/Models/Postcard.php
 
 		-
-			message: "#^Access to an undefined property App\\\\Models\\\\Series\\:\\:\\$lessons\\.$#"
-			count: 2
-			path: app/Models/Series.php
-
-		-
-			message: """
-				#^Class App\\\\Rules\\\\MatchCurrentPasswordRule implements deprecated interface Illuminate\\\\Contracts\\\\Validation\\\\Rule\\:
+			message: '''
+				#^Class App\\Rules\\MatchCurrentPasswordRule implements deprecated interface Illuminate\\Contracts\\Validation\\Rule\:
 				see ValidationRule$#
-			"""
+			'''
+			identifier: class.implementsDeprecatedInterface
 			count: 1
 			path: app/Rules/MatchCurrentPasswordRule.php
 
 		-
-			message: """
-				#^Class App\\\\Rules\\\\MatchingLicense implements deprecated interface Illuminate\\\\Contracts\\\\Validation\\\\Rule\\:
+			message: '''
+				#^Class App\\Rules\\MatchingLicense implements deprecated interface Illuminate\\Contracts\\Validation\\Rule\:
 				see ValidationRule$#
-			"""
+			'''
+			identifier: class.implementsDeprecatedInterface
 			count: 1
 			path: app/Rules/MatchingLicense.php
 
 		-
-			message: "#^Variable \\$license in PHPDoc tag @var does not exist\\.$#"
+			message: '#^Variable \$license in PHPDoc tag @var does not exist\.$#'
+			identifier: varTag.variableNotFound
 			count: 1
 			path: app/Rules/MatchingLicense.php
 
 		-
-			message: "#^Call to an undefined method Github\\\\Api\\\\AbstractApi\\:\\:releases\\(\\)\\.$#"
+			message: '#^Call to an undefined method Github\\Api\\AbstractApi\:\:releases\(\)\.$#'
+			identifier: method.notFound
 			count: 1
 			path: app/Services/GitHub/GitHubApi.php
-
-		-
-			message: "#^Access to an undefined property Illuminate\\\\Database\\\\Eloquent\\\\Model\\:\\:\\$id\\.$#"
-			count: 2
-			path: app/Support/Paddle/ProcessPaymentSucceededJob.php
 

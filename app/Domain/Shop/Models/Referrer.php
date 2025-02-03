@@ -20,16 +20,19 @@ class Referrer extends Model
         'last_clicked_at' => 'datetime',
     ];
 
+    /** @return BelongsToMany<Purchasable, $this> */
     public function purchasables(): BelongsToMany
     {
         return $this->belongsToMany(Purchasable::class, 'referrer_purchasable');
     }
 
+    /** @return BelongsToMany<Bundle, $this> */
     public function bundles(): BelongsToMany
     {
         return $this->belongsToMany(Bundle::class, 'referrer_bundle');
     }
 
+    /** @return BelongsToMany<Purchase, $this> */
     public function usedForPurchases(): BelongsToMany
     {
         return $this->belongsToMany(Purchase::class, 'referrer_purchases');

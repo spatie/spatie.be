@@ -23,7 +23,7 @@ class DetermineBlackFridayRewardAction
             return $redeemedReward;
         }
 
-        /** @var Collection{id: int, type: string} $specialRewards */
+        /** @var Collection<int, object{id: int, type: string}> $specialRewards */
         $specialRewards = DB::table('bf24_rewards')
             ->where('available_at', '<=', now())
             ->where('day', $day)

@@ -15,6 +15,7 @@ class BundlePrice extends Model
         'amount' => 'integer',
     ];
 
+    /** @return BelongsTo<Bundle, $this> */
     public function bundle(): BelongsTo
     {
         return $this->belongsTo(Bundle::class);

@@ -57,6 +57,7 @@ class Purchasable extends Model implements HasMedia, Sortable
             ->useDisk('purchasable_downloads');
     }
 
+    /** @return HasMany<PurchasablePrice, $this> */
     public function prices(): HasMany
     {
         return $this->hasMany(PurchasablePrice::class);
@@ -67,9 +68,10 @@ class Purchasable extends Model implements HasMedia, Sortable
         return $this->getFirstMediaUrl('purchasable-image');
     }
 
+    /** @return BelongsTo<Purchasable, $this> */
     public function renewalPurchasable(): BelongsTo
     {
-        return $this->belongsTo(Purchasable::class, 'renewal_purchasable_id');
+        return $this->belongsTo(self::class, 'renewal_purchasable_id');
     }
 
     public function originalPurchasable()
@@ -77,11 +79,13 @@ class Purchasable extends Model implements HasMedia, Sortable
         return $this->hasOne(Purchasable::class, 'renewal_purchasable_id');
     }
 
+    /** @return HasMany<Purchase, $this> */
     public function purchases(): HasMany
     {
         return $this->hasMany(Purchase::class);
     }
 
+    /** @return BelongsToMany<Series, $this> */
     public function series(): BelongsToMany
     {
         return $this->belongsToMany(Series::class);
@@ -92,6 +96,7 @@ class Purchasable extends Model implements HasMedia, Sortable
         return $this->originalPurchasable()->exists();
     }
 
+    /** @return BelongsTo<Product, $this> */
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);

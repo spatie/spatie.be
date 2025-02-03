@@ -36,6 +36,7 @@ class Bundle extends Model implements HasMedia, Sortable
         'purchasables',
     ];
 
+    /** @return HasMany<BundlePrice, $this> */
     public function prices(): HasMany
     {
         return $this->hasMany(BundlePrice::class);
@@ -63,6 +64,7 @@ class Bundle extends Model implements HasMedia, Sortable
         return (int)round($avgEarnings);
     }
 
+    /** @return BelongsToMany<Purchasable, $this> */
     public function purchasables(): BelongsToMany
     {
         return $this->belongsToMany(Purchasable::class)->orderBy('sort_order');

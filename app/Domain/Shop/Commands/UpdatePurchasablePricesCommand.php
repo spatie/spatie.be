@@ -4,6 +4,7 @@ namespace App\Domain\Shop\Commands;
 
 use App\Domain\Shop\Models\ConversionRate;
 use App\Domain\Shop\Models\Purchasable;
+use App\Domain\Shop\Models\PurchasablePrice;
 use App\Support\Paddle\EuCountries;
 use App\Support\Paddle\PaddleCountries;
 use App\Support\Paddle\PaddleCurrencies;
@@ -23,6 +24,7 @@ class UpdatePurchasablePricesCommand extends Command
             $this->info("Updating prices of purchasable id `{$purchasable->id}`...");
 
             PaddleCountries::get()->each(function (array $countryAttributes) use ($purchasable) {
+                /** @var PurchasablePrice $price */
                 $price = $purchasable->prices()->firstOrCreate(
                     ['country_code' => $countryAttributes['code']],
                     [

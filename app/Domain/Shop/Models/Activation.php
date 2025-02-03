@@ -25,6 +25,7 @@ class Activation extends Model
         });
     }
 
+    /** @return BelongsTo<License, $this> */
     public function license(): BelongsTo
     {
         return $this->belongsTo(License::class);

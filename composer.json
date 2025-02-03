@@ -11,7 +11,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.3",
+        "php": "^8.4",
         "ext-json": "*",
         "abraham/twitteroauth": "^3.3",
         "aws/aws-sdk-php": "^3.240.6",
@@ -97,12 +97,12 @@
         "laravel/envoy": "^2.9",
         "mockery/mockery": "^1.5.1",
         "nunomaduro/collision": "^8.1",
-        "larastan/larastan": "^2.4",
+        "larastan/larastan": "^3.0",
         "pestphp/pest": "^2.0",
         "pestphp/pest-plugin-laravel": "^2.0",
         "phpstan/extension-installer": "^1.2",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.2.2",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
         "spatie/laravel-blade-comments": "^1.0",
         "spatie/laravel-visit": "^1.1",
         "spatie/pest-plugin-snapshots": "^2.0"
@@ -110,7 +110,7 @@
     "config": {
         "optimize-autoloader": true,
         "platform": {
-            "php": "8.3"
+            "php": "8.4"
         },
         "preferred-install": "dist",
         "sort-packages": true,
@@ -173,10 +173,8 @@
         "post-create-project-cmd": [
             "php artisan key:generate"
         ],
-        "deploy": "envoy run deploy",
-        "deploy-code": "envoy run deploy-code",
         "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
-        "analyse": "vendor/bin/phpstan analyse",
+        "analyse": "vendor/bin/phpstan analyse --memory-limit=2G",
         "baseline": "vendor/bin/phpstan analyse --generate-baseline",
         "ide-helper": [
             "@php artisan ide-helper:eloquent",
