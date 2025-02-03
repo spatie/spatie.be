@@ -25,7 +25,7 @@
         "tailwindcss": "^3.4.3",
         "three": "^0.150.0",
         "three-stdlib": "^2.29.6",
-        "vite": "^5.4"
+        "vite": "^5.0"
     },
     "devDependencies": {
         "@types/three": "^0.171.0",
