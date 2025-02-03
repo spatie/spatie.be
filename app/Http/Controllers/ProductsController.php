@@ -36,6 +36,10 @@ class ProductsController
 
     public function show(Request $request, Product $product)
     {
+        if (! $product->visible && ! current_user()?->hasAccessToUnReleasedProducts()) {
+            abort(404);
+        }
+
         $assignments = $licenses = collect();
 
         if ($request->user()) {

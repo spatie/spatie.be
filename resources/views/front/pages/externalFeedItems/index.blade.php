@@ -5,12 +5,12 @@
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
     <div class="wrapper-lg mt-8 grid gap-8">
-        <h1 class="text-24 font-bold leading-snug text-center sm:text-left">
+        <h1 class="text-2xl/tight sm:text-4xl/tight font-bold">
             From our team & products
         </h1>
         <div class="grid gap-8 pb-16">
             @foreach($externalFeedItems as $externalFeedItem)
-                @include('front.pages.insights.partials.externalFeedItem')
+                @include('front.pages.blog.partials.externalFeedItem')
             @endforeach
             {{ $externalFeedItems->links() }}
         </div>
