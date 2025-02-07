@@ -86,4 +86,8 @@ return [
         'secret' => env('HELP_SPACE_SECRET')
     ],
 
+    'turnstile' => [
+        'secret' => env('TURNSTILE_SECRET'),
+    ]
+
 ];

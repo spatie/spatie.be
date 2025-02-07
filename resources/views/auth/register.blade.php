@@ -2,7 +2,9 @@
         title="Create account"
         background="/backgrounds/auth.jpg"
 >
-
+    @push('head')
+        <script data-navigate-track src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @endpush
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
@@ -69,6 +71,13 @@
                         <input class="form-checkbox mr-4" type="checkbox" name="newsletter" id="newsletter">
                         Keep me in the loop when there is new Spatie content
                     </label>
+                </x-field>
+
+                <x-field>
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAA74l4-VOOV7FQJO"></div>
+                    @error('cf-turnstile-response')
+                    <div class="text-pink-dark">{{ $message }}</div>
+                    @enderror
                 </x-field>
 
                 <x-button class="bg-blue hover:bg-blue-dark text-white px-5 py-2 rounded-sm text-sm" type="submit">

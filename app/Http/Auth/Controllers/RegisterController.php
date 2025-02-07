@@ -5,12 +5,14 @@ namespace App\Http\Auth\Controllers;
 use App\Actions\GrantRayTrialLicenseAction;
 use App\Actions\SubscribeUserToNewsletterAction;
 use App\Models\User;
+use Closure;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -31,6 +33,21 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
+            'cf-turnstile-response' => ['required', function (string $attribute, mixed $value, Closure $fail) {
+                if (! app()->environment('production')) {
+                    //return;
+                }
+
+                $success = Http::post('https://challenges.cloudflare.com/turnstile/v0/siteverify', [
+                    'secret' => config('services.turnstile.secret'),
+                    'response' => $value,
+                    'remoteip' => request()->ip(),
+                ])->json('success');
+
+                if (! $success) {
+                    $fail('The turnstile validation failed.');
+                }
+            }],
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => ['required', 'string', 'confirmed', Password::min(8)->uncompromised()],
