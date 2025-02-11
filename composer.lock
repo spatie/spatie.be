@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ec4c098025f67381d3d04ed2a3cd34ad",
+    "content-hash": "326af66569a409ddb9a3b95d372f96f6",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -13279,16 +13279,16 @@
         },
         {
             "name": "spatie/spatie-content-api",
-            "version": "3.2.0",
+            "version": "3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/spatie-content-api.git",
-                "reference": "498103e83adeb77bd05973128867a2446043e4fa"
+                "reference": "b19aaaf6ea9efe325d83ffec51ec0ad147933c82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/spatie-content-api/zipball/498103e83adeb77bd05973128867a2446043e4fa",
-                "reference": "498103e83adeb77bd05973128867a2446043e4fa",
+                "url": "https://api.github.com/repos/spatie/spatie-content-api/zipball/b19aaaf6ea9efe325d83ffec51ec0ad147933c82",
+                "reference": "b19aaaf6ea9efe325d83ffec51ec0ad147933c82",
                 "shasum": ""
             },
             "require": {
@@ -13337,9 +13337,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/spatie-content-api/issues",
-                "source": "https://github.com/spatie/spatie-content-api/tree/3.2.0"
+                "source": "https://github.com/spatie/spatie-content-api/tree/3.3.0"
             },
-            "time": "2025-01-22T20:10:48+00:00"
+            "time": "2025-02-11T16:03:00+00:00"
         },
         {
             "name": "spatie/ssh",

@@ -4,7 +4,15 @@
     <figure>
         <a wire:navigate href="{{ route('blog.show', $insight->slug) }}" class="size-36 sm:size-[120px] text-oss-royal-blue no-underline block bg-oss-green-pale rounded-8">
             @if ($insight->header_image)
-                <img class="w-full h-full object-cover rounded-8" src="{{ $insight->header_image }}" alt="">
+                <picture>
+                    <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
+                    <source srcset="
+                        @foreach ($insight->header_image_presets as $image)
+                        https://content.spatie.be{{ $image->url }} {{ $image->width }}w{{ $loop->last ? '' : ',' }}
+                        @endforeach
+                    " sizes="144px">
+                    <img class="w-full h-full object-cover rounded-8" src="{{ $insight->header_image }}" alt="">
+                </picture>
             @endif
         </a>
     </figure>
