@@ -12,7 +12,7 @@
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> A remuneration package with
                             a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike
-                            allowance, hardware, internet at home, pension plan, additional holidays …
+                            allowance, hardware, office furniture, internet at home, pension plan, additional holidays …
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Health insurance</li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
@@ -74,11 +74,11 @@
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Authentic espresso &amp;
                             fresh fruit in the office
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Board game evenings for
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Occasional board game evenings for
                             those who like to play
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Monthly Italian lunch with
-                            the team; wine from a chicken jug
+                            the team; with wine pouted out of a chicken jug
                         </li>
                     </ul>
 

@@ -89,7 +89,7 @@
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>Continually engage in the
                             open source community and provide support for our <a
-                                    href="{{ route('open-source.packages') }}">100+ Laravel & PHP packages</a>.
+                                    href="{{ route('open-source.packages') }}">400+ Laravel & PHP packages</a>.
                         </li>
                     </ul>
 

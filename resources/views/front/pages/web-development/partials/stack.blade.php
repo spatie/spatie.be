@@ -8,28 +8,26 @@
                 <h3 class="title-sm">Backend</h3>
                 <ul class="bullets-inline bullets-blue">
                     <li>Laravel</li>
-                    <li>Laravel Spark</li>
-                    <li>Laravel Nova</li>
                     <li>PHP</li>
                     <li>MySQL</li>
+                    <li>PostgreSQL</li>
                     <li>Redis</li>
                     <li>Algolia</li>
                     <li>Elasticsearch</li>
                     <li>Statamic</li>
+                    <li>…</li>
                 </ul>
                 <h3 class="title-sm">Frontend</h3>
                 <ul class="bullets-inline bullets-blue">
                     <li>React</li>
                     <li>TypeScript</li>
-                    <li>React Native</li>
                     <li>Vue.js</li>
                     <li>Vanilla JS</li>
                     <li>Tailwind CSS</li>
                     <li>PostCSS</li>
-                    <li>Laravel Mix</li>
+                    <li>Vite</li>
                     <li>npm</li>
-                    <li>Yarn</li>
-                    <li>Webpack</li>
+                    <li>…</li>
                 </ul>
             </div>
         </div>
@@ -49,6 +47,7 @@
                     <li>Google Analytics</li>
                     <li>Google Tag Manager</li>
                     <li>MS Visual Studio App Center</li>
+                    <li>…</li>
                 </ul>
             </div>
         </div>
@@ -57,18 +56,18 @@
                 <h3 class="title-sm">Devops</h3>
                 <ul class="bullets-inline bullets-blue">
                     <li>AWS</li>
+                    <li>GCP</li>
                     <li>Digital Ocean</li>
                     <li>Laravel Forge</li>
-                    <li>Laravel Vapor</li>
-                    <li>Netlify</li>
+                    <li>CloudFlare</li>
                     <li>NGINX</li>
                     <li>Docker</li>
+                    <li>Grafana</li>
+                    <li>Prometheus</li>
                     <li>Ansible</li>
+                    <li>…</li>
                 </ul>
             </div>
         </div>
-        <div class="sm:absolute sm:mr-8 lg:mr-16 right-0 bottom-0">
-            <a class="text-sm link-blue link-underline link-dimmed" href={{ route('uses') }}>More on our stack</a>
-       </div>
     </div>
 </section>
