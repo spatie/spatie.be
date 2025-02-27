@@ -78,7 +78,7 @@
                             those who like to play
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Monthly Italian lunch with
-                            the team; with wine poured out of a chicken jug
+                            the team; with wine poured from a chicken jug
                         </li>
                     </ul>
 
