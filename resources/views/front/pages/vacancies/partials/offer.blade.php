@@ -11,10 +11,10 @@
                             fostering environment
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> A remuneration package with
-                            a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike
+                            a competitive salary and extras tailored to your personal needs: eg. an (e-)bike
                             allowance, hardware, office furniture, internet at home, pension plan, additional holidays …
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Health insurance</li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Alan health insurance</li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Velo card for public bikes
                             in Antwerp
@@ -78,7 +78,7 @@
                             those who like to play
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Monthly Italian lunch with
-                            the team; with wine pouted out of a chicken jug
+                            the team; with wine poured out of a chicken jug
                         </li>
                     </ul>
 

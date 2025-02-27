@@ -43,7 +43,7 @@
             @endif
             <li>
                 <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
-                <strong>Juggle with work-life balance</strong> in our little circus after that umpteenth quarantine. We
+                <strong>Juggle with work-life balance</strong> in our little circus. We
                 don't do overtime.
                 We're open to changing our ways as an organization to keep things fresh.
             </li>
