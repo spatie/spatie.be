@@ -9,9 +9,9 @@
                     </label>
                     <div class="select p-0 text-[16px] bg-oss-black border-none text-oss-gray">
                         <select class="text-oss-gray" name="sort" wire:model.live="sort">
+                            <option value="-stars">popularity</option>
                             <option value="-downloads">downloads</option>
                             <option value="name">name</option>
-                            <option value="-stars">popularity</option>
                             <option value="-repository_created_at">date</option>
                         </select>
                         <span class="select-arrow pl-2.5 -mt-2">
