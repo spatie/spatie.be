@@ -124,7 +124,8 @@ return [
             "name" => "laravel-backup",
             "repository" => "spatie/laravel-backup",
             "branches" => [
-                "main" => "v8",
+                "main" => "v9",
+                "v8" => "v8",
                 "v7" => "v7",
                 "v6" => "v6",
                 "v5" => "v5",
