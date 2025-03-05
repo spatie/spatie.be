@@ -1,18 +1,17 @@
 <x-page
         background="/backgrounds/jobs.jpg"
-        title="React engineer vacancy"
-        description="Vacancy for a react engineer. Location: Antwerp."
+        title="Frontend engineer vacancy"
+        description="Vacancy for a frontend engineer. Location: Antwerp."
 >
     <script type="application/ld+json"> {
 	"@context": "http://schema.org",
 	"@type": "JobPosting",
-	"datePosted": "2022-02-27T00:00:00",
-    "validThrough": "2023-02-27T00:00:00",
+	"datePosted": "2025-03-01T00:00:00",
+    "validThrough": "2026-03-01T00:00:00",
 	"description": "<p>
                         You're in love with the React + TypeScript combo.
                     </p>
                     <ul>
-                        <li>You know where JavaScript comes from.</li>
                         <li>You know Git. That's it.</li>
                         <li>You don't run away from Tailwind CSS</li>
                         <li>You can work independently but aren't afraid to ask when you're stuck.</li>
@@ -21,7 +20,7 @@
                     <p>
                         Learn and grow together with a team that has made its name in open source. You'll have an enormous impact on users worldwide.
                     </p>",
-	"title": "React Engineer",
+	"title": "Frontend Engineer",
 	"employmentType": "FULL_TIME",
 	"hiringOrganization": {
 		"@type": "Organization",
@@ -46,7 +45,7 @@
     <section id="banner" class="banner" role="banner">
         <div class="wrap">
             <h1 class="banner-slogan">
-                React Engineer
+                Frontend Engineer
             </h1>
             <p class="mt-4">
                 <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
@@ -56,8 +55,6 @@
             </p>
         </div>
     </section>
-
-    @include('front.pages.vacancies.partials.filled')
 
     <div class="section section-group pt-0 section-fade">
         <section id="intro" class="section">
@@ -77,7 +74,7 @@
                     <ul class="bullets bullets-green">
                         <li>
                             <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
-                            You love the React + TypeScript combo, and you know where JavaScript comes from.
+                            You love the React + TypeScript combo but don't shy away from other stacks.
                         </li>
                         <li>
                             <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
@@ -97,11 +94,6 @@
                             You can speak Dutch and you love Italian food.
                         </li>
                     </ul>
-
-                    <div class="mt-16 gradient gradient-blue p-8 rounded">
-                        More of a <strong>Frontend Designer</strong> type? Check our <a
-                                href="{{ route('vacancies.show', 'frontend-designer') }}">designer vacancy</a> as well.
-                    </div>
                 </div>
             </div>
         </section>

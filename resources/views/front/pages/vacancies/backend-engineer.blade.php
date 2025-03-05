@@ -4,21 +4,19 @@
         {
             "@context": "http://schema.org"
             , "@type": "JobPosting"
-            , "datePosted": "2022-02-27T00:00:00"
-            , "validThrough": "2023-02-27T00:00:00"
+            , "datePosted": "2025-03-01T00:00:00"
+            , "validThrough": "2026-03-01T00:00:00"
             , "description": "<p>
-            You 're in love with the React + TypeScript combo. <
+            You love the PHP + Laravel combo. <
             /p>  <
             ul >
-            <li>You know where JavaScript comes from.</li> <
-            li > You know Git.That 's it.</li> <
-            li > You don 't run away from Tailwind CSS</li> <
+            li > You know git.</li> <
             li > You can work independently but aren 't afraid to ask when you'
             re stuck. < /li> <
             li > You can speak Dutch and you love Italian food. < /li> <
             /ul> <
             p >
-            Learn and grow together with a team that has made its name in open source.You 'll have an enormous impact on users worldwide. <
+            Learn and grow together with a team that has made its name in open source. You 'll have an enormous impact on users worldwide. <
             /p>",
             "title": "Backend Engineer"
             , "employmentType": "FULL_TIME"
