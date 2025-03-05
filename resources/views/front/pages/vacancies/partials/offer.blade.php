@@ -22,8 +22,8 @@
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Apple laptop + second
                             screen, most recent iPhone or Android smartphone
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Bose noise-cancelling
-                            headphones
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Noise-cancelling
+                            headphones to stay enter flow state
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Any software you prefer or
                             need
@@ -71,8 +71,8 @@
                                     href="https://www.kiva.org" target="_blank"
                                     rel="nofollow noreferrer noopener">Kiva</a> budget for micro-loans
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Authentic espresso &amp;
-                            fresh fruit in the office
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Unlimited espresso,
+                            fresh fruit, and soup at the office
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Occasional board game evenings for
                             those who like to play
