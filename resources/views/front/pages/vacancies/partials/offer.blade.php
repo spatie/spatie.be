@@ -23,7 +23,7 @@
                             screen, most recent iPhone or Android smartphone
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Noise-cancelling
-                            headphones to stay enter flow state
+                            headphones to enter flow state
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Any software you prefer or
                             need
