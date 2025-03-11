@@ -1,0 +1,40 @@
+<?php
+
+namespace App\Jobs;
+
+use App\Models\Repository;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Foundation\Queue\Queueable;
+use Spatie\Browsershot\Browsershot;
+use Spatie\TemporaryDirectory\TemporaryDirectory;
+
+class GeneratePackageGithubHeaderJob implements ShouldQueue
+{
+    use Queueable;
+
+    public function __construct(
+        public Repository $repository,
+    ) {}
+
+    public function handle(): void
+    {
+        $this->generateImage('dark');
+        $this->generateImage('light');
+    }
+
+    protected function generateImage($mode): void
+    {
+        $temporaryDirectory = (new TemporaryDirectory())->create();
+        $fileName = $temporaryDirectory->path('image.png');
+
+        Browsershot::url('https://spatie.be.test/packages/header/browsershot/html/' . $mode)
+            ->hideBackground()
+            ->windowSize(830, 186)
+            ->save($fileName);
+
+        $this->repository->addMedia($fileName)
+            ->toMediaCollection('github-header-' . $mode);
+
+        $temporaryDirectory->delete();
+    }
+}

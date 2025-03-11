@@ -8,6 +8,7 @@ use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use App\Models\Repository;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
@@ -46,6 +47,9 @@ class RepositoryResource extends Resource
                     ->getOptionLabelFromRecordUsing(fn ($record) => $record->name)
                     ->columnStart(1),
                 Toggle::make('ad_should_be_randomized')
+                    ->columnStart(1),
+                Textarea::make('logo_svg')
+                    ->rows(5)
                     ->columnStart(1),
             ]);
     }

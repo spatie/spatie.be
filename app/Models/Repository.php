@@ -12,11 +12,14 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Repository extends Model
+class Repository extends Model implements HasMedia
 {
     use HasFactory;
     use RepositoryPresenter;
+    use InteractsWithMedia;
 
     protected $casts = [
         'new' => 'boolean',
@@ -151,5 +154,11 @@ class Repository extends Model
     public function gitHubAdImagePath(): string
     {
         return Str::slug($this->name) . ".jpg";
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('github-header-light')->singleFile();
+        $this->addMediaCollection('github-header-dark')->singleFile();
     }
 }

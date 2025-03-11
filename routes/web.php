@@ -16,6 +16,7 @@ use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\ExternalFeedItemsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\PackageHeaderController;
 use App\Http\Controllers\RegenerateLicenseKeyController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
@@ -203,6 +204,8 @@ Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 */
 
 Route::get('uses', [UsesController::class, 'index'])->name('uses');
+
+Route::get('packages/header/{name}/html/{mode}', [PackageHeaderController::class, 'html']);
 
 Route::fallback(function (\Illuminate\Http\Request $request) {
     if ($request->segment(1) === 'videos') {
