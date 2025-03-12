@@ -9,7 +9,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('repositories', function (Blueprint $table) {
-            $table->longText('logo_svg');
+            $table->longText('logo_svg')->nullable();
+            $table->string('accent_color')->nullable();
         });
     }
 };

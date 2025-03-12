@@ -29,7 +29,7 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
 
         Browsershot::url('https://spatie.be.test/packages/header/browsershot/html/' . $mode)
             ->hideBackground()
-            ->windowSize(830, 186)
+            ->windowSize(830, 190)
             ->save($fileName);
 
         $this->repository->addMedia($fileName)

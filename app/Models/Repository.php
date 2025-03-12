@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
+use App\Http\Controllers\PackageHeaderController;
+use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
@@ -38,6 +40,8 @@ class Repository extends Model implements HasMedia
             $repository->load('ad');
 
             app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
+
+            dispatch(new GeneratePackageGithubHeaderJob($repository));
         });
     }
 
@@ -160,5 +164,15 @@ class Repository extends Model implements HasMedia
     {
         $this->addMediaCollection('github-header-light')->singleFile();
         $this->addMediaCollection('github-header-dark')->singleFile();
+    }
+
+    public function darkGithubHeader()
+    {
+        return action([PackageHeaderController::class, 'image'], ['name' => $this->name, 'mode' => 'dark']);
+    }
+
+    public function lightGithubHeader()
+    {
+        return action([PackageHeaderController::class, 'image'], ['name' => $this->name, 'mode' => 'light']);
     }
 }

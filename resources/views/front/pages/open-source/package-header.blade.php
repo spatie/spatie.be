@@ -32,15 +32,10 @@
     </style>
 </head>
 
-@php($color = '#2B7FFF')
+@php($color = $repository->accent_color)
 @php($dark = $mode === 'dark')
 
-<body @class([
-//    'bg-[#0E1117]' => !$dark,
-//    'bg-t' => $dark,
-//'bg-[#40ff00]'
-'bg-transparent'
-])>
+<body class="bg-transparent">
     <div @class([
         'max-w-[830px] font-smoothing relative',
         'text-white bg-[#0E1117]' => $dark,
