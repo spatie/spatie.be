@@ -21,6 +21,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\HtmlString;
 use Spatie\Ssh\Ssh;
 
 class RepositoryResource extends Resource
@@ -62,17 +63,15 @@ class RepositoryResource extends Resource
                     Placeholder::make('dark_github_header')
                         ->columnStart(1)
                         ->content(fn ($record) => $record ? $record->darkGithubHeader() : null),
+                    Placeholder::make('dark_github_header_preview')
+                        ->label('')
+                        ->content(fn ($record) => new HtmlString("<img src=\"{$record->darkGithubHeader()}\" alt=\"Dark GitHub header preview\">")),
                     Placeholder::make('light_github_header')
                         ->columnStart(1)
                         ->content(fn ($record) => $record ? $record->lightGithubHeader() : null),
-                    Actions::make([
-                        Action::make('generate')
-                            ->icon('heroicon-m-arrow-path')
-                            ->requiresConfirmation()
-                            ->action(function ($record) {
-                                ray($record);
-                            }),
-                    ])->columnStart(1),
+                    Placeholder::make('light_github_header_preview')
+                        ->label('')
+                        ->content(fn ($record) => new HtmlString("<img src=\"{$record->lightGithubHeader()}\" alt=\"Dark GitHub header preview\">")),
                 ])
             ]);
     }
