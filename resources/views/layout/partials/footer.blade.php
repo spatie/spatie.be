@@ -25,8 +25,7 @@
                 <address class="grid gap-4 | sm:gap-0 | md:grid-flow-col md:gap-8 md:text-right">
                     <div>
                         <a class="group flex items-end | md:flex-row-reverse"
-                           href="https://goo.gl/maps/A2zoLK3nVF9V8jydA" target="_blank"
-                           rel="nofollow noreferrer noopener">
+                           href="https://goo.gl/maps/A2zoLK3nVF9V8jydA" target="_blank" rel="nofollow noreferrer noopener">
                             <span>
                                 Kruikstraat 22, Box 12
                                 <br>
@@ -50,14 +49,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.instagram.com/spatie_be" target="_blank"
-                           rel="nofollow noreferrer noopener">
+                        <a href="https://www.instagram.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
                             Instagram
                         </a>
                     </li>
                     <li>
-                        <a href="https://be.linkedin.com/company/spatie" rel="me" target="_blank"
-                           rel="nofollow noreferrer noopener">
+                        <a href="https://be.linkedin.com/company/spatie" rel="me" target="_blank" rel="nofollow noreferrer noopener">
                             LinkedIn
                         </a>
                     </li>
@@ -73,14 +70,12 @@
                     </li>
                     <!-- Keeping this here for Mastodon profile verificaiton -->
                     <li class="hidden">
-                        <a href="https://phpc.social/@spatie" rel="me" target="_blank"
-                           rel="nofollow noreferrer noopener">
+                        <a href="https://phpc.social/@spatie" rel="me" target="_blank" rel="nofollow noreferrer noopener">
                             Mastodon
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.youtube.com/channel/UCoBbei3S9JLTcS2VeEOWDeQ" target="_blank"
-                           rel="nofollow noreferrer noopener">
+                        <a href="https://www.youtube.com/channel/UCoBbei3S9JLTcS2VeEOWDeQ" target="_blank" rel="nofollow noreferrer noopener">
                             YouTube
                         </a>
                     </li>
