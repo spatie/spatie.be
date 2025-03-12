@@ -29,6 +29,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('blog', 'Blog')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
+                ->url('https://spatie.myspreadshop.net', 'Merch ↗')
                 ->addIf(auth()->check(), View::create('layout.partials.navigation.profileIcon', ['url' => route('profile')]))
                 ->addIf(! auth()->check(), View::create('layout.partials.navigation.loginIcon', ['url' => route('login')]))
 
