@@ -14,7 +14,8 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
 
     public function __construct(
         public Repository $repository,
-    ) {}
+    ) {
+    }
 
     public function handle(): void
     {

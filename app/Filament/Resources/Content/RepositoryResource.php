@@ -7,8 +7,6 @@ use App\Filament\Resources\Content\RepositoryResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use App\Models\Repository;
-use Filament\Forms\Components\Actions;
-use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Section;
@@ -72,7 +70,7 @@ class RepositoryResource extends Resource
                     Placeholder::make('light_github_header_preview')
                         ->label('')
                         ->content(fn ($record) => new HtmlString("<img src=\"{$record->lightGithubHeader()}\" alt=\"Dark GitHub header preview\">")),
-                ])
+                ]),
             ]);
     }
 

@@ -11,6 +11,7 @@ class PackageHeaderController
         \Debugbar::disable();
 
         $repository = Repository::where('name', $name)->firstOrFail();
+
         return view('front.pages.open-source.package-header', compact('repository', 'mode'));
     }
 
