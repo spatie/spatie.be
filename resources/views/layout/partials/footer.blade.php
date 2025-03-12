@@ -67,6 +67,12 @@
                         </a>
                     </li>
                     <li>
+                        <a href="https://bsky.app/profile/spatie.be" target="_blank" rel="nofollow noreferrer noopener">
+                               Bluesky
+                        </a>
+                    </li>
+                    <!-- Keeping this here for Mastodon profile verificaiton -->
+                    <li class="hidden">
                         <a href="https://phpc.social/@spatie" rel="me" target="_blank"
                            rel="nofollow noreferrer noopener">
                             Mastodon
