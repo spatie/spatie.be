@@ -118,11 +118,11 @@
     margin-bottom: 0.35em;
 }
 
-.markup-lists ul li {
-    padding-left: 1em;
+.markup-lists ul > li {
+    padding-left: 1.2em;
 }
 
-.markup-lists ul li:before {
+.markup-lists ul > li:before {
     @apply text-blue;
     content: '•';
     left: 0;
@@ -142,7 +142,7 @@
     --counter-content: counter(var(--counter-increment), var(--counter-style)) '.';
 
     counter-increment: var(--counter-increment);
-    padding-left: 2.5rem;
+    padding-left: 1.2em;
 }
 
 .markup-lists ol > li:before {

@@ -34,7 +34,7 @@
                 </div>
                 <div href="{{ route('blog.show', $highlight->slug) }}" class="sm:pt-24 flex flex-col gap-6 sm:gap-9">
                     <p class="flex items-center gap-3 text-sm">
-                        <span class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5">
+                        <span class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5 leading-none">
                             Latest post
                         </span>
                         <time datetime="{{ $highlight->date->format('Y-m-d') }}">

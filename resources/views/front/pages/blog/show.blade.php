@@ -22,7 +22,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="sm:w-2/5 ml-auto sm:mr-0 mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
+                <div class="sm:w-2/5 sm:ml-auto sm:mr-0 mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
                     @if($post->header_image)
                         <picture>
                             <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
