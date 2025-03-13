@@ -1,6 +1,6 @@
 <x-page
     :title="$post->title"
-    background="/backgrounds/blog-post.png"
+    background="/backgrounds/blog-post.jpg"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
     :og-image="$post->og_image"

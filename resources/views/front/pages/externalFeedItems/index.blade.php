@@ -1,6 +1,6 @@
 <x-page
     title="From our team and products"
-    background="/backgrounds/blog-index.png"
+    background="/backgrounds/blog-index.jpg"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
