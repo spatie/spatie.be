@@ -41,7 +41,7 @@
                             {{ $highlight->date->format('F d, Y') }}
                         </time>
                     </p>
-                    <x-headers.h2 class="transition duration-150 group-hover:text-oss-spatie-blue">
+                    <x-headers.h2 class="transition duration-150 text-balance group-hover:text-oss-spatie-blue">
                         {{ $highlight->title }}
                     </x-headers.h2>
                     <div>

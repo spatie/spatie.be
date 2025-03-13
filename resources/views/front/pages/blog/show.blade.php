@@ -13,7 +13,7 @@
                     <time datetime="{{ $post->date?->format('Y-m-d') }}" class="text-oss-royal-blue text-base">
                         {{ $post->date?->format('F d, Y') ?? 'Preview' }}
                     </time>
-                    <x-headers.h1 class="mt-6">
+                    <x-headers.h1 class="mt-6 text-balance">
                         {!! $post->title !!}
                     </x-headers.h1>
                     <div class="mt-6 md:mt-9 font-semibold text-oss-royal-blue">
