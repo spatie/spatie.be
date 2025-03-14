@@ -205,7 +205,7 @@ Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 
 Route::get('uses', [UsesController::class, 'index'])->name('uses');
 
-Route::get('packages/header/{name}/html/{mode}.png', [PackageHeaderController::class, 'image']);
+Route::get('packages/header/{name}/html/{mode}.webp', [PackageHeaderController::class, 'image']);
 Route::get('packages/header/{name}/html/{mode}', [PackageHeaderController::class, 'html']);
 
 Route::fallback(function (\Illuminate\Http\Request $request) {

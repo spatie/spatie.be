@@ -26,11 +26,13 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
     protected function generateImage($mode): void
     {
         $temporaryDirectory = (new TemporaryDirectory())->create();
-        $fileName = $temporaryDirectory->path('image.png');
+        $fileName = $temporaryDirectory->path('image.webp');
 
         Browsershot::url('https://spatie.be.test/packages/header/browsershot/html/' . $mode)
             ->hideBackground()
             ->windowSize(830, 190)
+            ->deviceScaleFactor(2)
+            ->quality(100)
             ->save($fileName);
 
         $this->repository->addMedia($fileName)
