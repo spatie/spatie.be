@@ -24,7 +24,7 @@ class PostcardController
 
     public function respondWithJson($postcards, Collection $countries): JsonResponse
     {
-        return cache()->remember('postcardsJson', now()->addHour(), function () use ($postcards, $countries) {
+        return cache()->remember('postcards_json', now()->addHour(), function () use ($postcards, $countries) {
             return response()->json([
                 'postcards' => $postcards->map(function ($postcard) {
                     return [
@@ -32,7 +32,7 @@ class PostcardController
                         'sender' => $postcard->sender,
                         'location' => $postcard->location,
                         'image' => $postcard->getFirstMedia() ? $postcard->getFirstMedia()->getUrl() : null,
-                        'responsive_images' => $postcard->getFirstMedia() ? $postcard->getFirstMedia()->getResponsiveImageUrls() : null,
+                        'image_srcset' => $postcard->getFirstMedia() ? $postcard->getFirstMedia()->getSrcset() : null,
                         'created_at' => $postcard->created_at,
                     ];
                 }),
