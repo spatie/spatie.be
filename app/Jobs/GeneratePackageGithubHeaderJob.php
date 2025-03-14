@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Http\Controllers\PackageHeaderController;
 use App\Models\Repository;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
@@ -31,8 +32,9 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
 
         $temporaryDirectory = (new TemporaryDirectory())->create();
         $fileName = $temporaryDirectory->path('image.webp');
+        $url = action([PackageHeaderController::class, 'html'], ['name' => $this->repository->name, 'mode' => $mode]);
 
-        Browsershot::url('https://spatie.be.test/packages/header/browsershot/html/' . $mode)
+        Browsershot::url($url)
             ->setNodeBinary('/usr/bin/node')
             ->setNpmBinary('/usr/bin/npm')
             ->setChromePath("/home/forge/.cache/puppeteer/chrome/linux-134.0.6998.35/chrome-linux64/chrome")
