@@ -32,6 +32,7 @@ class PostcardController
                         'sender' => $postcard->sender,
                         'location' => $postcard->location,
                         'image' => $postcard->getFirstMedia() ? $postcard->getFirstMedia()->getUrl() : null,
+                        'responsive_images' => $postcard->getFirstMedia() ? $postcard->getFirstMedia()->getResponsiveImageUrls() : null,
                         'created_at' => $postcard->created_at,
                     ];
                 }),
