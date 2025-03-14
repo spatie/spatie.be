@@ -11,6 +11,7 @@
 /public/js
 /public/mix-manifest.json
 /public/images/medialibrary/
+/public/images/packages/
 
 # Frontend Assets
 /node_modules
