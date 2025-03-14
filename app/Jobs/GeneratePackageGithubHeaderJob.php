@@ -33,8 +33,8 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
         $fileName = $temporaryDirectory->path('image.webp');
 
         Browsershot::url('https://spatie.be.test/packages/header/browsershot/html/' . $mode)
-            ->setNodeBinary('/usr/local/bin/node')
-            ->setNpmBinary('/usr/local/bin/npm')
+            ->setNodeBinary('/usr/bin/node')
+            ->setNpmBinary('/usr/bin/npm')
             ->hideBackground()
             ->windowSize(830, 190)
             ->deviceScaleFactor(2)
