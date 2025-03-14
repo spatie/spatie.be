@@ -24,7 +24,7 @@ class PostcardController
 
     public function respondWithJson($postcards, Collection $countries): JsonResponse
     {
-        return cache()->remember('postcards-json', now()->addHour(), function () use ($postcards, $countries) {
+        return cache()->remember('postcardsJson', now()->addHour(), function () use ($postcards, $countries) {
             return response()->json([
                 'postcards' => $postcards->map(function ($postcard) {
                     return [
