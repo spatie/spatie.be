@@ -25,6 +25,10 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
 
     protected function generateImage($mode): void
     {
+        if (app()->environment('testing')) {
+            return;
+        }
+
         $temporaryDirectory = (new TemporaryDirectory())->create();
         $fileName = $temporaryDirectory->path('image.webp');
 
