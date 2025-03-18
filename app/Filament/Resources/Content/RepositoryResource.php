@@ -52,7 +52,7 @@ class RepositoryResource extends Resource
                     ->columnStart(1),
                 Toggle::make('ad_should_be_randomized')
                     ->columnStart(1),
-                Section::make()->schema([
+                Section::make('Github Header')->schema([
                     ColorPicker::make('accent_color')
                         ->columnStart(1),
                     Textarea::make('logo_svg')
