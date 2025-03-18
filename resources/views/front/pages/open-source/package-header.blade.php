@@ -14,23 +14,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
 
-    @vite('resources/css/front/front.css')
+    @vite('resources/css/package-headers.css')
 
     <style>
-        .logo svg {
-            width: 72px;
-            height: 72px;
-            filter: drop-shadow(0px 52.56px 78.48px rgba(0, 0, 0, 0.0646228)) drop-shadow(0px 11.74px 17.5295px rgba(0, 0, 0, 0.0953772)) drop-shadow(0px 3.49529px 5.219px rgba(0, 0, 0, 0.16));
-        }
 
-        h1 {
-            font-family: 'PT Root UI', sans-serif;
-            font-weight: 700;
-        }
-
-        .text-gheist {
-            font-family: "Geist Mono", monospace;
-        }
     </style>
 </head>
 

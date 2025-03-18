@@ -8,6 +8,7 @@ export default defineConfig({
             input: [
                 'resources/js/front/app.js',
                 'resources/js/front/gradient.jsx',
+                'resources/css/package-headers.css'
             ],
             detectTls: 'spatie.be.test',
         }),

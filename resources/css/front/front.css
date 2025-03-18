@@ -140,11 +140,3 @@ h5:has(.anchor-link):hover .anchor-link:hover {
 [x-cloak] {
     display: none !important;
 }
-
-.package-header-pattern-left {
-    background-image: url("../../images/packages/footer-pattern-left.png");
-}
-
-.package-header-pattern-right {
-    background-image: url("../../images/packages/footer-pattern.png");
-}
