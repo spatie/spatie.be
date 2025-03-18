@@ -75,13 +75,13 @@
                 'border-[#A7ADB4]' => !$dark,
             ])></div>
             <div class="pt-[12px] pb-2">
-                <div class="bg-[url('{{ Vite::asset('resources/images/packages/footer-pattern-left.png') }}')] bg-repeat-x w-[635px] h-[13px] bg-contain py-2"></div>
+                <div class="package-header-pattern-left bg-repeat-x w-[635px] h-[13px] bg-contain py-2"></div>
             </div>
             <div class="border-t border-t-[{{$color}}] h-[20px] z-5 pt-[3px]">
                 <span class="text-gheist text-xs">spatie.be/open-source</span>
             </div>
             <div class="pt-[12px] pb-2">
-                <div class="bg-[url('{{ Vite::asset('resources/images/packages/footer-pattern.png') }}')] bg-repeat-x w-[13px] h-[13px] bg-contain"></div>
+                <div class="package-header-pattern-right bg-repeat-x w-[13px] h-[13px] bg-contain"></div>
             </div>
         </footer>
     </div>
