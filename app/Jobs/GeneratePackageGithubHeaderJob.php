@@ -41,7 +41,6 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
             ->hideBackground()
             ->windowSize(830, 190)
             ->deviceScaleFactor(2)
-            ->quality(100)
             ->save($fileName);
 
         $this->repository->addMedia($fileName)
