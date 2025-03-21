@@ -53,7 +53,7 @@
             </div>
 
             <div>
-                <h1 class="text-[34px] font-['PT Root UI']">{{ str()->headline($repository->name) }}</h1>
+                <h1 class="text-[34px] font-['PT Root UI']">{{ ($repository->banner_title) ? $repository->banner_title : str()->headline($repository->name) }}</h1>
             </div>
         </div>
 

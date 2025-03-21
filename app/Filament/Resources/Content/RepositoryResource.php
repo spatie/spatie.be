@@ -55,6 +55,8 @@ class RepositoryResource extends Resource
                 Section::make('Github Header')->schema([
                     ColorPicker::make('accent_color')
                         ->columnStart(1),
+                    TextInput::make('banner_title')
+                        ->nullable(),
                     Textarea::make('logo_svg')
                         ->rows(5)
                         ->columnStart(1),
