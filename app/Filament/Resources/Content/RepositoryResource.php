@@ -52,14 +52,24 @@ class RepositoryResource extends Resource
                     ->columnStart(1),
                 Toggle::make('ad_should_be_randomized')
                     ->columnStart(1),
-                Section::make('Github Header')->schema([
+                Section::make('Branding')->schema([
                     ColorPicker::make('accent_color')
                         ->columnStart(1),
-                    TextInput::make('banner_title')
-                        ->nullable(),
                     Textarea::make('logo_svg')
                         ->rows(5)
                         ->columnStart(1),
+                ]),
+                Section::make('Docs')->schema([
+                    Toggle::make('has_issues')->columnStart(1),
+                    TextInput::make('intro_title')
+                        ->columnStart(1),
+                    Textarea::make('intro_text')
+                        ->rows(5)
+                        ->columnStart(1),
+                ]),
+                Section::make('Github Header')->schema([
+                    TextInput::make('banner_title')
+                        ->nullable(),
                     Placeholder::make('dark_github_header')
                         ->columnStart(1)
                         ->content(fn ($record) => $record ? $record->darkGithubHeader() : null),

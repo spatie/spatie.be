@@ -9,7 +9,9 @@ return new class extends Migration
     public function up()
     {
         Schema::table('repositories', function (Blueprint $table) {
-            $table->string('banner_title')->nullable();
+            $table->string('intro_title')->nullable();
+            $table->longText('intro_text')->nullable();
+            $table->boolean('has_issues')->default(false);
         });
     }
 };
