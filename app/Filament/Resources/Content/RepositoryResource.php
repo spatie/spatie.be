@@ -55,6 +55,7 @@ class RepositoryResource extends Resource
                 Section::make('Branding')->schema([
                     ColorPicker::make('accent_color')
                         ->columnStart(1),
+                    Toggle::make('light_button_text')->columnStart(1),
                     Textarea::make('logo_svg')
                         ->rows(5)
                         ->columnStart(1),
