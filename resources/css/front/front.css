@@ -140,3 +140,13 @@ h5:has(.anchor-link):hover .anchor-link:hover {
 [x-cloak] {
     display: none !important;
 }
+
+.docs-branded-header {
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+
+    .logo svg {
+        width: 72px;
+        height: 72px;
+        filter: drop-shadow(0px 52.56px 78.48px rgba(0, 0, 0, 0.0646228)) drop-shadow(0px 11.74px 17.5295px rgba(0, 0, 0, 0.0953772)) drop-shadow(0px 3.49529px 5.219px rgba(0, 0, 0, 0.16));
+    }
+}

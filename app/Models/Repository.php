@@ -28,6 +28,7 @@ class Repository extends Model implements HasMedia
         'topics' => 'array',
         'repository_created_at' => 'datetime',
         'ad_should_be_randomized' => 'boolean',
+        'has_issues' => 'boolean',
     ];
 
     protected $attributes = [

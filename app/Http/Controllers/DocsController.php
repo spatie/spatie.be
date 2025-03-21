@@ -7,6 +7,7 @@ use App\Docs\Docs;
 use App\Docs\DocumentationPage;
 use App\Docs\Highlighting\DiffLanguage;
 use App\Docs\Highlighting\JsxLanguage;
+use App\Models\Repository;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
 use Illuminate\Support\Arr;
@@ -120,6 +121,12 @@ class DocsController
 
         $showBigTitle = $page->slug === $navigation['_root']['pages'][0]->slug;
 
+        $repositoryModel = Repository::query()->where('name', $repository->slug)->first();
+
+        $showBrandedHeader = $repositoryModel && isset($repositoryModel->logo_svg) && isset($repositoryModel->accent_color);
+
+        ray('show branded header?', $showBrandedHeader, $repositoryModel);
+
         $tableOfContents = $this->extractTableOfContents($page->contents);
 
         return view('front.pages.docs.show', compact(
@@ -128,11 +135,13 @@ class DocsController
             'nextPage',
             'repositories',
             'repository',
+            'repositoryModel',
             'pages',
             'navigation',
             'alias',
             'showBigTitle',
-            'tableOfContents'
+            'showBrandedHeader',
+            'tableOfContents',
         ));
     }
 

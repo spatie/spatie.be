@@ -15,10 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
 
     @vite('resources/css/package-headers.css')
-
-    <style>
-
-    </style>
 </head>
 
 @php($color = $repository->accent_color)
