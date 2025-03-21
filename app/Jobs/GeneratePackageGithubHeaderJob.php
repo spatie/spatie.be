@@ -34,11 +34,15 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
         $fileName = $temporaryDirectory->path('image.webp');
         $url = action([PackageHeaderController::class, 'html'], ['name' => $this->repository->name, 'mode' => $mode]);
 
-        Browsershot::url($url)
-            ->setNodeBinary('/usr/bin/node')
-            ->setNpmBinary('/usr/bin/npm')
-            ->setChromePath("/home/forge/.cache/puppeteer/chrome/linux-134.0.6998.35/chrome-linux64/chrome")
-            ->hideBackground()
+        $browsershot = Browsershot::url($url);
+
+        if (app()->isProduction()) {
+            $browsershot->setNodeBinary('/usr/bin/node')
+                ->setNpmBinary('/usr/bin/npm')
+                ->setChromePath("/home/forge/.cache/puppeteer/chrome/linux-134.0.6998.35/chrome-linux64/chrome");
+        }
+
+        $browsershot->hideBackground()
             ->windowSize(830, 190)
             ->deviceScaleFactor(2)
             ->save($fileName);
