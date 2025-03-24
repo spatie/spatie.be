@@ -1,6 +1,6 @@
 .logo svg {
-    width: 72px;
-    height: 72px;
+    width: 64px;
+    height: 64px;
     filter: drop-shadow(0px 52.56px 78.48px rgba(0, 0, 0, 0.0646228)) drop-shadow(0px 11.74px 17.5295px rgba(0, 0, 0, 0.0953772)) drop-shadow(0px 3.49529px 5.219px rgba(0, 0, 0, 0.16));
 }
 
@@ -12,7 +12,6 @@ h1 {
 .text-gheist {
     font-family: "Geist Mono", monospace;
 }
-
 
 .package-header-pattern-left {
     background-image: url("../images/packages/footer-pattern-left.png");
