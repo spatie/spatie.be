@@ -1,5 +1,5 @@
 <x-page
-    title="Websites & webapplications in Laravel"
+    title="Websites & web applications in Laravel"
     background="/backgrounds/home-2020.jpg">
     <x-slot name="description">
         Spatie is a digital allrounder: we design solid websites & web applications using Laravel & Vue. No frills, just

@@ -11,10 +11,10 @@
                             fostering environment
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> A remuneration package with
-                            a competitive salary and extras tailored to your personal needs: eg. an e-bike, bike
-                            allowance, hardware, internet at home, pension plan, additional holidays …
+                            a competitive salary and extras tailored to your personal needs: eg. an (e-)bike
+                            allowance, hardware, office furniture, internet at home, pension plan, additional holidays …
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Health insurance</li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Alan health insurance</li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Meal and Eco vouchers</li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Velo card for public bikes
                             in Antwerp
@@ -22,8 +22,8 @@
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Apple laptop + second
                             screen, most recent iPhone or Android smartphone
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Bose noise-cancelling
-                            headphones
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Noise-cancelling
+                            headphones to enter flow state
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Any software you prefer or
                             need
@@ -71,14 +71,14 @@
                                     href="https://www.kiva.org" target="_blank"
                                     rel="nofollow noreferrer noopener">Kiva</a> budget for micro-loans
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Authentic espresso &amp;
-                            fresh fruit in the office
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Unlimited espresso,
+                            fresh fruit, and soup at the office
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Board game evenings for
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Occasional board game evenings for
                             those who like to play
                         </li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Monthly Italian lunch with
-                            the team; wine from a chicken jug
+                            the team; with wine poured from a chicken jug
                         </li>
                     </ul>
 

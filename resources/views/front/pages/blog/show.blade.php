@@ -1,6 +1,6 @@
 <x-page
     :title="$post->title"
-    background="/backgrounds/blog-post.png"
+    background="/backgrounds/blog-post.jpg"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
     :og-image="$post->og_image"
@@ -13,7 +13,7 @@
                     <time datetime="{{ $post->date?->format('Y-m-d') }}" class="text-oss-royal-blue text-base">
                         {{ $post->date?->format('F d, Y') ?? 'Preview' }}
                     </time>
-                    <x-headers.h1 class="mt-6">
+                    <x-headers.h1 class="mt-6 text-balance">
                         {!! $post->title !!}
                     </x-headers.h1>
                     <div class="mt-6 md:mt-9 font-semibold text-oss-royal-blue">
@@ -22,7 +22,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="sm:w-2/5 ml-auto sm:mr-0 mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
+                <div class="sm:w-2/5 sm:ml-auto sm:mr-0 mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
                     @if($post->header_image)
                         <picture>
                             <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>

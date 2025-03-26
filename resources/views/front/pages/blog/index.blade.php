@@ -1,6 +1,6 @@
 <x-page
     title="Insights"
-    background="/backgrounds/blog-index.png"
+    background="/backgrounds/blog-index.jpg"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
@@ -13,7 +13,7 @@
     @if($highlight)
         <article class="wrapper-lg px-7 sm:px-16 mt-8">
             <a href="{{ route('blog.show', $highlight->slug) }}" class="group flex flex-col sm:flex-row gap-8 sm:gap-24">
-                <div href="{{ route('blog.show', $highlight->slug) }}" class="flex-shrink-0 self-start sm:w-[440px] sm:h-[440px] rounded-8 overflow-hidden">
+                <div href="{{ route('blog.show', $highlight->slug) }}" class="flex-shrink-0 self-start sm:w-[440px] sm:h-[440px] rounded-8 overflow-hidden ">
                     @if ($highlight->header_image)
                         <picture>
                             <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
@@ -34,14 +34,14 @@
                 </div>
                 <div href="{{ route('blog.show', $highlight->slug) }}" class="sm:pt-24 flex flex-col gap-6 sm:gap-9">
                     <p class="flex items-center gap-3 text-sm">
-                        <span class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5">
+                        <span class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5 leading-none">
                             Latest post
                         </span>
                         <time datetime="{{ $highlight->date->format('Y-m-d') }}">
                             {{ $highlight->date->format('F d, Y') }}
                         </time>
                     </p>
-                    <x-headers.h2 class="transition duration-150 group-hover:text-oss-spatie-blue">
+                    <x-headers.h2 class="transition duration-150 text-balance group-hover:text-oss-spatie-blue">
                         {{ $highlight->title }}
                     </x-headers.h2>
                     <div>

@@ -15,7 +15,7 @@ class RepositoriesComponent extends Component
     public $search = '';
 
     /** @var string */
-    public $sort = '-downloads';
+    public $sort = '-stars';
 
     /** @var bool */
     public $filterable = true;
@@ -29,7 +29,7 @@ class RepositoriesComponent extends Component
     public function mount(
         $type = 'packages',
         $filterable = true,
-        $sort = '-downloads',
+        $sort = '-stars',
     ): void {
         $this->type = $type;
         $this->filterable = $filterable;

@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Actions\SyncRepositoryAdImageToGitHubAdsDiskAction;
+use App\Http\Controllers\PackageHeaderController;
+use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
 use BadMethodCallException;
@@ -12,17 +14,21 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
+use Spatie\MediaLibrary\HasMedia;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
-class Repository extends Model
+class Repository extends Model implements HasMedia
 {
     use HasFactory;
     use RepositoryPresenter;
+    use InteractsWithMedia;
 
     protected $casts = [
         'new' => 'boolean',
         'topics' => 'array',
         'repository_created_at' => 'datetime',
         'ad_should_be_randomized' => 'boolean',
+        'has_issues' => 'boolean',
     ];
 
     protected $attributes = [
@@ -35,6 +41,8 @@ class Repository extends Model
             $repository->load('ad');
 
             app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
+
+            dispatch(new GeneratePackageGithubHeaderJob($repository));
         });
     }
 
@@ -151,5 +159,21 @@ class Repository extends Model
     public function gitHubAdImagePath(): string
     {
         return Str::slug($this->name) . ".jpg";
+    }
+
+    public function registerMediaCollections(): void
+    {
+        $this->addMediaCollection('github-header-light')->singleFile();
+        $this->addMediaCollection('github-header-dark')->singleFile();
+    }
+
+    public function darkGithubHeader()
+    {
+        return action([PackageHeaderController::class, 'image'], ['name' => $this->name, 'mode' => 'dark']);
+    }
+
+    public function lightGithubHeader()
+    {
+        return action([PackageHeaderController::class, 'image'], ['name' => $this->name, 'mode' => 'light']);
     }
 }

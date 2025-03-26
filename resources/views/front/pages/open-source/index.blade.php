@@ -63,8 +63,8 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
             <x-oss-content>
                 <x-slot:aside>
                     <h3 class="font-bold mb-2.5">Spatie in the wild</h3>
-                    <p class="leading-snug text-oss-gray-dark mb-0.5">Our most recent presentation was Freek talking about common and not so common PHP functions at PHP UK 2024, which you can find
-                        <a class="underline" href="https://www.youtube.com/watch?v=ZWcgx0c2nGs" target="_blank">here</a>.</p>
+                    <p class="leading-snug text-oss-gray-dark mb-0.5"><a class="underline" href="https://www.youtube.com/watch?v=Boqfw4ZCk7g" target="_blank">Watch Freek talk about</a> about some of our less popular packages at Laracon US 2024.</p>
+
                 </x-slot:aside>
 
                 <p>Back in 2015 when we first began developing open source packages and tools for Laravel and PHP, we couldn't have imagined the overwhelming support and feedback we'd receive from the community.</p>

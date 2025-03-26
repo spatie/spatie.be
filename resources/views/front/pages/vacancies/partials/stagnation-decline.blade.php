@@ -16,7 +16,7 @@
         <ul class="bullets bullets-green">
             <li>
                 <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
-                There is a strong mentality to stay <strong>on top of things</strong>: through Slack, in-house
+                There is a strong mentality to stay <strong>on top of things</strong>: through interesting links from your colleagues on Slack, in-house
                 presentations or conferences.
                 @unless($profile == 'marketing')
                     Spend <strong>half a day each week</strong> on experiments and open source work.
@@ -27,7 +27,7 @@
                 @if($profile == 'front')
                     <li>
                         <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
-                        Get €1500,- <strong>extra budget</strong> every year for personal growth. Spend it on books,
+                        Get €1800,- <strong>extra budget</strong> every year for personal growth. Spend it on books,
                         courses and conferences (including train rides, hotels) like
                         dotJS/dotCSS, nordic.JS, Frontend United.
                     </li>
@@ -35,7 +35,7 @@
                 @if($profile == 'back')
                     <li>
                         <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
-                        Get €1500,- <strong>extra budget</strong> every year for personal growth. Spend it on books,
+                        Get €1800,- <strong>extra budget</strong> every year for personal growth. Spend it on books,
                         courses and conferences (including train rides, hotels) like
                         Laracon EU and US, DDD Europe, PHP Benelux, PHPUKConference, DPC, PHPDay ...
                     </li>
@@ -43,14 +43,14 @@
             @endif
             <li>
                 <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
-                <strong>Juggle with work-life balance</strong> in our little circus after that umpteenth quarantine. We
+                <strong>Juggle with work-life balance</strong> in our little circus. We
                 don't do overtime.
                 We're open to changing our ways as an organization to keep things fresh.
             </li>
             <li>
                 <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                 <strong>Regularly working from home</strong> has become an efficient routine.
-                Yet we value personal connections and visit the office at least two days a week. We get that those who
+                Yet we value personal connections and visit the office roughly 50% of the time. We get that those who
                 have to commute have a different regime than someone who only has to jump on a bike.
                 @if($profile == 'marketing')
                     <br>This position is also open for <strong>fully remote</strong> candidates.
@@ -65,7 +65,7 @@
             </li>
             <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
                 Grow together with a team that has <strong>made its name in open source</strong>, with more than
-                250.000.000 downloads of packages worldwide.
+                1.5 billion (!) downloads of packages worldwide.
                 Spot your fellow team members as experts in user groups or conference speakers.
             </li>
         </ul>
