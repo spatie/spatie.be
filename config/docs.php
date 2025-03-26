@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-mobile-pass",
+            "repository" => "spatie/laravel-mobile-pass",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-error-solutions",
             "repository" => "spatie/laravel-error-solutions",
             "branches" => [
