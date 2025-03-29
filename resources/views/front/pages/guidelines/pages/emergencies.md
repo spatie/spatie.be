@@ -1,7 +1,7 @@
 ---
 title: Emergencies
 description: Tips to stay cool
-weight: 6
+weight: 7
 ---
 
 Things in production are not always working as they should be. In general, we don't care who has made a mistake that resulted in an emergency or incidents. The entire team is responsible for letting something slip into production. We see any emergency as an opportunity to learn something and to improve how we handle things.
