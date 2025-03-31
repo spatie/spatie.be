@@ -116,7 +116,7 @@ class RepositoryResource extends Resource
                     ->requiresConfirmation()
                     ->icon('heroicon-o-arrow-path')
                     ->hidden(function (Repository $record) {
-                        return !collect(config('docs.repositories'))->pluck('name')->contains($record->name);
+                        return ! collect(config('docs.repositories'))->pluck('name')->contains($record->name);
                     })
                     ->action(fn (Repository $record) => dispatch(new ImportDocsForRepositoryJob($record->name))),
                 Tables\Actions\EditAction::make(),
