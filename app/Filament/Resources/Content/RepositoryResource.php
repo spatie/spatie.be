@@ -6,6 +6,7 @@ use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Filament\Resources\Content\RepositoryResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use App\Jobs\ImportDocsForRepositoryJob;
 use App\Models\Repository;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Placeholder;
@@ -110,6 +111,14 @@ class RepositoryResource extends Resource
                 //
             ])
             ->actions([
+                Tables\Actions\Action::make('sync docs')
+                    ->button()
+                    ->requiresConfirmation()
+                    ->icon('heroicon-o-arrow-path')
+                    ->hidden(function (Repository $record) {
+                        return !collect(config('docs.repositories'))->pluck('name')->contains($record->name);
+                    })
+                    ->action(fn (Repository $record) => dispatch(new ImportDocsForRepositoryJob($record->name))),
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
