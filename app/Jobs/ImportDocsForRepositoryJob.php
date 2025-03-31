@@ -15,7 +15,8 @@ class ImportDocsForRepositoryJob implements ShouldQueue
 
     protected Repository $repository;
 
-    public function __construct(protected string $repositoryName) {
+    public function __construct(protected string $repositoryName)
+    {
         $this->repository = Repository::query()->where('name', $this->repositoryName)->firstOrFail();
     }
 
