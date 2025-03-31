@@ -29,6 +29,7 @@ class Repository extends Model implements HasMedia
         'repository_created_at' => 'datetime',
         'ad_should_be_randomized' => 'boolean',
         'has_issues' => 'boolean',
+        'docs_synced_at' => 'datetime',
     ];
 
     protected $attributes = [

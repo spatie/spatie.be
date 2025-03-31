@@ -3,6 +3,7 @@
 namespace App\Console;
 
 use App\Console\Commands\AfterworkCommand;
+use App\Console\Commands\ImportAllDocsCommand;
 use App\Console\Commands\ImportDocsFromRepositoriesCommand;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportGuideLinesCommand;
@@ -45,6 +46,8 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(WishHappyBirthdayCommand::class)->runInBackground()->dailyAt('08:50');
         $schedule->command(AfterworkCommand::class)->runInBackground()->monthlyOn(1, '11:00');
+
+        $schedule->command(ImportAllDocsCommand::class)->runInBackground()->dailyAt('03:10');
     }
 
     protected function commands(): void

@@ -104,6 +104,7 @@ class RepositoryResource extends Resource
                     },
                 )->openUrlInNewTab(),
                 BooleanColumn::make('ad_should_be_randomized'),
+                Tables\Columns\TextColumn::make('docs_synced_at')->dateTime()->sortable(),
             ])
             ->filters([
                 //

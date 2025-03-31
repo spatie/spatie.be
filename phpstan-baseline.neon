@@ -246,6 +246,6 @@ parameters:
 		-
 			message: '#^Call to an undefined method Github\\Api\\AbstractApi\:\:releases\(\)\.$#'
 			identifier: method.notFound
-			count: 1
+			count: 2
 			path: app/Services/GitHub/GitHubApi.php
 
