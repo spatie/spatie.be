@@ -13,6 +13,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class PurchasablePriceResource extends Resource
@@ -56,11 +57,17 @@ class PurchasablePriceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                ResourceLinkColumn::make('purchasable.title', fn (PurchasablePrice $record) => route('filament.admin.resources.shop.purchasables.edit', $record->purchasable)),
-                Tables\Columns\TextColumn::make('country')->state(fn (PurchasablePrice $record) => PaddleCountries::getNameForCode($record->country_code) . "($record->country_code)")->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('currency_code')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('price_in_usd_cents')
+                TextColumn::make('id')->searchable()->sortable(),
+                ResourceLinkColumn::make(
+                    'purchasable.title',
+                    fn (PurchasablePrice $record) => route('filament.admin.resources.shop.purchasables.edit', $record->purchasable)
+                )->searchable(),
+                TextColumn::make('country_code')
+                    ->state(fn (PurchasablePrice $record) => PaddleCountries::getNameForCode($record->country_code) . "($record->country_code)")
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('currency_code')->searchable()->sortable(),
+                TextColumn::make('price_in_usd_cents')
                     ->label('Price')
                     ->money('USD', divideBy: 100)
                     ->sortable(),
