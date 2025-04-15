@@ -68,7 +68,7 @@ class PurchasablePriceResource extends Resource
                     ->searchable()
                     ->sortable(),
                 TextColumn::make('currency_code')->searchable()->sortable(),
-                TextColumn::make('price_in_usd_cents')
+                TextColumn::make('amount')
                     ->label('Price')
                     ->money('USD', divideBy: 100)
                     ->sortable(),
