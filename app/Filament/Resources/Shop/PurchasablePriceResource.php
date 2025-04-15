@@ -14,6 +14,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class PurchasablePriceResource extends Resource
@@ -74,7 +75,13 @@ class PurchasablePriceResource extends Resource
                 BooleanColumn::make('overridden')->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('purchasable_id')
+                    ->relationship('purchasable', 'title', function ($query) {
+                        return $query->with('product');
+                    })
+                    ->getOptionLabelFromRecordUsing(fn ($record) => "{$record->title} ({$record->product->title})")
+                    ->label('Purchasable')
+                    ->searchable(),
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
