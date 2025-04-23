@@ -90,7 +90,16 @@ class BlogController
 
     private static function getPost(string $slug): ?Post
     {
-        return ContentApi::getPost('spatie', $slug, theme: 'github-light');
+        $filters = request()->has('preview')
+            ? ['published:is' => false]
+            : [];
+
+        return ContentApi::getPost(
+            product: 'spatie',
+            slug: $slug,
+            theme: 'github-light',
+            filters: $filters,
+        );
     }
 
     private static function getPosts(int $perPage = 20): Paginator
