@@ -90,15 +90,11 @@ class BlogController
 
     private static function getPost(string $slug): ?Post
     {
-        $filters = request()->has('preview')
-            ? ['published:is' => false]
-            : [];
-
         return ContentApi::getPost(
             product: 'spatie',
             slug: $slug,
             theme: 'github-light',
-            filters: $filters,
+            filters: ['published:in' => 'true|false'],
         );
     }
 
