@@ -94,7 +94,6 @@ class BlogController
             product: 'spatie',
             slug: $slug,
             theme: 'github-light',
-            filters: ['published:in' => 'true|false'],
         );
     }
 
