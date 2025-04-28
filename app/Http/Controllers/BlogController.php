@@ -16,7 +16,7 @@ class BlogController
 {
     public function index(): View
     {
-        $posts = self::getPosts(5);
+        $posts = self::getPosts(20);
         $highlight = $posts->first();
         unset($posts[0]);
 
