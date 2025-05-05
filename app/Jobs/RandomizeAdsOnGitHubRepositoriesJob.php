@@ -22,7 +22,7 @@ class RandomizeAdsOnGitHubRepositoriesJob implements ShouldQueue, ArtisanDispatc
 
     public function handle(): void
     {
-        $ads = Ad::active()->get();
+        $ads = Ad::query()->whereIn('id', [4, 9])->get(); // flare and mailcoach
 
         Repository::adShouldBeRandomized()->each(function (Repository $repository) use ($ads) {
             $repository->ad()->associate($ads->random());
