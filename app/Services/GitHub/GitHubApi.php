@@ -62,6 +62,19 @@ class GitHubApi
         return $latestBugFixReleaseForFeatureVersionRelease['tag_name'];
     }
 
+    public function getLatestVersionDate(string $repository)
+    {
+        [$organisation, $repository] = explode('/', $repository);
+
+        $api = $this->client->api('repo')->releases();
+
+        $paginator = new ResultPager($this->client, 5);
+
+        $releases = $paginator->fetch($api, 'all', [$organisation, $repository]);
+
+        return Carbon::parse($releases[0]['published_at']);
+    }
+
     public function temporaryUrlOfLatestAvailableRelease(string $repository, Carbon $onDate): string
     {
         $releaseNumber = $this->latestVersionOnDate($repository, $onDate);

@@ -16,7 +16,7 @@ class BlogController
 {
     public function index(): View
     {
-        $posts = self::getPosts(5);
+        $posts = self::getPosts(20);
         $highlight = $posts->first();
         unset($posts[0]);
 
@@ -90,7 +90,11 @@ class BlogController
 
     private static function getPost(string $slug): ?Post
     {
-        return ContentApi::getPost('spatie', $slug, theme: 'github-light');
+        return ContentApi::getPost(
+            product: 'spatie',
+            slug: $slug,
+            theme: 'github-light',
+        );
     }
 
     private static function getPosts(int $perPage = 20): Paginator
