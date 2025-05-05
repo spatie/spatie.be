@@ -63,7 +63,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
             <x-oss-content>
                 <x-slot:aside>
                     <h3 class="font-bold mb-2.5">Spatie in the wild</h3>
-                    <p class="leading-snug text-oss-gray-dark mb-0.5"><a class="underline" href="https://www.youtube.com/watch?v=Boqfw4ZCk7g" target="_blank">Watch Freek talk about</a> about some of our less popular packages at Laracon US 2024.</p>
+                    <p class="leading-snug text-oss-gray-dark mb-0.5"><a class="underline" href="https://www.youtube.com/live/JmEmrLtMB_A" target="_blank">Watch Freek talk about</a> ways to implement multitenancy in your Laravel project at Laracon India 2025.</p>
 
                 </x-slot:aside>
 
