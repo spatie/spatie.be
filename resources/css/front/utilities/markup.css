@@ -338,24 +338,31 @@
     @apply inset-0;
 }
 
-.markup.docs-markup h1,
-.markup.docs-markup h2,
-.markup.docs-markup h3,
-.markup.docs-markup h4,
-.markup.docs-markup h5 {
+/* Updated Docs/Blog Post markup */
+
+.markup.content-markup h1,
+.markup.content-markup h2,
+.markup.content-markup h3,
+.markup.content-markup h4,
+.markup.content-markup h5 {
     @apply font-pt;
     @apply mt-0;
+    @apply clear-both;
     line-height: 1.2;
 }
 
-.markup.docs-markup h2 {
+.markup.content-markup h2 {
     @apply font-bold;
     @apply mb-5;
-    font-size: 24px;
+    font-size: 28px;
 }
 
-.markup.docs-markup h3 {
+.markup.content-markup h3 {
     @apply font-bold;
     @apply mb-5;
     font-size: 20px;
+}
+
+.markup.content-markup blockquote {
+    @apply float-end w-1/2 p-6 ml-6 mb-9 pe-0 border-l-2 border-oss-gray-medium bg-oss-gray-light lg:text-xl;
 }
