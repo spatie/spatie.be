@@ -66,7 +66,7 @@
                     </aside>
 
                     <div @class([
-                        'text-base sm:text-lg markup markup-titles markup-lists markup-tables markup-embeds links-blue links-underline docs-markup',
+                        'text-base sm:text-lg markup markup-lists markup-tables markup-embeds links-blue links-underline content-markup',
                         'md:[&_>.insights-list-item]:-mx-12 md:[&_>.insights-list-item]:px-12 md:[&_>.insights-list-item]:my-8',
                         'md:[&_>pre]:-mx-12 md:[&_>pre]:px-12',
                         '[&_>:not(pre)>code]:text-14 [&_>:not(pre)>code]:p-[2px]',

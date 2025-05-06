@@ -90,7 +90,7 @@
 
                 <div id="site-search-docs-content">
                     <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code
-                 links-blue links-underline docs-markup">
+                 links-blue links-underline content-markup">
                         {!! $page->contents !!}
                     </div>
                 </div>
