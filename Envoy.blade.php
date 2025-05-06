@@ -106,6 +106,11 @@ rm -rf {{ $newReleaseDir }}/public/docs
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/persistent/public/docs public/docs
 
+# Remove the public/videos directory and replace with persistent data
+rm -rf {{ $newReleaseDir }}/public/docs
+cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/persistent/public/videos public/videos
+
 # Import the environment config
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/.env .env
