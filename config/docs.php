@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-passkeys",
+            "repository" => "spatie/laravel-passkeys",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-mobile-pass",
             "repository" => "spatie/laravel-mobile-pass",
             "branches" => [
