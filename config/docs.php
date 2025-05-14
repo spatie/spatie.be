@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-one-time-passwords",
+            "repository" => "spatie/laravel-one-time-passwords",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-passkeys",
             "repository" => "spatie/laravel-passkeys",
             "branches" => [
