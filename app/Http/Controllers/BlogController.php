@@ -81,7 +81,7 @@ class BlogController
                 return FeedItem::create()
                     ->id($post->slug)
                     ->title($post->title)
-                    ->summary($post->summary)
+                    ->summary($post->summary ?? '')
                     ->updated($post->updated_at)
                     ->link(action([self::class, 'detail'], $post->slug))
                     ->authorName($post->authors->first()?->name);
