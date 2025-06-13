@@ -255,7 +255,8 @@
     @apply px-1;
     @apply font-mono;
     @apply rounded-sm;
-    font-size: 0.95em;
+    color: inherit;
+    font-size: 0.9em;
 }
 
 .markup pre {
@@ -266,7 +267,7 @@
     @apply overflow-hidden;
     @apply overflow-x-scroll;
     @apply bg-oss-gray-light;
-    @apply text-sm;
+    @apply text-[15px];
     @apply leading-relaxed;
 }
 
@@ -321,6 +322,10 @@
     content: '×';
 }
 
+.markup-code video, .markup-code img {
+    @apply rounded-lg overflow-hidden mb-8 sm:w-full sm:max-w-lg;
+}
+
 /* Video markup */
 
 .markup-video{
@@ -353,6 +358,7 @@
 
 .markup.content-markup h2 {
     @apply font-bold;
+    @apply mt-9;
     @apply mb-5;
     font-size: 28px;
 }

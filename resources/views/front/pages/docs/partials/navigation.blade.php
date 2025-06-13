@@ -17,7 +17,7 @@
         </x-modal>
     </div>
 
-    <div class="flex w-full items-center gap-5 text-[14px] mb-10">
+    <div class="flex w-full items-center gap-5 mb-10">
         <label for="alias" class="text-oss-royal-blue-light">Version</label>
         <div class="w-full leading-normal select bg-transparent p-0 border rounded border-oss-gray-medium">
             <select id="alias" class="text-oss-royal-blue w-full font-medium rounded-[4px] px-5 py-2.5 border-oss-gray-medium outline-none font-pt" name="alias"
@@ -42,7 +42,7 @@
         @endforeach
     </div>
 
-    <ol class="text-[14px] grid gap-2">
+    <ol class="grid gap-2">
         @foreach($navigation as $key => $section)
             @if ($key !== '_root')
                 <h2 class="text-base font-bold mb-2">{{ $section['_index']['title'] }}</h2>
