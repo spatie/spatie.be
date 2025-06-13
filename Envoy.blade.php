@@ -107,7 +107,7 @@ cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/persistent/public/docs public/docs
 
 # Remove the public/videos directory and replace with persistent data
-rm -rf {{ $newReleaseDir }}/public/docs
+rm -rf {{ $newReleaseDir }}/public/videos
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/persistent/public/videos public/videos
 
