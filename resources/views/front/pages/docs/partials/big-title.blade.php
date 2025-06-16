@@ -1,4 +1,4 @@
-<div class="mb-16 bg-white p-16 rounded-[16px] text-[18px]">
+<div class="mb-12 bg-white p-8 rounded-[16px] text-[18px] md:p-16">
     <h1 class="font-druk uppercase text-blue font-bold text-[72px] leading-[0.9] mb-5">
         {{ ucfirst($repository->slug) }}
     </h1>

@@ -20,7 +20,7 @@
     <div class="px-3 sm:px-12">
         @include('front.pages.docs.partials.breadcrumbs')
 
-        <section class="mt-10 max-w-screen-xl mx-auto w-full md:grid pb-24 gap-16 md:grid-cols-10 items-stretch">
+        <section class="max-w-screen-xl mx-auto w-full md:grid pb-24 gap-16 md:grid-cols-10 items-stretch md:mt-10">
             <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
                 @include('front.pages.docs.partials.navigation')
             </div>
@@ -72,8 +72,8 @@
                 @endif
 
                 @if(count($tableOfContents))
-                    <div class="lg:hidden p-6 bg-blue-lightest rounded-sm bg-opacity-25 mb-8">
-                        <h3 class="mb-2 text-gray font-semibold uppercase tracking-wider text-xs">
+                    <div class="lg:hidden mb-8">
+                        <h3 class="text-base font-bold mb-2">
                             On this page
                         </h3>
                         <ol class="grid gap-1">
@@ -89,14 +89,13 @@
                 @endif
 
                 <div id="site-search-docs-content">
-                    <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code
-                 links-blue links-underline content-markup">
+                    <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-base md:text-lg">
                         {!! $page->contents !!}
                     </div>
                 </div>
 
                 <div
-                    class="border border-gray/25 p-6 rounded-md mt-10 flex justify-between items-center bg-link-card-light">
+                    class="border border-gray/25 p-6 rounded-md mt-10 flex justify-between items-center bg-link-card-light md:text-lg">
                     <div class="w-full">
                         @if($prevPage)
                             <a class="flex items-center gap-x-2 text-blue hover:underline" href="{{ $prevPage->url }}"
