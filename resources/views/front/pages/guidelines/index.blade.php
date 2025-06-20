@@ -13,26 +13,23 @@
     <section>
         <div class="wrapper-lg px-7 sm:px-16 mt-8">
             <div class="sm:col-span-6 max-w-screen-sm mx-auto">
-                <div class="markup links-underline links-blue">
+                <div class="markup links-underline links-blue mb-12">
                     <p class="text-lg">
-                        Most projects are not created or maintained by one person. 
-                        Instead, a group of people work together, each with their own preferences. 
+                        Most projects are not created or maintained by one person.
+                        Instead, a group of people work together, each with their own preferences.
                         If everyone used their own style, projects would be difficult to maintain.
                     </p>
                     <p class="text-lg">
-                        Our team often discusses the pros and cons of our different programming styles. 
+                        Our team often discusses the pros and cons of our different programming styles.
                         When we agree on something, we write it down in these guidelines and explain why we chose that approach.
                     </p>
 
                     <p class="text-lg">
-                        We like to think of our guidelines as a living document. 
-                        People, teams and opinions change over time. 
-                        We don't adhere strictly to old rules, but constantly challenge them. 
+                        We like to think of our guidelines as a living document.
+                        People, teams and opinions change over time.
+                        We don't adhere strictly to old rules, but constantly challenge them.
                         New experiences lead to better guidelines.
                     </p>
-                    <div class="mt-12">
-                    @include('front.pages.guidelines.partials.writing-readable-php-cta')
-                    </div>
 
                     <div class="mt-8">
                         <x-coloured-block color="terminal" icon="code">
@@ -50,11 +47,26 @@
     </section>
 
     <section class="section section-group">
-        <div class="wrap mb-24">
+        <div class="wrapper-xl">
             <div class="grid gap-x-6 gap-y-16 | sm:grid-cols-3 items-stretch">
-                @each('front.pages.guidelines.partials.page', $pages, 'page')
+                @foreach($pages->take(3) as $page)
+                @include('front.pages.guidelines.partials.page', ['page' => $page])
+                @endforeach
+            </div>
+
+            <div class="my-12">
+                @include('front.pages.guidelines.partials.writing-readable-php-transparent-cta')
+            </div>
+
+            <div class="grid gap-x-6 gap-y-16 | sm:grid-cols-3 items-stretch">
+                @foreach($pages->skip(3) as $page)
+                @include('front.pages.guidelines.partials.page', ['page' => $page])
+                @endforeach
             </div>
         </div>
     </section>
 
+    <div class="wrapper-lg sm:px-16 my-16 lg:my-24">
+        <livewire:newsletter />
+    </div>
 </x-page>
