@@ -1,6 +1,6 @@
 ---
-title: Using our guidelines with Claude Code
-description: How to make Claude Code program with style
+title: Using our guidelines with AI
+description: How to make AI agents program with style
 weight: 5
 ---
 
@@ -8,7 +8,7 @@ weight: 5
 
 [Claude Code](https://claude.ai/code) is Anthropic's official CLI tool that helps developers write better code by providing AI-powered assistance directly in your terminal. It can understand and apply coding standards, making it perfect for maintaining consistency across your Laravel projects.
 
-We've created AI-optimized guidelines specifically formatted for Claude Code to ensure it generates code that follows Spatie's Laravel & PHP standards. 
+We've created AI-optimized guidelines specifically formatted for Claude Code and similar agents to ensure it generates code that follows Spatie's Laravel & PHP standards. 
 
 Our AI-optimized guidelines cover:
 
@@ -22,7 +22,7 @@ Our AI-optimized guidelines cover:
 
 You can view the file with AI-optimized guidelines [here](https://spatie.be/laravel-php-ai-guidelines.md).
 
-## Global Integration
+## Global Integration using Claude Code
 
 Add the guidelines to your global Claude Code configuration so they're available across all projects:
 
@@ -37,7 +37,7 @@ curl -o ~/.claude/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-gui
 echo -e "\n## Coding Standards\nFollow the Laravel & PHP guidelines in \`laravel-php-guidelines.md\`." >> ~/.claude/CLAUDE.md
 ```
 
-## Project-Specific Integration
+## Project-Specific Integration using Claude Code
 
 For individual Laravel projects, download the guidelines to your project root:
 
@@ -57,7 +57,11 @@ Optionally, you can create a Composer script to keep guidelines updated:
 ```json
 {
   "scripts": {
-    "update-guidelines": "curl -o docs/coding-standards.md https://spatie.be/laravel-php-ai-guidelines.md"
+    "update-guidelines": "curl -o docs/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md"
   }
 }
 ```
+
+## AI docs for Spatie packages
+
+The [Context7 MCP project](https://github.com/upstash/context7) contains docs for various Spatie packages.
