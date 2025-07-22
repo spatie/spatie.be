@@ -225,7 +225,7 @@ $condition
 - Enums: descriptive name, no prefix (`OrderStatus`, `BookingType`)
 
 ### Migrations
-- do not write down migrations
+- do not write down methods in migrations, only up methods
 
 ### Code Quality Reminders
 
