@@ -30,11 +30,11 @@ Add the guidelines to your global Claude Code configuration so they're available
 # Make sure the Claude configuration file exists
 mkdir -p ~/.claude && touch ~/.claude/CLAUDE.md
 
-## Download our guidelines
+# Download our guidelines
 curl -o ~/.claude/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md
 
-## Make Claude follow our guidelines
-echo -e "\n## Coding Standards\nFollow the Laravel & PHP guidelines in \`laravel-php-guidelines.md\`." >> ~/.claude/CLAUDE.md
+# Tell Claude to read the guidelines file
+echo -e "\n## Coding Standards\nWhen working with Laravel/PHP projects, first read the coding guidelines at \`~/.claude/laravel-php-guidelines.md\`" >> ~/.claude/CLAUDE.md
 ```
 
 ## Project-Specific Integration using Claude Code
@@ -45,11 +45,11 @@ For individual Laravel projects, download the guidelines to your project root:
 # Make sure the Claude configuration file exists
 touch CLAUDE.md
 
-## Download our guidelines
+# Download our guidelines
 curl -o laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md
 
-## Make Claude follow our guidelines
-echo -e "\n## Coding Standards\nFollow the Laravel & PHP guidelines in \`laravel-php-guidelines.md\`." >> CLAUDE.md
+# Tell Claude to read the guidelines file
+echo -e "\n## Coding Standards\nWhen working on this Laravel/PHP project, first read the coding guidelines at \`laravel-php-guidelines.md\`" >> CLAUDE.md
 ```
 
 Optionally, you can create a Composer script to keep guidelines updated:
