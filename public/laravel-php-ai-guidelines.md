@@ -10,18 +10,15 @@ This file contains Laravel and PHP coding standards optimized for AI code assist
 
 - Follow PSR-1, PSR-2, and PSR-12
 - Use camelCase for non-public-facing strings
-- Don't use `final` by default
 - Use short nullable notation: `?string` not `string|null`
 - Always specify `void` return types when methods return nothing
 
 ## Class Structure
-
 - Use typed properties, not docblocks:
 - Constructor property promotion when all properties can be promoted:
 - One trait per line:
 
 ## Type Declarations & Docblocks
-
 - Use typed properties over docblocks
 - Specify return types including `void`
 - Use short nullable syntax: `?Type` not `Type|null`
@@ -61,7 +58,6 @@ This file contains Laravel and PHP coding standards optimized for AI code assist
   ```
 
 ## Control Flow
-
 - **Happy path last**: Handle error conditions first, success case last
 - **Avoid else**: Use early returns instead of nested conditions  
 - **Separate conditions**: Prefer multiple if statements over compound conditions
