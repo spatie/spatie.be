@@ -38,6 +38,17 @@
                     <div class="mt-12">
                     @include('front.pages.guidelines.partials.writing-readable-php-cta')
                     </div>
+
+                    <div class="mt-8">
+                        <x-coloured-block color="terminal" icon="code">
+                            <p>
+                                You can integrate these guidelines with AI code assistants like <strong>Claude Code</strong>, <strong>GitHub Copilot</strong>, and <strong>Cursor</strong> to ensure consistent code generation that follows our standards.
+                            </p>
+                            <p class="mt-2">
+                                Check out our <a href="{{ url('/guidelines/ai') }}" class="font-semibold text-cyan-400 hover:text-cyan-300 underline">AI integration guide</a>.
+                            </p>
+                        </x-coloured-block>
+                    </div>
                 </div>
             </div>
         </div>
