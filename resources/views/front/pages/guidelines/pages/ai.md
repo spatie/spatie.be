@@ -22,7 +22,7 @@ Our AI-optimized guidelines cover:
 
 You can view the file with AI-optimized guidelines [here](https://spatie.be/laravel-php-ai-guidelines.md).
 
-## Global Integration using Claude Code
+## Global integration using Claude Code
 
 Add the guidelines to your global Claude Code configuration so they're available across all projects:
 
@@ -40,7 +40,10 @@ curl -s https://spatie.be/laravel-php-ai-guidelines.md >> ~/.claude/CLAUDE.md
 echo -e "\`\`\`\n<!-- SPATIE-GUIDELINES-END -->" >> ~/.claude/CLAUDE.md
 ```
 
-## Project-Specific Integration using Claude Code
+These commands are idempotent, meaning you can execute them again to get the latest version of our guidelines.
+
+
+## Project specific integration using Claude Code
 
 For individual Laravel projects, download and inline the guidelines in your project:
 
@@ -58,15 +61,7 @@ curl -s https://spatie.be/laravel-php-ai-guidelines.md >> CLAUDE.md
 echo -e "\`\`\`\n<!-- SPATIE-GUIDELINES-END -->" >> CLAUDE.md
 ```
 
-Optionally, you can create a Composer script to keep guidelines updated:
-
-```json
-{
-    "scripts": {
-        "update-guidelines": "curl -o docs/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md"
-    }
-}
-```
+These commands are idempotent, meaning you can execute them again to get the latest version of our guidelines.
 
 ## AI docs for Spatie packages
 
