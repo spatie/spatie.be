@@ -224,6 +224,9 @@ $condition
 - Resources/Transformers: plural + `Resource`/`Transformer` (`UsersResource`)
 - Enums: descriptive name, no prefix (`OrderStatus`, `BookingType`)
 
+### Migrations
+- do not write down migrations
+
 ### Code Quality Reminders
 
 #### PHP
