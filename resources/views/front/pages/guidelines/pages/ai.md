@@ -27,29 +27,23 @@ You can view the file with AI-optimized guidelines [here](https://spatie.be/lara
 Add the guidelines to your global Claude Code configuration so they're available across all projects:
 
 ```bash
-# Make sure the Claude configuration file exists
-mkdir -p ~/.claude && touch ~/.claude/CLAUDE.md
-
-# Download our guidelines
-curl -o ~/.claude/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md
-
-# Tell Claude to read the guidelines file
-echo -e "\n## Coding Standards\nWhen working with Laravel/PHP projects, first read the coding guidelines at \`~/.claude/laravel-php-guidelines.md\`" >> ~/.claude/CLAUDE.md
+# Remove existing Spatie guidelines and append new ones
+sed -i '/<!-- SPATIE-GUIDELINES-START -->/,/<!-- SPATIE-GUIDELINES-END -->/d' ~/.claude/CLAUDE.md 2>/dev/null || true
+echo -e "\n## Coding Standards\n<!-- SPATIE-GUIDELINES-START -->\nWhen working with Laravel/PHP projects, follow these Spatie guidelines:\n\`\`\`" >> ~/.claude/CLAUDE.md
+curl -s https://spatie.be/laravel-php-ai-guidelines.md >> ~/.claude/CLAUDE.md
+echo -e "\`\`\`\n<!-- SPATIE-GUIDELINES-END -->" >> ~/.claude/CLAUDE.md
 ```
 
 ## Project-Specific Integration using Claude Code
 
-For individual Laravel projects, download the guidelines to your project root:
+For individual Laravel projects, download and inline the guidelines in your project:
 
 ```bash
-# Make sure the Claude configuration file exists
-touch CLAUDE.md
-
-# Download our guidelines
-curl -o laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md
-
-# Tell Claude to read the guidelines file
-echo -e "\n## Coding Standards\nWhen working on this Laravel/PHP project, first read the coding guidelines at \`laravel-php-guidelines.md\`" >> CLAUDE.md
+# Remove existing Spatie guidelines and append new ones
+sed -i '/<!-- SPATIE-GUIDELINES-START -->/,/<!-- SPATIE-GUIDELINES-END -->/d' CLAUDE.md 2>/dev/null || true
+echo -e "\n## Coding Standards\n<!-- SPATIE-GUIDELINES-START -->\nWhen working on this Laravel/PHP project, follow these Spatie guidelines:\n\`\`\`" >> CLAUDE.md
+curl -s https://spatie.be/laravel-php-ai-guidelines.md >> CLAUDE.md
+echo -e "\`\`\`\n<!-- SPATIE-GUIDELINES-END -->" >> CLAUDE.md
 ```
 
 Optionally, you can create a Composer script to keep guidelines updated:
