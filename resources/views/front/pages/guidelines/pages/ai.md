@@ -34,7 +34,7 @@ mkdir -p ~/.claude && touch ~/.claude/CLAUDE.md
 curl -o ~/.claude/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md
 
 # Tell Claude to read the guidelines file
-echo -e "\n## Coding Standards\nWhen working with Laravel/PHP projects, first read the coding guidelines at \`~/.claude/laravel-php-guidelines.md\`" >> ~/.claude/CLAUDE.md
+echo -e "\n## Coding Standards\nWhen working with Laravel/PHP projects, first read the coding guidelines at @~/.claude/laravel-php-guidelines.md" >> ~/.claude/CLAUDE.md
 ```
 
 ## Project-Specific Integration using Claude Code
@@ -49,7 +49,7 @@ touch CLAUDE.md
 curl -o laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md
 
 # Tell Claude to read the guidelines file
-echo -e "\n## Coding Standards\nWhen working on this Laravel/PHP project, first read the coding guidelines at \`laravel-php-guidelines.md\`" >> CLAUDE.md
+echo -e "\n## Coding Standards\nWhen working on this Laravel/PHP project, first read the coding guidelines at @laravel-php-guidelines.md" >> CLAUDE.md
 ```
 
 Optionally, you can create a Composer script to keep guidelines updated:
