@@ -12,8 +12,8 @@
 
     @if($highlight)
         <article class="wrapper-lg px-7 sm:px-16 mt-8">
-            <a href="{{ route('blog.show', $highlight->slug) }}" class="group flex flex-col sm:flex-row gap-8 sm:gap-24">
-                <div href="{{ route('blog.show', $highlight->slug) }}" class="flex-shrink-0 self-start sm:w-[440px] sm:h-[440px] rounded-8 overflow-hidden ">
+            <a href="{{ route('blog.show', $highlight->slug) }}" class="group flex flex-col md:flex-row gap-8 md:gap-24">
+                <div href="{{ route('blog.show', $highlight->slug) }}" class="flex-shrink-0 self-start sm:w-[455px] sm:h-[455px] rounded-8 overflow-hidden ">
                     @if ($highlight->header_image)
                         <picture>
                             <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
@@ -21,7 +21,7 @@
                                 @foreach ($highlight->header_image_presets as $image)
                                 https://content.spatie.be{{ $image->url }} {{ $image->width }}w{{ $loop->last ? '' : ',' }}
                                 @endforeach
-                            " sizes="440px">
+                            ">
                             <img
                                 src="{{ $highlight->header_image }}"
                                 alt="{{ $highlight->title }}"
