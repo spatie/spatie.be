@@ -73,6 +73,7 @@
                         '[&_>pre]:p-6',
                         '[&_>:not(pre)>code]:p-[2px]',
                         '[&_p:has(video)]:mb-8 [&_p:has(img)]:mb-8',
+                        '[&_>iframe]:rounded-[0.5em]',
                         'sm:[&_:not(pre)>code]:text-[15.5px]',
                         'sm:[&_p:has(img)]:-mx-12 [&_p>img]:rounded-[0.5em] [&_p>img]:overflow-hidden',
                         'sm:[&_p:has(video)]:-mx-12 [&_p>video]:rounded-[0.5em] [&_p>video]:overflow-hidden [&_p>video]:w-full',
