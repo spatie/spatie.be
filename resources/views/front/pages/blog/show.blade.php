@@ -7,8 +7,8 @@
     :description="strip_tags($post->summary)"
 >
     <article>
-        <header class="wrapper-lg sm:wrapper-inset-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 relative z-10">
-            <div class="px-4 flex flex-col sm:flex-row gap-8">
+        <header class="wrapper-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 md:px-24 relative z-10">
+            <div class="px-4 flex flex-col sm:flex-row gap-12">
                 <div class="flex-1 sm:pb-28">
                     <time datetime="{{ $post->date?->format('Y-m-d') }}" class="text-oss-royal-blue text-base">
                         {{ $post->date?->format('F d, Y') ?? 'Preview' }}
@@ -66,13 +66,14 @@
                     </aside>
 
                     <div @class([
-                        'text-base sm:text-lg markup markup-lists markup-tables markup-embeds markup-blog links-blue links-underline content-markup',
+                        'text-base sm:text-lg markup markup-lists markup-tables markup-embeds links-blue links-underline content-markup',
                         '[&_:not(pre)>code]:text-14 [&_:not(pre)>code]:text-oss-royal-blue [&_:not(pre)>code]:p-[2px]',
                         '[&_>pre]:bg-oss-gray-light',
                         '[&_p>code]:bg-oss-gray-light',
                         '[&_>pre]:p-6',
                         '[&_>:not(pre)>code]:p-[2px]',
                         '[&_p:has(video)]:mb-8 [&_p:has(img)]:mb-8',
+                        '[&_>iframe]:rounded-[0.5em]',
                         'sm:[&_:not(pre)>code]:text-[15.5px]',
                         'sm:[&_p:has(img)]:-mx-12 [&_p>img]:rounded-[0.5em] [&_p>img]:overflow-hidden',
                         'sm:[&_p:has(video)]:-mx-12 [&_p>video]:rounded-[0.5em] [&_p>video]:overflow-hidden [&_p>video]:w-full',

@@ -372,11 +372,15 @@
 .markup.content-markup h4 {
     @apply font-bold;
     @apply mb-5;
-    @apply uppercase;
-    @apply text-gray-darker;
-    font-size: 17px;
+    @apply text-oss-royal-blue-light/90;
+    font-size: 20px;
 }
 
 .markup.content-markup blockquote {
     @apply float-end w-1/2 p-6 ml-6 mb-9 pe-0 border-l-2 border-oss-gray-medium bg-oss-gray-light lg:text-xl;
+}
+
+.markup.content-markup em {
+    font-family: inherit;
+    font-style: normal;
 }
