@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-url-ai-transformer",
+            "repository" => "spatie/laravel-url-ai-transformer",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-one-time-passwords",
             "repository" => "spatie/laravel-one-time-passwords",
             "branches" => [
