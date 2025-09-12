@@ -16,7 +16,7 @@
                         <div class="text-xs text-gray">Art transaction platform</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://bodartservicehouse.be" target="_blank" rel="noreferrer noopener">Bodart Service House</a>
+                        <a href="https://www.bodartservicehouse.be" target="_blank" rel="noreferrer noopener">Bodart Service House</a>
                         <div class="text-xs text-gray">Webshop for kitchen appliances</div>
                     </li>
                     <li class=mt-2>
