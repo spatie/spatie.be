@@ -19,6 +19,7 @@ use App\Domain\Shop\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Spatie\LaravelUrlAiTransformer\Commands\TransformUrlsCommand;
 use Spatie\ScheduleMonitor\Models\MonitoredScheduledTaskLogItem;
 use Spatie\SiteSearch\Commands\CrawlCommand;
 
@@ -48,6 +49,8 @@ class Kernel extends ConsoleKernel
         $schedule->command(AfterworkCommand::class)->runInBackground()->monthlyOn(1, '11:00');
 
         $schedule->command(ImportAllDocsCommand::class)->runInBackground()->dailyAt('03:10');
+
+        $schedule->command(TransformUrlsCommand::class, ['--now'])->runInBackground();
     }
 
     protected function commands(): void

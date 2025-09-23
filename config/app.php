@@ -206,6 +206,7 @@ return [
         App\Providers\HorizonServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\HealthServiceProvider::class,
+        App\Providers\AiTransformerServiceProvider::class,
     ],
 
     /*
