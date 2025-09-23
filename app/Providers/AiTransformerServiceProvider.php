@@ -16,9 +16,9 @@ class AiTransformerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        Transform::urls(
-            fn () => $this->crawlAllUrls()
-        )->usingTransformers(new LdJsonTransformer());
+//        Transform::urls(
+//            fn () => $this->crawlAllUrls()
+//        )->usingTransformers(new LdJsonTransformer());
     }
 
     /**
