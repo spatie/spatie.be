@@ -50,7 +50,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(ImportAllDocsCommand::class)->runInBackground()->dailyAt('03:10');
 
-        $schedule->command(TransformUrlsCommand::class, ['--now'])->runInBackground();
+//        $schedule->command(TransformUrlsCommand::class, ['--now'])->runInBackground();
     }
 
     protected function commands(): void
