@@ -74,6 +74,7 @@
         "spatie/laravel-slack-alerts": "^1.1.1",
         "spatie/laravel-stubs": "^3.0",
         "spatie/laravel-tail": "^4.4",
+        "spatie/laravel-url-ai-transformer": "^0.0.1",
         "spatie/laravel-validation-rules": "^3.2.1",
         "spatie/packagist-api": "^2.1",
         "spatie/ray": "^1.36",
