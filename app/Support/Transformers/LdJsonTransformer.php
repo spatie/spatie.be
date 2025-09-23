@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Spatie\LaravelUrlAiTransformer\Transformers\LdJsonTransformer as BaseLdJsonTransformer;
 
-
 class LdJsonTransformer extends BaseLdJsonTransformer
 {
     public function shouldRun(): bool

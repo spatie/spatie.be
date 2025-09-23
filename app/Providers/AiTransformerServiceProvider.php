@@ -17,7 +17,7 @@ class AiTransformerServiceProvider extends ServiceProvider
     public function register(): void
     {
         Transform::urls(
-            fn() => $this->crawlAllUrls()
+            fn () => $this->crawlAllUrls()
         )->usingTransformers(new LdJsonTransformer());
     }
 
@@ -31,17 +31,18 @@ class AiTransformerServiceProvider extends ServiceProvider
         $urls = [];
 
         Crawler::create()
-            ->setCrawlObserver(new class($urls) extends CrawlObserver
-            {
+            ->setCrawlObserver(new class ($urls) extends CrawlObserver {
                 /** @param array<int, string> $urls  */
-                public function __construct(protected array &$urls) {}
+                public function __construct(protected array &$urls)
+                {
+                }
 
                 public function crawled(
                     UriInterface $url,
                     ResponseInterface $response,
                     ?UriInterface $foundOnUrl = null,
-                    ?string $linkText = null): void
-                {
+                    ?string $linkText = null
+                ): void {
                     $url = (string) $url;
 
                     if (Str::endsWith($url, '.svg')) {
