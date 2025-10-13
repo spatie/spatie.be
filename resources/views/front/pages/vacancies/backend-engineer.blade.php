@@ -132,6 +132,34 @@
                 </div> --}}
                 </div>
             </div>
+
+            <div class="wrap wrap-6">
+                <div class="sm:col-span-4 mt-16 markup links-underline links-blue">
+                    <h3 class="title">Show us your code</h3>
+                    <p>
+                        To get a better idea of what you're capable of, we'd like to see some code.
+                        We don't expect your code to be perfect. We do expect you to be honest about your skills and
+                        experience.
+                        When applying, please send us:
+
+                    </p>
+                    <ul class="bullets bullets-green">
+                        <li>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            A link to your GitHub profile or any open source contributions you've made.
+                        </li>
+                        <li>
+                            <span class="icon">{{ app_svg('icons/far-angle-right') }}</span>
+                            If you have no public code, a small project that shows
+                            us what you're capable of. This could be a hobby project, or a repo containing a simple Laravel app that fetches data from an API and stores it in the database.
+                        </li>
+                    </ul>
+
+                    {{-- <div class="mt-16 gradient gradient-blue p-8 rounded">
+                        More of a <strong>React/JS</strong> type? Check our <a href="{{ route('vacancies.show', 'react-engineer') }}">React vacancy</a> as well.
+                </div> --}}
+                </div>
+            </div>
         </section>
         <section id="offer" class="section">
             @include('front.pages.vacancies.partials.offer')

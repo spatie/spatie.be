@@ -5,7 +5,7 @@
                 <div class="links-underline links-white">
                     <p class="text-2xl">
                         @isset($github)
-                            Mail us a brief motivation, CV and GitHub details.
+                            Mail us a brief motivation, CV, example project and GitHub details.
                         @else
                             Mail us a brief motivation and CV.
                         @endisset
