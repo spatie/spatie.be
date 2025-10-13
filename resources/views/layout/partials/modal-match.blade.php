@@ -2,10 +2,6 @@
     <div class="mr-16 bg-white max-w-xl max-h-screen p-8 z-20 overflow-auto shadow-lg | md:p-16 md:mx-8">
         <h2 class="text-center title-xl">{{ $caption ?? 'A good match' }}</h2>
 
-        <p class="mt-8 bg-green-lightest py-2 px-4 rounded text-sm">
-            We have room for new projects starting from <strong>{{ now()->addMonths(4)->format('F Y') }}</strong>.
-        </p>
-
         <div class="mt-8 markup grid gap-8 | md:grid-cols " style="--cols: 1fr 1fr">
             <div class=text-green-dark>
                 <h3 class=title-sm>What we do best</h3>
