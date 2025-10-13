@@ -74,9 +74,13 @@ class PurchaseResource extends Resource
                     ->icon('heroicon-o-document-duplicate')
                     ->searchable()
                     ->sortable(),
-                ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => route('filament.admin.resources.customers.receipts.edit', $record->receipt)),
+                ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => $record->receipt ? route('filament.admin.resources.customers.receipts.edit', $record->receipt) : null),
                 CopyableColumn::make('receipt')
                     ->state(function (Purchase $record) {
+                        if (! $record->receipt) {
+                            return '-';
+                        }
+
                         $exploded = explode('/', $record->receipt->receipt_url);
 
                         return $exploded[4] ?? '-';
