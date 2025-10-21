@@ -54,7 +54,8 @@ return [
             "name" => "lighthouse-php",
             "repository" => "spatie/lighthouse-php",
             "branches" => [
-                "main" => "v1",
+                "main" => "v2",
+                "v1" => "v1",
             ],
             "category" => "Laravel",
         ],
