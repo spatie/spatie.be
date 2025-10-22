@@ -68,14 +68,6 @@ return [
             "category" => "Laravel",
         ],
         [
-            "name" => "laravel-open-telemetry",
-            "repository" => "spatie/laravel-open-telemetry",
-            "branches" => [
-                "main" => "v1",
-            ],
-            "category" => "Laravel",
-        ],
-        [
             "name" => "laravel-dynamic-servers",
             "repository" => "spatie/laravel-dynamic-servers",
             "branches" => [
