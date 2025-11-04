@@ -1,7 +1,11 @@
 <div class="">
-    <a href="{{ action([\App\Http\Controllers\GuidelinesController::class, 'show'], $page->slug) }}" class="flex flex-col justify-center items-center">
+    <a href="{{ action([\App\Http\Controllers\GuidelinesController::class, 'show'], $page->slug) }}"
+        class="flex flex-col justify-center items-center">
         {{ image('guidelines/' . $page->slug . '.png') }}
-        <h2 class="text-oss-royal-blue text-bold">{{ $page->title }}</h2>
-        <p class="mt-4">{{ $page->description }}</p>
+
+        <div class="flex flex-col items-center mt-4">
+            <h2 class="text-oss-spatie-blue font-bold">{{ $page->title }}</h2>
+            <p class="">{{ $page->description }}</p>
+        </div>
     </a>
 </div>
