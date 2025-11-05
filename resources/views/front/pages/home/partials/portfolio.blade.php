@@ -25,7 +25,7 @@
 
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://flareapp.io" class="illustration is-left h-full aspect-[3/2]" title="Flare - Laravel error reporting"
+            <a href="https://flareapp.io" class="illustration is-left h-full aspect-[3/2]" title="Flare"
                target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/flare_spatie_cover.jpg') }}
             </a>
@@ -35,7 +35,7 @@
                 <h3 class="title">
                     Flare
                     <span class="title-subtext text-pink-dark block">
-                        full-stack monitoring for Laravel, PHP & JavaScript
+                        Full-stack monitoring for Laravel, PHP & JavaScript
                     </span>
                 </h3>
                 <p class="text-lg">
