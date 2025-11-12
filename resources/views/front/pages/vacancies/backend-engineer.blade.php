@@ -1,45 +1,5 @@
 <x-page background="/backgrounds/jobs.jpg" title="Backend engineer vacancy"
         description="Vacancy for a Backend engineer. Location: Antwerp.">
-    <script type="application/ld+json">
-        {
-            "@context": "http://schema.org"
-            , "@type": "JobPosting"
-            , "datePosted": "2025-03-01T00:00:00"
-            , "validThrough": "2026-03-01T00:00:00"
-            , "description": "<p>
-            You love the PHP + Laravel combo. <
-            /p>  <
-            ul >
-            li > You know git.</li> <
-            li > You can work independently but aren 't afraid to ask when you'
-            re stuck. < /li> <
-            li > You can speak Dutch and you love Italian food. < /li> <
-            /ul> <
-            p >
-            Learn and grow together with a team that has made its name in open source. You 'll have an enormous impact on users worldwide. <
-            /p>",
-            "title": "Backend Engineer"
-            , "employmentType": "FULL_TIME"
-            , "hiringOrganization": {
-                "@type": "Organization"
-                , "name": "Spatie"
-                , "sameAs": "https://spatie.be"
-                , "logo": "http://spatie.be/images/spatie.png"
-            }
-            , "jobLocation": {
-                "@type": "Place"
-                , "address": {
-                    "@type": "PostalAddress"
-                    , "streetAddress": "Kruikstraat 22"
-                    , "addressLocality": "Antwerp"
-                    , "addressRegion": "Antwerp"
-                    , "postalCode": "2018"
-                    , "addressCountry": "BE"
-                }
-            }
-        }
-
-    </script>
 
     <section id="banner" class="banner" role="banner">
         <div class="wrap">

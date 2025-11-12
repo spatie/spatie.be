@@ -16,10 +16,55 @@ class AiTransformerServiceProvider extends ServiceProvider
 {
     public function register(): void
     {
-        //        Transform::urls(
-        //            fn () => $this->crawlAllUrls()
-        //        )->usingTransformers(new LdJsonTransformer());
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * @return array<int, string>
@@ -57,4 +102,11 @@ class AiTransformerServiceProvider extends ServiceProvider
 
         return array_unique($urls);
     }
+
+
+
+
+    //        Transform::urls(
+    //            fn () => $this->crawlAllUrls()
+    //        )->usingTransformers(new LdJsonTransformer());
 }
