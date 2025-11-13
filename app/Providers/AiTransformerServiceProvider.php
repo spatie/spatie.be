@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 
-use App\Services\Crawler\Crawler;
 use App\Support\Transformers\LdJsonTransformer;
 use Illuminate\Support\ServiceProvider;
 

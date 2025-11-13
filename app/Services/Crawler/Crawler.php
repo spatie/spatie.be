@@ -22,7 +22,7 @@ class Crawler
             RequestOptions::VERIFY => false,
         ])
             ->setCrawlObserver(new class ($urls) extends CrawlObserver {
-                /** @param array<int, string> $urls  */
+                /** @param array<int, string> $urls */
                 public function __construct(protected array &$urls)
                 {
                 }
@@ -32,19 +32,23 @@ class Crawler
                     ResponseInterface $response,
                     ?UriInterface $foundOnUrl = null,
                     ?string $linkText = null
-                ): void {
-                    $url = (string) $url;
+                ): void
+                {
+                    $url = (string)$url;
 
                     if (Str::endsWith($url, '.svg')) {
                         return;
                     }
 
-                    $this->urls[] = (string) $url;
+                    $this->urls[] = (string)$url;
                 }
             })
             ->setCrawlProfile(new CrawlInternalUrls($startUrl))
             ->startCrawling($startUrl);
 
-        return array_unique($urls);
+        return collect($urls)
+            ->map(fn(string $url) => Str::after($url, config('app.url')))
+            ->unique()
+            ->toArray();
     }
 }
