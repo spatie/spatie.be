@@ -4,7 +4,6 @@ namespace App\Providers;
 
 use App\Support\Transformers\LdJsonTransformer;
 use Illuminate\Support\ServiceProvider;
-
 use Spatie\LaravelUrlAiTransformer\Support\Transform;
 
 class AiTransformerServiceProvider extends ServiceProvider
