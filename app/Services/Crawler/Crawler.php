@@ -32,8 +32,7 @@ class Crawler
                     ResponseInterface $response,
                     ?UriInterface $foundOnUrl = null,
                     ?string $linkText = null
-                ): void
-                {
+                ): void {
                     $url = (string)$url;
 
                     if (Str::endsWith($url, '.svg')) {
@@ -47,7 +46,7 @@ class Crawler
             ->startCrawling($startUrl);
 
         return collect($urls)
-            ->map(fn(string $url) => Str::after($url, config('app.url')))
+            ->map(fn (string $url) => Str::after($url, config('app.url')))
             ->unique()
             ->toArray();
     }
