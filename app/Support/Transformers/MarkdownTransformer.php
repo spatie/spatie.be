@@ -7,7 +7,7 @@ use Prism\Prism\Prism;
 use Spatie\LaravelUrlAiTransformer\Support\Config;
 use Spatie\LaravelUrlAiTransformer\Transformers\Transformer;
 
-class LdJsonTransformer extends Transformer
+class MarkdownTransformer extends Transformer
 {
     public function transform(): void
     {
@@ -19,10 +19,8 @@ class LdJsonTransformer extends Transformer
         $this->transformationResult->result = $response->text;
     }
 
-    public function prompt(): string
+    public function getPrompt(): string
     {
-        $content = Str::limit(strip_tags($this->urlContent), 6000);
-
-        return "Summarize the following webpage to ld+json. Only return valid json, no backtick openings.  This is the content that we fetched for url {$this->url}: {$content}";
+        return 'Summarize the following webpage to markdown. I expect three list items. Do not use any other formatting. Do not included markdown tags themselves. This is the content:'.Str::limit($this->urlContent, 6000);
     }
 }
