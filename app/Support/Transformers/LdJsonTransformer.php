@@ -19,7 +19,7 @@ class LdJsonTransformer extends Transformer
         $this->transformationResult->result = $response->text;
     }
 
-    public function prompt(): string
+    public function getPrompt(): string
     {
         $content = Str::limit(strip_tags($this->urlContent), 6000);
 

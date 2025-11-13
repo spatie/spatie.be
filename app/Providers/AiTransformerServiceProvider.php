@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Support\Transformers\LdJsonTransformer;
+use App\Support\Transformers\MarkdownTransformer;
 use Illuminate\Support\ServiceProvider;
 use Spatie\LaravelUrlAiTransformer\Support\Transform;
 
@@ -14,7 +15,8 @@ class AiTransformerServiceProvider extends ServiceProvider
             '/',
             '/about-us'
         )->usingTransformers(
-            new LdJsonTransformer()
+            new LdJsonTransformer(),
+            new MarkdownTransformer()
         );
     }
 }
