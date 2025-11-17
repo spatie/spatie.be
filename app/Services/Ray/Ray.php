@@ -8,7 +8,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class Ray
 {
-    protected $baseUrl = 'https://ray-app.s3.eu-west-1.amazonaws.com';
+    protected string $baseUrl = 'https://ray-app.s3.eu-west-1.amazonaws.com';
 
     public function getDownloadLink(string $platform)
     {
@@ -49,12 +49,7 @@ class Ray
     {
         $latestVersion = $this->latestMacosAppleSiliconVersion();
 
-        /** Hardcoded for now, replace when building new version */
         return "https://ray-app.s3.eu-west-1.amazonaws.com/arm64/Ray-{$latestVersion}-arm64.dmg";
-
-        //$latestVersion = $this->latestMacosAppleSiliconVersion();
-
-        //return "{$this->baseUrl}/arm64/Ray-{$latestVersion}-arm64.dmg";
     }
 
     public function latestWindowsVersion(): string
