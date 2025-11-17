@@ -2,23 +2,21 @@
 
 namespace App\Filament\Resources\Shop;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Grid;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Shop\ReferrerResource\Pages\ListReferrers;
-use App\Filament\Resources\Shop\ReferrerResource\Pages\CreateReferrer;
-use App\Filament\Resources\Shop\ReferrerResource\Pages\EditReferrer;
 use App\Domain\Shop\Models\Referrer;
 use App\Filament\Resources\Shop\ReferrerResource\Actions\AttachAllPurchasablesToReferrerAction;
-use App\Filament\Resources\Shop\ReferrerResource\Pages;
+use App\Filament\Resources\Shop\ReferrerResource\Pages\CreateReferrer;
+use App\Filament\Resources\Shop\ReferrerResource\Pages\EditReferrer;
+use App\Filament\Resources\Shop\ReferrerResource\Pages\ListReferrers;
 use App\Filament\Tables\Columns\CopyableColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ReferrerResource extends Resource

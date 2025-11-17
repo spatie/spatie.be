@@ -2,11 +2,11 @@
 
 namespace App\Domain\Shop\Actions;
 
-use Exception;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Services\Mailcoach\MailcoachApi;
 use App\Services\Mailcoach\Subscriber;
+use Exception;
 use Illuminate\Support\Str;
 
 class AddPurchasedTagsToEmailListSubscriberAction

@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Customers\PurchaseResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Customers\PurchaseResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditPurchase extends EditRecord

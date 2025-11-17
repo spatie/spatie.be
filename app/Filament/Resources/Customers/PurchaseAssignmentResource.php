@@ -2,25 +2,23 @@
 
 namespace App\Filament\Resources\Customers;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Grid;
-use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages\ListPurchaseAssignments;
+use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages\CreatePurchaseAssignment;
 use App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages\EditPurchaseAssignment;
-use App\Domain\Shop\Models\PurchaseAssignment;
-use App\Filament\Resources\Customers;
+use App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages\ListPurchaseAssignments;
+use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 

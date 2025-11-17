@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Customers\UserResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Customers\UserResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use STS\FilamentImpersonate\Pages\Actions\Impersonate;
 

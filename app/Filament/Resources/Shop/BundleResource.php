@@ -2,24 +2,23 @@
 
 namespace App\Filament\Resources\Shop;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Shop\BundleResource\Pages\ListBundles;
-use App\Filament\Resources\Shop\BundleResource\Pages\CreateBundle;
-use App\Filament\Resources\Shop\BundleResource\Pages\EditBundle;
 use App\Domain\Shop\Models\Bundle;
 use App\Filament\Resources\Shop\BundleResource\Actions\UpdateBundlePriceForCurrencyAction;
+use App\Filament\Resources\Shop\BundleResource\Pages\CreateBundle;
+use App\Filament\Resources\Shop\BundleResource\Pages\EditBundle;
+use App\Filament\Resources\Shop\BundleResource\Pages\ListBundles;
 use App\Filament\Tables\Columns\BooleanColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class BundleResource extends Resource

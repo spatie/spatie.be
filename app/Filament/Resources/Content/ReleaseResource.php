@@ -2,26 +2,24 @@
 
 namespace App\Filament\Resources\Content;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Content\ReleaseResource\Pages\ListReleases;
-use App\Filament\Resources\Content\ReleaseResource\Pages\CreateRelease;
-use App\Filament\Resources\Content\ReleaseResource\Pages\EditRelease;
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Release;
-use App\Filament\Resources\Content\ReleaseResource\Pages;
+use App\Filament\Resources\Content\ReleaseResource\Pages\CreateRelease;
+use App\Filament\Resources\Content\ReleaseResource\Pages\EditRelease;
+use App\Filament\Resources\Content\ReleaseResource\Pages\ListReleases;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ReleaseResource extends Resource

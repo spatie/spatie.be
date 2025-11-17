@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Courses\SeriesResource\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Resources\Courses\SeriesResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSeries extends ListRecords

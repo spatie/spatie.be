@@ -2,18 +2,17 @@
 
 namespace App\Filament\Resources\Customers;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Grid;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Customers\ReceiptResource\Pages\ListReceipts;
 use App\Filament\Resources\Customers\ReceiptResource\Pages\CreateReceipt;
 use App\Filament\Resources\Customers\ReceiptResource\Pages\EditReceipt;
+use App\Filament\Resources\Customers\ReceiptResource\Pages\ListReceipts;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Laravel\Paddle\Receipt;

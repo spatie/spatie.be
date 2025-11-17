@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Shop\ReferrerResource\Actions;
 
-use Filament\Actions\Action;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
+use Filament\Actions\Action;
 
 class AttachAllPurchasablesToReferrerAction
 {

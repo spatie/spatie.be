@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Content\ReleaseResource\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Resources\Content\ReleaseResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListReleases extends ListRecords

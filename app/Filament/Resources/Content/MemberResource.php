@@ -2,24 +2,22 @@
 
 namespace App\Filament\Resources\Content;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Content\MemberResource\Pages\ListMembers;
 use App\Filament\Resources\Content\MemberResource\Pages\CreateMember;
 use App\Filament\Resources\Content\MemberResource\Pages\EditMember;
-use App\Filament\Resources\Content\MemberResource\Pages;
+use App\Filament\Resources\Content\MemberResource\Pages\ListMembers;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Member;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class MemberResource extends Resource

@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Customers\UserResource\Actions;
 
-use Filament\Actions\Action;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
+use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 

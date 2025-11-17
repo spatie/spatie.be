@@ -2,27 +2,26 @@
 
 namespace App\Filament\Resources\Customers;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Grid;
-use Filament\Tables\Filters\SelectFilter;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Customers\PurchaseResource\Pages\ListPurchases;
-use App\Filament\Resources\Customers\PurchaseResource\Pages\CreatePurchase;
-use App\Filament\Resources\Customers\PurchaseResource\Pages\EditPurchase;
 use App\Domain\Shop\Models\Purchase;
 use App\Filament\Resources\Customers\PurchaseResource\Actions\TransferPurchaseAction;
 use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
+use App\Filament\Resources\Customers\PurchaseResource\Pages\CreatePurchase;
+use App\Filament\Resources\Customers\PurchaseResource\Pages\EditPurchase;
+use App\Filament\Resources\Customers\PurchaseResource\Pages\ListPurchases;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\IconPosition;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
 class PurchaseResource extends Resource

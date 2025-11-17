@@ -2,10 +2,10 @@
 
 namespace App\Docs;
 
-use Throwable;
 use Exception;
 use Illuminate\Support\Collection;
 use Spatie\Sheets\Sheets;
+use Throwable;
 
 class Docs
 {

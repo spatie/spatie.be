@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Content\TechnologyResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Content\TechnologyResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditTechnology extends EditRecord

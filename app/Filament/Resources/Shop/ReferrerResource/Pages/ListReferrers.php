@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Shop\ReferrerResource\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Resources\Shop\ReferrerResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListReferrers extends ListRecords

@@ -2,17 +2,15 @@
 
 namespace App\Filament\Resources\Courses;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
+use App\Filament\Resources\Courses\CommentResource\Pages\CreateComment;
+use App\Filament\Resources\Courses\CommentResource\Pages\EditComment;
+use App\Filament\Resources\Courses\CommentResource\Pages\ListComments;
 use Filament\Actions\Action;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Courses\CommentResource\Pages\ListComments;
-use App\Filament\Resources\Courses\CommentResource\Pages\CreateComment;
-use App\Filament\Resources\Courses\CommentResource\Pages\EditComment;
-use App\Filament\Resources\Courses\CommentResource\Pages;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Spatie\Comments\Models\Comment;
 
