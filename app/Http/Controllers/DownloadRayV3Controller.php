@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Ray\Ray;
 use App\Services\Ray\RayV3;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
