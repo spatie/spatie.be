@@ -1,32 +1,30 @@
+@php
+    $image = image("/backgrounds/bf-25-hero-alt.jpg");
+@endphp
+
+@push('startBody')
+    <div class="wallpaper fixed">
+        <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="" class="h-svh object-cover">
+    </div>
+@endpush
+
 <x-page
     ogImage="https://spatie.be/images/og-store.png"
     title="Applications and digital courses built for modern developers"
-    background="/backgrounds/product.jpg"
     description="Welcome in our store, by artisans for artisans. Get access to our paid products, courses and ebooks"
+    bodyClass="bg-bf-dark"
 >
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                Welcome in <br>our store
-            </h1>
-
-            <!--
-            <p class="banner-intro">
-                Applications and digital courses built for modern developers
-            </p>
-            -->
-        </div>
-    </section>
 
     {{-- @include('front.pages.products.partials.ctaLaraconEU') --}}
 
-    <div class="section section-group">
+    @include('front.pages.home.partials.bf-banner', array('button' => false))
 
+    <div class="section section-group text-white">
 
         <section class="section overflow-visible">
             @if (count($bundles))
                 <div class="wrap">
-                    <h2 class="title line-after mb-12">All of our products</h2>
+                    <h2 class="title line-after mb-12">Get 30% off on these courses &amp; products</h2>
                 </div>
             @endif
             <div class="wrap">
@@ -42,7 +40,7 @@
                                                 <div class="shadow-md group-hover:shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
                                             </div>
 
-                                            <h2 class="title-sm link-black link-underline-hover">{{ $product->title }}</h2>
+                                            <h2 class="font-bold text-xl link-underline-hover">{{ $product->title }}</h2>
                                             @if(! $product->visible && current_user()?->hasAccessToUnReleasedProducts())<p class="mt-2 text-orange text-sm">This product is currently set to non-visible, it is visible to users that have access to unreleased products.</p>@endif
                                         </a>
 
@@ -74,7 +72,7 @@
             </div>
         </section>
 
-        @if (count($bundles))
+        {{-- @if (count($bundles))
             <section class="section overflow-visible">
                 <div class="wrap">
                     <h2 class="title line-after mb-12">Check our bundle promotions!</h2>
@@ -103,7 +101,7 @@
                     </div>
                 </div>
             </section>
-        @endif
+        @endif --}}
     </div>
 
 </x-page>
