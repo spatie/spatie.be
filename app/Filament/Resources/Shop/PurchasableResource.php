@@ -2,23 +2,17 @@
 
 namespace App\Filament\Resources\Shop;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Tabs;
-use Filament\Schemas\Components\Tabs\Tab;
-use Filament\Schemas\Components\Grid;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Shop\PurchasableResource\Pages\ListPurchasables;
-use App\Filament\Resources\Shop\PurchasableResource\Pages\CreatePurchasable;
-use App\Filament\Resources\Shop\PurchasableResource\Pages\EditPurchasable;
 use App\Domain\Shop\Enums\PurchasableType;
 use App\Domain\Shop\Models\Purchasable;
-use App\Filament\Resources\Shop;
 use App\Filament\Resources\Shop\PurchasableResource\Actions\UpdatePriceForCurrencyAction;
+use App\Filament\Resources\Shop\PurchasableResource\Pages\CreatePurchasable;
+use App\Filament\Resources\Shop\PurchasableResource\Pages\EditPurchasable;
+use App\Filament\Resources\Shop\PurchasableResource\Pages\ListPurchasables;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
@@ -27,7 +21,11 @@ use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Wiebenieuwenhuis\FilamentCodeEditor\Components\CodeEditor;
 

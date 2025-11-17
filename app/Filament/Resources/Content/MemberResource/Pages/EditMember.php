@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Content\MemberResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Content\MemberResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditMember extends EditRecord

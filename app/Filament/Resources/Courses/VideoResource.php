@@ -2,19 +2,17 @@
 
 namespace App\Filament\Resources\Courses;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Courses\VideoResource\Pages\ListVideos;
 use App\Filament\Resources\Courses\VideoResource\Pages\CreateVideo;
 use App\Filament\Resources\Courses\VideoResource\Pages\EditVideo;
-use App\Filament\Resources\Courses\VideoResource\Pages;
+use App\Filament\Resources\Courses\VideoResource\Pages\ListVideos;
 use App\Models\Video;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class VideoResource extends Resource

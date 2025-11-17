@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Content\PostcardResource\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Resources\Content\PostcardResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListPostcards extends ListRecords

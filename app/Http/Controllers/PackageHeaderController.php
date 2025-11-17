@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Debugbar;
 use App\Models\Repository;
+use Debugbar;
 
 class PackageHeaderController
 {

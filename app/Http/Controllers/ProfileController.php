@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use App\Actions\SubscribeUserToNewsletterAction;
 use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Http\Auth\Requests\ProfileRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 

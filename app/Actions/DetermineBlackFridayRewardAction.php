@@ -2,10 +2,10 @@
 
 namespace App\Actions;
 
-use Exception;
 use App\Data\BlackFridayRewardData;
 use App\Enums\BlackFridayRewardType;
 use App\Models\User;
+use Exception;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;

@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Content\PlaylistResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Content\PlaylistResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditPlaylist extends EditRecord

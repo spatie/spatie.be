@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Content\AdResource\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Resources\Content\AdResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListAds extends ListRecords

@@ -2,23 +2,22 @@
 
 namespace App\Filament\Resources\Customers;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Grid;
-use Filament\Actions\Action;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Customers\LicenseResource\Pages\ListLicenses;
+use App\Domain\Shop\Models\License;
 use App\Filament\Resources\Customers\LicenseResource\Pages\CreateLicense;
 use App\Filament\Resources\Customers\LicenseResource\Pages\EditLicense;
-use App\Domain\Shop\Models\License;
+use App\Filament\Resources\Customers\LicenseResource\Pages\ListLicenses;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\LicensePurchasableNameColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Actions\Action;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;

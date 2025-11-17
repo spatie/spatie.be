@@ -2,21 +2,19 @@
 
 namespace App\Filament\Resources\Content;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Content\PostcardResource\Pages\ListPostcards;
 use App\Filament\Resources\Content\PostcardResource\Pages\CreatePostcard;
 use App\Filament\Resources\Content\PostcardResource\Pages\EditPostcard;
-use App\Filament\Resources\Content\PostcardResource\Pages;
+use App\Filament\Resources\Content\PostcardResource\Pages\ListPostcards;
 use App\Models\Postcard;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class PostcardResource extends Resource

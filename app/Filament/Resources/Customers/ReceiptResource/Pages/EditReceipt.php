@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Customers\ReceiptResource\Pages;
 
-use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Customers\ReceiptResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditReceipt extends EditRecord
