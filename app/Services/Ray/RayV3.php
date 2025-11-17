@@ -18,7 +18,7 @@ class RayV3
         return $this->$method();
     }
 
-    public function getDownloadLinkMacOs(): string
+    public function getDownloadLinkMacos(): string
     {
         $latestVersion = $this->latestVersion();
 
@@ -41,7 +41,7 @@ class RayV3
 
     public function latestVersion(): string
     {
-        return Cache::remember('latest-mac-version-v3', 60, function () {
+        return Cache::remember('latest-version-v3', 60, function () {
             $jsonPath = Http::get("{$this->baseUrl}/darwin/universal/RELEASES.json")->body();
 
             $versions = json_decode($jsonPath, true);
