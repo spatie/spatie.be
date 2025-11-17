@@ -13,6 +13,7 @@ use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Forms\Components\CodeEditor;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
@@ -27,7 +28,6 @@ use Filament\Schemas\Components\Tabs\Tab;
 use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
-use Wiebenieuwenhuis\FilamentCodeEditor\Components\CodeEditor;
 
 class PurchasableResource extends Resource
 {
