@@ -2,10 +2,10 @@
 
 namespace App\Services\GitHub;
 
+use Exception;
 use Github\Api\Organization;
 use Github\Api\Repo;
 use Github\Api\User;
-use Exception;
 use Github\Client;
 use Github\ResultPager;
 use Http;

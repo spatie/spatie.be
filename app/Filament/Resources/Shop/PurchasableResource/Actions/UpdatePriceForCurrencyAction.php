@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources\Shop\PurchasableResource\Actions;
 
-use Filament\Actions\Action;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchasablePrice;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;

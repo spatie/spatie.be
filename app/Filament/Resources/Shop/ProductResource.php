@@ -2,25 +2,23 @@
 
 namespace App\Filament\Resources\Shop;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Grid;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Shop\ProductResource\Pages\ListProducts;
+use App\Domain\Shop\Models\Product;
 use App\Filament\Resources\Shop\ProductResource\Pages\CreateProduct;
 use App\Filament\Resources\Shop\ProductResource\Pages\EditProduct;
-use App\Domain\Shop\Models\Product;
-use App\Filament\Resources\Shop\ProductResource\Pages;
+use App\Filament\Resources\Shop\ProductResource\Pages\ListProducts;
 use App\Filament\Tables\Columns\BooleanColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ProductResource extends Resource

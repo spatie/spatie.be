@@ -2,30 +2,28 @@
 
 namespace App\Filament\Resources\Customers;
 
-use Filament\Schemas\Schema;
-use Filament\Schemas\Components\Grid;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\ActionGroup;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Customers\UserResource\Pages\ListUsers;
-use App\Filament\Resources\Customers\UserResource\Pages\CreateUser;
-use App\Filament\Resources\Customers\UserResource\Pages\EditUser;
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseAssignmentAction;
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseToUserAction;
+use App\Filament\Resources\Customers\UserResource\Pages\CreateUser;
+use App\Filament\Resources\Customers\UserResource\Pages\EditUser;
+use App\Filament\Resources\Customers\UserResource\Pages\ListUsers;
 use App\Filament\Resources\Customers\UserResource\RelationManagers\AssignmentsRelationManager;
 use App\Filament\Resources\Customers\UserResource\RelationManagers\LicensesRelationManager;
 use App\Filament\Resources\Customers\UserResource\RelationManagers\PurchasesRelationManager;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Models\User;
-use Filament\Forms;
+use Filament\Actions\ActionGroup;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
 

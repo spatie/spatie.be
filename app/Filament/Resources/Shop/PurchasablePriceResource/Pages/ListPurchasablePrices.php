@@ -2,9 +2,8 @@
 
 namespace App\Filament\Resources\Shop\PurchasablePriceResource\Pages;
 
-use Filament\Actions\CreateAction;
 use App\Filament\Resources\Shop\PurchasablePriceResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListPurchasablePrices extends ListRecords

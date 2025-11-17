@@ -2,10 +2,10 @@
 
 namespace App\Filament\Resources\Customers\PurchaseResource\Actions;
 
-use Filament\Actions\Action;
 use App\Domain\Shop\Actions\TransferPurchaseToUser;
 use App\Domain\Shop\Models\Purchase;
 use App\Models\User;
+use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
 

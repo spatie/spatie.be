@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
-use Exception;
 use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Laminas\Feed\Reader\Entry\AbstractEntry;

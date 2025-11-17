@@ -2,24 +2,22 @@
 
 namespace App\Filament\Resources\Courses;
 
-use Filament\Schemas\Schema;
-use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Columns\ImageColumn;
-use Filament\Actions\EditAction;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteBulkAction;
-use App\Filament\Resources\Courses\SeriesResource\Pages\ListSeries;
 use App\Filament\Resources\Courses\SeriesResource\Pages\CreateSeries;
 use App\Filament\Resources\Courses\SeriesResource\Pages\EditSeries;
-use App\Filament\Resources\Courses\SeriesResource\Pages;
+use App\Filament\Resources\Courses\SeriesResource\Pages\ListSeries;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Series;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class SeriesResource extends Resource

@@ -2,9 +2,9 @@
 
 namespace App\Providers;
 
+use App\Docs\DocumentationContentParser;
 use App\Docs\DocumentationPage;
 use App\Docs\DocumentationPathParser;
-use App\Docs\DocumentationContentParser;
 use App\Models\HtmlLesson;
 use App\Models\Video;
 use App\Spotlight\DocsCommand;
