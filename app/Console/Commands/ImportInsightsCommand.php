@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Exception;
 use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Carbon\Carbon;
@@ -43,7 +44,7 @@ class ImportInsightsCommand extends Command
 
                         $this->info("Imported `{$insight->title}`");
                     }
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     $this->error("Could not load {$feedUrl}");
                 }
             });

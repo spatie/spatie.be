@@ -2,12 +2,12 @@
 
 namespace App\Filament\Resources\Shop\BundleResource\Actions;
 
+use Filament\Actions\Action;
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\BundlePrice;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
 
 class UpdateBundlePriceForCurrencyAction
 {
@@ -15,7 +15,7 @@ class UpdateBundlePriceForCurrencyAction
     {
         return Action::make('update_bundle_price')
             ->icon('heroicon-o-currency-dollar')
-            ->form([
+            ->schema([
                 TextInput::make('amount_in_cents')
                     ->label('Amount in cents')
                     ->required()

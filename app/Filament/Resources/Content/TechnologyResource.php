@@ -2,6 +2,14 @@
 
 namespace App\Filament\Resources\Content;
 
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Content\TechnologyResource\Pages\ListTechnologies;
+use App\Filament\Resources\Content\TechnologyResource\Pages\CreateTechnology;
+use App\Filament\Resources\Content\TechnologyResource\Pages\EditTechnology;
 use App\Filament\Resources\Content\TechnologyResource\Pages;
 use App\Models\Enums\TechnologyType;
 use App\Models\Member;
@@ -10,7 +18,6 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
@@ -20,16 +27,16 @@ class TechnologyResource extends Resource
 {
     protected static ?string $model = Technology::class;
 
-    protected static ?string $navigationGroup = 'Content';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content';
 
     protected static ?int $navigationSort = 6;
 
-    protected static ?string $navigationIcon = 'heroicon-o-heart';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-heart';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->columnStart(1)
                     ->disabled(),
@@ -65,10 +72,10 @@ class TechnologyResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('type')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('website_url')
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('type')->searchable()->sortable(),
+                TextColumn::make('website_url')
                     ->url(fn ($record) => $record->website_url)
                     ->openUrlInNewTab()
                     ->searchable()
@@ -78,12 +85,12 @@ class TechnologyResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -98,9 +105,9 @@ class TechnologyResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListTechnologies::route('/'),
-            'create' => Pages\CreateTechnology::route('/create'),
-            'edit' => Pages\EditTechnology::route('/{record}/edit'),
+            'index' => ListTechnologies::route('/'),
+            'create' => CreateTechnology::route('/create'),
+            'edit' => EditTechnology::route('/{record}/edit'),
         ];
     }
 }

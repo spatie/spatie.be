@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Content\RepositoryResource\Pages;
 
+use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Content\RepositoryResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
@@ -13,7 +14,7 @@ class EditRepository extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

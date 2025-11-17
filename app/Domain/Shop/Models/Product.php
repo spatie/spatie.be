@@ -73,7 +73,7 @@ class Product extends Model implements HasMedia, Sortable
 
     public function bundles(): Collection
     {
-        /** @var \Illuminate\Support\Collection $purchasables */
+        /** @var Collection $purchasables */
         return Bundle::query()
             ->whereHas(
                 'purchasables',

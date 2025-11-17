@@ -2,16 +2,23 @@
 
 namespace App\Filament\Resources\Customers;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Grid;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Customers\PurchaseResource\Pages\ListPurchases;
+use App\Filament\Resources\Customers\PurchaseResource\Pages\CreatePurchase;
+use App\Filament\Resources\Customers\PurchaseResource\Pages\EditPurchase;
 use App\Domain\Shop\Models\Purchase;
 use App\Filament\Resources\Customers\PurchaseResource\Actions\TransferPurchaseAction;
 use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\IconPosition;
 use Filament\Tables;
@@ -20,18 +27,18 @@ use Filament\Tables\Table;
 
 class PurchaseResource extends Resource
 {
-    protected static ?string $navigationGroup = 'Customers';
+    protected static string | \UnitEnum | null $navigationGroup = 'Customers';
 
     protected static ?string $model = Purchase::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-shopping-cart';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-shopping-cart';
 
     protected static ?int $navigationSort = 2;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(2)
                     ->schema([
                         TextInput::make('id')
@@ -96,22 +103,22 @@ class PurchaseResource extends Resource
                     ->dateTime(),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('purchasable')
+                SelectFilter::make('purchasable')
                     ->relationship('purchasable', 'title')
                     ->searchable()
                     ->preload(),
-                Tables\Filters\SelectFilter::make('bundle')
+                SelectFilter::make('bundle')
                     ->relationship('bundle', 'title')
                     ->searchable()
                     ->preload(),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
                 TransferPurchaseAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -126,9 +133,9 @@ class PurchaseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Resources\Customers\PurchaseResource\Pages\ListPurchases::route('/'),
-            'create' => \App\Filament\Resources\Customers\PurchaseResource\Pages\CreatePurchase::route('/create'),
-            'edit' => \App\Filament\Resources\Customers\PurchaseResource\Pages\EditPurchase::route('/{record}/edit'),
+            'index' => ListPurchases::route('/'),
+            'create' => CreatePurchase::route('/create'),
+            'edit' => EditPurchase::route('/{record}/edit'),
         ];
     }
 }
