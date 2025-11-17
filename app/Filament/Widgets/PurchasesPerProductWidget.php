@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class PurchasesPerProductWidget extends ChartWidget
 {
-    protected static ?string $heading = 'Purchases per Product';
+    protected ?string $heading = 'Purchases per Product';
 
     protected function getData(): array
     {

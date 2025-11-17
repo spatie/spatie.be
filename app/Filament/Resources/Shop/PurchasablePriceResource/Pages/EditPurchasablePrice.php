@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Shop\PurchasablePriceResource\Pages;
 
+use Filament\Actions\DeleteAction;
 use App\Filament\Resources\Shop\PurchasablePriceResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
@@ -13,7 +14,7 @@ class EditPurchasablePrice extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

@@ -2,6 +2,16 @@
 
 namespace App\Filament\Resources\Content;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Section;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\Action;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Content\RepositoryResource\Pages\ListRepositories;
+use App\Filament\Resources\Content\RepositoryResource\Pages\CreateRepository;
+use App\Filament\Resources\Content\RepositoryResource\Pages\EditRepository;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Filament\Resources\Content\RepositoryResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
@@ -10,12 +20,10 @@ use App\Jobs\ImportDocsForRepositoryJob;
 use App\Models\Repository;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Placeholder;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -27,16 +35,16 @@ class RepositoryResource extends Resource
 {
     protected static ?string $model = Repository::class;
 
-    protected static ?string $navigationGroup = 'Content';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content';
 
     protected static ?int $navigationSort = 3;
 
-    protected static ?string $navigationIcon = 'heroicon-o-archive-box';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-archive-box';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->columnStart(1)
                     ->disabled(),
@@ -92,8 +100,8 @@ class RepositoryResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('name')->searchable()->sortable(),
                 ResourceLinkColumn::make(
                     'ad.name',
                     function (Repository $record) {
@@ -105,13 +113,13 @@ class RepositoryResource extends Resource
                     },
                 )->openUrlInNewTab(),
                 BooleanColumn::make('ad_should_be_randomized'),
-                Tables\Columns\TextColumn::make('docs_synced_at')->dateTime()->sortable(),
+                TextColumn::make('docs_synced_at')->dateTime()->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\Action::make('sync docs')
+            ->recordActions([
+                Action::make('sync docs')
                     ->button()
                     ->requiresConfirmation()
                     ->icon('heroicon-o-arrow-path')
@@ -119,15 +127,15 @@ class RepositoryResource extends Resource
                         return ! collect(config('docs.repositories'))->pluck('name')->contains($record->name);
                     })
                     ->action(fn (Repository $record) => dispatch(new ImportDocsForRepositoryJob($record->name))),
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ])
             ->headerActions([
-                Tables\Actions\Action::make('Import docs')
+                Action::make('Import docs')
                     ->button()
                     ->requiresConfirmation()
                     ->icon('heroicon-o-arrow-down-tray')
@@ -135,7 +143,7 @@ class RepositoryResource extends Resource
                         fn () =>
                         Artisan::call(ImportGitHubRepositoriesCommand::class)
                     )),
-                Tables\Actions\Action::make('Update Satis')
+                Action::make('Update Satis')
                     ->button()
                     ->requiresConfirmation()
                     ->icon('heroicon-o-arrow-path')
@@ -158,9 +166,9 @@ class RepositoryResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListRepositories::route('/'),
-            'create' => Pages\CreateRepository::route('/create'),
-            'edit' => Pages\EditRepository::route('/{record}/edit'),
+            'index' => ListRepositories::route('/'),
+            'create' => CreateRepository::route('/create'),
+            'edit' => EditRepository::route('/{record}/edit'),
         ];
     }
 }

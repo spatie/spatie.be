@@ -2,6 +2,14 @@
 
 namespace App\Filament\Resources\Content;
 
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Content\MemberResource\Pages\ListMembers;
+use App\Filament\Resources\Content\MemberResource\Pages\CreateMember;
+use App\Filament\Resources\Content\MemberResource\Pages\EditMember;
 use App\Filament\Resources\Content\MemberResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Member;
@@ -9,7 +17,6 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
@@ -19,16 +26,16 @@ class MemberResource extends Resource
 {
     protected static ?string $model = Member::class;
 
-    protected static ?string $navigationGroup = 'Members';
+    protected static string | \UnitEnum | null $navigationGroup = 'Members';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-circle';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-user-circle';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->columnStart(1)
                     ->disabled(),
@@ -73,26 +80,26 @@ class MemberResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
                 ImageColumn::make('avatar')
                     ->default(fn (Member $record) => gravatar_url($record->email)),
-                Tables\Columns\TextColumn::make('first_name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('last_name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('preferred_name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('role')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('email')->searchable()->sortable(),
+                TextColumn::make('first_name')->searchable()->sortable(),
+                TextColumn::make('last_name')->searchable()->sortable(),
+                TextColumn::make('preferred_name')->searchable()->sortable(),
+                TextColumn::make('role')->searchable()->sortable(),
+                TextColumn::make('email')->searchable()->sortable(),
                 BooleanColumn::make('public_email')->sortable(),
-                Tables\Columns\TextColumn::make('birthday')->date()->sortable(),
+                TextColumn::make('birthday')->date()->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -107,9 +114,9 @@ class MemberResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListMembers::route('/'),
-            'create' => Pages\CreateMember::route('/create'),
-            'edit' => Pages\EditMember::route('/{record}/edit'),
+            'index' => ListMembers::route('/'),
+            'create' => CreateMember::route('/create'),
+            'edit' => EditMember::route('/{record}/edit'),
         ];
     }
 }

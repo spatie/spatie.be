@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class PurchasesPerProductPerDayWidget extends BasePurchaseChartWidget
 {
-    protected static ?string $heading = 'Purchases per Product';
+    protected ?string $heading = 'Purchases per Product';
 
     protected string|int|array $columnSpan = 3;
 

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class EarningsPerProductWidget extends ChartWidget
 {
-    protected static ?string $heading = 'Earnings per Product';
+    protected ?string $heading = 'Earnings per Product';
 
     protected function getData(): array
     {

@@ -2,6 +2,18 @@
 
 namespace App\Filament\Resources\Customers;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Grid;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\ActionGroup;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Customers\UserResource\Pages\ListUsers;
+use App\Filament\Resources\Customers\UserResource\Pages\CreateUser;
+use App\Filament\Resources\Customers\UserResource\Pages\EditUser;
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseAssignmentAction;
 use App\Filament\Resources\Customers\UserResource\Actions\TransferPurchaseToUserAction;
 use App\Filament\Resources\Customers\UserResource\RelationManagers\AssignmentsRelationManager;
@@ -11,11 +23,8 @@ use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Components\Grid;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Actions\ActionGroup;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 use STS\FilamentImpersonate\Tables\Actions\Impersonate;
@@ -24,43 +33,43 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationGroup = 'Customers';
+    protected static string | \UnitEnum | null $navigationGroup = 'Customers';
 
-    protected static ?string $navigationIcon = 'heroicon-o-user';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-user';
 
     protected static ?int $navigationSort = 1;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(2)
                     ->schema([
-                        Forms\Components\TextInput::make('uuid')
+                        TextInput::make('uuid')
                             ->label('UUID')
                             ->maxLength(36)
                             ->disabled(),
-                        Forms\Components\TextInput::make('name')
+                        TextInput::make('name')
                             ->required()
                             ->maxLength(255)
                             ->columnStart(1),
-                        Forms\Components\TextInput::make('email')
+                        TextInput::make('email')
                             ->email()
                             ->required()
                             ->maxLength(255)
                             ->columnStart(1),
-                        Forms\Components\TextInput::make('github_id')
+                        TextInput::make('github_id')
                             ->columnStart(1)
                             ->numeric(),
-                        Forms\Components\TextInput::make('github_username')
+                        TextInput::make('github_username')
                             ->maxLength(255),
-                        Forms\Components\Toggle::make('is_sponsor')
+                        Toggle::make('is_sponsor')
                             ->disabled()
                             ->columnStart(1),
-                        Forms\Components\Toggle::make('is_admin')
+                        Toggle::make('is_admin')
                             ->columnStart(1)
                             ->required(),
-                        Forms\Components\Toggle::make('has_access_to_unreleased_products')
+                        Toggle::make('has_access_to_unreleased_products')
                             ->columnStart(1)
                             ->required(),
                     ]),
@@ -74,20 +83,20 @@ class UserResource extends Resource
                 ImageColumn::make('avatar')
                     ->default(fn (User $record) => gravatar_url($record->email)),
 
-                Tables\Columns\TextColumn::make('name')
+                TextColumn::make('name')
                     ->searchable(),
 
                 CopyableColumn::make('email')
                     ->searchable(),
 
-                Tables\Columns\TextColumn::make('github_username')
+                TextColumn::make('github_username')
                     ->searchable(),
 
                 BooleanColumn::make('is_sponsor')->default(false),
                 BooleanColumn::make('is_admin'),
                 BooleanColumn::make('has_access_to_unreleased_products'),
 
-                Tables\Columns\TextColumn::make('created_at')
+                TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -95,17 +104,17 @@ class UserResource extends Resource
             ->filters([
 
             ])
-            ->actions([
+            ->recordActions([
                 Impersonate::make(),
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
                 ActionGroup::make([
                     TransferPurchaseAssignmentAction::make(),
                     TransferPurchaseToUserAction::make(),
                 ]),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -122,9 +131,9 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Resources\Customers\UserResource\Pages\ListUsers::route('/'),
-            'create' => \App\Filament\Resources\Customers\UserResource\Pages\CreateUser::route('/create'),
-            'edit' => \App\Filament\Resources\Customers\UserResource\Pages\EditUser::route('/{record}/edit'),
+            'index' => ListUsers::route('/'),
+            'create' => CreateUser::route('/create'),
+            'edit' => EditUser::route('/{record}/edit'),
         ];
     }
 }

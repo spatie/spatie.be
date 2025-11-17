@@ -2,6 +2,17 @@
 
 namespace App\Filament\Resources\Shop;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
+use Filament\Schemas\Components\Grid;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Shop\PurchasableResource\Pages\ListPurchasables;
+use App\Filament\Resources\Shop\PurchasableResource\Pages\CreatePurchasable;
+use App\Filament\Resources\Shop\PurchasableResource\Pages\EditPurchasable;
 use App\Domain\Shop\Enums\PurchasableType;
 use App\Domain\Shop\Models\Purchasable;
 use App\Filament\Resources\Shop;
@@ -9,16 +20,12 @@ use App\Filament\Resources\Shop\PurchasableResource\Actions\UpdatePriceForCurren
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
-use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Tabs\Tab;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -28,16 +35,16 @@ class PurchasableResource extends Resource
 {
     protected static ?string $model = Purchasable::class;
 
-    protected static ?string $navigationGroup = 'Products';
+    protected static string | \UnitEnum | null $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 2;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Tabs::make('Tabs')->columnSpan(2)->tabs([
                     Tab::make('Setup')->schema([
                         Grid::make(2)
@@ -139,24 +146,24 @@ class PurchasableResource extends Resource
                     'product.title',
                     fn (Purchasable $record) => route('filament.admin.resources.shop.products.edit', ['record' => $record->product]),
                 )->sortable(),
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                TextColumn::make('title')->searchable()->sortable(),
                 BooleanColumn::make('released')->sortable(),
-                Tables\Columns\TextColumn::make('price_in_usd_cents')
+                TextColumn::make('price_in_usd_cents')
                     ->label('Price')
                     ->money('USD', divideBy: 100)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('discount_percentage')->sortable(),
+                TextColumn::make('discount_percentage')->sortable(),
             ])
             ->filters([
 
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
                 UpdatePriceForCurrencyAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -171,9 +178,9 @@ class PurchasableResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Shop\PurchasableResource\Pages\ListPurchasables::route('/'),
-            'create' => Shop\PurchasableResource\Pages\CreatePurchasable::route('/create'),
-            'edit' => Shop\PurchasableResource\Pages\EditPurchasable::route('/{record}/edit'),
+            'index' => ListPurchasables::route('/'),
+            'create' => CreatePurchasable::route('/create'),
+            'edit' => EditPurchasable::route('/{record}/edit'),
         ];
     }
 }
