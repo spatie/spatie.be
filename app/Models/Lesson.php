@@ -131,7 +131,7 @@ class Lesson extends Model implements Sortable
 
     public function hasBeenCompletedByCurrentUser(): bool
     {
-        /** @var \App\Models\User $currentUser */
+        /** @var User $currentUser */
         $currentUser = auth()->user();
 
         if (! $currentUser) {
@@ -143,7 +143,7 @@ class Lesson extends Model implements Sortable
 
     public function markAsCompletedForCurrentUser(): self
     {
-        /** @var \App\Models\User $currentUser */
+        /** @var User $currentUser */
         $currentUser = auth()->user();
 
         if (! $currentUser) {
@@ -161,7 +161,7 @@ class Lesson extends Model implements Sortable
 
     public function markAsUncompletedForCurrentUser(): self
     {
-        /** @var \App\Models\User $currentUser */
+        /** @var User $currentUser */
         $currentUser = auth()->user();
 
         $currentUser->completedLessons()->detach($this);

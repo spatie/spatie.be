@@ -2,6 +2,7 @@
 
 namespace App\Docs;
 
+use Throwable;
 use Exception;
 use Illuminate\Support\Collection;
 use Spatie\Sheets\Sheets;
@@ -34,7 +35,7 @@ class Docs
 
                 try {
                     return Alias::fromDocumentationPage($index, $pages);
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     info($index);
 
                     throw $e;

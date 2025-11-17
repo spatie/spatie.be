@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class PaymentMethodsWidget extends ChartWidget
 {
-    protected static ?string $heading = 'Payment Methods';
+    protected ?string $heading = 'Payment Methods';
 
     protected int | string | array $columnSpan = 1;
 

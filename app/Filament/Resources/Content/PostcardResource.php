@@ -2,11 +2,18 @@
 
 namespace App\Filament\Resources\Content;
 
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Content\PostcardResource\Pages\ListPostcards;
+use App\Filament\Resources\Content\PostcardResource\Pages\CreatePostcard;
+use App\Filament\Resources\Content\PostcardResource\Pages\EditPostcard;
 use App\Filament\Resources\Content\PostcardResource\Pages;
 use App\Models\Postcard;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
@@ -16,16 +23,16 @@ class PostcardResource extends Resource
 {
     protected static ?string $model = Postcard::class;
 
-    protected static ?string $navigationGroup = 'Content';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content';
 
     protected static ?int $navigationSort = 5;
 
-    protected static ?string $navigationIcon = 'heroicon-o-envelope';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-envelope';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->columnStart(1)
                     ->disabled(),
@@ -49,21 +56,21 @@ class PostcardResource extends Resource
         return $table
             ->defaultSort('id', 'desc')
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('sender')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('city')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('country')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('sender')->searchable()->sortable(),
+                TextColumn::make('city')->searchable()->sortable(),
+                TextColumn::make('country')->searchable()->sortable(),
                 SpatieMediaLibraryImageColumn::make('front_image'),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -78,9 +85,9 @@ class PostcardResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPostcards::route('/'),
-            'create' => Pages\CreatePostcard::route('/create'),
-            'edit' => Pages\EditPostcard::route('/{record}/edit'),
+            'index' => ListPostcards::route('/'),
+            'create' => CreatePostcard::route('/create'),
+            'edit' => EditPostcard::route('/{record}/edit'),
         ];
     }
 }

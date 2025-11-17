@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Debugbar;
 use App\Models\Repository;
 
 class PackageHeaderController
 {
     public function html(string $name, $mode = 'dark')
     {
-        \Debugbar::disable();
+        Debugbar::disable();
 
         $repository = Repository::where('name', $name)->firstOrFail();
 

@@ -73,7 +73,7 @@ abstract class BasePurchaseChartWidget extends ChartWidget
         ];
     }
 
-    protected static ?array $options = [
+    protected ?array $options = [
         'scales' => [
             'x' => [
                 'stacked' => true,

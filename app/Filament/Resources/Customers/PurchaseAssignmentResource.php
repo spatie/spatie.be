@@ -2,16 +2,23 @@
 
 namespace App\Filament\Resources\Customers;
 
+use Filament\Schemas\Schema;
+use Filament\Schemas\Components\Grid;
+use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages\ListPurchaseAssignments;
+use App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages\CreatePurchaseAssignment;
+use App\Filament\Resources\Customers\PurchaseAssignmentResource\Pages\EditPurchaseAssignment;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Filament\Resources\Customers;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -21,16 +28,16 @@ class PurchaseAssignmentResource extends Resource
 {
     protected static ?string $model = PurchaseAssignment::class;
 
-    protected static ?string $navigationGroup = 'Customers';
+    protected static string | \UnitEnum | null $navigationGroup = 'Customers';
 
     protected static ?int $navigationSort = 8;
 
-    protected static ?string $navigationIcon = 'heroicon-o-user-plus';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-user-plus';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(2)
                     ->schema([
                         TextInput::make('id')
@@ -77,19 +84,19 @@ class PurchaseAssignmentResource extends Resource
                 )
                     ->state(fn (PurchaseAssignment $record) => '#' . $record->purchase->id . ' on ' . $record->purchase->created_at)
                     ->sortable(),
-                Customers\PurchaseResource\Columns\BoughtColumn::make(),
+                BoughtColumn::make(),
                 TextColumn::make('user.email')->sortable()->searchable(),
                 BooleanColumn::make('has_repository_access')->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -104,9 +111,9 @@ class PurchaseAssignmentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Customers\PurchaseAssignmentResource\Pages\ListPurchaseAssignments::route('/'),
-            'create' => Customers\PurchaseAssignmentResource\Pages\CreatePurchaseAssignment::route('/create'),
-            'edit' => Customers\PurchaseAssignmentResource\Pages\EditPurchaseAssignment::route('/{record}/edit'),
+            'index' => ListPurchaseAssignments::route('/'),
+            'create' => CreatePurchaseAssignment::route('/create'),
+            'edit' => EditPurchaseAssignment::route('/{record}/edit'),
         ];
     }
 }

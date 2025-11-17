@@ -2,10 +2,15 @@
 
 namespace App\Filament\Resources\Customers\UserResource\RelationManagers;
 
+use Filament\Schemas\Schema;
+use Filament\Actions\CreateAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\LicensePurchasableNameColumn;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -15,10 +20,10 @@ class LicensesRelationManager extends RelationManager
 {
     protected static string $relationship = 'licenses';
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 DateTimePicker::make('expires_at')
                     ->columnStart(1),
             ]);
@@ -29,7 +34,7 @@ class LicensesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('id')
             ->columns([
-                Tables\Columns\TextColumn::make('id'),
+                TextColumn::make('id'),
                 LicensePurchasableNameColumn::make(),
                 CopyableColumn::make('key')
                     ->searchable(),
@@ -40,15 +45,15 @@ class LicensesRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                CreateAction::make(),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }

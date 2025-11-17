@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class LessonCompletedButtonComponent extends Component
 {
-    /** @var \App\Models\Lesson|null */
+    /** @var Lesson|null */
     public $lesson;
 
     public function mount(Lesson $lesson): void

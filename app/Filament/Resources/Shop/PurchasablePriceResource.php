@@ -2,6 +2,13 @@
 
 namespace App\Filament\Resources\Shop;
 
+use Filament\Schemas\Schema;
+use Filament\Actions\EditAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use App\Filament\Resources\Shop\PurchasablePriceResource\Pages\ListPurchasablePrices;
+use App\Filament\Resources\Shop\PurchasablePriceResource\Pages\CreatePurchasablePrice;
+use App\Filament\Resources\Shop\PurchasablePriceResource\Pages\EditPurchasablePrice;
 use App\Domain\Shop\Models\PurchasablePrice;
 use App\Filament\Resources\Shop\PurchasablePriceResource\Pages;
 use App\Filament\Tables\Columns\BooleanColumn;
@@ -10,7 +17,6 @@ use App\Support\Paddle\PaddleCountries;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -21,16 +27,16 @@ class PurchasablePriceResource extends Resource
 {
     protected static ?string $model = PurchasablePrice::class;
 
-    protected static ?string $navigationGroup = 'Products';
+    protected static string | \UnitEnum | null $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 3;
 
-    protected static ?string $navigationIcon = 'heroicon-o-currency-yen';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-currency-yen';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Select::make('purchasable_id')
                     ->relationship(name: 'purchasable')
                     ->getOptionLabelFromRecordUsing(fn ($record) => $record->title . ' (' . $record->product->title . ')')
@@ -83,12 +89,12 @@ class PurchasablePriceResource extends Resource
                     ->label('Purchasable')
                     ->searchable(),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -103,9 +109,9 @@ class PurchasablePriceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPurchasablePrices::route('/'),
-            'create' => Pages\CreatePurchasablePrice::route('/create'),
-            'edit' => Pages\EditPurchasablePrice::route('/{record}/edit'),
+            'index' => ListPurchasablePrices::route('/'),
+            'create' => CreatePurchasablePrice::route('/create'),
+            'edit' => EditPurchasablePrice::route('/{record}/edit'),
         ];
     }
 }

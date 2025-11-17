@@ -2,13 +2,20 @@
 
 namespace App\Filament\Resources\Customers\UserResource\RelationManagers;
 
+use Filament\Schemas\Schema;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Actions\CreateAction;
+use Filament\Actions\EditAction;
+use Filament\Actions\DeleteAction;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 use App\Domain\Shop\Models\Purchase;
 use App\Filament\Resources\Customers\PurchaseResource\Columns\BoughtColumn;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Form;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
@@ -18,11 +25,11 @@ class PurchasesRelationManager extends RelationManager
 {
     protected static string $relationship = 'purchases';
 
-    public function form(Form $form): Form
+    public function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('id')
+        return $schema
+            ->components([
+                TextInput::make('id')
                     ->disabled()
                     ->maxLength(255),
                 Select::make('user_id')
@@ -39,7 +46,7 @@ class PurchasesRelationManager extends RelationManager
             ->defaultSort('created_at', 'desc')
             ->recordTitleAttribute('id')
             ->columns([
-                Tables\Columns\TextColumn::make('id')->disabled(),
+                TextColumn::make('id')->disabled(),
                 BoughtColumn::make(),
                 ResourceLinkColumn::make('receipt.id', fn (Purchase $record) => $record->receipt ? route('filament.admin.resources.customers.receipts.edit', $record->receipt) : ''),
                 CopyableColumn::make('receipt')
@@ -61,25 +68,25 @@ class PurchasesRelationManager extends RelationManager
                     ->dateTime(),
             ])
             ->filters([
-                Tables\Filters\SelectFilter::make('purchasable')
+                SelectFilter::make('purchasable')
                     ->relationship('purchasable', 'title')
                     ->searchable()
                     ->preload(),
-                Tables\Filters\SelectFilter::make('bundle')
+                SelectFilter::make('bundle')
                     ->relationship('bundle', 'title')
                     ->searchable()
                     ->preload(),
             ])
             ->headerActions([
-                Tables\Actions\CreateAction::make(),
+                CreateAction::make(),
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            ->recordActions([
+                EditAction::make(),
+                DeleteAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
