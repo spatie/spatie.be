@@ -1,9 +1,10 @@
+@php use Carbon\Carbon; @endphp
 @props([
     'button' => true,
 ])
 
 @php
-    $expirationDate = \Carbon\Carbon::createFromFormat('Y-m-d H:i', '2025-12-01 23:59');
+    $expirationDate = Carbon::createFromFormat('Y-m-d H:i', config('black-friday.expiration_date'));
 @endphp
 
 <section id="banner" class="banner" role="banner">
@@ -26,7 +27,7 @@
     @if ($button)
         <div class="flex flex-col items-center">
             <a href="{{ route('products.index') }}"
-                class="text-lg text-black font-bold transition transition-color font-pt px-6 py-2 bg-white rounded-full hover:bg-gray-lighter">
+               class="text-lg text-black font-bold transition transition-color font-pt px-6 py-2 bg-white rounded-full hover:bg-gray-lighter">
                 See all deals
             </a>
         </div>
