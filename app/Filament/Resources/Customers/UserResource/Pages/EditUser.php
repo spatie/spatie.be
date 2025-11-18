@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Customers\UserResource\Pages;
 
 use App\Filament\Resources\Customers\UserResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 use STS\FilamentImpersonate\Pages\Actions\Impersonate;
 
@@ -14,7 +14,7 @@ class EditUser extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
             Impersonate::make()->record($this->getRecord()),
         ];
     }

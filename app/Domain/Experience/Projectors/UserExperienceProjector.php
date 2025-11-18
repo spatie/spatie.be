@@ -12,7 +12,7 @@ class UserExperienceProjector extends Projector
 {
     public function onExperienceEarned(ExperienceEarned $event): void
     {
-        /** @var \App\Models\User $user */
+        /** @var User $user */
         $user = User::find($event->userId);
 
         $userExperience = $user->experience;

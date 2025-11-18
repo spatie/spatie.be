@@ -4,31 +4,37 @@ namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Bundle;
 use App\Filament\Resources\Shop\BundleResource\Actions\UpdateBundlePriceForCurrencyAction;
+use App\Filament\Resources\Shop\BundleResource\Pages\CreateBundle;
+use App\Filament\Resources\Shop\BundleResource\Pages\EditBundle;
+use App\Filament\Resources\Shop\BundleResource\Pages\ListBundles;
 use App\Filament\Tables\Columns\BooleanColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class BundleResource extends Resource
 {
     protected static ?string $model = Bundle::class;
 
-    protected static ?string $navigationGroup = 'Products';
+    protected static string | \UnitEnum | null $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 4;
 
-    protected static ?string $navigationIcon = 'heroicon-o-circle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-circle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 SpatieMediaLibraryFileUpload::make('image')
                     ->collection('image')
                     ->maxFiles(1)
@@ -68,22 +74,22 @@ class BundleResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('paddle_id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('price_in_usd_cents')->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('title')->searchable()->sortable(),
+                TextColumn::make('paddle_id')->searchable()->sortable(),
+                TextColumn::make('price_in_usd_cents')->sortable(),
                 BooleanColumn::make('visible')->label('Visible on Front')->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
                 UpdateBundlePriceForCurrencyAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -98,9 +104,9 @@ class BundleResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => BundleResource\Pages\ListBundles::route('/'),
-            'create' => BundleResource\Pages\CreateBundle::route('/create'),
-            'edit' => BundleResource\Pages\EditBundle::route('/{record}/edit'),
+            'index' => ListBundles::route('/'),
+            'create' => CreateBundle::route('/create'),
+            'edit' => EditBundle::route('/{record}/edit'),
         ];
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\SubscribeUserToNewsletterAction;
 use App\Actions\UnsubscribeUserFromNewsletterAction;
 use App\Http\Auth\Requests\ProfileRequest;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -17,7 +18,7 @@ class ProfileController
 
     public function update(ProfileRequest $profileRequest): RedirectResponse
     {
-        /** @var \App\Models\User $user */
+        /** @var User $user */
         $user = $profileRequest->user();
 
         if ($user->email) {
@@ -47,7 +48,7 @@ class ProfileController
 
     public function delete(): RedirectResponse
     {
-        /** @var \App\Models\User $user */
+        /** @var User $user */
         $user = auth()->user();
 
         $user->purchases()->delete();

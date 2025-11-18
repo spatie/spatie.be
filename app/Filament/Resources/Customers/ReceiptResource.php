@@ -2,12 +2,17 @@
 
 namespace App\Filament\Resources\Customers;
 
-use Filament\Forms\Components\Grid;
+use App\Filament\Resources\Customers\ReceiptResource\Pages\CreateReceipt;
+use App\Filament\Resources\Customers\ReceiptResource\Pages\EditReceipt;
+use App\Filament\Resources\Customers\ReceiptResource\Pages\ListReceipts;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Laravel\Paddle\Receipt;
@@ -16,16 +21,16 @@ class ReceiptResource extends Resource
 {
     protected static ?string $model = Receipt::class;
 
-    protected static ?string $navigationGroup = 'Customers';
+    protected static string | \UnitEnum | null $navigationGroup = 'Customers';
 
-    protected static ?string $navigationIcon = 'heroicon-o-ticket';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-ticket';
 
     protected static ?int $navigationSort = 5;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(2)
                     ->schema([
                         TextInput::make('id')
@@ -65,12 +70,12 @@ class ReceiptResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -85,9 +90,9 @@ class ReceiptResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Resources\Customers\ReceiptResource\Pages\ListReceipts::route('/'),
-            'create' => \App\Filament\Resources\Customers\ReceiptResource\Pages\CreateReceipt::route('/create'),
-            'edit' => \App\Filament\Resources\Customers\ReceiptResource\Pages\EditReceipt::route('/{record}/edit'),
+            'index' => ListReceipts::route('/'),
+            'create' => CreateReceipt::route('/create'),
+            'edit' => EditReceipt::route('/{record}/edit'),
         ];
     }
 }

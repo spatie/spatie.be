@@ -6,6 +6,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Services\Mailcoach\MailcoachApi;
 use App\Services\Mailcoach\Subscriber;
+use Exception;
 use Illuminate\Support\Str;
 
 class AddPurchasedTagsToEmailListSubscriberAction
@@ -28,7 +29,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
         $subscriber = $this->findOrCreateSubscriber($purchase->user->email, $listUuid);
 
         if (! $subscriber) {
-            report(new \Exception("Could not subscribe subscriber"));
+            report(new Exception("Could not subscribe subscriber"));
 
             return;
         }

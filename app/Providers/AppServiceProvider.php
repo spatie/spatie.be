@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Docs\DocumentationContentParser;
+use App\Docs\DocumentationPage;
+use App\Docs\DocumentationPathParser;
 use App\Models\HtmlLesson;
 use App\Models\Video;
 use App\Spotlight\DocsCommand;
@@ -31,9 +34,9 @@ class AppServiceProvider extends ServiceProvider
 
             config()->set("sheets.collections.{$docsRepository['name']}", [
                 'disk' => $docsRepository['name'],
-                'sheet_class' => \App\Docs\DocumentationPage::class,
-                'path_parser' => \App\Docs\DocumentationPathParser::class,
-                'content_parser' => \App\Docs\DocumentationContentParser::class,
+                'sheet_class' => DocumentationPage::class,
+                'path_parser' => DocumentationPathParser::class,
+                'content_parser' => DocumentationContentParser::class,
             ]);
         }
 

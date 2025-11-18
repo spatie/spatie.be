@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     @stack('head')
 
-    <x-comments::styles />
+    @laravelCommentsLivewireStyles
 </head>
 
 <body class="flex flex-col min-h-screen leading-normal antialiased {{ $bodyClass ?? '' }}">
@@ -47,6 +47,7 @@
     <x-impersonate::banner/>
 
     @livewireScripts
+    @laravelCommentsLivewireScripts
     @stack('scripts')
     <script>
         document.addEventListener('alpine:init', () => {

@@ -2,32 +2,37 @@
 
 namespace App\Filament\Resources\Content;
 
-use App\Filament\Resources\Content\AdResource\Pages;
+use App\Filament\Resources\Content\AdResource\Pages\CreateAd;
+use App\Filament\Resources\Content\AdResource\Pages\EditAd;
+use App\Filament\Resources\Content\AdResource\Pages\ListAds;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Models\Ad;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class AdResource extends Resource
 {
     protected static ?string $model = Ad::class;
 
-    protected static ?string $navigationGroup = 'Content';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationIcon = 'heroicon-o-presentation-chart-line';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-presentation-chart-line';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->columnStart(1)
                     ->disabled(),
@@ -50,10 +55,10 @@ class AdResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('name')->searchable()->sortable(),
                 ImageColumn::make('image')->disk('github_ads'),
-                Tables\Columns\TextColumn::make('click_redirect_url')
+                TextColumn::make('click_redirect_url')
                     ->url(fn ($record) => $record->click_redirect_url)
                     ->openUrlInNewTab()
                     ->searchable()
@@ -63,12 +68,12 @@ class AdResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -83,9 +88,9 @@ class AdResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListAds::route('/'),
-            'create' => Pages\CreateAd::route('/create'),
-            'edit' => Pages\EditAd::route('/{record}/edit'),
+            'index' => ListAds::route('/'),
+            'create' => CreateAd::route('/create'),
+            'edit' => EditAd::route('/{record}/edit'),
         ];
     }
 }
