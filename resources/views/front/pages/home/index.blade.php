@@ -1,17 +1,8 @@
 @php
     $isBlackFriday = config('black-friday.enabled');
 
-    $image = image("/backgrounds/bf-25-hero.jpg");
     $sectionClasses = $isBlackFriday ? 'section section-group section-fade bg-white pt-32' : 'section section-group section-fade';
 @endphp
-
-@if($isBlackFriday)
-    @push('startBody')
-        <div class="wallpaper">
-            <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="" class="aspect-[2/3] md:h-svh object-cover">
-        </div>
-    @endpush
-@endif
 
 <x-page
     title="Websites & web applications in Laravel"
