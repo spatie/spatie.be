@@ -34,6 +34,8 @@ class RayV3
     {
         $latestVersion = $this->latestVersion();
 
+        $latestVersion = str_replace('-', '~', $latestVersion);
+
         return "{$this->baseUrl}/linux/x64/ray_{$latestVersion}_amd64.deb";
     }
 
