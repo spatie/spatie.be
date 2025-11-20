@@ -5,6 +5,7 @@
     $bodyClass = $isBlackFriday ? 'bg-bf-dark' : '';
     $sectionClasses = $isBlackFriday ? 'section section-group text-white' : 'section section-group';
     $productsCopy = $isBlackFriday ? 'Get 30% off on these courses & products' : 'All of our products';
+    $ogImage = $isBlackFriday ? asset('/images/25-bf-og-store.jpg') : asset('/images/og-store.png');
 @endphp
 
 @if ($isBlackFriday)
@@ -16,11 +17,11 @@
 @endif
 
 <x-page
-    ogImage="https://spatie.be/images/og-store.png"
     title="Applications and digital courses built for modern developers"
     description="Welcome in our store, by artisans for artisans. Get access to our paid products, courses and ebooks"
     :background="$isBlackFriday ? '' : '/backgrounds/product.jpg'"
     :bodyClass="$bodyClass"
+    :og-image="$ogImage"
 >
 
     @if ($isBlackFriday)
