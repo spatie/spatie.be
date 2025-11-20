@@ -12,6 +12,8 @@
     @push('startBody')
         <div class="wallpaper fixed">
             <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="" class="h-svh object-cover">
+            <canvas class="absolute w-full h-full inset-0 js-asteroids z-[9] opacity-50"></canvas>
+
         </div>
     @endpush
 @endif
@@ -25,7 +27,7 @@
 >
 
     @if ($isBlackFriday)
-        @include('front.pages.home.partials.bf-banner', array('button' => false))
+        @include('front.pages.home.partials.bf-banner', array('button' => false, 'showBackground' => false))
     @else
         <section id="banner" class="banner" role="banner">
             <div class="wrap">
