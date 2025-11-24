@@ -15,12 +15,12 @@
 <section id="banner" class="banner" role="banner">
 
     @if ($showBackground)
-        <div class="wallpaper banner-wallpaper">
+        <div class="wallpaper banner-wallpaper bg-bf-dark">
             <img src="../images/black-friday/bf-25-scanlines.png" alt="" srcset="" class="absolute h-full z-10 mix-blend-overlay opacity-50">
 
             <canvas class="absolute w-full h-full inset-0 js-asteroids z-[9] opacity-50"></canvas>
 
-            <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="" class="aspect-[2/3] md:h-svh object-cover">
+            <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="" class="aspect-[2/3] md:h-full object-cover">
             <img src="../images/black-friday/bf-25-hero-grid.svg" alt="" srcset="" class="absolute bottom-0 max-h-[480px] object-cover object-top">
         </div>
     @endif
