@@ -4,9 +4,9 @@ namespace App\Filament\Resources\Customers\UserResource\Actions;
 
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
+use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
 
 class TransferPurchaseAssignmentAction
 {
@@ -14,7 +14,7 @@ class TransferPurchaseAssignmentAction
     {
         return Action::make('transfer_purchase_assignments')
             ->icon('heroicon-o-arrows-right-left')
-            ->form([
+            ->schema([
                 TextInput::make('email')
                     ->label('Email')
                     ->required()

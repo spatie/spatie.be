@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Customers\ReceiptResource\Pages;
 
 use App\Filament\Resources\Customers\ReceiptResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditReceipt extends EditRecord
@@ -13,7 +13,7 @@ class EditReceipt extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

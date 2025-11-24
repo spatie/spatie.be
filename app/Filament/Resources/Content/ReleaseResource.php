@@ -4,33 +4,38 @@ namespace App\Filament\Resources\Content;
 
 use App\Domain\Shop\Models\Product;
 use App\Domain\Shop\Models\Release;
-use App\Filament\Resources\Content\ReleaseResource\Pages;
+use App\Filament\Resources\Content\ReleaseResource\Pages\CreateRelease;
+use App\Filament\Resources\Content\ReleaseResource\Pages\EditRelease;
+use App\Filament\Resources\Content\ReleaseResource\Pages\ListReleases;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ReleaseResource extends Resource
 {
     protected static ?string $model = Release::class;
 
-    protected static ?string $navigationGroup = 'Content';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content';
 
     protected static ?int $navigationSort = 4;
 
-    protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-list-bullet';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->columnStart(1)
                     ->disabled(),
@@ -55,24 +60,24 @@ class ReleaseResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
                 ResourceLinkColumn::make(
                     'product.title',
                     fn (Release $record) => route('filament.admin.resources.shop.products.edit', ['record' => $record->product])
                 ),
-                Tables\Columns\TextColumn::make('version')->searchable()->sortable(),
+                TextColumn::make('version')->searchable()->sortable(),
                 BooleanColumn::make('released'),
-                Tables\Columns\TextColumn::make('released_at')->dateTime()->sortable(),
+                TextColumn::make('released_at')->dateTime()->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -87,9 +92,9 @@ class ReleaseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListReleases::route('/'),
-            'create' => Pages\CreateRelease::route('/create'),
-            'edit' => Pages\EditRelease::route('/{record}/edit'),
+            'index' => ListReleases::route('/'),
+            'create' => CreateRelease::route('/create'),
+            'edit' => EditRelease::route('/{record}/edit'),
         ];
     }
 }

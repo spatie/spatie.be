@@ -3,6 +3,7 @@
 namespace App\Support\CommonMark;
 
 use Illuminate\Support\Str;
+use InvalidArgumentException;
 use League\CommonMark\Extension\CommonMark\Node\Inline\Image;
 use League\CommonMark\Node\Node;
 use League\CommonMark\Renderer\ChildNodeRendererInterface;
@@ -19,7 +20,7 @@ class ImageRenderer implements NodeRendererInterface, ConfigurationAwareInterfac
     public function render(Node $node, ChildNodeRendererInterface $childRenderer)
     {
         if (! ($node instanceof Image)) {
-            throw new \InvalidArgumentException('Incompatible inline type: ' . \get_class($node));
+            throw new InvalidArgumentException('Incompatible inline type: ' . \get_class($node));
         }
 
         $attrs = $node->data->get('attributes', []);

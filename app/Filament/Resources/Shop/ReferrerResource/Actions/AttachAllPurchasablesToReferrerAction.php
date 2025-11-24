@@ -4,7 +4,7 @@ namespace App\Filament\Resources\Shop\ReferrerResource\Actions;
 
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Referrer;
-use Filament\Tables\Actions\Action;
+use Filament\Actions\Action;
 
 class AttachAllPurchasablesToReferrerAction
 {
