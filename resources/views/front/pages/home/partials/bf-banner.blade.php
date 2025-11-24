@@ -43,12 +43,15 @@
     @if ($button)
         <div class="flex flex-col items-center">
             <a href="{{ route('products.index') }}"
-               class="text-lg text-black font-bold transition transition-color font-pt px-6 py-2 bg-white rounded-full hover:bg-gray-lighter">
+               class="inline-flex gap-2 justify-center text-2xl text-black font-bold transition transition-color font-pt px-8 py-4 bg-white rounded-full hover:bg-gray-lighter">
                 See all deals
+                <span class="icon fill-current text-current">
+                    {{ app_svg('icons/far-angle-right') }}
+                </span>
             </a>
         </div>
     @endif
 
-    <div class="h-12"></div>
+    <div class="h-24"></div>
 
 </section>
