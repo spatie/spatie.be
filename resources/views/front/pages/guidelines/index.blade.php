@@ -1,4 +1,4 @@
-<x-page title="Guidelines" background="/backgrounds/blog-index.jpg" body-class="bg-oss-gray" main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased">
+<x-page title="Guidelines" background="/backgrounds/guidelines.jpg" body-class="bg-oss-gray" main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased">
     <x-slot name="description">
         A set of guidelines we use to bring our projects to a good end.
         Consistency is the key to writing maintainable software.
