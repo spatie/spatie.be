@@ -1,22 +1,29 @@
+@php
+    $isBlackFriday = config('black-friday.enabled');
+
+    $sectionClasses = $isBlackFriday ? 'section section-group section-fade bg-white pt-32' : 'section section-group section-fade';
+@endphp
+
 <x-page
     title="Websites & web applications in Laravel"
-    background="/backgrounds/home-2020.jpg">
+    :background="$isBlackFriday ? '' : '/backgrounds/home-2020.jpg'"
+>
     <x-slot name="description">
         Spatie is a digital allrounder: we design solid websites & web applications using Laravel & Vue. No frills, just
         proven expertise. From Antwerp, Belgium
     </x-slot>
 
-    @include('front.pages.home.partials.banner')
+    @if($isBlackFriday)
+        @include('front.pages.home.partials.bf-banner')
+    @else
+        @include('front.pages.home.partials.banner')
+    @endif
 
-    <div class="mb-8">
-        <a href="{{ route('products.index') }}">
-            {{-- @include('front.pages.products.partials.ctaLaraconEU') --}}
-        </a>
-    </div>
+    @if(!$isBlackFriday)
+        @include('front.pages.home.partials.news')
+    @endif
 
-    @include('front.pages.home.partials.news')
-
-    <div class="section section-group section-fade">
+    <div class="{{ $sectionClasses }}">
         @include('front.pages.home.partials.portfolio')
         @include('front.pages.home.partials.newsletter')
         @include('front.pages.home.partials.clients')

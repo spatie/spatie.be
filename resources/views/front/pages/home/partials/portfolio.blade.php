@@ -1,7 +1,7 @@
 <section id="portfolio" class="section">
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://mailcoach.app" class="illustration is-left h-full" title="Mailcoach Cloud" target="_blank" rel="nofollow noreferrer noopener">
+            <a href="https://mailcoach.app" class="illustration is-left h-full aspect-[3/2]" title="Mailcoach" target="_blank">
                 {{ image('portfolio/mailcoach.png') }}
             </a>
         </div>
@@ -10,20 +10,14 @@
                 <h3 class="title">
                     Mailcoach
                     <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">Powerful email marketing tools<br/>to effortlessly grow, connect and convert</span>
+                        Powerful email marketing to grow, connect and convert
                     </span>
                 </h3>
-                <h4 class="text-lg font-semibold">Mailcoach</h4>
                 <p class="text-lg">
-                    Mailcoach is a fully featured email marketing platform built for growing creators, developers, and businesses. Start a free 14-day trial, no credit card required.
-                </p>
-                <h4 class="text-lg font-semibold">Mailcoach Self-Hosted</h4>
-                <p class="text-lg">
-                    Email marketing you host yourself. Mailcoach Self-Hosted is a powerful email platform for email marketing, automations and transactional emails, seamlessly integrated into your Laravel application.
-                </p>
+ Mailcoach is an email marketing platform designed for creators, developers and businesses. It offers powerful tools for marketing campaigns, automations, and transactional emails as either a hosted service or a self-hosted Laravel integration.                 </p>
                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://mailcoach.app?ref=spatie" target="_blank" rel="nofollow noreferrer noopener">Mailcoach</a></li>
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="/products/mailcoach">Mailcoach Self-Hosted</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://mailcoach.app" target="_blank">Try Mailcoach for free</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="/products/mailcoach">Buy Mailcoach Self-Hosted</a></li>
                 </ul>
             </div>
         </div>
@@ -31,89 +25,25 @@
 
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://writing-readable-php.com" class="illustration is-left h-full" title="Writing Readable PHP"
+            <a href="https://flareapp.io" class="illustration is-left h-full aspect-[3/2]" title="Flare"
                target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/writing-readable-php.jpg') }}
+                {{ image('portfolio/flare_spatie_cover.jpg') }}
             </a>
         </div>
         <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Writing Readable PHP
-                    <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">Video and Online</span> Course
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Are you staring at your old code as if someone else wrote it? Do you code in a team without clean
-                    code habits?
-                    Or are you struggling with consistent naming?
-                </p>
-                <p class="text-lg">
-                    Stop the madness! Let’s learn how to write readable PHP in this hands-on course by our own Freek
-                    together with Christoph Rumpel.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://writing-readable-php.com" target="_blank"
-                                rel="nofollow noreferrer noopener">writing-readable-php.com</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 section">
-        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://laravelpackage.training" class="illustration is-left h-full"
-               title="Laravel package training" target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/laravel-package-training-v2.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-span-3 sm:col-start-5 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
-                    Laravel Package Training v2
+                    Flare
                     <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">4 hours of </span>premium video content
+                        Full-stack monitoring for Laravel, PHP & JavaScript
                     </span>
                 </h3>
                 <p class="text-lg">
-                    Learn how to build your own packages in an updated version of our popular video course. We explain a
-                    proven, modern workflow to create packages using our latest insights for Laravel&nbsp;8 and PHP&nbsp;8.
+Flare helps you spot slow performance in your app and alerts you the moment a bug breaks production. Built for Laravel, PHP & JavaScript, and connects with GitHub, Jira, Linear and more.
                 </p>
                 <ul class="text-lg mt-8">
                     <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://laravelpackage.training" target="_blank"
-                                rel="nofollow noreferrer noopener">laravelpackage.training</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
-        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://testing-laravel.com" class="illustration is-left h-full" title="Testing Laravel"
-               target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/testing-laravel.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Testing Laravel
-                    <span class="title-subtext text-pink-dark block">
-                        Video course <span class="font-normal">+ demo app</span>
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Learn how to write quality tests in Pest and PHPUnit.
-                </p>
-                <p class="text-lg">Learn best practices for testing Laravel applications. Ship less bugs to production
-                    and refactor stuff with confidence after watching this extended video course by Freek and Brent.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://testing-laravel.com" target="_blank" rel="nofollow noreferrer noopener">testing-laravel.com</a>
+                                href="https://flareapp.io" target="_blank" rel="nofollow noreferrer noopener">Try Flare for free</a>
                     </li>
                 </ul>
             </div>
@@ -122,155 +52,21 @@
 
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://event-sourcing-laravel.com" class="illustration is-left h-full" title="event-sourcing"
-               target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/event-sourcing.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-span-3 sm:col-start-5 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Event Sourcing in Laravel
-                    <span class="title-subtext text-pink-dark block">
-                        <span class="font-normal">New</span> book + video course
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Learn how to implement Event Sourcing in large Laravel applications in this extended course by
-                    Brent.
-                <p>
-                <p class="text-lg">
-                    This premium course includes an beautifully designed ebook, videos and a demo application with a
-                    shoppping cart example.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://event-sourcing-laravel.com" target="_blank"
-                                rel="nofollow noreferrer noopener">event-sourcing-laravel.com</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
-        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://myray.app" class="illustration is-left h-full" title="Ray" target="_blank"
-               rel="nofollow noreferrer noopener">
-                {{ image('portfolio/ray.png') }}
-            </a>
-        </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Debug with Ray
-                    <span class="title-subtext text-pink-dark block">
-                        Electron app <span class="font-normal">for Mac, Windows and Linux</span>
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Dump debugging has evolved.
-                </p>
-                <p class="text-lg">Ray is a desktop app that vastly improves your debugging experience without the
-                    hassle of installing extra PHP extensions. You can use it to debug faster in Laravel, PHP or
-                    Wordpress. Ray works with Javascript, Node.js and Ruby as well.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://myray.app" target="_blank"
-                                rel="nofollow noreferrer noopener">myray.app</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 section">
-        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://laravel-beyond-crud.com" class="illustration is-left h-full" title="Laravel Beyond CRUD"
-               target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/crud.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-span-3 sm:col-start-5 | self-center">
-            <div class="markup links-blue links-underline">
-                <h3 class="title">
-                    Laravel Beyond CRUD
-                    <span class="title-subtext text-pink-dark block">
-                        Book<span class="font-normal"> + </span>Premium Video Course
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Learn how to build larger-than-average Laravel applications in our new book and video course. The
-                    knowledge in this course is built from the years of experience our team has building large, robust
-                    applications.
-                    <br>Written and presented by Brent Roose.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://laravel-beyond-crud.com" target="_blank"
-                                rel="nofollow noreferrer noopener">laravel-beyond-crud.com</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 sm:grid-flow-col-dense section">
-        <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://flareapp.io" class="illustration is-left h-full" title="Flare - Laravel error reporting"
-               target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/flare.jpg') }}
-            </a>
-        </div>
-        <div class="sm:col-start-2 sm:col-span-3 | self-center">
-            <div class="markup links-blue links-underline | sm:grid-text-right">
-                <h3 class="title">
-                    Ignition + Flare
-                    <span class="title-subtext text-pink-dark block">
-                        Error page<span class="font-normal"> + </span>tracker <span class="font-normal">for
-                            Laravel</span>
-                    </span>
-                </h3>
-                <p class="text-lg">
-                    Ignition is a free and shareable error page that ships with Laravel 6 and up. It's built to keep you
-                    focused on finding a solution.
-                    It also couples with an online service —Flare— that tracks production errors and lets you work in
-                    team to fix them.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a
-                                href="https://flareapp.io" target="_blank" rel="nofollow noreferrer noopener">flareapp.io</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="wrap wrap-8 section">
-        <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
-            <a href="https://front-line-php.com" class="illustration is-left h-full" title="front-line-php.com"
-               target="_blank" rel="nofollow noreferrer noopener">
-                {{ image('portfolio/flphp.jpg') }}
+            <a href="https://myray.app" class="illustration is-left h-full aspect-[3/2]" title="Ray" target="_blank">
+                {{ image('portfolio/ray.jpg') }}
             </a>
         </div>
         <div class="sm:col-span-3 sm:col-start-5 | self-center">
             <div class="markup links-blue links-underline | sm:grid-text-right">
                 <h3 class="title">
-                    Front Line PHP
+                    Ray
                     <span class="title-subtext text-pink-dark block">
-                        Book<span class="font-normal"> + </span>free videos <span class="font-normal"></span>
+                        Dump debugging evolved
                     </span>
                 </h3>
-                <p class="text-lg font-semibold">
-                    Updated for PHP 8.2! </p>
                 <p class="text-lg">
-                    An ebook on cutting edge tactics in PHP&nbsp;8, accompanied by free videos with practical examples
-                    by Freek Van der Herten.
-                </p>
-                <ul class="text-lg mt-8">
-                    <li class="flex items-baseline">
-                        <span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span>
-                        <span class="ml-1"><a href="https://front-line-php.com" target="_blank"
-                                              rel="nofollow noreferrer noopener">front-line-php.com</a></span>
-                    </li>
+Ray is a desktop app that vastly improves your debugging experience without the hassle of installing extra PHP extensions. You can use it to debug faster in Laravel, PHP or Wordpress. Ray works with Javascript, Node.js and Ruby as well.                 <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://myray.app" target="_blank">Download Ray</a></li>
                 </ul>
             </div>
         </div>
@@ -278,7 +74,7 @@
 
     <div class="wrap wrap-8 sm:grid-flow-col-dense section">
         <div class="sm:col-start-5 sm:col-span-4 | md:col-start-5 md:col-span-3 md:ml-16 md:-mr-32">
-            <a href="https://medialibrary.pro" class="illustration is-left h-full" title="Media Library Pro" target="_blank" rel="nofollow noreferrer noopener">
+            <a href="https://medialibrary.pro" class="illustration is-left h-full aspect-[3/2]" title="Media Library Pro" target="_blank" rel="nofollow noreferrer noopener">
                 {{ image('portfolio/media-library-pro.jpg') }}
             </a>
         </div>

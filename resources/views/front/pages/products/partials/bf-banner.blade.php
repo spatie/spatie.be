@@ -5,8 +5,8 @@
 <section id="banner" class="banner mb-16" role="banner">
 
     <div class="flex flex-col items-center pb-12 p-4">
-        <img class="max-w-[480px] mb-16" src="../images/black-friday/bf-24-logo.svg" alt="">
-        <div class="text-xl lg:text-2xl text-bf-beige font-sans uppercase text-center">
+        <img class="w-full max-w-[800px] mb-16" src="../images/black-friday/bf-25-logo.webp" alt="">
+        <div class="text-xl lg:text-2xl text-white font-sans uppercase text-center">
             <p class="font-bold">Get 30% off on all Spatie products</p>
             <p>
                 <x-countdown class="inline-block" :expires="$expirationDate">

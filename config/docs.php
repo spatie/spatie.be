@@ -14,7 +14,9 @@ return [
             "name" => "laravel-one-time-passwords",
             "repository" => "spatie/laravel-one-time-passwords",
             "branches" => [
-                "main" => "v1",
+                "main" => "v2",
+                "v1" => "v1",
+
             ],
             "category" => "Laravel",
         ],
