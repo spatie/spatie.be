@@ -65,10 +65,6 @@ class PurchaseAssignmentResource extends Resource
 
                         DateTimePicker::make('license_expires_at')
                             ->label('Expires at')
-                            ->default(function ($record) {
-                                return $record?->licenses?->first()?->expires_at;
-                            })
-                            ->dehydrated(false)
                             ->columnStart(1),
                     ]),
             ]);
