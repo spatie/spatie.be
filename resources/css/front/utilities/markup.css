@@ -377,7 +377,11 @@
 }
 
 .markup.content-markup blockquote {
-    @apply float-end w-1/2 p-6 ml-6 mb-9 pe-0 border-l-2 border-oss-gray-medium bg-oss-gray-light lg:text-xl;
+    @apply p-6 mb-9 border-l-2 rounded-sm border-blue-light bg-blue-lightest;
+}
+
+.markup.content-markup.markup-code blockquote > :not(pre) code {
+    @apply bg-blue-50;
 }
 
 .markup.content-markup em {
