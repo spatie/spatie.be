@@ -133,16 +133,27 @@ $condition
 
 ## Comments
 
-- **Avoid comments** - write expressive code instead
-- When needed, use proper formatting:
-  ```php
-  // Single line with space after //
-  
-  /*
-   * Multi-line blocks start with single *
-   */
-  ```
-- Refactor comments into descriptive function names
+Be very critical about adding comments as they often become outdated and can mislead over time. Code should be self-documenting through descriptive variable and function names.
+
+Adding comments should never be the first tactic to make code readable.
+
+*Instead of this:*
+```php
+// Get the failed checks for this site
+$checks = $site->checks()->where('status', 'failed')->get();
+```
+
+*Do this:*
+```php
+$failedChecks = $site->checks()->where('status', 'failed')->get();
+```
+
+**Guidelines:**
+- Don't add comments that describe what the code does - make the code describe itself
+- Short, readable code doesn't need comments explaining it
+- Use descriptive variable names instead of generic names + comments
+- Only add comments when explaining *why* something non-obvious is done, not *what* is being done
+- Never add comments to tests - test names should be descriptive enough
 
 ## Whitespace
 
