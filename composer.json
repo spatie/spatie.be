@@ -50,7 +50,7 @@
         "spatie/cpu-load-health-check": "^1.0.2",
         "spatie/crypto": "^2.0.1",
         "spatie/eloquent-sortable": "^4.0.1",
-        "spatie/filament-simple-stats": "dev-main",
+        "spatie/filament-simple-stats": "^1.0.0",
         "spatie/fork": "^1.1.2",
         "spatie/holidays": "^1.0",
         "spatie/laravel-artisan-dispatchable": "^1.3",
