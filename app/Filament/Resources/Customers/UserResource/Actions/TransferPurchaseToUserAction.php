@@ -4,9 +4,9 @@ namespace App\Filament\Resources\Customers\UserResource\Actions;
 
 use App\Domain\Shop\Models\Purchase;
 use App\Models\User;
+use Filament\Actions\Action;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
 use Laravel\Paddle\Receipt;
 
 class TransferPurchaseToUserAction
@@ -15,7 +15,7 @@ class TransferPurchaseToUserAction
     {
         return Action::make('transfer_purchases_to_user')
             ->icon('heroicon-o-user-plus')
-            ->form([
+            ->schema([
                 TextInput::make('email')
                     ->label('Email')
                     ->required()

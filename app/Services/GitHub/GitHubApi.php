@@ -3,6 +3,9 @@
 namespace App\Services\GitHub;
 
 use Exception;
+use Github\Api\Organization;
+use Github\Api\Repo;
+use Github\Api\User;
 use Github\Client;
 use Github\ResultPager;
 use Http;
@@ -21,7 +24,7 @@ class GitHubApi
 
     public function fetchPublicRepositories(string $username): Collection
     {
-        /** @var \Github\Api\Organization $api */
+        /** @var Organization $api */
         $api = $this->client->api('organization');
 
         $paginator = new ResultPager($this->client);
@@ -93,7 +96,7 @@ class GitHubApi
 
     public function fetchRepositoryTopics(string $username, string $repository): Collection
     {
-        /** @var \Github\Api\Repo $api */
+        /** @var Repo $api */
         $api = $this->client->api('repository');
 
         return collect($api->topics($username, $repository)['names'] ?? []);
@@ -101,7 +104,7 @@ class GitHubApi
 
     public function fetchRepositoryContributors(string $username, string $repository): Collection
     {
-        /** @var \Github\Api\Repo $api */
+        /** @var Repo $api */
         $api = $this->client->api('repository');
 
         $paginator = new ResultPager($this->client);
@@ -111,7 +114,7 @@ class GitHubApi
 
     public function getUser($username)
     {
-        /** @var \Github\Api\User $api */
+        /** @var User $api */
         $api = $this->client->api('user');
 
         return $api->show($username);

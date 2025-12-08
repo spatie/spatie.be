@@ -7,6 +7,7 @@ use App\Domain\Shop\Notifications\LicenseExpiredNotification;
 use App\Domain\Shop\Notifications\LicenseExpiredSecondNotification;
 use App\Domain\Shop\Notifications\LicenseIsAboutToExpireNotification;
 use Illuminate\Console\Command;
+use Throwable;
 
 class SendLicenseExpirationNotificationsCommand extends Command
 {
@@ -30,7 +31,7 @@ class SendLicenseExpirationNotificationsCommand extends Command
             ->each(function (License $license): void {
                 try {
                     $license->assignment?->user->notify(new LicenseIsAboutToExpireNotification($license));
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     report($e);
                 }
 
@@ -48,7 +49,7 @@ class SendLicenseExpirationNotificationsCommand extends Command
             ->each(function (License $license): void {
                 try {
                     $license->assignment?->user->notify(new LicenseExpiredNotification($license));
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     report($e);
                 }
                 $license->update(['expiration_mail_sent_at' => now()]);
@@ -65,7 +66,7 @@ class SendLicenseExpirationNotificationsCommand extends Command
             ->each(function (License $license): void {
                 try {
                     $license->assignment?->user->notify(new LicenseExpiredSecondNotification($license));
-                } catch (\Throwable $e) {
+                } catch (Throwable $e) {
                     report($e);
                 }
                 $license->update(['second_expiration_mail_sent_at' => now()]);

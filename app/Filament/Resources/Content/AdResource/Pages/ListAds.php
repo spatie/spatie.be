@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Content\AdResource\Pages;
 
 use App\Filament\Resources\Content\AdResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListAds extends ListRecords
@@ -13,7 +13,7 @@ class ListAds extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }

@@ -2,28 +2,33 @@
 
 namespace App\Filament\Resources\Courses;
 
-use App\Filament\Resources\Courses\VideoResource\Pages;
+use App\Filament\Resources\Courses\VideoResource\Pages\CreateVideo;
+use App\Filament\Resources\Courses\VideoResource\Pages\EditVideo;
+use App\Filament\Resources\Courses\VideoResource\Pages\ListVideos;
 use App\Models\Video;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class VideoResource extends Resource
 {
     protected static ?string $model = Video::class;
 
-    protected static ?string $navigationGroup = 'Courses';
+    protected static string | \UnitEnum | null $navigationGroup = 'Courses';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->disabled()
                     ->columnStart(1),
@@ -40,18 +45,18 @@ class VideoResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('title')->searchable()->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -66,9 +71,9 @@ class VideoResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListVideos::route('/'),
-            'create' => Pages\CreateVideo::route('/create'),
-            'edit' => Pages\EditVideo::route('/{record}/edit'),
+            'index' => ListVideos::route('/'),
+            'create' => CreateVideo::route('/create'),
+            'edit' => EditVideo::route('/{record}/edit'),
         ];
     }
 }

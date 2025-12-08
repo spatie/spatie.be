@@ -5,6 +5,7 @@ namespace App\Actions;
 use App\Data\BlackFridayRewardData;
 use App\Enums\BlackFridayRewardType;
 use App\Models\User;
+use Exception;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -97,7 +98,7 @@ class DetermineBlackFridayRewardAction
     ): BlackFridayRewardData {
         $code = match ($rewardType) {
             BlackFridayRewardType::NextPurchaseDiscount => config('black-friday.next_purchase_discount_code'),
-            default => throw new \Exception('Invalid reward type'),
+            default => throw new Exception('Invalid reward type'),
         };
 
         return $this->redeemReward($user, $day, $rewardType, code: $code);

@@ -3,33 +3,38 @@
 namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Product;
-use App\Filament\Resources\Shop\ProductResource\Pages;
+use App\Filament\Resources\Shop\ProductResource\Pages\CreateProduct;
+use App\Filament\Resources\Shop\ProductResource\Pages\EditProduct;
+use App\Filament\Resources\Shop\ProductResource\Pages\ListProducts;
 use App\Filament\Tables\Columns\BooleanColumn;
-use Filament\Forms\Components\Grid;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationGroup = 'Products';
+    protected static string | \UnitEnum | null $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 1;
 
-    protected static ?string $navigationIcon = 'heroicon-o-gift';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-gift';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(2)
                     ->schema([
                         TextInput::make('id')
@@ -66,24 +71,24 @@ class ProductResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
                 SpatieMediaLibraryImageColumn::make('product_image')->collection('product-image'),
-                Tables\Columns\TextColumn::make('title')->searchable()->sortable(),
+                TextColumn::make('title')->searchable()->sortable(),
                 BooleanColumn::make('visible')->label('Visible on Front')->sortable(),
-                Tables\Columns\TextColumn::make('purchasablesWithoutRenewals.title')
+                TextColumn::make('purchasablesWithoutRenewals.title')
                     ->listWithLineBreaks()->bulleted(),
-                Tables\Columns\TextColumn::make('renewals.title')
+                TextColumn::make('renewals.title')
                     ->listWithLineBreaks()->bulleted(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ])
             ->reorderable('sort_order');
@@ -99,9 +104,9 @@ class ProductResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListProducts::route('/'),
-            'create' => Pages\CreateProduct::route('/create'),
-            'edit' => Pages\EditProduct::route('/{record}/edit'),
+            'index' => ListProducts::route('/'),
+            'create' => CreateProduct::route('/create'),
+            'edit' => EditProduct::route('/{record}/edit'),
         ];
     }
 }

@@ -17,7 +17,7 @@ class StatsOverviewWidget extends BaseWidget
     protected function getStats(): array
     {
         return [
-            SimpleStat::make(User::class)->last30Days()->dailyCount(),
+            SimpleStat::make(User::class)->last7Days()->dailyCount(),
             SimpleStat::make(Purchase::class)->last30Days()->dailySum('earnings'),
         ];
     }

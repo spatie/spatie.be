@@ -2,31 +2,36 @@
 
 namespace App\Filament\Resources\Content;
 
-use App\Filament\Resources\Content\PlaylistResource\Pages;
+use App\Filament\Resources\Content\PlaylistResource\Pages\CreatePlaylist;
+use App\Filament\Resources\Content\PlaylistResource\Pages\EditPlaylist;
+use App\Filament\Resources\Content\PlaylistResource\Pages\ListPlaylists;
 use App\Models\Playlist;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\SpatieMediaLibraryFileUpload;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
 use Filament\Support\Enums\IconPosition;
-use Filament\Tables;
 use Filament\Tables\Columns\SpatieMediaLibraryImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class PlaylistResource extends Resource
 {
     protected static ?string $model = Playlist::class;
 
-    protected static ?string $navigationGroup = 'Content';
+    protected static string | \UnitEnum | null $navigationGroup = 'Content';
 
     protected static ?int $navigationSort = 6;
 
-    protected static ?string $navigationIcon = 'heroicon-o-musical-note';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-musical-note';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 TextInput::make('id')
                     ->columnStart(1)
                     ->disabled(),
@@ -48,9 +53,9 @@ class PlaylistResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('name')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('spotify_url')
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('name')->searchable()->sortable(),
+                TextColumn::make('spotify_url')
                     ->url(fn ($record) => $record->spotify_url)
                     ->openUrlInNewTab()
                     ->searchable()
@@ -58,7 +63,7 @@ class PlaylistResource extends Resource
                     ->icon('heroicon-o-arrow-up-right')
                     ->iconPosition(IconPosition::After)
                     ->sortable(),
-                Tables\Columns\TextColumn::make('apple_music_url')
+                TextColumn::make('apple_music_url')
                     ->url(fn ($record) => $record->apple_music_url)
                     ->openUrlInNewTab()
                     ->limit(20)
@@ -71,12 +76,12 @@ class PlaylistResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -91,9 +96,9 @@ class PlaylistResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListPlaylists::route('/'),
-            'create' => Pages\CreatePlaylist::route('/create'),
-            'edit' => Pages\EditPlaylist::route('/{record}/edit'),
+            'index' => ListPlaylists::route('/'),
+            'create' => CreatePlaylist::route('/create'),
+            'edit' => EditPlaylist::route('/{record}/edit'),
         ];
     }
 }

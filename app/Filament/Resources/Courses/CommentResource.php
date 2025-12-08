@@ -2,11 +2,15 @@
 
 namespace App\Filament\Resources\Courses;
 
-use App\Filament\Resources\Courses\CommentResource\Pages;
-use Filament\Forms\Form;
+use App\Filament\Resources\Courses\CommentResource\Pages\CreateComment;
+use App\Filament\Resources\Courses\CommentResource\Pages\EditComment;
+use App\Filament\Resources\Courses\CommentResource\Pages\ListComments;
+use Filament\Actions\Action;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Actions\Action;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Spatie\Comments\Models\Comment;
 
@@ -14,16 +18,16 @@ class CommentResource extends Resource
 {
     protected static ?string $model = Comment::class;
 
-    protected static ?string $navigationGroup = 'Courses';
+    protected static string | \UnitEnum | null $navigationGroup = 'Courses';
 
     protected static ?int $navigationSort = 3;
 
-    protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 //
             ]);
     }
@@ -32,23 +36,23 @@ class CommentResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('title')
+                TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('title')
                     ->state(fn (Comment $record) => $record->topLevel()->commentable?->commentableName() ?? 'Deleted...'),
-                Tables\Columns\TextColumn::make('commentator.email')->searchable()->sortable(),
+                TextColumn::make('commentator.email')->searchable()->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
+            ->recordActions([
                 Action::make('show')
                     ->icon('heroicon-o-eye')
                     ->url(fn (Comment $record): string => $record->commentUrl())
                     ->openUrlInNewTab(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -63,9 +67,9 @@ class CommentResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListComments::route('/'),
-            'create' => Pages\CreateComment::route('/create'),
-            'edit' => Pages\EditComment::route('/{record}/edit'),
+            'index' => ListComments::route('/'),
+            'create' => CreateComment::route('/create'),
+            'edit' => EditComment::route('/{record}/edit'),
         ];
     }
 }

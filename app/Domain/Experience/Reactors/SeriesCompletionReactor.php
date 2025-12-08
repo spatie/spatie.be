@@ -18,10 +18,10 @@ class SeriesCompletionReactor extends Reactor
 
     public function __invoke(VideoCompleted $event): void
     {
-        /** @var \App\Models\User $user */
+        /** @var User $user */
         $user = User::find($event->userId);
 
-        /** @var \App\Models\Series $series */
+        /** @var Series $series */
         $series = Series::find($event->seriesId);
 
         if (! $user->hasCompleted($series)) {

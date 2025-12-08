@@ -4,32 +4,37 @@ namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Bundle;
 use App\Domain\Shop\Models\BundlePrice;
-use App\Filament\Resources\Shop\BundlePriceResource\Pages;
+use App\Filament\Resources\Shop\BundlePriceResource\Pages\CreateBundlePrice;
+use App\Filament\Resources\Shop\BundlePriceResource\Pages\EditBundlePrice;
+use App\Filament\Resources\Shop\BundlePriceResource\Pages\ListBundlePrices;
 use App\Filament\Tables\Columns\BooleanColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
 use App\Support\Paddle\PaddleCountries;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class BundlePriceResource extends Resource
 {
     protected static ?string $model = BundlePrice::class;
 
-    protected static ?string $navigationGroup = 'Products';
+    protected static string | \UnitEnum | null $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 5;
 
-    protected static ?string $navigationIcon = 'heroicon-o-currency-rupee';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-currency-rupee';
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Select::make('bundle_id')
                     ->relationship(name: 'bundle')
                     ->getOptionLabelFromRecordUsing(fn (Bundle $record) => $record->title)
@@ -57,11 +62,11 @@ class BundlePriceResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
                 ResourceLinkColumn::make('bundle.title', fn (BundlePrice $record) => route('filament.admin.resources.shop.bundles.edit', $record->bundle)),
-                Tables\Columns\TextColumn::make('country')->state(fn (BundlePrice $record) => PaddleCountries::getNameForCode($record->country_code) . "($record->country_code)")->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('currency_code')->searchable()->sortable(),
-                Tables\Columns\TextColumn::make('price_in_usd_cents')
+                TextColumn::make('country')->state(fn (BundlePrice $record) => PaddleCountries::getNameForCode($record->country_code) . "($record->country_code)")->searchable()->sortable(),
+                TextColumn::make('currency_code')->searchable()->sortable(),
+                TextColumn::make('price_in_usd_cents')
                     ->label('Price')
                     ->money('USD', divideBy: 100)
                     ->sortable(),
@@ -70,12 +75,12 @@ class BundlePriceResource extends Resource
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -90,9 +95,9 @@ class BundlePriceResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBundlePrices::route('/'),
-            'create' => Pages\CreateBundlePrice::route('/create'),
-            'edit' => Pages\EditBundlePrice::route('/{record}/edit'),
+            'index' => ListBundlePrices::route('/'),
+            'create' => CreateBundlePrice::route('/create'),
+            'edit' => EditBundlePrice::route('/{record}/edit'),
         ];
     }
 }

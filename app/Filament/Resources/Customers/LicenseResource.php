@@ -3,34 +3,39 @@
 namespace App\Filament\Resources\Customers;
 
 use App\Domain\Shop\Models\License;
+use App\Filament\Resources\Customers\LicenseResource\Pages\CreateLicense;
+use App\Filament\Resources\Customers\LicenseResource\Pages\EditLicense;
+use App\Filament\Resources\Customers\LicenseResource\Pages\ListLicenses;
 use App\Filament\Tables\Columns\CopyableColumn;
 use App\Filament\Tables\Columns\LicensePurchasableNameColumn;
 use App\Filament\Tables\Columns\ResourceLinkColumn;
+use Filament\Actions\Action;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
-use Filament\Tables\Actions\Action;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 
 class LicenseResource extends Resource
 {
-    protected static ?string $navigationGroup = 'Customers';
+    protected static string | \UnitEnum | null $navigationGroup = 'Customers';
 
     protected static ?string $model = License::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-key';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-key';
 
     protected static ?int $navigationSort = 4;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(2)
                     ->schema([
                         TextInput::make('id')
@@ -69,7 +74,7 @@ class LicenseResource extends Resource
                 TextColumn::make('satis_authentication_count')->sortable(),
                 TextColumn::make('expires_at')->date()->sortable(),
             ])
-            ->actions([
+            ->recordActions([
                 Action::make('regenerate')
                     ->button()
                     ->requiresConfirmation()
@@ -78,11 +83,11 @@ class LicenseResource extends Resource
                         fn (License $record) =>
                         $record->update(['key' => Str::random(64)])
                     ),
-                Tables\Actions\EditAction::make(),
+                EditAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -97,9 +102,9 @@ class LicenseResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => \App\Filament\Resources\Customers\LicenseResource\Pages\ListLicenses::route('/'),
-            'create' => \App\Filament\Resources\Customers\LicenseResource\Pages\CreateLicense::route('/create'),
-            'edit' => \App\Filament\Resources\Customers\LicenseResource\Pages\EditLicense::route('/{record}/edit'),
+            'index' => ListLicenses::route('/'),
+            'create' => CreateLicense::route('/create'),
+            'edit' => EditLicense::route('/{record}/edit'),
         ];
     }
 }

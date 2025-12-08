@@ -4,30 +4,35 @@ namespace App\Filament\Resources\Shop;
 
 use App\Domain\Shop\Models\Referrer;
 use App\Filament\Resources\Shop\ReferrerResource\Actions\AttachAllPurchasablesToReferrerAction;
-use App\Filament\Resources\Shop\ReferrerResource\Pages;
+use App\Filament\Resources\Shop\ReferrerResource\Pages\CreateReferrer;
+use App\Filament\Resources\Shop\ReferrerResource\Pages\EditReferrer;
+use App\Filament\Resources\Shop\ReferrerResource\Pages\ListReferrers;
 use App\Filament\Tables\Columns\CopyableColumn;
+use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
-use Filament\Tables;
+use Filament\Schemas\Components\Grid;
+use Filament\Schemas\Schema;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
 class ReferrerResource extends Resource
 {
     protected static ?string $model = Referrer::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-arrow-right-end-on-rectangle';
+    protected static string | \BackedEnum | null $navigationIcon = 'heroicon-o-arrow-right-end-on-rectangle';
 
-    protected static ?string $navigationGroup = 'Products';
+    protected static string | \UnitEnum | null $navigationGroup = 'Products';
 
     protected static ?int $navigationSort = 11;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return $form
-            ->schema([
+        return $schema
+            ->components([
                 Grid::make(2)
                     ->schema([
                         TextInput::make('id')
@@ -57,28 +62,28 @@ class ReferrerResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('id')->searchable()->sortable(),
+                TextColumn::make('id')->searchable()->sortable(),
                 CopyableColumn::make('slug')
                     ->formatStateUsing(fn (string $state) => url("/products?referrer={$state}"))
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('discount_percentage')
+                TextColumn::make('discount_percentage')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('click_count')
+                TextColumn::make('click_count')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('last_clicked_at')
+                TextColumn::make('last_clicked_at')
                     ->sortable(),
             ])
             ->filters([
                 //
             ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
+            ->recordActions([
+                EditAction::make(),
                 AttachAllPurchasablesToReferrerAction::make(),
             ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+            ->toolbarActions([
+                BulkActionGroup::make([
+                    DeleteBulkAction::make(),
                 ]),
             ]);
     }
@@ -93,9 +98,9 @@ class ReferrerResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListReferrers::route('/'),
-            'create' => Pages\CreateReferrer::route('/create'),
-            'edit' => Pages\EditReferrer::route('/{record}/edit'),
+            'index' => ListReferrers::route('/'),
+            'create' => CreateReferrer::route('/create'),
+            'edit' => EditReferrer::route('/{record}/edit'),
         ];
     }
 }

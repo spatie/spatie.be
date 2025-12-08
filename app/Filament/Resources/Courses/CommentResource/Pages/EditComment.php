@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Courses\CommentResource\Pages;
 
 use App\Filament\Resources\Courses\CommentResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditComment extends EditRecord
@@ -13,7 +13,7 @@ class EditComment extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

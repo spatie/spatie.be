@@ -4,10 +4,10 @@ namespace App\Filament\Resources\Shop\PurchasableResource\Actions;
 
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\PurchasablePrice;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
-use Filament\Tables\Actions\Action;
 
 class UpdatePriceForCurrencyAction
 {
@@ -15,7 +15,7 @@ class UpdatePriceForCurrencyAction
     {
         return Action::make('update_price_for_currency')
             ->icon('heroicon-o-currency-dollar')
-            ->form([
+            ->schema([
                 TextInput::make('amount_in_cents')
                     ->label('Amount in cents')
                     ->required()

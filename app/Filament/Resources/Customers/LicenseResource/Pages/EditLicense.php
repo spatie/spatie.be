@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Customers\LicenseResource\Pages;
 
 use App\Filament\Resources\Customers\LicenseResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditLicense extends EditRecord
@@ -13,7 +13,7 @@ class EditLicense extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

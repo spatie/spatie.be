@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Shop\ReferrerResource\Pages;
 
 use App\Filament\Resources\Shop\ReferrerResource;
-use Filament\Actions;
+use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
 class EditReferrer extends EditRecord
@@ -13,7 +13,7 @@ class EditReferrer extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            Actions\DeleteAction::make(),
+            DeleteAction::make(),
         ];
     }
 }

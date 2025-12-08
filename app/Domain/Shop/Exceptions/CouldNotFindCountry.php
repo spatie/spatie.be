@@ -2,7 +2,9 @@
 
 namespace App\Domain\Shop\Exceptions;
 
-class CouldNotFindCountry extends \RuntimeException
+use RuntimeException;
+
+class CouldNotFindCountry extends RuntimeException
 {
     public static function fromIp(): self
     {

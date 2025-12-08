@@ -3,7 +3,7 @@
 namespace App\Filament\Resources\Courses\SeriesResource\Pages;
 
 use App\Filament\Resources\Courses\SeriesResource;
-use Filament\Actions;
+use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListSeries extends ListRecords
@@ -13,7 +13,7 @@ class ListSeries extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            CreateAction::make(),
         ];
     }
 }
