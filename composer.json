@@ -148,10 +148,6 @@
         {
             "type": "composer",
             "url": "https://satis.spatie.be"
-        },
-        {
-            "type": "path",
-            "url": "../_packages/filament-simple-stats"
         }
     ],
     "minimum-stability": "stable",
