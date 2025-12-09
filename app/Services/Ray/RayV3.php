@@ -15,7 +15,7 @@ class RayV3
         return Cache::remember(
             key: "ray-v3-download-{$platform}",
             ttl: now()->addMinutes(5),
-            callback: fn() => match (strtolower($platform)) {
+            callback: fn () => match (strtolower($platform)) {
                 'macos-arm64', 'macos' => $this->macOsArm64(),
                 'macos-x64' => $this->macOsX64(),
                 'windows' => $this->windows(),
