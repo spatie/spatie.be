@@ -11,7 +11,8 @@ class DownloadRayV3Controller
     public function __invoke(Request $request, RayV3 $ray, string $platform): RedirectResponse
     {
         abort_unless(in_array($platform, [
-            'macos',
+            'macos-x64',
+            'macos-arm64',
             'windows',
             'linux',
         ]), 404);

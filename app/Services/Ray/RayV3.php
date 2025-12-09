@@ -4,51 +4,49 @@ namespace App\Services\Ray;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Symfony\Component\Yaml\Yaml;
 
 class RayV3
 {
-    protected string $baseUrl = 'https://ray-app.s3.eu-west-1.amazonaws.com/ray-app-updates-v3/beta';
+    protected string $baseUrl = 'https://ray-app.s3.eu-west-1.amazonaws.com/ray-app-updates-v3/beta/';
 
-    public function getDownloadLink(string $platform)
+    public function getDownloadLink(string $platform): string
     {
-        $method = "getDownloadLink" . ucfirst(strtolower($platform));
-
-        return $this->$method();
+        return match (strtolower($platform)) {
+            'macos-arm64', 'macos' => $this->macOsArm64(),
+            'macos-x64' => $this->macOsX64(),
+            'windows' => $this->windows(),
+            'linux' => $this->linux(),
+        };
     }
 
-    public function getDownloadLinkMacos(): string
+    public function macOsArm64(): string
     {
-        $latestVersion = $this->latestVersion();
-
-        return "{$this->baseUrl}/darwin/universal/Ray-darwin-universal-{$latestVersion}.zip";
+        return $this->getFilePathFromYml('beta-mac.yml', fn($file) => str_contains($file['url'], 'x64'));
     }
 
-    public function getDownloadLinkWindows(): string
+    public function macOsX64(): string
     {
-        $latestVersion = $this->latestVersion();
-
-        return "{$this->baseUrl}/win32/x64/Ray-{$latestVersion}%20Setup.exe";
+        return $this->getFilePathFromYml('beta-mac.yml', fn($file) => str_contains($file['url'], 'arm64'));
     }
 
-    public function getDownloadLinkLinux(): string
+    public function linux(): string
     {
-        $latestVersion = $this->latestVersion();
-
-        $latestVersion = str_replace('-', '~', $latestVersion);
-
-        return "{$this->baseUrl}/linux/x64/ray_{$latestVersion}_amd64.deb";
+        return $this->getFilePathFromYml('beta-linux.yml');
     }
 
-    public function latestVersion(): string
+    public function windows(): string
     {
-        return Cache::remember('latest-version-v3', 60, function () {
-            $jsonPath = Http::get("{$this->baseUrl}/darwin/universal/RELEASES.json")->body();
+        return $this->getFilePathFromYml('beta.yml');
+    }
 
-            $versions = json_decode($jsonPath, true);
+    protected function getFilePathFromYml(string $file, ?callable $fileMatch = null): string
+    {
+        $body = Http::get("{$this->baseUrl}{$file}")->body();
+        $releaseInfo = Yaml::parse($body);
 
-            $currentRelease = $versions['currentRelease'];
+        $file = collect($releaseInfo['files'])->first($fileMatch);
 
-            return $currentRelease;
-        });
+        return $this->baseUrl . $file['url'];
     }
 }
