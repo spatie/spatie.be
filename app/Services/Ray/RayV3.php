@@ -2,7 +2,6 @@
 
 namespace App\Services\Ray;
 
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\Yaml\Yaml;
 
@@ -22,12 +21,12 @@ class RayV3
 
     public function macOsArm64(): string
     {
-        return $this->getFilePathFromYml('beta-mac.yml', fn($file) => str_contains($file['url'], 'x64'));
+        return $this->getFilePathFromYml('beta-mac.yml', fn ($file) => str_contains($file['url'], 'x64'));
     }
 
     public function macOsX64(): string
     {
-        return $this->getFilePathFromYml('beta-mac.yml', fn($file) => str_contains($file['url'], 'arm64'));
+        return $this->getFilePathFromYml('beta-mac.yml', fn ($file) => str_contains($file['url'], 'arm64'));
     }
 
     public function linux(): string
