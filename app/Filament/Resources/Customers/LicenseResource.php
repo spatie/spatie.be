@@ -66,8 +66,10 @@ class LicenseResource extends Resource
                         if (! $record->assignment) {
                             return null;
                         }
+
                         return route('filament.admin.resources.customers.purchases.edit', $record->assignment->purchase);
-                    })
+                    }
+                )
                     ->label('Purchase ID')
                     ->searchable(),
                 ResourceLinkColumn::make(
