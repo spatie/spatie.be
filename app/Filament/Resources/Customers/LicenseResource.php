@@ -59,6 +59,7 @@ class LicenseResource extends Resource
             ->columns([
                 LicensePurchasableNameColumn::make(),
                 TextColumn::make('assignment.purchase.receipt.order_id')
+                    ->label('Paddle ID')
                     ->searchable(),
                 ResourceLinkColumn::make(
                     'assignment.purchase.id',
