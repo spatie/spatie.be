@@ -58,6 +58,18 @@ class LicenseResource extends Resource
         return $table
             ->columns([
                 LicensePurchasableNameColumn::make(),
+                TextColumn::make('assignment.purchase.receipt.order_id')
+                    ->searchable(),
+                ResourceLinkColumn::make('assignment.purchase.id',
+                    function (License $record) {
+                        if (! $record->assignment) {
+                            return null;
+                        }
+
+                        return route('filament.admin.resources.customers.purchase.edit', $record->assignment->purchase);
+                    })
+                    ->label('Purchase ID')
+                    ->searchable(),
                 ResourceLinkColumn::make(
                     'assignment.user.email',
                     function (License $record) {
