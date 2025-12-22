@@ -138,7 +138,7 @@
                         <h3 class="text-base font-bold mb-2">
                             On this page
                         </h3>
-                        <ul class="grid gap-2 mb-10">
+                        <ul class="grid gap-2 mb-10 max-h-screen overflow-y-auto">
                             @foreach($tableOfContents as $fragment => $title)
                                 <li class="text-sm">
                                     <a href="#{{ $fragment }}" class="docs-submenu-item">
