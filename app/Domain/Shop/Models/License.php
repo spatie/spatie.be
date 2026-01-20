@@ -135,7 +135,7 @@ class License extends Model implements AuthenticatableContract
     public function maximumActivationCount(): int
     {
         // Harbour students 2026
-        if ($this->id === 8564) {
+        if ($this->id === 3350) {
             return 200;
         }
 
