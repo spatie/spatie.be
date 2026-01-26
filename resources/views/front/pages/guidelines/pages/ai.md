@@ -6,9 +6,7 @@ weight: 5
 
 ## Introduction
 
-[Claude Code](https://claude.ai/code) is Anthropic's official CLI tool that helps developers write better code by providing AI-powered assistance directly in your terminal. It can understand and apply coding standards, making it perfect for maintaining consistency across your Laravel projects.
-
-We've created AI-optimized guidelines specifically formatted for Claude Code and similar agents to ensure it generates code that follows Spatie's Laravel & PHP standards.
+We've created AI-optimized guidelines specifically formatted for AI assistants like Claude Code and GitHub Copilot to ensure they generate code that follows Spatie's Laravel & PHP standards.
 
 Our AI-optimized guidelines cover:
 
@@ -20,11 +18,24 @@ Our AI-optimized guidelines cover:
 - **Naming conventions** - Complete reference for classes, methods, files, and URLs
 - **Code quality reminders** - Essential principles for maintainable code
 
-You can view the file with AI-optimized guidelines [here](https://spatie.be/laravel-php-ai-guidelines.md).
+## Using Laravel Boost (Recommended)
 
-## Global Integration using Claude Code
+The easiest way to use our guidelines in your Laravel projects is with [Laravel Boost](https://github.com/jasonmccreary/laravel-boost). Simply install our guideline package:
 
-Add the guidelines to your global Claude Code configuration so they're available across all projects:
+```bash
+composer require spatie/boost-spatie-guidelines --dev
+php artisan boost:install
+```
+
+Select the Spatie guidelines from the list, and you're done! AI assistants using Laravel Boost will automatically reference our guidelines when generating code.
+
+**[View the package on GitHub →](https://github.com/spatie/boost-spatie-guidelines)**
+
+You can view the raw AI-optimized guidelines file [here](https://spatie.be/laravel-php-ai-guidelines.md).
+
+## Alternative: Global Integration using Claude Code
+
+If you're not using Laravel Boost, you can add the guidelines to your global Claude Code configuration so they're available across all projects:
 
 ```bash
 # Make sure the Claude configuration file exists
@@ -37,9 +48,9 @@ curl -o ~/.claude/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-gui
 echo -e '\n## Coding Standards\nWhen working with Laravel/PHP projects, first read the coding guidelines at @~/.claude/laravel-php-guidelines.md' >> ~/.claude/CLAUDE.md
 ```
 
-## Project-Specific Integration using Claude Code
+## Alternative: Project-Specific Integration using Claude Code
 
-For individual Laravel projects, download the guidelines to your project root:
+For individual Laravel projects not using Laravel Boost, you can download the guidelines to your project root:
 
 ```bash
 # Make sure the Claude configuration file exists
