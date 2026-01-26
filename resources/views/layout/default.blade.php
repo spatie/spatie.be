@@ -18,7 +18,7 @@
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     @stack('head')
 
-    <x-comments::styles />
+    <x-ld-json />
 </head>
 
 <body class="flex flex-col min-h-screen leading-normal antialiased {{ $bodyClass ?? '' }}">
@@ -125,8 +125,6 @@
         });
     </script>
     <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
-
-    {!! schema()->localBusiness() !!}
 
     @stack('modals')
 </body>

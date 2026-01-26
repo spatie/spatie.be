@@ -21,4 +21,3 @@
     <meta name="robots" content="noindex">
 @endif
 
-<x-ld-json />

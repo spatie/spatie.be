@@ -18,7 +18,6 @@
     <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     @stack('head')
 
-    <x-comments::styles />
 </head>
 
 <body class="{{ $bodyClass ?? '' }}">

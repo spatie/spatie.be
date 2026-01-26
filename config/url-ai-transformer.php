@@ -38,8 +38,8 @@ return [
      */
     'ai' => [
         'default' => [
-            'provider' => Prism\Prism\Enums\Provider::OpenAI,
-            'model' => 'gpt-4o-mini',
+            'provider' => Prism\Prism\Enums\Provider::Anthropic,
+            'model' => 'claude-sonnet-4-5-20250929',
         ],
 
         'image' => [

@@ -16,7 +16,6 @@ use Spatie\EloquentSortable\SortableTrait;
 class Lesson extends Model implements Sortable
 {
     use SortableTrait;
-    use HasComments;
 
     protected $casts = [
         'sort' => 'integer',

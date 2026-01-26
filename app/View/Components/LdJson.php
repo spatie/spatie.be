@@ -4,18 +4,16 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Stringable;
 use Illuminate\View\Component;
+use Illuminate\Support\Str;
 use Spatie\LaravelUrlAiTransformer\Models\TransformationResult;
 
 class LdJson extends Component
 {
     public function render(): View|Closure|string
     {
-        $url = request()->url();
-
-        if (request()->path() === '/') {
-            $url .= '/';
-        }
+        $url = $this->getUrl();
 
         $result = TransformationResult::forUrl($url, 'ldJson');
 
@@ -24,7 +22,29 @@ class LdJson extends Component
         }
 
         return view('components.ld-json', [
-            'ldJsonContent' => $result,
+            'ldJsonContent' => $this->sanitize($result),
         ]);
     }
+
+    protected function getUrl(): string
+    {
+        $url = request()->path();
+
+        if (request()->path() !== '/') {
+            $url .= '/';
+        }
+        return $url;
+    }
+
+    protected function sanitize(string $result): Stringable
+    {
+        $result = Str::of($result)
+            ->trim()
+            ->after('```json')
+            ->trim('`')
+            ->trim();
+        return $result;
+    }
+
+
 }

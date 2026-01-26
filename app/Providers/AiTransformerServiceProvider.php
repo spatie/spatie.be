@@ -15,7 +15,7 @@ class AiTransformerServiceProvider extends ServiceProvider
             '/',
             '/about-us'
         )->usingTransformers(
-            new LdJsonTransformer(),
+            new LdJsonTransformer()
         );
     }
 }
