@@ -40,6 +40,7 @@ class ProductResource extends Resource
                         TextInput::make('id')
                             ->disabled(),
                         SpatieMediaLibraryFileUpload::make('product_image')
+                            ->disk('medialibrary')
                             ->collection('product-image')
                             ->maxFiles(1)
                             ->rules(['image'])
