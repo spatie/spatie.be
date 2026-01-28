@@ -4,9 +4,9 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
 use Illuminate\Support\Stringable;
 use Illuminate\View\Component;
-use Illuminate\Support\Str;
 use Spatie\LaravelUrlAiTransformer\Models\TransformationResult;
 
 class LdJson extends Component
@@ -33,6 +33,7 @@ class LdJson extends Component
         if (request()->path() !== '/') {
             $url .= '/';
         }
+
         return $url;
     }
 
@@ -43,8 +44,7 @@ class LdJson extends Component
             ->after('```json')
             ->trim('`')
             ->trim();
+
         return $result;
     }
-
-
 }
