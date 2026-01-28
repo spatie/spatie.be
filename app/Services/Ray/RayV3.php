@@ -26,7 +26,7 @@ class RayV3
 
     public function macOsArm64(): string
     {
-        return $this->getFilePathFromYml('beta-mac.yml', fn ($file) => str_contains($file['url'], 'arm64.dmg'));
+        return $this->getFilePathFromYml('latest-mac.yml', fn ($file) => str_contains($file['url'], 'arm64.dmg'));
     }
 
     public function macOsX64(): string
