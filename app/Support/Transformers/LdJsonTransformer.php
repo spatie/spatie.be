@@ -13,7 +13,7 @@ class LdJsonTransformer extends Transformer
     {
         $content = Str::limit(strip_tags($this->urlContent), 6000);
 
-        return "Summarize the following webpage to ld+json. Only return valid json. Do not start with ```json. This json will directly be included on the page.  This is the content that we fetched for url {$this->url}: {$content}";
+        return "Summarize the following webpage to ld+json. Only return valid json. This json will directly be included on the page.  This is the content that we fetched for url {$this->url}: {$content}";
     }
 
     public function transform(): void
