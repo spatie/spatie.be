@@ -9,6 +9,13 @@ use Spatie\LaravelUrlAiTransformer\Transformers\Transformer;
 
 class LdJsonTransformer extends Transformer
 {
+    public function getPrompt(): string
+    {
+        $content = Str::limit(strip_tags($this->urlContent), 6000);
+
+        return "Summarize the following webpage to ld+json. Only return valid json. This json will directly be included on the page.  This is the content that we fetched for url {$this->url}: {$content}";
+    }
+
     public function transform(): void
     {
         $response = Prism::text()
@@ -19,10 +26,5 @@ class LdJsonTransformer extends Transformer
         $this->transformationResult->result = $response->text;
     }
 
-    public function getPrompt(): string
-    {
-        $content = Str::limit(strip_tags($this->urlContent), 6000);
 
-        return "Summarize the following webpage to ld+json. Only return valid json. This json will directly be included on the page.  This is the content that we fetched for url {$this->url}: {$content}";
-    }
 }
