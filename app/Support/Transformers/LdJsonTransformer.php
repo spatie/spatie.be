@@ -25,6 +25,4 @@ class LdJsonTransformer extends Transformer
 
         $this->transformationResult->result = $response->text;
     }
-
-
 }
