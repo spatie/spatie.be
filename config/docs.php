@@ -48,7 +48,8 @@ return [
             "name" => "laravel-pdf",
             "repository" => "spatie/laravel-pdf",
             "branches" => [
-                "main" => "v1",
+                "main" => "v2",
+                "v1" => "v1",
             ],
             "category" => "Laravel",
         ],
