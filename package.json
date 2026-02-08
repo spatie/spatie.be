@@ -17,7 +17,7 @@
         "autoprefixer": "^10.4.19",
         "framer-motion": "^11.0.28",
         "laravel-vite-plugin": "^1.0.2",
-        "lodash": "^4.17.21",
+        "lodash": "^4.17.23",
         "object-fit-images": "^2.5.9",
         "prettier": "^1.10.2",
         "react": "^18.2.0",

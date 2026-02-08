@@ -19,7 +19,7 @@
         "blade-ui-kit/blade-ui-kit": "^0.5",
         "doctrine/dbal": "^3.5.1",
         "filament/filament": "^4.0",
-        "filament/spatie-laravel-media-library-plugin": "^3.2",
+        "filament/spatie-laravel-media-library-plugin": "^4.0",
         "flowframe/laravel-trend": "^0.4.0",
         "gehrisandro/tailwind-merge-laravel": "^1.2",
         "geoip2/geoip2": "^2.13",
