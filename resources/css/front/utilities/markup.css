@@ -73,7 +73,7 @@
     @apply uppercase;
     @apply leading-tight;
     @apply mb-4;
-    @apply mt-24;
+    @apply mt-18;
     page-break-inside: avoid;
     page-break-after: avoid;
 }
@@ -285,20 +285,21 @@
 
 
 .markup-code .hl-good pre {
-    @apply border-l-8;
-    @apply border-green-lightest;
+    @apply border-l-4;
+    @apply border-green-lighter;
 }
 
 .markup-code .hl-bad pre {
-    @apply border-l-8;
-    @apply border-pink-lightest;
+    @apply border-l-4;
+    @apply border-pink-lighter;
 }
 
 .markup-code .hl-good:before,
 .markup-code .hl-bad:before {
     @apply absolute;
-    top: -0.5rem;
-    left: -0.5rem;
+    top: 50%;
+    right: 3rem;
+    transform: translateY(-50%);
     @apply shadow;
     @apply z-10;
     @apply w-6;
