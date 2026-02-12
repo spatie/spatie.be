@@ -27,7 +27,7 @@ return [
 
             ],
             "category" => "Laravel",
-        ]
+        ],
         [
             "name" => "laravel-passkeys",
             "repository" => "spatie/laravel-passkeys",
