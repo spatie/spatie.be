@@ -3,6 +3,14 @@
 return [
     'repositories' => [
         [
+            "name" => "laravel-screenshot",
+            "repository" => "spatie/laravel-screenshot",
+            "branches" => [
+                "main" => "v1",
+            ],
+            "category" => "Laravel",
+        ],
+        [
             "name" => "laravel-url-ai-transformer",
             "repository" => "spatie/laravel-url-ai-transformer",
             "branches" => [
@@ -19,7 +27,7 @@ return [
 
             ],
             "category" => "Laravel",
-        ],
+        ]
         [
             "name" => "laravel-passkeys",
             "repository" => "spatie/laravel-passkeys",
