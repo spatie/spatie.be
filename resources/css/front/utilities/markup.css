@@ -323,7 +323,7 @@
 }
 
 .markup-code video, .markup-code img {
-    @apply rounded-lg overflow-hidden mb-8 sm:w-full sm:max-w-lg;
+    @apply rounded-lg overflow-hidden mb-8 max-w-full;
 }
 
 /* Video markup */
