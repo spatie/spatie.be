@@ -2,6 +2,14 @@
 
 return [
     'repositories' => [
+    [
+        "name" => "laravel-responsecache",
+        "repository" => "spatie/laravel-responsecache",
+        "branches" => [
+            "main" => "v8",
+        ],
+        "category" => "Laravel",
+    ],
         [
             "name" => "laravel-screenshot",
             "repository" => "spatie/laravel-screenshot",
