@@ -10,6 +10,7 @@ use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsController;
+use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
@@ -77,6 +78,8 @@ Route::domain('docs.spatie.be')->group(function () {
 Route::domain('guidelines.spatie.be')->group(function () {
     Route::permanentRedirect('{url?}', 'https://spatie.be/guidelines');
 });
+
+Route::get('llms.txt', LlmsTxtController::class);
 
 Route::view('/', 'front.pages.home.index')->name('home');
 
