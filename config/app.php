@@ -184,7 +184,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
+        Fruitcake\LaravelDebugbar\ServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
         Spatie\Tail\TailServiceProvider::class,
 
@@ -221,7 +221,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        'Debugbar' => Barryvdh\Debugbar\LaravelDebugbar::class,
+        'Debugbar' => Fruitcake\LaravelDebugbar\Facades\Debugbar::class,
     ])->toArray(),
 
 ];
