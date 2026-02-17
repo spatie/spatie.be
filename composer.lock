@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f4e6d51de0f03c8c3891a0c51d94254d",
+    "content-hash": "792a0d514997b34c924248d9f2706790",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -12037,16 +12037,16 @@
         },
         {
             "name": "spatie/laravel-markdown-response",
-            "version": "0.0.2",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-markdown-response.git",
-                "reference": "1809da48e25f0c9ebe40413edf73f1921523ca58"
+                "reference": "43fa7bf7bfb01af46eaccbafd8dcd2894f6f91dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-markdown-response/zipball/1809da48e25f0c9ebe40413edf73f1921523ca58",
-                "reference": "1809da48e25f0c9ebe40413edf73f1921523ca58",
+                "url": "https://api.github.com/repos/spatie/laravel-markdown-response/zipball/43fa7bf7bfb01af46eaccbafd8dcd2894f6f91dc",
+                "reference": "43fa7bf7bfb01af46eaccbafd8dcd2894f6f91dc",
                 "shasum": ""
             },
             "require": {
@@ -12068,6 +12068,7 @@
                 "phpstan/phpstan-phpunit": "^2.0",
                 "spatie/laravel-ray": "^1.35"
             },
+            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -12106,7 +12107,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-markdown-response/issues",
-                "source": "https://github.com/spatie/laravel-markdown-response/tree/0.0.2"
+                "source": "https://github.com/spatie/laravel-markdown-response/tree/main"
             },
             "funding": [
                 {
@@ -12114,7 +12115,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-17T13:57:02+00:00"
+            "time": "2026-02-17T15:54:38+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
@@ -22867,7 +22868,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "spatie/laravel-markdown-response": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
