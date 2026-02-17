@@ -137,13 +137,16 @@
                     <button
                         x-data="{ copied: false }"
                         x-on:click="
-                            fetch(window.location.href.replace(/\/$/, '') + '.md')
-                                .then(r => r.text())
-                                .then(text => navigator.clipboard.writeText(text))
-                                .then(() => {
-                                    copied = true;
-                                    setTimeout(() => copied = false, 2000);
+                            navigator.clipboard.write([
+                                new ClipboardItem({
+                                    'text/plain': fetch(window.location.href.replace(/\/$/, '') + '.md')
+                                        .then(r => r.text())
+                                        .then(text => new Blob([text], { type: 'text/plain' }))
                                 })
+                            ]).then(() => {
+                                copied = true;
+                                setTimeout(() => copied = false, 2000);
+                            })
                         "
                         class="text-sm inline-flex items-center gap-2 mb-6 hover:underline cursor-pointer"
                     >
