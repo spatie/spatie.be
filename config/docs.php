@@ -2,6 +2,16 @@
 
 return [
     'repositories' => [
+
+    [
+        "name" => "laravel-markdown-response",
+        "repository" => "spatie/laravel-markdown-response",
+        "branches" => [
+            "main" => "v1",
+        ],
+        
+        "category" => "Laravel",
+    ],
     [
         "name" => "laravel-responsecache",
         "repository" => "spatie/laravel-responsecache",
