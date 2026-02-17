@@ -121,6 +121,36 @@ parameters:
 			path: app/Domain/Shop/Models/Product.php
 
 		-
+			message: '''
+				#^Call to method content\(\) of deprecated class Filament\\Forms\\Components\\Placeholder\:
+				Use `TextEntry` with the `state\(\)` method instead\.$#
+			'''
+			identifier: method.deprecatedClass
+			count: 4
+			path: app/Filament/Resources/Content/RepositoryResource.php
+
+		-
+			message: '''
+				#^Call to static method make\(\) on deprecated class Filament\\Forms\\Components\\Placeholder\:
+				Use `TextEntry` with the `state\(\)` method instead\.$#
+			'''
+			identifier: staticMethod.deprecatedClass
+			count: 4
+			path: app/Filament/Resources/Content/RepositoryResource.php
+
+		-
+			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:commentableName\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: app/Filament/Resources/Courses/CommentResource.php
+
+		-
+			message: '#^Cannot access property \$licenses on Illuminate\\Database\\Eloquent\\Model\|int\|string\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: app/Filament/Resources/Customers/PurchaseAssignmentResource/Pages/EditPurchaseAssignment.php
+
+		-
 			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\PurchaseAssignment\:\:\$bundle\.$#'
 			identifier: property.notFound
 			count: 1
@@ -135,7 +165,7 @@ parameters:
 		-
 			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Purchase\:\:\$payment_method\.$#'
 			identifier: property.notFound
-			count: 2
+			count: 1
 			path: app/Filament/Widgets/PaymentMethodsWidget.php
 
 		-
@@ -169,6 +199,33 @@ parameters:
 			path: app/Http/Api/Controllers/BundlePriceController.php
 
 		-
+			message: '''
+				#^Call to deprecated method get\(\) of class Illuminate\\Http\\Request\:
+				use \-\>input\(\) instead$#
+			'''
+			identifier: method.deprecated
+			count: 2
+			path: app/Http/Auth/Controllers/LoginController.php
+
+		-
+			message: '''
+				#^Call to deprecated method get\(\) of class Illuminate\\Http\\Request\:
+				use \-\>input\(\) instead$#
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: app/Http/Auth/Controllers/RegisterController.php
+
+		-
+			message: '''
+				#^Call to deprecated method get\(\) of class Illuminate\\Http\\Request\:
+				use \-\>input\(\) instead$#
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: app/Http/Auth/Controllers/UpdatePasswordController.php
+
+		-
 			message: '#^Access to an undefined property App\\Docs\\DocumentationPage\:\:\$section\.$#'
 			identifier: property.notFound
 			count: 2
@@ -185,6 +242,15 @@ parameters:
 			identifier: property.notFound
 			count: 1
 			path: app/Http/Controllers/InvoicesController.php
+
+		-
+			message: '''
+				#^Call to deprecated method get\(\) of class Illuminate\\Http\\Request\:
+				use \-\>input\(\) instead$#
+			'''
+			identifier: method.deprecated
+			count: 1
+			path: app/Http/Controllers/ProfileController.php
 
 		-
 			message: '#^Method App\\Http\\Controllers\\WebhookController\:\:findOrCreateCustomer\(\) has invalid return type Laravel\\Paddle\\Billable\.$#'
@@ -211,6 +277,12 @@ parameters:
 			message: '#^Negated boolean expression is always false\.$#'
 			identifier: booleanNot.alwaysFalse
 			count: 2
+			path: app/Models/Lesson.php
+
+		-
+			message: '#^Return type \(App\\Models\\Lesson\|null\) of method App\\Models\\Lesson\:\:getPrevious\(\) should be compatible with return type \(array\<string, mixed\>\) of method Illuminate\\Database\\Eloquent\\Model\:\:getPrevious\(\)$#'
+			identifier: method.childReturnType
+			count: 1
 			path: app/Models/Lesson.php
 
 		-
@@ -248,4 +320,46 @@ parameters:
 			identifier: method.notFound
 			count: 2
 			path: app/Services/GitHub/GitHubApi.php
+
+		-
+			message: '#^Match expression does not handle remaining value\: string$#'
+			identifier: match.unhandled
+			count: 1
+			path: app/Services/Ray/RayV3.php
+
+		-
+			message: '#^Access to an undefined property Illuminate\\Database\\Eloquent\\Model\:\:\$id\.$#'
+			identifier: property.notFound
+			count: 2
+			path: app/Support/Paddle/ProcessPaymentSucceededJob.php
+
+		-
+			message: '#^Invalid array key type float\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 1
+			path: app/helpers.php
+
+		-
+			message: '#^Class Spatie\\BladeComments\\Commenters\\BladeCommenters\\AnonymousBladeComponentCommenter not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: config/blade-comments.php
+
+		-
+			message: '#^Class Spatie\\BladeComments\\Commenters\\BladeCommenters\\IncludeIfCommenter not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: config/blade-comments.php
+
+		-
+			message: '#^Class Spatie\\BladeComments\\Commenters\\BladeCommenters\\IncludeUnlessCommenter not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: config/blade-comments.php
+
+		-
+			message: '#^Class Spatie\\BladeComments\\Commenters\\BladeCommenters\\IncludeWhenCommenter not found\.$#'
+			identifier: class.notFound
+			count: 1
+			path: config/blade-comments.php
 
