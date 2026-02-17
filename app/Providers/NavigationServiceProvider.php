@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use Barryvdh\Debugbar\ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Spatie\Menu\Laravel\Menu;
 use Spatie\Menu\Laravel\View;
 
