@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "792a0d514997b34c924248d9f2706790",
+    "content-hash": "3deac282f5a93828f9d2416c64f84e5b",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -189,16 +189,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.369.35",
+            "version": "3.369.36",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "0f3e296342fe965271b5dd0bded4a18bdab8aba5"
+                "reference": "2a69e7df5e03be9e08f9f73fb6a8cc9dd63b59c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/0f3e296342fe965271b5dd0bded4a18bdab8aba5",
-                "reference": "0f3e296342fe965271b5dd0bded4a18bdab8aba5",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2a69e7df5e03be9e08f9f73fb6a8cc9dd63b59c0",
+                "reference": "2a69e7df5e03be9e08f9f73fb6a8cc9dd63b59c0",
                 "shasum": ""
             },
             "require": {
@@ -280,9 +280,9 @@
             "support": {
                 "forum": "https://github.com/aws/aws-sdk-php/discussions",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.369.35"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.369.36"
             },
-            "time": "2026-02-16T19:15:41+00:00"
+            "time": "2026-02-17T19:45:01+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -4203,16 +4203,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v12.51.0",
+            "version": "v12.52.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "ce4de3feb211e47c4f959d309ccf8a2733b1bc16"
+                "reference": "d5511fa74f4608dbb99864198b1954042aa8d5a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/ce4de3feb211e47c4f959d309ccf8a2733b1bc16",
-                "reference": "ce4de3feb211e47c4f959d309ccf8a2733b1bc16",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/d5511fa74f4608dbb99864198b1954042aa8d5a7",
+                "reference": "d5511fa74f4608dbb99864198b1954042aa8d5a7",
                 "shasum": ""
             },
             "require": {
@@ -4421,7 +4421,7 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
-            "time": "2026-02-10T18:20:19+00:00"
+            "time": "2026-02-17T17:07:04+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -12037,7 +12037,7 @@
         },
         {
             "name": "spatie/laravel-markdown-response",
-            "version": "dev-main",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-markdown-response.git",
@@ -12068,7 +12068,6 @@
                 "phpstan/phpstan-phpunit": "^2.0",
                 "spatie/laravel-ray": "^1.35"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -12107,7 +12106,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-markdown-response/issues",
-                "source": "https://github.com/spatie/laravel-markdown-response/tree/main"
+                "source": "https://github.com/spatie/laravel-markdown-response/tree/1.0.0"
             },
             "funding": [
                 {
@@ -20008,36 +20007,36 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v8.9.0",
+            "version": "v8.9.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "f52cab234f37641bd759c0ad56de17f632851419"
+                "reference": "a1ed3fa530fd60bc515f9303e8520fcb7d4bd935"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/f52cab234f37641bd759c0ad56de17f632851419",
-                "reference": "f52cab234f37641bd759c0ad56de17f632851419",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/a1ed3fa530fd60bc515f9303e8520fcb7d4bd935",
+                "reference": "a1ed3fa530fd60bc515f9303e8520fcb7d4bd935",
                 "shasum": ""
             },
             "require": {
                 "filp/whoops": "^2.18.4",
-                "nunomaduro/termwind": "^2.3.3",
+                "nunomaduro/termwind": "^2.4.0",
                 "php": "^8.2.0",
                 "symfony/console": "^7.4.4 || ^8.0.4"
             },
             "conflict": {
                 "laravel/framework": "<11.48.0 || >=14.0.0",
-                "phpunit/phpunit": "<11.5.50 || >=13.0.0"
+                "phpunit/phpunit": "<11.5.50 || >=14.0.0"
             },
             "require-dev": {
                 "brianium/paratest": "^7.8.5",
                 "larastan/larastan": "^3.9.2",
-                "laravel/framework": "^11.48.0 || ^12.51.0",
+                "laravel/framework": "^11.48.0 || ^12.52.0",
                 "laravel/pint": "^1.27.1",
                 "orchestra/testbench-core": "^9.12.0 || ^10.9.0",
-                "pestphp/pest": "^3.8.5 || ^4.3.2",
-                "sebastian/environment": "^7.2.1 || ^8.0.3"
+                "pestphp/pest": "^3.8.5 || ^4.4.1 || ^5.0.0",
+                "sebastian/environment": "^7.2.1 || ^8.0.3 || ^9.0.0"
             },
             "type": "library",
             "extra": {
@@ -20100,7 +20099,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2026-02-16T23:05:52+00:00"
+            "time": "2026-02-17T17:33:08+00:00"
         },
         {
             "name": "pestphp/pest",
@@ -22759,23 +22758,23 @@
         },
         {
             "name": "ta-tikoma/phpunit-architecture-test",
-            "version": "0.8.6",
+            "version": "0.8.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ta-tikoma/phpunit-architecture-test.git",
-                "reference": "ad48430b92901fd7d003fdaf2d7b139f96c0906e"
+                "reference": "1248f3f506ca9641d4f68cebcd538fa489754db8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ta-tikoma/phpunit-architecture-test/zipball/ad48430b92901fd7d003fdaf2d7b139f96c0906e",
-                "reference": "ad48430b92901fd7d003fdaf2d7b139f96c0906e",
+                "url": "https://api.github.com/repos/ta-tikoma/phpunit-architecture-test/zipball/1248f3f506ca9641d4f68cebcd538fa489754db8",
+                "reference": "1248f3f506ca9641d4f68cebcd538fa489754db8",
                 "shasum": ""
             },
             "require": {
                 "nikic/php-parser": "^4.18.0 || ^5.0.0",
                 "php": "^8.1.0",
                 "phpdocumentor/reflection-docblock": "^5.3.0 || ^6.0.0",
-                "phpunit/phpunit": "^10.5.5 || ^11.0.0 || ^12.0.0",
+                "phpunit/phpunit": "^10.5.5 || ^11.0.0 || ^12.0.0 || ^13.0.0",
                 "symfony/finder": "^6.4.0 || ^7.0.0 || ^8.0.0"
             },
             "require-dev": {
@@ -22812,9 +22811,9 @@
             ],
             "support": {
                 "issues": "https://github.com/ta-tikoma/phpunit-architecture-test/issues",
-                "source": "https://github.com/ta-tikoma/phpunit-architecture-test/tree/0.8.6"
+                "source": "https://github.com/ta-tikoma/phpunit-architecture-test/tree/0.8.7"
             },
-            "time": "2026-01-30T07:16:00+00:00"
+            "time": "2026-02-17T17:25:14+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -22869,9 +22868,7 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "spatie/laravel-markdown-response": 20
-    },
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
