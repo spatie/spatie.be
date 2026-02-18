@@ -12041,12 +12041,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-markdown-response.git",
-                "reference": "251cbad954dc8a8ea4731c41ee00c1866510f0ce"
+                "reference": "2482157ebfc85b30ccf579d7f613d7cc2d85a5f4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-markdown-response/zipball/251cbad954dc8a8ea4731c41ee00c1866510f0ce",
-                "reference": "251cbad954dc8a8ea4731c41ee00c1866510f0ce",
+                "url": "https://api.github.com/repos/spatie/laravel-markdown-response/zipball/2482157ebfc85b30ccf579d7f613d7cc2d85a5f4",
+                "reference": "2482157ebfc85b30ccf579d7f613d7cc2d85a5f4",
                 "shasum": ""
             },
             "require": {
@@ -12115,7 +12115,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-17T16:09:24+00:00"
+            "time": "2026-02-18T09:22:05+00:00"
         },
         {
             "name": "spatie/laravel-medialibrary",
