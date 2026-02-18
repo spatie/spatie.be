@@ -1,7 +1,7 @@
 <?php
 
 use App\Support\MarkdownResponse\CleanUpDocsMarkdownPostprocessor;
-use App\Support\MarkdownResponse\ExtractDocsContentPreprocessor;
+use App\Support\MarkdownResponse\RemoveDocsLayoutChromePreprocessor;
 use Spatie\MarkdownResponse\Actions\DetectsMarkdownRequest;
 use Spatie\MarkdownResponse\Actions\GeneratesCacheKey;
 use Spatie\MarkdownResponse\Postprocessors\CollapseBlankLinesPostprocessor;
@@ -66,7 +66,7 @@ return [
      */
     'preprocessors' => [
         RemoveScriptsAndStylesPreprocessor::class,
-        ExtractDocsContentPreprocessor::class,
+        RemoveDocsLayoutChromePreprocessor::class,
     ],
 
     /*
