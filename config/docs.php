@@ -2,7 +2,15 @@
 
 return [
     'repositories' => [
+        [
+            'name' => 'laravel-og-image',
+            'repository' => 'spatie/laravel-og-image',
+            'branches' => [
+                'main' => 'v1',
+            ],
 
+            'category' => 'Laravel',
+        ],
         [
             'name' => 'laravel-markdown-response',
             'repository' => 'spatie/laravel-markdown-response',
