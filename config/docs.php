@@ -3,6 +3,15 @@
 return [
     'repositories' => [
         [
+            'name' => 'laravel-openapi-cli',
+            'repository' => 'spatie/laravel-openapi-cli',
+            'branches' => [
+                'main' => 'v1',
+            ],
+
+            'category' => 'Laravel',
+        ],
+        [
             'name' => 'laravel-og-image',
             'repository' => 'spatie/laravel-og-image',
             'branches' => [
