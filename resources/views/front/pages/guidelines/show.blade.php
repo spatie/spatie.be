@@ -39,7 +39,7 @@
                 <h1
                     class="text-oss-spatie-blue uppercase text-[4.5rem] font-black leading-90 tracking-normal font-druk mb-10">
                     {{ $page->title }}</h1>
-                <div class="markup markup-titles markup-lists markup-code links-blue links-underline">
+                <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-base md:text-lg">
                     {{ $page->contents }}
                 </div>
 
