@@ -1,7 +1,7 @@
 ---
 title: Security
-description: There's no key under the mat
-weight: 6
+description: No keys under the mat.
+weight: 5
 ---
 
 This section of the guidelines documents some of our best practices to work securely.
@@ -45,4 +45,4 @@ All commits should be [signed](https://docs.github.com/en/authentication/managin
 - All Macs should have FileVault enabled
 - Do not use public searchable services like Pastebin or gist to share sensitive code or data
 - Do not install any pirated software on your Mac or phone
-- Browser extensions can pose security issues, so only install extensions from the Chrome Web Store or the App Store. Be aware that extensions may change ownership or be taken over by malicious actors, so use as few extensions as possible. Do not use any browser extensions that can track typed keys, passwords or browser history. Using the 1Password browser extension is fine.  
+- Browser extensions can pose security issues, so only install extensions from the Chrome Web Store or the App Store. Be aware that extensions may change ownership or be taken over by malicious actors, so use as few extensions as possible. Do not use any browser extensions that can track typed keys, passwords or browser history. Using the 1Password browser extension is fine.

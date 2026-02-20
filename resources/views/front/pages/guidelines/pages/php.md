@@ -1,7 +1,7 @@
 ---
 title: PHP
-description: Artisanal baked code
-weight: 2
+description: Cover the fundamentals.
+weight: 1
 ---
 
 ## About PHP

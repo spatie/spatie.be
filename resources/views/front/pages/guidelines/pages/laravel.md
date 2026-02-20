@@ -1,7 +1,7 @@
 ---
 title: Laravel
-description: Artisanal baked code
-weight: 1
+description: Artisanal baked code.
+weight: 2
 ---
 
 ## About Laravel

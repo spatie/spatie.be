@@ -1,7 +1,7 @@
 ---
 title: Version control
-description: Writing history
-weight: 5
+description: Write history.
+weight: 6
 ---
 
 All our projects use Git, mostly with a repository hosted on GitHub. Since we're a small team, and most projects have less than three people working on it simultaneously, we have pretty loose Git guidelines since we rarely bump into conflicts.

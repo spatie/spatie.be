@@ -1,6 +1,6 @@
 ---
 title: Emergencies
-description: Tips to stay cool
+description: Tips to stay cool.
 weight: 7
 ---
 

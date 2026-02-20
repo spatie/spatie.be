@@ -1,6 +1,6 @@
 ---
 title: Open source
-description: Sharing is caring
+description: Sharing is caring.
 weight: 4
 ---
 
