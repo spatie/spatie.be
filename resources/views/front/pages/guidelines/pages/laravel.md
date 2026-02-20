@@ -1,7 +1,7 @@
 ---
-title: Laravel & PHP
-description: Artisanal baked code
-weight: 1
+title: Laravel
+description: Artisanal baked code.
+weight: 2
 ---
 
 ## About Laravel

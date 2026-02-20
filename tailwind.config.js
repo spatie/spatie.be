@@ -65,6 +65,7 @@ export default {
             'red-dark': '#c81839',
 
             'pink-lightest': '#f2d8db',
+            'pink-lighter': '#fc97a3',
             pink: '#dd9099',
             'pink-dark': '#8d3b44',
 
@@ -239,12 +240,12 @@ export default {
 
             keyframes: {
                 wiggle: {
-                    '0%, 100%': {transform: 'rotate(-3deg)'},
-                    '50%': {transform: 'rotate(3deg)'},
+                    '0%, 100%': { transform: 'rotate(-3deg)' },
+                    '50%': { transform: 'rotate(3deg)' },
                 },
                 popin: {
-                    '0%': {transform: 'scale(0) translate(-50%, -4rem)'},
-                    '100%': {transform: 'scale(1) translate(-50%, -4rem)'},
+                    '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
+                    '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
                 }
             },
             animation: {
