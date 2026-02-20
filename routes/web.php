@@ -10,6 +10,7 @@ use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsController;
+use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
@@ -77,6 +78,8 @@ Route::domain('docs.spatie.be')->group(function () {
 Route::domain('guidelines.spatie.be')->group(function () {
     Route::permanentRedirect('{url?}', 'https://spatie.be/guidelines');
 });
+
+Route::get('llms.txt', LlmsTxtController::class);
 
 Route::view('/', 'front.pages.home.index')->name('home');
 
@@ -179,7 +182,7 @@ Route::redirect(
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
-Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*');
+Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(\Spatie\MarkdownResponse\Middleware\ProvideMarkdownResponse::class);
 
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);

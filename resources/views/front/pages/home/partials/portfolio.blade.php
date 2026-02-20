@@ -53,7 +53,7 @@ Flare helps you spot slow performance in your app and alerts you the moment a bu
     <div class="wrap wrap-8 section">
         <div class="sm:col-span-4 | md:col-start-2 md:col-span-3 md:-ml-32 md:mr-16">
             <a href="https://myray.app" class="illustration is-left h-full aspect-[3/2]" title="Ray" target="_blank">
-                {{ image('portfolio/ray.jpg') }}
+                {{ image('portfolio/ray_teaser.jpg') }}
             </a>
         </div>
         <div class="sm:col-span-3 sm:col-start-5 | self-center">
@@ -61,12 +61,15 @@ Flare helps you spot slow performance in your app and alerts you the moment a bu
                 <h3 class="title">
                     Ray
                     <span class="title-subtext text-pink-dark block">
-                        Dump debugging evolved
+                        Debug without breaking your flow
                     </span>
                 </h3>
                 <p class="text-lg">
-Ray is a desktop app that vastly improves your debugging experience without the hassle of installing extra PHP extensions. You can use it to debug faster in Laravel, PHP or Wordpress. Ray works with Javascript, Node.js and Ruby as well.                 <ul class="text-lg mt-8">
-                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://myray.app" target="_blank">Download Ray</a></li>
+                    Ray is a desktop debugging app that keeps the instant feedback you get from <code class="text-[0.925em]">console.log()</code> and <code class="text-[0.925em]">dump()</code> but lets you use the same debugging syntax across Laravel, PHP, and JavaScript.
+                </p>
+                <ul class="text-lg mt-8">
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://myray.app" target="_blank">Try Ray for free</a></li>
+                    <li><span class="icon fill-current text-pink-dark">{{ app_svg('icons/far-angle-right') }}</span> <a href="https://spatie.be/products/ray">Buy a license</a></li>
                 </ul>
             </div>
         </div>

@@ -134,6 +134,31 @@
             </article>
             <aside class="hidden lg:block w-full pb-16 col-span-2 print-hidden">
                 <div class="sticky top-[1rem]">
+                    <button
+                        x-data="{ copied: false }"
+                        x-on:click="
+                            navigator.clipboard.write([
+                                new ClipboardItem({
+                                    'text/plain': fetch(window.location.href.replace(/\/$/, '') + '.md')
+                                        .then(r => r.text())
+                                        .then(text => new Blob([text], { type: 'text/plain' }))
+                                })
+                            ]).then(() => {
+                                copied = true;
+                                setTimeout(() => copied = false, 2000);
+                            })
+                        "
+                        class="text-sm inline-flex items-center gap-2 mb-6 hover:underline cursor-pointer"
+                    >
+                        <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9.75a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" />
+                        </svg>
+                        <span class="grid justify-items-start">
+                            <span class="col-start-1 row-start-1" :class="copied ? 'invisible' : ''">Copy as markdown</span>
+                            <span class="col-start-1 row-start-1" :class="copied ? '' : 'invisible'">Copied!</span>
+                        </span>
+                    </button>
+
                     @if(count($tableOfContents))
                         <h3 class="text-base font-bold mb-2">
                             On this page

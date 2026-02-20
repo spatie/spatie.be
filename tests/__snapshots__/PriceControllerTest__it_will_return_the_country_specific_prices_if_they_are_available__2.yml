@@ -1,0 +1,15 @@
+actual:
+    price_in_cents: 13900
+    currency_code: EUR
+    currency_symbol: €
+    formatted_price: '€ 139'
+without_discount:
+    price_in_cents: 13900
+    currency_code: EUR
+    currency_symbol: €
+    formatted_price: '€ 139'
+discount:
+    active: false
+    percentage: null
+    name: null
+    expires_at: null
