@@ -32,7 +32,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                 }
 
                 try {
-                    $repositories = explode(', ', $license->assignment->purchasable->repository_access);
+                    $repositories = array_map('trim', explode(',', $license->assignment->purchasable->repository_access));
 
                     foreach ($repositories as $repository) {
                         if (empty($repository)) {
@@ -71,7 +71,7 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
         return $license->assignment->user
             ->licenses()
             ->whereNotExpired()
-            ->whereHas('assignment', fn (Builder $query) => $query->where('purchasable_id', $license->purchasable_id))
+            ->whereHas('assignment', fn (Builder $query) => $query->where('purchasable_id', $license->assignment->purchasable_id))
             ->exists();
     }
 
