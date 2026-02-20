@@ -50,46 +50,26 @@ class RestoreRepositoryAccessForUserCommand extends Command
         });
 
         $this->newLine();
-        $this->info('--- Processing assignments with has_repository_access = false ---');
+        $this->info('--- Processing assignments with active licenses ---');
 
-        $assignments = $user->assignments()
-            ->with(['purchasable.product', 'licenses'])
-            ->where('has_repository_access', false)
-            ->get();
+        $invited = false;
 
-        if ($assignments->isEmpty()) {
-            $this->warn('No assignments found with has_repository_access = false.');
-            $this->warn('All assignments already have has_repository_access = true.');
-            $this->warn('If the user still lacks access, their GitHub access was revoked but the flag was not updated.');
-            $this->warn('Run: $user->assignments()->update(["has_repository_access" => false]) in tinker first, then re-run this command.');
-
-            return;
-        }
-
-        $assignments->each(function (PurchaseAssignment $assignment) use ($user, $gitHubApi) {
-            $this->newLine();
-            $this->warn("Processing Assignment #{$assignment->id} ({$assignment->purchasable->getFullTitle()})");
-
+        $allAssignments->each(function (PurchaseAssignment $assignment) use ($user, $gitHubApi, &$invited) {
             if (! $assignment->purchasable->repository_access) {
-                $this->error("  SKIPPED: Purchasable has no repository_access configured.");
-
                 return;
             }
-
-            $this->info("  repository_access: {$assignment->purchasable->repository_access}");
 
             $hasActiveLicense = $assignment->licenses()
                 ->whereNotExpired()
                 ->exists();
 
-            $this->line("  requires_license: " . ($assignment->purchasable->requires_license ? 'true' : 'false'));
-            $this->line("  has active license on this assignment: " . ($hasActiveLicense ? 'true' : 'false'));
-
             if ($assignment->purchasable->requires_license && ! $hasActiveLicense) {
-                $this->error("  SKIPPED: Requires license but no active license found on this assignment.");
-
                 return;
             }
+
+            $this->newLine();
+            $this->warn("Processing Assignment #{$assignment->id} ({$assignment->purchasable->getFullTitle()})");
+            $this->line("  has_repository_access flag: " . ($assignment->has_repository_access ? 'true' : 'false'));
 
             $repositories = array_map('trim', explode(',', $assignment->purchasable->repository_access));
 
@@ -103,6 +83,7 @@ class RestoreRepositoryAccessForUserCommand extends Command
                 try {
                     $gitHubApi->inviteToRepo($user->github_username, $repository);
                     $this->info("  SUCCESS: Invited to {$repository}");
+                    $invited = true;
                 } catch (Exception $exception) {
                     $this->error("  FAILED: {$exception->getMessage()}");
 
@@ -113,6 +94,11 @@ class RestoreRepositoryAccessForUserCommand extends Command
             $assignment->update(['has_repository_access' => true]);
             $this->info("  Updated has_repository_access = true");
         });
+
+        if (! $invited) {
+            $this->newLine();
+            $this->error('No assignments with active licenses and repository_access found.');
+        }
 
         $this->newLine();
         $this->info('Done.');
