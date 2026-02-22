@@ -140,6 +140,14 @@ return [
             'category' => 'Laravel',
         ],
         [
+            'name' => 'php-attribute-reader',
+            'repository' => 'spatie/php-attribute-reader',
+            'branches' => [
+                'main' => 'v1',
+            ],
+            'category' => 'General PHP',
+        ],
+        [
             'name' => 'browsershot',
             'repository' => 'spatie/browsershot',
             'branches' => [
