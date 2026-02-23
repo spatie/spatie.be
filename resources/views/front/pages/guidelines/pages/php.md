@@ -67,7 +67,7 @@ class Foo
 
 
 [bad]
-```
+```php
 class Foo
 {
     /** @var string */
@@ -1067,7 +1067,7 @@ E.g. `SendInvitationMailListener`
 
 ### Commands
 
-To avoid naming collisions we'll suffix commands with `Command`, so they are easiliy distinguisable from jobs.
+To avoid naming collisions we'll suffix commands with `Command`, so they are easily distinguishable from jobs.
 
 e.g. `PublishScheduledPostsCommand`
 

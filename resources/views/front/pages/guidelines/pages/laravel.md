@@ -64,7 +64,7 @@ class Foo
 
 
 [bad]
-```
+```php
 class Foo
 {
     /** @var string */
@@ -725,7 +725,7 @@ public function handle()
 
     // do some work
     $items->each(function(Item $item) {
-        $this->info("Processing item id `{$item-id}`...");
+        $this->info("Processing item id `{$item->id}`...");
 
         $this->processItem($item);
     });
@@ -1053,7 +1053,7 @@ E.g. `SendInvitationMailListener`
 
 ### Commands
 
-To avoid naming collisions we'll suffix commands with `Command`, so they are easiliy distinguisable from jobs.
+To avoid naming collisions we'll suffix commands with `Command`, so they are easily distinguishable from jobs.
 
 e.g. `PublishScheduledPostsCommand`
 

@@ -19,7 +19,7 @@ All commits should be [signed](https://docs.github.com/en/authentication/managin
 ## Applications
 
 - All HTTP traffic should be sent over SSL
-- All forms should use a CSRF token to prevent cross site
+- All forms should use a CSRF token to prevent cross-site request forgery (CSRF)
 - Routes performing a significant action (delete, update, ...) should use the appropriate HTTP method (`DELETE`, `POST`, `PUT` - not `GET`)
 - When a site uses authorization/authentication, automated tests should be added to test only authorized users can use certain functionality
 
