@@ -5,6 +5,10 @@ namespace App\Guidelines;
 use Illuminate\Support\HtmlString;
 use Spatie\Sheets\Sheet;
 
+/**
+ * @property HtmlString $contents
+ * @property HtmlString $toc
+ */
 class GuidelinesPage extends Sheet
 {
     public function getTocAttribute(): HtmlString
