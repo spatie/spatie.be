@@ -14,7 +14,10 @@ Code style must follow [PSR-1](http://www.php-fig.org/psr/psr-1/), [PSR-2](http:
 
 ### Class defaults
 
-By default, we don't use `final`. In our team, there aren't many benefits that `final` offers as we don't rely too much on inheritance. For our open source stuff, we assume that all our users know they are responsible for writing tests for any overwritten behaviour.
+By default, we don't use `final` or `readonly`.
+
+- `final`: There aren't many benefits that `final` offers as we don't rely too much on inheritance. For our open source stuff, we assume that all our users know they are responsible for writing tests for any overwritten behaviour.
+- `readonly`: In practice, we haven't come across any problems that `readonly` would solve. The fact that some attributes should be treated as read only values is generally clear by the context (like a resource or data transfer object). While `readonly` explicitly states that intent, it's not worth the extra keyword for us.
 
 ### Nullable and union types
 
@@ -86,6 +89,17 @@ enum Suit {
 }
 
 Suit::Diamonds;
+```
+
+## Class constants
+
+Class constants follow the same PascalCase rule as enums.
+
+```php
+class Session
+{
+    public const SessionTokenHeader = 'X-Session-Token';
+}
 ```
 
 ## Docblocks
