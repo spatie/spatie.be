@@ -32,10 +32,6 @@
                         We don't adhere strictly to old rules, but constantly challenge them.
                         New experiences lead to better guidelines.
                     </p>
-
-                    <div class="mt-8">
-                        @include('front.pages.guidelines.partials.writing-readable-php-short-cta')
-                    </div>
                 </div>
             </div>
         </div>
@@ -43,7 +39,7 @@
 
     <section class="section section-group">
         <div class="wrapper-lg">
-            <div class="grid gap-x-6 gap-y-16 | sm:grid-cols-3 items-stretch">
+            <div class="flex flex-wrap justify-center gap-x-6 gap-y-16">
                 @foreach ($pages as $page)
                     @include('front.pages.guidelines.partials.page', ['page' => $page])
                 @endforeach
