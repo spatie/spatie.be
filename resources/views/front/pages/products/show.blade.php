@@ -6,7 +6,11 @@
         :title="$product->title"
         :description="Str::limit(strip_tags($product->long_description), 165)"
         :background="'/backgrounds/product-blur.jpg'"
-        :og-image="url($product->getFirstMediaUrl('product-image')) ?: asset('/images/og-image.jpg')"
 >
+    <x-og-image view="og-image.product" :data="[
+        'title' => $product->title,
+        'description' => strip_tags($product->long_description ?? $product->description),
+        'imageUrl' => $product->getFirstMediaUrl('product-image'),
+    ]" />
     @includeFirst(["front.pages.products.detail.{$product->slug}", "front.pages.products.detail.default"])
 </x-page>

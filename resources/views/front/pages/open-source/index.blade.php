@@ -12,7 +12,6 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
 <x-page
     title="Committed to open source"
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
-    :og-image="asset('images/og-image-oss.png')"
     dark
 >
     @push('head')
