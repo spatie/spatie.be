@@ -11,12 +11,21 @@ use App\Spotlight\DocsCommand;
 use App\Spotlight\Spotlight;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use Spatie\Flash\Flash;
+use Spatie\OgImage\Facades\OgImage;
 
 class AppServiceProvider extends ServiceProvider
 {
+    public function boot(): void
+    {
+        OgImage::fallbackUsing(fn (Request $request) => view('og-image.fallback', [
+            'title' => config('app.name', 'Spatie'),
+        ]));
+    }
+
     public function register(): void
     {
         Model::unguard();

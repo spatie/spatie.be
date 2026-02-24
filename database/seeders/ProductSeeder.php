@@ -14,9 +14,9 @@ class ProductSeeder extends Seeder
     {
         $ray = Product::factory()->create([
             'title' => 'Ray',
-            'slug' => 'Ray',
-            'description' => 'Ray',
-            'url' => 'https://ray',
+            'slug' => 'ray',
+            'description' => 'Ray is a desktop debugging app that keeps the instant feedback you get from console.log() and dump() but lets you use the same debugging syntax across Laravel, PHP, JavaScript and more.',
+            'url' => 'https://myray.app',
             'action_url' => '',
             'action_label' => 'Buy Ray',
             'private_key' => file_get_contents(database_path('factories/stubs/privateKey')),
@@ -62,7 +62,7 @@ class ProductSeeder extends Seeder
         $beyondCrud = Product::factory()->create([
             'title' => 'Laravel Beyond CRUD',
             'slug' => 'laravel-beyond-crud',
-            'description' => 'Learn how to build larger-than-average Laravel applications and maintain them for years to come.',
+            'description' => 'The knowledge in this course is built from the years of experience our team has building large, robust applications.',
             'url' => 'https://laravel-beyond-crud.com/',
             'action_url' => '',
             'action_label' => 'Buy course',
@@ -80,9 +80,9 @@ class ProductSeeder extends Seeder
         ]);
 
         $mailCoach = Product::factory()->create([
-            'title' => 'Mailcoach',
+            'title' => 'Mailcoach Self-Hosted',
             'slug' => 'mailcoach',
-            'description' => 'Self-host your email marketing software',
+            'description' => 'Powerful email marketing, automations and transactional emails, seamlessly integrated into your Laravel application.',
             'url' => 'https://mailcoach.app',
             'action_url' => '',
             'action_label' => 'Buy license or course',
@@ -145,10 +145,64 @@ class ProductSeeder extends Seeder
         ]);
 
         Product::factory()->create([
-            'title' => 'Medialibrary.pro',
-            'slug' => 'medialibrary_pro',
-            'description' => 'Every picture needs a frame',
+            'title' => 'Media Library Pro',
+            'slug' => 'media-library-pro',
+            'description' => 'UI components for spatie/laravel-medialibrary. Includes React, Vue and Livewire v3 components, Laravel Vapor support, temporary uploads and Tailwind CSS styling.',
             'url' => 'https://medialibrary.pro',
+            'action_url' => '',
+            'action_label' => 'Buy license',
+        ]);
+
+        Product::factory()->create([
+            'title' => 'Front Line PHP',
+            'slug' => 'front-line-php',
+            'description' => 'Over the years, PHP has become a modern, performant and overall fun programming language. This ebook will get you up to speed with modern-day PHP syntax.',
+            'url' => 'https://front-line-php.com',
+            'action_url' => '',
+            'action_label' => 'Buy ebook',
+        ]);
+
+        Product::factory()->create([
+            'title' => 'Testing Laravel',
+            'slug' => 'testing-laravel',
+            'description' => 'Testing is a fundamental skill for every developer. In this course you\'ll learn how to write quality tests to make sure your Laravel application is working correctly.',
+            'url' => 'https://testing-laravel.com',
+            'action_url' => '',
+            'action_label' => 'Buy course',
+        ]);
+
+        Product::factory()->create([
+            'title' => 'Event Sourcing in Laravel',
+            'slug' => 'event-sourcing-in-laravel',
+            'description' => 'A hands-on course to start using event sourcing in large apps.',
+            'url' => 'https://event-sourcing-laravel.com',
+            'action_url' => '',
+            'action_label' => 'Buy course',
+        ]);
+
+        Product::factory()->create([
+            'title' => 'Writing Readable PHP',
+            'slug' => 'writing-readable-php',
+            'description' => 'Learn how to write PHP that is a joy to read and easy to understand.',
+            'url' => 'https://writing-readable-php.com',
+            'action_url' => '',
+            'action_label' => 'Buy ebook',
+        ]);
+
+        Product::factory()->create([
+            'title' => 'Laravel Package Training v2.0',
+            'slug' => 'laravel-package-training',
+            'description' => 'Having produced over 500 packages, with more than 2 billion downloads in total, we know what we\'re talking about.',
+            'url' => 'https://laravelpackage.training',
+            'action_url' => '',
+            'action_label' => 'Buy course',
+        ]);
+
+        Product::factory()->create([
+            'title' => 'Laravel Comments',
+            'slug' => 'laravel-comments',
+            'description' => 'Laravel Comments contains a drop-in Livewire component that allows you to add comments to any Laravel app in no time.',
+            'url' => 'https://spatie.be/products/laravel-comments',
             'action_url' => '',
             'action_label' => 'Buy license',
         ]);

@@ -3,9 +3,11 @@
     background="/backgrounds/blog-post.jpg"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
-    :og-image="$post->og_image"
     :description="strip_tags($post->summary)"
 >
+    <x-og-image view="og-image.blog-post" :data="[
+        'title' => $post->title,
+    ]" />
     <article>
         <header class="wrapper-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 md:px-24 relative z-10">
             <div class="px-4 flex flex-col sm:flex-row gap-12">

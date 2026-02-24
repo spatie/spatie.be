@@ -13,6 +13,11 @@
     :no-index="$page->alias !== $latestVersion->slug"
     canonical="{{ url('/docs/' . $repository->slug . '/' . $latestVersion->slug . '/' . $page->slug) }}"
 >
+    <x-og-image view="og-image.docs" :data="[
+        'title' => $page->title,
+        'package' => $repository->slug,
+        'description' => $repositoryModel?->description,
+    ]" />
     <x-slot name="description">
         {{ $repository->slug }}
     </x-slot>
