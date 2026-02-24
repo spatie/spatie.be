@@ -15,7 +15,7 @@
         <div>
             <h1 class="text-[96px] font-bold leading-[1.1]">{{ $package }}</h1>
             @if(!empty($description))
-                <p class="mt-6 text-[52px] leading-snug opacity-75">{{ $description }}</p>
+                <p class="mt-6 text-[52px] font-bold leading-snug opacity-75">{{ $description }}</p>
             @endif
         </div>
     </div>
