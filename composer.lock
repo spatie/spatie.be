@@ -12365,16 +12365,16 @@
         },
         {
             "name": "spatie/laravel-og-image",
-            "version": "1.1.0",
+            "version": "1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/laravel-og-image.git",
-                "reference": "5ae86e426601d99f18f04f184a693629407fe777"
+                "reference": "6d632b9527a616f2096d68af170c4f783a053684"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/laravel-og-image/zipball/5ae86e426601d99f18f04f184a693629407fe777",
-                "reference": "5ae86e426601d99f18f04f184a693629407fe777",
+                "url": "https://api.github.com/repos/spatie/laravel-og-image/zipball/6d632b9527a616f2096d68af170c4f783a053684",
+                "reference": "6d632b9527a616f2096d68af170c4f783a053684",
                 "shasum": ""
             },
             "require": {
@@ -12436,7 +12436,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/laravel-og-image/issues",
-                "source": "https://github.com/spatie/laravel-og-image/tree/1.1.0"
+                "source": "https://github.com/spatie/laravel-og-image/tree/1.1.1"
             },
             "funding": [
                 {
@@ -12444,7 +12444,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-24T12:42:46+00:00"
+            "time": "2026-02-24T16:39:47+00:00"
         },
         {
             "name": "spatie/laravel-package-tools",
