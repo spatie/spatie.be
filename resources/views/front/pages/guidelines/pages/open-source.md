@@ -1,7 +1,7 @@
 ---
 title: Open source
-description: Sharing is caring
-weight: 3
+description: Sharing is caring.
+weight: 4
 ---
 
 ## Handling feedback
@@ -14,7 +14,7 @@ During the lifetime of a package, many users will likely have feedback. This fee
 
 On GitHub, we use an [issue template](https://github.com/spatie/package-skeleton-laravel) to triage feedback into the above categories.
 
-This is how it looks like when a new issue is created on a repo.
+This is what it looks like when a new issue is created on a repo.
 
 ![Screenshot of issue creation](https://spatie.be/images/guidelines/new-issue.jpg)
 

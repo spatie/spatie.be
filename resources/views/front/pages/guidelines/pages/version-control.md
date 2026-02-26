@@ -1,7 +1,7 @@
 ---
 title: Version control
-description: Writing history
-weight: 4
+description: Write history.
+weight: 6
 ---
 
 All our projects use Git, mostly with a repository hosted on GitHub. Since we're a small team, and most projects have less than three people working on it simultaneously, we have pretty loose Git guidelines since we rarely bump into conflicts.
@@ -48,7 +48,7 @@ Merging branches via GitHub pull requests isn't a requirement, but can be useful
 
 - You want a peer to review your changes
 - You want to ensure your branch can be merged and commits can be squashed via an interface
-- Future you wants a quick way to retrieve that point in history by browsing passed pull requests
+- Future you wants a quick way to retrieve that point in history by browsing past pull requests
 
 ### Merging and rebasing
 
@@ -59,7 +59,7 @@ Ideally, rebase your branch regularly to reduce the chance of merge conflicts.
 
 ## Commits
 
-There's not strict ruling on commits in projects in initial development, however, descriptive commit messages are recommended. After a project has gone live, descriptive commit messages are required. Always use present tense in commit messages.
+There's no strict ruling on commits in projects in initial development, however, descriptive commit messages are recommended. After a project has gone live, descriptive commit messages are required. Always use present tense in commit messages.
 
 - Non-descriptive: `wip`, `commit`, `a lot`, `solid`
 - Descriptive: `Update deps`, `Fix vat calculation in delivery costs`

@@ -1,14 +1,14 @@
 ---
 title: Emergencies
-description: Tips to stay cool
-weight: 6
+description: Tips to stay cool.
+weight: 7
 ---
 
 Things in production are not always working as they should be. In general, we don't care who has made a mistake that resulted in an emergency or incidents. The entire team is responsible for letting something slip into production. We see any emergency as an opportunity to learn something and to improve how we handle things.
 
 ## During an emergency
 
-In general, try to keep a cool head. A correct fix is better than a quick, and potentially wrong one.
+In general, try to keep a cool head. A correct fix is better than a quick and potentially wrong one.
 
 When you are working on fixing an emergency in production these tips might help:
 
@@ -20,7 +20,7 @@ When you are working on fixing an emergency in production these tips might help:
 
  When the dust is settled, schedule a meeting with the relevant team members to discuss:
 
-- what actual went wrong
+- what actually went wrong
 - how this could have been prevented
 - which changes we will make to the app to prevent a similar incident
-- how we could change our procedures to prevent similar incident.
+- how we could change our procedures to prevent similar incidents.

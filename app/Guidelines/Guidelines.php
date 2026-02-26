@@ -3,7 +3,6 @@
 namespace App\Guidelines;
 
 use Illuminate\Support\Collection;
-use Spatie\Sheets\Sheet;
 use Spatie\Sheets\Sheets;
 
 class Guidelines
@@ -20,7 +19,7 @@ class Guidelines
         return $this->pages;
     }
 
-    public function page(string $slug): ?Sheet
+    public function page(string $slug): ?GuidelinesPage
     {
         return $this->pages->firstWhere('slug', $slug);
     }

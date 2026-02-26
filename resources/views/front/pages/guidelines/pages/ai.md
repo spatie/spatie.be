@@ -1,7 +1,7 @@
 ---
 title: Using our guidelines with AI
-description: How to make AI agents program with style
-weight: 5
+description: Agents can have style too.
+weight: 8
 ---
 
 ## Introduction
