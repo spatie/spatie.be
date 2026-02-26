@@ -3,6 +3,15 @@
 return [
     'repositories' => [
         [
+            'name' => 'crawler',
+            'repository' => 'spatie/crawler',
+            'branches' => [
+                'main' => 'v9',
+            ],
+
+            'category' => 'PHP',
+        ],
+        [
             'name' => 'laravel-openapi-cli',
             'repository' => 'spatie/laravel-openapi-cli',
             'branches' => [
