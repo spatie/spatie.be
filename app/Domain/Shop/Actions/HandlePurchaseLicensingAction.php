@@ -3,7 +3,6 @@
 namespace App\Domain\Shop\Actions;
 
 use App\Domain\Shop\Exceptions\CouldNotRenewLicenseForPurchase;
-use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
