@@ -204,7 +204,8 @@ return [
             'name' => 'laravel-site-search',
             'repository' => 'spatie/laravel-site-search',
             'branches' => [
-                'main' => 'v2',
+                'main' => 'v3',
+                'v2' => 'v2',
                 'v1' => 'v1',
             ],
             'category' => 'Laravel',
