@@ -14,6 +14,12 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
 >
+
+    <x-og-image view="og-image.oss" :data="[
+        'title' => 'Committed to open source',
+        'url' => 'spatie.be/open-source'
+    ]" />
+
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])
         <style>html { background: #050508 }</style>

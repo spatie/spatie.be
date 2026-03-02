@@ -4,6 +4,12 @@
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased"
     dark
 >
+
+    <x-og-image view="og-image.oss" :data="[
+        'title' => 'Send us a postcard will you?',
+        'url' => 'spatie.be/open-source/postcards'
+    ]" />
+
     @push('head')
         @vite(['resources/js/front/gradient.jsx'])
         <style>html { scroll-behavior: smooth; background: #050508; }</style>
