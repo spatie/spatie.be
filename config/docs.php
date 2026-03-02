@@ -2,6 +2,15 @@
 
 return [
     'repositories' => [
+    [
+        'name' => 'laravel-sitemap',
+        'repository' => 'spatie/laravel-sitemap',
+        'branches' => [
+            'main' => 'v8',
+        ],
+
+        'category' => 'PHP',
+    ],
         [
             'name' => 'crawler',
             'repository' => 'spatie/crawler',
