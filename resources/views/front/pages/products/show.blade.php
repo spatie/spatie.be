@@ -9,7 +9,7 @@
 >
     <x-og-image view="og-image.product" :data="[
         'title' => $product->title,
-        'description' => strip_tags($product->long_description ?? $product->description),
     ]" />
+
     @includeFirst(["front.pages.products.detail.{$product->slug}", "front.pages.products.detail.default"])
 </x-page>

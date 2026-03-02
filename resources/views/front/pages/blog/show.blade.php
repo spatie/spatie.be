@@ -12,6 +12,7 @@
             'title' => $post->title,
         ]" />
     @endif
+
     <article>
         <header class="wrapper-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 md:px-24 relative z-10">
             <div class="px-4 flex flex-col sm:flex-row gap-12">
