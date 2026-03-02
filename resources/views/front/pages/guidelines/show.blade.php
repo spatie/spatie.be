@@ -31,7 +31,7 @@
         @include('front.pages.guidelines.partials.breadcrumbs')
 
 
-        <section class="max-w-screen-xl mx-auto w-full md:grid pb-24 gap-16 md:grid-cols-10 items-stretch md:mt-10">
+        <section class="max-w-screen-xl mx-auto w-full grid grid-cols-1 pb-24 gap-16 md:grid-cols-10 items-stretch md:mt-10">
             <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
                 @include('front.pages.guidelines.partials.navigation')
                 @include('components.banners.randomBanner')
@@ -39,7 +39,7 @@
 
             <article class="md:col-span-7 lg:col-span-6">
                 <h1
-                    class="text-oss-spatie-blue uppercase sm:text-[72px] md:text-[96px] font-black leading-90 tracking-normal font-druk mb-10">
+                    class="text-oss-spatie-blue uppercase text-[72px] md:text-[96px] font-black leading-90 tracking-normal font-druk mb-10">
                     {{ $page->title }}</h1>
                 <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-base md:text-lg">
                     {{ $page->contents }}
