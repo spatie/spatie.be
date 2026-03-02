@@ -1,4 +1,6 @@
-<x-page title="{{ $page->title }}" body-class="bg-oss-gray">
+<x-page
+    title="{{ $page->title }}"
+    body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue leading-[1.4]">
 
     <x-slot name="description">
         {{ $page->description }}
@@ -37,7 +39,7 @@
 
             <article class="md:col-span-7 lg:col-span-6">
                 <h1
-                    class="text-oss-spatie-blue uppercase text-[4.5rem] font-black leading-90 tracking-normal font-druk mb-10">
+                    class="text-oss-spatie-blue uppercase sm:text-[72px] md:text-[96px] font-black leading-90 tracking-normal font-druk mb-10">
                     {{ $page->title }}</h1>
                 <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-base md:text-lg">
                     {{ $page->contents }}
