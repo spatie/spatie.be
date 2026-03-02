@@ -5,9 +5,13 @@
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
     :description="strip_tags($post->summary)"
 >
-    <x-og-image view="og-image.blog-post" :data="[
-        'title' => $post->title,
-    ]" />
+    @if($post->og_image)
+        <x-og-image :url="$post->og_image" />
+    @else
+        <x-og-image view="og-image.blog-post" :data="[
+            'title' => $post->title,
+        ]" />
+    @endif
     <article>
         <header class="wrapper-lg mt-6 sm:mt-12 -mb-6 sm:-mb-12 md:px-24 relative z-10">
             <div class="px-4 flex flex-col sm:flex-row gap-12">
