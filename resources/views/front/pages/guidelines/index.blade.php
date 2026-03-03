@@ -1,4 +1,11 @@
 <x-page title="Guidelines" background="/backgrounds/guidelines.jpg">
+
+    <x-og-image view="og-image.default" :data="[
+        'title' => 'Coding Guidelines',
+        'url' => 'spatie.be',
+        'image' => image('/backgrounds/guidelines.jpg')
+    ]" />
+
     <x-slot name="description">
         A set of guidelines we use to bring our projects to a good end.
         Consistency is the key to writing maintainable software.
