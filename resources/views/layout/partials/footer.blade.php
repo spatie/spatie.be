@@ -1,9 +1,9 @@
 @php($dark ??= false)
 <footer
     @if ($dark)
-        class="bg-oss-footer-dark text-oss-gray-dark"
+        class="bg-oss-footer-dark text-oss-gray-dark font-sans"
     @else
-        class="bg-white text-oss-royal-blue border-t border-oss-gray | print:bg-transparent"
+        class="bg-white text-oss-royal-blue border-t border-oss-gray font-sans | print:bg-transparent"
     @endif
 >
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
