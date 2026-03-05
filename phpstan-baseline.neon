@@ -55,12 +55,6 @@ parameters:
 			path: app/Domain/Experience/Enums/ExperienceType.php
 
 		-
-			message: '#^Access to an undefined property App\\Domain\\Shop\\Models\\Purchasable\:\:\$originalPurchasable\.$#'
-			identifier: property.notFound
-			count: 2
-			path: app/Domain/Shop/Actions/HandlePurchaseLicensingAction.php
-
-		-
 			message: '#^@readonly property cannot have a default value\.$#'
 			identifier: property.readOnlyByPhpDocDefaultValue
 			count: 1
@@ -362,4 +356,3 @@ parameters:
 			identifier: class.notFound
 			count: 1
 			path: config/blade-comments.php
-

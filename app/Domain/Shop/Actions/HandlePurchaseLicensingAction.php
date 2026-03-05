@@ -21,10 +21,11 @@ class HandlePurchaseLicensingAction
     public function execute(Purchase $purchase): Purchase
     {
         $handledRenewal = false;
+        $quantity = (int)($purchase->quantity ?? 1);
 
-        $purchase->assignments()->each(function (PurchaseAssignment $assignment) use ($purchase, &$handledRenewal) {
+        $purchase->assignments()->each(function (PurchaseAssignment $assignment) use ($quantity, &$handledRenewal) {
             if ($assignment->purchasable->isRenewal()) {
-                $this->handleRenewals($assignment, $purchase->quantity);
+                $this->handleRenewals($assignment, $quantity);
                 $handledRenewal = true;
 
                 return;
@@ -41,14 +42,14 @@ class HandlePurchaseLicensingAction
             return $purchase;
         }
 
-        if ($purchase->assignments()->count() < $purchase->quantity) {
+        if ($purchase->assignments()->count() < $quantity) {
             $assignment = $purchase->assignments->first();
 
             if (! $assignment->purchasable->requires_license) {
                 return $purchase;
             }
 
-            foreach (range($purchase->assignments()->count(), $purchase->quantity - 1) as $i) {
+            foreach (range($purchase->assignments()->count(), $quantity - 1) as $i) {
                 $this->createLicenseAction->execute($assignment);
             }
         }

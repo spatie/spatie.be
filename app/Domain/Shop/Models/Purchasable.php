@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Mail\Markdown;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
@@ -74,7 +75,8 @@ class Purchasable extends Model implements HasMedia, Sortable
         return $this->belongsTo(self::class, 'renewal_purchasable_id');
     }
 
-    public function originalPurchasable()
+    /** @return HasOne<Purchasable, $this> */
+    public function originalPurchasable(): HasOne
     {
         return $this->hasOne(Purchasable::class, 'renewal_purchasable_id');
     }
