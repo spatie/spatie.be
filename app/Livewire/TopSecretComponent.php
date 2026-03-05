@@ -145,7 +145,6 @@ class TopSecretComponent extends Component
                 'title' => 'Top Secret',
                 'bodyClass' => 'bg-bf-gray min-h-screen antialiased',
                 'image' => '/backgrounds/bf-24-desk.jpg',
-                'ogImage' => asset('/images/og-image-topsecret.jpg'),
             ]);
     }
 }

@@ -2,6 +2,12 @@
     title="{{ $page->title }}"
     body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue leading-[1.4]">
 
+    <x-og-image view="og-image.default" :data="[
+        'title' => $page->title,
+        'url' => 'spatie.be/guidelines',
+        'image' => image('/backgrounds/guidelines-blur.jpg')
+    ]" />
+
     <x-slot name="description">
         {{ $page->description }}
     </x-slot>

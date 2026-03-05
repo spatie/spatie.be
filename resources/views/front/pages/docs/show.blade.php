@@ -13,6 +13,20 @@
     :no-index="$page->alias !== $latestVersion->slug"
     canonical="{{ url('/docs/' . $repository->slug . '/' . $latestVersion->slug . '/' . $page->slug) }}"
 >
+
+    @if($showBrandedHeader)
+        <x-og-image view="og-image.docs-branded" :data="[
+            'title' => $repositoryModel->banner_title ?? str()->headline($repositoryModel->name),
+            'package' => $repository->slug,
+            'color' => $repositoryModel?->accent_color,
+            'icon' => $repositoryModel->logo_svg
+        ]" />
+    @else
+        <x-og-image view="og-image.docs" :data="[
+            'package' => $repository->slug,
+        ]" />
+    @endif
+
     <x-slot name="description">
         {{ $repository->slug }}
     </x-slot>

@@ -141,6 +141,107 @@ it('finds a license to renew if none was passed through', function () {
     $this->assertTrue($license2->fresh()->expires_at > now());
 });
 
+it('renews multiple licenses when quantity is greater than 1', function () {
+    $user = User::factory()->create();
+
+    $renewable = Purchasable::factory()->create([
+        'requires_license' => true,
+    ]);
+    $purchasable = Purchasable::factory()->create([
+        'requires_license' => true,
+        'renewal_purchasable_id' => $renewable->id,
+    ]);
+
+    $originalPurchase = Purchase::factory()->create([
+        'purchasable_id' => $purchasable->id,
+        'user_id' => $user->id,
+    ]);
+
+    $assignment = PurchaseAssignment::create([
+        'user_id' => $user->id,
+        'purchasable_id' => $purchasable->id,
+        'purchase_id' => $originalPurchase->id,
+    ]);
+
+    $license1 = License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->subDays(2),
+    ]);
+
+    $license2 = License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->subDay(),
+    ]);
+
+    $purchase = Purchase::factory()->create([
+        'purchasable_id' => $renewable->id,
+        'user_id' => $user->id,
+        'quantity' => 2,
+    ]);
+
+    PurchaseAssignment::create([
+        'user_id' => $user->id,
+        'purchasable_id' => $renewable->id,
+        'purchase_id' => $purchase->id,
+    ]);
+
+    $this->action->execute($purchase);
+
+    $this->assertTrue($license1->fresh()->expires_at > now());
+    $this->assertTrue($license2->fresh()->expires_at > now());
+    expect(License::count())->toEqual(2);
+});
+
+it('creates new licenses on original purchasable when quantity exceeds existing licenses', function () {
+    $user = User::factory()->create();
+
+    $renewable = Purchasable::factory()->create([
+        'requires_license' => true,
+    ]);
+    $purchasable = Purchasable::factory()->create([
+        'requires_license' => true,
+        'renewal_purchasable_id' => $renewable->id,
+    ]);
+
+    $originalPurchase = Purchase::factory()->create([
+        'purchasable_id' => $purchasable->id,
+        'user_id' => $user->id,
+    ]);
+
+    $assignment = PurchaseAssignment::create([
+        'user_id' => $user->id,
+        'purchasable_id' => $purchasable->id,
+        'purchase_id' => $originalPurchase->id,
+    ]);
+
+    $license = License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->subDay(),
+    ]);
+
+    $purchase = Purchase::factory()->create([
+        'purchasable_id' => $renewable->id,
+        'user_id' => $user->id,
+        'quantity' => 2,
+    ]);
+
+    PurchaseAssignment::create([
+        'user_id' => $user->id,
+        'purchasable_id' => $renewable->id,
+        'purchase_id' => $purchase->id,
+    ]);
+
+    $this->action->execute($purchase);
+
+    $this->assertTrue($license->fresh()->expires_at > now());
+    expect(License::count())->toEqual(2);
+
+    $newLicense = License::where('id', '!=', $license->id)->first();
+    $newAssignment = $newLicense->assignment;
+    expect($newAssignment->purchasable_id)->toEqual($purchasable->id);
+    $this->assertTrue($newLicense->expires_at->isNextYear());
+});
+
 it('throws if it cannot find a license', function () {
     $user = User::factory()->create();
 
