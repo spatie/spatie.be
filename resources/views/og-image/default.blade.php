@@ -1,7 +1,7 @@
 <div class="flex h-full w-full flex-col p-16 font-pt text-white bg-oss-gray">
 
     @isset ($image)
-        <div class="absolute right-0 top-0 h-full">
+        <div class="absolute right-0 top-0 h-full opacity-75">
             <img src="{{ $image->getUrl() }}" alt="">
         </div>
     @endisset
