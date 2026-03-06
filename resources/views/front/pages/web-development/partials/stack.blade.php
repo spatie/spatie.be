@@ -67,6 +67,14 @@
                     <li>Ansible</li>
                     <li>…</li>
                 </ul>
+                <h3 class="title-sm">AI</h3>
+                <ul class="bullets-inline bullets-blue">
+                    <li>Claude Code</li>
+                    <li>GitHub Copilot</li>
+                    <li>OpenAI</li>
+                    <li>Custom AI integrations</li>
+                    <li>…</li>
+                </ul>
             </div>
         </div>
     </div>

@@ -11,13 +11,13 @@
             </h2>
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    We don't just execute, but need to be proud of our work —just like you.
+                    We don't just execute, but need to be proud of our work, just like you.
                     That's why we love to work in partnership: as advisors, as architects of technically challenging
                     projects.
                 </p>
                 <p class="text-lg">
                     <a href="{{ route('about') }}#team">Our team</a> is a fine blend of back &amp; frontend profiles
-                    that are used to working together, tightly coupled.
+                    that are used to working together, tightly coupled. AI lets them spend less time writing code and more time delivering quality solutions.
                 </p>
                 <p class="text-lg">
                     We'd really like to know what kind of project or problem you're dealing with. Feed us with as much

@@ -38,7 +38,7 @@
         <div class="sm:col-span-3 | md:col-span-2 md:col-start-1 md:row-start-5">
             <h3 class="title-sm">5. Build with sense</h3>
             <p class="">
-                With the plans laid out, we design a tasteful but functional interface. In the back, we code with modern best practices in PHP development.
+                With the plans laid out, we design a tasteful but functional interface. AI handles the routine code, freeing us to focus on architecture and quality.
             </p>
         </div>
         <div class="hidden | md:block md:col-span-4 md:col-start-3 md:row-start-5">
