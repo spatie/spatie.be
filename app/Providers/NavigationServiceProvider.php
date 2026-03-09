@@ -27,6 +27,7 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('vacancies.index', 'Vacancies')
                 ->route('about', 'About')
                 ->route('blog', 'Blog')
+                ->route('newsletter', 'Newsletter')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
                 ->url('https://spatie.myspreadshop.net', 'Merch ↗')
