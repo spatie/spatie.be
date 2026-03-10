@@ -36,7 +36,10 @@
                 </div>
             @endif
             <p class="mt-4 text-oss-royal-blue-light text-sm leading-tight">
-                Sign up for occasional emails on Spatie products and promotions.
+                @if($showDescription)
+                    We send the Spatie TLDR every three-ish months: product updates, what's going on behind the scenes,
+                    and interesting links. We also send occasional product updates when we have something new to share.
+                @endif
                 By submitting this form, you acknowledge our <a class="underline" href="{{ route('legal.privacy') }}">Privacy Policy</a>.
             </p>
         </div>

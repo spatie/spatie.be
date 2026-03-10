@@ -1,4 +1,4 @@
-<x-page title="Newsletter" background="/backgrounds/guidelines_new.jpg" body-class="bg-oss-gray"
+<x-page title="Newsletter" body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased">
 
     <x-og-image view="og-image.default" :data="[
@@ -6,6 +6,10 @@
         'url' => 'spatie.be/newsletter',
         'image' => image('/backgrounds/guidelines_new.jpg')
     ]" />
+
+    @push('startBody')
+        <div aria-hidden="true" class="wallpaper newsletter-wallpaper"></div>
+    @endpush
 
     <x-slot name="description">
         Get the latest from Spatie in your inbox.
@@ -17,7 +21,9 @@
         </x-headers.super>
     </header>
 
-    <section class="wrapper-lg sm:px-16 mb-16">
-        <livewire:newsletter />
+    @include('front.pages.newsletter.partials.intro')
+
+    <section class="wrapper-lg sm:px-16 mt-8 sm:mt-12 xl:mt-16 mb-16">
+        <livewire:newsletter :show-description="false" />
     </section>
 </x-page>
