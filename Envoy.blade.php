@@ -111,6 +111,11 @@ rm -rf {{ $newReleaseDir }}/public/videos
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/persistent/public/videos public/videos
 
+# Remove the public/fonts directory and replace with persistent data
+rm -rf {{ $newReleaseDir }}/public/fonts
+cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/persistent/public/fonts public/fonts
+
 # Import the environment config
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/.env .env
