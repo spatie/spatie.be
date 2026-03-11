@@ -41,6 +41,7 @@ use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
 use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Support\Facades\Route;
+use Spatie\MarkdownResponse\Middleware\ProvideMarkdownResponse;
 
 Route::domain('topsecret.'.config('app.url'))->group(function () {
     Route::view('soon', 'front.pages.top-secret.placeholder');
@@ -182,7 +183,7 @@ Route::redirect(
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
-Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(\Spatie\MarkdownResponse\Middleware\ProvideMarkdownResponse::class);
+Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(ProvideMarkdownResponse::class);
 
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
