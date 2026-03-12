@@ -414,7 +414,8 @@ return [
             'name' => 'laravel-dashboard',
             'repository' => 'spatie/laravel-dashboard',
             'branches' => [
-                'main' => 'v3',
+                'main' => 'v4',
+                'v3' => 'v3',
                 'v2' => 'v2',
                 'v1' => 'v1',
             ],
