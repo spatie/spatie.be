@@ -1,24 +1,18 @@
 <section id="jobs">
     <div class="wrap wrap-6 | items-start">
-{{--        <p>Sorry, no vacancies at the moment!</p>--}}
-        <div class="sm:col-span-3 | line-l">
-            <h2 class="title-sm">
-                Vacancies at Spatie
-                <span class="title-subtext text-pink-dark block">
-                   Currently looking for…
-                </span>
-            </h2>
-            <div class="mt-4">
-                <a class="link-underline link-blue" href="{{ route('vacancies.show', 'backend-engineer') }}">Backend Engineer</a>
-                <div class="text-xs text-gray">Full-time / Partially remote / Dutch speaking</div>
-            </div>
-            {{--
-            <div class="mt-4">
-                <a class="link-underline link-blue" href="{{ route('vacancies.show', 'frontend-engineer') }}">Frontend Engineer</a>
-                <div class="text-xs text-gray">Full-time / Partially remote / Dutch speaking</div>
-            </div>
-            --}}
-        </div>
+        <p>No current vacancies</p>
+{{--        <div class="sm:col-span-3 | line-l">--}}
+{{--            <h2 class="title-sm">--}}
+{{--                Vacancies at Spatie--}}
+{{--                <span class="title-subtext text-pink-dark block">--}}
+{{--                   Currently looking for…--}}
+{{--                </span>--}}
+{{--            </h2>--}}
+{{--            <div class="mt-4">--}}
+{{--                <a class="link-underline link-blue" href="{{ route('vacancies.show', 'backend-engineer') }}">Backend Engineer</a>--}}
+{{--                <div class="text-xs text-gray">Full-time / Partially remote / Dutch speaking</div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 {{--        <div class="sm:col-span-3 | line-l">--}}
 {{--            <h2 class="title-sm">--}}
 {{--                Internships--}}
