@@ -5,12 +5,11 @@
 @endphp
 
 <x-page
-    title="Websites & web applications in Laravel"
+    title="Websites & web applications in Laravel & AI"
     :background="$isBlackFriday ? '' : '/backgrounds/home-2020.jpg'"
 >
     <x-slot name="description">
-        Spatie is a digital allrounder: we design solid websites & web applications using Laravel & Vue. No frills, just
-        proven expertise. From Antwerp, Belgium
+        Spatie builds solid websites & web applications in Laravel. With AI, we focus on solutions, not boilerplate. From Antwerp, Belgium
     </x-slot>
 
     @if($isBlackFriday)

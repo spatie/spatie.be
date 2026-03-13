@@ -1,6 +1,6 @@
 ---
 title: Security
-description: There's no key under the mat
+description: No keys under the mat.
 weight: 5
 ---
 
@@ -19,7 +19,7 @@ All commits should be [signed](https://docs.github.com/en/authentication/managin
 ## Applications
 
 - All HTTP traffic should be sent over SSL
-- All forms should use a CSRF token to prevent cross site
+- All forms should use a CSRF token to prevent cross-site request forgery (CSRF)
 - Routes performing a significant action (delete, update, ...) should use the appropriate HTTP method (`DELETE`, `POST`, `PUT` - not `GET`)
 - When a site uses authorization/authentication, automated tests should be added to test only authorized users can use certain functionality
 
@@ -45,4 +45,4 @@ All commits should be [signed](https://docs.github.com/en/authentication/managin
 - All Macs should have FileVault enabled
 - Do not use public searchable services like Pastebin or gist to share sensitive code or data
 - Do not install any pirated software on your Mac or phone
-- Browser extensions can pose security issues, so only install extensions from the Chrome Web Store or the App Store. Be aware that extensions may change ownership or be taken over by malicious actors, so use as few extensions as possible. Do not use any browser extensions that can track typed keys, passwords or browser history. Using the 1Password browser extension is fine.  
+- Browser extensions can pose security issues, so only install extensions from the Chrome Web Store or the App Store. Be aware that extensions may change ownership or be taken over by malicious actors, so use as few extensions as possible. Do not use any browser extensions that can track typed keys, passwords or browser history. Using the 1Password browser extension is fine.

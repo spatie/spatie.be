@@ -1,0 +1,15 @@
+actual:
+    price_in_cents: 14900
+    currency_code: USD
+    currency_symbol: $
+    formatted_price: '$ 149'
+without_discount:
+    price_in_cents: 14900
+    currency_code: USD
+    currency_symbol: $
+    formatted_price: '$ 149'
+discount:
+    active: false
+    percentage: null
+    name: null
+    expires_at: null

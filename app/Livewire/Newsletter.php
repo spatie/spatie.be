@@ -11,6 +11,13 @@ class Newsletter extends Component
 
     public bool $submitted = false;
 
+    public bool $showDescription = true;
+
+    public function mount(bool $showDescription = true): void
+    {
+        $this->showDescription = $showDescription;
+    }
+
     public function subscribe(): void
     {
         $this->validate([

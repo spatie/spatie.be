@@ -1,5 +1,4 @@
 <x-page
-    ogImage="https://spatie.be/images/og-store.png"
     title="Applications and digital courses built for modern developers"
     background="/backgrounds/product.jpg"
     description="Welcome in our store, by artisans for artisans. Get access to our paid products, courses and ebooks"

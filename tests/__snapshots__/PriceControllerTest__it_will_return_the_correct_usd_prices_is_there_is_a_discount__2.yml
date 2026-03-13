@@ -1,0 +1,15 @@
+actual:
+    price_in_cents: 13400
+    currency_code: USD
+    currency_symbol: $
+    formatted_price: '$ 134'
+without_discount:
+    price_in_cents: 14900
+    currency_code: USD
+    currency_symbol: $
+    formatted_price: '$ 149'
+discount:
+    active: true
+    percentage: 10
+    name: 'Flash sale'
+    expires_at: 1577836800

@@ -9,7 +9,7 @@
         'components.banners.flare',
         'components.banners.mailcoach',
         'components.banners.ray',
-        'components.banners.testingLaravel',
-        'components.banners.writing-readable-php',
+        {{-- 'components.banners.testingLaravel', --}}
+        {{-- 'components.banners.writing-readable-php', --}}
     ]))
 @endif

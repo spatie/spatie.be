@@ -8,3 +8,140 @@
 .wallpaper img {
     @apply w-full;
 }
+
+.guidelines-wallpaper {
+    --guidelines-glow-width: clamp(52rem, 126vw, 124rem);
+    --guidelines-glow-blur: 172px;
+    --guidelines-glow-core-blur: 96px;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.guidelines-wallpaper::before {
+    content: '';
+    position: absolute;
+    width: var(--guidelines-glow-width);
+    aspect-ratio: 1804 / 1165;
+    top: calc(var(--guidelines-glow-width) * -0.34);
+    left: 50%;
+    border-radius: 9999px;
+    transform: translate3d(-50%, 0, 0) rotate(157.5deg);
+    transform-origin: center;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(114, 189, 213, 0.96) 0%,
+        rgba(114, 189, 213, 0.91) 20%,
+        rgba(111, 169, 187, 0.8) 38%,
+        rgba(114, 189, 213, 0.51) 54%,
+        rgba(114, 189, 213, 0.2) 68%,
+        rgba(114, 189, 213, 0.09) 79%,
+        transparent 87%
+    );
+    filter: blur(var(--guidelines-glow-blur)) saturate(1.01);
+}
+
+.guidelines-wallpaper::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--guidelines-glow-width) * 0.9);
+    aspect-ratio: 1804 / 1165;
+    top: calc(var(--guidelines-glow-width) * -0.255);
+    left: 50%;
+    border-radius: 9999px;
+    transform: translate3d(-50%, 0, 0) rotate(157.5deg);
+    transform-origin: center;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(114, 189, 213, 0.92) 0%,
+        rgba(114, 189, 213, 0.82) 24%,
+        rgba(111, 169, 187, 0.47) 46%,
+        rgba(111, 169, 187, 0.15) 61%,
+        transparent 71%
+    );
+    filter: blur(var(--guidelines-glow-core-blur)) saturate(1.03);
+}
+
+@media (min-width: 720px) {
+    .guidelines-wallpaper {
+        --guidelines-glow-width: clamp(62rem, 126vw, 124rem);
+        --guidelines-glow-blur: 196px;
+        --guidelines-glow-core-blur: 110px;
+    }
+}
+
+@media (min-width: 960px) {
+    .guidelines-wallpaper {
+        --guidelines-glow-blur: 214px;
+        --guidelines-glow-core-blur: 124px;
+    }
+}
+
+.newsletter-wallpaper {
+    --newsletter-glow-width: clamp(52rem, 126vw, 124rem);
+    --newsletter-glow-blur: 176px;
+    --newsletter-glow-core-blur: 98px;
+    --newsletter-glow-rotation: 146deg;
+    --newsletter-glow-left: 53%;
+    pointer-events: none;
+}
+
+.newsletter-wallpaper::before {
+    content: '';
+    position: absolute;
+    width: var(--newsletter-glow-width);
+    aspect-ratio: 2100 / 980;
+    top: calc(var(--newsletter-glow-width) * -0.28);
+    left: var(--newsletter-glow-left);
+    border-radius: 9999px;
+    transform: translate3d(-50%, 0, 0) rotate(var(--newsletter-glow-rotation)) scaleX(1.12) scaleY(0.92);
+    transform-origin: center;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(130, 216, 175, 0.72) 0%,
+        rgba(130, 216, 175, 0.67) 20%,
+        rgba(148, 218, 196, 0.57) 38%,
+        rgba(130, 216, 175, 0.34) 54%,
+        rgba(130, 216, 175, 0.14) 68%,
+        rgba(130, 216, 175, 0.05) 79%,
+        transparent 87%
+    );
+    filter: blur(var(--newsletter-glow-blur)) saturate(0.98);
+}
+
+.newsletter-wallpaper::after {
+    content: '';
+    position: absolute;
+    width: calc(var(--newsletter-glow-width) * 0.96);
+    aspect-ratio: 1950 / 920;
+    top: calc(var(--newsletter-glow-width) * -0.2);
+    left: calc(var(--newsletter-glow-left) - 1%);
+    border-radius: 9999px;
+    transform: translate3d(-50%, 0, 0) rotate(calc(var(--newsletter-glow-rotation) - 8deg)) scaleX(1.08) scaleY(0.88);
+    transform-origin: center;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(130, 216, 175, 0.56) 0%,
+        rgba(130, 216, 175, 0.5) 24%,
+        rgba(148, 218, 196, 0.3) 46%,
+        rgba(148, 218, 196, 0.1) 61%,
+        transparent 71%
+    );
+    filter: blur(var(--newsletter-glow-core-blur)) saturate(1);
+}
+
+@media (min-width: 720px) {
+    .newsletter-wallpaper {
+        --newsletter-glow-width: clamp(62rem, 126vw, 124rem);
+        --newsletter-glow-blur: 198px;
+        --newsletter-glow-core-blur: 112px;
+        --newsletter-glow-left: 54%;
+    }
+}
+
+@media (min-width: 960px) {
+    .newsletter-wallpaper {
+        --newsletter-glow-blur: 216px;
+        --newsletter-glow-core-blur: 126px;
+        --newsletter-glow-left: 55%;
+    }
+}

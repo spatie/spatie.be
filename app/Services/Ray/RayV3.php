@@ -8,7 +8,7 @@ use Symfony\Component\Yaml\Yaml;
 
 class RayV3
 {
-    protected string $baseUrl = 'https://ray-app.s3.eu-west-1.amazonaws.com/ray-app-updates-v3/beta/';
+    protected string $baseUrl = 'https://ray-app.s3.eu-west-1.amazonaws.com/ray-app-updates-v3/stable/';
 
     public function getDownloadLink(string $platform): string
     {
@@ -26,22 +26,22 @@ class RayV3
 
     public function macOsArm64(): string
     {
-        return $this->getFilePathFromYml('beta-mac.yml', fn ($file) => str_contains($file['url'], 'arm64.dmg'));
+        return $this->getFilePathFromYml('latest-mac.yml', fn ($file) => str_contains($file['url'], 'arm64.dmg'));
     }
 
     public function macOsX64(): string
     {
-        return $this->getFilePathFromYml('beta-mac.yml', fn ($file) => str_contains($file['url'], 'x64.dmg'));
+        return $this->getFilePathFromYml('latest-mac.yml', fn ($file) => str_contains($file['url'], 'x64.dmg'));
     }
 
     public function linux(): string
     {
-        return $this->getFilePathFromYml('beta-linux.yml');
+        return $this->getFilePathFromYml('latest-linux.yml');
     }
 
     public function windows(): string
     {
-        return $this->getFilePathFromYml('beta.yml');
+        return $this->getFilePathFromYml('latest.yml');
     }
 
     protected function getFilePathFromYml(string $file, ?callable $fileMatch = null): string

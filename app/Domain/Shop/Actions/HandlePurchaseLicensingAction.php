@@ -3,7 +3,6 @@
 namespace App\Domain\Shop\Actions;
 
 use App\Domain\Shop\Exceptions\CouldNotRenewLicenseForPurchase;
-use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
@@ -21,9 +20,13 @@ class HandlePurchaseLicensingAction
 
     public function execute(Purchase $purchase): Purchase
     {
-        $purchase->assignments()->each(function (PurchaseAssignment $assignment) {
+        $handledRenewal = false;
+        $quantity = (int)($purchase->quantity ?? 1);
+
+        $purchase->assignments()->each(function (PurchaseAssignment $assignment) use ($quantity, &$handledRenewal) {
             if ($assignment->purchasable->isRenewal()) {
-                $this->handleRenewal($assignment);
+                $this->handleRenewals($assignment, $quantity);
+                $handledRenewal = true;
 
                 return;
             }
@@ -35,14 +38,18 @@ class HandlePurchaseLicensingAction
             $this->createLicenseAction->execute($assignment);
         });
 
-        if ($purchase->assignments()->count() < $purchase->quantity) {
+        if ($handledRenewal) {
+            return $purchase;
+        }
+
+        if ($purchase->assignments()->count() < $quantity) {
             $assignment = $purchase->assignments->first();
 
             if (! $assignment->purchasable->requires_license) {
                 return $purchase;
             }
 
-            foreach (range($purchase->assignments()->count(), $purchase->quantity - 1) as $i) {
+            foreach (range($purchase->assignments()->count(), $quantity - 1) as $i) {
                 $this->createLicenseAction->execute($assignment);
             }
         }
@@ -50,31 +57,56 @@ class HandlePurchaseLicensingAction
         return $purchase;
     }
 
-    protected function handleRenewal(PurchaseAssignment $assignment): void
+    protected function handleRenewals(PurchaseAssignment $assignment, int $quantity): void
     {
-        $this->ensureUserOwnsPurchasableToRenew(
-            $assignment->user,
-            $assignment->purchasable->originalPurchasable
-        );
+        $originalPurchasable = $assignment->purchasable->originalPurchasable;
 
-        $license = $assignment->purchase->wasMadeForLicense();
+        $this->ensureUserOwnsPurchasableToRenew($assignment->user, $originalPurchasable);
 
-        if (! $license) {
-            $product = $assignment->purchasable->originalPurchasable->product;
+        $product = $originalPurchasable->product;
+        $renewedLicenseIds = [];
 
-            /** @var License|null $license */
-            $license = $assignment->user
+        $specificLicense = $assignment->purchase->wasMadeForLicense();
+
+        if ($specificLicense) {
+            $specificLicense->renew();
+            $renewedLicenseIds[] = $specificLicense->id;
+        }
+
+        $remainingToRenew = $quantity - count($renewedLicenseIds);
+
+        if ($remainingToRenew > 0) {
+            $licensesToRenew = $assignment->user
                 ->licenses()
                 ->forProduct($product)
+                ->whereNotIn('licenses.id', $renewedLicenseIds)
                 ->orderBy('expires_at')
-                ->first();
+                ->take($remainingToRenew)
+                ->get();
+
+            if ($licensesToRenew->isEmpty() && empty($renewedLicenseIds)) {
+                throw CouldNotRenewLicenseForPurchase::make($assignment->purchase);
+            }
+
+            foreach ($licensesToRenew as $license) {
+                $license->renew();
+                $renewedLicenseIds[] = $license->id;
+            }
         }
 
-        if (! $license) {
-            throw CouldNotRenewLicenseForPurchase::make($assignment->purchase);
-        }
+        $newLicensesNeeded = $quantity - count($renewedLicenseIds);
 
-        $license->renew();
+        if ($newLicensesNeeded > 0) {
+            $newAssignment = PurchaseAssignment::create([
+                'user_id' => $assignment->user_id,
+                'purchase_id' => $assignment->purchase_id,
+                'purchasable_id' => $originalPurchasable->id,
+            ]);
+
+            for ($i = 0; $i < $newLicensesNeeded; $i++) {
+                $this->createLicenseAction->execute($newAssignment);
+            }
+        }
     }
 
     protected function ensureUserOwnsPurchasableToRenew(User $user, Purchasable $purchasableToRenew): void

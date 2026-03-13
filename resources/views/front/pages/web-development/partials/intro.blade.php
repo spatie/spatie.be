@@ -6,7 +6,7 @@
                     Tailor-made web development in Laravel is what we do best. We love every new challenge as the next, and try to extract common patterns.
                     This has left us with a collection of <a href="{{ route('open-source.packages') }}">solid building blocks</a> to play with, plus a sense of what makes a web project great.
                 <p class="text-lg">
-                    Moreover, we can lean on the shoulders of frameworks like Laravel, React &amp; Vue</a> to take giant leaps.
+                    We lean on the shoulders of frameworks like Laravel, React &amp; Vue, and let AI handle the repetitive parts. That frees us to focus on what matters: delivering the right solution.
                 </p>
             </div>
         </div>

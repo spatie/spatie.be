@@ -6,29 +6,29 @@
         <div class="line-l | sm:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Corporate</h3>
-                <ul class="links-underline links-black">
+                <ul>
                     <li>
-                        <a href="https://my.agrafa.be" target="_blank" rel="noreferrer noopener">Agrafa</a>
+                        Agrafa
                         <div class="text-xs text-gray">Onsite apps for banner distribution</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://artassistant.com" target="_blank" rel="noreferrer noopener">ArtAssistant</a>
+                        ArtAssistant
                         <div class="text-xs text-gray">Art transaction platform</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://www.bodartservicehouse.be" target="_blank" rel="noreferrer noopener">Bodart Service House</a>
+                        Bodart Service House
                         <div class="text-xs text-gray">Webshop for kitchen appliances</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://hpengineers.be" target="_blank" rel="noreferrer noopener">HP Engineers</a>
+                        HP Engineers
                         <div class="text-xs text-gray">Portfolio of engineering company</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://www.krauthammer.com" target="_blank" rel="noreferrer noopener">Krauthammer</a>
+                        Krauthammer
                         <div class="text-xs text-gray">Tools for management trainings</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://mutsy.com" target="_blank" rel="noreferrer noopener">Mutsy</a>
+                        Mutsy
                         <div class="text-xs text-gray">Site for high-end Dutch strollers</div>
                     </li>
                 </ul>
@@ -37,21 +37,21 @@
         <div class="line-l | sm:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Public</h3>
-                <ul class="leading-loose links-underline links-black">
+                <ul class="leading-loose">
                     <li class=mt-2>
-                        <a href="https://hemiksem.be" target="_blank" rel="noreferrer noopener">City of Hemiksem</a>
+                        City of Hemiksem
                         <div class="text-xs text-gray">Communal website</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://flux50.com" target="_blank" rel="noreferrer noopener">Flux50</a>
+                        Flux50
                         <div class="text-xs text-gray">Smart energy consortium</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://vluchtelingenwerk.be" target="_blank" rel="noreferrer noopener">Vluchtelingenwerk Vlaanderen</a>
+                        Vluchtelingenwerk Vlaanderen
                         <div class="text-xs text-gray">Interactive exhibition timeline</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://vrijwilligerswerk.be" target="_blank" rel="noreferrer noopener">Vrijwilligerswerk Vlaanderen</a>
+                        Vrijwilligerswerk Vlaanderen
                         <div class="text-xs text-gray">Job platform for volunteers</div>
                     </li>
                 </ul>
@@ -60,25 +60,25 @@
         <div class="line-l | sm:col-span-2">
             <div class="markup text-sm">
                 <h3 class="title-sm">Creative</h3>
-                <ul class="leading-loose links-underline links-black">
+                <ul class="leading-loose">
                     <li>
-                        <a href="https://bulkarchitecten.be" target="_blank" rel="noreferrer noopener">Bulk architects</a>
+                        Bulk architects
                         <div class="text-xs text-gray">Portfolio site</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://demo.stmpdrcrds.com" target="_blank" rel="noreferrer noopener">Martin Garrix</a>
+                        Martin Garrix
                         <div class="text-xs text-gray">Workflow tool for the DJ himself</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://meta.be" target="_blank" rel="noreferrer noopener">META architects</a>
+                        META architects
                         <div class="text-xs text-gray">Portfolio site</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://overlegkunsten.org" target="_blank" rel="noreferrer noopener">Overleg Kunstenorganisaties</a>
+                        Overleg Kunstenorganisaties
                         <div class="text-xs text-gray">Portfolio site</div>
                     </li>
                     <li class=mt-2>
-                        <a href="https://wimdelvoye.be" target="_blank" rel="noreferrer noopener">Wim Delvoye</a>
+                        Wim Delvoye
                         <div class="text-xs text-gray">Famous artist's portfolio</div>
                     </li>
 

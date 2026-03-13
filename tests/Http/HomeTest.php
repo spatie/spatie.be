@@ -10,6 +10,6 @@ it('loads the homepage', function () {
         // TODO: enable again after black friday
 //        ->assertSee('Solid expertise')
         ->assertSee('We craft web applications, software, courses')
-        ->assertSee('Mailcoach Cloud')
+        ->assertSee('Mailcoach')
     ;
 });

@@ -8,7 +8,7 @@
         <div class="sm:col-span-4">
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    We design, build and support websites, webshops and applications —since 2004.
+                    We design, build and support websites, webshops and applications since 2004. AI lets us spend less time writing code and more time delivering quality.
                 </p>
                 <p class="text-lg">
                     We prefer analysis, clear-cut advice and solid technology over momentary fads. Our sites are built with modern standards, and optimized for performance on all types of devices.
@@ -18,7 +18,7 @@
                     We greatly value open source and try to give back to the community whenever possible.
                 </p>
                 <p class="text-lg">
-                    There is a strong mentality to stay on top of things: through Slack, in-house presentations or conferences.
+                    There is a strong mentality to stay on top of things: through Slack, in-house presentations, conferences, and by putting AI to work in our daily practice.
                     A part of our workload is dedicated to open source and side projects.
                     You can spot team members in user groups or as conference speakers as well.
                 </p>
