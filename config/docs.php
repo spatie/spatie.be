@@ -363,6 +363,7 @@ return [
             "name" => "typescript-transformer",
             "repository" => "spatie/typescript-transformer",
             "branches" => [
+                "main" => "v3",
                 "v2" => "v2",
                 "v1" => "v1",
             ],
