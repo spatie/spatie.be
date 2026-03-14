@@ -12,28 +12,16 @@ class RayV3
 
     public function getDownloadLink(string $platform): string
     {
-        // TODO: revert to Cache::remember logic once AWS is back online
-        $tempCdnLinks = [
-            'macos-arm64' => 'https://ray-app.b-cdn.net/Ray-3.2.0-arm64-mac.zip',
-            'macos' => 'https://ray-app.b-cdn.net/Ray-3.2.0-arm64-mac.zip',
-            'macos-x64' => 'https://ray-app.b-cdn.net/Ray-3.2.0-mac.zip',
-            'windows' => 'https://ray-app.b-cdn.net/ray-3.2.0-latest-win32-x64-setup.exe',
-            'linux' => 'https://ray-app.b-cdn.net/ray-3.2.0-latest-linux-x86_64.AppImage',
-        ];
-
-        return $tempCdnLinks[strtolower($platform)];
-
-        // Original logic:
-        // return Cache::remember(
-        //     key: "ray-v3-download-{$platform}",
-        //     ttl: now()->addMinutes(5),
-        //     callback: fn () => match (strtolower($platform)) {
-        //         'macos-arm64', 'macos' => $this->macOsArm64(),
-        //         'macos-x64' => $this->macOsX64(),
-        //         'windows' => $this->windows(),
-        //         'linux' => $this->linux(),
-        //     }
-        // );
+        return Cache::remember(
+            key: "ray-v3-download-{$platform}",
+            ttl: now()->addMinutes(5),
+            callback: fn () => match (strtolower($platform)) {
+                'macos-arm64', 'macos' => $this->macOsArm64(),
+                'macos-x64' => $this->macOsX64(),
+                'windows' => $this->windows(),
+                'linux' => $this->linux(),
+            }
+        );
     }
 
     public function macOsArm64(): string

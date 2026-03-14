@@ -186,6 +186,8 @@ Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
 Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(ProvideMarkdownResponse::class);
 
+Route::view('/newsletter', 'front.pages.newsletter.index')->name('newsletter');
+
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
 

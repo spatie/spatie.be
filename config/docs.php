@@ -414,7 +414,8 @@ return [
             'name' => 'laravel-dashboard',
             'repository' => 'spatie/laravel-dashboard',
             'branches' => [
-                'main' => 'v3',
+                'main' => 'v4',
+                'v3' => 'v3',
                 'v2' => 'v2',
                 'v1' => 'v1',
             ],
@@ -433,11 +434,12 @@ return [
             'category' => 'Laravel',
         ],
         [
-            'name' => 'typescript-transformer',
-            'repository' => 'spatie/typescript-transformer',
-            'branches' => [
-                'v2' => 'v2',
-                'v1' => 'v1',
+            "name" => "typescript-transformer",
+            "repository" => "spatie/typescript-transformer",
+            "branches" => [
+                "main" => "v3",
+                "v2" => "v2",
+                "v1" => "v1",
             ],
             'category' => 'General PHP',
         ],

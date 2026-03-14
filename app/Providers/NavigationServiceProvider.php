@@ -24,9 +24,10 @@ class NavigationServiceProvider extends ServiceProvider
         Menu::macro('service', function (array $properties = []) {
             return Menu::new()
                 ->addItemClass('first:-m-1 first:p-1 rounded-sm')
-                ->route('vacancies.index', 'Vacancies')
+                // ->route('vacancies.index', 'Vacancies')
                 ->route('about', 'About')
                 ->route('blog', 'Blog')
+                ->route('newsletter', 'Newsletter')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
                 ->url('https://spatie.myspreadshop.net', 'Merch ↗')

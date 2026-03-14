@@ -111,6 +111,11 @@ rm -rf {{ $newReleaseDir }}/public/videos
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/persistent/public/videos public/videos
 
+# Remove the public/typography directory and replace with persistent data
+rm -rf {{ $newReleaseDir }}/public/typography
+cd {{ $newReleaseDir }}
+ln -nfs {{ $baseDir }}/persistent/public/typography public/typography
+
 # Import the environment config
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/.env .env
