@@ -3,10 +3,10 @@
         <div class="sm:col-span-6">
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    Tailor-made web development in Laravel is what we do best. We love every new challenge as the next, and try to extract common patterns.
-                    This has left us with a collection of <a href="{{ route('open-source.packages') }}">solid building blocks</a> to play with, plus a sense of what makes a web project great.
+                    Tailor-made web development in Laravel is what we do best. Every project starts with the same question: what's the right tool for this job? Over the years, we've built a collection of <a href="{{ route('open-source.packages') }}">open source building blocks</a> that give us a head start, so your budget goes toward what makes your project unique.
+                </p>
                 <p class="text-lg">
-                    We lean on the shoulders of frameworks like Laravel, React &amp; Vue, and let AI handle the repetitive parts. That frees us to focus on what matters: delivering the right solution.
+                    AI has changed how we build. Not in theory, but in daily practice. Every developer at Spatie works with AI coding agents daily. Our <a href="{{ url('guidelines') }}">coding guidelines</a> ensure AI writes code that matches our standards. Our review process ensures nothing ships without human judgment. You get the speed of AI with the care of experienced developers.
                 </p>
             </div>
         </div>
@@ -27,7 +27,7 @@
                 <div class="mt-4 | sm:mt-8 sm:grid-text-right">
                     <h3 class="title-sm">Laravel framework</h3>
                     <p class="text-lg">
-                        <a href="https://laravel.com">Laravel</a> is one of the fastest growing open source PHP frameworks at the moment, letting us set up both simple sites as well as complex applications.
+                        <a href="https://laravel.com">Laravel</a> is one of the fastest growing open source PHP frameworks, letting us set up both simple sites as well as complex applications.
                     </p>
                 </div>
             </div>

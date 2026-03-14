@@ -86,6 +86,7 @@ Route::view('/', 'front.pages.home.index')->name('home');
 
 Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
 
+
 Route::prefix('about-us')->group(function () {
     Route::view('/', 'front.pages.about.index')->name('about');
 });
