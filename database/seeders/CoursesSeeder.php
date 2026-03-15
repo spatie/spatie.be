@@ -17,14 +17,19 @@ class CoursesSeeder extends Seeder
 {
     public function run(): void
     {
+        $seriesImagePath = fn (string $slug, string $ext) => database_path("seeders/images/series/{$slug}.{$ext}");
+
         $upcomingCourseSeries = Series::create([
             'id' => 7,
             'title' => 'Writing Readable PHP',
             'slug' => 'writing-readable-php',
-            'description' => 'Learn how to write readable PHP',
+            'description' => 'Learn how to write code that is a joy to read for your co-workers and future self. You will see dozens of tips and tricks that will increase code readability today.',
             'sort_order' => '0',
             'type' => SeriesType::Html,
         ]);
+        if (file_exists($seriesImagePath('writing-readable-php', 'jpg'))) {
+            $upcomingCourseSeries->addMedia($seriesImagePath('writing-readable-php', 'jpg'))->preservingOriginal()->toMediaCollection('series-image');
+        }
 
         $this->createHtmlLessonAndLesson([
             'chapter' => 'First chapter',
@@ -82,13 +87,16 @@ class CoursesSeeder extends Seeder
             'display' => LessonDisplayEnum::LICENSE,
         ]);
 
-        Series::create([
+        $packageTraining = Series::create([
             'title' => 'Laravel Package Training',
             'slug' => 'laravel-package-training',
             'description' => 'Have you ever wondered how to create your own packages? Interested in how some of our packages work under the hood? This series reveals all secrets!',
             'sort_order' => '0',
             'type' => SeriesType::Video,
         ]);
+        if (file_exists($seriesImagePath('laravel-package-training', 'jpg'))) {
+            $packageTraining->addMedia($seriesImagePath('laravel-package-training', 'jpg'))->preservingOriginal()->toMediaCollection('series-image');
+        }
 
         $mailcoach = Series::create([
             'title' => 'Building Mailcoach',
@@ -96,24 +104,32 @@ class CoursesSeeder extends Seeder
             'description' => 'Learn about the problems that we tackled and the clean code patterns that we applied when building the Mailcoach newsletter application.',
             'sort_order' => '1',
             'type' => SeriesType::Video,
-
         ]);
+        if (file_exists($seriesImagePath('building-mailcoach', 'png'))) {
+            $mailcoach->addMedia($seriesImagePath('building-mailcoach', 'png'))->preservingOriginal()->toMediaCollection('series-image');
+        }
 
-        Series::create([
+        $readableLaravel = Series::create([
             'title' => 'Readable Laravel',
             'slug' => 'readable-laravel',
-            'description' => 'In this series, we\'ll explore best practices on how to write maintainable and readable code.',
+            'description' => 'In this completely free series, we\'ll explore best practices on how to write maintainable and readable code.',
             'sort_order' => '2',
             'type' => SeriesType::Video,
-
         ]);
-        Series::create([
+        if (file_exists($seriesImagePath('readable-laravel', 'jpg'))) {
+            $readableLaravel->addMedia($seriesImagePath('readable-laravel', 'jpg'))->preservingOriginal()->toMediaCollection('series-image');
+        }
+
+        $showMeTheCode = Series::create([
             'title' => 'Show me the code',
             'slug' => 'show-me-the-code',
             'description' => 'Here are some problems that we solved in an elegant way',
             'sort_order' => '3',
             'type' => SeriesType::Video,
         ]);
+        if (file_exists($seriesImagePath('show-me-the-code', 'jpg'))) {
+            $showMeTheCode->addMedia($seriesImagePath('show-me-the-code', 'jpg'))->preservingOriginal()->toMediaCollection('series-image');
+        }
 
         $mailcoachProduct = Product::where('slug', 'mailcoach')->first();
         $mailcoach->purchasables()->attach(Purchasable::where('product_id', $mailcoachProduct->id)->get());

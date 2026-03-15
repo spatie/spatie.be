@@ -1,11 +1,15 @@
 @php
 $goodFirstIssuesSearchString = 'is:open is:issue user:spatie is:public label:"good first issue","help wanted"';
 
-$items = cache()->remember('good-first-issues', now()->addDay(), function () use ($goodFirstIssuesSearchString) {
-    [$pager, $goodFirstIssuesResult] = app(\App\Services\GitHub\GitHubApi::class)->searchIssues($goodFirstIssuesSearchString);
+try {
+    $items = cache()->remember('good-first-issues', now()->addDay(), function () use ($goodFirstIssuesSearchString) {
+        [$pager, $goodFirstIssuesResult] = app(\App\Services\GitHub\GitHubApi::class)->searchIssues($goodFirstIssuesSearchString);
 
-    return $goodFirstIssuesResult['items'];
-});
+        return $goodFirstIssuesResult['items'];
+    });
+} catch (\Throwable) {
+    $items = [];
+}
 
 $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(fn ($items) => count($items));
 @endphp

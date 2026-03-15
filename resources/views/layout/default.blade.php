@@ -4,6 +4,7 @@
 <head>
     @include('layout.partials.meta')
 
+
     <link rel="stylesheet" href="https://cloud.typography.com/6194432/6145752/css/fonts.css">
     @livewireStyles
 
