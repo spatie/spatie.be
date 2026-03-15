@@ -1,4 +1,4 @@
-<section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+<x-section-glow color="#E7C23D" position="top-left" class="w-full max-w-[1320px] mx-auto">
     <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-16">Our technology<wbr/> stack</h2>
 
     <div class="grid sm:grid-cols-3 gap-8">
@@ -19,4 +19,4 @@
             <p class="text-sm text-oss-gray-dark">AWS, GCP, Digital Ocean, Laravel Forge, CloudFlare, NGINX, Docker, Grafana, Prometheus, Ansible, ...</p>
         </div>
     </div>
-</section>
+</x-section-glow>

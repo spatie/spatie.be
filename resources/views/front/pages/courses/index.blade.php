@@ -118,9 +118,6 @@
             </div>
         </section>
 
-        <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
-            @include('front.profile.partials.sponsor')
-        </section>
     </div>
 
 </x-page>

@@ -1,4 +1,4 @@
-<section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+<x-section-glow color="#197593" position="top-right" class="w-full max-w-[1320px] mx-auto">
     <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-16">Our products</h2>
 
     <div class="grid sm:grid-cols-2 gap-8">
@@ -18,4 +18,4 @@
             UI components for React, Vue 2/3, and Livewire powered Blade components for one of our most well-known packages: laravel-medialibrary.
         </x-oss-link-card>
     </div>
-</section>
+</x-section-glow>

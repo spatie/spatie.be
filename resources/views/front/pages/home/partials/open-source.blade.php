@@ -1,4 +1,4 @@
-<section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0 pb-20">
+<x-section-glow color="#E7C23D" position="bottom-left" class="w-full max-w-[1320px] mx-auto mb-20">
     <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-10">From the<br>(open) source</h2>
     <div class="text-lg max-w-[640px]">
         <p>
@@ -28,4 +28,4 @@
             </a>
         </li>
     </ul>
-</section>
+</x-section-glow>

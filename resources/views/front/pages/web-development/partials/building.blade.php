@@ -1,4 +1,4 @@
-<section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+<x-section-glow color="#50E69B" position="top-right" class="w-full max-w-[1320px] mx-auto">
     <h2 class="font-druk uppercase text-white text-[40px] sm:text-[72px] leading-[0.9] mb-10">Building for<wbr/> the AI era</h2>
 
     <p class="text-lg max-w-[640px] mb-12">
@@ -22,4 +22,4 @@
             We practice what we preach. <a class="underline" href="https://flareapp.io">Flare</a>, our error tracker, ships with an MCP server and a Claude Code skill so AI agents can diagnose errors and review performance directly. <a class="underline" href="https://myray.app">Ray</a>, our debugging tool, includes AI-powered features to help developers work faster.
         </x-oss-link-card>
     </div>
-</section>
+</x-section-glow>
