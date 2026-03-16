@@ -22,7 +22,7 @@ it('redirects a registered user', function () {
         ->actingAs($user)
         ->get(action([LoginController::class, 'showLoginForm']));
 
-    $response->assertRedirect(route('profile'));
+    $response->assertRedirect(route('purchases'));
 });
 
 it('can store a redirect url to a spatie domain', function () {
