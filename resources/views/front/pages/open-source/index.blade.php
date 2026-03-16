@@ -224,6 +224,19 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
 
         <section class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
+                <div class="max-w-[480px] pt-10 sm:pt-20">
+                    <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Spatie Merch</h2>
+                    <p class="text-base">Show your love for Spatie with our official merchandise. T-shirts, hoodies, stickers, and more.</p>
+                    <a class="flex items-center gap-x-2 mt-6 text-base" href="https://spatie.myspreadshop.net" target="_blank">
+                        <svg aria-hidden="true" class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                        <span class="underline">Shop merch</span>
+                    </a>
+                </div>
+            </x-oss-content>
+        </section>
+
+        <section class="w-full relative px-7 lg:px-0">
+            <x-oss-content content-width="">
                 <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_555_5938" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_555_5938)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_555_5938)"/><defs><linearGradient id="paint0_linear_555_5938" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
                 <div class="max-w-[480px] pt-10 sm:pt-20">
                     <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Buy a license to our<br/>products or courses</h2>
@@ -249,5 +262,6 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                 Ray is a desktop application that serves as the dedicated home for debugging output. Send, format and filter debug information from both local projects and remote servers.
             </x-oss-link-card>
         </section>
+
     </div>
 </x-page>

@@ -1,5 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#050508">
 
 <link rel="dns-prefetch" href="https://cloud.typography.com">
 <link rel="dns-prefetch" href="https://pro.fontawesome.com">

@@ -94,9 +94,9 @@
                                                         <div class="pb-4">
                                                             <code class="w-full flex items-center justify-between font-mono text-xs text-oss-green-pale bg-white/[0.07] px-3 py-2 rounded-lg" title="{{ $license->key }}">
                                                                 <span class="break-all">{{ $license->key }}</span>
-                                                                <span class="break-normal text-xs text-center select-none cursor-pointer ml-2 hover:text-white" onclick="copyLicense(this, '{{ $license->key }}')">
+                                                                <button type="button" class="break-normal text-xs text-center select-none cursor-pointer ml-2 hover:text-white" onclick="copyLicense(this, '{{ $license->key }}')">
                                                                     <svg class="w-4 h-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M352 96V0H152a24 24 0 0 0-24 24v368a24 24 0 0 0 24 24h272a24 24 0 0 0 24-24V96z" opacity="0.4"/><path d="M96 392V96H24a24 24 0 0 0-24 24v368a24 24 0 0 0 24 24h272a24 24 0 0 0 24-24v-40H152a56.06 56.06 0 0 1-56-56zM441 73L375 7a24 24 0 0 0-17-7h-6v96h96v-6.06A24 24 0 0 0 441 73z"/></svg>
-                                                                </span>
+                                                                </button>
                                                             </code>
                                                             <form x-data @submit.prevent="if (confirm('Are you sure you want to regenerate this license key?')) $el.submit()" class="mt-2" action="{{ route('regenerate-key', $license) }}" method="POST">
                                                                 @csrf

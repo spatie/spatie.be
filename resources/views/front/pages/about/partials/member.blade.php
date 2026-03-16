@@ -1,7 +1,7 @@
 <div id="{{ $member->slug }}" class="pb-4">
     <div class="flex items-center mb-4">
         <div class="flex-none mr-4">
-            <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim($member->email))) }}?s=96&d=mp" alt="{{ $member->first_name }}" class="w-12 h-12 rounded-full object-cover">
+            <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim($member->email))) }}?s=96&d=mp" alt="{{ $member->first_name }}" width="48" height="48" class="w-12 h-12 rounded-full object-cover">
         </div>
         <div>
             <h3 class="font-bold text-lg text-white">{{ $member->first_name }} {{ $member->last_name }}</h3>

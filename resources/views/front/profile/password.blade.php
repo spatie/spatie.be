@@ -23,7 +23,7 @@
 
                 <div>
                     <label for="current_password" class="block text-sm font-medium mb-1.5">Current password</label>
-                    <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="current_password" id="current_password">
+                    <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="current_password" id="current_password" autocomplete="current-password">
                     @error('current_password')
                         <p class="text-oss-red text-sm mt-1">{{ $message }}</p>
                     @enderror
@@ -32,7 +32,7 @@
                 <div class="grid gap-6 md:grid-cols-2">
                     <div>
                         <label for="password" class="block text-sm font-medium mb-1.5">New password</label>
-                        <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="password" id="password">
+                        <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="password" id="password" autocomplete="new-password">
                         @error('password')
                             <p class="text-oss-red text-sm mt-1">{{ $message }}</p>
                         @enderror
@@ -40,7 +40,7 @@
 
                     <div>
                         <label for="password_confirmation" class="block text-sm font-medium mb-1.5">Confirm new password</label>
-                        <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="password_confirmation" id="password_confirmation">
+                        <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
                         @error('password_confirmation')
                             <p class="text-oss-red text-sm mt-1">{{ $message }}</p>
                         @enderror

@@ -35,7 +35,7 @@
                 <div>
                     <label for="name" class="block text-sm font-medium mb-1.5">Your name</label>
                     <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="text" name="name" id="name"
-                           value="{{ old('name', auth()->user()->name) }}">
+                           autocomplete="name" value="{{ old('name', auth()->user()->name) }}">
                     @error('name')
                     <div class="text-oss-red text-sm mt-1">{{ $message }}</div>
                     @enderror
@@ -44,7 +44,7 @@
                 <div>
                     <label for="email" class="block text-sm font-medium mb-1.5">Your email</label>
                     <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="email" name="email" id="email"
-                           value="{{ old('email', auth()->user()->email) }}">
+                           autocomplete="email" value="{{ old('email', auth()->user()->email) }}">
                     @error('email')
                     <div class="text-oss-red text-sm mt-1">{{ $message }}</div>
                     @enderror
