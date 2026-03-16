@@ -162,7 +162,6 @@
                             <li>PostCSS</li>
                             <li>Laravel Mix</li>
                             <li>npm</li>
-                            <li>Yarn</li>
                             <li>Webpack</li>
                         </ul>
                         <h3 class="title-sm">Services</h3>
