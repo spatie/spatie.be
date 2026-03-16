@@ -18,9 +18,9 @@
     <div class="px-3 sm:px-16 md:px-10 lg:px-16 mt-8 sm:mt-16 pb-20">
         <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
             <h1 class="font-druk uppercase text-[50px] sm:text-[72px] leading-[0.9] font-bold mb-6">Can't get in?</h1>
-            <p class="text-xl text-oss-gray-dark mb-2">Don't worry, we know the bouncer.</p>
+            <p class="text-xl mb-2">Don't worry, we know the bouncer.</p>
             <p>
-                <a href="{{ route('login') }}" class="underline text-oss-gray-dark hover:text-white">Back to login</a>
+                <a href="{{ route('login') }}" class="underline hover:text-white">Back to login</a>
             </p>
         </section>
 
@@ -34,18 +34,19 @@
 
                 <form class="space-y-6" method="POST" action="{{ route('password.email') }}">
                     @csrf
-                    <div class="flex gap-2">
-                        <input id="email" placeholder="{{ __('E-Mail Address') }}" type="email"
-                               class="flex-grow form-input bg-white/10 border-white/20 text-white rounded-lg" name="email"
+                    <div>
+                        <label for="email" class="block text-sm font-medium mb-1.5">{{ __('E-Mail Address') }}</label>
+                        <input id="email" placeholder="you@example.com" type="email"
+                               class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" name="email"
                                value="{{ old('email') }}" required autocomplete="email" autofocus>
-                        <button class="inline-flex items-center gap-2 px-6 py-3 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity cursor-pointer whitespace-nowrap" type="submit">
-                            {{ __('Send Reset Link') }}
-                        </button>
+                        @error('email')
+                        <p class="text-oss-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
                     </div>
 
-                    @error('email')
-                    <p class="text-oss-red text-sm">{{ $message }}</p>
-                    @enderror
+                    <button class="w-full sm:w-auto flex items-center justify-center px-6 py-3.5 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity cursor-pointer" type="submit">
+                        {{ __('Send Reset Link') }}
+                    </button>
                 </form>
             </div>
         </section>
