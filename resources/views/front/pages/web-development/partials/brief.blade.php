@@ -11,17 +11,14 @@
             </h2>
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    We don't just execute, but need to be proud of our work, just like you.
-                    That's why we love to work in partnership: as advisors, as architects of technically challenging
-                    projects.
+                    We work in partnership, not just execution. We want to be as proud of your project as you are.
+                    That means we act as advisors and architects, not just developers.
                 </p>
                 <p class="text-lg">
-                    <a href="{{ route('about') }}#team">Our team</a> is a fine blend of back &amp; frontend profiles
-                    that are used to working together, tightly coupled. AI lets them spend less time writing code and more time delivering quality solutions.
+                    <a href="{{ route('about') }}#team">Our team</a> blends back and frontend expertise with deep AI experience. They spend less time on repetitive code and more time on the decisions that shape your product.
                 </p>
                 <p class="text-lg">
-                    We'd really like to know what kind of project or problem you're dealing with. Feed us with as much
-                    input as you have, so we can get accurate early on.
+                    Whether you need a full project built at AI speed, AI features added to an existing app, or your platform prepared for the AI era, tell us about it.
                 </p>
             </div>
         </div>
@@ -38,12 +35,10 @@
                     </h3>
                     <ul class="mt-4 bullets bullets-white">
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Your main objective</li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> The initial budget &amp;
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> The initial budget &
                             planning
                         </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Who's doing content
-                            creation?
-                        </li>
+                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> AI features you want to explore</li>
                         <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> All external services /
                             APIs
                         </li>
@@ -53,4 +48,3 @@
         </div>
     </div>
 </section>
-

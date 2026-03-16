@@ -15,7 +15,7 @@
                     <li>Algolia</li>
                     <li>Elasticsearch</li>
                     <li>Statamic</li>
-                    <li>…</li>
+                    <li>...</li>
                 </ul>
                 <h3 class="title-sm">Frontend</h3>
                 <ul class="bullets-inline bullets-blue">
@@ -27,12 +27,24 @@
                     <li>PostCSS</li>
                     <li>Vite</li>
                     <li>npm</li>
-                    <li>…</li>
+                    <li>...</li>
                 </ul>
             </div>
         </div>
         <div class="line-l | sm:col-span-3 | md:col-span-2">
             <div class="markup text-sm">
+                <h3 class="title-sm">AI</h3>
+                <ul class="bullets-inline bullets-blue">
+                    <li>Claude Code</li>
+                    <li>GitHub Copilot</li>
+                    <li>OpenAI Codex</li>
+                    <li>Anthropic Claude API</li>
+                    <li>OpenAI API</li>
+                    <li>MCP</li>
+                    <li>llms.txt</li>
+                    <li>Custom AI integrations</li>
+                    <li>...</li>
+                </ul>
                 <h3 class="title-sm">Integrations</h3>
                 <ul class="bullets-inline bullets-blue">
                     <li>Stripe</li>
@@ -44,10 +56,7 @@
                     <li>One Signal</li>
                     <li>Sendgrid</li>
                     <li>Google Maps</li>
-                    <li>Google Analytics</li>
-                    <li>Google Tag Manager</li>
-                    <li>MS Visual Studio App Center</li>
-                    <li>…</li>
+                    <li>...</li>
                 </ul>
             </div>
         </div>
@@ -65,15 +74,7 @@
                     <li>Grafana</li>
                     <li>Prometheus</li>
                     <li>Ansible</li>
-                    <li>…</li>
-                </ul>
-                <h3 class="title-sm">AI</h3>
-                <ul class="bullets-inline bullets-blue">
-                    <li>Claude Code</li>
-                    <li>GitHub Copilot</li>
-                    <li>OpenAI</li>
-                    <li>Custom AI integrations</li>
-                    <li>…</li>
+                    <li>...</li>
                 </ul>
             </div>
         </div>

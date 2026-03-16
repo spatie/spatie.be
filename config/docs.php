@@ -377,7 +377,8 @@ return [
             'name' => 'laravel-query-builder',
             'repository' => 'spatie/laravel-query-builder',
             'branches' => [
-                'main' => 'v6',
+                'main' => 'v7',
+                'v6' => 'v6',
                 'v5' => 'v5',
                 'v4' => 'v4',
                 'v3' => 'v3',
@@ -434,11 +435,12 @@ return [
             'category' => 'Laravel',
         ],
         [
-            'name' => 'typescript-transformer',
-            'repository' => 'spatie/typescript-transformer',
-            'branches' => [
-                'v2' => 'v2',
-                'v1' => 'v1',
+            "name" => "typescript-transformer",
+            "repository" => "spatie/typescript-transformer",
+            "branches" => [
+                "main" => "v3",
+                "v2" => "v2",
+                "v1" => "v1",
             ],
             'category' => 'General PHP',
         ],

@@ -6,11 +6,11 @@
         <div class="sm:col-span-6">
             <div class="markup links-underline links-blue">
                 <p class="text-lg">
-                    We are truly a household name in the community, having contributed over <a href="{{ route('open-source.packages') }}">
-                    {{ App\Models\Repository::count() }} packages</a> that have been downloaded <strong>{{ App\Models\Repository::humanReadableDownloadCount() }} times</strong> by peer developers.
+                    We've contributed over <a href="{{ route('open-source.packages') }}">
+                    {{ App\Models\Repository::count() }} packages</a> to the Laravel community, downloaded <strong>{{ App\Models\Repository::humanReadableDownloadCount() }} times</strong> by developers worldwide.
                 </p>
                 <p class="text-lg">
-                    The many contributions, conference talks and top ranking amongst PHP developers are proof of our dedication to the Laravel ecosystem, and even more: to web development in general.<br>
+                    Conference talks, open source leadership, and a consistent track record in the PHP ecosystem mean you're working with a team that knows Laravel inside out.
                 </p>
             </div>
         </div>
