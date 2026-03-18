@@ -73,6 +73,7 @@ echo "{{ $newReleaseName }}" > public/release-name.txt
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/.env .env
 composer install --prefer-dist --no-scripts --no-dev -o
+php artisan package:discover
 @endtask
 
 @task('runNpm', ['on' => 'remote'])
@@ -172,6 +173,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +4 | xargs -d "\n" rm -rf
 {{ logMessage("💻  Deploying code changes...") }}
 cd {{ $currentDir }}
 git pull origin {{ $branch }}
+php artisan package:discover
 php artisan view:clear
 php artisan config:clear
 php artisan config:cache
