@@ -10,7 +10,7 @@ use App\Http\Middleware\HandleReferrer;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrustProxies;
-use App\Http\Middleware\VerifyCsrfToken;
+use App\Http\Middleware\PreventRequestForgery;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -46,7 +46,7 @@ class Kernel extends HttpKernel
         ],
 
         'admin' => [
-            VerifyCsrfToken::class,
+            PreventRequestForgery::class,
         ],
 
         'api' => [
