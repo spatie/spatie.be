@@ -19,7 +19,6 @@
 
 # Logs
 npm-debug.log
-yarn-error.log
 
 # Dot Files
 .env

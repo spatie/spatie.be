@@ -8,11 +8,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ```bash
 # Install dependencies
 composer install
-yarn install
+npm install
 
 # Run development servers
 php artisan serve
-yarn dev
+npm run dev
 
 # Database setup
 php artisan migrate
@@ -142,7 +142,7 @@ The codebase follows Laravel conventions with domain-driven design elements:
 - Never commit `.env` files or secrets
 
 ### Development Tips
-- Run `yarn dev` in a separate terminal for asset watching
+- Run `npm run dev` in a separate terminal for asset watching
 - Use `php artisan tinker` for quick debugging
 - Check `storage/logs/laravel.log` for errors
 - Horizon dashboard available at `/horizon` (requires authentication)

@@ -46,12 +46,12 @@ class TechnologiesSeeder extends Seeder
                 'description' => 'A description why we use Typescript',
             ],
             [
-                'name' => 'Yarn',
+                'name' => 'npm',
                 'type' => TechnologyType::frontend(),
-                'website_url' => 'https://www.typescriptlang.org/',
+                'website_url' => 'https://www.npmjs.com/',
                 'image_url' => 'https://vitejs.dev/logo.svg',
                 'recommended_by' => ['sebastian', 'adriaan'],
-                'description' => 'A description why we use Yarn',
+                'description' => 'A description why we use npm',
             ],
 
             // Backend
