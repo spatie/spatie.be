@@ -125,7 +125,9 @@
     },
     "extra": {
         "laravel": {
-            "dont-discover": []
+            "dont-discover": [
+                "wire-elements/spotlight"
+            ]
         }
     },
     "autoload": {
