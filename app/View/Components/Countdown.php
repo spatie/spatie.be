@@ -10,7 +10,8 @@ class Countdown extends Component
 {
     public function __construct(
         public DateTimeInterface $expires,
-    ) {}
+    ) {
+    }
 
     public function render()
     {
