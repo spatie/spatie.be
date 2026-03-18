@@ -5,11 +5,11 @@ namespace App\Providers;
 use App\Support\Transformers\LdJsonTransformer;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\UriInterface;
 use Spatie\Crawler\Crawler;
 use Spatie\Crawler\CrawlObservers\CrawlObserver;
+use Spatie\Crawler\CrawlProgress;
 use Spatie\Crawler\CrawlProfiles\CrawlInternalUrls;
+use Spatie\Crawler\CrawlResponse;
 use Spatie\LaravelUrlAiTransformer\Support\Transform;
 
 class AiTransformerServiceProvider extends ServiceProvider
@@ -30,30 +30,27 @@ class AiTransformerServiceProvider extends ServiceProvider
 
         $urls = [];
 
-        Crawler::create()
-            ->setCrawlObserver(new class ($urls) extends CrawlObserver {
+        Crawler::create($startUrl)
+            ->addObserver(new class ($urls) extends CrawlObserver {
                 /** @param array<int, string> $urls  */
                 public function __construct(protected array &$urls)
                 {
                 }
 
                 public function crawled(
-                    UriInterface $url,
-                    ResponseInterface $response,
-                    ?UriInterface $foundOnUrl = null,
-                    ?string $linkText = null
+                    string $url,
+                    CrawlResponse $response,
+                    CrawlProgress $progress,
                 ): void {
-                    $url = (string) $url;
-
                     if (Str::endsWith($url, '.svg')) {
                         return;
                     }
 
-                    $this->urls[] = (string) $url;
+                    $this->urls[] = $url;
                 }
             })
-            ->setCrawlProfile(new CrawlInternalUrls($startUrl))
-            ->startCrawling($startUrl);
+            ->crawlProfile(new CrawlInternalUrls($startUrl))
+            ->start();
 
         return array_unique($urls);
     }

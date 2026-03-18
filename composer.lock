@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d40a44b0e5156d8246f6ce495b6d7de9",
+    "content-hash": "60b6f4e4b6e8f002a6fee0ce26d0137c",
     "packages": [
         {
             "name": "abraham/twitteroauth",
@@ -9630,6 +9630,74 @@
                 }
             ],
             "time": "2026-02-21T22:37:38+00:00"
+        },
+        {
+            "name": "spatie/browsershot",
+            "version": "5.2.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/browsershot.git",
+                "reference": "d2e4ac7c69162999940172a674bf83ddc5ac59ea"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/d2e4ac7c69162999940172a674bf83ddc5ac59ea",
+                "reference": "d2e4ac7c69162999940172a674bf83ddc5ac59ea",
+                "shasum": ""
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "ext-json": "*",
+                "php": "^8.2",
+                "spatie/temporary-directory": "^2.0",
+                "symfony/process": "^6.0|^7.0|^8.0"
+            },
+            "require-dev": {
+                "pestphp/pest": "^3.0|^4.0",
+                "spatie/image": "^3.6",
+                "spatie/pdf-to-text": "^1.52",
+                "spatie/phpunit-snapshot-assertions": "^5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Spatie\\Browsershot\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://github.com/freekmurze",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Convert a webpage to an image or pdf using headless Chrome",
+            "homepage": "https://github.com/spatie/browsershot",
+            "keywords": [
+                "chrome",
+                "convert",
+                "headless",
+                "image",
+                "pdf",
+                "puppeteer",
+                "screenshot",
+                "webpage"
+            ],
+            "support": {
+                "source": "https://github.com/spatie/browsershot/tree/5.2.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-02-18T16:10:58+00:00"
         },
         {
             "name": "spatie/commonmark-shiki-highlighter",
