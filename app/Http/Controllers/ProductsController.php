@@ -77,10 +77,14 @@ class ProductsController
             return redirect(route('login') . "?next=" . route('products.buy', [$product, $purchasable]));
         }
 
-        $payLink = auth()->user()->getPayLinkForProductId(
-            $purchasable->paddle_product_id,
-            $license
-        );
+        try {
+            $payLink = auth()->user()->getPayLinkForProductId(
+                $purchasable->paddle_product_id,
+                $license
+            );
+        } catch (\Throwable) {
+            $payLink = null;
+        }
 
         return view('front.pages.products.buy', compact('product', 'purchasable', 'license', 'payLink'));
     }

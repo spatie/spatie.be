@@ -1,50 +1,42 @@
-<section id="brief" class="section">
-    <div class="wrap wrap-8">
-        <div class="sm:col-span-3">
-            <span class="illustration is-left is-rotated is-postcard-without-caption h-full">
-                {{ image('hire.jpg') }}
-            </span>
-        </div>
-        <div class="sm:col-span-3 sm:col-start-5">
-            <h2 class="title-2xl">
-                Hire <br>a team
-            </h2>
-            <div class="markup links-underline links-blue">
-                <p class="text-lg">
-                    We work in partnership, not just execution. We want to be as proud of your project as you are.
-                    That means we act as advisors and architects, not just developers.
-                </p>
-                <p class="text-lg">
-                    <a href="{{ route('about') }}#team">Our team</a> blends back and frontend expertise with deep AI experience. They spend less time on repetitive code and more time on the decisions that shape your product.
-                </p>
-                <p class="text-lg">
-                    Whether you need a full project built at AI speed, AI features added to an existing app, or your platform prepared for the AI era, tell us about it.
-                </p>
-            </div>
-        </div>
+<section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+    <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-10">Hire<br>a team</h2>
+    <div class="text-lg max-w-[640px]">
+        <p>
+            We work in partnership, not just execution. We want to be as proud of your project as you are.
+            That means we act as advisors and architects, not just developers.
+        </p>
+        <p class="mt-6">
+            <a class="underline hover:text-white" href="{{ route('about') }}#team">Our team</a> blends back and frontend expertise with deep AI experience. They spend less time on repetitive code and more time on the decisions that shape your product.
+        </p>
+        <p class="mt-6">
+            Whether you need a full project built at AI speed, AI features added to an existing app, or your platform prepared for the AI era, tell us about it.
+        </p>
     </div>
-    <div class="wrap mt-32">
-        <div class="card gradient gradient-green text-white">
-            <div class="wrap-card grid md:grid-cols-2 md:items-start">
-                <h2 class="title-xl">
-                    <a class="link-white link-underline" href="#match">Brief us</a> your project
-                </h2>
-                <div class="line-l line-l-white">
-                    <h3 class="title-sm">
-                        Topics to discuss
-                    </h3>
-                    <ul class="mt-4 bullets bullets-white">
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> Your main objective</li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> The initial budget &
-                            planning
-                        </li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> AI features you want to explore</li>
-                        <li><span class="icon">{{ app_svg('icons/far-angle-right') }}</span> All external services /
-                            APIs
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
+    <div class="bg-oss-green-pale text-oss-royal-blue rounded-[20px] md:rounded-[48px] p-7 md:py-16 md:px-12 mt-20 flex flex-col md:flex-row md:items-start gap-8">
+        <h2 class="font-druk uppercase text-[40px] sm:text-[60px] leading-[0.9]">
+            <a class="underline" href="#match">Brief us</a> your project
+        </h2>
+        <div class="md:border-l md:border-oss-royal-blue/20 md:pl-8">
+            <h3 class="font-bold mb-4">Topics to discuss</h3>
+            <ul class="space-y-1">
+                <li class="flex items-center gap-2">
+                    <svg class="w-2 fill-current flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                    Your main objective
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-2 fill-current flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                    The initial budget & planning
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-2 fill-current flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                    AI features you want to explore
+                </li>
+                <li class="flex items-center gap-2">
+                    <svg class="w-2 fill-current flex-shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                    All external services / APIs
+                </li>
+            </ul>
         </div>
     </div>
 </section>

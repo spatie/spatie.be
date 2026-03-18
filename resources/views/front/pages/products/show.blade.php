@@ -3,13 +3,26 @@
 @endpush
 
 <x-page
-        :title="$product->title"
-        :description="Str::limit(strip_tags($product->long_description), 165)"
-        :background="'/backgrounds/product-blur.jpg'"
+    :title="$product->title"
+    :description="Str::limit(strip_tags($product->long_description), 165)"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
     <x-og-image view="og-image.product" :data="[
         'title' => $product->title,
     ]" />
+
+    @include('layout.partials.gradient-background', [
+        'color1' => '#0E3B5E',
+        'color2' => '#0A2540',
+        'color3' => '#1A5276',
+        'rotationZ' => '80',
+        'positionX' => '-0.8',
+        'positionY' => '0.6',
+        'uDensity' => '1.4',
+        'uFrequency' => '5.0',
+        'uStrength' => '2.8',
+    ])
 
     @includeFirst(["front.pages.products.detail.{$product->slug}", "front.pages.products.detail.default"])
 </x-page>

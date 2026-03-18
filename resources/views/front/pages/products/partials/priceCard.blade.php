@@ -3,9 +3,9 @@
     $price = $purchasable->getPriceForCurrentRequest()
 @endphp
 <div
-    class="{{ isset($first) && $first ? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 md:mx-2 max-w-sm flex flex-col bg-white shadow-lg px-8"
-    style="bottom: {{ isset($first) && $first ? '-2rem' : '-1rem' }}">
-    <h2 class="flex-0 font-bold {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} leading-tight mb-4 min-h-10">
+    class="{{ isset($first) && $first ? 'mb-12 py-6 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 max-w-sm flex flex-col bg-oss-purple-extra-dark shadow-oss-card rounded-[20px] px-8"
+>
+    <h2 class="flex-0 font-bold text-white {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} leading-tight mb-4 min-h-10">
         {{ $purchasable->title }} @isset($license)- Renewal @endisset
     </h2>
     @isset($license)
@@ -63,13 +63,13 @@
 
     @if ($purchasable->hasActiveDiscount())
         @if(current_user()?->enjoysExtraDiscountOnNextPurchase())
-            <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
+            <div class="-mx-6 px-2 py-3 mt-4 bg-oss-green-pale/20 text-oss-green-pale text-sm text-center">
                 Personal discount included!
             </div>
         @endif
 
         @if(\App\Domain\Shop\Models\Referrer::activeReferrerGrantsDiscount($purchasable))
-            <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
+            <div class="-mx-6 px-2 py-3 mt-4 bg-oss-green-pale/20 text-oss-green-pale text-sm text-center">
                 Extra discount included!
             </div>
         @endif

@@ -1,89 +1,36 @@
-<section id="clients" class="section">
-    <div class="wrap">
-        <h3 class="title line-after mb-12">Some of our clients</h3>
-    </div>
-    <div class="wrap wrap-6 items-start">
-        <div class="line-l | sm:col-span-2">
-            <div class="markup text-sm">
-                <h3 class="title-sm">Corporate</h3>
-                <ul>
-                    <li>
-                        Agrafa
-                        <div class="text-xs text-gray">Onsite apps for banner distribution</div>
-                    </li>
-                    <li class=mt-2>
-                        ArtAssistant
-                        <div class="text-xs text-gray">Art transaction platform</div>
-                    </li>
-                    <li class=mt-2>
-                        Bodart Service House
-                        <div class="text-xs text-gray">Webshop for kitchen appliances</div>
-                    </li>
-                    <li class=mt-2>
-                        HP Engineers
-                        <div class="text-xs text-gray">Portfolio of engineering company</div>
-                    </li>
-                    <li class=mt-2>
-                        Krauthammer
-                        <div class="text-xs text-gray">Tools for management trainings</div>
-                    </li>
-                    <li class=mt-2>
-                        Mutsy
-                        <div class="text-xs text-gray">Site for high-end Dutch strollers</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="line-l | sm:col-span-2">
-            <div class="markup text-sm">
-                <h3 class="title-sm">Public</h3>
-                <ul class="leading-loose">
-                    <li class=mt-2>
-                        City of Hemiksem
-                        <div class="text-xs text-gray">Communal website</div>
-                    </li>
-                    <li class=mt-2>
-                        Flux50
-                        <div class="text-xs text-gray">Smart energy consortium</div>
-                    </li>
-                    <li class=mt-2>
-                        Vluchtelingenwerk Vlaanderen
-                        <div class="text-xs text-gray">Interactive exhibition timeline</div>
-                    </li>
-                    <li class=mt-2>
-                        Vrijwilligerswerk Vlaanderen
-                        <div class="text-xs text-gray">Job platform for volunteers</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="line-l | sm:col-span-2">
-            <div class="markup text-sm">
-                <h3 class="title-sm">Creative</h3>
-                <ul class="leading-loose">
-                    <li>
-                        Bulk architects
-                        <div class="text-xs text-gray">Portfolio site</div>
-                    </li>
-                    <li class=mt-2>
-                        Martin Garrix
-                        <div class="text-xs text-gray">Workflow tool for the DJ himself</div>
-                    </li>
-                    <li class=mt-2>
-                        META architects
-                        <div class="text-xs text-gray">Portfolio site</div>
-                    </li>
-                    <li class=mt-2>
-                        Overleg Kunstenorganisaties
-                        <div class="text-xs text-gray">Portfolio site</div>
-                    </li>
-                    <li class=mt-2>
-                        Wim Delvoye
-                        <div class="text-xs text-gray">Famous artist's portfolio</div>
-                    </li>
+<section id="clients" class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+    <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-16">Some of our<wbr/> clients</h2>
 
-                </ul>
-            </div>
+    <div class="grid sm:grid-cols-3 gap-8">
+        <div>
+            <h3 class="font-bold text-lg mb-4">Corporate</h3>
+            <ul class="space-y-2 text-sm text-oss-gray-dark">
+                <li>Agrafa <span class="block text-xs">Onsite apps for banner distribution</span></li>
+                <li>ArtAssistant <span class="block text-xs">Art transaction platform</span></li>
+                <li>Bodart Service House <span class="block text-xs">Webshop for kitchen appliances</span></li>
+                <li>HP Engineers <span class="block text-xs">Portfolio of engineering company</span></li>
+                <li>Krauthammer <span class="block text-xs">Tools for management trainings</span></li>
+                <li>Mutsy <span class="block text-xs">Site for high-end Dutch strollers</span></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="font-bold text-lg mb-4">Public</h3>
+            <ul class="space-y-2 text-sm text-oss-gray-dark">
+                <li>City of Hemiksem <span class="block text-xs">Communal website</span></li>
+                <li>Flux50 <span class="block text-xs">Smart energy consortium</span></li>
+                <li>Vluchtelingenwerk Vlaanderen <span class="block text-xs">Interactive exhibition timeline</span></li>
+                <li>Vrijwilligerswerk Vlaanderen <span class="block text-xs">Job platform for volunteers</span></li>
+            </ul>
+        </div>
+        <div>
+            <h3 class="font-bold text-lg mb-4">Creative</h3>
+            <ul class="space-y-2 text-sm text-oss-gray-dark">
+                <li>Bulk architects <span class="block text-xs">Portfolio site</span></li>
+                <li>Martin Garrix <span class="block text-xs">Workflow tool for the DJ himself</span></li>
+                <li>META architects <span class="block text-xs">Portfolio site</span></li>
+                <li>Overleg Kunstenorganisaties <span class="block text-xs">Portfolio site</span></li>
+                <li>Wim Delvoye <span class="block text-xs">Famous artist's portfolio</span></li>
+            </ul>
         </div>
     </div>
 </section>

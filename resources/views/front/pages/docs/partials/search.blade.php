@@ -14,7 +14,7 @@
         <input wire:model.live="query"
                x-ref="search"
                type="search"
-               placeholder="Search our docs..."
+               placeholder="Search our docs…"
                class="w-full relative z-10"
                @keyup.esc.window="query = ''"
         >

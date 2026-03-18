@@ -1,67 +1,41 @@
-<div class="pb-16 pt-8 md:pb-24 xl:pb-32">
-    <section id="video">
-        <div class="wrap wrap-6 mt-4 items-stretch">
-            <div class="z-10 | sm:col-span-2 | print:hidden">
+<div class="px-3 sm:px-16 md:px-10 lg:px-16 pb-20">
+    <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0 mt-8">
+        <div class="grid md:grid-cols-[280px,1fr] gap-8 items-start">
+            <div class="md:sticky md:top-4">
                 @include('front.pages.courses.content.html.sidebar')
             </div>
-            <div class="pt-8 | sm:col-start-3 sm:col-span-4 | md:pt-0">
-                <h2 class="title line-after">{{ $htmlLesson->title }}</h2>
-                <div
-                        class="mt-8 bg-white p-12 xl:p-16 text-lg links-underline rounded-sm overflow-hidden links-blue markup markup-code markup-titles markup-lists markup-tables">
+            <div>
+                <h2 class="font-druk uppercase text-[40px] leading-[0.9] mb-8 text-white">{{ $htmlLesson->title }}</h2>
+                <div class="bg-oss-purple-extra-dark shadow-oss-card rounded-[20px] p-8 md:p-12 text-lg markup markup-code markup-titles markup-lists markup-tables text-oss-gray links-underline">
                     {!! $htmlLesson->html !!}
                 </div>
 
-                <hr class="mt-12 -ml-4 line-after "/>
                 @if ($nextLesson)
-
-                    <div
-                            class="my-6 w-full overflow-hidden py-8 | md:flex gap-8 justify-between links-blue links-underline text-xs">
-
-
+                    <div class="mt-8 flex items-center justify-between py-6 border-t border-white/10">
                         <div>
-                            <span class="opacity-50">Up next</span>
-                            <span class="-mt-1 block font-semibold text-lg">{{ $nextLesson->title }}</span>
+                            <span class="text-oss-gray-dark text-sm">Up next</span>
+                            <span class="block font-semibold text-lg text-white">{{ $nextLesson->title }}</span>
                         </div>
 
                         @if($lesson->hasBeenCompletedByCurrentUser())
-                            <div class="flex items-center">
-                                <a class="cursor-pointer
-                    bg-blue hover:bg-blue-dark rounded-sm
-                    border-2 border-transparent
-                    justify-center flex items-center
-                    px-6 min-h-10 text-white
-                    font-sans-bold
-                    transition-opacity duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-nowrap"
-                                   href="{{ $nextLesson->url }}">Continue</a>
-                            </div>
-
+                            <a class="inline-flex items-center gap-2 px-6 py-3 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity"
+                               href="{{ $nextLesson->url }}">
+                                Continue
+                                <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                            </a>
                         @else
                             <form action="{{ route('courses.completeLesson', [$series, $lesson]) }}" method="POST">
                                 @csrf
-
-
-                                <button type="submit" class="cursor-pointer
-                    bg-blue bg-opacity-75 hover:bg-opacity-100 rounded-sm
-                    border-2 border-transparent
-                    justify-center flex items-center
-                    px-6 min-h-10 text-white
-                    font-sans-bold
-                    transition-bg duration-300
-                    focus:outline-none focus:border-blue-light no-underline whitespace-nowrap">
-                        <span class="truncate"><span class="font-semibold md:hidden">Next: </span> Complete and
-                            Continue</span>
-                                <span class="w-1 fill-current text-white ml-1 hidden | md:inline-block">
-                            {{ app_svg('icons/far-angle-right') }}
-                        </span>
-                            </button>
+                                <button type="submit" class="inline-flex items-center gap-2 px-6 py-3 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity cursor-pointer">
+                                    Complete and Continue
+                                    <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                                </button>
                             </form>
                         @endif
                     </div>
-
-                    <hr class="my-8 -ml-4 line-after "/>
                 @endif
 
+                {{-- Comments temporarily disabled during redesign
                 @php
                     $noCommentsText = 'What are your thoughts on "' . $htmlLesson->title . '"?'
                 @endphp
@@ -69,6 +43,7 @@
                 <livewire:comments
                         no-replies
                         :no-comments-text="$noCommentsText" :model="$htmlLesson->lesson"/>
+                --}}
             </div>
         </div>
     </section>

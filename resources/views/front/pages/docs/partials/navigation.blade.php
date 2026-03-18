@@ -4,7 +4,7 @@
             <input
                 type="text"
                 name="search"
-                placeholder="Search..."
+                placeholder="Search…"
                 class="cursor-pointer w-full rounded px-5 py-2.5 text-sm"
                 x-data="{}"
                 x-on:click.prevent="$store.modals.open('search-modal')"

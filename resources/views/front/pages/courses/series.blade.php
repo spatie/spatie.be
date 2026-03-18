@@ -1,20 +1,20 @@
 <x-page
-        :title="$title"
-        background="/backgrounds/video-blur.jpg"
-        :description="$description"
+    :title="$title"
+    :description="$description"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
-    {{--
-    <section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
-        <div class="wrap">
-            <p class="mt-4 links-underline links-blue">
-                <a href="{{ route('courses.index')}}">Courses</a>
-                <span class="icon mx-2 opacity-50 fill-current text-blue">{{ svg('icons/far-angle-right') }}</span>
-
-                <span>{{ $series->title }}</span>
-            </p>
-        </div>
-    </section>
-    --}}
+    @include('layout.partials.gradient-background', [
+        'color1' => '#21B989',
+        'color2' => '#015389',
+        'color3' => '#197593',
+        'rotationZ' => '190',
+        'positionX' => '0.8',
+        'positionY' => '-0.5',
+        'uDensity' => '1.8',
+        'uFrequency' => '4.0',
+        'uStrength' => '2.0',
+    ])
 
     @include("front.pages.courses.content.{$series->type->value}.index")
 

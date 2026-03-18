@@ -23,7 +23,7 @@
             @else
                 <div class="bg-white/80 py-3 sm:py-4 px-4 sm:px-6 rounded-md w-full flex justify-between items-center text-base">
                     <div class="flex-1">
-                        <input class="bg-transparent w-full h-full placeholder-oss-royal-blue-light" name="email" wire:model="email" type="email" placeholder="Your email address">
+                        <input class="bg-transparent w-full h-full placeholder-oss-royal-blue-light" name="email" wire:model="email" type="email" placeholder="Your email address" autocomplete="email">
                         @error('email')
                             <p class="text-oss-red text-xs">{{ $message }}</p>
                         @enderror
