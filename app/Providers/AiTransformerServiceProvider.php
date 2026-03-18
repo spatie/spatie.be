@@ -7,8 +7,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Spatie\Crawler\Crawler;
 use Spatie\Crawler\CrawlObservers\CrawlObserver;
-use Spatie\Crawler\CrawlProgress;
 use Spatie\Crawler\CrawlProfiles\CrawlInternalUrls;
+use Spatie\Crawler\CrawlProgress;
 use Spatie\Crawler\CrawlResponse;
 use Spatie\LaravelUrlAiTransformer\Support\Transform;
 
