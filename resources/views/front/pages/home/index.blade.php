@@ -29,15 +29,15 @@
         @include('front.pages.home.partials.banner')
     @endif
 
-    <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
+    <div class="mt-16 sm:mt-20 px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
+        @include('front.pages.home.partials.portfolio')
+        @include('front.pages.home.partials.web-development')
+        @include('front.pages.home.partials.open-source')
+        @include('front.pages.home.partials.newsletter')
+
         @if(!$isBlackFriday)
             @include('front.pages.home.partials.news')
         @endif
-
-        @include('front.pages.home.partials.portfolio')
-        @include('front.pages.home.partials.newsletter')
-        @include('front.pages.home.partials.clients')
-        @include('front.pages.home.partials.open-source')
     </div>
 
 </x-page>

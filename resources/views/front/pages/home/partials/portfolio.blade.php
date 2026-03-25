@@ -1,41 +1,41 @@
-<x-section-glow color="#B21E4E" position="top-right" class="w-full max-w-[1320px] mx-auto">
-    <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-16">Our products</h2>
+<section class="w-full px-7 lg:px-0">
+    <x-oss-staggered-title offset="md:-ml-[12.5rem]">
+        <x-slot:icon>
+            <svg class="w-8 h-8 sm:w-12 sm:h-12 inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 48 48"><g fill="#FF354F" clip-path="url(#clip0_products_heart)"><path d="M24 48a24 24 0 1 0 0-48 24 24 0 0 0 0 48ZM12.366 26.334c-2.757-2.793-2.757-7.33 0-10.125a6.983 6.983 0 0 1 9.975 0L24 17.897l1.66-1.688a6.983 6.983 0 0 1 9.974 0c2.757 2.794 2.757 7.332 0 10.125L26.11 36.01c-.58.591-1.34.882-2.109.882-.769 0-1.528-.291-2.11-.882l-9.524-9.675Z" opacity=".4"/><path d="M12.366 16.21c-2.756 2.793-2.756 7.33 0 10.124l9.525 9.675c.581.591 1.34.882 2.11.882.768 0 1.527-.291 2.109-.882l9.525-9.675c2.756-2.793 2.756-7.33 0-10.125a6.984 6.984 0 0 0-9.975 0L24 17.897l-1.659-1.688a6.984 6.984 0 0 0-9.975 0Z"/></g><defs><clipPath id="clip0_products_heart"><path fill="#fff" d="M0 0h48v48H0z"/></clipPath></defs></svg>
+        </x-slot:icon>
+        <x-slot:line1>
+            <span>Made with love</span>
+        </x-slot:line1>
+        <x-slot:line2>
+            <span>and Laravel</span>
+        </x-slot:line2>
+    </x-oss-staggered-title>
 
-    <div class="grid sm:grid-cols-2 gap-x-12 gap-y-16">
-        <div>
-            <h3 class="text-[18px] md:text-[24px] font-bold text-white mb-4">Mailcoach</h3>
-            <p class="text-oss-gray">Powerful email marketing to grow, connect and convert. Mailcoach offers tools for marketing campaigns, automations, and transactional emails as either a hosted service or a self-hosted Laravel integration.</p>
-            <a class="inline-flex items-center gap-x-2 mt-4 underline hover:text-white" href="https://mailcoach.app" target="_blank">
-                <svg aria-hidden="true" class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                <span>Try Mailcoach for free</span>
-            </a>
-        </div>
+    <x-oss-content>
+        <x-slot:aside>
+            <p class="leading-snug text-oss-gray-dark mb-0.5">This is just a sample. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </x-slot:aside>
 
-        <div>
-            <h3 class="text-[18px] md:text-[24px] font-bold text-white mb-4">Flare</h3>
-            <p class="text-oss-gray">Full-stack monitoring for Laravel, PHP &amp; JavaScript. Flare helps you spot slow performance in your app and alerts you the moment a bug breaks production.</p>
-            <a class="inline-flex items-center gap-x-2 mt-4 underline hover:text-white" href="https://flareapp.io" target="_blank">
-                <svg aria-hidden="true" class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                <span>Try Flare for free</span>
-            </a>
-        </div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+        </p>
+        <p>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.
+        </p>
+    </x-oss-content>
 
-        <div>
-            <h3 class="text-[18px] md:text-[24px] font-bold text-white mb-4">Ray</h3>
-            <p class="text-oss-gray">Debug without breaking your flow. Ray is a desktop debugging app that keeps the instant feedback you get from console.log() and dump() but lets you use the same debugging syntax across Laravel, PHP, and JavaScript.</p>
-            <a class="inline-flex items-center gap-x-2 mt-4 underline hover:text-white" href="https://myray.app" target="_blank">
-                <svg aria-hidden="true" class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                <span>Try Ray for free</span>
-            </a>
-        </div>
+    <div class="grid md:grid-cols-2 gap-4 sm:gap-8 max-w-[880px] mx-auto mt-16 md:mt-20">
+        <x-oss-link-card title="Flare" target="_blank" href="https://flareapp.io" link="Discover">
+            Flare is the best error tracking service for Laravel, PHP and JavaScript. Whenever an error happens in your production code, we'll notify you.
+        </x-oss-link-card>
 
-        <div>
-            <h3 class="text-[18px] md:text-[24px] font-bold text-white mb-4">Media Library Pro</h3>
-            <p class="text-oss-gray">UI components for React, Vue 2/3, and Livewire powered Blade components for one of our most well-known packages: laravel-medialibrary.</p>
-            <a class="inline-flex items-center gap-x-2 mt-4 underline hover:text-white" href="https://medialibrary.pro" target="_blank">
-                <svg aria-hidden="true" class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                <span>medialibrary.pro</span>
-            </a>
-        </div>
+        <x-oss-link-card title="Mailcoach" target="_blank" href="https://mailcoach.app" link="Discover">
+            Mailcoach is a fully featured email marketing platform built for growing creators, developers, and businesses.
+        </x-oss-link-card>
     </div>
-</x-section-glow>
+
+</section>
