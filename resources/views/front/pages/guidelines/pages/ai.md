@@ -20,14 +20,22 @@ Our AI-optimized guidelines cover:
 
 ## Using Laravel Boost (Recommended)
 
-The easiest way to use our guidelines in your Laravel projects is with [Laravel Boost](https://github.com/jasonmccreary/laravel-boost). Simply install our guideline package:
+The easiest way to use our guidelines in your Laravel projects is with [Laravel Boost](https://laravel.com/docs/13.x/boost). 
+
+If you haven't already, install Laravel Boost, and then our guideline package.
 
 ```bash
+composer require laravel/boost --dev
 composer require spatie/boost-spatie-guidelines --dev
+```
+
+After installing, run the following and select the Spatie guidelines from the list under `Agent Skills`. 
+
+```bash
 php artisan boost:install
 ```
 
-Select the Spatie guidelines from the list, and you're done! AI assistants using Laravel Boost will automatically reference our guidelines when generating code.
+Choose the coding agents you want to install Boost for, and you're all set! Your agent will now automatically follow our guidelines when creating code.
 
 **[View the package on GitHub →](https://github.com/spatie/boost-spatie-guidelines)**
 
