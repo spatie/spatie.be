@@ -31,9 +31,19 @@
                     ->setActiveClass('text-blue font-bold')
                  }}
              </nav>
-             <nav class="grid text-base | sm:opacity-75 sm:row-start-1 sm:grid-flow-col sm:items-center gap-4 sm:text-sm | print:hidden">
-                 @include('layout.partials.service')
-             </nav>
+             <div class="grid text-base | sm:row-start-1 sm:grid-flow-col sm:items-center gap-4 sm:text-sm | print:hidden">
+                 <nav class="grid sm:grid-flow-col sm:items-center gap-4 sm:opacity-75">
+                     {{ Menu::serviceFooter()
+                         ->addItemClass('text-oss-royal-blue-light sm:text-oss-royal-blue')
+                         ->setActiveClass('font-bold')
+                     }}
+                 </nav>
+                 @auth
+                     @include('layout.partials.navigation.profileIcon', ['url' => route('profile'), 'active' => request()->is('profile*')])
+                 @else
+                     @include('layout.partials.navigation.loginIcon', ['url' => route('login'), 'active' => request()->is('login')])
+                 @endauth
+             </div>
          </div>
     </header>
 </div>

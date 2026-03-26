@@ -17,7 +17,10 @@
                  }}
 
                 <div class="grid | md:grid-flow-col md:items-center md:ml-12 md:gap-12">
-                    @include('layout.partials.service', ['dark' => $dark, 'footer' => true])
+                    {{ Menu::serviceFooter()
+                        ->addItemClass(($dark ?? false) ? 'hover:text-oss-royal-blue-light' : 'text-oss-royal-blue-light sm:text-oss-royal-blue')
+                        ->setActiveClass('font-bold')
+                    }}
                 </div>
             </div>
             <hr class="my-8 h-2px text-gray opacity-25 rounded | print:text-black" style="page-break-after: avoid;">
@@ -59,8 +62,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
-                            Twitter
+                        <a href="https://x.com/spatie_be" target="_blank" rel="nofollow noreferrer noopener">
+                            X
                         </a>
                     </li>
                     <li>

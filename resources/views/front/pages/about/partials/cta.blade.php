@@ -1,17 +1,11 @@
-<section id="cta" class="section">
-    <div class="wrap">
-        <div class="card gradient gradient-green text-white">
-            <div class="wrap-card grid md:grid-cols-2 md:items-end">
-                <div class="links-underline links-white">
-                    <p class="text-2xl">
-                        Enough about us.
-                    </p>
-                </div>
-                <h2 class="ml-auto title-xl text-right">
-                    <a class="link-white link-underline" href="#match">How can we<br> help you</a>?
-                </h2>
-            </div>
-        </div>
+<section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+    <div class="bg-oss-green-pale text-oss-royal-blue rounded-[20px] md:rounded-[48px] p-7 md:py-16 md:px-12 flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+        <p class="text-2xl font-medium">
+            Enough about us.
+        </p>
+        <h2 class="font-druk uppercase text-[40px] sm:text-[60px] leading-[0.9]">
+            <a class="underline" href="#match">How can we<br>help you</a>?
+        </h2>
     </div>
 </section>
 

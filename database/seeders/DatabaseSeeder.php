@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             ->call(CoursesSeeder::class)
             ->call(UserSeeder::class)
             ->call(PurchaseSeeder::class)
+            ->call(InvoiceSeeder::class)
             ->call(TechnologiesSeeder::class)
             ->call(BlackFriday2024Seeder::class)
             ->call(DocsSeeder::class);

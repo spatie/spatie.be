@@ -2,8 +2,6 @@
     $isBlackFriday = config('black-friday.enabled');
 
     $image = image("/backgrounds/bf-25-hero-alt.jpg");
-    $bodyClass = $isBlackFriday ? 'bg-bf-dark' : '';
-    $sectionClasses = $isBlackFriday ? 'section section-group text-white' : 'section section-group';
     $productsCopy = $isBlackFriday ? 'Get 30% off on these courses & products' : 'All of our products';
 @endphp
 
@@ -12,7 +10,6 @@
         <div class="wallpaper fixed">
             <img srcset="{{ $image->getSrcset() }}" src="{{ $image->getUrl() }}" width="2400" sizes="100vw" alt="" class="h-svh object-cover">
             <canvas class="absolute w-full h-full inset-0 js-asteroids z-[9] opacity-50"></canvas>
-
         </div>
     @endpush
 @endif
@@ -20,114 +17,105 @@
 <x-page
     title="Applications and digital courses built for modern developers"
     description="Welcome in our store, by artisans for artisans. Get access to our paid products, courses and ebooks"
-    :background="$isBlackFriday ? '' : '/backgrounds/product.jpg'"
-    :bodyClass="$bodyClass"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
+
+    @unless($isBlackFriday)
+        @include('layout.partials.gradient-background', [
+            'color1' => '#0E3B5E',
+            'color2' => '#0A2540',
+            'color3' => '#1A5276',
+            'rotationZ' => '80',
+            'positionX' => '-0.8',
+            'positionY' => '0.6',
+            'uDensity' => '1.4',
+            'uFrequency' => '5.0',
+            'uStrength' => '2.8',
+        ])
+    @endunless
 
     @if ($isBlackFriday)
         @include('front.pages.home.partials.bf-banner', array('button' => false, 'showBackground' => false))
     @else
-        <section id="banner" class="banner" role="banner">
-            <div class="wrap">
-                <h1 class="banner-slogan">
-                    Welcome in <br>our store
-                </h1>
-
-                <!--
-                <p class="banner-intro">
-                    Applications and digital courses built for modern developers
-                </p>
-                -->
-            </div>
+        <section class="w-full max-w-[1080px] mx-auto mt-8 sm:mt-20 md:mt-32 mb-24 md:mb-52 px-7 lg:px-0">
+            <h1 class="font-druk uppercase text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-10">Welcome in<br>our store</h1>
         </section>
     @endif
 
-    <div class="{{ $sectionClasses }}">
+    <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20 pb-20">
+        <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+            <div class="grid gap-12 sm:grid-cols-2">
+                @foreach ($products as $product)
+                    <div>
+                        @if($product->external && $product->action_url)
+                            <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}" class="group block">
+                        @else
+                            <a href="{{ route('products.show', $product) }}" class="group block">
+                        @endif
+                            @if($product->getFirstMedia('product-image'))
+                                <div class="mb-6 rounded-[20px] overflow-hidden shadow-oss-card transition-transform transform ease-in-out group-hover:-translate-y-1 duration-200">
+                                    {{ $product->getFirstMedia('product-image') }}
+                                </div>
+                            @endif
+                            <h2 class="font-bold text-xl group-hover:underline">{{ $product->title }}</h2>
+                            @if(! $product->visible && current_user()?->hasAccessToUnReleasedProducts())
+                                <p class="mt-2 text-orange text-sm">This product is currently set to non-visible.</p>
+                            @endif
+                        </a>
 
-        <section class="section overflow-visible">
-            @if (count($bundles))
-                <div class="wrap">
-                    <h2 class="title line-after mb-12">{{ $productsCopy }}</h2>
-                </div>
-            @endif
-            <div class="wrap">
-                <div class="grid gap-x-24 gap-y-24 | sm:grid-cols-2 items-stretch">
-                    @foreach ($products as $product)
-                        <div class="my-6">
+                        <p class="my-4">
                             @if($product->external && $product->action_url)
-                                <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}" class="group">
-                                    @else
-                                        <a href="{{ route('products.show', $product) }}" class="group">
-                                            @endif
-                                            <div class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
-                                                <div class="shadow-md group-hover:shadow-lg">{{ $product->getFirstMedia('product-image') }}</div>
-                                            </div>
+                                <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}" class="inline-flex items-center gap-x-2 underline hover:text-white">
+                                    <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                                    {{ $product->action_label }}
+                                </a>
+                            @else
+                                <a href="{{ route('products.show', $product) }}" class="inline-flex items-center gap-x-2 underline hover:text-white">
+                                    <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                                    {{ $product->action_label }}
+                                </a>
+                            @endif
+                        </p>
 
-                                            <h2 class="font-bold text-xl link-underline-hover">{{ $product->title }}</h2>
-                                            @if(! $product->visible && current_user()?->hasAccessToUnReleasedProducts())<p class="mt-2 text-orange text-sm">This product is currently set to non-visible, it is visible to users that have access to unreleased products.</p>@endif
-                                        </a>
+                        @if ($purchasable = $product->purchasableWithDiscount())
+                            <p class="mt-2 text-oss-green font-bold">
+                                Now at -{{ $purchasable->displayableDiscountPercentage() }}%
+                            </p>
+                        @endif
 
-                                        <p class="my-4 flex items-center space-x-4">
-                                            @if($product->external && $product->action_url)
-                                                <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->action_url }}">
-                                                    <x-button>{{ $product->action_label }}</x-button>
-                                                </a>
-                                            @else
-                                                <a href="{{ route('products.show', $product) }}">
-                                                    <x-button>{{ $product->action_label }}</x-button>
-                                                </a>
-                                            @endif
-                                        </p>
-
-                                        @if ($purchasable = $product->purchasableWithDiscount())
-                                            <p class="mt-4">
-                                                Now at <b>-{{ $purchasable->displayableDiscountPercentage() }}%</b>
-                                            </p>
-                                        @endif
-
-
-
-                                        <p class="mt-4">{{ $product->formattedDescription }}</p>
-
-                        </div>
-                    @endforeach
-                </div>
+                        <p class="mt-4 text-oss-gray-dark">{{ $product->formattedDescription }}</p>
+                    </div>
+                @endforeach
             </div>
         </section>
 
-        @if (!$isBlackFriday)
-            @if (count($bundles))
-                <section class="section overflow-visible">
-                    <div class="wrap">
-                        <h2 class="title line-after mb-12">Check our bundle promotions!</h2>
-                    </div>
-                    <div class="wrap">
-                        <div class="grid gap-x-24 gap-y-24 | sm:grid-cols-2 items-stretch">
-                            @foreach ($bundles as $bundle)
-                                <div class="my-6">
-                                    <a href="{{ route('bundles.show', $bundle) }}" class="group">
-                                        <div class="-mt-8 pb-6 transition-transform transform ease-in-out group-hover:-translate-y-2 duration-200">
-                                            <div class="shadow-md group-hover:shadow-lg">{{ $bundle->getFirstMedia('image') }}</div>
-                                        </div>
-                                        <h2 class="title-sm link-black link-underline-hover">{{ $bundle->title }}</h2>
-                                    </a>
-
-                                    <p class="my-4 flex items-center space-x-4">
-                                        <a href="{{ route('bundles.show', $bundle) }}">
-                                            <x-button>Buy Bundle</x-button>
-                                        </a>
-                                    </p>
-
-                                    <p class="mt-4">{{ $bundle->formattedDescription }}</p>
-
-                                </div>
-                            @endforeach
+        @if (!$isBlackFriday && count($bundles))
+            <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
+                <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-16">Bundle promotions</h2>
+                <div class="grid gap-12 sm:grid-cols-2">
+                    @foreach ($bundles as $bundle)
+                        <div>
+                            <a href="{{ route('bundles.show', $bundle) }}" class="group block">
+                                @if($bundle->getFirstMedia('image'))
+                                    <div class="mb-6 rounded-[20px] overflow-hidden shadow-oss-card transition-transform transform ease-in-out group-hover:-translate-y-1 duration-200">
+                                        {{ $bundle->getFirstMedia('image') }}
+                                    </div>
+                                @endif
+                                <h2 class="font-bold text-xl group-hover:underline">{{ $bundle->title }}</h2>
+                            </a>
+                            <p class="my-4">
+                                <a href="{{ route('bundles.show', $bundle) }}" class="inline-flex items-center gap-x-2 underline hover:text-white">
+                                    <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
+                                    Buy Bundle
+                                </a>
+                            </p>
+                            <p class="mt-4 text-oss-gray-dark">{{ $bundle->formattedDescription }}</p>
                         </div>
-                    </div>
-                </section>
-            @endif
+                    @endforeach
+                </div>
+            </section>
         @endif
-
     </div>
 
 </x-page>

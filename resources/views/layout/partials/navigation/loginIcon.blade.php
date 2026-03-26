@@ -1,6 +1,3 @@
-<a href="{{ route('login') }}">
-    <span class="icon fill-current text-oss-royal-blue" title="Log in">
-        <span class="mr-2 md:hidden">Log in</span>
-        {{ $active ? app_svg('icons/fas-user') : app_svg('icons/far-user') }}
-    </span>
+<a href="{{ route('login') }}" class="text-oss-royal-blue hover:text-oss-spatie-blue transition-colors" title="Log in">
+    Log in
 </a>

@@ -1,51 +1,56 @@
 <x-page
-        title="Update password"
-        background="/backgrounds/auth.jpg"
+    title="Update password"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
-    @include('front.profile.partials.subnav')
+    @include('layout.partials.gradient-background', [
+        'color1' => '#197593',
+        'color2' => '#50E69B',
+        'color3' => '#2EC4B6',
+        'rotationZ' => '120',
+        'positionX' => '-0.5',
+        'positionY' => '0.4',
+        'uDensity' => '1.3',
+        'uFrequency' => '5.0',
+        'uStrength' => '3.0',
+    ])
 
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                Change password
-            </h1>
-        </div>
-    </section>
-
-    <section class="section section-group pt-0">
-        <div class="wrap">
+    <x-profile-layout title="Change password">
+        <div class="bg-oss-purple-extra-dark shadow-oss-card rounded-[20px] p-7 md:py-12 md:px-12">
             <form class="space-y-6" action="{{ route('profile.password') }}" method="POST">
                 @csrf
                 @method('PUT')
 
-                <x-field>
-                    <x-label for="current_password">Current password</x-label>
-                    <input class="form-input" type="password" name="current_password" id="current_password">
+                <div>
+                    <label for="current_password" class="block text-sm font-medium mb-1.5">Current password</label>
+                    <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="current_password" id="current_password" autocomplete="current-password">
                     @error('current_password')
-                        <p class="text-pink-dark">{{ $message }}</p>
+                        <p class="text-oss-red text-sm mt-1">{{ $message }}</p>
                     @enderror
-                </x-field>
-
-                <div class="grid gap-6 | md:grid-cols-2 md:items-start">
-                    <x-field>
-                        <x-label for="password">New password</x-label>
-                        <input class="form-input" type="password" name="password" id="password">
-                        @error('password')
-                            <p class="text-pink-dark">{{ $message }}</p>
-                        @enderror
-                    </x-field>
-
-                    <x-field>
-                        <x-label for="password_confirmation">Confirm new password</x-label>
-                        <input class="form-input" type="password" name="password_confirmation" id="password_confirmation">
-                        @error('password_confirmation')
-                            <p class="text-pink-dark">{{ $message }}</p>
-                        @enderror
-                    </x-field>
                 </div>
 
-                <x-button type="submit">Change password</x-button>
+                <div class="grid gap-6 md:grid-cols-2">
+                    <div>
+                        <label for="password" class="block text-sm font-medium mb-1.5">New password</label>
+                        <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="password" id="password" autocomplete="new-password">
+                        @error('password')
+                            <p class="text-oss-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="password_confirmation" class="block text-sm font-medium mb-1.5">Confirm new password</label>
+                        <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="password" name="password_confirmation" id="password_confirmation" autocomplete="new-password">
+                        @error('password_confirmation')
+                            <p class="text-oss-red text-sm mt-1">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <button class="w-full sm:w-auto flex items-center justify-center px-6 py-3.5 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity cursor-pointer" type="submit">
+                    Change password
+                </button>
             </form>
         </div>
-    </section>
+    </x-profile-layout>
 </x-page>
