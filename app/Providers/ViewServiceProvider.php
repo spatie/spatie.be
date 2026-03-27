@@ -5,11 +5,11 @@ namespace App\Providers;
 use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Exception;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Collection;
 use Spatie\ContentApi\ContentApi;
 
 class ViewServiceProvider extends ServiceProvider
