@@ -18,4 +18,37 @@
                 <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                 <p>Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum. Cras mattis consectetur purus sit amet fermentum.</p>
             </x-oss-content>
+
         </section>
+
+        <div class="flex flex-col gap-y-16 sm:gap-y-20">
+            <section class="w-full relative px-7 lg:px-0">
+                <x-oss-content content-width="">
+                    <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_home_web_1" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_home_web_1)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_home_web_1)"/><defs><linearGradient id="paint0_linear_home_web_1" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
+                    <div class="max-w-[480px] pt-10 sm:pt-20">
+                        <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Experts in<br/>Laravel &amp; PHP</h2>
+                        <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    </div>
+                </x-oss-content>
+            </section>
+
+            <section class="w-full relative px-7 lg:px-0">
+                <x-oss-content content-width="">
+                    <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_home_web_2" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_home_web_2)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_home_web_2)"/><defs><linearGradient id="paint0_linear_home_web_2" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
+                    <div class="max-w-[480px] pt-10 sm:pt-20">
+                        <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Measure twice,<br/>cut once</h2>
+                        <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+                    </div>
+                </x-oss-content>
+            </section>
+
+            <section class="w-full relative px-7 lg:px-0">
+                <x-oss-content content-width="">
+                    <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_home_web_3" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_home_web_3)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_home_web_3)"/><defs><linearGradient id="paint0_linear_home_web_3" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
+                    <div class="max-w-[480px] pt-10 sm:pt-20">
+                        <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Not just your<br/>keyboard for hire</h2>
+                        <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
+                    </div>
+                </x-oss-content>
+            </section>
+        </div>
