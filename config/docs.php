@@ -472,5 +472,13 @@ return [
             ],
             'category' => 'Other',
         ],
+        [
+            'name' => 'scotty',
+            'repository' => 'spatie/scotty',
+            'branches' => [
+                'main' => 'v1',
+            ],
+            'category' => 'General PHP',
+        ],
     ],
 ];
