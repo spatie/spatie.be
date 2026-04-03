@@ -25,51 +25,42 @@
         <div class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
                 <div class="max-w-[480px] mt-10 sm:mt-24">
-                    <h2 class="font-druk uppercase text-oss-purple text-[40px] sm:text-[72px] leading-[0.9] mb-10 text-balance">Powered by open source & AI</h2>
+                    <h2 class="font-druk uppercase text-oss-purple text-[40px] sm:text-[72px] leading-[0.9] mb-10 text-balance">A foundation to build on</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
                 </div>
-
-                {{-- <div class="grid md:grid-cols-3 border border-white/10 rounded-xl] mt-16 md:mt-20">
-
-                    <div class="flex justify-center items-center aspect-square border-r border-white/10">
-                        <img class="h-[72px] opacity-75" src="/images/laravel_logo_white.svg" alt="">
-                    </div>
-
-                    <div class="flex justify-center items-center aspect-square border-r border-white/10">
-                        <img class="h-[72px] opacity-75" src="/images/react_logo_white.svg" alt="">
-                    </div>
-
-                    <div class="flex justify-center items-center aspect-square">
-                        <img class="h-[72px] opacity-75" src="/images/vue_logo_white.svg" alt="">
-                    </div>
-
-                </div> --}}
-
             </x-oss-content>
         </div>
-
-        {{-- <section class="w-full relative px-7 lg:px-0">
-            <x-oss-content content-width="">
-                <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_home_web_2" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_home_web_2)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_home_web_2)"/><defs><linearGradient id="paint0_linear_home_web_2" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
-                <div class="max-w-[480px] pt-10 sm:pt-20">
-                    <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Measure twice,<br/>cut once</h2>
-                    <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
-                </div>
-            </x-oss-content>
-        </section>
-
-        <section class="w-full relative px-7 lg:px-0">
-            <x-oss-content content-width="">
-                <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_home_web_3" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_home_web_3)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_home_web_3)"/><defs><linearGradient id="paint0_linear_home_web_3" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
-                <div class="max-w-[480px] pt-10 sm:pt-20">
-                    <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Not just your<br/>keyboard for hire</h2>
-                    <p class="text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Curabitur blandit tempus porttitor. Maecenas faucibus mollis interdum.</p>
-                </div>
-            </x-oss-content>
-        </section> --}}
     </div>
 
-    <div class="grid grid-cols-3 md:grid-cols-6 border border-white/10 rounded-xl max-w-[1320px] mx-auto mt-16 md:mt-20 divide-y divide-x divide-white/10">
+    <div class="rounded-xl max-w-[1320px] mx-auto mt-16 md:mt-20">
+        <div class="grid gap-4 md:grid-cols-3">
+            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
+                <div class="flex items-center gap-3 text-4xl">
+                    <span class="font-druk text-oss-purple">01</span>
+                    <h3 class="font-druk uppercase text-white leading-tight">Research & Analysis</h3>
+                </div>
+                <p class="text-lg text-oss-gray-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et magna aliqua.</p>
+            </div>
+
+            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
+                <div class="flex items-center gap-3 text-4xl">
+                    <span class="font-druk text-oss-purple">02</span>
+                    <h3 class="font-druk uppercase text-white leading-tight">Build a Strong Foundation</h3>
+                </div>
+                <p class="text-lg text-oss-gray-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et magna aliqua.</p>
+            </div>
+
+            <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
+                <div class="flex items-center gap-3 text-4xl">
+                    <span class="font-druk text-oss-purple">03</span>
+                    <h3 class="font-druk uppercase text-white leading-tight">Flexible Development</h3>
+                </div>
+                <p class="text-lg text-oss-gray-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et magna aliqua.</p>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="grid grid-cols-3 md:grid-cols-6 border border-white/10 rounded-xl max-w-[1320px] mx-auto mt-16 md:mt-20 divide-y divide-x divide-white/10">
 
         <div class="flex justify-center items-center aspect-square">
             <img class="h-[40px] md:h-[72px] opacity-75" src="/images/laravel_logo_white.svg" alt="">
@@ -95,6 +86,6 @@
             <img class="h-[40px] md:h-[72px] opacity-75" src="/images/vue_logo_white.svg" alt="">
         </div>
 
-    </div>
+    </div> --}}
 
 </section>

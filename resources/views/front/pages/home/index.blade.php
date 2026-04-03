@@ -52,7 +52,8 @@
             <div class="mx-auto w-full max-w-[1080px] grid md:grid-cols-[20rem_1fr] gap-x-36 gap-y-8 md:gap-y-16">
                 <h2 class="md:col-start-2 font-druk uppercase text-oss-green-pale text-[40px] sm:text-[72px] leading-[0.9] text-balance">Insights from our team and products</h2>
                 <div class="space-y-12">
-                    <div class="space-y-4 text-lg">
+                    <div class="space-y-4 text-lg p-4">
+                        <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_home_web_2" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_home_web_2)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_home_web_2)"/><defs><linearGradient id="paint0_linear_home_web_2" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#82d8af"/></linearGradient></defs></svg>
                         <p>Get the latest from Spatie in your inbox by signing up for our regularly scheduled newsletter.</p>
                         <livewire:newsletter-inline />
                         <p class="text-sm text-oss-gray-medium">We'll send occasional updates when we have something new to share. By submitting this form, you acknowledge our <a class="underline hover:text-oss-gray-light transition-colors" href="{{ route('legal.privacy') }}">Privacy Policy</a>.</p>
