@@ -28,14 +28,47 @@
         </p>
     </x-oss-content>
 
-    <div class="grid md:grid-cols-2 gap-4 sm:gap-8 max-w-[880px] mx-auto mt-16 md:mt-20">
-        <x-oss-link-card title="Flare" target="_blank" href="https://flareapp.io" link="Discover">
-            Flare is the best error tracking service for Laravel, PHP and JavaScript. Whenever an error happens in your production code, we'll notify you.
-        </x-oss-link-card>
+    <div class="grid md:grid-cols-3 border border-white/10 rounded-xl max-w-[1320px] mx-auto mt-16 md:mt-20 divide-y md:divide-y-0 md:divide-x divide-white/10">
 
-        <x-oss-link-card title="Mailcoach" target="_blank" href="https://mailcoach.app" link="Discover">
+        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <a class="flex h-12 items-center" href="https://mailcoach.app" target="_blank">
+                <img class="h-[40px]" src="/images/mailcoach_logo_white.svg" alt="Mailcoach">
+            </a>
+            <p>An email marketing platform for sending campaigns, automations and transactional emails. Available as a hosted service or a self-hosted Laravel package.</p>
+            <div class="flex gap-4 text-sm">
+                <a class="underline transition-colors hover:text-white" href="https://mailcoach.app" target="_blank">Try Mailcoach for free</a>
+                <a class="underline transition-colors hover:text-white" href="https://www.mailcoach.app/self-hosted/" target="_blank">Self-hosted</a>
+            </div>
+        </div>
+
+        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <a class="flex h-12 items-center" href="https://flareapp.io" target="_blank">
+                <img class="h-[48px]" src="/images/flare_logo_white.svg" alt="Flare">
+            </a>
+            <p>Error tracking and performance monitoring for Laravel, PHP and JavaScript. Get alerted when bugs hit production, with integrations for GitHub, Jira, Linear and more.</p>
+            <div class="text-sm">
+                <a class="underline transition-colors hover:text-white" href="https://flareapp.io" target="_blank">Try Flare for free</a>
+            </div>
+        </div>
+
+        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <a class="flex h-12 items-center" href="https://myray.app" target="_blank">
+                <img class="h-[25px]" src="/images/ray_logo_gradient.svg" alt="Ray">
+            </a>
+            <p>A desktop debugging app for Laravel, PHP and JavaScript. All the speed of dump() and console.log(), but with a dedicated interface to keep your output organized.</p>
+            <div class="text-sm">
+                <a class="underline transition-colors hover:text-white" href="https://myray.app" target="_blank">Try Ray for free</a>
+            </div>
+        </div>
+
+        {{-- <x-oss-link-card title="Flare" target="_blank" href="https://flareapp.io" link="Discover">
+            Flare is the best error tracking service for Laravel, PHP and JavaScript. Whenever an error happens in your production code, we'll notify you.
+        </x-oss-link-card> --}}
+
+        {{-- <x-oss-link-card title="Mailcoach" target="_blank" href="https://mailcoach.app" link="Discover">
             Mailcoach is a fully featured email marketing platform built for growing creators, developers, and businesses.
-        </x-oss-link-card>
+        </x-oss-link-card> --}}
+
     </div>
 
 </section>

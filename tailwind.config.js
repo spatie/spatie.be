@@ -16,7 +16,7 @@ export default {
             'oss-spatie-blue': '#197593',
             'oss-royal-blue': '#172A3D',
             'oss-royal-blue-light': '#515F6E',
-            'oss-purple': '#735AFF',
+            'oss-purple': '#8a75fd',
             'oss-green': '#50E69B',
             'oss-green-pale': '#82D8AF',
             'oss-purple-extra-dark': '#15151E',

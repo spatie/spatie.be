@@ -29,15 +29,41 @@
         @include('front.pages.home.partials.banner')
     @endif
 
-    <div class="mt-16 sm:mt-20 px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
+    <div class="mt-16 sm:mt-20 px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-48">
         @include('front.pages.home.partials.portfolio')
         @include('front.pages.home.partials.web-development')
         @include('front.pages.home.partials.open-source')
-        @include('front.pages.home.partials.newsletter')
+    </div>
 
-        @if(!$isBlackFriday)
-            @include('front.pages.home.partials.news')
-        @endif
+    <div class="px-3 border-t border-white/10 bg-oss-footer-dark/50 md:mt-24">
+        <div class="px-7 py-12 md:py-32">
+            {{-- @include('front.pages.home.partials.newsletter') --}}
+            {{-- @include('front.pages.home.partials.news') --}}
+
+            {{-- <div class="wrap">
+                <div class="grid grid-cols-2">
+                    <div>
+                        <h2>Work with us</h2>
+                        <p>you got projects, we got questions</p>
+                    </div>
+                </div>
+            </div> --}}
+
+            <div class="mx-auto w-full max-w-[1080px] grid md:grid-cols-[20rem_1fr] gap-x-36 gap-y-8 md:gap-y-16">
+                <h2 class="md:col-start-2 font-druk uppercase text-oss-green-pale text-[40px] sm:text-[72px] leading-[0.9] text-balance">Insights from our team and products</h2>
+                <div class="space-y-12">
+                    <div class="space-y-4 text-lg">
+                        <p>Get the latest from Spatie in your inbox by signing up for our regularly scheduled newsletter.</p>
+                        <livewire:newsletter-inline />
+                        <p class="text-sm text-oss-gray-medium">We'll send occasional updates when we have something new to share. By submitting this form, you acknowledge our <a class="underline hover:text-oss-gray-light transition-colors" href="{{ route('legal.privacy') }}">Privacy Policy</a>.</p>
+                    </div>
+                </div>
+                <div>
+                    @include('front.pages.home.partials.news')
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </x-page>
