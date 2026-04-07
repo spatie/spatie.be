@@ -1,8 +1,8 @@
 <div id="match" class="modal" onclick="history.back()">
-    <div class="mr-16 bg-oss-black max-w-xl max-h-screen p-8 z-20 overflow-auto shadow-lg shadow-oss-purple/10 rounded-2xl border border-oss-green-pale/40 | md:p-16 md:mx-8" onclick="event.stopPropagation()">
+    <div class="mr-16 bg-oss-black max-w-xl max-h-screen p-8 z-20 overflow-auto shadow-lg shadow-oss-gray-light/5 rounded-2xl border border-oss-gray-light/20 | md:p-16 md:mx-8" onclick="event.stopPropagation()">
         {{-- <h2 class="text-white font-druk uppercase text-3xl md:text-4xl leading-[0.9]">{{ $caption ?? 'A good match' }}</h2> --}}
 
-        <div class="grid gap-6 md:grid-cols-2">
+        <div class="grid gap-12 md:grid-cols-2">
             <div>
                 <h3 class="text-white font-bold uppercase text-sm tracking-wider">What we do best</h3>
                 <ul class="mt-3 text-oss-gray space-y-2">

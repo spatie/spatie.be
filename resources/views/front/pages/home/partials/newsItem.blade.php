@@ -9,7 +9,7 @@
             wire:navigate.hover
         @endif
     >
-        <p class="font-medium text-[20px] leading-tight mb-1 group-hover:text-white">{{ $newsItem->title }}</p>
+        <p class="font-medium text-[20px] leading-tight mb-1 transition-colors group-hover:text-white">{{ $newsItem->title }}</p>
 
         <div class="mt-0 flex gap-4 items-center text-sm">
             <time datetime="{{ $newsItem->created_at->format('Y-m-d') }}">
