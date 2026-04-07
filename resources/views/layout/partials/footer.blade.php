@@ -7,43 +7,31 @@
     @endif
 >
 
-    <div class="px-3 text-oss-gray-light bg-oss-footer-dark border-t border-white/10 overflow-hidden">
-        <div class="guidelines-wallpaper opacity-25 animate-spin [animation-duration:60s]"></div>
+    <div class="px-3 {{ $dark ? 'text-oss-gray-light bg-oss-footer-dark border-white/10' : 'bg-oss-gray-light border-oss-gray-medium/50' }} border-t  overflow-hidden">
         <div class="px-7 py-12 md:pb-32 md:py-24">
             <div class="w-full max-w-[720px] mx-auto">
                 <div class="text-center">
-                    {{-- <div class="relative">
-                        <div class="bg-oss-gray-extra-dark/50 border border-white/10 rounded-xl p-8 space-y-4 text-xl shadow-lg">
-                            <p>Topics to discuss</p>
-                            <ol class="space-y-3">
-                                <li class="flex gap-3 items-center">
-                                    <div class="flex-shrink-0 w-[22px] h-[22px] rounded border-2 border-oss-purple flex items-center justify-center">
-                                        <svg class="w-3 h-3 text-oss-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                    </div>
-                                    Your main objective
-                                </li>
-                                <li class="flex gap-3 items-center">
-                                    <div class="flex-shrink-0 w-[22px] h-[22px] rounded border-2 border-oss-purple flex items-center justify-center">
-                                        <svg class="w-3 h-3 text-oss-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                    </div>
-                                    Initial budget & planning
-                                </li>
-                                <li class="flex gap-3 items-center">
-                                    <div class="flex-shrink-0 w-[22px] h-[22px] rounded border-2 border-oss-purple flex items-center justify-center">
-                                        <svg class="w-3 h-3 text-oss-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                    </div>
-                                    Any external services or APIs
-                                </li>
-                                <li class="flex gap-3 items-center">
-                                    <div class="flex-shrink-0 w-[22px] h-[22px] rounded border-2 border-oss-purple flex items-center justify-center">
-                                        <svg class="w-3 h-3 text-oss-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" /></svg>
-                                    </div>
-                                    AI features you want to explore
-                                </li>
-                            </ol>
-                        </div>
-                    </div> --}}
                     <div class="space-y-8 text-xl">
+                        <div
+                            x-data="{
+                                allAvatars: @js(\App\Models\Member::orderBy('first_name')->get()->map(fn ($m) => 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($m->email))) . '?s=80&d=mp')->values()->all()),
+                                visible: [],
+                                init() {
+                                    const shuffled = [...this.allAvatars].sort(() => Math.random() - 0.5);
+                                    this.visible = shuffled.slice(0, 8);
+                                }
+                            }"
+                            class="flex justify-center -space-x-2"
+                        >
+                            <template x-for="(img, index) in visible" :key="index">
+                                <img
+                                    :src="img"
+                                    :style="'z-index:' + (8 - index) + '; opacity:' + (index < 5 ? 1 : index === 5 ? 0.5 : index === 6 ? 0.25 : 0.1)"
+                                    class="w-10 h-10 rounded-full border-2 {{ $dark ? 'border-oss-footer-dark' : 'border-oss-gray-light' }} object-cover"
+                                    alt=""
+                                >
+                            </template>
+                        </div>
                         <h2 class="font-druk uppercase text-[50px] sm:text-[72px] md:text-[96px] leading-[0.9]">Hire us for<br /> your next project</h2>
                         <p>We work in partnership, not just execution. We want to be as proud of your project as you are. That means we act as advisors and architects, not just developers. Tailor-made web development in Laravel is what we do best.</p>
                         <a class="text-lg font-bold inline-block bg-oss-green-pale px-5 py-4 text-center text-oss-gray-extra-dark rounded-lg transition hover:opacity-90" href="#match">Brief us your project</a>
