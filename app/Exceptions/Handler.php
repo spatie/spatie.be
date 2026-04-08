@@ -17,8 +17,6 @@ class Handler extends ExceptionHandler
 
     public function register(): void
     {
-        $this->reportable(function (\Throwable $e) {
-            \Spatie\LaravelFlare\Facades\Flare::report($e);
-        });
+        \Spatie\LaravelFlare\Facades\Flare::handles();
     }
 }
