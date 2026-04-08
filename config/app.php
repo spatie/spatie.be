@@ -186,6 +186,7 @@ return [
          */
         Fruitcake\LaravelDebugbar\ServiceProvider::class,
         Spatie\Backup\BackupServiceProvider::class,
+        Spatie\Comments\CommentsServiceProvider::class,
         Spatie\Tail\TailServiceProvider::class,
 
         /*

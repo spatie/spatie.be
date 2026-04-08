@@ -126,7 +126,8 @@
     "extra": {
         "laravel": {
             "dont-discover": [
-                "wire-elements/spotlight"
+                "wire-elements/spotlight",
+                "spatie/laravel-comments"
             ]
         }
     },
