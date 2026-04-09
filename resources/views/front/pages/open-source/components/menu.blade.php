@@ -1,4 +1,4 @@
-<section id="header" class="md:flex w-full max-w-[1080px] mx-auto mt-8 sm:mt-20 md:mt-32 mb-24 md:mb-52 px-7 lg:px-0">
+<section id="header" class="md:flex w-full max-w-[1080px] mx-auto mt-8 sm:mt-20 md:mt-24 mb-24 md:mb-52 px-7 lg:px-0">
     <div class="w-full mb-10 md:mb-0">
         <h1 class="font-druk uppercase text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-10">{!! $title !!}</h1>
         <h2 class="text-[18px] sm:text-2xl font-medium max-w-[600px]">{!! $subtitle !!}</h2>
@@ -43,7 +43,7 @@
     x-init="headerHeight = document.getElementById('header').getBoundingClientRect().height; scrollTop = window.scrollY; active = initialActive;"
     x-on:scroll.window.lazy="scrollTop = window.scrollY;"
     x-bind:class="scrollTop > headerHeight ? 'translate-y-0' : 'translate-y-[200%]'"
-    class="text-sm sm:text-base transition-transform fixed z-50 bottom-0 left-1/2 -translate-x-1/2 mb-10 max-w-[480px] w-[calc(100%-1rem)] link-card bg-link-card shadow-oss-card rounded-[38px] p-1.5 flex items-center backdrop-blur-lg"
+    class="text-sm sm:text-base transition-transform fixed z-50 bottom-8 left-1/2 -translate-x-1/2 max-w-[480px] w-[calc(100%-1rem)] link-card bg-link-card shadow-oss-card rounded-[38px] p-1.5 flex items-center backdrop-blur-lg"
 >
     <div class="absolute bg-oss-gray rounded-[100px] px-3 py-3 sm:px-5 w-1/3 h-12 transition-all" x-bind:style="`transform: translateX(calc(${active * 100}% - ${active * 0.4}rem))`"></div>
     @foreach ([

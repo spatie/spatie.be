@@ -3,6 +3,7 @@
     background="/backgrounds/blog-index.jpg"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
+    footerCta
 >
     <header class="wrapper-lg px-7 sm:px-16 mt-4 lg:mt-12">
         <x-headers.super class="md:text-[96px] md:text-right text-white drop-shadow-2xl">

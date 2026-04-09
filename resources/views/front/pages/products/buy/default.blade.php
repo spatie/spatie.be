@@ -1,76 +1,40 @@
-<section id="breadcrumb" class="hidden md:block py-4 md:py-6 lg:py-8">
-    <div class="wrap">
-        <p class="mt-4 links-underline links-blue">
-            <a href="{{ route('products.index')}}">Products</a>
-            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
-            <a href="{{ route('products.show', $product)}}">{{ $product->title }}</a>
-            <span class="icon mx-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-right') }}</span>
+<div class="px-3 sm:px-16 md:px-10 lg:px-16">
+    <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0 mt-8 sm:mt-12">
+        <p class="text-sm text-oss-gray-dark">
+            <a class="underline hover:text-white" href="{{ route('products.index') }}">Products</a>
+            <span class="mx-2 opacity-50">&rsaquo;</span>
+            <a class="underline hover:text-white" href="{{ route('products.show', $product) }}">{{ $product->title }}</a>
+            <span class="mx-2 opacity-50">&rsaquo;</span>
             <span>Buy</span>
         </p>
-    </div>
-</section>
+    </section>
 
-<section id="banner" class="md:pt-0 banner" role="banner">
-    <div class="wrap">
-        <h1 class="banner-slogan">
-            {{ $product->title }}
-        </h1>
-        <div class="banner-intro">
-            {{ $product->formattedDescription }}
-        </div>
-    </div>
-</section>
-
-<div class="section pt-0 wrap grid sm:gap-6 md:gap-8 grid-cols-9 sm:grid-flow-col-dense">
-    <div class="col-span-9 sm:col-start-5 sm:col-span-5">
-        <section class="mb-16 pt-0">
-            <div class="md:-mx-2 md:grid md:grid-flow-col items-stretch justify-start">
+    <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0 mt-8 sm:mt-16 mb-16">
+        <div class="flex flex-col md:flex-row gap-10 md:gap-16 md:items-start">
+            <div class="flex-1 min-w-0 space-y-8">
+                <h1 class="font-druk uppercase text-[56px] sm:text-[72px] md:text-[96px] lg:text-[120px] leading-[0.85] font-bold mb-6 text-balance">{{ $product->title }}</h1>
+                <div class="text-[18px] sm:text-xl text-oss-gray-medium max-w-[520px]">{{ $product->formattedDescription }}</div>
+                @if($product->getFirstMedia('product-image'))
+                    <div class="w-full md:w-[420px] flex-shrink-0 rounded-xl overflow-hidden">
+                        {{ $product->getFirstMedia('product-image') }}
+                    </div>
+                @endif
+            </div>
+            <div class="w-full md:w-[480px] flex-shrink-0">
                 @include('front.pages.products.partials.priceCard', [
                     'payLink' => $payLink,
                 ])
-            </div>
-        </section>
 
-        <div class="section md:-mt-12 pt-0 pb-16">
-            <div class="flex-0 text-xs text-gray md:mt-6">
-                Includes a 10% coupon for a follow-up purchase within the next 24 hours.
-                <br/>
-                @if($product->hasGuarantee())
-                    On this product, we offer a 10 day money-back guarantee.
-                @else
-                    Sales are final and are not eligible for a refund.
-                @endif
-                <br/>
-                VAT will be calculated during checkout by
-                <a class="underline" target="_blank"
-                   href="https://www.paddle.com/help/sell/tax/how-paddle-handles-vat-on-your-behalf">Paddle</a>.
+                <p class="text-xs text-oss-gray-dark mt-5">
+                    Includes a 10% coupon for a follow-up purchase within the next 24 hours.
+                    @if($product->hasGuarantee())
+                        &middot; 10 day money-back guarantee.
+                    @else
+                        &middot; Sales are final.
+                    @endif
+                    &middot; VAT calculated at checkout by <a class="underline" target="_blank" href="https://paddle.com/support/welcome/#vat-tax-handling-and-compliance">Paddle</a>.
+                </p>
             </div>
         </div>
-    </div>
-    <div class="col-span-9 sm:col-start-1 sm:col-span-4" style="bottom: -1rem">
-        <div class="illustration is-left mb-12" title="Project">
-            {{ $product->getFirstMedia('product-image') }}
-        </div>
-
-        <div class="markup markup-titles markup-lists links-blue links-underline | sm:grid-text-right">
-            {{ $product->formattedLongDescription }}
-
-            <p class="mt-4 flex items-center space-x-4">
-                @if($product->action_url)
-                    <a target="_blank" class="no-underline" rel="nofollow noreferrer noopener"
-                       href="{{ $product->action_url }}">
-                        <x-button>{{ $product->action_label }}</x-button>
-                    </a>
-                @elseif ($product->url)
-                    <a target="_blank" rel="nofollow noreferrer noopener" href="{{ $product->url }}">
-                        <span class="icon fill-current text-pink-dark">
-                            {{ app_svg('icons/far-angle-right') }}
-                        </span>
-                        {{ Str::after($product->url, 'https://') }}
-                    </a>
-                @endif
-            </p>
-        </div>
-    </div>
+    </section>
 </div>
-

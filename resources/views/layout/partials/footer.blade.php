@@ -1,4 +1,5 @@
 @php($dark ??= false)
+@php($footerCta ??= false)
 <footer
     @if ($dark)
         class="bg-oss-black text-oss-gray-dark font-pt"
@@ -7,7 +8,8 @@
     @endif
 >
 
-    <div class="px-3 {{ $dark ? 'text-oss-gray-light bg-oss-footer-dark border-white/10' : 'bg-oss-gray-light border-oss-gray-medium/50' }} border-t  overflow-hidden">
+    @if($footerCta)
+    <div class="px-3 font-medium {{ $dark ? 'text-oss-gray-light bg-oss-footer-dark border-white/10' : 'bg-oss-gray-light border-oss-gray-medium/50' }} border-t overflow-hidden">
         <div class="px-7 py-12 md:pb-32 md:py-24">
             <div class="w-full max-w-[720px] mx-auto">
                 <div class="text-center">
@@ -40,6 +42,7 @@
             </div>
         </div>
     </div>
+    @endif
 
     <div class="flex-none pt-16 pb-8 | print:pb-2" role="navigation">
         <div class="wrap links @unless($dark) links-gray text-gray @endunless leading-loose | md:leading-normal">

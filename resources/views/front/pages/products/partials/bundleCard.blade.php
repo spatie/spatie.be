@@ -1,10 +1,10 @@
-<div class="mb-12 py-6 md:py-10 md:z-10 md:mb-0 max-w-sm flex flex-col bg-oss-purple-extra-dark shadow-oss-card rounded-[20px] px-8">
-    <span class="top-0 mt-3 left-0 absolute pl-8 pr-3 py-1 rounded-br-lg text-xxs font-semibold uppercase tracking-widest" style="background: rgba(130,216,175,0.2); color: #82D8AF;">Bundle promo</span>
-    <h2 class="flex-0 font-bold text-white text-2xl leading-tight mb-4 min-h-10">
+<div class="relative flex flex-col border border-white/10 rounded-xl px-7 py-7">
+    <span class="absolute top-0 right-0 mt-3 mr-3 px-2 py-0.5 rounded-full text-xs font-medium bg-oss-green/10 text-oss-green">Bundle</span>
+    <h2 class="flex-0 font-pt font-medium text-white text-xl mb-4">
         {{ $bundle->title }}
     </h2>
 
-    <div class="flex-grow markup markup-lists markup-lists-compact text-xs text-oss-gray">
+    <div class="flex-grow markup markup-lists markup-lists-compact text-sm text-oss-gray-dark">
         <p>
             You can get a good deal when buying these products combined:
         </p>
@@ -22,11 +22,11 @@
         </ul>
     </div>
 
-    <div class="flex-0 mt-6 flex justify-center">
-        <div class="w-full flex justify-center">
+    <div class="flex-0 mt-6">
+        <div class="w-full">
             <a href="{{ route('bundles.show', $bundle) }}">
-                <x-button large>
-                    <span class="font-normal">Buy Bundle for&nbsp;</span>
+                <x-button>
+                    <span>Buy bundle for&nbsp;</span>
                     <span>{{ $bundle->getPriceForCurrentRequest()->formattedPrice() }}</span>
                 </x-button>
             </a>

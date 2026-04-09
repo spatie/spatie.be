@@ -3,17 +3,8 @@
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
 >
-    @include('layout.partials.gradient-background', [
-        'color1' => '#735AFF',
-        'color2' => '#197593',
-        'color3' => '#2EC4B6',
-        'rotationZ' => '200',
-        'positionX' => '0.8',
-        'positionY' => '0.2',
-        'uDensity' => '1.5',
-        'uFrequency' => '4.5',
-        'uStrength' => '2.8',
-    ])
+
+    @include('layout.partials.bg-color')
 
     <x-profile-layout title="Purchases">
         <section class="mb-12">

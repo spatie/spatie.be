@@ -3,19 +3,10 @@
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
 >
-    <?php /** @var \Laravel\Paddle\Transaction $transaction */?>
 
-    @include('layout.partials.gradient-background', [
-        'color1' => '#50E69B',
-        'color2' => '#197593',
-        'color3' => '#735AFF',
-        'rotationZ' => '50',
-        'positionX' => '-1.0',
-        'positionY' => '-0.3',
-        'uDensity' => '1.8',
-        'uFrequency' => '3.8',
-        'uStrength' => '2.2',
-    ])
+    @include('layout.partials.bg-color')
+
+    <?php /** @var \Laravel\Paddle\Transaction $transaction */?>
 
     <x-profile-layout title="Invoices">
         @forelse ($transactions as $transaction)

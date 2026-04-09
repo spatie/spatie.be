@@ -3,17 +3,8 @@
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
 >
-    @include('layout.partials.gradient-background', [
-        'color1' => '#197593',
-        'color2' => '#50E69B',
-        'color3' => '#2EC4B6',
-        'rotationZ' => '120',
-        'positionX' => '-0.5',
-        'positionY' => '0.4',
-        'uDensity' => '1.3',
-        'uFrequency' => '5.0',
-        'uStrength' => '3.0',
-    ])
+
+    @include('layout.partials.bg-color')
 
     <x-profile-layout title="Change password">
         <div class="bg-oss-purple-extra-dark shadow-oss-card rounded-[20px] p-7 md:py-12 md:px-12">

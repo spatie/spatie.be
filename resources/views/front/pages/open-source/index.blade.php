@@ -17,6 +17,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
     title="Committed to open source"
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
+    footerCta
 >
 
     <x-og-image view="og-image.oss" :data="[
@@ -46,7 +47,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
         At Spatie, we’re big on open source. It’s not just a way of working for us, it's part of our culture.
     </x-slot>
 
-    <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
+    <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-24">
         <x-oss-menu
             title="Committed to<br/>Open Source"
             subtitle="At Spatie, we’re big on open source.<br/>

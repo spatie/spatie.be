@@ -1,24 +1,26 @@
 <x-page
         title="Privacy"
-        background="/backgrounds/legal.jpg"
+        background="/backgrounds/legal-blurred.jpg"
+        body-class="bg-oss-gray"
+        main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
         description="Our privacy policy. Because we respect you."
 >
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                Privacy policy
-            </h1>
-            <p class="mt-4 | print:hidden">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
-                <a
-                        href="{{ route('legal.index')}}" class="link-underline link-blue">Legal overview</a>
-            </p>
-        </div>
-    </section>
-    <div class="section section-group pt-0">
-        <section>
-            <div class="wrap">
-                <div class="markup markup-titles markup-lists counters links-underline links-blue">
+
+    <header class="wrapper-lg px-7 sm:px-16 mt-6 sm:mt-12">
+        <p class="print:hidden">
+            <a href="{{ route('legal.index')}}" class="text-base text-oss-royal-blue-light hover:text-oss-royal-blue underline">
+                &larr; Legal overview
+            </a>
+        </p>
+        <x-headers.h1 class="mt-4 text-balance">
+            Privacy policy
+        </x-headers.h1>
+    </header>
+
+    <section class="wrapper-lg sm:px-16 mt-8 sm:mt-12 mb-16 lg:mb-24">
+        <div class="bg-white rounded-2xl pt-12 md:pt-16 pb-12 md:pb-20">
+            <div class="wrapper-sm px-6">
+                <div class="text-base sm:text-lg markup markup-titles markup-lists counters links-underline links-blue">
                     <h2>Why this Privacy Statement</h2>
 
                     <p>
@@ -84,7 +86,7 @@
                         <li>
                             Offering and improve general and personalised services; including billing purposes,
                             provision of information, newsletters and offers that may be useful or necessary for you,
-                            the obtaining and processing of User’s assessments and the providing of support.
+                            the obtaining and processing of User's assessments and the providing of support.
                         </li>
                         <li>
                             Offering and improving the supplied products; personal and specific products on the basis of
@@ -249,7 +251,7 @@
                     </p>
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
 </x-page>

@@ -31,11 +31,13 @@
         {{ $repository->slug }}
     </x-slot>
 
-    <div class="px-3 sm:px-12">
-        @include('front.pages.docs.partials.breadcrumbs')
+    <div class="px-3 py-2 sm:px-12">
+        <div class="max-w-[1320px] mx-auto w-full">
+            @include('front.pages.docs.partials.breadcrumbs')
+        </div>
 
-        <section class="max-w-screen-xl mx-auto w-full md:grid pb-24 gap-16 md:grid-cols-10 items-stretch md:mt-10">
-            <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
+        <section class="max-w-[1320px] mx-auto w-full md:grid pb-24 gap-12 md:grid-cols-10 items-stretch md:mt-10">
+            <div class="z-10 mb-8 | md:col-span-3 | lg:col-span-2 | print:hidden">
                 @include('front.pages.docs.partials.navigation')
             </div>
             <article class="md:col-span-7 lg:col-span-6">
@@ -80,9 +82,9 @@
                     @else
                         @include('front.pages.docs.partials.big-title')
                     @endif
-                    <h2 class="text-[36px] font-bold mb-5">{{ $page->title }}</h2>
+                    <h2 class="text-[28px] font-semibold mb-5">{{ $page->title }}</h2>
                 @else
-                    <h1 class="text-[36px] font-bold mb-6 leading-none">{{ $page->title }}</h1>
+                    <h1 class="text-[28px] font-semibold mb-6 leading-none">{{ $page->title }}</h1>
                 @endif
 
                 @if(count($tableOfContents))
@@ -103,7 +105,7 @@
                 @endif
 
                 <div id="site-search-docs-content">
-                    <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-base md:text-lg">
+                    <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-lg">
                         {!! $page->contents !!}
                     </div>
                 </div>
@@ -187,6 +189,7 @@
                             @endforeach
                         </ul>
                     @endif
+
                     @include('components.banners.randomBanner', ['repository' => $repository])
 
                     <a href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md" target="_blank"

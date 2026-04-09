@@ -12,21 +12,33 @@
     @apply items-center;
     @apply justify-center;
     @apply w-screen;
-    @apply min-h-screen;
+    @apply min-h-dvh;
     @apply cursor-pointer;
     background-color: theme('colors.black') e6;
     backdrop-filter: grayscale(1);
+    opacity: 1;
+    transition: opacity 0.2s ease, display 0.2s allow-discrete, backdrop-filter 0.2s ease;
+    transition-behavior: allow-discrete;
 }
 
-.modal:after {
-    @apply absolute;
-    @apply flex;
-    @apply items-start;
-    @apply justify-end;
-    @apply text-white;
-    top: 0.5em;
-    right: 0.5em;
-    content: '×';
-    font-size: 2rem;
-    line-height: 1;
+@starting-style {
+    .modal:target {
+        opacity: 0;
+        backdrop-filter: grayscale(0);
+    }
+}
+
+.modal:target > div {
+    animation: modal-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes modal-panel-in {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }

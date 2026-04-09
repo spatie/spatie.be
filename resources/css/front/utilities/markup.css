@@ -19,7 +19,7 @@
 }
 
 .markup em {
-    @apply font-sans;
+    @apply font-pt;
     @apply italic;
 }
 
@@ -29,11 +29,12 @@
 }
 
 .markup-titles h1 {
-    @apply text-4xl;
-    @apply font-serif;
+    @apply text-4xl/[0.8];
+    @apply font-druk;
     @apply font-bold;
     @apply leading-tight;
     @apply mb-16;
+    @apply uppercase;
     page-break-inside: avoid;
     page-break-after: avoid;
 }
@@ -51,7 +52,7 @@
 
 .markup-titles h2 {
     @apply text-2xl;
-    @apply font-sans;
+    @apply font-pt;
     @apply font-bold;
     @apply leading-tight;
     @apply mb-8;
@@ -68,7 +69,7 @@
 }
 
 .markup-titles h3 {
-    @apply font-sans;
+    @apply font-pt;
     @apply font-bold;
     @apply uppercase;
     @apply leading-tight;
@@ -80,7 +81,7 @@
 
 .markup-titles h4 {
     @apply text-xs;
-    @apply font-sans;
+    @apply font-pt;
     @apply font-bold;
     @apply uppercase;
     @apply leading-tight;
@@ -262,7 +263,7 @@
 .markup pre {
     @apply px-9;
     @apply py-7.5;
-    @apply my-8;
+    @apply my-6;
     @apply rounded-lg;
     @apply overflow-hidden;
     @apply overflow-x-scroll;
@@ -358,23 +359,23 @@
 }
 
 .markup.content-markup h2 {
-    @apply font-bold;
+    @apply font-semibold;
     @apply mt-9;
     @apply mb-5;
-    font-size: 28px;
+    font-size: 24px;
 }
 
 .markup.content-markup h3 {
-    @apply font-bold;
+    @apply font-semibold;
     @apply mb-5;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .markup.content-markup h4 {
-    @apply font-bold;
+    @apply font-semibold;
     @apply mb-5;
     @apply text-oss-royal-blue-light/90;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 .markup.content-markup blockquote {

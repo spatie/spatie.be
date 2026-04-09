@@ -4,17 +4,7 @@
     dark
 >
 
-    @include('layout.partials.gradient-background', [
-        'color1' => '#2EC4B6',
-        'color2' => '#197593',
-        'color3' => '#50E69B',
-        'rotationZ' => '270',
-        'positionX' => '0.3',
-        'positionY' => '-0.2',
-        'uDensity' => '1.6',
-        'uFrequency' => '4.0',
-        'uStrength' => '2.5',
-    ])
+    @include('layout.partials.bg-color')
 
     <x-profile-layout title="My profile">
         @if (auth()->user()->github_id)

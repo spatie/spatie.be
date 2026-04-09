@@ -15,7 +15,7 @@
                x-ref="search"
                type="search"
                placeholder="Search our docs…"
-               class="w-full relative z-10"
+               class="w-full relative z-10 bg-white"
                @keyup.esc.window="query = ''"
         >
 

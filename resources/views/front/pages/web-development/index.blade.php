@@ -2,6 +2,7 @@
     title="Web development"
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
+    footerCta
 >
     <x-slot name="description">
         Tailor-made web development in Laravel, amplified by AI. We build with AI, we build for AI, and every line of code gets human review.
@@ -21,7 +22,7 @@
 
     @include('front.pages.web-development.partials.banner')
 
-    <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20 pb-20">
+    <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-32 pb-20">
         @include('front.pages.web-development.partials.intro')
         @include('front.pages.web-development.partials.workflow')
         @include('front.pages.web-development.partials.cta')

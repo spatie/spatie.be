@@ -4,8 +4,12 @@
 @endpush
 
 <x-page
-        :title="$bundle->title"
-        background="/backgrounds/product-blur.jpg"
+    :title="$bundle->title"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
+
+    @include('layout.partials.bg-color')
+
     @includeFirst(["front.pages.bundles.buy.{$bundle->slug}", "front.pages.bundles.buy.default"])
 </x-page>

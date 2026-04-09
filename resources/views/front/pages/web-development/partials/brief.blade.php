@@ -1,14 +1,14 @@
 <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
     <h2 class="font-druk uppercase text-[40px] sm:text-[72px] leading-[0.9] mb-10">Hire<br>a team</h2>
-    <div class="text-lg max-w-[640px]">
+    <div class="text-lg max-w-[640px] space-y-6">
         <p>
             We work in partnership, not just execution. We want to be as proud of your project as you are.
             That means we act as advisors and architects, not just developers.
         </p>
-        <p class="mt-6">
+        <p>
             <a class="underline hover:text-white" href="{{ route('about') }}#team">Our team</a> blends back and frontend expertise with deep AI experience. They spend less time on repetitive code and more time on the decisions that shape your product.
         </p>
-        <p class="mt-6">
+        <p>
             Whether you need a full project built at AI speed, AI features added to an existing app, or your platform prepared for the AI era, tell us about it.
         </p>
     </div>

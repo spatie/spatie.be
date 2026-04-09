@@ -43,7 +43,7 @@
         {{ $slot }}
     </main>
 
-    @include('layout.partials.footer', ['dark' => $dark ?? false])
+    @include('layout.partials.footer', ['dark' => $dark ?? false, 'footerCta' => $footerCta ?? false])
 
     <x-impersonate::banner/>
 
