@@ -1,11 +1,12 @@
 <div x-data="{ open: false }" x-on:click.outside="open = false" class="relative">
-    <button x-on:click="open = !open" class="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oss-spatie-blue flex items-center -my-1" x-ref="avatarBtn">
+    <button x-on:click="open = !open" class="cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-oss-spatie-blue flex items-center gap-1.5 -my-1" x-ref="avatarBtn">
         <img
             src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim(auth()->user()->email))) }}?s=64&d=https%3A%2F%2Fui-avatars.com%2Fapi%2F/{{ urlencode(auth()->user()->name ?? 'U') }}/64/197593/ffffff/2/0.5/false/bold/true"
             alt="{{ auth()->user()->name }}"
             width="28" height="28"
             class="w-7 h-7 rounded-full object-cover"
         >
+        <span class="text-sm text-oss-royal-blue">Account</span>
     </button>
 
     <template x-teleport="body">

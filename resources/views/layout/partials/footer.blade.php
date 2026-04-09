@@ -18,7 +18,7 @@
                                 visible: [],
                                 init() {
                                     const shuffled = [...this.allAvatars].sort(() => Math.random() - 0.5);
-                                    this.visible = shuffled.slice(0, 8);
+                                    this.visible = shuffled.slice(0, 6);
                                 }
                             }"
                             class="flex justify-center -space-x-2"
@@ -26,7 +26,7 @@
                             <template x-for="(img, index) in visible" :key="index">
                                 <img
                                     :src="img"
-                                    :style="'z-index:' + (8 - index) + '; opacity:' + (index < 5 ? 1 : index === 5 ? 0.5 : index === 6 ? 0.25 : 0.1)"
+                                    :style="'z-index:' + (6 - index) + '; opacity:' + (index < 4 ? 1 : index === 4 ? 0.5 : index === 5 ? 0.25 : 0.1)"
                                     class="w-10 h-10 rounded-full border-2 {{ $dark ? 'border-oss-footer-dark' : 'border-oss-gray-light' }} object-cover"
                                     alt=""
                                 >
@@ -34,7 +34,7 @@
                         </div>
                         <h2 class="font-druk uppercase text-[50px] sm:text-[72px] md:text-[96px] leading-[0.9]">Hire us for<br /> your next project</h2>
                         <p>We work in partnership, not just execution. We want to be as proud of your project as you are. That means we act as advisors and architects, not just developers. Tailor-made web development in Laravel is what we do best.</p>
-                        <a class="text-lg font-bold inline-block bg-oss-green-pale px-5 py-4 text-center text-oss-gray-extra-dark rounded-lg transition hover:opacity-90" href="#match">Brief us your project</a>
+                        <a class="text-lg font-bold inline-block bg-oss-green-pale px-5 py-4 text-center text-oss-royal-blue rounded-lg transition hover:opacity-90" href="#match">Brief us your project</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
             <div class="grid grid-cols-2 items-start text-sm | md:flex md:justify-between">
                 {{ Menu::main()
                     ->addClass(
-                        'md:grid grid-flow-col gap-6 justify-between md:text-lg | print:hidden'
+                        'md:grid grid-flow-col gap-6 justify-between md:text-base | print:hidden'
                     )
                     ->setActiveClass('text-blue font-bold')
                  }}
