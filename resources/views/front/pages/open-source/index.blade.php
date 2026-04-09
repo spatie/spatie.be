@@ -49,7 +49,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
 
     <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-24">
         <x-oss-menu
-            title="Committed to<br/>Open Source"
+            title="Committed to<br/>Open source"
             subtitle="At Spatie, we’re big on open source.<br/>
                 It’s not just a way of working for us,<br/>
                 but part of our culture."
