@@ -171,18 +171,48 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                 </x-slot:aside>
 
                 <p>Community is what makes open source work worthwhile. Without the hundreds of people who use, test, and contribute to our packages, they wouldn't be as successful as they are today.</p>
-                <p>If you want to get involved in our open source work, here’s some tips on how you can help us out best.</p>
+                <p>If you want to get involved in our open source work or help us in other ways, here are the best ways to do that.</p>
             </x-oss-content>
+
             <x-oss-content>
-                <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_555_5938" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_555_5938)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_555_5938)"/><defs><linearGradient id="paint0_linear_555_5938" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
-                <div class="max-w-[480px] pt-10 sm:pt-20 mt-20">
-                    <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Resolve open issues</h3>
-                    <p>Ready to help us out? Be sure to check out the package's contribution guidelines first. They’ll walk you through the process on how to properly submit an issue or pull request to our repositories.</p>
+                {{-- <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_555_5938" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_555_5938)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_555_5938)"/><defs><linearGradient id="paint0_linear_555_5938" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg> --}}
+
+                <div class="max-w-[480px] pt-12 space-y-12 mb-20">
+
+                    <div class="space-y-4 text-base">
+                        <div class="flex items-center gap-3 text-4xl">
+                            <span class="font-druk text-oss-yellow">01</span>
+                            <h2 class="font-druk uppercase text-white leading-tight">Resolve open issues</h2>
+                        </div>
+
+                        <p>Open issues across <a class="underline" href="https://github.com/orgs/spatie/repositories">our packages and repositories</a> are open to anyone to tackle, including you. We welcome contributions, but follow the contribution guidelines from each project on how to submit issues or pull requests correctly.</p>
+                    </div>
+
+                    <div class="space-y-4 text-base">
+                        <div class="flex items-center gap-3 text-4xl">
+                            <span class="font-druk text-oss-yellow">02</span>
+                            <h2 class="font-druk uppercase text-white leading-tight">Buy products &amp; courses</h2>
+                        </div>
+
+                        <p>We create <a href="/products" class="underline">paid software</a> and <a href="/courses" class="underline">courses</a> that you can purchase to support us directly. In return, you gain access to productive tools to help you improve your workflow or learn valuable skills!</p>
+                    </div>
+
+                    <div class="space-y-4 text-base">
+                        <div class="flex items-center gap-3 text-4xl">
+                            <span class="font-druk text-oss-yellow">03</span>
+                            <h2 class="font-druk uppercase text-white leading-tight">Get some sweet merch</h2>
+                        </div>
+
+                        <p>Show your love for Spatie with <a href="https://spatie.myspreadshop.net/" class="underline">our official merchandise</a>. T-shirts, mugs, hoodies, stickers, and more.</p>
+                    </div>
+
                 </div>
+
             </x-oss-content>
+
         </section>
 
-        @if (count($goodFirstIssues))
+        {{-- @if (count($goodFirstIssues))
             <section class="w-full px-7 lg:px-0">
                 <x-oss-content class="flex-col-reverse" aside-width="w-full" content-width="w-full" align-items="items-start">
                     <x-slot:aside>
@@ -207,9 +237,9 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                     </div>
                 </x-oss-content>
             </section>
-        @endif
+        @endif --}}
 
-        <section class="w-full relative px-7 lg:px-0">
+        {{-- <section class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
                 <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_555_5938" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_555_5938)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_555_5938)"/><defs><linearGradient id="paint0_linear_555_5938" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
                 <div class="max-w-[480px] pt-10 sm:pt-20">
@@ -220,9 +250,9 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                     <p class="text-base">Do you think this approach would fit you? It's <a class="underline" href="{{ route('web-development') }}#match">time to talk</a>.</p>
                 </div>
             </x-oss-content>
-        </section>
+        </section> --}}
 
-        <section class="w-full relative px-7 lg:px-0">
+        {{-- <section class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
                 <div class="max-w-[480px] pt-10 sm:pt-20">
                     <h2 class="font-druk uppercase text-oss-yellow text-[40px] sm:text-[72px] leading-[0.9] mb-10">Spatie Merch</h2>
@@ -233,9 +263,9 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                     </a>
                 </div>
             </x-oss-content>
-        </section>
+        </section> --}}
 
-        <section class="w-full relative px-7 lg:px-0">
+        {{-- <section class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
                 <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_555_5938" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_555_5938)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_555_5938)"/><defs><linearGradient id="paint0_linear_555_5938" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#E7C23D"/></linearGradient></defs></svg>
                 <div class="max-w-[480px] pt-10 sm:pt-20">
@@ -243,9 +273,9 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
                     <p class="text-base">Support Spatie by purchasing licenses for our developer tools, gaining access to our awesome software and courses. You'll gain access to some awesome new software or the ability to learn valuable skills!</p>
                 </div>
             </x-oss-content>
-        </section>
+        </section> --}}
 
-        <section class="w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-[1320px] mx-auto mb-20 px-7 lg:px-0">
+        {{-- <section class="w-full grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 max-w-[1320px] mx-auto mb-20 px-7 lg:px-0">
             <x-oss-link-card title="Media Library Pro" target="_blank" href="https://medialibrary.pro/" link="Discover">
                 Media Library Pro is an add-on package to our popular Media Library package that offers Blade, Livewire, Vue, and React components to upload files to your application.
             </x-oss-link-card>
@@ -261,7 +291,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
             <x-oss-link-card title="Ray" target="_blank" href="https://myray.app" link="Discover">
                 Ray is a desktop application that serves as the dedicated home for debugging output. Send, format and filter debug information from both local projects and remote servers.
             </x-oss-link-card>
-        </section>
+        </section> --}}
 
     </div>
 </x-page>
