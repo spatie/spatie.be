@@ -480,5 +480,13 @@ return [
             ],
             'category' => 'General PHP',
         ],
+        [
+            'name' => 'laravel-sluggable',
+            'repository' => 'spatie/laravel-sluggable',
+            'branches' => [
+                'main' => 'v4',
+            ],
+            'category' => 'Laravel',
+        ],
     ],
 ];
