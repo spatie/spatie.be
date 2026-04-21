@@ -6,40 +6,47 @@ weight: 8
 
 ## Introduction
 
-We've created AI-optimized guidelines specifically formatted for AI assistants like Claude Code and GitHub Copilot to ensure they generate code that follows Spatie's Laravel & PHP standards.
+We've packaged our coding guidelines as AI skills so AI assistants can apply Spatie's conventions more effectively in the right context.
 
-Our AI-optimized guidelines cover:
+Our skills cover:
 
-- **Core Laravel principles** - Follow documented Laravel conventions first
-- **PHP standards** - PSR compliance, type declarations, nullable syntax
-- **Class structure** - Typed properties, constructor promotion, traits
-- **Control flow** - Early returns, avoiding else statements, happy path patterns
-- **Laravel conventions** - Routes, controllers, configuration, artisan commands
-- **Naming conventions** - Complete reference for classes, methods, files, and URLs
-- **Code quality reminders** - Essential principles for maintainable code
+- **`spatie-laravel-php`** - Laravel & PHP coding conventions, PSR standards, control flow, and naming
+- **`spatie-javascript`** - JavaScript coding standards, Prettier config, functions, and destructuring
+- **`spatie-version-control`** - Git workflow conventions, repo and branch naming, and commit messages
+- **`spatie-security`** - Application, database, and server security best practices
 
 ## Using Laravel Boost (Recommended)
 
-The easiest way to use our guidelines in your Laravel projects is with [Laravel Boost](https://laravel.com/docs/13.x/boost). 
+The easiest way to use our guidelines in your Laravel projects is with [Laravel Boost](https://laravel.com/docs/13.x/boost).
 
-If you haven't already, install Laravel Boost, and then our guideline package.
+If you haven't already, install Laravel Boost, and then our skills package.
 
 ```bash
 composer require laravel/boost --dev
-composer require spatie/boost-spatie-guidelines --dev
+composer require spatie/guidelines-skills --dev
 ```
 
-After installing, run the following and select the Spatie guidelines from the list under `Agent Skills`. 
+After installing, run the following and select the Spatie guidelines from the list.
 
 ```bash
 php artisan boost:install
 ```
 
-Choose the coding agents you want to install Boost for, and you're all set! Your agent will now automatically follow our guidelines when creating code.
+Choose the coding agents you want to install Boost for, and you're all set.
 
-**[View the package on GitHub →](https://github.com/spatie/boost-spatie-guidelines)**
+**[View the package on GitHub →](https://github.com/spatie/guidelines-skills)**
 
-You can view the raw AI-optimized guidelines file [here](https://spatie.be/laravel-php-ai-guidelines.md).
+If you prefer a manual setup, you can still use the raw AI-optimized guidelines file [here](https://spatie.be/laravel-php-ai-guidelines.md).
+
+## Alternative: Using skills.sh
+
+If you're not using Laravel Boost, you can install our skills via [skills.sh](https://skills.sh):
+
+```bash
+npx skills add spatie/guidelines-skills
+```
+
+This will install the Spatie skills for your AI agent using the `skills.sh` ecosystem.
 
 ## Alternative: Global Integration using Claude Code
 
@@ -79,6 +86,17 @@ Optionally, you can create a Composer script to keep guidelines updated:
         "update-guidelines": "curl -o docs/laravel-php-guidelines.md https://spatie.be/laravel-php-ai-guidelines.md"
     }
 }
+```
+
+If you use the skills package instead, keep it up to date with one of these commands:
+
+```bash
+# When installed through Composer / Laravel Boost
+composer update spatie/guidelines-skills
+php artisan boost:update
+
+# When installed through skills.sh
+npx skills add spatie/guidelines-skills
 ```
 
 ## AI docs for Spatie packages

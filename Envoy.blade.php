@@ -73,7 +73,7 @@ echo "{{ $newReleaseName }}" > public/release-name.txt
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/.env .env
 composer install --prefer-dist --no-scripts --no-dev -o
-php artisan package:discover
+php -d memory_limit=2G artisan package:discover
 @endtask
 
 @task('runNpm', ['on' => 'remote'])
