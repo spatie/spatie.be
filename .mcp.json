@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "uidotsh": {
+      "type": "http",
+      "url": "https://ui.sh/mcp?agent=claude",
+      "headers": {
+        "Authorization": "Bearer ${UIDOTSH_TOKEN}"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "uidotsh"
+  ],
+  "permissions": {
+    "allow": [
+      "mcp__uidotsh__uidotsh_fetch"
+    ]
+  }
+}
