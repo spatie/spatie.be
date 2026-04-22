@@ -29,9 +29,9 @@
                 <img class="h-[40px]" src="/images/mailcoach_logo_white.svg" alt="Mailcoach">
             </a>
             <p>An email marketing platform for sending campaigns, automations and transactional emails. Available as a hosted service or a self-hosted Laravel package.</p>
-            <div class="flex gap-4 text-sm">
-                <a class="underline transition-colors hover:text-white" href="https://mailcoach.app" target="_blank">Try Mailcoach for free</a>
-                <a class="underline transition-colors hover:text-white" href="https://www.mailcoach.app/self-hosted/" target="_blank">Self-hosted</a>
+            <div class="flex gap-4">
+                <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://mailcoach.app" target="_blank">Try Mailcoach for free</a>
+                <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://www.mailcoach.app/self-hosted/" target="_blank">Self-hosted</a>
             </div>
         </div>
 
@@ -40,8 +40,8 @@
                 <img class="h-[48px]" src="/images/flare_logo_white.svg" alt="Flare">
             </a>
             <p>Error tracking and performance monitoring for Laravel, PHP and JavaScript. Get alerted when bugs hit production, with integrations for GitHub, Jira, Linear and more.</p>
-            <div class="text-sm">
-                <a class="underline transition-colors hover:text-white" href="https://flareapp.io" target="_blank">Try Flare for free</a>
+            <div class="">
+                <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://flareapp.io" target="_blank">Try Flare for free</a>
             </div>
         </div>
 
@@ -50,8 +50,8 @@
                 <img class="h-[25px]" src="/images/ray_logo_gradient.svg" alt="Ray">
             </a>
             <p>A desktop debugging app for Laravel, PHP and JavaScript. All the speed of dump() and console.log(), but with a dedicated interface to keep your output organized.</p>
-            <div class="text-sm">
-                <a class="underline transition-colors hover:text-white" href="https://myray.app" target="_blank">Try Ray for free</a>
+            <div class="">
+                <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://myray.app" target="_blank">Try Ray for free</a>
             </div>
         </div>
 
