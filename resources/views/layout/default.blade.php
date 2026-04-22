@@ -131,5 +131,6 @@
     {!! schema()->localBusiness() !!}
 
     @stack('modals')
+
 </body>
 </html>

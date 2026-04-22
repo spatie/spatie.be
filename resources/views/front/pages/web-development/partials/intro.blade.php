@@ -1,31 +1,39 @@
-<section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0">
-    <div class="text-lg max-w-[640px] space-y-6">
-        <p>
-            We build web applications and platforms in Laravel for companies that value quality. Every project starts with the same question: what is the right tool for this job? Over the years, we have built a collection of <a class="underline hover:text-white" href="{{ route('open-source.packages') }}">open source building blocks</a> that give us a head start, so your budget goes toward what makes your project unique.
-        </p>
-        <p>
-            AI has changed how we build. Every developer at Spatie works with AI coding agents daily. Our <a class="underline hover:text-white" href="{{ url('guidelines') }}">coding guidelines</a> ensure AI writes code that matches our standards. Nothing ships without human review. You get the speed of AI with the care of experienced developers.
-        </p>
-        <p>
-            <a class="inline-flex items-center gap-x-2 underline hover:text-white font-bold" href="#match">
-                <svg aria-hidden="true" class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
-                Tell us about your project
-            </a>
-        </p>
+<section class="w-full max-w-[1320px] mx-auto px-7 lg:px-0">
+    <h2 class="text-4xl font-druk uppercase text-white leading-tight mb-8">Technologies we work with</h2>
+
+    <div class="grid md:grid-cols-3 border border-white/10 rounded-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <h3 class="font-bold text-white text-xl">Laravel framework</h3>
+            <p><a class="underline transition-colors hover:text-white" href="https://laravel.com">Laravel</a> is our framework of choice for everything from marketing sites to complex platforms. It's a battle-tested foundation that keeps codebases clean, maintainable, and easy to hand off as projects grow.</p>
+        </div>
+        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <h3 class="font-bold text-white text-xl">React & Livewire</h3>
+            <p>We match the frontend tool to the level of interactivity a project needs. <a class="underline transition-colors hover:text-white" href="https://livewire.laravel.com">Livewire</a> handles reactive interfaces within Laravel, while <a class="underline transition-colors hover:text-white" href="https://reactjs.org">React</a> takes over for full SPA and mobile-first applications.</p>
+        </div>
+        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <h3 class="font-bold text-white text-xl">AI coding agents</h3>
+            <p>We use AI to generate code throughout the whole development cycle: features, tests, debugging and refactoring. Our <a class="underline transition-colors hover:text-white" href="{{ url('guidelines') }}">coding guidelines</a> make sure the output matches our standards and your project.</p>
+        </div>
     </div>
 
-    <div class="grid sm:grid-cols-2 gap-8 mt-16">
-        <div>
-            <h3 class="font-bold text-lg mb-2">Laravel framework</h3>
-            <p>
-                <a class="underline hover:text-white" href="https://laravel.com">Laravel</a> is one of the fastest growing open source PHP frameworks, letting us set up both simple sites as well as complex applications.
-            </p>
+    <div class="grid md:grid-cols-3 border-x border-b border-white/10 rounded-b-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div class="p-9 space-y-6">
+            <div class="space-y-1">
+                <p class="text-oss-gray-dark text-xs font-bold">Backend</p>
+                <p class="text-sm text-oss-gray-dark">Laravel, PHP, MySQL, PostgreSQL, Redis, Algolia, Elasticsearch, Statamic, ...</p>
+            </div>
+            <div class="space-y-1">
+                <p class="text-oss-gray-dark text-xs font-bold">DevOps</p>
+                <p class="text-sm text-oss-gray-dark">AWS, GCP, Digital Ocean, Laravel Forge, CloudFlare, NGINX, Docker, Grafana, Prometheus, Ansible, ...</p>
+            </div>
         </div>
-        <div>
-            <h3 class="font-bold text-lg mb-2">React & Vue.js</h3>
-            <p>
-                <a class="underline hover:text-white" href="https://vuejs.org">Vue.js</a> shines in Laravel apps that need that extra sprinkle of interactivity, while <a class="underline hover:text-white" href="https://reactjs.org">React</a> is our weapon of choice for highly interactive web and mobile applications.
-            </p>
+        <div class="p-9 space-y-1">
+            <p class="text-oss-gray-dark text-xs font-bold">Frontend</p>
+            <p class="text-sm text-oss-gray-dark">React, TypeScript, Vue.js, Vanilla JS, Tailwind CSS, PostCSS, Vite, npm, ...</p>
+        </div>
+        <div class="p-9 space-y-1">
+            <p class="text-oss-gray-dark text-xs font-bold">AI</p>
+            <p class="text-sm text-oss-gray-dark">Claude Code, GitHub Copilot, OpenAI Codex, Anthropic Claude API, OpenAI API, MCP, llms.txt, Custom AI integrations, ...</p>
         </div>
     </div>
 </section>

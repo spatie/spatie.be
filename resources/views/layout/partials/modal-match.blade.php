@@ -21,7 +21,7 @@
     <div class="bg-oss-black max-w-xl max-h-[90dvh] p-8 z-20 overflow-auto shadow-lg shadow-oss-gray-light/5 rounded-2xl border border-oss-gray-light/20 mx-4 | md:p-12 md:mx-8" onclick="event.stopPropagation()">
 
         <div class="flex items-start justify-between gap-4 mb-8">
-            <h2 class="text-white font-druk uppercase text-5xl leading-[0.9]">A good<br>match?</h2>
+            <h2 class="text-white font-druk uppercase text-7xl leading-[0.9]">A good<br>match?</h2>
             <button
                 onclick="history.back()"
                 class="shrink-0 size-8 rounded-full flex items-center justify-center text-white/40 hover:text-white/70 hover:bg-white/10 transition"

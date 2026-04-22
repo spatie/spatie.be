@@ -14,25 +14,16 @@
             <div class="w-full max-w-[720px] mx-auto">
                 <div class="text-center">
                     <div class="space-y-8 text-xl">
-                        <div
-                            x-data="{
-                                allAvatars: @js(\App\Models\Member::orderBy('first_name')->get()->map(fn ($m) => 'https://www.gravatar.com/avatar/' . md5(strtolower(trim($m->email))) . '?s=80&d=mp')->values()->all()),
-                                visible: [],
-                                init() {
-                                    const shuffled = [...this.allAvatars].sort(() => Math.random() - 0.5);
-                                    this.visible = shuffled.slice(0, 6);
-                                }
-                            }"
-                            class="flex justify-center -space-x-2"
-                        >
-                            <template x-for="(img, index) in visible" :key="index">
+                        @php($avatars = \App\Models\Member::all()->shuffle()->take(6))
+                        <div class="flex justify-center -space-x-2">
+                            @foreach($avatars as $index => $member)
                                 <img
-                                    :src="img"
-                                    :style="'z-index:' + (6 - index) + '; opacity:' + (index < 4 ? 1 : index === 4 ? 0.5 : index === 5 ? 0.25 : 0.1)"
+                                    src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim($member->email))) }}?s=80&d=mp"
+                                    style="z-index: {{ 6 - $index }}"
                                     class="w-10 h-10 rounded-full border-2 {{ $dark ? 'border-oss-footer-dark' : 'border-oss-gray-light' }} object-cover"
                                     alt=""
                                 >
-                            </template>
+                            @endforeach
                         </div>
                         <h2 class="font-druk uppercase text-[50px] sm:text-[72px] md:text-[96px] leading-[0.9]">Hire us for<br /> your next project</h2>
                         <p>We work in partnership, not just execution. We want to be as proud of your project as you are. That means we act as advisors and architects, not just developers. Tailor-made web development in Laravel is what we do best.</p>
