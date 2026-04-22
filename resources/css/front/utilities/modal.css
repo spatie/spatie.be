@@ -13,29 +13,25 @@
     @apply justify-center;
     @apply w-screen;
     @apply min-h-dvh;
-    @apply cursor-pointer;
-    background-color: theme('colors.black') e6;
-    backdrop-filter: grayscale(1);
-    opacity: 1;
-    transition: opacity 0.2s ease, display 0.2s allow-discrete, backdrop-filter 0.2s ease;
+    background-color: rgb(0 0 0 / 0.85);
+    transition: background-color 0.3s ease, display 0.3s allow-discrete;
     transition-behavior: allow-discrete;
 }
 
 @starting-style {
     .modal:target {
-        opacity: 0;
-        backdrop-filter: grayscale(0);
+        background-color: rgb(0 0 0 / 0);
     }
 }
 
 .modal:target > div {
-    animation: modal-panel-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation: modal-panel-in 0.75s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes modal-panel-in {
     from {
         opacity: 0;
-        transform: translateY(16px) scale(0.97);
+        transform: translateY(24px) scale(0.9);
     }
     to {
         opacity: 1;

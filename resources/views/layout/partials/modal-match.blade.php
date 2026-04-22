@@ -17,7 +17,7 @@
     ];
 @endphp
 
-<div id="match" class="modal" onclick="history.back()">
+<div id="match" class="modal font-pt font-medium" onclick="history.back()">
     <div class="bg-oss-black max-w-xl max-h-[90dvh] p-8 z-20 overflow-auto shadow-lg shadow-oss-gray-light/5 rounded-2xl border border-oss-gray-light/20 mx-4 | md:p-12 md:mx-8" onclick="event.stopPropagation()">
 
         <div class="flex items-start justify-between gap-4 mb-8">
