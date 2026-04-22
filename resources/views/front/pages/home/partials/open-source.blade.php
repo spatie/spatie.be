@@ -10,13 +10,15 @@
         <x-slot:line3></x-slot:line3>
     </x-oss-staggered-title>
 
-    <x-oss-content>
+    <x-oss-content alignItems="">
         <x-slot:aside>
-            @include('front.pages.open-source.partials.sponsors')
+<p class="leading-snug text-oss-gray-dark mb-0.5">Support from <a href="https://github.com/sponsors/spatie" target="_blank" class="underline">premium GitHub sponsors</a> helps to sustain our open-source efforts.</p>
+
+            {{-- @include('front.pages.open-source.partials.sponsors') --}}
         </x-slot:aside>
 
-        <p>Community is what makes open source work worthwhile. Without the hundreds of people who use, test, and contribute to our packages, they wouldn't be as successful as they are today.</p>
-        <p>Back in 2015 when we first began developing open source packages and tools for Laravel and PHP, we couldn't have imagined the overwhelming support and feedback we'd receive from the community.</p>
+        <p class="text-xl">Community is what makes open source work worthwhile. Without the hundreds of people who use, test, and contribute to our packages, they wouldn't be as successful as they are today.</p>
+        <span class="inline-flex gap-2 underline underline-offset-4 decoration-white/25 transition hover:decoration-white"><a href="/open-source">Our open source efforts</a><span class="icon">{{ app_svg('icons/far-angle-right') }}</span></span>
     </x-oss-content>
 
     <div class="w-full border-t border-white/10 pt-10 sm:pt-0 sm:border-t-0 mt-10 sm:mt-24 lg:px-0">

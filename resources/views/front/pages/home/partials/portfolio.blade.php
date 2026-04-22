@@ -11,21 +11,15 @@
         </x-slot:line2>
     </x-oss-staggered-title>
 
-    <x-oss-content>
+    <x-oss-content alignItems="">
         <x-slot:aside>
-            <p class="leading-snug text-oss-gray-dark mb-0.5">This is just a sample. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p class="leading-snug text-oss-gray-dark mb-0.5">We <a class="underline transition hover:text-white" href="/newsletter">have a quarterly(-ish) newsletter</a> with product updates, what's going on behind the scenes, and interesting links.</p>
         </x-slot:aside>
 
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-            ea commodo consequat.
+        <p class="text-xl">
+            We use Laravel for almost all our web development projects, and it's the foundation for many of our products too. Our own products run on the same stack we build for clients, so we know firsthand what it takes to keep software running in production.
         </p>
-        <p>
-            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-            laborum.
-        </p>
+        <span class="inline-flex gap-2 underline underline-offset-4 decoration-white/25 transition hover:decoration-white"><a href="/products">Our products &amp; courses</a><span class="icon">{{ app_svg('icons/far-angle-right') }}</span></span>
     </x-oss-content>
 
     <div class="grid md:grid-cols-3 border border-white/10 rounded-xl max-w-[1320px] mx-auto mt-16 md:mt-20 divide-y md:divide-y-0 md:divide-x divide-white/10">

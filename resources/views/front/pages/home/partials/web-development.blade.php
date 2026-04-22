@@ -11,13 +11,14 @@
             <x-slot:line2>with decades of</x-slot:line2>
             <x-slot:line3>experience</x-slot:line3>
         </x-oss-staggered-title>
-            <x-oss-content>
+            <x-oss-content alignItems="">
                 <x-slot:aside>
-                    <p class="leading-snug text-oss-gray-dark mb-0.5">We kickstart your project by lorem ipsum dolor sit amet sed do eiusmod ut labore et dolore magna aliqua.</p>
+                    <p class="leading-snug text-oss-gray-dark mb-0.5">We share a lot of our experiences doing open source and client work <a class="underline transition hover:text-white" href="/blog">on our blog</a>.</p>
                 </x-slot:aside>
 
-            <p>Building with you, not for you. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-            <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            {{-- <p>We start by understanding your goals, then figuring out the right solution, not the obvious one. We work with your team, challenge assumptions, and make sure every decision serves the product.</p> --}}
+            <p class="text-xl">Spatie has been crafting Laravel applications since the framework's early days. That depth means fewer surprises, faster delivery, and code that your team can maintain long after we're done.</p>
+            <span class="inline-flex gap-2 underline underline-offset-4 decoration-white/25 transition hover:decoration-white"><a href="/web-development">Our web development services</a><span class="icon">{{ app_svg('icons/far-angle-right') }}</span></span>
         </x-oss-content>
     </div>
 
@@ -25,8 +26,8 @@
         <div class="w-full relative px-7 lg:px-0">
             <x-oss-content content-width="">
                 <div class="max-w-[480px] mt-10 sm:mt-24">
-                    <h2 class="font-druk uppercase text-oss-purple text-[40px] sm:text-[72px] leading-[0.9] mb-10 text-balance">A foundation to build on</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                    <h2 class="font-druk uppercase text-oss-purple text-[40px] sm:text-[72px] leading-[0.9] mb-10 text-balance">Our approach</h2>
+                    <p>By asking the right questions first, we make thoughtful architecture decisions, and ship clean code your team can maintain and extend long after launch.</p>
                 </div>
             </x-oss-content>
         </div>
@@ -39,7 +40,9 @@
                     <span class="font-druk text-oss-purple">01</span>
                     <h3 class="font-druk uppercase text-white leading-tight">Research & Analysis</h3>
                 </div>
-                <p class="text-lg text-oss-gray-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et magna aliqua.</p>
+                <p class="text-lg text-oss-gray-medium">
+                    Know we dig into your domain before touching any code. We accommodate new projects and legacy applications bursting out of its seams.
+                </p>
             </div>
 
             <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
@@ -47,7 +50,9 @@
                     <span class="font-druk text-oss-purple">02</span>
                     <h3 class="font-druk uppercase text-white leading-tight">Build a Strong Foundation</h3>
                 </div>
-                <p class="text-lg text-oss-gray-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et magna aliqua.</p>
+                <p class="text-lg text-oss-gray-medium">
+                    A Laravel codebase built for the long haul: clear structure, automated tests, and sensible abstractions that don't fight you when requirements change.
+                </p>
             </div>
 
             <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
@@ -55,7 +60,9 @@
                     <span class="font-druk text-oss-purple">03</span>
                     <h3 class="font-druk uppercase text-white leading-tight">Flexible Development</h3>
                 </div>
-                <p class="text-lg text-oss-gray-medium">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et magna aliqua.</p>
+                <p class="text-lg text-oss-gray-medium">
+                    We work in short cycles with frequent check-ins. Priorities can shift, but our process is designed for it, so you always get the most valuable thing next.
+                </p>
             </div>
         </div>
     </div>
