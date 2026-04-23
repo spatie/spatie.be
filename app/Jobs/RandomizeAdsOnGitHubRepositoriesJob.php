@@ -22,7 +22,7 @@ class RandomizeAdsOnGitHubRepositoriesJob implements ShouldQueue, ArtisanDispatc
 
     public function handle(): void
     {
-        $ads = Ad::query()->whereIn('id', [4,5,7, 9])->get(); // flare, mailcoach, ray, ml pro
+        $ads = Ad::query()->whereIn('id', [4, 9])->get(); // mailcoach, flare
 
         if ($ads->isEmpty()) {
             return;
