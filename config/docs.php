@@ -481,6 +481,14 @@ return [
             'category' => 'General PHP',
         ],
         [
+            'name' => 'sourcemaps-lookup',
+            'repository' => 'spatie/sourcemaps-lookup',
+            'branches' => [
+                'main' => 'v1',
+            ],
+            'category' => 'General PHP',
+        ],
+        [
             'name' => 'laravel-sluggable',
             'repository' => 'spatie/laravel-sluggable',
             'branches' => [
