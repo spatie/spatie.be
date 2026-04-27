@@ -29,7 +29,7 @@
     },
     "devDependencies": {
         "@types/three": "^0.171.0",
-        "postcss": "^8.2.8"
+        "postcss": "^8.5.12"
     },
     "packageManager": "npm@10.9.3"
 }
