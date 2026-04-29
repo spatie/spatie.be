@@ -18,6 +18,10 @@ class AdminsOnly
             return $next($request);
         }
 
-        throw new AuthenticationException('Unauthenticated, user has no access to this area.');
+        throw new AuthenticationException(
+            'Unauthenticated, user has no access to this area.',
+            [],
+            $request->expectsJson() ? null : route('login'),
+        );
     }
 }
