@@ -20,6 +20,14 @@ class MembersSeeder extends Seeder
             'birthday' => '1996-02-05',
         ],
 
+        'dries@spatie.be' => [
+            'first_name' => 'Dries',
+            'last_name' => 'Heyninck',
+            'preferred_name' => null,
+            'role' => 'Frontend developer',
+            'description' => 'Dries brings competitive sprinter energy to frontend development - fast, focused, and always optimizing for performance.',
+        ],
+
         'freek@spatie.be' => [
             'first_name' => 'Freek',
             'last_name' => 'Van der Herten',
@@ -45,26 +53,40 @@ class MembersSeeder extends Seeder
             'birthday' => '1975-03-28',
         ],
 
-        'niels@spatie.be' => [
-            'first_name' => 'Niels',
-            'last_name' => 'Vanpachtenbeke',
+        'jimi@spatie.be' => [
+            'first_name' => 'Jimi',
+            'last_name' => 'Robaer',
             'preferred_name' => null,
-            'role' => 'Backend developer',
-            'description' => 'The eleventh member of our team has solid experience in building modern web applications and API\'s. We have yet to find out what his scouting totem is… stay tuned!',
-            'twitter' => 'NielsVanpach',
-            'birthday' => '1993-07-14',
+            'role' => 'Designer',
+            'description' => 'Everyone is a designer until you have a designer on your team. Has been building things on the web since before Flexbox was invented.',
+            'twitter' => 'jimirobaer',
+            'website' => 'https://jimirobaer.be',
         ],
 
-        'rias@spatie.be' => [
-            'first_name' => 'Rias',
-            'last_name' => 'Van der Veken',
+        'marceli@spatie.be' => [
+            'first_name' => 'Marceli',
+            'last_name' => 'Wilczynski',
             'preferred_name' => null,
             'role' => 'Backend developer',
-            'description' => 'Another member of the Full Stack Antwerp family in our midst: Rias brings Laravel & CMS expertise to the backend table —with a smile.',
-            'twitter' => 'riasvdv',
-            'website' => 'https://rias.be',
-            'website_rss' => 'https://rias.be/feed',
-            'birthday' => '1992-05-25',
+            'description' => 'Marceli is the backend wizard who turns "it can\'t be done" into "it\'s already deployed."',
+        ],
+
+        'nickb@spatie.be' => [
+            'first_name' => 'Nick',
+            'last_name' => 'Bevers',
+            'preferred_name' => null,
+            'role' => 'Frontend developer',
+            'description' => 'Nick bakes the greatest cookies. Both in the browser and in real life.',
+            'website' => 'https://nickbevers.dev',
+        ],
+
+        'nickd@spatie.be' => [
+            'first_name' => 'Nick',
+            'last_name' => 'Denys',
+            'preferred_name' => null,
+            'role' => 'Backend developer',
+            'description' => 'Nick builds things that work as well as they look. He won\'t ship it until both the code and the pixels are right.',
+            'website' => 'https://nickdenys.com',
         ],
 
         'ruben@spatie.be' => [
@@ -84,22 +106,20 @@ class MembersSeeder extends Seeder
             'last_name' => 'De Deyne',
             'preferred_name' => 'Seb',
             'role' => 'Full stack developer',
-            'description' => 'Seb really earns the label ‘full stack’. Throw anything at this guy and he\'ll kick it back to you as a component.',
+            'description' => 'Seb really earns the label \'full stack\'. Throw anything at this guy and he\'ll kick it back to you as a component.',
             'twitter' => 'sebdedeyne',
             'website' => 'https://sebastiandedeyne.com',
             'website_rss' => 'https://sebastiandedeyne.com/feed/articles',
             'birthday' => '1992-02-01',
         ],
 
-        'wouter@spatie.be' => [
-            'first_name' => 'Wouter',
-            'last_name' => 'Brouwers',
-            'preferred_name' => null,
-            'role' => 'Project Manager',
-            'description' => 'Who needs a status board when you have Wouter? This fellow knows a thing or 2 about closing Basecamp tickets.',
-            'twitter' => 'brouwerswouter',
-            'public_email' => true,
-            'birthday' => '1991-03-15',
+        'sebastien@spatie.be' => [
+            'first_name' => 'Sébastien',
+            'last_name' => 'Henau',
+            'preferred_name' => 'Seba',
+            'role' => 'Frontend developer',
+            'description' => 'Seba is our master of JavaScript and frontend technologies. He can make browsers sing, dance, and jump through flamings hoops.',
+            'website' => 'https://sebastienhenau.com',
         ],
 
         'tim@spatie.be' => [
@@ -109,8 +129,18 @@ class MembersSeeder extends Seeder
             'role' => 'Full stack developer',
             'description' => 'Tim is the George Harrison of the team: quietly making essential contributions to all our major projects.',
             'twitter' => 'timvandijck',
-            'website' => 'https://timvandijck.be',
+            'website' => 'https://veedee.dev',
             'birthday' => '1989-10-14',
+        ],
+
+        'zuzana@spatie.be' => [
+            'first_name' => 'Zuzana',
+            'last_name' => 'Kunckova',
+            'preferred_name' => null,
+            'role' => 'Support engineer',
+            'description' => 'Zuzana has the rare ability of turning support questions into high-fives.',
+            'twitter' => 'zuzana_kunckova',
+            'website' => 'https://www.zuzana-k.com',
         ],
 
     ];

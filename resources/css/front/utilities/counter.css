@@ -34,7 +34,7 @@
 
     counter-reset: var(--counter-reset);
     counter-increment: var(--counter-increment);
-    padding-left: 7.5rem; /* more room for romans on H1 */
+    padding-left: 3.5rem; /* more room for romans on H1 */
 }
 
 .counters h1:before {

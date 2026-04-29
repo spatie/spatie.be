@@ -3,6 +3,7 @@
     description="This is our postcardware license in action."
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased"
     dark
+    footerCta
 >
 
     <x-og-image view="og-image.oss" :data="[
@@ -31,7 +32,7 @@
         </div>
     @endpush
 
-    <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
+    <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-24">
         <x-oss-menu title="Postcards">
             <x-slot:subtitle>
                 <span>All of our packages are postcardware: free to use if you send us a postcard. We enjoy receiving mail from all around the world!</span>

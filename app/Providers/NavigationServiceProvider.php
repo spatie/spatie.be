@@ -12,10 +12,10 @@ class NavigationServiceProvider extends ServiceProvider
     {
         Menu::macro('main', function (array $properties = []) {
             return Menu::new()
+                ->route('web-development', 'Services')
+                ->route('open-source.index', 'Open source')
                 ->route('products.index', 'Products')
-                ->route('open-source.index', 'Open Source')
                 ->route('courses.index', 'Courses')
-                ->route('web-development', 'Web Development')
 
                 ->setActiveFromRequest()
                 ->addClass($properties['class'] ?? '');
@@ -30,9 +30,23 @@ class NavigationServiceProvider extends ServiceProvider
                 ->route('newsletter', 'Newsletter')
                 ->route('docs', 'Docs')
                 ->route('guidelines', 'Guidelines')
-                ->url('https://spatie.myspreadshop.net', 'Merch ↗')
                 ->addIf(auth()->check(), View::create('layout.partials.navigation.profileIcon', ['url' => route('profile')]))
                 ->addIf(! auth()->check(), View::create('layout.partials.navigation.loginIcon', ['url' => route('login')]))
+
+                ->withoutWrapperTag()
+                ->withoutParentTag()
+                ->setActiveClassOnLink()
+                ->setActiveFromRequest();
+        });
+
+        Menu::macro('serviceFooter', function (array $properties = []) {
+            return Menu::new()
+                ->addItemClass('first:-m-1 first:p-1 rounded-sm')
+                ->route('about', 'About')
+                ->route('blog', 'Blog')
+                ->route('newsletter', 'Newsletter')
+                ->route('docs', 'Docs')
+                ->route('guidelines', 'Guidelines')
 
                 ->withoutWrapperTag()
                 ->withoutParentTag()
@@ -62,10 +76,10 @@ class NavigationServiceProvider extends ServiceProvider
 
         Menu::macro('profile', function () {
             return Menu::new()
-                ->route('profile', 'Profile')
-                ->route('profile.password', 'Password')
                 ->route('purchases', 'Purchases')
                 ->route('invoices', 'Invoices')
+                ->route('profile', 'Profile')
+                ->route('profile.password', 'Password')
                 ->setActiveFromRequest('/profile')
                 ->setActiveClass('submenu-active')
             ;

@@ -1,11 +1,13 @@
 @push('head')
-    @php($vendor = ['vendor' => (int) config('cashier.vendor_id')])
-    <script src="https://cdn.paddle.com/paddle/paddle.js"></script>
+    @paddleJS
 @endpush
 
 <x-page
-        :title="$product->title"
-        background="/backgrounds/product-blur.jpg"
+    :title="$product->title"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
+    @include('layout.partials.bg-color')
+
     @includeFirst(["front.pages.products.buy.{$product->slug}", "front.pages.products.buy.default"])
 </x-page>

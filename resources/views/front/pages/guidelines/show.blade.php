@@ -33,21 +33,40 @@
             }
         </style>
     </x-slot>
-    <div class="px-3 sm:px-12">
-        @include('front.pages.guidelines.partials.breadcrumbs')
+    <div class="px-3 py-2 sm:px-12">
+        <div class="max-w-[1320px] mx-auto w-full">
+            @include('front.pages.guidelines.partials.breadcrumbs')
+        </div>
 
-
-        <section class="max-w-screen-xl mx-auto w-full grid grid-cols-1 pb-24 gap-16 md:grid-cols-10 items-stretch md:mt-10">
-            <div class="z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
+        <section class="max-w-[1320px] mx-auto w-full grid pb-24 gap-12 md:grid-cols-10 items-stretch md:mt-10">
+            <div class="order-last md:order-none z-10 | md:col-span-3 | lg:col-span-2 | print:hidden">
                 @include('front.pages.guidelines.partials.navigation')
                 @include('components.banners.randomBanner')
             </div>
 
-            <article class="md:col-span-7 lg:col-span-6">
+            <article class="order-first md:order-none min-w-0 md:col-span-7 lg:col-span-6">
                 <h1
-                    class="text-oss-spatie-blue uppercase text-[72px] md:text-[96px] font-black leading-90 tracking-normal font-druk mb-10">
+                    class="text-oss-spatie-blue uppercase text-[72px] md:text-[96px] font-black leading-90 tracking-normal font-druk mb-10 text-balance">
                     {{ $page->title }}</h1>
-                <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-base md:text-lg">
+
+                @if (count($tableOfContents))
+                    <div class="lg:hidden mb-8">
+                        <h3 class="text-base font-bold mb-2">
+                            On this page
+                        </h3>
+                        <ol class="grid gap-1">
+                            @foreach ($tableOfContents as $fragment => $title)
+                                <li class="text-sm">
+                                    <a href="#{{ $fragment }}">
+                                        {{ $title }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ol>
+                    </div>
+                @endif
+
+                <div class="markup markup-titles markup-lists markup-tables markup-embeds markup-code links-blue links-underline content-markup text-lg">
                     {{ $page->contents }}
                 </div>
 
@@ -60,9 +79,9 @@
                         <h3 class="text-base font-bold mb-2">
                             On this page
                         </h3>
-                        <ul class="grid gap-2 mb-10">
+                        <ul class="grid gap-2 mb-10 max-h-screen overflow-y-auto">
                             @foreach ($tableOfContents as $fragment => $title)
-                                <li class="text-sm">
+                                <li class="text-[15px]">
                                     <a href="#{{ $fragment }}" class="docs-submenu-item">
                                         {{ $title }}
                                     </a>

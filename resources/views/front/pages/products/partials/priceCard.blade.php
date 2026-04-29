@@ -3,13 +3,13 @@
     $price = $purchasable->getPriceForCurrentRequest()
 @endphp
 <div
-    class="{{ isset($first) && $first ? 'mb-12 py-6 md:-mt-8 md:py-10 md:z-10' : 'mb-8 py-6' }} md:mb-0 md:mx-2 max-w-sm flex flex-col bg-white shadow-lg px-8"
-    style="bottom: {{ isset($first) && $first ? '-2rem' : '-1rem' }}">
-    <h2 class="flex-0 font-bold {{ isset($first) && $first ? 'text-2xl' : 'text-lg'}} leading-tight mb-4 min-h-10">
+    class="flex flex-col border border-white/10 rounded-xl px-7 py-7"
+>
+    <h2 class="flex-0 font-pt font-medium text-white text-xl mb-4">
         {{ $purchasable->title }} @isset($license)- Renewal @endisset
     </h2>
     @isset($license)
-        <p class="text-sm -mt-6 mb-6">Renewal for license <code class="text-xs text-blue">{{ \Illuminate\Support\Str::limit($license->key, 8) }}</code></p>
+        <p class="text-sm mb-6">Renewal for license <code class="text-xs text-blue">{{ \Illuminate\Support\Str::limit($license->key, 8) }}</code></p>
     @endisset
 
     @if ($purchasable->id === 18)
@@ -53,7 +53,7 @@
     </section>
     @endif
 
-    <div class="flex-grow markup markup-lists markup-lists-compact text-xs">
+    <div class="flex-grow markup markup-lists markup-lists-compact text-sm text-oss-gray-dark">
         @if ($purchasable->originalPurchasable)
             {!! $purchasable->originalPurchasable->formattedDescription !!}
         @else
@@ -63,18 +63,18 @@
 
     @if ($purchasable->hasActiveDiscount())
         @if(current_user()?->enjoysExtraDiscountOnNextPurchase())
-            <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
+            <div class="-mx-6 px-2 py-3 mt-4 bg-oss-green-pale/20 text-oss-green-pale text-sm text-center">
                 Personal discount included!
             </div>
         @endif
 
         @if(\App\Domain\Shop\Models\Referrer::activeReferrerGrantsDiscount($purchasable))
-            <div class="-mx-6 px-2 py-3 mt-4 bg-green-lightest text-black text-sm text-center">
+            <div class="-mx-6 px-2 py-3 mt-4 bg-oss-green-pale/20 text-oss-green-pale text-sm text-center">
                 Extra discount included!
             </div>
         @endif
 
-        <div class="-mx-6 px-2 py-3 bg-green-lightest mt-4 text-black text-sm text-center">
+        <div class="-mx-6 px-2 py-3 bg-oss-green/10 mt-4 text-oss-green-pale text-sm text-center">
             @if ($purchasable->discount_name)
                 <span>{{ $purchasable->discount_name }} <span class="char-separator">•</span> </span>
             @endif
@@ -85,7 +85,7 @@
 
             @if($purchasable->currentDiscountPercentageExpiresAt()?->isFuture())
                 <div
-                    class="mt-1 text-green-dark text-xs"
+                    class="mt-1 text-oss-green-pale/70 text-xs"
                     style="font-variant-numeric:tabular-nums">
                     <x-countdown :expires="$purchasable->currentDiscountPercentageExpiresAt()">
                         <span><span
@@ -109,48 +109,48 @@
 
     @endif
 
-    <div class="flex-0 mt-6 flex justify-center">
-        <div class="w-full flex justify-center">
+    <div class="flex-0 mt-6">
+        <div class="w-full">
             @auth
                 @if (isset($payLink) && $payLink)
                     <div class="w-full" x-data="priceCard" x-cloak>
                         <div x-show="loading" :class="loading ? 'flex' : ''" class="w-full items-center justify-center my-4">
                             <svg class="spin w-8 h-8 opacity-75" aria-hidden="true" focusable="false" data-prefix="fad" data-icon="spinner-third" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g class="fa-group"><path class="fa-secondary" fill="currentColor" d="M478.71 364.58zm-22 6.11l-27.83-15.9a15.92 15.92 0 0 1-6.94-19.2A184 184 0 1 1 256 72c5.89 0 11.71.29 17.46.83-.74-.07-1.48-.15-2.23-.21-8.49-.69-15.23-7.31-15.23-15.83v-32a16 16 0 0 1 15.34-16C266.24 8.46 261.18 8 256 8 119 8 8 119 8 256s111 248 248 248c98 0 182.42-56.95 222.71-139.42-4.13 7.86-14.23 10.55-22 6.11z" opacity="0.4"></path><path class="fa-primary" fill="currentColor" d="M271.23 72.62c-8.49-.69-15.23-7.31-15.23-15.83V24.73c0-9.11 7.67-16.78 16.77-16.17C401.92 17.18 504 124.67 504 256a246 246 0 0 1-25 108.24c-4 8.17-14.37 11-22.26 6.45l-27.84-15.9c-7.41-4.23-9.83-13.35-6.2-21.07A182.53 182.53 0 0 0 440 256c0-96.49-74.27-175.63-168.77-183.38z"></path></g></svg>
                         </div>
-                        <div class="bg-white overflow-hidden">
-                            <div x-show="free" class="text-center text-gray-dark">
+                        <div class="overflow-hidden">
+                            <div x-show="free" class="text-center text-oss-gray-dark">
                                 Free for you! 🥳
                             </div>
-                            <div x-show="!loading" class="border-t border-gray-lighter px-4 py-5 sm:p-0">
-                                <dl class="divide-y divide-gray-lighter">
+                            <div x-show="!loading" class="border-t border-white/10 px-4 py-5 sm:p-0">
+                                <dl class="divide-y divide-white/10">
                                     @if (!isset($license))
                                         <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
-                                            <dt class="text-sm font-medium text-gray-dark">
+                                            <dt class="text-sm font-medium text-oss-gray-dark">
                                                 Quantity
                                             </dt>
-                                            <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                                <input class="w-8 show-input-number-buttons" type="number" name="quantity" x-model.number.lazy="quantity">
+                                            <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
+                                                <input class="w-8 show-input-number-buttons bg-transparent text-oss-gray" type="number" name="quantity" x-model.number.lazy="quantity">
                                             </dd>
                                         </div>
                                         <template x-for="index in parseInt(quantity)">
                                             <div class="py-2 sm:py-3 sm:grid sm:grid-cols-3 sm:gap-4">
-                                                <dt class="text-sm font-medium text-gray-dark">
+                                                <dt class="text-sm font-medium text-oss-gray-dark">
                                                     Recipient <span x-html="index"></span> email
                                                 </dt>
-                                                <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
-                                                    <input class="text-right w-full" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
+                                                <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
+                                                    <input class="text-right w-full bg-transparent text-oss-gray" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
                                                 </dd>
                                             </div>
                                         </template>
-                                        <div class="py-2 sm:py-3 text-gray-dark text-xs">
+                                        <div class="py-2 sm:py-3 text-oss-gray-dark text-xs">
                                             We’ll mail each recipient instructions on how to get started.
                                         </div>
                                     @endif
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
-                                        <dt class="text-sm font-medium text-gray-dark">
+                                        <dt class="text-sm font-medium text-oss-gray-dark">
                                             Subtotal
                                         </dt>
-                                        <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                        <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
                                             <span x-show="subtotalWithoutDiscount" class="mr-2">
                                                 <span class="font-semibold line-through" x-text="subtotalWithoutDiscount"></span>
                                             </span>
@@ -158,23 +158,23 @@
                                         </dd>
                                     </div>
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
-                                        <dt class="text-sm font-medium text-gray-dark">
+                                        <dt class="text-sm font-medium text-oss-gray-dark">
                                             VAT
                                         </dt>
-                                        <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                        <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
                                             <span class="text-blue" x-text="tax"></span>
                                         </dd>
                                     </div>
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
-                                        <dt class="text-sm font-medium text-gray-dark">
+                                        <dt class="text-sm font-medium text-oss-gray-dark">
                                             Total
                                         </dt>
-                                        <dd class="mt-1 text-sm text-right text-gray-900 sm:mt-0 sm:col-span-2">
+                                        <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
                                             <span class="text-blue" x-text="total"></span>
                                         </dd>
                                     </div>
                                 </dl>
-                                <p x-show="!free" class="text-xs text-gray border-t border-gray-lighter pt-1">Prices in <span x-text="currency"></span></p>
+                                <p x-show="!free" class="text-xs text-oss-gray-dark border-t border-white/10 pt-1">Prices in <span x-text="currency"></span></p>
                             </div>
                         </div>
                         <div x-show="emailsComplete && emailsLoading" :class="emailsComplete && emailsLoading ? 'flex' : ''" class="w-full items-center justify-center my-4">
@@ -183,7 +183,7 @@
                         <div x-show="emailsComplete">
                             <div class="checkout-container w-full"></div>
                         </div>
-                        <p class="py-2 sm:py-3 text-gray-dark text-sm" x-show="!emailsComplete && !loading">
+                        <p class="py-2 sm:py-3 text-oss-gray-dark text-sm" x-show="!emailsComplete && !loading">
                             Please enter an email address for each recipient of the purchases. You can add the same email address multiple times if you want an account to receive it multiple times.
                         </p>
                     </div>
@@ -282,15 +282,15 @@
                 @else
                     @if (isset($product))
                         <a href="{{ route('products.buy', [$product, $purchasable]) }}">
-                            <x-button :large="true">
-                                <span class="font-normal">Buy for&nbsp;</span>
+                            <x-button>
+                                <span>Buy for&nbsp;</span>
                                 <span>{{ $price->formattedPrice() }}</span>
                             </x-button>
                         </a>
                     @elseif ($purchasable instanceof \App\Domain\Shop\Models\Bundle)
                         <a href="{{ route('login', ['next' => request()->url()]) }}">
-                            <x-button :large="true">
-                                <span class="font-normal">Log in to buy for&nbsp;</span>
+                            <x-button>
+                                <span>Log in to buy for&nbsp;</span>
                                 <span>{{ $price->formattedPrice() }}</span>
                             </x-button>
                         </a>
@@ -299,15 +299,15 @@
             @else
                 @if (isset($product))
                     <a href="{{ route('login') }}?next={{ route('products.buy', [$product, $purchasable]) }}">
-                        <x-button :large="true">
-                            <span class="font-normal">Buy for&nbsp;</span>
+                        <x-button>
+                            <span>Buy for&nbsp;</span>
                             <span>{{ $price->formattedPrice() }}</span>
                         </x-button>
                     </a>
                 @elseif ($purchasable instanceof \App\Domain\Shop\Models\Bundle)
                     <a href="{{ route('login', ['next' => request()->url()]) }}">
-                        <x-button :large="true">
-                            <span class="font-normal">Log in to buy for&nbsp;</span>
+                        <x-button>
+                            <span>Log in to buy for&nbsp;</span>
                             <span>{{ $price->formattedPrice() }}</span>
                         </x-button>
                     </a>

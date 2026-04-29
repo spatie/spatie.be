@@ -1,30 +1,30 @@
-<div class="pb-16 md:pb-24 xl:pb-32">
-    <section id="video">
-        <div class="wrap wrap-6 mt-8 items-stretch">
-            <div class="z-10 | sm:col-span-2 | print:hidden">
+<div class="px-3 sm:px-16 md:px-10 lg:px-16 pb-20">
+    <section class="w-full max-w-[1080px] mx-auto px-7 lg:px-0 mt-8">
+        <div class="grid md:grid-cols-[280px,1fr] gap-8 items-start">
+            <div class="md:sticky md:top-4">
                 @include('front.pages.courses.content.video.sidebar')
             </div>
-            <div class="pt-8 | md:pt-0 sm:col-start-3 sm:col-span-4">
-                <h2 class="title-xl">{{ $series->title }}</h2>
-
-                <div class="mt-8 text-lg links-underline links-blue markup markup-titles markup-lists">
-                    <x-markdown>{!! $series->introduction ?? $series->description !!}</x-markdown>
+            <div>
+                <div class="bg-oss-purple-extra-dark shadow-oss-card rounded-[20px] p-8 md:p-12 text-lg markup markup-titles markup-lists">
+                    <h1 class="font-druk uppercase text-[40px] leading-[0.9] mb-8 text-white">{{ $series->title }}</h1>
+                    <div class="text-oss-gray">
+                        <x-markdown>{!! $series->introduction ?? $series->description !!}</x-markdown>
+                    </div>
                 </div>
 
-                <hr class="-ml-4 mt-12 line-after"/>
-
-                <div
-                        class="mt-4 w-full overflow-hidden | md:flex justify-between links-blue links-underline text-xs">
-                    @if ($series->lessons->first())
-                        <a class="mb-2 md:w-1/2 md:pl-4 flex items-center md:justify-end ml-auto"
+                @if ($series->lessons->first() && $series->isOwnedByCurrentUser())
+                    <div class="mt-8 flex items-center justify-between py-6 border-t border-white/10">
+                        <div>
+                            <span class="text-oss-gray-dark text-sm">Up next</span>
+                            <span class="block font-semibold text-lg text-white">{{ $series->lessons->first()->title }}</span>
+                        </div>
+                        <a class="inline-flex items-center gap-2 px-6 py-3 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity"
                            href="{{ $series->lessons->first()->url }}">
-                            <span class="truncate"><span class="font-semibold md:hidden"></span>{{ $series->lessons->first()->title  }}</span>
-                            <span class="w-1 fill-current text-blue ml-1 hidden | md:inline-block">
-                                    {{ app_svg('icons/far-angle-right') }}
-                                </span>
+                            Continue
+                            <svg class="w-2 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 7 12"><path d="m6.687 6-.53.53-4.5 4.5-.532.532L.063 10.5l.53-.53L4.563 6 .596 2.03.063 1.5 1.125.438l.53.53 4.5 4.5.532.532Z"/></svg>
                         </a>
-                    @endif
-                </div>
+                    </div>
+                @endif
             </div>
         </div>
     </section>

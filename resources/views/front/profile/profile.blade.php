@@ -1,84 +1,69 @@
 <x-page
-        title="Profile"
-        background="/backgrounds/auth.jpg"
+    title="Profile"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
 
-    @include('front.profile.partials.subnav')
+    @include('layout.partials.bg-color')
 
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                My profile
-            </h1>
-            <div class="mt-4">
-                @if (auth()->user()->github_id)
-                    <span class="flex items-center">
-                        <span class="icon fill-current w-4 mr-2">
-                            {{ app_svg('github') }}
-                        </span>
-                        <span class="font-bold">{{ auth()->user()->github_username }}</span>
-                        <a class="ml-4 link-blue link-underline" href="{{ route('github-disconnect') }}">Disconnect from GitHub</a>
-                    </span>
-                @else
-                    <a class="link-blue link-underline flex items-center" href="{{ route('github-login') }}">
-                        <span class="icon fill-current w-4 mr-2">
-                            {{ app_svg('github') }}
-                        </span>
-                        Connect to GitHub account
-                    </a>
-                    <p class="mt-1 text-sm text-gray">Log in without password and check your sponsor status.</p>
-                @endif
+    <x-profile-layout title="My profile">
+        @if (auth()->user()->github_id)
+            <div class="mb-8">
+                <span class="flex items-center">
+                    <span class="icon fill-current w-4 mr-2">{{ app_svg('github') }}</span>
+                    <span class="font-bold">{{ auth()->user()->github_username }}</span>
+                    <a class="ml-4 underline text-oss-spatie-blue hover:text-white" href="{{ route('github-disconnect') }}">Disconnect from GitHub</a>
+                </span>
             </div>
-        </div>
-    </section>
+        @endif
 
-    <section class="section section-group pt-0">
-        @include('front.profile.partials.sponsor')
-
-        <div class="wrap">
+        <div class="bg-oss-purple-extra-dark shadow-oss-card rounded-[20px] p-7 md:py-12 md:px-12">
             <form class="space-y-6" action="{{ route('profile') }}" method="POST">
                 @csrf
                 @method('PUT')
 
-                <x-field>
-                    <x-label for="name">Your name</x-label>
-                    <input class="form-input" type="text" name="name" id="name"
-                           value="{{ old('name', auth()->user()->name) }}">
+                <div>
+                    <label for="name" class="block text-sm font-medium mb-1.5">Your name</label>
+                    <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="text" name="name" id="name"
+                           autocomplete="name" value="{{ old('name', auth()->user()->name) }}">
                     @error('name')
-                    <div class="text-pink-dark">{{ $message }}</div>
+                    <div class="text-oss-red text-sm mt-1">{{ $message }}</div>
                     @enderror
-                </x-field>
+                </div>
 
-                <x-field>
-                    <x-label for="email">Your email</x-label>
-                    <input class="form-input" type="email" name="email" id="email"
-                           value="{{ old('email', auth()->user()->email) }}">
+                <div>
+                    <label for="email" class="block text-sm font-medium mb-1.5">Your email</label>
+                    <input class="w-full px-4 py-3 bg-white/[0.07] border border-white/10 text-white rounded-lg placeholder-white/30 focus:border-oss-spatie-blue focus:outline-none" type="email" name="email" id="email"
+                           autocomplete="email" value="{{ old('email', auth()->user()->email) }}">
                     @error('email')
-                    <div class="text-pink-dark">{{ $message }}</div>
+                    <div class="text-oss-red text-sm mt-1">{{ $message }}</div>
                     @enderror
-                </x-field>
+                </div>
 
                 @if (auth()->user()->email)
-                    <x-field>
-                        <label for="newsletter">
+                    <div>
+                        <label for="newsletter" class="flex items-center cursor-pointer">
                             <input class="form-checkbox mr-4" type="checkbox" name="newsletter"
                                    id="newsletter" {{ auth()->user()->isSubscribedToNewsletter() ? 'checked' : ''}}>
                             Keep me in the loop when there is new Spatie content
                         </label>
-                    </x-field>
+                    </div>
                 @endif
 
-                <x-button type="submit">Save profile</x-button>
-            </form>
-
-            <form class="absolute bottom-0 right-0 pr-8 | sm:pr-16" action="{{ route('profile') }}" method="POST">
-                @csrf
-                @method('DELETE')
-
-                <button class="link-underline link-red" type="submit"
-                        onclick="return confirm('Are you sure you want to delete your account?')">Delete my account
+                <button class="w-full sm:w-auto flex items-center justify-center px-6 py-3.5 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity cursor-pointer" type="submit">
+                    Save profile
                 </button>
             </form>
+
+            <div class="mt-6 pt-6 border-t border-white/10">
+                <form action="{{ route('profile') }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="underline text-oss-red text-sm" type="submit"
+                            onclick="return confirm('Are you sure you want to delete your account?')">Delete my account
+                    </button>
+                </form>
+            </div>
         </div>
-        <section>
+    </x-profile-layout>
 </x-page>

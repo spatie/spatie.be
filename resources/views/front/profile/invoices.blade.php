@@ -1,44 +1,29 @@
 <x-page
     title="Invoices"
-    background="/backgrounds/auth.jpg"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
 >
+
+    @include('layout.partials.bg-color')
+
     <?php /** @var \Laravel\Paddle\Transaction $transaction */?>
 
-    @include('front.profile.partials.subnav')
-
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                Invoices
-            </h1>
-            @forelse ($transactions as $transaction)
-            @empty
-                <p class="banner-intro">No invoices yet, take a look at <a class="link-underline link-blue"
-                                                                           href="{{ route('products.index') }}">our
-                        products</a>.</p>
-            @endforelse
-        </div>
-    </section>
-
-    <section class="section section-group pt-0">
-        <div class="wrap">
-
-            @forelse ($transactions as $transaction)
-                @if($transaction->purchase)
-                    <div class="grid grid-cols-4 py-3 border-b-2 border-gray-lighter">
-                        <span class="font-bold">{{ $transaction->paid_at->toFormattedDateString() }}</span>
-                        @if ($transaction->purchase->purchasable_id)
-                            <span class="">{{ $transaction->purchase->purchasable->product->title }} - {{ $transaction->purchase->purchasable->title }}</span>
-                        @elseif($transaction->purchase->bundle_id)
-                            <span class="">{{ $transaction->purchase->bundle->title }}</span>
-                        @endif
-                        <span>{{ $transaction->amount() }}</span>
-                        <span><a class="link-underline link-blue" href="{{ $transaction->receipt_url }}"
-                                 target="_blank">Download</a></span>
-                    </div>
-                @endif
-            @empty
-            @endforelse
-        </div>
-    </section>
+    <x-profile-layout title="Invoices">
+        @forelse ($transactions as $transaction)
+            @if($transaction->purchase)
+                <div class="grid grid-cols-4 py-3 border-b border-white/10">
+                    <span class="font-bold">{{ $transaction->paid_at->toFormattedDateString() }}</span>
+                    @if ($transaction->purchase->purchasable_id)
+                        <span>{{ $transaction->purchase->purchasable->product->title }} - {{ $transaction->purchase->purchasable->title }}</span>
+                    @elseif($transaction->purchase->bundle_id)
+                        <span>{{ $transaction->purchase->bundle->title }}</span>
+                    @endif
+                    <span>{{ $transaction->amount() }}</span>
+                    <span><a class="underline hover:text-white" href="{{ $transaction->receipt_url }}" target="_blank">Download</a></span>
+                </div>
+            @endif
+        @empty
+            <p class="text-xl">No invoices yet, take a look at <a class="underline hover:text-white" href="{{ route('products.index') }}">our products</a>.</p>
+        @endforelse
+    </x-profile-layout>
 </x-page>

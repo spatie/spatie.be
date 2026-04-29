@@ -36,6 +36,7 @@ class BundleResource extends Resource
         return $schema
             ->components([
                 SpatieMediaLibraryFileUpload::make('image')
+                    ->disk('medialibrary')
                     ->collection('image')
                     ->maxFiles(1)
                     ->rules(['image'])
@@ -60,6 +61,11 @@ class BundleResource extends Resource
                     ->required()
                     ->columnStart(1),
 
+                TextInput::make('color')
+                    ->label('Page background color')
+                    ->placeholder('#ff0000')
+                    ->maxLength(7)
+                    ->columnStart(1),
                 Toggle::make('visible')
                     ->columnStart(1),
 

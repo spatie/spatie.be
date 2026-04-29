@@ -22,7 +22,7 @@
             <p class="text-xl sm:text-[28px] leading-tight text-right">Find extensive documentation for<br>many of our packages here.</p>
         </div>
         <div x-data x-on:click="$dispatch('open-spotlight')" class="w-full relative mt-16">
-            <input class="w-full bg-white rounded-[12px] h-16 px-7" type="search" placeholder="Find a package ...">
+            <input class="w-full bg-white rounded-[12px] h-16 px-7" type="search" placeholder="Find a package…">
             <svg class="w-6 h-6 right-0 top-0 mt-5 mr-5 absolute" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="#3A3C3E" stroke-width="2" d="m19 19-4-4m-4 2a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/></svg>
         </div>
         <p class="mt-4 inline-block text-xs text-oss-gray-darker">

@@ -60,6 +60,11 @@ class ProductResource extends Resource
                         TextInput::make('action_url')
                             ->default(''),
                         TextInput::make('maximum_activation_count')->integer(),
+                        TextInput::make('color')
+                            ->label('Page background color')
+                            ->placeholder('#ff0000')
+                            ->maxLength(7)
+                            ->columnStart(1),
                         Toggle::make('visible')
                             ->columnStart(1),
                         Toggle::make('external')

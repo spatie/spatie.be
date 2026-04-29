@@ -1,31 +1,46 @@
 <x-page
-        title="Server error"
-        background="/backgrounds/error.jpg"
+    title="Server error"
+    background="/backgrounds/error.jpg"
+    body-class="bg-oss-gray"
+    main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
 
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                Our server <br>is confused
-            </h1>
-            <p class="banner-intro">
-                Our server seems to have a little trouble building this page… <br>
-                We'll get to the bottom of this asap!
+    <header class="wrapper-lg px-7 sm:px-16 mt-6 sm:mt-12">
+        <div class="max-w-[1080px] mx-auto px-8 sm:px-12 md:px-16">
+            <x-headers.h1 class="text-balance">
+                Our server<br>is confused
+            </x-headers.h1>
+            <p class="mt-7 text-2xl text-oss-royal-blue-light font-medium max-w-[600px]">
+                Our server seems to have a little trouble building this page. We'll get to the bottom of this asap!
             </p>
+        </div>
+    </header>
+
+    <section class="wrapper-lg px-7 sm:px-16 mt-8 sm:mt-12 mb-16 lg:mb-24">
+        <div class="max-w-[1080px] mx-auto">
+            <div class="bg-white rounded-2xl p-8 sm:p-12 md:p-16 space-y-12">
+                <div>
+                    <h2 class="text-2xl font-semibold text-oss-royal-blue">
+                        A few suggestions
+                    </h2>
+                    <ul class="text-xl mt-4 space-y-2">
+                        <li><a href="{{ route('home') }}" class="underline hover:no-underline">Homepage</a></li>
+                        <li><a href="{{ route('open-source.packages') }}" class="underline hover:no-underline">Open source packages</a></li>
+                        <li><a href="{{ route('about') }}" class="underline hover:no-underline">About us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h2 class="text-2xl font-semibold text-oss-royal-blue">
+                        Get in touch
+                    </h2>
+                    <p class="text-xl mt-2 text-oss-royal-blue-light">
+                        If you have a burning question, we're here to help.
+                    </p>
+                    @include('front.pages.about.partials.banner-contact')
+                </div>
+            </div>
         </div>
     </section>
 
-    <div class="section section-group pt-0">
-        @include('errors.partials.suggestions')
-
-        <section class=section>
-            <div class="wrap">
-                <p class="text-2xl">
-                    If you have a burning question at this point, <br>just contact us so we can help you out.
-                </p>
-
-                @include('front.pages.about.partials.banner-contact')
-            </div>
-        </section>
-    </div>
 </x-page>

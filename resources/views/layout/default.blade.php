@@ -4,6 +4,7 @@
 <head>
     @include('layout.partials.meta')
 
+
     <link rel="stylesheet" href="https://cloud.typography.com/6194432/6145752/css/fonts.css">
     @livewireStyles
 
@@ -42,7 +43,7 @@
         {{ $slot }}
     </main>
 
-    @include('layout.partials.footer', ['dark' => $dark ?? false])
+    @include('layout.partials.footer', ['dark' => $dark ?? false, 'footerCta' => $footerCta ?? false])
 
     <x-impersonate::banner/>
 
@@ -130,5 +131,6 @@
     {!! schema()->localBusiness() !!}
 
     @stack('modals')
+
 </body>
 </html>

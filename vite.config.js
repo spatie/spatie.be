@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/front/gradient.jsx',
                 'resources/css/package-headers.css'
             ],
+            refresh: ['resources/views/**/*.blade.php'],
             detectTls: 'spatie.be.test',
         }),
         react(),

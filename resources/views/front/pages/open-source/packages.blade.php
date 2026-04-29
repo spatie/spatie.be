@@ -2,6 +2,7 @@
     title="Laravel, PHP and JavaScript Packages"
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased"
     dark
+    footerCta
 >
 
     <x-og-image view="og-image.oss" :data="[
@@ -33,7 +34,7 @@
         Search in our massive list of open source packages for Laravel & JavaScript.
     </x-slot>
 
-    <div class="px-3 sm:px-16 md:px-10 lg:px-16 flex flex-col gap-y-16 sm:gap-y-20">
+    <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-24">
         <x-oss-menu title="Packages">
             <x-slot:subtitle>
                 <span>We've created more than {{ floor(\App\Models\Repository::visible()->count() / 100) * 100 }} packages for Laravel and PHP. These packages have been downloaded a whopping {{ ucfirst(App\Models\Repository::humanReadableDownloadCount()) }} times!</span>

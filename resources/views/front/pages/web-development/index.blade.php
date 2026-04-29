@@ -1,25 +1,40 @@
 <x-page
     title="Web development"
-    background="/backgrounds/web-development.jpg"
+    body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    dark
+    footerCta
 >
-
     <x-slot name="description">
-        Tailor-made web development in Laravel, amplified by AI. We build with AI, we build for AI, and every line of code gets human review.
+        Tailor-made web development in Laravel for companies that value quality. Accelerated by AI, reviewed by experienced developers.
     </x-slot>
+
+    <x-og-image view="og-image.services" />
+
+    @include('layout.partials.gradient-background', [
+        'color1' => '#197593',
+        'color2' => '#412BBD',
+        'color3' => '#54B183',
+        'rotationZ' => '-145',
+        'positionX' => '0.5',
+        'positionY' => '-0.3',
+        'uDensity' => '1.6',
+        'uFrequency' => '4.5',
+        'uStrength' => '2.5',
+    ])
 
     @include('front.pages.web-development.partials.banner')
 
-    <div class="section section-group pt-0 section-fade">
-        @include('front.pages.web-development.partials.intro')
-        @include('front.pages.web-development.partials.workflow')
-        @include('front.pages.web-development.partials.cta')
-        @include('front.pages.web-development.partials.clients')
-        @include('front.pages.web-development.partials.building')
-        @include('front.pages.web-development.partials.greenhouse')
+    <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-32 pb-20">
+        @include('front.pages.web-development.partials.about')
+        {{-- @include('front.pages.web-development.partials.clients') --}}
         @include('front.pages.web-development.partials.stack')
-    </div>
 
-    @include('front.pages.web-development.partials.brief')
+        {{-- @include('front.pages.web-development.partials.intro') --}}
+        {{-- @include('front.pages.web-development.partials.cta') --}}
+        {{-- @include('front.pages.web-development.partials.building') --}}
+        {{-- @include('front.pages.web-development.partials.greenhouse') --}}
+        {{-- @include('front.pages.web-development.partials.brief') --}}
+    </div>
 
     @include('layout.partials.modal-match', ["caption" => "Time to talk?"])
 </x-page>

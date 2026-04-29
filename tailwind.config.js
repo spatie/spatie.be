@@ -1,10 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
     important: true,
-    content: [
-        './resources/**/*.blade.php',
-        './resources/**/*.js'
-    ],
+    content: ['./resources/**/*.blade.php', './resources/**/*.js'],
     theme: {
         colors: {
             'oss-black': '#050508',
@@ -19,7 +16,7 @@ export default {
             'oss-spatie-blue': '#197593',
             'oss-royal-blue': '#172A3D',
             'oss-royal-blue-light': '#515F6E',
-            'oss-purple': '#735AFF',
+            'oss-purple': '#8a75fd',
             'oss-green': '#50E69B',
             'oss-green-pale': '#82D8AF',
             'oss-purple-extra-dark': '#15151E',
@@ -147,23 +144,10 @@ export default {
                 'Helvetica Neue',
                 'sans-serif',
             ],
-            'special-elite': [
-                'Special Elite',
-                'monospace',
-            ],
-            'obviously-narrow': [
-                'obviously-narrow',
-                'sans-serif'
-            ],
-            'obviously-condensed': [
-                'obviously-condensed',
-                'sans-serif'
-            ],
-            'marker': [
-                'Marker Felt',
-                'Comic Sans MS',
-                'cursive'
-            ]
+            'special-elite': ['Special Elite', 'monospace'],
+            'obviously-narrow': ['obviously-narrow', 'sans-serif'],
+            'obviously-condensed': ['obviously-condensed', 'sans-serif'],
+            marker: ['Marker Felt', 'Comic Sans MS', 'cursive'],
         },
 
         lineHeight: {
@@ -187,8 +171,10 @@ export default {
         extend: {
             backgroundImage: {
                 'link-card': 'linear-gradient(180deg, rgba(141, 161, 166, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);',
-                'link-card-light': 'linear-gradient(180deg, rgba(209, 201, 188, 0.1) 0%, rgba(255, 255, 255, 0.015) 100%);',
-                'link-card-light-hover': 'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.09) 100%);',
+                'link-card-light':
+                    'linear-gradient(180deg, rgba(209, 201, 188, 0.1) 0%, rgba(255, 255, 255, 0.015) 100%);',
+                'link-card-light-hover':
+                    'linear-gradient(180deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0.09) 100%);',
                 'paper-cover-beige': 'radial-gradient(66.3% 50% at 50% 50%, #F1D393 0%, #E6C989 100%);',
             },
 
@@ -205,9 +191,10 @@ export default {
                 'inner-light': 'inset 0 2px 4px 0 rgba(76, 55, 55, 0.04)',
                 none: 'none',
                 'oss-card': '0px 0px 110px 50px #00000033',
-                'big': '0px 0px 110px 50px rgba(0, 0, 0, 0.1)',
-                'bf-smooth': '0px 95.5638px 130.417px rgba(0, 0, 0, 0.04), 0px 11.9661px 23.4186px rgba(0, 0, 0, 0.08);',
-                'bf-hard': '0px 18.4854px 36.9708px #1E1A1A;'
+                big: '0px 0px 110px 50px rgba(0, 0, 0, 0.1)',
+                'bf-smooth':
+                    '0px 95.5638px 130.417px rgba(0, 0, 0, 0.04), 0px 11.9661px 23.4186px rgba(0, 0, 0, 0.08);',
+                'bf-hard': '0px 18.4854px 36.9708px #1E1A1A;',
             },
 
             fontSize: {
@@ -236,6 +223,8 @@ export default {
             spacing: {
                 '7.5': '1.875rem',
                 '18': '4.5rem',
+                '26': '6.5rem',
+                '27': '6.75rem',
             },
 
             keyframes: {
@@ -246,7 +235,7 @@ export default {
                 popin: {
                     '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
                     '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
-                }
+                },
             },
             animation: {
                 wiggle: 'wiggle 0.15s ease-in-out infinite',
@@ -287,7 +276,7 @@ export default {
 
             inset: {
                 full: '100%',
-                '1/2': '50%'
+                '1/2': '50%',
             },
 
             gridTemplateColumns: {
@@ -300,5 +289,4 @@ export default {
         //     strategy: "class",
         // }),
     ],
-}
-
+};

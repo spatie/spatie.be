@@ -1,26 +1,25 @@
 <x-page
         title="General conditions"
-        background="/backgrounds/legal.jpg"
+        background="/backgrounds/legal-blurred.jpg"
+        body-class="bg-oss-gray"
+        main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
         description="Our general terms and conditions for clients."
 >
+    <header class="wrapper-lg px-7 sm:px-16 mt-6 sm:mt-12">
+        <p class="print:hidden">
+            <a href="{{ route('legal.index')}}" class="text-base text-oss-royal-blue-light hover:text-oss-royal-blue underline">
+                &larr; Legal overview
+            </a>
+        </p>
+        <x-headers.h1 class="mt-4 text-balance">
+            General terms and conditions
+        </x-headers.h1>
+    </header>
 
-    <section id="banner" class="banner" role="banner">
-        <div class="wrap">
-            <h1 class="banner-slogan">
-                General terms <br>
-                and conditions
-            </h1>
-            <p class="mt-4 | print:hidden">
-                <span class="icon mr-2 opacity-50 fill-current text-blue">{{ app_svg('icons/far-angle-left') }}</span>
-                <a
-                        href="{{ route('legal.index')}}" class="link-underline link-blue">Legal overview</a>
-            </p>
-        </div>
-    </section>
-    <div class="section section-group pt-0">
-        <section class=section>
-            <div class="wrap">
-                <div class="markup markup-lists markup-titles links-underline links-blue">
+    <section class="wrapper-lg sm:px-16 mt-8 sm:mt-12 mb-16 lg:mb-24">
+        <div class="bg-white rounded-2xl pt-12 md:pt-16 pb-12 md:pb-20">
+            <div class="wrapper-sm px-6">
+                <div class="text-base sm:text-lg markup markup-lists markup-titles links-underline links-blue">
                     <h2 id="toc">Table of contents</h2>
                     <ol class="counters-upper-roman leading-loose">
                         <li><a href="#chapter-1">General sales conditions</a></li>
@@ -30,10 +29,11 @@
                     </ol>
                 </div>
             </div>
-        </section>
-        <section class=section>
-            <div class="wrap">
-                <div class="markup markup-titles counters markup-lists links-underline links-blue">
+
+            <hr class="my-10 md:my-14 border-oss-gray">
+
+            <div class="wrapper-sm px-6">
+                <div class="text-base sm:text-lg markup markup-titles counters markup-lists links-underline links-blue">
                     <h1 id="chapter-1">General sales conditions</h1>
 
                     <h2>Applicability</h2>
@@ -380,7 +380,7 @@
                         </li>
                     </ol>
 
-                    <p class="mt-16 | print:hidden">
+                    <p class="mt-16 print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 
@@ -515,7 +515,7 @@
                         </li>
                     </ol>
 
-                    <p class="mt-16 | print:hidden">
+                    <p class="mt-16 print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 
@@ -606,13 +606,13 @@
                             A web hosting is offered for a period of 1 year, unless otherwise agreed. Except for written
                             notice, the period at expiry of that period is automatically extended for a period of 1
                             year.
-                            The client is committed to respect 3 months’ notice in writing, which 3 months takes place
+                            The client is committed to respect 3 months' notice in writing, which 3 months takes place
                             before the end of the subscription day or during the initial period or during the period of
                             extension.
                         </li>
                     </ol>
 
-                    <p class="mt-16 | print:hidden">
+                    <p class="mt-16 print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 
@@ -708,13 +708,13 @@
                         </li>
                     </ol>
 
-                    <p class="mt-16 | print:hidden">
+                    <p class="mt-16 print:hidden">
                         <a href="#toc">Table of contents &uarr;</a>
                     </p>
 
                 </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
 </x-page>
