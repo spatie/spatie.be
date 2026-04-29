@@ -1,5 +1,5 @@
 <x-page
-    title="Insights"
+    title="Our blog"
     background="/backgrounds/blog-index.jpg"
     body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"

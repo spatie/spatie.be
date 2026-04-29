@@ -12,6 +12,8 @@
         Spatie builds solid websites & web applications in Laravel. With AI, we focus on solutions, not boilerplate. From Antwerp, Belgium
     </x-slot>
 
+    <x-og-image view="og-image.home" />
+
     @include('layout.partials.gradient-background', [
         'color1' => '#197593',
         'color2' => '#0A2540',

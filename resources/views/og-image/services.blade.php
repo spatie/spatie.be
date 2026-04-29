@@ -1,4 +1,4 @@
-<?php $image = image('/backgrounds/home-new.jpg') ?>
+<?php $image = image('/backgrounds/services-new.jpg') ?>
 
 <div class="flex h-full w-full flex-col p-16 font-pt text-white bg-oss-footer-dark">
 
@@ -11,7 +11,7 @@
     </div>
 
     <div class="flex flex-col pt-16 justify-between h-full text-balance text-oss-gray">
-        <h1 class="font-druk uppercase font-bold text-[192px]/[0.8] mb-5">{!! $title !!}</h1>
+        <h1 class="font-druk uppercase font-bold text-[192px]/[0.8] mb-5">Tailor-made <br /> web development</h1>
     </div>
 
 </div>

@@ -8,6 +8,8 @@
         Tailor-made web development in Laravel for companies that value quality. Accelerated by AI, reviewed by experienced developers.
     </x-slot>
 
+    <x-og-image view="og-image.services" />
+
     @include('layout.partials.gradient-background', [
         'color1' => '#197593',
         'color2' => '#412BBD',
