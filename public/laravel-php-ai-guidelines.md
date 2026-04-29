@@ -12,6 +12,7 @@ This file contains Laravel and PHP coding standards optimized for AI code assist
 - Use camelCase for non-public-facing strings
 - Use short nullable notation: `?string` not `string|null`
 - Always specify `void` return types when methods return nothing
+- Don't use `final` or `readonly` by default
 
 ## Class Structure
 - Use typed properties, not docblocks:
@@ -129,7 +130,17 @@ $condition
 
 ## Enums
 
-- Use PascalCase for enum values:
+- Use PascalCase for enum values
+
+## Class Constants
+
+- Use PascalCase (same rule as enums):
+  ```php
+  class Session
+  {
+      public const SessionTokenHeader = 'X-Session-Token';
+  }
+  ```
 
 ## Comments
 

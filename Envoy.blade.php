@@ -23,7 +23,7 @@ return "echo '\033[32m" .$message. "\033[0m';\n";
 startDeployment
 cloneRepository
 runComposer
-runYarn
+runNpm
 generateAssets
 updateSymlinks
 optimizeInstallation
@@ -73,19 +73,19 @@ echo "{{ $newReleaseName }}" > public/release-name.txt
 cd {{ $newReleaseDir }}
 ln -nfs {{ $baseDir }}/.env .env
 composer install --prefer-dist --no-scripts --no-dev -o
+php -d memory_limit=2G artisan package:discover
 @endtask
 
-@task('runYarn', ['on' => 'remote'])
-{{ logMessage("📦  Running Yarn...") }}
+@task('runNpm', ['on' => 'remote'])
+{{ logMessage("📦  Running npm...") }}
 cd {{ $newReleaseDir }}
-yarn config set ignore-engines true
-yarn
+npm ci
 @endtask
 
 @task('generateAssets', ['on' => 'remote'])
 {{ logMessage("🌅  Generating assets...") }}
 cd {{ $newReleaseDir }}
-yarn build
+npm run build
 php artisan filament:assets
 @endtask
 
@@ -173,6 +173,7 @@ ls -dt {{ $releasesDir }}/* | tail -n +4 | xargs -d "\n" rm -rf
 {{ logMessage("💻  Deploying code changes...") }}
 cd {{ $currentDir }}
 git pull origin {{ $branch }}
+php artisan package:discover
 php artisan view:clear
 php artisan config:clear
 php artisan config:cache

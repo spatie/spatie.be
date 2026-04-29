@@ -2,16 +2,21 @@
 
 namespace App\Support\Search;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Http\Message\UriInterface;
+use Spatie\Crawler\Crawler;
+use Spatie\Crawler\CrawlResponse;
 use Spatie\SiteSearch\Profiles\DefaultSearchProfile;
 
 class DocsSearchProfile extends DefaultSearchProfile
 {
-    public function shouldIndex(UriInterface $url, ResponseInterface $response): bool
+    public function shouldIndex(string $url, CrawlResponse $response): bool
     {
         info('should index ' . $url);
 
         return true;
+    }
+
+    public function configureCrawler(Crawler $crawler): void
+    {
+        $crawler->concurrency(5);
     }
 }

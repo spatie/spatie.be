@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use LivewireUI\Spotlight\SpotlightServiceProvider;
 use Spatie\Flash\Flash;
 use Spatie\OgImage\Facades\OgImage;
 
@@ -28,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
 
     public function register(): void
     {
+        $this->app->register(SpotlightServiceProvider::class);
+
         Model::unguard();
 
         Flash::levels([

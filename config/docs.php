@@ -279,7 +279,8 @@ return [
             'name' => 'laravel-activitylog',
             'repository' => 'spatie/laravel-activitylog',
             'branches' => [
-                'main' => 'v4',
+                'main' => 'v5',
+                'v4' => 'v4',
                 'v3' => 'v3',
                 'v2' => 'v2',
                 'v1' => 'v1',
@@ -470,6 +471,30 @@ return [
                 'main' => 'v1',
             ],
             'category' => 'Other',
+        ],
+        [
+            'name' => 'scotty',
+            'repository' => 'spatie/scotty',
+            'branches' => [
+                'main' => 'v1',
+            ],
+            'category' => 'General PHP',
+        ],
+        [
+            'name' => 'sourcemaps-lookup',
+            'repository' => 'spatie/sourcemaps-lookup',
+            'branches' => [
+                'main' => 'v1',
+            ],
+            'category' => 'General PHP',
+        ],
+        [
+            'name' => 'laravel-sluggable',
+            'repository' => 'spatie/laravel-sluggable',
+            'branches' => [
+                'main' => 'v4',
+            ],
+            'category' => 'Laravel',
         ],
     ],
 ];
