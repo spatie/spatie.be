@@ -48,7 +48,9 @@ class DocsController
             ]))))
             ->values();
 
-        return view('front.pages.docs.index', compact('repositories', 'haystacks'));
+        $totalPackageCount = Repository::visible()->count();
+
+        return view('front.pages.docs.index', compact('repositories', 'haystacks', 'totalPackageCount'));
     }
 
     public function repository(Docs $docs, string $repository, ?string $alias = null)

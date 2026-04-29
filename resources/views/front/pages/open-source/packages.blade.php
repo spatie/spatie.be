@@ -154,6 +154,71 @@
             </div>
         </section>
 
-        <livewire:repositories/>
+        <section
+            id="packages"
+            class="border-t border-oss-gray-extra-dark pt-20 mb-20 max-w-[1320px] mx-auto"
+            x-data="{
+                query: '',
+                haystacks: @js($allRepositoryHaystacks),
+                get noMatches() {
+                    return this.query !== '' && ! this.haystacks.some(h => h.includes(this.query.toLowerCase()));
+                },
+            }"
+            @keydown.window.escape="query = ''"
+        >
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-8 mb-12">
+                <h2 class="font-druk uppercase font-bold text-[50px] md:text-[96px] leading-[0.9]">All<br>packages</h2>
+                <div class="md:max-w-md w-full relative">
+                    <input
+                        type="search"
+                        placeholder="Filter packages…"
+                        autocomplete="off"
+                        x-model="query"
+                        class="w-full bg-oss-black text-oss-gray rounded-[12px] h-14 px-5 pr-12 border border-oss-gray-extra-dark placeholder:text-oss-gray-dark focus:border-oss-gray-dark focus:outline-none"
+                    >
+                    <svg class="w-5 h-5 right-4 top-1/2 -translate-y-1/2 absolute text-oss-gray-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="m19 19-4-4m-4 2a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/></svg>
+                </div>
+            </div>
+
+            <div class="lg:columns-2 lg:gap-x-12 border-t border-oss-gray-extra-dark">
+                @foreach ($allRepositories as $i => $repository)
+                    <a
+                        href="{{ $repository->url }}"
+                        target="_blank"
+                        rel="noopener"
+                        class="group items-center gap-4 py-3 -mx-3 px-3 rounded border-b border-oss-gray-extra-dark hover:bg-white/5 transition break-inside-avoid"
+                        :class="!query || haystacks[{{ $i }}].includes(query.toLowerCase()) ? 'flex' : 'hidden'"
+                    >
+                        <div class="flex-1 min-w-0">
+                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
+                                <h3 class="text-[17px] font-semibold text-oss-gray truncate">{{ $repository->name }}</h3>
+                                @if ($repository->description)
+                                    <p class="text-[14px] text-oss-gray-dark truncate">{{ $repository->description }}</p>
+                                @endif
+                            </div>
+                        </div>
+                        @if ($allRepositoryStarsLabels[$i])
+                            <span class="shrink-0 inline-flex items-center gap-1 text-[12px] font-semibold text-oss-gray-dark tabular-nums">
+                                <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
+                                    <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                                </svg>
+                                {{ $allRepositoryStarsLabels[$i] }}
+                            </span>
+                        @endif
+                        <svg class="w-2 fill-current text-oss-gray-dark group-hover:text-oss-gray shrink-0" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 9 15">
+                            <path d="m8.915 7.5-.706.706-6 6-.71.71L.085 13.5l.706-.706L6.084 7.5.794 2.206.083 1.5 1.5.084l.706.707 6 6 .71.709Z"/>
+                        </svg>
+                    </a>
+                @endforeach
+            </div>
+
+            <p
+                x-show="noMatches"
+                x-cloak
+                class="text-center py-16 text-oss-gray-dark"
+            >
+                No packages match “<span class="font-semibold text-oss-gray" x-text="query"></span>”.
+            </p>
+        </section>
     </div>
 </x-page>

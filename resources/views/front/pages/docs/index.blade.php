@@ -30,7 +30,11 @@
             </div>
         </div>
 
-        <div class="px-3 w-full max-w-[1320px] mx-auto mt-12 mb-24">
+        <div class="px-3 w-full max-w-[1320px] mx-auto mt-8 mb-24">
+            <p class="text-sm text-oss-gray-extra-dark mb-10 max-w-2xl">
+                These {{ $repositories->count() }} packages have their documentation hosted right here. Looking for everything else we ship? Browse the complete catalogue of <a href="{{ route('open-source.packages') }}" class="font-semibold text-oss-royal-blue underline underline-offset-2 hover:no-underline" wire:navigate>{{ floor($totalPackageCount / 100) * 100 }}+ open-source packages</a>.
+            </p>
+
             <div class="lg:columns-2 lg:gap-x-12 border-t border-oss-gray-medium/70">
                 @each('front.pages.docs.partials.repository', $repositories, 'repository')
             </div>

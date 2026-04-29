@@ -117,7 +117,33 @@ Route::prefix('bundles')->group(function () {
 
 Route::prefix('open-source')->group(function () {
     Route::view('/', 'front.pages.open-source.index')->name('open-source.index');
-    Route::view('packages', 'front.pages.open-source.packages')->name('open-source.packages');
+    Route::get('packages', function () {
+        $allRepositories = \App\Models\Repository::visible()
+            ->orderBy('name')
+            ->get();
+
+        $allRepositoryHaystacks = $allRepositories
+            ->map(fn ($repository) => \Illuminate\Support\Str::lower(($repository->name ?? '') . ' ' . ($repository->description ?? '')))
+            ->values();
+
+        $allRepositoryStarsLabels = $allRepositories
+            ->map(function ($repository) {
+                $stars = $repository->stars;
+
+                if (! $stars) {
+                    return null;
+                }
+
+                if ($stars >= 1000) {
+                    return \Illuminate\Support\Str::lower(\Illuminate\Support\Number::abbreviate($stars, maxPrecision: 1));
+                }
+
+                return (string) $stars;
+            })
+            ->values();
+
+        return view('front.pages.open-source.packages', compact('allRepositories', 'allRepositoryHaystacks', 'allRepositoryStarsLabels'));
+    })->name('open-source.packages');
     Route::get('postcards', [PostcardController::class, 'index'])->name('open-source.postcards');
 });
 
