@@ -35,7 +35,6 @@ use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\TidBitsSubscriptionController;
-// use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
@@ -213,8 +212,6 @@ Route::permanentRedirect('/markdown', 'https://spatie.be/docs/laravel-comments/v
 Route::get('testing-laravel', [TestingLaravelController::class, 'show']);
 Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 */
-
-// Route::get('uses', [UsesController::class, 'index'])->name('uses');
 
 Route::get('packages/header/{name}/html/{mode}.webp', [PackageHeaderController::class, 'image']);
 Route::get('packages/header/{name}/html/{mode}', [PackageHeaderController::class, 'html']);
