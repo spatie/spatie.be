@@ -22,13 +22,13 @@
         <span class="inline-flex gap-2 underline underline-offset-4 decoration-white/25 transition hover:decoration-white"><a href="/products">Our products &amp; courses</a><span class="icon">{{ app_svg('icons/far-angle-right') }}</span></span>
     </x-oss-content>
 
-    <div class="grid md:grid-cols-3 border border-white/10 rounded-xl max-w-[1320px] mx-auto mt-16 md:mt-20 divide-y md:divide-y-0 md:divide-x divide-white/10">
+    <div class="grid md:grid-cols-4 border border-white/10 rounded-xl max-w-screen-xl mx-auto mt-16 md:mt-20 divide-y md:divide-y-0 md:divide-x divide-white/10">
 
         <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
             <a class="flex h-12 items-center" href="https://mailcoach.app" target="_blank">
                 <img class="h-[40px]" src="/images/mailcoach_logo_white.svg" alt="Mailcoach">
             </a>
-            <p>An email marketing platform for sending campaigns, automations and transactional emails. Available as a hosted service or a self-hosted Laravel package.</p>
+            <p>Email marketing platform for sending campaigns, automations and transactional emails. Available as a hosted service or a self-hosted Laravel package.</p>
             <div class="flex gap-4">
                 <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://mailcoach.app" target="_blank">Try Mailcoach for free</a>
                 <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://www.mailcoach.app/self-hosted/" target="_blank">Self-hosted</a>
@@ -37,11 +37,21 @@
 
         <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
             <a class="flex h-12 items-center" href="https://flareapp.io" target="_blank">
-                <img class="h-[48px]" src="/images/flare_logo_white.svg" alt="Flare">
+                <img class="h-[44px]" src="/images/flare_logo_white.svg" alt="Flare">
             </a>
-            <p>Error tracking and performance monitoring for Laravel, PHP and JavaScript. Get alerted when bugs hit production, with integrations for GitHub, Jira, Linear and more.</p>
+            <p>Flare lets Laravel &amp; PHP teams keep track of everything that's happening in their apps, with error tracking, performance monitoring, and logging, all in one place.</p>
             <div class="">
                 <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://flareapp.io" target="_blank">Try Flare for free</a>
+            </div>
+        </div>
+
+        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <a class="flex h-12 items-center" href="https://myray.app" target="_blank">
+                <img class="h-[38px]" src="/images/tt_logo.svg" alt="There There">
+            </a>
+            <p>A helpdesk where AI surfaces context and drafts replies, so your team responds faster and every customer gets a thoughtful answer.</p>
+            <div class="">
+                <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://there-there.app/" target="_blank">Apply for early access</a>
             </div>
         </div>
 

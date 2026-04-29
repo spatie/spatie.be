@@ -44,7 +44,26 @@
             </div>
         </div>
 
-        <div class="grid md:grid-cols-3 border-x border-b border-white/10 rounded-b-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div class="flex gap-4 justify-between items-center p-16">
+            @foreach([
+                ['src' => '/images/logo_laravel_square.svg', 'label' => 'Laravel'],
+                ['src' => '/images/logo_react_square.svg', 'label' => 'React'],
+                ['src' => '/images/logo_livewire_square.svg', 'label' => 'Livewire'],
+                ['src' => '/images/logo_claude_square.svg', 'label' => 'Claude Code'],
+                ['src' => '/images/logo_clickhouse_square.svg', 'label' => 'ClickHouse'],
+                ['src' => '/images/logo_statamic_square.svg', 'label' => 'Statamic'],
+            ] as $tech)
+            <div class="group relative flex flex-col items-center">
+                <div class="absolute top-full mt-3 px-3 py-1.5 bg-oss-footer-dark text-gray-900 text-sm font-semibold rounded-lg shadow-xl opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap">
+                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-oss-footer-dark"></div>
+                    {{ $tech['label'] }}
+                </div>
+                <img src="{{ $tech['src'] }}" alt="{{ $tech['label'] }}" class="size-12 opacity-60 group-hover:opacity-100 transition-opacity duration-200">
+            </div>
+            @endforeach
+        </div>
+
+        {{-- <div class="grid md:grid-cols-3 border-x border-b border-white/10 rounded-b-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
             <div class="p-9 space-y-6">
                 <div class="space-y-1">
                     <p class="text-oss-gray-dark text-xs font-bold">Backend</p>
@@ -63,7 +82,7 @@
                 <p class="text-oss-gray-dark text-xs font-bold">AI</p>
                 <p class="text-sm text-oss-gray-dark">Claude Code, GitHub Copilot, OpenAI Codex, Anthropic Claude API, OpenAI API, MCP, llms.txt, Custom AI integrations, ...</p>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 

@@ -1,11 +1,8 @@
 @php
     $clients = [
         ['logo' => 'tomorrowland.svg', 'name' => 'Tomorrowland', 'caption' => 'Custom platform for one of the world\'s largest music festivals.'],
-        ['logo' => 'the-team.svg', 'name' => 'THE-TEAM', 'caption' => 'TODO: add caption.'],
         ['logo' => 'ticketmatic.svg', 'name' => 'Ticketmatic', 'caption' => 'Ticketing infrastructure for venues and event organizers at scale.'],
         ['logo' => 'trainin.svg', 'name' => 'Trainin', 'caption' => 'TODO: add caption.'],
-        ['logo' => 'megatix.svg', 'name' => 'Megatix', 'caption' => 'TODO: add caption.'],
-        ['logo' => 'megatix.svg', 'name' => 'TODO: replace duplicate', 'caption' => 'TODO: add caption.'],
     ];
 @endphp
 

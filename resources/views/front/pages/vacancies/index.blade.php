@@ -1,7 +1,7 @@
 <x-page
     title="Vacancies"
-    background="/backgrounds/jobs.jpg"
-    body-class="bg-white"
+    background="/backgrounds/legal-blurred.jpg"
+    body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
 >
     <x-slot name="description">
