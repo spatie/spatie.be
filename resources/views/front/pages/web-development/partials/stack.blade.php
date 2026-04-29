@@ -30,15 +30,15 @@
     <div class="w-full max-w-[1320px] mx-auto border-t border-white/10 pt-10 sm:pt-0 sm:border-t-0 mt-10 sm:mt-24 lg:px-0">
 
         <div class="grid md:grid-cols-3 border border-white/10 rounded-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
-            <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
                 <h3 class="font-bold text-white text-xl">Laravel &amp; PHP</h3>
                 <p><a class="underline transition-colors hover:text-white" href="https://laravel.com">Laravel</a> is our framework of choice for everything from marketing sites to complex platforms. It's a battle-tested foundation that keeps codebases clean, maintainable, and easy to hand off as projects grow.</p>
             </div>
-            <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
                 <h3 class="font-bold text-white text-xl">React & Livewire</h3>
                 <p>We match the frontend tool to the level of interactivity a project needs. <a class="underline transition-colors hover:text-white" href="https://livewire.laravel.com">Livewire</a> handles reactive interfaces within Laravel, while <a class="underline transition-colors hover:text-white" href="https://reactjs.org">React</a> takes over for full SPA and mobile-first applications.</p>
             </div>
-            <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
                 <h3 class="font-bold text-white text-xl">AI coding agents</h3>
                 <p>We use AI to generate code throughout the whole development cycle: features, tests, debugging and refactoring. Our <a class="underline transition-colors hover:text-white" href="{{ url('guidelines') }}">coding guidelines</a> make sure the output matches our standards and your project.</p>
             </div>

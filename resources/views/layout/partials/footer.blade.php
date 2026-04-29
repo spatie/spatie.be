@@ -13,7 +13,7 @@
         <div class="px-7 py-12 md:pb-32 md:py-24">
             <div class="w-full max-w-[720px] mx-auto">
                 <div class="text-center">
-                    <div class="space-y-10 text-2xl">
+                    <div class="space-y-10 text-xl sm:text-2xl font-medium">
                         @php($avatars = \App\Models\Member::all()->shuffle()->take(6))
                         <div class="flex justify-center -space-x-2">
                             @foreach($avatars as $index => $member)

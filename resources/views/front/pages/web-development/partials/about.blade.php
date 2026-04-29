@@ -8,7 +8,7 @@
             <div class="space-y-4">
                 <h2 class="font-druk uppercase text-[40px] sm:text-[56px] leading-[0.9] text-white text-pretty">Specialists who know <br />Laravel inside out</h2>
             </div>
-            <div class="space-y-5 text-lg text-oss-gray-medium text-pretty">
+            <div class="space-y-5 text-lg text-oss-gray-light text-pretty">
                 <p>By asking the right questions first, we make thoughtful architecture decisions, and ship clean code your team can maintain and extend long after launch.</p>
                 <p>Over time, we have created a collection of <a class="underline hover:text-white" href="{{ route('open-source.packages') }}">open source building blocks</a> that allow us to focus all our time and effort on making your project unique, rather than on the scaffolding.<p>
                 <p>And with our experiences in building with AI, we can ship faster, iterate more quickly, and develop more prototypes that can validate your ideas.</p>

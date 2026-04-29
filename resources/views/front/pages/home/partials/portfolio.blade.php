@@ -24,18 +24,18 @@
 
     <div class="grid md:grid-cols-4 border border-white/10 rounded-xl max-w-screen-xl mx-auto mt-16 md:mt-20 divide-y md:divide-y-0 md:divide-x divide-white/10">
 
-        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
             <a class="flex h-12 items-center" href="https://mailcoach.app" target="_blank">
                 <img class="h-[40px]" src="/images/mailcoach_logo_white.svg" alt="Mailcoach">
             </a>
             <p>Email marketing platform for sending campaigns, automations and transactional emails. Available as a hosted service or a self-hosted Laravel package.</p>
-            <div class="flex gap-4">
+            <div class="flex flex-wrap gap-4">
                 <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://mailcoach.app" target="_blank">Try Mailcoach for free</a>
                 <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://www.mailcoach.app/self-hosted/" target="_blank">Self-hosted</a>
             </div>
         </div>
 
-        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
             <a class="flex h-12 items-center" href="https://flareapp.io" target="_blank">
                 <img class="h-[44px]" src="/images/flare_logo_white.svg" alt="Flare">
             </a>
@@ -45,7 +45,7 @@
             </div>
         </div>
 
-        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
             <a class="flex h-12 items-center" href="https://myray.app" target="_blank">
                 <img class="h-[38px]" src="/images/tt_logo.svg" alt="There There">
             </a>
@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
             <a class="flex h-12 items-center" href="https://myray.app" target="_blank">
                 <img class="h-[25px]" src="/images/ray_logo_gradient.svg" alt="Ray">
             </a>
