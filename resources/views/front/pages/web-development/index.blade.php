@@ -24,7 +24,7 @@
 
     <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-32 pb-20">
         @include('front.pages.web-development.partials.about')
-        @include('front.pages.web-development.partials.clients')
+        {{-- @include('front.pages.web-development.partials.clients') --}}
         @include('front.pages.web-development.partials.stack')
 
         {{-- @include('front.pages.web-development.partials.intro') --}}

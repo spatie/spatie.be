@@ -13,7 +13,7 @@
         </x-oss-staggered-title>
             <x-oss-content>
             <p>AI has genuinely changed how we build. Coding agents like Claude Code, Codex, and Copilot do a serious chunk of the work for us now. They scaffold features, write tests, work through refactors, and handle the kind of repetitive tasks that used to eat half a developer's week. What we used to spend on boilerplate, we now spend on architecture, edge cases, and the parts of your product that actually need careful thinking.</p>
-            <p>None of it ships without a human in front of it. Every result goes through a senior Laravel developer who reviews it as carefully as they'd review a colleague's pull request. We catch what the agent got wrong, sharpen what's clumsy, and make sure the pieces fit together. The outcome is more software, shipped faster, without the technical debt that usually comes with moving at this speed.</p>
+            <p>None of it ships without a human in front of it. Every result goes through a senior Laravel developer, who reviews it as carefully as they'd review a colleague's pull request. We catch what the agent got wrong, sharpen what's clumsy, and make sure the pieces fit together. The outcome is more software, shipped faster, without the technical debt that usually comes with moving at this speed.</p>
         </x-oss-content>
     </div>
 

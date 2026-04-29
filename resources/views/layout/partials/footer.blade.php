@@ -42,7 +42,7 @@
                     ->addClass(
                         'md:grid grid-flow-col gap-6 justify-between md:text-base | print:hidden'
                     )
-                    ->setActiveClass('text-blue font-bold')
+                    ->setActiveClass('text-white font-bold')
                  }}
 
                 <div class="grid | md:grid-flow-col md:items-center md:ml-12 md:gap-12">
