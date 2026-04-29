@@ -35,7 +35,6 @@ use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
 use App\Http\Controllers\TidBitsSubscriptionController;
-use App\Http\Controllers\UsesController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
@@ -126,18 +125,19 @@ Route::prefix('vacancies')->group(function () {
     Route::permanentRedirect('free-application', '/vacancies/spontaneous-application');
 
     Route::view('/', 'front.pages.vacancies.index')->name('vacancies.index');
-    Route::view('internships', 'front.pages.vacancies.internship')->name('vacancies.internship');
+    // Route::view('internships', 'front.pages.vacancies.internship')->name('vacancies.internship');
     Route::redirect('recruiters', "https://youtu.be/cvh0nX08nRw")->name('vacancies.recruiters');
 
-    Route::get('{slug}', function ($slug) {
-        $view = "front.pages.vacancies.{$slug}";
+    // Route::get('{slug}', function ($slug) {
+    //     $view = "front.pages.vacancies.{$slug}";
 
-        if (! view()->exists($view)) {
-            abort(404);
-        }
+    //     if (! view()->exists($view)) {
+    //         abort(404);
+    //     }
 
-        return view($view);
-    })->name('vacancies.show');
+    //     return view($view);
+    // })->name('vacancies.show');
+
 });
 
 Route::middleware('auth')->prefix('profile')->group(function () {
@@ -212,8 +212,6 @@ Route::permanentRedirect('/markdown', 'https://spatie.be/docs/laravel-comments/v
 Route::get('testing-laravel', [TestingLaravelController::class, 'show']);
 Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 */
-
-Route::get('uses', [UsesController::class, 'index'])->name('uses');
 
 Route::get('packages/header/{name}/html/{mode}.webp', [PackageHeaderController::class, 'image']);
 Route::get('packages/header/{name}/html/{mode}', [PackageHeaderController::class, 'html']);

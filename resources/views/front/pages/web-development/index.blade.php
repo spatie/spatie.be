@@ -8,6 +8,8 @@
         Tailor-made web development in Laravel for companies that value quality. Accelerated by AI, reviewed by experienced developers.
     </x-slot>
 
+    <x-og-image view="og-image.services" />
+
     @include('layout.partials.gradient-background', [
         'color1' => '#197593',
         'color2' => '#412BBD',
@@ -24,11 +26,10 @@
 
     <div class="px-3 sm:px-16 md:px-10 lg:px-16 space-y-16 sm:space-y-32 pb-20">
         @include('front.pages.web-development.partials.about')
-        @include('front.pages.web-development.partials.clients')
-        {{-- @include('front.pages.web-development.partials.intro') --}}
-
+        {{-- @include('front.pages.web-development.partials.clients') --}}
         @include('front.pages.web-development.partials.stack')
 
+        {{-- @include('front.pages.web-development.partials.intro') --}}
         {{-- @include('front.pages.web-development.partials.cta') --}}
         {{-- @include('front.pages.web-development.partials.building') --}}
         {{-- @include('front.pages.web-development.partials.greenhouse') --}}

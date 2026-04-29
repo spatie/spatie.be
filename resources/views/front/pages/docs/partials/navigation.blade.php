@@ -5,7 +5,7 @@
                 type="text"
                 name="search"
                 placeholder="Search…"
-                class="cursor-pointer w-full rounded-lg px-5 py-2.5 text-sm bg-oss-gray-medium placeholder-oss-gray-extra-dark"
+                class="cursor-pointer w-full rounded-lg px-5 py-2.5 text-sm bg-oss-gray-light placeholder-oss-gray-extra-dark"
                 x-data="{}"
                 x-on:click.prevent="$store.modals.open('search-modal')"
                 readonly

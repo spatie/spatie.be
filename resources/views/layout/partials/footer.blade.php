@@ -13,7 +13,7 @@
         <div class="px-7 py-12 md:pb-32 md:py-24">
             <div class="w-full max-w-[720px] mx-auto">
                 <div class="text-center">
-                    <div class="space-y-8 text-xl">
+                    <div class="space-y-10 text-xl sm:text-2xl font-medium">
                         @php($avatars = \App\Models\Member::all()->shuffle()->take(6))
                         <div class="flex justify-center -space-x-2">
                             @foreach($avatars as $index => $member)
@@ -26,7 +26,7 @@
                             @endforeach
                         </div>
                         <h2 class="font-druk uppercase text-[50px] sm:text-[72px] md:text-[96px] leading-[0.9]">Hire us for<br /> your next project</h2>
-                        <p>We work in partnership, not just execution. We want to be as proud of your project as you are. That means we act as advisors and architects, not just developers. Tailor-made web development in Laravel is what we do best.</p>
+                        <p>We act as advisors and architects, not just developers. We want to be as proud of your project as you are. Tailor-made web development in Laravel is what we do best.</p>
                         <a class="text-lg font-bold inline-block bg-oss-green-pale px-5 py-4 text-center text-oss-royal-blue rounded-lg transition hover:opacity-90" href="#match">Brief us your project</a>
                     </div>
                 </div>
@@ -42,7 +42,7 @@
                     ->addClass(
                         'md:grid grid-flow-col gap-6 justify-between md:text-base | print:hidden'
                     )
-                    ->setActiveClass('text-blue font-bold')
+                    ->setActiveClass('text-white font-bold')
                  }}
 
                 <div class="grid | md:grid-flow-col md:items-center md:ml-12 md:gap-12">

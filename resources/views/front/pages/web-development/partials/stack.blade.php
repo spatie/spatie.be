@@ -13,7 +13,7 @@
         </x-oss-staggered-title>
             <x-oss-content>
             <p>AI has genuinely changed how we build. Coding agents like Claude Code, Codex, and Copilot do a serious chunk of the work for us now. They scaffold features, write tests, work through refactors, and handle the kind of repetitive tasks that used to eat half a developer's week. What we used to spend on boilerplate, we now spend on architecture, edge cases, and the parts of your product that actually need careful thinking.</p>
-            <p>None of it ships without a human in front of it. Every result goes through a senior Laravel developer who reviews it as carefully as they'd review a colleague's pull request. We catch what the agent got wrong, sharpen what's clumsy, and make sure the pieces fit together. The outcome is more software, shipped faster, without the technical debt that usually comes with moving at this speed.</p>
+            <p>None of it ships without a human in front of it. Every result goes through a senior Laravel developer, who reviews it as carefully as they'd review a colleague's pull request. We catch what the agent got wrong, sharpen what's clumsy, and make sure the pieces fit together. The outcome is more software, shipped faster, without the technical debt that usually comes with moving at this speed.</p>
         </x-oss-content>
     </div>
 
@@ -30,21 +30,40 @@
     <div class="w-full max-w-[1320px] mx-auto border-t border-white/10 pt-10 sm:pt-0 sm:border-t-0 mt-10 sm:mt-24 lg:px-0">
 
         <div class="grid md:grid-cols-3 border border-white/10 rounded-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
-            <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
                 <h3 class="font-bold text-white text-xl">Laravel &amp; PHP</h3>
                 <p><a class="underline transition-colors hover:text-white" href="https://laravel.com">Laravel</a> is our framework of choice for everything from marketing sites to complex platforms. It's a battle-tested foundation that keeps codebases clean, maintainable, and easy to hand off as projects grow.</p>
             </div>
-            <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
                 <h3 class="font-bold text-white text-xl">React & Livewire</h3>
                 <p>We match the frontend tool to the level of interactivity a project needs. <a class="underline transition-colors hover:text-white" href="https://livewire.laravel.com">Livewire</a> handles reactive interfaces within Laravel, while <a class="underline transition-colors hover:text-white" href="https://reactjs.org">React</a> takes over for full SPA and mobile-first applications.</p>
             </div>
-            <div class="p-9 space-y-6 text-lg text-oss-gray-medium">
+            <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
                 <h3 class="font-bold text-white text-xl">AI coding agents</h3>
                 <p>We use AI to generate code throughout the whole development cycle: features, tests, debugging and refactoring. Our <a class="underline transition-colors hover:text-white" href="{{ url('guidelines') }}">coding guidelines</a> make sure the output matches our standards and your project.</p>
             </div>
         </div>
 
-        <div class="grid md:grid-cols-3 border-x border-b border-white/10 rounded-b-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
+        <div class="flex gap-4 justify-between items-center p-16">
+            @foreach([
+                ['src' => '/images/logo_laravel_square.svg', 'label' => 'Laravel'],
+                ['src' => '/images/logo_react_square.svg', 'label' => 'React'],
+                ['src' => '/images/logo_livewire_square.svg', 'label' => 'Livewire'],
+                ['src' => '/images/logo_claude_square.svg', 'label' => 'Claude Code'],
+                ['src' => '/images/logo_clickhouse_square.svg', 'label' => 'ClickHouse'],
+                ['src' => '/images/logo_statamic_square.svg', 'label' => 'Statamic'],
+            ] as $tech)
+            <div class="group relative flex flex-col items-center">
+                <div class="absolute top-full mt-3 px-3 py-1.5 bg-oss-footer-dark text-gray-900 text-sm font-semibold rounded-lg shadow-xl opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-200 pointer-events-none whitespace-nowrap">
+                    <div class="absolute bottom-full left-1/2 -translate-x-1/2 border-4 border-transparent border-b-oss-footer-dark"></div>
+                    {{ $tech['label'] }}
+                </div>
+                <img src="{{ $tech['src'] }}" alt="{{ $tech['label'] }}" class="size-12 opacity-60 group-hover:opacity-100 transition-opacity duration-200">
+            </div>
+            @endforeach
+        </div>
+
+        {{-- <div class="grid md:grid-cols-3 border-x border-b border-white/10 rounded-b-xl mx-auto divide-y md:divide-y-0 md:divide-x divide-white/10">
             <div class="p-9 space-y-6">
                 <div class="space-y-1">
                     <p class="text-oss-gray-dark text-xs font-bold">Backend</p>
@@ -63,7 +82,7 @@
                 <p class="text-oss-gray-dark text-xs font-bold">AI</p>
                 <p class="text-sm text-oss-gray-dark">Claude Code, GitHub Copilot, OpenAI Codex, Anthropic Claude API, OpenAI API, MCP, llms.txt, Custom AI integrations, ...</p>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 

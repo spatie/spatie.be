@@ -11,7 +11,7 @@
     </div>
 
     <div class="flex flex-col pt-16 justify-between h-full text-balance text-oss-gray">
-        <h1 class="font-druk uppercase font-bold text-[192px]/[0.8] mb-5">{!! $title !!}</h1>
+        <h1 class="font-druk uppercase font-bold text-[192px]/[0.8] mb-5">Solid expertise <br/> in Laravel & AI</h1>
     </div>
 
 </div>

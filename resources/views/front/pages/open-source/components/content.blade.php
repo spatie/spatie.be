@@ -10,7 +10,7 @@
             </div>
        @endisset
     </aside>
-    <div class="order-1 md:order-2 markup text-lg w-full max-w-[640px] lg:shrink-0 @unless(isset($aside)) ml-auto @endunless">
+    <div class="order-1 md:order-2 markup text-lg w-full max-w-[640px] lg:shrink-0">
         <div class="{{ $contentWidth ?? 'max-w-[480px]' }}">
             {{ $slot }}
         </div>

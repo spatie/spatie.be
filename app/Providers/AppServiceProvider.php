@@ -12,6 +12,7 @@ use App\Spotlight\Spotlight;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use LivewireUI\Spotlight\SpotlightServiceProvider;
@@ -22,8 +23,16 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        View::composer('layout.partials.meta', function ($view) {
+            $data = $view->getData();
+            $title = $data['ogImageTitle'] ?? $data['title'] ?? null;
+            if ($title) {
+                app()->instance('page.og-image-title', $title);
+            }
+        });
+
         OgImage::fallbackUsing(fn (Request $request) => view('og-image.fallback', [
-            'title' => config('app.name', 'Spatie'),
+            'title' => app()->bound('page.og-image-title') ? app('page.og-image-title') : 'Solid expertise <br> in Laravel &amp; AI',
         ]));
     }
 

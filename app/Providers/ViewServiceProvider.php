@@ -113,7 +113,7 @@ class ViewServiceProvider extends ServiceProvider
         return $selectedItems;
     }
 
-    private function getAvatarUrlForAuthor(?string $authorName): ?string
+    private function getAvatarUrlForAuthor(?string $authorName): string
     {
         if (! $authorName) {
             return asset('images/avatars/alex.png');
@@ -129,7 +129,7 @@ class ViewServiceProvider extends ServiceProvider
         };
     }
 
-    private function getAvatarFilenameForWebsite(?string $website): ?string
+    private function getAvatarFilenameForWebsite(?string $website): string
     {
         return match (strtolower($website ?? '')) {
             'flareapp.io' => 'ruben.png',
