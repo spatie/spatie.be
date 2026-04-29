@@ -51,6 +51,10 @@ frankenphp-worker.php
 # Laravel
 /stubs
 
+# Claude
+/.claude/settings.local.json
+/.claude/scheduled_tasks.lock
+
 # Misc
 /storage/*.key
 /storage/media-library/*
