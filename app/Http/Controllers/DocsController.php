@@ -30,9 +30,25 @@ class DocsController
 {
     public function index(Docs $docs): View
     {
-        return view('front.pages.docs.index', [
-            'repositories' => $docs->getRepositories(),
-        ]);
+        $repositories = $docs->getRepositories();
+
+        $stars = Repository::query()
+            ->whereIn('name', $repositories->pluck('slug'))
+            ->pluck('stars', 'name');
+
+        $repositories->each(fn (\App\Docs\Repository $repository) => $repository->stars = $stars[$repository->slug] ?? null);
+
+        $repositories = $repositories->sortBy('slug')->values();
+
+        $haystacks = $repositories
+            ->map(fn (\App\Docs\Repository $repository) => \Illuminate\Support\Str::lower(implode(' ', array_filter([
+                $repository->slug,
+                $repository->aliases->last()?->slogan,
+                $repository->category,
+            ]))))
+            ->values();
+
+        return view('front.pages.docs.index', compact('repositories', 'haystacks'));
     }
 
     public function repository(Docs $docs, string $repository, ?string $alias = null)

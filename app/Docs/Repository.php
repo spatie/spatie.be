@@ -12,6 +12,8 @@ class Repository
 
     public ?string $category;
 
+    public ?int $stars = null;
+
     public function __construct(string $slug, Collection $aliases, ?DocumentationPage $index)
     {
         $this->slug = $slug;

@@ -1,44 +1,48 @@
 <x-page title="Documentation" body-class="bg-oss-gray font-pt antialiased font-medium leading-[1.4]">
-    @push('head')
-        @vite(['resources/js/front/gradient.jsx'])
-    @endpush
-    @push('startBody')
-        <div
-            x-show="show"
-            x-data="{ show: false }"
-            x-init="setTimeout(() => show = true, 50)"
-            x-transition.opacity.duration.1000ms
-            x-cloak
-            class="absolute top-0 left-0 right-0 z-0 pointer-events-none"
-        >
-            <div id="gradient" class="aspect-[9/16] sm:aspect-[1440/700] w-full" data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=0.4&cAzimuthAngle=180&cDistance=2&cPolarAngle=80&cameraZoom=9.1&color1=%23197593&color2=%23328c7d&color3=%23EAE8E5&destination=onCanvas&embedMode=off&envPreset=city&format=gif&fov=20&frameRate=10&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1&positionX=1&positionY=-0.8&positionZ=0&range=enabled&rangeEnd=40&rangeStart=0&reflection=0.1&rotationX=50&rotationY=0&rotationZ=-60&shader=defaults&type=waterPlane&uAmplitude=0&uDensity=2&uFrequency=0&uSpeed=0.05&uStrength=0.6&uTime=8&wireframe=false"></div>
-            <div class="absolute inset-0 z-10 w-full h-full aspect-[9/16] sm:aspect-[1440/700] bg-gradient-to-b from-transparent to-oss-gray"></div>
-        </div>
-    @endpush
-
-    <section class="px-3 w-full max-w-[1080px] mx-auto mt-20">
-        <div class="flex flex-col sm:flex-row w-full justify-between items-end text-white">
-            <h1 class="font-druk uppercase text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-4">Docs</h1>
-            <p class="text-xl sm:text-[28px] leading-tight text-right">Find extensive documentation for<br>many of our packages here.</p>
-        </div>
-        <div x-data x-on:click="$dispatch('open-spotlight')" class="w-full relative mt-16">
-            <input class="w-full bg-white rounded-[12px] h-16 px-7" type="search" placeholder="Find a package…">
-            <svg class="w-6 h-6 right-0 top-0 mt-5 mr-5 absolute" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="#3A3C3E" stroke-width="2" d="m19 19-4-4m-4 2a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/></svg>
-        </div>
-        <p class="mt-4 inline-block text-xs text-oss-gray-darker">
-            Pro tip: Use <kbd class="text-monospace text-xs font-bold">CMD/CTRL+K</kbd> to navigate quickly.
-        </p>
-    </section>
-
-    <section class="px-3 my-32 w-full max-w-[1320px] mx-auto">
-        @foreach($repositories->groupBy('category') as $category => $repositories)
-            <div class="border-t border-oss-gray-dark pt-20 mt-20">
-                <h2 class="font-druk uppercase text-oss-royal-blue text-[96px] mb-16">{{ $category }}</h2>
-                <div class="grid gap-10 | sm:grid-cols-3 items-stretch">
-                    @each('front.pages.docs.partials.repository', $repositories, 'repository')
+    <section
+        x-data="{
+            query: '',
+            haystacks: @js($haystacks),
+            get noMatches() {
+                return this.query !== '' && ! this.haystacks.some(h => h.includes(this.query.toLowerCase()));
+            },
+        }"
+        @keydown.window.escape="query = ''"
+    >
+        <div class="bg-oss-royal-blue text-white">
+            <div class="px-3 w-full max-w-[1320px] mx-auto py-10">
+                <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
+                    <h1 class="font-druk uppercase text-[64px] lg:text-[88px] leading-[0.85] font-bold shrink-0">Docs</h1>
+                    <p class="text-lg lg:text-xl text-white/70 max-w-md">
+                        Find extensive documentation for many of our packages here.
+                    </p>
+                    <div class="flex-1 relative">
+                        <input
+                            type="search"
+                            placeholder="Filter packages…"
+                            autocomplete="off"
+                            x-model="query"
+                            class="w-full bg-white text-oss-royal-blue rounded-[12px] h-14 px-5 pr-12 placeholder:text-oss-gray-dark"
+                        >
+                        <svg class="w-5 h-5 right-4 top-1/2 -translate-y-1/2 absolute text-oss-gray-extra-dark" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-width="2" d="m19 19-4-4m-4 2a6 6 0 1 1 0-12 6 6 0 0 1 0 12Z"/></svg>
+                    </div>
                 </div>
             </div>
-        @endforeach
+        </div>
+
+        <div class="px-3 w-full max-w-[1320px] mx-auto mt-12 mb-24">
+            <div class="lg:columns-2 lg:gap-x-12 border-t border-oss-gray-medium/70">
+                @each('front.pages.docs.partials.repository', $repositories, 'repository')
+            </div>
+
+            <p
+                x-show="noMatches"
+                x-cloak
+                class="text-center py-16 text-oss-gray-extra-dark"
+            >
+                No packages match “<span class="font-semibold text-oss-royal-blue" x-text="query"></span>”.
+            </p>
+        </div>
     </section>
 
     @livewire('spotlight')
