@@ -89,12 +89,12 @@
 
             <div class="max-w-[1080px] mx-auto mt-12 md:mt-28 flex flex-col gap-10">
                 @php($favourites = [
-                    [
-                        'package' => 'typescript-transformer',
-                        'name' => 'Niels',
-                        'avatar' => asset('images/avatars/avatar-niels.png'),
-                        'reason' => 'At Spatie, we are a fan of Inertia. This package truly shines when we need to define types for both PHP and TypeScript, and keep them in sync. By parsing PHP files and transforming them into TypeScript type declarations, we save time and mental effort but also streamline the refactoring process.',
-                    ],
+                    // [
+                    //     'package' => 'typescript-transformer',
+                    //     'name' => 'Niels',
+                    //     'avatar' => asset('images/avatars/avatar-niels.png'),
+                    //     'reason' => 'At Spatie, we are a fan of Inertia. This package truly shines when we need to define types for both PHP and TypeScript, and keep them in sync. By parsing PHP files and transforming them into TypeScript type declarations, we save time and mental effort but also streamline the refactoring process.',
+                    // ],
                     [
                         'package' => 'laravel-sluggable',
                         'name' => 'Ruben',
@@ -119,12 +119,12 @@
                         'avatar' => asset('images/avatars/avatar-seb.png'),
                         'reason' => 'I love playing with off-beat ways to make tests more readable and joyful to write. Snapshot testing was popularized by Jest to test UI components. I thought it would be a great fit for testing large data, so I wrote a PHPUnit package to bring it to PHP.',
                     ],
-                    [
-                        'package' => 'simple-excel',
-                        'name' => 'Rias',
-                        'avatar' => asset('images/avatars/avatar-rias.png'),
-                        'reason' => 'The name says it all, it makes exporting and importing Excel & CSV files simple. Every project needs some kind of importing or exporting, this package just makes it a breeze.',
-                    ],
+                    // [
+                    //     'package' => 'simple-excel',
+                    //     'name' => 'Rias',
+                    //     'avatar' => asset('images/avatars/avatar-rias.png'),
+                    //     'reason' => 'The name says it all, it makes exporting and importing Excel & CSV files simple. Every project needs some kind of importing or exporting, this package just makes it a breeze.',
+                    // ],
                     [
                         'package' => 'laravel-medialibrary',
                         'name' => 'Freek',
