@@ -33,7 +33,7 @@
 
         <div class="px-3 w-full max-w-[1320px] mx-auto mb-24">
             <p class="text-lg font-medium text-oss-gray-extra-dark mb-10">
-                These {{ $repositories->count() }} packages have their documentation hosted right here. Looking for something else? Browse all of our <a href="{{ route('open-source.packages') }}" class="font-semibold text-oss-royal-blue underline underline-offset-2 hover:no-underline" wire:navigate>{{ floor($totalPackageCount / 100) * 100 }}+ open-source packages here</a>.
+                Showing {{ $repositories->count() }} packages with documentation. View the full list of <a href="{{ route('open-source.packages') }}" class="font-semibold text-oss-royal-blue underline underline-offset-2 hover:no-underline" wire:navigate>{{ floor($totalPackageCount / 100) * 100 }}+ open-source packages</a>.
             </p>
 
             <div class="lg:columns-2 lg:gap-x-12 border-t border-oss-gray-medium/70">

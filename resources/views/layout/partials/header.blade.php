@@ -6,7 +6,7 @@
             isMobile: window.innerWidth < 720,
         }"
         x-on:resize.window="mobileOpen = window.innerWidth >= 720; isMobile = window.innerWidth < 720"
-        class="max-w-[1080px] mx-auto p-3 sm:flex sm:items-center sm:gap-x-6 z-10 my-3 sm:my-7 rounded-xl overflow-hidden sm:overflow-visible bg-white shadow-light font-pt antialiased font-medium print:bg-transparent print:shadow-none"
+        class="max-w-[1080px] mx-auto p-3 sm:flex sm:items-center sm:gap-x-6 z-20 my-3 sm:my-7 rounded-xl overflow-hidden sm:overflow-visible bg-white shadow-light font-pt antialiased font-medium print:bg-transparent print:shadow-none"
     >
         {{-- Logo --}}
         <div class="flex items-center justify-between">
