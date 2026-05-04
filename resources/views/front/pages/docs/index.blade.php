@@ -1,4 +1,8 @@
-<x-page title="Documentation" body-class="bg-oss-gray font-pt antialiased font-medium leading-[1.4]">
+<x-page
+    title="Documentation"
+    body-class="bg-oss-gray font-pt"
+    background="/backgrounds/about-blurred.jpg"
+>
     <section
         x-data="{
             query: '',
@@ -9,14 +13,11 @@
         }"
         @keydown.window.escape="query = ''"
     >
-        <div class="bg-oss-royal-blue text-white">
+        <div class="text-white drop-shadow-2xl">
             <div class="px-3 w-full max-w-[1320px] mx-auto py-10">
-                <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12">
-                    <h1 class="font-druk uppercase text-[64px] lg:text-[88px] leading-[0.85] font-bold shrink-0">Docs</h1>
-                    <p class="text-lg lg:text-xl text-white/70 max-w-md">
-                        Find extensive documentation for many of our packages here.
-                    </p>
-                    <div class="flex-1 relative">
+                <div class="flex flex-col justify-between lg:flex-row lg:items-center gap-6 lg:gap-12">
+                    <h1 class="font-druk uppercase text-[64px] lg:text-[108px] leading-[0.85] font-bold">Docs</h1>
+                    <div class="flex-1 max-w-md relative">
                         <input
                             type="search"
                             placeholder="Filter packages…"
@@ -30,9 +31,9 @@
             </div>
         </div>
 
-        <div class="px-3 w-full max-w-[1320px] mx-auto mt-8 mb-24">
-            <p class="text-sm text-oss-gray-extra-dark mb-10 max-w-2xl">
-                These {{ $repositories->count() }} packages have their documentation hosted right here. Looking for everything else we ship? Browse the complete catalogue of <a href="{{ route('open-source.packages') }}" class="font-semibold text-oss-royal-blue underline underline-offset-2 hover:no-underline" wire:navigate>{{ floor($totalPackageCount / 100) * 100 }}+ open-source packages</a>.
+        <div class="px-3 w-full max-w-[1320px] mx-auto mb-24">
+            <p class="text-lg font-medium text-oss-gray-extra-dark mb-10">
+                These {{ $repositories->count() }} packages have their documentation hosted right here. Looking for something else? Browse all of our <a href="{{ route('open-source.packages') }}" class="font-semibold text-oss-royal-blue underline underline-offset-2 hover:no-underline" wire:navigate>{{ floor($totalPackageCount / 100) * 100 }}+ open-source packages here</a>.
             </p>
 
             <div class="lg:columns-2 lg:gap-x-12 border-t border-oss-gray-medium/70">

@@ -10,20 +10,20 @@
 <a
     href="{{ action([DocsController::class, 'repository'], $repository->slug) }}"
     wire:navigate
-    class="group items-center gap-4 py-3 -mx-3 px-3 rounded border-b border-oss-gray-medium/70 hover:bg-white/60 transition break-inside-avoid"
+    class="group items-center gap-4 py-3 -mx-3 px-3 border-b border-oss-gray-medium/70 hover:bg-white/60 transition break-inside-avoid"
     :class="!query || @js($haystack).includes(query.toLowerCase()) ? 'flex' : 'hidden'"
 >
     <div class="flex-1 min-w-0">
-        <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
-            <h3 class="text-[17px] font-semibold text-oss-royal-blue truncate">{{ $repository->slug }}</h3>
+        <div class="leading-normal">
+            <h3 class="text-base font-semibold text-oss-royal-blue truncate">{{ $repository->slug }}</h3>
             @if ($slogan)
-                <p class="text-[14px] text-oss-gray-extra-dark truncate">{{ $slogan }}</p>
+                <p class="text-sm font-medium text-oss-gray-extra-dark/80 truncate">{{ $slogan }}</p>
             @endif
         </div>
     </div>
 
     @if ($starsLabel)
-        <span class="shrink-0 inline-flex items-center gap-1 text-[12px] font-semibold text-oss-royal-blue/70 tabular-nums">
+        <span class="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-oss-royal-blue/70 tabular-nums uppercase">
             <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
                 <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
             </svg>

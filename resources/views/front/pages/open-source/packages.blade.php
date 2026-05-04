@@ -156,7 +156,7 @@
 
         <section
             id="packages"
-            class="border-t border-oss-gray-extra-dark pt-20 mb-20 max-w-[1320px] mx-auto"
+            class="border-t border-oss-gray-extra-dark pt-20 pb-20 max-w-[1320px] mx-auto"
             x-data="{
                 query: '',
                 haystacks: @js($allRepositoryHaystacks),
@@ -186,19 +186,19 @@
                         href="{{ $repository->url }}"
                         target="_blank"
                         rel="noopener"
-                        class="group items-center gap-4 py-3 -mx-3 px-3 rounded border-b border-oss-gray-extra-dark hover:bg-white/5 transition break-inside-avoid"
+                        class="group items-center gap-4 py-3 -mx-3 px-3 border-b border-oss-gray-extra-dark hover:bg-white/5 transition break-inside-avoid"
                         :class="!query || haystacks[{{ $i }}].includes(query.toLowerCase()) ? 'flex' : 'hidden'"
                     >
                         <div class="flex-1 min-w-0">
-                            <div class="flex flex-col sm:flex-row sm:items-baseline sm:gap-3">
-                                <h3 class="text-[17px] font-semibold text-oss-gray truncate">{{ $repository->name }}</h3>
+                            <div class="leading-normal">
+                                <h3 class="text-base font-semibold text-oss-gray truncate">{{ $repository->name }}</h3>
                                 @if ($repository->description)
-                                    <p class="text-[14px] text-oss-gray-dark truncate">{{ $repository->description }}</p>
+                                    <p class="text-sm text-oss-gray-dark truncate">{{ $repository->description }}</p>
                                 @endif
                             </div>
                         </div>
                         @if ($allRepositoryStarsLabels[$i])
-                            <span class="shrink-0 inline-flex items-center gap-1 text-[12px] font-semibold text-oss-gray-dark tabular-nums">
+                            <span class="shrink-0 inline-flex items-center gap-1 text-xs font-semibold text-oss-gray-dark tabular-nums uppercase">
                                 <svg viewBox="0 0 24 24" class="w-3.5 h-3.5" fill="currentColor" aria-hidden="true">
                                     <path d="M12 17.27 18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
                                 </svg>

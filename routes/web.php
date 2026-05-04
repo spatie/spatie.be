@@ -119,7 +119,7 @@ Route::prefix('open-source')->group(function () {
     Route::view('/', 'front.pages.open-source.index')->name('open-source.index');
     Route::get('packages', function () {
         $allRepositories = \App\Models\Repository::visible()
-            ->orderBy('name')
+            ->orderByDesc('stars')
             ->get();
 
         $allRepositoryHaystacks = $allRepositories
