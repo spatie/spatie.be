@@ -46,7 +46,7 @@
         </div>
 
         <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
-            <a class="flex h-12 items-center" href="https://myray.app" target="_blank">
+            <a class="flex h-12 items-center" href="https://there-there.app/" target="_blank">
                 <img class="h-[38px]" src="/images/tt_logo.svg" alt="There There">
             </a>
             <p>A helpdesk where AI surfaces context and drafts replies, so your team responds faster and every customer gets a thoughtful answer.</p>

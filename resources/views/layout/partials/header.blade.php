@@ -3,8 +3,9 @@
         x-data="{
             mobileOpen: window.innerWidth >= 720,
             ossOpen: false,
+            isMobile: window.innerWidth < 720,
         }"
-        x-on:resize.window="mobileOpen = window.innerWidth >= 720"
+        x-on:resize.window="mobileOpen = window.innerWidth >= 720; isMobile = window.innerWidth < 720"
         class="max-w-[1080px] mx-auto p-3 sm:flex sm:items-center sm:gap-x-6 z-10 my-3 sm:my-7 rounded-xl overflow-hidden sm:overflow-visible bg-white shadow-light font-pt antialiased font-medium print:bg-transparent print:shadow-none"
     >
         {{-- Logo --}}
@@ -46,40 +47,40 @@
                 {{-- Open source dropdown --}}
                 <div class="relative" x-on:mouseenter="ossOpen = true" x-on:mouseleave="ossOpen = false">
                     <button
-                        x-on:click="if (window.innerWidth < 720) ossOpen = !ossOpen"
+                        x-on:click="if (!isMobile) ossOpen = !ossOpen"
                         class="flex items-center gap-1 cursor-pointer hover:text-oss-spatie-blue transition-colors {{ request()->is('open-source*') || request()->routeIs('guidelines') || request()->routeIs('docs') ? 'font-bold text-blue' : '' }}"
                     >
                         Open source
-                        <svg class="w-2.5 h-2.5 mt-0.5 transition-transform" :class="{ 'rotate-180': ossOpen }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m1 1 4 4 4-4"/></svg>
+                        <svg class="hidden sm:block w-2.5 h-2.5 mt-0.5 transition-transform" :class="{ 'rotate-180': ossOpen }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m1 1 4 4 4-4"/></svg>
                     </button>
 
                     {{-- Invisible bridge to cover gap between trigger and dropdown --}}
                     <div class="hidden sm:block absolute left-0 right-0 h-3"></div>
 
                     <div
-                        x-show="ossOpen"
+                        x-show="ossOpen || isMobile"
                         x-transition:enter="transition ease-out duration-100"
                         x-transition:enter-start="opacity-0 scale-95"
                         x-transition:enter-end="opacity-100 scale-100"
                         x-transition:leave="transition ease-in duration-75"
                         x-transition:leave-start="opacity-100 scale-100"
                         x-transition:leave-end="opacity-0 scale-95"
-                        class="sm:absolute sm:left-0 sm:mt-3 sm:w-52 sm:rounded-xl sm:bg-white sm:shadow-lg sm:ring-1 sm:ring-black/5 sm:py-1 pl-4 sm:pl-0 mt-2"
+                        class="sm:absolute sm:left-0 sm:mt-3 sm:w-52 sm:rounded-xl sm:bg-white sm:shadow-lg sm:ring-1 sm:ring-black/5 sm:py-1 sm:pl-0 mt-2"
                     >
-                        <div class="grid sm:px-1 gap-0.5">
-                            <a href="{{ route('open-source.index') }}" class="sm:px-4 py-2 hover:bg-blue-lightest transition-colors rounded-lg {{ request()->routeIs('open-source.index') ? 'font-bold' : '' }}">
+                        <div class="grid sm:px-1 gap-0.5 text-oss-royal-blue/60 sm:text-current">
+                            <a href="{{ route('open-source.index') }}" class="sm:px-4 py-2 sm:hover:bg-blue-lightest transition-colors sm:rounded-lg {{ request()->routeIs('open-source.index') ? 'font-bold' : '' }}">
                                 Our philosophy
                             </a>
-                            <a href="{{ route('open-source.packages') }}" class="sm:px-4 py-2 hover:bg-blue-lightest transition-colors rounded-lg {{ request()->routeIs('open-source.packages') ? 'font-bold' : '' }}">
+                            <a href="{{ route('open-source.packages') }}" class="sm:px-4 py-2 sm:hover:bg-blue-lightest transition-colors sm:rounded-lg {{ request()->routeIs('open-source.packages') ? 'font-bold' : '' }}">
                                 Packages
                             </a>
-                            <a href="{{ route('open-source.postcards') }}" class="sm:px-4 py-2 hover:bg-blue-lightest transition-colors rounded-lg {{ request()->routeIs('open-source.postcards') ? 'font-bold' : '' }}">
+                            <a href="{{ route('open-source.postcards') }}" class="sm:px-4 py-2 sm:hover:bg-blue-lightest transition-colors sm:rounded-lg {{ request()->routeIs('open-source.postcards') ? 'font-bold' : '' }}">
                                 Postcards
                             </a>
-                            <a href="{{ route('guidelines') }}" class="sm:px-4 py-2 hover:bg-blue-lightest transition-colors rounded-lg {{ request()->routeIs('guidelines') ? 'font-bold' : '' }}">
+                            <a href="{{ route('guidelines') }}" class="sm:px-4 py-2 sm:hover:bg-blue-lightest transition-colors sm:rounded-lg {{ request()->routeIs('guidelines') ? 'font-bold' : '' }}">
                                 Guidelines
                             </a>
-                            <a href="{{ route('docs') }}" class="sm:px-4 py-2 hover:bg-blue-lightest transition-colors rounded-lg {{ request()->routeIs('docs') ? 'font-bold' : '' }}">
+                            <a href="{{ route('docs') }}" class="sm:px-4 py-2 sm:hover:bg-blue-lightest transition-colors sm:rounded-lg {{ request()->routeIs('docs') ? 'font-bold' : '' }}">
                                 Documentation
                             </a>
                         </div>
