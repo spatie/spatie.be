@@ -34,7 +34,7 @@
         @endif
 
         <div class="-mx-6 px-2 py-3 bg-oss-green/10 mt-4 text-oss-green-pale text-sm text-center">
-            @if ($purchasable->discount_name)
+            @if ($purchasable->hasActivePurchasableDiscount())
                 <span>{{ $purchasable->discount_name }} <span class="char-separator">•</span> </span>
             @endif
             Now <span class="font-semibold">{{ $purchasable->displayableDiscountPercentage() }}%</span> off
@@ -293,4 +293,3 @@
         </div>
     </div>
 </div>
-
