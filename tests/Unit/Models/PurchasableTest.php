@@ -37,15 +37,41 @@ test('a discount can be valid during a certain period', function () {
 
     TestTime::addSeconds(59);
     expect($this->purchasable->hasActiveDiscount())->toBeFalse();
+    expect($this->purchasable->hasActivePurchasableDiscount())->toBeFalse();
 
     TestTime::addSecond();
     expect($this->purchasable->hasActiveDiscount())->toBeTrue();
+    expect($this->purchasable->hasActivePurchasableDiscount())->toBeTrue();
 
     TestTime::addHour()->subSecond();
     expect($this->purchasable->hasActiveDiscount())->toBeTrue();
+    expect($this->purchasable->hasActivePurchasableDiscount())->toBeTrue();
 
     TestTime::addSecond();
     expect($this->purchasable->hasActiveDiscount())->toBeFalse();
+    expect($this->purchasable->hasActivePurchasableDiscount())->toBeFalse();
+});
+
+test('an expired purchasable discount is not active when a personal discount is active', function () {
+    $this->user->update([
+        'next_purchase_discount_period_ends_at' => now()->addHour(),
+    ]);
+
+    $this->purchasable->update([
+        'discount_percentage' => 30,
+        'discount_name' => 'BLACK FRIDAY',
+        'discount_starts_at' => now()->subDays(10),
+        'discount_expires_at' => now()->subDay(),
+    ]);
+
+    expect($this->purchasable->hasActivePurchasableDiscount())->toBeFalse();
+
+    $this->actingAs($this->user);
+
+    expect($this->purchasable->hasActiveDiscount())->toBeTrue()
+        ->and($this->purchasable->hasActivePurchasableDiscount())->toBeFalse()
+        ->and($this->purchasable->displayableDiscountPercentage())->toEqual(10)
+        ->and($this->purchasable->getPriceForCountryCode('BE')->priceInCents)->toEqual(9000);
 });
 
 test('the next purchase discount on a user will be used', function () {

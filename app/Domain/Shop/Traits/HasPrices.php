@@ -37,10 +37,7 @@ trait HasPrices
 
             $discountPercentage = 0;
 
-            if (now()->between(
-                $this->discount_starts_at ?? now()->subMinute(),
-                $this->discount_expires_at ?? now()->addMinute(),
-            )) {
+            if ($this->hasActivePurchasableDiscount()) {
                 $discountPercentage = $this->discount_percentage;
             }
 
@@ -125,6 +122,11 @@ trait HasPrices
             }
         }
 
+        return $this->hasActivePurchasableDiscount();
+    }
+
+    public function hasActivePurchasableDiscount(): bool
+    {
         if (! $this->discount_name) {
             return false;
         }
@@ -149,7 +151,9 @@ trait HasPrices
             }
         }
 
-        $purchasableDiscountExpiresAt = $this->discount_expires_at ?? now()->subSecond();
+        $purchasableDiscountExpiresAt = $this->hasActivePurchasableDiscount()
+            ? $this->discount_expires_at ?? now()->addMinute()
+            : now()->subSecond();
 
         return $userDiscountExpiresAt->isAfter($purchasableDiscountExpiresAt)
             ? $userDiscountExpiresAt
@@ -160,9 +164,7 @@ trait HasPrices
     {
         $percentage = 0;
 
-        $purchasableDiscountExpiresAt = $this->discount_expires_at ?? now()->addSecond();
-
-        if ($purchasableDiscountExpiresAt->isFuture()) {
+        if ($this->hasActivePurchasableDiscount()) {
             $percentage += $this->discount_percentage ?? 0;
         }
 
