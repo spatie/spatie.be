@@ -496,5 +496,13 @@ return [
             ],
             'category' => 'Laravel',
         ],
+        [
+            'name' => 'piper',
+            'repository' => 'spatie/piper',
+            'branches' => [
+                'main' => 'v1',
+            ],
+            'category' => 'General PHP',
+        ],
     ],
 ];
