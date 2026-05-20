@@ -97,7 +97,7 @@
                                                     Recipient <span x-html="index"></span> email
                                                 </dt>
                                                 <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
-                                                    <input class="text-right w-full bg-transparent text-oss-gray" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
+                                                    <input class="text-right w-full bg-transparent text-white" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
                                                 </dd>
                                             </div>
                                         </template>
@@ -113,7 +113,7 @@
                                             <span x-show="subtotalWithoutDiscount" class="mr-2">
                                                 <span class="font-semibold line-through" x-text="subtotalWithoutDiscount"></span>
                                             </span>
-                                            <span class="text-blue" x-text="subtotal"></span>
+                                            <span class="text-white" x-text="subtotal"></span>
                                         </dd>
                                     </div>
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
@@ -121,7 +121,7 @@
                                             VAT
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
-                                            <span class="text-blue" x-text="tax || 'Calculated at checkout'"></span>
+                                            <span class="text-white" x-text="tax || 'Calculated at checkout'"></span>
                                         </dd>
                                     </div>
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
@@ -129,7 +129,7 @@
                                             Total
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
-                                            <span class="text-blue" x-text="total"></span>
+                                            <span class="text-white" x-text="total"></span>
                                         </dd>
                                     </div>
                                 </dl>
