@@ -1,6 +1,6 @@
 @php
     $priceWithoutDiscount = $purchasable->getPriceWithoutDiscountForCurrentRequest();
-    $price = $purchasable->getPriceForCurrentRequest()
+    $price = $purchasable->getPriceForCurrentRequest();
 @endphp
 <div
     class="flex flex-col border border-white/10 rounded-xl px-7 py-7"
@@ -97,7 +97,7 @@
                                                     Recipient <span x-html="index"></span> email
                                                 </dt>
                                                 <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
-                                                    <input class="text-right w-full bg-transparent text-oss-gray" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
+                                                    <input class="text-right w-full bg-transparent text-white" placeholder="Enter account email" type="email" name="emails[]" x-model.lazy="emails[index - 1]">
                                                 </dd>
                                             </div>
                                         </template>
@@ -113,7 +113,7 @@
                                             <span x-show="subtotalWithoutDiscount" class="mr-2">
                                                 <span class="font-semibold line-through" x-text="subtotalWithoutDiscount"></span>
                                             </span>
-                                            <span class="text-blue" x-text="subtotal"></span>
+                                            <span class="text-white" x-text="subtotal"></span>
                                         </dd>
                                     </div>
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
@@ -121,7 +121,7 @@
                                             VAT
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
-                                            <span class="text-blue" x-text="tax"></span>
+                                            <span class="text-white" x-text="tax || 'Calculated at checkout'"></span>
                                         </dd>
                                     </div>
                                     <div x-show="!free" :class="!free ? 'sm:grid' : ''" class="py-2 sm:py-3 sm:grid-cols-3 sm:gap-4">
@@ -129,7 +129,7 @@
                                             Total
                                         </dt>
                                         <dd class="mt-1 text-sm text-right text-oss-gray sm:mt-0 sm:col-span-2">
-                                            <span class="text-blue" x-text="total"></span>
+                                            <span class="text-white" x-text="total"></span>
                                         </dd>
                                     </div>
                                 </dl>
@@ -155,12 +155,29 @@
                                 emailsComplete: true,
                                 emailsLoading: false,
                                 subtotal: null,
+                                initialPriceInCents: {{ $price->priceInCents }},
                                 initialSubtotalWithoutDiscount: {{ $purchasable->hasActiveDiscount() ? $priceWithoutDiscount->priceInCents : 'null' }},
                                 subtotalWithoutDiscount: null,
                                 tax: null,
                                 total: null,
-                                currency: 'USD',
+                                currency: '{{ $price->currencyCode }}',
                                 free: false,
+
+                                formatPrice(amountInCents) {
+                                    const formatter = new Intl.NumberFormat('en', { style: 'currency', currency: this.currency });
+                                    return formatter.format(amountInCents / 100);
+                                },
+
+                                refreshPricesFromServer() {
+                                    const qty = parseInt(this.quantity) || 1;
+                                    this.subtotal = this.formatPrice(this.initialPriceInCents * qty);
+                                    this.total = this.subtotal;
+                                    this.free = this.initialPriceInCents <= 0;
+
+                                    if (this.initialSubtotalWithoutDiscount) {
+                                        this.subtotalWithoutDiscount = this.formatPrice(this.initialSubtotalWithoutDiscount * qty);
+                                    }
+                                },
 
                                 init() {
                                     const self = this;
@@ -173,6 +190,8 @@
                                             self.updatePrices(eventData);
                                         }
                                     });
+
+                                    this.refreshPricesFromServer();
 
                                     const passthrough = @json(auth()->user()->getPassthrough($license ?? null));
 
@@ -206,8 +225,11 @@
                                         }
                                     }
 
+                                    setTimeout(() => { self.loading = false; }, 5000);
+
                                     this.$watch('quantity', (newQuantity) => {
                                         options.quantity = newQuantity;
+                                        self.refreshPricesFromServer();
 
                                         let emails = [];
                                         for (let i = 0; i < newQuantity; i++) {
@@ -234,9 +256,12 @@
                                 },
 
                                 updatePrices(data) {
-                                    console.log({ data });
                                     this.loading = false;
                                     this.emailsLoading = false;
+
+                                    if (!data?.eventData?.checkout?.prices?.customer) {
+                                        return;
+                                    }
 
                                     var subtotal = data.eventData.checkout.prices.customer.total - data.eventData.checkout.prices.customer.total_tax;
 
