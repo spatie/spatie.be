@@ -224,6 +224,17 @@ $failedChecks = $site->checks()->where('status', 'failed')->get();
 - Keep test classes in same file when possible
 - Use descriptive test method names
 - Follow the arrange-act-assert pattern
+- Assert behavior, not setup. Re-checking a config value you set in the arrange step, or that a component renders a hardcoded label, proves nothing; a test should fail when the code under test breaks
+- Mirror the `app/` directory structure under `tests/`; don't split tests into `Feature/` and `Unit/` directories:
+  ```
+  app/Http/Controllers/UserController.php
+  tests/Http/Controllers/UserControllerTest.php
+
+  app/Domain/User/Actions/CreateUserAction.php
+  tests/Domain/User/Actions/CreateUserActionTest.php
+  ```
+- Deviate from the mirror when a specific scenario calls for it
+- Place shared test helpers under the `Tests\TestSupport` namespace (e.g. `Tests\TestSupport\Models`)
 
 ## Quick Reference
 
