@@ -366,7 +366,8 @@ return [
             'name' => 'laravel-permission',
             'repository' => 'spatie/laravel-permission',
             'branches' => [
-                'main' => 'v7',
+                'main' => 'v8',
+                'v7' => 'v7',
                 'v6' => 'v6',
                 'v5' => 'v5',
                 'v4' => 'v4',
