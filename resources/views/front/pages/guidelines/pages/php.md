@@ -351,6 +351,46 @@ $greeting = 'Hi, I am ' . $name . '.';
 [/bad]
 
 
+## Method chaining
+
+Once there's a line break in chained method calls, ensure further chains start on a new line.
+
+The most straightforward rule is to put each `->` on a new line:
+
+[good]
+```php
+$availability = $ticketShop
+    ->orders()
+    ->getEventProductAvailability(
+        new GetEventProductAvailabilityParams(
+            productCode: $this->productCode,
+            eventId: $eventId,
+        ),
+    );
+```
+[/good]
+
+You may also have all `->`'s on a single line, which often looks more natural when accessing a property.
+
+[good]
+```php
+$user->team->update([
+    'billing_plan' => BillingPlan::Pro,
+    'billing_frequency' => BillingFrequency::Annual,
+]);
+```
+[/good]
+
+Never mix both:
+
+[bad]
+```php
+$user->projects()->where('updated_at', '<=', now()->subMonth())
+    ->where('archived', false)
+    ->update(['archived' => true]);
+```
+[/bad]
+
 ## Ternary operators
 
 Every portion of a ternary expression should be on its own line unless it's a really short expression.
