@@ -370,16 +370,14 @@ $availability = $ticketShop
 ```
 [/good]
 
-You may also have all `->`'s on a single line:
+You may also have all `->`'s on a single line, which often looks more natural when accessing a property.
 
 [good]
 ```php
-$availability = $ticketShop->orders()->getEventProductAvailability(
-    new GetEventProductAvailabilityParams(
-        productCode: $this->productCode,
-        eventId: $eventId,
-    ),
-);
+$user->team->update([
+    'billing_plan' => BillingPlan::Pro,
+    'billing_frequency' => BillingFrequency::Annual,
+]);
 ```
 [/good]
 
@@ -387,12 +385,9 @@ Never mix both:
 
 [bad]
 ```php
-$availability = $ticketShop->orders()->getEventProductAvailability(
-    new GetEventProductAvailabilityParams(
-        productCode: $this->productCode,
-        eventId: $eventId,
-    ),
-)->update($data);
+$user->projects()->where('updated_at', '<=', now()->subMonth())
+    ->where('archived', false)
+    ->update(['archived' => true]);
 ```
 [/bad]
 
