@@ -13,6 +13,13 @@
             @if($assignment->purchase->created_at)
                 <p class="text-xs text-oss-gray-dark mt-1">Added on {{ $assignment->purchase->created_at->format('Y-m-d') }}</p>
             @endif
+            <div class="mt-3">
+                @if($assignment->purchase->user_id === auth()->id())
+                    <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-oss-green-pale">Bought by you</span>
+                @else
+                    <span class="inline-flex rounded-full bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-wide text-oss-gray">Assigned by {{ $assignment->purchase->user->email }}</span>
+                @endif
+            </div>
         </a>
 
         @if ($assignment->purchasable->repository_access)

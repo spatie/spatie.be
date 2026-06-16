@@ -8,10 +8,12 @@
 
     <x-profile-layout title="Purchases">
         <section class="mb-12">
-            @if (!$courses->count() && !$applications->count())
+            @if(!$courses->count() && !$applications->count() && !$assignedAwayPurchases->count())
                 <p class="text-xl">No purchases yet, take a look at <a class="underline hover:text-white" href="{{ route('products.index') }}">our products</a>.</p>
+            @elseif(!$courses->count() && !$applications->count())
+                <p class="text-xl">Your purchases are assigned to other accounts. You can download receipts below, but product access lives with the assigned recipients.</p>
             @else
-                <p class="text-xl">Here you'll find all your purchased applications and courses.</p>
+                <p class="text-xl">Here you'll find products assigned to your account and purchases you bought for others.</p>
             @endif
         </section>
 
@@ -148,6 +150,16 @@
                                         @endforeach
                                     </div>
                                 </x-purchase-assignment>
+                            @endforeach
+                        </div>
+                    @endif
+
+                    @if(count($assignedAwayPurchases))
+                        <h2 class="font-druk uppercase text-[40px] leading-[0.9] mt-16 mb-4">Assigned to others</h2>
+                        <p class="mb-8 text-sm text-oss-gray-dark">These purchases were paid for by you, but access was assigned to another account.</p>
+                        <div class="grid gap-4">
+                            @foreach($assignedAwayPurchases as $purchase)
+                                @include('front.profile.components.assigned-away-purchase', ['purchase' => $purchase])
                             @endforeach
                         </div>
                     @endif
