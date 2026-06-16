@@ -44,7 +44,7 @@ class PurchasesController
             ])
             ->whereHas('assignments', fn (Builder $query) => $query->where('user_id', '!=', $user->id))
             ->get()
-            ->sortByDesc(fn (Purchase $purchase) => $purchase->receipt?->paid_at ?? $purchase->created_at);
+            ->sortByDesc(fn (Purchase $purchase) => $purchase->receipt->paid_at ?? $purchase->created_at);
 
         return view('front.profile.purchases', compact('courses', 'applications', 'assignedAwayPurchases'));
     }
