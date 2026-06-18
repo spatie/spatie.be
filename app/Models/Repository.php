@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 use Spatie\MediaLibrary\HasMedia;
@@ -56,6 +57,12 @@ class Repository extends Model implements HasMedia
     public function ad(): BelongsTo
     {
         return $this->belongsTo(Ad::class, 'ad_id');
+    }
+
+    /** @return HasMany<RepositoryRelease, $this> */
+    public function releases(): HasMany
+    {
+        return $this->hasMany(RepositoryRelease::class);
     }
 
     public function getSlug(): string

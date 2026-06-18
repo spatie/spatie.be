@@ -5,6 +5,7 @@ namespace App\Console;
 use App\Console\Commands\AfterworkCommand;
 use App\Console\Commands\ImportAllDocsCommand;
 use App\Console\Commands\ImportDocsFromRepositoriesCommand;
+use App\Console\Commands\ImportGitHubReleasesCommand;
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
 use App\Console\Commands\ImportGuideLinesCommand;
 use App\Console\Commands\ImportInsightsCommand;
@@ -30,6 +31,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportInsightsCommand::class)->hourly();
         $schedule->command(ImportPackagistDownloadsCommand::class)->hourly();
         $schedule->command(ImportGitHubRepositoriesCommand::class)->weekly();
+        $schedule->command(ImportGitHubReleasesCommand::class)->runInBackground()->withoutOverlapping()->dailyAt('02:30');
         $schedule->command(ImportGuideLinesCommand::class)->weekly();
         $schedule->command(RegenerateLeakedKeysCommand::class)->graceTimeInMinutes(30)->runInBackground()->hourly();
 

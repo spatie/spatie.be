@@ -36,6 +36,42 @@ class GitHubApi
         });
     }
 
+    public function fetchReleases(string $repository): Collection
+    {
+        [$organisation, $repository] = explode('/', $repository);
+
+        /** @var Repo $repoApi */
+        $repoApi = $this->client->api('repo');
+
+        $paginator = new ResultPager($this->client, 100);
+
+        return collect($paginator->fetchAll($repoApi->releases(), 'all', [$organisation, $repository]));
+    }
+
+    public function fetchTags(string $repository): Collection
+    {
+        [$organisation, $repository] = explode('/', $repository);
+
+        /** @var Repo $repoApi */
+        $repoApi = $this->client->api('repo');
+
+        $paginator = new ResultPager($this->client, 100);
+
+        return collect($paginator->fetchAll($repoApi, 'tags', [$organisation, $repository]));
+    }
+
+    public function fetchCommitDate(string $repository, string $sha): Carbon
+    {
+        [$organisation, $repository] = explode('/', $repository);
+
+        /** @var Repo $repoApi */
+        $repoApi = $this->client->api('repo');
+
+        $commit = $repoApi->commits()->show($organisation, $repository, $sha);
+
+        return Carbon::parse($commit['commit']['committer']['date']);
+    }
+
     public function latestVersionOnDate(string $repository, Carbon $onDate): string
     {
         [$organisation, $repository] = explode('/', $repository);
