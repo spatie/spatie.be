@@ -1,21 +1,18 @@
-import React from 'react';
 import { createRoot } from "react-dom/client";
-import { ShaderGradientCanvas, ShaderGradient } from '@shadergradient/react'
 
-document.addEventListener('livewire:navigated', () => {
+document.addEventListener('livewire:navigated', async () => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (window.matchMedia('(max-width: 639px)').matches) return;
+
     const element = document.getElementById("gradient");
+    if (! element) return;
 
-    if (! element) {
-        return;
-    }
+    const url = element.dataset.url;
+    if (! url) return;
 
-    const root = createRoot(document.getElementById("gradient"));
-    const url = document.getElementById("gradient").dataset.url;
+    const { ShaderGradientCanvas, ShaderGradient } = await import('@shadergradient/react');
 
-    if (! url) {
-        return;
-    }
-
+    const root = createRoot(element);
     root.render(
         <ShaderGradientCanvas>
             <ShaderGradient

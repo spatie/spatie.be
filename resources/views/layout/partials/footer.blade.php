@@ -22,6 +22,7 @@
                                     style="z-index: {{ 6 - $index }}"
                                     class="w-10 h-10 rounded-full border-2 {{ $dark ? 'border-oss-footer-dark' : 'border-oss-gray-light' }} object-cover"
                                     alt=""
+                                    loading="lazy"
                                 >
                             @endforeach
                         </div>

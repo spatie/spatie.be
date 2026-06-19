@@ -20,6 +20,7 @@
         'uDensity' => '1.6',
         'uFrequency' => '4.5',
         'uStrength' => '2.5',
+        'mobilePlaceholder' => '/images/gradient-placeholder-services.webp',
     ])
 
     @include('front.pages.web-development.partials.banner')

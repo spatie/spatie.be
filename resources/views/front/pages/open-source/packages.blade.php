@@ -15,18 +15,23 @@
         <style>html { scroll-behavior: smooth; background: #050508; }</style>
     @endpush
     @push('startBody')
-        <div
-            x-show="show"
-            x-data="{ show: false }"
-            x-init="setTimeout(() => show = true, 50)"
-            x-transition.opacity.duration.1000ms
-            x-cloak
-            class="absolute top-0 left-0 right-0 z-0 pointer-events-none"
-        >
-            <div id="gradient" class="aspect-[9/16] sm:aspect-video w-full"
-                 data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=0.6&cAzimuthAngle=250&cDistance=1.5&cPolarAngle=140&cameraZoom=12.5&color1=%239e0b68&color2=%231f0059&color3=%235b00b8&embedMode=off&envPreset=city&fov=45&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1.1&positionX=0&positionY=0&positionZ=0&range=disabled&reflection=0.5&rotationX=0&rotationY=0&rotationZ=140&shader=defaults&type=sphere&uAmplitude=2.3&uDensity=1.4&uFrequency=5.5&uSpeed=0.05&uStrength=1.2&uTime=0&wireframe=false"></div>
+        <div class="sm:motion-safe:hidden absolute top-0 left-0 right-0 z-0 pointer-events-none">
+            <img src="/images/gradient-placeholder-oss.webp" class="w-full aspect-[9/16] object-cover" alt="">
+            <div class="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-transparent to-oss-black"></div>
+        </div>
+        <div class="hidden sm:motion-safe:block">
             <div
-                class="absolute inset-0 z-10 w-full h-full aspect-video bg-gradient-to-b from-transparent to-oss-black"></div>
+                x-show="show"
+                x-data="{ show: false }"
+                x-init="setTimeout(() => show = true, 50)"
+                x-transition.opacity.duration.1000ms
+                x-cloak
+                class="absolute top-0 left-0 right-0 z-0 pointer-events-none"
+            >
+                <div id="gradient" class="aspect-[9/16] sm:aspect-video w-full"
+                     data-url="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=0.6&cAzimuthAngle=250&cDistance=1.5&cPolarAngle=140&cameraZoom=12.5&color1=%239e0b68&color2=%231f0059&color3=%235b00b8&embedMode=off&envPreset=city&fov=45&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=1.1&positionX=0&positionY=0&positionZ=0&range=disabled&reflection=0.5&rotationX=0&rotationY=0&rotationZ=140&shader=defaults&type=sphere&uAmplitude=2.3&uDensity=1.4&uFrequency=5.5&uSpeed=0.05&uStrength=1.2&uTime=0&wireframe=false"></div>
+                <div class="absolute inset-0 z-10 w-full h-full aspect-video bg-gradient-to-b from-transparent to-oss-black"></div>
+            </div>
         </div>
     @endpush
 
@@ -148,7 +153,7 @@
                         </x-slot:title>
                         <p class="text-[16px] mb-9">{{ $favourite['reason'] }}</p>
                         <div class="flex items-center gap-5">
-                            <img class="w-12 h-12 rounded-full" src="{{ $favourite['avatar'] }}" alt="">
+                            <img class="w-12 h-12 rounded-full" src="{{ $favourite['avatar'] }}" alt="" loading="lazy">
                             <div class="flex flex-col text-[16px] leading-tight">
                                 <span class="font-bold">{{ $favourite['name'] }}</span>
                             </div>

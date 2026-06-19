@@ -33,6 +33,7 @@
             'uDensity' => '1.4',
             'uFrequency' => '5.0',
             'uStrength' => '2.8',
+            'mobilePlaceholder' => '/images/gradient-placeholder-products.webp',
         ])
     @endunless
 

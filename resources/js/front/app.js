@@ -2,7 +2,7 @@ import '../../css/front/front.css'
 
 import images from './images';
 import docs from './docs';
-import { startAsteroids } from './asteroids';
+// import { startAsteroids } from './asteroids';
 
 window.addEventListener('load', images);
 window.addEventListener('load', docs);
