@@ -4,7 +4,6 @@
 <meta name="theme-color" content="#050508">
 <meta name="msvalidate.01" content="66E6FAFC3E214E528EECBD04ECA4804C" />
 
-<link rel="dns-prefetch" href="https://cloud.typography.com">
 <link rel="dns-prefetch" href="https://pro.fontawesome.com">
 
 <title>{!! $title ?? '' !!} | Spatie</title>
