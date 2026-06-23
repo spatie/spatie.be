@@ -18,7 +18,7 @@
     @endpush
     @push('startBody')
         <div class="sm:motion-safe:hidden absolute top-0 left-0 right-0 z-0 pointer-events-none">
-            <img src="/images/gradient-placeholder-oss.webp" class="w-full aspect-[9/16] object-cover" alt="">
+            <img src="/images/gradient-placeholder-oss.webp" class="w-full aspect-[9/16] object-cover" alt="" fetchpriority=high>
             <div class="absolute inset-0 z-10 w-full h-full bg-gradient-to-b from-transparent to-oss-black"></div>
         </div>
         <div class="hidden sm:motion-safe:block">
