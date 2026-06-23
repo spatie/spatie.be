@@ -15,9 +15,7 @@
 <meta property="og:url" content="{{ request()->getUri() }}"/>
 <meta property="og:type" content="website" />
 
-@if (isset($canonical) && $canonical)
-    <link rel="canonical" href="{{ $canonical }}" />
-@endif
+<link rel="canonical" href="{{ $canonical ?? request()->url() }}" />
 
 @if (isset($noIndex) && $noIndex)
     <meta name="robots" content="noindex">
