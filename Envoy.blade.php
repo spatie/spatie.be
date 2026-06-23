@@ -150,7 +150,7 @@ php artisan config:clear
 php artisan config:cache
 php artisan event:cache
 php artisan guidelines:import
-#php artisan schedule-monitor:sync
+php artisan schedule-monitor:sync
 
 sudo service php8.4-fpm restart
 sudo supervisorctl restart all
@@ -180,7 +180,7 @@ php artisan config:cache
 php artisan event:cache
 php artisan guidelines:import
 sudo service php8.4-fpm restart
-#php artisan schedule-monitor:sync
+php artisan schedule-monitor:sync
 php artisan horizon:terminate
 sudo supervisorctl restart all
 @endtask
