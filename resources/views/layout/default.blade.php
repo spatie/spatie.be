@@ -1,11 +1,21 @@
+@props([
+    'comments' => false,
+    'livewire' => false,
+])
+
+@php
+    $usesLivewire = $livewire || $comments;
+@endphp
+
 <!DOCTYPE html>
 <html lang="{{ $lang ?? 'en' }}">
 
 <head>
     @include('layout.partials.meta')
 
-
-    @livewireStyles
+    @if($usesLivewire)
+        @livewireStyles
+    @endif
 
     @include('layout.partials.favicons')
     @include('feed::links')
@@ -14,11 +24,11 @@
 
     @include('layout.partials.analytics')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     @stack('head')
 
-    @laravelCommentsLivewireStyles
+    @if($comments)
+        @laravelCommentsLivewireStyles
+    @endif
 </head>
 
 <body class="flex flex-col min-h-screen leading-normal antialiased {{ $bodyClass ?? '' }}">
@@ -46,8 +56,14 @@
 
     <x-impersonate::banner/>
 
-    @livewireScripts
-    @laravelCommentsLivewireScripts
+    @if($usesLivewire)
+        @livewireScripts
+    @endif
+
+    @if($comments)
+        @laravelCommentsLivewireScripts
+    @endif
+
     @stack('scripts')
     <script>
         document.addEventListener('alpine:init', () => {
@@ -80,48 +96,6 @@
                     this.openModals = this.openModals.filter(modal => modal !== id);
                     history.pushState('', document.title, window.location.pathname + window.location.search);
                 },
-            });
-
-            Alpine.data('compose', ({ text, defer = false } = {}) => {
-                // Store the editor as a non-reactive instance property
-                let editor;
-
-                return {
-                    text,
-
-                    init() {
-                        if (! defer) {
-                            this.load();
-                        }
-                    },
-
-                    load() {
-                        if (editor) {
-                            return;
-                        }
-
-                        const textarea = this.$el.querySelector('textarea');
-
-                        if (! textarea) {
-                            return;
-                        }
-
-                        editor = new SimpleMDE({
-                            element: textarea,
-                            hideIcons: ['heading', 'image', 'preview', 'side-by-side', 'fullscreen', 'guide'],
-                            spellChecker: false,
-                            status: false,
-                        });
-
-                        editor.codemirror.on("change", () => {
-                            this.text = editor.value();
-                        });
-                    },
-
-                    clear() {
-                        editor.value('');
-                    },
-                };
             });
         });
     </script>

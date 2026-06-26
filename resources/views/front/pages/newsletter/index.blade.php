@@ -1,4 +1,4 @@
-<x-page title="Newsletter" body-class="bg-oss-gray"
+<x-page title="Newsletter" body-class="bg-oss-gray" livewire
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased">
 
     <x-og-image view="og-image.default" :data="[

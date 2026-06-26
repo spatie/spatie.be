@@ -4,6 +4,7 @@
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased"
     dark
     footerCta
+    livewire
 >
 
     <x-og-image view="og-image.oss" :data="[
