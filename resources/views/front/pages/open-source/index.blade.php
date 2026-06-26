@@ -18,6 +18,7 @@ $goodFirstIssues = collect($items ?? [])->groupBy('repository_url')->sortByDesc(
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
     footerCta
+    livewire
 >
 
     <x-og-image view="og-image.oss" :data="[

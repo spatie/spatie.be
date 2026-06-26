@@ -5,6 +5,7 @@
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased"
     :description="strip_tags($post->summary)"
     footerCta
+    livewire
 >
     @if($post->og_image)
         <x-og-image :url="$post->og_image" />
