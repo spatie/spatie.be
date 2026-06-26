@@ -1,0 +1,79 @@
+/* Inline code */
+
+.blog-content :not(pre) > code {
+    @apply text-14 text-oss-royal-blue p-[2px];
+}
+
+@screen sm {
+    .blog-content :not(pre) > code {
+        font-size: 15.5px;
+    }
+}
+
+.blog-content :is(h1, h2, h3, h4, h5, h6) code,
+.blog-content td code,
+.blog-content th code {
+    font-size: inherit !important;
+}
+
+.blog-content p > code {
+    @apply bg-oss-gray-light;
+}
+
+.blog-content pre {
+    @apply p-6;
+    background-color: theme('colors.oss-gray-light') !important;
+    border-radius: theme('borderRadius.lg') !important;
+}
+
+@screen md {
+    .blog-content > pre {
+        @apply -mx-12 px-12;
+    }
+}
+
+/* Images */
+
+.blog-content p:has(img) {
+    @apply mb-8;
+}
+
+.blog-content p > img {
+    @apply rounded-[0.5em] overflow-hidden;
+}
+
+@screen sm {
+    .blog-content p:has(img) {
+        @apply -mx-12;
+    }
+}
+
+/* Video */
+
+.blog-content p:has(video) {
+    @apply mb-8;
+}
+
+.blog-content p > video {
+    @apply rounded-[0.5em] overflow-hidden w-full;
+}
+
+@screen sm {
+    .blog-content p:has(video) {
+        @apply -mx-12;
+    }
+}
+
+/* Iframes */
+
+.blog-content > iframe {
+    @apply rounded-[0.5em];
+}
+
+/* Insights list */
+
+@screen md {
+    .blog-content > .insights-list-item {
+        @apply -mx-12 px-12 my-8;
+    }
+}

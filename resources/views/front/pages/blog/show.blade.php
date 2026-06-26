@@ -73,22 +73,7 @@
                         @endforeach
                     </aside>
 
-                    <div @class([
-                        'text-base sm:text-lg markup markup-lists markup-tables markup-embeds links-blue links-underline content-markup',
-                        '[&_:not(pre)>code]:text-14 [&_:not(pre)>code]:text-oss-royal-blue [&_:not(pre)>code]:p-[2px]',
-                        '[&_>pre]:bg-oss-gray-light',
-                        '[&_p>code]:bg-oss-gray-light',
-                        '[&_>pre]:p-6',
-                        '[&_>:not(pre)>code]:p-[2px]',
-                        '[&_p:has(video)]:mb-8 [&_p:has(img)]:mb-8',
-                        '[&_>iframe]:rounded-[0.5em]',
-                        'sm:[&_:not(pre)>code]:text-[15.5px]',
-                        'sm:[&_p:has(img)]:-mx-12 [&_p>img]:rounded-[0.5em] [&_p>img]:overflow-hidden',
-                        'sm:[&_p:has(video)]:-mx-12 [&_p>video]:rounded-[0.5em] [&_p>video]:overflow-hidden [&_p>video]:w-full',
-                        'md:[&_>.insights-list-item]:-mx-12 md:[&_>.insights-list-item]:px-12 md:[&_>.insights-list-item]:my-8',
-                        'md:[&_>pre]:-mx-12 md:[&_>pre]:px-12',
-                        'md:[&_>pre]:-mx-12 md:[&_>pre]:px-12',
-                    ])>
+                    <div class="text-base sm:text-lg markup markup-lists markup-tables markup-embeds links-blue links-underline content-markup blog-content">
                         {!! $content !!}
                     </div>
                 </div>

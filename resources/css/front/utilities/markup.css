@@ -199,7 +199,7 @@
     @apply border-b;
     @apply border-gray-lighter;
     @apply w-full;
-    @apply text-xs;
+    @apply text-sm;
     @apply my-6;
 }
 
