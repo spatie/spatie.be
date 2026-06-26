@@ -1,4 +1,4 @@
-<x-page title="Guidelines" body-class="bg-oss-gray" livewire
+<x-page title="Guidelines" body-class="bg-oss-gray"
     main-class="font-pt text-oss-royal-blue font-medium text-18 leading-140 antialiased">
 
     <x-og-image view="og-image.default" :data="[

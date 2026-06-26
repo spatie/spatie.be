@@ -2,7 +2,6 @@
     title="Documentation"
     body-class="bg-oss-gray font-pt"
     background="/backgrounds/about-blurred.jpg"
-    livewire
 >
     <section
         x-data="{

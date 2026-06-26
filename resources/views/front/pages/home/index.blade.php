@@ -7,7 +7,6 @@
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
     footerCta
-    livewire
 >
     <x-slot name="description">
         Spatie builds solid websites & web applications in Laravel. With AI, we focus on solutions, not boilerplate. From Antwerp, Belgium

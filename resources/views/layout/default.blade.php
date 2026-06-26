@@ -1,11 +1,6 @@
 @props([
     'comments' => false,
-    'livewire' => false,
 ])
-
-@php
-    $usesLivewire = $livewire || $comments;
-@endphp
 
 <!DOCTYPE html>
 <html lang="{{ $lang ?? 'en' }}">
@@ -13,9 +8,7 @@
 <head>
     @include('layout.partials.meta')
 
-    @if($usesLivewire)
-        @livewireStyles
-    @endif
+    @livewireStyles
 
     @include('layout.partials.favicons')
     @include('feed::links')
@@ -56,9 +49,7 @@
 
     <x-impersonate::banner/>
 
-    @if($usesLivewire)
-        @livewireScripts
-    @endif
+    @livewireScripts
 
     @if($comments)
         @laravelCommentsLivewireScripts
