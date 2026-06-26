@@ -10,17 +10,6 @@ function assertLivewireAssetsAreLoaded(TestResponse $response): void
         ->toContain('data-update-uri');
 }
 
-function assertFrontendEditorAssetsAreNotLoaded(TestResponse $response): void
-{
-    expect($response->getContent())
-        ->not->toContain('Livewire Styles')
-        ->not->toContain('Livewire Scripts')
-        ->not->toContain('data-update-uri')
-        ->not->toContain('_laravel-comments-livewire')
-        ->not->toContain('simplemde')
-        ->not->toContain('SimpleMDE');
-}
-
 function assertCommentAndSimpleMdeAssetsAreNotLoaded(TestResponse $response): void
 {
     expect($response->getContent())
@@ -29,12 +18,13 @@ function assertCommentAndSimpleMdeAssetsAreNotLoaded(TestResponse $response): vo
         ->not->toContain('SimpleMDE');
 }
 
-it('does not load livewire comments or simplemde assets on a static page', function () {
+it('loads livewire assets on a static page for alpine and navigation', function () {
     $response = $this->get(route('legal.index'));
 
     $response->assertOk();
 
-    assertFrontendEditorAssetsAreNotLoaded($response);
+    assertLivewireAssetsAreLoaded($response);
+    assertCommentAndSimpleMdeAssetsAreNotLoaded($response);
 });
 
 it('loads livewire assets on livewire pages', function () {

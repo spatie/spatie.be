@@ -12,7 +12,6 @@
     body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue leading-[1.4]"
     :no-index="$page->alias !== $latestVersion->slug"
     canonical="{{ url('/docs/' . $repository->slug . '/' . $latestVersion->slug . '/' . $page->slug) }}"
-    livewire
 >
 
     @if($showBrandedHeader)

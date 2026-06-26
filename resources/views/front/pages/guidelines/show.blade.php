@@ -1,7 +1,6 @@
 <x-page
     title="{{ $page->title }}"
-    body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue leading-[1.4]"
-    livewire>
+    body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue leading-[1.4]">
 
     <x-og-image view="og-image.default" :data="[
         'title' => $page->title,
