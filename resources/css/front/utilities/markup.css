@@ -265,8 +265,8 @@
     @apply py-7.5;
     @apply my-6;
     @apply rounded-lg;
-    @apply overflow-hidden;
-    @apply overflow-x-scroll;
+    @apply overflow-y-hidden;
+    @apply overflow-x-auto;
     @apply bg-oss-gray-light;
     @apply text-[15px];
     @apply leading-relaxed;
