@@ -13,11 +13,7 @@
 
     @include('layout.partials.analytics')
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
-    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
     @stack('head')
-
-    <x-comments::styles />
 </head>
 
 <body class="{{ $bodyClass ?? '' }}">
@@ -25,6 +21,8 @@
     {{ $slot }}
 
     <x-impersonate::banner/>
+
+    @livewireScripts
 
     @stack('scripts')
 

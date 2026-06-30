@@ -208,4 +208,3 @@
 
     @livewire('spotlight')
 </x-page>
-
