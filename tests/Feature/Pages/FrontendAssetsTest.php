@@ -1,9 +1,9 @@
 <?php
 
 use Database\Seeders\DocsSeeder;
-use Illuminate\Testing\TestResponse;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Testing\TestResponse;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 function assertLivewireAssetsAreLoaded(TestResponse $response): void
