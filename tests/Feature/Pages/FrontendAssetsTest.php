@@ -1,5 +1,6 @@
 <?php
 
+use Database\Seeders\DocsSeeder;
 use Illuminate\Testing\TestResponse;
 
 function assertLivewireAssetsAreLoaded(TestResponse $response): void
@@ -37,6 +38,8 @@ it('loads livewire assets on livewire pages', function () {
 });
 
 it('loads livewire assets on docs pages', function (string $url) {
+    $this->seed(DocsSeeder::class);
+
     $response = $this->get($url);
 
     $response->assertOk();
