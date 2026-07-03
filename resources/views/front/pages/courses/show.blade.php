@@ -3,6 +3,7 @@
     :description="$lesson->content->description"
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
+    livewire
 >
 
     @include('layout.partials.bg-color')

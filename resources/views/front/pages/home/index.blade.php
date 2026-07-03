@@ -7,12 +7,17 @@
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
     dark
     footerCta
+    :uses-session="false"
 >
     <x-slot name="description">
         Spatie builds solid websites & web applications in Laravel. With AI, we focus on solutions, not boilerplate. From Antwerp, Belgium
     </x-slot>
 
     <x-og-image view="og-image.home" />
+
+    @push('head')
+        <link rel="preload" href="{{ asset('fonts/Druk-Bold-Web.woff2') }}" as="font" type="font/woff2" crossorigin>
+    @endpush
 
     @include('layout.partials.gradient-background', [
         'color1' => '#197593',
@@ -59,8 +64,8 @@
                         <svg class="absolute top-0 right-0 w-64" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 248 248"><mask id="path-1-inside-1_home_web_2" fill="#fff"><path d="M0 0h224c13.255 0 24 10.745 24 24v224H0V0Z"/></mask><path fill="url(#paint0_linear_home_web_2)" d="M0-1h224c13.807 0 25 11.193 25 25h-2c0-12.703-10.297-23-23-23H0v-2Zm248 249H0h248ZM0 248V0v248ZM224-1c13.807 0 25 11.193 25 25v224h-2V24c0-12.703-10.297-23-23-23v-2Z" mask="url(#path-1-inside-1_home_web_2)"/><defs><linearGradient id="paint0_linear_home_web_2" x1="0" x2="197.371" y1="247.549" y2="-35.726" gradientUnits="userSpaceOnUse"><stop offset=".605" stop-opacity="0"/><stop offset="1" stop-color="#82d8af"/></linearGradient></defs></svg>
                         <h3 class="text-4xl/[0.9] font-druk uppercase text-white">Get the latest<br /> from Spatie</h3>
                         <p>Get occasional product updates, behind the scenes, and interesting links in your mailbox.</p>
-                        <div class="space-y-3">
-                            <livewire:newsletter-inline />
+                        <div id="newsletter" class="space-y-3 scroll-mt-8">
+                            @include('front.pages.home.partials.newsletter-form')
                             <p class="text-sm text-oss-gray-medium">By submitting this form, you acknowledge our <a class="underline hover:text-oss-gray-light transition-colors" href="{{ route('legal.privacy') }}">Privacy Policy</a>.</p>
                         </div>
                     </div>

@@ -2,6 +2,9 @@
 
 use Database\Seeders\DocsSeeder;
 use Illuminate\Testing\TestResponse;
+use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 function assertLivewireAssetsAreLoaded(TestResponse $response): void
 {
@@ -9,6 +12,14 @@ function assertLivewireAssetsAreLoaded(TestResponse $response): void
         ->toContain('Livewire Styles')
         ->toContain('Livewire Scripts')
         ->toContain('data-update-uri');
+}
+
+function assertLivewireAssetsAreNotLoaded(TestResponse $response): void
+{
+    expect($response->getContent())
+        ->not->toContain('Livewire Styles')
+        ->not->toContain('Livewire Scripts')
+        ->not->toContain('data-update-uri');
 }
 
 function assertCommentAndSimpleMdeAssetsAreNotLoaded(TestResponse $response): void
@@ -19,17 +30,36 @@ function assertCommentAndSimpleMdeAssetsAreNotLoaded(TestResponse $response): vo
         ->not->toContain('SimpleMDE');
 }
 
-it('loads livewire assets on a static page for alpine and navigation', function () {
+it('does not load livewire assets on a static page', function () {
     $response = $this->get(route('legal.index'));
 
     $response->assertOk();
 
-    assertLivewireAssetsAreLoaded($response);
+    assertLivewireAssetsAreNotLoaded($response);
     assertCommentAndSimpleMdeAssetsAreNotLoaded($response);
 });
 
-it('loads livewire assets on livewire pages', function () {
+it('does not load livewire assets on the homepage', function () {
     $response = $this->get(route('home'));
+
+    $response->assertOk();
+
+    assertLivewireAssetsAreNotLoaded($response);
+    assertCommentAndSimpleMdeAssetsAreNotLoaded($response);
+    expect($response->getContent())
+        ->toContain('newsletter-subscriptions')
+        ->toContain('fonts/Druk-Bold-Web.woff2')
+        ->not->toContain('newsletter-inline');
+});
+
+it('does not start a session on the homepage', function () {
+    expect(Route::getRoutes()->getByName('home')->excludedMiddleware())
+        ->toContain(StartSession::class)
+        ->toContain(ShareErrorsFromSession::class);
+});
+
+it('loads livewire assets on livewire pages', function () {
+    $response = $this->get(route('newsletter'));
 
     $response->assertOk();
 
@@ -58,7 +88,6 @@ it('does not load comment or simplemde assets on normal pages', function (string
 
     assertCommentAndSimpleMdeAssetsAreNotLoaded($response);
 })->with([
-    'home' => ['/'],
     'docs' => ['/docs'],
     'legal' => ['/legal'],
     'guidelines' => ['/guidelines'],

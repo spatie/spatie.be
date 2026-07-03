@@ -18,6 +18,7 @@ use App\Http\Controllers\DownloadRayV3Controller;
 use App\Http\Controllers\ExternalFeedItemsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MusicController;
+use App\Http\Controllers\NewsletterSubscriptionController;
 use App\Http\Controllers\PackageHeaderController;
 use App\Http\Controllers\RegenerateLicenseKeyController;
 use App\Http\Controllers\ShowReleaseNotesController;
@@ -39,7 +40,9 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
 use App\Http\Middleware\TopSecretMiddleware;
+use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Spatie\MarkdownResponse\Middleware\ProvideMarkdownResponse;
 
 Route::domain('topsecret.'.config('app.url'))->group(function () {
@@ -81,7 +84,16 @@ Route::domain('guidelines.spatie.be')->group(function () {
 
 Route::get('llms.txt', LlmsTxtController::class);
 
-Route::view('/', 'front.pages.home.index')->name('home');
+Route::view('/', 'front.pages.home.index')
+    ->withoutMiddleware([
+        StartSession::class,
+        ShareErrorsFromSession::class,
+    ])
+    ->name('home');
+
+Route::post('newsletter-subscriptions', NewsletterSubscriptionController::class)
+    ->middleware('throttle:5,1')
+    ->name('newsletter.subscribe');
 
 Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
 
