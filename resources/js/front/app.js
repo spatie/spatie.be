@@ -1,8 +1,17 @@
 import '../../css/front/front.css'
 
+import Alpine from 'alpinejs';
 import images from './images';
 import docs from './docs';
 // import { startAsteroids } from './asteroids';
+
+window.Alpine = Alpine;
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => Alpine.start());
+} else {
+    Alpine.start();
+}
 
 window.addEventListener('load', images);
 window.addEventListener('load', docs);
