@@ -9,6 +9,7 @@ use App\Filament\Widgets\Purchases\PurchasesPerProductPerDayWidget;
 use App\Filament\Widgets\Purchases\PurchasesPerPurchasablePerDayWidget;
 use App\Filament\Widgets\PurchasesPerProductWidget;
 use App\Filament\Widgets\StatsOverviewWidget;
+use Filament\Facades\Filament;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
@@ -22,9 +23,17 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Livewire\Livewire;
 
 class AdminPanelProvider extends PanelProvider
 {
+    public function boot(): void
+    {
+        Filament::serving(function (): void {
+            Livewire::forceAssetInjection();
+        });
+    }
+
     public function panel(Panel $panel): Panel
     {
         return $panel
