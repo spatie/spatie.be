@@ -17,14 +17,14 @@
         "alpinejs": "^3.10.5",
         "autoprefixer": "^10.4.19",
         "framer-motion": "^11.0.28",
-        "laravel-vite-plugin": "^2.0",
+        "laravel-vite-plugin": "^3.1",
         "prettier": "^1.10.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "tailwindcss": "^3.4.3",
         "three": "^0.150.0",
         "three-stdlib": "^2.29.6",
-        "vite": "^7.3"
+        "vite": "^8.1"
     },
     "devDependencies": {
         "@types/three": "^0.171.0",
