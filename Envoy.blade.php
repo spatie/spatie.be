@@ -153,8 +153,8 @@ php artisan event:cache
 php artisan guidelines:import
 php artisan schedule-monitor:sync
 
-service {{ $phpFpmService }} restart
-supervisorctl restart all
+sudo service {{ $phpFpmService }} restart
+sudo supervisorctl restart all
 @endtask
 
 @task('cleanOldReleases', ['on' => 'remote'])
