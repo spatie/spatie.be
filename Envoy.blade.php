@@ -10,6 +10,7 @@ $releasesDir = "{$baseDir}/releases";
 $currentDir = "{$baseDir}/current";
 $newReleaseName = date('Ymd-His');
 $newReleaseDir = "{$releasesDir}/{$newReleaseName}";
+$phpFpmService = "php8.5-fpm";
 $user = get_current_user();
 
 function logMessage($message) {
@@ -152,7 +153,7 @@ php artisan event:cache
 php artisan guidelines:import
 php artisan schedule-monitor:sync
 
-sudo service php8.4-fpm restart
+sudo service {{ $phpFpmService }} restart
 sudo supervisorctl restart all
 @endtask
 
@@ -179,7 +180,7 @@ php artisan config:clear
 php artisan config:cache
 php artisan event:cache
 php artisan guidelines:import
-sudo service php8.4-fpm restart
+sudo service {{ $phpFpmService }} restart
 php artisan schedule-monitor:sync
 php artisan horizon:terminate
 sudo supervisorctl restart all
