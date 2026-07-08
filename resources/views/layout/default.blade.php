@@ -1,7 +1,3 @@
-@props([
-    'comments' => false,
-])
-
 <!DOCTYPE html>
 <html lang="{{ $lang ?? 'en' }}">
 
@@ -19,7 +15,7 @@
 
     @stack('head')
 
-    @if($comments)
+    @if($comments ?? false)
         @laravelCommentsLivewireStyles
     @endif
 </head>
@@ -51,7 +47,7 @@
 
     @livewireScripts
 
-    @if($comments)
+    @if($comments ?? false)
         @laravelCommentsLivewireScripts
     @endif
 
