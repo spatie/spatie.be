@@ -5,8 +5,10 @@
 <x-page
     title="Websites & web applications in Laravel & AI"
     body-class="bg-oss-black text-oss-gray font-medium font-pt antialiased mb-0"
+    css-entry="resources/css/front/home.css"
     dark
     footerCta
+    gtm-strategy="delayed"
     :uses-session="false"
 >
     <x-slot name="description">
@@ -29,6 +31,9 @@
         'uDensity' => '1.6',
         'uFrequency' => '4.5',
         'uStrength' => '2.5',
+        'mobilePlaceholder' => Vite::asset('resources/images/front/gradient-placeholder-home-mobile.webp'),
+        'mobilePlaceholderWidth' => 720,
+        'mobilePlaceholderHeight' => 1280,
     ])
 
     @if($isBlackFriday)

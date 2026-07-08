@@ -1,5 +1,3 @@
-import partition from 'lodash/partition';
-
 export default function() {
     let elementsInView = [];
     const navLinks = [...document.querySelectorAll('.docs-submenu-item')];
@@ -47,9 +45,18 @@ export default function() {
     }
 
     function updateElementsInView(entries) {
-        const [elementsEntering, elementsLeaving] = partition(entries, entry => entry.isIntersecting).map(entries =>
-            entries.map(entry => entry.target)
-        );
+        const elementsEntering = [];
+        const elementsLeaving = [];
+
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                elementsEntering.push(entry.target);
+
+                return;
+            }
+
+            elementsLeaving.push(entry.target);
+        });
 
         return [...elementsInView.filter(el => !elementsLeaving.includes(el)), ...elementsEntering];
     }

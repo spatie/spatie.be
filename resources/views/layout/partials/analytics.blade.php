@@ -4,18 +4,13 @@
     @endif
 @endif
 
-
 @php
     $gtmId = app()->environment('production') ? 'GTM-WGCBMG' : 'GTM-TEST';
+    $hasPurchaseEvent = ($usesSession ?? true) && session()->has('sold_purchasable');
+    $gtmStrategy = $hasPurchaseEvent ? 'eager' : ($gtmStrategy ?? 'delayed');
 @endphp
 
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer', '{{$gtmId}}');</script>
-
-@if(($usesSession ?? true) && session()->has('sold_purchasable'))
+@if($hasPurchaseEvent)
     <script>
         @php
             /** @var \App\Domain\Shop\Models\Purchasable|\App\Domain\Shop\Models\Bundle $purchasable */
@@ -46,3 +41,47 @@
         });
     </script>
 @endif
+
+@unless($gtmStrategy === 'disabled')
+    <script>
+        (function(window, document, scriptTag, layerName, id, strategy) {
+            window[layerName] = window[layerName] || [];
+
+            function loadGtm() {
+                if (window.spatieGtmLoaded) return;
+
+                window.spatieGtmLoaded = true;
+                window[layerName].push({
+                    'gtm.start': new Date().getTime(),
+                    event: 'gtm.js',
+                });
+
+                var firstScript = document.getElementsByTagName(scriptTag)[0];
+                var script = document.createElement(scriptTag);
+                var dataLayer = layerName !== 'dataLayer' ? '&l=' + layerName : '';
+
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtm.js?id=' + id + dataLayer;
+                firstScript.parentNode.insertBefore(script, firstScript);
+            }
+
+            if (strategy === 'eager') {
+                loadGtm();
+
+                return;
+            }
+
+            ['pointerdown', 'keydown', 'touchstart', 'scroll'].forEach(function(eventName) {
+                window.addEventListener(eventName, loadGtm, { once: true, passive: true });
+            });
+
+            if ('requestIdleCallback' in window) {
+                window.requestIdleCallback(loadGtm, { timeout: 3500 });
+
+                return;
+            }
+
+            window.setTimeout(loadGtm, 3500);
+        })(window, document, 'script', 'dataLayer', '{{ $gtmId }}', '{{ $gtmStrategy }}');
+    </script>
+@endunless

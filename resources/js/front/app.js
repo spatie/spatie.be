@@ -1,19 +1,31 @@
-import '../../css/front/front.css'
-
 import Alpine from 'alpinejs';
-import images from './images';
-import docs from './docs';
-
 window.Alpine = Alpine;
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => Alpine.start());
-} else {
+async function startAlpine() {
+    if (window.spatieUsesAlpineFocus) {
+        const { default: focus } = await import('@alpinejs/focus');
+
+        Alpine.plugin(focus);
+    }
+
     Alpine.start();
 }
 
-window.addEventListener('load', images);
-window.addEventListener('load', docs);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startAlpine);
+} else {
+    startAlpine();
+}
+
+window.addEventListener('load', () => {
+    if (document.querySelector('[srcset][sizes="1px"]')) {
+        import('./images').then(({ default: images }) => images());
+    }
+
+    if (document.querySelector('.docs-submenu-item')) {
+        import('./docs').then(({ default: docs }) => docs());
+    }
+});
 
 let cleanupAsteroids = null;
 let asteroidsCanvas = null;
@@ -46,28 +58,3 @@ if (document.readyState === 'loading') {
 }
 
 document.addEventListener('livewire:navigated', bootAsteroids);
-
-/*
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-worker.js');
-}
-*/
-
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.getRegistrations().then(function(registrations) {
-        for (let registration of registrations) {
-            registration
-                .unregister()
-                .then(function() {
-                    return self.clients.matchAll();
-                })
-                .then(function(clients) {
-                    clients.forEach(client => {
-                        if (client.url && 'navigate' in client) {
-                            client.navigate(client.url);
-                        }
-                    });
-                });
-        }
-    });
-}

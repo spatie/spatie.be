@@ -13,6 +13,7 @@
     :no-index="$page->alias !== $latestVersion->slug"
     canonical="{{ url('/docs/' . $repository->slug . '/' . $latestVersion->slug . '/' . $page->slug) }}"
     livewire
+    uses-alpine-focus
 >
 
     @if($showBrandedHeader)

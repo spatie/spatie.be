@@ -44,12 +44,21 @@ it('does not load livewire assets on the homepage', function () {
 
     $response->assertOk();
 
+    $content = $response->getContent();
+
     assertLivewireAssetsAreNotLoaded($response);
     assertCommentAndSimpleMdeAssetsAreNotLoaded($response);
-    expect($response->getContent())
+    expect($content)
         ->toContain('newsletter-subscriptions')
         ->toContain('fonts/Druk-Bold-Web.woff2')
-        ->not->toContain('newsletter-inline');
+        ->toContain('requestIdleCallback')
+        ->not->toContain('newsletter-inline')
+        ->not->toContain('resources/css/front/front.css')
+        ->not->toContain('unpkg.com/@alpinejs/focus')
+        ->not->toContain('serviceWorker.getRegistrations');
+
+    expect(file_get_contents(resource_path('views/front/pages/home/index.blade.php')))
+        ->toContain('css-entry="resources/css/front/home.css"');
 });
 
 it('does not start a session on the homepage', function () {

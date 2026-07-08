@@ -1,5 +1,8 @@
 @props([
+    'cssEntry' => 'resources/css/front/front.css',
+    'gtmStrategy' => 'delayed',
     'livewire' => false,
+    'usesAlpineFocus' => false,
 ])
 
 <!DOCTYPE html>
@@ -15,9 +18,13 @@
     @include('layout.partials.favicons')
     @include('feed::links')
 
-    @vite(['resources/js/front/app.js'])
+    @if($usesAlpineFocus)
+        <script>window.spatieUsesAlpineFocus = true;</script>
+    @endif
 
-    @include('layout.partials.analytics')
+    @vite([$cssEntry, 'resources/js/front/app.js'])
+
+    @include('layout.partials.analytics', ['gtmStrategy' => $gtmStrategy])
 
     @stack('head')
 </head>
@@ -33,8 +40,6 @@
     @endif
 
     @stack('scripts')
-
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
 
     {!! schema()->localBusiness() !!}
 </body>
