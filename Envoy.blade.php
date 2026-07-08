@@ -28,10 +28,10 @@ runNpm
 generateAssets
 updateSymlinks
 optimizeInstallation
-#backupDatabase
+backupDatabase
 migrateDatabase
 blessNewRelease
-#cleanOldReleases
+cleanOldReleases
 finishDeploy
 @endmacro
 
@@ -153,8 +153,8 @@ php artisan event:cache
 php artisan guidelines:import
 php artisan schedule-monitor:sync
 
-#sudo service {{ $phpFpmService }} restart
-#sudo supervisorctl restart all
+service {{ $phpFpmService }} restart
+supervisorctl restart all
 @endtask
 
 @task('cleanOldReleases', ['on' => 'remote'])
