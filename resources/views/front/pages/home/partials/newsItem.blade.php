@@ -5,8 +5,6 @@
         @if($newsItem->is_external)
             target="_blank"
             rel="noreferrer noopener"
-        @else
-            wire:navigate.hover
         @endif
     >
         <p class="font-medium text-[20px] leading-tight mb-1 transition-colors group-hover:text-white">{{ $newsItem->title }}</p>

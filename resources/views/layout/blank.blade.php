@@ -1,10 +1,16 @@
+@props([
+    'livewire' => false,
+])
+
 <!DOCTYPE html>
 <html lang="{{ $lang ?? 'en' }}">
 
 <head>
     @include('layout.partials.meta')
 
-    @livewireStyles
+    @if($livewire)
+        @livewireStyles
+    @endif
 
     @include('layout.partials.favicons')
     @include('feed::links')
@@ -22,7 +28,9 @@
 
     <x-impersonate::banner/>
 
-    @livewireScripts
+    @if($livewire)
+        @livewireScripts
+    @endif
 
     @stack('scripts')
 

@@ -1,17 +1,27 @@
+@props([
+    'comments' => false,
+    'livewire' => false,
+    'usesSession' => true,
+])
+
+@php($usesLivewire = $livewire || $comments)
+
 <!DOCTYPE html>
 <html lang="{{ $lang ?? 'en' }}">
 
 <head>
     @include('layout.partials.meta')
 
-    @livewireStyles
+    @if($usesLivewire)
+        @livewireStyles
+    @endif
 
     @include('layout.partials.favicons')
     @include('feed::links')
 
     @vite(['resources/js/front/app.js'])
 
-    @include('layout.partials.analytics')
+    @include('layout.partials.analytics', ['usesSession' => $usesSession])
 
     @stack('head')
 
@@ -34,8 +44,11 @@
     {{-- @include('layout.partials.cta') --}}
 
     {{-- @include('layout.partials.header-alert') --}}
-    @include('layout.partials.header')
-    @include('layout.partials.flash')
+    @include('layout.partials.header', ['usesSession' => $usesSession])
+
+    @if($usesSession)
+        @include('layout.partials.flash')
+    @endif
 
     <main class="flex-grow {{ $mainClass ?? '' }}">
         {{ $slot }}
@@ -43,9 +56,13 @@
 
     @include('layout.partials.footer', ['dark' => $dark ?? false, 'footerCta' => $footerCta ?? false])
 
-    <x-impersonate::banner/>
+    @if($usesSession)
+        <x-impersonate::banner/>
+    @endif
 
-    @livewireScripts
+    @if($usesLivewire)
+        @livewireScripts
+    @endif
 
     @if($comments ?? false)
         @laravelCommentsLivewireScripts

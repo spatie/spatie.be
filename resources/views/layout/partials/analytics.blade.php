@@ -15,7 +15,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer', '{{$gtmId}}');</script>
 
-@if(session()->has('sold_purchasable'))
+@if(($usesSession ?? true) && session()->has('sold_purchasable'))
     <script>
         @php
             /** @var \App\Domain\Shop\Models\Purchasable|\App\Domain\Shop\Models\Bundle $purchasable */
