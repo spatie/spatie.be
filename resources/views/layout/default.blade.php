@@ -1,10 +1,9 @@
-@props([
-    'comments' => false,
-    'livewire' => false,
-    'usesSession' => true,
-])
-
-@php($usesLivewire = $livewire || $comments)
+@php
+    $comments = $comments ?? false;
+    $livewire = $livewire ?? false;
+    $usesSession = $usesSession ?? true;
+    $usesLivewire = $livewire || $comments;
+@endphp
 
 <!DOCTYPE html>
 <html lang="{{ $lang ?? 'en' }}">
