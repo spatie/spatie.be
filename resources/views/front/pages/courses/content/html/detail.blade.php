@@ -35,15 +35,6 @@
                     </div>
                 @endif
 
-                {{-- Comments temporarily disabled during redesign
-                @php
-                    $noCommentsText = 'What are your thoughts on "' . $htmlLesson->title . '"?'
-                @endphp
-
-                <livewire:comments
-                        no-replies
-                        :no-comments-text="$noCommentsText" :model="$htmlLesson->lesson"/>
-                --}}
             </div>
         </div>
     </section>

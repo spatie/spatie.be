@@ -27,16 +27,13 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Paddle\Billable;
 use Laravel\Sanctum\HasApiTokens;
-use Spatie\Comments\Models\Concerns\InteractsWithComments;
-use Spatie\Comments\Models\Concerns\Interfaces\CanComment;
 
-class User extends Authenticatable implements CanComment, FilamentUser
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory;
     use HasApiTokens;
     use Billable;
     use Notifiable;
-    use InteractsWithComments;
 
     protected $hidden = [
         'password', 'remember_token',

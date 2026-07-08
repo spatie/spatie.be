@@ -9,14 +9,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Support\Str;
 use League\CommonMark\CommonMarkConverter;
-use Spatie\Comments\Models\Concerns\HasComments;
 use Spatie\EloquentSortable\Sortable;
 use Spatie\EloquentSortable\SortableTrait;
 
 class Lesson extends Model implements Sortable
 {
     use SortableTrait;
-    use HasComments;
 
     protected $casts = [
         'sort' => 'integer',
