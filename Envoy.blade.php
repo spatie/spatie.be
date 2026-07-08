@@ -2,7 +2,7 @@
 require __DIR__.'/vendor/autoload.php';
 
 $branch = "main";
-$server = "spatie.be";
+$server = "64.226.117.243";
 $userAndServer = 'forge@'. $server;
 $repository = "spatie/spatie.be";
 $baseDir = "/home/forge/spatie.be";
