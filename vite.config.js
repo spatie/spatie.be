@@ -6,6 +6,9 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
+                'resources/css/front/front.css',
+                'resources/css/front/home.css',
+                'resources/images/front/gradient-placeholder-home-mobile.webp',
                 'resources/js/front/app.js',
                 'resources/js/front/gradient.jsx',
                 'resources/css/package-headers.css'

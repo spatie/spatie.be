@@ -1,6 +1,9 @@
 @php
     $comments = $comments ?? false;
+    $cssEntry = $cssEntry ?? 'resources/css/front/front.css';
+    $gtmStrategy = $gtmStrategy ?? 'delayed';
     $livewire = $livewire ?? false;
+    $usesAlpineFocus = $usesAlpineFocus ?? false;
     $usesSession = $usesSession ?? true;
     $usesLivewire = $livewire || $comments;
 @endphp
@@ -18,9 +21,16 @@
     @include('layout.partials.favicons')
     @include('feed::links')
 
-    @vite(['resources/js/front/app.js'])
+    @if($usesAlpineFocus)
+        <script>window.spatieUsesAlpineFocus = true;</script>
+    @endif
 
-    @include('layout.partials.analytics', ['usesSession' => $usesSession])
+    @vite([$cssEntry, 'resources/js/front/app.js'])
+
+    @include('layout.partials.analytics', [
+        'gtmStrategy' => $gtmStrategy,
+        'usesSession' => $usesSession,
+    ])
 
     @stack('head')
 
@@ -102,8 +112,6 @@
             });
         });
     </script>
-    <script defer src="https://unpkg.com/@alpinejs/focus@3.10.5/dist/cdn.min.js"></script>
-
     {!! schema()->localBusiness() !!}
 
     @stack('modals')
