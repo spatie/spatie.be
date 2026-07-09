@@ -4,39 +4,65 @@ namespace App\Services\GitHub;
 
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 class GitHubGraphApi
 {
     public function isSponsor($gitHubUserName): bool
     {
-        $sponsorUserNames = collect($this->getAllSponsors())->pluck('username')->toArray();
+        return $this->determineSponsorStatus($gitHubUserName) ?? false;
+    }
+
+    public function determineSponsorStatus($gitHubUserName): ?bool
+    {
+        $sponsors = $this->getAllSponsors();
+
+        if ($sponsors === null) {
+            return null;
+        }
+
+        $sponsorUserNames = collect($sponsors)->pluck('username')->toArray();
 
         return in_array($gitHubUserName, $sponsorUserNames);
     }
 
-    public function getAllSponsors(): array
+    public function getAllSponsors(): ?array
     {
-        return Cache::remember('sponsors', now()->addMinute(), function () {
-            return array_map(function ($sponsor) {
-                return [
-                    'id' => $sponsor['sponsorEntity']['id'],
-                    'tier_id' => $sponsor['tier']['id'],
-                    'tier_name' => $sponsor['tier']['name'],
-                    'tier_description' => $sponsor['tier']['descriptionHTML'],
-                    'tier_price' => $sponsor['tier']['monthlyPriceInDollars'],
-                    'tier_price_in_cents' => $sponsor['tier']['monthlyPriceInCents'],
-                    'username' => $sponsor['sponsorEntity']['login'],
-                    'name' => $sponsor['sponsorEntity']['name'],
-                    'email' => $sponsor['sponsorEntity']['email'],
-                    'avatar' => $sponsor['sponsorEntity']['avatarUrl'],
-                    'company' => $sponsor['sponsorEntity']['company'] ?? '',
-                    'location' => $sponsor['sponsorEntity']['location'] ?? '',
-                    'website' => $sponsor['sponsorEntity']['websiteUrl'] ?? '',
-                    'created_at' => $sponsor['createdAt'],
-                    'url' => $sponsor['sponsorEntity']['url'],
-                ];
-            }, $this->fetchRawSponsors());
-        });
+        $cachedSponsors = Cache::get('sponsors');
+
+        if (is_array($cachedSponsors)) {
+            return $cachedSponsors;
+        }
+
+        $rawSponsors = $this->fetchRawSponsors();
+
+        if ($rawSponsors === null) {
+            return null;
+        }
+
+        $sponsors = array_map(function ($sponsor) {
+            return [
+                'id' => $sponsor['sponsorEntity']['id'],
+                'tier_id' => $sponsor['tier']['id'],
+                'tier_name' => $sponsor['tier']['name'],
+                'tier_description' => $sponsor['tier']['descriptionHTML'],
+                'tier_price' => $sponsor['tier']['monthlyPriceInDollars'],
+                'tier_price_in_cents' => $sponsor['tier']['monthlyPriceInCents'],
+                'username' => $sponsor['sponsorEntity']['login'],
+                'name' => $sponsor['sponsorEntity']['name'],
+                'email' => $sponsor['sponsorEntity']['email'],
+                'avatar' => $sponsor['sponsorEntity']['avatarUrl'],
+                'company' => $sponsor['sponsorEntity']['company'] ?? '',
+                'location' => $sponsor['sponsorEntity']['location'] ?? '',
+                'website' => $sponsor['sponsorEntity']['websiteUrl'] ?? '',
+                'created_at' => $sponsor['createdAt'],
+                'url' => $sponsor['sponsorEntity']['url'],
+            ];
+        }, $rawSponsors);
+
+        Cache::put('sponsors', $sponsors, now()->addMinute());
+
+        return $sponsors;
     }
 
     public function fetchRawSponsors($runningSponsors = [], $afterCursor = null)
@@ -94,9 +120,22 @@ class GitHubGraphApi
                 EOT,
             ]);
 
-        $sponsors = $response['data']['organization']['sponsorshipsAsMaintainer']['nodes'];
-        $hasNextPage = $response['data']['organization']['sponsorshipsAsMaintainer']['pageInfo']['hasNextPage'];
-        $endCursor = $response['data']['organization']['sponsorshipsAsMaintainer']['pageInfo']['endCursor'];
+        $sponsorships = $response->json('data.organization.sponsorshipsAsMaintainer');
+
+        if (! $response->successful() || ! is_array($sponsorships)) {
+            Log::warning('Could not fetch GitHub sponsors.', [
+                'status' => $response->status(),
+                'message' => $response->json('message'),
+                'errors' => $response->json('errors'),
+            ]);
+
+            return null;
+        }
+
+        $sponsors = $sponsorships['nodes'] ?? [];
+        $pageInfo = $sponsorships['pageInfo'] ?? [];
+        $hasNextPage = $pageInfo['hasNextPage'] ?? false;
+        $endCursor = $pageInfo['endCursor'] ?? null;
 
         $allSponsors = array_merge($runningSponsors, $sponsors);
 
