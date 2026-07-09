@@ -8,6 +8,7 @@ use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
+use Throwable;
 
 class GitHubSocialiteController
 {
@@ -40,11 +41,15 @@ class GitHubSocialiteController
             'is_sponsor' => $isSponsor,
         ]);
 
-        /*
-         * Make sure the user has access to all repositories that
-         * belong to past purchases.
-         */
-        app(RestoreRepositoryAccessAction::class)->execute($user);
+        try {
+            /*
+             * Make sure the user has access to all repositories that
+             * belong to past purchases.
+             */
+            app(RestoreRepositoryAccessAction::class)->execute($user);
+        } catch (Throwable $exception) {
+            report("Could not restore repository access for user `{$user->id}` after GitHub login: {$exception->getMessage()}");
+        }
 
         if (! $user->is_sponsor && ! $user->isSpatieMember()) {
             /*
