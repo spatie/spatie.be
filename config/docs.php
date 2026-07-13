@@ -67,7 +67,8 @@ return [
             'name' => 'laravel-url-ai-transformer',
             'repository' => 'spatie/laravel-url-ai-transformer',
             'branches' => [
-                'main' => 'v1',
+                'main' => 'v2',
+                'v1' => 'v1',
             ],
             'category' => 'Laravel',
         ],
