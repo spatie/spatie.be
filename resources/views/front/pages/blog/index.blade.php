@@ -66,7 +66,7 @@
                         @endif
                     @endforeach
                     @if ($posts->hasMorePages())
-                        <a href="{{ route('blog.all') }}" wire:navigate.hover class="flex w-full items-center justify-center py-6 text-blue text-base bg-link-card-light border border-gray/25 rounded">
+                        <a href="{{ route('blog.all', ['page' => $posts->currentPage() + 1]) }}" wire:navigate.hover class="flex w-full items-center justify-center py-6 text-blue text-base bg-link-card-light border border-gray/25 rounded">
                             View more
                         </a>
                     @endif

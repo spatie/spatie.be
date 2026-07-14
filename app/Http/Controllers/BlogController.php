@@ -35,13 +35,17 @@ class BlogController
     {
         $posts = self::getPosts();
 
-        $highlight = $posts->first();
+        $highlight = null;
 
-        unset($posts[0]);
+        if ($posts->currentPage() === 1) {
+            $highlight = $posts->first();
+
+            unset($posts[0]);
+        }
 
         return view('front.pages.blog.index', [
             'posts' => $posts,
-            'highlight' => $highlight ?? null,
+            'highlight' => $highlight,
         ]);
     }
 
