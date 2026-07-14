@@ -16,13 +16,13 @@ class BlogController
 {
     public function index(): View
     {
-        $posts = self::getPosts(20);
+        $posts = self::getPosts(20, page: 1);
         $highlight = $posts->first();
         unset($posts[0]);
 
         $externalFeedItems = ExternalFeedItem::query()
             ->orderBy('created_at', 'desc')
-            ->paginate(7);
+            ->paginate(perPage: 7, page: 1);
 
         return view('front.pages.blog.index', [
             'posts' => $posts,
@@ -101,11 +101,11 @@ class BlogController
         );
     }
 
-    private static function getPosts(int $perPage = 20): Paginator
+    private static function getPosts(int $perPage = 20, ?int $page = null): Paginator
     {
         return ContentApi::getPosts(
             product: 'spatie',
-            page: request('page', 1),
+            page: $page ?? max(1, request()->integer('page', 1)),
             perPage: $perPage,
         );
     }
