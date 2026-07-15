@@ -27,8 +27,8 @@
             @forelse ($hits as $index => $hit)
                 <li wire:key="{{ $hit->id }}" class="block">
                     <a id="hit-{{ $index }}" :class="selectedHit == {{ $index }} ? 'bg-blue-light text-white' : 'bg-gray-100'" class="block outline-none hover:bg-blue-light focus:text-white hover:text-white group px-4 py-3 rounded" href="{{ $hit->url }}">
-                        <p class="mb-1" x-html="@js($hit->title()).replace(/({{ $query }})/gi, '<strong class=\'underline group-hover:text-white group-focus:text-white'+ (selectedHit == {{ $index }} ? 'text-white' : 'text-blue-light') +'\'>$1</strong>')"></p>
-                        <p class="text-sm" x-html="@js($hit->entry).replace(/({{ $query }})/gi, '<strong class=\'underline group-hover:text-white group-focus:text-white'+ (selectedHit == {{ $index }} ? 'text-white' : 'text-blue-light') +'\'>$1</strong>')"></p>
+                        <p class="mb-1" x-text="@js($hit->title())"></p>
+                        <p class="text-sm [&_em]:font-bold [&_em]:underline" x-html="@js($hit->highlightedSnippet() ?? $hit->snippet())"></p>
                     </a>
                 </li>
             @empty
