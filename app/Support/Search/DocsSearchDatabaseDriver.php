@@ -20,7 +20,7 @@ class DocsSearchDatabaseDriver extends DatabaseDriver
             throw new RuntimeException('The docs search database driver requires MySQL or MariaDB.');
         }
 
-        return new self($connection, new DocsSearchMySqlGrammar);
+        return new self($connection, new DocsSearchMySqlGrammar());
     }
 
     public function search(
