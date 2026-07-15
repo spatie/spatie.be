@@ -22,6 +22,10 @@
         <script>window.spatieUsesAlpineFocus = true;</script>
     @endif
 
+    @if($livewire)
+        <script>window.spatieUsesLivewire = true;</script>
+    @endif
+
     @vite([$cssEntry, 'resources/js/front/app.js'])
 
     @include('layout.partials.analytics', ['gtmStrategy' => $gtmStrategy])

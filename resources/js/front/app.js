@@ -1,5 +1,4 @@
 import Alpine from 'alpinejs';
-window.Alpine = Alpine;
 
 async function startAlpine() {
     if (window.spatieUsesAlpineFocus) {
@@ -11,10 +10,14 @@ async function startAlpine() {
     Alpine.start();
 }
 
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', startAlpine);
-} else {
-    startAlpine();
+if (! window.spatieUsesLivewire) {
+    window.Alpine = Alpine;
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startAlpine);
+    } else {
+        startAlpine();
+    }
 }
 
 window.addEventListener('load', () => {

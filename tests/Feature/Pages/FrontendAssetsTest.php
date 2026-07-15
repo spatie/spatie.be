@@ -11,7 +11,8 @@ function assertLivewireAssetsAreLoaded(TestResponse $response): void
     expect($response->getContent())
         ->toContain('Livewire Styles')
         ->toContain('Livewire Scripts')
-        ->toContain('data-update-uri');
+        ->toContain('data-update-uri')
+        ->toContain('window.spatieUsesLivewire = true;');
 }
 
 function assertLivewireAssetsAreNotLoaded(TestResponse $response): void
@@ -19,7 +20,8 @@ function assertLivewireAssetsAreNotLoaded(TestResponse $response): void
     expect($response->getContent())
         ->not->toContain('Livewire Styles')
         ->not->toContain('Livewire Scripts')
-        ->not->toContain('data-update-uri');
+        ->not->toContain('data-update-uri')
+        ->not->toContain('window.spatieUsesLivewire = true;');
 }
 
 function assertCommentAndSimpleMdeAssetsAreNotLoaded(TestResponse $response): void
