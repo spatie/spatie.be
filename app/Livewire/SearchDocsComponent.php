@@ -43,14 +43,10 @@ class SearchDocsComponent extends Component
         return Search::onIndex($this->indexName())
             ->limit(20)
             ->query($this->query)
-            ->searchParameters(
-                ['filter' => [
-                    "version = '{$version}'",
-                    "repo = '{$repo}'",
-
-                ],
-                ]
-            )
+            ->searchParameters(['filters' => [
+                'version' => $version,
+                'repo' => $repo,
+            ]])
             ->get()
             ->hits;
     }

@@ -14,15 +14,6 @@ class SiteSearchSeeder extends Seeder
             'index_base_name' => 'docs',
             'crawl_url' => 'https://spatie.be.test/docs',
             'enabled' => 1,
-            'extra' => [
-                'meilisearch' => [
-                    // apiKey => '', // for production
-                    'indexSettings' => [
-                        'filterableAttributes' => ['version', 'repo'],
-                        'searchableAttributes' => ['pageTitle', 'description', 'entry'],
-                    ],
-                ],
-            ],
         ]);
     }
 }
