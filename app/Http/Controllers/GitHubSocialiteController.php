@@ -32,13 +32,13 @@ class GitHubSocialiteController
         $gitHubUser = Socialite::driver('github')->stateless()->user();
 
         $user = $this->retrieveUser($gitHubUser);
-        $isSponsor = (new GitHubGraphApi())->determineSponsorStatus($gitHubUser->nickname) ?? $user->is_sponsor;
+        // $isSponsor = (new GitHubGraphApi())->determineSponsorStatus($gitHubUser->nickname) ?? $user->is_sponsor;
 
         $user->update([
             'github_id' => $gitHubUser->id,
             'github_username' => $gitHubUser->nickname,
             'avatar' => $gitHubUser->avatar,
-            'is_sponsor' => $isSponsor,
+            // 'is_sponsor' => $isSponsor,
         ]);
 
         try {
