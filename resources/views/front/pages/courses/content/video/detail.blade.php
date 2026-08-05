@@ -68,25 +68,12 @@
                     @endif
                 </div>
 
-                @if ($lesson->canBeSeenByCurrentUser())
-                    <div class="flex items-center mt-4 text-sm">
-                        <div class="text-oss-gray-dark space-y-1">
-                            @if($video->downloadable)
-                                <div class="flex gap-2">
-                                    <span>Download video:</span>
-                                    <a href="{{ $video->download_hd_url }}" class="underline hover:text-white transition-colors">HD</a>
-                                    <span>|</span>
-                                    <a href="{{ $video->download_sd_url }}" class="underline hover:text-white transition-colors">SD</a>
-                                </div>
-                            @endif
+                @if($lesson->canBeSeenByCurrentUser())
+                    @auth
+                        <div class="flex justify-end mt-4 text-sm">
+                            <livewire:lesson-completed-button :lesson="$video->lesson"/>
                         </div>
-
-                        @if(auth()->user())
-                            <div class="ml-auto">
-                                <livewire:lesson-completed-button :lesson="$video->lesson"/>
-                            </div>
-                        @endif
-                    </div>
+                    @endauth
                 @endif
 
                 <h2 class="font-druk uppercase text-[40px] leading-[0.9] mb-8 mt-12 text-white">{{ $lesson->title }}</h2>
