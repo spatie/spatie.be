@@ -17,6 +17,8 @@ class DocsSearchProfile extends DefaultSearchProfile
 
     public function configureCrawler(Crawler $crawler): void
     {
-        $crawler->concurrency(5);
+        // Non-latest docs versions are served with a `noindex` robots meta tag for SEO.
+        // Respecting it here would keep them out of our own docs search as well.
+        $crawler->concurrency(5)->ignoreRobots();
     }
 }
