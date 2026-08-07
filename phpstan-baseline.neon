@@ -133,12 +133,6 @@ parameters:
 			path: app/Filament/Resources/Content/RepositoryResource.php
 
 		-
-			message: '#^Call to an undefined method Illuminate\\Database\\Eloquent\\Model\:\:commentableName\(\)\.$#'
-			identifier: method.notFound
-			count: 1
-			path: app/Filament/Resources/Courses/CommentResource.php
-
-		-
 			message: '#^Cannot access property \$licenses on Illuminate\\Database\\Eloquent\\Model\|int\|string\.$#'
 			identifier: property.nonObject
 			count: 2
