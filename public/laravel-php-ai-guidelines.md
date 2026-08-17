@@ -128,6 +128,40 @@ $condition
 
 - **String interpolation** over concatenation:
 
+## Method Chaining
+
+Once there's a line break in chained method calls, ensure further chains start on a new line.
+
+The most straightforward rule is to put each `->` on a new line:
+
+```php
+$availability = $ticketShop
+    ->orders()
+    ->getEventProductAvailability(
+        new GetEventProductAvailabilityParams(
+            productCode: $this->productCode,
+            eventId: $eventId,
+        ),
+    );
+```
+
+You may also have all `->`'s on a single line, which often looks more natural when accessing a property:
+
+```php
+$user->team->update([
+    'billing_plan' => BillingPlan::Pro,
+    'billing_frequency' => BillingFrequency::Annual,
+]);
+```
+
+Never mix both:
+
+```php
+$user->projects()->where('updated_at', '<=', now()->subMonth())
+    ->where('archived', false)
+    ->update(['archived' => true]);
+```
+
 ## Enums
 
 - Use PascalCase for enum values
