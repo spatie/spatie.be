@@ -11,6 +11,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Resources\Resource;
@@ -46,6 +47,11 @@ class AdResource extends Resource
                     ->columnStart(1)
                     ->required()
                     ->url(),
+                Select::make('banner_component')
+                    ->label('Banner')
+                    ->helperText('Shown on the docs pages of repositories using this ad. Leave empty to show a random banner.')
+                    ->options(Ad::availableBannerComponents())
+                    ->columnStart(1),
                 Toggle::make('active')
                     ->columnStart(1),
             ]);
@@ -63,6 +69,9 @@ class AdResource extends Resource
                     ->openUrlInNewTab()
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('banner_component')
+                    ->label('Banner')
+                    ->placeholder('random'),
                 BooleanColumn::make('active'),
             ])
             ->filters([

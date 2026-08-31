@@ -146,8 +146,6 @@ class DocsController
 
         $showBrandedHeader = $repositoryModel && isset($repositoryModel->logo_svg) && isset($repositoryModel->accent_color);
 
-        ray('show branded header?', $showBrandedHeader, $repositoryModel);
-
         $tableOfContents = $this->extractTableOfContents($page->contents);
 
         return view('front.pages.docs.show', compact(

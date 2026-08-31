@@ -192,7 +192,7 @@
                         </ul>
                     @endif
 
-                    @include('components.banners.randomBanner', ['repository' => $repository])
+                    @include('components.banners.randomBanner', ['repositoryModel' => $repositoryModel])
 
                     <a href="{{ $alias->githubUrl }}/blob/{{$alias->branch}}/docs/{{ $page->slug }}.md" target="_blank"
                        class="text-sm inline-flex items-center gap-3 mt-10 hover:underline">
