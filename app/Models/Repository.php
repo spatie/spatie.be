@@ -151,6 +151,11 @@ class Repository extends Model implements HasMedia
         );
     }
 
+    public function adBannerView(): ?string
+    {
+        return $this->ad?->bannerView();
+    }
+
     public function hasAdWithImage(): bool
     {
         if (! $ad = $this->ad) {
