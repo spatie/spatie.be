@@ -40,7 +40,7 @@
             </div>
             <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
                 <h3 class="font-bold text-white text-xl">AI coding agents</h3>
-                <p>We use AI to generate code throughout the whole development cycle: features, tests, debugging and refactoring. Our <a class="underline transition-colors hover:text-white" href="{{ url('guidelines') }}">coding guidelines</a> make sure the output matches our standards and your project.</p>
+                <p>We use AI to generate code throughout the whole development cycle: features, tests, debugging and refactoring. Our <a class="underline transition-colors hover:text-white" href="{{ url('guidelines') }}">coding guidelines</a> make sure the output matches our standards and your project. We run them in <a class="underline transition-colors hover:text-white" href="https://runbloom.app" target="_blank">Bloom</a>, the Mac app we built for it.</p>
             </div>
         </div>
 
