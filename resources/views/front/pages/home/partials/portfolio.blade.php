@@ -16,16 +16,16 @@
             <p class="leading-snug text-oss-gray-dark mb-0.5">We <a class="underline transition hover:text-white" href="/newsletter">have a quarterly(-ish) newsletter</a> with product updates, what's going on behind the scenes, and interesting links.</p>
         </x-slot:aside>
 
-        <p class="text-xl">
+        <p class="text-xl mb-8">
             We use Laravel for almost all our web development projects, and it's the foundation for many of our products too. Our own products run on the same stack we build for clients, so we know firsthand what it takes to keep software running in production.
         </p>
         <span class="inline-flex gap-2 underline underline-offset-4 decoration-white/25 transition hover:decoration-white"><a href="/products">Our products &amp; courses</a><span class="icon">{{ app_svg('icons/far-angle-right') }}</span></span>
     </x-oss-content>
 
-    <div class="grid md:grid-cols-3 border border-white/10 rounded-xl max-w-screen-xl mx-auto mt-16 md:mt-20 divide-y md:divide-y-0 divide-white/10">
+    <div class="grid md:grid-cols-3 border border-solid border-white/10 rounded-xl max-w-screen-xl mx-auto mt-16 md:mt-20">
 
-        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9">
-            <a class="flex h-12 items-center" href="https://mailcoach.app" target="_blank">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 border-dotted border-white/10 md:border-b">
+            <a class="inline-flex h-12 items-center" href="https://mailcoach.app" target="_blank">
                 <img class="h-[40px]" src="/images/mailcoach_logo_white.svg" alt="Mailcoach">
             </a>
             <p>Email marketing platform for sending campaigns, automations and transactional emails. Available as a hosted service or a self-hosted Laravel package.</p>
@@ -35,8 +35,8 @@
             </div>
         </div>
 
-        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 md:border-l md:border-white/10">
-            <a class="flex h-12 items-center" href="https://flareapp.io" target="_blank">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 border-dotted border-white/10 border-t md:border-t-0 md:border-l-2 md:border-b">
+            <a class="inline-flex h-12 items-center" href="https://flareapp.io" target="_blank">
                 <img class="h-[44px]" src="/images/flare_logo_white.svg" alt="Flare">
             </a>
             <p>Flare lets Laravel &amp; PHP teams keep track of everything that's happening in their apps, with error tracking, performance monitoring, and logging, all in one place.</p>
@@ -45,18 +45,18 @@
             </div>
         </div>
 
-        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 md:border-l md:border-white/10">
-            <a class="flex h-12 items-center" href="https://there-there.app/" target="_blank">
-                <img class="h-[38px]" src="/images/tt_logo.svg" alt="There There">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 border-dotted border-white/10 border-t md:border-t-0 md:border-l-2 md:border-b">
+            <a class="inline-flex h-12 items-center" href="https://there-there.app/" target="_blank">
+                <img class="h-[28px]" src="/images/tt_logo.svg" alt="There There">
             </a>
-            <p>A helpdesk where AI surfaces context and drafts replies, so your team responds faster and every customer gets a thoughtful answer.</p>
+            <p> There There helps you close tickets faster by putting your knowledge and resolved tickets to work on every email and chat message.</p>
             <div class="">
-                <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://there-there.app/" target="_blank">Apply for early access</a>
+                <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://there-there.app/" target="_blank">Try There There for free</a>
             </div>
         </div>
 
-        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 md:border-t md:border-white/10">
-            <a class="flex h-12 items-center" href="https://myray.app" target="_blank">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 border-dotted border-white/10 border-t md:border-t-0">
+            <a class="inline-flex h-12 items-center" href="https://myray.app" target="_blank">
                 <img class="h-[25px]" src="/images/ray_logo_gradient.svg" alt="Ray">
             </a>
             <p>A desktop debugging app for Laravel, PHP and JavaScript. All the speed of dump() and console.log(), but with a dedicated interface to keep your output organized.</p>
@@ -65,8 +65,8 @@
             </div>
         </div>
 
-        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 md:border-l md:border-t md:border-white/10">
-            <a class="flex h-12 items-center" href="https://runbloom.app" target="_blank">
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 border-dotted border-white/10 border-t md:border-t-0 md:border-l-2">
+            <a class="inline-flex h-12 items-center" href="https://runbloom.app" target="_blank">
                 <img class="h-[40px]" src="/images/bloom_logo_white.svg" alt="Bloom">
             </a>
             <p>A native Mac app that runs coding agents like Claude Code and Codex in parallel, each in its own git worktree. Read the diffs, leave notes on the lines that worry you, and merge the ones that got it right.</p>
@@ -74,6 +74,8 @@
                 <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://runbloom.app" target="_blank">Download for macOS</a>
             </div>
         </div>
+
+        <div class="p-6 space-y-6 text-lg text-oss-gray-medium md:p-9 border-dotted border-white/10 border-t hidden md:block md:border-t-0 md:border-l-2"></div>
 
         {{-- <x-oss-link-card title="Flare" target="_blank" href="https://flareapp.io" link="Discover">
             Flare is the best error tracking service for Laravel, PHP and JavaScript. Whenever an error happens in your production code, we'll notify you.
