@@ -69,7 +69,7 @@
             <a class="inline-flex h-12 items-center" href="https://runbloom.app" target="_blank">
                 <img class="h-[40px]" src="/images/bloom_logo_white.svg" alt="Bloom">
             </a>
-            <p>A native Mac app that runs coding agents like Claude Code and Codex in parallel, each in its own git worktree. Read the diffs, leave notes on the lines that worry you, and merge the ones that got it right.</p>
+            <p> Run Claude Code and Codex side by side on your Mac. Give each task its own workspace, review the changes, and open a pull request from the same window.</p>
             <div class="">
                 <a class="underline underline-offset-4 decoration-white/25 transition hover:decoration-white" href="https://runbloom.app" target="_blank">Download for macOS</a>
             </div>
