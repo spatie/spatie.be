@@ -1,7 +1,7 @@
 ---
 title: Open source
 description: Sharing is caring.
-weight: 4
+weight: 6
 ---
 
 ## Handling feedback

@@ -17,10 +17,11 @@ class GuidelinesController
     public function show(string $slug, Guidelines $guidelines): View
     {
         $page = $guidelines->page($slug);
-        $pages = $guidelines->pages()->sortBy('weight')->values();
-        $tableOfContents = $this->extractTableOfContents($page->contents);
 
         abort_unless($page, 404);
+
+        $pages = $guidelines->pages()->sortBy('weight')->values();
+        $tableOfContents = $this->extractTableOfContents($page->contents);
 
         return view('front.pages.guidelines.show', compact('page', 'pages', 'tableOfContents'));
     }
