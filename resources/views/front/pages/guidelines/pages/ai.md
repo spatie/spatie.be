@@ -1,7 +1,7 @@
 ---
 title: Using our guidelines with AI
 description: Agents can have style too.
-weight: 8
+weight: 9
 ---
 
 ## Introduction
