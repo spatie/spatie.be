@@ -20,6 +20,7 @@ use App\Domain\Shop\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
 use Spatie\LaravelUrlAiTransformer\Commands\TransformUrlsCommand;
 use Spatie\ScheduleMonitor\Models\MonitoredScheduledTaskLogItem;
 use Spatie\SiteSearch\Commands\CrawlCommand;
@@ -36,6 +37,11 @@ class Kernel extends ConsoleKernel
         $schedule->command(RegenerateLeakedKeysCommand::class)->graceTimeInMinutes(30)->runInBackground()->hourly();
 
         $schedule->command(CrawlCommand::class)->hourlyAt(30);
+
+        $schedule->call(fn () => DB::select('OPTIMIZE TABLE site_search_documents'))
+            ->name('optimize-docs-search')
+            ->dailyAt('02:00')
+            ->withoutOverlapping();
 
         $schedule->command('model:prune', ['--model' => MonitoredScheduledTaskLogItem::class])->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
