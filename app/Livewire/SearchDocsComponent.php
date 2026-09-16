@@ -37,7 +37,7 @@ class SearchDocsComponent extends Component
     {
         $this->resetErrorBag('query');
 
-        if (strlen($this->query) < 3) {
+        if (mb_strlen($this->query) < 3) {
             return collect();
         }
 
