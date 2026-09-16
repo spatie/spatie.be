@@ -21,6 +21,7 @@ use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Illuminate\Support\Facades\DB;
+use RuntimeException;
 use Spatie\LaravelUrlAiTransformer\Commands\TransformUrlsCommand;
 use Spatie\ScheduleMonitor\Models\MonitoredScheduledTaskLogItem;
 use Spatie\SiteSearch\Commands\CrawlCommand;
@@ -38,7 +39,15 @@ class Kernel extends ConsoleKernel
 
         $schedule->command(CrawlCommand::class)->hourlyAt(30);
 
-        $schedule->call(fn () => DB::select('OPTIMIZE TABLE site_search_documents'))
+        $schedule->call(function () {
+            $results = DB::selectFromWriteConnection('OPTIMIZE TABLE site_search_documents');
+
+            foreach ($results as $result) {
+                if (strtolower($result->Msg_type) === 'error') {
+                    throw new RuntimeException("Docs search optimization failed: {$result->Msg_text}");
+                }
+            }
+        })
             ->name('optimize-docs-search')
             ->dailyAt('02:00')
             ->withoutOverlapping();
