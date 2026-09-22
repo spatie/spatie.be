@@ -23,6 +23,8 @@ class Schema
                 'https://www.linkedin.com/company/spatie',
                 'https://x.com/spatie_be',
                 'https://github.com/spatie',
+                'https://bsky.app/profile/spatie.be',
+                'https://www.instagram.com/spatie_be',
             ])
             ->logo('https://spatie.be/images/spatie.png')
             ->image('https://spatie.be/images/og-image.jpg')

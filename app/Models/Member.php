@@ -44,13 +44,21 @@ class Member extends Model
 
     public function schema(): Person
     {
+        $profiles = collect([
+            $this->twitter ? "https://x.com/{$this->twitter}" : null,
+            $this->github ? "https://github.com/{$this->github}" : null,
+        ])
+            ->filter()
+            ->values()
+            ->all();
+
         return Schema::person()
             ->name("{$this->first_name} {$this->last_name}")
             ->jobTitle($this->role)
-            ->url(array_values(array_filter([
-                $this->website,
-                $this->twitter ? "https://twitter.com/{$this->twitter}" : null,
-            ])))
+            ->if($this->website, function (Person $person): void {
+                $person->url($this->website);
+            })
+            ->sameAs($profiles)
             ->if($this->public_email, function ($person): void {
                 $person->email($this->email);
             });
