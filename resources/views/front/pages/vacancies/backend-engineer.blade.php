@@ -21,10 +21,7 @@
             "title": "Backend Engineer"
             , "employmentType": "FULL_TIME"
             , "hiringOrganization": {
-                "@type": "Organization"
-                , "name": "Spatie"
-                , "sameAs": "https://spatie.be"
-                , "logo": "http://spatie.be/images/spatie.png"
+                "@id": "https://spatie.be/#organization"
             }
             , "jobLocation": {
                 "@type": "Place"
