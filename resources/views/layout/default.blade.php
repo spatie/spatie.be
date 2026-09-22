@@ -116,7 +116,7 @@
             });
         });
     </script>
-    {!! schema()->localBusiness() !!}
+    {!! schema()->organization() !!}
 
     @stack('modals')
 

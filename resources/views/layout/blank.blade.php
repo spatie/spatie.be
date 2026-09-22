@@ -45,6 +45,6 @@
 
     @stack('scripts')
 
-    {!! schema()->localBusiness() !!}
+    {!! schema()->organization() !!}
 </body>
 </html>
