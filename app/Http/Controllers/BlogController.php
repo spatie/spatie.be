@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\ExternalFeedItem;
+use App\Models\Member;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Spatie\ContentApi\ContentApi;
+use Spatie\ContentApi\Data\Author;
 use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
 
@@ -75,6 +77,33 @@ class BlogController
             'post' => $post,
             'content' => $content,
             'otherPosts' => $otherPosts,
+            'authorMembers' => Member::all()->keyBy(function (Member $member) {
+                return $member->author_gravatar_url;
+            }),
+        ]);
+    }
+
+    public function author(string $slug): View
+    {
+        $member = Member::all()->first(function (Member $member) use ($slug) {
+            return $member->author_slug === $slug;
+        });
+
+        abort_if(is_null($member), 404);
+
+        $posts = self::getPosts(100, page: 1)
+            ->filter(function (Post $post) use ($member) {
+                return $post->authors->contains(function (Author $author) use ($member) {
+                    return $member->isAuthor($author);
+                });
+            });
+
+        abort_if($posts->isEmpty(), 404);
+
+        return view('front.pages.blog.author', [
+            'member' => $member,
+            'highlight' => $posts->first(),
+            'posts' => $posts->skip(1),
         ]);
     }
 

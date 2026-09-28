@@ -61,6 +61,7 @@ Route::feeds();
 
 Route::get('blog', [BlogController::class, 'index'])->name('blog');
 Route::get('blog/all', [BlogController::class, 'all'])->name('blog.all');
+Route::get('blog/authors/{slug}', [BlogController::class, 'author'])->name('blog.author');
 Route::get('blog/{slug}', [BlogController::class, 'detail'])->name('blog.show');
 Route::get('team-products', ExternalFeedItemsController::class)->name('external-feed-items');
 
