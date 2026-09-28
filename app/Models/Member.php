@@ -51,7 +51,7 @@ class Member extends Model
 
     public function getAuthorGravatarUrlAttribute(): string
     {
-        $hash = md5(strtolower(trim($this->email)));
+        $hash = md5($this->email);
 
         return "https://www.gravatar.com/avatar/{$hash}";
     }

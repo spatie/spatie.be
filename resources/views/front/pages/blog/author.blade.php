@@ -40,43 +40,7 @@
         </ul>
     </header>
 
-    <article class="wrapper-lg px-7 sm:px-16 mt-12 md:mt-16">
-        <a href="{{ route('blog.show', $highlight->slug) }}" wire:navigate.hover class="group flex flex-col md:flex-row gap-8 md:gap-24">
-            <div class="flex-shrink-0 self-start sm:w-[455px] sm:h-[455px] rounded-8 overflow-hidden bg-oss-green-pale">
-                @if ($highlight->header_image)
-                    <picture>
-                        <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
-                        <source srcset="
-                            @foreach ($highlight->header_image_presets as $image)
-                            https://content.spatie.be{{ $image->url }} {{ $image->width }}w{{ $loop->last ? '' : ',' }}
-                            @endforeach
-                        ">
-                        <img
-                            src="{{ $highlight->header_image }}"
-                            alt="{{ $highlight->title }}"
-                            class="size-full transition duration-300 object-cover group-hover:scale-[1.0125]"
-                        >
-                    </picture>
-                @endif
-            </div>
-            <div class="sm:pt-24 flex flex-col gap-6 sm:gap-9">
-                <p class="flex items-center gap-3 text-sm">
-                    <span class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5 leading-none">
-                        Latest by {{ $member->name() }}
-                    </span>
-                    <time datetime="{{ $highlight->date->format('Y-m-d') }}">
-                        {{ $highlight->date->format('F d, Y') }}
-                    </time>
-                </p>
-                <x-headers.h2 class="transition duration-150 text-balance group-hover:text-oss-spatie-blue">
-                    {{ $highlight->title }}
-                </x-headers.h2>
-                <div>
-                    {!! $highlight->summary !!}
-                </div>
-            </div>
-        </a>
-    </article>
+    <x-blog.highlight :post="$highlight" class="mt-12 md:mt-16" />
 
     @if($posts->isNotEmpty())
         <div class="wrapper-lg px-7 sm:px-16 mt-16 lg:mt-24">

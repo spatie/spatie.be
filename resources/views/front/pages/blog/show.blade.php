@@ -63,7 +63,7 @@
                                 <img src="{{ $author->gravatar_url }}" alt="" class="flex-shrink-0 size-6 rounded-full bg-indigo-50">
                                 <div class="text-base leading-none text-oss-royal-blue font-bold">
                                     @if($member)
-                                        <a href="{{ route('blog.author', $member->author_slug) }}" class="hover:text-oss-spatie-blue">
+                                        <a href="{{ route('blog.author', $member->author_slug) }}" wire:navigate.hover class="hover:text-oss-spatie-blue">
                                             {{ $member->full_name }}
                                         </a>
                                     @else

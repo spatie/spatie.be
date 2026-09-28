@@ -13,49 +13,7 @@
     </header>
 
     @if($highlight)
-        <article class="wrapper-lg px-7 sm:px-16 mt-8">
-            <a href="{{ route('blog.show', $highlight->slug) }}" class="group flex flex-col md:flex-row gap-8 md:gap-24">
-                <div href="{{ route('blog.show', $highlight->slug) }}" class="flex-shrink-0 self-start sm:w-[455px] sm:h-[455px] rounded-8 overflow-hidden ">
-                    @if ($highlight->header_image)
-                        <picture>
-                            <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
-                            <source srcset="
-                                @foreach ($highlight->header_image_presets as $image)
-                                https://content.spatie.be{{ $image->url }} {{ $image->width }}w{{ $loop->last ? '' : ',' }}
-                                @endforeach
-                            ">
-                            <img
-                                src="{{ $highlight->header_image }}"
-                                alt="{{ $highlight->title }}"
-                                class="transition duration-300 object-cover group-hover:scale-[1.0125]"
-                            >
-                        </picture>
-                    @else
-                        <div class="w-[220px] h-[220px] sm:w-[440px] sm:h-[440px] bg-oss-green-pale rounded-8"></div>
-                    @endif
-                </div>
-                <div href="{{ route('blog.show', $highlight->slug) }}" class="sm:pt-24 flex flex-col gap-6 sm:gap-9">
-                    <p class="flex items-center gap-3 text-sm">
-                        <span class="bg-oss-green-pale font-semibold rounded-8 px-2 py-1.5 leading-none">
-                            Latest post
-                        </span>
-                        <time datetime="{{ $highlight->date->format('Y-m-d') }}">
-                            {{ $highlight->date->format('F d, Y') }}
-                        </time>
-                        @if ($highlight->authors->isNotEmpty())
-                            <span aria-hidden="true" class="opacity-50">·</span>
-                            <span>{{ $highlight->authors->pluck('name')->join(', ', ' & ') }}</span>
-                        @endif
-                    </p>
-                    <x-headers.h2 class="transition duration-150 text-balance group-hover:text-oss-spatie-blue">
-                        {{ $highlight->title }}
-                    </x-headers.h2>
-                    <div>
-                        {!! $highlight->summary !!}
-                    </div>
-                </div>
-            </a>
-        </article>
+        <x-blog.highlight :post="$highlight" class="mt-8" />
         <hr class="sm:hidden mx-3 my-8 h-px bg-oss-gray-medium">
     @endif
 
