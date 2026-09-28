@@ -42,6 +42,10 @@
                         <time datetime="{{ $highlight->date->format('Y-m-d') }}">
                             {{ $highlight->date->format('F d, Y') }}
                         </time>
+                        @if ($highlight->authors->isNotEmpty())
+                            <span aria-hidden="true" class="opacity-50">·</span>
+                            <span>{{ $highlight->authors->pluck('name')->join(', ', ' & ') }}</span>
+                        @endif
                     </p>
                     <x-headers.h2 class="transition duration-150 text-balance group-hover:text-oss-spatie-blue">
                         {{ $highlight->title }}
