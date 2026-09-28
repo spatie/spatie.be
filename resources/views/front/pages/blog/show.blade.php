@@ -7,6 +7,10 @@
     footerCta
     livewire
 >
+    @push('head')
+        {!! schema()->blogPost($post, $authorMembers) !!}
+    @endpush
+
     @if($post->og_image)
         <x-og-image :url="$post->og_image" />
     @else
@@ -52,23 +56,32 @@
                 <div class="wrapper-sm px-6">
                     <aside class="mb-10 flex flex-col gap-3">
                         @foreach ($post->authors->sortBy('name') as $author)
+                            @php
+                                $member = $authorMembers->get($author->gravatar_url);
+                            @endphp
                             <div class="flex items-center gap-2">
                                 <img src="{{ $author->gravatar_url }}" alt="" class="flex-shrink-0 size-6 rounded-full bg-indigo-50">
                                 <div class="text-base leading-none text-oss-royal-blue font-bold">
-                                    @php
-                                        echo match ($author->name) {
-                                            'Alex' => 'Alex Vanderbist',
-                                            'Freek' => 'Freek Van der Herten',
-                                            'Jef' => 'Jef Van der Voort',
-                                            'Niels' => 'Niels Vanpachtenbeke',
-                                            'Ruben' => 'Ruben Van Assche',
-                                            'Sebastian' => 'Sebastian De Deyne',
-                                            'Sébastien' => 'Sébastien Henau',
-                                            'Tim' => 'Tim Van Dijck',
-                                            'Wouter' => 'Wouter Brouwers',
-                                            default => $author->name,
-                                        };
-                                    @endphp
+                                    @if($member)
+                                        <a href="{{ route('blog.author', $member->author_slug) }}" class="hover:text-oss-spatie-blue">
+                                            {{ $member->full_name }}
+                                        </a>
+                                    @else
+                                        @php
+                                            echo match ($author->name) {
+                                                'Alex' => 'Alex Vanderbist',
+                                                'Freek' => 'Freek Van der Herten',
+                                                'Jef' => 'Jef Van der Voort',
+                                                'Niels' => 'Niels Vanpachtenbeke',
+                                                'Ruben' => 'Ruben Van Assche',
+                                                'Sebastian' => 'Sebastian De Deyne',
+                                                'Sébastien' => 'Sébastien Henau',
+                                                'Tim' => 'Tim Van Dijck',
+                                                'Wouter' => 'Wouter Brouwers',
+                                                default => $author->name,
+                                            };
+                                        @endphp
+                                    @endif
                                 </div>
                             </div>
                         @endforeach

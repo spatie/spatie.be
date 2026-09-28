@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
+use Spatie\ContentApi\Data\Author;
 use Spatie\SchemaOrg\Person;
 use Spatie\SchemaOrg\Schema;
 
@@ -37,6 +39,28 @@ class Member extends Model
         return strtolower($this->first_name);
     }
 
+    public function getFullNameAttribute(): string
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
+
+    public function getAuthorSlugAttribute(): string
+    {
+        return Str::slug($this->full_name);
+    }
+
+    public function getAuthorGravatarUrlAttribute(): string
+    {
+        $hash = md5(strtolower(trim($this->email)));
+
+        return "https://www.gravatar.com/avatar/{$hash}";
+    }
+
+    public function isAuthor(Author $author): bool
+    {
+        return $author->gravatar_url === $this->author_gravatar_url;
+    }
+
     public function getWebsiteDomainAttribute(): string
     {
         return parse_url($this->website)['host'] ?? '';
@@ -45,7 +69,7 @@ class Member extends Model
     public function schema(): Person
     {
         return Schema::person()
-            ->name("{$this->first_name} {$this->last_name}")
+            ->name($this->full_name)
             ->jobTitle($this->role)
             ->url(array_values(array_filter([
                 $this->website,

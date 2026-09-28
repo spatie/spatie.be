@@ -17,6 +17,9 @@
             @if($member->twitter)
                 <li><a class="underline text-oss-spatie-blue transition-colors hover:text-oss-royal-blue" href="https://x.com/{{ $member->twitter }}">{{ '@'.$member->twitter }}</a></li>
             @endif
+            @if($member->github)
+                <li><a class="underline text-oss-spatie-blue transition-colors hover:text-oss-royal-blue" href="https://github.com/{{ $member->github }}">github.com/{{ $member->github }}</a></li>
+            @endif
             @if($member->website)
                 <li><a class="underline text-oss-spatie-blue transition-colors hover:text-oss-royal-blue" href="{{ $member->website }}">{{ $member->website_domain }}</a></li>
             @endif
