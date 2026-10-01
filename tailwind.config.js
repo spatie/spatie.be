@@ -236,10 +236,15 @@ export default {
                     '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
                     '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
                 },
+                'soft-pulse': {
+                    '0%, 100%': { transform: 'scale(1)', opacity: '0.7' },
+                    '50%': { transform: 'scale(2.2)', opacity: '0.15' },
+                },
             },
             animation: {
                 wiggle: 'wiggle 0.15s ease-in-out infinite',
                 popin: 'popin 0.2s 1 ease-in-out forwards',
+                'soft-pulse': 'soft-pulse 2.4s ease-in-out infinite',
             },
 
             maxWidth: {
