@@ -5,7 +5,7 @@ use App\Models\Ad;
 use App\Models\Repository;
 
 it('can randomize ads on git hub repositories', function () {
-    $ads = collect([4, 5, 7, 9])->map(fn ($id) => Ad::factory()->create(['id' => $id]));
+    $ads = collect([14, 16, 17])->map(fn ($id) => Ad::factory()->active()->create(['id' => $id]));
 
     $repositories = Repository::factory()->count(10)->create([
         'ad_should_be_randomized' => true,
@@ -18,10 +18,10 @@ it('can randomize ads on git hub repositories', function () {
     });
 });
 
-it('will only use ads with the hardcoded ids', function () {
-    Ad::factory()->count(10)->create();
+it('will only use active ads', function () {
+    Ad::factory()->count(10)->inactive()->create();
 
-    $targetAd = Ad::factory()->create(['id' => 4]);
+    $targetAd = Ad::factory()->active()->create();
 
     $repositories = Repository::factory()->count(10)->create([
         'ad_should_be_randomized' => true,
@@ -35,7 +35,7 @@ it('will only use ads with the hardcoded ids', function () {
 });
 
 it('will not update a repository whose ad should not be randomized', function () {
-    collect([4, 5, 7, 9])->each(fn ($id) => Ad::factory()->create(['id' => $id]));
+    collect([14, 16, 17])->each(fn ($id) => Ad::factory()->active()->create(['id' => $id]));
 
     $repositories = Repository::factory()->count(10)->create([
         'ad_should_be_randomized' => false,
@@ -48,8 +48,8 @@ it('will not update a repository whose ad should not be randomized', function ()
     });
 });
 
-it('does nothing when none of the hardcoded ad ids exist', function () {
-    Ad::factory()->count(10)->create();
+it('does nothing when no ads are active', function () {
+    Ad::factory()->count(10)->inactive()->create();
 
     $repositories = Repository::factory()->count(10)->create([
         'ad_should_be_randomized' => true,
