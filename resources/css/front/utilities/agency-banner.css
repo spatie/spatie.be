@@ -1,0 +1,118 @@
+.agency-banner {
+    --agency-banner-glow: rgb(90 69 224 / 0.75);
+
+    @apply flex w-full flex-col gap-4 overflow-hidden rounded-lg bg-oss-black p-5 text-white;
+    container-type: inline-size;
+    background-image: radial-gradient(farthest-corner at 100% 0%, var(--agency-banner-glow) 0%, transparent 62%),
+        linear-gradient(rgb(255 255 255 / 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgb(255 255 255 / 0.07) 1px, transparent 1px);
+    background-size: 100% 100%, 46px 46px, 46px 46px;
+    background-position: 0 0, -1px -1px, -1px -1px;
+}
+
+.agency-banner-green {
+    --agency-banner-glow: rgb(47 163 107 / 0.7);
+}
+
+.agency-banner-yellow {
+    --agency-banner-glow: rgb(184 150 42 / 0.7);
+}
+
+.agency-banner-body {
+    @apply grid gap-4;
+}
+
+.agency-banner-title {
+    @apply font-druk font-bold uppercase;
+    font-size: min(52px, 27cqi);
+    line-height: 0.9;
+}
+
+.agency-banner-text {
+    @apply text-sm leading-snug text-[#C9C7CF];
+}
+
+.agency-banner-logos {
+    @apply flex gap-3.5 text-[#A8A294];
+}
+
+.agency-banner-logos > span {
+    @apply h-[26px] w-[26px];
+}
+
+.agency-banner-logos svg {
+    @apply h-full w-full;
+}
+
+.agency-banner-logos path {
+    fill: currentColor;
+}
+
+.agency-banner-chat {
+    @apply grid gap-2.5 text-[13px] leading-snug;
+}
+
+.agency-banner-message {
+    @apply flex items-end gap-2;
+}
+
+.agency-banner-message-client {
+    @apply flex-row-reverse;
+}
+
+.agency-banner-avatar {
+    @apply grid h-[22px] w-[22px] flex-none place-items-center rounded-full text-xs font-bold;
+}
+
+.agency-banner-bubble {
+    @apply rounded-xl bg-[#1C1D21] px-3 py-2.5;
+}
+
+.agency-banner-message-client .agency-banner-avatar {
+    @apply bg-[#C98A5B];
+}
+
+.agency-banner-message-spatie .agency-banner-avatar {
+    @apply bg-oss-spatie-blue;
+}
+
+.agency-banner-message-client .agency-banner-bubble {
+    @apply rounded-br-sm bg-[#2A3B33] text-[#E4ECE7];
+}
+
+.agency-banner-message-spatie .agency-banner-bubble {
+    @apply rounded-bl-sm;
+}
+
+.agency-banner-button {
+    @apply block flex-none rounded-md bg-oss-green px-3.5 py-2.5 text-center text-sm font-medium text-oss-black;
+}
+
+.agency-banner-button:hover {
+    @apply bg-[#6FF0B0];
+}
+
+.agency-banner-thin {
+    @apply flex-row flex-wrap items-center gap-5 px-6;
+}
+
+.agency-banner-thin .agency-banner-body {
+    @apply gap-1.5;
+    flex: 1 1 260px;
+}
+
+.agency-banner-thin .agency-banner-title {
+    font-size: 38px;
+}
+
+.agency-banner-thin .agency-banner-chat {
+    flex: 1 1 320px;
+}
+
+.agency-banner-thin .agency-banner-message {
+    @apply max-w-[85%];
+}
+
+.agency-banner-thin .agency-banner-message-client {
+    @apply justify-self-end;
+}
