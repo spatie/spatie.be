@@ -37,9 +37,12 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
         $browsershot = Browsershot::url($url);
 
         if (app()->isProduction()) {
+            $chromePaths = glob('/home/forge/.cache/puppeteer/chrome/linux-*/chrome-linux64/chrome') ?: [];
+
             $browsershot->setNodeBinary('/usr/bin/node')
                 ->setNpmBinary('/usr/bin/npm')
-                ->setChromePath("/home/forge/.cache/puppeteer/chrome/linux-134.0.6998.35/chrome-linux64/chrome");
+                ->setChromePath(collect($chromePaths)->sort()->last())
+                ->noSandbox();
         }
 
         $browsershot->hideBackground()
