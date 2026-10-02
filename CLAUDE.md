@@ -47,15 +47,7 @@ composer baseline
 ```
 
 ### Deployment
-```bash
-# Deploy to production
-composer deploy
-./vendor/bin/envoy run deploy
-
-# Deploy code only (no migrations/build)
-composer deploy-code
-./vendor/bin/envoy run deploy-code
-```
+Deploys happen on Laravel Cloud when pushing to main.
 
 ### Maintenance
 ```bash
