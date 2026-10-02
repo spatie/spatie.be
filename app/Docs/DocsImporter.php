@@ -3,6 +3,7 @@
 namespace App\Docs;
 
 use App\Exceptions\DocsImportException;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Throwable;
@@ -17,7 +18,8 @@ class DocsImporter
 
     /**
      * Assets are written in place first, then the markdown is written to a new release
-     * that only gets activated once every branch was imported.
+     * that only gets activated once every branch was imported. Imports of the same
+     * repository never run at the same time, as they would prune each other's release.
      *
      * @param array{
      *     name: string,
@@ -27,6 +29,20 @@ class DocsImporter
      * } $repository
      */
     public function import(array $repository): void
+    {
+        Cache::lock("docs.import.{$repository['name']}", 60 * 15)
+            ->block(60 * 5, fn () => $this->importRelease($repository));
+    }
+
+    /**
+     * @param array{
+     *     name: string,
+     *     repository: string,
+     *     branches: array<string, string>,
+     *     category: string
+     * } $repository
+     */
+    protected function importRelease(array $repository): void
     {
         $releasePath = $this->storage->createReleasePath($repository['name']);
 
@@ -48,11 +64,13 @@ class DocsImporter
             throw $exception;
         }
 
+        $previousReleasePath = $this->storage->currentReleasePath($repository['name']);
+
         $this->storage->activateRelease($repository['name'], $releasePath);
 
         $this->docs->refreshRepository($repository['name']);
 
-        $this->storage->pruneReleases($repository['name']);
+        $this->storage->pruneReleases($repository['name'], $previousReleasePath);
     }
 
     /**

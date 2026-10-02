@@ -3,7 +3,6 @@
 namespace App\Docs;
 
 use Illuminate\Contracts\Filesystem\Filesystem;
-use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -71,19 +70,18 @@ class DocsStorage
      * Keeps the current and the previous release, so a request that started
      * reading the previous release just before the switch can still finish.
      */
-    public function pruneReleases(string $repositoryName): void
+    public function pruneReleases(string $repositoryName, string $previousReleasePath): void
     {
-        $currentReleasePath = $this->currentReleasePath($repositoryName);
+        $releasePathsToKeep = [
+            $this->currentReleasePath($repositoryName),
+            $previousReleasePath,
+        ];
 
-        $previousReleasePath = $this->releasePaths($repositoryName)
-            ->reject(fn (string $releasePath) => $releasePath === $currentReleasePath)
-            ->last();
-
-        $this->releasePaths($repositoryName)
-            ->reject(fn (string $releasePath) => in_array($releasePath, [$currentReleasePath, $previousReleasePath]))
+        collect($this->disk()->directories("{$repositoryName}/releases"))
+            ->reject(fn (string $releasePath) => in_array($releasePath, $releasePathsToKeep))
             ->each(fn (string $releasePath) => $this->disk()->deleteDirectory($releasePath));
 
-        if ($previousReleasePath) {
+        if (! in_array($repositoryName, $releasePathsToKeep)) {
             $this->deleteLegacyLayout($repositoryName);
         }
     }
@@ -91,14 +89,6 @@ class DocsStorage
     public function deleteRelease(string $releasePath): void
     {
         $this->disk()->deleteDirectory($releasePath);
-    }
-
-    /** @return Collection<int, string> */
-    protected function releasePaths(string $repositoryName): Collection
-    {
-        return collect($this->disk()->directories("{$repositoryName}/releases"))
-            ->sort()
-            ->values();
     }
 
     protected function deleteLegacyLayout(string $repositoryName): void

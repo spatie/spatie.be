@@ -1,0 +1,75 @@
+<?php
+
+use App\Docs\Docs;
+use App\Jobs\ImportDocsForRepositoryJob;
+use App\Models\Repository;
+use App\Services\GitHub\GitHubApi;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Storage;
+use Tests\Docs\Support\FakeGitHubDocs;
+
+beforeEach(function () {
+    Storage::fake('docs');
+    Storage::fake('docs-assets');
+    Storage::fake('github_ads');
+
+    config()->set('docs.cache_store', 'array');
+    config()->set('docs.repositories', [[
+        'name' => 'laravel-backup',
+        'repository' => 'spatie/laravel-backup',
+        'branches' => ['main' => 'v9'],
+        'category' => 'Laravel',
+    ]]);
+
+    FakeGitHubDocs::make()->branch('spatie/laravel-backup', 'main', FakeGitHubDocs::docsForVersion('v9'));
+
+    $this->mock(GitHubApi::class)
+        ->allows('getLatestVersionDate')
+        ->with('spatie/laravel-backup')
+        ->andReturn(now()->subDay());
+});
+
+it('imports the docs when there is a release since the last import', function () {
+    $this->freezeSecond();
+
+    $repository = Repository::factory()->create([
+        'name' => 'laravel-backup',
+        'docs_synced_at' => now()->subWeek(),
+    ]);
+
+    dispatch(new ImportDocsForRepositoryJob('laravel-backup'));
+
+    expect(app(Docs::class)->getRepository('laravel-backup')->getAlias('v9'))->not->toBeNull();
+    expect($repository->refresh()->docs_synced_at->equalTo(now()))->toBeTrue();
+});
+
+it('imports the docs of a repository that was never imported', function () {
+    Repository::factory()->create(['name' => 'laravel-backup', 'docs_synced_at' => null]);
+
+    dispatch(new ImportDocsForRepositoryJob('laravel-backup'));
+
+    Http::assertSentCount(1);
+});
+
+it('skips the import when there was no release since the last import', function () {
+    Repository::factory()->create([
+        'name' => 'laravel-backup',
+        'docs_synced_at' => now()->subHour(),
+    ]);
+
+    dispatch(new ImportDocsForRepositoryJob('laravel-backup'));
+
+    Http::assertNothingSent();
+});
+
+it('can be forced to import the docs', function () {
+    Repository::factory()->create([
+        'name' => 'laravel-backup',
+        'docs_synced_at' => now()->subHour(),
+    ]);
+
+    dispatch(new ImportDocsForRepositoryJob('laravel-backup', force: true));
+
+    Http::assertSentCount(1);
+    expect(app(Docs::class)->getRepository('laravel-backup')->getAlias('v9'))->not->toBeNull();
+});

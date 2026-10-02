@@ -13,7 +13,9 @@ class DocsAssetController
 {
     public function __invoke(string $repository, string $alias, string $path, DocsStorage $docsStorage): StreamedResponse
     {
-        abort_if(in_array('..', explode('/', $path), true), 404);
+        if (in_array('..', explode('/', $path), true)) {
+            abort(404);
+        }
 
         $assetPath = "{$repository}/{$alias}/{$path}";
 

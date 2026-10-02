@@ -70,10 +70,12 @@ weight: 1
 {$description}
 MD);
 
+        $previousReleasePath = $docsStorage->currentReleasePath($name);
+
         $docsStorage->activateRelease($name, $releasePath);
 
         app(Docs::class)->refreshRepository($name);
 
-        $docsStorage->pruneReleases($name);
+        $docsStorage->pruneReleases($name, $previousReleasePath);
     }
 }

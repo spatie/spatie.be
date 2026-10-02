@@ -7,7 +7,6 @@ use App\Models\Repository;
 use App\Services\GitHub\GitHubApi;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Queue\Middleware\WithoutOverlapping;
 
 class ImportDocsForRepositoryJob implements ShouldQueue
 {
@@ -20,14 +19,6 @@ class ImportDocsForRepositoryJob implements ShouldQueue
         protected bool $force = false,
     ) {
         $this->repository = Repository::query()->where('name', $this->repositoryName)->firstOrFail();
-    }
-
-    /** @return array<int, object> */
-    public function middleware(): array
-    {
-        return [
-            (new WithoutOverlapping("import-docs-{$this->repositoryName}"))->dontRelease()->expireAfter(60 * 15),
-        ];
     }
 
     public function handle(GitHubApi $gitHubApi, DocsImporter $docsImporter): void
