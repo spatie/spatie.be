@@ -3,6 +3,9 @@
 use App\Domain\Shop\Actions\AddPurchasedTagsToEmailListSubscriberAction;
 use App\Domain\Shop\Models\Purchase;
 use App\Services\Mailcoach\MailcoachApi;
+use Illuminate\Http\Client\Request;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
 
@@ -68,4 +71,50 @@ it('doesnt crash if the user has no email', function () {
     app(AddPurchasedTagsToEmailListSubscriberAction::class)->execute($purchase);
 
     Http::assertSentCount(0);
+});
+
+it('does not report an error when mailcoach rejects the subscriber', function () {
+    Exceptions::fake();
+
+    $purchase = Purchase::factory()->create();
+
+    Http::fake([
+        'https://spatie.mailcoach.app/api/email-lists/*' => fn (Request $request) => $request->method() === 'GET'
+            ? Http::response(['data' => []])
+            : Http::response(['message' => 'The email has already been taken.', 'errors' => ['email' => ['The email has already been taken.']]], 422),
+    ]);
+
+    app(AddPurchasedTagsToEmailListSubscriberAction::class)->execute($purchase);
+
+    Http::assertSentCount(2);
+    Exceptions::assertNothingReported();
+});
+
+it('throws when mailcoach fails unexpectedly', function (int $status) {
+    $purchase = Purchase::factory()->create();
+
+    Http::fake([
+        'https://spatie.mailcoach.app/api/email-lists/*' => fn (Request $request) => $request->method() === 'GET'
+            ? Http::response(['data' => []])
+            : Http::response(['message' => 'Something went wrong.'], $status),
+    ]);
+
+    app(AddPurchasedTagsToEmailListSubscriberAction::class)->execute($purchase);
+})->with([
+    'unauthenticated' => 401,
+    'server error' => 500,
+])->throws(RequestException::class);
+
+it('asks the mailcoach api for json responses', function () {
+    $purchase = Purchase::factory()->create();
+
+    Http::fake([
+        'https://spatie.mailcoach.app/api/email-lists/*' => Http::response(['data' => [['uuid' => '1234', 'email' => $purchase->user->email, 'subscribed_at' => now(), 'unsubscribed_at' => null]]]),
+        'https://spatie.mailcoach.app/api/subscribers/1234' => Http::response(),
+    ]);
+
+    app(AddPurchasedTagsToEmailListSubscriberAction::class)->execute($purchase);
+
+    Http::assertSent(fn (Request $request) => $request->hasHeader('Accept', 'application/json'));
+    Http::assertNotSent(fn (Request $request) => ! $request->hasHeader('Accept', 'application/json'));
 });
