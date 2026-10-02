@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Repository;
 use Debugbar;
+use Illuminate\Support\Facades\Storage;
 
 class PackageHeaderController
 {
@@ -25,6 +26,11 @@ class PackageHeaderController
             abort(404);
         }
 
-        return response()->file($media->getPath());
+        /*
+         * The header is a PNG stored as image.webp, see GeneratePackageGithubHeaderJob.
+         */
+        return Storage::disk($media->disk)->response($media->getPathRelativeToRoot(), headers: [
+            'Content-Type' => 'image/png',
+        ]);
     }
 }

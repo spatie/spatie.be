@@ -88,6 +88,7 @@ class PurchasableResource extends Resource
                                     ->required()
                                     ->columnStart(1),
                                 SpatieMediaLibraryFileUpload::make('image')
+                                    ->disk('medialibrary')
                                     ->collection('purchasable-image')
                                     ->maxFiles(1)
                                     ->rules(['image'])

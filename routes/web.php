@@ -12,6 +12,7 @@ use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsAssetController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\LlmsTxtController;
+use App\Http\Controllers\MediaLibraryFileController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
@@ -253,6 +254,8 @@ Route::permanentRedirect('/markdown', 'https://spatie.be/docs/laravel-comments/v
 Route::get('testing-laravel', [TestingLaravelController::class, 'show']);
 Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 */
+
+Route::get('images/medialibrary/{path}', MediaLibraryFileController::class)->where('path', '.*');
 
 Route::get('packages/header/{name}/html/{mode}.webp', [PackageHeaderController::class, 'image']);
 Route::get('packages/header/{name}/html/{mode}', [PackageHeaderController::class, 'html']);

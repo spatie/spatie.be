@@ -59,6 +59,7 @@ class TechnologyResource extends Resource
                     ->columnStart(1)
                     ->multiple(),
                 SpatieMediaLibraryFileUpload::make('avatar')
+                    ->disk('medialibrary')
                     ->columnStart(1)
                     ->maxFiles(1)
                     ->rules(['image'])
