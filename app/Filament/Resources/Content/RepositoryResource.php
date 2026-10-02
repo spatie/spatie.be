@@ -139,7 +139,7 @@ class RepositoryResource extends Resource
                     ->action(fn () => dispatch(
                         fn () =>
                         Artisan::call(ImportGitHubRepositoriesCommand::class)
-                    )),
+                    )->onQueue('long-running')),
             ]);
     }
 

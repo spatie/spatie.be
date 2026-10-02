@@ -74,7 +74,7 @@ return [
         'production' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
+                'queue' => ['default', 'long-running'],
                 'balance' => 'simple',
                 'processes' => 5,
                 'tries' => 1,
@@ -85,7 +85,7 @@ return [
         'staging' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
+                'queue' => ['default', 'long-running'],
                 'balance' => 'simple',
                 'processes' => 5,
                 'tries' => 1,
@@ -96,7 +96,7 @@ return [
         'local' => [
             'supervisor-1' => [
                 'connection' => 'redis',
-                'queue' => ['default'],
+                'queue' => ['default', 'long-running'],
                 'balance' => 'simple',
                 'processes' => 2,
                 'tries' => 3,

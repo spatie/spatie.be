@@ -16,9 +16,9 @@ return [
 
     /*
      * This queue will be used to generate derived and responsive images.
-     * Leave empty to use the default queue.
+     * Leave empty to use the queue the jobs are routed to in AppServiceProvider.
      */
-    'queue_name' => '',
+    'queue_name' => null,
 
     /*
      * The fully qualified class name of the media model.
