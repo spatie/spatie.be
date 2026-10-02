@@ -13,12 +13,13 @@ use Tests\Docs\Support\FakeGitHubDocs;
 
 function introductionOf(string $version): string
 {
-    return app(Docs::class)
+    $page = app(Docs::class)
         ->getRepository('laravel-backup')
         ->getAlias($version)
         ->pages
-        ->firstWhere('slug', 'introduction')
-        ->contents;
+        ->firstWhere('slug', 'introduction');
+
+    return app(Docs::class)->pageContents($page);
 }
 
 beforeEach(function () {
@@ -112,6 +113,32 @@ it('refreshes the cached docs after an import', function () {
 
     app(DocsImporter::class)->import($this->repository);
 
+    expect(introductionOf('v9'))->toContain('Updated introduction');
+});
+
+it('caches the pages of a repository without their markdown', function () {
+    app(DocsImporter::class)->import($this->repository);
+
+    $releasePath = app(DocsStorage::class)->currentReleasePath('laravel-backup');
+
+    $cachedPages = Cache::store('array')->get('docs.pages.laravel-backup');
+
+    expect($cachedPages)->not->toBeEmpty();
+    expect($cachedPages->pluck('contents')->filter())->toBeEmpty();
+    expect($cachedPages->pluck('releasePath')->unique()->all())->toBe([$releasePath]);
+    expect($cachedPages->firstWhere('slug', 'introduction')->title)->toBe('Introduction');
+});
+
+it('reads the markdown of a page from the release its pages were cached from', function () {
+    app(DocsImporter::class)->import($this->repository);
+
+    $page = app(Docs::class)->getRepository('laravel-backup')->getAlias('v9')->pages->firstWhere('slug', 'introduction');
+
+    $this->gitHub->branch('spatie/laravel-backup', 'main', FakeGitHubDocs::docsForVersion('v9', 'Updated introduction'));
+
+    app(DocsImporter::class)->import($this->repository);
+
+    expect(app(Docs::class)->pageContents($page))->toContain('Introduction text');
     expect(introductionOf('v9'))->toContain('Updated introduction');
 });
 

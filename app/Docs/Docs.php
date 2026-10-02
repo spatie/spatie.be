@@ -6,11 +6,18 @@ use Exception;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
+use RuntimeException;
 use Spatie\Sheets\Sheets;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Throwable;
 
 class Docs
 {
+    public function __construct(
+        protected DocsStorage $storage,
+    ) {
+    }
+
     public function getRepository(string $slug): ?Repository
     {
         $pages = $this->pages($slug);
@@ -51,6 +58,23 @@ class Docs
         return new Repository($slug, $aliases, $index);
     }
 
+    /**
+     * The cached pages of a repository don't contain their markdown, so a request only
+     * reads the markdown of the page it shows.
+     */
+    public function pageContents(DocumentationPage $page): string
+    {
+        $path = "{$page->releasePath}/{$page->getPath()}";
+
+        $markdown = $this->storage->disk()->get($path);
+
+        if ($markdown === null) {
+            throw new RuntimeException("Could not read docs file `{$path}`.");
+        }
+
+        return YamlFrontMatter::parse($markdown)->body();
+    }
+
     public function refreshRepository(string $slug): void
     {
         $this->cache()->forever($this->cacheKey($slug), $this->loadPages($slug));
@@ -77,7 +101,11 @@ class Docs
 
     protected function loadPages(string $slug): Collection
     {
-        return app(Sheets::class)->collection($slug)->all()->sortBy('weight');
+        return app(Sheets::class)
+            ->collection($slug)
+            ->all()
+            ->each(fn (DocumentationPage $page) => $page->offsetUnset('contents'))
+            ->sortBy('weight');
     }
 
     protected function cache(): CacheRepository

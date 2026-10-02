@@ -29,13 +29,13 @@ class DocumentationRepository implements Repository
     {
         $path = Str::finish($path, '.md');
 
-        $fullPath = "{$this->storage->currentReleasePath($this->repositoryName)}/{$path}";
+        $releasePath = $this->storage->currentReleasePath($this->repositoryName);
 
-        if (! $this->storage->disk()->exists($fullPath)) {
+        if (! $this->storage->disk()->exists("{$releasePath}/{$path}")) {
             return null;
         }
 
-        return $this->factory->make($path, $this->read($fullPath));
+        return $this->make($releasePath, $path);
     }
 
     public function all(): Collection
@@ -48,8 +48,22 @@ class DocumentationRepository implements Repository
             ->filter(fn (string $path) => str_ends_with($path, '.md'))
             ->map(fn (string $path) => Str::after($path, "{$releasePath}/"))
             ->reject(fn (string $path) => $usesLegacyLayout && str_starts_with($path, 'releases/'))
-            ->map(fn (string $path) => $this->factory->make($path, $this->read("{$releasePath}/{$path}")))
+            ->map(fn (string $path) => $this->make($releasePath, $path))
             ->values();
+    }
+
+    /**
+     * Every page remembers the release it was read from, so its contents can be
+     * read later on without loading the other pages of the repository.
+     */
+    protected function make(string $releasePath, string $path): DocumentationPage
+    {
+        /** @var DocumentationPage $page */
+        $page = $this->factory->make($path, $this->read("{$releasePath}/{$path}"));
+
+        $page->releasePath = $releasePath;
+
+        return $page;
     }
 
     /**

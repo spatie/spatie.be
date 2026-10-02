@@ -130,10 +130,8 @@ class DocsController
             return redirect()->action([DocsController::class, 'repository'], [$repository->slug, $alias->slug]);
         }
 
-        $page->contents = $this->renderMarkdown($page->contents);
+        $page->contents = $this->renderMarkdown($docs->pageContents($page));
         $page->contents = str_replace('<pre ', '<pre translate="no"', $page->contents);
-
-        $repositories = $docs->getRepositories();
 
         $navigation = $this->getNavigation($pages);
 
@@ -152,7 +150,6 @@ class DocsController
             'page',
             'prevPage',
             'nextPage',
-            'repositories',
             'repository',
             'repositoryModel',
             'pages',
