@@ -4,9 +4,9 @@ use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Models\Repository;
 use Illuminate\Bus\UniqueLock;
 use Illuminate\Cache\RateLimiting\Unlimited;
-use Illuminate\Support\Facades\Cache;
 use Illuminate\Queue\Middleware\RateLimited;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\RateLimiter;
@@ -24,8 +24,7 @@ beforeEach(function () {
 
 function fakeScreenshotDriver(): ScreenshotDriver
 {
-    $driver = new class implements ScreenshotDriver
-    {
+    $driver = new class () implements ScreenshotDriver {
         /** @var array<int, array{input: string, options: ScreenshotOptions}> */
         public array $screenshots = [];
 
