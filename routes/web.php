@@ -12,7 +12,6 @@ use App\Http\Controllers\BundlesController;
 use App\Http\Controllers\DocsAssetController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\LlmsTxtController;
-use App\Http\Controllers\LogUnknownPostRequestController;
 use App\Http\Controllers\MediaLibraryFileController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
@@ -94,9 +93,6 @@ Route::view('/', 'front.pages.home.index')
         ShareErrorsFromSession::class,
     ])
     ->name('home');
-
-// Temporary: remove once we know who sends these requests.
-Route::post('/', LogUnknownPostRequestController::class);
 
 Route::post('newsletter-subscriptions', NewsletterSubscriptionController::class)
     ->middleware('throttle:5,1')
