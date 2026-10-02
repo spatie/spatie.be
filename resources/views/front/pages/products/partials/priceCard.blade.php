@@ -241,7 +241,6 @@
                                         options.passthrough = JSON.stringify(passthrough);
 
                                         Paddle.Checkout.open(options);
-                                        self.loading = true;
                                     });
 
                                     this.$watch('emails', (newEmails) => {
@@ -252,6 +251,7 @@
 
                                         Paddle.Checkout.open(options);
                                         self.emailsLoading = true;
+                                        setTimeout(() => { self.emailsLoading = false; }, 5000);
                                     })
                                 },
 
