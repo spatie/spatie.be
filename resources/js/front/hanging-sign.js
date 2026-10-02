@@ -16,7 +16,7 @@ export function startHangingSign(sign) {
     }
 
     let angle = 0;
-    let velocity = 0.4;
+    let velocity = 0.15;
     let turns = 0;
     let time = Math.random() * 100;
     let previousFrame = null;
