@@ -173,3 +173,21 @@ it('can dispatch header generation for specific repositories', function () {
 
     Queue::assertPushed(GeneratePackageGithubHeaderJob::class, fn ($job) => $job->repository->is($this->repository));
 });
+
+it('handles jobs that were queued before the job was split per mode', function () {
+    $driver = fakeScreenshotDriver();
+
+    $values = (new GeneratePackageGithubHeaderJob($this->repository, 'dark'))->__serialize();
+    unset($values['mode']);
+
+    $legacyJob = (new ReflectionClass(GeneratePackageGithubHeaderJob::class))->newInstanceWithoutConstructor();
+    $legacyJob->__unserialize($values);
+
+    expect($legacyJob->uniqueId())->toBe((string) $this->repository->getKey());
+
+    $legacyJob->handle();
+
+    expect($driver->screenshots)->toBeEmpty();
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, fn ($job) => $job->repository->is($this->repository) && $job->mode === 'dark');
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, fn ($job) => $job->repository->is($this->repository) && $job->mode === 'light');
+});
