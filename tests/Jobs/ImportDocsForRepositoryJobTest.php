@@ -1,6 +1,7 @@
 <?php
 
 use App\Docs\Docs;
+use App\Docs\DocsStorage;
 use App\Jobs\ImportDocsForRepositoryJob;
 use App\Models\Repository;
 use App\Services\GitHub\GitHubApi;
@@ -73,4 +74,36 @@ it('can be forced to import the docs', function () {
 
     Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main');
     expect(app(Docs::class)->getRepository('laravel-backup')->getAlias('v9'))->not->toBeNull();
+});
+
+it('can run again when it is delivered a second time', function () {
+    Repository::factory()->create(['name' => 'laravel-backup']);
+
+    $job = new ImportDocsForRepositoryJob('laravel-backup');
+
+    expect($job->tries)->toBe(2);
+    expect($job->maxExceptions)->toBe(1);
+});
+
+it('leaves the docs intact when an interrupted import runs again', function () {
+    Repository::factory()->create(['name' => 'laravel-backup', 'docs_synced_at' => null]);
+
+    dispatch(new ImportDocsForRepositoryJob('laravel-backup'));
+
+    $previousReleasePath = app(DocsStorage::class)->currentReleasePath('laravel-backup');
+
+    $interruptedReleasePath = app(DocsStorage::class)->createReleasePath('laravel-backup');
+    Storage::disk('docs')->put("{$interruptedReleasePath}/v9/introduction.md", 'Half imported');
+
+    dispatch(new ImportDocsForRepositoryJob('laravel-backup', force: true));
+
+    $currentReleasePath = app(DocsStorage::class)->currentReleasePath('laravel-backup');
+
+    expect(Storage::disk('docs')->directories('laravel-backup/releases'))
+        ->toEqualCanonicalizing([$previousReleasePath, $currentReleasePath]);
+    expect(Storage::disk('docs')->allFiles($currentReleasePath))
+        ->toEqualCanonicalizing(collect(Storage::disk('docs')->allFiles($previousReleasePath))
+            ->map(fn (string $path) => str_replace($previousReleasePath, $currentReleasePath, $path))
+            ->all());
+    expect(app(Docs::class)->getRepository('laravel-backup')->getAlias('v9')->pages)->not->toBeEmpty();
 });

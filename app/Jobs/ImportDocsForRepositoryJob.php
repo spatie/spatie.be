@@ -12,6 +12,15 @@ class ImportDocsForRepositoryJob implements ShouldQueue
 {
     use Queueable;
 
+    /**
+     * A deploy on Laravel Cloud can replace the queue worker while an import is running,
+     * after which the job is delivered again. That second delivery gets to run the
+     * import, but an import that throws still fails right away.
+     */
+    public int $tries = 2;
+
+    public int $maxExceptions = 1;
+
     protected Repository $repository;
 
     public function __construct(
