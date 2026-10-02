@@ -122,10 +122,11 @@ return [
     |
     | Cache tags are not supported when using the file or database cache
     | drivers in Laravel. This is done so that only locations can be cleared.
+    | Laravel Cloud uses the database cache, so tags aren't used there.
     |
     */
 
-    'cache_tags' => ['torann-geoip-location'],
+    'cache_tags' => laravel_cloud() ? null : ['torann-geoip-location'],
 
     /*
     |--------------------------------------------------------------------------

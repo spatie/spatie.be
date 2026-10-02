@@ -50,3 +50,15 @@ it('reads the default cache store from CACHE_STORE before CACHE_DRIVER', functio
     expect(configWithEnvironment('cache.php', ['CACHE_DRIVER' => 'redis'])['default'])->toBe('redis')
         ->and(configWithEnvironment('cache.php', ['CACHE_STORE' => 'database', 'CACHE_DRIVER' => 'redis'])['default'])->toBe('database');
 });
+
+it('does not use cache tags for geoip locations on laravel cloud', function () {
+    expect(configWithEnvironment('geoip.php', [])['cache_tags'])->toBe(['torann-geoip-location'])
+        ->and(configWithEnvironment('geoip.php', ['LARAVEL_CLOUD' => '1'])['cache_tags'])->toBeNull();
+});
+
+it('can look up a location while using the database cache without tags', function () {
+    config()->set('cache.default', 'database');
+    config()->set('geoip.cache_tags', null);
+
+    expect(geoip('127.0.0.1')->iso_code)->toBeString();
+});
