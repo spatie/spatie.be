@@ -73,6 +73,14 @@ export default {
             'green-dark': '#0a8867',
 
             purple: '#885de3',
+
+            kraft: {
+                light: '#E6CC9C',
+                DEFAULT: '#C9A675',
+                dark: '#6B5540',
+                darkest: '#3A2A1E',
+                red: '#B23E2C',
+            },
         },
 
         screens: {
@@ -148,6 +156,7 @@ export default {
             'obviously-narrow': ['obviously-narrow', 'sans-serif'],
             'obviously-condensed': ['obviously-condensed', 'sans-serif'],
             marker: ['Marker Felt', 'Comic Sans MS', 'cursive'],
+            yellowtail: ['Yellowtail', 'cursive'],
         },
 
         lineHeight: {
@@ -195,6 +204,8 @@ export default {
                 'bf-smooth':
                     '0px 95.5638px 130.417px rgba(0, 0, 0, 0.04), 0px 11.9661px 23.4186px rgba(0, 0, 0, 0.08);',
                 'bf-hard': '0px 18.4854px 36.9708px #1E1A1A;',
+                'hanging-sign':
+                    'inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -2px 0 rgba(0, 0, 0, 0.15), 0 16px 24px -12px rgba(0, 0, 0, 0.75)',
             },
 
             fontSize: {
@@ -236,15 +247,10 @@ export default {
                     '0%': { transform: 'scale(0) translate(-50%, -4rem)' },
                     '100%': { transform: 'scale(1) translate(-50%, -4rem)' },
                 },
-                'soft-pulse': {
-                    '0%, 100%': { transform: 'scale(1)', opacity: '0.7' },
-                    '50%': { transform: 'scale(2.2)', opacity: '0.15' },
-                },
             },
             animation: {
                 wiggle: 'wiggle 0.15s ease-in-out infinite',
                 popin: 'popin 0.2s 1 ease-in-out forwards',
-                'soft-pulse': 'soft-pulse 2.4s ease-in-out infinite',
             },
 
             maxWidth: {

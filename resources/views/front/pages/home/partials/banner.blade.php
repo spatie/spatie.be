@@ -9,13 +9,13 @@
 
 <section id="header" class="md:flex w-full max-w-[1080px] mx-auto mt-8 sm:mt-20 md:mt-24 mb-24 md:mb-52 px-7 lg:px-0">
     <div class="w-full mb-10 md:mb-0">
-        @include('front.pages.home.partials.availability-notice')
         <h1 class="font-druk uppercase text-[48px] sm:text-[72px] lg:text-[144px] leading-[0.8] font-bold mb-10">Solid expertise<br>in Laravel &amp; AI</h1>
         <p class="text-xl sm:text-2xl font-medium max-w-[600px]">
             We craft web applications, software, courses &amp; open source packages powered by Laravel.
         </p>
     </div>
-    <aside class="w-full max-w-[360px] flex-shrink-0 md:pl-32 flex flex-col md:justify-end md:items-end pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/20">
+    <aside class="relative w-full max-w-[360px] flex-shrink-0 md:pl-32 flex flex-col md:justify-end md:items-end pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/20">
+        @include('front.pages.home.partials.open-sign')
         <ul class="text-xl w-full space-y-3 sm:max-w-[240px]">
             <li class="text-white/50 hover:text-white transition-colors">
                 <a href="/web-development" class="flex items-center justify-between">
