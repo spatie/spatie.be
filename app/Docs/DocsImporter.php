@@ -4,7 +4,6 @@ namespace App\Docs;
 
 use App\Exceptions\DocsImportException;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
@@ -13,6 +12,7 @@ class DocsImporter
     public function __construct(
         protected DocsStorage $storage,
         protected Docs $docs,
+        protected GitHubDocsDownloader $gitHubDocsDownloader,
     ) {
     }
 
@@ -88,73 +88,29 @@ class DocsImporter
      */
     protected function importBranch(array $repository, string $branch, string $alias, string $releasePath): int
     {
-        $archivePath = $this->downloadArchive($repository['repository'], $branch);
+        $commit = $this->gitHubDocsDownloader->latestCommit($repository['repository'], $branch);
 
-        if ($archivePath === null) {
+        if ($commit === null) {
+            Log::warning("Skipped importing docs of {$repository['repository']}@{$branch} because the branch was not found.");
+
             return 0;
         }
 
         $importedMarkdownFileCount = 0;
 
-        try {
-            foreach ((new DocsArchive($archivePath))->docsFiles() as $path => $contents) {
-                if (! str_ends_with($path, '.md')) {
-                    $this->storage->assetsDisk()->put("{$repository['name']}/{$alias}/{$path}", $contents);
+        foreach ($this->gitHubDocsDownloader->docsFiles($repository['repository'], $commit) as $path => $contents) {
+            if (! str_ends_with($path, '.md')) {
+                $this->storage->assetsDisk()->put("{$repository['name']}/{$alias}/{$path}", $contents);
 
-                    continue;
-                }
-
-                $this->storage->disk()->put("{$releasePath}/{$alias}/{$path}", $contents);
-
-                $importedMarkdownFileCount++;
+                continue;
             }
-        } finally {
-            @unlink($archivePath);
+
+            $this->storage->disk()->put("{$releasePath}/{$alias}/{$path}", $contents);
+
+            $importedMarkdownFileCount++;
         }
 
         return $importedMarkdownFileCount;
-    }
-
-    /**
-     * Streams the zipball of the branch to a temporary file. Returns null when the
-     * branch doesn't exist, so the other branches of the repository still get imported.
-     */
-    protected function downloadArchive(string $repository, string $branch): ?string
-    {
-        $archivePath = tempnam(sys_get_temp_dir(), 'docs-archive-');
-
-        $request = Http::accept('application/vnd.github+json')
-            ->timeout(300)
-            ->sink($archivePath);
-
-        if ($token = $this->gitHubToken()) {
-            $request->withToken($token);
-        }
-
-        try {
-            $response = $request->get("https://api.github.com/repos/{$repository}/zipball/{$branch}");
-
-            if ($response->notFound()) {
-                Log::warning("Skipped importing docs of {$repository}@{$branch} because the branch was not found.");
-
-                @unlink($archivePath);
-
-                return null;
-            }
-
-            $response->throw();
-        } catch (Throwable $exception) {
-            @unlink($archivePath);
-
-            throw $exception;
-        }
-
-        return $archivePath;
-    }
-
-    protected function gitHubToken(): ?string
-    {
-        return config('services.github.docs_access_token') ?: config('services.github.token');
     }
 
     /**

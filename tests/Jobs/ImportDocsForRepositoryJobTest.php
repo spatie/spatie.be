@@ -4,6 +4,7 @@ use App\Docs\Docs;
 use App\Jobs\ImportDocsForRepositoryJob;
 use App\Models\Repository;
 use App\Services\GitHub\GitHubApi;
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Tests\Docs\Support\FakeGitHubDocs;
@@ -48,7 +49,7 @@ it('imports the docs of a repository that was never imported', function () {
 
     dispatch(new ImportDocsForRepositoryJob('laravel-backup'));
 
-    Http::assertSentCount(1);
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main');
 });
 
 it('skips the import when there was no release since the last import', function () {
@@ -70,6 +71,6 @@ it('can be forced to import the docs', function () {
 
     dispatch(new ImportDocsForRepositoryJob('laravel-backup', force: true));
 
-    Http::assertSentCount(1);
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main');
     expect(app(Docs::class)->getRepository('laravel-backup')->getAlias('v9'))->not->toBeNull();
 });

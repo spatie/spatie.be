@@ -40,7 +40,7 @@ beforeEach(function () {
 it('imports the docs of the given repository', function () {
     $this->artisan('docs:import', ['--repo' => 'spatie/laravel-backup'])->assertSuccessful();
 
-    Http::assertSentCount(1);
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main');
     expect(app(Docs::class)->getRepository('laravel-backup')->getAlias('v9'))->not->toBeNull();
     expect(app(Docs::class)->getRepository('laravel-medialibrary')->aliases)->toBeEmpty();
 });
@@ -50,14 +50,15 @@ it('imports the docs of the repositories that were updated through the webhook',
 
     $this->artisan('docs:import')->assertSuccessful();
 
-    Http::assertSent(fn (Request $request) => str_contains($request->url(), 'spatie/laravel-medialibrary/zipball/main'));
+    Http::assertSent(fn (Request $request) => str_contains($request->url(), 'spatie/laravel-medialibrary/branches/main'));
     expect(UpdatedRepositoriesValueStore::make()->getNames())->toBeEmpty();
 });
 
 it('imports the docs of all repositories', function () {
     $this->artisan('docs:import', ['--all' => true])->assertSuccessful();
 
-    Http::assertSentCount(2);
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main');
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-medialibrary/branches/main');
 });
 
 it('continues with the other repositories when an import fails', function () {
@@ -87,7 +88,8 @@ it('can force the import of all repositories', function () {
 
     $this->artisan('app:import-all-docs', ['--force' => true])->assertSuccessful();
 
-    Http::assertSentCount(2);
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main');
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-medialibrary/branches/main');
 });
 
 it('can force the import of a single repository', function () {
@@ -97,5 +99,5 @@ it('can force the import of a single repository', function () {
 
     $this->artisan('app:import-docs', ['repository' => 'laravel-backup', '--force' => true])->assertSuccessful();
 
-    Http::assertSentCount(1);
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main');
 });

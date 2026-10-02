@@ -43,15 +43,19 @@ beforeEach(function () {
         ->branch('spatie/laravel-backup', 'v8', FakeGitHubDocs::docsForVersion('v8'));
 });
 
-it('downloads the zipball of every branch with the docs token', function () {
+it('downloads the docs of every branch with the docs token', function () {
     app(DocsImporter::class)->import($this->repository);
 
-    Http::assertSentCount(2);
-
-    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/zipball/main'
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/main'
         && $request->hasHeader('Authorization', 'Bearer docs-token'));
 
-    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/zipball/v8');
+    Http::assertSent(fn (Request $request) => $request->url() === 'https://api.github.com/repos/spatie/laravel-backup/branches/v8');
+
+    Http::assertSent(fn (Request $request) => str_starts_with($request->url(), 'https://raw.githubusercontent.com/spatie/laravel-backup/')
+        && str_ends_with($request->url(), '/docs/basic-usage/taking-backups.md')
+        && $request->hasHeader('Authorization', 'Bearer docs-token'));
+
+    Http::assertNotSent(fn (Request $request) => str_ends_with($request->url(), 'README.md') || str_ends_with($request->url(), 'symlink.md'));
 });
 
 it('writes the markdown of every branch to a new release on the docs disk', function () {
@@ -144,6 +148,21 @@ it('keeps the current docs when a branch fails to download', function () {
     Cache::store('array')->flush();
 
     expect(introductionOf('v9'))->toContain('Introduction text');
+});
+
+it('keeps the current docs when a file fails to download', function () {
+    app(DocsImporter::class)->import($this->repository);
+
+    $releasePath = app(DocsStorage::class)->currentReleasePath('laravel-backup');
+
+    $this->gitHub
+        ->branch('spatie/laravel-backup', 'main', FakeGitHubDocs::docsForVersion('v9', 'Updated introduction'))
+        ->failingFile('basic-usage/taking-backups.md');
+
+    expect(fn () => app(DocsImporter::class)->import($this->repository))->toThrow(DocsImportException::class);
+
+    expect(app(DocsStorage::class)->currentReleasePath('laravel-backup'))->toBe($releasePath);
+    expect(Storage::disk('docs')->directories('laravel-backup/releases'))->toBe([$releasePath]);
 });
 
 it('skips a branch that does not exist', function () {
