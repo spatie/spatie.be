@@ -3,32 +3,35 @@
 namespace App\Services\Mailcoach;
 
 use Exception;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
+use Throwable;
 
 class MailcoachApi
 {
     public function getSubscriber(string $email, ?string $listUuid = null): ?Subscriber
     {
+        try {
+            return $this->findSubscriber($email, $listUuid);
+        } catch (Exception) {
+            return null;
+        }
+    }
+
+    /** @throws RequestException|ConnectionException */
+    public function findSubscriber(string $email, ?string $listUuid = null): ?Subscriber
+    {
         $listUuid ??= '4af46b59-3784-41a5-9272-6da31afa3a02';
 
-
-        try {
-            $response = $this->request()
-                ->get("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
-                    'filter' => [
-                        'email' => $email,
-                    ],
-                ]);
-        } catch (Exception $e) {
-            return null;
-        }
-
-
-        if (! $response->successful()) {
-            return null;
-        }
+        $response = $this->request()
+            ->get("https://spatie.mailcoach.app/api/email-lists/{$listUuid}/subscribers", [
+                'filter' => [
+                    'email' => $email,
+                ],
+            ])
+            ->throw();
 
         $subscribers = $response->json('data');
 
@@ -99,6 +102,28 @@ class MailcoachApi
     {
         return Http::timeout(10)
             ->withToken(config('services.mailcoach.token'))
-            ->acceptJson();
+            ->acceptJson()
+            ->retry(
+                times: 3,
+                sleepMilliseconds: fn (int $attempt, RequestException $exception) => $this->retryDelayInMilliseconds($attempt, $exception),
+                when: fn (Throwable $exception) => $this->isRateLimited($exception),
+                throw: false,
+            );
+    }
+
+    protected function isRateLimited(Throwable $exception): bool
+    {
+        if (! $exception instanceof RequestException) {
+            return false;
+        }
+
+        return $exception->response->tooManyRequests();
+    }
+
+    protected function retryDelayInMilliseconds(int $attempt, RequestException $exception): int
+    {
+        $retryAfterSeconds = (int) $exception->response->header('Retry-After');
+
+        return max($retryAfterSeconds, $attempt * 5) * 1000;
     }
 }

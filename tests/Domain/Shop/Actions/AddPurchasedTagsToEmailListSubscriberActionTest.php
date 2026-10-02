@@ -7,6 +7,7 @@ use Illuminate\Http\Client\Request;
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Sleep;
 use Illuminate\Support\Str;
 
 beforeEach(function () {
@@ -117,4 +118,55 @@ it('asks the mailcoach api for json responses', function () {
 
     Http::assertSent(fn (Request $request) => $request->hasHeader('Accept', 'application/json'));
     Http::assertNotSent(fn (Request $request) => ! $request->hasHeader('Accept', 'application/json'));
+});
+
+it('retries when mailcoach rate limits the requests', function () {
+    Sleep::fake();
+
+    $purchase = Purchase::factory()->create();
+
+    Http::fake([
+        'https://spatie.mailcoach.app/api/email-lists/*' => Http::sequence()
+            ->push(['message' => 'Too Many Attempts.'], 429, ['Retry-After' => 12])
+            ->push(['data' => [['uuid' => '1234', 'email' => $purchase->user->email, 'subscribed_at' => now(), 'unsubscribed_at' => null]]]),
+        'https://spatie.mailcoach.app/api/subscribers/1234' => Http::sequence()
+            ->push(['message' => 'Too Many Attempts.'], 429)
+            ->push(),
+    ]);
+
+    app(AddPurchasedTagsToEmailListSubscriberAction::class)->execute($purchase);
+
+    Http::assertSentCount(4);
+    Http::assertSent(fn (Request $request) => $request->method() === 'PATCH');
+    Http::assertNotSent(fn (Request $request) => $request->method() === 'POST');
+    Sleep::assertSequence([
+        Sleep::for(12)->seconds(),
+        Sleep::for(5)->seconds(),
+    ]);
+});
+
+it('throws instead of creating a subscriber when looking up the subscriber fails', function (int $status) {
+    Sleep::fake();
+
+    $purchase = Purchase::factory()->create();
+
+    Http::fake([
+        'https://spatie.mailcoach.app/api/email-lists/*' => Http::response(['message' => 'Something went wrong.'], $status),
+    ]);
+
+    expect(fn () => app(AddPurchasedTagsToEmailListSubscriberAction::class)->execute($purchase))
+        ->toThrow(RequestException::class);
+
+    Http::assertNotSent(fn (Request $request) => $request->method() === 'POST');
+})->with([
+    'rate limited' => 429,
+    'server error' => 500,
+]);
+
+it('still returns null from getSubscriber when mailcoach fails', function () {
+    Http::fake([
+        'https://spatie.mailcoach.app/api/email-lists/*' => Http::response(['message' => 'Something went wrong.'], 500),
+    ]);
+
+    expect(app(MailcoachApi::class)->getSubscriber('john@example.com'))->toBeNull();
 });
