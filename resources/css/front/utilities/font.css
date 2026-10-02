@@ -27,6 +27,13 @@
 }
 
 @font-face {
+    font-family: 'Yellowtail';
+    src: url('/fonts/Yellowtail-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Druk';
     src:
         url('/fonts/Druk-Bold-Web.woff2') format('woff2'),
