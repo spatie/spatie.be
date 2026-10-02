@@ -45,3 +45,8 @@ it('generates urls in the bucket for the scoped disks', function () {
     expect(Storage::disk('medialibrary')->url('12/image.jpg'))
         ->toBe('https://public-bucket.example.com/medialibrary/12/image.jpg');
 });
+
+it('reads the default cache store from CACHE_STORE before CACHE_DRIVER', function () {
+    expect(configWithEnvironment('cache.php', ['CACHE_DRIVER' => 'redis'])['default'])->toBe('redis')
+        ->and(configWithEnvironment('cache.php', ['CACHE_STORE' => 'database', 'CACHE_DRIVER' => 'redis'])['default'])->toBe('database');
+});
