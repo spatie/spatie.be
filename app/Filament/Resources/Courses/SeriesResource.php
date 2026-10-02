@@ -38,6 +38,7 @@ class SeriesResource extends Resource
                     ->columnStart(1)
                     ->disabled(),
                 SpatieMediaLibraryFileUpload::make('image')
+                    ->disk('medialibrary')
                     ->collection('image')
                     ->maxFiles(1)
                     ->rules(['image'])

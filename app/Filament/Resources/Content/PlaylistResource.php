@@ -42,6 +42,7 @@ class PlaylistResource extends Resource
                     ->columnStart(1)
                     ->required(),
                 SpatieMediaLibraryFileUpload::make('image')
+                    ->disk('medialibrary')
                     ->columnStart(1)
                     ->maxFiles(1)
                     ->rules(['image'])
