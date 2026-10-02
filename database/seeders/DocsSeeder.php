@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Docs\Docs;
+use App\Docs\DocsStorage;
 use App\Models\Repository;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\File;
 
 class DocsSeeder extends Seeder
 {
@@ -21,8 +21,6 @@ class DocsSeeder extends Seeder
         $this->seedDocs('laravel-slack-slash-command', 'v1', 'Handle Slack slash commands in a Laravel app');
         $this->seedDocs('laravel-livewire-wizard', 'v1', 'A package to create wizards using Livewire');
         $this->seedDocs('laravel-responsecache', 'v7', 'Speed up your app by caching the entire response');
-
-        Cache::store('docs')->flush();
     }
 
     protected function seedDocs(string $name, string $version, string $description): void
@@ -39,19 +37,19 @@ class DocsSeeder extends Seeder
             ],
         );
 
-        $docsPath = storage_path("docs/{$name}");
-        $aliasPath = "{$docsPath}/{$version}";
+        $docsStorage = app(DocsStorage::class);
 
-        File::ensureDirectoryExists($aliasPath);
+        $releasePath = $docsStorage->createReleasePath($name);
+        $aliasPath = "{$releasePath}/{$version}";
 
-        File::put("{$docsPath}/_index.md", <<<MD
+        $docsStorage->disk()->put("{$releasePath}/_index.md", <<<MD
 ---
 title: {$name}
 category: Laravel
 ---
 MD);
 
-        File::put("{$aliasPath}/_index.md", <<<MD
+        $docsStorage->disk()->put("{$aliasPath}/_index.md", <<<MD
 ---
 title: {$version}
 slogan: {$description}
@@ -61,7 +59,7 @@ weight: 1
 ---
 MD);
 
-        File::put("{$aliasPath}/introduction.md", <<<MD
+        $docsStorage->disk()->put("{$aliasPath}/introduction.md", <<<MD
 ---
 title: Introduction
 weight: 1
@@ -71,5 +69,11 @@ weight: 1
 
 {$description}
 MD);
+
+        $docsStorage->activateRelease($name, $releasePath);
+
+        app(Docs::class)->refreshRepository($name);
+
+        $docsStorage->pruneReleases($name);
     }
 }

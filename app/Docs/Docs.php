@@ -3,7 +3,9 @@
 namespace App\Docs;
 
 use Exception;
+use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Spatie\Sheets\Sheets;
 use Throwable;
 
@@ -11,9 +13,7 @@ class Docs
 {
     public function getRepository(string $slug): ?Repository
     {
-        $pages = cache()->store('docs')->rememberForever($slug, function () use ($slug) {
-            return app(Sheets::class)->collection($slug)->all()->sortBy('weight');
-        });
+        $pages = $this->pages($slug);
 
         $aliases = $pages
             ->whereNotNull('alias')
@@ -49,6 +49,45 @@ class Docs
             ->firstWhere('slug', '_index');
 
         return new Repository($slug, $aliases, $index);
+    }
+
+    public function refreshRepository(string $slug): void
+    {
+        $this->cache()->forever($this->cacheKey($slug), $this->loadPages($slug));
+    }
+
+    /**
+     * A request that started reading the previous release before an import finished
+     * uses `add`, so it can't overwrite the pages that the import just cached.
+     */
+    protected function pages(string $slug): Collection
+    {
+        $cachedPages = $this->cache()->get($this->cacheKey($slug));
+
+        if ($cachedPages !== null) {
+            return $cachedPages;
+        }
+
+        $pages = $this->loadPages($slug);
+
+        $this->cache()->add($this->cacheKey($slug), $pages);
+
+        return $pages;
+    }
+
+    protected function loadPages(string $slug): Collection
+    {
+        return app(Sheets::class)->collection($slug)->all()->sortBy('weight');
+    }
+
+    protected function cache(): CacheRepository
+    {
+        return Cache::store(config('docs.cache_store'));
+    }
+
+    protected function cacheKey(string $slug): string
+    {
+        return "docs.pages.{$slug}";
     }
 
     public function getRepositories(): Collection

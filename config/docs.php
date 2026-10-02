@@ -1,6 +1,24 @@
 <?php
 
 return [
+    /*
+     * The disk the imported markdown is written to and read from. Every import of a
+     * repository is written to a new release folder before it is activated.
+     */
+    'disk' => env('DOCS_DISK', 'docs'),
+
+    /*
+     * The disk the images and other non-markdown files of the docs are written to.
+     * They are served at `/docs/{repository}/{alias}/{path}`.
+     */
+    'assets_disk' => env('DOCS_ASSETS_DISK', 'docs-assets'),
+
+    /*
+     * The cache store that holds the parsed docs and the list of repositories
+     * that were updated through the GitHub webhook.
+     */
+    'cache_store' => env('DOCS_CACHE_STORE', 'docs'),
+
     'repositories' => [
     [
         'name' => 'laravel-sitemap',
