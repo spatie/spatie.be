@@ -10,6 +10,10 @@ class RemoveDocsLayoutChromePreprocessor implements Preprocessor
 {
     public function __invoke(string $html): string
     {
+        if (trim($html) === '') {
+            return $html;
+        }
+
         libxml_use_internal_errors(true);
 
         $dom = new DOMDocument();

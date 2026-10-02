@@ -42,3 +42,24 @@ it('shows a docs page while only loading the docs of its repository', function (
 
     expect(Cache::store('array')->has('docs.pages.laravel-medialibrary'))->toBeFalse();
 });
+
+it('handles a markdown head request for a docs page', function () {
+    Storage::fake('docs');
+    Storage::fake('docs-assets');
+
+    config()->set('docs.cache_store', 'array');
+
+    FakeGitHubDocs::make()->branch('spatie/laravel-backup', 'main', FakeGitHubDocs::docsForVersion('v9'));
+
+    app(DocsImporter::class)->import([
+        'name' => 'laravel-backup',
+        'repository' => 'spatie/laravel-backup',
+        'branches' => ['main' => 'v9'],
+        'category' => 'Laravel',
+    ]);
+
+    $this
+        ->call('HEAD', '/docs/laravel-backup/v9/basic-usage/taking-backups', server: ['HTTP_ACCEPT' => 'text/markdown'])
+        ->assertOk()
+        ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8');
+});
