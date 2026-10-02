@@ -6,8 +6,8 @@ use App\Docs\DocumentationContentParser;
 use App\Docs\DocumentationPage;
 use App\Docs\DocumentationPathParser;
 use App\Docs\DocumentationRepository;
-use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Jobs\ImportDocsForRepositoryJob;
+use App\Jobs\Middleware\ThrottleScreenshots;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use App\Models\HtmlLesson;
 use App\Models\Video;
@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->routeLongRunningJobs();
 
-        RateLimiter::for(GeneratePackageGithubHeaderJob::RATE_LIMITER, function () {
+        RateLimiter::for(ThrottleScreenshots::RATE_LIMITER, function () {
             if (config('laravel-screenshot.driver') !== 'cloudflare') {
                 return Limit::none();
             }
