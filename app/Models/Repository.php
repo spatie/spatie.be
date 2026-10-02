@@ -45,7 +45,7 @@ class Repository extends Model implements HasMedia
             app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
 
             if ($repository->headerNeedsRegeneration()) {
-                dispatch(new GeneratePackageGithubHeaderJob($repository));
+                GeneratePackageGithubHeaderJob::dispatchForAllModes($repository);
             }
         });
     }

@@ -1,10 +1,10 @@
 <?php
 
 use App\Jobs\GeneratePackageGithubHeaderJob;
+use App\Jobs\Middleware\ThrottleScreenshots;
 use App\Models\Repository;
 use Illuminate\Bus\UniqueLock;
 use Illuminate\Cache\RateLimiting\Unlimited;
-use Illuminate\Queue\Middleware\RateLimited;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
@@ -47,10 +47,17 @@ function fakeScreenshotDriver(): ScreenshotDriver
     return $driver;
 }
 
+function generateHeaders(Repository $repository): void
+{
+    foreach (GeneratePackageGithubHeaderJob::MODES as $mode) {
+        (new GeneratePackageGithubHeaderJob($repository, $mode))->handle();
+    }
+}
+
 it('takes the header screenshots with the configured screenshot driver', function () {
     $driver = fakeScreenshotDriver();
 
-    (new GeneratePackageGithubHeaderJob($this->repository))->handle();
+    generateHeaders($this->repository);
 
     expect($driver->screenshots)->toHaveCount(2)
         ->and($driver->screenshots[0]['input'])->toBe(url('packages/header/laravel-permission/html/dark'))
@@ -69,7 +76,7 @@ it('takes the header screenshots with the configured screenshot driver', functio
 it('stores the headers in the media library like before', function () {
     fakeScreenshotDriver();
 
-    (new GeneratePackageGithubHeaderJob($this->repository))->handle();
+    generateHeaders($this->repository);
 
     foreach (['dark', 'light'] as $mode) {
         $media = $this->repository->fresh()->getFirstMedia("github-header-{$mode}");
@@ -91,7 +98,7 @@ it('can render the headers with cloudflare browser rendering', function () {
         'api.cloudflare.com/*' => Http::response(base64_decode(TINY_PNG)),
     ]);
 
-    (new GeneratePackageGithubHeaderJob($this->repository))->handle();
+    generateHeaders($this->repository);
 
     Http::assertSentCount(2);
     Http::assertSent(fn ($request) => $request->url() === 'https://api.cloudflare.com/client/v4/accounts/account/browser-rendering/screenshot'
@@ -105,36 +112,40 @@ it('can render the headers with cloudflare browser rendering', function () {
 it('only regenerates the header when something on it changed', function () {
     $repository = Repository::factory()->create();
 
-    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 1);
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 2);
 
-    Cache::lock(UniqueLock::getKey(new GeneratePackageGithubHeaderJob($repository)))->forceRelease();
+    foreach (GeneratePackageGithubHeaderJob::MODES as $mode) {
+        Cache::lock(UniqueLock::getKey(new GeneratePackageGithubHeaderJob($repository, $mode)))->forceRelease();
+    }
 
     $repository = $repository->fresh();
     $repository->update(['stars' => 12345, 'topics' => ['changed']]);
     $repository->save();
 
-    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 1);
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 2);
 
     $this->repository->update(['banner_title' => 'Laravel Permission']);
 
-    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 2);
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 4);
     Queue::assertPushed(GeneratePackageGithubHeaderJob::class, fn ($job) => $job->repository->is($this->repository));
 });
 
-it('dispatches one job per repository at a time', function () {
+it('dispatches one job per repository and mode at a time', function () {
     $this->repository->update(['banner_title' => 'First']);
     $this->repository->update(['banner_title' => 'Second']);
 
-    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 1);
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 2);
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, fn ($job) => $job->mode === 'dark');
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, fn ($job) => $job->mode === 'light');
 });
 
 it('throttles header generation only when using cloudflare', function () {
-    $job = new GeneratePackageGithubHeaderJob($this->repository);
+    $job = new GeneratePackageGithubHeaderJob($this->repository, 'dark');
 
-    expect($job->middleware())->toEqual([new RateLimited(GeneratePackageGithubHeaderJob::RATE_LIMITER)])
+    expect($job->middleware())->toEqual([new ThrottleScreenshots()])
         ->and($job->retryUntil())->toBeGreaterThan(now()->addHours(23));
 
-    $limiter = RateLimiter::limiter(GeneratePackageGithubHeaderJob::RATE_LIMITER);
+    $limiter = RateLimiter::limiter(ThrottleScreenshots::RATE_LIMITER);
 
     config()->set('laravel-screenshot.driver', 'browsershot');
     expect($limiter())->toBeInstanceOf(Unlimited::class);
@@ -147,13 +158,13 @@ it('throttles header generation only when using cloudflare', function () {
 
 it('can dispatch header generation for repositories without a header', function () {
     fakeScreenshotDriver();
-    (new GeneratePackageGithubHeaderJob($this->repository))->handle();
+    generateHeaders($this->repository);
 
     $withoutHeader = Repository::factory()->createQuietly(['name' => 'laravel-backup']);
 
     Artisan::call('app:generate-package-header', ['--missing' => true]);
 
-    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 1);
+    Queue::assertPushed(GeneratePackageGithubHeaderJob::class, 2);
     Queue::assertPushed(GeneratePackageGithubHeaderJob::class, fn ($job) => $job->repository->is($withoutHeader));
 });
 
