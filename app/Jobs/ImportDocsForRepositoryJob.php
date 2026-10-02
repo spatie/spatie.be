@@ -14,10 +14,11 @@ class ImportDocsForRepositoryJob implements ShouldQueue
 
     /**
      * A deploy on Laravel Cloud can replace the queue worker while an import is running,
-     * after which the job is delivered again. That second delivery gets to run the
-     * import, but an import that throws still fails right away.
+     * after which the job is delivered again while the import lock of the killed run is
+     * still held. That delivery is released until the lock expires and the third attempt
+     * runs the import. An import that throws still fails right away.
      */
-    public int $tries = 2;
+    public int $tries = 3;
 
     public int $maxExceptions = 1;
 
@@ -43,7 +44,11 @@ class ImportDocsForRepositoryJob implements ShouldQueue
 
         $repository = collect(config('docs.repositories'))->keyBy('repository')->get('spatie/' . $this->repositoryName);
 
-        $docsImporter->import($repository);
+        if (! $docsImporter->importUnlessAlreadyImporting($repository)) {
+            $this->release(DocsImporter::LOCK_SECONDS);
+
+            return;
+        }
 
         $this->repository->update(['docs_synced_at' => now()]);
     }

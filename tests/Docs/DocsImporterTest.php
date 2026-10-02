@@ -248,3 +248,27 @@ it('removes the docs that were imported before releases existed once they are no
     Storage::disk('docs')->assertExists('laravel-backup/current-release');
     expect(introductionOf('v9'))->toContain('Introduction text');
 });
+
+it('skips the import when another import of the repository holds the lock', function () {
+    Cache::lock('docs.import.laravel-backup', DocsImporter::LOCK_SECONDS)->get();
+
+    expect(app(DocsImporter::class)->importUnlessAlreadyImporting($this->repository))->toBeFalse();
+
+    Http::assertNothingSent();
+    expect(Storage::disk('docs')->allFiles())->toBeEmpty();
+});
+
+it('imports and releases the lock when no other import of the repository is running', function () {
+    expect(app(DocsImporter::class)->importUnlessAlreadyImporting($this->repository))->toBeTrue();
+
+    expect(introductionOf('v9'))->toContain('Introduction text');
+    expect(Cache::lock('docs.import.laravel-backup', DocsImporter::LOCK_SECONDS)->get())->toBeTrue();
+});
+
+it('releases the lock when a non blocking import fails', function () {
+    $this->repository['branches'] = ['missing' => 'v10'];
+
+    expect(fn () => app(DocsImporter::class)->importUnlessAlreadyImporting($this->repository))->toThrow(DocsImportException::class);
+
+    expect(Cache::lock('docs.import.laravel-backup', DocsImporter::LOCK_SECONDS)->get())->toBeTrue();
+});
