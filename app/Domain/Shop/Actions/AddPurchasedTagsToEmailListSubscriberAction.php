@@ -53,7 +53,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
 
     protected function findOrCreateSubscriber(string $email, ?string $listUuid = null): ?Subscriber
     {
-        if ($subscriber = $this->mailcoachApi->getSubscriber($email, $listUuid)) {
+        if ($subscriber = $this->mailcoachApi->findSubscriber($email, $listUuid)) {
             return $subscriber;
         }
 
