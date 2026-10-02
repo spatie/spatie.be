@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Docs\DocumentationContentParser;
 use App\Docs\DocumentationPage;
 use App\Docs\DocumentationPathParser;
+use App\Docs\DocumentationRepository;
 use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Models\HtmlLesson;
 use App\Models\Video;
@@ -59,13 +60,9 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         foreach (config('docs.repositories') as $docsRepository) {
-            config()->set("filesystems.disks.{$docsRepository['name']}", [
-                'driver' => 'local',
-                'root' => storage_path("docs/{$docsRepository['name']}"),
-            ]);
-
             config()->set("sheets.collections.{$docsRepository['name']}", [
-                'disk' => $docsRepository['name'],
+                'repository' => DocumentationRepository::class,
+                'repository_name' => $docsRepository['name'],
                 'sheet_class' => DocumentationPage::class,
                 'path_parser' => DocumentationPathParser::class,
                 'content_parser' => DocumentationContentParser::class,

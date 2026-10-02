@@ -3,17 +3,24 @@
 namespace App\Docs;
 
 use Exception;
+use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
+use RuntimeException;
 use Spatie\Sheets\Sheets;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Throwable;
 
 class Docs
 {
+    public function __construct(
+        protected DocsStorage $storage,
+    ) {
+    }
+
     public function getRepository(string $slug): ?Repository
     {
-        $pages = cache()->store('docs')->rememberForever($slug, function () use ($slug) {
-            return app(Sheets::class)->collection($slug)->all()->sortBy('weight');
-        });
+        $pages = $this->pages($slug);
 
         $aliases = $pages
             ->whereNotNull('alias')
@@ -49,6 +56,66 @@ class Docs
             ->firstWhere('slug', '_index');
 
         return new Repository($slug, $aliases, $index);
+    }
+
+    /**
+     * The cached pages of a repository don't contain their markdown, so a request only
+     * reads the markdown of the page it shows.
+     */
+    public function pageContents(DocumentationPage $page): string
+    {
+        $path = "{$page->releasePath}/{$page->getPath()}";
+
+        $markdown = $this->storage->disk()->get($path);
+
+        if ($markdown === null) {
+            throw new RuntimeException("Could not read docs file `{$path}`.");
+        }
+
+        return YamlFrontMatter::parse($markdown)->body();
+    }
+
+    public function refreshRepository(string $slug): void
+    {
+        $this->cache()->forever($this->cacheKey($slug), $this->loadPages($slug));
+    }
+
+    /**
+     * A request that started reading the previous release before an import finished
+     * uses `add`, so it can't overwrite the pages that the import just cached.
+     */
+    protected function pages(string $slug): Collection
+    {
+        $cachedPages = $this->cache()->get($this->cacheKey($slug));
+
+        if ($cachedPages !== null) {
+            return $cachedPages;
+        }
+
+        $pages = $this->loadPages($slug);
+
+        $this->cache()->add($this->cacheKey($slug), $pages);
+
+        return $pages;
+    }
+
+    protected function loadPages(string $slug): Collection
+    {
+        return app(Sheets::class)
+            ->collection($slug)
+            ->all()
+            ->each(fn (DocumentationPage $page) => $page->offsetUnset('contents'))
+            ->sortBy('weight');
+    }
+
+    protected function cache(): CacheRepository
+    {
+        return Cache::store(config('docs.cache_store'));
+    }
+
+    protected function cacheKey(string $slug): string
+    {
+        return "docs.pages.{$slug}";
     }
 
     public function getRepositories(): Collection

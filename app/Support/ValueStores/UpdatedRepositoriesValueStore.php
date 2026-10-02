@@ -2,41 +2,42 @@
 
 namespace App\Support\ValueStores;
 
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Arr;
-use Spatie\Valuestore\Valuestore;
+use Illuminate\Support\Facades\Cache;
 
 class UpdatedRepositoriesValueStore
 {
-    protected Valuestore $valueStore;
+    protected string $cacheKey = 'docs.updated-repository-names';
 
     public static function make(): self
     {
         return new static();
     }
 
-    public function __construct()
-    {
-        $this->valueStore = Valuestore::make(storage_path('app/updatesRepositories.json'));
-    }
-
     public function getNames(): array
     {
-        return Arr::wrap($this->valueStore->get('updatedRepositoryNames') ?? []);
+        return Arr::wrap($this->cache()->get($this->cacheKey, []));
     }
 
     public function store(string $name): self
     {
-        $updatedRepositoryNames = $this->valueStore->get('updatedRepositoryNames', []);
+        $updatedRepositoryNames = $this->getNames();
 
         $updatedRepositoryNames[] = $name;
 
-        $this->valueStore->put('updatedRepositoryNames', array_unique($updatedRepositoryNames));
+        $this->cache()->forever($this->cacheKey, array_values(array_unique($updatedRepositoryNames)));
 
         return $this;
     }
 
     public function flush(): void
     {
-        $this->valueStore->flush();
+        $this->cache()->forget($this->cacheKey);
+    }
+
+    protected function cache(): Repository
+    {
+        return Cache::store(config('docs.cache_store'));
     }
 }

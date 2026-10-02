@@ -74,6 +74,13 @@ return [
             'root' => storage_path('docs'),
         ],
 
+        'docs-assets' => [
+            'driver' => 'local',
+            'root' => public_path('docs'),
+            'url' => '/docs',
+            'visibility' => 'public',
+        ],
+
         'guidelines' => [
             'driver' => 'local',
             'root' => resource_path('views/front/pages/guidelines/pages'),

@@ -9,6 +9,7 @@ use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
+use App\Http\Controllers\DocsAssetController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\LlmsTxtController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
@@ -223,6 +224,7 @@ Route::redirect(
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
+Route::get('/docs/{repository}/{alias}/{path}', DocsAssetController::class)->where('path', '.*\\.(png|jpe?g|gif|svg|webp|avif|ico|PNG|JPE?G|GIF|SVG|WEBP)');
 Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(ProvideMarkdownResponse::class);
 
 Route::view('/newsletter', 'front.pages.newsletter.index')->name('newsletter');
