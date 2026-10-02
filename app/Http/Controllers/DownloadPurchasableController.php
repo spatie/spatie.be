@@ -21,6 +21,12 @@ class DownloadPurchasableController
 
         abort_unless($purchase->getPurchasables()->contains($file->model), 403, 'File does not belong to purchasable');
 
-        return response()->download($file->getPath(), $file->file_name);
+        if ($file->getDiskDriverName() === 'local') {
+            return response()->download($file->getPath(), $file->file_name);
+        }
+
+        return redirect($file->getTemporaryUrl(now()->addMinutes(5), options: [
+            'ResponseContentDisposition' => "attachment; filename=\"{$file->file_name}\"",
+        ]));
     }
 }

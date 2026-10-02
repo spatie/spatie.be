@@ -35,6 +35,7 @@
         "laravel/ui": "^4.2",
         "league/commonmark": "^2.2.1",
         "league/flysystem-aws-s3-v3": "^3.10",
+        "league/flysystem-path-prefixing": "^3.0",
         "livewire/livewire": "^4.0",
         "myclabs/php-enum": "^1.8.4",
         "nyholm/psr7": "^1.5.1",

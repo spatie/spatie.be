@@ -1,5 +1,45 @@
 <?php
 
+/*
+ * On Laravel Cloud, the public and the private bucket are attached to the environment as the
+ * `cloud-public` and `cloud-private` disks. These disks keep the names used by the app, but
+ * store their files in a directory of one of those buckets.
+ */
+$bucketDisks = [
+    'medialibrary' => [
+        'driver' => 'scoped',
+        'disk' => 'cloud-public',
+        'prefix' => 'medialibrary',
+        'visibility' => 'public',
+    ],
+
+    'public' => [
+        'driver' => 'scoped',
+        'disk' => 'cloud-public',
+        'prefix' => 'storage',
+        'visibility' => 'public',
+    ],
+
+    'docs-assets' => [
+        'driver' => 'scoped',
+        'disk' => 'cloud-public',
+        'prefix' => 'docs',
+        'visibility' => 'public',
+    ],
+
+    'docs' => [
+        'driver' => 'scoped',
+        'disk' => 'cloud-private',
+        'prefix' => 'docs',
+    ],
+
+    'purchasable_downloads' => [
+        'driver' => 'scoped',
+        'disk' => 'cloud-private',
+        'prefix' => 'purchasable-downloads',
+    ],
+];
+
 return [
 
     /*
@@ -30,7 +70,7 @@ return [
     |
     */
 
-    'disks' => [
+    'disks' => array_merge([
         'backups' => [
             'driver' => 'local',
             'root' => storage_path('app/backups'),
@@ -104,8 +144,7 @@ return [
             'url' => '/images/medialibrary',
             'visibility' => 'public',
         ],
-
-    ],
+    ], laravel_cloud() ? $bucketDisks : []),
 
     /*
     |--------------------------------------------------------------------------
