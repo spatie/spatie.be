@@ -8,11 +8,12 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may configure the log settings for when a location is not found
-    | for the IP provided.
+    | for the IP provided. The package writes these to storage/logs/geoip.log
+    | without rotation, so it's off unless GEOIP_LOG_FAILURES is enabled.
     |
     */
 
-    'log_failures' => true,
+    'log_failures' => (bool) env('GEOIP_LOG_FAILURES', false),
 
     /*
     |--------------------------------------------------------------------------
