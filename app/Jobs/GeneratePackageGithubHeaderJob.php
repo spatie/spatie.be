@@ -9,6 +9,7 @@ use DateTimeInterface;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
+use ReflectionProperty;
 use Spatie\LaravelScreenshot\Facades\Screenshot;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
@@ -43,6 +44,10 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 
     public function uniqueId(): string
     {
+        if ($this->isQueuedBeforeSplitPerMode()) {
+            return (string) $this->repository->getKey();
+        }
+
         return "{$this->repository->getKey()}-{$this->mode}";
     }
 
@@ -65,6 +70,12 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 
     public function handle(): void
     {
+        if ($this->isQueuedBeforeSplitPerMode()) {
+            self::dispatchForAllModes($this->repository);
+
+            return;
+        }
+
         $temporaryDirectory = (new TemporaryDirectory())->create();
 
         /**
@@ -86,5 +97,14 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
             ->toMediaCollection('github-header-' . $this->mode);
 
         $temporaryDirectory->delete();
+    }
+
+    /**
+     * Jobs queued before the job was split per mode have no mode. They are retried
+     * for up to a day, so they can still be on the queue after a deploy.
+     */
+    protected function isQueuedBeforeSplitPerMode(): bool
+    {
+        return ! (new ReflectionProperty($this, 'mode'))->isInitialized($this);
     }
 }
