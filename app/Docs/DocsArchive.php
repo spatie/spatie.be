@@ -15,7 +15,8 @@ class DocsArchive
 {
     public function __construct(
         protected string $path,
-    ) {}
+    ) {
+    }
 
     /**
      * Yields the contents of every file in the `docs` folder, keyed by its path

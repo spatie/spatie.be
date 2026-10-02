@@ -12,7 +12,8 @@ class DocsImporter
     public function __construct(
         protected DocsStorage $storage,
         protected Docs $docs,
-    ) {}
+    ) {
+    }
 
     /**
      * Assets are written in place first, then the markdown is written to a new release
