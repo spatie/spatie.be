@@ -18,7 +18,9 @@ it('serves the github header image from the media library disk', function () {
 
     $response = $this->get('packages/header/laravel-backup/html/dark.webp');
 
-    $response->assertOk();
+    $response
+        ->assertOk()
+        ->assertHeader('Content-Type', 'image/png');
 
     expect($response->streamedContent())->not->toBeEmpty();
 });
