@@ -5,13 +5,16 @@ namespace App\Providers;
 use App\Docs\DocumentationContentParser;
 use App\Docs\DocumentationPage;
 use App\Docs\DocumentationPathParser;
+use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Models\HtmlLesson;
 use App\Models\Video;
 use App\Spotlight\DocsCommand;
 use App\Spotlight\Spotlight;
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
@@ -34,6 +37,14 @@ class AppServiceProvider extends ServiceProvider
         OgImage::fallbackUsing(fn (Request $request) => view('og-image.fallback', [
             'title' => app()->bound('page.og-image-title') ? app('page.og-image-title') : 'Solid expertise <br> in Laravel &amp; AI',
         ]));
+
+        RateLimiter::for(GeneratePackageGithubHeaderJob::RATE_LIMITER, function () {
+            if (config('laravel-screenshot.driver') !== 'cloudflare') {
+                return Limit::none();
+            }
+
+            return Limit::perSecond(1, 20);
+        });
     }
 
     public function register(): void

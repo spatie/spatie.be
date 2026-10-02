@@ -4,18 +4,51 @@ namespace App\Jobs;
 
 use App\Http\Controllers\PackageHeaderController;
 use App\Models\Repository;
+use DateTimeInterface;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Spatie\Browsershot\Browsershot;
+use Illuminate\Queue\Middleware\RateLimited;
+use Spatie\LaravelScreenshot\Facades\Screenshot;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
-class GeneratePackageGithubHeaderJob implements ShouldQueue
+class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 {
     use Queueable;
+
+    public const string RATE_LIMITER = 'package-github-headers';
+
+    public const array HEADER_ATTRIBUTES = ['name', 'banner_title', 'accent_color', 'logo_svg'];
+
+    public int $maxExceptions = 4;
+
+    public int $uniqueFor = 60 * 60 * 24;
 
     public function __construct(
         public Repository $repository,
     ) {
+    }
+
+    public function uniqueId(): string
+    {
+        return (string) $this->repository->getKey();
+    }
+
+    /** @return array<int, object> */
+    public function middleware(): array
+    {
+        return [new RateLimited(self::RATE_LIMITER)];
+    }
+
+    public function retryUntil(): DateTimeInterface
+    {
+        return now()->addDay();
+    }
+
+    /** @return array<int, int> */
+    public function backoff(): array
+    {
+        return [60, 60 * 60, 60 * 60 * 6];
     }
 
     public function handle(): void
@@ -24,33 +57,26 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue
         $this->generateImage('light');
     }
 
-    protected function generateImage($mode): void
+    protected function generateImage(string $mode): void
     {
-        if (app()->environment('testing')) {
-            return;
-        }
-
         $temporaryDirectory = (new TemporaryDirectory())->create();
-        $fileName = $temporaryDirectory->path('image.webp');
+
+        /**
+         * The header has always been a PNG stored as image.webp. GitHub READMEs
+         * link to the .webp URL, so the format and file name stay as they were.
+         */
+        $path = $temporaryDirectory->path('image.png');
+
         $url = action([PackageHeaderController::class, 'html'], ['name' => $this->repository->name, 'mode' => $mode]);
 
-        $browsershot = Browsershot::url($url);
-
-        if (app()->isProduction()) {
-            $chromePaths = glob('/home/forge/.cache/puppeteer/chrome/linux-*/chrome-linux64/chrome') ?: [];
-
-            $browsershot->setNodeBinary('/usr/bin/node')
-                ->setNpmBinary('/usr/bin/npm')
-                ->setChromePath(collect($chromePaths)->sort()->last())
-                ->noSandbox();
-        }
-
-        $browsershot->hideBackground()
-            ->windowSize(830, 190)
+        Screenshot::url($url)
+            ->size(830, 190)
             ->deviceScaleFactor(2)
-            ->save($fileName);
+            ->omitBackground()
+            ->save($path);
 
-        $this->repository->addMedia($fileName)
+        $this->repository->addMedia($path)
+            ->usingFileName('image.webp')
             ->toMediaCollection('github-header-' . $mode);
 
         $temporaryDirectory->delete();
