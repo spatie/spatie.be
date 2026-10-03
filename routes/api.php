@@ -30,7 +30,7 @@ Route::post('activations/{activation:uuid}/version', UpdateCurrentVersionControl
 Route::delete('activations/{activation:uuid}', DeleteActivationController::class);
 
 Route::get('price/{purchasable}/{ipOrCountryCode?}', PriceController::class);
-Route::get('bundle-price/{bundle}/{ipOrCountryCode}', BundlePriceController::class);
+Route::get('bundle-price/{bundle}/{ipOrCountryCode?}', BundlePriceController::class);
 
 
 Route::get('license/{license:key}', ShowLicenseController::class);

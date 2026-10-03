@@ -3,11 +3,14 @@
 namespace App\Http\Api\Controllers;
 
 use App\Domain\Shop\Models\Bundle;
+use Illuminate\Http\Request;
 
 class BundlePriceController
 {
-    public function __invoke(Bundle $bundle, string $ipOrCountryCode)
+    public function __invoke(Request $request, Bundle $bundle, ?string $ipOrCountryCode = null)
     {
+        $ipOrCountryCode ??= $request->ip() ?? '';
+
         $countryCode = strlen($ipOrCountryCode) === 2
             ? $ipOrCountryCode
             : geoip($ipOrCountryCode)->iso_code;
