@@ -26,6 +26,26 @@ class DocsStorage
         return Storage::disk(config('docs.assets_disk'));
     }
 
+    /**
+     * On Laravel Cloud the assets live in the public bucket. Visitors can download
+     * them from the bucket directly, which doesn't count towards the app bandwidth.
+     */
+    public function assetsAreInBucket(): bool
+    {
+        $assetsDiskName = config('docs.assets_disk');
+
+        return config("filesystems.disks.{$assetsDiskName}.driver") !== 'local';
+    }
+
+    public function assetUrl(string $assetPath): string
+    {
+        $encodedAssetPath = collect(explode('/', $assetPath))
+            ->map(rawurlencode(...))
+            ->implode('/');
+
+        return $this->assetsDisk()->url($encodedAssetPath);
+    }
+
     public function createReleasePath(string $repositoryName): string
     {
         $release = Str::lower((string) Str::ulid());
