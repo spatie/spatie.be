@@ -65,10 +65,6 @@ php artisan cache:clear
 php artisan config:clear
 php artisan route:clear
 php artisan view:clear
-
-# Horizon queue management
-php artisan horizon
-php artisan horizon:status
 ```
 
 ### Configuration
@@ -89,8 +85,8 @@ echo -e "\n## Coding Standards\nFollow the Laravel & PHP guidelines in \`public/
 - **Alpine.js** and **React** for frontend interactivity
 - **Tailwind CSS** with extensive customization
 - **Vite** for asset building
-- **MySQL** database with **Redis** for caching/queues
-- **Horizon** for queue monitoring
+- **MySQL** database with **Redis** for caching
+- **Laravel Cloud** managed queues
 - **Pest** for testing
 
 ### Domain Structure
@@ -137,5 +133,4 @@ The codebase follows Laravel conventions with domain-driven design elements:
 - Run `npm run dev` in a separate terminal for asset watching
 - Use `php artisan tinker` for quick debugging
 - Check `storage/logs/laravel.log` for errors
-- Horizon dashboard available at `/horizon` (requires authentication)
 - Debug bar available in local environment (bottom of page)

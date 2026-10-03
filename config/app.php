@@ -203,7 +203,6 @@ return [
         App\Providers\BladeComponentsServiceProvider::class,
         App\Providers\LivewireServiceProvider::class,
         App\Providers\MailcoachServiceProvider::class,
-        App\Providers\HorizonServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\HealthServiceProvider::class,
         App\Providers\AiTransformerServiceProvider::class,
