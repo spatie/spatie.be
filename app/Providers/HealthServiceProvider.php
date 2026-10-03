@@ -8,7 +8,6 @@ use Spatie\Health\Checks\Check;
 use Spatie\Health\Checks\Checks\DatabaseCheck;
 use Spatie\Health\Checks\Checks\DebugModeCheck;
 use Spatie\Health\Checks\Checks\EnvironmentCheck;
-use Spatie\Health\Checks\Checks\HorizonCheck;
 use Spatie\Health\Checks\Checks\OptimizedAppCheck;
 use Spatie\Health\Checks\Checks\UsedDiskSpaceCheck;
 use Spatie\Health\Facades\Health;
@@ -29,8 +28,7 @@ class HealthServiceProvider extends ServiceProvider
     }
 
     /**
-     * On Laravel Cloud, queues are managed queues instead of Horizon, and
-     * the replicas' load and disk space are managed by Cloud.
+     * On Laravel Cloud, the replicas' load and disk space are managed by Cloud.
      *
      * @return array<int, Check>
      */
@@ -42,7 +40,6 @@ class HealthServiceProvider extends ServiceProvider
 
         return [
             CpuLoadCheck::new()->failWhenLoadIsHigherInTheLast5Minutes(5.0),
-            HorizonCheck::new(),
             UsedDiskSpaceCheck::new()
                 ->warnWhenUsedSpaceIsAbovePercentage(90)
                 ->failWhenUsedSpaceIsAbovePercentage(95),
