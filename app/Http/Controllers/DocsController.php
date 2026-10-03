@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Docs\Alias;
 use App\Docs\Docs;
+use App\Docs\DocsStorage;
 use App\Docs\DocumentationPage;
 use App\Docs\Highlighting\DiffLanguage;
 use App\Docs\Highlighting\JsxLanguage;
@@ -91,7 +92,7 @@ class DocsController
         ]);
     }
 
-    public function show(string $repository, string $alias, string $slug, Docs $docs)
+    public function show(string $repository, string $alias, string $slug, Docs $docs, DocsStorage $docsStorage)
     {
         try {
             $repository = $docs->getRepository($repository);
@@ -132,6 +133,7 @@ class DocsController
 
         $page->contents = $this->renderMarkdown($docs->pageContents($page));
         $page->contents = str_replace('<pre ', '<pre translate="no"', $page->contents);
+        $page->contents = $this->linkImagesToAssetsBucket($page->contents, $repository->slug, $docsStorage);
 
         $navigation = $this->getNavigation($pages);
 
@@ -215,6 +217,33 @@ class DocsController
                     'paths' => ['docs'],
                 ],
             ])->toHtml($contents);
+    }
+
+    /**
+     * Images of the docs are linked to the bucket directly, so browsers don't
+     * need to be redirected by DocsAssetController first.
+     */
+    private function linkImagesToAssetsBucket(string $contents, string $repositoryName, DocsStorage $docsStorage): string
+    {
+        if (! $docsStorage->assetsAreInBucket()) {
+            return $contents;
+        }
+
+        $quotedRepositoryName = preg_quote($repositoryName, '~');
+
+        return preg_replace_callback(
+            '~(<img\b[^>]*?\bsrc=)(["\'])/docs/(' . $quotedRepositoryName . '/[^/"\']+/[^"\'?#]+\.(?:png|jpe?g|gif|svg|webp|avif|ico))\2~i',
+            function (array $matches) use ($docsStorage) {
+                $assetPath = rawurldecode(html_entity_decode($matches[3]));
+
+                if (in_array('..', explode('/', $assetPath), true)) {
+                    return $matches[0];
+                }
+
+                return $matches[1] . $matches[2] . e($docsStorage->assetUrl($assetPath)) . $matches[2];
+            },
+            $contents,
+        );
     }
 
     private function getPrevPage(DocumentationPage $currentPage, Collection $navigation): ?DocumentationPage
