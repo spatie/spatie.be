@@ -15,7 +15,7 @@
         </p>
     </div>
     <aside class="relative w-full max-w-[360px] flex-shrink-0 md:pl-32 flex flex-col md:justify-end md:items-end pt-10 md:pt-0 border-t md:border-t-0 md:border-l border-white/20">
-        @include('front.pages.home.partials.open-sign')
+        <x-hanging-sign />
         <ul class="text-xl w-full space-y-3 sm:max-w-[240px]">
             <li class="text-white/50 hover:text-white transition-colors">
                 <a href="/web-development" class="flex items-center justify-between">
