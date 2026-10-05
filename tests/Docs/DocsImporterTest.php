@@ -214,6 +214,8 @@ it('keeps the current docs when no docs were found at all', function () {
 });
 
 it('only keeps the current and the previous release', function () {
+    $releasePaths = [];
+
     foreach (range(1, 3) as $importNumber) {
         app(DocsImporter::class)->import($this->repository);
 

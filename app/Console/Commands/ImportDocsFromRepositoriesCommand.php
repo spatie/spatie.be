@@ -31,7 +31,7 @@ class ImportDocsFromRepositoriesCommand extends Command
         }
 
         $repositories = collect(config('docs.repositories'))
-            ->filter(fn (array $repository) => in_array($repository['repository'], $updatedRepositoryNames));
+            ->filter(fn (array $repository) => in_array($repository['repository'], $updatedRepositoryNames, true));
 
         $this->info("{$repositories->count()} repositories.");
 

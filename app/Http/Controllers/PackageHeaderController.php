@@ -19,7 +19,7 @@ class PackageHeaderController
         return view('front.pages.open-source.package-header', compact('repository', 'mode'));
     }
 
-    public function image(string $name, $mode = 'dark'): StreamedResponse|RedirectResponse
+    public function image(string $name, string $mode = 'dark'): StreamedResponse|RedirectResponse
     {
         $repository = Repository::where('name', $name)->firstOrFail();
         $media = $repository->getMedia('github-header-' . $mode)->first();
@@ -31,7 +31,7 @@ class PackageHeaderController
         /*
          * A regenerated header gets a new url in the bucket, so the redirect is temporary.
          */
-        if (config("filesystems.disks.{$media->disk}.driver") !== 'local') {
+        if ($media->getDiskDriverName() !== 'local') {
             return redirect()->away($media->getUrl(), 302, [
                 'Cache-Control' => 'public, max-age=3600',
             ]);

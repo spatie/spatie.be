@@ -78,7 +78,7 @@ it('can be forced to import the docs', function () {
     expect(app(Docs::class)->getRepository('laravel-backup')->getAlias('v9'))->not->toBeNull();
 });
 
-it('can run again after a redelivery was released', function () {
+it('has enough tries to run again after a redelivery was released', function () {
     Repository::factory()->create(['name' => 'laravel-backup']);
 
     $job = new ImportDocsForRepositoryJob('laravel-backup');

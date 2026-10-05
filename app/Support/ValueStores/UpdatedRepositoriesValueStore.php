@@ -2,7 +2,7 @@
 
 namespace App\Support\ValueStores;
 
-use Illuminate\Contracts\Cache\Repository;
+use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 
@@ -36,7 +36,7 @@ class UpdatedRepositoriesValueStore
         $this->cache()->forget($this->cacheKey);
     }
 
-    protected function cache(): Repository
+    protected function cache(): CacheRepository
     {
         return Cache::store(config('docs.cache_store'));
     }

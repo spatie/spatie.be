@@ -3,11 +3,12 @@
 namespace App\Http\Api\Controllers;
 
 use App\Domain\Shop\Models\Bundle;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class BundlePriceController
 {
-    public function __invoke(Request $request, Bundle $bundle, ?string $ipOrCountryCode = null)
+    public function __invoke(Request $request, Bundle $bundle, ?string $ipOrCountryCode = null): JsonResponse
     {
         $ipOrCountryCode ??= $request->ip() ?? '';
 
