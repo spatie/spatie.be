@@ -7,6 +7,7 @@ use Github\Api\Organization;
 use Github\Api\Repo;
 use Github\Api\User;
 use Github\Client;
+use Github\Exception\RuntimeException;
 use Github\ResultPager;
 use Http;
 use Illuminate\Support\Carbon;
@@ -154,6 +155,37 @@ class GitHubApi
         $api = $this->client->api('user');
 
         return $api->show($username);
+    }
+
+    public function userExists(string $username): bool
+    {
+        try {
+            $this->getUser($username);
+
+            return true;
+        } catch (RuntimeException $exception) {
+            if ($exception->getCode() === 404) {
+                return false;
+            }
+
+            throw $exception;
+        }
+    }
+
+    public function getUsernameForId(int $gitHubId): ?string
+    {
+        /** @var User $api */
+        $api = $this->client->api('user');
+
+        try {
+            return $api->showById($gitHubId)['login'];
+        } catch (RuntimeException $exception) {
+            if ($exception->getCode() === 404) {
+                return null;
+            }
+
+            throw $exception;
+        }
     }
 
     public function inviteToRepo(string $gitHubUsername, string $repository): void

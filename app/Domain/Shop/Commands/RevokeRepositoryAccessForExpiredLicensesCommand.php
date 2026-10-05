@@ -2,13 +2,13 @@
 
 namespace App\Domain\Shop\Commands;
 
+use App\Domain\Shop\Exceptions\CouldNotRevokeRepositoryAccess;
 use App\Domain\Shop\Models\License;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Log;
 
 class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
 {
@@ -27,11 +27,23 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                     return;
                 }
 
-                if (! $license->assignment->user->github_username) {
+                $user = $license->assignment->user;
+
+                if (! $user->github_username) {
                     return;
                 }
 
                 try {
+                    $gitHubUsername = $this->currentGitHubUsername($user, $gitHubApi);
+
+                    if (! $gitHubUsername) {
+                        $this->unsetGithubUsername($user);
+
+                        $license->assignment->update(['has_repository_access' => false]);
+
+                        return;
+                    }
+
                     $repositories = array_map('trim', explode(',', $license->assignment->purchasable->repository_access));
 
                     foreach ($repositories as $repository) {
@@ -42,22 +54,20 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
                             continue;
                         }
 
-                        $gitHubApi->revokeAccessToRepo(
-                            $license->assignment->user->github_username,
-                            $repository
-                        );
+                        $gitHubApi->revokeAccessToRepo($gitHubUsername, $repository);
                     }
                 } catch (Exception $exception) {
                     if ($exception->getMessage() !== 'Not Found') {
-                        Log::alert(
-                            "We could not revoke access for {$license->assignment->user->github_username}
-                             to {$license->assignment->purchasable->repository_access}. Exception: {$exception->getMessage()}"
-                        );
+                        report(CouldNotRevokeRepositoryAccess::make(
+                            $user->github_username,
+                            $license->assignment->purchasable->repository_access,
+                            $exception,
+                        ));
 
                         return;
                     }
 
-                    $this->unsetGithubUsername($license->assignment->user);
+                    $this->unsetGithubUsername($user);
                 }
 
                 $license->assignment->update(['has_repository_access' => false]);
@@ -73,6 +83,32 @@ class RevokeRepositoryAccessForExpiredLicensesCommand extends Command
             ->whereNotExpired()
             ->whereHas('assignment', fn (Builder $query) => $query->where('purchasable_id', $license->assignment->purchasable_id))
             ->exists();
+    }
+
+    /**
+     * When a user renamed their GitHub account, the stored username no longer
+     * exists. Revoking access for it fails, while the renamed account keeps
+     * access. We use the immutable GitHub id to find the current username.
+     */
+    protected function currentGitHubUsername(User $user, GitHubApi $gitHubApi): ?string
+    {
+        if ($gitHubApi->userExists($user->github_username)) {
+            return $user->github_username;
+        }
+
+        if (! $user->github_id) {
+            return null;
+        }
+
+        $currentGitHubUsername = $gitHubApi->getUsernameForId($user->github_id);
+
+        if (! $currentGitHubUsername) {
+            return null;
+        }
+
+        $user->update(['github_username' => $currentGitHubUsername]);
+
+        return $currentGitHubUsername;
     }
 
     protected function unsetGithubUsername(User $user): void
