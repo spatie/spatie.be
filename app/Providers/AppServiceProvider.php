@@ -47,7 +47,7 @@ class AppServiceProvider extends ServiceProvider
 
         $this->routeLongRunningJobs();
 
-        RateLimiter::for(ThrottleScreenshots::RATE_LIMITER, function () {
+        RateLimiter::for(ThrottleScreenshots::RATE_LIMITER, function (): Limit {
             if (config('laravel-screenshot.driver') !== 'cloudflare') {
                 return Limit::none();
             }

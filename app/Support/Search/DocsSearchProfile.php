@@ -8,7 +8,7 @@ use Spatie\SiteSearch\Profiles\DefaultSearchProfile;
 
 class DocsSearchProfile extends DefaultSearchProfile
 {
-    public const USER_AGENT = 'spatie.be site search crawler';
+    public const string USER_AGENT = 'spatie.be site search crawler';
 
     public function shouldIndex(string $url, CrawlResponse $response): bool
     {

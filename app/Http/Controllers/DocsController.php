@@ -233,7 +233,7 @@ class DocsController
 
         return preg_replace_callback(
             '~(<img\b[^>]*?\bsrc=)(["\'])/docs/(' . $quotedRepositoryName . '/[^/"\']+/[^"\'?#]+\.(?:png|jpe?g|gif|svg|webp|avif|ico))\2~i',
-            function (array $matches) use ($docsStorage) {
+            function (array $matches) use ($docsStorage): string {
                 $assetPath = rawurldecode(html_entity_decode($matches[3]));
 
                 if (in_array('..', explode('/', $assetPath), true)) {
