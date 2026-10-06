@@ -20,8 +20,8 @@ it('can change tracing using env variables', function () {
         ->and($config['sampler']['config']['rate'])->toBe('0.5');
 });
 
-it('only sends error logs to flare', function () {
-    expect(config('flare.minimal_log_level'))->toBe(Level::Error);
+it('only sends warning logs and above to flare', function () {
+    expect(config('flare.minimal_log_level'))->toBe(Level::Warning);
 });
 
 it('reports exceptions to flare', function () {

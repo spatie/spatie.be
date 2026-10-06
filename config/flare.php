@@ -202,5 +202,5 @@ return [
     |
     */
 
-    'minimal_log_level' => Level::Error,
+    'minimal_log_level' => Level::Warning,
 ];
