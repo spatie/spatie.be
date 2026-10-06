@@ -17,11 +17,11 @@
         <span class="text-sm leading-loose text-oss-royal-blue-light">
             <span class="w-16 inline-block">VAT</span> BE0809.387.596
             <br>
-            <span class="w-16 inline-block">D-U-N-S</span> 400021543
-            <br>
             <span class="w-16 inline-block">IBAN</span> BE36<span class="ml-1">7350</span><span class="ml-1">5382</span><span class="ml-1">4981</span>
             <br>
             <span class="w-16 inline-block">BIC</span> KREDBEBB
+            <br>
+            <span class="w-16 inline-block">D-U-N-S</span> 400021543
         </span>
     @endisset
 </div>
