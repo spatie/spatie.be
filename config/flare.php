@@ -1,8 +1,8 @@
 <?php
 
+use App\Flare\CloudFlareSender;
 use Monolog\Level;
 use Spatie\FlareClient\Sampling\RateSampler;
-use Spatie\FlareClient\Senders\DaemonSender;
 use Spatie\LaravelFlare\FlareConfig;
 use Spatie\LaravelFlare\Senders\LaravelHttpSender;
 
@@ -81,7 +81,7 @@ return [
 
     'sender' => env('FLARE_DAEMON_URL')
         ? [
-            'class' => DaemonSender::class,
+            'class' => CloudFlareSender::class,
             'config' => [
                 'daemon_url' => env('FLARE_DAEMON_URL'),
             ],
