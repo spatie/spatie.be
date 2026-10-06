@@ -1,0 +1,111 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+cd "$(dirname "${BASH_SOURCE[0]}")/.."
+export DEBIAN_FRONTEND=noninteractive
+TIMEFORMAT='  completed in %3R seconds'
+
+echo '==> Installing PHP 8.5 (matching CI) and local database tools'
+packages=(php8.5-cli php8.5-bcmath php8.5-curl php8.5-gd php8.5-imagick
+    php8.5-intl php8.5-mbstring php8.5-mysql php8.5-redis php8.5-soap
+    php8.5-sqlite3 php8.5-xml php8.5-zip mysql-community-server mysql-community-client redis-server)
+missing=()
+for package in "${packages[@]}"; do
+    if [[ "$(dpkg-query -W -f='${Status}' "$package" 2>/dev/null || true)" != 'install ok installed' ]]; then
+        missing+=("$package")
+    fi
+done
+if ((${#missing[@]})); then
+    if [[ ! -f /etc/apt/sources.list.d/php.list ]]; then
+        keyring=$(mktemp)
+        curl -fsSL https://packages.sury.org/debsuryorg-archive-keyring.deb -o "$keyring"
+        sudo dpkg -i "$keyring"
+        rm "$keyring"
+        echo 'deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ bookworm main' |
+            sudo tee /etc/apt/sources.list.d/php.list >/dev/null
+    fi
+    if [[ ! -f /etc/apt/sources.list.d/mysql.list ]]; then
+        curl -fsSL https://repo.mysql.com/RPM-GPG-KEY-mysql-2025 |
+            sudo tee /usr/share/keyrings/mysql.asc >/dev/null
+        echo 'deb [signed-by=/usr/share/keyrings/mysql.asc] https://repo.mysql.com/apt/debian/ bookworm mysql-8.4-lts' |
+            sudo tee /etc/apt/sources.list.d/mysql.list >/dev/null
+    fi
+    time sudo apt-get update -qq
+    time sudo -E apt-get install -y --no-install-recommends "${missing[@]}"
+fi
+sudo update-alternatives --set php /usr/bin/php8.5
+
+echo '==> Installing Composer and Node.js'
+if ! command -v composer >/dev/null; then
+    installer=$(mktemp)
+    curl -fsSL https://getcomposer.org/installer -o "$installer"
+    expected=$(curl -fsSL https://composer.github.io/installer.sig)
+    [[ "$(sha384sum "$installer" | cut -d ' ' -f 1)" == "$expected" ]]
+    php "$installer" --2 --install-dir=/tmp --filename=composer.phar
+    sudo install -m 755 /tmp/composer.phar /usr/local/bin/composer
+    rm "$installer" /tmp/composer.phar
+fi
+
+# Vite 7 needs Node >=22.12; use a stable LTS rather than the orb's rolling Node.
+node_version=22.22.0
+if [[ "$(node --version 2>/dev/null || true)" != "v$node_version" ]]; then
+    node_archive="node-v${node_version}-linux-$(dpkg --print-architecture | sed 's/amd64/x64/')"
+    download=$(mktemp -d)
+    curl -fsSL "https://nodejs.org/dist/v$node_version/$node_archive.tar.xz" -o "$download/$node_archive.tar.xz"
+    curl -fsSL "https://nodejs.org/dist/v$node_version/SHASUMS256.txt" -o "$download/SHASUMS256.txt"
+    (cd "$download"; grep " $node_archive.tar.xz\$" SHASUMS256.txt | sha256sum --check)
+    sudo tar -xJf "$download/$node_archive.tar.xz" --strip-components=1 -C /usr/local
+    rm -r "$download"
+fi
+npm_version=$(node -p "require('./package.json').packageManager.split('@')[1]")
+if [[ "$(npm --version)" != "$npm_version" ]]; then
+    time sudo npm install --global "npm@$npm_version" --no-audit --no-fund
+fi
+
+echo '==> Preparing local services and environment'
+# These are disposable orb databases. Systemd owns the processes, not setup's shell.
+sudo tee /etc/mysql/mysql.conf.d/99-orb.cnf >/dev/null <<'EOF'
+[mysqld]
+bind-address=127.0.0.1
+mysqlx-bind-address=127.0.0.1
+innodb_flush_log_at_trx_commit=2
+skip-log-bin
+EOF
+sudo systemctl enable mysql redis-server >/dev/null
+time sudo systemctl start mysql redis-server
+sudo mysql <<'SQL'
+CREATE DATABASE IF NOT EXISTS spatie;
+CREATE DATABASE IF NOT EXISTS spatie_tests;
+CREATE USER IF NOT EXISTS 'orb'@'127.0.0.1' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON spatie.* TO 'orb'@'127.0.0.1';
+GRANT ALL PRIVILEGES ON `spatie\_tests%`.* TO 'orb'@'127.0.0.1';
+SQL
+
+if [[ ! -f .env ]]; then
+    cp .env.example .env
+    sed -i 's/^DB_USERNAME=.*/DB_USERNAME=orb/' .env
+fi
+
+echo '==> Installing locked PHP dependencies'
+# post-install-cmd tries to execute a nonexistent local "composer" PHP file.
+# Run the required autoload/discovery hooks explicitly instead.
+time composer install --no-interaction --prefer-dist --no-progress --no-scripts
+time composer run-script post-autoload-dump --no-interaction
+composer check-platform-reqs
+if grep -Eq '^APP_KEY=(""|\x27\x27)?$' .env; then
+    php artisan key:generate --no-interaction
+fi
+
+echo '==> Installing locked frontend dependencies and building assets'
+time npm ci --no-audit --no-fund --prefer-offline
+time npm run build
+
+echo '==> Migrating the disposable local database'
+# Never follow an existing .env or injected database URL to a shared database.
+# Ignore any cached application configuration for this command as well.
+time env APP_ENV=local APP_CONFIG_CACHE=storage/framework/cache/orb-config.php \
+    DATABASE_URL= DB_SOCKET= DB_CONNECTION=mysql DB_HOST=127.0.0.1 DB_PORT=3306 \
+    DB_DATABASE=spatie DB_USERNAME=orb DB_PASSWORD= \
+    php artisan migrate --force --no-interaction
+
+echo '==> Orb ready: PHP, Composer, Node, assets, MySQL and Redis'

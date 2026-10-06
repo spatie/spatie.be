@@ -73,3 +73,6 @@ auth.json
 meilisearch
 data.ms
 .DS_Store
+
+# Generated orb portal links
+/.amp/portals/
