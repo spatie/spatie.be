@@ -50,7 +50,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => explode(',', (string) env('LOG_STACK', 'daily')),
+            'channels' => explode(',', (string) env('LOG_STACK', 'daily,flare')),
             'ignore_exceptions' => false,
         ],
 
