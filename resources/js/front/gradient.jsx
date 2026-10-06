@@ -39,7 +39,6 @@ function canRender(element) {
     if (! desktopMediaQuery.matches) return false;
     if (reducedMotionMediaQuery.matches) return false;
     if (connectionSavesData()) return false;
-    if (document.visibilityState !== 'visible') return false;
 
     return true;
 }
@@ -80,7 +79,7 @@ function syncCurrentElement() {
 function reveal(element) {
     window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => {
-            if (currentElement !== element) return;
+            if (currentElement !== element || ! root) return;
 
             element.classList.remove('opacity-0');
             element.classList.add('opacity-100');
@@ -95,9 +94,9 @@ async function renderGradient(element) {
 
     isRendering = true;
 
-    const [{ createRoot }, { ShaderGradient, ShaderGradientCanvas }, React] = await Promise.all([
+    const [{ createRoot }, { default: GradientScene }, React] = await Promise.all([
         import('react-dom/client'),
-        import('@shadergradient/react'),
+        import('./gradient-scene.jsx'),
         import('react'),
     ]);
 
@@ -107,24 +106,14 @@ async function renderGradient(element) {
         return;
     }
 
-    if (! canRender(element)) {
+    if (! canRender(element) || document.visibilityState !== 'visible') {
         isRendering = false;
 
         return;
     }
 
     root = createRoot(element);
-    root.render(
-        React.createElement(
-            ShaderGradientCanvas,
-            null,
-            React.createElement(ShaderGradient, {
-                control: 'query',
-                enableTransition: false,
-                urlString: element.dataset.url,
-            }),
-        ),
-    );
+    root.render(React.createElement(GradientScene, { url: element.dataset.url }));
 
     reveal(element);
 }
@@ -140,6 +129,8 @@ function attemptRender() {
         return;
     }
 
+    // Hidden tabs defer startup, but keep an existing scene and its last frame.
+    if (document.visibilityState !== 'visible') return;
     if (! hasIntent && ! hasFallbackElapsed) return;
 
     renderGradient(element);
