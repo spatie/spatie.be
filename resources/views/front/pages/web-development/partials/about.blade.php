@@ -17,29 +17,32 @@
         </div>
     </div>
 
-<div class="mt-16 md:mt-20">
-    <div class="grid gap-4 md:grid-cols-3">
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
+<div id="process" class="mt-16 md:mt-20">
+    <div class="process-overview grid md:grid-cols-3">
+        <div class="process-card space-y-4">
+            <img class="process-illustration" src="/images/services-process-research.webp" alt="" width="600" height="291">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">01</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Research & Analysis</h3>
             </div>
             <p class="text-lg text-oss-gray-medium">
-                Know we dig into your domain before touching any code. We accommodate new projects and legacy applications bursting out of its seams.
+                First we dig deep into your domain: everyone needs to know what we're really solving. New projects and legacy apps bursting out of their seams alike.
             </p>
         </div>
 
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
+        <div class="process-card space-y-4">
+            <img class="process-illustration" src="/images/services-process-foundation.webp" alt="" width="600" height="352">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">02</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Build a Strong Foundation</h3>
             </div>
             <p class="text-lg text-oss-gray-medium">
-                A Laravel codebase built for the long haul: clear structure, automated tests, and sensible abstractions that don't fight you when requirements change.
+                A Laravel codebase built for developers and agents alike. Clear structure, automated tests, and sensible abstractions that don't fight you when requirements change.
             </p>
         </div>
 
-        <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 md:p-8 space-y-4">
+        <div class="process-card space-y-4">
+            <img class="process-illustration process-illustration-development" src="/images/services-process-development.webp" alt="" width="600" height="394">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">03</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Flexible Development</h3>

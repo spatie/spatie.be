@@ -1,0 +1,22 @@
+.process-overview {
+    gap: 160px 16px;
+    padding-top: 140px;
+}
+
+.process-card {
+    @apply relative flex flex-col bg-white/[0.03] border border-white/10 rounded-xl p-6 pt-[140px] md:p-8 md:pt-[140px];
+}
+
+.process-illustration {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: calc(100% - 32px);
+    height: auto;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+}
+
+.process-illustration-development {
+    transform: translate(-50%, -50%) scale(0.82);
+}
