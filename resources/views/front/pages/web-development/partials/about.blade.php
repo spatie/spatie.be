@@ -19,8 +19,8 @@
 
 <div id="process" class="mt-16 md:mt-20">
     <div class="process-overview grid md:grid-cols-3">
-        <a class="process-card space-y-4" href="{{ route('web-development.research-and-analysis') }}" aria-labelledby="process-research-link">
-            <span id="process-research-link" class="sr-only">Research &amp; Analysis: Grab a notebook</span>
+        <div class="process-card space-y-4">
+            <img class="process-illustration" src="/images/services-process-research.webp" alt="" width="600" height="291">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">01</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Research & Analysis</h3>
@@ -28,11 +28,10 @@
             <p class="text-lg text-oss-gray-medium">
                 First we dig deep into your domain: everyone needs to know what we're really solving. New projects and legacy apps bursting out of their seams alike.
             </p>
-            <x-services-phase-tag phase="01" aria-hidden="true" />
-        </a>
+        </div>
 
-        <a class="process-card space-y-4" href="{{ route('web-development.strong-foundation') }}" aria-labelledby="process-foundation-link">
-            <span id="process-foundation-link" class="sr-only">Build a Strong Foundation: Hard hats on</span>
+        <div class="process-card space-y-4">
+            <img class="process-illustration" src="/images/services-process-foundation.webp" alt="" width="600" height="352">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">02</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Build a Strong Foundation</h3>
@@ -40,11 +39,10 @@
             <p class="text-lg text-oss-gray-medium">
                 A Laravel codebase built for developers and agents alike. Clear structure, automated tests, and sensible abstractions that don't fight you when requirements change.
             </p>
-            <x-services-phase-tag phase="02" aria-hidden="true" />
-        </a>
+        </div>
 
-        <a class="process-card space-y-4" href="{{ route('web-development.flexible-development') }}" aria-labelledby="process-development-link">
-            <span id="process-development-link" class="sr-only">Flexible Development: Plot twists welcome</span>
+        <div class="process-card space-y-4">
+            <img class="process-illustration process-illustration-development" src="/images/services-process-development.webp" alt="" width="600" height="394">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">03</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Flexible Development</h3>
@@ -52,13 +50,7 @@
             <p class="text-lg text-oss-gray-medium">
                 We work in short cycles with frequent check-ins. Priorities can shift, but our process is designed for it, so you always get the most valuable thing next.
             </p>
-            <x-services-phase-tag phase="03" aria-hidden="true" />
-        </a>
-        <svg class="process-clothesline" viewBox="0 0 300 40" preserveAspectRatio="none" fill="none" aria-hidden="true">
-            <path d="M0 8 Q50 32 100 8 Q150 32 200 8 Q250 32 300 8" stroke="currentColor" stroke-width="1.5" vector-effect="non-scaling-stroke" />
-            <circle cx="1" cy="8" r="1" fill="currentColor" />
-            <circle cx="299" cy="8" r="1" fill="currentColor" />
-        </svg>
+        </div>
     </div>
 </div>
 
