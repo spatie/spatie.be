@@ -39,7 +39,7 @@
             <nav class="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-5 md:gap-6 text-oss-royal-blue md:text-base print:hidden">
                 <a
                     href="{{ route('web-development') }}"
-                    class="hover:text-oss-spatie-blue transition-colors {{ request()->routeIs('web-development') ? 'font-bold text-blue' : '' }}"
+                    class="hover:text-oss-spatie-blue transition-colors {{ request()->routeIs('web-development', 'web-development.*') ? 'font-bold text-blue' : '' }}"
                 >
                     Services
                 </a>

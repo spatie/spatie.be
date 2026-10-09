@@ -101,6 +101,11 @@ Route::post('newsletter-subscriptions', NewsletterSubscriptionController::class)
 
 Route::view('web-development', 'front.pages.web-development.index')->name('web-development');
 
+Route::prefix('web-development')->name('web-development.')->group(function () {
+    Route::view('research-and-analysis', 'front.pages.web-development.research-and-analysis')->name('research-and-analysis');
+    Route::view('strong-foundation', 'front.pages.web-development.strong-foundation')->name('strong-foundation');
+    Route::view('flexible-development', 'front.pages.web-development.flexible-development')->name('flexible-development');
+});
 
 Route::prefix('about-us')->group(function () {
     Route::view('/', 'front.pages.about.index')->name('about');
