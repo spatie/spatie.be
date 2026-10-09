@@ -25,7 +25,7 @@
                 <h3 class="font-druk uppercase text-white leading-tight">Research & Analysis</h3>
             </div>
             <p class="text-lg text-oss-gray-medium">
-                Know we dig into your domain before touching any code. We accommodate new projects and legacy applications bursting out of its seams.
+                First we dig deep into your domain: everyone needs to know what we're really solving. New projects and legacy apps bursting out of their seams alike.
             </p>
         </div>
 
@@ -35,7 +35,7 @@
                 <h3 class="font-druk uppercase text-white leading-tight">Build a Strong Foundation</h3>
             </div>
             <p class="text-lg text-oss-gray-medium">
-                A Laravel codebase built for the long haul: clear structure, automated tests, and sensible abstractions that don't fight you when requirements change.
+                A Laravel codebase built for developers and agents alike. Clear structure, automated tests, and sensible abstractions that don't fight you when requirements change.
             </p>
         </div>
 
