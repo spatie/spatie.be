@@ -20,7 +20,7 @@
 <div id="process" class="mt-16 md:mt-20">
     <div class="process-overview grid md:grid-cols-3">
         <div class="process-card space-y-4">
-            <img class="process-illustration" src="/images/services-process-research.webp" alt="" width="600" height="291">
+            <img class="process-illustration" src="/images/services-process-research.webp" alt="" width="600" height="324">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">01</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Research & Analysis</h3>
@@ -31,7 +31,7 @@
         </div>
 
         <div class="process-card space-y-4">
-            <img class="process-illustration" src="/images/services-process-foundation.webp" alt="" width="600" height="352">
+            <img class="process-illustration" src="/images/services-process-foundation.webp" alt="" width="600" height="368">
             <div class="flex items-center gap-3 text-4xl">
                 <span class="font-druk text-oss-purple">02</span>
                 <h3 class="font-druk uppercase text-white leading-tight">Build a Strong Foundation</h3>
