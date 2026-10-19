@@ -5,6 +5,33 @@
 
 This repo contains the source code of [our company website](https://spatie.be). [This blog post series at freek.dev](https://freek.dev/1789-selling-digital-products-using-laravel-part-1-intro-a-tour-of-spatiebe) contains a lot of info on how this code works.
 
+## Development in Amp orbs
+
+Amp runs `.agents/setup` when preparing a project snapshot. It installs PHP 8.5
+(matching CI), Composer 2, Node.js 22.22.0, the npm version from `package.json`,
+and dependencies from both lockfiles. It also builds Vite assets and migrates a
+local MySQL 8.4 database. Exact snapshot matches reuse this work; warm setup runs
+reuse installed system packages and package-manager download caches.
+
+Setup creates `.env` only when it is missing and preserves an existing app key.
+The local databases are `spatie` and `spatie_tests`, with user `orb`, no password,
+and host `127.0.0.1`. The user can also create Pest's parallel test databases.
+MySQL and Redis run under systemd; `.agents/resume` ensures they are running
+without reinstalling dependencies. MySQL is required rather than MariaDB because
+the search timeout tests exercise MySQL's `MAX_EXECUTION_TIME` hint.
+
+Run `composer test` for tests, or `amp orb services ensure` to start the website
+and get its authenticated preview URL. The preview uses built assets; run
+`npm run build` after frontend changes. Databases start without demo content.
+Run `php artisan db:seed` when you need the repository's demo data; the full
+seeder is not idempotent, so setup does not run it automatically. External
+integrations such as Paddle, GitHub OAuth and MaxMind still need their own
+credentials; do not commit those or copy production data into a snapshot.
+
+Setup runs Composer's autoload/discovery hooks explicitly, skipping the existing
+post-install hook that attempts to execute a missing local `composer` PHP file.
+It does not update either lockfile. Both lifecycle scripts are safe to rerun.
+
 ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/spatiebe.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/spatie.be)

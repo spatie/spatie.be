@@ -33,8 +33,10 @@ class ImportDocsForRepositoryJob implements ShouldQueue
 
     public function handle(GitHubApi $gitHubApi, DocsImporter $docsImporter): void
     {
+        $fullRepositoryName = "spatie/{$this->repositoryName}";
+
         if (! $this->force) {
-            $lastVersionDate = $gitHubApi->getLatestVersionDate('spatie/' . $this->repositoryName);
+            $lastVersionDate = $gitHubApi->getLatestVersionDate($fullRepositoryName);
             $lastImportDate = $this->repository->docs_synced_at;
 
             if ($lastImportDate && $lastImportDate->isAfter($lastVersionDate)) {
@@ -42,7 +44,7 @@ class ImportDocsForRepositoryJob implements ShouldQueue
             }
         }
 
-        $repository = collect(config('docs.repositories'))->keyBy('repository')->get('spatie/' . $this->repositoryName);
+        $repository = collect(config('docs.repositories'))->keyBy('repository')->get($fullRepositoryName);
 
         if (! $docsImporter->importUnlessAlreadyImporting($repository)) {
             $this->release(DocsImporter::LOCK_SECONDS);

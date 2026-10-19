@@ -78,7 +78,7 @@ it('stores the headers in the media library like before', function () {
 
     generateHeaders($this->repository);
 
-    foreach (['dark', 'light'] as $mode) {
+    foreach (GeneratePackageGithubHeaderJob::MODES as $mode) {
         $media = $this->repository->fresh()->getFirstMedia("github-header-{$mode}");
 
         expect($media)

@@ -105,8 +105,8 @@ class MailcoachApi
             ->acceptJson()
             ->retry(
                 times: 3,
-                sleepMilliseconds: fn (int $attempt, RequestException $exception) => $this->retryDelayInMilliseconds($attempt, $exception),
-                when: fn (Throwable $exception) => $this->isRateLimited($exception),
+                sleepMilliseconds: $this->retryDelayInMilliseconds(...),
+                when: $this->isRateLimited(...),
                 throw: false,
             );
     }

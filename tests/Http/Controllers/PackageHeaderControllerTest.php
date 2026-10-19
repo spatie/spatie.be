@@ -51,7 +51,7 @@ it('redirects to the github header image in the bucket when the media library is
     $response = $this->get('packages/header/laravel-backup/html/light.webp');
 
     $response
-        ->assertStatus(302)
+        ->assertFound()
         ->assertRedirect("https://public-bucket.example.com/medialibrary/{$media->id}/image.webp")
         ->assertHeader('Cache-Control', 'max-age=3600, public')
         ->assertDontSee('data-og-image', escape: false);
