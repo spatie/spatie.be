@@ -20,6 +20,7 @@ export default {
         './resources/views/layout/partials/navigation/*.blade.php',
         './resources/views/layout/partials/wallpaper.blade.php',
         './resources/views/components/countdown.blade.php',
+        './resources/views/components/hanging-sign.blade.php',
         './resources/views/components/ld-json.blade.php',
     ],
 };

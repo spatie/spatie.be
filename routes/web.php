@@ -9,8 +9,10 @@ use App\Http\Auth\Controllers\UpdatePasswordController;
 use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
+use App\Http\Controllers\DocsAssetController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\LlmsTxtController;
+use App\Http\Controllers\MediaLibraryFileController;
 use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
@@ -44,6 +46,7 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Spatie\MarkdownResponse\Middleware\ProvideMarkdownResponse;
+use Spatie\OgImage\Http\Middleware\RenderOgImageMiddleware;
 
 Route::domain('topsecret.'.config('app.url'))->group(function () {
     Route::view('soon', 'front.pages.top-secret.placeholder');
@@ -223,6 +226,13 @@ Route::redirect(
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
+Route::get('/docs/{repository}/{alias}/{path}', DocsAssetController::class)
+    ->where('path', '.*\\.(png|jpe?g|gif|svg|webp|avif|ico|PNG|JPE?G|GIF|SVG|WEBP)')
+    ->withoutMiddleware([
+        StartSession::class,
+        ShareErrorsFromSession::class,
+        RenderOgImageMiddleware::class,
+    ]);
 Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(ProvideMarkdownResponse::class);
 
 Route::view('/newsletter', 'front.pages.newsletter.index')->name('newsletter');
@@ -252,7 +262,14 @@ Route::get('testing-laravel', [TestingLaravelController::class, 'show']);
 Route::post('testing-laravel', [TestingLaravelController::class, 'subscribe']);
 */
 
-Route::get('packages/header/{name}/html/{mode}.webp', [PackageHeaderController::class, 'image']);
+Route::get('images/medialibrary/{path}', MediaLibraryFileController::class)->where('path', '.*');
+
+Route::get('packages/header/{name}/html/{mode}.webp', [PackageHeaderController::class, 'image'])
+    ->withoutMiddleware([
+        StartSession::class,
+        ShareErrorsFromSession::class,
+        RenderOgImageMiddleware::class,
+    ]);
 Route::get('packages/header/{name}/html/{mode}', [PackageHeaderController::class, 'html']);
 
 Route::fallback(function (\Illuminate\Http\Request $request) {

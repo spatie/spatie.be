@@ -2,9 +2,11 @@
 
 namespace Tests;
 
+use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
+use Illuminate\Support\Facades\Queue;
 use Livewire\Livewire;
 
 abstract class TestCase extends BaseTestCase
@@ -20,6 +22,8 @@ abstract class TestCase extends BaseTestCase
 
         $this->withoutVite();
         $this->withoutMix();
+
+        Queue::fake([GeneratePackageGithubHeaderJob::class]);
     }
 
     public function getStub(string $nameOfStub): string
