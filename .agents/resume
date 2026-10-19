@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# No installs on wake. Systemd starts only services that are not already running.
+sudo systemctl start mysql redis-server
+echo 'Local MySQL and Redis are ready.'

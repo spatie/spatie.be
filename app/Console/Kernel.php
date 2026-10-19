@@ -20,6 +20,8 @@ use App\Domain\Shop\Commands\UpdatePurchasablePricesCommand;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
+use RuntimeException;
 use Spatie\LaravelUrlAiTransformer\Commands\TransformUrlsCommand;
 use Spatie\ScheduleMonitor\Models\MonitoredScheduledTaskLogItem;
 use Spatie\SiteSearch\Commands\CrawlCommand;
@@ -35,7 +37,20 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportGuideLinesCommand::class)->weekly();
         $schedule->command(RegenerateLeakedKeysCommand::class)->graceTimeInMinutes(30)->runInBackground()->hourly();
 
-        $schedule->command(CrawlCommand::class)->hourlyAt(30);
+        $schedule->command(CrawlCommand::class)->weeklyOn(1, '04:00')->timezone('Europe/Brussels');
+
+        $schedule->call(function () {
+            $results = DB::selectFromWriteConnection('OPTIMIZE TABLE site_search_documents');
+
+            foreach ($results as $result) {
+                if (strtolower($result->Msg_type) === 'error') {
+                    throw new RuntimeException("Docs search optimization failed: {$result->Msg_text}");
+                }
+            }
+        })
+            ->name('optimize-docs-search')
+            ->dailyAt('02:00')
+            ->withoutOverlapping();
 
         $schedule->command('model:prune', ['--model' => MonitoredScheduledTaskLogItem::class])->weekly();
         $schedule->command(SendLicenseExpirationNotificationsCommand::class)->dailyAt('10:00');
@@ -45,7 +60,10 @@ class Kernel extends ConsoleKernel
         $schedule->command(UpdateConversionRatesCommand::class)->runInBackground()->sundays()->at('05:00');
         $schedule->command(UpdatePurchasablePricesCommand::class)->runInBackground()->sundays()->at('06:00');
         $schedule->command(UpdateBundlePricesCommand::class)->runInBackground()->sundays()->at('06:30');
-        $schedule->command('geoip:update')->weekly();
+
+        if (! laravel_cloud()) {
+            $schedule->command('geoip:update')->weekly();
+        }
 
         $schedule->command(WishHappyBirthdayCommand::class)->runInBackground()->dailyAt('08:50');
         $schedule->command(AfterworkCommand::class)->runInBackground()->monthlyOn(1, '11:00');
@@ -53,6 +71,19 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportAllDocsCommand::class)->runInBackground()->dailyAt('03:10');
 
         //        $schedule->command(TransformUrlsCommand::class, ['--now'])->runInBackground();
+
+        $this->runEachTaskOnOneServer($schedule);
+    }
+
+    /**
+     * Laravel Cloud runs the scheduler on every replica of the app, so each task
+     * should only start on the first replica that claims it.
+     */
+    protected function runEachTaskOnOneServer(Schedule $schedule): void
+    {
+        foreach ($schedule->events() as $event) {
+            $event->onOneServer();
+        }
     }
 
     protected function commands(): void
