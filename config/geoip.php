@@ -8,11 +8,12 @@ return [
     |--------------------------------------------------------------------------
     |
     | Here you may configure the log settings for when a location is not found
-    | for the IP provided.
+    | for the IP provided. The package writes these to storage/logs/geoip.log
+    | without rotation, so it's off unless GEOIP_LOG_FAILURES is enabled.
     |
     */
 
-    'log_failures' => true,
+    'log_failures' => (bool) env('GEOIP_LOG_FAILURES', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,10 +122,11 @@ return [
     |
     | Cache tags are not supported when using the file or database cache
     | drivers in Laravel. This is done so that only locations can be cleared.
+    | Laravel Cloud uses the database cache, so tags aren't used there.
     |
     */
 
-    'cache_tags' => ['torann-geoip-location'],
+    'cache_tags' => laravel_cloud() ? null : ['torann-geoip-location'],
 
     /*
     |--------------------------------------------------------------------------

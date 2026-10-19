@@ -2,6 +2,7 @@
 
 use App\Models\Ad;
 use App\Models\Repository;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
@@ -57,7 +58,7 @@ it('renders the medialibrary banner on the medialibrary docs after migrating', f
 
     $this->migration->up();
 
-    $rendered = renderRandomBanner(['repositoryModel' => $repository->fresh()]);
+    $rendered = Blade::render('@include("components.banners.randomBanner")', ['repositoryModel' => $repository->fresh()]);
 
     expect($rendered)->toContain('medialibrary.pro');
 });

@@ -3,53 +3,108 @@
 namespace App\Jobs;
 
 use App\Http\Controllers\PackageHeaderController;
+use App\Jobs\Middleware\ThrottleScreenshots;
 use App\Models\Repository;
+use DateTimeInterface;
+use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Spatie\Browsershot\Browsershot;
+use ReflectionProperty;
+use Spatie\LaravelScreenshot\Facades\Screenshot;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
-class GeneratePackageGithubHeaderJob implements ShouldQueue
+class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 {
     use Queueable;
 
+    public const array HEADER_ATTRIBUTES = ['name', 'banner_title', 'accent_color', 'logo_svg'];
+
+    public const array MODES = ['dark', 'light'];
+
+    public int $maxExceptions = 4;
+
+    public int $uniqueFor = 60 * 60 * 24;
+
     public function __construct(
         public Repository $repository,
+        public string $mode,
     ) {
+    }
+
+    /**
+     * Each mode is a separate screenshot, and Cloudflare only allows one screenshot
+     * every few seconds, so every mode gets its own job and its own rate limiter slot.
+     */
+    public static function dispatchForAllModes(Repository $repository): void
+    {
+        foreach (self::MODES as $mode) {
+            dispatch(new self($repository, $mode));
+        }
+    }
+
+    public function uniqueId(): string
+    {
+        if ($this->isQueuedBeforeSplitPerMode()) {
+            return (string) $this->repository->getKey();
+        }
+
+        return "{$this->repository->getKey()}-{$this->mode}";
+    }
+
+    /** @return array<int, object> */
+    public function middleware(): array
+    {
+        return [new ThrottleScreenshots()];
+    }
+
+    public function retryUntil(): DateTimeInterface
+    {
+        return now()->addDay();
+    }
+
+    /** @return array<int, int> */
+    public function backoff(): array
+    {
+        return [60, 60 * 60, 60 * 60 * 6];
     }
 
     public function handle(): void
     {
-        $this->generateImage('dark');
-        $this->generateImage('light');
-    }
+        if ($this->isQueuedBeforeSplitPerMode()) {
+            self::dispatchForAllModes($this->repository);
 
-    protected function generateImage($mode): void
-    {
-        if (app()->environment('testing')) {
             return;
         }
 
         $temporaryDirectory = (new TemporaryDirectory())->create();
-        $fileName = $temporaryDirectory->path('image.webp');
-        $url = action([PackageHeaderController::class, 'html'], ['name' => $this->repository->name, 'mode' => $mode]);
 
-        $browsershot = Browsershot::url($url);
+        /**
+         * The header has always been a PNG stored as image.webp. GitHub READMEs
+         * link to the .webp URL, so the format and file name stay as they were.
+         */
+        $path = $temporaryDirectory->path('image.png');
 
-        if (app()->isProduction()) {
-            $browsershot->setNodeBinary('/usr/bin/node')
-                ->setNpmBinary('/usr/bin/npm')
-                ->setChromePath("/home/forge/.cache/puppeteer/chrome/linux-134.0.6998.35/chrome-linux64/chrome");
-        }
+        $url = action([PackageHeaderController::class, 'html'], ['name' => $this->repository->name, 'mode' => $this->mode]);
 
-        $browsershot->hideBackground()
-            ->windowSize(830, 190)
+        Screenshot::url($url)
+            ->size(830, 190)
             ->deviceScaleFactor(2)
-            ->save($fileName);
+            ->omitBackground()
+            ->save($path);
 
-        $this->repository->addMedia($fileName)
-            ->toMediaCollection('github-header-' . $mode);
+        $this->repository->addMedia($path)
+            ->usingFileName('image.webp')
+            ->toMediaCollection('github-header-' . $this->mode);
 
         $temporaryDirectory->delete();
+    }
+
+    /**
+     * Jobs queued before the job was split per mode have no mode. They are retried
+     * for up to a day, so they can still be on the queue after a deploy.
+     */
+    protected function isQueuedBeforeSplitPerMode(): bool
+    {
+        return ! (new ReflectionProperty($this, 'mode'))->isInitialized($this);
     }
 }
