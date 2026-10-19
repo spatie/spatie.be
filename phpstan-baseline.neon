@@ -1,12 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Call to function is_string\(\) with string will always evaluate to true\.$#'
-			identifier: function.alreadyNarrowedType
-			count: 1
-			path: app/Console/Commands/GenerateApiTokenCommand.php
-
-		-
 			message: '#^Call to an undefined method Laminas\\Feed\\Reader\\Entry\\AbstractEntry\:\:getContent\(\)\.$#'
 			identifier: method.notFound
 			count: 1
