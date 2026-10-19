@@ -7,6 +7,8 @@ use App\Domain\Shop\Models\Purchase;
 use App\Services\Mailcoach\MailcoachApi;
 use App\Services\Mailcoach\Subscriber;
 use Exception;
+use Illuminate\Http\Client\RequestException;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 class AddPurchasedTagsToEmailListSubscriberAction
@@ -15,7 +17,7 @@ class AddPurchasedTagsToEmailListSubscriberAction
     {
     }
 
-    public function execute(Purchase $purchase)
+    public function execute(Purchase $purchase): void
     {
         if (empty($purchase->user->email)) {
             return;
@@ -26,10 +28,20 @@ class AddPurchasedTagsToEmailListSubscriberAction
             default => null
         };
 
-        $subscriber = $this->findOrCreateSubscriber($purchase->user->email, $listUuid);
+        try {
+            $subscriber = $this->findOrCreateSubscriber($purchase->user->email, $listUuid);
+        } catch (RequestException $exception) {
+            if (! $exception->response->unprocessableEntity()) {
+                throw $exception;
+            }
+
+            Log::info("Mailcoach did not accept the subscriber for purchase `{$purchase->id}`: {$exception->response->json('message')}");
+
+            return;
+        }
 
         if (! $subscriber) {
-            report(new Exception("Could not subscribe subscriber"));
+            report(new Exception("Could not subscribe subscriber for purchase `{$purchase->id}`"));
 
             return;
         }
@@ -41,11 +53,11 @@ class AddPurchasedTagsToEmailListSubscriberAction
 
     protected function findOrCreateSubscriber(string $email, ?string $listUuid = null): ?Subscriber
     {
-        if ($subscriber = $this->mailcoachApi->getSubscriber($email, $listUuid)) {
+        if ($subscriber = $this->mailcoachApi->findSubscriber($email, $listUuid)) {
             return $subscriber;
         }
 
-        return $this->mailcoachApi->subscribe($email, $listUuid, skipConfirmation: true);
+        return $this->mailcoachApi->createSubscriber($email, $listUuid, skipConfirmation: true);
     }
 
     protected function getTagNames(Purchase $purchase): array

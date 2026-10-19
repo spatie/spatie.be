@@ -12,6 +12,7 @@ use Spatie\Sheets\Sheet;
  * @property string $githubUrl
  * @property string $branch
  * @property string $slug
+ * @property string $releasePath
  */
 class DocumentationPage extends Sheet
 {

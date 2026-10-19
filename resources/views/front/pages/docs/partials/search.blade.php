@@ -23,7 +23,9 @@
     </div>
 
     <ul class="py-6 mt-6 flex flex-col gap-y-4 overflow-auto" style="max-height: 40vh">
-        @if ($query !== '')
+        @if ($errors->has('query'))
+            <p class="text-slate-500">{{ $errors->first('query') }}</p>
+        @elseif ($query !== '')
             @forelse ($hits as $index => $hit)
                 <li wire:key="{{ $hit->id }}" class="block">
                     <a id="hit-{{ $index }}" :class="selectedHit == {{ $index }} ? 'bg-blue-light text-white' : 'bg-gray-100'" class="block outline-none hover:bg-blue-light focus:text-white hover:text-white group px-4 py-3 rounded" href="{{ $hit->url }}">

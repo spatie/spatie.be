@@ -20,6 +20,12 @@ if (! window.spatieUsesLivewire) {
     }
 }
 
+const sign = document.querySelector('[data-hanging-sign]');
+
+if (sign) {
+    import('./hanging-sign').then(({ startHangingSign }) => startHangingSign(sign));
+}
+
 window.addEventListener('load', () => {
     if (document.querySelector('[srcset][sizes="1px"]')) {
         import('./images').then(({ default: images }) => images());

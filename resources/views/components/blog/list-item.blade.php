@@ -25,13 +25,18 @@
         <a wire:navigate href="{{ route('blog.show', $insight->slug) }}" class="text-oss-royal-blue no-underline block mt-3 text-base sm:text-18 [&_p]:mt-2 [&_code]:text-16 [&_code]:bg-transparent">
             {!! $insight->summary !!}
         </a>
-        <a wire:navigate href="{{ route('blog.show', $insight->slug) }}" class="text-oss-royal-blue no-underline mt-4 flex gap-3 text-14">
+        <a wire:navigate href="{{ route('blog.show', $insight->slug) }}" class="text-oss-royal-blue no-underline mt-4 flex flex-wrap gap-2 text-14">
             @isset($insight->date)
                 <time datetime="{{ $insight->date->format('Y-m-d') }}">
                     {{ $insight->date->format('F d, Y') }}
                 </time>
             @endisset
+            @if ($insight->authors->isNotEmpty())
+                <span aria-hidden="true" class="opacity-50">·</span>
+                <span>{{ $insight->authors->pluck('name')->join(', ', ' & ') }}</span>
+            @endif
             @if (count($insight->tags))
+                <span aria-hidden="true" class="opacity-50">·</span>
                 <ul class="lowercase contents font-bold">
                     @foreach ($insight->tags as $tag)
                     <li>#{{ $tag }}</li>

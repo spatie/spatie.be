@@ -17,6 +17,7 @@ use Github\Exception\RuntimeException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Mail;
 use Laravel\Paddle\Receipt;
+use Throwable;
 
 class HandlePurchaseAction
 {
@@ -68,7 +69,11 @@ class HandlePurchaseAction
 
         $this->startOrExtendExtraDiscountPeriodAction->execute($user);
 
-        $this->addPurchasedTagsToEmailListSubscriberAction->execute($purchase);
+        try {
+            $this->addPurchasedTagsToEmailListSubscriberAction->execute($purchase);
+        } catch (Throwable $exception) {
+            report($exception);
+        }
 
         if ($referrer) {
             $this->attributePurchaseToReferrerAction->execute($purchase, $referrer);
