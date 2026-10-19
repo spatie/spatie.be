@@ -37,7 +37,7 @@ class Kernel extends ConsoleKernel
         $schedule->command(ImportGuideLinesCommand::class)->weekly();
         $schedule->command(RegenerateLeakedKeysCommand::class)->graceTimeInMinutes(30)->runInBackground()->hourly();
 
-        $schedule->command(CrawlCommand::class)->hourlyAt(30);
+        $schedule->command(CrawlCommand::class)->weeklyOn(1, '04:00')->timezone('Europe/Brussels');
 
         $schedule->call(function () {
             $results = DB::selectFromWriteConnection('OPTIMIZE TABLE site_search_documents');

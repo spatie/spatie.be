@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\Shop\Actions\AddPurchasedTagsToEmailListSubscriberAction;
 use App\Domain\Shop\Actions\HandlePurchaseAction;
 use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Domain\Shop\Models\Bundle;
@@ -13,7 +14,9 @@ use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
 use App\Support\Paddle\PaddlePayload;
 use Database\Factories\ReceiptFactory;
+use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Exceptions;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Notification;
@@ -481,3 +484,27 @@ function createRayPurchasable(): Purchasable
         'type' => 'standard',
     ]);
 }
+
+it('completes the purchase when adding the purchase to the email list fails', function () {
+    Mail::fake();
+    Exceptions::fake();
+
+    $this->mock(AddPurchasedTagsToEmailListSubscriberAction::class)
+        ->shouldReceive('execute')
+        ->andThrow(new ConnectionException('Mailcoach timed out'));
+
+    $purchasable = Purchasable::factory()->create([
+        'requires_license' => false,
+    ]);
+
+    $purchase = resolve(HandlePurchaseAction::class)->execute(
+        $this->user,
+        $purchasable,
+        $this->payload
+    );
+
+    expect($purchase->exists)->toBeTrue();
+
+    Mail::assertQueued(PurchaseConfirmationMail::class);
+    Exceptions::assertReported(ConnectionException::class);
+});

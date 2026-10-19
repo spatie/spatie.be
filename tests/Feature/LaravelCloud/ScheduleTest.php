@@ -39,3 +39,15 @@ it('does not update the geoip database on laravel cloud', function () {
 
     expect($commands)->not->toContain('geoip:update');
 });
+
+it('crawls the site for docs search weekly on monday at 04:00 brussels time', function () {
+    $this->artisan('schedule:list')
+        ->expectsOutputToContain('0  4  * * 1  php artisan site-search:crawl')
+        ->assertSuccessful();
+
+    $crawlEvent = collect(scheduledEvents())
+        ->first(fn (Event $event) => str_contains($event->command, 'site-search:crawl'));
+
+    expect($crawlEvent->expression)->toBe('0 4 * * 1')
+        ->and($crawlEvent->timezone)->toBe('Europe/Brussels');
+});

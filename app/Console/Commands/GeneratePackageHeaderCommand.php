@@ -32,7 +32,7 @@ class GeneratePackageHeaderCommand extends Command
             ))
             ->get();
 
-        $repositories->each(fn (Repository $repository) => dispatch(new GeneratePackageGithubHeaderJob($repository)));
+        $repositories->each(fn (Repository $repository) => GeneratePackageGithubHeaderJob::dispatchForAllModes($repository));
 
         $this->info("Dispatched header generation for {$repositories->count()} repositories.");
 

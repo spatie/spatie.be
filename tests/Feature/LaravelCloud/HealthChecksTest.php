@@ -1,7 +1,6 @@
 <?php
 
 use App\Providers\HealthServiceProvider;
-use Spatie\Health\Checks\Checks\HorizonCheck;
 use Spatie\Health\Checks\Checks\UsedDiskSpaceCheck;
 use Spatie\Health\Facades\Health;
 
@@ -18,16 +17,12 @@ afterEach(function () {
     unset($_ENV['LARAVEL_CLOUD'], $_SERVER['LARAVEL_CLOUD']);
 });
 
-it('checks horizon and the disk when not running on laravel cloud', function () {
-    expect(registeredHealthChecks())
-        ->toContain(HorizonCheck::class)
-        ->toContain(UsedDiskSpaceCheck::class);
+it('checks the disk when not running on laravel cloud', function () {
+    expect(registeredHealthChecks())->toContain(UsedDiskSpaceCheck::class);
 });
 
-it('does not check horizon and the disk on laravel cloud', function () {
+it('does not check the disk on laravel cloud', function () {
     $_ENV['LARAVEL_CLOUD'] = '1';
 
-    expect(registeredHealthChecks())
-        ->not->toContain(HorizonCheck::class)
-        ->not->toContain(UsedDiskSpaceCheck::class);
+    expect(registeredHealthChecks())->not->toContain(UsedDiskSpaceCheck::class);
 });

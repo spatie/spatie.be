@@ -30,6 +30,11 @@ it('will return the country specific prices if it is available', function () {
         ->assertJsonPath('actual.price_in_cents', 789);
 });
 
+it('will use the ip of the visitor when no ip or country code is given', function () {
+    get(action(BundlePriceController::class, [$this->bundlePrice->bundle->id]))
+        ->assertOk()
+        ->assertJsonPath('actual.price_in_cents', 123);
+});
 
 it('it will return a 404 if the purchasable is not found', function () {
     get(action(BundlePriceController::class, [123, 'BE']))

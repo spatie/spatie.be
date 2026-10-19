@@ -12,6 +12,16 @@ class ImportDocsForRepositoryJob implements ShouldQueue
 {
     use Queueable;
 
+    /**
+     * A deploy on Laravel Cloud can replace the queue worker while an import is running,
+     * after which the job is delivered again while the import lock of the killed run is
+     * still held. That delivery is released until the lock expires and the third attempt
+     * runs the import. An import that throws still fails right away.
+     */
+    public int $tries = 3;
+
+    public int $maxExceptions = 1;
+
     protected Repository $repository;
 
     public function __construct(
@@ -23,8 +33,10 @@ class ImportDocsForRepositoryJob implements ShouldQueue
 
     public function handle(GitHubApi $gitHubApi, DocsImporter $docsImporter): void
     {
+        $fullRepositoryName = "spatie/{$this->repositoryName}";
+
         if (! $this->force) {
-            $lastVersionDate = $gitHubApi->getLatestVersionDate('spatie/' . $this->repositoryName);
+            $lastVersionDate = $gitHubApi->getLatestVersionDate($fullRepositoryName);
             $lastImportDate = $this->repository->docs_synced_at;
 
             if ($lastImportDate && $lastImportDate->isAfter($lastVersionDate)) {
@@ -32,9 +44,13 @@ class ImportDocsForRepositoryJob implements ShouldQueue
             }
         }
 
-        $repository = collect(config('docs.repositories'))->keyBy('repository')->get('spatie/' . $this->repositoryName);
+        $repository = collect(config('docs.repositories'))->keyBy('repository')->get($fullRepositoryName);
 
-        $docsImporter->import($repository);
+        if (! $docsImporter->importUnlessAlreadyImporting($repository)) {
+            $this->release(DocsImporter::LOCK_SECONDS);
+
+            return;
+        }
 
         $this->repository->update(['docs_synced_at' => now()]);
     }

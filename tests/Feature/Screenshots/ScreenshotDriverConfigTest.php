@@ -1,5 +1,6 @@
 <?php
 
+use App\Jobs\GenerateOgImageJob;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
@@ -52,7 +53,7 @@ it('renders og images with the configured screenshot driver', function () {
 
     Cache::forever('og-image:abc123', ['url' => 'https://spatie.be/open-source']);
 
-    $this->get('/og-image/abc123.jpeg')->assertOk();
+    (new GenerateOgImageJob('abc123', 'jpeg'))->handle();
 
     Http::assertSent(fn ($request) => $request->url() === 'https://api.cloudflare.com/client/v4/accounts/account/browser-rendering/screenshot'
         && $request['url'] === 'https://spatie.be/open-source?ogimage='

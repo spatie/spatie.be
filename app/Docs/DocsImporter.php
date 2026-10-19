@@ -3,12 +3,15 @@
 namespace App\Docs;
 
 use App\Exceptions\DocsImportException;
+use Illuminate\Contracts\Cache\Lock;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
 use Throwable;
 
 class DocsImporter
 {
+    public const int LOCK_SECONDS = 60 * 15;
+
     public function __construct(
         protected DocsStorage $storage,
         protected Docs $docs,
@@ -30,8 +33,47 @@ class DocsImporter
      */
     public function import(array $repository): void
     {
-        Cache::lock("docs.import.{$repository['name']}", 60 * 15)
-            ->block(60 * 5, fn () => $this->importRelease($repository));
+        $this->lock($repository)->block(60 * 5, fn () => $this->importRelease($repository));
+    }
+
+    /**
+     * Returns false without importing when another import of the repository holds the lock.
+     *
+     * @param array{
+     *     name: string,
+     *     repository: string,
+     *     branches: array<string, string>,
+     *     category: string
+     * } $repository
+     */
+    public function importUnlessAlreadyImporting(array $repository): bool
+    {
+        $lock = $this->lock($repository);
+
+        if (! $lock->get()) {
+            return false;
+        }
+
+        try {
+            $this->importRelease($repository);
+        } finally {
+            $lock->release();
+        }
+
+        return true;
+    }
+
+    /**
+     * @param array{
+     *     name: string,
+     *     repository: string,
+     *     branches: array<string, string>,
+     *     category: string
+     * } $repository
+     */
+    protected function lock(array $repository): Lock
+    {
+        return Cache::lock("docs.import.{$repository['name']}", self::LOCK_SECONDS);
     }
 
     /**

@@ -3,12 +3,13 @@
 namespace App\Jobs;
 
 use App\Http\Controllers\PackageHeaderController;
+use App\Jobs\Middleware\ThrottleScreenshots;
 use App\Models\Repository;
 use DateTimeInterface;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
-use Illuminate\Queue\Middleware\RateLimited;
+use ReflectionProperty;
 use Spatie\LaravelScreenshot\Facades\Screenshot;
 use Spatie\TemporaryDirectory\TemporaryDirectory;
 
@@ -16,9 +17,9 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 {
     use Queueable;
 
-    public const string RATE_LIMITER = 'package-github-headers';
-
     public const array HEADER_ATTRIBUTES = ['name', 'banner_title', 'accent_color', 'logo_svg'];
+
+    public const array MODES = ['dark', 'light'];
 
     public int $maxExceptions = 4;
 
@@ -26,18 +27,34 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 
     public function __construct(
         public Repository $repository,
+        public string $mode,
     ) {
+    }
+
+    /**
+     * Each mode is a separate screenshot, and Cloudflare only allows one screenshot
+     * every few seconds, so every mode gets its own job and its own rate limiter slot.
+     */
+    public static function dispatchForAllModes(Repository $repository): void
+    {
+        foreach (self::MODES as $mode) {
+            dispatch(new self($repository, $mode));
+        }
     }
 
     public function uniqueId(): string
     {
-        return (string) $this->repository->getKey();
+        if ($this->isQueuedBeforeSplitPerMode()) {
+            return (string) $this->repository->getKey();
+        }
+
+        return "{$this->repository->getKey()}-{$this->mode}";
     }
 
     /** @return array<int, object> */
     public function middleware(): array
     {
-        return [new RateLimited(self::RATE_LIMITER)];
+        return [new ThrottleScreenshots()];
     }
 
     public function retryUntil(): DateTimeInterface
@@ -53,12 +70,12 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 
     public function handle(): void
     {
-        $this->generateImage('dark');
-        $this->generateImage('light');
-    }
+        if ($this->isQueuedBeforeSplitPerMode()) {
+            self::dispatchForAllModes($this->repository);
 
-    protected function generateImage(string $mode): void
-    {
+            return;
+        }
+
         $temporaryDirectory = (new TemporaryDirectory())->create();
 
         /**
@@ -67,7 +84,7 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
          */
         $path = $temporaryDirectory->path('image.png');
 
-        $url = action([PackageHeaderController::class, 'html'], ['name' => $this->repository->name, 'mode' => $mode]);
+        $url = action([PackageHeaderController::class, 'html'], ['name' => $this->repository->name, 'mode' => $this->mode]);
 
         Screenshot::url($url)
             ->size(830, 190)
@@ -77,8 +94,17 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 
         $this->repository->addMedia($path)
             ->usingFileName('image.webp')
-            ->toMediaCollection('github-header-' . $mode);
+            ->toMediaCollection('github-header-' . $this->mode);
 
         $temporaryDirectory->delete();
+    }
+
+    /**
+     * Jobs queued before the job was split per mode have no mode. They are retried
+     * for up to a day, so they can still be on the queue after a deploy.
+     */
+    protected function isQueuedBeforeSplitPerMode(): bool
+    {
+        return ! (new ReflectionProperty($this, 'mode'))->isInitialized($this);
     }
 }

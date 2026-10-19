@@ -96,7 +96,7 @@ class GitHubDocsDownloader
     protected function rawUrl(string $repository, string $commit, string $path): string
     {
         $encodedPath = collect(explode('/', "docs/{$path}"))
-            ->map(fn (string $segment) => rawurlencode($segment))
+            ->map(rawurlencode(...))
             ->implode('/');
 
         return "https://raw.githubusercontent.com/{$repository}/{$commit}/{$encodedPath}";
