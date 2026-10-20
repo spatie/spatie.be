@@ -26,7 +26,7 @@
         "laminas/laminas-feed": "^2.19",
         "laminas/laminas-http": "^2.17",
         "laravel/cashier-paddle": "1.x-dev",
-        "laravel/framework": "^13.0",
+        "laravel/framework": "^13.38.0",
         "laravel/sanctum": "^4.0",
         "laravel/slack-notification-channel": "^3.2",
         "laravel/socialite": "^5.6",
