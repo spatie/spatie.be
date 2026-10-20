@@ -48,6 +48,15 @@ return [
             'category' => 'Laravel',
         ],
         [
+            'name' => 'laravel-webhook-server',
+            'repository' => 'spatie/laravel-webhook-server',
+            'branches' => [
+                'main' => 'v4',
+            ],
+
+            'category' => 'Laravel',
+        ],
+        [
             'name' => 'laravel-og-image',
             'repository' => 'spatie/laravel-og-image',
             'branches' => [
