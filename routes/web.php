@@ -236,6 +236,7 @@ Route::get('/docs/{repository}/{alias}/{path}', DocsAssetController::class)
 Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(ProvideMarkdownResponse::class);
 
 Route::view('/newsletter', 'front.pages.newsletter.index')->name('newsletter');
+Route::permanentRedirect('/newsletter/{path}', '/newsletters/{path}')->where('path', '.+');
 
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
 Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
