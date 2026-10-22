@@ -20,7 +20,8 @@ class GitHubAdImageController
         abort_unless($disk->exists($path), 404, headers: ['Cache-Control' => 'no-store']);
 
         return $disk->response($path, headers: [
-            'Cache-Control' => 'public, max-age=120, s-maxage=86400',
+            'Cache-Control' => 'public, max-age=120',
+            'Cloudflare-CDN-Cache-Control' => 'public, max-age=86400',
         ]);
     }
 }

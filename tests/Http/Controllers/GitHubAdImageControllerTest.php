@@ -19,7 +19,8 @@ it('serves the full image with its actual mime type and shared cache headers wit
     $response
         ->assertOk()
         ->assertHeader('Content-Type', 'image/png')
-        ->assertHeader('Cache-Control', 'max-age=120, public, s-maxage=86400')
+        ->assertHeader('Cache-Control', 'max-age=120, public')
+        ->assertHeader('Cloudflare-CDN-Cache-Control', 'public, max-age=86400')
         ->assertHeaderMissing('Location');
 
     expect($response->streamedContent())->toBe($image->get())
