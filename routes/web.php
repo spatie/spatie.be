@@ -26,6 +26,7 @@ use App\Http\Controllers\RegenerateLicenseKeyController;
 use App\Http\Controllers\ShowReleaseNotesController;
 use App\Http\Controllers\GitHubSocialiteController;
 use App\Http\Controllers\GuidelinesController;
+use App\Http\Controllers\GitHubAdImageController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\IsValidLicenseController;
 use App\Http\Controllers\OpenSourceController;
@@ -248,6 +249,15 @@ Route::view('general-conditions', 'front.pages.legal.generalConditions')->name('
 Route::view('gdpr', 'front.pages.legal.gdpr')->name('legal.gdpr');
 
 Route::get('github-ad-click/{repositoryName}', RedirectGitHubAdClickController::class)->name('github-ad-click');
+
+Route::get('github-ad-image/{name}.jpg', GitHubAdImageController::class)
+    ->where('name', '[A-Za-z0-9_.-]+')
+    ->withoutMiddleware([
+        StartSession::class,
+        ShareErrorsFromSession::class,
+        RenderOgImageMiddleware::class,
+    ])
+    ->name('githubAdImage');
 
 Route::get('wwsd/{slug?}', WwsdController::class)->name('wwsd');
 // Route::view('black-friday-deals', 'front.pages.black-friday-deals.index');

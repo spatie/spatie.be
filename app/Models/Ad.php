@@ -26,16 +26,16 @@ class Ad extends Model
     public static function booted(): void
     {
         self::saved(function (Ad $ad): void {
-            if (in_array('image', $ad->getChanges())) {
-                $ad->repositories->each(function (Repository $repository) {
+            if ($ad->wasChanged('image')) {
+                $ad->repositories()->each(function (Repository $repository) {
                     app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
                 });
             }
         });
 
         self::deleting(function (Ad $ad): void {
-            $ad->repositories->each(function (Repository $repository) {
-                app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
+            $ad->repositories()->each(function (Repository $repository) {
+                $repository->update(['ad_id' => null]);
             });
         });
     }
