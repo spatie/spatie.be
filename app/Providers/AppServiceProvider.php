@@ -33,6 +33,9 @@ class AppServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
+        config()->set('filesystems.disks.github_ads.throw', true);
+        config()->set('filesystems.disks.github_ads.options.CacheControl', 'max-age=120, s-maxage=120');
+
         View::composer('layout.partials.meta', function ($view) {
             $data = $view->getData();
             $title = $data['ogImageTitle'] ?? $data['title'] ?? null;
@@ -46,6 +49,8 @@ class AppServiceProvider extends ServiceProvider
         ]));
 
         $this->routeLongRunningJobs();
+
+        RateLimiter::for('cloud-cache-purges', fn () => Limit::perMinute(60));
 
         RateLimiter::for(ThrottleScreenshots::RATE_LIMITER, function (): Limit {
             if (config('laravel-screenshot.driver') !== 'cloudflare') {

@@ -89,6 +89,16 @@ return [
             ],
         ],
 
+        'github_ads_legacy' => [
+            'driver' => env('GITHUB_ADS_DISK_DRIVER'),
+            'key' => env('GITHUB_ADS_DISK_KEY'),
+            'secret' => env('GITHUB_ADS_DISK_SECRET'),
+            'region' => env('GITHUB_ADS_DISK_REGION'),
+            'bucket' => env('GITHUB_ADS_DISK_BUCKET'),
+            'url' => env('GITHUB_ADS_DISK_URL'),
+            'throw' => true,
+        ],
+
 
         'local' => [
             'driver' => 'local',

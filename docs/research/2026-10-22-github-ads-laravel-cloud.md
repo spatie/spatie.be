@@ -1,6 +1,6 @@
 # GitHub-advertenties van S3 naar Laravel Cloud
 
-Onderzocht op 22 oktober 2026. Er is een proefroute gebouwd en een aparte Cloud-testomgeving met eigen database en private bucket ingericht. Productieopslag en bestaande README-links zijn niet gewijzigd.
+Onderzocht op 22 oktober 2026. De liveproef is geslaagd. De productie-uitrol gebruikt een private Cloud-bucket en vaste afbeeldingsroutes met Cloudflare-edgecaching. De onderstaande onderzoeksinventaris beschrijft de situatie voor de uitrol.
 
 ## Conclusie
 
@@ -147,4 +147,10 @@ De 151-secondenproef toont aan dat Cloud de specifieke edgeheader respecteert; e
 
 De lokale controller- en advertentietests slagen. GitHub CI voor de code slaagt ook, inclusief de volledige testsuite (354 geslaagd, 5 overgeslagen), PHPStan en formattering.
 
-Voor een productie-uitrol ontbreken nog de automatische purge na een geslaagde advertentiewissel, de definitieve bucketmigratie en het aanpassen van de README-links. De PR is een proef en is niet gemerged. De bestaande productieomgeving gebruikt nog steeds S3 voor `github_ads`.
+De productie-uitwerking in dezelfde PR voegt een gerichte purgejob toe na iedere geslaagde advertentiewijziging. De job wordt na de databasetransactie verstuurd, beperkt requests tot 60 per minuut en probeert mislukte purges opnieuw. Ongewijzigde repositorymetadata veroorzaakt geen kopie of purge.
+
+Disk `github_ads` wordt aan private EU-bucket `spatie-github-ads` gekoppeld. Disk `github_ads_legacy` blijft de oorspronkelijke S3-bucket bijwerken, zodat links in tags, oude commits en forks blijven werken. Het kopiëren bewaart de echte MIME-types en controleert checksums.
+
+De purgecredential heeft alleen `environment.edit` op de productieomgeving van `spatie.be`, de kleinste beschikbare permissie voor deze API. Een purge op de proefomgeving gaf met deze credential HTTP 403; een productiepurge gaf HTTP 200. Het token is opgeslagen in 1Password, wordt ingesteld als `CLOUD_CACHE_PURGE_TOKEN` en verloopt op **22 oktober 2027**. `CLOUD_CACHE_PURGE_ENVIRONMENT_ID` selecteert productie en `GITHUB_ADS_LEGACY_DISK=github_ads_legacy` activeert de dubbele writes.
+
+De README-uitrol gebruikt de publieke Spatie-repositories uit de productiedatabase. Bestaande advertentie-URL's worden vervangen door `https://spatie.be/github-ad-image/{repository}.jpg`. Package-placeholders blijven intact. Op verzoek worden Oekraïne-steunbetuigingen en de bijbehorende afbeeldingen uit de actuele README's verwijderd. Archiefstatussen blijven behouden. S3 blijft beschikbaar voor historische links.

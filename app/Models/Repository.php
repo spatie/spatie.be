@@ -39,10 +39,18 @@ class Repository extends Model implements HasMedia
 
     public static function booted(): void
     {
-        self::saved(function (Repository $repository) {
+        self::created(function (Repository $repository) {
             $repository->load('ad');
 
             app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
+        });
+
+        self::saved(function (Repository $repository) {
+            $repository->load('ad');
+
+            if ($repository->wasChanged(['name', 'ad_id'])) {
+                app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
+            }
 
             if ($repository->headerNeedsRegeneration()) {
                 GeneratePackageGithubHeaderJob::dispatchForAllModes($repository);

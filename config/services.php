@@ -2,6 +2,15 @@
 
 return [
 
+    'laravel_cloud' => [
+        'environment_id' => env('CLOUD_CACHE_PURGE_ENVIRONMENT_ID'),
+        'cache_purge_token' => env('CLOUD_CACHE_PURGE_TOKEN'),
+    ],
+
+    'github_ads' => [
+        'legacy_disk' => env('GITHUB_ADS_LEGACY_DISK'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Third Party Services
