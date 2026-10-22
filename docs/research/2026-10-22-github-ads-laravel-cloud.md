@@ -135,6 +135,7 @@ De proefafbeelding staat op [de test-URL](https://spatiebe-ads-cache-probe-nrfxt
 | Clientheaders | `Cache-Control: max-age=120, public`, correct `image/png` ondanks `.jpg` |
 | Cloudflare-specifieke header | Wordt door de edge verwerkt en niet naar de client doorgestuurd |
 | Na wijziging in de testbucket en 151 seconden cacheleeftijd | Nog steeds `HIT` met de oude afbeelding; edgecache leeft langer dan de client-TTL van 120 seconden |
+| Cachehit terwijl de app sliep | Replica-count was 0 vanaf 14:02:11 UTC; de `HIT` om 14:02:43 UTC maakte de app niet wakker |
 | Gerichte purge met `path` | API HTTP 200 |
 | Eerstvolgende aanvraag na purge | `MISS`, nieuwe afbeelding van 923.608 bytes, andere hash |
 | Daarna | Opnieuw `HIT` met de nieuwe afbeelding |
@@ -142,7 +143,7 @@ De proefafbeelding staat op [de test-URL](https://spatiebe-ads-cache-probe-nrfxt
 
 Alleen de appresponse is cookie-vrij. Cloudflare voegt op de `laravel.cloud`-hostname wel een `__cf_bm`-botcookie toe. De waargenomen `HIT` bevestigt dat deze edgecookie het cachen van deze response niet verhindert. Er is geen applicatiesessiecookie gevonden.
 
-De 151-secondenproef toont aan dat Cloud de specifieke edgeheader respecteert; een volledige wachttijd van 24 uur is niet getest. Een `HIT` wordt door de edge geleverd zonder de controller uit te voeren. De ontvangen replica-metrics waren op dat moment nog niet actueel genoeg om daarnaast een afzonderlijke slaap/wake-meting te bewijzen.
+De 151-secondenproef toont aan dat Cloud de specifieke edgeheader respecteert; een volledige wachttijd van 24 uur is niet getest. De later bijgewerkte Cloud-metrics bevestigen dat de app tijdens de cachehit sliep: replica-count 0 vanaf 14:02:11 UTC, de `HIT` om 14:02:43 UTC, en pas weer replica-count 1 om 14:02:47 UTC bij het ophalen na de purge. De cachehit bereikte de webcontainer dus niet.
 
 De lokale controller- en advertentietests slagen. GitHub CI voor de code slaagt ook, inclusief de volledige testsuite (354 geslaagd, 5 overgeslagen), PHPStan en formattering.
 
