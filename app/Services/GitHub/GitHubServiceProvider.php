@@ -13,7 +13,9 @@ class GitHubServiceProvider extends ServiceProvider
         $this->app->singleton(GitHubApi::class, function () {
             $client = new Client();
 
-            $client->authenticate(config('services.github.token'), null,  AuthMethod::ACCESS_TOKEN);
+            if ($token = config('services.github.token')) {
+                $client->authenticate($token, null, AuthMethod::ACCESS_TOKEN);
+            }
 
             return new GitHubApi($client);
         });

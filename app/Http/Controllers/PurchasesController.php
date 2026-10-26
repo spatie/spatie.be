@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\Shop\Actions\GetRepositoryAccessStatusesAction;
 use App\Domain\Shop\Models\Purchase;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
@@ -9,7 +10,7 @@ use Illuminate\View\View;
 
 class PurchasesController
 {
-    public function __invoke(Request $request): View
+    public function __invoke(Request $request, GetRepositoryAccessStatusesAction $getRepositoryAccessStatuses): View
     {
         $user = $request->user();
 
@@ -46,6 +47,8 @@ class PurchasesController
             ->get()
             ->sortByDesc(fn (Purchase $purchase) => $purchase->receipt->paid_at ?? $purchase->created_at);
 
-        return view('front.profile.purchases', compact('courses', 'applications', 'assignedAwayPurchases'));
+        $repositoryAccessStatuses = $getRepositoryAccessStatuses->execute($user);
+
+        return view('front.profile.purchases', compact('courses', 'applications', 'assignedAwayPurchases', 'repositoryAccessStatuses'));
     }
 }
