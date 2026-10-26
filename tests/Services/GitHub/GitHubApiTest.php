@@ -26,6 +26,7 @@ it('recognizes explicit two-factor rejections when inviting repository collabora
         $this->fail('Expected a two-factor authentication error.');
     } catch (GitHubTwoFactorAuthenticationRequired $exception) {
         expect($exception->getPrevious())->toBe($rejection);
+        expect($exception->getCode())->toBe($status);
         expect($exception->getMessage())->toContain('remove SMS authentication');
     }
 })->with([
