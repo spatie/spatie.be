@@ -40,8 +40,8 @@ it('fails without making a request when the token is missing', function (?string
     Http::assertNothingSent();
 })->with([null, '', '   ']);
 
-it('distinguishes invalid credentials from GitHub availability and rate-limit problems', function (int $status, array $headers, string $expectedStatus, string $summary) {
-    Http::fake(['api.github.com/user' => Http::response(['message' => 'test-api-token must never appear in health output'], $status, $headers)]);
+it('distinguishes invalid credentials from GitHub availability and rate-limit problems', function (int $status, array $headers, string $expectedStatus, string $summary, string $message = 'test-api-token must never appear in health output') {
+    Http::fake(['api.github.com/user' => Http::response(['message' => $message], $status, $headers)]);
 
     $result = GitHubTokenCheck::new()->label('GitHub API token')->run();
 
@@ -51,8 +51,16 @@ it('distinguishes invalid credentials from GitHub availability and rate-limit pr
 })->with([
     'expired or revoked token' => [401, [], 'failed', 'Invalid token'],
     'forbidden' => [403, [], 'failed', 'Token validation failed'],
+    'forbidden with remaining quota' => [403, ['X-RateLimit-Remaining' => '42'], 'failed', 'Token validation failed'],
     'primary rate limit' => [403, ['X-RateLimit-Remaining' => '0'], 'warning', 'GitHub rate limited'],
     'secondary rate limit' => [403, ['Retry-After' => '60'], 'warning', 'GitHub rate limited'],
+    'secondary rate limit without retry-after and with remaining quota' => [
+        403,
+        ['X-RateLimit-Remaining' => '42'],
+        'warning',
+        'GitHub rate limited',
+        'You have exceeded a secondary rate limit. Please wait a few minutes before you try again. test-api-token',
+    ],
     'rate limit' => [429, [], 'warning', 'GitHub rate limited'],
     'GitHub unavailable' => [503, [], 'warning', 'GitHub unavailable'],
     'redirect' => [302, ['Location' => 'https://example.com'], 'failed', 'Token validation failed'],

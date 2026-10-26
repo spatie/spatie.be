@@ -4,6 +4,7 @@ namespace App\Checks;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 use Spatie\Health\Checks\Check;
 use Spatie\Health\Checks\Result;
 
@@ -51,8 +52,11 @@ class GitHubTokenCheck extends Check
                 ->shortSummary('Invalid token');
         }
 
-        if ($response->tooManyRequests()
-            || ($response->forbidden() && ($response->header('X-RateLimit-Remaining') === '0' || $response->header('Retry-After')))) {
+        $hasRateLimitIndicators = $response->header('X-RateLimit-Remaining') === '0'
+            || $response->header('Retry-After')
+            || Str::contains((string) $response->json('message'), 'secondary rate limit', ignoreCase: true);
+
+        if ($response->tooManyRequests() || ($response->forbidden() && $hasRateLimitIndicators)) {
             return $result
                 ->warning('GitHub rate limiting prevented token validation. Try again after the rate limit resets.')
                 ->shortSummary('GitHub rate limited');
