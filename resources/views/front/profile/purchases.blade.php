@@ -49,8 +49,9 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                             @foreach ($applications as $product_id => $assignments)
                                 @php($assignment = $assignments->sortByDesc('created_at')->first())
-                                @php($repositoryAssignment = $assignments->first(fn ($assignment) => $assignment->has_repository_access)
-                                    ?? $assignments->first(fn ($assignment) => $assignment->isEligibleForRepositoryAccess())
+                                @php($eligibleRepositoryAssignments = $assignments->filter(fn ($assignment) => $assignment->isEligibleForRepositoryAccess()))
+                                @php($repositoryAssignment = $eligibleRepositoryAssignments->first(fn ($assignment) => $assignment->has_repository_access)
+                                    ?? $eligibleRepositoryAssignments->first()
                                     ?? $assignment)
                                 <x-purchase-assignment :assignment="$assignment" :repositoryAssignment="$repositoryAssignment" :showImage="false">
                                     @if ($assignment->purchasable->getting_started_url)

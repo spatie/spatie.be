@@ -34,6 +34,10 @@ class GitHubSocialiteController
         $user = $this->retrieveUser($gitHubUser);
         // $isSponsor = (new GitHubGraphApi())->determineSponsorStatus($gitHubUser->nickname) ?? $user->is_sponsor;
 
+        if ((string) $user->github_id !== (string) $gitHubUser->id || ! $user->github_username) {
+            $user->assignments()->update(['has_repository_access' => false]);
+        }
+
         $user->update([
             'github_id' => $gitHubUser->id,
             'github_username' => $gitHubUser->nickname,

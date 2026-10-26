@@ -7,13 +7,20 @@
     @include('layout.partials.bg-color')
 
     <x-profile-layout title="My profile">
-        @if (auth()->user()->github_id)
+        @if(auth()->user()->github_id && auth()->user()->github_username)
             <div class="mb-8">
                 <span class="flex items-center">
                     <span class="icon fill-current w-4 mr-2">{{ app_svg('github') }}</span>
                     <span class="font-bold">{{ auth()->user()->github_username }}</span>
                     <a class="ml-4 underline text-oss-spatie-blue hover:text-white" href="{{ route('github-disconnect') }}">Disconnect from GitHub</a>
                 </span>
+            </div>
+        @else
+            <div class="mb-8">
+                <a class="inline-flex items-center underline text-oss-spatie-blue hover:text-white" href="{{ route('github-login') }}">
+                    <span class="icon fill-current w-4 mr-2">{{ app_svg('github') }}</span>
+                    Connect to GitHub
+                </a>
             </div>
         @endif
 

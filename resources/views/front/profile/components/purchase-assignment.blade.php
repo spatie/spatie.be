@@ -27,15 +27,15 @@
 
         @if ($repositoryAssignment->purchasable->repository_access)
             <div class="mt-6 px-4 md:px-6 text-sm">
-                @if ($repositoryAssignment->has_repository_access)
+                @if(! $repositoryAssignment->isEligibleForRepositoryAccess())
+                    Renew your license to restore GitHub repository access.
+                @elseif($repositoryAssignment->has_repository_access && auth()->user()->github_username)
                     Access has been granted to these repos on GitHub<br/>
                     @foreach(explode(',', $repositoryAssignment->purchasable->repository_access) as $repository)
                         <a class="underline hover:text-white" target="_blank" href="https://github.com/{{ $repository }}">
                             {{ $repository }}
                         </a><br/>
                     @endforeach
-                @elseif (! $repositoryAssignment->isEligibleForRepositoryAccess())
-                    Renew your license to restore GitHub repository access.
                 @else
                     <a class="underline hover:text-white" href="{{ route('github-login') }}">
                         @if(auth()->user()->github_username)
