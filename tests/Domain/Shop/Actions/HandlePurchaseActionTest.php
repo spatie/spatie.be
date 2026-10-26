@@ -12,8 +12,11 @@ use App\Domain\Shop\Models\Referrer;
 use App\Domain\Shop\Notifications\AccountHasBeenCreatedNotification;
 use App\Mail\PurchaseConfirmationMail;
 use App\Models\User;
+use App\Services\GitHub\Exceptions\GitHubTwoFactorAuthenticationRequired;
+use App\Services\GitHub\GitHubApi;
 use App\Support\Paddle\PaddlePayload;
 use Database\Factories\ReceiptFactory;
+use Github\Exception\RuntimeException as GitHubRuntimeException;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Exceptions;
@@ -263,6 +266,34 @@ it('restores repository access', function () {
     );
 
     $spy->shouldHaveReceived('execute')->with($this->user)->once();
+});
+
+it('completes purchase processing when GitHub rejects repository access for MFA', function () {
+    Mail::fake();
+    Exceptions::fake();
+    TestTime::freeze();
+
+    $this->user->update(['github_username' => 'customer']);
+    $purchasable = Purchasable::factory()->create([
+        'requires_license' => true,
+        'repository_access' => 'spatie/some-repository',
+    ]);
+    $referrer = Referrer::factory()->create();
+    $failure = new GitHubTwoFactorAuthenticationRequired(new GitHubRuntimeException('Secure two-factor authentication is required.', 403));
+    $this->mock(GitHubApi::class)->shouldReceive('inviteToRepo')
+        ->once()->with('customer', 'spatie/some-repository')->andThrow($failure);
+    $emailList = $this->spy(AddPurchasedTagsToEmailListSubscriberAction::class);
+
+    $purchase = resolve(HandlePurchaseAction::class)->execute($this->user, $purchasable, $this->payload, $referrer);
+
+    expect($purchase->exists)->toBeTrue();
+    expect($purchase->licenses)->toHaveCount(1);
+    expect($purchase->assignments->first()->has_repository_access)->toBeFalse();
+    expect($this->user->fresh()->next_purchase_discount_period_ends_at->timestamp)->toBe(now()->addDay()->timestamp);
+    expect($referrer->fresh()->usedForPurchases->modelKeys())->toBe([$purchase->id]);
+    $emailList->shouldHaveReceived('execute')->with(Mockery::on(fn ($processedPurchase) => $processedPurchase->is($purchase)))->once();
+    Mail::assertQueued(PurchaseConfirmationMail::class, fn ($mail) => $mail->hasTo($this->user->email));
+    Exceptions::assertReported(fn (Exception $exception) => str_contains($exception->getMessage(), 'Could not restore repository access'));
 });
 
 it('will start the next purchase discount for a user', function () {

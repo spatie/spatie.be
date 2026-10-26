@@ -8,6 +8,7 @@ use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\Series;
 use App\Models\User;
+use App\Services\Mailcoach\MailcoachApi;
 use Database\Factories\ReceiptFactory;
 use Illuminate\Support\Str;
 
@@ -147,3 +148,135 @@ it('distinguishes between no purchases and purchases that are only assigned away
         ->assertSee('Your purchases are assigned to other accounts')
         ->assertSee('Assigned to others');
 });
+
+it('keeps renewal guidance on products with expired repository licenses', function (?string $gitHubUsername, bool $hadRepositoryAccess) {
+    $user = User::factory()->create(['github_username' => $gitHubUsername]);
+    $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-medialibrary-pro',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    $assignment->update(['has_repository_access' => $hadRepositoryAccess]);
+    License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->subDay(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('Renew your license to restore GitHub repository access.')
+        ->assertDontSee('GitHub repositories')
+        ->assertDontSee('https://github.com/spatie/laravel-medialibrary-pro');
+})->with([
+    [null, false],
+    [null, true],
+    ['connected-user', false],
+    ['connected-user', true],
+]);
+
+it('offers reconnection on purchases and profile after disconnecting a GitHub account', function () {
+    $user = User::factory()->create(['github_id' => '12345', 'github_username' => 'connected-user']);
+    $purchasable = createPurchasesPagePurchasable('Mailcoach', 'Single domain');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-mailcoach',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    $assignment->update(['has_repository_access' => true]);
+    License::factory()->create(['purchase_assignment_id' => $assignment->id]);
+    $this->mock(MailcoachApi::class)->shouldReceive('getSubscriber')->with($user->email)->andReturnNull();
+
+    $this->actingAs($user)
+        ->get(route('github-disconnect'))
+        ->assertRedirect(route('profile'));
+
+    expect($user->fresh())->github_id->toBeNull()->github_username->toBeNull();
+
+    $this->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('Connect to GitHub')
+        ->assertSee('https://github.com/spatie/laravel-mailcoach')
+        ->assertDontSee('Connected as connected-user');
+
+    $this->get(route('profile'))
+        ->assertOk()
+        ->assertSee('Connect to GitHub')
+        ->assertSee(route('github-login'))
+        ->assertDontSee('Disconnect from GitHub');
+});
+
+it('shows account-wide GitHub actions and secure two-factor guidance once for multiple products', function (?string $gitHubUsername, bool $hadRepositoryAccess, string $message) {
+    $user = User::factory()->create(['github_username' => $gitHubUsername]);
+    $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-medialibrary-pro',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    $assignment->update(['has_repository_access' => $hadRepositoryAccess]);
+    License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->addYear(),
+    ]);
+    $secondPurchasable = createPurchasesPagePurchasable('Mailcoach', 'Single domain');
+    $secondPurchasable->update(['repository_access' => 'spatie/laravel-mailcoach']);
+    $secondPurchase = createPurchasesPagePurchase($user, $secondPurchasable, 'https://example.com/mailcoach-receipt');
+    $secondAssignment = assignPurchasesPagePurchase($secondPurchase, $secondPurchasable, $user);
+    License::factory()->create(['purchase_assignment_id' => $secondAssignment->id]);
+
+    $response = $this->actingAs($user)
+        ->get(route('purchases'))
+        ->assertOk()
+        ->assertSee($message)
+        ->assertSeeInOrder(['GitHub account', 'Applications'])
+        ->assertSee('Accept any pending GitHub repository invitations to activate access.')
+        ->assertSee('remove SMS authentication')
+        ->assertSee('GitHub security settings')
+        ->assertSee('https://github.com/spatie/laravel-medialibrary-pro')
+        ->assertSee('https://github.com/spatie/laravel-mailcoach')
+        ->assertDontSee('Renew your license to restore GitHub repository access.');
+
+    $gitHubLoginUrl = route('github-login');
+    expect(substr_count($response->getContent(), "href=\"{$gitHubLoginUrl}\""))->toBe(1);
+    expect(substr_count($response->getContent(), 'remove SMS authentication'))->toBe(1);
+
+    if ($gitHubUsername) {
+        $response->assertSeeText("Connected as {$gitHubUsername}");
+    }
+})->with([
+    [null, false, 'Connect to GitHub'],
+    ['connected-user', false, 'Retry repository access'],
+    ['connected-user', true, 'Retry repository access'],
+]);
+
+it('uses an eligible older assignment when the newest assignment has expired', function (bool $hasRepositoryAccess) {
+    $user = User::factory()->create(['github_username' => 'connected-user']);
+    $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-medialibrary-pro',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $activeAssignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    $activeAssignment->update(['has_repository_access' => $hasRepositoryAccess, 'created_at' => now()->subYear()]);
+    License::factory()->create(['purchase_assignment_id' => $activeAssignment->id]);
+    $expiredAssignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    $expiredAssignment->update(['has_repository_access' => ! $hasRepositoryAccess]);
+    License::factory()->create([
+        'purchase_assignment_id' => $expiredAssignment->id,
+        'expires_at' => now()->subDay(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('GitHub repositories')
+        ->assertSee('Retry repository access')
+        ->assertDontSee('Renew your license to restore GitHub repository access.')
+        ->assertDontSee('Connect to GitHub to get access to the repository');
+})->with([true, false]);

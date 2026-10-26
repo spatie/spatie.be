@@ -15,7 +15,7 @@ class PurchasesController
 
         $courses = $user
             ->assignmentsWithoutRenewals()
-            ->with(['purchase.user', 'purchasable.product', 'purchasable.media'])
+            ->with(['purchase.user', 'purchasable.product', 'purchasable.media', 'licenses'])
             ->whereHas(
                 'purchasable',
                 fn (Builder $query) => $query

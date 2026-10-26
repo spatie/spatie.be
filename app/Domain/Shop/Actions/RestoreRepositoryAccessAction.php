@@ -6,6 +6,7 @@ use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use Exception;
+use Illuminate\Database\Eloquent\Builder;
 
 class RestoreRepositoryAccessAction
 {
@@ -16,23 +17,15 @@ class RestoreRepositoryAccessAction
         $this->gitHubApi = $gitHubApi;
     }
 
-    public function execute(User $user): void
+    public function execute(User $user, bool $refreshExistingAccess = false): void
     {
         $assignments = $user->assignments()
-            ->with(['purchasable'])
-            ->where('has_repository_access', false)
+            ->with(['purchasable', 'licenses'])
+            ->when(! $refreshExistingAccess, fn (Builder $query) => $query->where('has_repository_access', false))
             ->get();
 
         $assignments->each(function (PurchaseAssignment $assignment) use ($user) {
-            if (! $assignment->purchasable->repository_access) {
-                return;
-            }
-
-            $hasActiveLicense = $assignment->licenses()
-                ->whereNotExpired()
-                ->exists();
-
-            if ($assignment->purchasable->requires_license && ! $hasActiveLicense) {
+            if (! $assignment->isEligibleForRepositoryAccess()) {
                 return;
             }
 
