@@ -18,6 +18,8 @@
             @endif
         </section>
 
+        @include('front.profile.partials.github-account')
+
                 @if(session()->has('sold_purchasable'))
                     @php
                         $purchasable = session()->get('sold_purchasable');
@@ -49,9 +51,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                             @foreach ($applications as $product_id => $assignments)
                                 @php($assignment = $assignments->sortByDesc('created_at')->first())
-                                @php($eligibleRepositoryAssignments = $assignments->filter(fn ($assignment) => $assignment->isEligibleForRepositoryAccess()))
-                                @php($repositoryAssignment = $eligibleRepositoryAssignments->first(fn ($assignment) => $assignment->has_repository_access)
-                                    ?? $eligibleRepositoryAssignments->first()
+                                @php($repositoryAssignment = $assignments->first(fn ($assignment) => $assignment->isEligibleForRepositoryAccess())
                                     ?? $assignment)
                                 <x-purchase-assignment :assignment="$assignment" :repositoryAssignment="$repositoryAssignment" :showImage="false">
                                     @if ($assignment->purchasable->getting_started_url)
