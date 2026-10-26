@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Checks\GitHubTokenCheck;
 use Illuminate\Support\ServiceProvider;
 use Spatie\CpuLoadHealthCheck\CpuLoadCheck;
 use Spatie\Health\Checks\Check;
@@ -23,8 +24,28 @@ class HealthServiceProvider extends ServiceProvider
                 ->checkConfig(),
             EnvironmentCheck::new(),
             DatabaseCheck::new(),
+            ...$this->gitHubTokenChecks(),
             ...$this->serverChecks(),
         ]);
+    }
+
+    /** @return array<int, Check> */
+    protected function gitHubTokenChecks(): array
+    {
+        $checks = [
+            GitHubTokenCheck::new()->name('GitHubApiToken')->label('GitHub API token'),
+        ];
+
+        $docsToken = config('services.github.docs_access_token');
+
+        if ($docsToken && $docsToken !== config('services.github.token')) {
+            $checks[] = GitHubTokenCheck::new()
+                ->name('GitHubDocsToken')
+                ->label('GitHub docs token')
+                ->tokenConfigKey('services.github.docs_access_token');
+        }
+
+        return $checks;
     }
 
     /**
