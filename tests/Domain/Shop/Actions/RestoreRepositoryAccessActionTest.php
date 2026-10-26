@@ -7,6 +7,7 @@ use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
 use App\Services\GitHub\GitHubApi;
 use Database\Factories\ReceiptFactory;
+use Github\Exception\RuntimeException;
 
 beforeEach(function () {
     $this->apiSpy = $this->spy(GitHubApi::class);
@@ -79,5 +80,19 @@ it('restores repository access for a license without an expiration date', functi
     $this->action->execute($this->user);
 
     $this->apiSpy->shouldHaveReceived('inviteToRepo', ['riasvdv', 'spatie/spatie.be'])->once();
+    expect($this->assignment->fresh()->has_repository_access)->toBeTrue();
+});
+
+it('preserves known access when refreshing an invitation fails', function () {
+    $this->purchase->purchasable->update([
+        'repository_access' => 'spatie/spatie.be',
+        'requires_license' => true,
+    ]);
+    $this->assignment->update(['has_repository_access' => true]);
+    $this->apiSpy->shouldReceive('inviteToRepo')->once()->andThrow(new RuntimeException('GitHub is unavailable', 503));
+
+    expect(fn () => $this->action->execute($this->user, refreshExistingAccess: true))
+        ->toThrow(RuntimeException::class);
+
     expect($this->assignment->fresh()->has_repository_access)->toBeTrue();
 });

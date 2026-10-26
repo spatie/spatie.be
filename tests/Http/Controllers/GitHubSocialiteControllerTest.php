@@ -1,6 +1,7 @@
 <?php
 
 use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
+use App\Domain\Shop\Commands\RevokeRepositoryAccessForExpiredLicensesCommand;
 use App\Domain\Shop\Models\License;
 use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
@@ -69,7 +70,7 @@ it('connects GitHub to the signed in account and returns to purchases', function
     ]));
     Socialite::shouldReceive('driver')->with('github')->andReturn($provider);
     $this->mock(RestoreRepositoryAccessAction::class)
-        ->shouldReceive('execute')->once()->with(Mockery::on(fn (User $connectedUser) => $connectedUser->is($user)));
+        ->shouldReceive('execute')->once()->with(Mockery::on(fn (User $connectedUser) => $connectedUser->is($user)), true);
 
     $this->actingAs($user)
         ->get(route('github-login'))
@@ -152,9 +153,55 @@ it('refreshes eligible repository access when explicitly connecting GitHub', fun
 
     expect($user->fresh())->github_username->toBe('reconnected-user');
     expect($assignments->first()->fresh()->has_repository_access)->toBeTrue();
-    expect($assignments->last()->fresh()->has_repository_access)->toBeFalse();
+    expect($assignments->last()->fresh()->has_repository_access)->toBeTrue();
 })->with([
     'disconnected account' => [null, null],
     'different account' => ['12345', 'previous-user'],
     'same account after organization access was removed' => ['67890', 'reconnected-user'],
 ]);
+
+it('preserves expired access for the daily revocation command after retrying GitHub', function () {
+    $user = User::factory()->create(['github_id' => '67890', 'github_username' => 'connected-user']);
+    $purchasable = Purchasable::factory()->create([
+        'repository_access' => 'spatie/expired-product',
+        'requires_license' => true,
+    ]);
+    $purchase = Purchase::factory()->create([
+        'user_id' => $user->id,
+        'purchasable_id' => $purchasable->id,
+        'receipt_id' => ReceiptFactory::new()->create()->id,
+    ]);
+    $assignment = PurchaseAssignment::factory()->create([
+        'user_id' => $user->id,
+        'purchase_id' => $purchase->id,
+        'purchasable_id' => $purchasable->id,
+        'has_repository_access' => true,
+    ]);
+    License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->subDay(),
+    ]);
+    $provider = Mockery::mock();
+    $provider->shouldReceive('stateless')->andReturnSelf();
+    $provider->shouldReceive('user')->andReturn(SocialiteUser::fake([
+        'id' => '67890',
+        'nickname' => 'connected-user',
+        'email' => $user->email,
+    ]));
+    Socialite::shouldReceive('driver')->with('github')->andReturn($provider);
+    $api = $this->mock(GitHubApi::class);
+    $api->shouldNotReceive('inviteToRepo');
+    $api->shouldReceive('userExists')->with('connected-user')->andReturnTrue();
+    $api->shouldReceive('revokeAccessToRepo')->once()->with('connected-user', 'spatie/expired-product');
+
+    $this->actingAs($user)
+        ->withSession(['auth-user-id' => $user->id])
+        ->get('login/github/callback?code=123&state=state')
+        ->assertOk();
+
+    expect($assignment->fresh()->has_repository_access)->toBeTrue();
+
+    $this->artisan(RevokeRepositoryAccessForExpiredLicensesCommand::class)->assertSuccessful();
+
+    expect($assignment->fresh()->has_repository_access)->toBeFalse();
+});

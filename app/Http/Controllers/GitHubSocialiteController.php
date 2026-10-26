@@ -36,9 +36,9 @@ class GitHubSocialiteController
         $user = $this->retrieveUser($gitHubUser);
         // $isSponsor = (new GitHubGraphApi())->determineSponsorStatus($gitHubUser->nickname) ?? $user->is_sponsor;
 
-        if ($isConnectingGitHub || (string) $user->github_id !== (string) $gitHubUser->id || ! $user->github_username) {
-            $user->assignments()->update(['has_repository_access' => false]);
-        }
+        $refreshExistingAccess = $isConnectingGitHub
+            || (string) $user->github_id !== (string) $gitHubUser->id
+            || ! $user->github_username;
 
         $user->update([
             'github_id' => $gitHubUser->id,
@@ -54,7 +54,7 @@ class GitHubSocialiteController
              * Make sure the user has access to all repositories that
              * belong to past purchases.
              */
-            app(RestoreRepositoryAccessAction::class)->execute($user);
+            app(RestoreRepositoryAccessAction::class)->execute($user, refreshExistingAccess: $refreshExistingAccess);
         } catch (Throwable $exception) {
             report("Could not restore repository access for user `{$user->id}` after GitHub login: {$exception->getMessage()}");
             flash()->error($exception instanceof GitHubTwoFactorAuthenticationRequired
