@@ -12,9 +12,13 @@ use Github\Exception\RuntimeException;
 use Github\Exception\ValidationFailedException;
 use Github\ResultPager;
 use Http;
+use Illuminate\Http\Client\Pool;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
+use Throwable;
 
 class GitHubApi
 {
@@ -190,8 +194,133 @@ class GitHubApi
         }
     }
 
+    /**
+     * @param array<int, string> $repositories
+     * @return array<string, RepositoryAccessStatus>
+     */
+    public function repositoryAccessStatuses(string $gitHubUsername, array $repositories): array
+    {
+        $statuses = [];
+        $uncached = [];
+
+        foreach ($repositories as $repository) {
+            $cached = Cache::get($this->repositoryAccessCacheKey($gitHubUsername, $repository));
+
+            if ($cached) {
+                $statuses[$repository] = RepositoryAccessStatus::from($cached);
+
+                continue;
+            }
+
+            $uncached[] = $repository;
+        }
+
+        foreach ($this->fetchRepositoryAccessStatuses($gitHubUsername, $uncached) as $repository => $status) {
+            Cache::put($this->repositoryAccessCacheKey($gitHubUsername, $repository), $status->value, 60);
+            $statuses[$repository] = $status;
+        }
+
+        return $statuses;
+    }
+
+    /**
+     * @param array<int, string> $repositories
+     * @return array<string, RepositoryAccessStatus>
+     */
+    protected function fetchRepositoryAccessStatuses(string $gitHubUsername, array $repositories): array
+    {
+        $statuses = array_fill_keys($repositories, RepositoryAccessStatus::Unknown);
+
+        if (! $repositories || blank(config('services.github.token'))) {
+            return $statuses;
+        }
+
+        $urls = [];
+        foreach ($repositories as $repository) {
+            $urls[$repository] = "https://api.github.com/repos/{$repository}/collaborators/" . rawurlencode($gitHubUsername);
+        }
+
+        $withoutAccess = [];
+        foreach ($this->repositoryAccessRequests($urls) as $repository => $response) {
+            if (! $response instanceof Response) {
+                continue;
+            }
+
+            if ($response->noContent()) {
+                $statuses[$repository] = RepositoryAccessStatus::Granted;
+            }
+
+            if ($response->notFound()) {
+                $withoutAccess[] = $repository;
+            }
+        }
+
+        // Bound pagination so an unusually large invitation list cannot hold up Purchases indefinitely.
+        for ($page = 1; $page <= 3 && $withoutAccess; $page++) {
+            $urls = [];
+            foreach ($withoutAccess as $repository) {
+                $urls[$repository] = "https://api.github.com/repos/{$repository}/invitations?per_page=100&page={$page}";
+            }
+
+            $withoutAccess = [];
+            foreach ($this->repositoryAccessRequests($urls) as $repository => $response) {
+                if (! $response instanceof Response || ! $response->ok()) {
+                    continue;
+                }
+
+                $invitations = $response->json();
+
+                if (! is_array($invitations) || ! array_is_list($invitations)) {
+                    continue;
+                }
+
+                if (collect($invitations)->contains(fn ($invitation) => strcasecmp($invitation['invitee']['login'] ?? '', $gitHubUsername) === 0)) {
+                    $statuses[$repository] = RepositoryAccessStatus::Pending;
+
+                    continue;
+                }
+
+                if (Str::contains($response->header('Link'), 'rel="next"')) {
+                    $withoutAccess[] = $repository;
+
+                    continue;
+                }
+
+                // A successful invitations request also confirms our token can see this repository.
+                // A collaborator 404 alone could mean the token cannot access the private repository.
+                $statuses[$repository] = RepositoryAccessStatus::Missing;
+            }
+        }
+
+        return $statuses;
+    }
+
+    /**
+     * @param array<string, string> $urls
+     * @return array<string, Response|Throwable>
+     */
+    protected function repositoryAccessRequests(array $urls): array
+    {
+        return Http::pool(fn (Pool $pool) => collect($urls)->map(fn (string $url, string $repository) => $pool->as($repository)
+            ->withToken(config('services.github.token'))
+            ->withHeaders(['Accept' => 'application/vnd.github+json', 'User-Agent' => 'spatie.be'])
+            ->connectTimeout(1)
+            ->timeout(2)
+            ->withoutRedirecting()
+            ->get($url))->all());
+    }
+
+    protected function repositoryAccessCacheKey(string $gitHubUsername, string $repository): string
+    {
+        return 'github-repository-access:' . hash('sha256', json_encode([
+            strtolower($gitHubUsername), strtolower($repository), config('services.github.token'),
+        ]));
+    }
+
     public function inviteToRepo(string $gitHubUsername, string $repository): void
     {
+        Cache::forget($this->repositoryAccessCacheKey($gitHubUsername, $repository));
+
         [$organisation, $repository] = explode('/', $repository);
 
         try {
@@ -213,6 +342,8 @@ class GitHubApi
 
     public function revokeAccessToRepo(string $gitHubUsername, string $repository): void
     {
+        Cache::forget($this->repositoryAccessCacheKey($gitHubUsername, $repository));
+
         [$organisation, $repository] = explode('/', $repository);
 
         $this->client->repo()->collaborators()->remove(

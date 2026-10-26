@@ -10,7 +10,13 @@ use App\Models\Series;
 use App\Models\User;
 use App\Services\Mailcoach\MailcoachApi;
 use Database\Factories\ReceiptFactory;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
+
+beforeEach(function () {
+    config()->set('services.github.token', 'test-api-token');
+    Http::preventStrayRequests();
+});
 
 function createPurchasesPagePurchasable(
     string $productTitle,
@@ -170,6 +176,8 @@ it('keeps renewal guidance on products with expired repository licenses', functi
         ->assertSee('Renew your license to restore GitHub repository access.')
         ->assertDontSee('GitHub repositories')
         ->assertDontSee('https://github.com/spatie/laravel-medialibrary-pro');
+
+    Http::assertNothingSent();
 })->with([
     [null, false],
     [null, true],
@@ -210,6 +218,10 @@ it('offers reconnection on purchases and profile after disconnecting a GitHub ac
 });
 
 it('shows account-wide GitHub actions and secure two-factor guidance once for multiple products', function (?string $gitHubUsername, bool $hadRepositoryAccess, string $message) {
+    Http::fake([
+        'api.github.com/repos/*/collaborators/*' => Http::response([], 404),
+        'api.github.com/repos/*/invitations*' => Http::response([]),
+    ]);
     $user = User::factory()->create(['github_username' => $gitHubUsername]);
     $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
     $purchasable->update([
@@ -234,7 +246,7 @@ it('shows account-wide GitHub actions and secure two-factor guidance once for mu
         ->assertOk()
         ->assertSee($message)
         ->assertSeeInOrder(['GitHub account', 'Applications'])
-        ->assertSee('Accept any pending GitHub repository invitations to activate access.')
+        ->assertSee('Connecting or restoring access grants access to repositories included with eligible purchases.')
         ->assertSee('remove SMS authentication')
         ->assertSee('GitHub security settings')
         ->assertSee('https://github.com/spatie/laravel-medialibrary-pro')
@@ -250,11 +262,15 @@ it('shows account-wide GitHub actions and secure two-factor guidance once for mu
     }
 })->with([
     [null, false, 'Connect to GitHub'],
-    ['connected-user', false, 'Retry repository access'],
-    ['connected-user', true, 'Retry repository access'],
+    ['connected-user', false, 'Restore repository access'],
+    ['connected-user', true, 'Restore repository access'],
 ]);
 
 it('uses an eligible older assignment when the newest assignment has expired', function (bool $hasRepositoryAccess) {
+    Http::fake([
+        'api.github.com/repos/*/collaborators/*' => Http::response([], 404),
+        'api.github.com/repos/*/invitations*' => Http::response([]),
+    ]);
     $user = User::factory()->create(['github_username' => 'connected-user']);
     $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
     $purchasable->update([
@@ -276,7 +292,115 @@ it('uses an eligible older assignment when the newest assignment has expired', f
         ->get(route('purchases'))
         ->assertOk()
         ->assertSee('GitHub repositories')
-        ->assertSee('Retry repository access')
+        ->assertSee('Restore repository access')
         ->assertDontSee('Renew your license to restore GitHub repository access.')
         ->assertDontSee('Connect to GitHub to get access to the repository');
+
+    Http::assertSentCount(2);
 })->with([true, false]);
+
+it('shows GitHub actions based on live access across all eligible repositories', function (int $collaboratorStatus, array $invitations, int $invitationStatus, bool $showRestore, bool $showPending, string $message) {
+    $user = User::factory()->create(['github_username' => 'connected-user']);
+    $purchasable = createPurchasesPagePurchasable('Mailcoach', 'Single domain');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-mailcoach, spatie/mailcoach-ui',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    License::factory()->create(['purchase_assignment_id' => $assignment->id]);
+    Http::fake([
+        'api.github.com/repos/spatie/laravel-mailcoach/collaborators/connected-user' => Http::response('', 204),
+        'api.github.com/repos/spatie/mailcoach-ui/collaborators/connected-user' => Http::response($collaboratorStatus === 204 ? '' : [], $collaboratorStatus),
+        'api.github.com/repos/spatie/mailcoach-ui/invitations*' => Http::response($invitations, $invitationStatus),
+    ]);
+
+    $response = $this->actingAs($user)->get(route('purchases'))->assertOk()->assertSee($message);
+
+    if ($showRestore) {
+        $response->assertSee('Restore repository access')->assertSee(route('github-login'));
+    } else {
+        $response->assertDontSee('Restore repository access')->assertDontSee(route('github-login'));
+    }
+
+    if ($showPending) {
+        $response->assertSee('https://github.com/spatie/mailcoach-ui/invitations');
+    } else {
+        $response->assertDontSee('Accept invitation to');
+    }
+
+    expect($assignment->fresh()->has_repository_access)->toBeFalse();
+})->with([
+    'all access confirmed despite a false local access flag' => [204, [], 200, false, false, 'You have access to all GitHub repositories'],
+    'one repository missing' => [404, [], 200, true, false, 'Connecting or restoring access grants access'],
+    'one invitation pending' => [404, [['invitee' => ['login' => 'connected-user']]], 200, false, true, 'Accept your pending GitHub repository invitations'],
+    'GitHub unavailable' => [503, [], 200, true, false, 'We could not verify all of your GitHub repository access'],
+    'token cannot inspect the repository' => [404, [], 403, true, false, 'We could not verify all of your GitHub repository access'],
+]);
+
+it('keeps pending invitations visible when another repository needs restoration', function () {
+    $user = User::factory()->create(['github_username' => 'connected-user']);
+    $purchasable = createPurchasesPagePurchasable('Mailcoach', 'Single domain');
+    $purchasable->update(['repository_access' => 'spatie/laravel-mailcoach,spatie/mailcoach-ui']);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    License::factory()->create(['purchase_assignment_id' => $assignment->id]);
+    Http::fake([
+        'api.github.com/repos/*/collaborators/*' => Http::response([], 404),
+        'api.github.com/repos/spatie/laravel-mailcoach/invitations*' => Http::response([['invitee' => ['login' => 'connected-user']]]),
+        'api.github.com/repos/spatie/mailcoach-ui/invitations*' => Http::response([]),
+    ]);
+
+    $this->actingAs($user)->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('Restore repository access')
+        ->assertSee('https://github.com/spatie/laravel-mailcoach/invitations')
+        ->assertDontSee('https://github.com/spatie/mailcoach-ui/invitations');
+});
+
+it('does not offer restoration or contact GitHub when there are no eligible repository purchases', function () {
+    $user = User::factory()->create(['github_username' => 'connected-user']);
+
+    $this->actingAs($user)->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('Connected as')
+        ->assertDontSee('Restore repository access')
+        ->assertDontSee('You have access to all GitHub repositories');
+
+    Http::assertNothingSent();
+});
+
+it('checks repositories included with courses that do not require a license', function () {
+    $user = User::factory()->create(['github_username' => 'connected-user']);
+    $purchasable = createPurchasesPagePurchasable('Writing Readable PHP', 'Course', PurchasableType::TYPE_VIDEOS);
+    $purchasable->update(['repository_access' => 'spatie/readable-php-examples', 'requires_license' => false]);
+    $purchasable->series()->attach(Series::factory()->create());
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    Http::fake(['api.github.com/repos/*/collaborators/*' => Http::response('', 204)]);
+
+    $this->actingAs($user)->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('You have access to all GitHub repositories')
+        ->assertDontSee('Restore repository access');
+
+    Http::assertSentCount(1);
+});
+
+it('keeps purchases available when the GitHub token is missing', function () {
+    config()->set('services.github.token', null);
+    Http::fake();
+    $user = User::factory()->create(['github_username' => 'connected-user']);
+    $purchasable = createPurchasesPagePurchasable('Mailcoach', 'Single domain');
+    $purchasable->update(['repository_access' => 'spatie/laravel-mailcoach']);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    License::factory()->create(['purchase_assignment_id' => $assignment->id]);
+
+    $this->actingAs($user)->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('We could not verify all of your GitHub repository access')
+        ->assertSee('Restore repository access');
+
+    Http::assertNothingSent();
+});
