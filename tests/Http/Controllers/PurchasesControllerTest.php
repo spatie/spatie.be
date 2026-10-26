@@ -168,7 +168,7 @@ it('asks for renewal instead of a GitHub connection when repository licenses hav
         ->get(route('purchases'))
         ->assertOk()
         ->assertSee('Renew your license to restore GitHub repository access.')
-        ->assertDontSee('Access has been granted to these repos on GitHub')
+        ->assertDontSee('GitHub repositories')
         ->assertDontSee('Connect to GitHub to get access to the repository');
 })->with([
     [null, false],
@@ -199,7 +199,7 @@ it('offers reconnection on purchases and profile after disconnecting a GitHub ac
     $this->get(route('purchases'))
         ->assertOk()
         ->assertSee('Connect to GitHub to get access to the repository')
-        ->assertDontSee('Access has been granted to these repos on GitHub');
+        ->assertDontSee('GitHub repositories');
 
     $this->get(route('profile'))
         ->assertOk()
@@ -208,7 +208,7 @@ it('offers reconnection on purchases and profile after disconnecting a GitHub ac
         ->assertDontSee('Disconnect from GitHub');
 });
 
-it('offers a GitHub connection for eligible repository access', function (?string $gitHubUsername, string $message) {
+it('offers a GitHub connection and secure two-factor guidance for eligible repository access', function (?string $gitHubUsername, bool $hadRepositoryAccess, string $message) {
     $user = User::factory()->create(['github_username' => $gitHubUsername]);
     $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
     $purchasable->update([
@@ -217,6 +217,7 @@ it('offers a GitHub connection for eligible repository access', function (?strin
     ]);
     $purchase = createPurchasesPagePurchase($user, $purchasable);
     $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    $assignment->update(['has_repository_access' => $hadRepositoryAccess]);
     License::factory()->create([
         'purchase_assignment_id' => $assignment->id,
         'expires_at' => now()->addYear(),
@@ -226,10 +227,14 @@ it('offers a GitHub connection for eligible repository access', function (?strin
         ->get(route('purchases'))
         ->assertOk()
         ->assertSee($message)
+        ->assertSee('Accept any pending GitHub repository invitations to activate access.')
+        ->assertSee('remove SMS authentication')
+        ->assertSee('GitHub security settings')
         ->assertDontSee('Renew your license to restore GitHub repository access.');
 })->with([
-    [null, 'Connect to GitHub to get access to the repository'],
-    ['connected-user', 'Retry granting GitHub repository access'],
+    [null, false, 'Connect to GitHub to get access to the repository'],
+    ['connected-user', false, 'Retry granting GitHub repository access'],
+    ['connected-user', true, 'Retry granting GitHub repository access'],
 ]);
 
 it('uses an eligible older assignment when the newest assignment has expired', function (bool $hasRepositoryAccess, string $message) {
@@ -257,6 +262,6 @@ it('uses an eligible older assignment when the newest assignment has expired', f
         ->assertDontSee('Renew your license to restore GitHub repository access.')
         ->assertDontSee('Connect to GitHub to get access to the repository');
 })->with([
-    [true, 'Access has been granted to these repos on GitHub'],
+    [true, 'GitHub repositories'],
     [false, 'Retry granting GitHub repository access'],
 ]);

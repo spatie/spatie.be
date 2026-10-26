@@ -30,7 +30,7 @@
                 @if(! $repositoryAssignment->isEligibleForRepositoryAccess())
                     Renew your license to restore GitHub repository access.
                 @elseif($repositoryAssignment->has_repository_access && auth()->user()->github_username)
-                    Access has been granted to these repos on GitHub<br/>
+                    GitHub repositories<br/>
                     @foreach(explode(',', $repositoryAssignment->purchasable->repository_access) as $repository)
                         <a class="underline hover:text-white" target="_blank" href="https://github.com/{{ $repository }}">
                             {{ $repository }}
@@ -44,6 +44,17 @@
                             Connect to GitHub to get access to the repository
                         @endif
                     </a>
+                @endif
+
+                @if($repositoryAssignment->isEligibleForRepositoryAccess())
+                    <p class="mt-3">
+                        Accept any pending GitHub repository invitations to activate access.
+                        Spatie requires secure two-factor authentication: use an authenticator app, passkey, security key, or GitHub Mobile, and remove SMS authentication.
+                        <a class="underline hover:text-white" href="https://github.com/settings/security" target="_blank" rel="noopener noreferrer">GitHub security settings</a>
+                    </p>
+                    @if($repositoryAssignment->has_repository_access && auth()->user()->github_username)
+                        <a class="inline-block mt-3 underline hover:text-white" href="{{ route('github-login') }}">Retry granting GitHub repository access</a>
+                    @endif
                 @endif
             </div>
         @endif

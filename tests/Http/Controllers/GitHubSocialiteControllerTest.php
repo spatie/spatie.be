@@ -6,6 +6,7 @@ use App\Domain\Shop\Models\Purchasable;
 use App\Domain\Shop\Models\Purchase;
 use App\Domain\Shop\Models\PurchaseAssignment;
 use App\Models\User;
+use App\Services\GitHub\Exceptions\GitHubTwoFactorAuthenticationRequired;
 use App\Services\GitHub\GitHubApi;
 use Database\Factories\ReceiptFactory;
 use Illuminate\Http\RedirectResponse;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Http;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\User as SocialiteUser;
 
-it('does not fail the callback when repository access cannot be restored', function () {
+it('keeps login working and explains repository restoration failures', function (Throwable $failure, string $message) {
     Http::fake([
         'https://api.github.com/graphql' => Http::response([
             'message' => 'Bad credentials',
@@ -33,18 +34,27 @@ it('does not fail the callback when repository access cannot be restored', funct
         ->with('github')
         ->andReturn($provider);
 
-    $this->app->bind(RestoreRepositoryAccessAction::class, function () {
-        throw new TypeError('GitHub token is missing.');
+    $this->app->bind(RestoreRepositoryAccessAction::class, function () use ($failure) {
+        throw $failure;
     });
 
     $this
         ->get('login/github/callback?code=123&state=state')
         ->assertOk()
         ->assertSessionHas('laravel_flash_message.level', 'error')
-        ->assertSessionHas('laravel_flash_message.message', 'Your GitHub account is connected, but repository access could not be restored. Please try again or contact support.');
+        ->assertSessionHas('laravel_flash_message.message', $message);
 
     $this->assertAuthenticated();
-});
+})->with([
+    'general failure' => [
+        new TypeError('GitHub token is missing.'),
+        'Your GitHub account is connected, but repository access could not be restored. Please try again or contact support.',
+    ],
+    'two-factor rejection' => [
+        $twoFactorFailure = new GitHubTwoFactorAuthenticationRequired(new RuntimeException('Two-factor authentication is required.', 403)),
+        $twoFactorFailure->getMessage(),
+    ],
+]);
 
 it('connects GitHub to the signed in account and returns to purchases', function () {
     $user = User::factory()->create(['email' => 'purchaser@example.com']);
@@ -95,7 +105,7 @@ it('preserves the next page for a regular GitHub login', function () {
         ->assertSessionMissing('next');
 });
 
-it('restores eligible repository access when reconnecting or changing GitHub accounts', function (?string $previousGitHubId, ?string $previousGitHubUsername) {
+it('refreshes eligible repository access when explicitly connecting GitHub', function (?string $previousGitHubId, ?string $previousGitHubUsername) {
     $user = User::factory()->create([
         'github_id' => $previousGitHubId,
         'github_username' => $previousGitHubUsername,
@@ -146,4 +156,5 @@ it('restores eligible repository access when reconnecting or changing GitHub acc
 })->with([
     'disconnected account' => [null, null],
     'different account' => ['12345', 'previous-user'],
+    'same account after organization access was removed' => ['67890', 'reconnected-user'],
 ]);

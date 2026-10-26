@@ -2,12 +2,14 @@
 
 namespace App\Services\GitHub;
 
+use App\Services\GitHub\Exceptions\GitHubTwoFactorAuthenticationRequired;
 use Exception;
 use Github\Api\Organization;
 use Github\Api\Repo;
 use Github\Api\User;
 use Github\Client;
 use Github\Exception\RuntimeException;
+use Github\Exception\ValidationFailedException;
 use Github\ResultPager;
 use Http;
 use Illuminate\Support\Carbon;
@@ -192,12 +194,21 @@ class GitHubApi
     {
         [$organisation, $repository] = explode('/', $repository);
 
-        $this->client->repo()->collaborators()->add(
-            $organisation,
-            $repository,
-            $gitHubUsername,
-            ['permission' => 'pull']
-        );
+        try {
+            $this->client->repo()->collaborators()->add(
+                $organisation,
+                $repository,
+                $gitHubUsername,
+                ['permission' => 'pull']
+            );
+        } catch (RuntimeException|ValidationFailedException $exception) {
+            if (! in_array($exception->getCode(), [403, 422], true)
+                || ! Str::contains(Str::lower($exception->getMessage()), ['two-factor', 'two factor', '2fa', 'mfa'])) {
+                throw $exception;
+            }
+
+            throw new GitHubTwoFactorAuthenticationRequired($exception);
+        }
     }
 
     public function revokeAccessToRepo(string $gitHubUsername, string $repository): void

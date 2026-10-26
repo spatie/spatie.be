@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
+use App\Services\GitHub\Exceptions\GitHubTwoFactorAuthenticationRequired;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
@@ -31,10 +32,11 @@ class GitHubSocialiteController
     {
         $gitHubUser = Socialite::driver('github')->stateless()->user();
 
+        $isConnectingGitHub = session()->has('auth-user-id');
         $user = $this->retrieveUser($gitHubUser);
         // $isSponsor = (new GitHubGraphApi())->determineSponsorStatus($gitHubUser->nickname) ?? $user->is_sponsor;
 
-        if ((string) $user->github_id !== (string) $gitHubUser->id || ! $user->github_username) {
+        if ($isConnectingGitHub || (string) $user->github_id !== (string) $gitHubUser->id || ! $user->github_username) {
             $user->assignments()->update(['has_repository_access' => false]);
         }
 
@@ -55,7 +57,9 @@ class GitHubSocialiteController
             app(RestoreRepositoryAccessAction::class)->execute($user);
         } catch (Throwable $exception) {
             report("Could not restore repository access for user `{$user->id}` after GitHub login: {$exception->getMessage()}");
-            flash()->error('Your GitHub account is connected, but repository access could not be restored. Please try again or contact support.');
+            flash()->error($exception instanceof GitHubTwoFactorAuthenticationRequired
+                ? $exception->getMessage()
+                : 'Your GitHub account is connected, but repository access could not be restored. Please try again or contact support.');
         }
 
         if (! $user->is_sponsor && ! $user->isSpatieMember()) {
