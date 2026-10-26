@@ -19,20 +19,12 @@ class RestoreRepositoryAccessAction
     public function execute(User $user): void
     {
         $assignments = $user->assignments()
-            ->with(['purchasable'])
+            ->with(['purchasable', 'licenses'])
             ->where('has_repository_access', false)
             ->get();
 
         $assignments->each(function (PurchaseAssignment $assignment) use ($user) {
-            if (! $assignment->purchasable->repository_access) {
-                return;
-            }
-
-            $hasActiveLicense = $assignment->licenses()
-                ->whereNotExpired()
-                ->exists();
-
-            if ($assignment->purchasable->requires_license && ! $hasActiveLicense) {
+            if (! $assignment->isEligibleForRepositoryAccess()) {
                 return;
             }
 

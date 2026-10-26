@@ -68,3 +68,16 @@ it('does nothing when the license is expired', function () {
     $this->apiSpy->shouldNotHaveReceived('inviteToRepo');
     expect($this->assignment->fresh()->has_repository_access)->toBeFalse();
 });
+
+it('restores repository access for a license without an expiration date', function () {
+    $this->purchase->purchasable->update([
+        'repository_access' => 'spatie/spatie.be',
+        'requires_license' => true,
+    ]);
+    $this->license->update(['expires_at' => null]);
+
+    $this->action->execute($this->user);
+
+    $this->apiSpy->shouldHaveReceived('inviteToRepo', ['riasvdv', 'spatie/spatie.be'])->once();
+    expect($this->assignment->fresh()->has_repository_access)->toBeTrue();
+});

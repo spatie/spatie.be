@@ -147,3 +147,73 @@ it('distinguishes between no purchases and purchases that are only assigned away
         ->assertSee('Your purchases are assigned to other accounts')
         ->assertSee('Assigned to others');
 });
+
+it('asks for renewal instead of a GitHub connection when repository licenses have expired', function (?string $gitHubUsername) {
+    $user = User::factory()->create(['github_username' => $gitHubUsername]);
+    $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-medialibrary-pro',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->subDay(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('Renew your license to restore GitHub repository access.')
+        ->assertDontSee('Connect to GitHub to get access to the repository');
+})->with([null, 'connected-user']);
+
+it('offers a GitHub connection for eligible repository access', function (?string $gitHubUsername, string $message) {
+    $user = User::factory()->create(['github_username' => $gitHubUsername]);
+    $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-medialibrary-pro',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $assignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    License::factory()->create([
+        'purchase_assignment_id' => $assignment->id,
+        'expires_at' => now()->addYear(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('purchases'))
+        ->assertOk()
+        ->assertSee($message)
+        ->assertDontSee('Renew your license to restore GitHub repository access.');
+})->with([
+    [null, 'Connect to GitHub to get access to the repository'],
+    ['connected-user', 'Retry granting GitHub repository access'],
+]);
+
+it('shows repository access from an older assignment when the newest assignment has expired', function () {
+    $user = User::factory()->create(['github_username' => 'connected-user']);
+    $purchasable = createPurchasesPagePurchasable('Media Library Pro', 'One application');
+    $purchasable->update([
+        'repository_access' => 'spatie/laravel-medialibrary-pro',
+        'requires_license' => true,
+    ]);
+    $purchase = createPurchasesPagePurchase($user, $purchasable);
+    $activeAssignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    $activeAssignment->update(['has_repository_access' => true, 'created_at' => now()->subYear()]);
+    License::factory()->create(['purchase_assignment_id' => $activeAssignment->id]);
+    $expiredAssignment = assignPurchasesPagePurchase($purchase, $purchasable, $user);
+    License::factory()->create([
+        'purchase_assignment_id' => $expiredAssignment->id,
+        'expires_at' => now()->subDay(),
+    ]);
+
+    $this->actingAs($user)
+        ->get(route('purchases'))
+        ->assertOk()
+        ->assertSee('Access has been granted to these repos on GitHub')
+        ->assertDontSee('Renew your license to restore GitHub repository access.')
+        ->assertDontSee('Connect to GitHub to get access to the repository');
+});

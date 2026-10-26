@@ -49,7 +49,10 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                             @foreach ($applications as $product_id => $assignments)
                                 @php($assignment = $assignments->sortByDesc('created_at')->first())
-                                <x-purchase-assignment :assignment="$assignment" :showImage="false">
+                                @php($repositoryAssignment = $assignments->first(fn ($assignment) => $assignment->has_repository_access)
+                                    ?? $assignments->first(fn ($assignment) => $assignment->isEligibleForRepositoryAccess())
+                                    ?? $assignment)
+                                <x-purchase-assignment :assignment="$assignment" :repositoryAssignment="$repositoryAssignment" :showImage="false">
                                     @if ($assignment->purchasable->getting_started_url)
                                         <div class="px-6 py-4 border-t border-white/10">
                                             <a class="inline-flex items-center gap-2 px-5 py-2.5 bg-oss-green-pale text-oss-royal-blue font-bold rounded-lg hover:opacity-90 transition-opacity text-sm"

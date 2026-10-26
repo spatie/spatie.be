@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
 use App\Models\User;
-use App\Services\GitHub\GitHubGraphApi;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Laravel\Socialite\Facades\Socialite;
@@ -22,6 +21,7 @@ class GitHubSocialiteController
              * connect their GitHub profile. Remember who's logged in.
              */
             session()->put('auth-user-id', auth()->user()->id);
+            session()->flash('next', route('purchases'));
         }
 
         return Socialite::driver('github')->redirect();
@@ -41,6 +41,8 @@ class GitHubSocialiteController
             // 'is_sponsor' => $isSponsor,
         ]);
 
+        flash()->success('You have been logged in');
+
         try {
             /*
              * Make sure the user has access to all repositories that
@@ -49,6 +51,7 @@ class GitHubSocialiteController
             app(RestoreRepositoryAccessAction::class)->execute($user);
         } catch (Throwable $exception) {
             report("Could not restore repository access for user `{$user->id}` after GitHub login: {$exception->getMessage()}");
+            flash()->error('Your GitHub account is connected, but repository access could not be restored. Please try again or contact support.');
         }
 
         if (! $user->is_sponsor && ! $user->isSpatieMember()) {
@@ -61,19 +64,19 @@ class GitHubSocialiteController
 
         auth()->login($user, true);
 
-        flash()->success('You have been logged in');
-
-        return view('auth.gitHubCallback');
+        return view('auth.gitHubCallback', [
+            'redirectUrl' => session()->pull('next', route('products.index')),
+        ]);
     }
 
     protected function retrieveUser($gitHubUser): User
     {
-        if (session('auth-user-id')) {
+        if ($userId = session()->pull('auth-user-id')) {
             /*
              * If there already was a local user created for the email used
              * on GitHub, then let's use that local user
              */
-            return User::find(session('auth-user-id'));
+            return User::findOrFail($userId);
         }
 
         if ($gitHubUser->email && $user = User::where('email', $gitHubUser->email)->first()) {

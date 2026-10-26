@@ -41,6 +41,16 @@ class PurchaseAssignment extends Model
         return $this->hasMany(License::class);
     }
 
+    public function isEligibleForRepositoryAccess(): bool
+    {
+        if (! $this->purchasable->repository_access) {
+            return false;
+        }
+
+        return ! $this->purchasable->requires_license
+            || $this->licenses->contains(fn (License $license) => ! $license->isExpired());
+    }
+
     public function scopeForProduct(Builder $query, Product $product): void
     {
         $query->whereIn('purchasable_id', $product->purchasables->pluck('id'));

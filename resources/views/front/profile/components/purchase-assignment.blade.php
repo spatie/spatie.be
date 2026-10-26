@@ -1,4 +1,7 @@
-<?php $theme ??= 'green'; ?>
+@php
+    $theme ??= 'green';
+    $repositoryAssignment ??= $assignment;
+@endphp
 <div id="{{ $assignment->purchasable->product->slug }}" class="flex flex-col py-6 bg-oss-purple-extra-dark shadow-oss-card rounded-[20px]">
     <div class="mb-6">
         <a href="{{ route('products.show', $assignment->purchasable->product) }}" class="group block px-4 md:px-6">
@@ -22,18 +25,24 @@
             </div>
         </a>
 
-        @if ($assignment->purchasable->repository_access)
+        @if ($repositoryAssignment->purchasable->repository_access)
             <div class="mt-6 px-4 md:px-6 text-sm">
-                @if ($assignment->has_repository_access)
+                @if ($repositoryAssignment->has_repository_access)
                     Access has been granted to these repos on GitHub<br/>
-                    @foreach(explode(',', $assignment->purchasable->repository_access) as $repository)
+                    @foreach(explode(',', $repositoryAssignment->purchasable->repository_access) as $repository)
                         <a class="underline hover:text-white" target="_blank" href="https://github.com/{{ $repository }}">
                             {{ $repository }}
                         </a><br/>
                     @endforeach
+                @elseif (! $repositoryAssignment->isEligibleForRepositoryAccess())
+                    Renew your license to restore GitHub repository access.
                 @else
                     <a class="underline hover:text-white" href="{{ route('github-login') }}">
-                        Connect to GitHub to get access to the repository
+                        @if(auth()->user()->github_username)
+                            Retry granting GitHub repository access
+                        @else
+                            Connect to GitHub to get access to the repository
+                        @endif
                     </a>
                 @endif
             </div>
