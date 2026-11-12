@@ -16,20 +16,21 @@ for package in "${packages[@]}"; do
     fi
 done
 if ((${#missing[@]})); then
-    if [[ ! -f /etc/apt/sources.list.d/php.list ]]; then
+    source /etc/os-release
+    if [[ ! -f /usr/share/keyrings/debsuryorg-archive-keyring.gpg ]]; then
         keyring=$(mktemp)
         curl -fsSL https://packages.sury.org/debsuryorg-archive-keyring.deb -o "$keyring"
         sudo dpkg -i "$keyring"
         rm "$keyring"
-        echo 'deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ bookworm main' |
-            sudo tee /etc/apt/sources.list.d/php.list >/dev/null
     fi
-    if [[ ! -f /etc/apt/sources.list.d/mysql.list ]]; then
+    echo "deb [signed-by=/usr/share/keyrings/debsuryorg-archive-keyring.gpg] https://packages.sury.org/php/ ${VERSION_CODENAME} main" |
+        sudo tee /etc/apt/sources.list.d/php.list >/dev/null
+    if [[ ! -f /usr/share/keyrings/mysql.asc ]]; then
         curl -fsSL https://repo.mysql.com/RPM-GPG-KEY-mysql-2025 |
             sudo tee /usr/share/keyrings/mysql.asc >/dev/null
-        echo 'deb [signed-by=/usr/share/keyrings/mysql.asc] https://repo.mysql.com/apt/debian/ bookworm mysql-8.4-lts' |
-            sudo tee /etc/apt/sources.list.d/mysql.list >/dev/null
     fi
+    echo "deb [signed-by=/usr/share/keyrings/mysql.asc] https://repo.mysql.com/apt/debian/ ${VERSION_CODENAME} mysql-8.4-lts" |
+        sudo tee /etc/apt/sources.list.d/mysql.list >/dev/null
     time sudo apt-get update -qq
     time sudo -E apt-get install -y --no-install-recommends "${missing[@]}"
 fi
