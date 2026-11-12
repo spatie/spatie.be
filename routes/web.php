@@ -63,6 +63,10 @@ Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where
 
 Route::feeds();
 
+Route::get('admin/blog-preview/{post}', [BlogController::class, 'preview'])
+    ->middleware('adminsOnly')
+    ->name('blog.preview');
+
 Route::get('blog', [BlogController::class, 'index'])->name('blog');
 Route::get('blog/all', [BlogController::class, 'all'])->name('blog.all');
 Route::get('blog/authors/{slug}', [BlogController::class, 'author'])->name('blog.author');

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Domain\Blog\Actions\PrepareBlogImagesAction;
+use App\Domain\Blog\Data\Author;
+use App\Domain\Blog\Models\BlogPost;
 use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
-use Spatie\ContentApi\ContentApi;
-use Spatie\ContentApi\Data\Author;
-use Spatie\ContentApi\Data\Post;
 use Spatie\Feed\FeedItem;
 
 class BlogController
@@ -65,10 +66,22 @@ class BlogController
 
         abort_if(is_null($post), 404);
 
-        $content = $this->replaceComponents($post->content);
+        return $this->postView($post);
+    }
+
+    public function preview(BlogPost $post): Response
+    {
+        return response($this->postView($post))
+            ->header('Cache-Control', 'private, no-store')
+            ->header('X-Robots-Tag', 'noindex, nofollow');
+    }
+
+    protected function postView(BlogPost $post): View
+    {
+        $content = $this->replaceComponents(app(PrepareBlogImagesAction::class)->execute($post));
 
         $otherPosts = self::getPosts()
-            ->filter(function (Post $otherPost) use ($post) {
+            ->filter(function (BlogPost $otherPost) use ($post) {
                 return $otherPost->slug !== $post->slug;
             })
             ->take(2);
@@ -91,8 +104,12 @@ class BlogController
 
         abort_if(is_null($member), 404);
 
-        $posts = self::getPosts(100, page: 1)
-            ->filter(function (Post $post) use ($member) {
+        $posts = BlogPost::query()
+            ->visible()
+            ->with('media')
+            ->orderByDesc('published_at')
+            ->get()
+            ->filter(function (BlogPost $post) use ($member) {
                 return $post->authors->contains(function (Author $author) use ($member) {
                     return $member->isAuthor($author);
                 });
@@ -110,7 +127,7 @@ class BlogController
     public static function getFeedItems(): Collection
     {
         return self::getPosts()
-            ->map(function (Post $post) {
+            ->map(function (BlogPost $post) {
                 return FeedItem::create()
                     ->id($post->slug)
                     ->title($post->title)
@@ -121,22 +138,23 @@ class BlogController
             });
     }
 
-    private static function getPost(string $slug): ?Post
+    private static function getPost(string $slug): ?BlogPost
     {
-        return ContentApi::getPost(
-            product: 'spatie',
-            slug: $slug,
-            theme: 'github-light',
-        );
+        return BlogPost::query()
+            ->visible()
+            ->with('media')
+            ->where('slug', $slug)
+            ->first();
     }
 
     private static function getPosts(int $perPage = 20, ?int $page = null): Paginator
     {
-        return ContentApi::getPosts(
-            product: 'spatie',
-            page: $page ?? max(1, request()->integer('page', 1)),
-            perPage: $perPage,
-        );
+        return BlogPost::query()
+            ->visible()
+            ->with('media')
+            ->orderByDesc('published_at')
+            ->orderByDesc('id')
+            ->simplePaginate($perPage, page: $page ?? max(1, request()->integer('page', 1)));
     }
 
     private function replaceComponents(string $content): string
@@ -185,9 +203,9 @@ class BlogController
             return '';
         }
 
-        return Blade::render("components.posts.list-item", [
+        return view('components.blog.list-item', [
             'insight' => $post,
             'border' => true,
-        ]);
+        ])->render();
     }
 }

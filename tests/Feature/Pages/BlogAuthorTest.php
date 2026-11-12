@@ -1,5 +1,6 @@
 <?php
 
+use App\Domain\Blog\Models\BlogPost;
 use App\Models\Member;
 use Illuminate\Support\Facades\Http;
 
@@ -8,12 +9,9 @@ function blogAuthorTestPost(string $title, string $slug, string $authorEmail): a
     return [
         'title' => $title,
         'slug' => $slug,
-        'header_image' => null,
-        'summary' => '',
-        'authors' => [['name' => 'Author', 'email' => $authorEmail]],
-        'content' => '',
+        'author_data' => [['name' => 'Author', 'gravatar_url' => 'https://www.gravatar.com/avatar/'.md5($authorEmail)]],
         'published' => true,
-        'date' => '2026-09-01',
+        'published_at' => '2026-09-01',
         'updated_at' => '2026-09-01',
     ];
 }
@@ -22,12 +20,9 @@ function fakeBlogAuthorTestPosts(array $posts): void
 {
     Http::preventStrayRequests();
 
-    Http::fake([
-        'content.spatie.be/*' => Http::response([
-            'data' => $posts,
-            'meta' => ['last_page' => 1],
-        ]),
-    ]);
+    foreach ($posts as $post) {
+        BlogPost::factory()->create($post);
+    }
 }
 
 beforeEach(function () {

@@ -2,15 +2,14 @@
 
 namespace App\Providers;
 
+use App\Domain\Blog\Models\BlogPost;
 use App\Models\ExternalFeedItem;
 use App\Models\Member;
-use Exception;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
-use Spatie\ContentApi\ContentApi;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -21,17 +20,11 @@ class ViewServiceProvider extends ServiceProvider
         });
 
         View::composer('front.pages.home.partials.news', function ($view): void {
-            $blogPosts = collect();
-
-            try {
-                $blogPosts = Cache::flexible('home.blogPosts', [60, 60 * 60], function () {
-                    return collect(ContentApi::getPosts(
-                        product: 'spatie',
-                        perPage: 12,
-                    )->items());
-                });
-            } catch (Exception) {
-            }
+            $blogPosts = BlogPost::query()
+                ->visible()
+                ->orderByDesc('published_at')
+                ->limit(12)
+                ->get();
 
             $externalFeedItems = Cache::flexible('home.externalFeedItems', [60, 60 * 60], function () {
                 return ExternalFeedItem::query()

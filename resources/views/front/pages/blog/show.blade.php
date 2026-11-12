@@ -38,12 +38,7 @@
                 <div class="sm:w-2/5 sm:ml-auto sm:mr-0 mt-auto flex-shrink-0 aspect-square bg-oss-green-pale rounded-8 shadow-big">
                     @if($post->header_image)
                         <picture>
-                            <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
-                            <source srcset="
-                                @foreach ($post->header_image_presets as $image)
-                                https://content.spatie.be{{ $image->url }} {{ $image->width }}w{{ $loop->last ? '' : ',' }}
-                                @endforeach
-                            " sizes="325px">
+                            <source srcset="{{ $post->headerMedia()?->getSrcset() }}" sizes="325px">
                             <img class="w-full rounded-8" alt="" src="{{ $post->header_image }}"/>
                         </picture>
                     @endif
@@ -87,7 +82,7 @@
                         @endforeach
                     </aside>
 
-                    <div class="text-base sm:text-lg markup markup-lists markup-tables markup-embeds links-blue links-underline content-markup blog-content">
+                    <div class="text-base sm:text-lg markup markup-lists markup-tables markup-embeds links-blue links-underline content-markup blog-content highlight">
                         {!! $content !!}
                     </div>
                 </div>

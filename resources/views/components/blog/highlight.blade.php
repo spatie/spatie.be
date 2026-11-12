@@ -1,16 +1,11 @@
 @props(['post'])
-<?php /** @var \Spatie\ContentApi\Data\Post $post */ ?>
+<?php /** @var \App\Domain\Blog\Models\BlogPost $post */ ?>
 <article {{ $attributes->merge(['class' => 'wrapper-lg px-7 sm:px-16']) }}>
     <a href="{{ route('blog.show', $post->slug) }}" wire:navigate.hover class="group flex flex-col md:flex-row gap-8 md:gap-24">
         <div class="flex-shrink-0 self-start sm:w-[455px] sm:h-[455px] rounded-8 overflow-hidden">
             @if ($post->header_image)
                 <picture>
-                    <?php /** @var \Spatie\ContentApi\Data\ImagePreset $image */ ?>
-                    <source srcset="
-                        @foreach ($post->header_image_presets as $image)
-                        https://content.spatie.be{{ $image->url }} {{ $image->width }}w{{ $loop->last ? '' : ',' }}
-                        @endforeach
-                    ">
+                    <source srcset="{{ $post->headerMedia()?->getSrcset() }}" sizes="(min-width: 640px) 455px, 100vw">
                     <img
                         src="{{ $post->header_image }}"
                         alt="{{ $post->title }}"

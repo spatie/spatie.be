@@ -2,10 +2,10 @@
 
 namespace App\Services\Schema;
 
+use App\Domain\Blog\Data\Author;
+use App\Domain\Blog\Models\BlogPost;
 use App\Models\Member;
 use Illuminate\Support\Collection;
-use Spatie\ContentApi\Data\Author;
-use Spatie\ContentApi\Data\Post;
 use Spatie\SchemaOrg\BlogPosting;
 use Spatie\SchemaOrg\Organization;
 use Spatie\SchemaOrg\Person;
@@ -46,7 +46,7 @@ class Schema
     }
 
     /** @param Collection<string, Member> $authorMembers */
-    public function blogPost(Post $post, Collection $authorMembers): BlogPosting
+    public function blogPost(BlogPost $post, Collection $authorMembers): BlogPosting
     {
         $authors = $post->authors
             ->map(function (Author $author) use ($authorMembers) {

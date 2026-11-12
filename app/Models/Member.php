@@ -2,10 +2,10 @@
 
 namespace App\Models;
 
+use App\Domain\Blog\Data\Author;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
-use Spatie\ContentApi\Data\Author;
 use Spatie\SchemaOrg\Person;
 use Spatie\SchemaOrg\Schema;
 
