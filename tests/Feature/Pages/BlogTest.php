@@ -7,6 +7,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Livewire;
+use Spatie\LaravelUrlAiTransformer\Models\TransformationResult;
 
 beforeEach(function () {
     Http::preventStrayRequests();
@@ -63,6 +64,16 @@ it('stores a header on the media disk and serves it with responsive sources', fu
     Storage::fake('medialibrary');
     $this->actingAsSpatie();
     $post = BlogPost::factory()->create();
+    TransformationResult::create([
+        'url' => route('blog.show', $post->slug),
+        'type' => 'ldJson',
+        'result' => '{"image":"https://content.spatie.be/assets/old-cover.png"}',
+    ]);
+    TransformationResult::create([
+        'url' => url('/').'/',
+        'type' => 'ldJson',
+        'result' => '{"name":"Homepage structured data"}',
+    ]);
 
     Livewire::test(EditBlogPost::class, ['record' => $post->id])
         ->fillForm(['header' => [UploadedFile::fake()->image('cover.png', 1200, 800)]])
@@ -73,7 +84,9 @@ it('stores a header on the media disk and serves it with responsive sources', fu
     expect($media)->not->toBeNull();
     expect($media->disk)->toBe('medialibrary');
     Storage::disk('medialibrary')->assertExists($media->getPathRelativeToRoot());
-    $this->get('/blog/'.$post->slug)->assertSuccessful()->assertSee($media->getUrl());
+    $this->get('/blog/'.$post->slug)->assertSuccessful()->assertSee($media->getUrl())
+        ->assertSee('BlogPosting')->assertDontSee('content.spatie.be/assets/old-cover.png');
+    $this->get('/')->assertSuccessful()->assertSee('Homepage structured data');
 
     Livewire::test(EditBlogPost::class, ['record' => $post->id])
         ->fillForm(['header' => [UploadedFile::fake()->image('replacement.png', 800, 600)]])

@@ -38,7 +38,7 @@ beforeEach(function () {
         'source' => ['timezone' => 'UTC'],
         'entries' => $entries,
         'authors' => [['id' => 'author-a', 'name' => 'Alex'], ['id' => 'author-b', 'name' => 'Freek']],
-        'tags' => [['slug' => 'laravel', 'title' => 'Laravel']],
+        'tags' => [['id' => 'tags::laravel', 'slug' => 'laravel', 'title' => 'Laravel']],
         'assets' => [[
             'path' => 'cover.png', 'file' => 'cover.png', 'sha256' => hash_file('sha256', $image->getPathname()), 'bytes' => filesize($image->getPathname()),
             'references' => collect($entries)->map(fn ($entry) => ['entry_id' => $entry['record']['id'], 'field' => 'content'])->all(),

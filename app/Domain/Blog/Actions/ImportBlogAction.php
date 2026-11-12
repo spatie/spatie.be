@@ -152,7 +152,7 @@ class ImportBlogAction
             $this->assertResolved($markdown."\n\n".$summary);
 
             $tags = collect($data['tags'] ?? [])->map(function (string $tag) use ($manifest): string {
-                $term = collect($manifest['tags'])->first(fn ($term) => is_array($term) && ($term['id'] ?? $term['slug'] ?? null) === $tag);
+                $term = collect($manifest['tags'])->first(fn ($term) => is_array($term) && (($term['id'] ?? null) === $tag || ($term['slug'] ?? null) === $tag));
 
                 return $term['title'] ?? $term['data']['title'] ?? $tag;
             })->all();

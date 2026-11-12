@@ -11,6 +11,10 @@ class LdJson extends Component
 {
     public function render(): View|Closure|string
     {
+        if (request()->routeIs('blog.show', 'blog.preview')) {
+            return '';
+        }
+
         $url = request()->url();
 
         if (request()->path() === '/') {
