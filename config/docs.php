@@ -521,7 +521,9 @@ return [
             'name' => 'laravel-sluggable',
             'repository' => 'spatie/laravel-sluggable',
             'branches' => [
-                'main' => 'v4',
+                'main' => 'v6',
+                'v5' => 'v5',
+                'v4' => 'v4',
             ],
             'category' => 'Laravel',
         ],
