@@ -65,6 +65,7 @@ class LlmsTxtController
         $lines[] = '## AI Coding Guidelines';
         $lines[] = '';
         $lines[] = "- [Laravel & PHP AI Guidelines]({$url}): Guidelines for AI assistants writing Laravel and PHP code following Spatie conventions";
+        $lines[] = '- [Agent Skills discovery index]('.url('/.well-known/agent-skills/index.json').'): Installable skill using these same guidelines, with a SHA-256 digest for verification';
         $lines[] = '';
     }
 
