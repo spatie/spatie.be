@@ -18,7 +18,7 @@ class LlmsTxtController
             '',
             '> Spatie is a web development agency from Antwerp, Belgium. We create Laravel and PHP open source packages, and sell digital products like courses and tools. We have created over 400 open source packages that have been downloaded more than 500 million times.',
             '',
-            'Docs pages can be visited as markdown by appending `.md` to the URL.',
+            'Documentation pages, individual guidelines, and published blog posts can be visited as Markdown by appending `.md` to the URL. Guidelines and blog posts also accept `Accept: text/markdown`.',
             '',
         ];
 

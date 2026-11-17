@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CreateArticleMarkdownResponseAction;
 use App\Guidelines\Guidelines;
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\View\View;
 
 class GuidelinesController
@@ -14,16 +17,20 @@ class GuidelinesController
         return view('front.pages.guidelines.index', compact('pages'));
     }
 
-    public function show(string $slug, Guidelines $guidelines): View
+    public function show(string $slug, Guidelines $guidelines, Request $request, CreateArticleMarkdownResponseAction $markdown): Response
     {
         $page = $guidelines->page($slug);
 
         abort_unless($page, 404);
 
+        if ($markdown->isRequested($request)) {
+            return $markdown->execute($page->title, $page->contents->toHtml());
+        }
+
         $pages = $guidelines->pages()->sortBy('weight')->values();
         $tableOfContents = $this->extractTableOfContents($page->contents);
 
-        return view('front.pages.guidelines.show', compact('page', 'pages', 'tableOfContents'));
+        return response()->view('front.pages.guidelines.show', compact('page', 'pages', 'tableOfContents'))->setVary('Accept');
     }
 
     private function extractTableOfContents(string $contents)
