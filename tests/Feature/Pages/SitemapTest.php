@@ -68,7 +68,10 @@ it('lists public canonical pages without exposing unpublished content or private
         url('/top-secret'),
     );
     expect($urls)->toHaveCount(count(array_unique($urls)));
-    expect(file_get_contents(public_path('robots.txt')))->toContain('Sitemap: https://spatie.be/sitemap.xml');
+    expect(file_get_contents(public_path('robots.txt')))->toContain(
+        "User-agent: *\nContent-Signal: ai-train=yes, search=yes, ai-input=yes\nDisallow:\n",
+        'Sitemap: https://spatie.be/sitemap.xml',
+    );
 
     $post->update(['published' => false]);
     $this->travel(1)->seconds();

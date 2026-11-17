@@ -119,6 +119,9 @@ return [
         ],
     ],
 
+    // Usage preferences live in robots.txt, not the package's default training opt-out header.
+    'content_signals' => [],
+
     'driver_options' => [
 
         /*
