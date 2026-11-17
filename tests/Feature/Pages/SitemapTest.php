@@ -43,16 +43,29 @@ it('lists public canonical pages without exposing unpublished content or private
     $urls = array_map('strval', iterator_to_array($xml->xpath('//*[local-name()="loc"]')));
 
     expect($urls)->toContain(
-        url('/'), route('docs'), route('products.index'), route('legal.privacy'),
-        route('blog.show', $post->slug), route('products.show', $product),
-        route('bundles.show', $bundle->slug), route('series.show', $series),
+        url('/'),
+        route('docs'),
+        route('products.index'),
+        route('legal.privacy'),
+        route('blog.show', $post->slug),
+        route('products.show', $product),
+        route('bundles.show', $bundle->slug),
+        route('series.show', $series),
         url('/docs/laravel-backup/v9/introduction'),
         url('/docs/laravel-backup/v9/basic-usage/taking-backups'),
     )->not->toContain(
-        route('blog.show', $draft->slug), route('blog.show', $future->slug), route('blog.show', $deleted->slug),
-        route('products.show', $hiddenProduct), route('bundles.show', $hiddenBundle->slug), route('series.show', $hiddenSeries),
-        url('/docs/laravel-backup'), url('/docs/laravel-backup/v9/basic-usage/_index'),
-        url('/login'), url('/profile'), url('/admin'), url('/top-secret'),
+        route('blog.show', $draft->slug),
+        route('blog.show', $future->slug),
+        route('blog.show', $deleted->slug),
+        route('products.show', $hiddenProduct),
+        route('bundles.show', $hiddenBundle->slug),
+        route('series.show', $hiddenSeries),
+        url('/docs/laravel-backup'),
+        url('/docs/laravel-backup/v9/basic-usage/_index'),
+        url('/login'),
+        url('/profile'),
+        url('/admin'),
+        url('/top-secret'),
     );
     expect($urls)->toHaveCount(count(array_unique($urls)));
     expect(file_get_contents(public_path('robots.txt')))->toContain('Sitemap: https://spatie.be/sitemap.xml');
