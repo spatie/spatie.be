@@ -55,7 +55,8 @@ it('serves fresh public article content without session chrome, private previews
     }
 
     $this->get('/blog/'.$post->slug, ['Accept' => 'text/markdown'])
-        ->assertSee("# A public example\n\n## Typed collections", false)
+        ->assertSee('# A public example', false)
+        ->assertSee('## Typed collections', false)
         ->assertSee('[Read the docs](https://spatie.be/docs)', false)
         ->assertSee('$total = 2 < 5; Collection<User>', false)
         ->assertSee('| Backup | 9 |', false)
@@ -84,5 +85,60 @@ it('respects disabling Markdown responses', function () {
     config()->set('markdown-response.enabled', false);
 
     $this->get('/guidelines/php', ['Accept' => 'text/markdown'])->assertOk()
-        ->assertHeader('Content-Type', 'text/html; charset=utf-8');
+        ->assertHeader('Content-Type', 'text/html; charset=utf-8')
+        ->assertHeaderMissing('Link');
+});
+
+it('advertises working Markdown alternatives only on supported public HTML pages', function () {
+    $post = BlogPost::factory()->create();
+
+    foreach (['/guidelines/php', '/blog/'.$post->slug] as $path) {
+        $markdownUrl = url($path.'.md');
+
+        $this->get($path.'?utm_source=test')->assertOk()
+            ->assertHeader('Link', '<'.$markdownUrl.'>; rel="alternate"; type="text/markdown"');
+        $this->head($path)->assertOk()
+            ->assertHeader('Link', '<'.$markdownUrl.'>; rel="alternate"; type="text/markdown"');
+        $this->get($markdownUrl)->assertOk()
+            ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8');
+    }
+
+    config()->set('markdown-response.detection.detect_via_md_suffix', false);
+    $this->get('/guidelines/php')->assertOk()
+        ->assertHeader('Link', '<'.url('/guidelines/php').'>; rel="alternate"; type="text/markdown"');
+    $this->get('/guidelines/php', ['Accept' => 'text/markdown'])->assertOk()
+        ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8');
+
+    $this->get('/login')->assertHeaderMissing('Link');
+    $this->get('/admin')->assertRedirect()->assertHeaderMissing('Link');
+    $post->update(['published' => false]);
+    $this->get('/blog/'.$post->slug)->assertNotFound()->assertHeaderMissing('Link');
+});
+
+it('includes canonical sources and stored blog metadata without inventing guideline dates', function () {
+    $this->travelTo('2026-11-17 12:00:00');
+    $post = BlogPost::factory()->create([
+        'slug' => 'source-context',
+        'published_at' => '2026-10-02 09:30:00',
+        'updated_at' => '2026-11-16 14:45:00',
+        'author_data' => [['name' => 'Zoe'], ['name' => 'Alex']],
+    ]);
+
+    foreach (['/blog/source-context', '/blog/source-context.md?utm_source=test'] as $path) {
+        $this->get($path, ['Accept' => 'text/markdown'])->assertOk()
+            ->assertSee('Source: '.url('/blog/source-context'), false)
+            ->assertSee('Authors: Zoe, Alex', false)
+            ->assertSee('Published: 2026-10-02T07:30:00+00:00', false)
+            ->assertSee('Updated: 2026-11-16T14:45:00+01:00', false)
+            ->assertDontSee('utm_source')
+            ->assertDontSee('source-context.md');
+    }
+
+    $this->get('/guidelines/php.md?utm_source=test')->assertOk()
+        ->assertSee('Source: '.url('/guidelines/php'), false)
+        ->assertDontSee('Authors:')->assertDontSee('Published:')->assertDontSee('Updated:')
+        ->assertDontSee('utm_source')->assertDontSee('/guidelines/php.md');
+
+    $post->update(['author_data' => []]);
+    $this->get('/blog/source-context.md')->assertOk()->assertDontSee('Authors:');
 });

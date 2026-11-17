@@ -45,6 +45,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
 use App\Http\Middleware\ProvideHomepageMarkdownResponse;
+use App\Http\Middleware\ProvideMarkdownLinks;
 use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
@@ -73,7 +74,7 @@ Route::get('admin/blog-preview/{post}', [BlogController::class, 'preview'])
 Route::get('blog', [BlogController::class, 'index'])->name('blog');
 Route::get('blog/all', [BlogController::class, 'all'])->name('blog.all');
 Route::get('blog/authors/{slug}', [BlogController::class, 'author'])->name('blog.author');
-Route::get('blog/{slug}', [BlogController::class, 'detail'])->name('blog.show');
+Route::get('blog/{slug}', [BlogController::class, 'detail'])->middleware(ProvideMarkdownLinks::class)->name('blog.show');
 Route::get('team-products', ExternalFeedItemsController::class)->name('external-feed-items');
 
 Route::redirect('/docs/products/ray', '/docs/ray');
@@ -94,7 +95,7 @@ Route::domain('guidelines.spatie.be')->group(function () {
     Route::permanentRedirect('{url?}', 'https://spatie.be/guidelines');
 });
 
-Route::get('llms.txt', LlmsTxtController::class);
+Route::get('llms.txt', [LlmsTxtController::class, 'index']);
 Route::prefix('.well-known/agent-skills')
     ->withoutMiddleware([StartSession::class, ShareErrorsFromSession::class])
     ->group(function () {
@@ -248,6 +249,7 @@ Route::redirect(
 
 Route::get('/docs', [DocsController::class, 'index'])->name('docs');
 Route::get('/docs/{repository}/{alias?}', [DocsController::class, 'repository']);
+Route::get('/docs/{repository}/{alias}/llms.txt', [LlmsTxtController::class, 'show']);
 Route::get('/docs/{repository}/{alias}/{path}', DocsAssetController::class)
     ->where('path', '.*\\.(png|jpe?g|gif|svg|webp|avif|ico|PNG|JPE?G|GIF|SVG|WEBP)')
     ->withoutMiddleware([
@@ -255,13 +257,13 @@ Route::get('/docs/{repository}/{alias}/{path}', DocsAssetController::class)
         ShareErrorsFromSession::class,
         RenderOgImageMiddleware::class,
     ]);
-Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware(ProvideMarkdownResponse::class);
+Route::get('/docs/{repository}/{alias}/{slug}', [DocsController::class, 'show'])->where('slug', '.*')->middleware([ProvideMarkdownLinks::class, ProvideMarkdownResponse::class]);
 
 Route::view('/newsletter', 'front.pages.newsletter.index')->name('newsletter');
 Route::permanentRedirect('/newsletter/{path}', '/newsletters/{path}')->where('path', '.+');
 
 Route::get('/guidelines', [GuidelinesController::class, 'index'])->name('guidelines');
-Route::get('/guidelines/{page}', [GuidelinesController::class, 'show']);
+Route::get('/guidelines/{page}', [GuidelinesController::class, 'show'])->middleware(ProvideMarkdownLinks::class);
 
 Route::view('legal', 'front.pages.legal.index')->name('legal.index');
 Route::view('privacy', 'front.pages.legal.privacy')->name('legal.privacy');

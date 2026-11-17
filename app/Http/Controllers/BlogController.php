@@ -69,7 +69,16 @@ class BlogController
         abort_if(is_null($post), 404);
 
         if ($markdown->isRequested($request)) {
-            return $markdown->execute($post->title, $this->postContent($post));
+            return $markdown->execute(
+                $post->title,
+                $this->postContent($post),
+                route('blog.show', $post->slug),
+                [
+                    'Authors' => $post->authors->pluck('name')->implode(', '),
+                    'Published' => $post->date?->toIso8601String(),
+                    'Updated' => $post->updated_at?->toIso8601String(),
+                ],
+            );
         }
 
         return response($this->postView($post))->setVary('Accept');

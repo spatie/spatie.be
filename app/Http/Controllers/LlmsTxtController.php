@@ -8,10 +8,11 @@ use App\Domain\Shop\Models\Product;
 use App\Guidelines\Guidelines;
 use App\Models\Series;
 use Illuminate\Http\Response;
+use RuntimeException;
 
 class LlmsTxtController
 {
-    public function __invoke(Docs $docs, Guidelines $guidelines): Response
+    public function index(Docs $docs, Guidelines $guidelines): Response
     {
         $lines = [
             '# Spatie',
@@ -33,6 +34,45 @@ class LlmsTxtController
         $content = implode("\n", $lines);
 
         return response($content, 200, [
+            'Content-Type' => 'text/plain; charset=UTF-8',
+        ]);
+    }
+
+    public function show(string $repository, string $alias, Docs $docs): Response
+    {
+        try {
+            $repository = $docs->getRepository($repository);
+        } catch (RuntimeException $exception) {
+            abort(404);
+        }
+
+        abort_unless($repository, 404);
+
+        $version = $repository->getAlias($alias);
+
+        abort_unless($version, 404);
+
+        $lines = [
+            "# {$repository->slug} {$version->slug}",
+            '',
+            'Documentation pages are available as Markdown at the links below.',
+            '',
+        ];
+
+        foreach ($version->pages->reject(fn ($page) => $page->isIndex()) as $page) {
+            $lines[] = "- [{$page->title}]({$page->url}.md)";
+        }
+
+        $lines[] = '';
+        $lines[] = '## Versions';
+        $lines[] = '';
+
+        foreach ($repository->aliases as $otherVersion) {
+            $url = url("/docs/{$repository->slug}/{$otherVersion->slug}/llms.txt");
+            $lines[] = "- [{$otherVersion->slug}]({$url})";
+        }
+
+        return response(implode("\n", $lines)."\n", headers: [
             'Content-Type' => 'text/plain; charset=UTF-8',
         ]);
     }
@@ -93,23 +133,10 @@ class LlmsTxtController
                     continue;
                 }
 
-                $firstPage = $alias->pages->where('section', '_root')->first();
-
-                if (! $firstPage) {
-                    continue;
-                }
-
                 $slogan = $alias->slogan ? ": {$alias->slogan}" : '';
-                $pageList = $alias->pages
-                    ->reject(fn ($page) => $page->isIndex())
-                    ->map(fn ($page) => "  - [{$page->title}]({$page->url}.md)")
-                    ->implode("\n");
+                $url = url("/docs/{$repository->slug}/{$alias->slug}/llms.txt");
 
-                $lines[] = "- [{$repository->slug}]({$firstPage->url}.md){$slogan}";
-
-                if ($pageList !== '') {
-                    $lines[] = $pageList;
-                }
+                $lines[] = "- [{$repository->slug} ({$alias->slug})]({$url}){$slogan}";
             }
 
             $lines[] = '';

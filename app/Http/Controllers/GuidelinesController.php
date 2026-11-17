@@ -24,7 +24,7 @@ class GuidelinesController
         abort_unless($page, 404);
 
         if ($markdown->isRequested($request)) {
-            return $markdown->execute($page->title, $page->contents->toHtml());
+            return $markdown->execute($page->title, $page->contents->toHtml(), url("/guidelines/{$slug}"));
         }
 
         $pages = $guidelines->pages()->sortBy('weight')->values();

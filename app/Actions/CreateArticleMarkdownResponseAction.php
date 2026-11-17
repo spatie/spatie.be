@@ -27,7 +27,8 @@ class CreateArticleMarkdownResponseAction
             > ($accept->get('text/html')?->getQuality() ?? 0);
     }
 
-    public function execute(string $title, string $html): Response
+    /** @param array<string, ?string> $metadata */
+    public function execute(string $title, string $html, string $sourceUrl, array $metadata = []): Response
     {
         $document = HTMLDocument::createFromString('<!DOCTYPE html><html><body>'.$html.'</body></html>', LIBXML_NOERROR, 'UTF-8');
 
@@ -46,7 +47,12 @@ class CreateArticleMarkdownResponseAction
         ]);
         $converter->getEnvironment()->addConverter(new TableConverter());
 
-        $markdown = $converter->convert('<h1>'.e($title)."</h1>\n".$document->querySelector('body')->innerHTML);
+        $context = collect(['Source' => $sourceUrl, ...$metadata])
+            ->filter(fn (?string $value) => $value !== null && $value !== '')
+            ->map(fn (string $value, string $label) => '<p>'.e("{$label}: {$value}").'</p>')
+            ->implode("\n");
+
+        $markdown = $converter->convert('<h1>'.e($title)."</h1>\n".$context."\n".$document->querySelector('body')->innerHTML);
 
         return response($markdown, headers: [
             'Content-Type' => 'text/markdown; charset=UTF-8',

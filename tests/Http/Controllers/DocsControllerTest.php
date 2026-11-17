@@ -36,6 +36,7 @@ it('shows a docs page while only loading the docs of its repository', function (
     $this
         ->get('/docs/laravel-backup/v9/basic-usage/taking-backups')
         ->assertOk()
+        ->assertHeader('Link', '<'.url('/docs/laravel-backup/v9/basic-usage/taking-backups.md').'>; rel="alternate"; type="text/markdown"')
         ->assertSee('Taking backups')
         ->assertSee('Run the backup command.')
         ->assertDontSee('Introduction text');
