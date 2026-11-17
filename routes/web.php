@@ -38,6 +38,7 @@ use App\Http\Controllers\PurchasesController;
 use App\Http\Controllers\RedirectDocsDomainController;
 use App\Http\Controllers\RedirectGitHubAdClickController;
 use App\Http\Controllers\SeriesController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
@@ -92,6 +93,11 @@ Route::domain('guidelines.spatie.be')->group(function () {
 });
 
 Route::get('llms.txt', LlmsTxtController::class);
+Route::get('sitemap.xml', SitemapController::class)
+    ->withoutMiddleware([
+        StartSession::class,
+        ShareErrorsFromSession::class,
+    ]);
 
 Route::view('/', 'front.pages.home.index')
     ->withoutMiddleware([
