@@ -61,7 +61,8 @@ it('handles a markdown head request for a docs page', function () {
     $this
         ->call('HEAD', '/docs/laravel-backup/v9/basic-usage/taking-backups', server: ['HTTP_ACCEPT' => 'text/markdown'])
         ->assertOk()
-        ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8');
+        ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+        ->assertHeaderMissing('Content-Signal');
 });
 
 it('links the images of a docs page to the bucket when the assets are stored in a bucket', function () {

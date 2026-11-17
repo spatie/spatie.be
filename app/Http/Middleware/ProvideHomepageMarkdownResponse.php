@@ -18,9 +18,4 @@ class ProvideHomepageMarkdownResponse extends ProvideMarkdownResponse
 
         return $response;
     }
-
-    protected function buildContentSignalHeader(): string
-    {
-        return '';
-    }
 }
