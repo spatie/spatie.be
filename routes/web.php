@@ -43,6 +43,7 @@ use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
+use App\Http\Middleware\ProvideHomepageMarkdownResponse;
 use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
@@ -100,6 +101,7 @@ Route::get('sitemap.xml', SitemapController::class)
     ]);
 
 Route::view('/', 'front.pages.home.index')
+    ->middleware(ProvideHomepageMarkdownResponse::class)
     ->withoutMiddleware([
         StartSession::class,
         ShareErrorsFromSession::class,
