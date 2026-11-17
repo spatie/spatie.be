@@ -6,6 +6,7 @@ use Illuminate\Support\HtmlString;
 use Spatie\Sheets\Sheet;
 
 /**
+ * @property string $title
  * @property HtmlString $contents
  * @property HtmlString $toc
  */

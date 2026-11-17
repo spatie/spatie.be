@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Actions\CreateArticleMarkdownResponseAction;
 use App\Domain\Blog\Actions\PrepareBlogImagesAction;
 use App\Domain\Blog\Data\Author;
 use App\Domain\Blog\Models\BlogPost;
@@ -9,6 +10,7 @@ use App\Models\ExternalFeedItem;
 use App\Models\Member;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -52,7 +54,7 @@ class BlogController
         ]);
     }
 
-    public function detail(string $slug): View|RedirectResponse
+    public function detail(string $slug, Request $request, CreateArticleMarkdownResponseAction $markdown): Response|RedirectResponse
     {
         $post = self::getPost($slug);
 
@@ -66,7 +68,11 @@ class BlogController
 
         abort_if(is_null($post), 404);
 
-        return $this->postView($post);
+        if ($markdown->isRequested($request)) {
+            return $markdown->execute($post->title, $this->postContent($post));
+        }
+
+        return response($this->postView($post))->setVary('Accept');
     }
 
     public function preview(BlogPost $post): Response
@@ -78,7 +84,7 @@ class BlogController
 
     protected function postView(BlogPost $post): View
     {
-        $content = $this->replaceComponents(app(PrepareBlogImagesAction::class)->execute($post));
+        $content = $this->postContent($post);
 
         $otherPosts = self::getPosts()
             ->filter(function (BlogPost $otherPost) use ($post) {
@@ -94,6 +100,11 @@ class BlogController
                 return $member->author_gravatar_url;
             }),
         ]);
+    }
+
+    private function postContent(BlogPost $post): string
+    {
+        return $this->replaceComponents(app(PrepareBlogImagesAction::class)->execute($post));
     }
 
     public function author(string $slug): View
