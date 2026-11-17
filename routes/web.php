@@ -6,6 +6,7 @@ use App\Http\Auth\Controllers\LogoutController;
 use App\Http\Auth\Controllers\RegisterController;
 use App\Http\Auth\Controllers\ResetPasswordController;
 use App\Http\Auth\Controllers\UpdatePasswordController;
+use App\Http\Controllers\AgentSkillsController;
 use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
@@ -94,6 +95,14 @@ Route::domain('guidelines.spatie.be')->group(function () {
 });
 
 Route::get('llms.txt', LlmsTxtController::class);
+Route::prefix('.well-known/agent-skills')
+    ->withoutMiddleware([StartSession::class, ShareErrorsFromSession::class])
+    ->group(function () {
+        Route::get('index.json', [AgentSkillsController::class, 'index']);
+        Route::get('following-spatie-laravel-php-guidelines/SKILL{extension?}', [AgentSkillsController::class, 'show'])
+            ->where('extension', '\.md');
+    });
+
 Route::get('sitemap.xml', SitemapController::class)
     ->withoutMiddleware([
         StartSession::class,
