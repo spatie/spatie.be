@@ -42,6 +42,7 @@ use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
+use App\Http\Middleware\ProvideHomepageMarkdownResponse;
 use App\Http\Middleware\TopSecretMiddleware;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\Route;
@@ -94,6 +95,7 @@ Route::domain('guidelines.spatie.be')->group(function () {
 Route::get('llms.txt', LlmsTxtController::class);
 
 Route::view('/', 'front.pages.home.index')
+    ->middleware(ProvideHomepageMarkdownResponse::class)
     ->withoutMiddleware([
         StartSession::class,
         ShareErrorsFromSession::class,
