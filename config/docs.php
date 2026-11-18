@@ -20,6 +20,14 @@ return [
     'cache_store' => env('DOCS_CACHE_STORE', 'docs'),
 
     'repositories' => [
+        [
+            'name' => 'laravel-suspicious-login',
+            'repository' => 'spatie/laravel-suspicious-login',
+            'branches' => [
+                'main' => 'v1',
+            ],
+            'category' => 'Laravel',
+        ],
     [
         'name' => 'laravel-sitemap',
         'repository' => 'spatie/laravel-sitemap',
