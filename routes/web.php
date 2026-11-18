@@ -10,6 +10,7 @@ use App\Http\Controllers\AgentSkillsController;
 use App\Http\Controllers\AfterPaddleBundleSaleController;
 use App\Http\Controllers\BlogsController;
 use App\Http\Controllers\BundlesController;
+use App\Http\Controllers\ContentAssetController;
 use App\Http\Controllers\DocsAssetController;
 use App\Http\Controllers\DocsController;
 use App\Http\Controllers\LlmsTxtController;
@@ -58,6 +59,14 @@ Route::domain('topsecret.'.config('app.url'))->group(function () {
     // Route::redirect('soon', '/');
     Route::get('/', \App\Livewire\TopSecretComponent::class)->middleware(TopSecretMiddleware::class);
 });
+
+Route::domain('content.spatie.be')
+    ->withoutMiddleware([StartSession::class, ShareErrorsFromSession::class, RenderOgImageMiddleware::class])
+    ->group(function () {
+        Route::get('assets/{path}', [ContentAssetController::class, 'asset'])->where('path', '.*');
+        Route::get('img/asset/{encodedPath}/{filename?}', [ContentAssetController::class, 'image']);
+        Route::get('{any?}', fn () => abort(404))->where('any', '.*');
+    });
 
 Route::permanentRedirect('docs/ray', 'https://myray.app/docs/');
 Route::permanentRedirect('docs/ray/{any}', 'https://myray.app/docs/')->where('any', '.*');

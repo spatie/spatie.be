@@ -97,6 +97,10 @@ return [
 
     'turnstile' => [
         'secret' => env('TURNSTILE_SECRET'),
-    ]
+    ],
+
+    'content_spatie_be' => [
+        'assets_url' => 'https://fls-a2e8a005-2380-4c8b-a69c-154d8efa1221.laravel.cloud',
+    ],
 
 ];
