@@ -34,11 +34,12 @@ class AddBlogMediaAction
         ])->validate();
 
         $dimensions = @getimagesize($file);
+        $name = pathinfo($properties['original_name'] ?? basename($file), PATHINFO_FILENAME);
 
         return $post->addMedia($file)
             ->preservingOriginal()
-            ->usingFileName(Str::uuid().'.'.$source->guessExtension())
-            ->usingName(pathinfo($properties['original_name'] ?? basename($file), PATHINFO_FILENAME))
+            ->usingFileName((Str::slug($name) ?: 'image').'-'.Str::lower(Str::random(6)).'.'.$source->guessExtension())
+            ->usingName($name)
             ->withCustomProperties($properties + [
                 'sha256' => hash_file('sha256', $file),
                 'width' => $dimensions ? $dimensions[0] : null,

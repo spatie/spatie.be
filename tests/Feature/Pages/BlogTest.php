@@ -76,13 +76,14 @@ it('stores a header on the media disk and serves it with responsive sources', fu
     ]);
 
     Livewire::test(EditBlogPost::class, ['record' => $post->id])
-        ->fillForm(['header' => [UploadedFile::fake()->image('cover.png', 1200, 800)]])
+        ->fillForm(['header' => [UploadedFile::fake()->image('Laravel Cloud Cover.png', 1200, 800)]])
         ->call('save')->assertHasNoFormErrors();
 
     $post->refresh();
     $media = $post->headerMedia();
     expect($media)->not->toBeNull();
     expect($media->disk)->toBe('medialibrary');
+    expect($media->file_name)->toMatch('/^laravel-cloud-cover-[a-z0-9]{6}\.png$/');
     Storage::disk('medialibrary')->assertExists($media->getPathRelativeToRoot());
     $this->get('/blog/'.$post->slug)->assertSuccessful()->assertSee($media->getUrl())
         ->assertSee('BlogPosting')->assertDontSee('content.spatie.be/assets/old-cover.png');
