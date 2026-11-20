@@ -21,6 +21,7 @@
                     <div class="flex-1 max-w-md relative">
                         <input
                             type="search"
+                            aria-label="Filter packages"
                             placeholder="Filter packages…"
                             autocomplete="off"
                             x-model="query"
@@ -37,8 +38,25 @@
                 Showing {{ $repositories->count() }} packages with documentation. View the full list of <a href="{{ route('open-source.packages') }}" class="font-semibold text-oss-royal-blue underline underline-offset-2 hover:no-underline" wire:navigate>{{ floor($totalPackageCount / 100) * 100 }}+ open-source packages</a>.
             </p>
 
-            <div class="lg:columns-2 lg:gap-x-12 border-t border-oss-gray-medium/70">
-                @each('front.pages.docs.partials.repository', $repositories, 'repository')
+            <nav aria-label="Package categories" class="flex flex-wrap gap-x-6 gap-y-3 mb-10 text-oss-royal-blue">
+                @foreach($groupedRepositories->keys() as $category)
+                    <a href="#{{ \Illuminate\Support\Str::slug($category) }}" class="font-semibold underline underline-offset-2 hover:no-underline">{{ $category }}</a>
+                @endforeach
+            </nav>
+
+            <div class="space-y-12">
+                @foreach($groupedRepositories as $category => $categoryRepositories)
+                    <section
+                        id="{{ \Illuminate\Support\Str::slug($category) }}"
+                        aria-labelledby="{{ \Illuminate\Support\Str::slug($category) }}-heading"
+                        x-show="!query || @js($categoryRepositories->keys()->map(fn ($index) => $haystacks[$index])->values()).some(h => h.includes(query.toLowerCase()))"
+                    >
+                        <h2 id="{{ \Illuminate\Support\Str::slug($category) }}-heading" class="text-2xl font-semibold text-oss-royal-blue mb-4">{{ $category }} packages</h2>
+                        <div class="lg:columns-2 lg:gap-x-12 border-t border-oss-gray-medium/70">
+                            @each('front.pages.docs.partials.repository', $categoryRepositories, 'repository')
+                        </div>
+                    </section>
+                @endforeach
             </div>
 
             <p

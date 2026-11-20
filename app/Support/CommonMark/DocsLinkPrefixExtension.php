@@ -18,6 +18,12 @@ class DocsLinkPrefixExtension implements ExtensionInterface
                     continue;
                 }
 
+                $url = $node->getUrl();
+
+                if (! preg_match('~^(?:[a-z][a-z0-9+.-]*:|/|#)~i', $url)) {
+                    $node->setUrl(preg_replace('/\.md(?=[?#]|$)/', '', $url));
+                }
+
                 if (! Str::startsWith($node->getUrl(), '/')) {
                     continue;
                 }

@@ -18,6 +18,61 @@ it('can load the docs', function () {
     ;
 });
 
+it('lists Rust docs in their own category and serves the configured version', function () {
+    Storage::fake('docs');
+    Storage::fake('docs-assets');
+
+    config()->set('docs.cache_store', 'array');
+
+    $repository = collect(config('docs.repositories'))->firstWhere('name', 'rust-crawler');
+
+    $files = [
+        '_index.md' => "---\ntitle: v0.2\nslogan: Crawl the web using Rust\ngithubUrl: https://github.com/spatie/rust-crawler\nbranch: main\n---\n",
+        'introduction.md' => "---\ntitle: Introduction\nweight: 1\n---\n\n[Setup](installation-setup.md)\n",
+        'installation-setup.md' => "---\ntitle: Installation & setup\nweight: 2\n---\n\n```rust,no_run\nlet crawler = Crawler::new();\n```\n",
+        'basic-usage/_index.md' => "---\ntitle: Basic usage\nweight: 3\n---\n",
+        'basic-usage/first-crawl.md' => "---\ntitle: First crawl\nweight: 1\n---\n\n[Setup](../installation-setup.md#library)\n[Next](next.md?example=1#code)\n[Source](https://github.com/spatie/rust-crawler/blob/main/README.md)\n",
+    ];
+
+    $gitHub = FakeGitHubDocs::make()->branch('spatie/rust-crawler', 'main', $files);
+
+    app(DocsImporter::class)->import($repository);
+
+    foreach (['laravel-backup', 'crawler', 'image'] as $name) {
+        $phpRepository = collect(config('docs.repositories'))->firstWhere('name', $name);
+        $version = $phpRepository['branches']['main'];
+        $gitHub->branch($phpRepository['repository'], 'main', FakeGitHubDocs::docsForVersion($version));
+        $phpRepository['branches'] = ['main' => $version];
+        app(DocsImporter::class)->import($phpRepository);
+    }
+
+    $this->get('/docs')
+        ->assertOk()
+        ->assertSeeInOrder(['Laravel packages', 'laravel-backup', 'PHP packages', 'crawler', 'image', 'Rust packages', 'rust-crawler', 'Other packages'])
+        ->assertSee('id="rust"', escape: false)
+        ->assertSee('Crawl the web using Rust')
+        ->assertDontSee('image-optimizer-rust')
+        ->assertDontSee('temporary-directory-rust')
+        ->assertSee('href="'.url('/docs/rust-crawler').'"', escape: false);
+
+    $this->get('/docs/rust-crawler')
+        ->assertRedirect('/docs/rust-crawler/v0.2/introduction');
+
+    $this->get('/docs/rust-crawler/v0.2/introduction')
+        ->assertOk()
+        ->assertSee('href="installation-setup"', escape: false);
+
+    $this->get('/docs/rust-crawler/v0.2/installation-setup')
+        ->assertOk()
+        ->assertSee('let crawler = Crawler::new();');
+
+    $this->get('/docs/rust-crawler/v0.2/basic-usage/first-crawl')
+        ->assertOk()
+        ->assertSee('href="../installation-setup#library"', escape: false)
+        ->assertSee('href="next?example=1#code"', escape: false)
+        ->assertSee('href="https://github.com/spatie/rust-crawler/blob/main/README.md"', escape: false);
+});
+
 it('shows a docs page while only loading the docs of its repository', function () {
     Storage::fake('docs');
     Storage::fake('docs-assets');

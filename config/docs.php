@@ -21,6 +21,14 @@ return [
 
     'repositories' => [
         [
+            'name' => 'rust-crawler',
+            'repository' => 'spatie/rust-crawler',
+            'branches' => [
+                'main' => 'v0.2',
+            ],
+            'category' => 'Rust',
+        ],
+        [
             'name' => 'laravel-suspicious-login',
             'repository' => 'spatie/laravel-suspicious-login',
             'branches' => [

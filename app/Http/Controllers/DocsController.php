@@ -50,9 +50,22 @@ class DocsController
             ]))))
             ->values();
 
+        $groupedRepositories = $repositories
+            ->groupBy(fn (\App\Docs\Repository $repository) => match ($repository->category) {
+                'PHP', 'General PHP' => 'PHP',
+                null => 'Other',
+                default => $repository->category,
+            }, preserveKeys: true)
+            ->sortBy(fn (Collection $repositories, string $category) => match ($category) {
+                'Laravel' => 0,
+                'PHP' => 1,
+                'Rust' => 2,
+                default => 3,
+            });
+
         $totalPackageCount = Repository::visible()->count();
 
-        return view('front.pages.docs.index', compact('repositories', 'haystacks', 'totalPackageCount'));
+        return view('front.pages.docs.index', compact('repositories', 'groupedRepositories', 'haystacks', 'totalPackageCount'));
     }
 
     public function repository(Docs $docs, string $repository, ?string $alias = null)
