@@ -13,6 +13,7 @@ use App\Models\Repository;
 use App\Support\CommonMark\DocsLinkPrefixExtension;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
+use App\Support\CommonMark\RustCodeBlockRenderer;
 use App\Support\RepositoryAccess;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -222,7 +223,7 @@ class DocsController
             ->addExtension(new WireNavigateExtension())
             ->addInlineRenderer(Image::class, new ImageRenderer())
             ->addInlineRenderer(Link::class, new LinkRenderer())
-            ->addInlineRenderer(FencedCode::class, new CodeBlockRenderer($highlighter), 10)
+            ->addInlineRenderer(FencedCode::class, new RustCodeBlockRenderer(new CodeBlockRenderer($highlighter)), 10)
             ->addInlineRenderer(Code::class, new InlineCodeBlockRenderer($highlighter), 10)
             ->commonmarkOptions([
                 'heading_permalink' => [

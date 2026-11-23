@@ -106,6 +106,68 @@ it('lists Rust docs in their own category and serves the configured version', fu
     }
 });
 
+it('renders Rust doctest examples without their hidden setup', function (string $language) {
+    Storage::fake('docs');
+    Storage::fake('docs-assets');
+
+    config()->set('docs.cache_store', 'array');
+    config()->set('markdown.cache_store', 'array');
+
+    $source = <<<'RUST'
+# use example::Builder;
+#
+    # let setup = Builder::new();
+    #
+#[derive(Debug)]
+#![allow(dead_code)]
+let text = r##"
+## visible hash
+    ## indented hash
+###
+##
+#not_hidden
+#	tab_after_hash
+"##;
+let literal = r#"a # literal"#;
+# Ok::<(), Box<dyn std::error::Error>>(())
+RUST;
+
+    $expected = <<<'RUST'
+#[derive(Debug)]
+#![allow(dead_code)]
+let text = r##"
+# visible hash
+    # indented hash
+##
+#
+#not_hidden
+#	tab_after_hash
+"##;
+let literal = r#"a # literal"#;
+RUST;
+
+    $php = "# a PHP comment\n## another PHP comment\n#\n#[Attribute]\n";
+    $markdown = "```{$language}\n{$source}\n```\n\n```php\n{$php}```\n\n`{rust}# inline code`\n";
+
+    FakeGitHubDocs::make()->branch('spatie/laravel-backup', 'main', FakeGitHubDocs::docsForVersion('v9', $markdown));
+
+    app(DocsImporter::class)->import([
+        'name' => 'laravel-backup',
+        'repository' => 'spatie/laravel-backup',
+        'branches' => ['main' => 'v9'],
+        'category' => 'Laravel',
+    ]);
+
+    $response = $this->get('/docs/laravel-backup/v9/introduction')->assertOk();
+
+    preg_match_all('~<pre\b[^>]*>(.*?)</pre>~s', $response->getContent(), $blocks);
+
+    $code = array_map(fn (string $html) => html_entity_decode(strip_tags($html), ENT_QUOTES | ENT_HTML5), $blocks[1]);
+
+    expect($code)->toBe([$expected."\n", $php]);
+    expect(html_entity_decode(strip_tags($response->getContent()), ENT_QUOTES | ENT_HTML5))->toContain('# inline code');
+})->with(['rust', 'rs', 'rust,no_run', 'rs,ignore']);
+
 it('shows a docs page while only loading the docs of its repository', function () {
     Storage::fake('docs');
     Storage::fake('docs-assets');
