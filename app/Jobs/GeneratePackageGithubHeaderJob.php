@@ -5,6 +5,7 @@ namespace App\Jobs;
 use App\Http\Controllers\PackageHeaderController;
 use App\Jobs\Middleware\ThrottleScreenshots;
 use App\Models\Repository;
+use App\Support\RepositoryAccess;
 use DateTimeInterface;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -37,6 +38,10 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
      */
     public static function dispatchForAllModes(Repository $repository): void
     {
+        if (RepositoryAccess::isRestricted($repository->name)) {
+            return;
+        }
+
         foreach (self::MODES as $mode) {
             dispatch(new self($repository, $mode));
         }
@@ -70,6 +75,10 @@ class GeneratePackageGithubHeaderJob implements ShouldQueue, ShouldBeUnique
 
     public function handle(): void
     {
+        if (RepositoryAccess::isRestricted($this->repository->name)) {
+            return;
+        }
+
         if ($this->isQueuedBeforeSplitPerMode()) {
             self::dispatchForAllModes($this->repository);
 

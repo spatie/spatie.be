@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Docs\Docs;
 use App\Docs\DocsImporter;
 use App\Exceptions\DocsImportException;
 use App\Support\ValueStores\UpdatedRepositoriesValueStore;
@@ -27,10 +28,10 @@ class ImportDocsFromRepositoriesCommand extends Command
         }
 
         if ($this->option('all')) {
-            $updatedRepositoryNames = collect(config('docs.repositories'))->pluck('repository')->toArray();
+            $updatedRepositoryNames = Docs::configurations()->pluck('repository')->toArray();
         }
 
-        $repositories = collect(config('docs.repositories'))
+        $repositories = Docs::configurations()
             ->filter(fn (array $repository) => in_array($repository['repository'], $updatedRepositoryNames, true));
 
         $this->info("{$repositories->count()} repositories.");

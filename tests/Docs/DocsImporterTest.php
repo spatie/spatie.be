@@ -104,6 +104,20 @@ it('makes the imported docs available', function () {
         ->toEqualCanonicalizing(['introduction', 'basic-usage/_index', 'basic-usage/taking-backups']);
 });
 
+it('uses configured source metadata when the version index omits it', function () {
+    $files = FakeGitHubDocs::docsForVersion('v9');
+    $files['_index.md'] = "---\ntitle: v9\n---\n";
+    $this->gitHub->branch('spatie/laravel-backup', 'main', $files);
+
+    app(DocsImporter::class)->import($this->repository);
+
+    $alias = app(Docs::class)->getRepository('laravel-backup')->getAlias('v9');
+
+    expect($alias->branch)->toBe('main');
+    expect($alias->githubUrl)->toBe('https://github.com/spatie/laravel-backup');
+    expect(introductionOf('v9'))->toContain('Introduction text');
+});
+
 it('refreshes the cached docs after an import', function () {
     app(DocsImporter::class)->import($this->repository);
 

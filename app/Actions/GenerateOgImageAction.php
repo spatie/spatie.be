@@ -3,6 +3,7 @@
 namespace App\Actions;
 
 use App\Jobs\GenerateOgImageJob;
+use App\Support\RepositoryAccess;
 use Illuminate\Support\Facades\Storage;
 use Spatie\OgImage\Actions\GenerateOgImageAction as BaseGenerateOgImageAction;
 use Spatie\OgImage\OgImage;
@@ -27,6 +28,9 @@ class GenerateOgImageAction extends BaseGenerateOgImageAction
         }
 
         $ogImage = app(OgImage::class);
+        $page = $ogImage->getFromCache($hash);
+        abort_if($page && RepositoryAccess::isRestrictedUrl($page['url']), 404, headers: ['Cache-Control' => 'private, no-store']);
+
         $path = $ogImage->imagePath($hash, $format);
         $disk = Storage::disk(config('og-image.disk', 'public'));
 
@@ -34,7 +38,7 @@ class GenerateOgImageAction extends BaseGenerateOgImageAction
             return $this->serveImage($disk, $path, $format);
         }
 
-        if (! $ogImage->getFromCache($hash)) {
+        if (! $page) {
             abort(404);
         }
 

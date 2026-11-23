@@ -24,13 +24,19 @@ class ImportGitHubRepositoriesCommand extends Command
         $repositories->each(function (array $repositoryAttributes) use ($api): void {
             $this->comment("Importing `{$repositoryAttributes['name']}`... ");
 
-            $repository = Repository::updateOrCreate(['name' => $repositoryAttributes['name'] ?? null], [
+            $repository = Repository::firstOrNew(['name' => $repositoryAttributes['name']]);
+
+            if (! $repository->exists) {
+                $repository->visibility = 'public';
+            }
+
+            $repository->fill([
                 'name' => $repositoryAttributes['name'],
                 'description' => $repositoryAttributes['description'],
                 'stars' => $repositoryAttributes['stargazers_count'],
                 'language' => $repositoryAttributes['language'],
                 'repository_created_at' => Carbon::createFromFormat(DateTime::ATOM, $repositoryAttributes['created_at']),
-            ]);
+            ])->save();
 
             $repository->setTopics(
                 Cache::remember(

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Docs\Docs;
 use App\Jobs\ImportDocsForRepositoryJob;
 use Illuminate\Console\Command;
 
@@ -13,7 +14,7 @@ class ImportAllDocsCommand extends Command
 
     public function handle(): void
     {
-        $repositories = collect(config('docs.repositories'))->pluck('name');
+        $repositories = Docs::configurations()->pluck('name');
 
         foreach ($repositories as $repository) {
             dispatch(new ImportDocsForRepositoryJob($repository, $this->option('force')));

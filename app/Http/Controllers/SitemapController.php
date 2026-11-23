@@ -41,7 +41,7 @@ class SitemapController
             $urls->push(url("guidelines/{$page->slug}"));
         }
 
-        foreach ($docs->getRepositories() as $repository) {
+        foreach ($docs->getRepositories(publicOnly: true) as $repository) {
             foreach ($repository->aliases as $alias) {
                 foreach ($alias->pages as $page) {
                     if (! $page->isIndex()) {

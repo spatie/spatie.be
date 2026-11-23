@@ -24,6 +24,7 @@ class RepositoryFactory extends Factory
             'highlighted' => $this->faker->boolean(5),
             'language' => $this->faker->randomElement(['php', 'javascript']),
             'type' => $this->faker->randomElement(RepositoryType::toArray()),
+            'visibility' => 'public',
             'ad_should_be_randomized' => $this->faker->boolean(90),
         ];
     }

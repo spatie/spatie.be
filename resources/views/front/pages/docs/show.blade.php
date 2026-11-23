@@ -10,13 +10,15 @@
 <x-page
     title="{{ $page->title }} | {{ $repository->slug }}"
     body-class="bg-oss-gray font-pt antialiased font-medium text-oss-royal-blue leading-[1.4]"
-    :no-index="$page->alias !== $latestVersion->slug"
+    :no-index="\App\Support\RepositoryAccess::isRestricted($repository->slug) || $page->alias !== $latestVersion->slug"
     canonical="{{ url('/docs/' . $repository->slug . '/' . $latestVersion->slug . '/' . $page->slug) }}"
     livewire
     uses-alpine-focus
 >
 
-    @if($showBrandedHeader)
+    @if(\App\Support\RepositoryAccess::isRestricted($repository->slug))
+        <x-og-image :url="url('images/og-image.jpg')" />
+    @elseif($showBrandedHeader)
         <x-og-image view="og-image.docs-branded" :data="[
             'title' => $repositoryModel->banner_title ?? str()->headline($repositoryModel->name),
             'package' => $repository->slug,

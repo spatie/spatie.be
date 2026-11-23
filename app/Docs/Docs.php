@@ -2,11 +2,14 @@
 
 namespace App\Docs;
 
+use App\Models\Repository as RepositoryModel;
+use App\Support\RepositoryAccess;
 use Exception;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use RuntimeException;
+use Spatie\Sheets\Factory;
 use Spatie\Sheets\Sheets;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
 use Throwable;
@@ -101,7 +104,14 @@ class Docs
 
     protected function loadPages(string $slug): Collection
     {
-        return app(Sheets::class)
+        $sheets = app(Sheets::class);
+
+        if (! in_array($slug, $sheets->getRegisteredCollectionNames(), true)) {
+            $factory = new Factory(new DocumentationPathParser(), app(DocumentationContentParser::class), DocumentationPage::class);
+            $sheets->registerCollection($slug, new DocumentationRepository($factory, $this->storage, ['repository_name' => $slug]));
+        }
+
+        return $sheets
             ->collection($slug)
             ->all()
             ->each(fn (DocumentationPage $page) => $page->offsetUnset('contents'))
@@ -118,9 +128,32 @@ class Docs
         return "docs.pages.{$slug}";
     }
 
-    public function getRepositories(): Collection
+    /** @return Collection<int, array{name: string, repository: string, branches: array<string, string>, category: string}> */
+    public static function configurations(): Collection
     {
+        $databaseRepositories = RepositoryModel::query()
+            ->whereNotNull('docs_branches')
+            ->get()
+            ->map(fn (RepositoryModel $repository) => [
+                'name' => $repository->name,
+                'repository' => $repository->full_name,
+                'branches' => $repository->docs_branches,
+                'category' => $repository->docs_category ?? $repository->language ?? 'Other',
+            ]);
+
         return collect(config('docs.repositories'))
+            ->keyBy('name')
+            ->merge($databaseRepositories->keyBy('name'))
+            ->values();
+    }
+
+    public function getRepositories(bool $publicOnly = false): Collection
+    {
+        $includeRestricted = ! $publicOnly && RepositoryAccess::canViewRestricted();
+        $restrictedNames = RepositoryAccess::restrictedNames();
+
+        return self::configurations()
+            ->reject(fn (array $repository) => in_array($repository['name'], $restrictedNames, true) && ! $includeRestricted)
             ->pluck('name')
             ->map(function (string $repositoryName) {
                 try {

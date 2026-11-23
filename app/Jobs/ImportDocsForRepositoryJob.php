@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Docs\Docs;
 use App\Docs\DocsImporter;
 use App\Models\Repository;
 use App\Services\GitHub\GitHubApi;
@@ -44,7 +45,7 @@ class ImportDocsForRepositoryJob implements ShouldQueue
             }
         }
 
-        $repository = collect(config('docs.repositories'))->keyBy('repository')->get($fullRepositoryName);
+        $repository = Docs::configurations()->firstWhere('repository', $fullRepositoryName);
 
         if (! $docsImporter->importUnlessAlreadyImporting($repository)) {
             $this->release(DocsImporter::LOCK_SECONDS);

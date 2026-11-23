@@ -34,6 +34,7 @@ class DocsSeeder extends Seeder
                 'language' => 'PHP',
                 'type' => 'package',
                 'visible' => true,
+                'visibility' => 'public',
             ],
         );
 

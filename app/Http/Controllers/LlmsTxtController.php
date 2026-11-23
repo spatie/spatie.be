@@ -111,7 +111,7 @@ class LlmsTxtController
 
     private function addDocsSection(array &$lines, Docs $docs): void
     {
-        $repositories = $docs->getRepositories();
+        $repositories = $docs->getRepositories(publicOnly: true);
 
         if ($repositories->isEmpty()) {
             return;

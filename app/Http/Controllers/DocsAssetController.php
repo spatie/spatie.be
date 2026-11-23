@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Docs\DocsStorage;
+use App\Support\RepositoryAccess;
 use Illuminate\Http\RedirectResponse;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
@@ -18,6 +19,13 @@ class DocsAssetController
 
         if (in_array('..', explode('/', $assetPath), true)) {
             abort(404);
+        }
+
+        if (RepositoryAccess::isRestricted($repository)) {
+            $privatePath = $docsStorage->currentReleasePath($repository) . "/{$alias}/{$path}";
+            abort_unless($docsStorage->disk()->exists($privatePath), 404);
+
+            return $docsStorage->disk()->response($privatePath, headers: ['Cache-Control' => 'private, no-store']);
         }
 
         if ($docsStorage->assetsAreInBucket()) {

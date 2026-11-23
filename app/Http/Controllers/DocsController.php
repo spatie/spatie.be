@@ -13,6 +13,7 @@ use App\Models\Repository;
 use App\Support\CommonMark\DocsLinkPrefixExtension;
 use App\Support\CommonMark\ImageRenderer;
 use App\Support\CommonMark\LinkRenderer;
+use App\Support\RepositoryAccess;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
@@ -240,7 +241,7 @@ class DocsController
      */
     private function linkImagesToAssetsBucket(string $contents, string $repositoryName, DocsStorage $docsStorage): string
     {
-        if (! $docsStorage->assetsAreInBucket()) {
+        if (RepositoryAccess::isRestricted($repositoryName) || ! $docsStorage->assetsAreInBucket()) {
             return $contents;
         }
 

@@ -3,6 +3,7 @@
 namespace App\Spotlight;
 
 use App\Http\Controllers\DocsController;
+use App\Support\RepositoryAccess;
 use LivewireUI\Spotlight\Spotlight;
 use LivewireUI\Spotlight\SpotlightCommand;
 
@@ -27,8 +28,15 @@ class DocsCommand extends SpotlightCommand
         return $this->repository['category'];
     }
 
+    public function shouldBeShown(): bool
+    {
+        return ! RepositoryAccess::isRestricted($this->repository['name']) || RepositoryAccess::canViewRestricted();
+    }
+
     public function execute(Spotlight $spotlight): void
     {
+        abort_unless($this->shouldBeShown(), 404);
+
         $spotlight->redirect(action([DocsController::class, 'repository'], ['repository' => $this->repository['name']]));
     }
 }

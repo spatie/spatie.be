@@ -7,6 +7,7 @@ use App\Http\Controllers\PackageHeaderController;
 use App\Jobs\GeneratePackageGithubHeaderJob;
 use App\Models\Enums\RepositoryType;
 use App\Models\Presenters\RepositoryPresenter;
+use App\Support\RepositoryAccess;
 use BadMethodCallException;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,21 +32,31 @@ class Repository extends Model implements HasMedia
         'ad_should_be_randomized' => 'boolean',
         'has_issues' => 'boolean',
         'docs_synced_at' => 'datetime',
+        'docs_branches' => 'array',
     ];
 
     protected $attributes = [
         'ad_should_be_randomized' => true,
+        'visibility' => 'staff',
     ];
 
     public static function booted(): void
     {
         self::created(function (Repository $repository) {
+            if ($repository->visibility !== 'public') {
+                return;
+            }
+
             $repository->load('ad');
 
             app(SyncRepositoryAdImageToGitHubAdsDiskAction::class)->execute($repository);
         });
 
         self::saved(function (Repository $repository) {
+            if ($repository->visibility !== 'public') {
+                return;
+            }
+
             $repository->load('ad');
 
             if ($repository->wasChanged(['name', 'ad_id'])) {
@@ -69,7 +80,7 @@ class Repository extends Model implements HasMedia
 
     public function scopeAdShouldBeRandomized(Builder $query): void
     {
-        $query->where('ad_should_be_randomized', true);
+        $query->where('ad_should_be_randomized', true)->where('visibility', 'public');
     }
 
     /** @return BelongsTo<Ad, $this> */
@@ -126,6 +137,10 @@ class Repository extends Model implements HasMedia
     public function scopeVisible(Builder $builder): void
     {
         $builder->where('visible', true);
+
+        if (! RepositoryAccess::canViewRestricted()) {
+            $builder->where('visibility', 'public');
+        }
     }
 
     public function scopePackages(Builder $builder): void

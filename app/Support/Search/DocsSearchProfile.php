@@ -2,6 +2,7 @@
 
 namespace App\Support\Search;
 
+use App\Support\RepositoryAccess;
 use Spatie\Crawler\Crawler;
 use Spatie\Crawler\CrawlResponse;
 use Spatie\SiteSearch\Profiles\DefaultSearchProfile;
@@ -10,8 +11,17 @@ class DocsSearchProfile extends DefaultSearchProfile
 {
     public const string USER_AGENT = 'spatie.be site search crawler';
 
+    public function shouldCrawl(string $url): bool
+    {
+        return ! RepositoryAccess::isRestrictedUrl($url);
+    }
+
     public function shouldIndex(string $url, CrawlResponse $response): bool
     {
+        if (RepositoryAccess::isRestrictedUrl($url)) {
+            return false;
+        }
+
         info('should index ' . $url);
 
         return true;

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Content;
 
 use App\Console\Commands\ImportGitHubRepositoriesCommand;
+use App\Docs\Docs;
 use App\Filament\Resources\Content\RepositoryResource\Pages\CreateRepository;
 use App\Filament\Resources\Content\RepositoryResource\Pages\EditRepository;
 use App\Filament\Resources\Content\RepositoryResource\Pages\ListRepositories;
@@ -15,6 +16,7 @@ use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Placeholder;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -48,6 +50,11 @@ class RepositoryResource extends Resource
                 TextInput::make('name')
                     ->columnStart(1)
                     ->required(),
+                Select::make('visibility')
+                    ->options(['public' => 'Public', 'staff' => 'Spatie staff only'])
+                    ->default('staff')
+                    ->required()
+                    ->columnStart(1),
                 TextInput::make('documentation_url')
                     ->columnStart(1),
                 TextInput::make('blogpost_url')
@@ -67,6 +74,12 @@ class RepositoryResource extends Resource
                         ->columnStart(1),
                 ]),
                 Section::make('Docs')->schema([
+                    KeyValue::make('docs_branches')
+                        ->keyLabel('Branch')
+                        ->valueLabel('Version')
+                        ->nullable()
+                        ->columnStart(1),
+                    TextInput::make('docs_category')->columnStart(1),
                     Toggle::make('has_issues')->columnStart(1),
                     TextInput::make('intro_title')
                         ->columnStart(1),
@@ -121,7 +134,7 @@ class RepositoryResource extends Resource
                     ->requiresConfirmation()
                     ->icon('heroicon-o-arrow-path')
                     ->hidden(function (Repository $record) {
-                        return ! collect(config('docs.repositories'))->pluck('name')->contains($record->name);
+                        return ! Docs::configurations()->contains('name', $record->name);
                     })
                     ->action(fn (Repository $record) => dispatch(new ImportDocsForRepositoryJob($record->name))),
                 EditAction::make(),

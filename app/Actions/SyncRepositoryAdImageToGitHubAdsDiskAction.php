@@ -4,6 +4,7 @@ namespace App\Actions;
 
 use App\Jobs\PurgeGitHubAdImageCacheJob;
 use App\Models\Repository;
+use App\Support\RepositoryAccess;
 use Illuminate\Filesystem\FilesystemAdapter;
 use Illuminate\Support\Facades\Storage;
 use RuntimeException;
@@ -19,6 +20,10 @@ class SyncRepositoryAdImageToGitHubAdsDiskAction
 
     public function execute(Repository $repository): void
     {
+        if (RepositoryAccess::isRestricted($repository->name)) {
+            return;
+        }
+
         $repository->hasAdWithImage()
             ? $this->updateAdForRepository($repository)
             : $this->removeAdForRepository($repository);

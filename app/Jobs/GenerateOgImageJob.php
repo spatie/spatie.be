@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Jobs\Middleware\ThrottleScreenshots;
+use App\Support\RepositoryAccess;
 use DateTimeInterface;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -51,13 +52,17 @@ class GenerateOgImageJob implements ShouldQueue, ShouldBeUnique
     public function handle(): void
     {
         $ogImage = app(OgImage::class);
+        $page = $ogImage->getFromCache($this->hash);
+
+        if ($page && RepositoryAccess::isRestrictedUrl($page['url'])) {
+            return;
+        }
+
         $path = $ogImage->imagePath($this->hash, $this->format);
 
         if (Storage::disk(config('og-image.disk', 'public'))->exists($path)) {
             return;
         }
-
-        $page = $ogImage->getFromCache($this->hash);
 
         if (! $page) {
             return;

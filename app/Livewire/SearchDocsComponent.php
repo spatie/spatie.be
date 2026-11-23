@@ -2,12 +2,17 @@
 
 namespace App\Livewire;
 
+use App\Docs\Docs;
+use App\Docs\DocumentationPage;
+use App\Support\RepositoryAccess;
 use App\Support\Search\DocsVersion;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\RateLimiter;
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Spatie\SiteSearch\Search;
+use Spatie\SiteSearch\SearchResults\Hit;
 
 class SearchDocsComponent extends Component
 {
@@ -57,6 +62,30 @@ class SearchDocsComponent extends Component
 
         $repo = DocsVersion::getRepo($this->currentUrl);
         $version = DocsVersion::getVersion($this->currentUrl);
+
+        abort_if(RepositoryAccess::isRestricted($repo) && ! RepositoryAccess::canViewRestricted(), 404, headers: ['Cache-Control' => 'private, no-store']);
+
+        if (RepositoryAccess::isRestricted($repo)) {
+            $docs = app(Docs::class);
+            $pages = $docs->getRepository($repo)?->getAlias($version)->pages ?? collect();
+
+            // Private docs are never crawled into the public search index.
+            return $pages->reject(fn (DocumentationPage $page) => $page->isIndex())
+                ->map(function (DocumentationPage $page) use ($docs) {
+                    $contents = strip_tags($docs->pageContents($page));
+
+                    if (! Str::contains(mb_strtolower($page->title . ' ' . $contents), mb_strtolower($this->query))) {
+                        return null;
+                    }
+
+                    return new Hit([
+                        'id' => $page->slug,
+                        'url' => $page->getUrlAttribute(),
+                        'pageTitle' => $page->title,
+                        'entry' => e(Str::limit($contents, 300)),
+                    ]);
+                })->filter()->take(20)->values();
+        }
 
         try {
             return Search::onIndex($this->indexName())

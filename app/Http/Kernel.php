@@ -9,6 +9,7 @@ use App\Http\Middleware\ForceJsonResponse;
 use App\Http\Middleware\HandleReferrer;
 use App\Http\Middleware\PreventRequestForgery;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
+use App\Http\Middleware\ProtectStaffRepositories;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\TrustProxies;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
@@ -42,6 +43,7 @@ class Kernel extends HttpKernel
             StartSession::class,
             ShareErrorsFromSession::class,
             SubstituteBindings::class,
+            ProtectStaffRepositories::class,
             HandleReferrer::class,
         ],
 

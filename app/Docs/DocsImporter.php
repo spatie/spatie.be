@@ -3,9 +3,12 @@
 namespace App\Docs;
 
 use App\Exceptions\DocsImportException;
+use App\Support\RepositoryAccess;
 use Illuminate\Contracts\Cache\Lock;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Log;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
+use Symfony\Component\Yaml\Yaml;
 use Throwable;
 
 class DocsImporter
@@ -142,9 +145,22 @@ class DocsImporter
 
         foreach ($this->gitHubDocsDownloader->docsFiles($repository['repository'], $commit) as $path => $contents) {
             if (! str_ends_with($path, '.md')) {
-                $this->storage->assetsDisk()->put("{$repository['name']}/{$alias}/{$path}", $contents);
+                if (RepositoryAccess::isRestricted($repository['name'])) {
+                    $this->storage->disk()->put("{$releasePath}/{$alias}/{$path}", $contents);
+                } else {
+                    $this->storage->assetsDisk()->put("{$repository['name']}/{$alias}/{$path}", $contents);
+                }
 
                 continue;
+            }
+
+            if ($path === '_index.md') {
+                $document = YamlFrontMatter::parse($contents);
+                $metadata = $document->matter() + [
+                    'branch' => $branch,
+                    'githubUrl' => "https://github.com/{$repository['repository']}",
+                ];
+                $contents = "---\n" . Yaml::dump($metadata) . "---\n" . $document->body();
             }
 
             $this->storage->disk()->put("{$releasePath}/{$alias}/{$path}", $contents);

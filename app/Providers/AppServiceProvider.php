@@ -11,7 +11,6 @@ use App\Jobs\Middleware\ThrottleScreenshots;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
 use App\Models\HtmlLesson;
 use App\Models\Video;
-use App\Spotlight\DocsCommand;
 use App\Spotlight\Spotlight;
 use App\Support\Search\CrawlSiteJob;
 use Illuminate\Cache\RateLimiting\Limit;
@@ -104,9 +103,5 @@ class AppServiceProvider extends ServiceProvider
 
 
         Livewire::component('spotlight', Spotlight::class);
-
-        foreach (collect(config('docs.repositories'))->sortBy('name') as $repository) {
-            Spotlight::registerInstantiatedCommand(new DocsCommand($repository));
-        }
     }
 }
