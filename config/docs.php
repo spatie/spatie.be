@@ -24,7 +24,7 @@ return [
             'name' => 'rust-crawler',
             'repository' => 'spatie/rust-crawler',
             'branches' => [
-                'main' => 'v0.2',
+                'main' => 'v0',
             ],
             'category' => 'Rust',
         ],

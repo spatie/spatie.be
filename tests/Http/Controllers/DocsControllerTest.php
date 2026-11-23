@@ -27,7 +27,7 @@ it('lists Rust docs in their own category and serves the configured version', fu
     $repository = collect(config('docs.repositories'))->firstWhere('name', 'rust-crawler');
 
     $files = [
-        '_index.md' => "---\ntitle: v0.2\nslogan: Crawl the web using Rust\ngithubUrl: https://github.com/spatie/rust-crawler\nbranch: main\n---\n",
+        '_index.md' => "---\ntitle: v0\nslogan: Crawl the web using Rust\ngithubUrl: https://github.com/spatie/rust-crawler\nbranch: main\n---\n",
         'introduction.md' => "---\ntitle: Introduction\nweight: 1\n---\n\n[Setup](installation-setup.md)\n",
         'installation-setup.md' => "---\ntitle: Installation & setup\nweight: 2\n---\n\n```rust,no_run\nlet crawler = Crawler::new();\n```\n",
         'basic-usage/_index.md' => "---\ntitle: Basic usage\nweight: 3\n---\n",
@@ -56,21 +56,29 @@ it('lists Rust docs in their own category and serves the configured version', fu
         ->assertSee('href="'.url('/docs/rust-crawler').'"', escape: false);
 
     $this->get('/docs/rust-crawler')
-        ->assertRedirect('/docs/rust-crawler/v0.2/introduction');
+        ->assertRedirect('/docs/rust-crawler/v0/introduction');
 
-    $this->get('/docs/rust-crawler/v0.2/introduction')
+    $this->get('/docs/rust-crawler/v0/introduction')
         ->assertOk()
         ->assertSee('href="installation-setup"', escape: false);
 
-    $this->get('/docs/rust-crawler/v0.2/installation-setup')
+    $this->get('/docs/rust-crawler/v0/installation-setup')
         ->assertOk()
         ->assertSee('let crawler = Crawler::new();');
 
-    $this->get('/docs/rust-crawler/v0.2/basic-usage/first-crawl')
+    $this->get('/docs/rust-crawler/v0/basic-usage/first-crawl')
         ->assertOk()
         ->assertSee('href="../installation-setup#library"', escape: false)
         ->assertSee('href="next?example=1#code"', escape: false)
         ->assertSee('href="https://github.com/spatie/rust-crawler/blob/main/README.md"', escape: false);
+
+    foreach (['introduction', 'installation-setup', 'basic-usage/first-crawl', 'introduction.md'] as $page) {
+        $this->get("/docs/rust-crawler/v0.2/{$page}")
+            ->assertMovedPermanently("/docs/rust-crawler/v0/{$page}");
+    }
+
+    $this->get('/docs/rust-crawler/v0.2')
+        ->assertMovedPermanently('/docs/rust-crawler/v0/introduction');
 });
 
 it('shows a docs page while only loading the docs of its repository', function () {
