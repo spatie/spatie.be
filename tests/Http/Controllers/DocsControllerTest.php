@@ -26,6 +26,7 @@ it('lists Rust docs in their own category and serves the configured version', fu
         ->prependMiddleware(\Spatie\MarkdownResponse\Middleware\RewriteMarkdownUrls::class);
 
     config()->set('docs.cache_store', 'array');
+    config()->set('markdown.cache_store', 'array');
 
     $repository = collect(config('docs.repositories'))->firstWhere('name', 'rust-crawler');
 
@@ -82,7 +83,9 @@ it('lists Rust docs in their own category and serves the configured version', fu
 
     $this->get('/docs/rust-crawler/v1/installation-setup')
         ->assertOk()
-        ->assertSee('let crawler = Crawler::new();');
+        ->assertSee('data-lang="rust"', escape: false)
+        ->assertSee('tabindex="0"', escape: false)
+        ->assertSee('<span class="hl-keyword">let</span> crawler = <span class="hl-type">Crawler</span>::<span class="hl-property">new</span>();', escape: false);
 
     $this->get('/docs/rust-crawler/v1/basic-usage/first-crawl')
         ->assertOk()

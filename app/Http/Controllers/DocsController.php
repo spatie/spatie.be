@@ -8,6 +8,7 @@ use App\Docs\DocsStorage;
 use App\Docs\DocumentationPage;
 use App\Docs\Highlighting\DiffLanguage;
 use App\Docs\Highlighting\JsxLanguage;
+use App\Docs\Highlighting\RustLanguage;
 use App\Models\Repository;
 use App\Support\CommonMark\DocsLinkPrefixExtension;
 use App\Support\CommonMark\ImageRenderer;
@@ -145,7 +146,7 @@ class DocsController
         }
 
         $page->contents = $this->renderMarkdown($docs->pageContents($page));
-        $page->contents = str_replace('<pre ', '<pre translate="no"', $page->contents);
+        $page->contents = str_replace('<pre ', '<pre translate="no" tabindex="0" ', $page->contents);
         $page->contents = $this->linkImagesToAssetsBucket($page->contents, $repository->slug, $docsStorage);
 
         $navigation = $this->getNavigation($pages);
@@ -210,6 +211,7 @@ class DocsController
         $highlighter = new Highlighter();
         $highlighter->addLanguage(new DiffLanguage());
         $highlighter->addLanguage(new JsxLanguage());
+        $highlighter->addLanguage(new RustLanguage());
 
         return app(MarkdownRenderer::class)
             ->highlightCode(false)

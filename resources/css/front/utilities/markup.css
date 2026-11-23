@@ -272,7 +272,9 @@
     @apply leading-relaxed;
 }
 
-.markup-code pre::-webkit-scrollbar { height: 1px;width: 1px; }
+.markup-code pre::-webkit-scrollbar {
+    @apply h-2 w-2;
+}
 
 .markup-code pre::-webkit-scrollbar-track {
     background: transparent;
@@ -281,7 +283,7 @@
 .markup-code pre::-webkit-scrollbar-thumb {
     background-image: none;
     @apply bg-gray-light;
-    @apply bg-opacity-25;
+    @apply bg-opacity-75;
 }
 
 
