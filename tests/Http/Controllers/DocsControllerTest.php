@@ -38,6 +38,13 @@ it('lists Rust docs in their own category and serves the configured version', fu
 
     app(DocsImporter::class)->import($repository);
 
+    $gitHub->branch('spatie/image-optimizer-rust', 'main', [
+        '_index.md' => "---\ntitle: v0\nslogan: Optimize images from Rust\ngithubUrl: https://github.com/spatie/image-optimizer-rust\nbranch: main\n---\n",
+        'introduction.md' => "---\ntitle: Introduction\nweight: 1\n---\n\nRun native image optimizers from Rust.\n",
+    ]);
+
+    app(DocsImporter::class)->import(collect(config('docs.repositories'))->firstWhere('name', 'image-optimizer-rust'));
+
     foreach (['laravel-backup', 'crawler', 'image'] as $name) {
         $phpRepository = collect(config('docs.repositories'))->firstWhere('name', $name);
         $version = $phpRepository['branches']['main'];
@@ -48,12 +55,20 @@ it('lists Rust docs in their own category and serves the configured version', fu
 
     $this->get('/docs')
         ->assertOk()
-        ->assertSeeInOrder(['Laravel packages', 'laravel-backup', 'PHP packages', 'crawler', 'image', 'Rust packages', 'rust-crawler', 'Other packages'])
+        ->assertSeeInOrder(['Laravel packages', 'laravel-backup', 'PHP packages', 'crawler', 'image', 'Rust packages', 'image-optimizer-rust', 'rust-crawler', 'Other packages'])
         ->assertSee('id="rust"', escape: false)
         ->assertSee('Crawl the web using Rust')
-        ->assertDontSee('image-optimizer-rust')
+        ->assertSee('Optimize images from Rust')
         ->assertDontSee('temporary-directory-rust')
+        ->assertSee('href="'.url('/docs/image-optimizer-rust').'"', escape: false)
         ->assertSee('href="'.url('/docs/rust-crawler').'"', escape: false);
+
+    $this->get('/docs/image-optimizer-rust')
+        ->assertRedirect('/docs/image-optimizer-rust/v0/introduction');
+
+    $this->get('/docs/image-optimizer-rust/v0/introduction')
+        ->assertOk()
+        ->assertSee('Run native image optimizers from Rust.');
 
     $this->get('/docs/rust-crawler')
         ->assertRedirect('/docs/rust-crawler/v0/introduction');

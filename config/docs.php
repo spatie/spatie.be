@@ -21,6 +21,14 @@ return [
 
     'repositories' => [
         [
+            'name' => 'image-optimizer-rust',
+            'repository' => 'spatie/image-optimizer-rust',
+            'branches' => [
+                'main' => 'v0',
+            ],
+            'category' => 'Rust',
+        ],
+        [
             'name' => 'rust-crawler',
             'repository' => 'spatie/rust-crawler',
             'branches' => [
