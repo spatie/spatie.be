@@ -24,7 +24,7 @@ return [
             'name' => 'image-optimizer-rust',
             'repository' => 'spatie/image-optimizer-rust',
             'branches' => [
-                'main' => 'v0',
+                'main' => 'v1',
             ],
             'category' => 'Rust',
         ],
@@ -32,7 +32,7 @@ return [
             'name' => 'rust-crawler',
             'repository' => 'spatie/rust-crawler',
             'branches' => [
-                'main' => 'v0',
+                'main' => 'v1',
             ],
             'category' => 'Rust',
         ],

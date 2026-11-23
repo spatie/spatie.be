@@ -22,12 +22,15 @@ it('lists Rust docs in their own category and serves the configured version', fu
     Storage::fake('docs');
     Storage::fake('docs-assets');
 
+    $this->app->make(\Illuminate\Contracts\Http\Kernel::class)
+        ->prependMiddleware(\Spatie\MarkdownResponse\Middleware\RewriteMarkdownUrls::class);
+
     config()->set('docs.cache_store', 'array');
 
     $repository = collect(config('docs.repositories'))->firstWhere('name', 'rust-crawler');
 
     $files = [
-        '_index.md' => "---\ntitle: v0\nslogan: Crawl the web using Rust\ngithubUrl: https://github.com/spatie/rust-crawler\nbranch: main\n---\n",
+        '_index.md' => "---\ntitle: v1\nslogan: Crawl the web using Rust\ngithubUrl: https://github.com/spatie/rust-crawler\nbranch: main\n---\n",
         'introduction.md' => "---\ntitle: Introduction\nweight: 1\n---\n\n[Setup](installation-setup.md)\n",
         'installation-setup.md' => "---\ntitle: Installation & setup\nweight: 2\n---\n\n```rust,no_run\nlet crawler = Crawler::new();\n```\n",
         'basic-usage/_index.md' => "---\ntitle: Basic usage\nweight: 3\n---\n",
@@ -39,7 +42,7 @@ it('lists Rust docs in their own category and serves the configured version', fu
     app(DocsImporter::class)->import($repository);
 
     $gitHub->branch('spatie/image-optimizer-rust', 'main', [
-        '_index.md' => "---\ntitle: v0\nslogan: Optimize images from Rust\ngithubUrl: https://github.com/spatie/image-optimizer-rust\nbranch: main\n---\n",
+        '_index.md' => "---\ntitle: v1\nslogan: Optimize images from Rust\ngithubUrl: https://github.com/spatie/image-optimizer-rust\nbranch: main\n---\n",
         'introduction.md' => "---\ntitle: Introduction\nweight: 1\n---\n\nRun native image optimizers from Rust.\n",
     ]);
 
@@ -64,36 +67,40 @@ it('lists Rust docs in their own category and serves the configured version', fu
         ->assertSee('href="'.url('/docs/rust-crawler').'"', escape: false);
 
     $this->get('/docs/image-optimizer-rust')
-        ->assertRedirect('/docs/image-optimizer-rust/v0/introduction');
+        ->assertRedirect('/docs/image-optimizer-rust/v1/introduction');
 
-    $this->get('/docs/image-optimizer-rust/v0/introduction')
+    $this->get('/docs/image-optimizer-rust/v1/introduction')
         ->assertOk()
         ->assertSee('Run native image optimizers from Rust.');
 
     $this->get('/docs/rust-crawler')
-        ->assertRedirect('/docs/rust-crawler/v0/introduction');
+        ->assertRedirect('/docs/rust-crawler/v1/introduction');
 
-    $this->get('/docs/rust-crawler/v0/introduction')
+    $this->get('/docs/rust-crawler/v1/introduction')
         ->assertOk()
         ->assertSee('href="installation-setup"', escape: false);
 
-    $this->get('/docs/rust-crawler/v0/installation-setup')
+    $this->get('/docs/rust-crawler/v1/installation-setup')
         ->assertOk()
         ->assertSee('let crawler = Crawler::new();');
 
-    $this->get('/docs/rust-crawler/v0/basic-usage/first-crawl')
+    $this->get('/docs/rust-crawler/v1/basic-usage/first-crawl')
         ->assertOk()
         ->assertSee('href="../installation-setup#library"', escape: false)
         ->assertSee('href="next?example=1#code"', escape: false)
         ->assertSee('href="https://github.com/spatie/rust-crawler/blob/main/README.md"', escape: false);
 
-    foreach (['introduction', 'installation-setup', 'basic-usage/first-crawl', 'introduction.md'] as $page) {
-        $this->get("/docs/rust-crawler/v0.2/{$page}")
-            ->assertMovedPermanently("/docs/rust-crawler/v0/{$page}");
-    }
+    foreach (['rust-crawler', 'image-optimizer-rust'] as $name) {
+        foreach (['v0', 'v0.2'] as $version) {
+            foreach (['introduction', 'installation-setup', 'basic-usage/first-crawl', 'introduction.md'] as $page) {
+                $this->get("/docs/{$name}/{$version}/{$page}")
+                    ->assertMovedPermanently("/docs/{$name}/v1/{$page}");
+            }
 
-    $this->get('/docs/rust-crawler/v0.2')
-        ->assertMovedPermanently('/docs/rust-crawler/v0/introduction');
+            $this->get("/docs/{$name}/{$version}")
+                ->assertMovedPermanently("/docs/{$name}/v1/introduction");
+        }
+    }
 });
 
 it('shows a docs page while only loading the docs of its repository', function () {

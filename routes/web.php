@@ -71,8 +71,17 @@ Route::domain('content.spatie.be')
 Route::permanentRedirect('docs/ray', 'https://myray.app/docs/');
 Route::permanentRedirect('docs/ray/{any}', 'https://myray.app/docs/')->where('any', '.*');
 Route::permanentRedirect('docs/laravel-medialibrary/v11/handling-uploads-with-media-library-pro{any}', 'https://spatie.be/docs/laravel-medialibrary-pro/v6/introduction')->where('any', '.*');
-Route::permanentRedirect('docs/rust-crawler/v0.2', '/docs/rust-crawler/v0/introduction');
-Route::permanentRedirect('docs/rust-crawler/v0.2/{path}', '/docs/rust-crawler/v0/{path}')->where('path', '.*');
+Route::get('docs/{repository}/{version}/{path?}', function (\Illuminate\Http\Request $request, string $repository, string $version, ?string $path = null) {
+    $path ??= 'introduction';
+
+    if ($request->attributes->get('markdown-response.suffix')) {
+        $path .= '.md';
+    }
+
+    return redirect()->to("/docs/{$repository}/v1/{$path}", 301);
+})->whereIn('repository', ['rust-crawler', 'image-optimizer-rust'])
+    ->whereIn('version', ['v0', 'v0.2'])
+    ->where('path', '.*');
 
 Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where('any', '.*');
 
