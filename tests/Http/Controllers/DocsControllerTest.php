@@ -129,6 +129,7 @@ let text = r##"
 #	tab_after_hash
 "##;
 let literal = r#"a # literal"#;
+let html = "<html><head></head><body>Example</body></html>";
 # Ok::<(), Box<dyn std::error::Error>>(())
 RUST;
 
@@ -144,6 +145,7 @@ let text = r##"
 #	tab_after_hash
 "##;
 let literal = r#"a # literal"#;
+let html = "<html><head></head><body>Example</body></html>";
 RUST;
 
     $php = "# a PHP comment\n## another PHP comment\n#\n#[Attribute]\n";

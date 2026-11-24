@@ -6,6 +6,7 @@ use App\Docs\DocumentationContentParser;
 use App\Docs\DocumentationPage;
 use App\Docs\DocumentationPathParser;
 use App\Docs\DocumentationRepository;
+use App\Http\Middleware\RenderOgImageMiddleware;
 use App\Jobs\ImportDocsForRepositoryJob;
 use App\Jobs\Middleware\ThrottleScreenshots;
 use App\Jobs\RandomizeAdsOnGitHubRepositoriesJob;
@@ -27,6 +28,7 @@ use Spatie\Flash\Flash;
 use Spatie\MediaLibrary\Conversions\Jobs\PerformConversionsJob;
 use Spatie\MediaLibrary\ResponsiveImages\Jobs\GenerateResponsiveImagesJob;
 use Spatie\OgImage\Facades\OgImage;
+use Spatie\OgImage\Http\Middleware\RenderOgImageMiddleware as BaseRenderOgImageMiddleware;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -78,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->register(SpotlightServiceProvider::class);
+        $this->app->bind(BaseRenderOgImageMiddleware::class, RenderOgImageMiddleware::class);
 
         Model::unguard();
 

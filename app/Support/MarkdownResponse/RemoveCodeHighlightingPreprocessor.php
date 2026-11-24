@@ -19,6 +19,12 @@ class RemoveCodeHighlightingPreprocessor implements Preprocessor
 
         $xpath = new DOMXPath($document);
 
+        foreach ($xpath->query('//pre/preceding-sibling::node()[1][self::text()]') as $whitespace) {
+            if (trim($whitespace->textContent) === '') {
+                $whitespace->parentNode->removeChild($whitespace);
+            }
+        }
+
         foreach ($xpath->query('//pre[not(code)] | //code') as $code) {
             $text = $document->createTextNode($code->textContent);
 

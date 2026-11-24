@@ -15,7 +15,7 @@ RUST;
     $highlighted = str_replace('OsString', '<span class="hl-type">OsString</span>', e($code));
 
     $html = '<main><p>Use <code>Vec&lt;<span class="hl-type">OsString</span>&gt;</code>.</p>'
-        .sprintf($template, $highlighted)
+        .' '.sprintf($template, $highlighted)
         .'<p>See <a href="https://example.com/PARITY.md#serialization">serialization differences</a>.</p>'
         .'<p>Contact <a href="mailto:security@example.com">security@example.com</a>.</p></main>';
 
