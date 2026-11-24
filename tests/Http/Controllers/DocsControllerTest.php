@@ -166,6 +166,14 @@ RUST;
 
     expect($code)->toBe([$expected."\n", $php]);
     expect(html_entity_decode(strip_tags($response->getContent()), ENT_QUOTES | ENT_HTML5))->toContain('# inline code');
+
+    $this->get('/docs/laravel-backup/v9/introduction', ['Accept' => 'text/markdown'])
+        ->assertOk()
+        ->assertHeader('Content-Type', 'text/markdown; charset=UTF-8')
+        ->assertSee("```\n{$expected}\n```", escape: false)
+        ->assertSee("```\n{$php}```", escape: false)
+        ->assertDontSee('# use example::Builder;', escape: false)
+        ->assertDontSee('# let setup', escape: false);
 })->with(['rust', 'rs', 'rust,no_run', 'rs,ignore']);
 
 it('shows a docs page while only loading the docs of its repository', function () {

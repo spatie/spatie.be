@@ -1,11 +1,11 @@
 <?php
 
 use App\Support\MarkdownResponse\CleanUpDocsMarkdownPostprocessor;
+use App\Support\MarkdownResponse\RemoveCodeHighlightingPreprocessor;
 use App\Support\MarkdownResponse\RemoveDocsLayoutChromePreprocessor;
 use Spatie\MarkdownResponse\Actions\DetectsMarkdownRequest;
 use Spatie\MarkdownResponse\Actions\GeneratesCacheKey;
 use Spatie\MarkdownResponse\Postprocessors\CollapseBlankLinesPostprocessor;
-use Spatie\MarkdownResponse\Postprocessors\RemoveHtmlTagsPostprocessor;
 use Spatie\MarkdownResponse\Preprocessors\RemoveScriptsAndStylesPreprocessor;
 
 return [
@@ -67,6 +67,7 @@ return [
     'preprocessors' => [
         RemoveScriptsAndStylesPreprocessor::class,
         RemoveDocsLayoutChromePreprocessor::class,
+        RemoveCodeHighlightingPreprocessor::class,
     ],
 
     /*
@@ -74,7 +75,6 @@ return [
      * Each class must implement the Postprocessor interface.
      */
     'postprocessors' => [
-        RemoveHtmlTagsPostprocessor::class,
         CleanUpDocsMarkdownPostprocessor::class,
         CollapseBlankLinesPostprocessor::class,
     ],
