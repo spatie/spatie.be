@@ -178,6 +178,49 @@ RUST;
         ->assertDontSee('# let setup', escape: false);
 })->with(['rust', 'rs', 'rust,no_run', 'rs,ignore']);
 
+it('preserves inline placeholders while highlighting recognized language prefixes', function () {
+    Storage::fake('docs');
+    Storage::fake('docs-assets');
+
+    config()->set('docs.cache_store', 'array');
+    config()->set('markdown.cache_store', 'array');
+
+    $examples = [
+        '{relation}_{function}_{column}' => '{relation}_{function}_{column}',
+        '{resource}.{action}.{target}' => '{resource}.{action}.{target}',
+        '{php}$value' => '$value',
+        '{js}const value = 42;' => 'const value = 42;',
+        '{rust}let value: Vec<String> = vec![];' => 'let value: Vec<String> = vec![];',
+        '{rs}let value = 42;' => 'let value = 42;',
+        '{txt}<literal>' => '<literal>',
+        '{text}<literal>' => '<literal>',
+        '{unknown}<literal>' => '{unknown}<literal>',
+    ];
+    $markdown = implode("\n\n", array_map(fn (string $code) => "`{$code}`", array_keys($examples)));
+
+    FakeGitHubDocs::make()->branch('spatie/laravel-backup', 'main', FakeGitHubDocs::docsForVersion('v9', $markdown));
+
+    app(DocsImporter::class)->import([
+        'name' => 'laravel-backup',
+        'repository' => 'spatie/laravel-backup',
+        'branches' => ['main' => 'v9'],
+        'category' => 'Laravel',
+    ]);
+
+    $response = $this->get('/docs/laravel-backup/v9/introduction')->assertOk();
+    preg_match_all('~<code>(.*?)</code>~s', $response->getContent(), $codes);
+
+    expect(array_map(fn (string $html) => html_entity_decode(strip_tags($html), ENT_QUOTES | ENT_HTML5), $codes[1]))
+        ->toBe(array_values($examples));
+    expect($codes[1][2])->toContain('class="hl-variable"');
+
+    $response = $this->get('/docs/laravel-backup/v9/introduction', ['Accept' => 'text/markdown'])->assertOk();
+
+    foreach ($examples as $expected) {
+        $response->assertSee("`{$expected}`", escape: false);
+    }
+});
+
 it('shows a docs page while only loading the docs of its repository', function () {
     Storage::fake('docs');
     Storage::fake('docs-assets');
