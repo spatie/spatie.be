@@ -19,6 +19,7 @@ use App\Http\Controllers\DownloadLatestReleaseForExpiredLicenseController;
 use App\Http\Controllers\DownloadPurchasableController;
 use App\Http\Controllers\DownloadRayController;
 use App\Http\Controllers\DownloadRayV3Controller;
+use App\Http\Controllers\DownloadRayV4Controller;
 use App\Http\Controllers\ExternalFeedItemsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\MusicController;
@@ -158,6 +159,7 @@ Route::prefix('products')->group(function () {
 
     Route::get('ray/download/{platform}/latest', DownloadRayController::class);
     Route::get('ray/v3/download/{platform}/latest', DownloadRayV3Controller::class);
+    Route::get('ray/v4/download/{platform}/latest', DownloadRayV4Controller::class);
 
 
     Route::get('{product:slug}/purchasables/{purchasable}/purchase-complete', AfterPaddleSaleController::class)->name('purchase.complete');
