@@ -3,6 +3,7 @@
 namespace Tests;
 
 use App\Jobs\GeneratePackageGithubHeaderJob;
+use App\Models\AdminAccess;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
@@ -46,6 +47,20 @@ abstract class TestCase extends BaseTestCase
         ]);
 
         $this->actingAs($user);
+
+        return $user;
+    }
+
+    public function actingAsAdmin(): User
+    {
+        $user = $this->actingAsSpatie();
+
+        AdminAccess::create(['email' => strtolower($user->email), 'google_id' => 'test-google-id']);
+        $this->withSession(['admin_google_login' => [
+            'user_id' => $user->id,
+            'email' => strtolower($user->email),
+            'google_id' => 'test-google-id',
+        ]]);
 
         return $user;
     }

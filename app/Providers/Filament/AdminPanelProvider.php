@@ -9,8 +9,9 @@ use App\Filament\Widgets\Purchases\PurchasesPerProductPerDayWidget;
 use App\Filament\Widgets\Purchases\PurchasesPerPurchasablePerDayWidget;
 use App\Filament\Widgets\PurchasesPerProductWidget;
 use App\Filament\Widgets\StatsOverviewWidget;
+use App\Http\Controllers\Admin\GoogleAdminLoginController;
+use App\Http\Middleware\EnsureAdminPanelAccess;
 use Filament\Facades\Filament;
-use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Panel;
@@ -22,6 +23,7 @@ use Illuminate\Foundation\Http\Middleware\PreventRequestForgery;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Livewire\Livewire;
 
@@ -41,7 +43,14 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->authGuard('web')
+            ->login(GoogleAdminLoginController::class)
+            ->routes(function (): void {
+                Route::post('login/google', [GoogleAdminLoginController::class, 'redirect'])
+                    ->middleware('throttle:10,1')->name('auth.google');
+                Route::get('auth/google/callback', [GoogleAdminLoginController::class, 'callback'])
+                    ->middleware('throttle:10,1')->name('auth.google.callback');
+            })
             ->colors([
                 'primary' => '#197593',
             ])
@@ -70,8 +79,8 @@ class AdminPanelProvider extends PanelProvider
                 DispatchServingFilamentEvent::class,
             ])
             ->authMiddleware([
-                Authenticate::class,
-            ])->navigationGroups([
+                EnsureAdminPanelAccess::class,
+            ], isPersistent: true)->navigationGroups([
                 'Customers',
                 'Products',
                 'Courses',

@@ -16,6 +16,7 @@ use App\Observers\UserObserver;
 use App\Services\Mailcoach\MailcoachApi;
 use App\Support\Uuid\Uuid;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Panel;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -27,6 +28,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Collection;
 use Laravel\Paddle\Billable;
 use Laravel\Sanctum\HasApiTokens;
+use STS\FilamentImpersonate\Facades\Impersonation;
 
 class User extends Authenticatable implements FilamentUser
 {
@@ -295,8 +297,23 @@ class User extends Authenticatable implements FilamentUser
         return $this->hasMany(UserAchievementProjection::class);
     }
 
-    public function canAccessPanel($panel): bool
+    public function canAccessPanel(Panel $panel): bool
     {
-        return $this->is_admin;
+        if ($panel->getId() !== 'admin' || Impersonation::isImpersonating()) {
+            return false;
+        }
+
+        $email = strtolower($this->email);
+        $proof = session('admin_google_login');
+
+        if (! str_ends_with($email, '@spatie.be') || ! is_array($proof) || blank($proof['google_id'] ?? null)) {
+            return false;
+        }
+
+        if ($proof !== ['user_id' => $this->id, 'email' => $email, 'google_id' => $proof['google_id']]) {
+            return false;
+        }
+
+        return AdminAccess::query()->where('email', $email)->where('google_id', $proof['google_id'])->exists();
     }
 }

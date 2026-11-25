@@ -46,6 +46,7 @@ use App\Http\Controllers\TidBitsSubscriptionController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\WebhookController;
 use App\Http\Controllers\WwsdController;
+use App\Http\Middleware\EnsureAdminPanelAccess;
 use App\Http\Middleware\ProvideHomepageMarkdownResponse;
 use App\Http\Middleware\ProvideMarkdownLinks;
 use App\Http\Middleware\TopSecretMiddleware;
@@ -89,7 +90,7 @@ Route::redirect('/mailcoach/{any}', 'https://spatie.mailcoach.app/{any}')->where
 Route::feeds();
 
 Route::get('admin/blog-preview/{post}', [BlogController::class, 'preview'])
-    ->middleware('adminsOnly')
+    ->middleware(EnsureAdminPanelAccess::class)
     ->name('blog.preview');
 
 Route::get('blog', [BlogController::class, 'index'])->name('blog');
