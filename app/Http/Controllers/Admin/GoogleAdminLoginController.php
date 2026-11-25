@@ -67,13 +67,17 @@ class GoogleAdminLoginController
 
                 $user = User::query()->where('email', $email)->first();
 
+                if ($access->user_id !== $user?->id) {
+                    throw ValidationException::withMessages(['email' => 'This address is already linked to a different customer account. Ask an administrator to verify the account before granting access.']);
+                }
+
                 $user ??= User::create([
                     'email' => $email,
                     'name' => $identity->getName() ?? strstr($email, '@', true),
                     'password' => bcrypt(Str::random(64)),
                 ]);
 
-                $access->update(['google_id' => $googleId]);
+                $access->update(['user_id' => $user->id, 'google_id' => $googleId]);
 
                 return $user;
             });

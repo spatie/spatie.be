@@ -14,7 +14,6 @@ class UserFactory extends Factory
             'name' => ucfirst($name),
             'email' => "${name}@spatie.be",
             'password' => bcrypt('password'),
-            'is_admin' => false,
         ];
     }
 }

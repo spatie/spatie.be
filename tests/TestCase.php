@@ -43,8 +43,9 @@ abstract class TestCase extends BaseTestCase
     {
         $user = User::factory()->create([
             'github_username' => 'Nielsvanpach',
-            'is_admin' => true,
         ]);
+
+        AdminAccess::create(['email' => strtolower($user->email), 'user_id' => $user->id]);
 
         $this->actingAs($user);
 
@@ -55,7 +56,7 @@ abstract class TestCase extends BaseTestCase
     {
         $user = $this->actingAsSpatie();
 
-        AdminAccess::create(['email' => strtolower($user->email), 'google_id' => 'test-google-id']);
+        AdminAccess::query()->where('email', strtolower($user->email))->update(['google_id' => 'test-google-id']);
         $this->withSession(['admin_google_login' => [
             'user_id' => $user->id,
             'email' => strtolower($user->email),

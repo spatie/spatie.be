@@ -42,7 +42,6 @@ class User extends Authenticatable implements FilamentUser
     ];
 
     public $casts = [
-        'is_admin' => 'bool',
         'next_purchase_discount_period_ends_at' => 'datetime',
         'sponsor_gift_given_at' => 'datetime',
         'has_access_to_unreleased_products' => 'boolean',
@@ -172,9 +171,26 @@ class User extends Authenticatable implements FilamentUser
         return false;
     }
 
+    public function isAdmin(): bool
+    {
+        $email = strtolower($this->email ?? '');
+
+        if ($this->getKey() === null || ! str_ends_with($email, '@spatie.be')) {
+            return false;
+        }
+
+        return $this->adminAccess()->where('email', $email)->exists();
+    }
+
+    /** @return HasOne<AdminAccess, $this> */
+    public function adminAccess(): HasOne
+    {
+        return $this->hasOne(AdminAccess::class);
+    }
+
     public function isSpatieMember(): bool
     {
-        if (! $this->is_admin) {
+        if (! $this->isAdmin()) {
             return false;
         }
 
@@ -306,7 +322,7 @@ class User extends Authenticatable implements FilamentUser
         $email = strtolower($this->email);
         $proof = session('admin_google_login');
 
-        if (! str_ends_with($email, '@spatie.be') || ! is_array($proof) || blank($proof['google_id'] ?? null)) {
+        if ($this->getKey() === null || ! str_ends_with($email, '@spatie.be') || ! is_array($proof) || blank($proof['google_id'] ?? null)) {
             return false;
         }
 
@@ -314,6 +330,6 @@ class User extends Authenticatable implements FilamentUser
             return false;
         }
 
-        return AdminAccess::query()->where('email', $email)->where('google_id', $proof['google_id'])->exists();
+        return $this->adminAccess()->where('email', $email)->where('google_id', $proof['google_id'])->exists();
     }
 }

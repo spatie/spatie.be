@@ -3,12 +3,13 @@
 namespace Tests\Http\Api;
 
 use App\Http\Api\Controllers\MembersController;
+use App\Models\AdminAccess;
 use App\Models\Member;
 use App\Models\User;
 use Laravel\Sanctum\Sanctum;
 
 it('returns all Spatie team members', function () {
-    Sanctum::actingAs(User::factory()->create(['is_admin' => true]));
+    Sanctum::actingAs($this->actingAsSpatie());
 
     Member::insert(membersDummyData());
 
@@ -38,7 +39,8 @@ it('cannot fetch spatie data when not authorized', function () {
 });
 
 it('can perform an api call with the generated token', function () {
-    $user = User::factory()->create(['is_admin' => true]);
+    $user = User::factory()->create();
+    $access = AdminAccess::create(['email' => strtolower($user->email), 'user_id' => $user->id]);
     $token = $user->createToken('api-token');
 
     Member::insert(membersDummyData());
@@ -47,6 +49,12 @@ it('can perform an api call with the generated token', function () {
         ->withToken($token->plainTextToken)
         ->get(action([MembersController::class, 'index']))
         ->assertStatus(200);
+
+    $access->delete();
+
+    $this->withToken($token->plainTextToken)
+        ->getJson(action([MembersController::class, 'index']))
+        ->assertUnauthorized();
 });
 
 function membersDummyData(): array

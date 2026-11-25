@@ -28,7 +28,6 @@ class UserSeeder extends Seeder
         ], [
             'name' => ucfirst($name),
             'password' => bcrypt('password'),
-            'is_admin' => true,
         ]))->each(function (User $user): void {
             $randomPurchasables = Purchasable::query()->inRandomOrder()->take(random_int(0, 5))->get();
 

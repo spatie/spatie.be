@@ -4,6 +4,7 @@ use App\Docs\Docs;
 use App\Docs\DocsImporter;
 use App\Docs\DocsStorage;
 use App\Livewire\SearchDocsComponent;
+use App\Models\AdminAccess;
 use App\Models\Member;
 use App\Models\Repository;
 use App\Models\User;
@@ -37,14 +38,20 @@ beforeEach(function () {
         app(DocsImporter::class)->import($repository);
     }
 
-    $this->staff = User::factory()->create(['email' => 'staff@spatie.be', 'is_admin' => true]);
+    $this->staff = User::factory()->create(['email' => 'staff@spatie.be']);
+    AdminAccess::create(['email' => $this->staff->email, 'user_id' => $this->staff->id]);
     Member::factory()->create(['email' => $this->staff->email]);
 });
 
 it('conceals staff repositories from guests and untrusted accounts on every public surface', function (?string $email, bool $admin) {
     if ($email) {
-        $this->actingAs(User::factory()->create(['email' => $email, 'is_admin' => $admin]));
+        $user = User::factory()->create(['email' => $email]);
+        $this->actingAs($user);
         Member::factory()->create(['email' => $email]);
+
+        if ($admin) {
+            AdminAccess::create(['email' => $email, 'user_id' => $user->id]);
+        }
     }
 
     foreach (['/docs', '/open-source/packages', '/llms.txt', '/sitemap.xml'] as $url) {

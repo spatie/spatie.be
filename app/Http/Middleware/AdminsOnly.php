@@ -14,7 +14,7 @@ class AdminsOnly
         /** @var User|null $user */
         $user = $request->user();
 
-        if ($user?->is_admin) {
+        if ($user?->isAdmin()) {
             return $next($request);
         }
 
