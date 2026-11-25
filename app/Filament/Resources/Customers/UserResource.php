@@ -65,6 +65,8 @@ class UserResource extends Resource
                             ->disabled()
                             ->columnStart(1),
                         Toggle::make('is_admin')
+                            ->label('Staff privileges')
+                            ->helperText('Controls existing staff benefits and API access. Manage admin sign-in separately under Team / Admin access.')
                             ->columnStart(1)
                             ->required(),
                         Toggle::make('has_access_to_unreleased_products')
@@ -91,7 +93,7 @@ class UserResource extends Resource
                     ->searchable(),
 
                 BooleanColumn::make('is_sponsor')->default(false),
-                BooleanColumn::make('is_admin'),
+                BooleanColumn::make('is_admin')->label('Staff privileges'),
                 BooleanColumn::make('has_access_to_unreleased_products'),
 
                 TextColumn::make('created_at')

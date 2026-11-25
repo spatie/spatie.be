@@ -33,7 +33,7 @@ it('serves only published posts whose publication date has arrived across blog a
 });
 
 it('edits Markdown in Filament and publishes, previews and unpublishes without stale pages', function () {
-    $this->actingAsSpatie();
+    $this->actingAsAdmin();
     Livewire::test(CreateBlogPost::class)->fillForm([
         'title' => 'A local draft', 'slug' => 'a-local-draft',
         'markdown' => "## Hello\n\n```blade\n{{-- inside a view --}}\n```",
@@ -62,7 +62,7 @@ it('edits Markdown in Filament and publishes, previews and unpublishes without s
 
 it('stores a header on the media disk and serves it with responsive sources', function () {
     Storage::fake('medialibrary');
-    $this->actingAsSpatie();
+    $this->actingAsAdmin();
     $post = BlogPost::factory()->create();
     TransformationResult::create([
         'url' => route('blog.show', $post->slug),
@@ -105,7 +105,7 @@ it('stores a header on the media disk and serves it with responsive sources', fu
 });
 
 it('rejects reserved blog routes in the editor', function (string $slug) {
-    $this->actingAsSpatie();
+    $this->actingAsAdmin();
     Livewire::test(CreateBlogPost::class)->fillForm([
         'title' => 'Reserved', 'slug' => $slug, 'markdown' => 'Body',
     ])->call('create')->assertHasFormErrors(['slug']);

@@ -2,6 +2,12 @@
 
 return [
 
+    'google' => [
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_ADMIN_CALLBACK_URL', rtrim(env('APP_URL', 'http://localhost'), '/').'/admin/auth/google/callback'),
+    ],
+
     'laravel_cloud' => [
         'environment_id' => env('CLOUD_CACHE_PURGE_ENVIRONMENT_ID'),
         'cache_purge_token' => env('CLOUD_CACHE_PURGE_TOKEN'),

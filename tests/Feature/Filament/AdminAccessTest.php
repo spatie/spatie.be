@@ -1,0 +1,254 @@
+<?php
+
+use App\Domain\Blog\Models\BlogPost;
+use App\Domain\Shop\Actions\RestoreRepositoryAccessAction;
+use App\Filament\Resources\AdminAccessResource\Pages\ManageAdminAccess;
+use App\Models\AdminAccess;
+use App\Models\User;
+use Filament\Actions\Testing\TestAction;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Laravel\Socialite\Two\GoogleProvider;
+use Laravel\Socialite\Two\User as GoogleUser;
+use Livewire\Livewire;
+use STS\FilamentImpersonate\Facades\Impersonation;
+
+it('shows only Google sign-in to guests and password-authenticated administrators', function (bool $signedIn) {
+    if ($signedIn) {
+        $user = $this->actingAsSpatie();
+        AdminAccess::create(['email' => strtolower($user->email), 'google_id' => 'linked-google-id']);
+    }
+
+    $this->get('/admin')->assertRedirect(route('filament.admin.auth.login'));
+    $this->get('/admin/login')->assertOk()->assertSee('Continue with Google')
+        ->assertHeader('X-Robots-Tag', 'noindex, nofollow')
+        ->assertDontSee('name="password"', false)->assertDontSee('GitHub');
+})->with([false, true]);
+
+it('starts stateful Google OAuth with an account chooser and domain hint', function () {
+    config()->set('services.google', [
+        'client_id' => 'test-client', 'client_secret' => 'test-secret',
+        'redirect' => 'http://localhost/admin/auth/google/callback',
+    ]);
+
+    $response = $this->post(route('filament.admin.auth.google'))->assertRedirect()->assertSessionHas('state');
+    parse_str(parse_url($response->headers->get('Location'), PHP_URL_QUERY), $query);
+
+    expect($query)->toMatchArray(['hd' => 'spatie.be', 'prompt' => 'select_account', 'client_id' => 'test-client']);
+    expect($query['state'])->not->toBeEmpty();
+});
+
+it('authenticates only approved verified Google identities and binds the session', function (bool $existing) {
+    $access = AdminAccess::create(['email' => 'approved@spatie.be']);
+    $user = $existing ? User::factory()->create(['email' => 'Approved@spatie.be', 'is_admin' => false]) : null;
+    $identity = (new GoogleUser())->setRaw(['email_verified' => true])->map([
+        'id' => 'google-subject', 'email' => 'APPROVED@spatie.be', 'name' => 'Approved Staff',
+    ]);
+    Socialite::shouldReceive('buildProvider')->with(GoogleProvider::class, config('services.google'))->andReturnSelf();
+    Socialite::shouldReceive('user')->once()->andReturn($identity);
+
+    $this->get(route('filament.admin.auth.google.callback'))->assertRedirect(route('filament.admin.pages.dashboard'))
+        ->assertSessionHas('admin_google_login', [
+            'user_id' => $user?->id ?? User::query()->sole()->id,
+            'email' => 'approved@spatie.be', 'google_id' => 'google-subject',
+        ]);
+
+    $this->assertAuthenticatedAs($user ?? User::query()->sole());
+    expect($access->refresh()->google_id)->toBe('google-subject');
+    expect(User::count())->toBe(1);
+    expect(Auth::user()->fresh()->is_admin)->toBeFalse();
+    $this->get(route('filament.admin.resources.admin-accesses.index'))->assertOk();
+})->with([false, true]);
+
+it('rejects unapproved, external, unverified and conflicting Google identities without creating accounts', function (string $email, mixed $verified, string $googleId, ?string $approved, ?string $linked) {
+    if ($approved) {
+        AdminAccess::create(['email' => $approved, 'google_id' => $linked]);
+    }
+
+    $identity = (new GoogleUser())->setRaw(['email_verified' => $verified])->map([
+        'id' => $googleId, 'email' => $email, 'name' => 'Rejected Person',
+    ]);
+    Socialite::shouldReceive('buildProvider')->with(GoogleProvider::class, config('services.google'))->andReturnSelf();
+    Socialite::shouldReceive('user')->once()->andReturn($identity);
+
+    $this->get(route('filament.admin.auth.google.callback'))->assertRedirect(route('filament.admin.auth.login'))->assertSessionHasErrors('google');
+
+    $this->assertGuest();
+    expect(User::count())->toBe(0);
+})->with([
+    'unapproved staff' => ['staff@spatie.be', true, 'id', null, null],
+    'external account' => ['person@example.com', true, 'id', 'person@example.com', 'id'],
+    'lookalike domain' => ['staff@spatie.be.example.com', true, 'id', 'staff@spatie.be.example.com', 'id'],
+    'unverified email' => ['staff@spatie.be', false, 'id', 'staff@spatie.be', null],
+    'string false claim' => ['staff@spatie.be', 'false', 'id', 'staff@spatie.be', null],
+    'missing subject' => ['staff@spatie.be', true, '', 'staff@spatie.be', null],
+    'different subject' => ['staff@spatie.be', true, 'new-id', 'staff@spatie.be', 'original-id'],
+]);
+
+it('returns OAuth state failures and cancellation to admin sign-in', function () {
+    config()->set('services.google', [
+        'client_id' => 'test-client', 'client_secret' => 'test-secret',
+        'redirect' => 'http://localhost/admin/auth/google/callback',
+    ]);
+
+    $this->withSession(['state' => 'expected-state'])
+        ->get(route('filament.admin.auth.google.callback', ['state' => 'wrong-state', 'code' => 'code']))
+        ->assertRedirect(route('filament.admin.auth.login'))->assertSessionHasErrors('google');
+    $this->get(route('filament.admin.auth.google.callback', ['error' => 'access_denied']))->assertRedirect(route('filament.admin.auth.login'))->assertSessionHasErrors('google');
+    $this->assertGuest();
+});
+
+it('does not grant admin access when restoring a remember cookie', function () {
+    $user = $this->actingAsAdmin();
+    Auth::guard('web')->login($user, true);
+    $cookieName = Auth::guard('web')->getRecallerName();
+    $cookie = "{$user->id}|{$user->getRememberToken()}|{$user->password}";
+    session()->flush();
+    Auth::forgetGuards();
+
+    $this->withCookie($cookieName, $cookie)->get('/admin')
+        ->assertRedirect(route('filament.admin.auth.login'))->assertSessionMissing('admin_google_login');
+    $this->assertAuthenticatedAs($user);
+});
+
+it('keeps GitHub customer login working without preserving Google admin proof', function () {
+    $user = $this->actingAsAdmin();
+    $identity = (new GoogleUser())->map([
+        'id' => '12345', 'email' => $user->email, 'name' => $user->name, 'nickname' => 'staff',
+    ]);
+    Socialite::shouldReceive('driver')->with('github')->andReturnSelf();
+    Socialite::shouldReceive('stateless')->andReturnSelf();
+    Socialite::shouldReceive('user')->andReturn($identity);
+    $this->mock(RestoreRepositoryAccessAction::class)->shouldReceive('execute')->once();
+
+    $this->get('/login/github/callback')->assertOk()->assertSessionMissing('admin_google_login');
+    $this->assertAuthenticatedAs($user);
+    $this->get('/admin')->assertRedirect(route('filament.admin.auth.login'));
+});
+
+it('clears Google proof on a real password login and on logout', function () {
+    $user = $this->actingAsAdmin();
+
+    Auth::guard('web')->forgetUser();
+    Auth::guard('web')->attempt(['email' => $user->email, 'password' => 'password']);
+
+    $this->get('/admin')->assertRedirect(route('filament.admin.auth.login'))->assertSessionMissing('admin_google_login');
+    $this->assertAuthenticatedAs($user);
+
+    $this->withSession(['admin_google_login' => [
+        'user_id' => $user->id, 'email' => strtolower($user->email), 'google_id' => 'test-google-id',
+    ]]);
+    $this->post(route('filament.admin.auth.logout'))->assertRedirect()->assertSessionMissing('admin_google_login');
+    $this->assertGuest();
+});
+
+it('requires current approval and identity for panel requests and blog previews', function (string $change) {
+    $user = $this->actingAsAdmin();
+    $post = BlogPost::factory()->create(['published' => false]);
+    $panelUrl = route('filament.admin.resources.admin-accesses.index');
+    $this->get($panelUrl)->assertOk();
+    $this->get(route('blog.preview', $post))->assertOk();
+
+    match ($change) {
+        'revocation' => AdminAccess::query()->delete(),
+        'subject change' => AdminAccess::query()->update(['google_id' => 'replacement-id']),
+        'email change' => $user->update(['email' => 'different@spatie.be']),
+        'identity switch' => $this->actingAs(User::factory()->create(['is_admin' => true, 'password' => $user->password])),
+    };
+
+    $this->get($panelUrl)->assertRedirect(route('filament.admin.auth.login'));
+    $this->get(route('blog.preview', $post))->assertRedirect(route('filament.admin.auth.login'));
+})->with(['revocation', 'subject change', 'email change', 'identity switch']);
+
+it('manages normalized Spatie approvals without changing customer accounts', function () {
+    $this->actingAsAdmin();
+    $customer = User::factory()->create(['email' => 'new@spatie.be']);
+
+    Livewire::test(ManageAdminAccess::class)
+        ->callAction('create', data: ['email' => ' NEW@spatie.be '])
+        ->assertHasNoActionErrors();
+
+    $access = AdminAccess::query()->where('email', 'new@spatie.be')->sole();
+    expect($access->google_id)->toBeNull();
+
+    Livewire::test(ManageAdminAccess::class)
+        ->callAction('create', data: ['email' => 'new@spatie.be'])->assertHasActionErrors(['email' => 'unique']);
+    Livewire::test(ManageAdminAccess::class)
+        ->callAction('create', data: ['email' => 'person@example.com'])->assertHasActionErrors(['email' => 'ends_with']);
+
+    Livewire::test(ManageAdminAccess::class)
+        ->callAction(TestAction::make('delete')->table($access))->assertHasNoActionErrors();
+
+    expect(AdminAccess::find($access->id))->toBeNull();
+    expect($customer->fresh())->not->toBeNull();
+    expect($customer->fresh()->is_admin)->toBeFalse();
+});
+
+it('preserves the last administrator and provides an explicit bootstrap command', function () {
+    $this->artisan('admin:grant-access', ['email' => 'person@example.com'])->assertFailed();
+    expect(AdminAccess::count())->toBe(0);
+    $this->artisan('admin:grant-access', ['email' => ' First@Spatie.be '])->assertSuccessful();
+    $this->artisan('admin:grant-access', ['email' => 'first@spatie.be'])->assertSuccessful();
+    expect(AdminAccess::query()->sole()->email)->toBe('first@spatie.be');
+
+    expect(fn () => AdminAccess::query()->sole()->revoke())->toThrow(Illuminate\Validation\ValidationException::class);
+    expect(AdminAccess::count())->toBe(1);
+});
+
+it('does not inherit admin access while impersonating and rechecks approval on return', function (bool $revoke) {
+    $admin = $this->actingAsAdmin();
+    $target = User::factory()->create(['is_admin' => true]);
+    AdminAccess::create(['email' => strtolower($target->email), 'google_id' => 'target-google-id']);
+
+    expect(Impersonation::enter($admin, $target, 'web'))->toBeTrue();
+    $this->get('/admin')->assertRedirect(route('filament.admin.auth.login'));
+
+    if ($revoke) {
+        AdminAccess::query()->where('email', strtolower($admin->email))->sole()->revoke();
+    }
+
+    expect(Impersonation::leave())->toBeTrue();
+    $response = $this->get(route('filament.admin.resources.admin-accesses.index'));
+    $revoke ? $response->assertRedirect(route('filament.admin.auth.login')) : $response->assertOk();
+})->with([false, true]);
+
+it('blocks writes from an already-open Livewire page after revocation or a non-Google login', function (string $change) {
+    $user = $this->actingAsAdmin();
+    $response = $this->get(route('filament.admin.resources.admin-accesses.index'))->assertOk();
+    $document = Dom\HTMLDocument::createFromString($response->getContent(), LIBXML_NOERROR);
+    $snapshot = $document->querySelector('[wire\\:snapshot*="ManageAdminAccess"]')->getAttribute('wire:snapshot');
+
+    Livewire::flushState();
+
+    $mounted = $this->postJson(Livewire::getUpdateUri(), ['components' => [[
+        'snapshot' => $snapshot,
+        'updates' => [],
+        'calls' => [['method' => 'mountAction', 'params' => ['create']]],
+    ]]], ['X-Livewire' => 'true'])->assertOk();
+
+    if ($change === 'revocation') {
+        AdminAccess::query()->delete();
+    }
+
+    if ($change === 'password login') {
+        Auth::guard('web')->attempt(['email' => $user->email, 'password' => 'password']);
+    }
+
+    Livewire::flushState();
+
+    $result = $this->postJson(Livewire::getUpdateUri(), ['components' => [[
+        'snapshot' => $mounted->json('components.0.snapshot'),
+        'updates' => ['mountedActions.0.data.email' => 'unauthorized@spatie.be'],
+        'calls' => [['method' => 'callMountedAction', 'params' => []]],
+    ]]], ['X-Livewire' => 'true']);
+
+    if ($change === 'unchanged') {
+        $result->assertOk();
+        expect(AdminAccess::query()->where('email', 'unauthorized@spatie.be')->exists())->toBeTrue();
+
+        return;
+    }
+
+    $result->assertForbidden();
+    expect(AdminAccess::query()->where('email', 'unauthorized@spatie.be')->exists())->toBeFalse();
+})->with(['unchanged', 'revocation', 'password login']);

@@ -12,7 +12,7 @@ beforeEach(function () {
     Storage::fake('medialibrary');
     Storage::fake('local');
 
-    $this->actingAsSpatie();
+    $this->actingAsAdmin();
 });
 
 it('stores uploaded playlist images on the media library disk', function () {

@@ -3,7 +3,7 @@
 use App\Models\RepositoryRelease;
 
 it('shows the releases index page to admins', function () {
-    $this->actingAsSpatie();
+    $this->actingAsAdmin();
 
     RepositoryRelease::factory()->create();
 
@@ -12,7 +12,7 @@ it('shows the releases index page to admins', function () {
 });
 
 it('does not expose a create page', function () {
-    $this->actingAsSpatie();
+    $this->actingAsAdmin();
 
     expect(fn () => route('filament.admin.resources.content.repository-releases.create'))
         ->toThrow(Symfony\Component\Routing\Exception\RouteNotFoundException::class);
