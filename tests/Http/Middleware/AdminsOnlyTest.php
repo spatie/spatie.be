@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Middleware\AdminsOnly;
+use App\Models\AdminAccess;
 use App\Models\User;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
@@ -10,11 +11,12 @@ beforeEach(function () {
 });
 
 it('will pass when a user is admin', function () {
+    $user = User::factory()->create();
+    AdminAccess::create(['email' => strtolower($user->email), 'user_id' => $user->id]);
+
     $request = new Request();
 
-    $request->setUserResolver(
-        fn () => User::factory()->make(['is_admin' => true])
-    );
+    $request->setUserResolver(fn () => $user);
 
     $response = $this->middleware->handle($request, fn (Request $request) => $request);
 
@@ -35,7 +37,7 @@ it('will not pass when the user is not an admin', function () {
 
     $request = new Request();
 
-    $request->setUserResolver(fn () => User::factory()->make(['is_admin' => false]));
+    $request->setUserResolver(fn () => User::factory()->create());
 
     $this->middleware->handle($request, fn (Request $request) => $request);
 });

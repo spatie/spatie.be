@@ -26,7 +26,7 @@ it('cannot create an api token for non members', function () {
 });
 
 it('cannot create an api token for non admins', function () {
-    $this->actingAs(User::factory()->create(['is_admin' => false]));
+    $this->actingAs(User::factory()->create());
 
     $this
         ->post(action([ApiTokensController::class, 'create']))
