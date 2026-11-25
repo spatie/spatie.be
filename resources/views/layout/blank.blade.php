@@ -35,6 +35,8 @@
 
 <body class="{{ $bodyClass ?? '' }}">
 
+    @stack('startBody')
+
     {{ $slot }}
 
     <x-impersonate::banner/>

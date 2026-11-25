@@ -1,7 +1,19 @@
 <x-blank :no-index="true" body-class="bg-oss-black text-oss-gray font-pt antialiased">
     <x-slot name="title">Admin sign in</x-slot>
 
-    <main class="min-h-[100svh] flex items-center justify-center px-5 py-12 sm:px-8">
+    @include('layout.partials.gradient-background', [
+        'color1' => '#2EC4B6',
+        'color2' => '#0E3B5E',
+        'color3' => '#50E69B',
+        'rotationZ' => '160',
+        'positionX' => '0.5',
+        'positionY' => '-0.4',
+        'uDensity' => '1.4',
+        'uFrequency' => '4.2',
+        'uStrength' => '2.6',
+    ])
+
+    <main class="relative min-h-[100svh] flex items-center justify-center px-5 py-12 sm:px-8">
         <div class="w-full max-w-[520px]">
             <a href="{{ url('/') }}" aria-label="Spatie home" class="inline-flex h-12 w-28 mb-10 rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-8 focus-visible:outline-white">
                 @app_svg('logo')
